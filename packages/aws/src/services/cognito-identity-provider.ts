@@ -173,6 +173,7 @@ export type AdminCreateUserUnusedAccountValidityDaysType = number;
 export type SmsInviteMessageType = string;
 export type EmailInviteMessageType = string;
 export type PriorityType = number;
+export type EncryptionKeyArnType = string;
 export type DomainType = string;
 export type ClientNameType = string;
 export type GenerateSecret = boolean;
@@ -186,6 +187,8 @@ export type HexStringType = string;
 export type AuthSessionValidityType = number;
 export type RetryGracePeriodSecondsType = number;
 export type WrappedIntegerType = number;
+export type RegionNameType = string;
+export type HealthCheckIdType = string;
 export type EmailNotificationSubjectType = string;
 export type EmailNotificationBodyType = string;
 export type AccountTakeoverActionNotifyType = boolean;
@@ -1421,10 +1424,19 @@ export const EmailMfaSettingsType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EmailMfaSettingsType",
 }) as any as S.Schema<EmailMfaSettingsType>;
+export interface WebAuthnMfaSettingsType {
+  Enabled?: boolean;
+}
+export const WebAuthnMfaSettingsType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Enabled: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "WebAuthnMfaSettingsType",
+}) as any as S.Schema<WebAuthnMfaSettingsType>;
 export interface AdminSetUserMFAPreferenceRequest {
   SMSMfaSettings?: SMSMfaSettingsType;
   SoftwareTokenMfaSettings?: SoftwareTokenMfaSettingsType;
   EmailMfaSettings?: EmailMfaSettingsType;
+  WebAuthnMfaSettings?: WebAuthnMfaSettingsType;
   Username: string | redacted.Redacted<string>;
   UserPoolId: string;
 }
@@ -1434,6 +1446,7 @@ export const AdminSetUserMFAPreferenceRequest =
       SMSMfaSettings: S.optional(SMSMfaSettingsType),
       SoftwareTokenMfaSettings: S.optional(SoftwareTokenMfaSettingsType),
       EmailMfaSettings: S.optional(EmailMfaSettingsType),
+      WebAuthnMfaSettings: S.optional(WebAuthnMfaSettingsType),
       Username: SensitiveString,
       UserPoolId: S.String,
     }).pipe(
@@ -2715,6 +2728,33 @@ export const AccountRecoverySettingType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<AccountRecoverySettingType>;
 export type UserPoolTierType = "LITE" | "ESSENTIALS" | "PLUS" | (string & {});
 export const UserPoolTierType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type EncryptionKeyType =
+  | "AWS_OWNED_KEY"
+  | "CUSTOMER_MANAGED_KEY"
+  | (string & {});
+export const EncryptionKeyType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface KeyConfigurationType {
+  KeyType?: EncryptionKeyType;
+  KmsKeyArn?: string;
+}
+export const KeyConfigurationType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyType: S.optional(EncryptionKeyType),
+    KmsKeyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KeyConfigurationType",
+}) as any as S.Schema<KeyConfigurationType>;
+export type IssuerType = "ORIGINAL" | "UPDATED" | (string & {});
+export const IssuerType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface IssuerConfigurationType {
+  Type?: IssuerType;
+}
+export const IssuerConfigurationType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Type: S.optional(IssuerType) }),
+).annotate({
+  identifier: "IssuerConfigurationType",
+}) as any as S.Schema<IssuerConfigurationType>;
 export interface CreateUserPoolRequest {
   PoolName: string;
   Policies?: UserPoolPolicyType;
@@ -2740,6 +2780,8 @@ export interface CreateUserPoolRequest {
   UsernameConfiguration?: UsernameConfigurationType;
   AccountRecoverySetting?: AccountRecoverySettingType;
   UserPoolTier?: UserPoolTierType;
+  KeyConfiguration?: KeyConfigurationType;
+  IssuerConfiguration?: IssuerConfigurationType;
 }
 export const CreateUserPoolRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2767,6 +2809,8 @@ export const CreateUserPoolRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     UsernameConfiguration: S.optional(UsernameConfigurationType),
     AccountRecoverySetting: S.optional(AccountRecoverySettingType),
     UserPoolTier: S.optional(UserPoolTierType),
+    KeyConfiguration: S.optional(KeyConfigurationType),
+    IssuerConfiguration: S.optional(IssuerConfigurationType),
   }).pipe(
     T.all(
       ns,
@@ -2818,6 +2862,8 @@ export interface UserPoolType {
   Arn?: string;
   AccountRecoverySetting?: AccountRecoverySettingType;
   UserPoolTier?: UserPoolTierType;
+  KeyConfiguration?: KeyConfigurationType;
+  IssuerConfiguration?: IssuerConfigurationType;
 }
 export const UserPoolType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2857,6 +2903,8 @@ export const UserPoolType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Arn: S.optional(S.String),
     AccountRecoverySetting: S.optional(AccountRecoverySettingType),
     UserPoolTier: S.optional(UserPoolTierType),
+    KeyConfiguration: S.optional(KeyConfigurationType),
+    IssuerConfiguration: S.optional(IssuerConfigurationType),
   }),
 ).annotate({ identifier: "UserPoolType" }) as any as S.Schema<UserPoolType>;
 export interface CreateUserPoolResponse {
@@ -3109,19 +3157,47 @@ export const CreateUserPoolClientResponse =
   ).annotate({
     identifier: "CreateUserPoolClientResponse",
   }) as any as S.Schema<CreateUserPoolClientResponse>;
+export type SecurityPolicyType =
+  | "TLS_V1"
+  | "TLS_V1_2_2021"
+  | "TLS_V1_3_2025"
+  | (string & {});
+export const SecurityPolicyType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CustomDomainConfigType {
   CertificateArn: string;
+  SecurityPolicy?: SecurityPolicyType;
 }
 export const CustomDomainConfigType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ CertificateArn: S.String }),
+  () =>
+    S.Struct({
+      CertificateArn: S.String,
+      SecurityPolicy: S.optional(SecurityPolicyType),
+    }),
 ).annotate({
   identifier: "CustomDomainConfigType",
 }) as any as S.Schema<CustomDomainConfigType>;
+export interface FailoverType {
+  SecondaryRegion: string;
+  PrimaryRoute53HealthCheckId: string;
+}
+export const FailoverType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SecondaryRegion: S.String,
+    PrimaryRoute53HealthCheckId: S.String,
+  }),
+).annotate({ identifier: "FailoverType" }) as any as S.Schema<FailoverType>;
+export interface RoutingType {
+  Failover?: FailoverType;
+}
+export const RoutingType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Failover: S.optional(FailoverType) }),
+).annotate({ identifier: "RoutingType" }) as any as S.Schema<RoutingType>;
 export interface CreateUserPoolDomainRequest {
   Domain: string;
   UserPoolId: string;
   ManagedLoginVersion?: number;
   CustomDomainConfig?: CustomDomainConfigType;
+  Routing?: RoutingType;
 }
 export const CreateUserPoolDomainRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3130,6 +3206,7 @@ export const CreateUserPoolDomainRequest =
       UserPoolId: S.String,
       ManagedLoginVersion: S.optional(S.Number),
       CustomDomainConfig: S.optional(CustomDomainConfigType),
+      Routing: S.optional(RoutingType),
     }).pipe(
       T.all(
         ns,
@@ -3147,16 +3224,77 @@ export const CreateUserPoolDomainRequest =
 export interface CreateUserPoolDomainResponse {
   ManagedLoginVersion?: number;
   CloudFrontDomain?: string;
+  Routing?: RoutingType;
 }
 export const CreateUserPoolDomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       ManagedLoginVersion: S.optional(S.Number),
       CloudFrontDomain: S.optional(S.String),
+      Routing: S.optional(RoutingType),
     }).pipe(ns),
   ).annotate({
     identifier: "CreateUserPoolDomainResponse",
   }) as any as S.Schema<CreateUserPoolDomainResponse>;
+export interface CreateUserPoolReplicaRequest {
+  UserPoolId: string;
+  RegionName: string;
+  UserPoolTags?: { [key: string]: string | undefined };
+}
+export const CreateUserPoolReplicaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      UserPoolId: S.String,
+      RegionName: S.String,
+      UserPoolTags: S.optional(UserPoolTagsType),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateUserPoolReplicaRequest",
+  }) as any as S.Schema<CreateUserPoolReplicaRequest>;
+export type ReplicaStatusType =
+  | "CREATING"
+  | "ACTIVE"
+  | "INACTIVE"
+  | "DELETING"
+  | (string & {});
+export const ReplicaStatusType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ReplicaRoleType = "PRIMARY" | "SECONDARY" | (string & {});
+export const ReplicaRoleType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface UserPoolReplicaType {
+  RegionName?: string;
+  Status?: ReplicaStatusType;
+  Role?: ReplicaRoleType;
+  UserPoolArn?: string;
+}
+export const UserPoolReplicaType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegionName: S.optional(S.String),
+    Status: S.optional(ReplicaStatusType),
+    Role: S.optional(ReplicaRoleType),
+    UserPoolArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UserPoolReplicaType",
+}) as any as S.Schema<UserPoolReplicaType>;
+export interface CreateUserPoolReplicaResponse {
+  UserPoolReplica?: UserPoolReplicaType;
+}
+export const CreateUserPoolReplicaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ UserPoolReplica: S.optional(UserPoolReplicaType) }).pipe(ns),
+  ).annotate({
+    identifier: "CreateUserPoolReplicaResponse",
+  }) as any as S.Schema<CreateUserPoolReplicaResponse>;
 export interface DeleteGroupRequest {
   GroupName: string;
   UserPoolId: string;
@@ -3438,6 +3576,35 @@ export const DeleteUserPoolDomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DeleteUserPoolDomainResponse",
   }) as any as S.Schema<DeleteUserPoolDomainResponse>;
+export interface DeleteUserPoolReplicaRequest {
+  UserPoolId: string;
+  RegionName: string;
+}
+export const DeleteUserPoolReplicaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ UserPoolId: S.String, RegionName: S.String }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteUserPoolReplicaRequest",
+  }) as any as S.Schema<DeleteUserPoolReplicaRequest>;
+export interface DeleteUserPoolReplicaResponse {
+  UserPoolReplica?: UserPoolReplicaType;
+}
+export const DeleteUserPoolReplicaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ UserPoolReplica: S.optional(UserPoolReplicaType) }).pipe(ns),
+  ).annotate({
+    identifier: "DeleteUserPoolReplicaResponse",
+  }) as any as S.Schema<DeleteUserPoolReplicaResponse>;
 export interface DeleteWebAuthnCredentialRequest {
   AccessToken: string | redacted.Redacted<string>;
   CredentialId: string;
@@ -3942,6 +4109,7 @@ export interface DomainDescriptionType {
   Status?: DomainStatusType;
   CustomDomainConfig?: CustomDomainConfigType;
   ManagedLoginVersion?: number;
+  Routing?: RoutingType;
 }
 export const DomainDescriptionType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3954,6 +4122,7 @@ export const DomainDescriptionType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Status: S.optional(DomainStatusType),
     CustomDomainConfig: S.optional(CustomDomainConfigType),
     ManagedLoginVersion: S.optional(S.Number),
+    Routing: S.optional(RoutingType),
   }),
 ).annotate({
   identifier: "DomainDescriptionType",
@@ -4547,15 +4716,23 @@ export const EmailMfaConfigType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EmailMfaConfigType>;
 export type UserVerificationType = "required" | "preferred" | (string & {});
 export const UserVerificationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type WebAuthnFactorConfigurationType =
+  | "SINGLE_FACTOR"
+  | "MULTI_FACTOR_WITH_USER_VERIFICATION"
+  | (string & {});
+export const WebAuthnFactorConfigurationType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface WebAuthnConfigurationType {
   RelyingPartyId?: string;
   UserVerification?: UserVerificationType;
+  FactorConfiguration?: WebAuthnFactorConfigurationType;
 }
 export const WebAuthnConfigurationType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       RelyingPartyId: S.optional(S.String),
       UserVerification: S.optional(UserVerificationType),
+      FactorConfiguration: S.optional(WebAuthnFactorConfigurationType),
     }),
 ).annotate({
   identifier: "WebAuthnConfigurationType",
@@ -5049,6 +5226,42 @@ export const ListUserPoolClientSecretsResponse =
   ).annotate({
     identifier: "ListUserPoolClientSecretsResponse",
   }) as any as S.Schema<ListUserPoolClientSecretsResponse>;
+export interface ListUserPoolReplicasRequest {
+  UserPoolId: string;
+  NextToken?: string;
+}
+export const ListUserPoolReplicasRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ UserPoolId: S.String, NextToken: S.optional(S.String) }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListUserPoolReplicasRequest",
+  }) as any as S.Schema<ListUserPoolReplicasRequest>;
+export type UserPoolReplicaListType = UserPoolReplicaType[];
+export const UserPoolReplicaListType =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(UserPoolReplicaType);
+export interface ListUserPoolReplicasResponse {
+  UserPoolReplicas?: UserPoolReplicaType[];
+  NextToken?: string;
+}
+export const ListUserPoolReplicasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      UserPoolReplicas: S.optional(UserPoolReplicaListType),
+      NextToken: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ListUserPoolReplicasResponse",
+  }) as any as S.Schema<ListUserPoolReplicasResponse>;
 export interface ListUserPoolsRequest {
   NextToken?: string;
   MaxResults: number;
@@ -5068,6 +5281,8 @@ export const ListUserPoolsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUserPoolsRequest",
 }) as any as S.Schema<ListUserPoolsRequest>;
+export type ReplicaRegionsType = string[];
+export const ReplicaRegionsType = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface UserPoolDescriptionType {
   Id?: string;
   Name?: string;
@@ -5075,6 +5290,7 @@ export interface UserPoolDescriptionType {
   Status?: StatusType;
   LastModifiedDate?: Date;
   CreationDate?: Date;
+  ReplicaRegions?: string[];
 }
 export const UserPoolDescriptionType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -5087,6 +5303,7 @@ export const UserPoolDescriptionType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       ),
       CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      ReplicaRegions: S.optional(ReplicaRegionsType),
     }),
 ).annotate({
   identifier: "UserPoolDescriptionType",
@@ -5495,6 +5712,7 @@ export interface SetUserMFAPreferenceRequest {
   SMSMfaSettings?: SMSMfaSettingsType;
   SoftwareTokenMfaSettings?: SoftwareTokenMfaSettingsType;
   EmailMfaSettings?: EmailMfaSettingsType;
+  WebAuthnMfaSettings?: WebAuthnMfaSettingsType;
   AccessToken: string | redacted.Redacted<string>;
 }
 export const SetUserMFAPreferenceRequest =
@@ -5503,6 +5721,7 @@ export const SetUserMFAPreferenceRequest =
       SMSMfaSettings: S.optional(SMSMfaSettingsType),
       SoftwareTokenMfaSettings: S.optional(SoftwareTokenMfaSettingsType),
       EmailMfaSettings: S.optional(EmailMfaSettingsType),
+      WebAuthnMfaSettings: S.optional(WebAuthnMfaSettingsType),
       AccessToken: SensitiveString,
     }).pipe(
       T.all(
@@ -6103,6 +6322,8 @@ export interface UpdateUserPoolRequest {
   AccountRecoverySetting?: AccountRecoverySettingType;
   PoolName?: string;
   UserPoolTier?: UserPoolTierType;
+  KeyConfiguration?: KeyConfigurationType;
+  IssuerConfiguration?: IssuerConfigurationType;
 }
 export const UpdateUserPoolRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6127,6 +6348,8 @@ export const UpdateUserPoolRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     AccountRecoverySetting: S.optional(AccountRecoverySettingType),
     PoolName: S.optional(S.String),
     UserPoolTier: S.optional(UserPoolTierType),
+    KeyConfiguration: S.optional(KeyConfigurationType),
+    IssuerConfiguration: S.optional(IssuerConfigurationType),
   }).pipe(
     T.all(
       ns,
@@ -6228,6 +6451,7 @@ export interface UpdateUserPoolDomainRequest {
   UserPoolId: string;
   ManagedLoginVersion?: number;
   CustomDomainConfig?: CustomDomainConfigType;
+  Routing?: RoutingType;
 }
 export const UpdateUserPoolDomainRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -6236,6 +6460,7 @@ export const UpdateUserPoolDomainRequest =
       UserPoolId: S.String,
       ManagedLoginVersion: S.optional(S.Number),
       CustomDomainConfig: S.optional(CustomDomainConfigType),
+      Routing: S.optional(RoutingType),
     }).pipe(
       T.all(
         ns,
@@ -6253,16 +6478,54 @@ export const UpdateUserPoolDomainRequest =
 export interface UpdateUserPoolDomainResponse {
   ManagedLoginVersion?: number;
   CloudFrontDomain?: string;
+  Routing?: RoutingType;
 }
 export const UpdateUserPoolDomainResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       ManagedLoginVersion: S.optional(S.Number),
       CloudFrontDomain: S.optional(S.String),
+      Routing: S.optional(RoutingType),
     }).pipe(ns),
   ).annotate({
     identifier: "UpdateUserPoolDomainResponse",
   }) as any as S.Schema<UpdateUserPoolDomainResponse>;
+export type UpdateReplicaStatusType = "ACTIVE" | "INACTIVE" | (string & {});
+export const UpdateReplicaStatusType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface UpdateUserPoolReplicaRequest {
+  UserPoolId: string;
+  RegionName: string;
+  Status: UpdateReplicaStatusType;
+}
+export const UpdateUserPoolReplicaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      UserPoolId: S.String,
+      RegionName: S.String,
+      Status: UpdateReplicaStatusType,
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateUserPoolReplicaRequest",
+  }) as any as S.Schema<UpdateUserPoolReplicaRequest>;
+export interface UpdateUserPoolReplicaResponse {
+  UserPoolReplica?: UserPoolReplicaType;
+}
+export const UpdateUserPoolReplicaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ UserPoolReplica: S.optional(UserPoolReplicaType) }).pipe(ns),
+  ).annotate({
+    identifier: "UpdateUserPoolReplicaResponse",
+  }) as any as S.Schema<UpdateUserPoolReplicaResponse>;
 export interface VerifySoftwareTokenRequest {
   AccessToken?: string | redacted.Redacted<string>;
   Session?: string | redacted.Redacted<string>;
@@ -6353,6 +6616,10 @@ export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedExce
   "NotAuthorizedException",
   { message: S.optional(S.String) },
 ).pipe(C.withAuthError) {}
+export class OperationNotEnabledException extends S.TaggedErrorClass<OperationNotEnabledException>()(
+  "OperationNotEnabledException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
@@ -6575,6 +6842,7 @@ export type AddCustomAttributesError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserImportInProgressException
@@ -6606,6 +6874,7 @@ export const addCustomAttributes: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserImportInProgressException,
@@ -6649,6 +6918,7 @@ export type AdminAddUserToGroupError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -6680,6 +6950,7 @@ export const adminAddUserToGroup: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -6694,6 +6965,7 @@ export type AdminConfirmSignUpError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyFailedAttemptsException
   | TooManyRequestsException
@@ -6736,6 +7008,7 @@ export const adminConfirmSignUp: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyFailedAttemptsException,
     TooManyRequestsException,
@@ -6756,6 +7029,7 @@ export type AdminCreateUserError =
   | InvalidSmsRoleAccessPolicyException
   | InvalidSmsRoleTrustRelationshipException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PreconditionNotMetException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -6830,6 +7104,7 @@ export const adminCreateUser: API.OperationMethod<
     InvalidSmsRoleAccessPolicyException,
     InvalidSmsRoleTrustRelationshipException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PreconditionNotMetException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -6847,6 +7122,7 @@ export type AdminDeleteUserError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -6876,6 +7152,7 @@ export const adminDeleteUser: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -6888,6 +7165,7 @@ export type AdminDeleteUserAttributesError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -6919,6 +7197,7 @@ export const adminDeleteUserAttributes: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -6932,6 +7211,7 @@ export type AdminDisableProviderForUserError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -6988,6 +7268,7 @@ export const adminDisableProviderForUser: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7000,6 +7281,7 @@ export type AdminDisableUserError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -7031,6 +7313,7 @@ export const adminDisableUser: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7043,6 +7326,7 @@ export type AdminEnableUserError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -7073,6 +7357,7 @@ export const adminEnableUser: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7086,6 +7371,7 @@ export type AdminForgetDeviceError =
   | InvalidParameterException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -7118,6 +7404,7 @@ export const adminForgetDevice: API.OperationMethod<
     InvalidParameterException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7131,6 +7418,7 @@ export type AdminGetDeviceError =
   | InvalidParameterException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -7161,6 +7449,7 @@ export const adminGetDevice: API.OperationMethod<
     InvalidParameterException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -7172,6 +7461,7 @@ export type AdminGetUserError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -7205,6 +7495,7 @@ export const adminGetUser: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7223,6 +7514,7 @@ export type AdminInitiateAuthError =
   | InvalidUserPoolConfigurationException
   | MFAMethodNotFoundException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -7284,6 +7576,7 @@ export const adminInitiateAuth: API.OperationMethod<
     InvalidUserPoolConfigurationException,
     MFAMethodNotFoundException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -7303,6 +7596,7 @@ export type AdminLinkProviderForUserError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -7348,6 +7642,7 @@ export const adminLinkProviderForUser: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7361,6 +7656,7 @@ export type AdminListDevicesError =
   | InvalidParameterException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -7393,6 +7689,7 @@ export const adminListDevices: API.OperationMethod<
     InvalidParameterException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -7404,6 +7701,7 @@ export type AdminListGroupsForUserError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -7450,6 +7748,7 @@ export const adminListGroupsForUser: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7468,6 +7767,7 @@ export type AdminListUserAuthEventsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -7514,6 +7814,7 @@ export const adminListUserAuthEvents: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7533,6 +7834,7 @@ export type AdminRemoveUserFromGroupError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -7564,6 +7866,7 @@ export const adminRemoveUserFromGroup: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7581,6 +7884,7 @@ export type AdminResetUserPasswordError =
   | InvalidSmsRoleTrustRelationshipException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UnexpectedLambdaException
@@ -7642,6 +7946,7 @@ export const adminResetUserPassword: API.OperationMethod<
     InvalidSmsRoleTrustRelationshipException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UnexpectedLambdaException,
@@ -7666,6 +7971,7 @@ export type AdminRespondToAuthChallengeError =
   | InvalidUserPoolConfigurationException
   | MFAMethodNotFoundException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordHistoryPolicyViolationException
   | PasswordResetRequiredException
   | ResourceNotFoundException
@@ -7735,6 +8041,7 @@ export const adminRespondToAuthChallenge: API.OperationMethod<
     InvalidUserPoolConfigurationException,
     MFAMethodNotFoundException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordHistoryPolicyViolationException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
@@ -7753,6 +8060,7 @@ export type AdminSetUserMFAPreferenceError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | UserNotConfirmedException
@@ -7787,6 +8095,7 @@ export const adminSetUserMFAPreference: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     UserNotConfirmedException,
@@ -7801,6 +8110,7 @@ export type AdminSetUserPasswordError =
   | InvalidParameterException
   | InvalidPasswordException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordHistoryPolicyViolationException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -7860,6 +8170,7 @@ export const adminSetUserPassword: API.OperationMethod<
     InvalidParameterException,
     InvalidPasswordException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordHistoryPolicyViolationException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -7873,6 +8184,7 @@ export type AdminSetUserSettingsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | UserNotFoundException
   | CommonErrors;
@@ -7903,6 +8215,7 @@ export const adminSetUserSettings: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     UserNotFoundException,
   ],
@@ -7914,6 +8227,7 @@ export type AdminUpdateAuthEventFeedbackError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -7954,6 +8268,7 @@ export const adminUpdateAuthEventFeedback: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -7968,6 +8283,7 @@ export type AdminUpdateDeviceStatusError =
   | InvalidParameterException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -8003,6 +8319,7 @@ export const adminUpdateDeviceStatus: API.OperationMethod<
     InvalidParameterException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -8020,6 +8337,7 @@ export type AdminUpdateUserAttributesError =
   | InvalidSmsRoleAccessPolicyException
   | InvalidSmsRoleTrustRelationshipException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UnexpectedLambdaException
@@ -8082,6 +8400,7 @@ export const adminUpdateUserAttributes: API.OperationMethod<
     InvalidSmsRoleAccessPolicyException,
     InvalidSmsRoleTrustRelationshipException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UnexpectedLambdaException,
@@ -8096,6 +8415,7 @@ export type AdminUserGlobalSignOutError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -8148,6 +8468,7 @@ export const adminUserGlobalSignOut: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -8162,6 +8483,7 @@ export type AssociateSoftwareTokenError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | SoftwareTokenMFANotFoundException
   | CommonErrors;
@@ -8193,6 +8515,7 @@ export const associateSoftwareToken: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     SoftwareTokenMFANotFoundException,
   ],
@@ -8207,6 +8530,7 @@ export type ChangePasswordError =
   | InvalidPasswordException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordHistoryPolicyViolationException
   | PasswordResetRequiredException
   | ResourceNotFoundException
@@ -8239,6 +8563,7 @@ export const changePassword: API.OperationMethod<
     InvalidPasswordException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordHistoryPolicyViolationException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
@@ -8256,6 +8581,7 @@ export type CompleteWebAuthnRegistrationError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | TooManyRequestsException
   | WebAuthnChallengeNotFoundException
@@ -8285,6 +8611,7 @@ export const completeWebAuthnRegistration: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     TooManyRequestsException,
     WebAuthnChallengeNotFoundException,
@@ -8307,6 +8634,7 @@ export type ConfirmDeviceError =
   | InvalidPasswordException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -8344,6 +8672,7 @@ export const confirmDevice: API.OperationMethod<
     InvalidPasswordException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -8365,6 +8694,7 @@ export type ConfirmForgotPasswordError =
   | InvalidPasswordException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordHistoryPolicyViolationException
   | ResourceNotFoundException
   | TooManyFailedAttemptsException
@@ -8401,6 +8731,7 @@ export const confirmForgotPassword: API.OperationMethod<
     InvalidPasswordException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordHistoryPolicyViolationException,
     ResourceNotFoundException,
     TooManyFailedAttemptsException,
@@ -8424,6 +8755,7 @@ export type ConfirmSignUpError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyFailedAttemptsException
   | TooManyRequestsException
@@ -8466,6 +8798,7 @@ export const confirmSignUp: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyFailedAttemptsException,
     TooManyRequestsException,
@@ -8483,6 +8816,7 @@ export type CreateGroupError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -8514,6 +8848,7 @@ export const createGroup: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -8573,6 +8908,7 @@ export type CreateManagedLoginBrandingError =
   | LimitExceededException
   | ManagedLoginBrandingExistsException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -8619,6 +8955,7 @@ export const createManagedLoginBranding: API.OperationMethod<
     LimitExceededException,
     ManagedLoginBrandingExistsException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -8631,6 +8968,7 @@ export type CreateResourceServerError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -8662,6 +9000,7 @@ export const createResourceServer: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -8675,6 +9014,7 @@ export type CreateTermsError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TermsExistsException
   | TooManyRequestsException
@@ -8719,6 +9059,7 @@ export const createTerms: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TermsExistsException,
     TooManyRequestsException,
@@ -8732,6 +9073,7 @@ export type CreateUserImportJobError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PreconditionNotMetException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -8763,6 +9105,7 @@ export const createUserImportJob: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PreconditionNotMetException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -8849,6 +9192,7 @@ export type CreateUserPoolClientError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | ScopeDoesNotExistException
   | TooManyRequestsException
@@ -8888,6 +9232,7 @@ export const createUserPoolClient: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     ScopeDoesNotExistException,
     TooManyRequestsException,
@@ -8903,6 +9248,7 @@ export type CreateUserPoolDomainError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | CommonErrors;
 /**
@@ -8944,16 +9290,67 @@ export const createUserPoolDomain: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateUserPoolDomain",
 }));
+export type CreateUserPoolReplicaError =
+  | FeatureUnavailableInTierException
+  | InternalErrorException
+  | InvalidParameterException
+  | LimitExceededException
+  | NotAuthorizedException
+  | OperationNotEnabledException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | UserPoolTaggingException
+  | CommonErrors;
+/**
+ * Creates a replica of an existing user pool in a specified Amazon Web Services Region. The replica
+ * enables multi-region replication for high availability and disaster recovery. To create
+ * a replica, you must have permissions to create user pools in the target Region.
+ *
+ * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you must use IAM credentials to authorize requests, and you must
+ * grant yourself the corresponding IAM permission in a policy.
+ *
+ * **Learn more**
+ *
+ * - Signing Amazon Web Services API Requests
+ *
+ * - Using the Amazon Cognito user pools API and user pool endpoints
+ */
+export const createUserPoolReplica: API.OperationMethod<
+  CreateUserPoolReplicaRequest,
+  CreateUserPoolReplicaResponse,
+  CreateUserPoolReplicaError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateUserPoolReplicaRequest,
+  output: CreateUserPoolReplicaResponse,
+  errors: [
+    FeatureUnavailableInTierException,
+    InternalErrorException,
+    InvalidParameterException,
+    LimitExceededException,
+    NotAuthorizedException,
+    OperationNotEnabledException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+    UserPoolTaggingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateUserPoolReplica",
+}));
 export type DeleteGroupError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -8986,6 +9383,7 @@ export const deleteGroup: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9043,6 +9441,7 @@ export type DeleteManagedLoginBrandingError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9075,6 +9474,7 @@ export const deleteManagedLoginBranding: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9086,6 +9486,7 @@ export type DeleteResourceServerError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9118,6 +9519,7 @@ export const deleteResourceServer: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9130,6 +9532,7 @@ export type DeleteTermsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9159,6 +9562,7 @@ export const deleteTerms: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9171,6 +9575,7 @@ export type DeleteUserError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -9201,6 +9606,7 @@ export const deleteUser: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -9216,6 +9622,7 @@ export type DeleteUserAttributesError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -9247,6 +9654,7 @@ export const deleteUserAttributes: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -9261,6 +9669,7 @@ export type DeleteUserPoolError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserImportInProgressException
@@ -9290,6 +9699,7 @@ export const deleteUserPool: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserImportInProgressException,
@@ -9303,6 +9713,7 @@ export type DeleteUserPoolClientError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9323,6 +9734,7 @@ export const deleteUserPoolClient: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9364,6 +9776,7 @@ export type DeleteUserPoolDomainError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | CommonErrors;
 /**
@@ -9384,11 +9797,54 @@ export const deleteUserPoolDomain: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteUserPoolDomain",
+}));
+export type DeleteUserPoolReplicaError =
+  | InternalErrorException
+  | InvalidParameterException
+  | NotAuthorizedException
+  | OperationNotEnabledException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Deletes a secondary replica user pool. You can only delete replicas that are in the
+ * INACTIVE status. This operation must be called from the primary Region.
+ *
+ * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you must use IAM credentials to authorize requests, and you must
+ * grant yourself the corresponding IAM permission in a policy.
+ *
+ * **Learn more**
+ *
+ * - Signing Amazon Web Services API Requests
+ *
+ * - Using the Amazon Cognito user pools API and user pool endpoints
+ */
+export const deleteUserPoolReplica: API.OperationMethod<
+  DeleteUserPoolReplicaRequest,
+  DeleteUserPoolReplicaResponse,
+  DeleteUserPoolReplicaError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteUserPoolReplicaRequest,
+  output: DeleteUserPoolReplicaResponse,
+  errors: [
+    InternalErrorException,
+    InvalidParameterException,
+    NotAuthorizedException,
+    OperationNotEnabledException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteUserPoolReplica",
 }));
 export type DeleteWebAuthnCredentialError =
   | ForbiddenException
@@ -9396,6 +9852,7 @@ export type DeleteWebAuthnCredentialError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -9425,6 +9882,7 @@ export const deleteWebAuthnCredential: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -9467,6 +9925,7 @@ export type DescribeManagedLoginBrandingError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9486,6 +9945,7 @@ export const describeManagedLoginBranding: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9497,6 +9957,7 @@ export type DescribeManagedLoginBrandingByClientError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9516,6 +9977,7 @@ export const describeManagedLoginBrandingByClient: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9527,6 +9989,7 @@ export type DescribeResourceServerError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9545,6 +10008,7 @@ export const describeResourceServer: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9556,6 +10020,7 @@ export type DescribeRiskConfigurationError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserPoolAddOnNotEnabledException
@@ -9578,6 +10043,7 @@ export const describeRiskConfiguration: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserPoolAddOnNotEnabledException,
@@ -9590,6 +10056,7 @@ export type DescribeTermsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9618,6 +10085,7 @@ export const describeTerms: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9629,6 +10097,7 @@ export type DescribeUserImportJobError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9647,6 +10116,7 @@ export const describeUserImportJob: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9658,6 +10128,7 @@ export type DescribeUserPoolError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserPoolTaggingException
@@ -9689,6 +10160,7 @@ export const describeUserPool: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserPoolTaggingException,
@@ -9701,6 +10173,7 @@ export type DescribeUserPoolClientError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9731,6 +10204,7 @@ export const describeUserPoolClient: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9742,6 +10216,7 @@ export type DescribeUserPoolDomainError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | CommonErrors;
 /**
@@ -9770,6 +10245,7 @@ export const describeUserPoolDomain: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
   ],
   protocol: AwsProtocol,
@@ -9782,6 +10258,7 @@ export type ForgetDeviceError =
   | InvalidParameterException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -9813,6 +10290,7 @@ export const forgetDevice: API.OperationMethod<
     InvalidParameterException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -9834,6 +10312,7 @@ export type ForgotPasswordError =
   | InvalidSmsRoleTrustRelationshipException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UnexpectedLambdaException
@@ -9895,6 +10374,7 @@ export const forgotPassword: API.OperationMethod<
     InvalidSmsRoleTrustRelationshipException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UnexpectedLambdaException,
@@ -9909,6 +10389,7 @@ export type GetCSVHeaderError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -9942,6 +10423,7 @@ export const getCSVHeader: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -9955,6 +10437,7 @@ export type GetDeviceError =
   | InvalidParameterException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -9986,6 +10469,7 @@ export const getDevice: API.OperationMethod<
     InvalidParameterException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -10000,6 +10484,7 @@ export type GetGroupError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -10031,6 +10516,7 @@ export const getGroup: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -10112,6 +10598,7 @@ export const getLogDeliveryConfiguration: API.OperationMethod<
 export type GetSigningCertificateError =
   | InternalErrorException
   | InvalidParameterException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | CommonErrors;
 /**
@@ -10145,6 +10632,7 @@ export const getSigningCertificate: API.OperationMethod<
   errors: [
     InternalErrorException,
     InvalidParameterException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
   ],
   protocol: AwsProtocol,
@@ -10157,6 +10645,7 @@ export type GetTokensFromRefreshTokenError =
   | InvalidLambdaResponseException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | RefreshTokenReuseException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -10185,6 +10674,7 @@ export const getTokensFromRefreshToken: API.OperationMethod<
     InvalidLambdaResponseException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     RefreshTokenReuseException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -10200,6 +10690,7 @@ export type GetUICustomizationError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -10222,6 +10713,7 @@ export const getUICustomization: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -10234,6 +10726,7 @@ export type GetUserError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -10263,6 +10756,7 @@ export const getUser: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -10284,6 +10778,7 @@ export type GetUserAttributeVerificationCodeError =
   | InvalidSmsRoleTrustRelationshipException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -10339,6 +10834,7 @@ export const getUserAttributeVerificationCode: API.OperationMethod<
     InvalidSmsRoleTrustRelationshipException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -10356,6 +10852,7 @@ export type GetUserAuthFactorsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -10391,6 +10888,7 @@ export const getUserAuthFactors: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -10457,6 +10955,7 @@ export type GlobalSignOutError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -10508,6 +11007,7 @@ export const globalSignOut: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -10527,6 +11027,7 @@ export type InitiateAuthError =
   | InvalidSmsRoleTrustRelationshipException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -10583,6 +11084,7 @@ export const initiateAuth: API.OperationMethod<
     InvalidSmsRoleTrustRelationshipException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -10602,6 +11104,7 @@ export type ListDevicesError =
   | InvalidParameterException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -10633,6 +11136,7 @@ export const listDevices: API.OperationMethod<
     InvalidParameterException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -10647,6 +11151,7 @@ export type ListGroupsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -10690,6 +11195,7 @@ export const listGroups: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -10768,6 +11274,7 @@ export type ListResourceServersError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -10812,6 +11319,7 @@ export const listResourceServers: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -10829,6 +11337,7 @@ export type ListTagsForResourceError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -10849,6 +11358,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -10860,6 +11370,7 @@ export type ListTermsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -10888,6 +11399,7 @@ export const listTerms: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -10899,6 +11411,7 @@ export type ListUserImportJobsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -10929,6 +11442,7 @@ export const listUserImportJobs: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -10940,6 +11454,7 @@ export type ListUserPoolClientsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -10984,6 +11499,7 @@ export const listUserPoolClients: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -11025,6 +11541,49 @@ export const listUserPoolClientSecrets: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListUserPoolClientSecrets",
+}));
+export type ListUserPoolReplicasError =
+  | InternalErrorException
+  | InvalidParameterException
+  | NotAuthorizedException
+  | OperationNotEnabledException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Lists all replicas for a user pool, including both primary and secondary replicas. We
+ * recommend using pagination to ensure that the operation returns quickly and
+ * successfully.
+ *
+ * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you must use IAM credentials to authorize requests, and you must
+ * grant yourself the corresponding IAM permission in a policy.
+ *
+ * **Learn more**
+ *
+ * - Signing Amazon Web Services API Requests
+ *
+ * - Using the Amazon Cognito user pools API and user pool endpoints
+ */
+export const listUserPoolReplicas: API.OperationMethod<
+  ListUserPoolReplicasRequest,
+  ListUserPoolReplicasResponse,
+  ListUserPoolReplicasError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListUserPoolReplicasRequest,
+  output: ListUserPoolReplicasResponse,
+  errors: [
+    InternalErrorException,
+    InvalidParameterException,
+    NotAuthorizedException,
+    OperationNotEnabledException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListUserPoolReplicas",
 }));
 export type ListUserPoolsError =
   | InternalErrorException
@@ -11088,6 +11647,7 @@ export type ListUsersError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -11136,6 +11696,7 @@ export const listUsers: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -11153,6 +11714,7 @@ export type ListUsersInGroupError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -11197,6 +11759,7 @@ export const listUsersInGroup: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -11216,6 +11779,7 @@ export type ListWebAuthnCredentialsError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | TooManyRequestsException
   | CommonErrors;
@@ -11244,6 +11808,7 @@ export const listWebAuthnCredentials: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     TooManyRequestsException,
   ],
@@ -11262,6 +11827,7 @@ export type ResendConfirmationCodeError =
   | InvalidSmsRoleTrustRelationshipException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UnexpectedLambdaException
@@ -11316,6 +11882,7 @@ export const resendConfirmationCode: API.OperationMethod<
     InvalidSmsRoleTrustRelationshipException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UnexpectedLambdaException,
@@ -11341,6 +11908,7 @@ export type RespondToAuthChallengeError =
   | InvalidUserPoolConfigurationException
   | MFAMethodNotFoundException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordHistoryPolicyViolationException
   | PasswordResetRequiredException
   | ResourceNotFoundException
@@ -11406,6 +11974,7 @@ export const respondToAuthChallenge: API.OperationMethod<
     InvalidUserPoolConfigurationException,
     MFAMethodNotFoundException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordHistoryPolicyViolationException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
@@ -11424,6 +11993,7 @@ export type RevokeTokenError =
   | ForbiddenException
   | InternalErrorException
   | InvalidParameterException
+  | OperationNotEnabledException
   | TooManyRequestsException
   | UnauthorizedException
   | UnsupportedOperationException
@@ -11451,6 +12021,7 @@ export const revokeToken: API.OperationMethod<
     ForbiddenException,
     InternalErrorException,
     InvalidParameterException,
+    OperationNotEnabledException,
     TooManyRequestsException,
     UnauthorizedException,
     UnsupportedOperationException,
@@ -11500,6 +12071,7 @@ export type SetRiskConfigurationError =
   | InvalidEmailRoleAccessPolicyException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserPoolAddOnNotEnabledException
@@ -11524,6 +12096,12 @@ export type SetRiskConfigurationError =
  * off, update the value of `UserPoolAddOns` in an `UpdateUserPool`
  * request. To activate this setting, your user pool must be on the
  * Plus tier.
+ *
+ * In secondary regions for user pools with multi-region replication, only the
+ * `SourceARN` and `From` attributes of
+ * `NotifyConfiguration` can be modified to configure region-specific SES
+ * integration. All other risk configuration settings must match the existing values to
+ * maintain consistency across replicas.
  */
 export const setRiskConfiguration: API.OperationMethod<
   SetRiskConfigurationRequest,
@@ -11539,6 +12117,7 @@ export const setRiskConfiguration: API.OperationMethod<
     InvalidEmailRoleAccessPolicyException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserPoolAddOnNotEnabledException,
@@ -11551,6 +12130,7 @@ export type SetUICustomizationError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -11585,6 +12165,7 @@ export const setUICustomization: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -11597,6 +12178,7 @@ export type SetUserMFAPreferenceError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | UserNotConfirmedException
@@ -11633,6 +12215,7 @@ export const setUserMFAPreference: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     UserNotConfirmedException,
@@ -11650,6 +12233,7 @@ export type SetUserPoolMfaConfigError =
   | InvalidSmsRoleAccessPolicyException
   | InvalidSmsRoleTrustRelationshipException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -11690,6 +12274,7 @@ export const setUserPoolMfaConfig: API.OperationMethod<
     InvalidSmsRoleAccessPolicyException,
     InvalidSmsRoleTrustRelationshipException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -11702,6 +12287,7 @@ export type SetUserSettingsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | UserNotConfirmedException
@@ -11732,6 +12318,7 @@ export const setUserSettings: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     UserNotConfirmedException,
@@ -11753,6 +12340,7 @@ export type SignUpError =
   | InvalidSmsRoleTrustRelationshipException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UnexpectedLambdaException
@@ -11811,6 +12399,7 @@ export const signUp: API.OperationMethod<
     InvalidSmsRoleTrustRelationshipException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UnexpectedLambdaException,
@@ -11825,6 +12414,7 @@ export type StartUserImportJobError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PreconditionNotMetException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -11846,6 +12436,7 @@ export const startUserImportJob: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PreconditionNotMetException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -11860,6 +12451,7 @@ export type StartWebAuthnRegistrationError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | TooManyRequestsException
   | WebAuthnConfigurationMissingException
@@ -11887,6 +12479,7 @@ export const startWebAuthnRegistration: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     TooManyRequestsException,
     WebAuthnConfigurationMissingException,
@@ -11900,6 +12493,7 @@ export type StopUserImportJobError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PreconditionNotMetException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -11921,6 +12515,7 @@ export const stopUserImportJob: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PreconditionNotMetException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -11933,6 +12528,7 @@ export type TagResourceError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -11967,6 +12563,7 @@ export const tagResource: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -11978,6 +12575,7 @@ export type UntagResourceError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -11996,6 +12594,7 @@ export const untagResource: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -12007,6 +12606,7 @@ export type UpdateAuthEventFeedbackError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | UserNotFoundException
@@ -12045,6 +12645,7 @@ export const updateAuthEventFeedback: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
     UserNotFoundException,
@@ -12060,6 +12661,7 @@ export type UpdateDeviceStatusError =
   | InvalidParameterException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -12095,6 +12697,7 @@ export const updateDeviceStatus: API.OperationMethod<
     InvalidParameterException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -12109,6 +12712,7 @@ export type UpdateGroupError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -12138,6 +12742,7 @@ export const updateGroup: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -12196,6 +12801,7 @@ export type UpdateManagedLoginBrandingError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -12235,6 +12841,7 @@ export const updateManagedLoginBranding: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -12246,6 +12853,7 @@ export type UpdateResourceServerError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -12278,6 +12886,7 @@ export const updateResourceServer: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
@@ -12290,6 +12899,7 @@ export type UpdateTermsError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TermsExistsException
   | TooManyRequestsException
@@ -12333,6 +12943,7 @@ export const updateTerms: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TermsExistsException,
     TooManyRequestsException,
@@ -12354,6 +12965,7 @@ export type UpdateUserAttributesError =
   | InvalidSmsRoleAccessPolicyException
   | InvalidSmsRoleTrustRelationshipException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -12414,6 +13026,7 @@ export const updateUserAttributes: API.OperationMethod<
     InvalidSmsRoleAccessPolicyException,
     InvalidSmsRoleTrustRelationshipException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,
@@ -12435,6 +13048,7 @@ export type UpdateUserPoolError =
   | InvalidSmsRoleAccessPolicyException
   | InvalidSmsRoleTrustRelationshipException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TierChangeNotAllowedException
   | TooManyRequestsException
@@ -12446,7 +13060,12 @@ export type UpdateUserPoolError =
  * defaults, construct this API request to pass the existing configuration of your user
  * pool, modified to include the changes that you want to make.
  *
- * With the exception of `UserPoolTier`, if you don't provide a value for an attribute, Amazon Cognito sets it to its default value.
+ * If you don't provide a value for an attribute, Amazon Cognito sets it to its default value.
+ *
+ * In secondary regions for user pools with multi-region replication, regional
+ * configurations for email, SMS, Lambda functions, and tags can be updated. Both global
+ * and regional settings must be provided as inputs, with global settings required to match
+ * existing values to maintain consistency across replicas.
  *
  * This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers
  * require you to register an origination phone number before you can send SMS messages
@@ -12492,6 +13111,7 @@ export const updateUserPool: API.OperationMethod<
     InvalidSmsRoleAccessPolicyException,
     InvalidSmsRoleTrustRelationshipException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TierChangeNotAllowedException,
     TooManyRequestsException,
@@ -12509,6 +13129,7 @@ export type UpdateUserPoolClientError =
   | InvalidOAuthFlowException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | ScopeDoesNotExistException
   | TooManyRequestsException
@@ -12550,6 +13171,7 @@ export const updateUserPoolClient: API.OperationMethod<
     InvalidOAuthFlowException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     ScopeDoesNotExistException,
     TooManyRequestsException,
@@ -12564,6 +13186,7 @@ export type UpdateUserPoolDomainError =
   | InternalErrorException
   | InvalidParameterException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | ResourceNotFoundException
   | TooManyRequestsException
   | CommonErrors;
@@ -12615,12 +13238,56 @@ export const updateUserPoolDomain: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateUserPoolDomain",
+}));
+export type UpdateUserPoolReplicaError =
+  | InternalErrorException
+  | InvalidParameterException
+  | NotAuthorizedException
+  | OperationNotEnabledException
+  | ResourceNotFoundException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Updates replica-specific settings for a user pool replica. You can modify the status
+ * to activate or deactivate the replica. This request can be made in both primary and secondary
+ * regions of the user pool.
+ *
+ * Amazon Cognito evaluates Identity and Access Management (IAM) policies in requests for this API operation. For
+ * this operation, you must use IAM credentials to authorize requests, and you must
+ * grant yourself the corresponding IAM permission in a policy.
+ *
+ * **Learn more**
+ *
+ * - Signing Amazon Web Services API Requests
+ *
+ * - Using the Amazon Cognito user pools API and user pool endpoints
+ */
+export const updateUserPoolReplica: API.OperationMethod<
+  UpdateUserPoolReplicaRequest,
+  UpdateUserPoolReplicaResponse,
+  UpdateUserPoolReplicaError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateUserPoolReplicaRequest,
+  output: UpdateUserPoolReplicaResponse,
+  errors: [
+    InternalErrorException,
+    InvalidParameterException,
+    NotAuthorizedException,
+    OperationNotEnabledException,
+    ResourceNotFoundException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateUserPoolReplica",
 }));
 export type VerifySoftwareTokenError =
   | CodeMismatchException
@@ -12630,6 +13297,7 @@ export type VerifySoftwareTokenError =
   | InvalidParameterException
   | InvalidUserPoolConfigurationException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | SoftwareTokenMFANotFoundException
@@ -12664,6 +13332,7 @@ export const verifySoftwareToken: API.OperationMethod<
     InvalidParameterException,
     InvalidUserPoolConfigurationException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     SoftwareTokenMFANotFoundException,
@@ -12684,6 +13353,7 @@ export type VerifyUserAttributeError =
   | InvalidParameterException
   | LimitExceededException
   | NotAuthorizedException
+  | OperationNotEnabledException
   | PasswordResetRequiredException
   | ResourceNotFoundException
   | TooManyRequestsException
@@ -12723,6 +13393,7 @@ export const verifyUserAttribute: API.OperationMethod<
     InvalidParameterException,
     LimitExceededException,
     NotAuthorizedException,
+    OperationNotEnabledException,
     PasswordResetRequiredException,
     ResourceNotFoundException,
     TooManyRequestsException,

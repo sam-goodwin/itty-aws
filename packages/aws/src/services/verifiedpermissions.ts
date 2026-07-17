@@ -2471,12 +2471,18 @@ export const GetPolicyStoreAliasOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetPolicyStoreAliasOutput",
 }) as any as S.Schema<GetPolicyStoreAliasOutput>;
+export type DeletionMode = "SoftDelete" | "HardDelete" | (string & {});
+export const DeletionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DeletePolicyStoreAliasInput {
   aliasName: string;
+  deletionMode?: DeletionMode;
 }
 export const DeletePolicyStoreAliasInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ aliasName: S.String }).pipe(
+    S.Struct({
+      aliasName: S.String,
+      deletionMode: S.optional(DeletionMode),
+    }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
   ).annotate({
@@ -2690,7 +2696,7 @@ export type CreatePolicyStoreError =
 /**
  * Creates a policy store. A policy store is a container for policy resources.
  *
- * Although Cedar supports multiple namespaces, Verified Permissions currently supports only one namespace per policy store.
+ * As of May 2026, Verified Permissions has aligned with Cedar and now supports multiple namespaces.
  *
  * Verified Permissions is * eventually consistent *. It can take a few seconds for a new or changed element to propagate through the service and be visible in the results of other Verified Permissions operations.
  */
@@ -3425,7 +3431,11 @@ export type DeletePolicyStoreAliasError = InvalidStateException | CommonErrors;
  *
  * This operation is idempotent. If you specify a policy store alias that does not exist, the request response will still return a successful HTTP 200 status code.
  *
- * When a policy store alias is deleted, it enters the `PendingDeletion` state. When a policy store alias is in the `PendingDeletion` state, new policy store aliases cannot be created with the same name. If the policy store alias is used in an API that has a `policyStoreId` field, the operation will fail with a `ResourceNotFound` exception.
+ * By default, when a policy store alias is deleted, it enters the `PendingDeletion` state. When a policy store alias is in the `PendingDeletion` state, new policy store aliases cannot be created with the same name. If the policy store alias is used in an API that has a `policyStoreId` field, the operation will fail with a `ResourceNotFound` exception.
+ *
+ * To immediately delete a policy store alias and bypass the `PendingDeletion` state, set the `deletionMode` parameter to `HardDelete`.
+ *
+ * Verified Permissions is eventually consistent. If you hard delete a policy store alias and then immediately recreate it to be associated with a different policy store, requests that reference this alias may continue to be evaluated against the previously associated policy store for a short period of time.
  */
 export const deletePolicyStoreAlias: API.OperationMethod<
   DeletePolicyStoreAliasInput,

@@ -3217,6 +3217,16 @@ export type AcceptHandshakeError =
  * - Approve all features request (`ENABLE_ALL_FEATURES`)
  *
  * For more information, see Responding to invitations and Enabling all features in the *Organizations User Guide*.
+ *
+ * When a handshake is accepted, Organizations logs membership events in CloudTrail, available
+ * only in the management account's event history. If the account was standalone and joined
+ * a new organization, an `AccountJoinedOrganization` event is logged with
+ * `joinedMethod:Invited` and `joinedTime` fields. If the account
+ * departed one organization and joined another, both an
+ * `AccountDepartedOrganization` event with `departedMethod:Left`
+ * and `departedTime` and an `AccountJoinedOrganization` event with
+ * `joinedMethod:Invited` and `joinedTime` are logged in their
+ * respective management accounts.
  */
 export const acceptHandshake: API.OperationMethod<
   AcceptHandshakeRequest,
@@ -3416,6 +3426,12 @@ export type CloseAccountError =
  * accounts. To learn important pre-closure details, see
  * Closing an Amazon Web Services GovCloud (US) account in the
  * Amazon Web Services GovCloud User Guide.
+ *
+ * After the permanent termination of the account after the 90-day waiting period,
+ * Organizations logs a membership event in CloudTrail. The event is an
+ * `AccountDepartedOrganization` event with
+ * `departedMethod:Cleaned` and `departedTime`. This event is
+ * available only in the management account's event history.
  */
 export const closeAccount: API.OperationMethod<
   CloseAccountRequest,
@@ -3467,6 +3483,11 @@ export type CreateAccountError =
  * - Check the CloudTrail log for the `CreateAccountResult` event. For
  * information on using CloudTrail with Organizations, see Logging and monitoring in Organizations in the
  * *Organizations User Guide*.
+ *
+ * Additionally, the `AccountJoinedOrganization` event is logged in CloudTrail and
+ * is available only in the management account's event history. This event includes
+ * `joinedMethod:Created` and `joinedTime` fields to provide context
+ * on how and when the account joined the organization.
  *
  * The user who calls the API to create an account must have the
  * `organizations:CreateAccount` permission. If you enabled all features in
@@ -3613,6 +3634,12 @@ export type CreateGovCloudAccountError =
  * monitoring in Organizations in the
  * *Organizations User Guide*.
  *
+ * Additionally, the `AccountJoinedOrganization` event is logged in CloudTrail and
+ * is available only in the management account's event history only for the linked
+ * commercial account. This event includes `joinedMethod:Created` and
+ * `joinedTime` fields to provide context on how and when the account joined
+ * the organization.
+ *
  * When you call the `CreateGovCloudAccount` action, you create two accounts:
  * a standalone account in the Amazon Web Services GovCloud (US) Region and an associated account in the
  * commercial Region for billing and support purposes. The account in the commercial Region
@@ -3711,6 +3738,11 @@ export type CreateOrganizationError =
  * supporting only the consolidated billing features by setting the `FeatureSet`
  * parameter to `CONSOLIDATED_BILLING`, no policy types are enabled by default
  * and you can't use organization policies.
+ *
+ * The `AccountJoinedOrganization` event is logged in CloudTrail and
+ * is available only in the management account's event history. This event includes
+ * `joinedMethod:Invited` and `joinedTime` fields to provide
+ * context on how and when the account joined the organization.
  */
 export const createOrganization: API.OperationMethod<
   CreateOrganizationRequest,
@@ -3887,6 +3919,11 @@ export type DeleteOrganizationError =
 /**
  * Deletes the organization. You can delete an organization only by using credentials
  * from the management account. The organization must be empty of member accounts.
+ *
+ * When an organization is deleted, Organizations logs a membership event in CloudTrail. The
+ * event is an `AccountDepartedOrganization` event with
+ * `departedMethod:Left` and `departedTime`. This event is available
+ * only in the management account's event history.
  */
 export const deleteOrganization: API.OperationMethod<
   DeleteOrganizationRequest,
@@ -4894,6 +4931,11 @@ export type LeaveOrganizationError =
  * instead.
  *
  * You can only call from operation from a member account.
+ *
+ * When an account leaves an organization, Organizations logs a membership event in
+ * CloudTrail. The event is an `AccountDepartedOrganization` event with
+ * `departedMethod:Left` and `departedTime`. This event is available
+ * only in the management account's event history.
  *
  * - The management account in an organization with all features enabled can
  * set service control policies (SCPs) that can restrict what administrators of
@@ -6262,6 +6304,12 @@ export type RemoveAccountFromOrganizationError =
  * accrued by the member account after it's removed from the organization.
  *
  * You can only call this operation from the management account. Member accounts can remove themselves with LeaveOrganization instead.
+ *
+ * When an account is removed from an organization, Organizations logs a membership
+ * event in CloudTrail. The event is an
+ * `AccountDepartedOrganization` event with
+ * `departedMethod:Removed` and `departedTime`. This event is
+ * available only in the management account's event history.
  *
  * - You can remove an account from your organization only if the account is
  * configured with the information required to operate as a standalone account.

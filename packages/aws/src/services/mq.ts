@@ -346,6 +346,29 @@ export const CreateBrokerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBrokerResponse",
 }) as any as S.Schema<CreateBrokerResponse>;
+export interface ResourceShareError {
+  ErrorCode?: string;
+  ResourceShareArn?: string;
+  Status?: string;
+}
+export const ResourceShareError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ErrorCode: S.optional(S.String),
+    ResourceShareArn: S.optional(S.String),
+    Status: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({
+      ErrorCode: "errorCode",
+      ResourceShareArn: "resourceShareArn",
+      Status: "status",
+    }),
+  ),
+).annotate({
+  identifier: "ResourceShareError",
+}) as any as S.Schema<ResourceShareError>;
+export type __listOfResourceShareError = ResourceShareError[];
+export const __listOfResourceShareError =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceShareError);
 export interface CreateConfigurationRequest {
   AuthenticationStrategy?: AuthenticationStrategy;
   EngineType?: EngineType;
@@ -1281,6 +1304,122 @@ export const DescribeConfigurationRevisionResponse =
   ).annotate({
     identifier: "DescribeConfigurationRevisionResponse",
   }) as any as S.Schema<DescribeConfigurationRevisionResponse>;
+export interface DescribeSharedResourcesRequest {
+  BrokerId: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const DescribeSharedResourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BrokerId: S.String.pipe(T.HttpLabel("BrokerId")),
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/v1/brokers/{BrokerId}/shared-resources",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeSharedResourcesRequest",
+  }) as any as S.Schema<DescribeSharedResourcesRequest>;
+export type SharedResourceErrorCode =
+  | "QUOTA_EXCEEDED"
+  | "SHARE_NOT_FOUND"
+  | "INVITE_FAILED"
+  | "SETUP_INCOMPLETE"
+  | "INTERNAL_ERROR"
+  | "AZ_MISMATCH"
+  | "RESOURCE_CONFIGURATION_NOT_FOUND"
+  | (string & {});
+export const SharedResourceErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SharedResourceError {
+  Code?: SharedResourceErrorCode;
+  Message?: string;
+}
+export const SharedResourceError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Code: S.optional(SharedResourceErrorCode),
+    Message: S.optional(S.String),
+  }).pipe(S.encodeKeys({ Code: "code", Message: "message" })),
+).annotate({
+  identifier: "SharedResourceError",
+}) as any as S.Schema<SharedResourceError>;
+export type SharedResourceStatus =
+  | "AVAILABLE"
+  | "SETUP_IN_PROGRESS"
+  | "DELETION_IN_PROGRESS"
+  | "PENDING_CREATE"
+  | "PENDING_DELETE"
+  | "ERROR"
+  | (string & {});
+export const SharedResourceStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SharedResourceType = "RESOURCE_SHARE" | "RESOURCE" | (string & {});
+export const SharedResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SharedResource {
+  DnsNames?: string[];
+  Error?: SharedResourceError;
+  ResourceArn?: string;
+  ResourceShareArns?: string[];
+  Status?: SharedResourceStatus;
+  Type?: SharedResourceType;
+}
+export const SharedResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DnsNames: S.optional(__listOf__string),
+    Error: S.optional(SharedResourceError),
+    ResourceArn: S.optional(S.String),
+    ResourceShareArns: S.optional(__listOf__string),
+    Status: S.optional(SharedResourceStatus),
+    Type: S.optional(SharedResourceType),
+  }).pipe(
+    S.encodeKeys({
+      DnsNames: "dnsNames",
+      Error: "error",
+      ResourceArn: "resourceArn",
+      ResourceShareArns: "resourceShareArns",
+      Status: "status",
+      Type: "type",
+    }),
+  ),
+).annotate({ identifier: "SharedResource" }) as any as S.Schema<SharedResource>;
+export type __listOfSharedResource = SharedResource[];
+export const __listOfSharedResource =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SharedResource);
+export interface DescribeSharedResourcesResponse {
+  NextToken?: string;
+  SharedResources?: (SharedResource & {
+    ResourceArn: string;
+    Status: SharedResourceStatus;
+    Type: SharedResourceType;
+    Error: SharedResourceError & {
+      Code: SharedResourceErrorCode;
+      Message: string;
+    };
+  })[];
+}
+export const DescribeSharedResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      NextToken: S.optional(S.String),
+      SharedResources: S.optional(__listOfSharedResource),
+    }).pipe(
+      S.encodeKeys({
+        NextToken: "nextToken",
+        SharedResources: "sharedResources",
+      }),
+    ),
+  ).annotate({
+    identifier: "DescribeSharedResourcesResponse",
+  }) as any as S.Schema<DescribeSharedResourcesResponse>;
 export interface DescribeUserRequest {
   BrokerId: string;
   Username: string;
@@ -1722,6 +1861,7 @@ export interface UpdateBrokerRequest {
   LdapServerMetadata?: LdapServerMetadataInput;
   Logs?: Logs;
   MaintenanceWindowStartTime?: WeeklyStartTime;
+  ResourceShareArns?: string[];
   SecurityGroups?: string[];
   DataReplicationMode?: DataReplicationMode;
 }
@@ -1736,6 +1876,7 @@ export const UpdateBrokerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     LdapServerMetadata: S.optional(LdapServerMetadataInput),
     Logs: S.optional(Logs),
     MaintenanceWindowStartTime: S.optional(WeeklyStartTime),
+    ResourceShareArns: S.optional(__listOf__string),
     SecurityGroups: S.optional(__listOf__string),
     DataReplicationMode: S.optional(DataReplicationMode),
   })
@@ -1749,6 +1890,7 @@ export const UpdateBrokerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
         LdapServerMetadata: "ldapServerMetadata",
         Logs: "logs",
         MaintenanceWindowStartTime: "maintenanceWindowStartTime",
+        ResourceShareArns: "resourceShareArns",
         SecurityGroups: "securityGroups",
         DataReplicationMode: "dataReplicationMode",
       }),
@@ -1786,6 +1928,7 @@ export interface UpdateBrokerResponse {
     DayOfWeek: DayOfWeek;
     TimeOfDay: string;
   };
+  ResourceShareArns?: string[];
   SecurityGroups?: string[];
   DataReplicationMetadata?: DataReplicationMetadataOutput & {
     DataReplicationRole: string;
@@ -1815,6 +1958,7 @@ export const UpdateBrokerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     LdapServerMetadata: S.optional(LdapServerMetadataOutput),
     Logs: S.optional(Logs),
     MaintenanceWindowStartTime: S.optional(WeeklyStartTime),
+    ResourceShareArns: S.optional(__listOf__string),
     SecurityGroups: S.optional(__listOf__string),
     DataReplicationMetadata: S.optional(DataReplicationMetadataOutput),
     DataReplicationMode: S.optional(DataReplicationMode),
@@ -1831,6 +1975,7 @@ export const UpdateBrokerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       LdapServerMetadata: "ldapServerMetadata",
       Logs: "logs",
       MaintenanceWindowStartTime: "maintenanceWindowStartTime",
+      ResourceShareArns: "resourceShareArns",
       SecurityGroups: "securityGroups",
       DataReplicationMetadata: "dataReplicationMetadata",
       DataReplicationMode: "dataReplicationMode",
@@ -1985,27 +2130,51 @@ export const UpdateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 //# Errors
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
-  { ErrorAttribute: S.optional(S.String), Message: S.optional(S.String) },
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(__listOfResourceShareError),
+  },
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
-  { ErrorAttribute: S.optional(S.String), Message: S.optional(S.String) },
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(__listOfResourceShareError),
+  },
 ).pipe(C.withConflictError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
-  { ErrorAttribute: S.optional(S.String), Message: S.optional(S.String) },
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(__listOfResourceShareError),
+  },
 ).pipe(C.withAuthError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
-  { ErrorAttribute: S.optional(S.String), Message: S.optional(S.String) },
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(__listOfResourceShareError),
+  },
 ).pipe(C.withServerError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
-  { ErrorAttribute: S.optional(S.String), Message: S.optional(S.String) },
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(__listOfResourceShareError),
+  },
 ).pipe(C.withAuthError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
-  { ErrorAttribute: S.optional(S.String), Message: S.optional(S.String) },
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(__listOfResourceShareError),
+  },
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -2395,6 +2564,54 @@ export const describeConfigurationRevision: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeConfigurationRevision",
+}));
+export type DescribeSharedResourcesError =
+  | BadRequestException
+  | ForbiddenException
+  | InternalServerErrorException
+  | NotFoundException
+  | CommonErrors;
+/**
+ * Returns the resources shared to a broker.
+ */
+export const describeSharedResources: API.OperationMethod<
+  DescribeSharedResourcesRequest,
+  DescribeSharedResourcesResponse,
+  DescribeSharedResourcesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeSharedResourcesRequest,
+  ) => stream.Stream<
+    DescribeSharedResourcesResponse,
+    DescribeSharedResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeSharedResourcesRequest,
+  ) => stream.Stream<
+    SharedResource,
+    DescribeSharedResourcesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: DescribeSharedResourcesRequest,
+  output: DescribeSharedResourcesResponse,
+  errors: [
+    BadRequestException,
+    ForbiddenException,
+    InternalServerErrorException,
+    NotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeSharedResources",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "SharedResources",
+    pageSize: "MaxResults",
+  } as const,
 }));
 export type DescribeUserError =
   | BadRequestException

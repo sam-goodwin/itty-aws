@@ -167,6 +167,9 @@ export type StorageType = string;
 export type WorkflowOwnerId = string;
 export type AwsAccountId = string;
 export type WorkflowVersionName = string;
+export type NetworkingMode = string;
+export type EngineSettings = unknown;
+export type ScratchStorageMode = string;
 export type RunSettingId = string;
 export type S3UriSettings = string;
 export type BatchId = string;
@@ -195,7 +198,6 @@ export type RunGroupArn = string;
 export type RunGroupTimestamp = Date;
 export type RunGroupListToken = string;
 export type RunRequestId = string;
-export type NetworkingMode = string;
 export type RunStatus = string;
 export type RunExport = string;
 export type EngineVersion = string;
@@ -212,6 +214,7 @@ export type EngineLogStream = string;
 export type RunLogStream = string;
 export type WorkflowUuid = string;
 export type RunListToken = string;
+export type WorkflowName = string;
 export type TaskId = string;
 export type TaskStatus = string;
 export type TaskName = string;
@@ -262,7 +265,6 @@ export type ShareStatus = string;
 export type ResourceOwner = string;
 export type ShareResourceType = string;
 export type TagArn = string;
-export type WorkflowName = string;
 export type WorkflowDescription = string;
 export type WorkflowEngine = string;
 export type WorkflowMain = string;
@@ -288,6 +290,7 @@ export type WorkflowStatusMessage = string;
 export type WorkflowMetadataKey = string;
 export type WorkflowMetadataValue = string;
 export type ReadmeS3PresignedUrl = string;
+export type WorkflowProfileName = string;
 export type WorkflowListToken = string;
 export type WorkflowVersionDescription = string;
 export type WorkflowVersionArn = string;
@@ -2234,6 +2237,10 @@ export interface DefaultRunSetting {
   workflowOwnerId?: string;
   outputBucketOwnerId?: string;
   workflowVersionName?: string;
+  networkingMode?: string;
+  configurationName?: string;
+  engineSettings?: any;
+  scratchStorageMode?: string;
 }
 export const DefaultRunSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2255,6 +2262,10 @@ export const DefaultRunSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     workflowOwnerId: S.optional(S.String),
     outputBucketOwnerId: S.optional(S.String),
     workflowVersionName: S.optional(S.String),
+    networkingMode: S.optional(S.String),
+    configurationName: S.optional(S.String),
+    engineSettings: S.optional(S.Any),
+    scratchStorageMode: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DefaultRunSetting",
@@ -2267,6 +2278,7 @@ export interface InlineSetting {
   parameters?: any;
   outputBucketOwnerId?: string;
   runTags?: { [key: string]: string | undefined };
+  engineSettings?: any;
 }
 export const InlineSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2277,6 +2289,7 @@ export const InlineSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     parameters: S.optional(S.Any),
     outputBucketOwnerId: S.optional(S.String),
     runTags: S.optional(TagMap),
+    engineSettings: S.optional(S.Any),
   }),
 ).annotate({ identifier: "InlineSetting" }) as any as S.Schema<InlineSetting>;
 export type InlineSettings = InlineSetting[];
@@ -3081,7 +3094,9 @@ export interface StartRunRequest {
   workflowOwnerId?: string;
   workflowVersionName?: string;
   networkingMode?: string;
+  scratchStorageMode?: string;
   configurationName?: string;
+  engineSettings?: any;
 }
 export const StartRunRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3105,7 +3120,9 @@ export const StartRunRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     workflowOwnerId: S.optional(S.String),
     workflowVersionName: S.optional(S.String),
     networkingMode: S.optional(S.String),
+    scratchStorageMode: S.optional(S.String),
     configurationName: S.optional(S.String),
+    engineSettings: S.optional(S.Any),
   }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/run" }),
@@ -3232,8 +3249,10 @@ export interface GetRunResponse {
   workflowVersionName?: string;
   workflowUuid?: string;
   networkingMode?: string;
+  scratchStorageMode?: string;
   configuration?: ConfigurationDetails;
   vpcConfig?: VpcConfigResponse;
+  engineSettings?: any;
 }
 export const GetRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3279,8 +3298,10 @@ export const GetRunResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     workflowVersionName: S.optional(S.String),
     workflowUuid: S.optional(S.String),
     networkingMode: S.optional(S.String),
+    scratchStorageMode: S.optional(S.String),
     configuration: S.optional(ConfigurationDetails),
     vpcConfig: S.optional(VpcConfigResponse),
+    engineSettings: S.optional(S.Any),
   }),
 ).annotate({ identifier: "GetRunResponse" }) as any as S.Schema<GetRunResponse>;
 export interface DeleteRunRequest {
@@ -3342,6 +3363,7 @@ export interface RunListItem {
   stopTime?: Date;
   storageType?: string;
   workflowVersionName?: string;
+  workflowName?: string;
 }
 export const RunListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3362,6 +3384,7 @@ export const RunListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     stopTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     storageType: S.optional(S.String),
     workflowVersionName: S.optional(S.String),
+    workflowName: S.optional(S.String),
   }),
 ).annotate({ identifier: "RunListItem" }) as any as S.Schema<RunListItem>;
 export type RunList = RunListItem[];
@@ -6202,6 +6225,18 @@ export const DefinitionRepositoryDetails =
   ).annotate({
     identifier: "DefinitionRepositoryDetails",
   }) as any as S.Schema<DefinitionRepositoryDetails>;
+export type WorkflowProfileList = string[];
+export const WorkflowProfileList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export type WorkflowProfileParameterTemplates = {
+  [key: string]: { [key: string]: WorkflowParameter | undefined } | undefined;
+};
+export const WorkflowProfileParameterTemplates =
+  /*@__PURE__*/ /*#__PURE__*/ S.Record(
+    S.String,
+    WorkflowParameterTemplate.pipe(S.optional),
+  );
 export interface GetWorkflowResponse {
   arn?: string;
   id?: string;
@@ -6226,6 +6261,10 @@ export interface GetWorkflowResponse {
   readme?: string;
   definitionRepositoryDetails?: DefinitionRepositoryDetails;
   readmePath?: string;
+  profiles?: string[];
+  profileParameterTemplates?: {
+    [key: string]: { [key: string]: WorkflowParameter | undefined } | undefined;
+  };
 }
 export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6254,6 +6293,8 @@ export const GetWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     readme: S.optional(S.String),
     definitionRepositoryDetails: S.optional(DefinitionRepositoryDetails),
     readmePath: S.optional(S.String),
+    profiles: S.optional(WorkflowProfileList),
+    profileParameterTemplates: S.optional(WorkflowProfileParameterTemplates),
   }),
 ).annotate({
   identifier: "GetWorkflowResponse",
@@ -6521,6 +6562,10 @@ export interface GetWorkflowVersionResponse {
   readme?: string;
   definitionRepositoryDetails?: DefinitionRepositoryDetails;
   readmePath?: string;
+  profiles?: string[];
+  profileParameterTemplates?: {
+    [key: string]: { [key: string]: WorkflowParameter | undefined } | undefined;
+  };
 }
 export const GetWorkflowVersionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6551,6 +6596,8 @@ export const GetWorkflowVersionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       readme: S.optional(S.String),
       definitionRepositoryDetails: S.optional(DefinitionRepositoryDetails),
       readmePath: S.optional(S.String),
+      profiles: S.optional(WorkflowProfileList),
+      profileParameterTemplates: S.optional(WorkflowProfileParameterTemplates),
     }),
 ).annotate({
   identifier: "GetWorkflowVersionResponse",
@@ -7944,7 +7991,7 @@ export type StartRunBatchError =
 /**
  * Starts a batch of workflow runs. You can group up to 100,000 runs into a single batch that share a common configuration defined in `defaultRunSetting`. Per-run overrides can be provided either inline via `inlineSettings` (up to 100 runs) or via a JSON file stored in Amazon S3 via `s3UriSettings` (up to 100,000 runs).
  *
- * `StartRunBatch` validates common fields synchronously and returns immediately with a batch ID and status `PENDING`. Runs are submitted gradually and asynchronously at a rate governed by your `StartRun` throughput quota.
+ * `StartRunBatch` validates common fields synchronously and returns immediately with a batch ID and status `CREATING`. The batch transitions to `PENDING` once initial setup completes. Runs are then submitted gradually and asynchronously at a rate governed by your `StartRun` throughput quota.
  */
 export const startRunBatch: API.OperationMethod<
   StartRunBatchRequest,

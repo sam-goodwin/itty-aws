@@ -181,7 +181,9 @@ export type RegionName =
   | "eu-west-3"
   | "eu-central-1"
   | "eu-north-1"
+  | "eu-south-2"
   | "ca-central-1"
+  | "ap-east-1"
   | "ap-south-1"
   | "ap-southeast-1"
   | "ap-southeast-2"
@@ -189,6 +191,7 @@ export type RegionName =
   | "ap-northeast-2"
   | "ap-southeast-3"
   | "ap-southeast-5"
+  | "sa-east-1"
   | (string & {});
 export const RegionName = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ResourceLocation {
@@ -1692,11 +1695,18 @@ export type OriginProtocolPolicyEnum =
   | "https-only"
   | (string & {});
 export const OriginProtocolPolicyEnum = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type OriginIpAddressTypeEnum =
+  | "ipv4"
+  | "ipv6"
+  | "dualstack"
+  | (string & {});
+export const OriginIpAddressTypeEnum = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface InputOrigin {
   name?: string;
   regionName?: RegionName;
   protocolPolicy?: OriginProtocolPolicyEnum;
   responseTimeout?: number;
+  ipAddressType?: OriginIpAddressTypeEnum;
 }
 export const InputOrigin = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1704,6 +1714,7 @@ export const InputOrigin = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     regionName: S.optional(RegionName),
     protocolPolicy: S.optional(OriginProtocolPolicyEnum),
     responseTimeout: S.optional(S.Number),
+    ipAddressType: S.optional(OriginIpAddressTypeEnum),
   }),
 ).annotate({ identifier: "InputOrigin" }) as any as S.Schema<InputOrigin>;
 export type BehaviorEnum = "dont-cache" | "cache" | (string & {});
@@ -1862,6 +1873,7 @@ export interface Origin {
   regionName?: RegionName;
   protocolPolicy?: OriginProtocolPolicyEnum;
   responseTimeout?: number;
+  ipAddressType?: OriginIpAddressTypeEnum;
 }
 export const Origin = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1870,6 +1882,7 @@ export const Origin = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     regionName: S.optional(RegionName),
     protocolPolicy: S.optional(OriginProtocolPolicyEnum),
     responseTimeout: S.optional(S.Number),
+    ipAddressType: S.optional(OriginIpAddressTypeEnum),
   }),
 ).annotate({ identifier: "Origin" }) as any as S.Schema<Origin>;
 export interface LightsailDistribution {

@@ -114,6 +114,7 @@ export type UUID = string;
 export type PhotonAmiId = string;
 export type UsbDeviceFilterString = string;
 export type AppstreamAgentVersion = string;
+export type WorkspaceImageId = string;
 export type ImageImportDescription = string;
 export type ImageImportDisplayName = string;
 export type InstanceType = string;
@@ -128,6 +129,7 @@ export type FeedbackURL = string;
 export type SettingsGroup = string;
 export type EmbedHostDomain = string;
 export type UrlPattern = string;
+export type S3BucketArn = string;
 export type StreamingUrlUserId = string;
 export type ThemeFooterLinkDisplayName = string;
 export type ThemeFooterLinkURL = string;
@@ -1053,6 +1055,7 @@ export type ExportImageTaskState =
   | "EXPORTING"
   | "COMPLETED"
   | "FAILED"
+  | "TIMED_OUT"
   | (string & {});
 export const ExportImageTaskState = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ExportImageTask {
@@ -1539,6 +1542,7 @@ export const AppCatalogConfig =
 export interface CreateImportedImageRequest {
   Name?: string;
   SourceAmiId?: string;
+  WorkspaceImageId?: string;
   IamRoleArn?: string;
   Description?: string;
   DisplayName?: string;
@@ -1553,6 +1557,7 @@ export const CreateImportedImageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       Name: S.optional(S.String),
       SourceAmiId: S.optional(S.String),
+      WorkspaceImageId: S.optional(S.String),
       IamRoleArn: S.optional(S.String),
       Description: S.optional(S.String),
       DisplayName: S.optional(S.String),
@@ -1619,7 +1624,7 @@ export type DynamicAppProvidersEnabled = "ENABLED" | "DISABLED" | (string & {});
 export const DynamicAppProvidersEnabled = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ImageSharedWithOthers = "TRUE" | "FALSE" | (string & {});
 export const ImageSharedWithOthers = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type ImageType = "CUSTOM" | "NATIVE" | (string & {});
+export type ImageType = "CUSTOM" | "NATIVE" | "BYOL" | (string & {});
 export const ImageType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Image {
   Name?: string;
@@ -1791,6 +1796,57 @@ export const ContentRedirection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContentRedirection",
 }) as any as S.Schema<ContentRedirection>;
+export type AgentAction =
+  | "COMPUTER_VISION"
+  | "COMPUTER_INPUT"
+  | "FORWARD_MCP_TOOLS"
+  | (string & {});
+export const AgentAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AgentAccessSetting {
+  AgentAction?: AgentAction;
+  Permission?: Permission;
+}
+export const AgentAccessSetting = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AgentAction: S.optional(AgentAction),
+    Permission: S.optional(Permission),
+  }),
+).annotate({
+  identifier: "AgentAccessSetting",
+}) as any as S.Schema<AgentAccessSetting>;
+export type AgentAccessSettingList = AgentAccessSetting[];
+export const AgentAccessSettingList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgentAccessSetting);
+export type ScreenResolution = "W_1280xH_720" | (string & {});
+export const ScreenResolution = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ScreenImageFormat = "PNG" | "JPEG" | (string & {});
+export const ScreenImageFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type UserControlMode =
+  | "VIEW_ONLY"
+  | "VIEW_STOP"
+  | "DISABLED"
+  | (string & {});
+export const UserControlMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AgentAccessConfig {
+  Settings?: AgentAccessSetting[];
+  S3BucketArn?: string;
+  ScreenshotsUploadEnabled?: boolean;
+  ScreenResolution?: ScreenResolution;
+  ScreenImageFormat?: ScreenImageFormat;
+  UserControlMode?: UserControlMode;
+}
+export const AgentAccessConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Settings: S.optional(AgentAccessSettingList),
+    S3BucketArn: S.optional(S.String),
+    ScreenshotsUploadEnabled: S.optional(S.Boolean),
+    ScreenResolution: S.optional(ScreenResolution),
+    ScreenImageFormat: S.optional(ScreenImageFormat),
+    UserControlMode: S.optional(UserControlMode),
+  }),
+).annotate({
+  identifier: "AgentAccessConfig",
+}) as any as S.Schema<AgentAccessConfig>;
 export interface CreateStackRequest {
   Name?: string;
   Description?: string;
@@ -1805,6 +1861,7 @@ export interface CreateStackRequest {
   EmbedHostDomains?: string[];
   StreamingExperienceSettings?: StreamingExperienceSettings;
   ContentRedirection?: ContentRedirection;
+  AgentAccessConfig?: AgentAccessConfig;
 }
 export const CreateStackRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1821,6 +1878,7 @@ export const CreateStackRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     EmbedHostDomains: S.optional(EmbedHostDomains),
     StreamingExperienceSettings: S.optional(StreamingExperienceSettings),
     ContentRedirection: S.optional(ContentRedirection),
+    AgentAccessConfig: S.optional(AgentAccessConfig),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1875,6 +1933,7 @@ export interface Stack {
   EmbedHostDomains?: string[];
   StreamingExperienceSettings?: StreamingExperienceSettings;
   ContentRedirection?: ContentRedirection;
+  AgentAccessConfig?: AgentAccessConfig;
 }
 export const Stack = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1893,6 +1952,7 @@ export const Stack = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     EmbedHostDomains: S.optional(EmbedHostDomains),
     StreamingExperienceSettings: S.optional(StreamingExperienceSettings),
     ContentRedirection: S.optional(ContentRedirection),
+    AgentAccessConfig: S.optional(AgentAccessConfig),
   }),
 ).annotate({ identifier: "Stack" }) as any as S.Schema<Stack>;
 export interface CreateStackResult {
@@ -1905,6 +1965,14 @@ export interface CreateStackResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
     ContentRedirection: ContentRedirection & {
       HostToClient: UrlRedirectionConfig & { Enabled: boolean };
+    };
+    AgentAccessConfig: AgentAccessConfig & {
+      Settings: (AgentAccessSetting & {
+        AgentAction: AgentAction;
+        Permission: Permission;
+      })[];
+      ScreenResolution: ScreenResolution;
+      ScreenImageFormat: ScreenImageFormat;
     };
   };
 }
@@ -3039,6 +3107,14 @@ export interface DescribeStacksResult {
     ContentRedirection: ContentRedirection & {
       HostToClient: UrlRedirectionConfig & { Enabled: boolean };
     };
+    AgentAccessConfig: AgentAccessConfig & {
+      Settings: (AgentAccessSetting & {
+        AgentAction: AgentAction;
+        Permission: Permission;
+      })[];
+      ScreenResolution: ScreenResolution;
+      ScreenImageFormat: ScreenImageFormat;
+    };
   })[];
   NextToken?: string;
 }
@@ -4094,11 +4170,33 @@ export type StackAttribute =
   | "ACCESS_ENDPOINTS"
   | "STREAMING_EXPERIENCE_SETTINGS"
   | "CONTENT_REDIRECTION"
+  | "AGENT_ACCESS_CONFIG"
   | (string & {});
 export const StackAttribute = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type StackAttributes = StackAttribute[];
 export const StackAttributes =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(StackAttribute);
+export interface AgentAccessConfigForUpdate {
+  Settings?: AgentAccessSetting[];
+  S3BucketArn?: string;
+  ScreenshotsUploadEnabled?: boolean;
+  ScreenResolution?: ScreenResolution;
+  ScreenImageFormat?: ScreenImageFormat;
+  UserControlMode?: UserControlMode;
+}
+export const AgentAccessConfigForUpdate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Settings: S.optional(AgentAccessSettingList),
+      S3BucketArn: S.optional(S.String),
+      ScreenshotsUploadEnabled: S.optional(S.Boolean),
+      ScreenResolution: S.optional(ScreenResolution),
+      ScreenImageFormat: S.optional(ScreenImageFormat),
+      UserControlMode: S.optional(UserControlMode),
+    }),
+).annotate({
+  identifier: "AgentAccessConfigForUpdate",
+}) as any as S.Schema<AgentAccessConfigForUpdate>;
 export interface UpdateStackRequest {
   DisplayName?: string;
   Description?: string;
@@ -4113,6 +4211,8 @@ export interface UpdateStackRequest {
   AccessEndpoints?: AccessEndpoint[];
   EmbedHostDomains?: string[];
   StreamingExperienceSettings?: StreamingExperienceSettings;
+  ContentRedirection?: ContentRedirection;
+  AgentAccessConfig?: AgentAccessConfigForUpdate;
 }
 export const UpdateStackRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4129,6 +4229,8 @@ export const UpdateStackRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     AccessEndpoints: S.optional(AccessEndpointList),
     EmbedHostDomains: S.optional(EmbedHostDomains),
     StreamingExperienceSettings: S.optional(StreamingExperienceSettings),
+    ContentRedirection: S.optional(ContentRedirection),
+    AgentAccessConfig: S.optional(AgentAccessConfigForUpdate),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -4145,6 +4247,14 @@ export interface UpdateStackResult {
     AccessEndpoints: (AccessEndpoint & { EndpointType: AccessEndpointType })[];
     ContentRedirection: ContentRedirection & {
       HostToClient: UrlRedirectionConfig & { Enabled: boolean };
+    };
+    AgentAccessConfig: AgentAccessConfig & {
+      Settings: (AgentAccessSetting & {
+        AgentAction: AgentAction;
+        Permission: Permission;
+      })[];
+      ScreenResolution: ScreenResolution;
+      ScreenImageFormat: ScreenImageFormat;
     };
   };
 }
@@ -4814,6 +4924,7 @@ export type CreateImportedImageError =
   | DryRunOperationException
   | IncompatibleImageException
   | InvalidAccountStatusException
+  | InvalidParameterCombinationException
   | InvalidRoleException
   | LimitExceededException
   | OperationNotPermittedException
@@ -4835,6 +4946,7 @@ export const createImportedImage: API.OperationMethod<
     DryRunOperationException,
     IncompatibleImageException,
     InvalidAccountStatusException,
+    InvalidParameterCombinationException,
     InvalidRoleException,
     LimitExceededException,
     OperationNotPermittedException,

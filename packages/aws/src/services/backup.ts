@@ -2441,6 +2441,7 @@ export const ScanResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ScanResultStatus =
   | "NO_THREATS_FOUND"
   | "THREATS_FOUND"
+  | "UNKNOWN"
   | (string & {});
 export const ScanResultStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ScanResultInfo {
@@ -2463,6 +2464,8 @@ export interface DescribeScanJobOutput {
   BackupVaultArn: string;
   BackupVaultName: string;
   CompletionDate?: Date;
+  ContinuousScanEndTime?: Date;
+  ContinuousScanStartTime?: Date;
   CreatedBy: ScanJobCreator;
   CreationDate: Date;
   IamRoleArn: string;
@@ -2486,6 +2489,12 @@ export const DescribeScanJobOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     BackupVaultArn: S.String,
     BackupVaultName: S.String,
     CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ContinuousScanEndTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    ContinuousScanStartTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
     CreatedBy: ScanJobCreator,
     CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     IamRoleArn: S.String,
@@ -3018,6 +3027,55 @@ export const GetLegalHoldOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLegalHoldOutput",
 }) as any as S.Schema<GetLegalHoldOutput>;
+export interface GetPITRMalwareScanResultsInput {
+  RecoveryPointArn: string;
+  BackupVaultName: string;
+  ScanEndTime: Date;
+  MalwareScanner: MalwareScanner;
+}
+export const GetPITRMalwareScanResultsInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      RecoveryPointArn: S.String.pipe(T.HttpQuery("RecoveryPointArn")),
+      BackupVaultName: S.String.pipe(T.HttpQuery("BackupVaultName")),
+      ScanEndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+        T.HttpQuery("ScanEndTime"),
+      ),
+      MalwareScanner: MalwareScanner.pipe(T.HttpQuery("MalwareScanner")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/scan/pitr-malware-scan-results" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetPITRMalwareScanResultsInput",
+  }) as any as S.Schema<GetPITRMalwareScanResultsInput>;
+export interface GetPITRMalwareScanResultsOutput {
+  ScanEndTime: Date;
+  ScanResult: ScanResultInfo;
+  LastScanJobTime?: Date;
+  ScanId?: string;
+  ScanMode?: ScanMode;
+}
+export const GetPITRMalwareScanResultsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ScanEndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ScanResult: ScanResultInfo,
+      LastScanJobTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+      ScanId: S.optional(S.String),
+      ScanMode: S.optional(ScanMode),
+    }),
+  ).annotate({
+    identifier: "GetPITRMalwareScanResultsOutput",
+  }) as any as S.Schema<GetPITRMalwareScanResultsOutput>;
 export interface GetRecoveryPointIndexDetailsInput {
   BackupVaultName: string;
   RecoveryPointArn: string;
@@ -5305,6 +5363,8 @@ export interface ScanJob {
   BackupVaultArn: string;
   BackupVaultName: string;
   CompletionDate?: Date;
+  ContinuousScanEndTime?: Date;
+  ContinuousScanStartTime?: Date;
   CreatedBy: ScanJobCreator;
   CreationDate: Date;
   IamRoleArn: string;
@@ -5328,6 +5388,12 @@ export const ScanJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     BackupVaultArn: S.String,
     BackupVaultName: S.String,
     CompletionDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ContinuousScanEndTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    ContinuousScanStartTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
     CreatedBy: ScanJobCreator,
     CreationDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     IamRoleArn: S.String,
@@ -5870,6 +5936,7 @@ export const StartRestoreJobOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartRestoreJobOutput>;
 export interface StartScanJobInput {
   BackupVaultName: string;
+  ContinuousScanEndTime?: Date;
   IamRoleArn: string;
   IdempotencyToken?: string;
   MalwareScanner: MalwareScanner;
@@ -5881,6 +5948,9 @@ export interface StartScanJobInput {
 export const StartScanJobInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     BackupVaultName: S.String,
+    ContinuousScanEndTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
     IamRoleArn: S.String,
     IdempotencyToken: S.optional(S.String),
     MalwareScanner: MalwareScanner,
@@ -7976,6 +8046,33 @@ export const getLegalHold: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetLegalHold",
+}));
+export type GetPITRMalwareScanResultsError =
+  | InvalidParameterValueException
+  | MissingParameterValueException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | CommonErrors;
+/**
+ * Returns the malware scan results for a specified point in time within a continuous (point-in-time recovery) backup.
+ */
+export const getPITRMalwareScanResults: API.OperationMethod<
+  GetPITRMalwareScanResultsInput,
+  GetPITRMalwareScanResultsOutput,
+  GetPITRMalwareScanResultsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetPITRMalwareScanResultsInput,
+  output: GetPITRMalwareScanResultsOutput,
+  errors: [
+    InvalidParameterValueException,
+    MissingParameterValueException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPITRMalwareScanResults",
 }));
 export type GetRecoveryPointIndexDetailsError =
   | InvalidParameterValueException

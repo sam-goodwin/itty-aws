@@ -160,6 +160,7 @@ export type KmsKeyArn = string;
 export type CostScaleFactor = number;
 export type IdentityCenterPrincipalId = string;
 export type IdentityStoreId = string;
+export type Region = string;
 export type AmountRequirementName = string;
 export type MaxCount = number;
 export type MinZeroMaxInteger = number;
@@ -175,12 +176,18 @@ export type EbsIops = number;
 export type EbsThroughputMiB = number;
 export type AcceleratorRuntime = string;
 export type VpcResourceConfigurationArn = string;
+export type PersistentVolumeSizeGiB = number;
+export type PersistentVolumeIops = number;
+export type PersistentVolumeThroughputMiB = number;
+export type MountPath = string;
+export type PersistentVolumeTtlHours = number;
 export type ServiceManagedEc2WorkerIdleDurationSeconds = number;
 export type HostConfigurationScript = string | redacted.Redacted<string>;
 export type HostConfigurationScriptTimeoutSeconds = number;
 export type AccessKeyId = string | redacted.Redacted<string>;
 export type SecretAccessKey = string | redacted.Redacted<string>;
 export type SessionToken = string | redacted.Redacted<string>;
+export type VolumeId = string;
 export type S3BucketName = string;
 export type S3Prefix = string;
 export type Document = unknown;
@@ -204,11 +211,12 @@ export type LicenseEndpointId = string;
 export type StatusMessage = string;
 export type DnsName = string;
 export type IdentityCenterInstanceArn = string;
-export type Region = string;
 export type Subdomain = string;
 export type MonitorId = string;
 export type IdentityCenterApplicationArn = string;
 export type Url = string;
+export type SettingKey = string;
+export type SettingValue = string;
 
 //# Schemas
 export interface BatchGetJobIdentifier {
@@ -3264,6 +3272,7 @@ export interface AssociateMemberToFarmRequest {
   identityStoreId: string;
   membershipLevel: MembershipLevel;
   principalId: string;
+  identityCenterRegion?: string;
 }
 export const AssociateMemberToFarmRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3273,6 +3282,7 @@ export const AssociateMemberToFarmRequest =
       identityStoreId: S.String,
       membershipLevel: MembershipLevel,
       principalId: S.String.pipe(T.HttpLabel("principalId")),
+      identityCenterRegion: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -4348,7 +4358,13 @@ export const Ec2EbsVolume = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     throughputMiB: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Ec2EbsVolume" }) as any as S.Schema<Ec2EbsVolume>;
-export type AcceleratorName = "t4" | "a10g" | "l4" | "l40s" | (string & {});
+export type AcceleratorName =
+  | "t4"
+  | "a10g"
+  | "l4"
+  | "l40s"
+  | "rtx-pro-server-6000"
+  | (string & {});
 export const AcceleratorName = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface AcceleratorSelection {
   name: AcceleratorName;
@@ -4435,6 +4451,25 @@ export const VpcConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcConfiguration",
 }) as any as S.Schema<VpcConfiguration>;
+export interface PersistentVolumeConfiguration {
+  sizeGiB?: number;
+  iops?: number;
+  throughputMiB?: number;
+  mountPath: string;
+  lastUsedTtlHours?: number;
+}
+export const PersistentVolumeConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sizeGiB: S.optional(S.Number),
+      iops: S.optional(S.Number),
+      throughputMiB: S.optional(S.Number),
+      mountPath: S.String,
+      lastUsedTtlHours: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "PersistentVolumeConfiguration",
+  }) as any as S.Schema<PersistentVolumeConfiguration>;
 export interface ServiceManagedEc2AutoScalingConfiguration {
   standbyWorkerCount?: number;
   workerIdleDurationSeconds?: number;
@@ -4455,6 +4490,7 @@ export interface ServiceManagedEc2FleetConfiguration {
   instanceMarketOptions: ServiceManagedEc2InstanceMarketOptions;
   vpcConfiguration?: VpcConfiguration;
   storageProfileId?: string;
+  persistentVolumeConfiguration?: PersistentVolumeConfiguration;
   autoScalingConfiguration?: ServiceManagedEc2AutoScalingConfiguration;
 }
 export const ServiceManagedEc2FleetConfiguration =
@@ -4464,6 +4500,7 @@ export const ServiceManagedEc2FleetConfiguration =
       instanceMarketOptions: ServiceManagedEc2InstanceMarketOptions,
       vpcConfiguration: S.optional(VpcConfiguration),
       storageProfileId: S.optional(S.String),
+      persistentVolumeConfiguration: S.optional(PersistentVolumeConfiguration),
       autoScalingConfiguration: S.optional(
         ServiceManagedEc2AutoScalingConfiguration,
       ),
@@ -4820,6 +4857,7 @@ export interface AssociateMemberToFleetRequest {
   identityStoreId: string;
   membershipLevel: MembershipLevel;
   principalId: string;
+  identityCenterRegion?: string;
 }
 export const AssociateMemberToFleetRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4830,6 +4868,7 @@ export const AssociateMemberToFleetRequest =
       identityStoreId: S.String,
       membershipLevel: MembershipLevel,
       principalId: S.String.pipe(T.HttpLabel("principalId")),
+      identityCenterRegion: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -4989,6 +5028,176 @@ export const ListFleetMembersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListFleetMembersResponse",
 }) as any as S.Schema<ListFleetMembersResponse>;
+export interface GetVolumeRequest {
+  farmId: string;
+  fleetId: string;
+  volumeId: string;
+}
+export const GetVolumeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    farmId: S.String.pipe(T.HttpLabel("farmId")),
+    fleetId: S.String.pipe(T.HttpLabel("fleetId")),
+    volumeId: S.String.pipe(T.HttpLabel("volumeId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2023-10-12/farms/{farmId}/fleets/{fleetId}/volumes/{volumeId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetVolumeRequest",
+}) as any as S.Schema<GetVolumeRequest>;
+export type VolumeState =
+  | "PENDING_CREATION"
+  | "PENDING_ATTACHMENT"
+  | "IN_USE"
+  | "AVAILABLE"
+  | "PENDING_DELETION"
+  | (string & {});
+export const VolumeState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type EbsVolumeType = "gp3" | (string & {});
+export const EbsVolumeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetVolumeResponse {
+  volumeId: string;
+  farmId: string;
+  fleetId: string;
+  state: VolumeState;
+  sizeGiB: number;
+  availabilityZoneId: string;
+  attachedWorkerId?: string;
+  volumeType: EbsVolumeType;
+  iops?: number;
+  throughputMiB?: number;
+  createdAt: Date;
+  lastAssignedAt?: Date;
+  lastReleasedAt?: Date;
+  expiresAt?: Date;
+}
+export const GetVolumeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    volumeId: S.String,
+    farmId: S.String,
+    fleetId: S.String,
+    state: VolumeState,
+    sizeGiB: S.Number,
+    availabilityZoneId: S.String,
+    attachedWorkerId: S.optional(S.String),
+    volumeType: EbsVolumeType,
+    iops: S.optional(S.Number),
+    throughputMiB: S.optional(S.Number),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastAssignedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    lastReleasedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    expiresAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GetVolumeResponse",
+}) as any as S.Schema<GetVolumeResponse>;
+export interface DeleteVolumeRequest {
+  farmId: string;
+  fleetId: string;
+  volumeId: string;
+}
+export const DeleteVolumeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    farmId: S.String.pipe(T.HttpLabel("farmId")),
+    fleetId: S.String.pipe(T.HttpLabel("fleetId")),
+    volumeId: S.String.pipe(T.HttpLabel("volumeId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2023-10-12/farms/{farmId}/fleets/{fleetId}/volumes/{volumeId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteVolumeRequest",
+}) as any as S.Schema<DeleteVolumeRequest>;
+export interface DeleteVolumeResponse {}
+export const DeleteVolumeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteVolumeResponse",
+}) as any as S.Schema<DeleteVolumeResponse>;
+export interface ListVolumesRequest {
+  farmId: string;
+  fleetId: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    farmId: S.String.pipe(T.HttpLabel("farmId")),
+    fleetId: S.String.pipe(T.HttpLabel("fleetId")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/2023-10-12/farms/{farmId}/fleets/{fleetId}/volumes",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListVolumesRequest",
+}) as any as S.Schema<ListVolumesRequest>;
+export interface VolumeSummary {
+  volumeId: string;
+  farmId: string;
+  fleetId: string;
+  state: VolumeState;
+  sizeGiB: number;
+  availabilityZoneId: string;
+  attachedWorkerId?: string;
+}
+export const VolumeSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    volumeId: S.String,
+    farmId: S.String,
+    fleetId: S.String,
+    state: VolumeState,
+    sizeGiB: S.Number,
+    availabilityZoneId: S.String,
+    attachedWorkerId: S.optional(S.String),
+  }),
+).annotate({ identifier: "VolumeSummary" }) as any as S.Schema<VolumeSummary>;
+export type VolumeSummaries = VolumeSummary[];
+export const VolumeSummaries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(VolumeSummary);
+export interface ListVolumesResponse {
+  volumes: VolumeSummary[];
+  nextToken?: string;
+}
+export const ListVolumesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ volumes: VolumeSummaries, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListVolumesResponse",
+}) as any as S.Schema<ListVolumesResponse>;
 export interface HostPropertiesRequest {
   ipAddresses?: IpAddresses;
   hostName?: string;
@@ -6433,6 +6642,7 @@ export interface AssociateMemberToQueueRequest {
   identityStoreId: string;
   membershipLevel: MembershipLevel;
   principalId: string;
+  identityCenterRegion?: string;
 }
 export const AssociateMemberToQueueRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -6443,6 +6653,7 @@ export const AssociateMemberToQueueRequest =
       identityStoreId: S.String,
       membershipLevel: MembershipLevel,
       principalId: S.String.pipe(T.HttpLabel("principalId")),
+      identityCenterRegion: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -7250,6 +7461,7 @@ export interface AssociateMemberToJobRequest {
   identityStoreId: string;
   membershipLevel: MembershipLevel;
   principalId: string;
+  identityCenterRegion?: string;
 }
 export const AssociateMemberToJobRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -7261,6 +7473,7 @@ export const AssociateMemberToJobRequest =
       identityStoreId: S.String,
       membershipLevel: MembershipLevel,
       principalId: S.String.pipe(T.HttpLabel("principalId")),
+      identityCenterRegion: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -8854,6 +9067,70 @@ export const ListMonitorsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMonitorsResponse",
 }) as any as S.Schema<ListMonitorsResponse>;
+export interface GetMonitorSettingsRequest {
+  monitorId: string;
+}
+export const GetMonitorSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ monitorId: S.String.pipe(T.HttpLabel("monitorId")) }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/2023-10-12/monitors/{monitorId}/settings",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetMonitorSettingsRequest",
+}) as any as S.Schema<GetMonitorSettingsRequest>;
+export type SettingsMap = { [key: string]: string | undefined };
+export const SettingsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface GetMonitorSettingsResponse {
+  settings: { [key: string]: string | undefined };
+}
+export const GetMonitorSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ settings: SettingsMap }),
+).annotate({
+  identifier: "GetMonitorSettingsResponse",
+}) as any as S.Schema<GetMonitorSettingsResponse>;
+export interface UpdateMonitorSettingsRequest {
+  monitorId: string;
+  settings: { [key: string]: string | undefined };
+}
+export const UpdateMonitorSettingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      monitorId: S.String.pipe(T.HttpLabel("monitorId")),
+      settings: SettingsMap,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PATCH",
+          uri: "/2023-10-12/monitors/{monitorId}/settings",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateMonitorSettingsRequest",
+  }) as any as S.Schema<UpdateMonitorSettingsRequest>;
+export interface UpdateMonitorSettingsResponse {}
+export const UpdateMonitorSettingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "UpdateMonitorSettingsResponse",
+  }) as any as S.Schema<UpdateMonitorSettingsResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
@@ -10904,6 +11181,116 @@ export const listFleetMembers: API.OperationMethod<
     inputToken: "nextToken",
     outputToken: "nextToken",
     items: "members",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type GetVolumeError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets a persistent volume.
+ */
+export const getVolume: API.OperationMethod<
+  GetVolumeRequest,
+  GetVolumeResponse,
+  GetVolumeError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetVolumeRequest,
+  output: GetVolumeResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetVolume",
+}));
+export type DeleteVolumeError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a persistent volume.
+ */
+export const deleteVolume: API.OperationMethod<
+  DeleteVolumeRequest,
+  DeleteVolumeResponse,
+  DeleteVolumeError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteVolumeRequest,
+  output: DeleteVolumeResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteVolume",
+}));
+export type ListVolumesError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the persistent volumes in a fleet.
+ */
+export const listVolumes: API.OperationMethod<
+  ListVolumesRequest,
+  ListVolumesResponse,
+  ListVolumesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListVolumesRequest,
+  ) => stream.Stream<
+    ListVolumesResponse,
+    ListVolumesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVolumesRequest,
+  ) => stream.Stream<
+    VolumeSummary,
+    ListVolumesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListVolumesRequest,
+  output: ListVolumesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListVolumes",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "volumes",
     pageSize: "maxResults",
   } as const,
 }));
@@ -13095,4 +13482,62 @@ export const listMonitors: API.OperationMethod<
     items: "monitors",
     pageSize: "maxResults",
   } as const,
+}));
+export type GetMonitorSettingsError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets the settings for a Deadline Cloud monitor.
+ */
+export const getMonitorSettings: API.OperationMethod<
+  GetMonitorSettingsRequest,
+  GetMonitorSettingsResponse,
+  GetMonitorSettingsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetMonitorSettingsRequest,
+  output: GetMonitorSettingsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetMonitorSettings",
+}));
+export type UpdateMonitorSettingsError =
+  | AccessDeniedException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the settings for a Deadline Cloud monitor. Keys present in the request are upserted; keys absent are left unchanged. Send an empty string value to delete a key.
+ */
+export const updateMonitorSettings: API.OperationMethod<
+  UpdateMonitorSettingsRequest,
+  UpdateMonitorSettingsResponse,
+  UpdateMonitorSettingsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateMonitorSettingsRequest,
+  output: UpdateMonitorSettingsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateMonitorSettings",
 }));

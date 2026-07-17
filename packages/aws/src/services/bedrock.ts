@@ -88,13 +88,29 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 //# Newtypes
-export type AcknowledgementFormDataBody = Uint8Array;
+export type AdvancedPromptOptimizationJobIdentifier = string;
 export type NonBlankString = string;
+export type AdvancedPromptOptimizationJobName = string;
+export type AdvancedPromptOptimizationJobDescription = string;
+export type IdempotencyToken = string;
+export type S3Uri = string;
+export type S3UriFolder = string;
+export type KmsKeyArn = string;
+export type TagKey = string;
+export type TagValue = string;
+export type BedrockModelId = string;
+export type AdditionalModelRequestFieldsKey = string;
+export type AdditionalModelRequestFieldsValue = unknown;
+export type AdvancedPromptOptimizationJobArn = string;
+export type TaggableResourcesArn = string;
+export type ErrorMessage = string;
+export type MaxResults = number;
+export type PaginationToken = string;
+export type AcknowledgementFormDataBody = Uint8Array;
 export type AutomatedReasoningPolicyName = string | redacted.Redacted<string>;
 export type AutomatedReasoningPolicyDescription =
   | string
   | redacted.Redacted<string>;
-export type IdempotencyToken = string;
 export type AutomatedReasoningPolicyFormatVersion = string;
 export type AutomatedReasoningPolicyDefinitionTypeName =
   | string
@@ -120,16 +136,10 @@ export type AutomatedReasoningPolicyDefinitionVariableDescription =
   | string
   | redacted.Redacted<string>;
 export type KmsKeyId = string;
-export type TagKey = string;
-export type TagValue = string;
 export type AutomatedReasoningPolicyArn = string;
 export type AutomatedReasoningPolicyVersion = string;
 export type AutomatedReasoningPolicyHash = string;
-export type TaggableResourcesArn = string;
 export type AutomatedReasoningPolicyId = string;
-export type KmsKeyArn = string;
-export type PaginationToken = string;
-export type MaxResults = number;
 export type AutomatedReasoningPolicyBuildWorkflowId = string;
 export type AutomatedReasoningPolicyTestGuardContent =
   | string
@@ -187,6 +197,9 @@ export type AutomatedReasoningLogicStatementContent =
 export type AutomatedReasoningNaturalLanguageStatementContent =
   | string
   | redacted.Redacted<string>;
+export type AutomatedReasoningPolicyBuildFeedback =
+  | string
+  | redacted.Redacted<string>;
 export type ModelSourceIdentifier = string;
 export type InstanceCount = number;
 export type InstanceType = string;
@@ -202,9 +215,8 @@ export type CustomModelDeploymentDescription = string;
 export type CustomModelDeploymentArn = string;
 export type CustomModelDeploymentIdentifier = string;
 export type ModelArn = string;
-export type ErrorMessage = string;
 export type CustomModelName = string;
-export type S3Uri = string;
+export type ModelPackageArn = string;
 export type ModelIdentifier = string;
 export type JobName = string;
 export type ModelCustomizationJobArn = string;
@@ -251,8 +263,6 @@ export type FilterKey = string;
 export type FilterValue = unknown;
 export type BedrockModelArn = string;
 export type BedrockRerankingModelArn = string;
-export type AdditionalModelRequestFieldsKey = string;
-export type AdditionalModelRequestFieldsValue = unknown;
 export type TextPromptTemplate = string | redacted.Redacted<string>;
 export type Temperature = number;
 export type TopP = number;
@@ -304,7 +314,6 @@ export type ModelInvocationJobIdentifier = string;
 export type Message = string | redacted.Redacted<string>;
 export type NonNegativeLong = number;
 export type GetFoundationModelIdentifier = string;
-export type BedrockModelId = string;
 export type BrandedName = string;
 export type Provider = string;
 export type PromptRouterName = string;
@@ -323,6 +332,356 @@ export type BaseModelIdentifier = string;
 export type ModelCustomizationJobIdentifier = string;
 
 //# Schemas
+export type AdvancedPromptOptimizationJobIdentifiers = string[];
+export const AdvancedPromptOptimizationJobIdentifiers =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface BatchDeleteAdvancedPromptOptimizationJobRequest {
+  jobIdentifiers: string[];
+}
+export const BatchDeleteAdvancedPromptOptimizationJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobIdentifiers: AdvancedPromptOptimizationJobIdentifiers }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/advanced-prompt-optimization-job/batch-delete",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "BatchDeleteAdvancedPromptOptimizationJobRequest",
+  }) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobRequest>;
+export interface BatchDeleteAdvancedPromptOptimizationJobError_ {
+  jobIdentifier: string;
+  code: string;
+  message?: string;
+}
+export const BatchDeleteAdvancedPromptOptimizationJobError_ =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobIdentifier: S.String,
+      code: S.String,
+      message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BatchDeleteAdvancedPromptOptimizationJobError",
+  }) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobError_>;
+export type BatchDeleteAdvancedPromptOptimizationJobErrors =
+  BatchDeleteAdvancedPromptOptimizationJobError_[];
+export const BatchDeleteAdvancedPromptOptimizationJobErrors =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    BatchDeleteAdvancedPromptOptimizationJobError_,
+  );
+export type AdvancedPromptOptimizationJobStatus =
+  | "InProgress"
+  | "Completed"
+  | "Failed"
+  | "PartiallyCompleted"
+  | "Stopping"
+  | "Stopped"
+  | "Deleting"
+  | (string & {});
+export const AdvancedPromptOptimizationJobStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface BatchDeleteAdvancedPromptOptimizationJobItem {
+  jobIdentifier: string;
+  jobStatus: AdvancedPromptOptimizationJobStatus;
+}
+export const BatchDeleteAdvancedPromptOptimizationJobItem =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobIdentifier: S.String,
+      jobStatus: AdvancedPromptOptimizationJobStatus,
+    }),
+  ).annotate({
+    identifier: "BatchDeleteAdvancedPromptOptimizationJobItem",
+  }) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobItem>;
+export type BatchDeleteAdvancedPromptOptimizationJobItems =
+  BatchDeleteAdvancedPromptOptimizationJobItem[];
+export const BatchDeleteAdvancedPromptOptimizationJobItems =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    BatchDeleteAdvancedPromptOptimizationJobItem,
+  );
+export interface BatchDeleteAdvancedPromptOptimizationJobResponse {
+  errors: BatchDeleteAdvancedPromptOptimizationJobError_[];
+  advancedPromptOptimizationJobs: BatchDeleteAdvancedPromptOptimizationJobItem[];
+}
+export const BatchDeleteAdvancedPromptOptimizationJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      errors: BatchDeleteAdvancedPromptOptimizationJobErrors,
+      advancedPromptOptimizationJobs:
+        BatchDeleteAdvancedPromptOptimizationJobItems,
+    }),
+  ).annotate({
+    identifier: "BatchDeleteAdvancedPromptOptimizationJobResponse",
+  }) as any as S.Schema<BatchDeleteAdvancedPromptOptimizationJobResponse>;
+export interface AdvancedPromptOptimizationInputConfig {
+  s3Uri: string;
+}
+export const AdvancedPromptOptimizationInputConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ s3Uri: S.String }),
+  ).annotate({
+    identifier: "AdvancedPromptOptimizationInputConfig",
+  }) as any as S.Schema<AdvancedPromptOptimizationInputConfig>;
+export interface AdvancedPromptOptimizationOutputConfig {
+  s3Uri: string;
+}
+export const AdvancedPromptOptimizationOutputConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ s3Uri: S.String }),
+  ).annotate({
+    identifier: "AdvancedPromptOptimizationOutputConfig",
+  }) as any as S.Schema<AdvancedPromptOptimizationOutputConfig>;
+export interface Tag {
+  key: string;
+  value: string;
+}
+export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ key: S.String, value: S.String }),
+).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+export type TagList = Tag[];
+export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export type NonEmptyStringList = string[];
+export const NonEmptyStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface InferenceConfiguration {
+  maxTokens?: number;
+  temperature?: number;
+  topP?: number;
+  stopSequences?: string[];
+}
+export const InferenceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maxTokens: S.optional(S.Number),
+      temperature: S.optional(S.Number),
+      topP: S.optional(S.Number),
+      stopSequences: S.optional(NonEmptyStringList),
+    }),
+).annotate({
+  identifier: "InferenceConfiguration",
+}) as any as S.Schema<InferenceConfiguration>;
+export type AdditionalModelRequestFields = { [key: string]: any | undefined };
+export const AdditionalModelRequestFields =
+  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.Any.pipe(S.optional));
+export interface ModelConfiguration {
+  modelId: string;
+  inferenceConfig?: InferenceConfiguration;
+  additionalModelRequestFields?: { [key: string]: any | undefined };
+}
+export const ModelConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modelId: S.String,
+    inferenceConfig: S.optional(InferenceConfiguration),
+    additionalModelRequestFields: S.optional(AdditionalModelRequestFields),
+  }),
+).annotate({
+  identifier: "ModelConfiguration",
+}) as any as S.Schema<ModelConfiguration>;
+export type ModelConfigurations = ModelConfiguration[];
+export const ModelConfigurations =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ModelConfiguration);
+export interface CreateAdvancedPromptOptimizationJobRequest {
+  jobName: string;
+  jobDescription?: string;
+  clientToken?: string;
+  inputConfig: AdvancedPromptOptimizationInputConfig;
+  outputConfig: AdvancedPromptOptimizationOutputConfig;
+  encryptionKeyArn?: string;
+  tags?: Tag[];
+  modelConfigurations: ModelConfiguration[];
+}
+export const CreateAdvancedPromptOptimizationJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobName: S.String,
+      jobDescription: S.optional(S.String),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      inputConfig: AdvancedPromptOptimizationInputConfig,
+      outputConfig: AdvancedPromptOptimizationOutputConfig,
+      encryptionKeyArn: S.optional(S.String),
+      tags: S.optional(TagList),
+      modelConfigurations: ModelConfigurations,
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/advanced-prompt-optimization-jobs" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateAdvancedPromptOptimizationJobRequest",
+  }) as any as S.Schema<CreateAdvancedPromptOptimizationJobRequest>;
+export interface CreateAdvancedPromptOptimizationJobResponse {
+  jobArn: string;
+}
+export const CreateAdvancedPromptOptimizationJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ jobArn: S.String }),
+  ).annotate({
+    identifier: "CreateAdvancedPromptOptimizationJobResponse",
+  }) as any as S.Schema<CreateAdvancedPromptOptimizationJobResponse>;
+export interface GetAdvancedPromptOptimizationJobRequest {
+  jobIdentifier: string;
+}
+export const GetAdvancedPromptOptimizationJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/advanced-prompt-optimization-jobs/{jobIdentifier}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetAdvancedPromptOptimizationJobRequest",
+  }) as any as S.Schema<GetAdvancedPromptOptimizationJobRequest>;
+export interface GetAdvancedPromptOptimizationJobResponse {
+  jobArn: string;
+  jobName: string;
+  jobDescription?: string;
+  jobStatus: AdvancedPromptOptimizationJobStatus;
+  inputConfig: AdvancedPromptOptimizationInputConfig;
+  outputConfig: AdvancedPromptOptimizationOutputConfig;
+  encryptionKeyArn?: string;
+  creationTime: Date;
+  lastModifiedTime?: Date;
+  failureMessage?: string;
+  modelConfigurations: ModelConfiguration[];
+}
+export const GetAdvancedPromptOptimizationJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobArn: S.String,
+      jobName: S.String,
+      jobDescription: S.optional(S.String),
+      jobStatus: AdvancedPromptOptimizationJobStatus,
+      inputConfig: AdvancedPromptOptimizationInputConfig,
+      outputConfig: AdvancedPromptOptimizationOutputConfig,
+      encryptionKeyArn: S.optional(S.String),
+      creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      lastModifiedTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+      failureMessage: S.optional(S.String),
+      modelConfigurations: ModelConfigurations,
+    }),
+  ).annotate({
+    identifier: "GetAdvancedPromptOptimizationJobResponse",
+  }) as any as S.Schema<GetAdvancedPromptOptimizationJobResponse>;
+export type SortJobsBy = "CreationTime" | (string & {});
+export const SortJobsBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SortOrder = "Ascending" | "Descending" | (string & {});
+export const SortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ListAdvancedPromptOptimizationJobsRequest {
+  maxResults?: number;
+  nextToken?: string;
+  sortBy?: SortJobsBy;
+  sortOrder?: SortOrder;
+}
+export const ListAdvancedPromptOptimizationJobsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      sortBy: S.optional(SortJobsBy).pipe(T.HttpQuery("sortBy")),
+      sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/advanced-prompt-optimization-jobs" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListAdvancedPromptOptimizationJobsRequest",
+  }) as any as S.Schema<ListAdvancedPromptOptimizationJobsRequest>;
+export interface AdvancedPromptOptimizationJobSummary {
+  jobArn: string;
+  jobName: string;
+  jobStatus: AdvancedPromptOptimizationJobStatus;
+  creationTime: Date;
+  lastModifiedTime?: Date;
+}
+export const AdvancedPromptOptimizationJobSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobArn: S.String,
+      jobName: S.String,
+      jobStatus: AdvancedPromptOptimizationJobStatus,
+      creationTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      lastModifiedTime: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+  ).annotate({
+    identifier: "AdvancedPromptOptimizationJobSummary",
+  }) as any as S.Schema<AdvancedPromptOptimizationJobSummary>;
+export type AdvancedPromptOptimizationJobSummaries =
+  AdvancedPromptOptimizationJobSummary[];
+export const AdvancedPromptOptimizationJobSummaries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AdvancedPromptOptimizationJobSummary);
+export interface ListAdvancedPromptOptimizationJobsResponse {
+  jobSummaries?: AdvancedPromptOptimizationJobSummary[];
+  nextToken?: string;
+}
+export const ListAdvancedPromptOptimizationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobSummaries: S.optional(AdvancedPromptOptimizationJobSummaries),
+      nextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListAdvancedPromptOptimizationJobsResponse",
+  }) as any as S.Schema<ListAdvancedPromptOptimizationJobsResponse>;
+export interface StopAdvancedPromptOptimizationJobRequest {
+  jobIdentifier: string;
+}
+export const StopAdvancedPromptOptimizationJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jobIdentifier: S.String.pipe(T.HttpLabel("jobIdentifier")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/advanced-prompt-optimization-jobs/{jobIdentifier}/stop",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StopAdvancedPromptOptimizationJobRequest",
+  }) as any as S.Schema<StopAdvancedPromptOptimizationJobRequest>;
+export interface StopAdvancedPromptOptimizationJobResponse {}
+export const StopAdvancedPromptOptimizationJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "StopAdvancedPromptOptimizationJobResponse",
+  }) as any as S.Schema<StopAdvancedPromptOptimizationJobResponse>;
 export interface GetUseCaseForModelAccessRequest {}
 export const GetUseCaseForModelAccessRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -463,15 +822,6 @@ export const AutomatedReasoningPolicyDefinition =
   ).annotate({
     identifier: "AutomatedReasoningPolicyDefinition",
   }) as any as S.Schema<AutomatedReasoningPolicyDefinition>;
-export interface Tag {
-  key: string;
-  value: string;
-}
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
-export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
 export interface CreateAutomatedReasoningPolicyRequest {
   name: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
@@ -1490,6 +1840,8 @@ export type AutomatedReasoningPolicyBuildWorkflowType =
   | "IMPORT_POLICY"
   | "GENERATE_FIDELITY_REPORT"
   | "GENERATE_POLICY_SCENARIOS"
+  | "RESOLVE_POLICY_AMBIGUITIES"
+  | "ITERATIVELY_REFINE_POLICY"
   | (string & {});
 export const AutomatedReasoningPolicyBuildWorkflowType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -3058,21 +3410,49 @@ export const AutomatedReasoningPolicyGenerateFidelityReportContent =
       documents: AutomatedReasoningPolicyGenerateFidelityReportDocumentList,
     }),
   ]);
+export type AutomatedReasoningPolicyIterativeRefinementDocumentList =
+  AutomatedReasoningPolicyBuildWorkflowDocument[];
+export const AutomatedReasoningPolicyIterativeRefinementDocumentList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(
+    AutomatedReasoningPolicyBuildWorkflowDocument,
+  );
+export interface AutomatedReasoningPolicyIterativeRefinementContent {
+  documents: AutomatedReasoningPolicyBuildWorkflowDocument[];
+  feedback?: string | redacted.Redacted<string>;
+}
+export const AutomatedReasoningPolicyIterativeRefinementContent =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      documents: AutomatedReasoningPolicyIterativeRefinementDocumentList,
+      feedback: S.optional(SensitiveString),
+    }),
+  ).annotate({
+    identifier: "AutomatedReasoningPolicyIterativeRefinementContent",
+  }) as any as S.Schema<AutomatedReasoningPolicyIterativeRefinementContent>;
 export type AutomatedReasoningPolicyWorkflowTypeContent =
   | {
       documents: AutomatedReasoningPolicyBuildWorkflowDocument[];
       policyRepairAssets?: never;
       generateFidelityReportContent?: never;
+      iterativeRefinementContent?: never;
     }
   | {
       documents?: never;
       policyRepairAssets: AutomatedReasoningPolicyBuildWorkflowRepairContent;
       generateFidelityReportContent?: never;
+      iterativeRefinementContent?: never;
     }
   | {
       documents?: never;
       policyRepairAssets?: never;
       generateFidelityReportContent: AutomatedReasoningPolicyGenerateFidelityReportContent;
+      iterativeRefinementContent?: never;
+    }
+  | {
+      documents?: never;
+      policyRepairAssets?: never;
+      generateFidelityReportContent?: never;
+      iterativeRefinementContent: AutomatedReasoningPolicyIterativeRefinementContent;
     };
 export const AutomatedReasoningPolicyWorkflowTypeContent =
   /*@__PURE__*/ /*#__PURE__*/ S.Union([
@@ -3083,6 +3463,10 @@ export const AutomatedReasoningPolicyWorkflowTypeContent =
     S.Struct({
       generateFidelityReportContent:
         AutomatedReasoningPolicyGenerateFidelityReportContent,
+    }),
+    S.Struct({
+      iterativeRefinementContent:
+        AutomatedReasoningPolicyIterativeRefinementContent,
     }),
   ]);
 export interface AutomatedReasoningPolicyBuildWorkflowSource {
@@ -3749,8 +4133,6 @@ export const GetCustomModelDeploymentResponse =
   }) as any as S.Schema<GetCustomModelDeploymentResponse>;
 export type SortModelsBy = "CreationTime" | (string & {});
 export const SortModelsBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type SortOrder = "Ascending" | "Descending" | (string & {});
-export const SortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ListCustomModelDeploymentsRequest {
   createdBefore?: Date;
   createdAfter?: Date;
@@ -3883,9 +4265,24 @@ export type ModelDataSource = { s3DataSource: S3DataSource };
 export const ModelDataSource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ s3DataSource: S3DataSource }),
 ]);
+export interface ModelPackageArnDataSource {
+  modelPackageArn: string;
+}
+export const ModelPackageArnDataSource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ modelPackageArn: S.String }),
+).annotate({
+  identifier: "ModelPackageArnDataSource",
+}) as any as S.Schema<ModelPackageArnDataSource>;
+export type CustomModelDataSource = {
+  modelPackageArnDataSource: ModelPackageArnDataSource;
+};
+export const CustomModelDataSource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ modelPackageArnDataSource: ModelPackageArnDataSource }),
+]);
 export interface CreateCustomModelRequest {
   modelName: string;
-  modelSourceConfig: ModelDataSource;
+  modelSourceConfig?: ModelDataSource;
+  customModelDataSource?: CustomModelDataSource;
   modelKmsKeyArn?: string;
   roleArn?: string;
   modelTags?: Tag[];
@@ -3895,7 +4292,8 @@ export const CreateCustomModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       modelName: S.String,
-      modelSourceConfig: ModelDataSource,
+      modelSourceConfig: S.optional(ModelDataSource),
+      customModelDataSource: S.optional(CustomModelDataSource),
       modelKmsKeyArn: S.optional(S.String),
       roleArn: S.optional(S.String),
       modelTags: S.optional(TagList),
@@ -4313,6 +4711,77 @@ export const ListCustomModelsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListCustomModelsResponse",
 }) as any as S.Schema<ListCustomModelsResponse>;
+export interface GetAccountDataRetentionRequest {}
+export const GetAccountDataRetentionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/data-retention" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetAccountDataRetentionRequest",
+  }) as any as S.Schema<GetAccountDataRetentionRequest>;
+export type DataRetentionMode =
+  | "default"
+  | "none"
+  | "provider_data_share"
+  | "inherit"
+  | (string & {});
+export const DataRetentionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetAccountDataRetentionResponse {
+  mode: DataRetentionMode;
+  updatedAt?: Date;
+}
+export const GetAccountDataRetentionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DataRetentionMode,
+      updatedAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GetAccountDataRetentionResponse",
+  }) as any as S.Schema<GetAccountDataRetentionResponse>;
+export interface PutAccountDataRetentionRequest {
+  mode: DataRetentionMode;
+}
+export const PutAccountDataRetentionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ mode: DataRetentionMode }).pipe(
+      T.all(
+        T.Http({ method: "PUT", uri: "/data-retention" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "PutAccountDataRetentionRequest",
+  }) as any as S.Schema<PutAccountDataRetentionRequest>;
+export interface PutAccountDataRetentionResponse {
+  mode: DataRetentionMode;
+  updatedAt?: Date;
+}
+export const PutAccountDataRetentionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      mode: DataRetentionMode,
+      updatedAt: S.optional(
+        T.DateFromString.pipe(T.TimestampFormat("date-time")),
+      ),
+    }),
+  ).annotate({
+    identifier: "PutAccountDataRetentionResponse",
+  }) as any as S.Schema<PutAccountDataRetentionResponse>;
 export interface DeleteEnforcedGuardrailConfigurationRequest {
   configId: string;
 }
@@ -5122,9 +5591,6 @@ export type VectorSearchRerankingConfigurationType =
   | (string & {});
 export const VectorSearchRerankingConfigurationType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type AdditionalModelRequestFields = { [key: string]: any | undefined };
-export const AdditionalModelRequestFields =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.Any.pipe(S.optional));
 export interface VectorSearchBedrockRerankingModelConfiguration {
   modelArn: string;
   additionalModelRequestFields?: { [key: string]: any | undefined };
@@ -5629,8 +6095,6 @@ export const GetEvaluationJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetEvaluationJobResponse",
 }) as any as S.Schema<GetEvaluationJobResponse>;
-export type SortJobsBy = "CreationTime" | (string & {});
-export const SortJobsBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ListEvaluationJobsRequest {
   creationTimeAfter?: Date;
   creationTimeBefore?: Date;
@@ -9407,14 +9871,14 @@ export const StopModelCustomizationJobResponse =
   }) as any as S.Schema<StopModelCustomizationJobResponse>;
 
 //# Errors
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
 ).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
@@ -9423,12 +9887,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
@@ -9449,6 +9913,176 @@ export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnava
 ).pipe(C.withServerError) {}
 
 //# Operations
+export type BatchDeleteAdvancedPromptOptimizationJobError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes one or more advanced prompt optimization jobs.
+ */
+export const batchDeleteAdvancedPromptOptimizationJob: API.OperationMethod<
+  BatchDeleteAdvancedPromptOptimizationJobRequest,
+  BatchDeleteAdvancedPromptOptimizationJobResponse,
+  BatchDeleteAdvancedPromptOptimizationJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchDeleteAdvancedPromptOptimizationJobRequest,
+  output: BatchDeleteAdvancedPromptOptimizationJobResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "BatchDeleteAdvancedPromptOptimizationJob",
+}));
+export type CreateAdvancedPromptOptimizationJobError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | TooManyTagsException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates an advanced prompt optimization job. The job optimizes your prompt templates for specific models using your evaluation dataset and criteria.
+ */
+export const createAdvancedPromptOptimizationJob: API.OperationMethod<
+  CreateAdvancedPromptOptimizationJobRequest,
+  CreateAdvancedPromptOptimizationJobResponse,
+  CreateAdvancedPromptOptimizationJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAdvancedPromptOptimizationJobRequest,
+  output: CreateAdvancedPromptOptimizationJobResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    TooManyTagsException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateAdvancedPromptOptimizationJob",
+}));
+export type GetAdvancedPromptOptimizationJobError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets information about an advanced prompt optimization job.
+ */
+export const getAdvancedPromptOptimizationJob: API.OperationMethod<
+  GetAdvancedPromptOptimizationJobRequest,
+  GetAdvancedPromptOptimizationJobResponse,
+  GetAdvancedPromptOptimizationJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAdvancedPromptOptimizationJobRequest,
+  output: GetAdvancedPromptOptimizationJobResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAdvancedPromptOptimizationJob",
+}));
+export type ListAdvancedPromptOptimizationJobsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the advanced prompt optimization jobs in your account.
+ */
+export const listAdvancedPromptOptimizationJobs: API.OperationMethod<
+  ListAdvancedPromptOptimizationJobsRequest,
+  ListAdvancedPromptOptimizationJobsResponse,
+  ListAdvancedPromptOptimizationJobsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAdvancedPromptOptimizationJobsRequest,
+  ) => stream.Stream<
+    ListAdvancedPromptOptimizationJobsResponse,
+    ListAdvancedPromptOptimizationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAdvancedPromptOptimizationJobsRequest,
+  ) => stream.Stream<
+    AdvancedPromptOptimizationJobSummary,
+    ListAdvancedPromptOptimizationJobsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAdvancedPromptOptimizationJobsRequest,
+  output: ListAdvancedPromptOptimizationJobsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAdvancedPromptOptimizationJobs",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "jobSummaries",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type StopAdvancedPromptOptimizationJobError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Stops an advanced prompt optimization job that is in progress.
+ */
+export const stopAdvancedPromptOptimizationJob: API.OperationMethod<
+  StopAdvancedPromptOptimizationJobRequest,
+  StopAdvancedPromptOptimizationJobResponse,
+  StopAdvancedPromptOptimizationJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StopAdvancedPromptOptimizationJobRequest,
+  output: StopAdvancedPromptOptimizationJobResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StopAdvancedPromptOptimizationJob",
+}));
 export type GetUseCaseForModelAccessError =
   | InternalServerException
   | ResourceNotFoundException
@@ -10788,6 +11422,12 @@ export type CreateCustomModelError =
 /**
  * Creates a new custom model in Amazon Bedrock. After the model is active, you can use it for inference.
  *
+ * You can provide the model data source in one of the following ways:
+ *
+ * - `customModelDataSource` — Specify a SageMaker AI model package ARN. Amazon Bedrock resolves the model package to retrieve the model artifacts. This is the preferred method for new SageMaker AI training outputs.
+ *
+ * - `modelSourceConfig` — Specify an Amazon S3 URI pointing to the Amazon-managed Amazon S3 bucket containing your model artifacts.
+ *
  * To use the model for inference, you must purchase Provisioned Throughput for it. You can't use On-demand inference with these custom models. For more information about Provisioned Throughput, see Provisioned Throughput.
  *
  * The model appears in `ListCustomModels` with a `customizationType` of `imported`. To track the status of the new model, you use the `GetCustomModel` API operation. The model can be in the following states:
@@ -10937,6 +11577,60 @@ export const listCustomModels: API.OperationMethod<
     items: "modelSummaries",
     pageSize: "maxResults",
   } as const,
+}));
+export type GetAccountDataRetentionError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the account-wide data retention mode for Amazon Bedrock.
+ */
+export const getAccountDataRetention: API.OperationMethod<
+  GetAccountDataRetentionRequest,
+  GetAccountDataRetentionResponse,
+  GetAccountDataRetentionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAccountDataRetentionRequest,
+  output: GetAccountDataRetentionResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAccountDataRetention",
+}));
+export type PutAccountDataRetentionError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Sets the account-wide data retention mode for Amazon Bedrock.
+ */
+export const putAccountDataRetention: API.OperationMethod<
+  PutAccountDataRetentionRequest,
+  PutAccountDataRetentionResponse,
+  PutAccountDataRetentionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutAccountDataRetentionRequest,
+  output: PutAccountDataRetentionResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutAccountDataRetention",
 }));
 export type DeleteEnforcedGuardrailConfigurationError =
   | AccessDeniedException

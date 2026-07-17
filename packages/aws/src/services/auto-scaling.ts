@@ -865,6 +865,10 @@ export const MixedInstancesPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MixedInstancesPolicy>;
 export type AvailabilityZones = string[];
 export const AvailabilityZones = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type AvailabilityZoneIds = string[];
+export const AvailabilityZoneIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
 export type TerminationPolicies = string[];
 export const TerminationPolicies = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String,
@@ -1043,6 +1047,7 @@ export interface CreateAutoScalingGroupType {
   DesiredCapacity?: number;
   DefaultCooldown?: number;
   AvailabilityZones?: string[];
+  AvailabilityZoneIds?: string[];
   LoadBalancerNames?: string[];
   TargetGroupARNs?: string[];
   HealthCheckType?: string;
@@ -1081,6 +1086,7 @@ export const CreateAutoScalingGroupType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DesiredCapacity: S.optional(S.Number),
       DefaultCooldown: S.optional(S.Number),
       AvailabilityZones: S.optional(AvailabilityZones),
+      AvailabilityZoneIds: S.optional(AvailabilityZoneIds),
       LoadBalancerNames: S.optional(LoadBalancerNames),
       TargetGroupARNs: S.optional(TargetGroupARNs),
       HealthCheckType: S.optional(S.String),
@@ -1660,6 +1666,7 @@ export interface Instance {
   InstanceId?: string;
   InstanceType?: string;
   AvailabilityZone?: string;
+  AvailabilityZoneId?: string;
   LifecycleState?: LifecycleState;
   HealthStatus?: string;
   LaunchConfigurationName?: string;
@@ -1673,6 +1680,7 @@ export const Instance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     InstanceId: S.optional(S.String),
     InstanceType: S.optional(S.String),
     AvailabilityZone: S.optional(S.String),
+    AvailabilityZoneId: S.optional(S.String),
     LifecycleState: S.optional(LifecycleState),
     HealthStatus: S.optional(S.String),
     LaunchConfigurationName: S.optional(S.String),
@@ -1774,6 +1782,7 @@ export interface AutoScalingGroup {
   PredictedCapacity?: number;
   DefaultCooldown?: number;
   AvailabilityZones?: string[];
+  AvailabilityZoneIds?: string[];
   LoadBalancerNames?: string[];
   TargetGroupARNs?: string[];
   HealthCheckType?: string;
@@ -1817,6 +1826,7 @@ export const AutoScalingGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     PredictedCapacity: S.optional(S.Number),
     DefaultCooldown: S.optional(S.Number),
     AvailabilityZones: S.optional(AvailabilityZones),
+    AvailabilityZoneIds: S.optional(AvailabilityZoneIds),
     LoadBalancerNames: S.optional(LoadBalancerNames),
     TargetGroupARNs: S.optional(TargetGroupARNs),
     HealthCheckType: S.optional(S.String),
@@ -1930,6 +1940,7 @@ export interface AutoScalingInstanceDetails {
   InstanceType?: string;
   AutoScalingGroupName?: string;
   AvailabilityZone?: string;
+  AvailabilityZoneId?: string;
   LifecycleState?: string;
   HealthStatus?: string;
   LaunchConfigurationName?: string;
@@ -1945,6 +1956,7 @@ export const AutoScalingInstanceDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       InstanceType: S.optional(S.String),
       AutoScalingGroupName: S.optional(S.String),
       AvailabilityZone: S.optional(S.String),
+      AvailabilityZoneId: S.optional(S.String),
       LifecycleState: S.optional(S.String),
       HealthStatus: S.optional(S.String),
       LaunchConfigurationName: S.optional(S.String),
@@ -4588,6 +4600,7 @@ export interface UpdateAutoScalingGroupType {
   DesiredCapacity?: number;
   DefaultCooldown?: number;
   AvailabilityZones?: string[];
+  AvailabilityZoneIds?: string[];
   HealthCheckType?: string;
   HealthCheckGracePeriod?: number;
   PlacementGroup?: string;
@@ -4620,6 +4633,7 @@ export const UpdateAutoScalingGroupType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DesiredCapacity: S.optional(S.Number),
       DefaultCooldown: S.optional(S.Number),
       AvailabilityZones: S.optional(AvailabilityZones),
+      AvailabilityZoneIds: S.optional(AvailabilityZoneIds),
       HealthCheckType: S.optional(S.String),
       HealthCheckGracePeriod: S.optional(S.Number),
       PlacementGroup: S.optional(S.String),

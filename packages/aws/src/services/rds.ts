@@ -7795,6 +7795,76 @@ export const ReservedDBInstancesOfferingMessage =
   ).annotate({
     identifier: "ReservedDBInstancesOfferingMessage",
   }) as any as S.Schema<ReservedDBInstancesOfferingMessage>;
+export interface DescribeServerlessV2PlatformVersionsMessage {
+  ServerlessV2PlatformVersion?: string;
+  Engine?: string;
+  Filters?: Filter[];
+  DefaultOnly?: boolean;
+  IncludeAll?: boolean;
+  MaxRecords?: number;
+  Marker?: string;
+}
+export const DescribeServerlessV2PlatformVersionsMessage =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ServerlessV2PlatformVersion: S.optional(S.String),
+      Engine: S.optional(S.String),
+      Filters: S.optional(FilterList),
+      DefaultOnly: S.optional(S.Boolean),
+      IncludeAll: S.optional(S.Boolean),
+      MaxRecords: S.optional(S.Number),
+      Marker: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeServerlessV2PlatformVersionsMessage",
+  }) as any as S.Schema<DescribeServerlessV2PlatformVersionsMessage>;
+export interface ServerlessV2PlatformVersionInfo {
+  ServerlessV2PlatformVersion?: string;
+  ServerlessV2PlatformVersionDescription?: string;
+  Engine?: string;
+  ServerlessV2FeaturesSupport?: ServerlessV2FeaturesSupport;
+  Status?: string;
+  IsDefault?: boolean;
+}
+export const ServerlessV2PlatformVersionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ServerlessV2PlatformVersion: S.optional(S.String),
+      ServerlessV2PlatformVersionDescription: S.optional(S.String),
+      Engine: S.optional(S.String),
+      ServerlessV2FeaturesSupport: S.optional(ServerlessV2FeaturesSupport),
+      Status: S.optional(S.String),
+      IsDefault: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ServerlessV2PlatformVersionInfo",
+  }) as any as S.Schema<ServerlessV2PlatformVersionInfo>;
+export type ServerlessV2PlatformVersionList = ServerlessV2PlatformVersionInfo[];
+export const ServerlessV2PlatformVersionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ServerlessV2PlatformVersionInfo);
+export interface ServerlessV2PlatformVersionsMessage {
+  Marker?: string;
+  ServerlessV2PlatformVersions?: ServerlessV2PlatformVersionInfo[];
+}
+export const ServerlessV2PlatformVersionsMessage =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Marker: S.optional(S.String),
+      ServerlessV2PlatformVersions: S.optional(ServerlessV2PlatformVersionList),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ServerlessV2PlatformVersionsMessage",
+  }) as any as S.Schema<ServerlessV2PlatformVersionsMessage>;
 export interface DescribeSourceRegionsMessage {
   RegionName?: string;
   MaxRecords?: number;
@@ -15403,6 +15473,44 @@ export const describeReservedDBInstancesOfferings: API.OperationMethod<
     inputToken: "Marker",
     outputToken: "Marker",
     items: "ReservedDBInstancesOfferings",
+    pageSize: "MaxRecords",
+  } as const,
+}));
+export type DescribeServerlessV2PlatformVersionsError = CommonErrors;
+/**
+ * Describes the properties of specific platform versions for Aurora Serverless v2.
+ */
+export const describeServerlessV2PlatformVersions: API.OperationMethod<
+  DescribeServerlessV2PlatformVersionsMessage,
+  ServerlessV2PlatformVersionsMessage,
+  DescribeServerlessV2PlatformVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: DescribeServerlessV2PlatformVersionsMessage,
+  ) => stream.Stream<
+    ServerlessV2PlatformVersionsMessage,
+    DescribeServerlessV2PlatformVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: DescribeServerlessV2PlatformVersionsMessage,
+  ) => stream.Stream<
+    ServerlessV2PlatformVersionInfo,
+    DescribeServerlessV2PlatformVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: DescribeServerlessV2PlatformVersionsMessage,
+  output: ServerlessV2PlatformVersionsMessage,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeServerlessV2PlatformVersions",
+  pagination: {
+    inputToken: "Marker",
+    outputToken: "Marker",
+    items: "ServerlessV2PlatformVersions",
     pageSize: "MaxRecords",
   } as const,
 }));

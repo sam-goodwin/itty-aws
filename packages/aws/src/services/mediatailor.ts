@@ -112,6 +112,8 @@ export const __listOfLoggingStrategies =
 export type AdsInteractionPublishOptInEventType =
   | "RAW_ADS_RESPONSE"
   | "RAW_ADS_REQUEST"
+  | "PRE_ADS_REQUEST_HOOK_SUMMARY"
+  | "PRE_ADS_REQUEST_FUNCTION_COMPLETED"
   | (string & {});
 export const AdsInteractionPublishOptInEventType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -161,6 +163,8 @@ export type AdsInteractionExcludeEventType =
   | "VOD_TIME_BASED_AVAIL_PLAN_WARNING_NO_ADVERTISEMENTS"
   | "INTERSTITIAL_VOD_SUCCESS"
   | "INTERSTITIAL_VOD_FAILURE"
+  | "PRE_ADS_REQUEST_HOOK_ERROR"
+  | "PRE_ADS_REQUEST_FUNCTION_ERROR"
   | (string & {});
 export const AdsInteractionExcludeEventType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -182,6 +186,16 @@ export const AdsInteractionLog = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdsInteractionLog",
 }) as any as S.Schema<AdsInteractionLog>;
+export type ManifestServicePublishOptInEventType =
+  | "PRE_SESSION_INIT_HOOK_SUMMARY"
+  | "PRE_SESSION_INIT_FUNCTION_COMPLETED"
+  | (string & {});
+export const ManifestServicePublishOptInEventType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type __manifestServicePublishOptInEventTypesList =
+  ManifestServicePublishOptInEventType[];
+export const __manifestServicePublishOptInEventTypesList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ManifestServicePublishOptInEventType);
 export type ManifestServiceExcludeEventType =
   | "GENERATED_MANIFEST"
   | "ORIGIN_MANIFEST"
@@ -215,6 +229,8 @@ export type ManifestServiceExcludeEventType =
   | "ERROR_PROFILE_NAME_INTERPOLATION"
   | "ERROR_BUMPER_START_INTERPOLATION"
   | "ERROR_BUMPER_END_INTERPOLATION"
+  | "PRE_SESSION_INIT_HOOK_ERROR"
+  | "PRE_SESSION_INIT_FUNCTION_ERROR"
   | (string & {});
 export const ManifestServiceExcludeEventType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -223,11 +239,15 @@ export type __manifestServiceExcludeEventTypesList =
 export const __manifestServiceExcludeEventTypesList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(ManifestServiceExcludeEventType);
 export interface ManifestServiceInteractionLog {
+  PublishOptInEventTypes?: ManifestServicePublishOptInEventType[];
   ExcludeEventTypes?: ManifestServiceExcludeEventType[];
 }
 export const ManifestServiceInteractionLog =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
+      PublishOptInEventTypes: S.optional(
+        __manifestServicePublishOptInEventTypesList,
+      ),
       ExcludeEventTypes: S.optional(__manifestServiceExcludeEventTypesList),
     }),
   ).annotate({
@@ -1497,6 +1517,265 @@ export const DeleteProgramResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteProgramResponse",
 }) as any as S.Schema<DeleteProgramResponse>;
+export type FunctionType =
+  | "HTTP_REQUEST"
+  | "CUSTOM_OUTPUT"
+  | "SEQUENTIAL_EXECUTOR"
+  | (string & {});
+export const FunctionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type RuntimeType = "JSONATA" | (string & {});
+export const RuntimeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type MethodType = "GET" | "POST" | (string & {});
+export const MethodType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface HttpRequestConfiguration {
+  Runtime: RuntimeType;
+  Output?: { [key: string]: string | undefined };
+  MethodType: MethodType;
+  RequestTimeoutMilliseconds: number;
+  Url: string;
+  Body?: string;
+  Headers?: { [key: string]: string | undefined };
+}
+export const HttpRequestConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Runtime: RuntimeType,
+      Output: S.optional(__mapOf__string),
+      MethodType: MethodType,
+      RequestTimeoutMilliseconds: S.Number,
+      Url: S.String,
+      Body: S.optional(S.String),
+      Headers: S.optional(__mapOf__string),
+    }),
+).annotate({
+  identifier: "HttpRequestConfiguration",
+}) as any as S.Schema<HttpRequestConfiguration>;
+export interface CustomOutputConfiguration {
+  Runtime: RuntimeType;
+  Output?: { [key: string]: string | undefined };
+}
+export const CustomOutputConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Runtime: RuntimeType, Output: S.optional(__mapOf__string) }),
+).annotate({
+  identifier: "CustomOutputConfiguration",
+}) as any as S.Schema<CustomOutputConfiguration>;
+export interface FunctionRef {
+  RunCondition?: string;
+  FunctionId?: string;
+}
+export const FunctionRef = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RunCondition: S.optional(S.String),
+    FunctionId: S.optional(S.String),
+  }),
+).annotate({ identifier: "FunctionRef" }) as any as S.Schema<FunctionRef>;
+export type __listOfFunctionsRef = FunctionRef[];
+export const __listOfFunctionsRef =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(FunctionRef);
+export interface SequentialExecutorConfiguration {
+  Runtime: RuntimeType;
+  Output?: { [key: string]: string | undefined };
+  FunctionList: FunctionRef[];
+  TimeoutMilliseconds: number;
+}
+export const SequentialExecutorConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Runtime: RuntimeType,
+      Output: S.optional(__mapOf__string),
+      FunctionList: __listOfFunctionsRef,
+      TimeoutMilliseconds: S.Number,
+    }),
+  ).annotate({
+    identifier: "SequentialExecutorConfiguration",
+  }) as any as S.Schema<SequentialExecutorConfiguration>;
+export interface PutFunctionRequest {
+  FunctionId: string;
+  FunctionType: FunctionType;
+  Description?: string;
+  HttpRequestConfiguration?: HttpRequestConfiguration;
+  CustomOutputConfiguration?: CustomOutputConfiguration;
+  SequentialExecutorConfiguration?: SequentialExecutorConfiguration;
+  Tags?: { [key: string]: string | undefined };
+}
+export const PutFunctionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionId: S.String.pipe(T.HttpLabel("FunctionId")),
+    FunctionType: FunctionType,
+    Description: S.optional(S.String),
+    HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
+    CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
+    SequentialExecutorConfiguration: S.optional(
+      SequentialExecutorConfiguration,
+    ),
+    Tags: S.optional(__mapOf__string),
+  })
+    .pipe(S.encodeKeys({ Tags: "tags" }))
+    .pipe(
+      T.all(
+        T.Http({ method: "PUT", uri: "/function/{FunctionId}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "PutFunctionRequest",
+}) as any as S.Schema<PutFunctionRequest>;
+export interface PutFunctionResponse {
+  FunctionId: string;
+  FunctionType: FunctionType;
+  Description?: string;
+  HttpRequestConfiguration?: HttpRequestConfiguration;
+  CustomOutputConfiguration?: CustomOutputConfiguration;
+  SequentialExecutorConfiguration?: SequentialExecutorConfiguration;
+  Tags?: { [key: string]: string | undefined };
+  Arn?: string;
+}
+export const PutFunctionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionId: S.String,
+    FunctionType: FunctionType,
+    Description: S.optional(S.String),
+    HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
+    CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
+    SequentialExecutorConfiguration: S.optional(
+      SequentialExecutorConfiguration,
+    ),
+    Tags: S.optional(__mapOf__string),
+    Arn: S.optional(S.String),
+  }).pipe(S.encodeKeys({ Tags: "tags" })),
+).annotate({
+  identifier: "PutFunctionResponse",
+}) as any as S.Schema<PutFunctionResponse>;
+export interface GetFunctionRequest {
+  FunctionId: string;
+}
+export const GetFunctionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ FunctionId: S.String.pipe(T.HttpLabel("FunctionId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/function/{FunctionId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetFunctionRequest",
+}) as any as S.Schema<GetFunctionRequest>;
+export interface GetFunctionResponse {
+  FunctionId: string;
+  FunctionType: FunctionType;
+  Description?: string;
+  HttpRequestConfiguration?: HttpRequestConfiguration;
+  CustomOutputConfiguration?: CustomOutputConfiguration;
+  SequentialExecutorConfiguration?: SequentialExecutorConfiguration;
+  Tags?: { [key: string]: string | undefined };
+  Arn?: string;
+}
+export const GetFunctionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionId: S.String,
+    FunctionType: FunctionType,
+    Description: S.optional(S.String),
+    HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
+    CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
+    SequentialExecutorConfiguration: S.optional(
+      SequentialExecutorConfiguration,
+    ),
+    Tags: S.optional(__mapOf__string),
+    Arn: S.optional(S.String),
+  }).pipe(S.encodeKeys({ Tags: "tags" })),
+).annotate({
+  identifier: "GetFunctionResponse",
+}) as any as S.Schema<GetFunctionResponse>;
+export interface DeleteFunctionRequest {
+  FunctionId: string;
+}
+export const DeleteFunctionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ FunctionId: S.String.pipe(T.HttpLabel("FunctionId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/function/{FunctionId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteFunctionRequest",
+}) as any as S.Schema<DeleteFunctionRequest>;
+export interface DeleteFunctionResponse {}
+export const DeleteFunctionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteFunctionResponse",
+}) as any as S.Schema<DeleteFunctionResponse>;
+export interface ListFunctionsRequest {
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListFunctionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/functions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListFunctionsRequest",
+}) as any as S.Schema<ListFunctionsRequest>;
+export interface Function {
+  FunctionId: string;
+  FunctionType: FunctionType;
+  Description?: string;
+  HttpRequestConfiguration?: HttpRequestConfiguration;
+  CustomOutputConfiguration?: CustomOutputConfiguration;
+  SequentialExecutorConfiguration?: SequentialExecutorConfiguration;
+  Tags?: { [key: string]: string | undefined };
+  Arn?: string;
+}
+export const Function = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FunctionId: S.String,
+    FunctionType: FunctionType,
+    Description: S.optional(S.String),
+    HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
+    CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
+    SequentialExecutorConfiguration: S.optional(
+      SequentialExecutorConfiguration,
+    ),
+    Tags: S.optional(__mapOf__string),
+    Arn: S.optional(S.String),
+  }).pipe(S.encodeKeys({ Tags: "tags" })),
+).annotate({ identifier: "Function" }) as any as S.Schema<Function>;
+export type __listOfFunctionsResponse = Function[];
+export const __listOfFunctionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(Function);
+export interface ListFunctionsResponse {
+  Items?: Function[];
+  NextToken?: string;
+}
+export const ListFunctionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Items: S.optional(__listOfFunctionsResponse),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFunctionsResponse",
+}) as any as S.Schema<ListFunctionsResponse>;
 export type Type = "DASH" | "HLS" | (string & {});
 export const Type = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface HttpPackageConfiguration {
@@ -1913,6 +2192,16 @@ export const AdDecisionServerConfiguration =
   ).annotate({
     identifier: "AdDecisionServerConfiguration",
   }) as any as S.Schema<AdDecisionServerConfiguration>;
+export type EventName =
+  | "PRE_SESSION_INITIALIZATION"
+  | "PRE_ADS_REQUEST"
+  | (string & {});
+export const EventName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type FunctionMapping = { [key in EventName]?: string };
+export const FunctionMapping = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  EventName,
+  S.String.pipe(S.optional),
+);
 export interface PutPlaybackConfigurationRequest {
   AdDecisionServerUrl?: string;
   AvailSuppression?: AvailSuppression;
@@ -1933,6 +2222,7 @@ export interface PutPlaybackConfigurationRequest {
   VideoContentSourceUrl?: string;
   AdConditioningConfiguration?: AdConditioningConfiguration;
   AdDecisionServerConfiguration?: AdDecisionServerConfiguration;
+  FunctionMapping?: { [key: string]: string | undefined };
 }
 export const PutPlaybackConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1954,6 +2244,7 @@ export const PutPlaybackConfigurationRequest =
       VideoContentSourceUrl: S.optional(S.String),
       AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
       AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
+      FunctionMapping: S.optional(FunctionMapping),
     })
       .pipe(S.encodeKeys({ Tags: "tags" }))
       .pipe(
@@ -2042,6 +2333,7 @@ export interface PutPlaybackConfigurationResponse {
   VideoContentSourceUrl?: string;
   AdConditioningConfiguration?: AdConditioningConfiguration;
   AdDecisionServerConfiguration?: AdDecisionServerConfiguration;
+  FunctionMapping?: { [key: string]: string | undefined };
 }
 export const PutPlaybackConfigurationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2068,6 +2360,7 @@ export const PutPlaybackConfigurationResponse =
       VideoContentSourceUrl: S.optional(S.String),
       AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
       AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
+      FunctionMapping: S.optional(FunctionMapping),
     }).pipe(S.encodeKeys({ Tags: "tags" })),
   ).annotate({
     identifier: "PutPlaybackConfigurationResponse",
@@ -2117,6 +2410,7 @@ export interface GetPlaybackConfigurationResponse {
   VideoContentSourceUrl?: string;
   AdConditioningConfiguration?: AdConditioningConfiguration;
   AdDecisionServerConfiguration?: AdDecisionServerConfiguration;
+  FunctionMapping?: { [key: string]: string | undefined };
 }
 export const GetPlaybackConfigurationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2143,6 +2437,7 @@ export const GetPlaybackConfigurationResponse =
       VideoContentSourceUrl: S.optional(S.String),
       AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
       AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
+      FunctionMapping: S.optional(FunctionMapping),
     }).pipe(S.encodeKeys({ Tags: "tags" })),
   ).annotate({
     identifier: "GetPlaybackConfigurationResponse",
@@ -2217,6 +2512,7 @@ export interface PlaybackConfiguration {
   VideoContentSourceUrl?: string;
   AdConditioningConfiguration?: AdConditioningConfiguration;
   AdDecisionServerConfiguration?: AdDecisionServerConfiguration;
+  FunctionMapping?: { [key: string]: string | undefined };
 }
 export const PlaybackConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2242,6 +2538,7 @@ export const PlaybackConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     VideoContentSourceUrl: S.optional(S.String),
     AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
     AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
+    FunctionMapping: S.optional(FunctionMapping),
   }).pipe(S.encodeKeys({ Tags: "tags" })),
 ).annotate({
   identifier: "PlaybackConfiguration",
@@ -3672,6 +3969,95 @@ export const deleteProgram: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteProgram",
+}));
+export type PutFunctionError = CommonErrors;
+/**
+ * Creates or updates a function. A function defines reusable logic that MediaTailor executes at lifecycle hooks during ad insertion. For more information about functions, see Working with functions in the *MediaTailor User Guide*.
+ */
+export const putFunction: API.OperationMethod<
+  PutFunctionRequest,
+  PutFunctionResponse,
+  PutFunctionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutFunctionRequest,
+  output: PutFunctionResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutFunction",
+}));
+export type GetFunctionError = CommonErrors;
+/**
+ * Retrieves the configuration and metadata for a function. For more information about functions, see Working with functions in the *MediaTailor User Guide*.
+ */
+export const getFunction: API.OperationMethod<
+  GetFunctionRequest,
+  GetFunctionResponse,
+  GetFunctionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetFunctionRequest,
+  output: GetFunctionResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetFunction",
+}));
+export type DeleteFunctionError = CommonErrors;
+/**
+ * Deletes a function. MediaTailor prevents deletion of a function that is still referenced by a playback configuration or by another function. Remove all references before deleting. For more information about functions, see Working with functions in the *MediaTailor User Guide*.
+ */
+export const deleteFunction: API.OperationMethod<
+  DeleteFunctionRequest,
+  DeleteFunctionResponse,
+  DeleteFunctionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteFunctionRequest,
+  output: DeleteFunctionResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteFunction",
+}));
+export type ListFunctionsError = CommonErrors;
+/**
+ * Retrieves all functions associated with your AWS account in the current Region. For more information about functions, see Working with functions in the *MediaTailor User Guide*.
+ */
+export const listFunctions: API.OperationMethod<
+  ListFunctionsRequest,
+  ListFunctionsResponse,
+  ListFunctionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFunctionsRequest,
+  ) => stream.Stream<
+    ListFunctionsResponse,
+    ListFunctionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFunctionsRequest,
+  ) => stream.Stream<
+    Function,
+    ListFunctionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListFunctionsRequest,
+  output: ListFunctionsResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListFunctions",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+    pageSize: "MaxResults",
+  } as const,
 }));
 export type CreateLiveSourceError = CommonErrors;
 /**

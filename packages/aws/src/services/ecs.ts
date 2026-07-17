@@ -106,14 +106,57 @@ export type SensitiveString = string | redacted.Redacted<string>;
 export type DaemonDrainPercent = number;
 export type IAMRoleArn = string;
 export type HookDetails = unknown;
+export type DeploymentLifecycleHookDuration = number;
 export type PortNumber = number;
 export type Duration = number;
 export type ECSVolumeName = string;
 export type EBSKMSKeyId = string;
 export type EBSVolumeType = string;
 export type EBSSnapshotId = string;
+export type MetricName = string;
+export type MetricResolutionSeconds = number;
 
 //# Schemas
+export type DeploymentLifecycleHookAction =
+  | "ROLLBACK"
+  | "CONTINUE"
+  | (string & {});
+export const DeploymentLifecycleHookAction =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ContinueServiceDeploymentRequest {
+  serviceDeploymentArn: string;
+  hookId: string;
+  action?: DeploymentLifecycleHookAction;
+}
+export const ContinueServiceDeploymentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serviceDeploymentArn: S.String,
+      hookId: S.String,
+      action: S.optional(DeploymentLifecycleHookAction),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ContinueServiceDeploymentRequest",
+  }) as any as S.Schema<ContinueServiceDeploymentRequest>;
+export interface ContinueServiceDeploymentResponse {
+  serviceDeploymentArn?: string;
+}
+export const ContinueServiceDeploymentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ serviceDeploymentArn: S.optional(S.String) }).pipe(ns),
+  ).annotate({
+    identifier: "ContinueServiceDeploymentResponse",
+  }) as any as S.Schema<ContinueServiceDeploymentResponse>;
 export type SettingName =
   | "serviceLongArnFormat"
   | "taskLongArnFormat"
@@ -486,7 +529,11 @@ export const SystemControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type SystemControls = SystemControl[];
 export const SystemControls =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SystemControl);
-export type ResourceType = "GPU" | "InferenceAccelerator" | (string & {});
+export type ResourceType =
+  | "GPU"
+  | "InferenceAccelerator"
+  | "NeuronDevice"
+  | (string & {});
 export const ResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ResourceRequirement {
   value: string;
@@ -1688,11 +1735,22 @@ export const InfrastructureOptimization = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InfrastructureOptimization",
 }) as any as S.Schema<InfrastructureOptimization>;
+export type AutoRepairActionsStatus = "ENABLED" | "DISABLED" | (string & {});
+export const AutoRepairActionsStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AutoRepairConfiguration {
+  actionsStatus?: AutoRepairActionsStatus;
+}
+export const AutoRepairConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ actionsStatus: S.optional(AutoRepairActionsStatus) }),
+).annotate({
+  identifier: "AutoRepairConfiguration",
+}) as any as S.Schema<AutoRepairConfiguration>;
 export interface CreateManagedInstancesProviderConfiguration {
   infrastructureRoleArn: string;
   instanceLaunchTemplate: InstanceLaunchTemplate;
   propagateTags?: PropagateMITags;
   infrastructureOptimization?: InfrastructureOptimization;
+  autoRepairConfiguration?: AutoRepairConfiguration;
 }
 export const CreateManagedInstancesProviderConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1701,6 +1759,7 @@ export const CreateManagedInstancesProviderConfiguration =
       instanceLaunchTemplate: InstanceLaunchTemplate,
       propagateTags: S.optional(PropagateMITags),
       infrastructureOptimization: S.optional(InfrastructureOptimization),
+      autoRepairConfiguration: S.optional(AutoRepairConfiguration),
     }),
   ).annotate({
     identifier: "CreateManagedInstancesProviderConfiguration",
@@ -1748,6 +1807,7 @@ export interface ManagedInstancesProvider {
   instanceLaunchTemplate?: InstanceLaunchTemplate;
   propagateTags?: PropagateMITags;
   infrastructureOptimization?: InfrastructureOptimization;
+  autoRepairConfiguration?: AutoRepairConfiguration;
 }
 export const ManagedInstancesProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1756,6 +1816,7 @@ export const ManagedInstancesProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       instanceLaunchTemplate: S.optional(InstanceLaunchTemplate),
       propagateTags: S.optional(PropagateMITags),
       infrastructureOptimization: S.optional(InfrastructureOptimization),
+      autoRepairConfiguration: S.optional(AutoRepairConfiguration),
     }),
 ).annotate({
   identifier: "ManagedInstancesProvider",
@@ -1864,6 +1925,7 @@ export interface UpdateManagedInstancesProviderConfiguration {
   instanceLaunchTemplate: InstanceLaunchTemplateUpdate;
   propagateTags?: PropagateMITags;
   infrastructureOptimization?: InfrastructureOptimization;
+  autoRepairConfiguration?: AutoRepairConfiguration;
 }
 export const UpdateManagedInstancesProviderConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1872,6 +1934,7 @@ export const UpdateManagedInstancesProviderConfiguration =
       instanceLaunchTemplate: InstanceLaunchTemplateUpdate,
       propagateTags: S.optional(PropagateMITags),
       infrastructureOptimization: S.optional(InfrastructureOptimization),
+      autoRepairConfiguration: S.optional(AutoRepairConfiguration),
     }),
   ).annotate({
     identifier: "UpdateManagedInstancesProviderConfiguration",
@@ -2436,6 +2499,7 @@ export const InstanceHealthCheckType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface InstanceHealthCheckResult {
   type?: InstanceHealthCheckType;
   status?: InstanceHealthCheckState;
+  statusReason?: string;
   lastUpdated?: Date;
   lastStatusChange?: Date;
 }
@@ -2444,6 +2508,7 @@ export const InstanceHealthCheckResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       type: S.optional(InstanceHealthCheckType),
       status: S.optional(InstanceHealthCheckState),
+      statusReason: S.optional(S.String),
       lastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       lastStatusChange: S.optional(
         S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -3134,7 +3199,7 @@ export const PutAttributesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutAttributesResponse",
 }) as any as S.Schema<PutAttributesResponse>;
-export type PlatformDeviceType = "GPU" | (string & {});
+export type PlatformDeviceType = "GPU" | "NEURON_DEVICE" | (string & {});
 export const PlatformDeviceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface PlatformDevice {
   id: string;
@@ -4056,6 +4121,10 @@ export type DaemonTaskDefinitionStatus =
   | "DELETED"
   | (string & {});
 export const DaemonTaskDefinitionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DaemonPidMode = "none" | "shared" | (string & {});
+export const DaemonPidMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DaemonIpcMode = "none" | "shared" | (string & {});
+export const DaemonIpcMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DaemonTaskDefinition {
   daemonTaskDefinitionArn?: string;
   family?: string;
@@ -4070,6 +4139,8 @@ export interface DaemonTaskDefinition {
   registeredAt?: Date;
   deleteRequestedAt?: Date;
   registeredBy?: string;
+  pidMode?: DaemonPidMode;
+  ipcMode?: DaemonIpcMode;
 }
 export const DaemonTaskDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4088,6 +4159,8 @@ export const DaemonTaskDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
     registeredBy: S.optional(S.String),
+    pidMode: S.optional(DaemonPidMode),
+    ipcMode: S.optional(DaemonIpcMode),
   }),
 ).annotate({
   identifier: "DaemonTaskDefinition",
@@ -4196,6 +4269,8 @@ export interface RegisterDaemonTaskDefinitionRequest {
   memory?: string;
   volumes?: DaemonVolume[];
   tags?: Tag[];
+  pidMode?: DaemonPidMode;
+  ipcMode?: DaemonIpcMode;
 }
 export const RegisterDaemonTaskDefinitionRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4208,6 +4283,8 @@ export const RegisterDaemonTaskDefinitionRequest =
       memory: S.optional(S.String),
       volumes: S.optional(DaemonVolumeList),
       tags: S.optional(Tags),
+      pidMode: S.optional(DaemonPidMode),
+      ipcMode: S.optional(DaemonIpcMode),
     }).pipe(
       T.all(
         ns,
@@ -4301,12 +4378,74 @@ export type ServiceDeploymentLifecycleStage =
   | (string & {});
 export const ServiceDeploymentLifecycleStage =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DeploymentLifecycleHookTargetType =
+  | "AWS_LAMBDA"
+  | "PAUSE"
+  | (string & {});
+export const DeploymentLifecycleHookTargetType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DeploymentLifecycleHookStatus =
+  | "AWAITING_ACTION"
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "TIMED_OUT"
+  | (string & {});
+export const DeploymentLifecycleHookStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DeploymentLifecycleHookDetail {
+  hookId?: string;
+  targetType?: DeploymentLifecycleHookTargetType;
+  targetArn?: string;
+  status?: DeploymentLifecycleHookStatus;
+  expiresAt?: Date;
+  timeoutAction?: DeploymentLifecycleHookAction;
+}
+export const DeploymentLifecycleHookDetail =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hookId: S.optional(S.String),
+      targetType: S.optional(DeploymentLifecycleHookTargetType),
+      targetArn: S.optional(S.String),
+      status: S.optional(DeploymentLifecycleHookStatus),
+      expiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      timeoutAction: S.optional(DeploymentLifecycleHookAction),
+    }),
+  ).annotate({
+    identifier: "DeploymentLifecycleHookDetail",
+  }) as any as S.Schema<DeploymentLifecycleHookDetail>;
+export type DeploymentLifecycleHookDetailList = DeploymentLifecycleHookDetail[];
+export const DeploymentLifecycleHookDetailList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeploymentLifecycleHookDetail);
+export type ThresholdType =
+  | "COUNT"
+  | "BOUNDED_PERCENT"
+  | "UNBOUNDED_PERCENT"
+  | (string & {});
+export const ThresholdType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ThresholdConfiguration {
+  type: ThresholdType;
+  value: number;
+}
+export const ThresholdConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ type: ThresholdType, value: S.Number }),
+).annotate({
+  identifier: "ThresholdConfiguration",
+}) as any as S.Schema<ThresholdConfiguration>;
 export interface DeploymentCircuitBreaker {
   enable: boolean;
   rollback: boolean;
+  resetOnHealthyTask?: boolean;
+  thresholdConfiguration?: ThresholdConfiguration;
 }
 export const DeploymentCircuitBreaker = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ enable: S.Boolean, rollback: S.Boolean }),
+  () =>
+    S.Struct({
+      enable: S.Boolean,
+      rollback: S.Boolean,
+      resetOnHealthyTask: S.optional(S.Boolean),
+      thresholdConfiguration: S.optional(ThresholdConfiguration),
+    }),
 ).annotate({
   identifier: "DeploymentCircuitBreaker",
 }) as any as S.Schema<DeploymentCircuitBreaker>;
@@ -4333,6 +4472,7 @@ export type DeploymentLifecycleHookStage =
   | "POST_SCALE_UP"
   | "TEST_TRAFFIC_SHIFT"
   | "POST_TEST_TRAFFIC_SHIFT"
+  | "PRE_PRODUCTION_TRAFFIC_SHIFT"
   | "PRODUCTION_TRAFFIC_SHIFT"
   | "POST_PRODUCTION_TRAFFIC_SHIFT"
   | (string & {});
@@ -4341,19 +4481,38 @@ export const DeploymentLifecycleHookStage =
 export type DeploymentLifecycleHookStageList = DeploymentLifecycleHookStage[];
 export const DeploymentLifecycleHookStageList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(DeploymentLifecycleHookStage);
+export interface DeploymentLifecycleHookTimeoutConfiguration {
+  timeoutInMinutes?: number;
+  action?: DeploymentLifecycleHookAction;
+}
+export const DeploymentLifecycleHookTimeoutConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      timeoutInMinutes: S.optional(S.Number),
+      action: S.optional(DeploymentLifecycleHookAction),
+    }),
+  ).annotate({
+    identifier: "DeploymentLifecycleHookTimeoutConfiguration",
+  }) as any as S.Schema<DeploymentLifecycleHookTimeoutConfiguration>;
 export interface DeploymentLifecycleHook {
+  targetType?: DeploymentLifecycleHookTargetType;
   hookTargetArn?: string;
   roleArn?: string;
   lifecycleStages?: DeploymentLifecycleHookStage[];
   hookDetails?: any;
+  timeoutConfiguration?: DeploymentLifecycleHookTimeoutConfiguration;
 }
 export const DeploymentLifecycleHook = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
+      targetType: S.optional(DeploymentLifecycleHookTargetType),
       hookTargetArn: S.optional(S.String),
       roleArn: S.optional(S.String),
       lifecycleStages: S.optional(DeploymentLifecycleHookStageList),
       hookDetails: S.optional(S.Any),
+      timeoutConfiguration: S.optional(
+        DeploymentLifecycleHookTimeoutConfiguration,
+      ),
     }),
 ).annotate({
   identifier: "DeploymentLifecycleHook",
@@ -4477,6 +4636,7 @@ export interface ServiceDeployment {
   status?: ServiceDeploymentStatus;
   statusReason?: string;
   lifecycleStage?: ServiceDeploymentLifecycleStage;
+  lifecycleHookDetails?: DeploymentLifecycleHookDetail[];
   deploymentConfiguration?: DeploymentConfiguration;
   rollback?: Rollback;
   deploymentCircuitBreaker?: ServiceDeploymentCircuitBreaker;
@@ -4497,6 +4657,7 @@ export const ServiceDeployment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     status: S.optional(ServiceDeploymentStatus),
     statusReason: S.optional(S.String),
     lifecycleStage: S.optional(ServiceDeploymentLifecycleStage),
+    lifecycleHookDetails: S.optional(DeploymentLifecycleHookDetailList),
     deploymentConfiguration: S.optional(DeploymentConfiguration),
     rollback: S.optional(Rollback),
     deploymentCircuitBreaker: S.optional(ServiceDeploymentCircuitBreaker),
@@ -4791,28 +4952,29 @@ export const ExpressGatewayScalingTarget =
     identifier: "ExpressGatewayScalingTarget",
   }) as any as S.Schema<ExpressGatewayScalingTarget>;
 export interface CreateExpressGatewayServiceRequest {
-  executionRoleArn: string;
+  executionRoleArn?: string;
   infrastructureRoleArn: string;
   serviceName?: string;
   cluster?: string;
   healthCheckPath?: string;
-  primaryContainer: ExpressGatewayContainer;
+  primaryContainer?: ExpressGatewayContainer;
   taskRoleArn?: string;
   networkConfiguration?: ExpressGatewayServiceNetworkConfiguration;
   cpu?: string;
   memory?: string;
   scalingTarget?: ExpressGatewayScalingTarget;
   tags?: Tag[];
+  taskDefinitionArn?: string;
 }
 export const CreateExpressGatewayServiceRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
-      executionRoleArn: S.String,
+      executionRoleArn: S.optional(S.String),
       infrastructureRoleArn: S.String,
       serviceName: S.optional(S.String),
       cluster: S.optional(S.String),
       healthCheckPath: S.optional(S.String),
-      primaryContainer: ExpressGatewayContainer,
+      primaryContainer: S.optional(ExpressGatewayContainer),
       taskRoleArn: S.optional(S.String),
       networkConfiguration: S.optional(
         ExpressGatewayServiceNetworkConfiguration,
@@ -4821,6 +4983,7 @@ export const CreateExpressGatewayServiceRequest =
       memory: S.optional(S.String),
       scalingTarget: S.optional(ExpressGatewayScalingTarget),
       tags: S.optional(Tags),
+      taskDefinitionArn: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -4873,6 +5036,7 @@ export interface ExpressGatewayServiceConfiguration {
   serviceRevisionArn?: string;
   executionRoleArn?: string;
   taskRoleArn?: string;
+  taskDefinitionArn?: string;
   cpu?: string;
   memory?: string;
   networkConfiguration?: ExpressGatewayServiceNetworkConfiguration;
@@ -4888,6 +5052,7 @@ export const ExpressGatewayServiceConfiguration =
       serviceRevisionArn: S.optional(S.String),
       executionRoleArn: S.optional(S.String),
       taskRoleArn: S.optional(S.String),
+      taskDefinitionArn: S.optional(S.String),
       cpu: S.optional(S.String),
       memory: S.optional(S.String),
       networkConfiguration: S.optional(
@@ -5255,6 +5420,28 @@ export type VpcLatticeConfigurations = VpcLatticeConfiguration[];
 export const VpcLatticeConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   VpcLatticeConfiguration,
 );
+export type MetricNamesList = string[];
+export const MetricNamesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface MetricConfiguration {
+  metricNames: string[];
+  resolutionSeconds: number;
+}
+export const MetricConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ metricNames: MetricNamesList, resolutionSeconds: S.Number }),
+).annotate({
+  identifier: "MetricConfiguration",
+}) as any as S.Schema<MetricConfiguration>;
+export type MetricConfigurationList = MetricConfiguration[];
+export const MetricConfigurationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(MetricConfiguration);
+export interface MonitoringConfiguration {
+  metricConfigurations?: MetricConfiguration[];
+}
+export const MonitoringConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ metricConfigurations: S.optional(MetricConfigurationList) }),
+).annotate({
+  identifier: "MonitoringConfiguration",
+}) as any as S.Schema<MonitoringConfiguration>;
 export interface CreateServiceRequest {
   cluster?: string;
   serviceName: string;
@@ -5282,6 +5469,7 @@ export interface CreateServiceRequest {
   serviceConnectConfiguration?: ServiceConnectConfiguration;
   volumeConfigurations?: ServiceVolumeConfiguration[];
   vpcLatticeConfigurations?: VpcLatticeConfiguration[];
+  monitoring?: MonitoringConfiguration;
 }
 export const CreateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5311,6 +5499,7 @@ export const CreateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
     volumeConfigurations: S.optional(ServiceVolumeConfigurations),
     vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
+    monitoring: S.optional(MonitoringConfiguration),
   }).pipe(
     T.all(
       ns,
@@ -5833,6 +6022,7 @@ export interface UpdateExpressGatewayServiceRequest {
   cpu?: string;
   memory?: string;
   scalingTarget?: ExpressGatewayScalingTarget;
+  taskDefinitionArn?: string;
 }
 export const UpdateExpressGatewayServiceRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -5848,6 +6038,7 @@ export const UpdateExpressGatewayServiceRequest =
       cpu: S.optional(S.String),
       memory: S.optional(S.String),
       scalingTarget: S.optional(ExpressGatewayScalingTarget),
+      taskDefinitionArn: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -5917,6 +6108,7 @@ export interface UpdateServiceRequest {
   serviceConnectConfiguration?: ServiceConnectConfiguration;
   volumeConfigurations?: ServiceVolumeConfiguration[];
   vpcLatticeConfigurations?: VpcLatticeConfiguration[];
+  monitoring?: MonitoringConfiguration;
 }
 export const UpdateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5942,6 +6134,7 @@ export const UpdateServiceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     serviceConnectConfiguration: S.optional(ServiceConnectConfiguration),
     volumeConfigurations: S.optional(ServiceVolumeConfigurations),
     vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
+    monitoring: S.optional(MonitoringConfiguration),
   }).pipe(
     T.all(
       ns,
@@ -6314,6 +6507,7 @@ export interface ServiceRevision {
   vpcLatticeConfigurations?: VpcLatticeConfiguration[];
   resolvedConfiguration?: ResolvedConfiguration;
   ecsManagedResources?: ECSManagedResources;
+  monitoring?: MonitoringConfiguration;
 }
 export const ServiceRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6337,6 +6531,7 @@ export const ServiceRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     vpcLatticeConfigurations: S.optional(VpcLatticeConfigurations),
     resolvedConfiguration: S.optional(ResolvedConfiguration),
     ecsManagedResources: S.optional(ECSManagedResources),
+    monitoring: S.optional(MonitoringConfiguration),
   }),
 ).annotate({
   identifier: "ServiceRevision",
@@ -6569,6 +6764,8 @@ export type ManagedAgents = ManagedAgent[];
 export const ManagedAgents = /*@__PURE__*/ /*#__PURE__*/ S.Array(ManagedAgent);
 export type GpuIds = string[];
 export const GpuIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type NeuronDeviceIds = string[];
+export const NeuronDeviceIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface Container {
   containerArn?: string;
   taskArn?: string;
@@ -6587,6 +6784,7 @@ export interface Container {
   memory?: string;
   memoryReservation?: string;
   gpuIds?: string[];
+  neuronDeviceIds?: string[];
 }
 export const Container = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6607,6 +6805,7 @@ export const Container = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     memory: S.optional(S.String),
     memoryReservation: S.optional(S.String),
     gpuIds: S.optional(GpuIds),
+    neuronDeviceIds: S.optional(NeuronDeviceIds),
   }),
 ).annotate({ identifier: "Container" }) as any as S.Schema<Container>;
 export type Containers = Container[];
@@ -7269,6 +7468,14 @@ export class ServerException extends S.TaggedErrorClass<ServerException>()(
   "ServerException",
   { message: S.optional(S.String) },
 ).pipe(C.withServerError, C.withRetryableError) {}
+export class ServiceDeploymentNotFoundException extends S.TaggedErrorClass<ServiceDeploymentNotFoundException>()(
+  "ServiceDeploymentNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class UnsupportedFeatureException extends S.TaggedErrorClass<UnsupportedFeatureException>()(
+  "UnsupportedFeatureException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export class NamespaceNotFoundException extends S.TaggedErrorClass<NamespaceNotFoundException>()(
   "NamespaceNotFoundException",
   { message: S.optional(S.String) },
@@ -7285,10 +7492,6 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
 ).pipe(C.withNotFoundError) {}
-export class UnsupportedFeatureException extends S.TaggedErrorClass<UnsupportedFeatureException>()(
-  "UnsupportedFeatureException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
 export class UpdateInProgressException extends S.TaggedErrorClass<UpdateInProgressException>()(
   "UpdateInProgressException",
   { message: S.optional(S.String) },
@@ -7365,16 +7568,49 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { resourceIds: S.optional(ResourceIds), message: S.optional(S.String) },
 ).pipe(C.withConflictError) {}
-export class ServiceDeploymentNotFoundException extends S.TaggedErrorClass<ServiceDeploymentNotFoundException>()(
-  "ServiceDeploymentNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
 export class BlockedException extends S.TaggedErrorClass<BlockedException>()(
   "BlockedException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
+export type ContinueServiceDeploymentError =
+  | AccessDeniedException
+  | ClientException
+  | InvalidParameterException
+  | ServerException
+  | ServiceDeploymentNotFoundException
+  | UnsupportedFeatureException
+  | CommonErrors;
+/**
+ * Continues or rolls back an Amazon ECS service deployment that is paused at a lifecycle hook.
+ *
+ * When a service deployment reaches a lifecycle stage that has a `PAUSE` hook configured, the deployment pauses and waits for an explicit action. Use this API to either continue the deployment to the next stage or roll back to the previous service revision.
+ *
+ * To find the `hookId` of the paused hook, call DescribeServiceDeployments and inspect the `lifecycleHookDetails` field.
+ *
+ * For more information, see Continuing Amazon ECS service deployments in the *Amazon Elastic Container Service Developer Guide*.
+ */
+export const continueServiceDeployment: API.OperationMethod<
+  ContinueServiceDeploymentRequest,
+  ContinueServiceDeploymentResponse,
+  ContinueServiceDeploymentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ContinueServiceDeploymentRequest,
+  output: ContinueServiceDeploymentResponse,
+  errors: [
+    AccessDeniedException,
+    ClientException,
+    InvalidParameterException,
+    ServerException,
+    ServiceDeploymentNotFoundException,
+    UnsupportedFeatureException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ContinueServiceDeployment",
+}));
 export type DeleteAccountSettingError =
   | AccessDeniedException
   | ClientException

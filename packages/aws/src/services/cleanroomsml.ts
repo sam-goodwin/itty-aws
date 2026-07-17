@@ -253,6 +253,18 @@ export type MLInputChannelStatus =
   | "INACTIVE"
   | (string & {});
 export const MLInputChannelStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface PayerConfiguration {
+  computePayerAccountId?: string;
+  syntheticDataPayerAccountId?: string;
+}
+export const PayerConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    computePayerAccountId: S.optional(S.String),
+    syntheticDataPayerAccountId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PayerConfiguration",
+}) as any as S.Schema<PayerConfiguration>;
 export interface CollaborationMLInputChannelSummary {
   createTime: Date;
   updateTime: Date;
@@ -264,6 +276,7 @@ export interface CollaborationMLInputChannelSummary {
   status: MLInputChannelStatus;
   creatorAccountId: string;
   description?: string;
+  payerConfiguration?: PayerConfiguration;
 }
 export const CollaborationMLInputChannelSummary =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -279,6 +292,7 @@ export const CollaborationMLInputChannelSummary =
       status: MLInputChannelStatus,
       creatorAccountId: S.String,
       description: S.optional(S.String),
+      payerConfiguration: S.optional(PayerConfiguration),
     }),
   ).annotate({
     identifier: "CollaborationMLInputChannelSummary",
@@ -520,6 +534,7 @@ export interface CollaborationTrainedModelInferenceJobSummary {
   metricsStatusDetails?: string;
   logsStatus?: LogsStatus;
   logsStatusDetails?: string;
+  mlModelInferencePayerAccountId?: string;
   createTime: Date;
   updateTime: Date;
   creatorAccountId: string;
@@ -541,6 +556,7 @@ export const CollaborationTrainedModelInferenceJobSummary =
       metricsStatusDetails: S.optional(S.String),
       logsStatus: S.optional(LogsStatus),
       logsStatusDetails: S.optional(S.String),
+      mlModelInferencePayerAccountId: S.optional(S.String),
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       creatorAccountId: S.String,
@@ -643,6 +659,7 @@ export interface CollaborationTrainedModelSummary {
   status: TrainedModelStatus;
   configuredModelAlgorithmAssociationArn: string;
   creatorAccountId: string;
+  mlModelTrainingPayerAccountId?: string;
 }
 export const CollaborationTrainedModelSummary =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -661,6 +678,7 @@ export const CollaborationTrainedModelSummary =
       status: TrainedModelStatus,
       configuredModelAlgorithmAssociationArn: S.String,
       creatorAccountId: S.String,
+      mlModelTrainingPayerAccountId: S.optional(S.String),
     }),
   ).annotate({
     identifier: "CollaborationTrainedModelSummary",
@@ -2623,6 +2641,7 @@ export interface CreateMLInputChannelRequest {
   description?: string;
   kmsKeyArn?: string;
   tags?: { [key: string]: string | undefined };
+  payerConfiguration?: PayerConfiguration;
 }
 export const CreateMLInputChannelRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2636,6 +2655,7 @@ export const CreateMLInputChannelRequest =
       description: S.optional(S.String),
       kmsKeyArn: S.optional(S.String),
       tags: S.optional(TagMap),
+      payerConfiguration: S.optional(PayerConfiguration),
     }).pipe(
       T.all(
         T.Http({
@@ -2851,6 +2871,7 @@ export interface GetMLInputChannelResponse {
   privacyBudgets?: PrivacyBudgets;
   description?: string;
   syntheticDataConfiguration?: SyntheticDataConfiguration;
+  payerConfiguration?: PayerConfiguration;
   createTime: Date;
   updateTime: Date;
   inputChannel: InputChannel;
@@ -2876,6 +2897,7 @@ export const GetMLInputChannelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       privacyBudgets: S.optional(PrivacyBudgets),
       description: S.optional(S.String),
       syntheticDataConfiguration: S.optional(SyntheticDataConfiguration),
+      payerConfiguration: S.optional(PayerConfiguration),
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       inputChannel: InputChannel,
@@ -2956,6 +2978,7 @@ export interface MLInputChannelSummary {
   mlInputChannelArn: string;
   status: MLInputChannelStatus;
   description?: string;
+  payerConfiguration?: PayerConfiguration;
 }
 export const MLInputChannelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2970,6 +2993,7 @@ export const MLInputChannelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     mlInputChannelArn: S.String,
     status: MLInputChannelStatus,
     description: S.optional(S.String),
+    payerConfiguration: S.optional(PayerConfiguration),
   }),
 ).annotate({
   identifier: "MLInputChannelSummary",
@@ -3031,6 +3055,7 @@ export interface GetCollaborationMLInputChannelResponse {
   privacyBudgets?: PrivacyBudgets;
   description?: string;
   syntheticDataConfiguration?: SyntheticDataConfiguration;
+  payerConfiguration?: PayerConfiguration;
   createTime: Date;
   updateTime: Date;
   creatorAccountId: string;
@@ -3051,6 +3076,7 @@ export const GetCollaborationMLInputChannelResponse =
       privacyBudgets: S.optional(PrivacyBudgets),
       description: S.optional(S.String),
       syntheticDataConfiguration: S.optional(SyntheticDataConfiguration),
+      payerConfiguration: S.optional(PayerConfiguration),
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       creatorAccountId: S.String,
@@ -3282,6 +3308,7 @@ export interface CreateTrainedModelRequest {
   description?: string;
   kmsKeyArn?: string;
   tags?: { [key: string]: string | undefined };
+  mlModelTrainingPayerAccountId?: string;
 }
 export const CreateTrainedModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3301,6 +3328,7 @@ export const CreateTrainedModelRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       description: S.optional(S.String),
       kmsKeyArn: S.optional(S.String),
       tags: S.optional(TagMap),
+      mlModelTrainingPayerAccountId: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -3378,6 +3406,7 @@ export interface GetTrainedModelResponse {
   logsStatus?: LogsStatus;
   logsStatusDetails?: string;
   trainingContainerImageDigest?: string;
+  mlModelTrainingPayerAccountId?: string;
   createTime: Date;
   updateTime: Date;
   hyperparameters?: { [key: string]: string | undefined };
@@ -3409,6 +3438,7 @@ export const GetTrainedModelResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       logsStatus: S.optional(LogsStatus),
       logsStatusDetails: S.optional(S.String),
       trainingContainerImageDigest: S.optional(S.String),
+      mlModelTrainingPayerAccountId: S.optional(S.String),
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       hyperparameters: S.optional(HyperParameters),
@@ -3493,6 +3523,7 @@ export interface TrainedModelSummary {
   collaborationIdentifier: string;
   status: TrainedModelStatus;
   configuredModelAlgorithmAssociationArn: string;
+  mlModelTrainingPayerAccountId?: string;
 }
 export const TrainedModelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3509,6 +3540,7 @@ export const TrainedModelSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     collaborationIdentifier: S.String,
     status: TrainedModelStatus,
     configuredModelAlgorithmAssociationArn: S.String,
+    mlModelTrainingPayerAccountId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "TrainedModelSummary",
@@ -3614,6 +3646,7 @@ export interface GetCollaborationTrainedModelResponse {
   logsStatus?: LogsStatus;
   logsStatusDetails?: string;
   trainingContainerImageDigest?: string;
+  mlModelTrainingPayerAccountId?: string;
   createTime: Date;
   updateTime: Date;
   creatorAccountId: string;
@@ -3641,6 +3674,7 @@ export const GetCollaborationTrainedModelResponse =
       logsStatus: S.optional(LogsStatus),
       logsStatusDetails: S.optional(S.String),
       trainingContainerImageDigest: S.optional(S.String),
+      mlModelTrainingPayerAccountId: S.optional(S.String),
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       creatorAccountId: S.String,
@@ -3876,6 +3910,7 @@ export interface StartTrainedModelInferenceJobRequest {
   environment?: { [key: string]: string | undefined };
   kmsKeyArn?: string;
   tags?: { [key: string]: string | undefined };
+  mlModelInferencePayerAccountId?: string;
 }
 export const StartTrainedModelInferenceJobRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3895,6 +3930,7 @@ export const StartTrainedModelInferenceJobRequest =
       environment: S.optional(InferenceEnvironmentMap),
       kmsKeyArn: S.optional(S.String),
       tags: S.optional(TagMap),
+      mlModelInferencePayerAccountId: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -3971,6 +4007,7 @@ export interface GetTrainedModelInferenceJobResponse {
   logsStatus?: LogsStatus;
   logsStatusDetails?: string;
   tags?: { [key: string]: string | undefined };
+  mlModelInferencePayerAccountId?: string;
 }
 export const GetTrainedModelInferenceJobResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4000,6 +4037,7 @@ export const GetTrainedModelInferenceJobResponse =
       logsStatus: S.optional(LogsStatus),
       logsStatusDetails: S.optional(S.String),
       tags: S.optional(TagMap),
+      mlModelInferencePayerAccountId: S.optional(S.String),
     }),
   ).annotate({
     identifier: "GetTrainedModelInferenceJobResponse",
@@ -4054,6 +4092,7 @@ export interface TrainedModelInferenceJobSummary {
   metricsStatusDetails?: string;
   logsStatus?: LogsStatus;
   logsStatusDetails?: string;
+  mlModelInferencePayerAccountId?: string;
   createTime: Date;
   updateTime: Date;
 }
@@ -4074,6 +4113,7 @@ export const TrainedModelInferenceJobSummary =
       metricsStatusDetails: S.optional(S.String),
       logsStatus: S.optional(LogsStatus),
       logsStatusDetails: S.optional(S.String),
+      mlModelInferencePayerAccountId: S.optional(S.String),
       createTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
       updateTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     }),

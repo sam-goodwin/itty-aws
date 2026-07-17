@@ -1048,6 +1048,23 @@ export const AmazonMskCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AmazonMskCluster",
 }) as any as S.Schema<AmazonMskCluster>;
+export interface ApacheKafkaCluster {
+  ApacheKafkaClusterId?: string;
+  BootstrapBrokerString?: string;
+}
+export const ApacheKafkaCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApacheKafkaClusterId: S.optional(S.String),
+    BootstrapBrokerString: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({
+      ApacheKafkaClusterId: "apacheKafkaClusterId",
+      BootstrapBrokerString: "bootstrapBrokerString",
+    }),
+  ),
+).annotate({
+  identifier: "ApacheKafkaCluster",
+}) as any as S.Schema<ApacheKafkaCluster>;
 export interface KafkaClusterClientVpcConfig {
   SecurityGroupIds?: string[];
   SubnetIds?: string[];
@@ -1066,18 +1083,91 @@ export const KafkaClusterClientVpcConfig =
   ).annotate({
     identifier: "KafkaClusterClientVpcConfig",
   }) as any as S.Schema<KafkaClusterClientVpcConfig>;
+export type KafkaClusterSaslScramMechanism =
+  | "SHA256"
+  | "SHA512"
+  | (string & {});
+export const KafkaClusterSaslScramMechanism =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface KafkaClusterSaslScramAuthentication {
+  Mechanism?: KafkaClusterSaslScramMechanism;
+  SecretArn?: string;
+}
+export const KafkaClusterSaslScramAuthentication =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Mechanism: S.optional(KafkaClusterSaslScramMechanism),
+      SecretArn: S.optional(S.String),
+    }).pipe(S.encodeKeys({ Mechanism: "mechanism", SecretArn: "secretArn" })),
+  ).annotate({
+    identifier: "KafkaClusterSaslScramAuthentication",
+  }) as any as S.Schema<KafkaClusterSaslScramAuthentication>;
+export interface KafkaClusterMTLSAuthentication {
+  SecretArn?: string;
+}
+export const KafkaClusterMTLSAuthentication =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ SecretArn: S.optional(S.String) }).pipe(
+      S.encodeKeys({ SecretArn: "secretArn" }),
+    ),
+  ).annotate({
+    identifier: "KafkaClusterMTLSAuthentication",
+  }) as any as S.Schema<KafkaClusterMTLSAuthentication>;
+export interface KafkaClusterClientAuthentication {
+  SaslScram?: KafkaClusterSaslScramAuthentication;
+  MTLS?: KafkaClusterMTLSAuthentication;
+}
+export const KafkaClusterClientAuthentication =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SaslScram: S.optional(KafkaClusterSaslScramAuthentication),
+      MTLS: S.optional(KafkaClusterMTLSAuthentication),
+    }).pipe(S.encodeKeys({ SaslScram: "saslScram", MTLS: "mTLS" })),
+  ).annotate({
+    identifier: "KafkaClusterClientAuthentication",
+  }) as any as S.Schema<KafkaClusterClientAuthentication>;
+export type KafkaClusterEncryptionInTransitType = "TLS" | (string & {});
+export const KafkaClusterEncryptionInTransitType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface KafkaClusterEncryptionInTransit {
+  EncryptionType?: KafkaClusterEncryptionInTransitType;
+  RootCaCertificate?: string;
+}
+export const KafkaClusterEncryptionInTransit =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      EncryptionType: S.optional(KafkaClusterEncryptionInTransitType),
+      RootCaCertificate: S.optional(S.String),
+    }).pipe(
+      S.encodeKeys({
+        EncryptionType: "encryptionType",
+        RootCaCertificate: "rootCaCertificate",
+      }),
+    ),
+  ).annotate({
+    identifier: "KafkaClusterEncryptionInTransit",
+  }) as any as S.Schema<KafkaClusterEncryptionInTransit>;
 export interface KafkaCluster {
   AmazonMskCluster?: AmazonMskCluster;
+  ApacheKafkaCluster?: ApacheKafkaCluster;
   VpcConfig?: KafkaClusterClientVpcConfig;
+  ClientAuthentication?: KafkaClusterClientAuthentication;
+  EncryptionInTransit?: KafkaClusterEncryptionInTransit;
 }
 export const KafkaCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     AmazonMskCluster: S.optional(AmazonMskCluster),
+    ApacheKafkaCluster: S.optional(ApacheKafkaCluster),
     VpcConfig: S.optional(KafkaClusterClientVpcConfig),
+    ClientAuthentication: S.optional(KafkaClusterClientAuthentication),
+    EncryptionInTransit: S.optional(KafkaClusterEncryptionInTransit),
   }).pipe(
     S.encodeKeys({
       AmazonMskCluster: "amazonMskCluster",
+      ApacheKafkaCluster: "apacheKafkaCluster",
       VpcConfig: "vpcConfig",
+      ClientAuthentication: "clientAuthentication",
+      EncryptionInTransit: "encryptionInTransit",
     }),
   ),
 ).annotate({ identifier: "KafkaCluster" }) as any as S.Schema<KafkaCluster>;
@@ -1088,11 +1178,14 @@ export type __listOf__stringMax256 = string[];
 export const __listOf__stringMax256 = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String,
 );
+export type ConsumerGroupOffsetSyncMode = "LEGACY" | "ENHANCED" | (string & {});
+export const ConsumerGroupOffsetSyncMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ConsumerGroupReplication {
   ConsumerGroupsToExclude?: string[];
   ConsumerGroupsToReplicate?: string[];
   DetectAndCopyNewConsumerGroups?: boolean;
   SynchroniseConsumerGroupOffsets?: boolean;
+  ConsumerGroupOffsetSyncMode?: ConsumerGroupOffsetSyncMode;
 }
 export const ConsumerGroupReplication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1101,12 +1194,14 @@ export const ConsumerGroupReplication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ConsumerGroupsToReplicate: S.optional(__listOf__stringMax256),
       DetectAndCopyNewConsumerGroups: S.optional(S.Boolean),
       SynchroniseConsumerGroupOffsets: S.optional(S.Boolean),
+      ConsumerGroupOffsetSyncMode: S.optional(ConsumerGroupOffsetSyncMode),
     }).pipe(
       S.encodeKeys({
         ConsumerGroupsToExclude: "consumerGroupsToExclude",
         ConsumerGroupsToReplicate: "consumerGroupsToReplicate",
         DetectAndCopyNewConsumerGroups: "detectAndCopyNewConsumerGroups",
         SynchroniseConsumerGroupOffsets: "synchroniseConsumerGroupOffsets",
+        ConsumerGroupOffsetSyncMode: "consumerGroupOffsetSyncMode",
       }),
     ),
 ).annotate({
@@ -1193,23 +1288,29 @@ export const TopicReplication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ReplicationInfo {
   ConsumerGroupReplication?: ConsumerGroupReplication;
   SourceKafkaClusterArn?: string;
+  SourceKafkaClusterId?: string;
   TargetCompressionType?: TargetCompressionType;
   TargetKafkaClusterArn?: string;
+  TargetKafkaClusterId?: string;
   TopicReplication?: TopicReplication;
 }
 export const ReplicationInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     ConsumerGroupReplication: S.optional(ConsumerGroupReplication),
     SourceKafkaClusterArn: S.optional(S.String),
+    SourceKafkaClusterId: S.optional(S.String),
     TargetCompressionType: S.optional(TargetCompressionType),
     TargetKafkaClusterArn: S.optional(S.String),
+    TargetKafkaClusterId: S.optional(S.String),
     TopicReplication: S.optional(TopicReplication),
   }).pipe(
     S.encodeKeys({
       ConsumerGroupReplication: "consumerGroupReplication",
       SourceKafkaClusterArn: "sourceKafkaClusterArn",
+      SourceKafkaClusterId: "sourceKafkaClusterId",
       TargetCompressionType: "targetCompressionType",
       TargetKafkaClusterArn: "targetKafkaClusterArn",
+      TargetKafkaClusterId: "targetKafkaClusterId",
       TopicReplication: "topicReplication",
     }),
   ),
@@ -1219,6 +1320,75 @@ export const ReplicationInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type __listOfReplicationInfo = ReplicationInfo[];
 export const __listOfReplicationInfo =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(ReplicationInfo);
+export interface ReplicatorCloudWatchLogs {
+  Enabled?: boolean;
+  LogGroup?: string;
+}
+export const ReplicatorCloudWatchLogs = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Enabled: S.optional(S.Boolean),
+      LogGroup: S.optional(S.String),
+    }).pipe(S.encodeKeys({ Enabled: "enabled", LogGroup: "logGroup" })),
+).annotate({
+  identifier: "ReplicatorCloudWatchLogs",
+}) as any as S.Schema<ReplicatorCloudWatchLogs>;
+export interface ReplicatorFirehose {
+  Enabled?: boolean;
+  DeliveryStream?: string;
+}
+export const ReplicatorFirehose = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Enabled: S.optional(S.Boolean),
+    DeliveryStream: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({ Enabled: "enabled", DeliveryStream: "deliveryStream" }),
+  ),
+).annotate({
+  identifier: "ReplicatorFirehose",
+}) as any as S.Schema<ReplicatorFirehose>;
+export interface ReplicatorS3 {
+  Enabled?: boolean;
+  Bucket?: string;
+  Prefix?: string;
+}
+export const ReplicatorS3 = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Enabled: S.optional(S.Boolean),
+    Bucket: S.optional(S.String),
+    Prefix: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({ Enabled: "enabled", Bucket: "bucket", Prefix: "prefix" }),
+  ),
+).annotate({ identifier: "ReplicatorS3" }) as any as S.Schema<ReplicatorS3>;
+export interface ReplicatorLogDelivery {
+  CloudWatchLogs?: ReplicatorCloudWatchLogs;
+  Firehose?: ReplicatorFirehose;
+  S3?: ReplicatorS3;
+}
+export const ReplicatorLogDelivery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudWatchLogs: S.optional(ReplicatorCloudWatchLogs),
+    Firehose: S.optional(ReplicatorFirehose),
+    S3: S.optional(ReplicatorS3),
+  }).pipe(
+    S.encodeKeys({
+      CloudWatchLogs: "cloudWatchLogs",
+      Firehose: "firehose",
+      S3: "s3",
+    }),
+  ),
+).annotate({
+  identifier: "ReplicatorLogDelivery",
+}) as any as S.Schema<ReplicatorLogDelivery>;
+export interface LogDelivery {
+  ReplicatorLogDelivery?: ReplicatorLogDelivery;
+}
+export const LogDelivery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ ReplicatorLogDelivery: S.optional(ReplicatorLogDelivery) }).pipe(
+    S.encodeKeys({ ReplicatorLogDelivery: "replicatorLogDelivery" }),
+  ),
+).annotate({ identifier: "LogDelivery" }) as any as S.Schema<LogDelivery>;
 export interface CreateReplicatorRequest {
   Description?: string;
   KafkaClusters?: KafkaCluster[];
@@ -1226,6 +1396,7 @@ export interface CreateReplicatorRequest {
   ReplicatorName?: string;
   ServiceExecutionRoleArn?: string;
   Tags?: { [key: string]: string | undefined };
+  LogDelivery?: LogDelivery;
 }
 export const CreateReplicatorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1236,6 +1407,7 @@ export const CreateReplicatorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ReplicatorName: S.optional(S.String),
       ServiceExecutionRoleArn: S.optional(S.String),
       Tags: S.optional(__mapOf__string),
+      LogDelivery: S.optional(LogDelivery),
     })
       .pipe(
         S.encodeKeys({
@@ -1245,6 +1417,7 @@ export const CreateReplicatorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
           ReplicatorName: "replicatorName",
           ServiceExecutionRoleArn: "serviceExecutionRoleArn",
           Tags: "tags",
+          LogDelivery: "logDelivery",
         }),
       )
       .pipe(
@@ -1923,6 +2096,16 @@ export const BrokerEBSVolumeInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type __listOfBrokerEBSVolumeInfo = BrokerEBSVolumeInfo[];
 export const __listOfBrokerEBSVolumeInfo =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(BrokerEBSVolumeInfo);
+export interface ZookeeperAccess {
+  Enabled?: boolean;
+}
+export const ZookeeperAccess = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(
+    S.encodeKeys({ Enabled: "enabled" }),
+  ),
+).annotate({
+  identifier: "ZookeeperAccess",
+}) as any as S.Schema<ZookeeperAccess>;
 export type __listOf__double = number[];
 export const __listOf__double = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
 export interface BrokerCountUpdateInfo {
@@ -1948,6 +2131,7 @@ export interface MutableClusterInfo {
   NumberOfBrokerNodes?: number;
   EnhancedMonitoring?: EnhancedMonitoring;
   OpenMonitoring?: OpenMonitoring;
+  ZookeeperAccess?: ZookeeperAccess;
   KafkaVersion?: string;
   LoggingInfo?: LoggingInfo;
   InstanceType?: string;
@@ -1965,6 +2149,7 @@ export const MutableClusterInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     NumberOfBrokerNodes: S.optional(S.Number),
     EnhancedMonitoring: S.optional(EnhancedMonitoring),
     OpenMonitoring: S.optional(OpenMonitoring),
+    ZookeeperAccess: S.optional(ZookeeperAccess),
     KafkaVersion: S.optional(S.String),
     LoggingInfo: S.optional(LoggingInfo),
     InstanceType: S.optional(S.String),
@@ -1981,6 +2166,7 @@ export const MutableClusterInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       NumberOfBrokerNodes: "numberOfBrokerNodes",
       EnhancedMonitoring: "enhancedMonitoring",
       OpenMonitoring: "openMonitoring",
+      ZookeeperAccess: "zookeeperAccess",
       KafkaVersion: "kafkaVersion",
       LoggingInfo: "loggingInfo",
       InstanceType: "instanceType",
@@ -2650,20 +2836,29 @@ export const DescribeReplicatorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeReplicatorRequest>;
 export interface KafkaClusterDescription {
   AmazonMskCluster?: AmazonMskCluster;
+  ApacheKafkaCluster?: ApacheKafkaCluster;
   KafkaClusterAlias?: string;
   VpcConfig?: KafkaClusterClientVpcConfig;
+  ClientAuthentication?: KafkaClusterClientAuthentication;
+  EncryptionInTransit?: KafkaClusterEncryptionInTransit;
 }
 export const KafkaClusterDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       AmazonMskCluster: S.optional(AmazonMskCluster),
+      ApacheKafkaCluster: S.optional(ApacheKafkaCluster),
       KafkaClusterAlias: S.optional(S.String),
       VpcConfig: S.optional(KafkaClusterClientVpcConfig),
+      ClientAuthentication: S.optional(KafkaClusterClientAuthentication),
+      EncryptionInTransit: S.optional(KafkaClusterEncryptionInTransit),
     }).pipe(
       S.encodeKeys({
         AmazonMskCluster: "amazonMskCluster",
+        ApacheKafkaCluster: "apacheKafkaCluster",
         KafkaClusterAlias: "kafkaClusterAlias",
         VpcConfig: "vpcConfig",
+        ClientAuthentication: "clientAuthentication",
+        EncryptionInTransit: "encryptionInTransit",
       }),
     ),
 ).annotate({
@@ -2719,7 +2914,21 @@ export interface DescribeReplicatorResponse {
   IsReplicatorReference?: boolean;
   KafkaClusters?: (KafkaClusterDescription & {
     AmazonMskCluster: AmazonMskCluster & { MskClusterArn: string };
+    ApacheKafkaCluster: ApacheKafkaCluster & {
+      ApacheKafkaClusterId: string;
+      BootstrapBrokerString: string;
+    };
     VpcConfig: KafkaClusterClientVpcConfig & { SubnetIds: __listOf__string };
+    ClientAuthentication: KafkaClusterClientAuthentication & {
+      SaslScram: KafkaClusterSaslScramAuthentication & {
+        Mechanism: KafkaClusterSaslScramMechanism;
+        SecretArn: string;
+      };
+      MTLS: KafkaClusterMTLSAuthentication & { SecretArn: string };
+    };
+    EncryptionInTransit: KafkaClusterEncryptionInTransit & {
+      EncryptionType: KafkaClusterEncryptionInTransitType;
+    };
   })[];
   ReplicationInfoList?: (ReplicationInfoDescription & {
     ConsumerGroupReplication: ConsumerGroupReplication & {
@@ -2737,6 +2946,13 @@ export interface DescribeReplicatorResponse {
   ServiceExecutionRoleArn?: string;
   StateInfo?: ReplicationStateInfo;
   Tags?: { [key: string]: string | undefined };
+  LogDelivery?: LogDelivery & {
+    ReplicatorLogDelivery: ReplicatorLogDelivery & {
+      CloudWatchLogs: ReplicatorCloudWatchLogs & { Enabled: boolean };
+      Firehose: ReplicatorFirehose & { Enabled: boolean };
+      S3: ReplicatorS3 & { Enabled: boolean };
+    };
+  };
 }
 export const DescribeReplicatorResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2756,6 +2972,7 @@ export const DescribeReplicatorResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ServiceExecutionRoleArn: S.optional(S.String),
       StateInfo: S.optional(ReplicationStateInfo),
       Tags: S.optional(__mapOf__string),
+      LogDelivery: S.optional(LogDelivery),
     }).pipe(
       S.encodeKeys({
         CreationTime: "creationTime",
@@ -2771,6 +2988,7 @@ export const DescribeReplicatorResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         ServiceExecutionRoleArn: "serviceExecutionRoleArn",
         StateInfo: "stateInfo",
         Tags: "tags",
+        LogDelivery: "logDelivery",
       }),
     ),
 ).annotate({
@@ -3862,15 +4080,18 @@ export const ListReplicatorsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<ListReplicatorsRequest>;
 export interface KafkaClusterSummary {
   AmazonMskCluster?: AmazonMskCluster;
+  ApacheKafkaCluster?: ApacheKafkaCluster;
   KafkaClusterAlias?: string;
 }
 export const KafkaClusterSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     AmazonMskCluster: S.optional(AmazonMskCluster),
+    ApacheKafkaCluster: S.optional(ApacheKafkaCluster),
     KafkaClusterAlias: S.optional(S.String),
   }).pipe(
     S.encodeKeys({
       AmazonMskCluster: "amazonMskCluster",
+      ApacheKafkaCluster: "apacheKafkaCluster",
       KafkaClusterAlias: "kafkaClusterAlias",
     }),
   ),
@@ -3949,6 +4170,10 @@ export interface ListReplicatorsResponse {
   Replicators?: (ReplicatorSummary & {
     KafkaClustersSummary: (KafkaClusterSummary & {
       AmazonMskCluster: AmazonMskCluster & { MskClusterArn: string };
+      ApacheKafkaCluster: ApacheKafkaCluster & {
+        ApacheKafkaClusterId: string;
+        BootstrapBrokerString: string;
+      };
     })[];
   })[];
 }
@@ -4653,6 +4878,7 @@ export interface UpdateConnectivityRequest {
   ClusterArn: string;
   ConnectivityInfo?: ConnectivityInfo;
   CurrentVersion?: string;
+  ZookeeperAccess?: ZookeeperAccess;
 }
 export const UpdateConnectivityRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -4660,11 +4886,13 @@ export const UpdateConnectivityRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ClusterArn: S.String.pipe(T.HttpLabel("ClusterArn")),
       ConnectivityInfo: S.optional(ConnectivityInfo),
       CurrentVersion: S.optional(S.String),
+      ZookeeperAccess: S.optional(ZookeeperAccess),
     })
       .pipe(
         S.encodeKeys({
           ConnectivityInfo: "connectivityInfo",
           CurrentVersion: "currentVersion",
+          ZookeeperAccess: "zookeeperAccess",
         }),
       )
       .pipe(
@@ -4867,8 +5095,11 @@ export interface UpdateReplicationInfoRequest {
   CurrentVersion?: string;
   ReplicatorArn: string;
   SourceKafkaClusterArn?: string;
+  SourceKafkaClusterId?: string;
   TargetKafkaClusterArn?: string;
+  TargetKafkaClusterId?: string;
   TopicReplication?: TopicReplicationUpdate;
+  LogDelivery?: LogDelivery;
 }
 export const UpdateReplicationInfoRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4877,16 +5108,22 @@ export const UpdateReplicationInfoRequest =
       CurrentVersion: S.optional(S.String),
       ReplicatorArn: S.String.pipe(T.HttpLabel("ReplicatorArn")),
       SourceKafkaClusterArn: S.optional(S.String),
+      SourceKafkaClusterId: S.optional(S.String),
       TargetKafkaClusterArn: S.optional(S.String),
+      TargetKafkaClusterId: S.optional(S.String),
       TopicReplication: S.optional(TopicReplicationUpdate),
+      LogDelivery: S.optional(LogDelivery),
     })
       .pipe(
         S.encodeKeys({
           ConsumerGroupReplication: "consumerGroupReplication",
           CurrentVersion: "currentVersion",
           SourceKafkaClusterArn: "sourceKafkaClusterArn",
+          SourceKafkaClusterId: "sourceKafkaClusterId",
           TargetKafkaClusterArn: "targetKafkaClusterArn",
+          TargetKafkaClusterId: "targetKafkaClusterId",
           TopicReplication: "topicReplication",
+          LogDelivery: "logDelivery",
         }),
       )
       .pipe(

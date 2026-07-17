@@ -171,11 +171,11 @@ export type MembershipStatus = string;
 export type ProtectedJobIdentifier = string;
 export type JobParameterName = string;
 export type JobParameterValue = string;
+export type SparkPropertyKey = string;
+export type SparkPropertyValue = string;
 export type ProtectedQueryIdentifier = string;
 export type ProtectedQueryStatus = string;
 export type DifferentialPrivacyAggregationExpression = string;
-export type SparkPropertyKey = string;
-export type SparkPropertyValue = string;
 export type ProtectedQueryType = string;
 export type TargetProtectedQueryStatus = string;
 
@@ -2042,6 +2042,8 @@ export const ChangeSpecificationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface MemberChangeSpecification {
   accountId: string;
   memberAbilities: MemberAbility[];
+  mlMemberAbilities?: MLMemberAbilities;
+  paymentConfiguration?: PaymentConfiguration;
   displayName?: string;
 }
 export const MemberChangeSpecification = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -2049,6 +2051,8 @@ export const MemberChangeSpecification = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       accountId: S.String,
       memberAbilities: MemberAbilities,
+      mlMemberAbilities: S.optional(MLMemberAbilities),
+      paymentConfiguration: S.optional(PaymentConfiguration),
       displayName: S.optional(S.String),
     }),
 ).annotate({
@@ -2124,6 +2128,12 @@ export type ChangeType =
   | "GRANT_RECEIVE_RESULTS_ABILITY"
   | "REVOKE_RECEIVE_RESULTS_ABILITY"
   | "EDIT_AUTO_APPROVED_CHANGE_TYPES"
+  | "ADD_PAYER_CANDIDATE"
+  | "REMOVE_PAYER_CANDIDATE"
+  | "GRANT_CAN_RECEIVE_MODEL_OUTPUT"
+  | "GRANT_CAN_RECEIVE_INFERENCE_OUTPUT"
+  | "REVOKE_CAN_RECEIVE_MODEL_OUTPUT"
+  | "REVOKE_CAN_RECEIVE_INFERENCE_OUTPUT"
   | (string & {});
 export const ChangeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ChangeTypeList = ChangeType[];
@@ -5573,12 +5583,28 @@ export const GetMembershipOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMembershipOutput",
 }) as any as S.Schema<GetMembershipOutput>;
+export interface UpdateMembershipPaymentConfiguration {
+  queryCompute?: MembershipQueryComputePaymentConfig;
+  machineLearning?: MembershipMLPaymentConfig;
+  jobCompute?: MembershipJobComputePaymentConfig;
+}
+export const UpdateMembershipPaymentConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      queryCompute: S.optional(MembershipQueryComputePaymentConfig),
+      machineLearning: S.optional(MembershipMLPaymentConfig),
+      jobCompute: S.optional(MembershipJobComputePaymentConfig),
+    }),
+  ).annotate({
+    identifier: "UpdateMembershipPaymentConfiguration",
+  }) as any as S.Schema<UpdateMembershipPaymentConfiguration>;
 export interface UpdateMembershipInput {
   membershipIdentifier: string;
   queryLogStatus?: MembershipQueryLogStatus;
   jobLogStatus?: MembershipJobLogStatus;
   defaultResultConfiguration?: MembershipProtectedQueryResultConfiguration;
   defaultJobResultConfiguration?: MembershipProtectedJobResultConfiguration;
+  membershipPaymentConfiguration?: UpdateMembershipPaymentConfiguration;
 }
 export const UpdateMembershipInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5590,6 +5616,9 @@ export const UpdateMembershipInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     defaultJobResultConfiguration: S.optional(
       MembershipProtectedJobResultConfiguration,
+    ),
+    membershipPaymentConfiguration: S.optional(
+      UpdateMembershipPaymentConfiguration,
     ),
   }).pipe(
     T.all(
@@ -5868,13 +5897,28 @@ export const ProtectedJobError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ProtectedJobWorkerComputeType = "CR.1X" | "CR.4X" | (string & {});
 export const ProtectedJobWorkerComputeType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SparkProperties = { [key: string]: string | undefined };
+export const SparkProperties = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export type WorkerComputeConfigurationProperties = {
+  spark: { [key: string]: string | undefined };
+};
+export const WorkerComputeConfigurationProperties =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([S.Struct({ spark: SparkProperties })]);
 export interface ProtectedJobWorkerComputeConfiguration {
   type: ProtectedJobWorkerComputeType;
   number: number;
+  properties?: WorkerComputeConfigurationProperties;
 }
 export const ProtectedJobWorkerComputeConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ type: ProtectedJobWorkerComputeType, number: S.Number }),
+    S.Struct({
+      type: ProtectedJobWorkerComputeType,
+      number: S.Number,
+      properties: S.optional(WorkerComputeConfigurationProperties),
+    }),
   ).annotate({
     identifier: "ProtectedJobWorkerComputeConfiguration",
   }) as any as S.Schema<ProtectedJobWorkerComputeConfiguration>;
@@ -5897,6 +5941,7 @@ export interface ProtectedJob {
   result?: ProtectedJobResult;
   error?: ProtectedJobError;
   computeConfiguration?: ProtectedJobComputeConfiguration;
+  jobComputePayerAccountId?: string;
 }
 export const ProtectedJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -5911,6 +5956,7 @@ export const ProtectedJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     result: S.optional(ProtectedJobResult),
     error: S.optional(ProtectedJobError),
     computeConfiguration: S.optional(ProtectedJobComputeConfiguration),
+    jobComputePayerAccountId: S.optional(S.String),
   }),
 ).annotate({ identifier: "ProtectedJob" }) as any as S.Schema<ProtectedJob>;
 export interface GetProtectedJobOutput {
@@ -6157,16 +6203,6 @@ export const DifferentialPrivacyParameters =
   }) as any as S.Schema<DifferentialPrivacyParameters>;
 export type WorkerComputeType = "CR.1X" | "CR.4X" | (string & {});
 export const WorkerComputeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type SparkProperties = { [key: string]: string | undefined };
-export const SparkProperties = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export type WorkerComputeConfigurationProperties = {
-  spark: { [key: string]: string | undefined };
-};
-export const WorkerComputeConfigurationProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.Union([S.Struct({ spark: SparkProperties })]);
 export interface WorkerComputeConfiguration {
   type?: WorkerComputeType;
   number?: number;
@@ -6199,6 +6235,7 @@ export interface ProtectedQuery {
   error?: ProtectedQueryError;
   differentialPrivacy?: DifferentialPrivacyParameters;
   computeConfiguration?: ComputeConfiguration;
+  queryComputePayerAccountId?: string;
 }
 export const ProtectedQuery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6214,6 +6251,7 @@ export const ProtectedQuery = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     error: S.optional(ProtectedQueryError),
     differentialPrivacy: S.optional(DifferentialPrivacyParameters),
     computeConfiguration: S.optional(ComputeConfiguration),
+    queryComputePayerAccountId: S.optional(S.String),
   }),
 ).annotate({ identifier: "ProtectedQuery" }) as any as S.Schema<ProtectedQuery>;
 export interface GetProtectedQueryOutput {
@@ -6384,6 +6422,7 @@ export interface ProtectedJobSummary {
   createTime: Date;
   status: ProtectedJobStatus;
   receiverConfigurations: ProtectedJobReceiverConfiguration[];
+  jobComputePayerAccountId?: string;
 }
 export const ProtectedJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6393,6 +6432,7 @@ export const ProtectedJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     status: ProtectedJobStatus,
     receiverConfigurations: ProtectedJobReceiverConfigurations,
+    jobComputePayerAccountId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ProtectedJobSummary",
@@ -6484,6 +6524,7 @@ export interface ProtectedQuerySummary {
   createTime: Date;
   status: string;
   receiverConfigurations: ReceiverConfiguration[];
+  queryComputePayerAccountId?: string;
 }
 export const ProtectedQuerySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6493,6 +6534,7 @@ export const ProtectedQuerySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     status: S.String,
     receiverConfigurations: ReceiverConfigurationsList,
+    queryComputePayerAccountId: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ProtectedQuerySummary",
@@ -6628,6 +6670,7 @@ export interface StartProtectedJobInput {
   jobParameters: ProtectedJobParameters;
   resultConfiguration?: ProtectedJobResultConfigurationInput;
   computeConfiguration?: ProtectedJobComputeConfiguration;
+  jobComputePayerAccountId?: string;
 }
 export const StartProtectedJobInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6637,6 +6680,7 @@ export const StartProtectedJobInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       jobParameters: ProtectedJobParameters,
       resultConfiguration: S.optional(ProtectedJobResultConfigurationInput),
       computeConfiguration: S.optional(ProtectedJobComputeConfiguration),
+      jobComputePayerAccountId: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -6667,6 +6711,7 @@ export interface StartProtectedQueryInput {
   sqlParameters: ProtectedQuerySQLParameters;
   resultConfiguration?: ProtectedQueryResultConfiguration;
   computeConfiguration?: ComputeConfiguration;
+  queryComputePayerAccountId?: string;
 }
 export const StartProtectedQueryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6676,6 +6721,7 @@ export const StartProtectedQueryInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       sqlParameters: ProtectedQuerySQLParameters,
       resultConfiguration: S.optional(ProtectedQueryResultConfiguration),
       computeConfiguration: S.optional(ComputeConfiguration),
+      queryComputePayerAccountId: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({

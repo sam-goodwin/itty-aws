@@ -98,6 +98,7 @@ export type ErrorMessage = string;
 export type DnssecPublicKey = string;
 export type RequestId = string;
 export type LangCode = string;
+export type TldName = string;
 export type DomainAuthCode = string | redacted.Redacted<string>;
 export type Message = string;
 export type TagKey = string;
@@ -121,7 +122,6 @@ export type DomainStatus = string;
 export type Value = string;
 export type PageMarker = string;
 export type PageMaxItems = number;
-export type TldName = string;
 export type ListPricesPageMaxItems = number;
 export type DomainPriceName = string;
 export type Price = number;
@@ -1641,7 +1641,7 @@ export const RetrieveDomainAuthCodeResponse =
 export interface TransferDomainRequest {
   DomainName: string;
   IdnLangCode?: string;
-  DurationInYears: number;
+  DurationInYears?: number;
   Nameservers?: Nameserver[];
   AuthCode?: string | redacted.Redacted<string>;
   AutoRenew?: boolean;
@@ -1658,7 +1658,7 @@ export const TransferDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     IdnLangCode: S.optional(S.String),
-    DurationInYears: S.Number,
+    DurationInYears: S.optional(S.Number),
     Nameservers: S.optional(NameserverList),
     AuthCode: S.optional(SensitiveString),
     AutoRenew: S.optional(S.Boolean),
@@ -1956,6 +1956,10 @@ export class TLDRulesViolation extends S.TaggedErrorClass<TLDRulesViolation>()(
   "TLDRulesViolation",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class TLDInMaintenance extends S.TaggedErrorClass<TLDInMaintenance>()(
+  "TLDInMaintenance",
+  { message: S.optional(S.String), tld: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type AcceptDomainTransferFromAnotherAwsAccountError =
@@ -2062,6 +2066,7 @@ export const cancelDomainTransferToAnotherAwsAccount: API.OperationMethod<
 }));
 export type CheckDomainAvailabilityError =
   | InvalidInput
+  | TLDInMaintenance
   | UnsupportedTLD
   | CommonErrors;
 /**
@@ -2077,13 +2082,14 @@ export const checkDomainAvailability: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckDomainAvailabilityRequest,
   output: CheckDomainAvailabilityResponse,
-  errors: [InvalidInput, UnsupportedTLD],
+  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CheckDomainAvailability",
 }));
 export type CheckDomainTransferabilityError =
   | InvalidInput
+  | TLDInMaintenance
   | UnsupportedTLD
   | CommonErrors;
 /**
@@ -2097,7 +2103,7 @@ export const checkDomainTransferability: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckDomainTransferabilityRequest,
   output: CheckDomainTransferabilityResponse,
-  errors: [InvalidInput, UnsupportedTLD],
+  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CheckDomainTransferability",
@@ -2125,7 +2131,8 @@ export type DeleteDomainError =
  * - When the registration has been deleted, we'll send you a confirmation to the
  * registrant contact. The email will come from
  * `noreply@domainnameverification.net` or
- * `noreply@registrar.amazon.com`.
+ * `noreply@emailverification.info` or
+ * `noreply@registrar.amazon`.
  */
 export const deleteDomain: API.OperationMethod<
   DeleteDomainRequest,
@@ -2358,6 +2365,7 @@ export const getDomainDetail: API.OperationMethod<
 }));
 export type GetDomainSuggestionsError =
   | InvalidInput
+  | TLDInMaintenance
   | UnsupportedTLD
   | CommonErrors;
 /**
@@ -2371,7 +2379,7 @@ export const getDomainSuggestions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainSuggestionsRequest,
   output: GetDomainSuggestionsResponse,
-  errors: [InvalidInput, UnsupportedTLD],
+  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetDomainSuggestions",
@@ -2551,6 +2559,7 @@ export const listTagsForDomain: API.OperationMethod<
 export type PushDomainError =
   | InvalidInput
   | OperationLimitExceeded
+  | TLDInMaintenance
   | UnsupportedTLD
   | CommonErrors;
 /**
@@ -2569,7 +2578,12 @@ export const pushDomain: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PushDomainRequest,
   output: PushDomainResponse,
-  errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  errors: [
+    InvalidInput,
+    OperationLimitExceeded,
+    TLDInMaintenance,
+    UnsupportedTLD,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "PushDomain",
@@ -2696,6 +2710,7 @@ export const renewDomain: API.OperationMethod<
 export type ResendContactReachabilityEmailError =
   | InvalidInput
   | OperationLimitExceeded
+  | TLDInMaintenance
   | UnsupportedTLD
   | CommonErrors;
 /**
@@ -2711,12 +2726,20 @@ export const resendContactReachabilityEmail: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResendContactReachabilityEmailRequest,
   output: ResendContactReachabilityEmailResponse,
-  errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  errors: [
+    InvalidInput,
+    OperationLimitExceeded,
+    TLDInMaintenance,
+    UnsupportedTLD,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ResendContactReachabilityEmail",
 }));
-export type ResendOperationAuthorizationError = InvalidInput | CommonErrors;
+export type ResendOperationAuthorizationError =
+  | InvalidInput
+  | TLDInMaintenance
+  | CommonErrors;
 /**
  * Resend the form of authorization email for this operation.
  */
@@ -2728,13 +2751,14 @@ export const resendOperationAuthorization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResendOperationAuthorizationRequest,
   output: ResendOperationAuthorizationResponse,
-  errors: [InvalidInput],
+  errors: [InvalidInput, TLDInMaintenance],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ResendOperationAuthorization",
 }));
 export type RetrieveDomainAuthCodeError =
   | InvalidInput
+  | TLDInMaintenance
   | UnsupportedTLD
   | CommonErrors;
 /**
@@ -2749,7 +2773,7 @@ export const retrieveDomainAuthCode: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveDomainAuthCodeRequest,
   output: RetrieveDomainAuthCodeResponse,
-  errors: [InvalidInput, UnsupportedTLD],
+  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "RetrieveDomainAuthCode",

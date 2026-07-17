@@ -118,6 +118,9 @@ export type S3BucketArn = string;
 export type ConfidenceThreshold = number;
 export type VoiceId = string;
 export type BedrockModelArn = string;
+export type AudioFillerDelayInMilliseconds = number;
+export type AudioFillerDurationInMilliseconds = number;
+export type AudioFillerDeliveryDelayInMilliseconds = number;
 export type SecretsManagerSecretArn = string;
 export type DeepgramModelId = string;
 export type Enabled = boolean;
@@ -865,6 +868,34 @@ export const UnifiedSpeechSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UnifiedSpeechSettings",
 }) as any as S.Schema<UnifiedSpeechSettings>;
+export type AudioFillerType =
+  | "MELODY_CHIPPER_CHIME"
+  | "MELODY_CURIOUS_CRAWL"
+  | "MELODY_RISING_RIPPLE"
+  | "MELODY_PATIENT_PING"
+  | "MELODY_PONDERING_PONG"
+  | "TYPING_KINETIC_KEYS"
+  | "TYPING_QUIET_QWERTY"
+  | (string & {});
+export const AudioFillerType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AudioFillerSettings {
+  enabled?: boolean;
+  audioType?: AudioFillerType;
+  startDelayInMilliseconds?: number;
+  minimumPlayDurationInMilliseconds?: number;
+  responseDeliveryDelayInMilliseconds?: number;
+}
+export const AudioFillerSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    audioType: S.optional(AudioFillerType),
+    startDelayInMilliseconds: S.optional(S.Number),
+    minimumPlayDurationInMilliseconds: S.optional(S.Number),
+    responseDeliveryDelayInMilliseconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AudioFillerSettings",
+}) as any as S.Schema<AudioFillerSettings>;
 export type SpeechModelPreference =
   | "Standard"
   | "Neural"
@@ -1056,6 +1087,7 @@ export interface CreateBotLocaleRequest {
   nluIntentConfidenceThreshold: number;
   voiceSettings?: VoiceSettings;
   unifiedSpeechSettings?: UnifiedSpeechSettings;
+  audioFillerSettings?: AudioFillerSettings;
   speechRecognitionSettings?: SpeechRecognitionSettings;
   generativeAISettings?: GenerativeAISettings;
   speechDetectionSensitivity?: SpeechDetectionSensitivity;
@@ -1070,6 +1102,7 @@ export const CreateBotLocaleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       nluIntentConfidenceThreshold: S.Number,
       voiceSettings: S.optional(VoiceSettings),
       unifiedSpeechSettings: S.optional(UnifiedSpeechSettings),
+      audioFillerSettings: S.optional(AudioFillerSettings),
       speechRecognitionSettings: S.optional(SpeechRecognitionSettings),
       generativeAISettings: S.optional(GenerativeAISettings),
       speechDetectionSensitivity: S.optional(SpeechDetectionSensitivity),
@@ -1098,6 +1131,7 @@ export interface CreateBotLocaleResponse {
   nluIntentConfidenceThreshold?: number;
   voiceSettings?: VoiceSettings;
   unifiedSpeechSettings?: UnifiedSpeechSettings;
+  audioFillerSettings?: AudioFillerSettings;
   speechRecognitionSettings?: SpeechRecognitionSettings;
   botLocaleStatus?: BotLocaleStatus;
   creationDateTime?: Date;
@@ -1115,6 +1149,7 @@ export const CreateBotLocaleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       nluIntentConfidenceThreshold: S.optional(S.Number),
       voiceSettings: S.optional(VoiceSettings),
       unifiedSpeechSettings: S.optional(UnifiedSpeechSettings),
+      audioFillerSettings: S.optional(AudioFillerSettings),
       speechRecognitionSettings: S.optional(SpeechRecognitionSettings),
       botLocaleStatus: S.optional(BotLocaleStatus),
       creationDateTime: S.optional(
@@ -3744,6 +3779,7 @@ export interface DescribeBotLocaleResponse {
   nluIntentConfidenceThreshold?: number;
   voiceSettings?: VoiceSettings;
   unifiedSpeechSettings?: UnifiedSpeechSettings;
+  audioFillerSettings?: AudioFillerSettings;
   speechRecognitionSettings?: SpeechRecognitionSettings;
   intentsCount?: number;
   slotTypesCount?: number;
@@ -3768,6 +3804,7 @@ export const DescribeBotLocaleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       nluIntentConfidenceThreshold: S.optional(S.Number),
       voiceSettings: S.optional(VoiceSettings),
       unifiedSpeechSettings: S.optional(UnifiedSpeechSettings),
+      audioFillerSettings: S.optional(AudioFillerSettings),
       speechRecognitionSettings: S.optional(SpeechRecognitionSettings),
       intentsCount: S.optional(S.Number),
       slotTypesCount: S.optional(S.Number),
@@ -4319,6 +4356,7 @@ export interface BotLocaleImportSpecification {
   speechRecognitionSettings?: SpeechRecognitionSettings;
   speechDetectionSensitivity?: SpeechDetectionSensitivity;
   unifiedSpeechSettings?: UnifiedSpeechSettings;
+  audioFillerSettings?: AudioFillerSettings;
 }
 export const BotLocaleImportSpecification =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4331,6 +4369,7 @@ export const BotLocaleImportSpecification =
       speechRecognitionSettings: S.optional(SpeechRecognitionSettings),
       speechDetectionSensitivity: S.optional(SpeechDetectionSensitivity),
       unifiedSpeechSettings: S.optional(UnifiedSpeechSettings),
+      audioFillerSettings: S.optional(AudioFillerSettings),
     }),
   ).annotate({
     identifier: "BotLocaleImportSpecification",
@@ -9728,6 +9767,7 @@ export interface UpdateBotLocaleRequest {
   nluIntentConfidenceThreshold: number;
   voiceSettings?: VoiceSettings;
   unifiedSpeechSettings?: UnifiedSpeechSettings;
+  audioFillerSettings?: AudioFillerSettings;
   speechRecognitionSettings?: SpeechRecognitionSettings;
   generativeAISettings?: GenerativeAISettings;
   speechDetectionSensitivity?: SpeechDetectionSensitivity;
@@ -9742,6 +9782,7 @@ export const UpdateBotLocaleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       nluIntentConfidenceThreshold: S.Number,
       voiceSettings: S.optional(VoiceSettings),
       unifiedSpeechSettings: S.optional(UnifiedSpeechSettings),
+      audioFillerSettings: S.optional(AudioFillerSettings),
       speechRecognitionSettings: S.optional(SpeechRecognitionSettings),
       generativeAISettings: S.optional(GenerativeAISettings),
       speechDetectionSensitivity: S.optional(SpeechDetectionSensitivity),
@@ -9770,6 +9811,7 @@ export interface UpdateBotLocaleResponse {
   nluIntentConfidenceThreshold?: number;
   voiceSettings?: VoiceSettings;
   unifiedSpeechSettings?: UnifiedSpeechSettings;
+  audioFillerSettings?: AudioFillerSettings;
   speechRecognitionSettings?: SpeechRecognitionSettings;
   botLocaleStatus?: BotLocaleStatus;
   failureReasons?: string[];
@@ -9790,6 +9832,7 @@ export const UpdateBotLocaleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       nluIntentConfidenceThreshold: S.optional(S.Number),
       voiceSettings: S.optional(VoiceSettings),
       unifiedSpeechSettings: S.optional(UnifiedSpeechSettings),
+      audioFillerSettings: S.optional(AudioFillerSettings),
       speechRecognitionSettings: S.optional(SpeechRecognitionSettings),
       botLocaleStatus: S.optional(BotLocaleStatus),
       failureReasons: S.optional(FailureReasons),

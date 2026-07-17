@@ -1131,11 +1131,13 @@ export type ModificationResourceEnum =
   | "ROOT_VOLUME"
   | "USER_VOLUME"
   | "COMPUTE_TYPE"
+  | "PROTOCOL"
   | (string & {});
 export const ModificationResourceEnum = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ModificationStateEnum =
   | "UPDATE_INITIATED"
   | "UPDATE_IN_PROGRESS"
+  | "UPDATE_FAILED"
   | (string & {});
 export const ModificationStateEnum = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ModificationState {
@@ -5591,10 +5593,10 @@ export type CreateConnectClientAddInError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * Creates a client-add-in for Amazon Connect within a directory. You can create only
- * one Amazon Connect client add-in within a directory.
+ * Creates a client-add-in for Connect Customer within a directory. You can create only
+ * one Connect Customer client add-in within a directory.
  *
- * This client add-in allows WorkSpaces users to seamlessly connect to Amazon Connect.
+ * This client add-in allows WorkSpaces users to seamlessly connect to Connect Customer.
  */
 export const createConnectClientAddIn: API.OperationMethod<
   CreateConnectClientAddInRequest,
@@ -5990,7 +5992,7 @@ export type DeleteConnectClientAddInError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * Deletes a client-add-in for Amazon Connect that is configured within a
+ * Deletes a client-add-in for Connect Customer that is configured within a
  * directory.
  */
 export const deleteConnectClientAddIn: API.OperationMethod<
@@ -6452,7 +6454,7 @@ export type DescribeConnectClientAddInsError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * Retrieves a list of Amazon Connect client add-ins that have been created.
+ * Retrieves a list of Connect Customer client add-ins that have been created.
  */
 export const describeConnectClientAddIns: API.OperationMethod<
   DescribeConnectClientAddInsRequest,
@@ -7981,8 +7983,8 @@ export type UpdateConnectClientAddInError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * Updates a Amazon Connect client add-in. Use this action to update the name and
- * endpoint URL of a Amazon Connect client add-in.
+ * Updates a Connect Customer client add-in. Use this action to update the name and
+ * endpoint URL of a Connect Customer client add-in.
  */
 export const updateConnectClientAddIn: API.OperationMethod<
   UpdateConnectClientAddInRequest,

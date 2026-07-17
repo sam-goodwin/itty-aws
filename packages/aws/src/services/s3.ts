@@ -2423,25 +2423,35 @@ const rules = T.EndpointResolver((p, _) => {
                                             accessPointName !== false
                                           ) {
                                             if (outpostType === "accesspoint") {
-                                              {
-                                                const url =
-                                                  _.parseURL(Endpoint);
-                                                if (
-                                                  Endpoint != null &&
-                                                  url != null &&
-                                                  url !== false
-                                                ) {
-                                                  return e(
-                                                    `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${outpostId}.${_.getAttr(url, "authority")}`,
-                                                    _p7(bucketArn),
-                                                    {},
-                                                  );
+                                              if (
+                                                _.isValidHostLabel(
+                                                  accessPointName,
+                                                  false,
+                                                )
+                                              ) {
+                                                {
+                                                  const url =
+                                                    _.parseURL(Endpoint);
+                                                  if (
+                                                    Endpoint != null &&
+                                                    url != null &&
+                                                    url !== false
+                                                  ) {
+                                                    return e(
+                                                      `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${outpostId}.${_.getAttr(url, "authority")}`,
+                                                      _p7(bucketArn),
+                                                      {},
+                                                    );
+                                                  }
                                                 }
+                                                return e(
+                                                  `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${outpostId}.s3-outposts.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
+                                                  _p7(bucketArn),
+                                                  {},
+                                                );
                                               }
-                                              return e(
-                                                `https://${accessPointName}-${_.getAttr(bucketArn, "accountId")}.${outpostId}.s3-outposts.${_.getAttr(bucketArn, "region")}.${_.getAttr(bucketPartition, "dnsSuffix")}`,
-                                                _p7(bucketArn),
-                                                {},
+                                              return err(
+                                                `Invalid ARN: The access point name may only contain a-z, A-Z, 0-9 and \`-\`. Found: \`${accessPointName}\``,
                                               );
                                             }
                                             return err(
@@ -3021,6 +3031,11 @@ export type ChecksumCRC32C = string;
 export type ChecksumCRC64NVME = string;
 export type ChecksumSHA1 = string;
 export type ChecksumSHA256 = string;
+export type ChecksumSHA512 = string;
+export type ChecksumMD5 = string;
+export type ChecksumXXHASH64 = string;
+export type ChecksumXXHASH3 = string;
+export type ChecksumXXHASH128 = string;
 export type PartNumber = number;
 export type MpuObjectSize = number;
 export type IfMatch = string;
@@ -3067,6 +3082,7 @@ export type S3RegionalOrS3ExpressBucketArnString = string;
 export type ContentMD5 = string;
 export type RecordExpirationDays = number;
 export type KmsKeyArn = string;
+export type Role = string;
 export type S3TablesBucketArn = string;
 export type S3TablesName = string;
 export type AbortDate = Date;
@@ -3083,6 +3099,8 @@ export type BypassGovernanceRetention = boolean;
 export type IfMatchLastModifiedTime = Date;
 export type IfMatchSize = number;
 export type DeleteMarker = boolean;
+export type AnnotationName = string;
+export type ObjectIfMatch = string;
 export type LastModifiedTime = Date;
 export type Size = number;
 export type Quiet = boolean;
@@ -3122,7 +3140,6 @@ export type QueueArn = string;
 export type LambdaFunctionArn = string;
 export type Policy = string;
 export type IsPublic = boolean;
-export type Role = string;
 export type Priority = number;
 export type ReplicaKmsKeyID = string;
 export type Minutes = number;
@@ -3173,6 +3190,9 @@ export type UploadIdMarker = string;
 export type NextKeyMarker = string;
 export type NextUploadIdMarker = string;
 export type Initiated = Date;
+export type MaxAnnotationResults = number;
+export type AnnotationPrefix = string;
+export type AnnotationCount = number;
 export type Marker = string;
 export type MaxKeys = number;
 export type NextMarker = string;
@@ -3283,6 +3303,11 @@ export interface CompletedPart {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   PartNumber?: number;
 }
 export const CompletedPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3293,6 +3318,11 @@ export const CompletedPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ChecksumCRC64NVME: S.optional(S.String),
     ChecksumSHA1: S.optional(S.String),
     ChecksumSHA256: S.optional(S.String),
+    ChecksumSHA512: S.optional(S.String),
+    ChecksumMD5: S.optional(S.String),
+    ChecksumXXHASH64: S.optional(S.String),
+    ChecksumXXHASH3: S.optional(S.String),
+    ChecksumXXHASH128: S.optional(S.String),
     PartNumber: S.optional(S.Number),
   }),
 ).annotate({ identifier: "CompletedPart" }) as any as S.Schema<CompletedPart>;
@@ -3325,6 +3355,11 @@ export interface CompleteMultipartUploadRequest {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   ChecksumType?: ChecksumType;
   MpuObjectSize?: number;
   RequestPayer?: RequestPayer;
@@ -3358,6 +3393,21 @@ export const CompleteMultipartUploadRequest =
       ),
       ChecksumSHA256: S.optional(S.String).pipe(
         T.HttpHeader("x-amz-checksum-sha256"),
+      ),
+      ChecksumSHA512: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha512"),
+      ),
+      ChecksumMD5: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-md5"),
+      ),
+      ChecksumXXHASH64: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash64"),
+      ),
+      ChecksumXXHASH3: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash3"),
+      ),
+      ChecksumXXHASH128: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash128"),
       ),
       ChecksumType: S.optional(ChecksumType).pipe(
         T.HttpHeader("x-amz-checksum-type"),
@@ -3414,6 +3464,11 @@ export interface CompleteMultipartUploadOutput {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   ChecksumType?: ChecksumType;
   ServerSideEncryption?: ServerSideEncryption;
   VersionId?: string;
@@ -3434,6 +3489,11 @@ export const CompleteMultipartUploadOutput =
       ChecksumCRC64NVME: S.optional(S.String),
       ChecksumSHA1: S.optional(S.String),
       ChecksumSHA256: S.optional(S.String),
+      ChecksumSHA512: S.optional(S.String),
+      ChecksumMD5: S.optional(S.String),
+      ChecksumXXHASH64: S.optional(S.String),
+      ChecksumXXHASH3: S.optional(S.String),
+      ChecksumXXHASH128: S.optional(S.String),
       ChecksumType: S.optional(ChecksumType),
       ServerSideEncryption: S.optional(ServerSideEncryption).pipe(
         T.HttpHeader("x-amz-server-side-encryption"),
@@ -3468,6 +3528,11 @@ export type ChecksumAlgorithm =
   | "SHA1"
   | "SHA256"
   | "CRC64NVME"
+  | "SHA512"
+  | "MD5"
+  | "XXHASH64"
+  | "XXHASH3"
+  | "XXHASH128"
   | (string & {});
 export const ChecksumAlgorithm = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type Metadata = { [key: string]: string | undefined };
@@ -3479,6 +3544,8 @@ export type MetadataDirective = "COPY" | "REPLACE" | (string & {});
 export const MetadataDirective = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type TaggingDirective = "COPY" | "REPLACE" | (string & {});
 export const TaggingDirective = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AnnotationDirective = "COPY" | "EXCLUDE" | (string & {});
+export const AnnotationDirective = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type StorageClass =
   | "STANDARD"
   | "REDUCED_REDUNDANCY"
@@ -3524,6 +3591,7 @@ export interface CopyObjectRequest {
   Metadata?: { [key: string]: string | undefined };
   MetadataDirective?: MetadataDirective;
   TaggingDirective?: TaggingDirective;
+  AnnotationDirective?: AnnotationDirective;
   ServerSideEncryption?: ServerSideEncryption;
   StorageClass?: StorageClass;
   WebsiteRedirectLocation?: string;
@@ -3598,6 +3666,9 @@ export const CopyObjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     TaggingDirective: S.optional(TaggingDirective).pipe(
       T.HttpHeader("x-amz-tagging-directive"),
+    ),
+    AnnotationDirective: S.optional(AnnotationDirective).pipe(
+      T.HttpHeader("x-amz-object-annotation-directive"),
     ),
     ServerSideEncryption: S.optional(ServerSideEncryption).pipe(
       T.HttpHeader("x-amz-server-side-encryption"),
@@ -3680,6 +3751,11 @@ export interface CopyObjectResult {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
 }
 export const CopyObjectResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3691,6 +3767,11 @@ export const CopyObjectResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ChecksumCRC64NVME: S.optional(S.String),
     ChecksumSHA1: S.optional(S.String),
     ChecksumSHA256: S.optional(S.String),
+    ChecksumSHA512: S.optional(S.String),
+    ChecksumMD5: S.optional(S.String),
+    ChecksumXXHASH64: S.optional(S.String),
+    ChecksumXXHASH3: S.optional(S.String),
+    ChecksumXXHASH128: S.optional(S.String),
   }),
 ).annotate({
   identifier: "CopyObjectResult",
@@ -3980,14 +4061,37 @@ export const InventoryTableConfiguration =
   ).annotate({
     identifier: "InventoryTableConfiguration",
   }) as any as S.Schema<InventoryTableConfiguration>;
+export type AnnotationConfigurationState =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
+export const AnnotationConfigurationState =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AnnotationTableConfiguration {
+  ConfigurationState: AnnotationConfigurationState;
+  EncryptionConfiguration?: MetadataTableEncryptionConfiguration;
+  Role?: string;
+}
+export const AnnotationTableConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ConfigurationState: AnnotationConfigurationState,
+      EncryptionConfiguration: S.optional(MetadataTableEncryptionConfiguration),
+      Role: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AnnotationTableConfiguration",
+  }) as any as S.Schema<AnnotationTableConfiguration>;
 export interface MetadataConfiguration {
   JournalTableConfiguration: JournalTableConfiguration;
   InventoryTableConfiguration?: InventoryTableConfiguration;
+  AnnotationTableConfiguration?: AnnotationTableConfiguration;
 }
 export const MetadataConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     JournalTableConfiguration: JournalTableConfiguration,
     InventoryTableConfiguration: S.optional(InventoryTableConfiguration),
+    AnnotationTableConfiguration: S.optional(AnnotationTableConfiguration),
   }),
 ).annotate({
   identifier: "MetadataConfiguration",
@@ -4911,6 +5015,62 @@ export const DeleteObjectOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteObjectOutput",
 }) as any as S.Schema<DeleteObjectOutput>;
+export interface DeleteObjectAnnotationRequest {
+  Bucket: string;
+  Key: string;
+  AnnotationName: string;
+  VersionId?: string;
+  RequestPayer?: RequestPayer;
+  ExpectedBucketOwner?: string;
+  ObjectIfMatch?: string;
+}
+export const DeleteObjectAnnotationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+      Key: S.String.pipe(T.HttpLabel("Key")),
+      AnnotationName: S.String.pipe(T.HttpQuery("annotationName")),
+      VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+      RequestPayer: S.optional(RequestPayer).pipe(
+        T.HttpHeader("x-amz-request-payer"),
+      ),
+      ExpectedBucketOwner: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-expected-bucket-owner"),
+      ),
+      ObjectIfMatch: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-object-if-match"),
+      ),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "DELETE", uri: "/{Bucket}/{Key+}?annotation" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteObjectAnnotationRequest",
+  }) as any as S.Schema<DeleteObjectAnnotationRequest>;
+export interface DeleteObjectAnnotationOutput {
+  ObjectVersionId?: string;
+  RequestCharged?: RequestCharged;
+}
+export const DeleteObjectAnnotationOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ObjectVersionId: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-object-version-id"),
+      ),
+      RequestCharged: S.optional(RequestCharged).pipe(
+        T.HttpHeader("x-amz-request-charged"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DeleteObjectAnnotationOutput",
+  }) as any as S.Schema<DeleteObjectAnnotationOutput>;
 export interface ObjectIdentifier {
   Key: string;
   VersionId?: string;
@@ -6302,10 +6462,32 @@ export const InventoryTableConfigurationResult =
   ).annotate({
     identifier: "InventoryTableConfigurationResult",
   }) as any as S.Schema<InventoryTableConfigurationResult>;
+export interface AnnotationTableConfigurationResult {
+  ConfigurationState: AnnotationConfigurationState;
+  TableStatus?: string;
+  Error?: ErrorDetails;
+  TableName?: string;
+  TableArn?: string;
+  Role?: string;
+}
+export const AnnotationTableConfigurationResult =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ConfigurationState: AnnotationConfigurationState,
+      TableStatus: S.optional(S.String),
+      Error: S.optional(ErrorDetails),
+      TableName: S.optional(S.String),
+      TableArn: S.optional(S.String),
+      Role: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AnnotationTableConfigurationResult",
+  }) as any as S.Schema<AnnotationTableConfigurationResult>;
 export interface MetadataConfigurationResult {
   DestinationResult: DestinationResult;
   JournalTableConfigurationResult?: JournalTableConfigurationResult;
   InventoryTableConfigurationResult?: InventoryTableConfigurationResult;
+  AnnotationTableConfigurationResult?: AnnotationTableConfigurationResult;
 }
 export const MetadataConfigurationResult =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -6316,6 +6498,9 @@ export const MetadataConfigurationResult =
       ),
       InventoryTableConfigurationResult: S.optional(
         InventoryTableConfigurationResult,
+      ),
+      AnnotationTableConfigurationResult: S.optional(
+        AnnotationTableConfigurationResult,
       ),
     }),
   ).annotate({
@@ -6564,6 +6749,9 @@ export type Event =
   | "s3:ObjectTagging:*"
   | "s3:ObjectTagging:Put"
   | "s3:ObjectTagging:Delete"
+  | "s3:ObjectAnnotation:*"
+  | "s3:ObjectAnnotation:Put"
+  | "s3:ObjectAnnotation:Delete"
   | (string & {});
 export const Event = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type EventList = Event[];
@@ -7383,7 +7571,18 @@ export const GetObjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       ver,
       rules,
       T.AwsProtocolsHttpChecksum({
-        responseAlgorithms: ["CRC64NVME", "CRC32", "CRC32C", "SHA256", "SHA1"],
+        responseAlgorithms: [
+          "CRC64NVME",
+          "CRC32",
+          "CRC32C",
+          "SHA256",
+          "SHA1",
+          "SHA512",
+          "MD5",
+          "XXHASH64",
+          "XXHASH3",
+          "XXHASH128",
+        ],
       }),
     ),
   ),
@@ -7412,6 +7611,11 @@ export interface GetObjectOutput {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   ChecksumType?: ChecksumType;
   MissingMeta?: number;
   VersionId?: string;
@@ -7466,6 +7670,19 @@ export const GetObjectOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     ChecksumSHA256: S.optional(S.String).pipe(
       T.HttpHeader("x-amz-checksum-sha256"),
+    ),
+    ChecksumSHA512: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-sha512"),
+    ),
+    ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+    ChecksumXXHASH64: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash64"),
+    ),
+    ChecksumXXHASH3: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash3"),
+    ),
+    ChecksumXXHASH128: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash128"),
     ),
     ChecksumType: S.optional(ChecksumType).pipe(
       T.HttpHeader("x-amz-checksum-type"),
@@ -7576,6 +7793,141 @@ export const GetObjectAclOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetObjectAclOutput",
 }) as any as S.Schema<GetObjectAclOutput>;
+export interface GetObjectAnnotationRequest {
+  Bucket: string;
+  Key: string;
+  AnnotationName: string;
+  VersionId?: string;
+  RequestPayer?: RequestPayer;
+  ExpectedBucketOwner?: string;
+  ChecksumMode?: ChecksumMode;
+}
+export const GetObjectAnnotationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+      Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+      AnnotationName: S.String.pipe(T.HttpQuery("annotationName")),
+      VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+      RequestPayer: S.optional(RequestPayer).pipe(
+        T.HttpHeader("x-amz-request-payer"),
+      ),
+      ExpectedBucketOwner: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-expected-bucket-owner"),
+      ),
+      ChecksumMode: S.optional(ChecksumMode).pipe(
+        T.HttpHeader("x-amz-checksum-mode"),
+      ),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "GET",
+          uri: "/{Bucket}/{Key+}?annotation&x-id=GetObjectAnnotation",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+        T.AwsProtocolsHttpChecksum({
+          responseAlgorithms: [
+            "CRC64NVME",
+            "CRC32",
+            "CRC32C",
+            "SHA256",
+            "SHA1",
+            "SHA512",
+            "MD5",
+            "XXHASH64",
+            "XXHASH3",
+            "XXHASH128",
+          ],
+        }),
+      ),
+    ),
+).annotate({
+  identifier: "GetObjectAnnotationRequest",
+}) as any as S.Schema<GetObjectAnnotationRequest>;
+export interface GetObjectAnnotationOutput {
+  AnnotationPayload?: T.StreamingOutputBody;
+  ObjectVersionId?: string;
+  LastModified?: Date;
+  ContentLength?: number;
+  ETag?: string;
+  ChecksumCRC32?: string;
+  ChecksumCRC32C?: string;
+  ChecksumCRC64NVME?: string;
+  ChecksumSHA1?: string;
+  ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
+  ChecksumType?: ChecksumType;
+  ServerSideEncryption?: ServerSideEncryption;
+  RequestCharged?: RequestCharged;
+  ReplicationStatus?: ReplicationStatus;
+}
+export const GetObjectAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AnnotationPayload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
+      ObjectVersionId: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-object-version-id"),
+      ),
+      LastModified: S.optional(
+        S.Date.pipe(T.TimestampFormat("http-date")),
+      ).pipe(T.HttpHeader("Last-Modified")),
+      ContentLength: S.optional(S.Number).pipe(T.HttpHeader("Content-Length")),
+      ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+      ChecksumCRC32: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-crc32"),
+      ),
+      ChecksumCRC32C: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-crc32c"),
+      ),
+      ChecksumCRC64NVME: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-crc64nvme"),
+      ),
+      ChecksumSHA1: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha1"),
+      ),
+      ChecksumSHA256: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha256"),
+      ),
+      ChecksumSHA512: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha512"),
+      ),
+      ChecksumMD5: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-md5"),
+      ),
+      ChecksumXXHASH64: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash64"),
+      ),
+      ChecksumXXHASH3: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash3"),
+      ),
+      ChecksumXXHASH128: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash128"),
+      ),
+      ChecksumType: S.optional(ChecksumType).pipe(
+        T.HttpHeader("x-amz-checksum-type"),
+      ),
+      ServerSideEncryption: S.optional(ServerSideEncryption).pipe(
+        T.HttpHeader("x-amz-server-side-encryption"),
+      ),
+      RequestCharged: S.optional(RequestCharged).pipe(
+        T.HttpHeader("x-amz-request-charged"),
+      ),
+      ReplicationStatus: S.optional(ReplicationStatus).pipe(
+        T.HttpHeader("x-amz-replication-status"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "GetObjectAnnotationOutput",
+}) as any as S.Schema<GetObjectAnnotationOutput>;
 export type ObjectAttributes =
   | "ETag"
   | "Checksum"
@@ -7648,6 +8000,11 @@ export interface Checksum {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   ChecksumType?: ChecksumType;
 }
 export const Checksum = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -7657,6 +8014,11 @@ export const Checksum = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ChecksumCRC64NVME: S.optional(S.String),
     ChecksumSHA1: S.optional(S.String),
     ChecksumSHA256: S.optional(S.String),
+    ChecksumSHA512: S.optional(S.String),
+    ChecksumMD5: S.optional(S.String),
+    ChecksumXXHASH64: S.optional(S.String),
+    ChecksumXXHASH3: S.optional(S.String),
+    ChecksumXXHASH128: S.optional(S.String),
     ChecksumType: S.optional(ChecksumType),
   }),
 ).annotate({ identifier: "Checksum" }) as any as S.Schema<Checksum>;
@@ -7668,6 +8030,11 @@ export interface ObjectPart {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
 }
 export const ObjectPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7678,6 +8045,11 @@ export const ObjectPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ChecksumCRC64NVME: S.optional(S.String),
     ChecksumSHA1: S.optional(S.String),
     ChecksumSHA256: S.optional(S.String),
+    ChecksumSHA512: S.optional(S.String),
+    ChecksumMD5: S.optional(S.String),
+    ChecksumXXHASH64: S.optional(S.String),
+    ChecksumXXHASH3: S.optional(S.String),
+    ChecksumXXHASH128: S.optional(S.String),
   }),
 ).annotate({ identifier: "ObjectPart" }) as any as S.Schema<ObjectPart>;
 export type PartsList = ObjectPart[];
@@ -8238,6 +8610,11 @@ export interface HeadObjectOutput {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   ChecksumType?: ChecksumType;
   ETag?: string;
   MissingMeta?: number;
@@ -8294,6 +8671,19 @@ export const HeadObjectOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     ChecksumSHA256: S.optional(S.String).pipe(
       T.HttpHeader("x-amz-checksum-sha256"),
+    ),
+    ChecksumSHA512: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-sha512"),
+    ),
+    ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+    ChecksumXXHASH64: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash64"),
+    ),
+    ChecksumXXHASH3: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash3"),
+    ),
+    ChecksumXXHASH128: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash128"),
     ),
     ChecksumType: S.optional(ChecksumType).pipe(
       T.HttpHeader("x-amz-checksum-type"),
@@ -8817,6 +9207,116 @@ export const ListMultipartUploadsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListMultipartUploadsOutput",
 }) as any as S.Schema<ListMultipartUploadsOutput>;
+export interface ListObjectAnnotationsRequest {
+  Bucket: string;
+  Key: string;
+  VersionId?: string;
+  MaxAnnotationResults?: number;
+  AnnotationPrefix?: string;
+  ContinuationToken?: string;
+  RequestPayer?: RequestPayer;
+  ExpectedBucketOwner?: string;
+}
+export const ListObjectAnnotationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+      Key: S.String.pipe(T.HttpLabel("Key")),
+      VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+      MaxAnnotationResults: S.optional(S.Number).pipe(
+        T.HttpQuery("max-annotation-results"),
+      ),
+      AnnotationPrefix: S.optional(S.String).pipe(
+        T.HttpQuery("annotation-prefix"),
+      ),
+      ContinuationToken: S.optional(S.String).pipe(
+        T.HttpQuery("continuation-token"),
+      ),
+      RequestPayer: S.optional(RequestPayer).pipe(
+        T.HttpHeader("x-amz-request-payer"),
+      ),
+      ExpectedBucketOwner: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-expected-bucket-owner"),
+      ),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "GET",
+          uri: "/{Bucket}/{Key+}?annotation&x-id=ListObjectAnnotations",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListObjectAnnotationsRequest",
+  }) as any as S.Schema<ListObjectAnnotationsRequest>;
+export type ChecksumAlgorithmList = ChecksumAlgorithm[];
+export const ChecksumAlgorithmList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ChecksumAlgorithm);
+export interface AnnotationEntry {
+  AnnotationName: string;
+  LastModified: Date;
+  ETag?: string;
+  ChecksumAlgorithm?: ChecksumAlgorithm[];
+  Size: number;
+  ReplicationStatus?: ReplicationStatus;
+}
+export const AnnotationEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AnnotationName: S.String,
+    LastModified: T.DateFromString,
+    ETag: S.optional(S.String),
+    ChecksumAlgorithm: S.optional(ChecksumAlgorithmList).pipe(T.XmlFlattened()),
+    Size: S.Number,
+    ReplicationStatus: S.optional(ReplicationStatus),
+  }),
+).annotate({
+  identifier: "AnnotationEntry",
+}) as any as S.Schema<AnnotationEntry>;
+export type AnnotationList = AnnotationEntry[];
+export const AnnotationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AnnotationEntry.pipe(T.XmlName("AnnotationEntry")).annotate({
+    identifier: "AnnotationEntry",
+  }),
+);
+export interface ListObjectAnnotationsOutput {
+  Annotations?: AnnotationEntry[];
+  Bucket?: string;
+  Key?: string;
+  ObjectVersionId?: string;
+  AnnotationPrefix?: string;
+  MaxAnnotationResults?: number;
+  AnnotationCount?: number;
+  ContinuationToken?: string;
+  NextContinuationToken?: string;
+  RequestCharged?: RequestCharged;
+}
+export const ListObjectAnnotationsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Annotations: S.optional(AnnotationList),
+      Bucket: S.optional(S.String),
+      Key: S.optional(S.String),
+      ObjectVersionId: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-object-version-id"),
+      ),
+      AnnotationPrefix: S.optional(S.String),
+      MaxAnnotationResults: S.optional(S.Number),
+      AnnotationCount: S.optional(S.Number),
+      ContinuationToken: S.optional(S.String),
+      NextContinuationToken: S.optional(S.String),
+      RequestCharged: S.optional(RequestCharged).pipe(
+        T.HttpHeader("x-amz-request-charged"),
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ListObjectAnnotationsOutput",
+  }) as any as S.Schema<ListObjectAnnotationsOutput>;
 export type OptionalObjectAttributes = "RestoreStatus" | (string & {});
 export const OptionalObjectAttributes = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type OptionalObjectAttributesList = OptionalObjectAttributes[];
@@ -8868,9 +9368,6 @@ export const ListObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListObjectsRequest",
 }) as any as S.Schema<ListObjectsRequest>;
-export type ChecksumAlgorithmList = ChecksumAlgorithm[];
-export const ChecksumAlgorithmList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ChecksumAlgorithm);
 export type ObjectStorageClass =
   | "STANDARD"
   | "REDUCED_REDUNDANCY"
@@ -9251,6 +9748,11 @@ export interface Part {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
 }
 export const Part = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9263,6 +9765,11 @@ export const Part = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ChecksumCRC64NVME: S.optional(S.String),
     ChecksumSHA1: S.optional(S.String),
     ChecksumSHA256: S.optional(S.String),
+    ChecksumSHA512: S.optional(S.String),
+    ChecksumMD5: S.optional(S.String),
+    ChecksumXXHASH64: S.optional(S.String),
+    ChecksumXXHASH3: S.optional(S.String),
+    ChecksumXXHASH128: S.optional(S.String),
   }),
 ).annotate({ identifier: "Part" }) as any as S.Schema<Part>;
 export type Parts = Part[];
@@ -10290,6 +10797,11 @@ export interface PutObjectRequest {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   Expires?: string;
   IfMatch?: string;
   IfNoneMatch?: string;
@@ -10351,6 +10863,19 @@ export const PutObjectRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     ChecksumSHA256: S.optional(S.String).pipe(
       T.HttpHeader("x-amz-checksum-sha256"),
+    ),
+    ChecksumSHA512: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-sha512"),
+    ),
+    ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+    ChecksumXXHASH64: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash64"),
+    ),
+    ChecksumXXHASH3: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash3"),
+    ),
+    ChecksumXXHASH128: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash128"),
     ),
     Expires: S.optional(S.String).pipe(T.HttpHeader("Expires")),
     IfMatch: S.optional(S.String).pipe(T.HttpHeader("If-Match")),
@@ -10438,6 +10963,11 @@ export interface PutObjectOutput {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   ChecksumType?: ChecksumType;
   ServerSideEncryption?: ServerSideEncryption;
   VersionId?: string;
@@ -10467,6 +10997,19 @@ export const PutObjectOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     ChecksumSHA256: S.optional(S.String).pipe(
       T.HttpHeader("x-amz-checksum-sha256"),
+    ),
+    ChecksumSHA512: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-sha512"),
+    ),
+    ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+    ChecksumXXHASH64: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash64"),
+    ),
+    ChecksumXXHASH3: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash3"),
+    ),
+    ChecksumXXHASH128: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash128"),
     ),
     ChecksumType: S.optional(ChecksumType).pipe(
       T.HttpHeader("x-amz-checksum-type"),
@@ -10574,6 +11117,167 @@ export const PutObjectAclOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutObjectAclOutput",
 }) as any as S.Schema<PutObjectAclOutput>;
+export interface PutObjectAnnotationRequest {
+  Bucket: string;
+  Key: string;
+  VersionId?: string;
+  AnnotationName: string;
+  AnnotationPayload: T.StreamingInputBody;
+  ObjectIfMatch?: string;
+  ChecksumAlgorithm?: ChecksumAlgorithm;
+  ChecksumCRC32?: string;
+  ChecksumCRC32C?: string;
+  ChecksumCRC64NVME?: string;
+  ChecksumSHA1?: string;
+  ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
+  ContentMD5?: string;
+  RequestPayer?: RequestPayer;
+  ExpectedBucketOwner?: string;
+}
+export const PutObjectAnnotationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+      Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
+      VersionId: S.optional(S.String).pipe(T.HttpQuery("versionId")),
+      AnnotationName: S.String.pipe(T.HttpQuery("annotationName")),
+      AnnotationPayload: T.StreamingInput.pipe(T.HttpPayload()),
+      ObjectIfMatch: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-object-if-match"),
+      ),
+      ChecksumAlgorithm: S.optional(ChecksumAlgorithm).pipe(
+        T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+      ),
+      ChecksumCRC32: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-crc32"),
+      ),
+      ChecksumCRC32C: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-crc32c"),
+      ),
+      ChecksumCRC64NVME: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-crc64nvme"),
+      ),
+      ChecksumSHA1: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha1"),
+      ),
+      ChecksumSHA256: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha256"),
+      ),
+      ChecksumSHA512: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha512"),
+      ),
+      ChecksumMD5: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-md5"),
+      ),
+      ChecksumXXHASH64: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash64"),
+      ),
+      ChecksumXXHASH3: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash3"),
+      ),
+      ChecksumXXHASH128: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash128"),
+      ),
+      ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+      RequestPayer: S.optional(RequestPayer).pipe(
+        T.HttpHeader("x-amz-request-payer"),
+      ),
+      ExpectedBucketOwner: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-expected-bucket-owner"),
+      ),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "PUT", uri: "/{Bucket}/{Key+}?annotation" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+        T.AwsProtocolsHttpChecksum({
+          requestAlgorithmMember: "ChecksumAlgorithm",
+        }),
+      ),
+    ),
+).annotate({
+  identifier: "PutObjectAnnotationRequest",
+}) as any as S.Schema<PutObjectAnnotationRequest>;
+export interface PutObjectAnnotationOutput {
+  Key?: string;
+  AnnotationName?: string;
+  ObjectVersionId?: string;
+  ETag?: string;
+  ChecksumCRC32?: string;
+  ChecksumCRC32C?: string;
+  ChecksumCRC64NVME?: string;
+  ChecksumSHA1?: string;
+  ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
+  ChecksumType?: ChecksumType;
+  ServerSideEncryption?: ServerSideEncryption;
+  RequestCharged?: RequestCharged;
+}
+export const PutObjectAnnotationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Key: S.optional(S.String),
+      AnnotationName: S.optional(S.String),
+      ObjectVersionId: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-object-version-id"),
+      ),
+      ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+      ChecksumCRC32: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-crc32"),
+      ),
+      ChecksumCRC32C: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-crc32c"),
+      ),
+      ChecksumCRC64NVME: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-crc64nvme"),
+      ),
+      ChecksumSHA1: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha1"),
+      ),
+      ChecksumSHA256: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha256"),
+      ),
+      ChecksumSHA512: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-sha512"),
+      ),
+      ChecksumMD5: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-md5"),
+      ),
+      ChecksumXXHASH64: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash64"),
+      ),
+      ChecksumXXHASH3: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash3"),
+      ),
+      ChecksumXXHASH128: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-checksum-xxhash128"),
+      ),
+      ChecksumType: S.optional(ChecksumType).pipe(
+        T.HttpHeader("x-amz-checksum-type"),
+      ),
+      ServerSideEncryption: S.optional(ServerSideEncryption).pipe(
+        T.HttpHeader("x-amz-server-side-encryption"),
+      ),
+      RequestCharged: S.optional(RequestCharged).pipe(
+        T.HttpHeader("x-amz-request-charged"),
+      ),
+    }).pipe(ns),
+).annotate({
+  identifier: "PutObjectAnnotationOutput",
+}) as any as S.Schema<PutObjectAnnotationOutput>;
 export interface PutObjectLegalHoldRequest {
   Bucket: string;
   Key: string;
@@ -11362,6 +12066,67 @@ export const SelectObjectContentOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "SelectObjectContentOutput",
 }) as any as S.Schema<SelectObjectContentOutput>;
+export interface AnnotationTableConfigurationUpdates {
+  ConfigurationState: AnnotationConfigurationState;
+  EncryptionConfiguration?: MetadataTableEncryptionConfiguration;
+  Role?: string;
+}
+export const AnnotationTableConfigurationUpdates =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ConfigurationState: AnnotationConfigurationState,
+      EncryptionConfiguration: S.optional(MetadataTableEncryptionConfiguration),
+      Role: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AnnotationTableConfigurationUpdates",
+  }) as any as S.Schema<AnnotationTableConfigurationUpdates>;
+export interface UpdateBucketMetadataAnnotationTableConfigurationRequest {
+  Bucket: string;
+  ContentMD5?: string;
+  ChecksumAlgorithm?: ChecksumAlgorithm;
+  AnnotationTableConfiguration: AnnotationTableConfigurationUpdates;
+  ExpectedBucketOwner?: string;
+}
+export const UpdateBucketMetadataAnnotationTableConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Bucket: S.String.pipe(T.HttpLabel("Bucket"), T.ContextParam("Bucket")),
+      ContentMD5: S.optional(S.String).pipe(T.HttpHeader("Content-MD5")),
+      ChecksumAlgorithm: S.optional(ChecksumAlgorithm).pipe(
+        T.HttpHeader("x-amz-sdk-checksum-algorithm"),
+      ),
+      AnnotationTableConfiguration: AnnotationTableConfigurationUpdates.pipe(
+        T.HttpPayload(),
+        T.XmlName("AnnotationTableConfiguration"),
+      ).annotate({ identifier: "AnnotationTableConfigurationUpdates" }),
+      ExpectedBucketOwner: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-expected-bucket-owner"),
+      ),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "PUT", uri: "/{Bucket}?metadataAnnotationTable" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+        T.AwsProtocolsHttpChecksum({
+          requestAlgorithmMember: "ChecksumAlgorithm",
+          requestChecksumRequired: true,
+        }),
+        T.StaticContextParams({ UseS3ExpressControlEndpoint: { value: true } }),
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateBucketMetadataAnnotationTableConfigurationRequest",
+  }) as any as S.Schema<UpdateBucketMetadataAnnotationTableConfigurationRequest>;
+export interface UpdateBucketMetadataAnnotationTableConfigurationResponse {}
+export const UpdateBucketMetadataAnnotationTableConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
+    identifier: "UpdateBucketMetadataAnnotationTableConfigurationResponse",
+  }) as any as S.Schema<UpdateBucketMetadataAnnotationTableConfigurationResponse>;
 export interface InventoryTableConfigurationUpdates {
   ConfigurationState: InventoryConfigurationState;
   EncryptionConfiguration?: MetadataTableEncryptionConfiguration;
@@ -11565,6 +12330,11 @@ export interface UploadPartRequest {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   Key: string;
   PartNumber: number;
   UploadId: string;
@@ -11597,6 +12367,19 @@ export const UploadPartRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     ChecksumSHA256: S.optional(S.String).pipe(
       T.HttpHeader("x-amz-checksum-sha256"),
+    ),
+    ChecksumSHA512: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-sha512"),
+    ),
+    ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+    ChecksumXXHASH64: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash64"),
+    ),
+    ChecksumXXHASH3: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash3"),
+    ),
+    ChecksumXXHASH128: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash128"),
     ),
     Key: S.String.pipe(T.HttpLabel("Key"), T.ContextParam("Key")),
     PartNumber: S.Number.pipe(T.HttpQuery("partNumber")),
@@ -11641,6 +12424,11 @@ export interface UploadPartOutput {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   SSECustomerAlgorithm?: string;
   SSECustomerKeyMD5?: string;
   SSEKMSKeyId?: string | redacted.Redacted<string>;
@@ -11667,6 +12455,19 @@ export const UploadPartOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     ChecksumSHA256: S.optional(S.String).pipe(
       T.HttpHeader("x-amz-checksum-sha256"),
+    ),
+    ChecksumSHA512: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-sha512"),
+    ),
+    ChecksumMD5: S.optional(S.String).pipe(T.HttpHeader("x-amz-checksum-md5")),
+    ChecksumXXHASH64: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash64"),
+    ),
+    ChecksumXXHASH3: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash3"),
+    ),
+    ChecksumXXHASH128: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-checksum-xxhash128"),
     ),
     SSECustomerAlgorithm: S.optional(S.String).pipe(
       T.HttpHeader("x-amz-server-side-encryption-customer-algorithm"),
@@ -11782,6 +12583,11 @@ export interface CopyPartResult {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
 }
 export const CopyPartResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11792,6 +12598,11 @@ export const CopyPartResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ChecksumCRC64NVME: S.optional(S.String),
     ChecksumSHA1: S.optional(S.String),
     ChecksumSHA256: S.optional(S.String),
+    ChecksumSHA512: S.optional(S.String),
+    ChecksumMD5: S.optional(S.String),
+    ChecksumXXHASH64: S.optional(S.String),
+    ChecksumXXHASH3: S.optional(S.String),
+    ChecksumXXHASH128: S.optional(S.String),
   }),
 ).annotate({ identifier: "CopyPartResult" }) as any as S.Schema<CopyPartResult>;
 export interface UploadPartCopyOutput {
@@ -11854,6 +12665,11 @@ export interface WriteGetObjectResponseRequest {
   ChecksumCRC64NVME?: string;
   ChecksumSHA1?: string;
   ChecksumSHA256?: string;
+  ChecksumSHA512?: string;
+  ChecksumMD5?: string;
+  ChecksumXXHASH64?: string;
+  ChecksumXXHASH3?: string;
+  ChecksumXXHASH128?: string;
   DeleteMarker?: boolean;
   ETag?: string;
   Expires?: string;
@@ -11929,6 +12745,21 @@ export const WriteGetObjectResponseRequest =
       ),
       ChecksumSHA256: S.optional(S.String).pipe(
         T.HttpHeader("x-amz-fwd-header-x-amz-checksum-sha256"),
+      ),
+      ChecksumSHA512: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-fwd-header-x-amz-checksum-sha512"),
+      ),
+      ChecksumMD5: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-fwd-header-x-amz-checksum-md5"),
+      ),
+      ChecksumXXHASH64: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-fwd-header-x-amz-checksum-xxhash64"),
+      ),
+      ChecksumXXHASH3: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-fwd-header-x-amz-checksum-xxhash3"),
+      ),
+      ChecksumXXHASH128: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-fwd-header-x-amz-checksum-xxhash128"),
       ),
       DeleteMarker: S.optional(S.Boolean).pipe(
         T.HttpHeader("x-amz-fwd-header-x-amz-delete-marker"),
@@ -12091,7 +12922,7 @@ export class SignatureDoesNotMatch extends S.TaggedErrorClass<SignatureDoesNotMa
 export class NoSuchKey extends S.TaggedErrorClass<NoSuchKey>()(
   "NoSuchKey",
   {},
-) {}
+).pipe(C.withBadRequestError) {}
 export class NoSuchConfiguration extends S.TaggedErrorClass<NoSuchConfiguration>()(
   "NoSuchConfiguration",
   {},
@@ -12135,6 +12966,10 @@ export class InvalidObjectState extends S.TaggedErrorClass<InvalidObjectState>()
     AccessTier: S.optional(IntelligentTieringAccessTier),
   },
 ).pipe(C.withAuthError) {}
+export class NoSuchAnnotation extends S.TaggedErrorClass<NoSuchAnnotation>()(
+  "NoSuchAnnotation",
+  {},
+).pipe(C.withBadRequestError) {}
 export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
   "InvalidRequest",
   {},
@@ -12151,6 +12986,10 @@ export class RequestError extends S.TaggedErrorClass<RequestError>()(
   "RequestError",
   {},
 ) {}
+export class InvalidPrefix extends S.TaggedErrorClass<InvalidPrefix>()(
+  "InvalidPrefix",
+  {},
+).pipe(C.withBadRequestError) {}
 export class MalformedXML extends S.TaggedErrorClass<MalformedXML>()(
   "MalformedXML",
   {},
@@ -12187,6 +13026,22 @@ export class ConditionalRequestConflict extends S.TaggedErrorClass<ConditionalRe
   "ConditionalRequestConflict",
   {},
 ).pipe(C.withConflictError, C.withRetryableError) {}
+export class AnnotationLimitExceeded extends S.TaggedErrorClass<AnnotationLimitExceeded>()(
+  "AnnotationLimitExceeded",
+  {},
+).pipe(C.withBadRequestError, C.withThrottlingError) {}
+export class AnnotationNameTooLong extends S.TaggedErrorClass<AnnotationNameTooLong>()(
+  "AnnotationNameTooLong",
+  {},
+).pipe(C.withBadRequestError) {}
+export class InvalidAnnotationName extends S.TaggedErrorClass<InvalidAnnotationName>()(
+  "InvalidAnnotationName",
+  {},
+).pipe(C.withBadRequestError) {}
+export class UnsupportedMediaType extends S.TaggedErrorClass<UnsupportedMediaType>()(
+  "UnsupportedMediaType",
+  {},
+).pipe(C.withBadRequestError) {}
 export class InvalidBucketState extends S.TaggedErrorClass<InvalidBucketState>()(
   "InvalidBucketState",
   {},
@@ -12782,9 +13637,14 @@ export type CreateBucketMetadataConfigurationError = CommonErrors;
  *
  * - `s3tables:PutTablePolicy`
  *
+ * - `s3tables:PutTableBucketPolicy`
+ *
  * - `s3tables:PutTableEncryption`
  *
  * - `kms:DescribeKey`
+ *
+ * - `iam:PassRole` - required if you include an
+ * `AnnotationTableConfiguration` with an IAM role.
  *
  * The following operations are related to `CreateBucketMetadataConfiguration`:
  *
@@ -12795,6 +13655,13 @@ export type CreateBucketMetadataConfigurationError = CommonErrors;
  * - UpdateBucketMetadataInventoryTableConfiguration
  *
  * - UpdateBucketMetadataJournalTableConfiguration
+ *
+ * - UpdateBucketMetadataAnnotationTableConfiguration
+ *
+ * If you include an `AnnotationTableConfiguration` with an IAM role, the role must
+ * have a trust policy that allows the Amazon S3 metadata service to assume it, and a permissions policy
+ * that grants the actions needed to read annotations from your bucket. The following examples show
+ * a trust policy and a permissions policy that you can adapt for your bucket and account.
  *
  * You must URL encode any signed header values that contain spaces. For example, if your header value is `my file.txt`, containing two spaces after `my`, you must URL encode this value to `my%20%20file.txt`.
  */
@@ -13416,14 +14283,34 @@ export type DeleteBucketInventoryConfigurationError =
   | NoSuchBucket
   | CommonErrors;
 /**
- * This operation is not supported for directory buckets.
- *
  * Deletes an S3 Inventory configuration (identified by the inventory ID) from the bucket.
+ *
+ * **Directory buckets ** - For directory buckets, you must make requests for this API operation to the Regional endpoint. These endpoints support path-style requests in the format https://s3express-control.*region-code*.amazonaws.com/*bucket-name*
+ * . Virtual-hosted-style requests aren't supported.
+ * For more information about endpoints in Availability Zones, see Regional and Zonal endpoints for directory buckets in Availability Zones in the
+ * *Amazon S3 User Guide*. For more information about endpoints in Local Zones, see Concepts for directory buckets in Local Zones in the
+ * *Amazon S3 User Guide*.
+ *
+ * ### Permissions
  *
  * To use this operation, you must have permissions to perform the
  * `s3:PutInventoryConfiguration` action. The bucket owner has this permission by default. The
  * bucket owner can grant this permission to others. For more information about permissions, see Permissions Related to Bucket Subresource Operations and Managing Access Permissions to Your Amazon S3
  * Resources.
+ *
+ * - **General purpose bucket permissions** - The
+ * `s3:PutInventoryConfiguration` permission is required in a policy. For more information
+ * about general purpose buckets permissions, see Using Bucket Policies and User
+ * Policies in the *Amazon S3 User Guide*.
+ *
+ * - **Directory bucket permissions** - To grant access to
+ * this API operation, you must have the `s3express:PutInventoryConfiguration` permission in
+ * an IAM identity-based policy instead of a bucket policy.
+ * For more information about directory bucket policies and permissions, see Amazon Web Services Identity and Access Management (IAM) for S3 Express One Zone in the *Amazon S3 User Guide*.
+ *
+ * ### HTTP Host header syntax
+ *
+ * **Directory buckets ** - The HTTP Host header syntax is `s3express-control.*region-code*.amazonaws.com`.
  *
  * For information about the Amazon S3 inventory feature, see Amazon S3 Inventory.
  *
@@ -14032,6 +14919,47 @@ export const deleteObject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteObject",
 }));
+export type DeleteObjectAnnotationError =
+  | NoSuchBucket
+  | NoSuchKey
+  | CommonErrors;
+/**
+ * Deletes a specific annotation from an Amazon S3 object. Use the `x-amz-object-if-match`
+ * header to perform a conditional delete that only succeeds if the object's ETag matches the
+ * provided value, preventing race conditions during concurrent updates.
+ *
+ * Deleting an annotation is permanent. Annotations are not independently versioned, so there is no
+ * delete marker or way to recover a deleted annotation.
+ *
+ * To use this operation, you must have the `s3:DeleteObjectAnnotation` permission. If
+ * the object is protected by Object Lock in governance mode, you must also include the
+ * `x-amz-bypass-governance-retention` header.
+ *
+ * Annotations are not supported by the following features: S3 Inventory Reports,
+ * API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on Outposts, and
+ * S3 Express One Zone (directory buckets).
+ *
+ * The following operations are related to `DeleteObjectAnnotation`:
+ *
+ * - PutObjectAnnotation
+ *
+ * - GetObjectAnnotation
+ *
+ * - ListObjectAnnotations
+ */
+export const deleteObjectAnnotation: API.OperationMethod<
+  DeleteObjectAnnotationRequest,
+  DeleteObjectAnnotationOutput,
+  DeleteObjectAnnotationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteObjectAnnotationRequest,
+  output: DeleteObjectAnnotationOutput,
+  errors: [NoSuchBucket, NoSuchKey],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteObjectAnnotation",
+}));
 export type DeleteObjectsError =
   | RequestLimitExceeded
   | SlowDown
@@ -14545,15 +15473,35 @@ export type GetBucketInventoryConfigurationError =
   | NoSuchConfiguration
   | CommonErrors;
 /**
- * This operation is not supported for directory buckets.
- *
  * Returns an S3 Inventory configuration (identified by the inventory configuration ID) from the
  * bucket.
  *
+ * **Directory buckets ** - For directory buckets, you must make requests for this API operation to the Regional endpoint. These endpoints support path-style requests in the format https://s3express-control.*region-code*.amazonaws.com/*bucket-name*
+ * . Virtual-hosted-style requests aren't supported.
+ * For more information about endpoints in Availability Zones, see Regional and Zonal endpoints for directory buckets in Availability Zones in the
+ * *Amazon S3 User Guide*. For more information about endpoints in Local Zones, see Concepts for directory buckets in Local Zones in the
+ * *Amazon S3 User Guide*.
+ *
+ * ### Permissions
+ *
  * To use this operation, you must have permissions to perform the
- * `s3:GetInventoryConfiguration` action. The bucket owner has this permission by default and
- * can grant this permission to others. For more information about permissions, see Permissions Related to Bucket Subresource Operations and Managing Access Permissions to Your Amazon S3
+ * `s3:GetInventoryConfiguration` action. The bucket owner has this permission by default. The
+ * bucket owner can grant this permission to others. For more information about permissions, see Permissions Related to Bucket Subresource Operations and Managing Access Permissions to Your Amazon S3
  * Resources.
+ *
+ * - **General purpose bucket permissions** - The
+ * `s3:GetInventoryConfiguration` permission is required in a policy. For more information
+ * about general purpose buckets permissions, see Using Bucket Policies and User
+ * Policies in the *Amazon S3 User Guide*.
+ *
+ * - **Directory bucket permissions** - To grant access to
+ * this API operation, you must have the `s3express:GetInventoryConfiguration` permission in
+ * an IAM identity-based policy instead of a bucket policy.
+ * For more information about directory bucket policies and permissions, see Amazon Web Services Identity and Access Management (IAM) for S3 Express One Zone in the *Amazon S3 User Guide*.
+ *
+ * ### HTTP Host header syntax
+ *
+ * **Directory buckets ** - The HTTP Host header syntax is `s3express-control.*region-code*.amazonaws.com`.
  *
  * For information about the Amazon S3 inventory feature, see Amazon S3 Inventory.
  *
@@ -15583,6 +16531,43 @@ export const getObjectAcl: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectAcl",
 }));
+export type GetObjectAnnotationError =
+  | NoSuchAnnotation
+  | NoSuchBucket
+  | NoSuchKey
+  | CommonErrors;
+/**
+ * Retrieves an annotation from an Amazon S3 object. To use this operation, you must have the
+ * `s3:GetObjectAnnotation` permission.
+ *
+ * If checksum mode is enabled via the `x-amz-checksum-mode` header, Amazon S3
+ * returns the stored checksum in the response headers for client-side validation.
+ *
+ * Annotations are not supported by the following features: S3 Inventory Reports,
+ * API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on Outposts, and
+ * S3 Express One Zone (directory buckets).
+ *
+ * The following operations are related to `GetObjectAnnotation`:
+ *
+ * - PutObjectAnnotation
+ *
+ * - ListObjectAnnotations
+ *
+ * - DeleteObjectAnnotation
+ */
+export const getObjectAnnotation: API.OperationMethod<
+  GetObjectAnnotationRequest,
+  GetObjectAnnotationOutput,
+  GetObjectAnnotationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetObjectAnnotationRequest,
+  output: GetObjectAnnotationOutput,
+  errors: [NoSuchAnnotation, NoSuchBucket, NoSuchKey],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetObjectAnnotation",
+}));
 export type GetObjectAttributesError = NoSuchKey | CommonErrors;
 /**
  * Retrieves all of the metadata from an object without returning the object itself. This operation is
@@ -16288,8 +17273,6 @@ export type ListBucketInventoryConfigurationsError =
   | NoSuchBucket
   | CommonErrors;
 /**
- * This operation is not supported for directory buckets.
- *
  * Returns a list of S3 Inventory configurations for the bucket. You can have up to 1,000 inventory
  * configurations per bucket.
  *
@@ -16300,10 +17283,32 @@ export type ListBucketInventoryConfigurationsError =
  * You use the `NextContinuationToken` value to continue the pagination of the list by passing
  * the value in continuation-token in the request to `GET` the next page.
  *
+ * **Directory buckets ** - For directory buckets, you must make requests for this API operation to the Regional endpoint. These endpoints support path-style requests in the format https://s3express-control.*region-code*.amazonaws.com/*bucket-name*
+ * . Virtual-hosted-style requests aren't supported.
+ * For more information about endpoints in Availability Zones, see Regional and Zonal endpoints for directory buckets in Availability Zones in the
+ * *Amazon S3 User Guide*. For more information about endpoints in Local Zones, see Concepts for directory buckets in Local Zones in the
+ * *Amazon S3 User Guide*.
+ *
+ * ### Permissions
+ *
  * To use this operation, you must have permissions to perform the
  * `s3:GetInventoryConfiguration` action. The bucket owner has this permission by default. The
  * bucket owner can grant this permission to others. For more information about permissions, see Permissions Related to Bucket Subresource Operations and Managing Access Permissions to Your Amazon S3
  * Resources.
+ *
+ * - **General purpose bucket permissions** - The
+ * `s3:GetInventoryConfiguration` permission is required in a policy. For more information
+ * about general purpose buckets permissions, see Using Bucket Policies and User
+ * Policies in the *Amazon S3 User Guide*.
+ *
+ * - **Directory bucket permissions** - To grant access to
+ * this API operation, you must have the `s3express:GetInventoryConfiguration` permission in
+ * an IAM identity-based policy instead of a bucket policy.
+ * For more information about directory bucket policies and permissions, see Amazon Web Services Identity and Access Management (IAM) for S3 Express One Zone in the *Amazon S3 User Guide*.
+ *
+ * ### HTTP Host header syntax
+ *
+ * **Directory buckets ** - The HTTP Host header syntax is `s3express-control.*region-code*.amazonaws.com`.
  *
  * For information about the Amazon S3 inventory feature, see Amazon S3 Inventory
  *
@@ -16624,6 +17629,64 @@ export const listMultipartUploads: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListMultipartUploads",
+}));
+export type ListObjectAnnotationsError =
+  | InvalidPrefix
+  | NoSuchBucket
+  | NoSuchKey
+  | CommonErrors;
+/**
+ * Lists the annotations attached to an Amazon S3 object. Results are paginated, with a maximum of
+ * 1,000 annotations per object. Use the `AnnotationPrefix` parameter to filter the
+ * results by name prefix.
+ *
+ * To use this operation, you must have the `s3:ListObjectAnnotations` permission.
+ *
+ * Annotations are not supported by the following features: S3 Inventory Reports,
+ * API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on Outposts, and
+ * S3 Express One Zone (directory buckets).
+ *
+ * The following operations are related to `ListObjectAnnotations`:
+ *
+ * - PutObjectAnnotation
+ *
+ * - GetObjectAnnotation
+ *
+ * - DeleteObjectAnnotation
+ */
+export const listObjectAnnotations: API.OperationMethod<
+  ListObjectAnnotationsRequest,
+  ListObjectAnnotationsOutput,
+  ListObjectAnnotationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListObjectAnnotationsRequest,
+  ) => stream.Stream<
+    ListObjectAnnotationsOutput,
+    ListObjectAnnotationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListObjectAnnotationsRequest,
+  ) => stream.Stream<
+    AnnotationEntry,
+    ListObjectAnnotationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListObjectAnnotationsRequest,
+  output: ListObjectAnnotationsOutput,
+  errors: [InvalidPrefix, NoSuchBucket, NoSuchKey],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListObjectAnnotations",
+  pagination: {
+    inputToken: "ContinuationToken",
+    outputToken: "NextContinuationToken",
+    items: "Annotations",
+    pageSize: "MaxAnnotationResults",
+  } as const,
 }));
 export type ListObjectsError =
   | NoSuchBucket
@@ -17474,8 +18537,6 @@ export type PutBucketInventoryConfigurationError =
   | NoSuchBucket
   | CommonErrors;
 /**
- * This operation is not supported for directory buckets.
- *
  * This implementation of the `PUT` action adds an S3 Inventory configuration (identified by
  * the inventory ID) to the bucket. You can have up to 1,000 inventory configurations per bucket.
  *
@@ -17496,6 +18557,12 @@ export type PutBucketInventoryConfigurationError =
  * Granting
  * Permissions for Amazon S3 Inventory and Storage Class Analysis.
  *
+ * **Directory buckets ** - For directory buckets, you must make requests for this API operation to the Regional endpoint. These endpoints support path-style requests in the format https://s3express-control.*region-code*.amazonaws.com/*bucket-name*
+ * . Virtual-hosted-style requests aren't supported.
+ * For more information about endpoints in Availability Zones, see Regional and Zonal endpoints for directory buckets in Availability Zones in the
+ * *Amazon S3 User Guide*. For more information about endpoints in Local Zones, see Concepts for directory buckets in Local Zones in the
+ * *Amazon S3 User Guide*.
+ *
  * ### Permissions
  *
  * To use this operation, you must have permission to perform the
@@ -17507,12 +18574,26 @@ export type PutBucketInventoryConfigurationError =
  * store the inventory. A user with read access to objects in the destination bucket can also access
  * all object metadata fields that are available in the inventory report.
  *
+ * - **General purpose bucket permissions** - The
+ * `s3:PutInventoryConfiguration` permission is required in a policy. For more information
+ * about general purpose buckets permissions, see Using Bucket Policies and User
+ * Policies in the *Amazon S3 User Guide*.
+ *
+ * - **Directory bucket permissions** - To grant access to
+ * this API operation, you must have the `s3express:PutInventoryConfiguration` permission in
+ * an IAM identity-based policy instead of a bucket policy.
+ * For more information about directory bucket policies and permissions, see Amazon Web Services Identity and Access Management (IAM) for S3 Express One Zone in the *Amazon S3 User Guide*.
+ *
  * To restrict access to an inventory report, see Restricting access to an Amazon S3 Inventory report in the
  * *Amazon S3 User Guide*. For more information about the metadata fields available
  * in S3 Inventory, see Amazon S3 Inventory
  * lists in the *Amazon S3 User Guide*. For more information about
  * permissions, see Permissions related to bucket subresource operations and Identity and access management in
  * Amazon S3 in the *Amazon S3 User Guide*.
+ *
+ * ### HTTP Host header syntax
+ *
+ * **Directory buckets ** - The HTTP Host header syntax is `s3express-control.*region-code*.amazonaws.com`.
  *
  * `PutBucketInventoryConfiguration` has the following special errors:
  *
@@ -18690,6 +19771,63 @@ export const putObjectAcl: API.OperationMethod<
   retry: Retry,
   operationName: "PutObjectAcl",
 }));
+export type PutObjectAnnotationError =
+  | AnnotationLimitExceeded
+  | AnnotationNameTooLong
+  | InvalidAnnotationName
+  | InvalidRequest
+  | NoSuchBucket
+  | NoSuchKey
+  | UnsupportedMediaType
+  | CommonErrors;
+/**
+ * Attaches an annotation to an Amazon S3 object. An annotation is a named payload of 1 byte to 1 MiB
+ * that you can associate with a specific object or object version. Each object can have up to 1,000
+ * annotations.
+ *
+ * For annotation naming rules and restrictions, see Annotation naming guidelines
+ * in the *Amazon S3 User Guide*.
+ *
+ * Annotations inherit the encryption of their parent object. For objects without server-side
+ * encryption, annotations are encrypted with SSE-S3 (the default for new objects). Objects
+ * encrypted with SSE-C cannot have annotations.
+ *
+ * To use this operation, you must have the `s3:PutObjectAnnotation` permission. If the
+ * bucket has Requester Pays enabled, you must include the `x-amz-request-payer` header.
+ *
+ * Annotations are not supported by the following features: S3 Inventory Reports,
+ * API Gateway, S3 Storage Lens, Amazon S3 File Gateway, Amazon FSx, S3 on Outposts, and
+ * S3 Express One Zone (directory buckets).
+ *
+ * The following operations are related to `PutObjectAnnotation`:
+ *
+ * - GetObjectAnnotation
+ *
+ * - ListObjectAnnotations
+ *
+ * - DeleteObjectAnnotation
+ */
+export const putObjectAnnotation: API.OperationMethod<
+  PutObjectAnnotationRequest,
+  PutObjectAnnotationOutput,
+  PutObjectAnnotationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutObjectAnnotationRequest,
+  output: PutObjectAnnotationOutput,
+  errors: [
+    AnnotationLimitExceeded,
+    AnnotationNameTooLong,
+    InvalidAnnotationName,
+    InvalidRequest,
+    NoSuchBucket,
+    NoSuchKey,
+    UnsupportedMediaType,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutObjectAnnotation",
+}));
 export type PutObjectLegalHoldError =
   | RequestLimitExceeded
   | SlowDown
@@ -19233,6 +20371,45 @@ export const selectObjectContent: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "SelectObjectContent",
+}));
+export type UpdateBucketMetadataAnnotationTableConfigurationError =
+  CommonErrors;
+/**
+ * Updates the annotation table configuration for an Amazon S3 bucket's metadata configuration. Use this
+ * operation to enable or disable the annotation table, or to update its associated IAM role.
+ *
+ * An annotation table is a queryable Iceberg table that contains records of all annotations
+ * attached to objects in the bucket. To use this operation, the bucket must have an existing Amazon S3
+ * Metadata configuration.
+ *
+ * To use this operation, you must have the
+ * `s3:UpdateBucketMetadataAnnotationTableConfiguration` permission. If you are specifying
+ * or changing the IAM role, you must also have `iam:PassRole` permission for the role.
+ *
+ * The IAM role must have a trust policy that allows the Amazon S3 metadata service to assume it, and a
+ * permissions policy that grants the actions needed to read annotations from your bucket. The
+ * following examples show a trust policy and a permissions policy that you can adapt for your bucket
+ * and account.
+ *
+ * The following operations are related to
+ * `UpdateBucketMetadataAnnotationTableConfiguration`:
+ *
+ * - CreateBucketMetadataConfiguration
+ *
+ * - GetBucketMetadataConfiguration
+ */
+export const updateBucketMetadataAnnotationTableConfiguration: API.OperationMethod<
+  UpdateBucketMetadataAnnotationTableConfigurationRequest,
+  UpdateBucketMetadataAnnotationTableConfigurationResponse,
+  UpdateBucketMetadataAnnotationTableConfigurationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateBucketMetadataAnnotationTableConfigurationRequest,
+  output: UpdateBucketMetadataAnnotationTableConfigurationResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateBucketMetadataAnnotationTableConfiguration",
 }));
 export type UpdateBucketMetadataInventoryTableConfigurationError = CommonErrors;
 /**

@@ -123,7 +123,9 @@ export type SecurityGroupId = string;
 export type SubnetId = string;
 export type PrefixListId = string;
 export type VpceId = string;
+export type IPAddressType = string;
 export type KmsKeyId = string;
+export type DegradedWorkspaceReason = string;
 export type UserType = string;
 export type SsoId = string;
 export type Role = string;
@@ -677,7 +679,9 @@ export interface WorkspaceDescription {
   vpcConfiguration?: VpcConfiguration;
   networkAccessControl?: NetworkAccessConfiguration;
   grafanaToken?: string;
+  ipAddressType?: string;
   kmsKeyId?: string;
+  degradedWorkspaceReason?: string;
 }
 export const WorkspaceDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -710,7 +714,9 @@ export const WorkspaceDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     vpcConfiguration: S.optional(VpcConfiguration),
     networkAccessControl: S.optional(NetworkAccessConfiguration),
     grafanaToken: S.optional(S.String),
+    ipAddressType: S.optional(S.String),
     kmsKeyId: S.optional(S.String),
+    degradedWorkspaceReason: S.optional(S.String),
   }),
 ).annotate({
   identifier: "WorkspaceDescription",
@@ -1202,6 +1208,7 @@ export interface CreateWorkspaceRequest {
   configuration?: string;
   networkAccessControl?: NetworkAccessConfiguration;
   grafanaVersion?: string;
+  ipAddressType?: string;
   kmsKeyId?: string;
 }
 export const CreateWorkspaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -1226,6 +1233,7 @@ export const CreateWorkspaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       configuration: S.optional(S.String),
       networkAccessControl: S.optional(NetworkAccessConfiguration),
       grafanaVersion: S.optional(S.String),
+      ipAddressType: S.optional(S.String),
       kmsKeyId: S.optional(S.String),
     }).pipe(
       T.all(
@@ -1290,6 +1298,7 @@ export interface UpdateWorkspaceRequest {
   removeVpcConfiguration?: boolean;
   networkAccessControl?: NetworkAccessConfiguration;
   removeNetworkAccessConfiguration?: boolean;
+  ipAddressType?: string;
 }
 export const UpdateWorkspaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1311,6 +1320,7 @@ export const UpdateWorkspaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       removeVpcConfiguration: S.optional(S.Boolean),
       networkAccessControl: S.optional(NetworkAccessConfiguration),
       removeNetworkAccessConfiguration: S.optional(S.Boolean),
+      ipAddressType: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({ method: "PUT", uri: "/workspaces/{workspaceId}" }),

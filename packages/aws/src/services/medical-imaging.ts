@@ -98,6 +98,9 @@ export type JobName = string;
 export type RoleArn = string;
 export type S3Uri = string;
 export type Message = string;
+export type DICOMStudyInstanceUID = string | redacted.Redacted<string>;
+export type DICOMSeriesInstanceUID = string | redacted.Redacted<string>;
+export type MetadataFilePath = string;
 export type ImageFrameId = string;
 export type NextToken = string;
 export type TagKey = string;
@@ -105,8 +108,6 @@ export type TagValue = string;
 export type DICOMPatientId = string | redacted.Redacted<string>;
 export type DICOMAccessionNumber = string | redacted.Redacted<string>;
 export type DICOMStudyId = string | redacted.Redacted<string>;
-export type DICOMStudyInstanceUID = string | redacted.Redacted<string>;
-export type DICOMSeriesInstanceUID = string | redacted.Redacted<string>;
 export type DICOMStudyDate = string | redacted.Redacted<string>;
 export type DICOMStudyTime = string | redacted.Redacted<string>;
 export type DICOMPatientName = string | redacted.Redacted<string>;
@@ -353,6 +354,40 @@ export type JobStatus =
   | "FAILED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DicomMetadataMapping {
+  studyInstanceUID: string | redacted.Redacted<string>;
+  seriesInstanceUID?: string | redacted.Redacted<string>;
+  metadataFilePath: string;
+}
+export const DicomMetadataMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    studyInstanceUID: SensitiveString,
+    seriesInstanceUID: S.optional(SensitiveString),
+    metadataFilePath: S.String,
+  }),
+).annotate({
+  identifier: "DicomMetadataMapping",
+}) as any as S.Schema<DicomMetadataMapping>;
+export type DicomMetadataMappings = DicomMetadataMapping[];
+export const DicomMetadataMappings =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DicomMetadataMapping);
+export interface DicomJsonMetadataImportConfiguration {
+  dicomMetadataMappings: DicomMetadataMapping[];
+}
+export const DicomJsonMetadataImportConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ dicomMetadataMappings: DicomMetadataMappings }),
+  ).annotate({
+    identifier: "DicomJsonMetadataImportConfiguration",
+  }) as any as S.Schema<DicomJsonMetadataImportConfiguration>;
+export type ImportConfiguration = {
+  dicomJsonMetadataImportConfiguration: DicomJsonMetadataImportConfiguration;
+};
+export const ImportConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({
+    dicomJsonMetadataImportConfiguration: DicomJsonMetadataImportConfiguration,
+  }),
+]);
 export interface DICOMImportJobProperties {
   jobId: string;
   jobName: string;
@@ -364,6 +399,7 @@ export interface DICOMImportJobProperties {
   inputS3Uri: string;
   outputS3Uri: string;
   message?: string;
+  importConfiguration?: ImportConfiguration;
 }
 export const DICOMImportJobProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -378,6 +414,7 @@ export const DICOMImportJobProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       inputS3Uri: S.String,
       outputS3Uri: S.String,
       message: S.optional(S.String),
+      importConfiguration: S.optional(ImportConfiguration),
     }),
 ).annotate({
   identifier: "DICOMImportJobProperties",
@@ -1013,6 +1050,7 @@ export interface StartDICOMImportJobRequest {
   inputS3Uri: string;
   outputS3Uri: string;
   inputOwnerAccountId?: string;
+  importConfiguration?: ImportConfiguration;
 }
 export const StartDICOMImportJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1024,6 +1062,7 @@ export const StartDICOMImportJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       inputS3Uri: S.String,
       outputS3Uri: S.String,
       inputOwnerAccountId: S.optional(S.String),
+      importConfiguration: S.optional(ImportConfiguration),
     }).pipe(
       T.all(
         T.Http({
@@ -1814,7 +1853,7 @@ export type StartDICOMImportJobError =
   | ValidationException
   | CommonErrors;
 /**
- * Start importing bulk data into an `ACTIVE` data store. The import job imports DICOM P10 files found in the S3 prefix specified by the `inputS3Uri` parameter. The import job stores processing results in the file specified by the `outputS3Uri` parameter.
+ * Start importing bulk data into an `ACTIVE` data store. The import job imports DICOM P10 files or enhances existing DICOM files with JSON metadata. The `importConfiguration` parameter specifies the import type. The data is found in the S3 prefix specified by the `inputS3Uri` parameter. The import job stores processing results in the file specified by the `outputS3Uri` parameter.
  */
 export const startDICOMImportJob: API.OperationMethod<
   StartDICOMImportJobRequest,

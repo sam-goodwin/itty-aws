@@ -4196,11 +4196,20 @@ export const CreateProvisioningProfileRequest =
   ).annotate({
     identifier: "CreateProvisioningProfileRequest",
   }) as any as S.Schema<CreateProvisioningProfileRequest>;
+export type ProvisioningProfileStatus =
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_FAILED"
+  | "CREATED"
+  | "DELETE_IN_PROGRESS"
+  | "DELETE_FAILED"
+  | (string & {});
+export const ProvisioningProfileStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateProvisioningProfileResponse {
   Arn?: string;
   Name?: string;
   ProvisioningType?: ProvisioningType;
   Id?: string;
+  Status?: ProvisioningProfileStatus;
   ClaimCertificate?: string | redacted.Redacted<string>;
   ClaimCertificatePrivateKey?: string | redacted.Redacted<string>;
 }
@@ -4211,6 +4220,7 @@ export const CreateProvisioningProfileResponse =
       Name: S.optional(S.String),
       ProvisioningType: S.optional(ProvisioningType),
       Id: S.optional(S.String),
+      Status: S.optional(ProvisioningProfileStatus),
       ClaimCertificate: S.optional(SensitiveString),
       ClaimCertificatePrivateKey: S.optional(SensitiveString),
     }),
@@ -4240,6 +4250,7 @@ export interface GetProvisioningProfileResponse {
   Name?: string;
   ProvisioningType?: ProvisioningType;
   Id?: string;
+  Status?: ProvisioningProfileStatus;
   ClaimCertificate?: string | redacted.Redacted<string>;
   Tags?: { [key: string]: string | undefined };
 }
@@ -4250,6 +4261,7 @@ export const GetProvisioningProfileResponse =
       Name: S.optional(S.String),
       ProvisioningType: S.optional(ProvisioningType),
       Id: S.optional(S.String),
+      Status: S.optional(ProvisioningProfileStatus),
       ClaimCertificate: S.optional(SensitiveString),
       Tags: S.optional(TagsMap),
     }),
@@ -4309,6 +4321,7 @@ export interface ProvisioningProfileSummary {
   Id?: string;
   Arn?: string;
   ProvisioningType?: ProvisioningType;
+  Status?: ProvisioningProfileStatus;
 }
 export const ProvisioningProfileSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -4317,6 +4330,7 @@ export const ProvisioningProfileSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Id: S.optional(S.String),
       Arn: S.optional(S.String),
       ProvisioningType: S.optional(ProvisioningType),
+      Status: S.optional(ProvisioningProfileStatus),
     }),
 ).annotate({
   identifier: "ProvisioningProfileSummary",
@@ -7241,7 +7255,7 @@ export type CreateProvisioningProfileError =
   | ValidationException
   | CommonErrors;
 /**
- * Create a provisioning profile for a device to execute the provisioning flows using a provisioning template. The provisioning template is a document that defines the set of resources and policies applied to a device during the provisioning process.
+ * Create a provisioning profile for executing device provisioning flows. The provisioning profile is a document that defines the set of resources and policies applied to a device during the provisioning process.
  */
 export const createProvisioningProfile: API.OperationMethod<
   CreateProvisioningProfileRequest,
@@ -7275,7 +7289,7 @@ export type GetProvisioningProfileError =
   | ValidationException
   | CommonErrors;
 /**
- * Get a provisioning profile by template name.
+ * Get details of a provisioning profile.
  */
 export const getProvisioningProfile: API.OperationMethod<
   GetProvisioningProfileRequest,
@@ -7300,6 +7314,7 @@ export const getProvisioningProfile: API.OperationMethod<
 }));
 export type DeleteProvisioningProfileError =
   | AccessDeniedException
+  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | ServiceUnavailableException
@@ -7320,6 +7335,7 @@ export const deleteProvisioningProfile: API.OperationMethod<
   output: DeleteProvisioningProfileResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ServiceUnavailableException,

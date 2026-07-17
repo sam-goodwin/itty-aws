@@ -863,6 +863,57 @@ export const ContainerPortConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ContainerPortConfiguration",
 }) as any as S.Schema<ContainerPortConfiguration>;
+export type LinuxCapability =
+  | "AUDIT_CONTROL"
+  | "AUDIT_WRITE"
+  | "BLOCK_SUSPEND"
+  | "CHOWN"
+  | "DAC_OVERRIDE"
+  | "DAC_READ_SEARCH"
+  | "FOWNER"
+  | "FSETID"
+  | "IPC_LOCK"
+  | "IPC_OWNER"
+  | "KILL"
+  | "LEASE"
+  | "LINUX_IMMUTABLE"
+  | "MAC_ADMIN"
+  | "MAC_OVERRIDE"
+  | "MKNOD"
+  | "NET_ADMIN"
+  | "NET_BIND_SERVICE"
+  | "NET_BROADCAST"
+  | "NET_RAW"
+  | "SETFCAP"
+  | "SETGID"
+  | "SETPCAP"
+  | "SETUID"
+  | "SYS_ADMIN"
+  | "SYS_BOOT"
+  | "SYS_CHROOT"
+  | "SYS_MODULE"
+  | "SYS_NICE"
+  | "SYS_PACCT"
+  | "SYS_PTRACE"
+  | "SYS_RAWIO"
+  | "SYS_RESOURCE"
+  | "SYS_TIME"
+  | "SYS_TTY_CONFIG"
+  | "SYSLOG"
+  | "WAKE_ALARM"
+  | (string & {});
+export const LinuxCapability = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type LinuxCapabilityList = LinuxCapability[];
+export const LinuxCapabilityList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(LinuxCapability);
+export interface LinuxCapabilities {
+  Include?: LinuxCapability[];
+}
+export const LinuxCapabilities = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Include: S.optional(LinuxCapabilityList) }),
+).annotate({
+  identifier: "LinuxCapabilities",
+}) as any as S.Schema<LinuxCapabilities>;
 export interface GameServerContainerDefinitionInput {
   ContainerName?: string;
   DependsOn?: ContainerDependency[];
@@ -871,6 +922,7 @@ export interface GameServerContainerDefinitionInput {
   ImageUri?: string;
   PortConfiguration?: ContainerPortConfiguration;
   ServerSdkVersion?: string;
+  LinuxCapabilities?: LinuxCapabilities;
 }
 export const GameServerContainerDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -882,6 +934,7 @@ export const GameServerContainerDefinitionInput =
       ImageUri: S.optional(S.String),
       PortConfiguration: S.optional(ContainerPortConfiguration),
       ServerSdkVersion: S.optional(S.String),
+      LinuxCapabilities: S.optional(LinuxCapabilities),
     }),
   ).annotate({
     identifier: "GameServerContainerDefinitionInput",
@@ -919,6 +972,7 @@ export interface SupportContainerDefinitionInput {
   MemoryHardLimitMebibytes?: number;
   PortConfiguration?: ContainerPortConfiguration;
   Vcpu?: number;
+  LinuxCapabilities?: LinuxCapabilities;
 }
 export const SupportContainerDefinitionInput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -933,6 +987,7 @@ export const SupportContainerDefinitionInput =
       MemoryHardLimitMebibytes: S.optional(S.Number),
       PortConfiguration: S.optional(ContainerPortConfiguration),
       Vcpu: S.optional(S.Number),
+      LinuxCapabilities: S.optional(LinuxCapabilities),
     }),
   ).annotate({
     identifier: "SupportContainerDefinitionInput",
@@ -993,6 +1048,7 @@ export interface GameServerContainerDefinition {
   PortConfiguration?: ContainerPortConfiguration;
   ResolvedImageDigest?: string;
   ServerSdkVersion?: string;
+  LinuxCapabilities?: LinuxCapabilities;
 }
 export const GameServerContainerDefinition =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1005,6 +1061,7 @@ export const GameServerContainerDefinition =
       PortConfiguration: S.optional(ContainerPortConfiguration),
       ResolvedImageDigest: S.optional(S.String),
       ServerSdkVersion: S.optional(S.String),
+      LinuxCapabilities: S.optional(LinuxCapabilities),
     }),
   ).annotate({
     identifier: "GameServerContainerDefinition",
@@ -1021,6 +1078,7 @@ export interface SupportContainerDefinition {
   PortConfiguration?: ContainerPortConfiguration;
   ResolvedImageDigest?: string;
   Vcpu?: number;
+  LinuxCapabilities?: LinuxCapabilities;
 }
 export const SupportContainerDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1036,6 +1094,7 @@ export const SupportContainerDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       PortConfiguration: S.optional(ContainerPortConfiguration),
       ResolvedImageDigest: S.optional(S.String),
       Vcpu: S.optional(S.Number),
+      LinuxCapabilities: S.optional(LinuxCapabilities),
     }),
 ).annotate({
   identifier: "SupportContainerDefinition",
@@ -3692,6 +3751,95 @@ export const DescribeContainerGroupDefinitionOutput =
   ).annotate({
     identifier: "DescribeContainerGroupDefinitionOutput",
   }) as any as S.Schema<DescribeContainerGroupDefinitionOutput>;
+export interface DescribeContainerGroupPortMappingsInput {
+  FleetId?: string;
+  ContainerGroupType?: ContainerGroupType;
+  ComputeName?: string;
+  InstanceId?: string;
+  ContainerName?: string;
+}
+export const DescribeContainerGroupPortMappingsInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      FleetId: S.optional(S.String),
+      ContainerGroupType: S.optional(ContainerGroupType),
+      ComputeName: S.optional(S.String),
+      InstanceId: S.optional(S.String),
+      ContainerName: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({ method: "POST", uri: "/" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeContainerGroupPortMappingsInput",
+  }) as any as S.Schema<DescribeContainerGroupPortMappingsInput>;
+export interface ContainerPortMapping {
+  ContainerPort?: number;
+  ConnectionPort?: number;
+  Protocol?: IpProtocol;
+}
+export const ContainerPortMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContainerPort: S.optional(S.Number),
+    ConnectionPort: S.optional(S.Number),
+    Protocol: S.optional(IpProtocol),
+  }),
+).annotate({
+  identifier: "ContainerPortMapping",
+}) as any as S.Schema<ContainerPortMapping>;
+export type ContainerPortMappingList = ContainerPortMapping[];
+export const ContainerPortMappingList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ContainerPortMapping);
+export interface ContainerGroupPortMapping {
+  ContainerName?: string;
+  ContainerRuntimeId?: string;
+  ContainerPortMappings?: ContainerPortMapping[];
+}
+export const ContainerGroupPortMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ContainerName: S.optional(S.String),
+      ContainerRuntimeId: S.optional(S.String),
+      ContainerPortMappings: S.optional(ContainerPortMappingList),
+    }),
+).annotate({
+  identifier: "ContainerGroupPortMapping",
+}) as any as S.Schema<ContainerGroupPortMapping>;
+export type ContainerGroupPortMappingList = ContainerGroupPortMapping[];
+export const ContainerGroupPortMappingList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ContainerGroupPortMapping);
+export interface DescribeContainerGroupPortMappingsOutput {
+  FleetId?: string;
+  FleetArn?: string;
+  Location?: string;
+  ContainerGroupDefinitionArn?: string;
+  ContainerGroupType?: ContainerGroupType;
+  ComputeName?: string;
+  InstanceId?: string;
+  ContainerGroupPortMappings?: ContainerGroupPortMapping[];
+}
+export const DescribeContainerGroupPortMappingsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      FleetId: S.optional(S.String),
+      FleetArn: S.optional(S.String),
+      Location: S.optional(S.String),
+      ContainerGroupDefinitionArn: S.optional(S.String),
+      ContainerGroupType: S.optional(ContainerGroupType),
+      ComputeName: S.optional(S.String),
+      InstanceId: S.optional(S.String),
+      ContainerGroupPortMappings: S.optional(ContainerGroupPortMappingList),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeContainerGroupPortMappingsOutput",
+  }) as any as S.Schema<DescribeContainerGroupPortMappingsOutput>;
 export interface DescribeEC2InstanceLimitsInput {
   EC2InstanceType?: EC2InstanceType;
   Location?: string;
@@ -8236,11 +8384,11 @@ export type CreateContainerGroupDefinitionError =
  *
  * - `ContainerGroupType` (`GAME_SERVER`)
  *
- * - `OperatingSystem` (omit to use default value)
+ * - `OperatingSystem`
  *
- * - `TotalMemoryLimitMebibytes` (omit to use default value)
+ * - `TotalMemoryLimitMebibytes`
  *
- * - `TotalVcpuLimit `(omit to use default value)
+ * - `TotalVcpuLimit`
  *
  * - At least one `GameServerContainerDefinition`
  *
@@ -8250,7 +8398,7 @@ export type CreateContainerGroupDefinitionError =
  *
  * - `PortConfiguration`
  *
- * - `ServerSdkVersion` (omit to use default value)
+ * - `ServerSdkVersion`
  *
  * - Create a per-instance container group definition. Provide the following required parameter
  * values:
@@ -8259,11 +8407,11 @@ export type CreateContainerGroupDefinitionError =
  *
  * - `ContainerGroupType` (`PER_INSTANCE`)
  *
- * - `OperatingSystem` (omit to use default value)
+ * - `OperatingSystem`
  *
- * - `TotalMemoryLimitMebibytes` (omit to use default value)
+ * - `TotalMemoryLimitMebibytes`
  *
- * - `TotalVcpuLimit `(omit to use default value)
+ * - `TotalVcpuLimit`
  *
  * - At least one `SupportContainerDefinition`
  *
@@ -9066,6 +9214,21 @@ export type CreateVpcPeeringAuthorizationError =
  * The authorization remains valid for 24 hours unless it is canceled. You must create or
  * delete the peering connection while the authorization is valid.
  *
+ * Amazon GameLift Servers uses the caller's credentials to update peer-VPC resources. The IAM user
+ * that calls this operation must have the following Amazon EC2 permissions enabled:
+ *
+ * - `ec2:AcceptVpcPeeringConnection`
+ *
+ * - `ec2:AuthorizeSecurityGroupEgress`
+ *
+ * - `ec2:AuthorizeSecurityGroupIngress`
+ *
+ * - `ec2:CreateRoute`
+ *
+ * - `ec2:DescribeRouteTables`
+ *
+ * - `ec2:DescribeSecurityGroups`
+ *
  * **Related actions**
  *
  * All APIs by task
@@ -9117,6 +9280,21 @@ export type CreateVpcPeeringConnectionError =
  * is asynchronous. If successful, a connection request is created. You can use continuous
  * polling to track the request's status using DescribeVpcPeeringConnections , or by monitoring fleet events for success
  * or failure using DescribeFleetEvents .
+ *
+ * Amazon GameLift Servers uses the caller's credentials to update peer-VPC resources. The IAM user
+ * that calls this operation must have the following Amazon EC2 permissions enabled:
+ *
+ * - `ec2:AcceptVpcPeeringConnection`
+ *
+ * - `ec2:AuthorizeSecurityGroupEgress`
+ *
+ * - `ec2:AuthorizeSecurityGroupIngress`
+ *
+ * - `ec2:CreateRoute`
+ *
+ * - `ec2:DescribeRouteTables`
+ *
+ * - `ec2:DescribeSecurityGroups`
  *
  * **Related actions**
  *
@@ -10063,6 +10241,71 @@ export const describeContainerGroupDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeContainerGroupDefinition",
 }));
+export type DescribeContainerGroupPortMappingsError =
+  | InternalServiceException
+  | InvalidRequestException
+  | LimitExceededException
+  | NotFoundException
+  | UnauthorizedException
+  | UnsupportedRegionException
+  | CommonErrors;
+/**
+ * **This API works with the following fleet types:** Container
+ *
+ * Retrieves the port mappings for a container group running on a container fleet. Port
+ * mappings show how container ports are mapped to connection ports on the fleet instance.
+ * Use this operation to find the connection port for a specific container on a fleet
+ * instance.
+ *
+ * **Request options**
+ *
+ * - Get port mappings for a game server container group. Provide the fleet ID,
+ * set `ContainerGroupType` to `GAME_SERVER`, and specify the
+ * `ComputeName` for the game server container group.
+ *
+ * - Get port mappings for a per-instance container group. Provide the fleet ID,
+ * set `ContainerGroupType` to `PER_INSTANCE`, and specify the
+ * `InstanceId` for the instance.
+ *
+ * - Optionally filter results to a single container by providing a
+ * `ContainerName`.
+ *
+ * **Results**
+ *
+ * This operation returns the fleet ID, fleet ARN, location, container group definition
+ * ARN, container group type, compute name (for game server container groups), instance ID,
+ * and a list of `ContainerGroupPortMapping` objects. Each object contains the
+ * container name, runtime ID, and a list of port mappings that show how container ports map
+ * to connection ports on the instance.
+ *
+ * **Learn more**
+ *
+ * Connect to
+ * containers
+ *
+ * Create a
+ * container group definition
+ */
+export const describeContainerGroupPortMappings: API.OperationMethod<
+  DescribeContainerGroupPortMappingsInput,
+  DescribeContainerGroupPortMappingsOutput,
+  DescribeContainerGroupPortMappingsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeContainerGroupPortMappingsInput,
+  output: DescribeContainerGroupPortMappingsOutput,
+  errors: [
+    InternalServiceException,
+    InvalidRequestException,
+    LimitExceededException,
+    NotFoundException,
+    UnauthorizedException,
+    UnsupportedRegionException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeContainerGroupPortMappings",
+}));
 export type DescribeEC2InstanceLimitsError =
   | InternalServiceException
   | InvalidRequestException
@@ -10083,24 +10326,27 @@ export type DescribeEC2InstanceLimitsError =
  * Region or in a remote location. For remote locations, limits also differ based on the
  * combination of home Region and remote location. All requests must specify an Amazon Web Services
  * Region (either explicitly or as your default settings). To get the limit for a remote
- * location, you must also specify the location. For example, the following requests all
+ * location, you must also specify the location. To learn more about how Amazon GameLift Servers handles
+ * locations, see Amazon GameLift Servers service
+ * locations. For example, the following requests all
  * return different results:
  *
  * - Request specifies the Region `ap-northeast-1` with no location. The
- * result is limits and usage data on all instance types that are deployed in
- * `us-east-2`, by all of the fleets that reside in
+ * result is limits and usage data on all of the fleets that reside in
+ * `ap-northeast-1`, for all instance types that are deployed in
  * `ap-northeast-1`.
  *
- * - Request specifies the Region `us-east-1` with location
- * `ca-central-1`. The result is limits and usage data on all
- * instance types that are deployed in `ca-central-1`, by all of the
- * fleets that reside in `us-east-2`. These limits do not affect fleets
- * in any other Regions that deploy instances to `ca-central-1`.
+ * - Request specifies the Region `ap-northeast-1` with location
+ * `us-west-2`. The result is limits and usage data on all of the
+ * fleets that reside in `ap-northeast-1`, for all instance types
+ * that are deployed in `us-west-2`.
  *
- * - Request specifies the Region `eu-west-1` with location
- * `ca-central-1`. The result is limits and usage data on all
- * instance types that are deployed in `ca-central-1`, by all of the
- * fleets that reside in `eu-west-1`.
+ * - Request specifies the Region `us-east-1` with location
+ * `ap-northeast-1`. The result is limits and usage data on all of
+ * the fleets that reside in `us-east-1`, for all instance types
+ * that are deployed in `ap-northeast-1`. These limits do not affect
+ * fleets in any other Regions that deploy instances to
+ * `ap-northeast-1`.
  *
  * This operation can be used in the following ways:
  *
@@ -10427,8 +10673,6 @@ export type DescribeFleetLocationAttributesError =
  *
  * If successful, a `LocationAttributes` object is returned for each requested
  * location. If the fleet does not have a requested location, no information is returned.
- * This operation does not return the home Region. To get information on a fleet's home
- * Region, call `DescribeFleetAttributes`.
  *
  * **Learn more**
  *
@@ -13091,8 +13335,8 @@ export type SearchGameSessionsError =
  *
  * To set search and sort criteria, create a filter expression using the following game session attributes. For game session search examples, see the Examples section of this topic.
  *
- * - **gameSessionId** -- A unique identifier for the game session. You can use either a
- * `GameSessionId` or `GameSessionArn` value.
+ * - **gameSessionId** -- An identifier for the game session that is unique across all regions. You must use the
+ * full ARN value.
  *
  * - **gameSessionName** -- Name assigned to a game
  * session. Game session names do not need to be unique to a game session.
@@ -13994,8 +14238,8 @@ export type UpdateContainerGroupDefinitionError =
  * version number. Provide updated values for the properties that you want to change only.
  * All other values remain the same as the source version.
  *
- * - Change a game server container definition. Provide the updated container
- * definition.
+ * - Change a game server container definition. Provide a complete set of container
+ * definitions, including the updated definition.
  *
  * - Add or change a support container definition. Provide a complete set of container
  * definitions, including the updated definition.
@@ -14190,7 +14434,7 @@ export type UpdateFleetPortSettingsError =
  * `InboundPermissionRevocations`. Permissions to be removed must match
  * existing fleet permissions.
  *
- * If successful, the fleet ID for the updated fleet is returned. For fleets with remote
+ * If successful, the fleet identifiers for the updated fleet are returned. For fleets with remote
  * locations, port setting updates can take time to propagate across all locations. You can
  * check the status of updates in each location by calling
  * `DescribeFleetPortSettings` with a location name.
@@ -14296,6 +14540,12 @@ export type UpdateGameServerGroupError =
  * updated values. Before applying the updates, the new values are validated to ensure that
  * Amazon GameLift Servers FleetIQ can continue to perform instance balancing activity. If successful, a
  * `GameServerGroup` object is returned.
+ *
+ * Target tracking Auto Scaling policies on the Auto Scaling group cannot be
+ * updated through the Amazon Web Services Management Console. Instead, use the Amazon Elastic Compute Cloud Auto Scaling
+ *
+ * `PutScalingPolicy`
+ * API action to update these policies.
  *
  * **Learn more**
  *

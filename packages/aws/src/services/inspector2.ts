@@ -164,6 +164,7 @@ export type EcrPullDateRescanDuration = string;
 export type EcrPullDateRescanMode = string;
 export type Ec2ScanMode = string;
 export type Ec2ScanModeStatus = string;
+export type VMScannerStatus = string;
 export type RelationshipStatus = string;
 export type Path = string;
 export type ScanType = string;
@@ -2590,11 +2591,27 @@ export const Ec2ScanModeState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "Ec2ScanModeState",
 }) as any as S.Schema<Ec2ScanModeState>;
+export interface VMScannerState {
+  activated?: boolean;
+  activatedAt?: Date;
+  status?: string;
+}
+export const VMScannerState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    activated: S.optional(S.Boolean),
+    activatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    status: S.optional(S.String),
+  }),
+).annotate({ identifier: "VMScannerState" }) as any as S.Schema<VMScannerState>;
 export interface Ec2ConfigurationState {
   scanModeState?: Ec2ScanModeState;
+  vmScannerState?: VMScannerState;
 }
 export const Ec2ConfigurationState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ scanModeState: S.optional(Ec2ScanModeState) }),
+  S.Struct({
+    scanModeState: S.optional(Ec2ScanModeState),
+    vmScannerState: S.optional(VMScannerState),
+  }),
 ).annotate({
   identifier: "Ec2ConfigurationState",
 }) as any as S.Schema<Ec2ConfigurationState>;
@@ -6306,9 +6323,10 @@ export const EcrConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EcrConfiguration>;
 export interface Ec2Configuration {
   scanMode: string;
+  activateVMScanner?: boolean;
 }
 export const Ec2Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ scanMode: S.String }),
+  S.Struct({ scanMode: S.String, activateVMScanner: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "Ec2Configuration",
 }) as any as S.Schema<Ec2Configuration>;

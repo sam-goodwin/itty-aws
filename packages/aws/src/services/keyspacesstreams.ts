@@ -973,14 +973,26 @@ export const Record = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Record" }) as any as S.Schema<Record>;
 export type RecordList = Record[];
 export const RecordList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Record);
+export type IteratorPosition = "AT_TIP" | "BEHIND_TIP" | (string & {});
+export const IteratorPosition = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface IteratorDescription {
+  iteratorPosition?: IteratorPosition;
+}
+export const IteratorDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ iteratorPosition: S.optional(IteratorPosition) }),
+).annotate({
+  identifier: "IteratorDescription",
+}) as any as S.Schema<IteratorDescription>;
 export interface GetRecordsOutput {
   changeRecords?: Record[];
   nextShardIterator?: string;
+  iteratorDescription?: IteratorDescription;
 }
 export const GetRecordsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     changeRecords: S.optional(RecordList),
     nextShardIterator: S.optional(S.String),
+    iteratorDescription: S.optional(IteratorDescription),
   }),
 ).annotate({
   identifier: "GetRecordsOutput",

@@ -473,6 +473,8 @@ export type SuppressionListReasons = SuppressionListReason[];
 export const SuppressionListReasons = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   SuppressionListReason,
 );
+export type SuppressionListScope = "ACCOUNT" | "TENANT" | (string & {});
+export const SuppressionListScope = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type FeatureStatus = "ENABLED" | "DISABLED" | (string & {});
 export const FeatureStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type SuppressionConfidenceVerdictThreshold =
@@ -517,11 +519,13 @@ export const SuppressionValidationOptions =
   }) as any as S.Schema<SuppressionValidationOptions>;
 export interface SuppressionOptions {
   SuppressedReasons?: SuppressionListReason[];
+  SuppressionScope?: SuppressionListScope;
   ValidationOptions?: SuppressionValidationOptions;
 }
 export const SuppressionOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     SuppressedReasons: S.optional(SuppressionListReasons),
+    SuppressionScope: S.optional(SuppressionListScope),
     ValidationOptions: S.optional(SuppressionValidationOptions),
   }),
 ).annotate({
@@ -1560,12 +1564,30 @@ export const CreateMultiRegionEndpointResponse =
   ).annotate({
     identifier: "CreateMultiRegionEndpointResponse",
   }) as any as S.Schema<CreateMultiRegionEndpointResponse>;
+export interface TenantSuppressionAttributes {
+  SuppressedReasons?: SuppressionListReason[];
+  SuppressionScope?: SuppressionListScope;
+}
+export const TenantSuppressionAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SuppressedReasons: S.optional(SuppressionListReasons),
+      SuppressionScope: S.optional(SuppressionListScope),
+    }),
+  ).annotate({
+    identifier: "TenantSuppressionAttributes",
+  }) as any as S.Schema<TenantSuppressionAttributes>;
 export interface CreateTenantRequest {
   TenantName: string;
   Tags?: Tag[];
+  SuppressionAttributes?: TenantSuppressionAttributes;
 }
 export const CreateTenantRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ TenantName: S.String, Tags: S.optional(TagList) }).pipe(
+  S.Struct({
+    TenantName: S.String,
+    Tags: S.optional(TagList),
+    SuppressionAttributes: S.optional(TenantSuppressionAttributes),
+  }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/v2/email/tenants" }),
       svc,
@@ -1591,6 +1613,7 @@ export interface CreateTenantResponse {
   CreatedTimestamp?: Date;
   Tags?: Tag[];
   SendingStatus?: SendingStatus;
+  SuppressionAttributes?: TenantSuppressionAttributes;
 }
 export const CreateTenantResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1602,6 +1625,7 @@ export const CreateTenantResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     Tags: S.optional(TagList),
     SendingStatus: S.optional(SendingStatus),
+    SuppressionAttributes: S.optional(TenantSuppressionAttributes),
   }),
 ).annotate({
   identifier: "CreateTenantResponse",
@@ -1912,10 +1936,14 @@ export const DeleteMultiRegionEndpointResponse =
   }) as any as S.Schema<DeleteMultiRegionEndpointResponse>;
 export interface DeleteSuppressedDestinationRequest {
   EmailAddress: string;
+  TenantName?: string;
 }
 export const DeleteSuppressedDestinationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ EmailAddress: S.String.pipe(T.HttpLabel("EmailAddress")) }).pipe(
+    S.Struct({
+      EmailAddress: S.String.pipe(T.HttpLabel("EmailAddress")),
+      TenantName: S.optional(S.String).pipe(T.HttpQuery("TenantName")),
+    }).pipe(
       T.all(
         T.Http({
           method: "DELETE",
@@ -3558,10 +3586,14 @@ export const GetReputationEntityResponse =
   }) as any as S.Schema<GetReputationEntityResponse>;
 export interface GetSuppressedDestinationRequest {
   EmailAddress: string;
+  TenantName?: string;
 }
 export const GetSuppressedDestinationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ EmailAddress: S.String.pipe(T.HttpLabel("EmailAddress")) }).pipe(
+    S.Struct({
+      EmailAddress: S.String.pipe(T.HttpLabel("EmailAddress")),
+      TenantName: S.optional(S.String).pipe(T.HttpQuery("TenantName")),
+    }).pipe(
       T.all(
         T.Http({
           method: "GET",
@@ -3595,6 +3627,7 @@ export interface SuppressedDestination {
   Reason: SuppressionListReason;
   LastUpdateTime: Date;
   Attributes?: SuppressedDestinationAttributes;
+  TenantName?: string;
 }
 export const SuppressedDestination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3602,6 +3635,7 @@ export const SuppressedDestination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Reason: SuppressionListReason,
     LastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     Attributes: S.optional(SuppressedDestinationAttributes),
+    TenantName: S.optional(S.String),
   }),
 ).annotate({
   identifier: "SuppressedDestination",
@@ -3639,6 +3673,7 @@ export interface Tenant {
   CreatedTimestamp?: Date;
   Tags?: Tag[];
   SendingStatus?: SendingStatus;
+  SuppressionAttributes?: TenantSuppressionAttributes;
 }
 export const Tenant = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3650,6 +3685,7 @@ export const Tenant = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ),
     Tags: S.optional(TagList),
     SendingStatus: S.optional(SendingStatus),
+    SuppressionAttributes: S.optional(TenantSuppressionAttributes),
   }),
 ).annotate({ identifier: "Tenant" }) as any as S.Schema<Tenant>;
 export interface GetTenantResponse {
@@ -4531,6 +4567,7 @@ export const ListResourceTenantsResponse =
     identifier: "ListResourceTenantsResponse",
   }) as any as S.Schema<ListResourceTenantsResponse>;
 export interface ListSuppressedDestinationsRequest {
+  TenantName?: string;
   Reasons?: SuppressionListReason[];
   StartDate?: Date;
   EndDate?: Date;
@@ -4540,6 +4577,7 @@ export interface ListSuppressedDestinationsRequest {
 export const ListSuppressedDestinationsRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
+      TenantName: S.optional(S.String).pipe(T.HttpQuery("TenantName")),
       Reasons: S.optional(SuppressionListReasons).pipe(T.HttpQuery("Reason")),
       StartDate: S.optional(
         S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -5004,6 +5042,7 @@ export const PutConfigurationSetSendingOptionsResponse =
   }) as any as S.Schema<PutConfigurationSetSendingOptionsResponse>;
 export interface PutConfigurationSetSuppressionOptionsRequest {
   ConfigurationSetName: string;
+  SuppressionScope?: SuppressionListScope;
   SuppressedReasons?: SuppressionListReason[];
   ValidationOptions?: SuppressionValidationOptions;
 }
@@ -5011,6 +5050,7 @@ export const PutConfigurationSetSuppressionOptionsRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       ConfigurationSetName: S.String.pipe(T.HttpLabel("ConfigurationSetName")),
+      SuppressionScope: S.optional(SuppressionListScope),
       SuppressedReasons: S.optional(SuppressionListReasons),
       ValidationOptions: S.optional(SuppressionValidationOptions),
     }).pipe(
@@ -5374,10 +5414,15 @@ export const PutEmailIdentityMailFromAttributesResponse =
 export interface PutSuppressedDestinationRequest {
   EmailAddress: string;
   Reason: SuppressionListReason;
+  TenantName?: string;
 }
 export const PutSuppressedDestinationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ EmailAddress: S.String, Reason: SuppressionListReason }).pipe(
+    S.Struct({
+      EmailAddress: S.String,
+      Reason: SuppressionListReason,
+      TenantName: S.optional(S.String),
+    }).pipe(
       T.all(
         T.Http({ method: "PUT", uri: "/v2/email/suppression/addresses" }),
         svc,
@@ -5395,6 +5440,35 @@ export const PutSuppressedDestinationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutSuppressedDestinationResponse",
   }) as any as S.Schema<PutSuppressedDestinationResponse>;
+export interface PutTenantSuppressionAttributesRequest {
+  TenantName: string;
+  SuppressedReasons?: SuppressionListReason[];
+  SuppressionScope?: SuppressionListScope;
+}
+export const PutTenantSuppressionAttributesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TenantName: S.String,
+      SuppressedReasons: S.optional(SuppressionListReasons),
+      SuppressionScope: S.optional(SuppressionListScope),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/v2/email/tenant/suppression" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "PutTenantSuppressionAttributesRequest",
+  }) as any as S.Schema<PutTenantSuppressionAttributesRequest>;
+export interface PutTenantSuppressionAttributesResponse {}
+export const PutTenantSuppressionAttributesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "PutTenantSuppressionAttributesResponse",
+  }) as any as S.Schema<PutTenantSuppressionAttributesResponse>;
 export type EmailAddressList = string[];
 export const EmailAddressList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface BulkEmailContent {
@@ -6554,6 +6628,10 @@ export type CreateTenantError =
  * Each tenant can have its own set of resources like email identities, configuration sets,
  * and templates, along with reputation metrics and sending status. This helps isolate and manage
  * email sending for different customers or business units within your Amazon SES API v2 account.
+ *
+ * You can optionally specify `SuppressionAttributes` to configure tenant-level
+ * suppression at creation time. When tenant-level suppression is enabled, Amazon SES maintains a
+ * separate suppression list for the tenant instead of using the account-level suppression list.
  */
 export const createTenant: API.OperationMethod<
   CreateTenantRequest,
@@ -6887,7 +6965,10 @@ export type DeleteSuppressedDestinationError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Removes an email address from the suppression list for your account.
+ * Removes an email address from the suppression list for your account or for a specific
+ * tenant. To target a tenant's suppression list, specify the `TenantName`
+ * parameter. If you omit `TenantName`, the address is removed from the
+ * account-level suppression list.
  */
 export const deleteSuppressedDestination: API.OperationMethod<
   DeleteSuppressedDestinationRequest,
@@ -7388,7 +7469,7 @@ export type GetEmailTemplateError =
  * Displays the template object (which includes the subject line, HTML part and text
  * part) for the template you specify.
  *
- * You can execute this operation no more than once per second.
+ * You can execute this operation no more than 50 times per second.
  */
 export const getEmailTemplate: API.OperationMethod<
   GetEmailTemplateRequest,
@@ -7528,7 +7609,9 @@ export type GetSuppressedDestinationError =
   | CommonErrors;
 /**
  * Retrieves information about a specific email address that's on the suppression list
- * for your account.
+ * for your account or for a specific tenant. To target a tenant's suppression list,
+ * specify the `TenantName` parameter. If you omit `TenantName`,
+ * the operation targets the account-level suppression list.
  */
 export const getSuppressedDestination: API.OperationMethod<
   GetSuppressedDestinationRequest,
@@ -7550,7 +7633,7 @@ export type GetTenantError =
   | CommonErrors;
 /**
  * Get information about a specific tenant, including the tenant's name, ID, ARN,
- * creation timestamp, tags, and sending status.
+ * creation timestamp, tags, sending status, and suppression attributes.
  */
 export const getTenant: API.OperationMethod<
   GetTenantRequest,
@@ -8218,11 +8301,14 @@ export const listResourceTenants: API.OperationMethod<
 export type ListSuppressedDestinationsError =
   | BadRequestException
   | InvalidNextTokenException
+  | NotFoundException
   | TooManyRequestsException
   | CommonErrors;
 /**
  * Retrieves a list of email addresses that are on the suppression list for your
- * account.
+ * account or for a specific tenant. To target a tenant's suppression list, specify the
+ * `TenantName` parameter. If you omit `TenantName`, the operation
+ * targets the account-level suppression list.
  */
 export const listSuppressedDestinations: API.OperationMethod<
   ListSuppressedDestinationsRequest,
@@ -8250,6 +8336,7 @@ export const listSuppressedDestinations: API.OperationMethod<
   errors: [
     BadRequestException,
     InvalidNextTokenException,
+    NotFoundException,
     TooManyRequestsException,
   ],
   protocol: AwsProtocol,
@@ -8575,7 +8662,10 @@ export type PutConfigurationSetSuppressionOptionsError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Specify the account suppression list preferences for a configuration set.
+ * Specify the suppression list preferences for a configuration set. You can
+ * also use this operation to specify a `SuppressionScope` to override the
+ * suppression scope of the tenant or account for emails sent using this configuration
+ * set.
  */
 export const putConfigurationSetSuppressionOptions: API.OperationMethod<
   PutConfigurationSetSuppressionOptionsRequest,
@@ -8880,10 +8970,14 @@ export const putEmailIdentityMailFromAttributes: API.OperationMethod<
 }));
 export type PutSuppressedDestinationError =
   | BadRequestException
+  | NotFoundException
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Adds an email address to the suppression list for your account.
+ * Adds an email address to the suppression list for your account or for a specific
+ * tenant. To target a tenant's suppression list, specify the `TenantName`
+ * parameter. If you omit `TenantName`, the address is added to the
+ * account-level suppression list.
  */
 export const putSuppressedDestination: API.OperationMethod<
   PutSuppressedDestinationRequest,
@@ -8893,10 +8987,36 @@ export const putSuppressedDestination: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutSuppressedDestinationRequest,
   output: PutSuppressedDestinationResponse,
-  errors: [BadRequestException, TooManyRequestsException],
+  errors: [BadRequestException, NotFoundException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "PutSuppressedDestination",
+}));
+export type PutTenantSuppressionAttributesError =
+  | BadRequestException
+  | NotFoundException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Configure the suppression list preferences for a tenant. Use this operation to enable
+ * or disable tenant-level suppression, or to change the suppressed reasons for a tenant.
+ *
+ * When you set the suppression scope to `TENANT`, Amazon SES maintains a separate
+ * suppression list for the tenant. When you set the scope to `ACCOUNT`, the tenant
+ * uses the account-level suppression list.
+ */
+export const putTenantSuppressionAttributes: API.OperationMethod<
+  PutTenantSuppressionAttributesRequest,
+  PutTenantSuppressionAttributesResponse,
+  PutTenantSuppressionAttributesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutTenantSuppressionAttributesRequest,
+  output: PutTenantSuppressionAttributesResponse,
+  errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutTenantSuppressionAttributes",
 }));
 export type SendBulkEmailError =
   | AccountSuspendedException

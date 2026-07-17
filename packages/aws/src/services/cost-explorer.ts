@@ -225,6 +225,7 @@ export type AnalysisId = string;
 export type AccountId = string;
 export type SavingsPlansCommitment = number;
 export type SavingsPlansId = string;
+export type SavingsPlansTargetCoverage = number;
 export type MetricName = string;
 export type GroupDefinitionKey = string;
 export type BillingViewArn = string;
@@ -1189,7 +1190,11 @@ export const AnalysisDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisDetails>;
 export type AccountScope = "PAYER" | "LINKED" | (string & {});
 export const AccountScope = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type AnalysisType = "MAX_SAVINGS" | "CUSTOM_COMMITMENT" | (string & {});
+export type AnalysisType =
+  | "MAX_SAVINGS"
+  | "CUSTOM_COMMITMENT"
+  | "TARGET_AVERAGE_COVERAGE"
+  | (string & {});
 export const AnalysisType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type PaymentOption =
   | "NO_UPFRONT"
@@ -1243,6 +1248,7 @@ export interface SavingsPlansPurchaseAnalysisConfiguration {
   SavingsPlansToAdd: SavingsPlans[];
   SavingsPlansToExclude?: string[];
   LookBackTimePeriod: DateInterval;
+  SavingsPlansTargetCoverage?: number;
 }
 export const SavingsPlansPurchaseAnalysisConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1253,6 +1259,7 @@ export const SavingsPlansPurchaseAnalysisConfiguration =
       SavingsPlansToAdd: SavingsPlansToAdd,
       SavingsPlansToExclude: S.optional(SavingsPlansToExclude),
       LookBackTimePeriod: DateInterval,
+      SavingsPlansTargetCoverage: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "SavingsPlansPurchaseAnalysisConfiguration",

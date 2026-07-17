@@ -103,6 +103,10 @@ export type KeyCheckValue = string;
 export type PlainTextOutputType = string | redacted.Redacted<string>;
 export type PlainTextType = string | redacted.Redacted<string>;
 export type As2805RandomKeyMaterial = string | redacted.Redacted<string>;
+export type TransactionDataType = string | redacted.Redacted<string>;
+export type HexLengthEquals4 = string;
+export type HexLengthEquals8 = string;
+export type AuthRequestCryptogramType = string | redacted.Redacted<string>;
 export type CardExpiryDateType = string | redacted.Redacted<string>;
 export type ServiceCodeType = string | redacted.Redacted<string>;
 export type HexLengthBetween2And8 = string;
@@ -112,8 +116,7 @@ export type IntegerRangeBetween3And5Type = number;
 export type ValidationDataType = string | redacted.Redacted<string>;
 export type MessageDataType = string | redacted.Redacted<string>;
 export type ApplicationCryptogramType = string | redacted.Redacted<string>;
-export type HexLengthEquals4 = string;
-export type IntegerRangeBetween4And16 = number;
+export type IntegerRangeBetween4And32 = number;
 export type MacOutputType = string | redacted.Redacted<string>;
 export type PinBlockLengthEquals16 = string | redacted.Redacted<string>;
 export type CommandMessageDataType = string | redacted.Redacted<string>;
@@ -131,9 +134,6 @@ export type WrappedKeyMaterialFormat = string;
 export type HexEvenLengthBetween16And32 = string | redacted.Redacted<string>;
 export type SystemTraceAuditNumberType = string;
 export type TransactionAmountType = string;
-export type TransactionDataType = string | redacted.Redacted<string>;
-export type AuthRequestCryptogramType = string | redacted.Redacted<string>;
-export type HexLengthEquals8 = string;
 export type ProprietaryAuthenticationDataType =
   | string
   | redacted.Redacted<string>;
@@ -434,11 +434,21 @@ export const EncryptDataOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptDataOutput",
 }) as any as S.Schema<EncryptDataOutput>;
+export type RandomKeyMaxLength =
+  | "BYTES_8"
+  | "BYTES_16"
+  | "BYTES_24"
+  | (string & {});
+export const RandomKeyMaxLength = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface KekValidationRequest {
   DeriveKeyAlgorithm: SymmetricKeyAlgorithm;
+  RandomKeyMaxLength?: RandomKeyMaxLength;
 }
 export const KekValidationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ DeriveKeyAlgorithm: SymmetricKeyAlgorithm }),
+  S.Struct({
+    DeriveKeyAlgorithm: SymmetricKeyAlgorithm,
+    RandomKeyMaxLength: S.optional(RandomKeyMaxLength),
+  }),
 ).annotate({
   identifier: "KekValidationRequest",
 }) as any as S.Schema<KekValidationRequest>;
@@ -509,6 +519,159 @@ export const GenerateAs2805KekValidationOutput =
   ).annotate({
     identifier: "GenerateAs2805KekValidationOutput",
   }) as any as S.Schema<GenerateAs2805KekValidationOutput>;
+export type MajorKeyDerivationMode =
+  | "EMV_OPTION_A"
+  | "EMV_OPTION_B"
+  | (string & {});
+export const MajorKeyDerivationMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SessionKeyEmvCommon {
+  PrimaryAccountNumber: string | redacted.Redacted<string>;
+  PanSequenceNumber: string;
+  ApplicationTransactionCounter: string;
+}
+export const SessionKeyEmvCommon = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PrimaryAccountNumber: SensitiveString,
+    PanSequenceNumber: S.String,
+    ApplicationTransactionCounter: S.String,
+  }),
+).annotate({
+  identifier: "SessionKeyEmvCommon",
+}) as any as S.Schema<SessionKeyEmvCommon>;
+export interface SessionKeyMastercard {
+  PrimaryAccountNumber: string | redacted.Redacted<string>;
+  PanSequenceNumber: string;
+  ApplicationTransactionCounter: string;
+  UnpredictableNumber: string;
+}
+export const SessionKeyMastercard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PrimaryAccountNumber: SensitiveString,
+    PanSequenceNumber: S.String,
+    ApplicationTransactionCounter: S.String,
+    UnpredictableNumber: S.String,
+  }),
+).annotate({
+  identifier: "SessionKeyMastercard",
+}) as any as S.Schema<SessionKeyMastercard>;
+export interface SessionKeyEmv2000 {
+  PrimaryAccountNumber: string | redacted.Redacted<string>;
+  PanSequenceNumber: string;
+  ApplicationTransactionCounter: string;
+}
+export const SessionKeyEmv2000 = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PrimaryAccountNumber: SensitiveString,
+    PanSequenceNumber: S.String,
+    ApplicationTransactionCounter: S.String,
+  }),
+).annotate({
+  identifier: "SessionKeyEmv2000",
+}) as any as S.Schema<SessionKeyEmv2000>;
+export interface SessionKeyAmex {
+  PrimaryAccountNumber: string | redacted.Redacted<string>;
+  PanSequenceNumber: string;
+}
+export const SessionKeyAmex = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PrimaryAccountNumber: SensitiveString,
+    PanSequenceNumber: S.String,
+  }),
+).annotate({ identifier: "SessionKeyAmex" }) as any as S.Schema<SessionKeyAmex>;
+export interface SessionKeyVisa {
+  PrimaryAccountNumber: string | redacted.Redacted<string>;
+  PanSequenceNumber: string;
+}
+export const SessionKeyVisa = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PrimaryAccountNumber: SensitiveString,
+    PanSequenceNumber: S.String,
+  }),
+).annotate({ identifier: "SessionKeyVisa" }) as any as S.Schema<SessionKeyVisa>;
+export type SessionKeyDerivation =
+  | {
+      EmvCommon: SessionKeyEmvCommon;
+      Mastercard?: never;
+      Emv2000?: never;
+      Amex?: never;
+      Visa?: never;
+    }
+  | {
+      EmvCommon?: never;
+      Mastercard: SessionKeyMastercard;
+      Emv2000?: never;
+      Amex?: never;
+      Visa?: never;
+    }
+  | {
+      EmvCommon?: never;
+      Mastercard?: never;
+      Emv2000: SessionKeyEmv2000;
+      Amex?: never;
+      Visa?: never;
+    }
+  | {
+      EmvCommon?: never;
+      Mastercard?: never;
+      Emv2000?: never;
+      Amex: SessionKeyAmex;
+      Visa?: never;
+    }
+  | {
+      EmvCommon?: never;
+      Mastercard?: never;
+      Emv2000?: never;
+      Amex?: never;
+      Visa: SessionKeyVisa;
+    };
+export const SessionKeyDerivation = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ EmvCommon: SessionKeyEmvCommon }),
+  S.Struct({ Mastercard: SessionKeyMastercard }),
+  S.Struct({ Emv2000: SessionKeyEmv2000 }),
+  S.Struct({ Amex: SessionKeyAmex }),
+  S.Struct({ Visa: SessionKeyVisa }),
+]);
+export interface GenerateAuthRequestCryptogramInput {
+  KeyIdentifier: string;
+  TransactionData: string | redacted.Redacted<string>;
+  MajorKeyDerivationMode: MajorKeyDerivationMode;
+  SessionKeyDerivationAttributes: SessionKeyDerivation;
+}
+export const GenerateAuthRequestCryptogramInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      KeyIdentifier: S.String,
+      TransactionData: SensitiveString,
+      MajorKeyDerivationMode: MajorKeyDerivationMode,
+      SessionKeyDerivationAttributes: SessionKeyDerivation,
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/cryptogram/generate" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GenerateAuthRequestCryptogramInput",
+  }) as any as S.Schema<GenerateAuthRequestCryptogramInput>;
+export interface GenerateAuthRequestCryptogramOutput {
+  KeyArn: string;
+  KeyCheckValue: string;
+  AuthRequestCryptogram: string | redacted.Redacted<string>;
+}
+export const GenerateAuthRequestCryptogramOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      KeyArn: S.String,
+      KeyCheckValue: S.String,
+      AuthRequestCryptogram: SensitiveString,
+    }),
+  ).annotate({
+    identifier: "GenerateAuthRequestCryptogramOutput",
+  }) as any as S.Schema<GenerateAuthRequestCryptogramOutput>;
 export interface AmexCardSecurityCodeVersion1 {
   CardExpiryDate: string | redacted.Redacted<string>;
 }
@@ -721,11 +884,6 @@ export type MacAlgorithm =
   | "AS2805_4_1"
   | (string & {});
 export const MacAlgorithm = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type MajorKeyDerivationMode =
-  | "EMV_OPTION_A"
-  | "EMV_OPTION_B"
-  | (string & {});
-export const MajorKeyDerivationMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type SessionKeyDerivationMode =
   | "EMV_COMMON_SESSION_KEY"
   | "EMV2000"
@@ -1587,113 +1745,6 @@ export const TranslatePinDataOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "TranslatePinDataOutput",
 }) as any as S.Schema<TranslatePinDataOutput>;
-export interface SessionKeyEmvCommon {
-  PrimaryAccountNumber: string | redacted.Redacted<string>;
-  PanSequenceNumber: string;
-  ApplicationTransactionCounter: string;
-}
-export const SessionKeyEmvCommon = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrimaryAccountNumber: SensitiveString,
-    PanSequenceNumber: S.String,
-    ApplicationTransactionCounter: S.String,
-  }),
-).annotate({
-  identifier: "SessionKeyEmvCommon",
-}) as any as S.Schema<SessionKeyEmvCommon>;
-export interface SessionKeyMastercard {
-  PrimaryAccountNumber: string | redacted.Redacted<string>;
-  PanSequenceNumber: string;
-  ApplicationTransactionCounter: string;
-  UnpredictableNumber: string;
-}
-export const SessionKeyMastercard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrimaryAccountNumber: SensitiveString,
-    PanSequenceNumber: S.String,
-    ApplicationTransactionCounter: S.String,
-    UnpredictableNumber: S.String,
-  }),
-).annotate({
-  identifier: "SessionKeyMastercard",
-}) as any as S.Schema<SessionKeyMastercard>;
-export interface SessionKeyEmv2000 {
-  PrimaryAccountNumber: string | redacted.Redacted<string>;
-  PanSequenceNumber: string;
-  ApplicationTransactionCounter: string;
-}
-export const SessionKeyEmv2000 = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrimaryAccountNumber: SensitiveString,
-    PanSequenceNumber: S.String,
-    ApplicationTransactionCounter: S.String,
-  }),
-).annotate({
-  identifier: "SessionKeyEmv2000",
-}) as any as S.Schema<SessionKeyEmv2000>;
-export interface SessionKeyAmex {
-  PrimaryAccountNumber: string | redacted.Redacted<string>;
-  PanSequenceNumber: string;
-}
-export const SessionKeyAmex = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrimaryAccountNumber: SensitiveString,
-    PanSequenceNumber: S.String,
-  }),
-).annotate({ identifier: "SessionKeyAmex" }) as any as S.Schema<SessionKeyAmex>;
-export interface SessionKeyVisa {
-  PrimaryAccountNumber: string | redacted.Redacted<string>;
-  PanSequenceNumber: string;
-}
-export const SessionKeyVisa = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PrimaryAccountNumber: SensitiveString,
-    PanSequenceNumber: S.String,
-  }),
-).annotate({ identifier: "SessionKeyVisa" }) as any as S.Schema<SessionKeyVisa>;
-export type SessionKeyDerivation =
-  | {
-      EmvCommon: SessionKeyEmvCommon;
-      Mastercard?: never;
-      Emv2000?: never;
-      Amex?: never;
-      Visa?: never;
-    }
-  | {
-      EmvCommon?: never;
-      Mastercard: SessionKeyMastercard;
-      Emv2000?: never;
-      Amex?: never;
-      Visa?: never;
-    }
-  | {
-      EmvCommon?: never;
-      Mastercard?: never;
-      Emv2000: SessionKeyEmv2000;
-      Amex?: never;
-      Visa?: never;
-    }
-  | {
-      EmvCommon?: never;
-      Mastercard?: never;
-      Emv2000?: never;
-      Amex: SessionKeyAmex;
-      Visa?: never;
-    }
-  | {
-      EmvCommon?: never;
-      Mastercard?: never;
-      Emv2000?: never;
-      Amex?: never;
-      Visa: SessionKeyVisa;
-    };
-export const SessionKeyDerivation = /*@__PURE__*/ /*#__PURE__*/ S.Union([
-  S.Struct({ EmvCommon: SessionKeyEmvCommon }),
-  S.Struct({ Mastercard: SessionKeyMastercard }),
-  S.Struct({ Emv2000: SessionKeyEmv2000 }),
-  S.Struct({ Amex: SessionKeyAmex }),
-  S.Struct({ Visa: SessionKeyVisa }),
-]);
 export interface CryptogramVerificationArpcMethod1 {
   AuthResponseCode: string;
 }
@@ -2093,7 +2144,7 @@ export type DecryptDataError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2146,7 +2197,7 @@ export type EncryptDataError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2185,15 +2236,17 @@ export type GenerateAs2805KekValidationError =
   | ValidationException
   | CommonErrors;
 /**
- * Establishes node-to-node initialization between payment processing nodes such as an acquirer, issuer or payment network using Australian Standard 2805 (AS2805).
+ * Generates a `KekValidationRequest` or a `KekValidationResponse` for node-to-node initialization between payment processing nodes using Australian Standard 2805 (AS2805).
  *
  * During node-to-node initialization, both communicating nodes must validate that they possess the correct Key Encrypting Keys (KEKs) before proceeding with session key exchange. In AS2805, the sending KEK (KEKs) of one node corresponds to the receiving KEK (KEKr) of its partner node. Each node uses its KEK to encrypt and decrypt session keys exchanged between the nodes. A KEK can be created or imported into Amazon Web Services Payment Cryptography using either the CreateKey or ImportKey operations.
  *
- * The node initiating communication can use `GenerateAS2805KekValidation` to generate a combined KEK validation request and KEK validation response to send to the partnering node for validation. When invoked, the API internally generates a random sending key encrypted under KEKs and provides a receiving key encrypted under KEKr as response. The initiating node sends the response returned by this API to its partner for validation.
+ * To use `GenerateAs2805KekValidation` to generate a KEK validation request, set `KekValidationType` to `KekValidationRequest`. This operation returns both `RandomKeySend` (KRs) and `RandomKeyReceive` (KRr) as response values. The partnering node receives the KRs, uses its KEKr to decrypt it, and generates a KRr which is an inverted value of KRs. The node receiving the KRr validates it against its own KRr generated during KEK validation request outside of Amazon Web Services Payment Cryptography.
+ *
+ * You can also use this operation to generate a KEK validation response, by setting `KekValidationType` to `KekValidationResponse` and providing the incoming KRs. This operation then calculates a KRr. To learn more about more about node-to-node initialization, see Validation of KEK in the *Amazon Web Services Payment Cryptography User Guide*.
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  */
 export const generateAs2805KekValidation: API.OperationMethod<
   GenerateAs2805KekValidationInput,
@@ -2214,6 +2267,47 @@ export const generateAs2805KekValidation: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateAs2805KekValidation",
 }));
+export type GenerateAuthRequestCryptogramError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Generates an Authorization Request Cryptogram (ARQC) for an EMV chip payment card authorization. For more information, see Generate auth request cryptogram in the *Amazon Web Services Payment Cryptography User Guide*.
+ *
+ * ARQC generation uses an Issuer Master Key (IMK) for application cryptograms (TR31_E0_EMV_MKEY_APP_CRYPTOGRAMS) to derive a session key, which is then used to generate the cryptogram from the provided transaction data (when applicable). To use this operation, you must first create or import an IMK-AC key by calling CreateKey or ImportKey. The `KeyModesOfUse` should be set to `DeriveKey` for the IMK-AC encryption key.
+ *
+ * This operation is intended for development and testing scenarios only. It is not recommended to use this operation as a substitute for card-based cryptogram generation in production payment flows.
+ *
+ * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
+ *
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
+ *
+ * **Related operations:**
+ *
+ * - VerifyAuthRequestCryptogram
+ */
+export const generateAuthRequestCryptogram: API.OperationMethod<
+  GenerateAuthRequestCryptogramInput,
+  GenerateAuthRequestCryptogramOutput,
+  GenerateAuthRequestCryptogramError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GenerateAuthRequestCryptogramInput,
+  output: GenerateAuthRequestCryptogramOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GenerateAuthRequestCryptogram",
+}));
 export type GenerateCardValidationDataError =
   | AccessDeniedException
   | InternalServerException
@@ -2228,7 +2322,7 @@ export type GenerateCardValidationDataError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2271,7 +2365,7 @@ export type GenerateMacError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2316,7 +2410,7 @@ export type GenerateMacEmvPinChangeError =
  *
  * Use GenerateMac operation when sending a script update to an EMV card that does not involve PIN change. When assigning IAM permissions, it is important to understand that EncryptData using EMV keys and GenerateMac perform similar functions to this command.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2359,7 +2453,7 @@ export type GeneratePinDataError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2406,7 +2500,7 @@ export type ReEncryptDataError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2453,7 +2547,7 @@ export type TranslateKeyMaterialError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2506,7 +2600,7 @@ export type TranslatePinDataError =
  *
  * Amazon Web Services Payment Cryptography currently supports ISO PIN block 4 translation for PIN block built using legacy PAN length. That is, PAN is the right most 12 digits excluding the check digits.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2548,7 +2642,7 @@ export type VerifyAuthRequestCryptogramError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2591,7 +2685,7 @@ export type VerifyCardValidationDataError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2636,7 +2730,7 @@ export type VerifyMacError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *
@@ -2677,7 +2771,7 @@ export type VerifyPinDataError =
  *
  * For information about valid keys for this operation, see Understanding key attributes and Key types for specific data operations in the *Amazon Web Services Payment Cryptography User Guide*.
  *
- * **Cross-account use**: This operation can't be used across different Amazon Web Services accounts.
+ * **Cross-account use**: This operation supports cross-account use when the key has a resource-based policy that grants access. For more information, see Resource-based policies.
  *
  * **Related operations:**
  *

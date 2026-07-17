@@ -98,6 +98,8 @@ export type ReservationArn = string;
 export type RouterNetworkInterfaceArn = string;
 export type MediaLiveChannelArn = string;
 export type FlowOutputArn = string;
+export type ClientToken = string;
+export type RouterCqaThresholdSeconds = number;
 export type RouterInputArn = string;
 export type FlowSourceArn = string;
 export type MediaLiveInputArn = string;
@@ -1904,6 +1906,11 @@ export const FlowTransitEncryption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FlowTransitEncryption",
 }) as any as S.Schema<FlowTransitEncryption>;
+export type NdiOutputTimecodeSource =
+  | "EMBEDDED_TIMECODE"
+  | "UTC_SYSTEM_TIME"
+  | (string & {});
+export const NdiOutputTimecodeSource = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface AddOutputRequest {
   CidrAllowList?: string[];
   Description?: string;
@@ -1926,6 +1933,7 @@ export interface AddOutputRequest {
   OutputTags?: { [key: string]: string | undefined };
   RouterIntegrationState?: State;
   RouterIntegrationTransitEncryption?: FlowTransitEncryption;
+  NdiOutputTimecodeSource?: NdiOutputTimecodeSource;
 }
 export const AddOutputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1952,6 +1960,7 @@ export const AddOutputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     OutputTags: S.optional(__mapOfString),
     RouterIntegrationState: S.optional(State),
     RouterIntegrationTransitEncryption: S.optional(FlowTransitEncryption),
+    NdiOutputTimecodeSource: S.optional(NdiOutputTimecodeSource),
   }).pipe(
     S.encodeKeys({
       CidrAllowList: "cidrAllowList",
@@ -1975,6 +1984,7 @@ export const AddOutputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       OutputTags: "outputTags",
       RouterIntegrationState: "routerIntegrationState",
       RouterIntegrationTransitEncryption: "routerIntegrationTransitEncryption",
+      NdiOutputTimecodeSource: "ndiOutputTimecodeSource",
     }),
   ),
 ).annotate({
@@ -2635,6 +2645,7 @@ export interface Transport {
   NdiSpeedHqQuality?: number;
   NdiProgramName?: string;
   NdiSourceSettings?: NdiSourceSettings;
+  NdiOutputTimecodeSource?: NdiOutputTimecodeSource;
 }
 export const Transport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2654,6 +2665,7 @@ export const Transport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     NdiSpeedHqQuality: S.optional(S.Number),
     NdiProgramName: S.optional(S.String),
     NdiSourceSettings: S.optional(NdiSourceSettings),
+    NdiOutputTimecodeSource: S.optional(NdiOutputTimecodeSource),
   }).pipe(
     S.encodeKeys({
       CidrAllowList: "cidrAllowList",
@@ -2672,6 +2684,7 @@ export const Transport = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       NdiSpeedHqQuality: "ndiSpeedHqQuality",
       NdiProgramName: "ndiProgramName",
       NdiSourceSettings: "ndiSourceSettings",
+      NdiOutputTimecodeSource: "ndiOutputTimecodeSource",
     }),
   ),
 ).annotate({ identifier: "Transport" }) as any as S.Schema<Transport>;
@@ -4466,6 +4479,7 @@ export interface UpdateFlowOutputRequest {
   NdiSpeedHqQuality?: number;
   RouterIntegrationState?: State;
   RouterIntegrationTransitEncryption?: FlowTransitEncryption;
+  NdiOutputTimecodeSource?: NdiOutputTimecodeSource;
 }
 export const UpdateFlowOutputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -4494,6 +4508,7 @@ export const UpdateFlowOutputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       NdiSpeedHqQuality: S.optional(S.Number),
       RouterIntegrationState: S.optional(State),
       RouterIntegrationTransitEncryption: S.optional(FlowTransitEncryption),
+      NdiOutputTimecodeSource: S.optional(NdiOutputTimecodeSource),
     })
       .pipe(
         S.encodeKeys({
@@ -4518,6 +4533,7 @@ export const UpdateFlowOutputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
           RouterIntegrationState: "routerIntegrationState",
           RouterIntegrationTransitEncryption:
             "routerIntegrationTransitEncryption",
+          NdiOutputTimecodeSource: "ndiOutputTimecodeSource",
         }),
       )
       .pipe(
@@ -5991,6 +6007,79 @@ export const MaintenanceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ PreferredDayTime: PreferredDayTimeMaintenanceConfiguration }),
   S.Struct({ Default: DefaultMaintenanceConfiguration }),
 ]);
+export interface BlackFramesConfiguration {
+  State: ContentQualityAnalysisState;
+  ThresholdSeconds: number;
+}
+export const BlackFramesConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      State: ContentQualityAnalysisState,
+      ThresholdSeconds: S.Number,
+    }).pipe(
+      S.encodeKeys({ State: "state", ThresholdSeconds: "thresholdSeconds" }),
+    ),
+).annotate({
+  identifier: "BlackFramesConfiguration",
+}) as any as S.Schema<BlackFramesConfiguration>;
+export interface FrozenFramesConfiguration {
+  State: ContentQualityAnalysisState;
+  ThresholdSeconds: number;
+}
+export const FrozenFramesConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      State: ContentQualityAnalysisState,
+      ThresholdSeconds: S.Number,
+    }).pipe(
+      S.encodeKeys({ State: "state", ThresholdSeconds: "thresholdSeconds" }),
+    ),
+).annotate({
+  identifier: "FrozenFramesConfiguration",
+}) as any as S.Schema<FrozenFramesConfiguration>;
+export interface SilentAudioConfiguration {
+  State: ContentQualityAnalysisState;
+  ThresholdSeconds: number;
+}
+export const SilentAudioConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      State: ContentQualityAnalysisState,
+      ThresholdSeconds: S.Number,
+    }).pipe(
+      S.encodeKeys({ State: "state", ThresholdSeconds: "thresholdSeconds" }),
+    ),
+).annotate({
+  identifier: "SilentAudioConfiguration",
+}) as any as S.Schema<SilentAudioConfiguration>;
+export interface ContentQualityAnalysisFeatureConfiguration {
+  BlackFrames?: BlackFramesConfiguration;
+  FrozenFrames?: FrozenFramesConfiguration;
+  SilentAudio?: SilentAudioConfiguration;
+}
+export const ContentQualityAnalysisFeatureConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BlackFrames: S.optional(BlackFramesConfiguration),
+      FrozenFrames: S.optional(FrozenFramesConfiguration),
+      SilentAudio: S.optional(SilentAudioConfiguration),
+    }).pipe(
+      S.encodeKeys({
+        BlackFrames: "blackFrames",
+        FrozenFrames: "frozenFrames",
+        SilentAudio: "silentAudio",
+      }),
+    ),
+  ).annotate({
+    identifier: "ContentQualityAnalysisFeatureConfiguration",
+  }) as any as S.Schema<ContentQualityAnalysisFeatureConfiguration>;
+export type RouterContentQualityAnalysisConfiguration = {
+  ContentLevel: ContentQualityAnalysisFeatureConfiguration;
+};
+export const RouterContentQualityAnalysisConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+    S.Struct({ ContentLevel: ContentQualityAnalysisFeatureConfiguration }),
+  ]);
 export interface CreateRouterInputRequest {
   Name: string;
   Configuration: RouterInputConfiguration;
@@ -6003,6 +6092,7 @@ export interface CreateRouterInputRequest {
   MaintenanceConfiguration?: MaintenanceConfiguration;
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
+  ContentQualityAnalysisConfiguration?: RouterContentQualityAnalysisConfiguration;
 }
 export const CreateRouterInputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6018,6 +6108,9 @@ export const CreateRouterInputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       MaintenanceConfiguration: S.optional(MaintenanceConfiguration),
       Tags: S.optional(__mapOfString),
       ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      ContentQualityAnalysisConfiguration: S.optional(
+        RouterContentQualityAnalysisConfiguration,
+      ),
     })
       .pipe(
         S.encodeKeys({
@@ -6032,6 +6125,8 @@ export const CreateRouterInputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
           MaintenanceConfiguration: "maintenanceConfiguration",
           Tags: "tags",
           ClientToken: "clientToken",
+          ContentQualityAnalysisConfiguration:
+            "contentQualityAnalysisConfiguration",
         }),
       )
       .pipe(
@@ -6247,6 +6342,9 @@ export type MaintenanceSchedule = { Window: WindowMaintenanceSchedule };
 export const MaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ Window: WindowMaintenanceSchedule }),
 ]);
+export type RouterContentQualityAnalysisType = "CONTENT_LEVEL" | (string & {});
+export const RouterContentQualityAnalysisType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface RouterInput {
   Name: string;
   Arn: string;
@@ -6272,6 +6370,8 @@ export interface RouterInput {
   MaintenanceConfiguration: MaintenanceConfiguration;
   MaintenanceScheduleType?: MaintenanceScheduleType;
   MaintenanceSchedule?: MaintenanceSchedule;
+  ContentQualityAnalysisType?: RouterContentQualityAnalysisType;
+  ContentQualityAnalysisConfiguration?: RouterContentQualityAnalysisConfiguration;
 }
 export const RouterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -6299,6 +6399,10 @@ export const RouterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     MaintenanceConfiguration: MaintenanceConfiguration,
     MaintenanceScheduleType: S.optional(MaintenanceScheduleType),
     MaintenanceSchedule: S.optional(MaintenanceSchedule),
+    ContentQualityAnalysisType: S.optional(RouterContentQualityAnalysisType),
+    ContentQualityAnalysisConfiguration: S.optional(
+      RouterContentQualityAnalysisConfiguration,
+    ),
   }).pipe(
     S.encodeKeys({
       Name: "name",
@@ -6325,11 +6429,17 @@ export const RouterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       MaintenanceConfiguration: "maintenanceConfiguration",
       MaintenanceScheduleType: "maintenanceScheduleType",
       MaintenanceSchedule: "maintenanceSchedule",
+      ContentQualityAnalysisType: "contentQualityAnalysisType",
+      ContentQualityAnalysisConfiguration:
+        "contentQualityAnalysisConfiguration",
     }),
   ),
 ).annotate({ identifier: "RouterInput" }) as any as S.Schema<RouterInput>;
 export interface CreateRouterInputResponse {
-  RouterInput: RouterInput;
+  RouterInput: RouterInput & {
+    ContentQualityAnalysisType: RouterContentQualityAnalysisType;
+    ContentQualityAnalysisConfiguration: RouterContentQualityAnalysisConfiguration;
+  };
 }
 export const CreateRouterInputResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6357,7 +6467,10 @@ export const GetRouterInputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetRouterInputRequest",
 }) as any as S.Schema<GetRouterInputRequest>;
 export interface GetRouterInputResponse {
-  RouterInput: RouterInput;
+  RouterInput: RouterInput & {
+    ContentQualityAnalysisType: RouterContentQualityAnalysisType;
+    ContentQualityAnalysisConfiguration: RouterContentQualityAnalysisConfiguration;
+  };
 }
 export const GetRouterInputResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6376,6 +6489,7 @@ export interface UpdateRouterInputRequest {
   Tier?: RouterInputTier;
   TransitEncryption?: RouterInputTransitEncryption;
   MaintenanceConfiguration?: MaintenanceConfiguration;
+  ContentQualityAnalysisConfiguration?: RouterContentQualityAnalysisConfiguration;
 }
 export const UpdateRouterInputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6388,6 +6502,9 @@ export const UpdateRouterInputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Tier: S.optional(RouterInputTier),
       TransitEncryption: S.optional(RouterInputTransitEncryption),
       MaintenanceConfiguration: S.optional(MaintenanceConfiguration),
+      ContentQualityAnalysisConfiguration: S.optional(
+        RouterContentQualityAnalysisConfiguration,
+      ),
     })
       .pipe(
         S.encodeKeys({
@@ -6398,6 +6515,8 @@ export const UpdateRouterInputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
           Tier: "tier",
           TransitEncryption: "transitEncryption",
           MaintenanceConfiguration: "maintenanceConfiguration",
+          ContentQualityAnalysisConfiguration:
+            "contentQualityAnalysisConfiguration",
         }),
       )
       .pipe(
@@ -6414,7 +6533,10 @@ export const UpdateRouterInputRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   identifier: "UpdateRouterInputRequest",
 }) as any as S.Schema<UpdateRouterInputRequest>;
 export interface UpdateRouterInputResponse {
-  RouterInput: RouterInput;
+  RouterInput: RouterInput & {
+    ContentQualityAnalysisType: RouterContentQualityAnalysisType;
+    ContentQualityAnalysisConfiguration: RouterContentQualityAnalysisConfiguration;
+  };
 }
 export const UpdateRouterInputResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6893,7 +7015,10 @@ export const BatchGetRouterInputErrorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   BatchGetRouterInputError_,
 );
 export interface BatchGetRouterInputResponse {
-  RouterInputs: RouterInput[];
+  RouterInputs: (RouterInput & {
+    ContentQualityAnalysisType: RouterContentQualityAnalysisType;
+    ContentQualityAnalysisConfiguration: RouterContentQualityAnalysisConfiguration;
+  })[];
   Errors: BatchGetRouterInputError_[];
 }
 export const BatchGetRouterInputResponse =

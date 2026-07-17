@@ -194,8 +194,10 @@ export type EvaluationFormSectionTitle = string;
 export type ReferenceId = string;
 export type EvaluationFormQuestionInstructions = string;
 export type EvaluationFormItemWeight = number;
+export type EvaluationScorePercentage = number;
 export type EvaluationFormQuestionTitle = string;
 export type EvaluationFormQuestionAnswerScore = number;
+export type PointValue = number;
 export type EvaluationFormSingleSelectQuestionOptionText = string;
 export type SingleSelectQuestionRuleCategoryAutomationLabel = string;
 export type EvaluationFormMultiSelectQuestionOptionText = string;
@@ -318,6 +320,8 @@ export type WorkspaceTitle = string;
 export type Page = string;
 export type Slug = string;
 export type InputData = string;
+export type MaximumSizeLimitInBytes = number;
+export type FileExtension = string;
 export type AuthenticationProfileId = string;
 export type AuthenticationProfileName = string;
 export type AuthenticationProfileDescription = string;
@@ -362,7 +366,6 @@ export type ContactDetailName = string;
 export type ContactDetailDescription = string;
 export type ActiveRegion = string;
 export type OriginRegion = string;
-export type EvaluationScorePercentage = number;
 export type EvaluationAcknowledgerCommentString = string;
 export type EvaluationReviewRequestCommentContent = string;
 export type EvaluationAnswerDataStringValue = string;
@@ -399,6 +402,11 @@ export type CurrentMetricId = string;
 export type Value = number;
 export type ApproximateTotalCount = number;
 export type IntegerCount = number;
+export type EvaluationFormValidationFailureReason = string;
+export type EvaluationFormValidationIssueCode = string;
+export type EvaluationFormValidationFindingItemProperty = string;
+export type EvaluationFormValidationFindingDescription = string;
+export type EvaluationFormValidationFindingSuggestion = string;
 export type SecurityToken = string | redacted.Redacted<string>;
 export type ThresholdValue = number;
 export type ResourceArnOrId = string;
@@ -439,6 +447,7 @@ export type MaxResult200 = number;
 export type MaxResult2 = number;
 export type TestCaseResourceId = string;
 export type ExecutionRecordString = string;
+export type EpochMilliseconds = number;
 export type ViewsNextToken = string;
 export type MaxResults = number;
 export type NullableProficiencyLimitValue = number;
@@ -452,6 +461,8 @@ export type SearchableSegmentAttributeKey = string | redacted.Redacted<string>;
 export type SearchableSegmentAttributeValue =
   | string
   | redacted.Redacted<string>;
+export type AiAgentId = string;
+export type AiAgentVersionNumber = number;
 export type TotalCount = number;
 export type DateYearMonthDayFormat = string;
 export type MaxResult500 = number;
@@ -3210,12 +3221,37 @@ export const CreateEmailAddressResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateEmailAddressResponse",
 }) as any as S.Schema<CreateEmailAddressResponse>;
+export type PerformanceCategoryName =
+  | "NEEDS_IMPROVEMENT"
+  | "EXCEEDS_EXPECTATIONS"
+  | (string & {});
+export const PerformanceCategoryName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface EvaluationFormScoreThreshold {
+  PerformanceCategory: PerformanceCategoryName;
+  MinScorePercentage?: number;
+  MaxScorePercentage?: number;
+}
+export const EvaluationFormScoreThreshold =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      PerformanceCategory: PerformanceCategoryName,
+      MinScorePercentage: S.optional(S.Number),
+      MaxScorePercentage: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "EvaluationFormScoreThreshold",
+  }) as any as S.Schema<EvaluationFormScoreThreshold>;
+export type EvaluationFormScoreThresholdList = EvaluationFormScoreThreshold[];
+export const EvaluationFormScoreThresholdList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(EvaluationFormScoreThreshold);
 export interface EvaluationFormSection {
   Title: string;
   RefId: string;
   Instructions?: string;
   Items: EvaluationFormItem[];
   Weight?: number;
+  IsExcludedFromScoring?: boolean;
+  ScoreThresholds?: EvaluationFormScoreThreshold[];
 }
 export const EvaluationFormSection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3226,6 +3262,8 @@ export const EvaluationFormSection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       identifier: "EvaluationFormItemsList",
     }),
     Weight: S.optional(S.Number),
+    IsExcludedFromScoring: S.optional(S.Boolean),
+    ScoreThresholds: S.optional(EvaluationFormScoreThresholdList),
   }),
 ).annotate({
   identifier: "EvaluationFormSection",
@@ -3246,12 +3284,23 @@ export const AutomaticFailConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AutomaticFailConfiguration",
 }) as any as S.Schema<AutomaticFailConfiguration>;
+export interface QuestionOptionPointsConfiguration {
+  PointValue: number;
+  IsBonus?: boolean;
+}
+export const QuestionOptionPointsConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ PointValue: S.Number, IsBonus: S.optional(S.Boolean) }),
+  ).annotate({
+    identifier: "QuestionOptionPointsConfiguration",
+  }) as any as S.Schema<QuestionOptionPointsConfiguration>;
 export interface EvaluationFormNumericQuestionOption {
   MinValue: number;
   MaxValue: number;
   Score?: number;
   AutomaticFail?: boolean;
   AutomaticFailConfiguration?: AutomaticFailConfiguration;
+  PointsConfiguration?: QuestionOptionPointsConfiguration;
 }
 export const EvaluationFormNumericQuestionOption =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3261,6 +3310,7 @@ export const EvaluationFormNumericQuestionOption =
       Score: S.optional(S.Number),
       AutomaticFail: S.optional(S.Boolean),
       AutomaticFailConfiguration: S.optional(AutomaticFailConfiguration),
+      PointsConfiguration: S.optional(QuestionOptionPointsConfiguration),
     }),
   ).annotate({
     identifier: "EvaluationFormNumericQuestionOption",
@@ -3347,6 +3397,7 @@ export interface EvaluationFormSingleSelectQuestionOption {
   Score?: number;
   AutomaticFail?: boolean;
   AutomaticFailConfiguration?: AutomaticFailConfiguration;
+  PointsConfiguration?: QuestionOptionPointsConfiguration;
 }
 export const EvaluationFormSingleSelectQuestionOption =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3356,6 +3407,7 @@ export const EvaluationFormSingleSelectQuestionOption =
       Score: S.optional(S.Number),
       AutomaticFail: S.optional(S.Boolean),
       AutomaticFailConfiguration: S.optional(AutomaticFailConfiguration),
+      PointsConfiguration: S.optional(QuestionOptionPointsConfiguration),
     }),
   ).annotate({
     identifier: "EvaluationFormSingleSelectQuestionOption",
@@ -3459,10 +3511,21 @@ export const EvaluationFormTextQuestionProperties =
 export interface EvaluationFormMultiSelectQuestionOption {
   RefId: string;
   Text: string;
+  Score?: number;
+  AutomaticFail?: boolean;
+  AutomaticFailConfiguration?: AutomaticFailConfiguration;
+  PointsConfiguration?: QuestionOptionPointsConfiguration;
 }
 export const EvaluationFormMultiSelectQuestionOption =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ RefId: S.String, Text: S.String }),
+    S.Struct({
+      RefId: S.String,
+      Text: S.String,
+      Score: S.optional(S.Number),
+      AutomaticFail: S.optional(S.Boolean),
+      AutomaticFailConfiguration: S.optional(AutomaticFailConfiguration),
+      PointsConfiguration: S.optional(QuestionOptionPointsConfiguration),
+    }),
   ).annotate({
     identifier: "EvaluationFormMultiSelectQuestionOption",
   }) as any as S.Schema<EvaluationFormMultiSelectQuestionOption>;
@@ -3701,6 +3764,36 @@ export const EvaluationFormItemEnablementConfiguration =
   ).annotate({
     identifier: "EvaluationFormItemEnablementConfiguration",
   }) as any as S.Schema<EvaluationFormItemEnablementConfiguration>;
+export interface QuestionPointsConfiguration {
+  MaxPointValue?: number;
+  MinPointValue?: number;
+  IsBonus?: boolean;
+}
+export const QuestionPointsConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MaxPointValue: S.optional(S.Number),
+      MinPointValue: S.optional(S.Number),
+      IsBonus: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "QuestionPointsConfiguration",
+  }) as any as S.Schema<QuestionPointsConfiguration>;
+export interface EvaluationFormQuestionScoringConfiguration {
+  PointsConfiguration?: QuestionPointsConfiguration;
+  IsExcludedFromScoring?: boolean;
+  ScoreThresholds?: EvaluationFormScoreThreshold[];
+}
+export const EvaluationFormQuestionScoringConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      PointsConfiguration: S.optional(QuestionPointsConfiguration),
+      IsExcludedFromScoring: S.optional(S.Boolean),
+      ScoreThresholds: S.optional(EvaluationFormScoreThresholdList),
+    }),
+  ).annotate({
+    identifier: "EvaluationFormQuestionScoringConfiguration",
+  }) as any as S.Schema<EvaluationFormQuestionScoringConfiguration>;
 export interface EvaluationFormQuestion {
   Title: string;
   Instructions?: string;
@@ -3710,6 +3803,7 @@ export interface EvaluationFormQuestion {
   QuestionTypeProperties?: EvaluationFormQuestionTypeProperties;
   Enablement?: EvaluationFormItemEnablementConfiguration;
   Weight?: number;
+  ScoringConfiguration?: EvaluationFormQuestionScoringConfiguration;
 }
 export const EvaluationFormQuestion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3722,6 +3816,9 @@ export const EvaluationFormQuestion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       QuestionTypeProperties: S.optional(EvaluationFormQuestionTypeProperties),
       Enablement: S.optional(EvaluationFormItemEnablementConfiguration),
       Weight: S.optional(S.Number),
+      ScoringConfiguration: S.optional(
+        EvaluationFormQuestionScoringConfiguration,
+      ),
     }),
 ).annotate({
   identifier: "EvaluationFormQuestion",
@@ -3746,6 +3843,7 @@ export const EvaluationFormItemsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export type EvaluationFormScoringMode =
   | "QUESTION_ONLY"
   | "SECTION_ONLY"
+  | "POINTS_BASED"
   | (string & {});
 export const EvaluationFormScoringMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type EvaluationFormScoringStatus =
@@ -3756,12 +3854,14 @@ export const EvaluationFormScoringStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface EvaluationFormScoringStrategy {
   Mode: EvaluationFormScoringMode;
   Status: EvaluationFormScoringStatus;
+  ScoreThresholds?: EvaluationFormScoreThreshold[];
 }
 export const EvaluationFormScoringStrategy =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       Mode: EvaluationFormScoringMode,
       Status: EvaluationFormScoringStatus,
+      ScoreThresholds: S.optional(EvaluationFormScoreThresholdList),
     }),
   ).annotate({
     identifier: "EvaluationFormScoringStrategy",
@@ -4846,6 +4946,7 @@ export type EventSourceName =
   | "OnRealTimeCallAnalysisAvailable"
   | "OnRealTimeChatAnalysisAvailable"
   | "OnPostChatAnalysisAvailable"
+  | "OnEmailAnalysisAvailable"
   | "OnZendeskTicketCreate"
   | "OnZendeskTicketStatusUpdate"
   | "OnSalesforceCaseCreate"
@@ -4854,6 +4955,10 @@ export type EventSourceName =
   | "OnCaseCreate"
   | "OnCaseUpdate"
   | "OnSlaBreach"
+  | "OnAlertUpdate"
+  | "OnSchedulePublish"
+  | "OnScheduleUpdate"
+  | "OnScheduleTimeOffRequestActivity"
   | (string & {});
 export const EventSourceName = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface RuleTriggerEventSource {
@@ -7557,6 +7662,87 @@ export const DescribeAgentStatusResponse =
   ).annotate({
     identifier: "DescribeAgentStatusResponse",
   }) as any as S.Schema<DescribeAgentStatusResponse>;
+export type AttachmentScope =
+  | "EMAIL"
+  | "CHAT"
+  | "CASE"
+  | "TASK"
+  | (string & {});
+export const AttachmentScope = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DescribeAttachedFilesConfigurationRequest {
+  InstanceId: string;
+  AttachmentScope: AttachmentScope;
+}
+export const DescribeAttachedFilesConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceId: S.String.pipe(T.HttpLabel("InstanceId")),
+      AttachmentScope: AttachmentScope.pipe(T.HttpLabel("AttachmentScope")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/attached-files-configurations/{InstanceId}/{AttachmentScope}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeAttachedFilesConfigurationRequest",
+  }) as any as S.Schema<DescribeAttachedFilesConfigurationRequest>;
+export interface AllowedExtension {
+  Extension: string;
+}
+export const AllowedExtension = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Extension: S.String }),
+).annotate({
+  identifier: "AllowedExtension",
+}) as any as S.Schema<AllowedExtension>;
+export type AllowedExtensionsList = AllowedExtension[];
+export const AllowedExtensionsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AllowedExtension);
+export interface ExtensionConfiguration {
+  AllowedExtensions: AllowedExtension[];
+}
+export const ExtensionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ AllowedExtensions: AllowedExtensionsList }),
+).annotate({
+  identifier: "ExtensionConfiguration",
+}) as any as S.Schema<ExtensionConfiguration>;
+export interface AttachedFilesConfiguration {
+  InstanceId: string;
+  AttachmentScope: AttachmentScope;
+  MaximumSizeLimitInBytes?: number;
+  ExtensionConfiguration?: ExtensionConfiguration;
+  LastModifiedTime?: Date;
+}
+export const AttachedFilesConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      InstanceId: S.String,
+      AttachmentScope: AttachmentScope,
+      MaximumSizeLimitInBytes: S.optional(S.Number),
+      ExtensionConfiguration: S.optional(ExtensionConfiguration),
+      LastModifiedTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+    }),
+).annotate({
+  identifier: "AttachedFilesConfiguration",
+}) as any as S.Schema<AttachedFilesConfiguration>;
+export interface DescribeAttachedFilesConfigurationResponse {
+  AttachedFilesConfiguration: AttachedFilesConfiguration;
+}
+export const DescribeAttachedFilesConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ AttachedFilesConfiguration: AttachedFilesConfiguration }),
+  ).annotate({
+    identifier: "DescribeAttachedFilesConfigurationResponse",
+  }) as any as S.Schema<DescribeAttachedFilesConfigurationResponse>;
 export interface DescribeAuthenticationProfileRequest {
   AuthenticationProfileId: string;
   InstanceId: string;
@@ -8432,6 +8618,9 @@ export interface EvaluationScore {
   NotApplicable?: boolean;
   AutomaticFail?: boolean;
   AppliedWeight?: number;
+  EarnedPoints?: number;
+  MaxBasePoint?: number;
+  PerformanceCategory?: PerformanceCategoryName;
 }
 export const EvaluationScore = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -8439,6 +8628,9 @@ export const EvaluationScore = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     NotApplicable: S.optional(S.Boolean),
     AutomaticFail: S.optional(S.Boolean),
     AppliedWeight: S.optional(S.Number),
+    EarnedPoints: S.optional(S.Number),
+    MaxBasePoint: S.optional(S.Number),
+    PerformanceCategory: S.optional(PerformanceCategoryName),
   }),
 ).annotate({
   identifier: "EvaluationScore",
@@ -9294,6 +9486,13 @@ export const DescribeEvaluationFormRequest =
   }) as any as S.Schema<DescribeEvaluationFormRequest>;
 export type EvaluationFormVersionStatus = "DRAFT" | "ACTIVE" | (string & {});
 export const EvaluationFormVersionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type EvaluationFormValidationStatus =
+  | "IN_PROGRESS"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
+export const EvaluationFormValidationStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface EvaluationForm {
   EvaluationFormId: string;
   EvaluationFormVersion: number;
@@ -9313,6 +9512,8 @@ export interface EvaluationForm {
   Tags?: { [key: string]: string | undefined };
   TargetConfiguration?: EvaluationFormTargetConfiguration;
   LanguageConfiguration?: EvaluationFormLanguageConfiguration;
+  LatestValidationStatus?: EvaluationFormValidationStatus;
+  LastValidationTime?: Date;
 }
 export const EvaluationForm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9336,6 +9537,10 @@ export const EvaluationForm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Tags: S.optional(TagMap),
     TargetConfiguration: S.optional(EvaluationFormTargetConfiguration),
     LanguageConfiguration: S.optional(EvaluationFormLanguageConfiguration),
+    LatestValidationStatus: S.optional(EvaluationFormValidationStatus),
+    LastValidationTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
   }),
 ).annotate({ identifier: "EvaluationForm" }) as any as S.Schema<EvaluationForm>;
 export interface DescribeEvaluationFormResponse {
@@ -12533,6 +12738,97 @@ export const GetEffectiveHoursOfOperationsResponse =
   ).annotate({
     identifier: "GetEffectiveHoursOfOperationsResponse",
   }) as any as S.Schema<GetEffectiveHoursOfOperationsResponse>;
+export interface GetEvaluationFormValidationRequest {
+  InstanceId: string;
+  EvaluationFormId: string;
+  EvaluationFormVersion?: number;
+}
+export const GetEvaluationFormValidationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceId: S.String.pipe(T.HttpLabel("InstanceId")),
+      EvaluationFormId: S.String.pipe(T.HttpLabel("EvaluationFormId")),
+      EvaluationFormVersion: S.optional(S.Number).pipe(T.HttpQuery("version")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/evaluation-forms/{InstanceId}/{EvaluationFormId}/validation-results",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "GetEvaluationFormValidationRequest",
+  }) as any as S.Schema<GetEvaluationFormValidationRequest>;
+export interface EvaluationFormValidationFindingItem {
+  RefId?: string;
+  Property?: string;
+}
+export const EvaluationFormValidationFindingItem =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ RefId: S.optional(S.String), Property: S.optional(S.String) }),
+  ).annotate({
+    identifier: "EvaluationFormValidationFindingItem",
+  }) as any as S.Schema<EvaluationFormValidationFindingItem>;
+export type EvaluationFormValidationFindingItemList =
+  EvaluationFormValidationFindingItem[];
+export const EvaluationFormValidationFindingItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(EvaluationFormValidationFindingItem);
+export type EvaluationFormValidationFindingSeverity =
+  | "WARNING"
+  | "ERROR"
+  | (string & {});
+export const EvaluationFormValidationFindingSeverity =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface EvaluationFormValidationFinding {
+  IssueCode: string;
+  Items?: EvaluationFormValidationFindingItem[];
+  Description: string;
+  Suggestion?: string;
+  Severity: EvaluationFormValidationFindingSeverity;
+}
+export const EvaluationFormValidationFinding =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IssueCode: S.String,
+      Items: S.optional(EvaluationFormValidationFindingItemList),
+      Description: S.String,
+      Suggestion: S.optional(S.String),
+      Severity: EvaluationFormValidationFindingSeverity,
+    }),
+  ).annotate({
+    identifier: "EvaluationFormValidationFinding",
+  }) as any as S.Schema<EvaluationFormValidationFinding>;
+export type EvaluationFormValidationFindingList =
+  EvaluationFormValidationFinding[];
+export const EvaluationFormValidationFindingList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(EvaluationFormValidationFinding);
+export interface GetEvaluationFormValidationResponse {
+  Status: EvaluationFormValidationStatus;
+  FailureReason?: string;
+  EvaluationFormId: string;
+  EvaluationFormVersion: number;
+  StartedTime: Date;
+  Findings?: EvaluationFormValidationFinding[];
+}
+export const GetEvaluationFormValidationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Status: EvaluationFormValidationStatus,
+      FailureReason: S.optional(S.String),
+      EvaluationFormId: S.String,
+      EvaluationFormVersion: S.Number,
+      StartedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      Findings: S.optional(EvaluationFormValidationFindingList),
+    }),
+  ).annotate({
+    identifier: "GetEvaluationFormValidationResponse",
+  }) as any as S.Schema<GetEvaluationFormValidationResponse>;
 export interface GetFederationTokenRequest {
   InstanceId: string;
 }
@@ -13571,6 +13867,69 @@ export const ListAssociatedContactsResponse =
   ).annotate({
     identifier: "ListAssociatedContactsResponse",
   }) as any as S.Schema<ListAssociatedContactsResponse>;
+export interface ListAttachedFilesConfigurationsRequest {
+  InstanceId: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListAttachedFilesConfigurationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceId: S.String.pipe(T.HttpLabel("InstanceId")),
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/attached-files-configurations/{InstanceId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListAttachedFilesConfigurationsRequest",
+  }) as any as S.Schema<ListAttachedFilesConfigurationsRequest>;
+export interface AttachedFilesConfigurationSummary {
+  InstanceId: string;
+  AttachmentScope: AttachmentScope;
+  MaximumSizeLimitInBytes?: number;
+  ExtensionConfiguration?: ExtensionConfiguration;
+}
+export const AttachedFilesConfigurationSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceId: S.String,
+      AttachmentScope: AttachmentScope,
+      MaximumSizeLimitInBytes: S.optional(S.Number),
+      ExtensionConfiguration: S.optional(ExtensionConfiguration),
+    }),
+  ).annotate({
+    identifier: "AttachedFilesConfigurationSummary",
+  }) as any as S.Schema<AttachedFilesConfigurationSummary>;
+export type AttachedFilesConfigurationSummaryList =
+  AttachedFilesConfigurationSummary[];
+export const AttachedFilesConfigurationSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AttachedFilesConfigurationSummary);
+export interface ListAttachedFilesConfigurationsResponse {
+  AttachedFilesConfigurations?: AttachedFilesConfigurationSummary[];
+  NextToken?: string;
+}
+export const ListAttachedFilesConfigurationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AttachedFilesConfigurations: S.optional(
+        AttachedFilesConfigurationSummaryList,
+      ),
+      NextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListAttachedFilesConfigurationsResponse",
+  }) as any as S.Schema<ListAttachedFilesConfigurationsResponse>;
 export interface ListAuthenticationProfilesRequest {
   InstanceId: string;
   MaxResults?: number;
@@ -17084,8 +17443,8 @@ export interface ListTestCaseExecutionsRequest {
   InstanceId: string;
   TestCaseId?: string;
   TestCaseName?: string;
-  StartTime?: Date;
-  EndTime?: Date;
+  StartTime?: number;
+  EndTime?: number;
   Status?: TestCaseExecutionStatus;
   NextToken?: string;
   MaxResults?: number;
@@ -17096,12 +17455,8 @@ export const ListTestCaseExecutionsRequest =
       InstanceId: S.String.pipe(T.HttpLabel("InstanceId")),
       TestCaseId: S.optional(S.String).pipe(T.HttpQuery("testCaseId")),
       TestCaseName: S.optional(S.String).pipe(T.HttpQuery("testCaseName")),
-      StartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ).pipe(T.HttpQuery("startTime")),
-      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-        T.HttpQuery("endTime"),
-      ),
+      StartTime: S.optional(S.Number).pipe(T.HttpQuery("startTime")),
+      EndTime: S.optional(S.Number).pipe(T.HttpQuery("endTime")),
       Status: S.optional(TestCaseExecutionStatus).pipe(T.HttpQuery("status")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
       MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -18465,11 +18820,88 @@ export const EvaluationSearchCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "EvaluationSearchCriteria",
 }) as any as S.Schema<EvaluationSearchCriteria>;
+export type ContactEvaluationAttributeKey = "ContactAgentId" | (string & {});
+export const ContactEvaluationAttributeKey =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ContactEvaluationAttributeValue {
+  StringValue?: string;
+}
+export const ContactEvaluationAttributeValue =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ StringValue: S.optional(S.String) }),
+  ).annotate({
+    identifier: "ContactEvaluationAttributeValue",
+  }) as any as S.Schema<ContactEvaluationAttributeValue>;
+export type ContactEvaluationAttributeComparisonType = "EXACT" | (string & {});
+export const ContactEvaluationAttributeComparisonType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ContactEvaluationAttributeCondition {
+  AttributeKey?: ContactEvaluationAttributeKey;
+  AttributeValue?: ContactEvaluationAttributeValue;
+  ComparisonType?: ContactEvaluationAttributeComparisonType;
+}
+export const ContactEvaluationAttributeCondition =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AttributeKey: S.optional(ContactEvaluationAttributeKey),
+      AttributeValue: S.optional(ContactEvaluationAttributeValue),
+      ComparisonType: S.optional(ContactEvaluationAttributeComparisonType),
+    }),
+  ).annotate({
+    identifier: "ContactEvaluationAttributeCondition",
+  }) as any as S.Schema<ContactEvaluationAttributeCondition>;
+export type ContactEvaluationAttributeConditionList =
+  ContactEvaluationAttributeCondition[];
+export const ContactEvaluationAttributeConditionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ContactEvaluationAttributeCondition);
+export interface ContactEvaluationAttributeAndCondition {
+  TagConditions?: TagCondition[];
+  AttributeConditions?: ContactEvaluationAttributeCondition[];
+}
+export const ContactEvaluationAttributeAndCondition =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      TagConditions: S.optional(TagAndConditionList),
+      AttributeConditions: S.optional(ContactEvaluationAttributeConditionList),
+    }),
+  ).annotate({
+    identifier: "ContactEvaluationAttributeAndCondition",
+  }) as any as S.Schema<ContactEvaluationAttributeAndCondition>;
+export type ContactEvaluationAttributeOrConditionList =
+  ContactEvaluationAttributeAndCondition[];
+export const ContactEvaluationAttributeOrConditionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ContactEvaluationAttributeAndCondition);
+export interface ContactEvaluationAttributeFilter {
+  OrConditions?: ContactEvaluationAttributeAndCondition[];
+  AndCondition?: ContactEvaluationAttributeAndCondition;
+  TagCondition?: TagCondition;
+  ContactEvaluationAttributeCondition?: ContactEvaluationAttributeCondition;
+}
+export const ContactEvaluationAttributeFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      OrConditions: S.optional(ContactEvaluationAttributeOrConditionList),
+      AndCondition: S.optional(ContactEvaluationAttributeAndCondition),
+      TagCondition: S.optional(TagCondition),
+      ContactEvaluationAttributeCondition: S.optional(
+        ContactEvaluationAttributeCondition,
+      ),
+    }),
+  ).annotate({
+    identifier: "ContactEvaluationAttributeFilter",
+  }) as any as S.Schema<ContactEvaluationAttributeFilter>;
 export interface EvaluationSearchFilter {
   AttributeFilter?: ControlPlaneAttributeFilter;
+  ContactEvaluationAttributeFilter?: ContactEvaluationAttributeFilter;
 }
 export const EvaluationSearchFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ AttributeFilter: S.optional(ControlPlaneAttributeFilter) }),
+  () =>
+    S.Struct({
+      AttributeFilter: S.optional(ControlPlaneAttributeFilter),
+      ContactEvaluationAttributeFilter: S.optional(
+        ContactEvaluationAttributeFilter,
+      ),
+    }),
 ).annotate({
   identifier: "EvaluationSearchFilter",
 }) as any as S.Schema<EvaluationSearchFilter>;
@@ -18518,6 +18950,9 @@ export interface EvaluationSearchMetadata {
   ReviewId?: string;
   ContactParticipantRole?: ContactParticipantRole;
   ContactParticipantId?: string;
+  EarnedPoints?: number;
+  MaxBasePoint?: number;
+  PerformanceCategory?: PerformanceCategoryName;
 }
 export const EvaluationSearchMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -18540,6 +18975,9 @@ export const EvaluationSearchMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ReviewId: S.optional(S.String),
       ContactParticipantRole: S.optional(ContactParticipantRole),
       ContactParticipantId: S.optional(S.String),
+      EarnedPoints: S.optional(S.Number),
+      MaxBasePoint: S.optional(S.Number),
+      PerformanceCategory: S.optional(PerformanceCategoryName),
     }),
 ).annotate({
   identifier: "EvaluationSearchMetadata",
@@ -19101,6 +19539,34 @@ export const SearchableSegmentAttributes =
   }) as any as S.Schema<SearchableSegmentAttributes>;
 export type ActiveRegionList = string[];
 export const ActiveRegionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface AiAgentSearchCriteria {
+  Id?: string;
+  VersionNumber?: number;
+  AiAgentEscalated?: boolean;
+  AiUseCase?: AiUseCase;
+}
+export const AiAgentSearchCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    VersionNumber: S.optional(S.Number),
+    AiAgentEscalated: S.optional(S.Boolean),
+    AiUseCase: S.optional(AiUseCase),
+  }),
+).annotate({
+  identifier: "AiAgentSearchCriteria",
+}) as any as S.Schema<AiAgentSearchCriteria>;
+export type AiAgentSearchCriteriaList = AiAgentSearchCriteria[];
+export const AiAgentSearchCriteriaList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  AiAgentSearchCriteria,
+);
+export interface AiAgentsCriteria {
+  Criteria?: AiAgentSearchCriteria[];
+}
+export const AiAgentsCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Criteria: S.optional(AiAgentSearchCriteriaList) }),
+).annotate({
+  identifier: "AiAgentsCriteria",
+}) as any as S.Schema<AiAgentsCriteria>;
 export interface SearchCriteria {
   Name?: NameCriteria;
   AgentIds?: string[];
@@ -19115,6 +19581,7 @@ export interface SearchCriteria {
   SearchableSegmentAttributes?: SearchableSegmentAttributes;
   ActiveRegions?: string[];
   ContactTags?: ControlPlaneTagFilter;
+  AiAgents?: AiAgentsCriteria;
 }
 export const SearchCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19131,6 +19598,7 @@ export const SearchCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SearchableSegmentAttributes: S.optional(SearchableSegmentAttributes),
     ActiveRegions: S.optional(ActiveRegionList),
     ContactTags: S.optional(ControlPlaneTagFilter),
+    AiAgents: S.optional(AiAgentsCriteria),
   }),
 ).annotate({ identifier: "SearchCriteria" }) as any as S.Schema<SearchCriteria>;
 export type SortableFieldName =
@@ -19230,6 +19698,25 @@ export const ContactSearchSummarySegmentAttributes =
     S.String,
     ContactSearchSummarySegmentAttributeValue.pipe(S.optional),
   );
+export interface ContactSearchSummaryAiAgentInfo {
+  AiAgentVersionId?: string;
+  AiAgentEscalated?: boolean;
+  AiUseCase?: AiUseCase;
+}
+export const ContactSearchSummaryAiAgentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AiAgentVersionId: S.optional(S.String),
+      AiAgentEscalated: S.optional(S.Boolean),
+      AiUseCase: S.optional(AiUseCase),
+    }),
+  ).annotate({
+    identifier: "ContactSearchSummaryAiAgentInfo",
+  }) as any as S.Schema<ContactSearchSummaryAiAgentInfo>;
+export type ContactSearchSummaryAiAgentInfoList =
+  ContactSearchSummaryAiAgentInfo[];
+export const ContactSearchSummaryAiAgentInfoList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ContactSearchSummaryAiAgentInfo);
 export interface ContactSearchSummary {
   Arn?: string;
   Id?: string;
@@ -19249,6 +19736,7 @@ export interface ContactSearchSummary {
   RoutingCriteria?: RoutingCriteria;
   Tags?: { [key: string]: string | undefined };
   GlobalResiliencyMetadata?: GlobalResiliencyMetadata;
+  AiAgentInfo?: ContactSearchSummaryAiAgentInfo[];
 }
 export const ContactSearchSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -19274,6 +19762,7 @@ export const ContactSearchSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     RoutingCriteria: S.optional(RoutingCriteria),
     Tags: S.optional(ContactTagMap),
     GlobalResiliencyMetadata: S.optional(GlobalResiliencyMetadata),
+    AiAgentInfo: S.optional(ContactSearchSummaryAiAgentInfoList),
   }),
 ).annotate({
   identifier: "ContactSearchSummary",
@@ -21963,6 +22452,48 @@ export const StartEmailContactResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "StartEmailContactResponse",
 }) as any as S.Schema<StartEmailContactResponse>;
+export interface StartEvaluationFormValidationRequest {
+  InstanceId: string;
+  EvaluationFormId: string;
+  EvaluationFormVersion: number;
+}
+export const StartEvaluationFormValidationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceId: S.String.pipe(T.HttpLabel("InstanceId")),
+      EvaluationFormId: S.String.pipe(T.HttpLabel("EvaluationFormId")),
+      EvaluationFormVersion: S.Number,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/evaluation-forms/{InstanceId}/{EvaluationFormId}/validate",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "StartEvaluationFormValidationRequest",
+  }) as any as S.Schema<StartEvaluationFormValidationRequest>;
+export interface StartEvaluationFormValidationResponse {
+  EvaluationFormId: string;
+  EvaluationFormArn: string;
+  EvaluationFormVersion: number;
+}
+export const StartEvaluationFormValidationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      EvaluationFormId: S.String,
+      EvaluationFormArn: S.String,
+      EvaluationFormVersion: S.Number,
+    }),
+  ).annotate({
+    identifier: "StartEvaluationFormValidationResponse",
+  }) as any as S.Schema<StartEvaluationFormValidationResponse>;
 export interface StartOutboundChatContactRequest {
   SourceEndpoint: Endpoint;
   DestinationEndpoint: Endpoint;
@@ -22237,7 +22768,7 @@ export const StartTestCaseExecutionRequest =
     S.Struct({
       InstanceId: S.String.pipe(T.HttpLabel("InstanceId")),
       TestCaseId: S.String.pipe(T.HttpLabel("TestCaseId")),
-      ClientToken: S.optional(S.String),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(
         T.Http({
@@ -22537,7 +23068,7 @@ export const StopTestCaseExecutionRequest =
       InstanceId: S.String.pipe(T.HttpLabel("InstanceId")),
       TestCaseExecutionId: S.String.pipe(T.HttpLabel("TestCaseExecutionId")),
       TestCaseId: S.String.pipe(T.HttpLabel("TestCaseId")),
-      ClientToken: S.optional(S.String),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(
         T.Http({
@@ -22853,6 +23384,56 @@ export const UpdateAgentStatusResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateAgentStatusResponse",
 }) as any as S.Schema<UpdateAgentStatusResponse>;
+export interface UpdateAttachedFilesConfigurationRequest {
+  InstanceId: string;
+  AttachmentScope: AttachmentScope;
+  MaximumSizeLimitInBytes?: number;
+  ExtensionConfiguration?: ExtensionConfiguration;
+}
+export const UpdateAttachedFilesConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceId: S.String.pipe(T.HttpLabel("InstanceId")),
+      AttachmentScope: AttachmentScope.pipe(T.HttpLabel("AttachmentScope")),
+      MaximumSizeLimitInBytes: S.optional(S.Number),
+      ExtensionConfiguration: S.optional(ExtensionConfiguration),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/attached-files-configurations/{InstanceId}/{AttachmentScope}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateAttachedFilesConfigurationRequest",
+  }) as any as S.Schema<UpdateAttachedFilesConfigurationRequest>;
+export interface UpdateAttachedFilesConfigurationResponse {
+  InstanceId: string;
+  AttachmentScope: AttachmentScope;
+  MaximumSizeLimitInBytes?: number;
+  ExtensionConfiguration?: ExtensionConfiguration;
+  LastModifiedTime?: Date;
+}
+export const UpdateAttachedFilesConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceId: S.String,
+      AttachmentScope: AttachmentScope,
+      MaximumSizeLimitInBytes: S.optional(S.Number),
+      ExtensionConfiguration: S.optional(ExtensionConfiguration),
+      LastModifiedTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateAttachedFilesConfigurationResponse",
+  }) as any as S.Schema<UpdateAttachedFilesConfigurationResponse>;
 export interface UpdateAuthenticationProfileRequest {
   AuthenticationProfileId: string;
   InstanceId: string;
@@ -25408,7 +25989,7 @@ export type ActivateEvaluationFormError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Activates an evaluation form in the specified Amazon Connect instance. After the evaluation form is
+ * Activates an evaluation form in the specified Connect Customer instance. After the evaluation form is
  * activated, it is available to start new evaluations based on the form.
  */
 export const activateEvaluationForm: API.OperationMethod<
@@ -25438,7 +26019,7 @@ export type AssociateAnalyticsDataSetError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Associates the specified dataset for a Amazon Connect instance with the target account. You can associate
+ * Associates the specified dataset for a Connect Customer instance with the target account. You can associate
  * only one dataset in a single call.
  */
 export const associateAnalyticsDataSet: API.OperationMethod<
@@ -25470,9 +26051,9 @@ export type AssociateApprovedOriginError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
- * Associates an approved origin to an Amazon Connect instance.
+ * Associates an approved origin to an Connect Customer instance.
  */
 export const associateApprovedOrigin: API.OperationMethod<
   AssociateApprovedOriginRequest,
@@ -25505,9 +26086,9 @@ export type AssociateBotError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
- * Allows the specified Amazon Connect instance to access the specified Amazon Lex or Amazon Lex V2
+ * Allows the specified Connect Customer instance to access the specified Amazon Lex or Amazon Lex V2
  * bot.
  */
 export const associateBot: API.OperationMethod<
@@ -25566,10 +26147,10 @@ export type AssociateContactWithUserError =
  * intended use cases.
  *
  * - The service quota *Queues per routing profile per instance* applies to manually assigned
- * queues, too. For more information about this quota, see Amazon Connect
- * quotas in the *Amazon Connect Administrator Guide*.
+ * queues, too. For more information about this quota, see Connect Customer
+ * quotas in the *Connect Customer Administrator Guide*.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const associateContactWithUser: API.OperationMethod<
   AssociateContactWithUserRequest,
@@ -25599,7 +26180,7 @@ export type AssociateDefaultVocabularyError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Associates an existing vocabulary as the default. Contact Lens for Amazon Connect uses the vocabulary in post-call and real-time
+ * Associates an existing vocabulary as the default. Contact Lens for Connect Customer uses the vocabulary in post-call and real-time
  * analysis sessions for the given language.
  */
 export const associateDefaultVocabulary: API.OperationMethod<
@@ -25632,7 +26213,7 @@ export type AssociateEmailAddressAliasError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Associates an email address alias with an existing email address in an Amazon Connect instance. This creates
+ * Associates an email address alias with an existing email address in an Connect Customer instance. This creates
  * a forwarding relationship where emails sent to the alias email address are automatically forwarded to the primary
  * email address.
  *
@@ -25649,7 +26230,7 @@ export type AssociateEmailAddressAliasError =
  * restructuring.
  *
  * - **Brand management**: Enable you to use familiar brand-specific email addresses
- * that forward to the appropriate Amazon Connect instance email address.
+ * that forward to the appropriate Connect Customer instance email address.
  *
  * **Important things to know**
  *
@@ -25669,11 +26250,11 @@ export type AssociateEmailAddressAliasError =
  *
  * - The status of the forwarding configuration.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  *
  * **Related operations**
  *
- * - DisassociateEmailAddressAlias: Removes the alias association between two email addresses in an Amazon Connect instance.
+ * - DisassociateEmailAddressAlias: Removes the alias association between two email addresses in an Connect Customer instance.
  *
  * - DescribeEmailAddress: View current alias configurations for an email address.
  *
@@ -25780,7 +26361,7 @@ export type AssociateInstanceStorageConfigError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Associates a storage resource type for the first time. You can only associate one type of storage configuration
  * in a single call. This means, for example, that you can't define an instance with multiple S3 buckets for storing
@@ -25820,9 +26401,9 @@ export type AssociateLambdaFunctionError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
- * Allows the specified Amazon Connect instance to access the specified Lambda function.
+ * Allows the specified Connect Customer instance to access the specified Lambda function.
  */
 export const associateLambdaFunction: API.OperationMethod<
   AssociateLambdaFunctionRequest,
@@ -25855,9 +26436,9 @@ export type AssociateLexBotError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
- * Allows the specified Amazon Connect instance to access the specified Amazon Lex V1 bot. This API
+ * Allows the specified Connect Customer instance to access the specified Amazon Lex V1 bot. This API
  * only supports the association of Amazon Lex V1 bots.
  */
 export const associateLexBot: API.OperationMethod<
@@ -25889,7 +26470,7 @@ export type AssociatePhoneNumberContactFlowError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Associates a flow with a phone number claimed to your Amazon Connect instance.
+ * Associates a flow with a phone number claimed to your Connect Customer instance.
  *
  * If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the
  * `PhoneNumberId` URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling
@@ -25933,7 +26514,7 @@ export type AssociateQueueEmailAddressesError =
  *
  * - You can associate up to 49 additional email addresses with a single queue, plus 1 default outbound email address, for a total of 50.
  *
- * - The email addresses must already exist in the Amazon Connect instance before they can be associated with a queue.
+ * - The email addresses must already exist in the Connect Customer instance before they can be associated with a queue.
  *
  * - Agents will be able to select from these associated email addresses when handling email contacts in the queue.
  *
@@ -26032,7 +26613,7 @@ export type AssociateSecurityKeyError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Associates a security key to the instance.
  */
@@ -26193,7 +26774,7 @@ export type BatchAssociateAnalyticsDataSetError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Associates a list of analytics datasets for a given Amazon Connect instance to a target account. You can
+ * Associates a list of analytics datasets for a given Connect Customer instance to a target account. You can
  * associate multiple datasets in a single call.
  */
 export const batchAssociateAnalyticsDataSet: API.OperationMethod<
@@ -26333,7 +26914,7 @@ export type BatchDisassociateAnalyticsDataSetError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Removes a list of analytics datasets associated with a given Amazon Connect instance. You can disassociate
+ * Removes a list of analytics datasets associated with a given Connect Customer instance. You can disassociate
  * multiple datasets in a single call.
  */
 export const batchDisassociateAnalyticsDataSet: API.OperationMethod<
@@ -26425,10 +27006,10 @@ export type BatchPutContactError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account
+ * Only the Connect Customer outbound campaigns service principal is allowed to assume a role in your account
  * and call this API.
  *
- * Allows you to create a batch of contacts in Amazon Connect. The outbound campaigns capability ingests dial
+ * Allows you to create a batch of contacts in Connect Customer. The outbound campaigns capability ingests dial
  * requests via the PutDialRequestBatch API. It then uses BatchPutContact to create contacts corresponding to those dial
  * requests. If agents are available, the dial requests are dialed out, which results in a voice call. The resulting
  * voice call uses the same contactId that was created by BatchPutContact.
@@ -26497,12 +27078,12 @@ export type ClaimPhoneNumberError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Claims an available phone number to your Amazon Connect instance or traffic distribution group. You can call
- * this API only in the same Amazon Web Services Region where the Amazon Connect instance or traffic distribution group was
+ * Claims an available phone number to your Connect Customer instance or traffic distribution group. You can call
+ * this API only in the same Amazon Web Services Region where the Connect Customer instance or traffic distribution group was
  * created.
  *
  * For more information about how to use this operation, see Claim a phone number in your country and Claim
- * phone numbers to traffic distribution groups in the Amazon Connect Administrator
+ * phone numbers to traffic distribution groups in the Connect Customer Administrator
  * Guide.
  *
  * You can call the SearchAvailablePhoneNumbers API for
@@ -26585,7 +27166,7 @@ export type CreateAgentStatusError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates an agent status for the specified Amazon Connect instance.
+ * Creates an agent status for the specified Connect Customer instance.
  */
 export const createAgentStatus: API.OperationMethod<
   CreateAgentStatusRequest,
@@ -26671,9 +27252,9 @@ export type CreateContactFlowError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a flow for the specified Amazon Connect instance.
+ * Creates a flow for the specified Connect Customer instance.
  *
- * You can also create and update flows using the Amazon Connect
+ * You can also create and update flows using the Connect Customer
  * Flow language.
  */
 export const createContactFlow: API.OperationMethod<
@@ -26711,7 +27292,7 @@ export type CreateContactFlowModuleError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a flow module for the specified Amazon Connect instance.
+ * Creates a flow module for the specified Connect Customer instance.
  */
 export const createContactFlowModule: API.OperationMethod<
   CreateContactFlowModuleRequest,
@@ -26934,9 +27515,9 @@ export type CreateEmailAddressError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Create new email address in the specified Amazon Connect instance. For more information about email
+ * Create new email address in the specified Connect Customer instance. For more information about email
  * addresses, see Create email
- * addresses in the Amazon Connect Administrator Guide.
+ * addresses in the Connect Customer Administrator Guide.
  */
 export const createEmailAddress: API.OperationMethod<
   CreateEmailAddressRequest,
@@ -26971,7 +27552,7 @@ export type CreateEvaluationFormError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates an evaluation form in the specified Amazon Connect instance. The form can be used to define
+ * Creates an evaluation form in the specified Connect Customer instance. The form can be used to define
  * questions related to agent performance, and create sections to organize such questions. Question and section
  * identifiers cannot be duplicated within the same evaluation form.
  */
@@ -27040,7 +27621,7 @@ export type CreateHoursOfOperationOverrideError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates an hours of operation override in an Amazon Connect hours of operation resource.
+ * Creates an hours of operation override in an Connect Customer hours of operation resource.
  */
 export const createHoursOfOperationOverride: API.OperationMethod<
   CreateHoursOfOperationOverrideRequest,
@@ -27071,16 +27652,16 @@ export type CreateInstanceError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
- * Initiates an Amazon Connect instance with all the supported channels enabled. It does not attach any
+ * Initiates an Connect Customer instance with all the supported channels enabled. It does not attach any
  * storage, such as Amazon Simple Storage Service (Amazon S3) or Amazon Kinesis. It also does not allow for any
- * configurations on features, such as Contact Lens for Amazon Connect.
+ * configurations on features, such as Contact Lens for Connect Customer.
  *
- * For more information, see Create an Amazon Connect instance in the
- * *Amazon Connect Administrator Guide*.
+ * For more information, see Create an Connect Customer instance in the
+ * *Connect Customer Administrator Guide*.
  *
- * Amazon Connect enforces a limit on the total number of instances that you can create or delete in 30 days.
+ * Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days.
  * If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances.
  * You must wait 30 days before you can restart creating and deleting instances in your account.
  */
@@ -27111,7 +27692,7 @@ export type CreateIntegrationAssociationError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates an Amazon Web Services resource association with an Amazon Connect instance.
+ * Creates an Amazon Web Services resource association with an Connect Customer instance.
  */
 export const createIntegrationAssociation: API.OperationMethod<
   CreateIntegrationAssociationRequest,
@@ -27209,7 +27790,7 @@ export type CreatePersistentContactAssociationError =
 /**
  * Enables rehydration of chats for the lifespan of a contact. For more information about chat rehydration, see
  * Enable persistent chat in
- * the *Amazon Connect Administrator Guide*.
+ * the *Connect Customer Administrator Guide*.
  */
 export const createPersistentContactAssociation: API.OperationMethod<
   CreatePersistentContactAssociationRequest,
@@ -27241,10 +27822,10 @@ export type CreatePredefinedAttributeError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a new predefined attribute for the specified Amazon Connect instance. A *predefined attribute*
+ * Creates a new predefined attribute for the specified Connect Customer instance. A *predefined attribute*
  * is made up of a name and a value.
  *
- * For the predefined attributes per instance quota, see Amazon Connect
+ * For the predefined attributes per instance quota, see Connect Customer
  * quotas.
  *
  * **Use cases**
@@ -27259,7 +27840,7 @@ export type CreatePredefinedAttributeError =
  * organization. This is a use case where information for a contact varies between transfers or conferences. For more
  * information, see Use contact segment attributes.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const createPredefinedAttribute: API.OperationMethod<
   CreatePredefinedAttributeRequest,
@@ -27293,7 +27874,7 @@ export type CreatePromptError =
 /**
  * Creates a prompt. For more information about prompts, such as supported file types and maximum length, see
  * Create prompts in the
- * *Amazon Connect Administrator Guide*.
+ * *Connect Customer Administrator Guide*.
  */
 export const createPrompt: API.OperationMethod<
   CreatePromptRequest,
@@ -27325,7 +27906,7 @@ export type CreatePushNotificationRegistrationError =
   | CommonErrors;
 /**
  * Creates registration for a device token and a chat contact to receive real-time push notifications. For more
- * information about push notifications, see Set up push notifications in Amazon Connect for mobile chat in the *Amazon Connect Administrator Guide*.
+ * information about push notifications, see Set up push notifications in Connect Customer for mobile chat in the *Connect Customer Administrator Guide*.
  */
 export const createPushNotificationRegistration: API.OperationMethod<
   CreatePushNotificationRegistrationRequest,
@@ -27357,10 +27938,10 @@ export type CreateQueueError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a new queue for the specified Amazon Connect instance.
+ * Creates a new queue for the specified Connect Customer instance.
  *
  * - If the phone number is claimed to a traffic distribution group that was created in the
- * same Region as the Amazon Connect instance where you are calling this API, then you can use a
+ * same Region as the Connect Customer instance where you are calling this API, then you can use a
  * full phone number ARN or a UUID for `OutboundCallerIdNumberId`. However, if the phone number is claimed
  * to a traffic distribution group that is in one Region, and you are calling this API from an instance in another Amazon Web Services Region that is associated with the traffic distribution group, you must provide a full phone number ARN. If a
  * UUID is provided in this scenario, you will receive a
@@ -27404,7 +27985,7 @@ export type CreateQuickConnectError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a quick connect for the specified Amazon Connect instance.
+ * Creates a quick connect for the specified Connect Customer instance.
  */
 export const createQuickConnect: API.OperationMethod<
   CreateQuickConnectRequest,
@@ -27470,7 +28051,7 @@ export type CreateRuleError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a rule for the specified Amazon Connect instance.
+ * Creates a rule for the specified Connect Customer instance.
  *
  * Use the Rules Function
  * language to code conditions for the rule.
@@ -27508,7 +28089,7 @@ export type CreateSecurityProfileError =
 /**
  * Creates a security profile.
  *
- * For information about security profiles, see Security Profiles in the *Amazon Connect Administrator Guide*. For a mapping of the API name and user interface name of the security
+ * For information about security profiles, see Security Profiles in the *Connect Customer Administrator Guide*. For a mapping of the API name and user interface name of the security
  * profile permissions, see List
  * of security profile permissions.
  */
@@ -27542,7 +28123,7 @@ export type CreateTaskTemplateError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a new task template in the specified Amazon Connect instance.
+ * Creates a new task template in the specified Connect Customer instance.
  */
 export const createTaskTemplate: API.OperationMethod<
   CreateTaskTemplateRequest,
@@ -27616,7 +28197,7 @@ export type CreateTrafficDistributionGroupError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a traffic distribution group given an Amazon Connect instance that has been replicated.
+ * Creates a traffic distribution group given an Connect Customer instance that has been replicated.
  *
  * The `SignInConfig` distribution is available only on a
  * default `TrafficDistributionGroup` (see the `IsDefault` parameter in the
@@ -27626,7 +28207,7 @@ export type CreateTrafficDistributionGroupError =
  * an `InvalidRequestException` is returned.
  *
  * For more information about creating traffic distribution groups, see Set up traffic distribution groups in the
- * *Amazon Connect Administrator Guide*.
+ * *Connect Customer Administrator Guide*.
  */
 export const createTrafficDistributionGroup: API.OperationMethod<
   CreateTrafficDistributionGroupRequest,
@@ -27689,10 +28270,10 @@ export type CreateUserError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a user account for the specified Amazon Connect instance.
+ * Creates a user account for the specified Connect Customer instance.
  *
  * Certain UserIdentityInfo parameters are required in some situations. For example, `Email`,
- * `FirstName` and `LastName` are required if you are using Amazon Connect or SAML for
+ * `FirstName` and `LastName` are required if you are using Connect Customer or SAML for
  * identity management.
  *
  * Fields in `PhoneConfig` cannot be set simultaneously with their corresponding channel-specific configuration parameters. Specifically:
@@ -27707,7 +28288,7 @@ export type CreateUserError =
  *
  * We recommend using channel-specific parameters such as `AutoAcceptConfigs`, `AfterContactWorkConfigs`, `PhoneNumberConfigs`, `PersistentConnectionConfigs`, and `VoiceEnhancementConfigs` for per-channel configuration.
  *
- * For information about how to create users using the Amazon Connect admin website, see Add Users in the Amazon Connect
+ * For information about how to create users using the Connect Customer admin website, see Add Users in the Connect Customer
  * Administrator Guide.
  */
 export const createUser: API.OperationMethod<
@@ -27858,8 +28439,8 @@ export type CreateVocabularyError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Creates a custom vocabulary associated with your Amazon Connect instance. You can set a custom vocabulary to
- * be your default vocabulary for a given language. Contact Lens for Amazon Connect uses the default vocabulary in post-call and real-time
+ * Creates a custom vocabulary associated with your Connect Customer instance. You can set a custom vocabulary to
+ * be your default vocabulary for a given language. Contact Lens for Connect Customer uses the default vocabulary in post-call and real-time
  * contact analysis sessions for that language.
  */
 export const createVocabulary: API.OperationMethod<
@@ -27968,7 +28549,7 @@ export type DeactivateEvaluationFormError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deactivates an evaluation form in the specified Amazon Connect instance. After a form is deactivated, it is no longer
+ * Deactivates an evaluation form in the specified Connect Customer instance. After a form is deactivated, it is no longer
  * available for users to start new evaluations based on the form.
  */
 export const deactivateEvaluationForm: API.OperationMethod<
@@ -28030,7 +28611,7 @@ export type DeleteContactEvaluationError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes a contact evaluation in the specified Amazon Connect instance.
+ * Deletes a contact evaluation in the specified Connect Customer instance.
  */
 export const deleteContactEvaluation: API.OperationMethod<
   DeleteContactEvaluationRequest,
@@ -28060,7 +28641,7 @@ export type DeleteContactFlowError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes a flow for the specified Amazon Connect instance.
+ * Deletes a flow for the specified Connect Customer instance.
  */
 export const deleteContactFlow: API.OperationMethod<
   DeleteContactFlowRequest,
@@ -28287,7 +28868,7 @@ export type DeleteEmailAddressError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes email address from the specified Amazon Connect instance.
+ * Deletes email address from the specified Connect Customer instance.
  */
 export const deleteEmailAddress: API.OperationMethod<
   DeleteEmailAddressRequest,
@@ -28318,7 +28899,7 @@ export type DeleteEvaluationFormError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes an evaluation form in the specified Amazon Connect instance.
+ * Deletes an evaluation form in the specified Connect Customer instance.
  *
  * - If the version property is provided, only the specified version of the evaluation form is deleted.
  *
@@ -28380,7 +28961,7 @@ export type DeleteHoursOfOperationOverrideError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes an hours of operation override in an Amazon Connect hours of operation resource.
+ * Deletes an hours of operation override in an Connect Customer hours of operation resource.
  */
 export const deleteHoursOfOperationOverride: API.OperationMethod<
   DeleteHoursOfOperationOverrideRequest,
@@ -28407,12 +28988,12 @@ export type DeleteInstanceError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
- * Deletes the Amazon Connect instance. For more information, see Delete your Amazon Connect instance in the
- * *Amazon Connect Administrator Guide*.
+ * Deletes the Connect Customer instance. For more information, see Delete your Connect Customer instance in the
+ * *Connect Customer Administrator Guide*.
  *
- * Amazon Connect enforces a limit on the total number of instances that you can create or delete in 30 days.
+ * Connect Customer enforces a limit on the total number of instances that you can create or delete in 30 days.
  * If you exceed this limit, you will get an error message indicating there has been an excessive number of attempts at creating or deleting instances.
  * You must wait 30 days before you can restart creating and deleting instances in your account.
  */
@@ -28440,7 +29021,7 @@ export type DeleteIntegrationAssociationError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes an Amazon Web Services resource association from an Amazon Connect instance. The association must not
+ * Deletes an Amazon Web Services resource association from an Connect Customer instance. The association must not
  * have any use cases associated with it.
  */
 export const deleteIntegrationAssociation: API.OperationMethod<
@@ -28501,7 +29082,7 @@ export type DeletePredefinedAttributeError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes a predefined attribute from the specified Amazon Connect instance.
+ * Deletes a predefined attribute from the specified Connect Customer instance.
  */
 export const deletePredefinedAttribute: API.OperationMethod<
   DeletePredefinedAttributeRequest,
@@ -28629,8 +29210,8 @@ export type DeleteQuickConnectError =
  *
  * - Remove deleted users so they don't appear to agents as transfer options.
  *
- * - Avoid the disruption of other Amazon Connect processes, such as instance replication and syncing if
- * you're using Amazon Connect Global Resiliency.
+ * - Avoid the disruption of other Connect Customer processes, such as instance replication and syncing if
+ * you're using Connect Customer Global Resiliency.
  */
 export const deleteQuickConnect: API.OperationMethod<
   DeleteQuickConnectRequest,
@@ -28690,7 +29271,7 @@ export type DeleteRuleError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes a rule for the specified Amazon Connect instance.
+ * Deletes a rule for the specified Connect Customer instance.
  */
 export const deleteRule: API.OperationMethod<
   DeleteRuleRequest,
@@ -28815,7 +29396,7 @@ export type DeleteTrafficDistributionGroupError =
  * Deletes a traffic distribution group. This API can be called only in the Region where the traffic distribution group is created.
  *
  * For more information about deleting traffic distribution groups, see Delete traffic distribution groups in the
- * *Amazon Connect Administrator Guide*.
+ * *Connect Customer Administrator Guide*.
  */
 export const deleteTrafficDistributionGroup: API.OperationMethod<
   DeleteTrafficDistributionGroupRequest,
@@ -28871,10 +29452,10 @@ export type DeleteUserError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Deletes a user account from the specified Amazon Connect instance.
+ * Deletes a user account from the specified Connect Customer instance.
  *
- * For information about what happens to a user's data when their account is deleted, see Delete Users from Your Amazon Connect
- * Instance in the *Amazon Connect Administrator Guide*.
+ * For information about what happens to a user's data when their account is deleted, see Delete Users from Your Connect Customer
+ * Instance in the *Connect Customer Administrator Guide*.
  *
  * After calling DeleteUser, call DeleteQuickConnect to delete any records
  * related to the deleted users. This will help you:
@@ -28883,8 +29464,8 @@ export type DeleteUserError =
  *
  * - Remove deleted users so they don't appear to agents as transfer options.
  *
- * - Avoid the disruption of other Amazon Connect processes, such as instance replication and syncing if
- * you're using Amazon Connect Global Resiliency.
+ * - Avoid the disruption of other Connect Customer processes, such as instance replication and syncing if
+ * you're using Connect Customer Global Resiliency.
  */
 export const deleteUser: API.OperationMethod<
   DeleteUserRequest,
@@ -29157,6 +29738,37 @@ export const describeAgentStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAgentStatus",
 }));
+export type DescribeAttachedFilesConfigurationError =
+  | AccessDeniedException
+  | InternalServiceException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes the attached files configuration for the specified Connect Customer instance and attachment scope.
+ *
+ * If a custom configuration exists for the specified attachment scope, the custom configuration is returned. If no custom configuration exists, the default configuration values for that attachment scope are returned.
+ */
+export const describeAttachedFilesConfiguration: API.OperationMethod<
+  DescribeAttachedFilesConfigurationRequest,
+  DescribeAttachedFilesConfigurationResponse,
+  DescribeAttachedFilesConfigurationError,
+  Creds | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeAttachedFilesConfigurationRequest,
+  output: DescribeAttachedFilesConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeAttachedFilesConfiguration",
+}));
 export type DescribeAuthenticationProfileError =
   | InternalServiceException
   | InvalidParameterException
@@ -29165,7 +29777,7 @@ export type DescribeAuthenticationProfileError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change. To
+ * This API is in preview release for Connect Customer and is subject to change. To
  * request access to this API, contact Amazon Web Services Support.
  *
  * Describes the target authentication profile.
@@ -29197,7 +29809,7 @@ export type DescribeContactError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Describes the specified contact.
  *
@@ -29221,10 +29833,10 @@ export type DescribeContactError =
  * - `SystemEndpoint` is not populated for contacts with initiation method of MONITOR, QUEUE_TRANSFER,
  * or CALLBACK
  *
- * - Contact information remains available in Amazon Connect for 24 months from the
- * `InitiationTimestamp`, and then it is deleted. Only contact information that is available in Amazon Connect is returned by this API.
+ * - Contact information remains available in Connect Customer for 24 months from the
+ * `InitiationTimestamp`, and then it is deleted. Only contact information that is available in Connect Customer is returned by this API.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const describeContact: API.OperationMethod<
   DescribeContactRequest,
@@ -29252,7 +29864,7 @@ export type DescribeContactEvaluationError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Describes a contact evaluation in the specified Amazon Connect instance.
+ * Describes a contact evaluation in the specified Connect Customer instance.
  */
 export const describeContactEvaluation: API.OperationMethod<
   DescribeContactEvaluationRequest,
@@ -29283,7 +29895,7 @@ export type DescribeContactFlowError =
 /**
  * Describes the specified flow.
  *
- * You can also create and update flows using the Amazon Connect
+ * You can also create and update flows using the Connect Customer
  * Flow language.
  *
  * Use the `$SAVED` alias in the request to describe the `SAVED` content of a Flow. For
@@ -29458,7 +30070,7 @@ export type DescribeEmailAddressError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Describe email address form the specified Amazon Connect instance.
+ * Describe email address form the specified Connect Customer instance.
  */
 export const describeEmailAddress: API.OperationMethod<
   DescribeEmailAddressRequest,
@@ -29487,7 +30099,7 @@ export type DescribeEvaluationFormError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Describes an evaluation form in the specified Amazon Connect instance. If the version property is not
+ * Describes an evaluation form in the specified Connect Customer instance. If the version property is not
  * provided, the latest version of the evaluation form is described.
  */
 export const describeEvaluationForm: API.OperationMethod<
@@ -29572,7 +30184,7 @@ export type DescribeInstanceError =
   | ResourceNotFoundException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Returns the current state of the specified instance identifier. It tracks the instance while it is being created
  * and returns an error status, if applicable.
@@ -29605,7 +30217,7 @@ export type DescribeInstanceAttributeError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Describes the specified instance attribute.
  */
@@ -29636,7 +30248,7 @@ export type DescribeInstanceStorageConfigError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Retrieves the current storage configurations for the specified resource type, association ID, and instance
  * ID.
@@ -29699,7 +30311,7 @@ export type DescribePhoneNumberError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Gets details and status of a phone number that’s claimed to your Amazon Connect instance or traffic distribution group.
+ * Gets details and status of a phone number that’s claimed to your Connect Customer instance or traffic distribution group.
  *
  * If the number is claimed to a traffic distribution group, and you are calling in the Amazon Web Services Region where the traffic distribution group was
  * created, you can use either a phone number ARN or UUID value for the `PhoneNumberId` URI request
@@ -29734,7 +30346,7 @@ export type DescribePredefinedAttributeError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Describes a predefined attribute for the specified Amazon Connect instance. A *predefined attribute*
+ * Describes a predefined attribute for the specified Connect Customer instance. A *predefined attribute*
  * is made up of a name and a value. You can use predefined attributes for:
  *
  * - Routing proficiency (for example, agent certification) that has predefined values (for example, a list of
@@ -29744,10 +30356,10 @@ export type DescribePredefinedAttributeError =
  * - Contact information that varies between transfers or conferences, such as the name of the business unit
  * handling the contact. For more information, see Use contact segment attributes.
  *
- * For the predefined attributes per instance quota, see Amazon Connect
+ * For the predefined attributes per instance quota, see Connect Customer
  * quotas.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const describePredefinedAttribute: API.OperationMethod<
   DescribePredefinedAttributeRequest,
@@ -29896,7 +30508,7 @@ export type DescribeRuleError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Describes a rule for the specified Amazon Connect instance.
+ * Describes a rule for the specified Connect Customer instance.
  */
 export const describeRule: API.OperationMethod<
   DescribeRuleRequest,
@@ -29927,7 +30539,7 @@ export type DescribeSecurityProfileError =
 /**
  * Gets basic information about the security profile.
  *
- * For information about security profiles, see Security Profiles in the *Amazon Connect Administrator Guide*. For a mapping of the API name and user interface name of the security
+ * For information about security profiles, see Security Profiles in the *Connect Customer Administrator Guide*. For a mapping of the API name and user interface name of the security
  * profile permissions, see List
  * of security profile permissions.
  */
@@ -30018,7 +30630,7 @@ export type DescribeUserError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Describes the specified user. You can find the instance ID in the Amazon Connect
+ * Describes the specified user. You can find the instance ID in the Connect Customer
  * console (it’s the final part of the ARN). The console does not display the user IDs. Instead, list the users
  * and note the IDs provided in the output.
  */
@@ -30078,7 +30690,7 @@ export type DescribeUserHierarchyStructureError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Describes the hierarchy structure of the specified Amazon Connect instance.
+ * Describes the hierarchy structure of the specified Connect Customer instance.
  */
 export const describeUserHierarchyStructure: API.OperationMethod<
   DescribeUserHierarchyStructureRequest,
@@ -30108,14 +30720,14 @@ export type DescribeViewError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Retrieves the view for the specified Amazon Connect instance and view identifier.
+ * Retrieves the view for the specified Connect Customer instance and view identifier.
  *
  * The view identifier can be supplied as a ViewId or ARN.
  *
  * `$SAVED` needs to be supplied if a view is unpublished.
  *
  * The view identifier can contain an optional qualifier, for example, `:$SAVED`, which
- * is either an actual version number or an Amazon Connect managed qualifier `$SAVED | $LATEST`. If it is
+ * is either an actual version number or an Connect Customer managed qualifier `$SAVED | $LATEST`. If it is
  * not supplied, then `$LATEST` is assumed for customer managed views and an error is returned if there is no
  * published content available. Version 1 is assumed for Amazon Web Services managed views.
  */
@@ -30207,7 +30819,7 @@ export type DisassociateAnalyticsDataSetError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Removes the dataset ID associated with a given Amazon Connect instance.
+ * Removes the dataset ID associated with a given Connect Customer instance.
  */
 export const disassociateAnalyticsDataSet: API.OperationMethod<
   DisassociateAnalyticsDataSetRequest,
@@ -30236,9 +30848,9 @@ export type DisassociateApprovedOriginError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
- * Revokes access to integrated applications from Amazon Connect.
+ * Revokes access to integrated applications from Connect Customer.
  */
 export const disassociateApprovedOrigin: API.OperationMethod<
   DisassociateApprovedOriginRequest,
@@ -30266,7 +30878,7 @@ export type DisassociateBotError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Revokes authorization from the specified instance to access the specified Amazon Lex or Amazon Lex V2 bot.
  */
@@ -30298,7 +30910,7 @@ export type DisassociateEmailAddressAliasError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Removes the alias association between two email addresses in an Amazon Connect instance. After
+ * Removes the alias association between two email addresses in an Connect Customer instance. After
  * disassociation, emails sent to the former alias email address are no longer forwarded to the primary email address.
  * Both email addresses continue to exist independently and can receive emails directly.
  *
@@ -30336,12 +30948,12 @@ export type DisassociateEmailAddressAliasError =
  *
  * - The timestamp of when the disassociation occurred.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  *
  * **Related operations**
  *
  * - AssociateEmailAddressAlias: Associates an email address alias with an existing email address in an
- * Amazon Connect instance.
+ * Connect Customer instance.
  *
  * - DescribeEmailAddress: View current alias configurations for an email address.
  *
@@ -30444,7 +31056,7 @@ export type DisassociateInstanceStorageConfigError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Removes the storage type configurations for the specified resource type and association ID.
  */
@@ -30475,7 +31087,7 @@ export type DisassociateLambdaFunctionError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Remove the Lambda function from the dropdown options available in the relevant flow blocks.
  */
@@ -30506,7 +31118,7 @@ export type DisassociateLexBotError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Revokes authorization from the specified instance to access the specified Amazon Lex bot.
  */
@@ -30537,7 +31149,7 @@ export type DisassociatePhoneNumberContactFlowError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Removes the flow association from a phone number claimed to your Amazon Connect instance.
+ * Removes the flow association from a phone number claimed to your Connect Customer instance.
  *
  * If the number is claimed to a traffic distribution group, and you are calling this API using an instance in the Amazon Web Services Region where the traffic distribution group was created, you can use either a full phone number ARN or UUID value for the
  * `PhoneNumberId` URI request parameter. However, if the number is claimed to a traffic distribution group and you are calling
@@ -30672,7 +31284,7 @@ export type DisassociateSecurityKeyError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Deletes the specified security key.
  */
@@ -30990,9 +31602,9 @@ export type GetContactMetricsError =
  *
  * - Metrics are only available while the contact is actively in queue.
  *
- * - For more information, see the Position in queue metric in the *Amazon Connect Administrator Guide*.
+ * - For more information, see the Position in queue metric in the *Connect Customer Administrator Guide*.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const getContactMetrics: API.OperationMethod<
   GetContactMetricsRequest,
@@ -31022,9 +31634,9 @@ export type GetCurrentMetricDataError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Gets the real-time metric data from the specified Amazon Connect instance.
+ * Gets the real-time metric data from the specified Connect Customer instance.
  *
- * For a description of each metric, see Metrics definitions in the *Amazon Connect Administrator Guide*.
+ * For a description of each metric, see Metrics definitions in the *Connect Customer Administrator Guide*.
  *
  * When you make a successful API request, you can expect the following metric values in the response:
  *
@@ -31094,7 +31706,7 @@ export type GetCurrentUserDataError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Gets the real-time active user data from the specified Amazon Connect instance.
+ * Gets the real-time active user data from the specified Connect Customer instance.
  */
 export const getCurrentUserData: API.OperationMethod<
   GetCurrentUserDataRequest,
@@ -31164,6 +31776,37 @@ export const getEffectiveHoursOfOperations: API.OperationMethod<
   retry: Retry,
   operationName: "GetEffectiveHoursOfOperations",
 }));
+export type GetEvaluationFormValidationError =
+  | InternalServiceException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves the status and results of a validation process started by StartEvaluationFormValidation.
+ * Returns the current execution status (`IN_PROGRESS`, `COMPLETED`, or `FAILED`),
+ * the validated form version, and when completed, a list of findings that identify structural issues and quality
+ * improvements for the evaluation form, and may include suggested fixes. If the validation failed, a reason is provided
+ * indicating the cause of the failure.
+ */
+export const getEvaluationFormValidation: API.OperationMethod<
+  GetEvaluationFormValidationRequest,
+  GetEvaluationFormValidationResponse,
+  GetEvaluationFormValidationError,
+  Creds | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetEvaluationFormValidationRequest,
+  output: GetEvaluationFormValidationResponse,
+  errors: [
+    InternalServiceException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetEvaluationFormValidation",
+}));
 export type GetFederationTokenError =
   | DuplicateResourceException
   | InternalServiceException
@@ -31173,15 +31816,15 @@ export type GetFederationTokenError =
   | UserNotFoundException
   | CommonErrors;
 /**
- * Supports SAML sign-in for Amazon Connect. Retrieves a token for federation. The token is for the Amazon Connect user which corresponds to the IAM credentials that were used to invoke this action.
+ * Supports SAML sign-in for Connect Customer. Retrieves a token for federation. The token is for the Connect Customer user which corresponds to the IAM credentials that were used to invoke this action.
  *
- * For more information about how SAML sign-in works in Amazon Connect, see Configure SAML with IAM for Amazon Connect
- * in the *Amazon Connect Administrator Guide*.
+ * For more information about how SAML sign-in works in Connect Customer, see Configure SAML with IAM for Connect Customer
+ * in the *Connect Customer Administrator Guide*.
  *
  * This API doesn't support root users. If you try to invoke GetFederationToken with root credentials, an error
  * message similar to the following one appears:
  *
- * `Provided identity: Principal: .... User: .... cannot be used for federation with Amazon Connect`
+ * `Provided identity: Principal: .... User: .... cannot be used for federation with Connect Customer`
  */
 export const getFederationToken: API.OperationMethod<
   GetFederationTokenRequest,
@@ -31242,9 +31885,9 @@ export type GetMetricDataError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Gets historical metric data from the specified Amazon Connect instance.
+ * Gets historical metric data from the specified Connect Customer instance.
  *
- * For a description of each historical metric, see Metrics definitions in the *Amazon Connect Administrator Guide*.
+ * For a description of each historical metric, see Metrics definitions in the *Connect Customer Administrator Guide*.
  *
  * We recommend using the GetMetricDataV2 API. It provides more flexibility, features, and the ability to query longer time ranges
  * than `GetMetricData`. Use it to retrieve historical agent and contact metrics for the last 3 months, at
@@ -31299,7 +31942,7 @@ export type GetMetricDataV2Error =
   | ThrottlingException
   | CommonErrors;
 /**
- * Gets metric data from the specified Amazon Connect instance.
+ * Gets metric data from the specified Connect Customer instance.
  *
  * `GetMetricDataV2` offers more features than GetMetricData, the previous version of this API. It
  * has new metrics, offers filtering at a metric level, and offers the ability to filter and group data by channels,
@@ -31307,7 +31950,7 @@ export type GetMetricDataV2Error =
  * at varying intervals. It does not support agent queues.
  *
  * For a description of the historical metrics that are supported by `GetMetricDataV2` and
- * `GetMetricData`, see Metrics definitions in the *Amazon Connect Administrator Guide*.
+ * `GetMetricData`, see Metrics definitions in the *Connect Customer Administrator Guide*.
  *
  * When you make a successful API request, you can expect the following metric values in the response:
  *
@@ -31408,7 +32051,7 @@ export type GetTaskTemplateError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Gets details about a specific task template in the specified Amazon Connect instance.
+ * Gets details about a specific task template in the specified Connect Customer instance.
  */
 export const getTaskTemplate: API.OperationMethod<
   GetTaskTemplateRequest,
@@ -31499,7 +32142,7 @@ export type ImportPhoneNumberError =
   | CommonErrors;
 /**
  * Imports a claimed phone number from an external service, such as Amazon Web Services End User Messaging, into an
- * Amazon Connect instance. You can call this API only in the same Amazon Web Services Region where the Amazon Connect instance was created.
+ * Connect Customer instance. You can call this API only in the same Amazon Web Services Region where the Connect Customer instance was created.
  *
  * Call the DescribePhoneNumber API to verify the status of a previous `ImportPhoneNumber` operation.
  *
@@ -31623,7 +32266,7 @@ export type ListAnalyticsDataAssociationsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Lists the association status of requested dataset ID for a given Amazon Connect instance.
+ * Lists the association status of requested dataset ID for a given Connect Customer instance.
  */
 export const listAnalyticsDataAssociations: API.OperationMethod<
   ListAnalyticsDataAssociationsRequest,
@@ -31652,7 +32295,7 @@ export type ListAnalyticsDataLakeDataSetsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Lists the data lake datasets available to associate with for a given Amazon Connect instance.
+ * Lists the data lake datasets available to associate with for a given Connect Customer instance.
  */
 export const listAnalyticsDataLakeDataSets: API.OperationMethod<
   ListAnalyticsDataLakeDataSetsRequest,
@@ -31681,7 +32324,7 @@ export type ListApprovedOriginsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Returns a paginated list of all approved origins associated with the instance.
  */
@@ -31754,6 +32397,58 @@ export const listAssociatedContacts: API.OperationMethod<
   retry: Retry,
   operationName: "ListAssociatedContacts",
 }));
+export type ListAttachedFilesConfigurationsError =
+  | AccessDeniedException
+  | InternalServiceException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Provides summary information about the attached files configurations for the specified Connect Customer instance.
+ *
+ * This API returns effective configurations (custom overrides or defaults) for each attachment scope. If no custom configuration exists for a scope, the default configuration values are returned.
+ */
+export const listAttachedFilesConfigurations: API.OperationMethod<
+  ListAttachedFilesConfigurationsRequest,
+  ListAttachedFilesConfigurationsResponse,
+  ListAttachedFilesConfigurationsError,
+  Creds | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAttachedFilesConfigurationsRequest,
+  ) => stream.Stream<
+    ListAttachedFilesConfigurationsResponse,
+    ListAttachedFilesConfigurationsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAttachedFilesConfigurationsRequest,
+  ) => stream.Stream<
+    AttachedFilesConfigurationSummary,
+    ListAttachedFilesConfigurationsError,
+    Creds | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAttachedFilesConfigurationsRequest,
+  output: ListAttachedFilesConfigurationsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAttachedFilesConfigurations",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "AttachedFilesConfigurations",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type ListAuthenticationProfilesError =
   | InternalServiceException
   | InvalidParameterException
@@ -31762,10 +32457,10 @@ export type ListAuthenticationProfilesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change. To
+ * This API is in preview release for Connect Customer and is subject to change. To
  * request access to this API, contact Amazon Web Services Support.
  *
- * Provides summary information about the authentication profiles in a specified Amazon Connect
+ * Provides summary information about the authentication profiles in a specified Connect Customer
  * instance.
  */
 export const listAuthenticationProfiles: API.OperationMethod<
@@ -31815,7 +32510,7 @@ export type ListBotsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * For the specified version of Amazon Lex, returns a paginated list of all the Amazon Lex bots
  * currently associated with the instance. Use this API to return both Amazon Lex V1 and V2
@@ -31920,7 +32615,7 @@ export type ListContactEvaluationsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Lists contact evaluations in the specified Amazon Connect instance.
+ * Lists contact evaluations in the specified Connect Customer instance.
  */
 export const listContactEvaluations: API.OperationMethod<
   ListContactEvaluationsRequest,
@@ -32022,7 +32717,7 @@ export type ListContactFlowModulesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides information about the flow modules for the specified Amazon Connect instance.
+ * Provides information about the flow modules for the specified Connect Customer instance.
  */
 export const listContactFlowModules: API.OperationMethod<
   ListContactFlowModulesRequest,
@@ -32125,12 +32820,12 @@ export type ListContactFlowsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides information about the flows for the specified Amazon Connect instance.
+ * Provides information about the flows for the specified Connect Customer instance.
  *
- * You can also create and update flows using the Amazon Connect
+ * You can also create and update flows using the Connect Customer
  * Flow language.
  *
- * For more information about flows, see Flows in the Amazon Connect
+ * For more information about flows, see Flows in the Connect Customer
  * Administrator Guide.
  */
 export const listContactFlows: API.OperationMethod<
@@ -32182,7 +32877,7 @@ export type ListContactFlowVersionsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Returns all the available versions for the specified Amazon Connect instance and flow identifier.
+ * Returns all the available versions for the specified Connect Customer instance and flow identifier.
  */
 export const listContactFlowVersions: API.OperationMethod<
   ListContactFlowVersionsRequest,
@@ -32233,7 +32928,7 @@ export type ListContactReferencesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * For the specified `referenceTypes`, returns a list of references associated with the contact.
  * *References* are links to documents that are related to a contact, such as emails, attachments,
@@ -32498,7 +33193,7 @@ export type ListDefaultVocabulariesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Lists the default vocabularies for the specified Amazon Connect instance.
+ * Lists the default vocabularies for the specified Connect Customer instance.
  */
 export const listDefaultVocabularies: API.OperationMethod<
   ListDefaultVocabulariesRequest,
@@ -32596,7 +33291,7 @@ export type ListEvaluationFormsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Lists evaluation forms in the specified Amazon Connect instance.
+ * Lists evaluation forms in the specified Connect Customer instance.
  */
 export const listEvaluationForms: API.OperationMethod<
   ListEvaluationFormsRequest,
@@ -32644,7 +33339,7 @@ export type ListEvaluationFormVersionsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Lists versions of an evaluation form in the specified Amazon Connect instance.
+ * Lists versions of an evaluation form in the specified Connect Customer instance.
  */
 export const listEvaluationFormVersions: API.OperationMethod<
   ListEvaluationFormVersionsRequest,
@@ -32795,10 +33490,10 @@ export type ListHoursOfOperationsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides information about the hours of operation for the specified Amazon Connect instance.
+ * Provides information about the hours of operation for the specified Connect Customer instance.
  *
  * For more information about hours of operation, see Set the Hours of Operation for a Queue in the
- * *Amazon Connect Administrator Guide*.
+ * *Connect Customer Administrator Guide*.
  */
 export const listHoursOfOperations: API.OperationMethod<
   ListHoursOfOperationsRequest,
@@ -32848,7 +33543,7 @@ export type ListInstanceAttributesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Returns a paginated list of all attribute types for the given instance.
  */
@@ -32897,7 +33592,7 @@ export type ListInstancesError =
   | InvalidRequestException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Return a list of instances which are in active state, creation-in-progress state, and failed state. Instances
  * that aren't successfully created (they are in a failed state) are returned only for 24 hours after the CreateInstance
@@ -32945,7 +33640,7 @@ export type ListInstanceStorageConfigsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Returns a paginated list of storage configs for the identified instance and resource type.
  */
@@ -32996,7 +33691,7 @@ export type ListIntegrationAssociationsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides summary information about the Amazon Web Services resource associations for the specified Amazon Connect instance.
+ * Provides summary information about the Amazon Web Services resource associations for the specified Connect Customer instance.
  */
 export const listIntegrationAssociations: API.OperationMethod<
   ListIntegrationAssociationsRequest,
@@ -33045,7 +33740,7 @@ export type ListLambdaFunctionsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Returns a paginated list of all Lambda functions that display in the dropdown options in the relevant flow
  * blocks.
@@ -33098,7 +33793,7 @@ export type ListLexBotsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Returns a paginated list of all the Amazon Lex V1 bots currently associated with the instance. To return
  * both Amazon Lex V1 and V2 bots, use the ListBots API.
@@ -33182,10 +33877,10 @@ export type ListPhoneNumbersError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides information about the phone numbers for the specified Amazon Connect instance.
+ * Provides information about the phone numbers for the specified Connect Customer instance.
  *
  * For more information about phone numbers, see Set Up Phone Numbers for Your Contact
- * Center in the *Amazon Connect Administrator Guide*.
+ * Center in the *Connect Customer Administrator Guide*.
  *
  * - We recommend using ListPhoneNumbersV2 to return phone number types. ListPhoneNumbers doesn't support number types
  * `UIFN`, `SHARED`, `THIRD_PARTY_TF`, and `THIRD_PARTY_DID`. While it
@@ -33243,11 +33938,11 @@ export type ListPhoneNumbersV2Error =
   | ThrottlingException
   | CommonErrors;
 /**
- * Lists phone numbers claimed to your Amazon Connect instance or traffic distribution group. If the provided `TargetArn`
+ * Lists phone numbers claimed to your Connect Customer instance or traffic distribution group. If the provided `TargetArn`
  * is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with traffic distribution group.
  *
  * For more information about phone numbers, see Set Up Phone Numbers for Your Contact
- * Center in the *Amazon Connect Administrator Guide*.
+ * Center in the *Connect Customer Administrator Guide*.
  *
  * - When given an instance ARN, `ListPhoneNumbersV2` returns only the phone numbers claimed to the
  * instance.
@@ -33303,7 +33998,7 @@ export type ListPredefinedAttributesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Lists predefined attributes for the specified Amazon Connect instance. A *predefined attribute* is
+ * Lists predefined attributes for the specified Connect Customer instance. A *predefined attribute* is
  * made up of a name and a value. You can use predefined attributes for:
  *
  * - Routing proficiency (for example, agent certification) that has predefined values (for example, a list of
@@ -33313,10 +34008,10 @@ export type ListPredefinedAttributesError =
  * - Contact information that varies between transfers or conferences, such as the name of the business unit
  * handling the contact. For more information, see Use contact segment attributes.
  *
- * For the predefined attributes per instance quota, see Amazon Connect
+ * For the predefined attributes per instance quota, see Connect Customer
  * quotas.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const listPredefinedAttributes: API.OperationMethod<
   ListPredefinedAttributesRequest,
@@ -33366,7 +34061,7 @@ export type ListPromptsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides information about the prompts for the specified Amazon Connect instance.
+ * Provides information about the prompts for the specified Connect Customer instance.
  */
 export const listPrompts: API.OperationMethod<
   ListPromptsRequest,
@@ -33507,14 +34202,14 @@ export type ListQueuesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides information about the queues for the specified Amazon Connect instance.
+ * Provides information about the queues for the specified Connect Customer instance.
  *
  * If you do not specify a `QueueTypes` parameter, both standard and
  * agent queues are returned. This might cause an unexpected truncation of results if you have more than 1000 agents and
  * you limit the number of results of the API call in code.
  *
  * For more information about queues, see Queues: Standard and Agent in the
- * *Amazon Connect Administrator Guide*.
+ * *Connect Customer Administrator Guide*.
  */
 export const listQueues: API.OperationMethod<
   ListQueuesRequest,
@@ -33564,7 +34259,7 @@ export type ListQuickConnectsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides information about the quick connects for the specified Amazon Connect instance.
+ * Provides information about the quick connects for the specified Connect Customer instance.
  */
 export const listQuickConnects: API.OperationMethod<
   ListQuickConnectsRequest,
@@ -33679,14 +34374,14 @@ export type ListRoutingProfileManualAssignmentQueuesError =
  * to the Worklist app. The user can additionally filter on queues, if they have access to those queues (otherwise a
  * invalid request exception will be thrown).
  *
- * For information about how manual contact assignment works in the agent workspace, see the Access the Worklist app in the Amazon Connect agent workspace in the *Amazon Connect Administrator Guide*.
+ * For information about how manual contact assignment works in the agent workspace, see the Access the Worklist app in the Connect Customer agent workspace in the *Connect Customer Administrator Guide*.
  *
  * **Important things to know**
  *
  * - This API only returns the manual assignment queues associated with a routing profile. Use the
  * ListRoutingProfileQueues API to list the auto assignment queues for the routing profile.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const listRoutingProfileManualAssignmentQueues: API.OperationMethod<
   ListRoutingProfileManualAssignmentQueuesRequest,
@@ -33786,9 +34481,9 @@ export type ListRoutingProfilesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides summary information about the routing profiles for the specified Amazon Connect instance.
+ * Provides summary information about the routing profiles for the specified Connect Customer instance.
  *
- * For more information about routing profiles, see Routing Profiles and Create a Routing Profile in the *Amazon Connect Administrator Guide*.
+ * For more information about routing profiles, see Routing Profiles and Create a Routing Profile in the *Connect Customer Administrator Guide*.
  */
 export const listRoutingProfiles: API.OperationMethod<
   ListRoutingProfilesRequest,
@@ -33838,7 +34533,7 @@ export type ListRulesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * List all rules for the specified Amazon Connect instance.
+ * List all rules for the specified Connect Customer instance.
  */
 export const listRules: API.OperationMethod<
   ListRulesRequest,
@@ -33888,7 +34583,7 @@ export type ListSecurityKeysError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Returns a paginated list of all security keys associated with the instance.
  */
@@ -34042,7 +34737,7 @@ export type ListSecurityProfilePermissionsError =
 /**
  * Lists the permissions granted to a security profile.
  *
- * For information about security profiles, see Security Profiles in the *Amazon Connect Administrator Guide*. For a mapping of the API name and user interface name of the security
+ * For information about security profiles, see Security Profiles in the *Connect Customer Administrator Guide*. For a mapping of the API name and user interface name of the security
  * profile permissions, see List
  * of security profile permissions.
  */
@@ -34094,9 +34789,9 @@ export type ListSecurityProfilesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides summary information about the security profiles for the specified Amazon Connect instance.
+ * Provides summary information about the security profiles for the specified Connect Customer instance.
  *
- * For more information about security profiles, see Security Profiles in the *Amazon Connect Administrator Guide*. For a mapping of the API name and user interface name of the security
+ * For more information about security profiles, see Security Profiles in the *Connect Customer Administrator Guide*. For a mapping of the API name and user interface name of the security
  * profile permissions, see List
  * of security profile permissions.
  */
@@ -34150,8 +34845,8 @@ export type ListTagsForResourceError =
 /**
  * Lists the tags for the specified resource.
  *
- * For sample policies that use tags, see Amazon Connect Identity-Based Policy
- * Examples in the *Amazon Connect Administrator Guide*.
+ * For sample policies that use tags, see Connect Customer Identity-Based Policy
+ * Examples in the *Connect Customer Administrator Guide*.
  */
 export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
@@ -34180,7 +34875,7 @@ export type ListTaskTemplatesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Lists task templates for the specified Amazon Connect instance.
+ * Lists task templates for the specified Connect Customer instance.
  */
 export const listTaskTemplates: API.OperationMethod<
   ListTaskTemplatesRequest,
@@ -34490,9 +35185,9 @@ export type ListUserHierarchyGroupsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides summary information about the hierarchy groups for the specified Amazon Connect instance.
+ * Provides summary information about the hierarchy groups for the specified Connect Customer instance.
  *
- * For more information about agent hierarchies, see Set Up Agent Hierarchies in the *Amazon Connect Administrator Guide*.
+ * For more information about agent hierarchies, see Set Up Agent Hierarchies in the *Connect Customer Administrator Guide*.
  */
 export const listUserHierarchyGroups: API.OperationMethod<
   ListUserHierarchyGroupsRequest,
@@ -34623,7 +35318,7 @@ export type ListUsersError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Provides summary information about the users for the specified Amazon Connect instance.
+ * Provides summary information about the users for the specified Connect Customer instance.
  */
 export const listUsers: API.OperationMethod<
   ListUsersRequest,
@@ -34728,7 +35423,7 @@ export type ListViewVersionsError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Returns all the available versions for the specified Amazon Connect instance and view identifier.
+ * Returns all the available versions for the specified Connect Customer instance and view identifier.
  *
  * Results will be sorted from highest to lowest.
  */
@@ -34986,11 +35681,11 @@ export type PutUserStatusError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Changes the current status of a user or agent in Amazon Connect. If the agent is currently handling a
+ * Changes the current status of a user or agent in Connect Customer. If the agent is currently handling a
  * contact, this sets the agent's next status.
  *
  * For more information, see Agent status and Set your
- * next status in the *Amazon Connect Administrator Guide*.
+ * next status in the *Connect Customer Administrator Guide*.
  */
 export const putUserStatus: API.OperationMethod<
   PutUserStatusRequest,
@@ -35022,10 +35717,10 @@ export type ReleasePhoneNumberError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group. You can call this API
+ * Releases a phone number previously claimed to an Connect Customer instance or traffic distribution group. You can call this API
  * only in the Amazon Web Services Region where the number was claimed.
  *
- * To release phone numbers from a traffic distribution group, use the `ReleasePhoneNumber` API, not the Amazon Connect admin website.
+ * To release phone numbers from a traffic distribution group, use the `ReleasePhoneNumber` API, not the Connect Customer admin website.
  *
  * After releasing a phone number, the phone number enters into a cooldown period for up to 180 days. It cannot be
  * searched for or claimed again until the period has ended. If you accidentally release a phone number, contact
@@ -35079,11 +35774,11 @@ export type ReplicateInstanceError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Replicates an Amazon Connect instance in the specified Amazon Web Services Region and copies configuration
- * information for Amazon Connect resources across Amazon Web Services Regions.
+ * Replicates an Connect Customer instance in the specified Amazon Web Services Region and copies configuration
+ * information for Connect Customer resources across Amazon Web Services Regions.
  *
- * For more information about replicating an Amazon Connect instance, see Create a replica of your existing Amazon Connect
- * instance in the *Amazon Connect Administrator Guide*.
+ * For more information about replicating an Connect Customer instance, see Create a replica of your existing Connect Customer
+ * instance in the *Connect Customer Administrator Guide*.
  */
 export const replicateInstance: API.OperationMethod<
   ReplicateInstanceRequest,
@@ -35179,7 +35874,7 @@ export type SearchAgentStatusesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches AgentStatuses in an Amazon Connect instance, with optional filtering.
+ * Searches AgentStatuses in an Connect Customer instance, with optional filtering.
  */
 export const searchAgentStatuses: API.OperationMethod<
   SearchAgentStatusesRequest,
@@ -35228,7 +35923,7 @@ export type SearchAvailablePhoneNumbersError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group. If the
+ * Searches for available phone numbers that you can claim to your Connect Customer instance or traffic distribution group. If the
  * provided `TargetArn` is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with
  * the traffic distribution group.
  */
@@ -35279,7 +35974,7 @@ export type SearchContactEvaluationsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches contact evaluations in an Amazon Connect instance, with optional filtering.
+ * Searches contact evaluations in an Connect Customer instance, with optional filtering.
  *
  * **Use cases**
  *
@@ -35295,7 +35990,7 @@ export type SearchContactEvaluationsError =
  * delete). If you don't see updated information for recently changed contact evaluations, try calling the API again
  * in a few seconds.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const searchContactEvaluations: API.OperationMethod<
   SearchContactEvaluationsRequest,
@@ -35324,7 +36019,7 @@ export type SearchContactFlowModulesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches the flow modules in an Amazon Connect instance, with optional filtering.
+ * Searches the flow modules in an Connect Customer instance, with optional filtering.
  */
 export const searchContactFlowModules: API.OperationMethod<
   SearchContactFlowModulesRequest,
@@ -35374,7 +36069,7 @@ export type SearchContactFlowsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches the flows in an Amazon Connect instance, with optional filtering.
+ * Searches the flows in an Connect Customer instance, with optional filtering.
  */
 export const searchContactFlows: API.OperationMethod<
   SearchContactFlowsRequest,
@@ -35424,7 +36119,7 @@ export type SearchContactsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches contacts in an Amazon Connect instance.
+ * Searches contacts in an Connect Customer instance.
  */
 export const searchContacts: API.OperationMethod<
   SearchContactsRequest,
@@ -35557,7 +36252,7 @@ export type SearchEvaluationFormsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches evaluation forms in an Amazon Connect instance, with optional filtering.
+ * Searches evaluation forms in an Connect Customer instance, with optional filtering.
  *
  * **Use cases**
  *
@@ -35575,7 +36270,7 @@ export type SearchEvaluationFormsError =
  * delete). If you don't see updated information for recently changed contact evaluations, try calling the API again
  * in a few seconds.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const searchEvaluationForms: API.OperationMethod<
   SearchEvaluationFormsRequest,
@@ -35654,7 +36349,7 @@ export type SearchHoursOfOperationsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches the hours of operation in an Amazon Connect instance, with optional filtering.
+ * Searches the hours of operation in an Connect Customer instance, with optional filtering.
  */
 export const searchHoursOfOperations: API.OperationMethod<
   SearchHoursOfOperationsRequest,
@@ -35745,10 +36440,10 @@ export type SearchPredefinedAttributesError =
  * - Contact information that varies between transfers or conferences, such as the name of the business unit
  * handling the contact. For more information, see Use contact segment attributes.
  *
- * For the predefined attributes per instance quota, see Amazon Connect
+ * For the predefined attributes per instance quota, see Connect Customer
  * quotas.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const searchPredefinedAttributes: API.OperationMethod<
   SearchPredefinedAttributesRequest,
@@ -35798,7 +36493,7 @@ export type SearchPromptsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches prompts in an Amazon Connect instance, with optional filtering.
+ * Searches prompts in an Connect Customer instance, with optional filtering.
  */
 export const searchPrompts: API.OperationMethod<
   SearchPromptsRequest,
@@ -35848,7 +36543,7 @@ export type SearchQueuesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches queues in an Amazon Connect instance, with optional filtering.
+ * Searches queues in an Connect Customer instance, with optional filtering.
  */
 export const searchQueues: API.OperationMethod<
   SearchQueuesRequest,
@@ -35898,7 +36593,7 @@ export type SearchQuickConnectsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches quick connects in an Amazon Connect instance, with optional filtering.
+ * Searches quick connects in an Connect Customer instance, with optional filtering.
  */
 export const searchQuickConnects: API.OperationMethod<
   SearchQuickConnectsRequest,
@@ -35949,7 +36644,7 @@ export type SearchResourceTagsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches tags used in an Amazon Connect instance using optional search criteria.
+ * Searches tags used in an Connect Customer instance using optional search criteria.
  */
 export const searchResourceTags: API.OperationMethod<
   SearchResourceTagsRequest,
@@ -36000,7 +36695,7 @@ export type SearchRoutingProfilesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches routing profiles in an Amazon Connect instance, with optional filtering.
+ * Searches routing profiles in an Connect Customer instance, with optional filtering.
  *
  * `SearchRoutingProfiles` does not populate LastModifiedRegion, LastModifiedTime,
  * MediaConcurrencies.CrossChannelBehavior, and AgentAvailabilityTimer in its response, but DescribeRoutingProfile does.
@@ -36053,9 +36748,9 @@ export type SearchSecurityProfilesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches security profiles in an Amazon Connect instance, with optional filtering.
+ * Searches security profiles in an Connect Customer instance, with optional filtering.
  *
- * For information about security profiles, see Security Profiles in the *Amazon Connect Administrator Guide*. For a mapping of the API name and user interface name of the security
+ * For information about security profiles, see Security Profiles in the *Connect Customer Administrator Guide*. For a mapping of the API name and user interface name of the security
  * profile permissions, see List
  * of security profile permissions.
  */
@@ -36159,7 +36854,7 @@ export type SearchUserHierarchyGroupsError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches UserHierarchyGroups in an Amazon Connect instance, with optional filtering.
+ * Searches UserHierarchyGroups in an Connect Customer instance, with optional filtering.
  *
  * The UserHierarchyGroup with `"LevelId": "0"` is the foundation for building levels on top of an
  * instance. It is not user-definable, nor is it visible in the UI.
@@ -36212,7 +36907,7 @@ export type SearchUsersError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches users in an Amazon Connect instance, with optional filtering.
+ * Searches users in an Connect Customer instance, with optional filtering.
  *
  * `AfterContactWorkTimeLimit` is returned in milliseconds.
  */
@@ -36315,7 +37010,7 @@ export type SearchVocabulariesError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Searches for vocabularies within a specific Amazon Connect instance using `State`,
+ * Searches for vocabularies within a specific Connect Customer instance using `State`,
  * `NameStartsWith`, and `LanguageCode`.
  */
 export const searchVocabularies: API.OperationMethod<
@@ -36469,7 +37164,7 @@ export type SendChatIntegrationEventError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Processes chat integration events from Amazon Web Services or external integrations to Amazon Connect. A chat
+ * Processes chat integration events from Amazon Web Services or external integrations to Connect Customer. A chat
  * integration event includes:
  *
  * - SourceId, DestinationId, and Subtype: a set of identifiers, uniquely representing a chat
@@ -36512,10 +37207,10 @@ export type SendOutboundEmailError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Send outbound email for outbound campaigns. For more information about outbound campaigns, see Set up Amazon Connect
+ * Send outbound email for outbound campaigns. For more information about outbound campaigns, see Set up Connect Customer
  * outbound campaigns.
  *
- * Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account
+ * Only the Connect Customer outbound campaigns service principal is allowed to assume a role in your account
  * and call this API.
  */
 export const sendOutboundEmail: API.OperationMethod<
@@ -36550,7 +37245,7 @@ export type StartAttachedFileUploadError =
 /**
  * Provides a pre-signed Amazon S3 URL in response for uploading your content.
  *
- * You may only use this API to upload attachments to an Amazon Connect Case or Amazon Connect Email.
+ * You may only use this API to upload attachments to an Connect Customer Case or Connect Customer Email.
  */
 export const startAttachedFileUpload: API.OperationMethod<
   StartAttachedFileUploadRequest,
@@ -36581,7 +37276,7 @@ export type StartChatContactError =
   | CommonErrors;
 /**
  * Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain
- * credentials from the CreateParticipantConnection API in the Amazon Connect Participant Service.
+ * credentials from the CreateParticipantConnection API in the Connect Customer Participant Service.
  *
  * When a new chat contact is successfully created, clients must subscribe to the participant’s connection for the
  * created chat within 5 minutes. This is achieved by invoking CreateParticipantConnection with WEBSOCKET and CONNECTION_CREDENTIALS.
@@ -36597,12 +37292,12 @@ export type StartChatContactError =
  * If you use the `ChatDurationInMinutes` parameter and receive a 400 error, your account may not
  * support the ability to configure custom chat durations. For more information, contact Amazon Web Services Support.
  *
- * For more information about chat, see the following topics in the Amazon Connect
+ * For more information about chat, see the following topics in the Connect Customer
  * Administrator Guide:
  *
- * - Concepts: Web and mobile messaging capabilities in Amazon Connect
+ * - Concepts: Web and mobile messaging capabilities in Connect Customer
  *
- * - Amazon Connect Chat security best practices
+ * - Connect Customer Chat security best practices
  */
 export const startChatContact: API.OperationMethod<
   StartChatContactRequest,
@@ -36632,7 +37327,7 @@ export type StartContactEvaluationError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Starts an empty evaluation in the specified Amazon Connect instance, using the given evaluation form for the
+ * Starts an empty evaluation in the specified Connect Customer instance, using the given evaluation form for the
  * particular contact. The evaluation form version used for the contact evaluation corresponds to the currently
  * activated version. If no version is activated for the evaluation form, the contact evaluation cannot be started.
  *
@@ -36747,14 +37442,14 @@ export type StartContactStreamingError =
  * Initiates real-time message streaming for a new chat contact.
  *
  * For more information about message streaming, see Enable real-time chat message streaming in the
- * *Amazon Connect Administrator Guide*.
+ * *Connect Customer Administrator Guide*.
  *
- * For more information about chat, see the following topics in the Amazon Connect
+ * For more information about chat, see the following topics in the Connect Customer
  * Administrator Guide:
  *
- * - Concepts: Web and mobile messaging capabilities in Amazon Connect
+ * - Concepts: Web and mobile messaging capabilities in Connect Customer
  *
- * - Amazon Connect Chat security best practices
+ * - Connect Customer Chat security best practices
  */
 export const startContactStreaming: API.OperationMethod<
   StartContactStreamingRequest,
@@ -36809,6 +37504,41 @@ export const startEmailContact: API.OperationMethod<
   retry: Retry,
   operationName: "StartEmailContact",
 }));
+export type StartEvaluationFormValidationError =
+  | InternalServiceException
+  | InvalidParameterException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Starts an asynchronous validation process for an evaluation form version in the specified Connect Customer
+ * instance. The validation first performs structural checks on the form content (such as verifying required fields,
+ * valid scoring configuration, and correct conditional logic), then asynchronously analyzes questions configured for
+ * generative AI evaluation against a set of best practices. Use GetEvaluationFormValidation to
+ * retrieve the status and results once the validation completes.
+ */
+export const startEvaluationFormValidation: API.OperationMethod<
+  StartEvaluationFormValidationRequest,
+  StartEvaluationFormValidationResponse,
+  StartEvaluationFormValidationError,
+  Creds | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: StartEvaluationFormValidationRequest,
+  output: StartEvaluationFormValidationResponse,
+  errors: [
+    InternalServiceException,
+    InvalidParameterException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartEvaluationFormValidation",
+}));
 export type StartOutboundChatContactError =
   | AccessDeniedException
   | ConflictException
@@ -36831,8 +37561,8 @@ export type StartOutboundChatContactError =
  * an ongoing contact to an outbound SMS or WhatsApp contact by using the StartOutboundChatContact Flow
  * Action.
  *
- * For more information about using SMS or WhatsApp in Amazon Connect, see the following topics in
- * the *Amazon Connect Administrator Guide*:
+ * For more information about using SMS or WhatsApp in Connect Customer, see the following topics in
+ * the *Connect Customer Administrator Guide*:
  *
  * - Set up SMS
  * messaging
@@ -36920,11 +37650,11 @@ export type StartOutboundVoiceContactError =
  * it fails.
  *
  * UK numbers with a 447 prefix are not allowed by default. Before you can dial these UK mobile numbers, you must
- * submit a service quota increase request. For more information, see Amazon Connect Service Quotas in the
- * *Amazon Connect Administrator Guide*.
+ * submit a service quota increase request. For more information, see Connect Customer Service Quotas in the
+ * *Connect Customer Administrator Guide*.
  *
  * Campaign calls are not allowed by default. Before you can make a call with `TrafficType` =
- * `CAMPAIGN`, you must submit a service quota increase request to the quota Amazon Connect campaigns.
+ * `CAMPAIGN`, you must submit a service quota increase request to the quota Connect Customer campaigns.
  *
  * For Preview dialing mode, only the Amazon Connect outbound campaigns service principal is allowed to assume a
  * role in your account and call this API with OutboundStrategy.
@@ -36960,7 +37690,7 @@ export type StartScreenSharingError =
   | CommonErrors;
 /**
  * Starts screen sharing for a contact. For more information about screen sharing, see Set up in-app, web, video calling, and screen sharing
- * capabilities in the *Amazon Connect Administrator Guide*.
+ * capabilities in the *Connect Customer Administrator Guide*.
  */
 export const startScreenSharing: API.OperationMethod<
   StartScreenSharingRequest,
@@ -36991,8 +37721,8 @@ export type StartTaskContactError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Initiates a flow to start a new task contact. For more information about task contacts, see Concepts: Tasks in Amazon Connect in the
- * *Amazon Connect Administrator Guide*.
+ * Initiates a flow to start a new task contact. For more information about task contacts, see Concepts: Tasks in Connect Customer in the
+ * *Connect Customer Administrator Guide*.
  *
  * When using `PreviousContactId` and `RelatedContactId` input parameters, note the
  * following:
@@ -37018,12 +37748,12 @@ export type StartTaskContactError =
  * `QuickConnectID`, or `TaskTemplateID`. Only one parameter is required as long as the task
  * template has a flow configured to run it. If more than one parameter is specified, or only the
  * `TaskTemplateID` is specified but it does not have a flow configured, the request returns an error
- * because Amazon Connect cannot identify the unique flow to run when the task is created.
+ * because Connect Customer cannot identify the unique flow to run when the task is created.
  *
  * A `ServiceQuotaExceededException` occurs when the number of open tasks exceeds the active tasks quota
  * or there are already 12 tasks referencing the same `PreviousContactId`. For more information about service
- * quotas for task contacts, see Amazon Connect service quotas in the
- * *Amazon Connect Administrator Guide*.
+ * quotas for task contacts, see Connect Customer service quotas in the
+ * *Connect Customer Administrator Guide*.
  */
 export const startTaskContact: API.OperationMethod<
   StartTaskContactRequest,
@@ -37087,7 +37817,7 @@ export type StartWebRTCContactError =
   | CommonErrors;
 /**
  * Places an inbound in-app, web, or video call to a contact, and then initiates the flow. It performs the actions
- * in the flow that are specified (in ContactFlowId) and present in the Amazon Connect instance (specified as
+ * in the flow that are specified (in ContactFlowId) and present in the Connect Customer instance (specified as
  * InstanceId).
  */
 export const startWebRTCContact: API.OperationMethod<
@@ -37283,7 +38013,7 @@ export type SubmitContactEvaluationError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Submits a contact evaluation in the specified Amazon Connect instance. Answers included in the request are
+ * Submits a contact evaluation in the specified Connect Customer instance. Answers included in the request are
  * merged with existing answers for the given evaluation. If no answers or notes are passed, the evaluation is submitted
  * with the existing answers and notes. You can delete an answer or note by passing an empty object (`{}`) to
  * the question identifier.
@@ -37354,7 +38084,7 @@ export type TagContactError =
   | CommonErrors;
 /**
  * Adds the specified tags to the contact resource. For more information about this API is used, see Set up granular billing for a detailed
- * view of your Amazon Connect usage.
+ * view of your Connect Customer usage.
  */
 export const tagContact: API.OperationMethod<
   TagContactRequest,
@@ -37387,10 +38117,10 @@ export type TagResourceError =
  * Adds the specified tags to the specified resource.
  *
  * Some of the supported resource types are agents, routing profiles, queues, quick connects, flows, agent
- * statuses, hours of operation, phone numbers, security profiles, and task templates. For a complete list, see Tagging resources in Amazon Connect.
+ * statuses, hours of operation, phone numbers, security profiles, and task templates. For a complete list, see Tagging resources in Connect Customer.
  *
- * For sample policies that use tags, see Amazon Connect Identity-Based Policy
- * Examples in the *Amazon Connect Administrator Guide*.
+ * For sample policies that use tags, see Connect Customer Identity-Based Policy
+ * Examples in the *Connect Customer Administrator Guide*.
  */
 export const tagResource: API.OperationMethod<
   TagResourceRequest,
@@ -37471,7 +38201,7 @@ export type UntagContactError =
   | CommonErrors;
 /**
  * Removes the specified tags from the contact resource. For more information about this API is used, see Set up granular billing for a detailed
- * view of your Amazon Connect usage.
+ * view of your Connect Customer usage.
  */
 export const untagContact: API.OperationMethod<
   UntagContactRequest,
@@ -37555,6 +38285,37 @@ export const updateAgentStatus: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAgentStatus",
 }));
+export type UpdateAttachedFilesConfigurationError =
+  | AccessDeniedException
+  | InternalServiceException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates the attached files configuration for the specified Connect Customer instance and attachment scope.
+ *
+ * If no instance-specific configuration exists, this operation creates one. Partial updates are supported—only specified fields are updated, while unspecified fields retain their current values.
+ */
+export const updateAttachedFilesConfiguration: API.OperationMethod<
+  UpdateAttachedFilesConfigurationRequest,
+  UpdateAttachedFilesConfigurationResponse,
+  UpdateAttachedFilesConfigurationError,
+  Creds | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAttachedFilesConfigurationRequest,
+  output: UpdateAttachedFilesConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAttachedFilesConfiguration",
+}));
 export type UpdateAuthenticationProfileError =
   | InternalServiceException
   | InvalidParameterException
@@ -37563,7 +38324,7 @@ export type UpdateAuthenticationProfileError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change. To
+ * This API is in preview release for Connect Customer and is subject to change. To
  * request access to this API, contact Amazon Web Services Support.
  *
  * Updates the selected authentication profile.
@@ -37598,7 +38359,7 @@ export type UpdateContactError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Adds or updates user-defined contact information associated with the specified contact. At least one field to be
  * updated must be present in the request.
@@ -37641,11 +38402,11 @@ export type UpdateContactAttributesError =
  * You can create or update user-defined attributes for both ongoing and completed contacts. For example, while the
  * call is active, you can update the customer's name or the reason the customer called. You can add notes about steps
  * that the agent took during the call that display to the next agent that takes the call. You can also update
- * attributes for a contact using data from your CRM application and save the data with the contact in Amazon Connect. You could also flag calls for additional analysis, such as legal review or to identify abusive callers.
+ * attributes for a contact using data from your CRM application and save the data with the contact in Connect Customer. You could also flag calls for additional analysis, such as legal review or to identify abusive callers.
  *
- * Contact attributes are available in Amazon Connect for 24 months, and are then deleted. For information
+ * Contact attributes are available in Connect Customer for 24 months, and are then deleted. For information
  * about contact record retention and the maximum size of the contact record attributes section, see Feature
- * specifications in the *Amazon Connect Administrator Guide*.
+ * specifications in the *Connect Customer Administrator Guide*.
  */
 export const updateContactAttributes: API.OperationMethod<
   UpdateContactAttributesRequest,
@@ -37674,7 +38435,7 @@ export type UpdateContactEvaluationError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates details about a contact evaluation in the specified Amazon Connect instance. A contact evaluation
+ * Updates details about a contact evaluation in the specified Connect Customer instance. A contact evaluation
  * must be in draft state. Answers included in the request are merged with existing answers for the given evaluation. An
  * answer or note can be deleted by passing an empty object (`{}`) to the question identifier.
  */
@@ -37708,7 +38469,7 @@ export type UpdateContactFlowContentError =
 /**
  * Updates the specified flow.
  *
- * You can also create and update flows using the Amazon Connect
+ * You can also create and update flows using the Connect Customer
  * Flow language.
  *
  * Use the `$SAVED` alias in the request to describe the `SAVED` content of a Flow. For
@@ -37810,7 +38571,7 @@ export type UpdateContactFlowModuleContentError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates specified flow module for the specified Amazon Connect instance.
+ * Updates specified flow module for the specified Connect Customer instance.
  *
  * Use the `$SAVED` alias in the request to describe the `SAVED` content of a Flow. For
  * example, `arn:aws:.../contact-flow/{id}:$SAVED`. After a flow is published, `$SAVED` needs to
@@ -37880,7 +38641,7 @@ export type UpdateContactFlowNameError =
 /**
  * The name of the flow.
  *
- * You can also create and update flows using the Amazon Connect
+ * You can also create and update flows using the Connect Customer
  * Flow language.
  */
 export const updateContactFlowName: API.OperationMethod<
@@ -38097,7 +38858,7 @@ export type UpdateEmailAddressMetadataError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates an email address metadata. For more information about email addresses, see Create email addresses in the Amazon Connect
+ * Updates an email address metadata. For more information about email addresses, see Create email addresses in the Connect Customer
  * Administrator Guide.
  */
 export const updateEmailAddressMetadata: API.OperationMethod<
@@ -38130,7 +38891,7 @@ export type UpdateEvaluationFormError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates details about a specific evaluation form version in the specified Amazon Connect instance. Question
+ * Updates details about a specific evaluation form version in the specified Connect Customer instance. Question
  * and section identifiers cannot be duplicated within the same evaluation form.
  *
  * This operation does not support partial updates. Instead it does a full update of evaluation form
@@ -38228,7 +38989,7 @@ export type UpdateInstanceAttributeError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Updates the value for the specified attribute type.
  */
@@ -38259,7 +39020,7 @@ export type UpdateInstanceStorageConfigError =
   | ThrottlingException
   | CommonErrors;
 /**
- * This API is in preview release for Amazon Connect and is subject to change.
+ * This API is in preview release for Connect Customer and is subject to change.
  *
  * Updates an existing configuration for a resource type. This API is idempotent.
  */
@@ -38322,7 +39083,7 @@ export type UpdateParticipantAuthenticationError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Instructs Amazon Connect to resume the authentication process. The subsequent actions depend on the request
+ * Instructs Connect Customer to resume the authentication process. The subsequent actions depend on the request
  * body contents:
  *
  * - **If a code is provided**: Connect retrieves the identity information from Amazon
@@ -38407,7 +39168,7 @@ export type UpdatePhoneNumberError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates your claimed phone number from its current Amazon Connect instance or traffic distribution group to another Amazon Connect instance or traffic distribution group in the same Amazon Web Services Region.
+ * Updates your claimed phone number from its current Connect Customer instance or traffic distribution group to another Connect Customer instance or traffic distribution group in the same Amazon Web Services Region.
  *
  * After using this API, you must verify that the phone number is attached to the correct flow in the target
  * instance or traffic distribution group. You need to do this because the API switches only the phone number to a new
@@ -38481,10 +39242,10 @@ export type UpdatePredefinedAttributeError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates a predefined attribute for the specified Amazon Connect instance. A *predefined attribute* is
+ * Updates a predefined attribute for the specified Connect Customer instance. A *predefined attribute* is
  * made up of a name and a value.
  *
- * For the predefined attributes per instance quota, see Amazon Connect
+ * For the predefined attributes per instance quota, see Connect Customer
  * quotas.
  *
  * **Use cases**
@@ -38499,7 +39260,7 @@ export type UpdatePredefinedAttributeError =
  * organization. This is a use case where information for a contact varies between transfers or conferences. For more
  * information, see Use contact segment attributes.
  *
- * **Endpoints**: See Amazon Connect endpoints and quotas.
+ * **Endpoints**: See Connect Customer endpoints and quotas.
  */
 export const updatePredefinedAttribute: API.OperationMethod<
   UpdatePredefinedAttributeRequest,
@@ -38649,7 +39410,7 @@ export type UpdateQueueOutboundCallerConfigError =
  * Updates the outbound caller ID name, number, and outbound whisper flow for a specified queue.
  *
  * - If the phone number is claimed to a traffic distribution group that was created in the
- * same Region as the Amazon Connect instance where you are calling this API, then you can use a
+ * same Region as the Connect Customer instance where you are calling this API, then you can use a
  * full phone number ARN or a UUID for `OutboundCallerIdNumberId`. However, if the phone number is claimed
  * to a traffic distribution group that is in one Region, and you are calling this API from an instance in another Amazon Web Services Region that is associated with the traffic distribution group, you must provide a full phone number ARN. If a
  * UUID is provided in this scenario, you will receive a
@@ -38958,7 +39719,7 @@ export type UpdateRuleError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates a rule for the specified Amazon Connect instance.
+ * Updates a rule for the specified Connect Customer instance.
  *
  * Use the Rules Function
  * language to code conditions for the rule.
@@ -38993,7 +39754,7 @@ export type UpdateSecurityProfileError =
 /**
  * Updates a security profile.
  *
- * For information about security profiles, see Security Profiles in the *Amazon Connect Administrator Guide*. For a mapping of the API name and user interface name of the security
+ * For information about security profiles, see Security Profiles in the *Connect Customer Administrator Guide*. For a mapping of the API name and user interface name of the security
  * profile permissions, see List
  * of security profile permissions.
  */
@@ -39025,7 +39786,7 @@ export type UpdateTaskTemplateError =
   | ThrottlingException
   | CommonErrors;
 /**
- * Updates details about a specific task template in the specified Amazon Connect instance. This operation does
+ * Updates details about a specific task template in the specified Connect Customer instance. This operation does
  * not support partial updates. Instead it does a full update of template content.
  */
 export const updateTaskTemplate: API.OperationMethod<
@@ -39107,7 +39868,7 @@ export type UpdateTrafficDistributionError =
  *
  * For more information about updating a traffic distribution group, see Update telephony traffic distribution
  * across Amazon Web Services Regions
- * in the *Amazon Connect Administrator Guide*.
+ * in the *Connect Customer Administrator Guide*.
  *
  * **Important things to know**
  *
@@ -39271,7 +40032,7 @@ export type UpdateUserIdentityInfoError =
  * that ability can change the login credentials of other users by changing their email address. This poses a security
  * risk to your organization. They can change the email address of a user to the attacker's email address, and then
  * reset the password through email. For more information, see Best Practices for Security Profiles
- * in the *Amazon Connect Administrator Guide*.
+ * in the *Connect Customer Administrator Guide*.
  */
 export const updateUserIdentityInfo: API.OperationMethod<
   UpdateUserIdentityInfoRequest,
@@ -39451,7 +40212,7 @@ export type UpdateViewContentError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Updates the view content of the given view identifier in the specified Amazon Connect instance.
+ * Updates the view content of the given view identifier in the specified Connect Customer instance.
  *
  * It performs content validation if `Status` is set to `SAVED` and performs full content
  * validation if `Status` is `PUBLISHED`. Note that the `$SAVED` alias' content will

@@ -56,14 +56,25 @@ const rules = T.EndpointResolver((p, _) => {
 
 //# Newtypes
 export type AgentSpaceId = string;
+export type AssetType = string;
+export type AssetFilePath = string;
+export type AssetFileBytes = Uint8Array;
+export type AssetFileText = string;
+export type AssetZipBytes = Uint8Array;
+export type AssetContentUrl = string;
 export type ResourceId = string;
 export type BacklogTaskTitle = string;
 export type BacklogTaskDescription = string;
 export type BackLogTimestamp = Date;
+export type TriggerType = string;
+export type ScheduleExpression = string;
+export type TriggerAction = unknown;
+export type TriggerStatus = string;
 export type NextToken = string;
 export type JournalTimestamp = Date;
 export type TagKey = string;
 export type TagValue = string;
+export type ChatExecutionId = string;
 export type MessageContent = string;
 export type AgentSpaceName = string;
 export type Description = string | redacted.Redacted<string>;
@@ -72,6 +83,7 @@ export type KmsKeyArn = string;
 export type RoleArn = string;
 export type IdpClientId = string;
 export type IdpClientSecret = string | redacted.Redacted<string>;
+export type OperatorAppUrl = string;
 export type ServiceId = string;
 export type EmailAddress = string | redacted.Redacted<string>;
 export type AssociationId = string;
@@ -87,31 +99,161 @@ export type PortRange = string;
 export type CertificateString = string;
 export type ResourceConfigurationArn = string;
 export type ResourceGatewayArn = string;
+export type FailureMessage = string;
 export type ClientId = string | redacted.Redacted<string>;
 export type ExchangeParameterValue = string | redacted.Redacted<string>;
 export type ClientSecret = string | redacted.Redacted<string>;
 export type ServiceNowInstanceUrl = string;
+export type MCPServerName = string;
+export type MCPServerEndpoint = string;
+export type OAuthScope = string;
 export type TokenValue = string | redacted.Redacted<string>;
 export type Guid = string;
+export type SigV4Region = string;
+export type CustomHeaderName = string;
+export type CustomHeaderValue = string | redacted.Redacted<string>;
+export type RemoteAgentName = string;
+export type RemoteAgentEndpoint = string;
 export type ServiceName = string;
 
 //# Schemas
-export interface AllowVendedLogDeliveryForResourceInput {
-  resourceArnBeingAuthorized: string;
-  deliverySourceArn: string;
-  logType?: string;
+export type AssetFileBody =
+  | { bytes: Uint8Array; text?: never }
+  | { bytes?: never; text: string };
+export const AssetFileBody = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ bytes: T.Blob }),
+  S.Struct({ text: S.String }),
+]);
+export interface AssetFileContent {
+  path: string;
+  body: AssetFileBody;
+  metadata?: any;
 }
-export const AllowVendedLogDeliveryForResourceInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssetFileContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.String,
+    body: AssetFileBody,
+    metadata: S.optional(S.Any),
+  }),
+).annotate({
+  identifier: "AssetFileContent",
+}) as any as S.Schema<AssetFileContent>;
+export interface AssetZipContent {
+  zipFile: Uint8Array;
+}
+export const AssetZipContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ zipFile: T.Blob }),
+).annotate({
+  identifier: "AssetZipContent",
+}) as any as S.Schema<AssetZipContent>;
+export interface AssetSourceUrlContent {
+  url: string;
+}
+export const AssetSourceUrlContent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ url: S.String }),
+).annotate({
+  identifier: "AssetSourceUrlContent",
+}) as any as S.Schema<AssetSourceUrlContent>;
+export type AssetContent =
+  | { file: AssetFileContent; zip?: never; sourceUrl?: never }
+  | { file?: never; zip: AssetZipContent; sourceUrl?: never }
+  | { file?: never; zip?: never; sourceUrl: AssetSourceUrlContent };
+export const AssetContent = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ file: AssetFileContent }),
+  S.Struct({ zip: AssetZipContent }),
+  S.Struct({ sourceUrl: AssetSourceUrlContent }),
+]);
+export interface CreateAssetRequest {
+  agentSpaceId: string;
+  assetType: string;
+  metadata?: any;
+  content: AssetContent;
+  clientToken?: string;
+}
+export const CreateAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    assetType: S.String,
+    metadata: S.optional(S.Any),
+    content: AssetContent,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/asset/agent-space/{agentSpaceId}/assets",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateAssetRequest",
+}) as any as S.Schema<CreateAssetRequest>;
+export interface Asset {
+  assetId: string;
+  assetType: string;
+  metadata: any;
+  version: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const Asset = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    assetId: S.String,
+    assetType: S.String,
+    metadata: S.Any,
+    version: S.Number,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "Asset" }) as any as S.Schema<Asset>;
+export interface CreateAssetResponse {
+  asset: Asset;
+}
+export const CreateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ asset: Asset }),
+).annotate({
+  identifier: "CreateAssetResponse",
+}) as any as S.Schema<CreateAssetResponse>;
+export interface ValidationExceptionField {
+  path: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ path: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export interface CreateAssetFileRequest {
+  agentSpaceId: string;
+  assetId: string;
+  path: string;
+  content: AssetFileBody;
+  metadata?: any;
+  clientToken?: string;
+}
+export const CreateAssetFileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      resourceArnBeingAuthorized: S.String,
-      deliverySourceArn: S.String,
-      logType: S.optional(S.String),
+      agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+      assetId: S.String.pipe(T.HttpLabel("assetId")),
+      path: S.String.pipe(T.HttpLabel("path")),
+      content: AssetFileBody,
+      metadata: S.optional(S.Any),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     }).pipe(
       T.all(
         T.Http({
           method: "POST",
-          uri: "/allow-vended-log-delivery-for-resource",
+          uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}/files/{path+}",
         }),
         svc,
         auth,
@@ -120,18 +262,35 @@ export const AllowVendedLogDeliveryForResourceInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AllowVendedLogDeliveryForResourceInput",
-  }) as any as S.Schema<AllowVendedLogDeliveryForResourceInput>;
-export interface AllowVendedLogDeliveryForResourceOutput {
-  message?: string;
+).annotate({
+  identifier: "CreateAssetFileRequest",
+}) as any as S.Schema<CreateAssetFileRequest>;
+export interface AssetFile {
+  path: string;
+  content: AssetFileBody;
+  metadata?: any;
+  version: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
-export const AllowVendedLogDeliveryForResourceOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ message: S.optional(S.String) }),
-  ).annotate({
-    identifier: "AllowVendedLogDeliveryForResourceOutput",
-  }) as any as S.Schema<AllowVendedLogDeliveryForResourceOutput>;
+export const AssetFile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.String,
+    content: AssetFileBody,
+    metadata: S.optional(S.Any),
+    version: S.Number,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "AssetFile" }) as any as S.Schema<AssetFile>;
+export interface CreateAssetFileResponse {
+  file: AssetFile;
+}
+export const CreateAssetFileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ file: AssetFile }),
+).annotate({
+  identifier: "CreateAssetFileResponse",
+}) as any as S.Schema<CreateAssetFileResponse>;
 export interface ReferenceInput {
   system: string;
   title?: string;
@@ -148,7 +307,12 @@ export const ReferenceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     associationId: S.String,
   }),
 ).annotate({ identifier: "ReferenceInput" }) as any as S.Schema<ReferenceInput>;
-export type TaskType = "INVESTIGATION" | "EVALUATION" | (string & {});
+export type TaskType =
+  | "INVESTIGATION"
+  | "EVALUATION"
+  | "RELEASE_READINESS_REVIEW"
+  | "RELEASE_TESTING"
+  | (string & {});
 export const TaskType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type Priority =
   | "CRITICAL"
@@ -221,6 +385,7 @@ export type TaskStatus =
   | "FAILED"
   | "TIMED_OUT"
   | "CANCELED"
+  | "SKIPPED"
   | (string & {});
 export const TaskStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Task {
@@ -271,30 +436,17 @@ export const CreateBacklogTaskResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateBacklogTaskResponse",
 }) as any as S.Schema<CreateBacklogTaskResponse>;
-export interface ValidationExceptionField {
-  path: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ path: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
 export type UserType = "IAM" | "IDC" | "IDP" | (string & {});
 export const UserType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateChatRequest {
   agentSpaceId: string;
-  userId: string;
+  userId?: string;
   userType?: UserType;
 }
 export const CreateChatRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
-    userId: S.String.pipe(T.HttpQuery("userId")),
+    userId: S.optional(S.String).pipe(T.HttpQuery("userId")),
     userType: S.optional(UserType).pipe(T.HttpQuery("userType")),
   }).pipe(
     T.all(
@@ -324,6 +476,173 @@ export const CreateChatResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChatResponse",
 }) as any as S.Schema<CreateChatResponse>;
+export interface ScheduleCondition {
+  expression: string;
+}
+export const ScheduleCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ expression: S.String }),
+).annotate({
+  identifier: "ScheduleCondition",
+}) as any as S.Schema<ScheduleCondition>;
+export type TriggerCondition = { schedule: ScheduleCondition };
+export const TriggerCondition = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ schedule: ScheduleCondition }),
+]);
+export interface CreateTriggerRequest {
+  agentSpaceId: string;
+  type: string;
+  condition: TriggerCondition;
+  action: any;
+  status?: string;
+  clientToken?: string;
+}
+export const CreateTriggerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    type: S.String,
+    condition: TriggerCondition,
+    action: S.Any,
+    status: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/trigger/agent-space/{agentSpaceId}/triggers",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateTriggerRequest",
+}) as any as S.Schema<CreateTriggerRequest>;
+export interface Trigger {
+  triggerId: string;
+  agentSpaceId: string;
+  type: string;
+  condition: TriggerCondition;
+  action: any;
+  status: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const Trigger = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    triggerId: S.String,
+    agentSpaceId: S.String,
+    type: S.String,
+    condition: TriggerCondition,
+    action: S.Any,
+    status: S.String,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
+export interface CreateTriggerResponse {
+  trigger: Trigger;
+}
+export const CreateTriggerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ trigger: Trigger }),
+).annotate({
+  identifier: "CreateTriggerResponse",
+}) as any as S.Schema<CreateTriggerResponse>;
+export interface DeleteAssetRequest {
+  agentSpaceId: string;
+  assetId: string;
+}
+export const DeleteAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    assetId: S.String.pipe(T.HttpLabel("assetId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteAssetRequest",
+}) as any as S.Schema<DeleteAssetRequest>;
+export interface DeleteAssetResponse {}
+export const DeleteAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAssetResponse",
+}) as any as S.Schema<DeleteAssetResponse>;
+export interface DeleteAssetFileRequest {
+  agentSpaceId: string;
+  assetId: string;
+  path: string;
+}
+export const DeleteAssetFileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+      assetId: S.String.pipe(T.HttpLabel("assetId")),
+      path: S.String.pipe(T.HttpLabel("path")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}/files/{path+}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteAssetFileRequest",
+}) as any as S.Schema<DeleteAssetFileRequest>;
+export interface DeleteAssetFileResponse {}
+export const DeleteAssetFileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteAssetFileResponse",
+}) as any as S.Schema<DeleteAssetFileResponse>;
+export interface DeleteTriggerRequest {
+  agentSpaceId: string;
+  triggerId: string;
+}
+export const DeleteTriggerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    triggerId: S.String.pipe(T.HttpLabel("triggerId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/trigger/agent-space/{agentSpaceId}/triggers/{triggerId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteTriggerRequest",
+}) as any as S.Schema<DeleteTriggerRequest>;
+export interface DeleteTriggerResponse {}
+export const DeleteTriggerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTriggerResponse",
+}) as any as S.Schema<DeleteTriggerResponse>;
 export interface GetAccountUsageInput {}
 export const GetAccountUsageInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -366,6 +685,112 @@ export const GetAccountUsageOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountUsageOutput",
 }) as any as S.Schema<GetAccountUsageOutput>;
+export interface GetAssetRequest {
+  agentSpaceId: string;
+  assetId: string;
+  assetVersion?: number;
+}
+export const GetAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    assetId: S.String.pipe(T.HttpLabel("assetId")),
+    assetVersion: S.optional(S.Number).pipe(T.HttpQuery("assetVersion")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAssetRequest",
+}) as any as S.Schema<GetAssetRequest>;
+export interface GetAssetResponse {
+  asset: Asset;
+}
+export const GetAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ asset: Asset }),
+).annotate({
+  identifier: "GetAssetResponse",
+}) as any as S.Schema<GetAssetResponse>;
+export interface GetAssetContentRequest {
+  agentSpaceId: string;
+  assetId: string;
+  assetVersion?: number;
+}
+export const GetAssetContentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+      assetId: S.String.pipe(T.HttpLabel("assetId")),
+      assetVersion: S.optional(S.Number).pipe(T.HttpQuery("assetVersion")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}/content",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetAssetContentRequest",
+}) as any as S.Schema<GetAssetContentRequest>;
+export interface GetAssetContentResponse {
+  content: AssetZipContent;
+  version: number;
+}
+export const GetAssetContentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ content: AssetZipContent, version: S.Number }),
+).annotate({
+  identifier: "GetAssetContentResponse",
+}) as any as S.Schema<GetAssetContentResponse>;
+export interface GetAssetFileRequest {
+  agentSpaceId: string;
+  assetId: string;
+  path: string;
+  assetVersion?: number;
+}
+export const GetAssetFileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    assetId: S.String.pipe(T.HttpLabel("assetId")),
+    path: S.String.pipe(T.HttpLabel("path")),
+    assetVersion: S.optional(S.Number).pipe(T.HttpQuery("assetVersion")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}/files/{path+}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAssetFileRequest",
+}) as any as S.Schema<GetAssetFileRequest>;
+export interface GetAssetFileResponse {
+  file: AssetFile;
+}
+export const GetAssetFileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ file: AssetFile }),
+).annotate({
+  identifier: "GetAssetFileResponse",
+}) as any as S.Schema<GetAssetFileResponse>;
 export interface GetBacklogTaskRequest {
   agentSpaceId: string;
   taskId: string;
@@ -458,6 +883,8 @@ export interface Recommendation {
   priority: RecommendationPriority;
   goalVersion?: number;
   additionalContext?: string;
+  rankPosition?: number;
+  rankedAt?: Date;
   createdAt: Date;
   updatedAt: Date;
   version: number;
@@ -474,6 +901,8 @@ export const Recommendation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     priority: RecommendationPriority,
     goalVersion: S.optional(S.Number),
     additionalContext: S.optional(S.String),
+    rankPosition: S.optional(S.Number),
+    rankedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     version: S.Number,
@@ -487,6 +916,247 @@ export const GetRecommendationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRecommendationResponse",
 }) as any as S.Schema<GetRecommendationResponse>;
+export interface GetTriggerRequest {
+  agentSpaceId: string;
+  triggerId: string;
+}
+export const GetTriggerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    triggerId: S.String.pipe(T.HttpLabel("triggerId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/trigger/agent-space/{agentSpaceId}/triggers/{triggerId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetTriggerRequest",
+}) as any as S.Schema<GetTriggerRequest>;
+export interface GetTriggerResponse {
+  trigger: Trigger;
+}
+export const GetTriggerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ trigger: Trigger }),
+).annotate({
+  identifier: "GetTriggerResponse",
+}) as any as S.Schema<GetTriggerResponse>;
+export interface ListAssetFilesRequest {
+  agentSpaceId: string;
+  assetId: string;
+  assetVersion?: number;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListAssetFilesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    assetId: S.String.pipe(T.HttpLabel("assetId")),
+    assetVersion: S.optional(S.Number).pipe(T.HttpQuery("assetVersion")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}/files",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAssetFilesRequest",
+}) as any as S.Schema<ListAssetFilesRequest>;
+export interface AssetFileSummary {
+  path: string;
+  metadata?: any;
+  version: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const AssetFileSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.String,
+    metadata: S.optional(S.Any),
+    version: S.Number,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "AssetFileSummary",
+}) as any as S.Schema<AssetFileSummary>;
+export type AssetFileSummaryList = AssetFileSummary[];
+export const AssetFileSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AssetFileSummary);
+export interface ListAssetFilesResponse {
+  items: AssetFileSummary[];
+  nextToken?: string;
+}
+export const ListAssetFilesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ items: AssetFileSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListAssetFilesResponse",
+}) as any as S.Schema<ListAssetFilesResponse>;
+export interface ListAssetsRequest {
+  agentSpaceId: string;
+  assetType?: string;
+  updatedAfter?: Date;
+  updatedBefore?: Date;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListAssetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    assetType: S.optional(S.String).pipe(T.HttpQuery("assetType")),
+    updatedAfter: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ).pipe(T.HttpQuery("updatedAfter")),
+    updatedBefore: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ).pipe(T.HttpQuery("updatedBefore")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/asset/agent-space/{agentSpaceId}/assets",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAssetsRequest",
+}) as any as S.Schema<ListAssetsRequest>;
+export type AssetList = Asset[];
+export const AssetList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Asset);
+export interface ListAssetsResponse {
+  items: Asset[];
+  nextToken?: string;
+}
+export const ListAssetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ items: AssetList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListAssetsResponse",
+}) as any as S.Schema<ListAssetsResponse>;
+export interface ListAssetTypesRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListAssetTypesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/asset/types" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAssetTypesRequest",
+}) as any as S.Schema<ListAssetTypesRequest>;
+export interface AssetTypeSummary {
+  assetType: string;
+  description: string;
+}
+export const AssetTypeSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ assetType: S.String, description: S.String }),
+).annotate({
+  identifier: "AssetTypeSummary",
+}) as any as S.Schema<AssetTypeSummary>;
+export type AssetTypeList = AssetTypeSummary[];
+export const AssetTypeList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AssetTypeSummary);
+export interface ListAssetTypesResponse {
+  items: AssetTypeSummary[];
+  nextToken?: string;
+}
+export const ListAssetTypesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ items: AssetTypeList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListAssetTypesResponse",
+}) as any as S.Schema<ListAssetTypesResponse>;
+export interface ListAssetVersionsRequest {
+  agentSpaceId: string;
+  assetId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListAssetVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+      assetId: S.String.pipe(T.HttpLabel("assetId")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}/versions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListAssetVersionsRequest",
+}) as any as S.Schema<ListAssetVersionsRequest>;
+export interface AssetVersionMetadata {
+  version: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const AssetVersionMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.Number,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "AssetVersionMetadata",
+}) as any as S.Schema<AssetVersionMetadata>;
+export type AssetVersionMetadataList = AssetVersionMetadata[];
+export const AssetVersionMetadataList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AssetVersionMetadata);
+export interface ListAssetVersionsResponse {
+  items: AssetVersionMetadata[];
+  nextToken?: string;
+}
+export const ListAssetVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      items: AssetVersionMetadataList,
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListAssetVersionsResponse",
+}) as any as S.Schema<ListAssetVersionsResponse>;
 export type PriorityList = Priority[];
 export const PriorityList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Priority);
 export type TaskStatusList = TaskStatus[];
@@ -565,14 +1235,14 @@ export const ListBacklogTasksResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<ListBacklogTasksResponse>;
 export interface ListChatsRequest {
   agentSpaceId: string;
-  userId: string;
+  userId?: string;
   maxResults?: number;
   nextToken?: string;
 }
 export const ListChatsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
-    userId: S.String.pipe(T.HttpQuery("userId")),
+    userId: S.optional(S.String).pipe(T.HttpQuery("userId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
   }).pipe(
@@ -1022,6 +1692,45 @@ export const ListTagsForResourceResponse =
   ).annotate({
     identifier: "ListTagsForResourceResponse",
   }) as any as S.Schema<ListTagsForResourceResponse>;
+export interface ListTriggersRequest {
+  agentSpaceId: string;
+  status?: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListTriggersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    status: S.optional(S.String).pipe(T.HttpQuery("status")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/trigger/agent-space/{agentSpaceId}/triggers",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTriggersRequest",
+}) as any as S.Schema<ListTriggersRequest>;
+export type TriggerList = Trigger[];
+export const TriggerList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Trigger);
+export interface ListTriggersResponse {
+  items: Trigger[];
+  nextToken?: string;
+}
+export const ListTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ items: TriggerList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListTriggersResponse",
+}) as any as S.Schema<ListTriggersResponse>;
 export interface SendMessageContext {
   currentPage?: string;
   lastMessage?: string;
@@ -1036,12 +1745,15 @@ export const SendMessageContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendMessageContext",
 }) as any as S.Schema<SendMessageContext>;
+export type AssetIdList = string[];
+export const AssetIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface SendMessageRequest {
   agentSpaceId: string;
   executionId: string;
   content: string;
   context?: SendMessageContext;
-  userId: string;
+  userId?: string;
+  assetIds?: string[];
 }
 export const SendMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1049,7 +1761,8 @@ export const SendMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     executionId: S.String,
     content: S.String,
     context: S.optional(SendMessageContext),
-    userId: S.String,
+    userId: S.optional(S.String),
+    assetIds: S.optional(AssetIdList),
   }).pipe(
     T.all(
       T.Http({
@@ -1412,6 +2125,85 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateAssetRequest {
+  agentSpaceId: string;
+  assetId: string;
+  metadata?: any;
+  content?: AssetContent;
+  clientToken?: string;
+}
+export const UpdateAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    assetId: S.String.pipe(T.HttpLabel("assetId")),
+    metadata: S.optional(S.Any),
+    content: S.optional(AssetContent),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateAssetRequest",
+}) as any as S.Schema<UpdateAssetRequest>;
+export interface UpdateAssetResponse {
+  asset: Asset;
+}
+export const UpdateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ asset: Asset }),
+).annotate({
+  identifier: "UpdateAssetResponse",
+}) as any as S.Schema<UpdateAssetResponse>;
+export interface UpdateAssetFileRequest {
+  agentSpaceId: string;
+  assetId: string;
+  path: string;
+  content?: AssetFileBody;
+  metadata?: any;
+  clientToken?: string;
+}
+export const UpdateAssetFileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+      assetId: S.String.pipe(T.HttpLabel("assetId")),
+      path: S.String.pipe(T.HttpLabel("path")),
+      content: S.optional(AssetFileBody),
+      metadata: S.optional(S.Any),
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PATCH",
+          uri: "/asset/agent-space/{agentSpaceId}/assets/{assetId}/files/{path+}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateAssetFileRequest",
+}) as any as S.Schema<UpdateAssetFileRequest>;
+export interface UpdateAssetFileResponse {
+  file: AssetFile;
+}
+export const UpdateAssetFileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ file: AssetFile }),
+).annotate({
+  identifier: "UpdateAssetFileResponse",
+}) as any as S.Schema<UpdateAssetFileResponse>;
 export interface UpdateBacklogTaskRequest {
   agentSpaceId: string;
   taskId: string;
@@ -1533,6 +2325,42 @@ export const UpdateRecommendationResponse =
   ).annotate({
     identifier: "UpdateRecommendationResponse",
   }) as any as S.Schema<UpdateRecommendationResponse>;
+export interface UpdateTriggerRequest {
+  agentSpaceId: string;
+  triggerId: string;
+  status?: string;
+  clientToken?: string;
+}
+export const UpdateTriggerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
+    triggerId: S.String.pipe(T.HttpLabel("triggerId")),
+    status: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/trigger/agent-space/{agentSpaceId}/triggers/{triggerId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateTriggerRequest",
+}) as any as S.Schema<UpdateTriggerRequest>;
+export interface UpdateTriggerResponse {
+  trigger: Trigger;
+}
+export const UpdateTriggerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ trigger: Trigger }),
+).annotate({
+  identifier: "UpdateTriggerResponse",
+}) as any as S.Schema<UpdateTriggerResponse>;
 export interface CreateAgentSpaceInput {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -1803,6 +2631,7 @@ export const IdpAuthConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdpAuthConfiguration>;
 export interface EnableOperatorAppOutput {
   agentSpaceId: string;
+  operatorAppUrl?: string;
   iam?: IamAuthConfiguration;
   idc?: IdcAuthConfiguration;
   idp?: IdpAuthConfiguration;
@@ -1811,6 +2640,7 @@ export const EnableOperatorAppOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       agentSpaceId: S.String,
+      operatorAppUrl: S.optional(S.String),
       iam: S.optional(IamAuthConfiguration),
       idc: S.optional(IdcAuthConfiguration),
       idp: S.optional(IdpAuthConfiguration),
@@ -1836,12 +2666,14 @@ export const GetOperatorAppInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetOperatorAppInput",
 }) as any as S.Schema<GetOperatorAppInput>;
 export interface GetOperatorAppOutput {
+  operatorAppUrl?: string;
   iam?: IamAuthConfiguration;
   idc?: IdcAuthConfiguration;
   idp?: IdpAuthConfiguration;
 }
 export const GetOperatorAppOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
+    operatorAppUrl: S.optional(S.String),
     iam: S.optional(IamAuthConfiguration),
     idc: S.optional(IdcAuthConfiguration),
     idp: S.optional(IdpAuthConfiguration),
@@ -1959,6 +2791,7 @@ export interface GitHubConfiguration {
   owner: string;
   ownerType: GithubRepoOwnerType;
   instanceIdentifier?: string;
+  runtimeRoleArn?: string;
 }
 export const GitHubConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1967,6 +2800,7 @@ export const GitHubConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     owner: S.String,
     ownerType: GithubRepoOwnerType,
     instanceIdentifier: S.optional(S.String),
+    runtimeRoleArn: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GitHubConfiguration",
@@ -2064,12 +2898,14 @@ export interface GitLabConfiguration {
   projectId: string;
   projectPath: string;
   instanceIdentifier?: string;
+  runtimeRoleArn?: string;
 }
 export const GitLabConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     projectId: S.String,
     projectPath: S.String,
     instanceIdentifier: S.optional(S.String),
+    runtimeRoleArn: S.optional(S.String),
   }),
 ).annotate({
   identifier: "GitLabConfiguration",
@@ -2140,6 +2976,26 @@ export const PagerDutyConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PagerDutyConfiguration",
 }) as any as S.Schema<PagerDutyConfiguration>;
+export interface MCPServerSigV4Configuration {
+  tools: string[];
+}
+export const MCPServerSigV4Configuration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ tools: MCPToolsList }),
+  ).annotate({
+    identifier: "MCPServerSigV4Configuration",
+  }) as any as S.Schema<MCPServerSigV4Configuration>;
+export interface RemoteAgentConfiguration {}
+export const RemoteAgentConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "RemoteAgentConfiguration",
+}) as any as S.Schema<RemoteAgentConfiguration>;
+export interface RemoteAgentSigV4Configuration {}
+export const RemoteAgentSigV4Configuration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "RemoteAgentSigV4Configuration",
+  }) as any as S.Schema<RemoteAgentSigV4Configuration>;
 export type ServiceConfiguration =
   | {
       sourceAws: SourceAwsConfiguration;
@@ -2158,6 +3014,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2176,6 +3035,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2194,6 +3056,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2212,6 +3077,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2230,6 +3098,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2248,6 +3119,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2266,6 +3140,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2284,6 +3161,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2302,6 +3182,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2320,6 +3203,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2338,6 +3224,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2356,6 +3245,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2374,6 +3266,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2392,6 +3287,9 @@ export type ServiceConfiguration =
       azuredevops: AzureDevOpsConfiguration;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2410,6 +3308,9 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana: MCPServerGrafanaConfiguration;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       sourceAws?: never;
@@ -2428,6 +3329,72 @@ export type ServiceConfiguration =
       azuredevops?: never;
       mcpservergrafana?: never;
       pagerduty: PagerDutyConfiguration;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
+    }
+  | {
+      sourceAws?: never;
+      aws?: never;
+      github?: never;
+      slack?: never;
+      dynatrace?: never;
+      servicenow?: never;
+      mcpservernewrelic?: never;
+      mcpserverdatadog?: never;
+      mcpserver?: never;
+      gitlab?: never;
+      mcpserversplunk?: never;
+      eventChannel?: never;
+      azure?: never;
+      azuredevops?: never;
+      mcpservergrafana?: never;
+      pagerduty?: never;
+      mcpserversigv4: MCPServerSigV4Configuration;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
+    }
+  | {
+      sourceAws?: never;
+      aws?: never;
+      github?: never;
+      slack?: never;
+      dynatrace?: never;
+      servicenow?: never;
+      mcpservernewrelic?: never;
+      mcpserverdatadog?: never;
+      mcpserver?: never;
+      gitlab?: never;
+      mcpserversplunk?: never;
+      eventChannel?: never;
+      azure?: never;
+      azuredevops?: never;
+      mcpservergrafana?: never;
+      pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent: RemoteAgentConfiguration;
+      remoteagentsigv4?: never;
+    }
+  | {
+      sourceAws?: never;
+      aws?: never;
+      github?: never;
+      slack?: never;
+      dynatrace?: never;
+      servicenow?: never;
+      mcpservernewrelic?: never;
+      mcpserverdatadog?: never;
+      mcpserver?: never;
+      gitlab?: never;
+      mcpserversplunk?: never;
+      eventChannel?: never;
+      azure?: never;
+      azuredevops?: never;
+      mcpservergrafana?: never;
+      pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4: RemoteAgentSigV4Configuration;
     };
 export const ServiceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ sourceAws: SourceAwsConfiguration }),
@@ -2446,17 +3413,42 @@ export const ServiceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ azuredevops: AzureDevOpsConfiguration }),
   S.Struct({ mcpservergrafana: MCPServerGrafanaConfiguration }),
   S.Struct({ pagerduty: PagerDutyConfiguration }),
+  S.Struct({ mcpserversigv4: MCPServerSigV4Configuration }),
+  S.Struct({ remoteagent: RemoteAgentConfiguration }),
+  S.Struct({ remoteagentsigv4: RemoteAgentSigV4Configuration }),
 ]);
+export type CapabilityType =
+  | "RELEASE_READINESS_REVIEW"
+  | "RELEASE_READINESS_REVIEW_AUTOMATED_TESTING"
+  | (string & {});
+export const CapabilityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CapabilityConfiguration {
+  enabled?: boolean;
+}
+export const CapabilityConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ enabled: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "CapabilityConfiguration",
+}) as any as S.Schema<CapabilityConfiguration>;
+export type AssociationCapabilities = {
+  [key in CapabilityType]?: CapabilityConfiguration;
+};
+export const AssociationCapabilities = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  CapabilityType,
+  CapabilityConfiguration.pipe(S.optional),
+);
 export interface AssociateServiceInput {
   agentSpaceId: string;
   serviceId: string;
   configuration: ServiceConfiguration;
+  capabilities?: { [key: string]: CapabilityConfiguration | undefined };
 }
 export const AssociateServiceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
     serviceId: S.String,
     configuration: ServiceConfiguration,
+    capabilities: S.optional(AssociationCapabilities),
   }).pipe(
     T.all(
       T.Http({
@@ -2487,6 +3479,7 @@ export interface Association {
   associationId: string;
   serviceId: string;
   configuration: ServiceConfiguration;
+  capabilities?: { [key: string]: CapabilityConfiguration | undefined };
 }
 export const Association = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2497,6 +3490,7 @@ export const Association = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     associationId: S.String,
     serviceId: S.String,
     configuration: ServiceConfiguration,
+    capabilities: S.optional(AssociationCapabilities),
   }),
 ).annotate({ identifier: "Association" }) as any as S.Schema<Association>;
 export type WebhookType =
@@ -2568,6 +3562,7 @@ export interface UpdateAssociationInput {
   agentSpaceId: string;
   associationId: string;
   configuration: ServiceConfiguration;
+  capabilities?: { [key: string]: CapabilityConfiguration | undefined };
 }
 export const UpdateAssociationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2575,6 +3570,7 @@ export const UpdateAssociationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       agentSpaceId: S.String.pipe(T.HttpLabel("agentSpaceId")),
       associationId: S.String.pipe(T.HttpLabel("associationId")),
       configuration: ServiceConfiguration,
+      capabilities: S.optional(AssociationCapabilities),
     }).pipe(
       T.all(
         T.Http({
@@ -2760,6 +3756,8 @@ export type IpAddressType = "IPV4" | "IPV6" | "DUAL_STACK" | (string & {});
 export const IpAddressType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type PortRanges = string[];
 export const PortRanges = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type ResourceConfigDnsResolution = "PUBLIC" | "IN_VPC" | (string & {});
+export const ResourceConfigDnsResolution = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ServiceManagedInput {
   hostAddress: string;
   vpcId: string;
@@ -2769,6 +3767,7 @@ export interface ServiceManagedInput {
   ipv4AddressesPerEni?: number;
   portRanges?: string[];
   certificate?: string;
+  dnsResolution?: ResourceConfigDnsResolution;
 }
 export const ServiceManagedInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2780,6 +3779,7 @@ export const ServiceManagedInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ipv4AddressesPerEni: S.optional(S.Number),
     portRanges: S.optional(PortRanges),
     certificate: S.optional(S.String),
+    dnsResolution: S.optional(ResourceConfigDnsResolution),
   }),
 ).annotate({
   identifier: "ServiceManagedInput",
@@ -2849,6 +3849,8 @@ export interface CreatePrivateConnectionOutput {
   resourceConfigurationId?: string;
   status: PrivateConnectionStatus;
   certificateExpiryTime?: Date;
+  dnsResolution?: ResourceConfigDnsResolution;
+  failureMessage?: string;
   tags?: { [key: string]: string | undefined };
 }
 export const CreatePrivateConnectionOutput =
@@ -2864,6 +3866,8 @@ export const CreatePrivateConnectionOutput =
       certificateExpiryTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
+      dnsResolution: S.optional(ResourceConfigDnsResolution),
+      failureMessage: S.optional(S.String),
       tags: S.optional(Tags),
     }),
   ).annotate({
@@ -2896,6 +3900,8 @@ export interface DescribePrivateConnectionOutput {
   resourceConfigurationId?: string;
   status: PrivateConnectionStatus;
   certificateExpiryTime?: Date;
+  dnsResolution?: ResourceConfigDnsResolution;
+  failureMessage?: string;
   tags?: { [key: string]: string | undefined };
 }
 export const DescribePrivateConnectionOutput =
@@ -2911,6 +3917,8 @@ export const DescribePrivateConnectionOutput =
       certificateExpiryTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
+      dnsResolution: S.optional(ResourceConfigDnsResolution),
+      failureMessage: S.optional(S.String),
       tags: S.optional(Tags),
     }),
   ).annotate({
@@ -2969,6 +3977,8 @@ export interface PrivateConnectionSummary {
   resourceConfigurationId?: string;
   status: PrivateConnectionStatus;
   certificateExpiryTime?: Date;
+  dnsResolution?: ResourceConfigDnsResolution;
+  failureMessage?: string;
 }
 export const PrivateConnectionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2983,6 +3993,8 @@ export const PrivateConnectionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       certificateExpiryTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
+      dnsResolution: S.optional(ResourceConfigDnsResolution),
+      failureMessage: S.optional(S.String),
     }),
 ).annotate({
   identifier: "PrivateConnectionSummary",
@@ -3034,6 +4046,8 @@ export interface UpdatePrivateConnectionCertificateOutput {
   resourceConfigurationId?: string;
   status: PrivateConnectionStatus;
   certificateExpiryTime?: Date;
+  dnsResolution?: ResourceConfigDnsResolution;
+  failureMessage?: string;
 }
 export const UpdatePrivateConnectionCertificateOutput =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3048,6 +4062,8 @@ export const UpdatePrivateConnectionCertificateOutput =
       certificateExpiryTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
+      dnsResolution: S.optional(ResourceConfigDnsResolution),
+      failureMessage: S.optional(S.String),
     }),
   ).annotate({
     identifier: "UpdatePrivateConnectionCertificateOutput",
@@ -3064,6 +4080,9 @@ export type PostRegisterServiceSupportedService =
   | "mcpserver"
   | "mcpserversplunk"
   | "azureidentity"
+  | "mcpserversigv4"
+  | "remoteagent"
+  | "remoteagentsigv4"
   | (string & {});
 export const PostRegisterServiceSupportedService =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -3480,6 +4499,177 @@ export const RegisteredAzureIdentityDetails =
   ).annotate({
     identifier: "RegisteredAzureIdentityDetails",
   }) as any as S.Schema<RegisteredAzureIdentityDetails>;
+export type CustomHeaders = {
+  [key: string]: string | redacted.Redacted<string> | undefined;
+};
+export const CustomHeaders = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  SensitiveString.pipe(S.optional),
+);
+export interface MCPServerSigV4AuthorizationConfig {
+  region: string;
+  service: string;
+  roleArn?: string;
+  mcpRoleArn?: string;
+  customHeaders?: {
+    [key: string]: string | redacted.Redacted<string> | undefined;
+  };
+}
+export const MCPServerSigV4AuthorizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.String,
+      service: S.String,
+      roleArn: S.optional(S.String),
+      mcpRoleArn: S.optional(S.String),
+      customHeaders: S.optional(CustomHeaders),
+    }),
+  ).annotate({
+    identifier: "MCPServerSigV4AuthorizationConfig",
+  }) as any as S.Schema<MCPServerSigV4AuthorizationConfig>;
+export interface MCPServerSigV4ServiceDetails {
+  name: string;
+  endpoint: string;
+  description?: string | redacted.Redacted<string>;
+  authorizationConfig: MCPServerSigV4AuthorizationConfig;
+}
+export const MCPServerSigV4ServiceDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      endpoint: S.String,
+      description: S.optional(SensitiveString),
+      authorizationConfig: MCPServerSigV4AuthorizationConfig,
+    }),
+  ).annotate({
+    identifier: "MCPServerSigV4ServiceDetails",
+  }) as any as S.Schema<MCPServerSigV4ServiceDetails>;
+export interface RemoteAgentAPIKeyConfig {
+  apiKeyName: string;
+  apiKeyValue: string | redacted.Redacted<string>;
+  apiKeyHeader: string;
+}
+export const RemoteAgentAPIKeyConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      apiKeyName: S.String,
+      apiKeyValue: SensitiveString,
+      apiKeyHeader: S.String,
+    }),
+).annotate({
+  identifier: "RemoteAgentAPIKeyConfig",
+}) as any as S.Schema<RemoteAgentAPIKeyConfig>;
+export interface RemoteAgentOAuthClientCredentialsConfig {
+  clientName?: string;
+  clientId: string | redacted.Redacted<string>;
+  exchangeParameters?: {
+    [key: string]: string | redacted.Redacted<string> | undefined;
+  };
+  clientSecret: string | redacted.Redacted<string>;
+  exchangeUrl: string;
+  scopes?: string[];
+}
+export const RemoteAgentOAuthClientCredentialsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientName: S.optional(S.String),
+      clientId: SensitiveString,
+      exchangeParameters: S.optional(ExchangeParameters),
+      clientSecret: SensitiveString,
+      exchangeUrl: S.String,
+      scopes: S.optional(Scopes),
+    }),
+  ).annotate({
+    identifier: "RemoteAgentOAuthClientCredentialsConfig",
+  }) as any as S.Schema<RemoteAgentOAuthClientCredentialsConfig>;
+export interface RemoteAgentBearerTokenConfig {
+  tokenName: string;
+  tokenValue: string | redacted.Redacted<string>;
+  authorizationHeader?: string;
+}
+export const RemoteAgentBearerTokenConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tokenName: S.String,
+      tokenValue: SensitiveString,
+      authorizationHeader: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RemoteAgentBearerTokenConfig",
+  }) as any as S.Schema<RemoteAgentBearerTokenConfig>;
+export type RemoteAgentAuthorizationConfig =
+  | {
+      apiKey: RemoteAgentAPIKeyConfig;
+      oAuthClientCredentials?: never;
+      bearerToken?: never;
+    }
+  | {
+      apiKey?: never;
+      oAuthClientCredentials: RemoteAgentOAuthClientCredentialsConfig;
+      bearerToken?: never;
+    }
+  | {
+      apiKey?: never;
+      oAuthClientCredentials?: never;
+      bearerToken: RemoteAgentBearerTokenConfig;
+    };
+export const RemoteAgentAuthorizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([
+    S.Struct({ apiKey: RemoteAgentAPIKeyConfig }),
+    S.Struct({
+      oAuthClientCredentials: RemoteAgentOAuthClientCredentialsConfig,
+    }),
+    S.Struct({ bearerToken: RemoteAgentBearerTokenConfig }),
+  ]);
+export interface RemoteAgentServiceDetails {
+  name: string;
+  endpoint: string;
+  description?: string | redacted.Redacted<string>;
+  authorizationConfig: RemoteAgentAuthorizationConfig;
+}
+export const RemoteAgentServiceDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      endpoint: S.String,
+      description: S.optional(SensitiveString),
+      authorizationConfig: RemoteAgentAuthorizationConfig,
+    }),
+).annotate({
+  identifier: "RemoteAgentServiceDetails",
+}) as any as S.Schema<RemoteAgentServiceDetails>;
+export interface RemoteAgentSigV4AuthorizationConfig {
+  region: string;
+  service: string;
+  roleArn?: string;
+}
+export const RemoteAgentSigV4AuthorizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      region: S.String,
+      service: S.String,
+      roleArn: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RemoteAgentSigV4AuthorizationConfig",
+  }) as any as S.Schema<RemoteAgentSigV4AuthorizationConfig>;
+export interface RemoteAgentSigV4ServiceDetails {
+  name: string;
+  endpoint: string;
+  description?: string | redacted.Redacted<string>;
+  authorizationConfig: RemoteAgentSigV4AuthorizationConfig;
+}
+export const RemoteAgentSigV4ServiceDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      endpoint: S.String,
+      description: S.optional(SensitiveString),
+      authorizationConfig: RemoteAgentSigV4AuthorizationConfig,
+    }),
+  ).annotate({
+    identifier: "RemoteAgentSigV4ServiceDetails",
+  }) as any as S.Schema<RemoteAgentSigV4ServiceDetails>;
 export type ServiceDetails =
   | {
       dynatrace: DynatraceServiceDetails;
@@ -3493,6 +4683,9 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty?: never;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3506,6 +4699,9 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty?: never;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3519,6 +4715,9 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty?: never;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3532,6 +4731,9 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty?: never;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3545,6 +4747,9 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty?: never;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3558,6 +4763,9 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty?: never;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3571,6 +4779,9 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty?: never;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3584,6 +4795,9 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty?: never;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3597,6 +4811,9 @@ export type ServiceDetails =
       mcpservergrafana: GrafanaServiceDetails;
       pagerduty?: never;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3610,6 +4827,9 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty: PagerDutyDetails;
       azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       dynatrace?: never;
@@ -3623,6 +4843,57 @@ export type ServiceDetails =
       mcpservergrafana?: never;
       pagerduty?: never;
       azureidentity: RegisteredAzureIdentityDetails;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
+    }
+  | {
+      dynatrace?: never;
+      servicenow?: never;
+      mcpserverdatadog?: never;
+      mcpserver?: never;
+      gitlab?: never;
+      mcpserversplunk?: never;
+      mcpservernewrelic?: never;
+      eventChannel?: never;
+      mcpservergrafana?: never;
+      pagerduty?: never;
+      azureidentity?: never;
+      mcpserversigv4: MCPServerSigV4ServiceDetails;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
+    }
+  | {
+      dynatrace?: never;
+      servicenow?: never;
+      mcpserverdatadog?: never;
+      mcpserver?: never;
+      gitlab?: never;
+      mcpserversplunk?: never;
+      mcpservernewrelic?: never;
+      eventChannel?: never;
+      mcpservergrafana?: never;
+      pagerduty?: never;
+      azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent: RemoteAgentServiceDetails;
+      remoteagentsigv4?: never;
+    }
+  | {
+      dynatrace?: never;
+      servicenow?: never;
+      mcpserverdatadog?: never;
+      mcpserver?: never;
+      gitlab?: never;
+      mcpserversplunk?: never;
+      mcpservernewrelic?: never;
+      eventChannel?: never;
+      mcpservergrafana?: never;
+      pagerduty?: never;
+      azureidentity?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4: RemoteAgentSigV4ServiceDetails;
     };
 export const ServiceDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ dynatrace: DynatraceServiceDetails }),
@@ -3636,12 +4907,17 @@ export const ServiceDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ mcpservergrafana: GrafanaServiceDetails }),
   S.Struct({ pagerduty: PagerDutyDetails }),
   S.Struct({ azureidentity: RegisteredAzureIdentityDetails }),
+  S.Struct({ mcpserversigv4: MCPServerSigV4ServiceDetails }),
+  S.Struct({ remoteagent: RemoteAgentServiceDetails }),
+  S.Struct({ remoteagentsigv4: RemoteAgentSigV4ServiceDetails }),
 ]);
 export interface RegisterServiceInput {
   service: PostRegisterServiceSupportedService;
   serviceDetails: ServiceDetails;
   kmsKeyArn?: string;
   privateConnectionName?: string;
+  targetUrlPrivateConnectionName?: string;
+  exchangeUrlPrivateConnectionName?: string;
   name?: string;
   tags?: { [key: string]: string | undefined };
 }
@@ -3651,6 +4927,8 @@ export const RegisterServiceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     serviceDetails: ServiceDetails,
     kmsKeyArn: S.optional(S.String),
     privateConnectionName: S.optional(S.String),
+    targetUrlPrivateConnectionName: S.optional(S.String),
+    exchangeUrlPrivateConnectionName: S.optional(S.String),
     name: S.optional(S.String),
     tags: S.optional(Tags),
   }).pipe(
@@ -3730,6 +5008,9 @@ export type Service =
   | "mcpserver"
   | "mcpserversplunk"
   | "azureidentity"
+  | "mcpserversigv4"
+  | "remoteagent"
+  | "remoteagentsigv4"
   | (string & {});
 export const Service = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type DocumentList = any[];
@@ -3859,6 +5140,80 @@ export const RegisteredPagerDutyDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RegisteredPagerDutyDetails",
 }) as any as S.Schema<RegisteredPagerDutyDetails>;
+export interface RegisteredMCPServerSigV4Details {
+  name: string;
+  endpoint: string;
+  description?: string | redacted.Redacted<string>;
+  region: string;
+  service: string;
+  roleArn: string;
+  mcpRoleArn?: string;
+  customHeaders?: {
+    [key: string]: string | redacted.Redacted<string> | undefined;
+  };
+}
+export const RegisteredMCPServerSigV4Details =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      endpoint: S.String,
+      description: S.optional(SensitiveString),
+      region: S.String,
+      service: S.String,
+      roleArn: S.String,
+      mcpRoleArn: S.optional(S.String),
+      customHeaders: S.optional(CustomHeaders),
+    }),
+  ).annotate({
+    identifier: "RegisteredMCPServerSigV4Details",
+  }) as any as S.Schema<RegisteredMCPServerSigV4Details>;
+export type RemoteAgentAuthorizationMethod =
+  | "oauth-client-credentials"
+  | "api-key"
+  | "bearer-token"
+  | (string & {});
+export const RemoteAgentAuthorizationMethod =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface RegisteredRemoteAgentDetails {
+  name: string;
+  endpoint: string;
+  description?: string | redacted.Redacted<string>;
+  authorizationMethod: RemoteAgentAuthorizationMethod;
+  apiKeyHeader?: string;
+}
+export const RegisteredRemoteAgentDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      endpoint: S.String,
+      description: S.optional(SensitiveString),
+      authorizationMethod: RemoteAgentAuthorizationMethod,
+      apiKeyHeader: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RegisteredRemoteAgentDetails",
+  }) as any as S.Schema<RegisteredRemoteAgentDetails>;
+export interface RegisteredRemoteAgentSigV4Details {
+  name: string;
+  endpoint: string;
+  description?: string | redacted.Redacted<string>;
+  region: string;
+  service: string;
+  roleArn?: string;
+}
+export const RegisteredRemoteAgentSigV4Details =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      endpoint: S.String,
+      description: S.optional(SensitiveString),
+      region: S.String,
+      service: S.String,
+      roleArn: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RegisteredRemoteAgentSigV4Details",
+  }) as any as S.Schema<RegisteredRemoteAgentSigV4Details>;
 export type AdditionalServiceDetails =
   | {
       github: RegisteredGithubServiceDetails;
@@ -3873,6 +5228,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -3887,6 +5245,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -3901,6 +5262,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -3915,6 +5279,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -3929,6 +5296,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -3943,6 +5313,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -3957,6 +5330,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -3971,6 +5347,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -3985,6 +5364,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -3999,6 +5381,9 @@ export type AdditionalServiceDetails =
       azureidentity: RegisteredAzureIdentityDetails;
       mcpservergrafana?: never;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -4013,6 +5398,9 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana: RegisteredGrafanaServerDetails;
       pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
     }
   | {
       github?: never;
@@ -4027,6 +5415,60 @@ export type AdditionalServiceDetails =
       azureidentity?: never;
       mcpservergrafana?: never;
       pagerduty: RegisteredPagerDutyDetails;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
+    }
+  | {
+      github?: never;
+      slack?: never;
+      mcpserverdatadog?: never;
+      mcpserver?: never;
+      servicenow?: never;
+      gitlab?: never;
+      mcpserversplunk?: never;
+      mcpservernewrelic?: never;
+      azuredevops?: never;
+      azureidentity?: never;
+      mcpservergrafana?: never;
+      pagerduty?: never;
+      mcpserversigv4: RegisteredMCPServerSigV4Details;
+      remoteagent?: never;
+      remoteagentsigv4?: never;
+    }
+  | {
+      github?: never;
+      slack?: never;
+      mcpserverdatadog?: never;
+      mcpserver?: never;
+      servicenow?: never;
+      gitlab?: never;
+      mcpserversplunk?: never;
+      mcpservernewrelic?: never;
+      azuredevops?: never;
+      azureidentity?: never;
+      mcpservergrafana?: never;
+      pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent: RegisteredRemoteAgentDetails;
+      remoteagentsigv4?: never;
+    }
+  | {
+      github?: never;
+      slack?: never;
+      mcpserverdatadog?: never;
+      mcpserver?: never;
+      servicenow?: never;
+      gitlab?: never;
+      mcpserversplunk?: never;
+      mcpservernewrelic?: never;
+      azuredevops?: never;
+      azureidentity?: never;
+      mcpservergrafana?: never;
+      pagerduty?: never;
+      mcpserversigv4?: never;
+      remoteagent?: never;
+      remoteagentsigv4: RegisteredRemoteAgentSigV4Details;
     };
 export const AdditionalServiceDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ github: RegisteredGithubServiceDetails }),
@@ -4041,6 +5483,9 @@ export const AdditionalServiceDetails = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ azureidentity: RegisteredAzureIdentityDetails }),
   S.Struct({ mcpservergrafana: RegisteredGrafanaServerDetails }),
   S.Struct({ pagerduty: RegisteredPagerDutyDetails }),
+  S.Struct({ mcpserversigv4: RegisteredMCPServerSigV4Details }),
+  S.Struct({ remoteagent: RegisteredRemoteAgentDetails }),
+  S.Struct({ remoteagentsigv4: RegisteredRemoteAgentSigV4Details }),
 ]);
 export interface RegisteredService {
   serviceId: string;
@@ -4152,10 +5597,6 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
   { message: S.String },
   T.Retryable(),
 ).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.String },
@@ -4165,6 +5606,14 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { message: S.String, fieldList: S.optional(ValidationExceptionFieldList) },
 ) {}
+export class ContentSizeExceededException extends S.TaggedErrorClass<ContentSizeExceededException>()(
+  "ContentSizeExceededException",
+  { message: S.String },
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.String },
@@ -4179,22 +5628,67 @@ export class IdentityCenterServiceException extends S.TaggedErrorClass<IdentityC
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
-export type AllowVendedLogDeliveryForResourceError = CommonErrors;
+export type CreateAssetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
 /**
- * Authorize Ingestion Hub subscription operation.
+ * Creates a new asset in the specified agent space
  */
-export const allowVendedLogDeliveryForResource: API.OperationMethod<
-  AllowVendedLogDeliveryForResourceInput,
-  AllowVendedLogDeliveryForResourceOutput,
-  AllowVendedLogDeliveryForResourceError,
+export const createAsset: API.OperationMethod<
+  CreateAssetRequest,
+  CreateAssetResponse,
+  CreateAssetError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
-  input: AllowVendedLogDeliveryForResourceInput,
-  output: AllowVendedLogDeliveryForResourceOutput,
-  errors: [],
+  input: CreateAssetRequest,
+  output: CreateAssetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "AllowVendedLogDeliveryForResource",
+  operationName: "CreateAsset",
+}));
+export type CreateAssetFileError =
+  | AccessDeniedException
+  | ConflictException
+  | ContentSizeExceededException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a file in an asset
+ */
+export const createAssetFile: API.OperationMethod<
+  CreateAssetFileRequest,
+  CreateAssetFileResponse,
+  CreateAssetFileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAssetFileRequest,
+  output: CreateAssetFileResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ContentSizeExceededException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateAssetFile",
 }));
 export type CreateBacklogTaskError =
   | AccessDeniedException
@@ -4254,6 +5748,128 @@ export const createChat: API.OperationMethod<
   retry: Retry,
   operationName: "CreateChat",
 }));
+export type CreateTriggerError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new Trigger in the specified agent space
+ */
+export const createTrigger: API.OperationMethod<
+  CreateTriggerRequest,
+  CreateTriggerResponse,
+  CreateTriggerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateTriggerRequest,
+  output: CreateTriggerResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateTrigger",
+}));
+export type DeleteAssetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an asset and all its files from the specified agent space
+ */
+export const deleteAsset: API.OperationMethod<
+  DeleteAssetRequest,
+  DeleteAssetResponse,
+  DeleteAssetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAssetRequest,
+  output: DeleteAssetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteAsset",
+}));
+export type DeleteAssetFileError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a file from an asset
+ */
+export const deleteAssetFile: API.OperationMethod<
+  DeleteAssetFileRequest,
+  DeleteAssetFileResponse,
+  DeleteAssetFileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAssetFileRequest,
+  output: DeleteAssetFileResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteAssetFile",
+}));
+export type DeleteTriggerError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a Trigger from the specified agent space
+ */
+export const deleteTrigger: API.OperationMethod<
+  DeleteTriggerRequest,
+  DeleteTriggerResponse,
+  DeleteTriggerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteTriggerRequest,
+  output: DeleteTriggerResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteTrigger",
+}));
 export type GetAccountUsageError =
   | AccessDeniedException
   | InternalServerException
@@ -4282,6 +5898,93 @@ export const getAccountUsage: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetAccountUsage",
+}));
+export type GetAssetError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets an asset from the specified agent space
+ */
+export const getAsset: API.OperationMethod<
+  GetAssetRequest,
+  GetAssetResponse,
+  GetAssetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAssetRequest,
+  output: GetAssetResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAsset",
+}));
+export type GetAssetContentError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets an asset's content as a zip bundle
+ */
+export const getAssetContent: API.OperationMethod<
+  GetAssetContentRequest,
+  GetAssetContentResponse,
+  GetAssetContentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAssetContentRequest,
+  output: GetAssetContentResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAssetContent",
+}));
+export type GetAssetFileError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets a file from an asset
+ */
+export const getAssetFile: API.OperationMethod<
+  GetAssetFileRequest,
+  GetAssetFileResponse,
+  GetAssetFileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAssetFileRequest,
+  output: GetAssetFileResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAssetFile",
 }));
 export type GetBacklogTaskError =
   | AccessDeniedException
@@ -4342,6 +6045,231 @@ export const getRecommendation: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetRecommendation",
+}));
+export type GetTriggerError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets a Trigger from the specified agent space
+ */
+export const getTrigger: API.OperationMethod<
+  GetTriggerRequest,
+  GetTriggerResponse,
+  GetTriggerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetTriggerRequest,
+  output: GetTriggerResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetTrigger",
+}));
+export type ListAssetFilesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists files in an asset
+ */
+export const listAssetFiles: API.OperationMethod<
+  ListAssetFilesRequest,
+  ListAssetFilesResponse,
+  ListAssetFilesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetFilesRequest,
+  ) => stream.Stream<
+    ListAssetFilesResponse,
+    ListAssetFilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetFilesRequest,
+  ) => stream.Stream<
+    AssetFileSummary,
+    ListAssetFilesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAssetFilesRequest,
+  output: ListAssetFilesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAssetFiles",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListAssetsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists assets in the specified agent space
+ */
+export const listAssets: API.OperationMethod<
+  ListAssetsRequest,
+  ListAssetsResponse,
+  ListAssetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetsRequest,
+  ) => stream.Stream<
+    ListAssetsResponse,
+    ListAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetsRequest,
+  ) => stream.Stream<
+    Asset,
+    ListAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAssetsRequest,
+  output: ListAssetsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAssets",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListAssetTypesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the supported asset types
+ */
+export const listAssetTypes: API.OperationMethod<
+  ListAssetTypesRequest,
+  ListAssetTypesResponse,
+  ListAssetTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetTypesRequest,
+  ) => stream.Stream<
+    ListAssetTypesResponse,
+    ListAssetTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetTypesRequest,
+  ) => stream.Stream<
+    AssetTypeSummary,
+    ListAssetTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAssetTypesRequest,
+  output: ListAssetTypesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAssetTypes",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type ListAssetVersionsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists versions of an asset in the specified agent space
+ */
+export const listAssetVersions: API.OperationMethod<
+  ListAssetVersionsRequest,
+  ListAssetVersionsResponse,
+  ListAssetVersionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetVersionsRequest,
+  ) => stream.Stream<
+    ListAssetVersionsResponse,
+    ListAssetVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetVersionsRequest,
+  ) => stream.Stream<
+    AssetVersionMetadata,
+    ListAssetVersionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAssetVersionsRequest,
+  output: ListAssetVersionsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAssetVersions",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
 }));
 export type ListBacklogTasksError =
   | AccessDeniedException
@@ -4649,6 +6577,56 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+export type ListTriggersError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists Triggers in the specified agent space
+ */
+export const listTriggers: API.OperationMethod<
+  ListTriggersRequest,
+  ListTriggersResponse,
+  ListTriggersError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTriggersRequest,
+  ) => stream.Stream<
+    ListTriggersResponse,
+    ListTriggersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTriggersRequest,
+  ) => stream.Stream<
+    Trigger,
+    ListTriggersError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListTriggersRequest,
+  output: ListTriggersResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTriggers",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
+}));
 export type SendMessageError =
   | AccessDeniedException
   | InternalServerException
@@ -4733,6 +6711,70 @@ export const untagResource: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UntagResource",
+}));
+export type UpdateAssetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an asset in the specified agent space
+ */
+export const updateAsset: API.OperationMethod<
+  UpdateAssetRequest,
+  UpdateAssetResponse,
+  UpdateAssetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAssetRequest,
+  output: UpdateAssetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAsset",
+}));
+export type UpdateAssetFileError =
+  | AccessDeniedException
+  | ConflictException
+  | ContentSizeExceededException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a file in an asset
+ */
+export const updateAssetFile: API.OperationMethod<
+  UpdateAssetFileRequest,
+  UpdateAssetFileResponse,
+  UpdateAssetFileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAssetFileRequest,
+  output: UpdateAssetFileResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ContentSizeExceededException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAssetFile",
 }));
 export type UpdateBacklogTaskError =
   | AccessDeniedException
@@ -4826,6 +6868,35 @@ export const updateRecommendation: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateRecommendation",
+}));
+export type UpdateTriggerError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the status of an existing Trigger
+ */
+export const updateTrigger: API.OperationMethod<
+  UpdateTriggerRequest,
+  UpdateTriggerResponse,
+  UpdateTriggerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateTriggerRequest,
+  output: UpdateTriggerResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateTrigger",
 }));
 export type CreateAgentSpaceError =
   | ConflictException

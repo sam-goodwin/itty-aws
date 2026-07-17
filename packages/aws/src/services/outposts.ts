@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
@@ -9,6 +10,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Outposts",
   serviceShapeName: "OutpostsOlafService",
@@ -93,6 +95,8 @@ export type CapacityTaskId = string;
 export type OutpostIdentifier = string;
 export type ErrorMessage = string;
 export type OrderId = string;
+export type QuoteIdentifier = string;
+export type QuoteOptionIdentifier = string;
 export type SkuCode = string;
 export type LineItemQuantity = number;
 export type OutpostIdOnly = string;
@@ -113,6 +117,17 @@ export type OwnerId = string;
 export type OutpostArn = string;
 export type LifeCycleStatus = string;
 export type SiteArn = string;
+export type CountryCode = string;
+export type ConstraintValue = string;
+export type QuoteDescription = string | redacted.Redacted<string>;
+export type QuoteId = string;
+export type AccountId = string;
+export type StatusMessage = string;
+export type RackId = string;
+export type Family = string;
+export type MaxSize = string;
+export type Quantity = string;
+export type OrderIdentifier = string;
 export type AutoFillIdempotencyToken = string;
 export type SiteName = string;
 export type SiteDescription = string;
@@ -126,17 +141,12 @@ export type City = string;
 export type StateOrRegion = string;
 export type DistrictOrCounty = string;
 export type PostalCode = string;
-export type CountryCode = string;
 export type Municipality = string;
-export type AccountId = string;
 export type InstanceTypeName = string;
 export type InstanceTypeCount = number;
 export type InstanceId = string;
 export type DryRun = boolean;
 export type CapacityTaskStatusReason = string;
-export type Family = string;
-export type MaxSize = string;
-export type Quantity = string;
 export type CatalogItemPowerKva = number;
 export type CatalogItemWeightLbs = number;
 export type SupportedUplinkGbps = number;
@@ -151,14 +161,16 @@ export type VCPUCount = number;
 export type AssetIdInput = string;
 export type OutpostInstanceType = string;
 export type HostId = string;
-export type RackId = string;
 export type InstanceFamilyName = string;
 export type RackElevation = number;
+export type MemoryInMib = number;
+export type NetworkPerformance = string;
 export type Arn = string;
 export type DeviceSerialNumber = string;
 export type NetworkInterfaceDeviceIndex = number;
 export type UnderlayIpAddress = string;
 export type ValidateOnly = boolean;
+export type OutpostIdentifierOrEmpty = string;
 
 //# Schemas
 export interface CancelCapacityTaskInput {
@@ -246,6 +258,8 @@ export type PaymentTerm =
 export const PaymentTerm = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateOrderInput {
   OutpostIdentifier: string;
+  QuoteIdentifier?: string;
+  QuoteOptionIdentifier?: string;
   LineItems?: LineItemRequest[];
   PaymentOption: PaymentOption;
   PaymentTerm?: PaymentTerm;
@@ -253,6 +267,8 @@ export interface CreateOrderInput {
 export const CreateOrderInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     OutpostIdentifier: S.String,
+    QuoteIdentifier: S.optional(S.String),
+    QuoteOptionIdentifier: S.optional(S.String),
     LineItems: S.optional(LineItemRequestListDefinition),
     PaymentOption: PaymentOption,
     PaymentTerm: S.optional(PaymentTerm),
@@ -363,6 +379,8 @@ export type OrderType = "OUTPOST" | "REPLACEMENT" | (string & {});
 export const OrderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Order {
   OutpostId?: string;
+  QuoteIdentifier?: string;
+  QuoteOptionIdentifier?: string;
   OrderId?: string;
   Status?: OrderStatus;
   LineItems?: LineItem[];
@@ -375,6 +393,8 @@ export interface Order {
 export const Order = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     OutpostId: S.optional(S.String),
+    QuoteIdentifier: S.optional(S.String),
+    QuoteOptionIdentifier: S.optional(S.String),
     OrderId: S.optional(S.String),
     Status: S.optional(OrderStatus),
     LineItems: S.optional(LineItemListDefinition),
@@ -473,6 +493,342 @@ export const CreateOutpostOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOutpostOutput",
 }) as any as S.Schema<CreateOutpostOutput>;
+export type QuoteCapacityType = "EC2" | "EBS" | "S3" | (string & {});
+export const QuoteCapacityType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface QuoteCapacity {
+  QuoteCapacityType?: QuoteCapacityType;
+  Unit?: string;
+  Quantity?: number;
+}
+export const QuoteCapacity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QuoteCapacityType: S.optional(QuoteCapacityType),
+    Unit: S.optional(S.String),
+    Quantity: S.optional(S.Number),
+  }),
+).annotate({ identifier: "QuoteCapacity" }) as any as S.Schema<QuoteCapacity>;
+export type QuoteCapacityList = QuoteCapacity[];
+export const QuoteCapacityList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(QuoteCapacity);
+export type QuoteConstraintType =
+  | "RACK_MAXIMUM"
+  | "RACK_MAX_POWER_KVA"
+  | "RACK_MAX_WEIGHT_LBS"
+  | (string & {});
+export const QuoteConstraintType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface QuoteConstraint {
+  QuoteConstraintType?: QuoteConstraintType;
+  Value?: string;
+}
+export const QuoteConstraint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QuoteConstraintType: S.optional(QuoteConstraintType),
+    Value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QuoteConstraint",
+}) as any as S.Schema<QuoteConstraint>;
+export type QuoteConstraintList = QuoteConstraint[];
+export const QuoteConstraintList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(QuoteConstraint);
+export type PaymentOptionList = PaymentOption[];
+export const PaymentOptionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(PaymentOption);
+export type PaymentTermList = PaymentTerm[];
+export const PaymentTermList = /*@__PURE__*/ /*#__PURE__*/ S.Array(PaymentTerm);
+export interface CreateQuoteInput {
+  OutpostIdentifier?: string;
+  CountryCode: string;
+  RequestedCapacities: QuoteCapacity[];
+  RequestedConstraints?: QuoteConstraint[];
+  RequestedPaymentOptions?: PaymentOption[];
+  RequestedPaymentTerms?: PaymentTerm[];
+  Description?: string | redacted.Redacted<string>;
+}
+export const CreateQuoteInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OutpostIdentifier: S.optional(S.String),
+    CountryCode: S.String,
+    RequestedCapacities: QuoteCapacityList,
+    RequestedConstraints: S.optional(QuoteConstraintList),
+    RequestedPaymentOptions: S.optional(PaymentOptionList),
+    RequestedPaymentTerms: S.optional(PaymentTermList),
+    Description: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/quotes" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateQuoteInput",
+}) as any as S.Schema<CreateQuoteInput>;
+export type QuoteStatus =
+  | "CREATED"
+  | "ORDER_SUBMITTED"
+  | "EXPIRED"
+  | (string & {});
+export const QuoteStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CapacitySummary {
+  ExistingCapacities?: QuoteCapacity[];
+  FinalCapacities?: QuoteCapacity[];
+  CapacityChange?: QuoteCapacity[];
+}
+export const CapacitySummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExistingCapacities: S.optional(QuoteCapacityList),
+    FinalCapacities: S.optional(QuoteCapacityList),
+    CapacityChange: S.optional(QuoteCapacityList),
+  }),
+).annotate({
+  identifier: "CapacitySummary",
+}) as any as S.Schema<CapacitySummary>;
+export type QuoteSpecificationType =
+  | "UPDATED_RACK"
+  | "NEW_RACK"
+  | "EXISTING_RACK"
+  | "SERVER"
+  | (string & {});
+export const QuoteSpecificationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type QuoteRackUseType = "NETWORKING" | "COMPUTE" | (string & {});
+export const QuoteRackUseType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type RackUnitHeight =
+  | "HEIGHT_42U"
+  | "HEIGHT_2U"
+  | "HEIGHT_1U"
+  | (string & {});
+export const RackUnitHeight = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface EC2Capacity {
+  Family?: string;
+  MaxSize?: string;
+  Quantity?: string;
+}
+export const EC2Capacity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Family: S.optional(S.String),
+    MaxSize: S.optional(S.String),
+    Quantity: S.optional(S.String),
+  }),
+).annotate({ identifier: "EC2Capacity" }) as any as S.Schema<EC2Capacity>;
+export type EC2CapacityListDefinition = EC2Capacity[];
+export const EC2CapacityListDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(EC2Capacity);
+export interface RackSpecificationDetails {
+  RackId?: string;
+  RackUse?: QuoteRackUseType;
+  RackPowerDrawKva?: number;
+  RackWeightLbs?: number;
+  RackHeightInches?: number;
+  RackWidthInches?: number;
+  RackDepthInches?: number;
+  RackUnitHeight?: RackUnitHeight;
+  EC2Capacities?: EC2Capacity[];
+}
+export const RackSpecificationDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      RackId: S.optional(S.String),
+      RackUse: S.optional(QuoteRackUseType),
+      RackPowerDrawKva: S.optional(S.Number),
+      RackWeightLbs: S.optional(S.Number),
+      RackHeightInches: S.optional(S.Number),
+      RackWidthInches: S.optional(S.Number),
+      RackDepthInches: S.optional(S.Number),
+      RackUnitHeight: S.optional(RackUnitHeight),
+      EC2Capacities: S.optional(EC2CapacityListDefinition),
+    }),
+).annotate({
+  identifier: "RackSpecificationDetails",
+}) as any as S.Schema<RackSpecificationDetails>;
+export interface ServerSpecificationDetails {
+  ServerPowerDrawKva?: number;
+  ServerWeightLbs?: number;
+  ServerHeightInches?: number;
+  ServerWidthInches?: number;
+  ServerDepthInches?: number;
+  RackUnitHeight?: RackUnitHeight;
+  EC2Capacities?: EC2Capacity[];
+}
+export const ServerSpecificationDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ServerPowerDrawKva: S.optional(S.Number),
+      ServerWeightLbs: S.optional(S.Number),
+      ServerHeightInches: S.optional(S.Number),
+      ServerWidthInches: S.optional(S.Number),
+      ServerDepthInches: S.optional(S.Number),
+      RackUnitHeight: S.optional(RackUnitHeight),
+      EC2Capacities: S.optional(EC2CapacityListDefinition),
+    }),
+).annotate({
+  identifier: "ServerSpecificationDetails",
+}) as any as S.Schema<ServerSpecificationDetails>;
+export interface QuoteSpecification {
+  QuoteSpecificationType?: QuoteSpecificationType;
+  ExistingRackSpecificationDetails?: RackSpecificationDetails;
+  FinalRackSpecificationDetails?: RackSpecificationDetails;
+  ServerSpecificationDetails?: ServerSpecificationDetails;
+}
+export const QuoteSpecification = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QuoteSpecificationType: S.optional(QuoteSpecificationType),
+    ExistingRackSpecificationDetails: S.optional(RackSpecificationDetails),
+    FinalRackSpecificationDetails: S.optional(RackSpecificationDetails),
+    ServerSpecificationDetails: S.optional(ServerSpecificationDetails),
+  }),
+).annotate({
+  identifier: "QuoteSpecification",
+}) as any as S.Schema<QuoteSpecification>;
+export type QuoteSpecificationList = QuoteSpecification[];
+export const QuoteSpecificationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(QuoteSpecification);
+export type QuotePricingType = "SUBSCRIPTION" | (string & {});
+export const QuotePricingType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type CurrencyCode = "USD" | (string & {});
+export const CurrencyCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SubscriptionPricingDetails {
+  PaymentOption?: PaymentOption;
+  PaymentTerm?: PaymentTerm;
+  UpfrontPrice?: number;
+  MonthlyRecurringPrice?: number;
+  Currency?: CurrencyCode;
+}
+export const SubscriptionPricingDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      PaymentOption: S.optional(PaymentOption),
+      PaymentTerm: S.optional(PaymentTerm),
+      UpfrontPrice: S.optional(S.Number),
+      MonthlyRecurringPrice: S.optional(S.Number),
+      Currency: S.optional(CurrencyCode),
+    }),
+).annotate({
+  identifier: "SubscriptionPricingDetails",
+}) as any as S.Schema<SubscriptionPricingDetails>;
+export interface PricingOption {
+  PricingType?: QuotePricingType;
+  SubscriptionPricingDetails?: SubscriptionPricingDetails;
+}
+export const PricingOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PricingType: S.optional(QuotePricingType),
+    SubscriptionPricingDetails: S.optional(SubscriptionPricingDetails),
+  }),
+).annotate({ identifier: "PricingOption" }) as any as S.Schema<PricingOption>;
+export type PricingOptionList = PricingOption[];
+export const PricingOptionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(PricingOption);
+export interface QuoteOption {
+  QuoteOptionIdentifier?: string;
+  Capacities?: QuoteCapacity[];
+  CapacitySummary?: CapacitySummary;
+  Specifications?: QuoteSpecification[];
+  PricingOptions?: PricingOption[];
+}
+export const QuoteOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QuoteOptionIdentifier: S.optional(S.String),
+    Capacities: S.optional(QuoteCapacityList),
+    CapacitySummary: S.optional(CapacitySummary),
+    Specifications: S.optional(QuoteSpecificationList),
+    PricingOptions: S.optional(PricingOptionList),
+  }),
+).annotate({ identifier: "QuoteOption" }) as any as S.Schema<QuoteOption>;
+export type QuoteOptionList = QuoteOption[];
+export const QuoteOptionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(QuoteOption);
+export type OrderingRequirementType =
+  | "OUTPOST_ACTIVE_CHECK_ERROR"
+  | "MAXIMUM_ALLOWED_ORDERS_CHECK_ERROR"
+  | "VALID_ZIP_CODE_CHECK_ERROR"
+  | "RACK_PHYSICAL_PROPERTIES_CHECK_ERROR"
+  | "OPERATING_ADDRESS_EXISTENCE_CHECK_ERROR"
+  | "SHIPPING_ADDRESS_EXISTENCE_CHECK_ERROR"
+  | "COUNTRY_CODE_MISMATCH_CHECK_ERROR"
+  | "OUTPOST_GENERATION_MISMATCH_ERROR"
+  | "UNSUPPORTED"
+  | "OUTPOST_ID_MISSING_ON_QUOTE_ERROR"
+  | "ENTERPRISE_SUPPORT_ERROR"
+  | "SHIPPING_ADDRESS_MISSING_CONTACT_NAME_ERROR"
+  | "SHIPPING_ADDRESS_MISSING_CONTACT_NUMBER_ERROR"
+  | "SHIPPING_ADDRESS_MISSING_CONTACT_INFO_ERROR"
+  | "OUTPOST_STATE_CHANGED_ERROR"
+  | "OUTPOST_NOT_FOUND_ERROR"
+  | "OUTPOST_RENEWAL_REQUIRED_ERROR"
+  | (string & {});
+export const OrderingRequirementType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type OrderingRequirementStatus =
+  | "PASS"
+  | "FAIL"
+  | "EXEMPT"
+  | (string & {});
+export const OrderingRequirementStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface OrderingRequirement {
+  StatusMessage?: string;
+  OrderingRequirementType?: OrderingRequirementType;
+  Status?: OrderingRequirementStatus;
+}
+export const OrderingRequirement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StatusMessage: S.optional(S.String),
+    OrderingRequirementType: S.optional(OrderingRequirementType),
+    Status: S.optional(OrderingRequirementStatus),
+  }),
+).annotate({
+  identifier: "OrderingRequirement",
+}) as any as S.Schema<OrderingRequirement>;
+export type OrderingRequirementList = OrderingRequirement[];
+export const OrderingRequirementList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(OrderingRequirement);
+export interface Quote {
+  QuoteId?: string;
+  AccountId?: string;
+  QuoteStatus?: QuoteStatus;
+  StatusMessage?: string;
+  OutpostArn?: string;
+  CountryCode?: string;
+  RequestedCapacities?: QuoteCapacity[];
+  RequestedConstraints?: QuoteConstraint[];
+  RequestedPaymentOptions?: PaymentOption[];
+  RequestedPaymentTerms?: PaymentTerm[];
+  QuoteOptions?: QuoteOption[];
+  OrderingRequirements?: OrderingRequirement[];
+  SubmittedOrderId?: string;
+  CreatedDate?: Date;
+  ExpirationDate?: Date;
+  Description?: string | redacted.Redacted<string>;
+}
+export const Quote = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QuoteId: S.optional(S.String),
+    AccountId: S.optional(S.String),
+    QuoteStatus: S.optional(QuoteStatus),
+    StatusMessage: S.optional(S.String),
+    OutpostArn: S.optional(S.String),
+    CountryCode: S.optional(S.String),
+    RequestedCapacities: S.optional(QuoteCapacityList),
+    RequestedConstraints: S.optional(QuoteConstraintList),
+    RequestedPaymentOptions: S.optional(PaymentOptionList),
+    RequestedPaymentTerms: S.optional(PaymentTermList),
+    QuoteOptions: S.optional(QuoteOptionList),
+    OrderingRequirements: S.optional(OrderingRequirementList),
+    SubmittedOrderId: S.optional(S.String),
+    CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Description: S.optional(SensitiveString),
+  }),
+).annotate({ identifier: "Quote" }) as any as S.Schema<Quote>;
+export interface CreateQuoteOutput {
+  Quote?: Quote;
+}
+export const CreateQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Quote: S.optional(Quote) }),
+).annotate({
+  identifier: "CreateQuoteOutput",
+}) as any as S.Schema<CreateQuoteOutput>;
 export interface CreateRenewalInput {
   PaymentOption: PaymentOption;
   PaymentTerm: PaymentTerm;
@@ -504,6 +860,7 @@ export interface CreateRenewalOutput {
   OutpostId?: string;
   UpfrontPrice?: number;
   MonthlyRecurringPrice?: number;
+  Currency?: CurrencyCode;
 }
 export const CreateRenewalOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -512,6 +869,7 @@ export const CreateRenewalOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     OutpostId: S.optional(S.String),
     UpfrontPrice: S.optional(S.Number),
     MonthlyRecurringPrice: S.optional(S.Number),
+    Currency: S.optional(CurrencyCode),
   }),
 ).annotate({
   identifier: "CreateRenewalOutput",
@@ -726,6 +1084,31 @@ export const DeleteOutpostOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteOutpostOutput",
 }) as any as S.Schema<DeleteOutpostOutput>;
+export interface DeleteQuoteInput {
+  QuoteIdentifier: string;
+}
+export const DeleteQuoteInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QuoteIdentifier: S.String.pipe(T.HttpLabel("QuoteIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/quotes/{QuoteIdentifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteQuoteInput",
+}) as any as S.Schema<DeleteQuoteInput>;
+export interface DeleteQuoteOutput {}
+export const DeleteQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteQuoteOutput",
+}) as any as S.Schema<DeleteQuoteOutput>;
 export interface DeleteSiteInput {
   SiteId: string;
 }
@@ -903,21 +1286,6 @@ export const GetCatalogItemInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCatalogItemInput>;
 export type CatalogItemStatus = "AVAILABLE" | "DISCONTINUED" | (string & {});
 export const CatalogItemStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export interface EC2Capacity {
-  Family?: string;
-  MaxSize?: string;
-  Quantity?: string;
-}
-export const EC2Capacity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Family: S.optional(S.String),
-    MaxSize: S.optional(S.String),
-    Quantity: S.optional(S.String),
-  }),
-).annotate({ identifier: "EC2Capacity" }) as any as S.Schema<EC2Capacity>;
-export type EC2CapacityListDefinition = EC2Capacity[];
-export const EC2CapacityListDefinition =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EC2Capacity);
 export type SupportedUplinkGbpsListDefinition = number[];
 export const SupportedUplinkGbpsListDefinition =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
@@ -1100,6 +1468,7 @@ export interface Subscription {
   OrderIds?: string[];
   BeginDate?: Date;
   EndDate?: Date;
+  Currency?: CurrencyCode;
   MonthlyRecurringPrice?: number;
   UpfrontPrice?: number;
 }
@@ -1111,6 +1480,7 @@ export const Subscription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     OrderIds: S.optional(OrderIdList),
     BeginDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     EndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Currency: S.optional(CurrencyCode),
     MonthlyRecurringPrice: S.optional(S.Number),
     UpfrontPrice: S.optional(S.Number),
   }),
@@ -1234,6 +1604,29 @@ export const GetOutpostSupportedInstanceTypesOutput =
   ).annotate({
     identifier: "GetOutpostSupportedInstanceTypesOutput",
   }) as any as S.Schema<GetOutpostSupportedInstanceTypesOutput>;
+export interface GetQuoteInput {
+  QuoteIdentifier: string;
+}
+export const GetQuoteInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QuoteIdentifier: S.String.pipe(T.HttpLabel("QuoteIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/quotes/{QuoteIdentifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "GetQuoteInput" }) as any as S.Schema<GetQuoteInput>;
+export interface GetQuoteOutput {
+  Quote?: Quote;
+}
+export const GetQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Quote: S.optional(Quote) }),
+).annotate({ identifier: "GetQuoteOutput" }) as any as S.Schema<GetQuoteOutput>;
 export interface GetRenewalPricingInput {
   OutpostIdentifier: string;
 }
@@ -1259,38 +1652,6 @@ export const GetRenewalPricingInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<GetRenewalPricingInput>;
 export type PricingResult = "PRICED" | "UNABLE_TO_PRICE" | (string & {});
 export const PricingResult = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type QuotePricingType = "SUBSCRIPTION" | (string & {});
-export const QuotePricingType = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export interface SubscriptionPricingDetails {
-  PaymentOption?: PaymentOption;
-  PaymentTerm?: PaymentTerm;
-  UpfrontPrice?: number;
-  MonthlyRecurringPrice?: number;
-}
-export const SubscriptionPricingDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PaymentOption: S.optional(PaymentOption),
-      PaymentTerm: S.optional(PaymentTerm),
-      UpfrontPrice: S.optional(S.Number),
-      MonthlyRecurringPrice: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "SubscriptionPricingDetails",
-}) as any as S.Schema<SubscriptionPricingDetails>;
-export interface PricingOption {
-  PricingType?: QuotePricingType;
-  SubscriptionPricingDetails?: SubscriptionPricingDetails;
-}
-export const PricingOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PricingType: S.optional(QuotePricingType),
-    SubscriptionPricingDetails: S.optional(SubscriptionPricingDetails),
-  }),
-).annotate({ identifier: "PricingOption" }) as any as S.Schema<PricingOption>;
-export type PricingOptionList = PricingOption[];
-export const PricingOptionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PricingOption);
 export interface GetRenewalPricingOutput {
   PricingResult?: PricingResult;
   PricingOptions?: PricingOption[];
@@ -1763,6 +2124,86 @@ export const ListCatalogItemsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListCatalogItemsOutput",
 }) as any as S.Schema<ListCatalogItemsOutput>;
+export type OutpostGeneration = "GENERATION_2" | "GENERATION_1" | (string & {});
+export const OutpostGeneration = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ListOrderableInstanceTypesInput {
+  OutpostGenerationFilter?: OutpostGeneration;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListOrderableInstanceTypesInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      OutpostGenerationFilter: S.optional(OutpostGeneration).pipe(
+        T.HttpQuery("OutpostGenerationFilter"),
+      ),
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/instanceTypes" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListOrderableInstanceTypesInput",
+  }) as any as S.Schema<ListOrderableInstanceTypesInput>;
+export type FormFactor = "RACK" | "SERVER" | (string & {});
+export const FormFactor = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface FormFactorConfig {
+  FormFactor?: FormFactor;
+  OutpostGeneration?: OutpostGeneration;
+}
+export const FormFactorConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FormFactor: S.optional(FormFactor),
+    OutpostGeneration: S.optional(OutpostGeneration),
+  }),
+).annotate({
+  identifier: "FormFactorConfig",
+}) as any as S.Schema<FormFactorConfig>;
+export type FormFactorConfigList = FormFactorConfig[];
+export const FormFactorConfigList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(FormFactorConfig);
+export interface DetailedInstanceTypeItem {
+  InstanceType?: string;
+  VCPUs?: number;
+  MemoryInMib?: number;
+  NetworkPerformance?: string;
+  FormFactorConfigs?: FormFactorConfig[];
+}
+export const DetailedInstanceTypeItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      InstanceType: S.optional(S.String),
+      VCPUs: S.optional(S.Number),
+      MemoryInMib: S.optional(S.Number),
+      NetworkPerformance: S.optional(S.String),
+      FormFactorConfigs: S.optional(FormFactorConfigList),
+    }),
+).annotate({
+  identifier: "DetailedInstanceTypeItem",
+}) as any as S.Schema<DetailedInstanceTypeItem>;
+export type DetailedInstanceTypeListDefinition = DetailedInstanceTypeItem[];
+export const DetailedInstanceTypeListDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DetailedInstanceTypeItem);
+export interface ListOrderableInstanceTypesOutput {
+  InstanceTypes?: DetailedInstanceTypeItem[];
+  NextToken?: string;
+}
+export const ListOrderableInstanceTypesOutput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InstanceTypes: S.optional(DetailedInstanceTypeListDefinition),
+      NextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListOrderableInstanceTypesOutput",
+  }) as any as S.Schema<ListOrderableInstanceTypesOutput>;
 export interface ListOrdersInput {
   OutpostIdentifierFilter?: string;
   NextToken?: string;
@@ -1892,6 +2333,78 @@ export const ListOutpostsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOutpostsOutput",
 }) as any as S.Schema<ListOutpostsOutput>;
+export interface ListQuotesInput {
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListQuotesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/quotes" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListQuotesInput",
+}) as any as S.Schema<ListQuotesInput>;
+export interface QuoteSummary {
+  QuoteId?: string;
+  AccountId?: string;
+  QuoteStatus?: QuoteStatus;
+  StatusMessage?: string;
+  OutpostArn?: string;
+  CountryCode?: string;
+  RequestedCapacities?: QuoteCapacity[];
+  RequestedConstraints?: QuoteConstraint[];
+  RequestedPaymentOptions?: PaymentOption[];
+  RequestedPaymentTerms?: PaymentTerm[];
+  QuoteOptions?: QuoteOption[];
+  SubmittedOrderId?: string;
+  CreatedDate?: Date;
+  ExpirationDate?: Date;
+  Description?: string | redacted.Redacted<string>;
+}
+export const QuoteSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QuoteId: S.optional(S.String),
+    AccountId: S.optional(S.String),
+    QuoteStatus: S.optional(QuoteStatus),
+    StatusMessage: S.optional(S.String),
+    OutpostArn: S.optional(S.String),
+    CountryCode: S.optional(S.String),
+    RequestedCapacities: S.optional(QuoteCapacityList),
+    RequestedConstraints: S.optional(QuoteConstraintList),
+    RequestedPaymentOptions: S.optional(PaymentOptionList),
+    RequestedPaymentTerms: S.optional(PaymentTermList),
+    QuoteOptions: S.optional(QuoteOptionList),
+    SubmittedOrderId: S.optional(S.String),
+    CreatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Description: S.optional(SensitiveString),
+  }),
+).annotate({ identifier: "QuoteSummary" }) as any as S.Schema<QuoteSummary>;
+export type QuoteSummaryListDefinition = QuoteSummary[];
+export const QuoteSummaryListDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(QuoteSummary);
+export interface ListQuotesOutput {
+  Quotes?: QuoteSummary[];
+  NextToken?: string;
+}
+export const ListQuotesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Quotes: S.optional(QuoteSummaryListDefinition),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListQuotesOutput",
+}) as any as S.Schema<ListQuotesOutput>;
 export type CountryCodeList = string[];
 export const CountryCodeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type StateOrRegionList = string[];
@@ -2229,6 +2742,47 @@ export const UpdateOutpostOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateOutpostOutput",
 }) as any as S.Schema<UpdateOutpostOutput>;
+export interface UpdateQuoteInput {
+  QuoteIdentifier: string;
+  OutpostIdentifier?: string;
+  CountryCode?: string;
+  RequestedCapacities?: QuoteCapacity[];
+  RequestedConstraints?: QuoteConstraint[];
+  RequestedPaymentOptions?: PaymentOption[];
+  RequestedPaymentTerms?: PaymentTerm[];
+  Description?: string | redacted.Redacted<string>;
+}
+export const UpdateQuoteInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    QuoteIdentifier: S.String.pipe(T.HttpLabel("QuoteIdentifier")),
+    OutpostIdentifier: S.optional(S.String),
+    CountryCode: S.optional(S.String),
+    RequestedCapacities: S.optional(QuoteCapacityList),
+    RequestedConstraints: S.optional(QuoteConstraintList),
+    RequestedPaymentOptions: S.optional(PaymentOptionList),
+    RequestedPaymentTerms: S.optional(PaymentTermList),
+    Description: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/quotes/{QuoteIdentifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateQuoteInput",
+}) as any as S.Schema<UpdateQuoteInput>;
+export interface UpdateQuoteOutput {
+  Quote?: Quote;
+}
+export const UpdateQuoteOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Quote: S.optional(Quote) }),
+).annotate({
+  identifier: "UpdateQuoteOutput",
+}) as any as S.Schema<UpdateQuoteOutput>;
 export interface UpdateSiteInput {
   SiteId: string;
   Name?: string;
@@ -2503,6 +3057,35 @@ export const createOutpost: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOutpost",
 }));
+export type CreateQuoteError =
+  | AccessDeniedException
+  | InternalServerException
+  | NotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a quote for an Outpost. A quote provides pricing and configuration options based
+ * on the requested capacity. You can optionally associate the quote with an existing Outpost or
+ * create a standalone quote by specifying only the country code and requested capacities.
+ */
+export const createQuote: API.OperationMethod<
+  CreateQuoteInput,
+  CreateQuoteOutput,
+  CreateQuoteError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateQuoteInput,
+  output: CreateQuoteOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    NotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateQuote",
+}));
 export type CreateRenewalError =
   | AccessDeniedException
   | InternalServerException
@@ -2587,6 +3170,33 @@ export const deleteOutpost: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteOutpost",
+}));
+export type DeleteQuoteError =
+  | AccessDeniedException
+  | InternalServerException
+  | NotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified quote.
+ */
+export const deleteQuote: API.OperationMethod<
+  DeleteQuoteInput,
+  DeleteQuoteOutput,
+  DeleteQuoteError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteQuoteInput,
+  output: DeleteQuoteOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    NotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteQuote",
 }));
 export type DeleteSiteError =
   | AccessDeniedException
@@ -2892,6 +3502,33 @@ export const getOutpostSupportedInstanceTypes: API.OperationMethod<
     items: "InstanceTypes",
     pageSize: "MaxResults",
   } as const,
+}));
+export type GetQuoteError =
+  | AccessDeniedException
+  | InternalServerException
+  | NotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets information about the specified quote.
+ */
+export const getQuote: API.OperationMethod<
+  GetQuoteInput,
+  GetQuoteOutput,
+  GetQuoteError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetQuoteInput,
+  output: GetQuoteOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    NotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetQuote",
 }));
 export type GetRenewalPricingError =
   | AccessDeniedException
@@ -3229,6 +3866,55 @@ export const listCatalogItems: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type ListOrderableInstanceTypesError =
+  | AccessDeniedException
+  | InternalServerException
+  | NotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the instance types that can be ordered for an Outpost. You can filter the results
+ * by Outpost generation.
+ */
+export const listOrderableInstanceTypes: API.OperationMethod<
+  ListOrderableInstanceTypesInput,
+  ListOrderableInstanceTypesOutput,
+  ListOrderableInstanceTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOrderableInstanceTypesInput,
+  ) => stream.Stream<
+    ListOrderableInstanceTypesOutput,
+    ListOrderableInstanceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOrderableInstanceTypesInput,
+  ) => stream.Stream<
+    DetailedInstanceTypeItem,
+    ListOrderableInstanceTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListOrderableInstanceTypesInput,
+  output: ListOrderableInstanceTypesOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    NotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListOrderableInstanceTypes",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "InstanceTypes",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type ListOrdersError =
   | AccessDeniedException
   | InternalServerException
@@ -3320,6 +4006,47 @@ export const listOutposts: API.OperationMethod<
     inputToken: "NextToken",
     outputToken: "NextToken",
     items: "Outposts",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type ListQuotesError =
+  | AccessDeniedException
+  | InternalServerException
+  | CommonErrors;
+/**
+ * Lists the quotes for your Amazon Web Services account.
+ */
+export const listQuotes: API.OperationMethod<
+  ListQuotesInput,
+  ListQuotesOutput,
+  ListQuotesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListQuotesInput,
+  ) => stream.Stream<
+    ListQuotesOutput,
+    ListQuotesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListQuotesInput,
+  ) => stream.Stream<
+    QuoteSummary,
+    ListQuotesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListQuotesInput,
+  output: ListQuotesOutput,
+  errors: [AccessDeniedException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListQuotes",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Quotes",
     pageSize: "MaxResults",
   } as const,
 }));
@@ -3554,6 +4281,34 @@ export const updateOutpost: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateOutpost",
+}));
+export type UpdateQuoteError =
+  | AccessDeniedException
+  | InternalServerException
+  | NotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the specified quote. You can modify the requested capacities, constraints,
+ * payment options, payment terms, or Outpost association.
+ */
+export const updateQuote: API.OperationMethod<
+  UpdateQuoteInput,
+  UpdateQuoteOutput,
+  UpdateQuoteError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateQuoteInput,
+  output: UpdateQuoteOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    NotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateQuote",
 }));
 export type UpdateSiteError =
   | AccessDeniedException

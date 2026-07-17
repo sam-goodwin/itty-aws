@@ -2126,6 +2126,8 @@ export interface WorkspaceConfigurationDescription {
   status: WorkspaceConfigurationStatus;
   limitsPerLabelSet?: LimitsPerLabelSet[];
   retentionPeriodInDays?: number;
+  outOfOrderTimeWindowInSeconds?: number;
+  ruleQueryOffsetInSeconds?: number;
 }
 export const WorkspaceConfigurationDescription =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2133,6 +2135,8 @@ export const WorkspaceConfigurationDescription =
       status: WorkspaceConfigurationStatus,
       limitsPerLabelSet: S.optional(LimitsPerLabelSetList),
       retentionPeriodInDays: S.optional(S.Number),
+      outOfOrderTimeWindowInSeconds: S.optional(S.Number),
+      ruleQueryOffsetInSeconds: S.optional(S.Number),
     }),
   ).annotate({
     identifier: "WorkspaceConfigurationDescription",
@@ -2151,6 +2155,8 @@ export interface UpdateWorkspaceConfigurationRequest {
   clientToken?: string;
   limitsPerLabelSet?: LimitsPerLabelSet[];
   retentionPeriodInDays?: number;
+  outOfOrderTimeWindowInSeconds?: number;
+  ruleQueryOffsetInSeconds?: number;
 }
 export const UpdateWorkspaceConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2159,6 +2165,8 @@ export const UpdateWorkspaceConfigurationRequest =
       clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
       limitsPerLabelSet: S.optional(LimitsPerLabelSetList),
       retentionPeriodInDays: S.optional(S.Number),
+      outOfOrderTimeWindowInSeconds: S.optional(S.Number),
+      ruleQueryOffsetInSeconds: S.optional(S.Number),
     }).pipe(
       T.all(
         T.Http({

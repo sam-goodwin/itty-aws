@@ -114,6 +114,7 @@ export type TagKey = string;
 export type TagValue = string;
 export type ClientToken = string;
 export type ApplicationArn = string;
+export type IdentityStoreArn = string;
 export type NameType = string;
 export type AccessControlAttributeKey = string;
 export type AccessControlAttributeValueSource = string;
@@ -374,9 +375,16 @@ export const CreateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateApplicationRequest>;
 export interface CreateApplicationResponse {
   ApplicationArn?: string;
+  InstanceArn?: string;
+  IdentityStoreArn?: string;
 }
 export const CreateApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ApplicationArn: S.optional(S.String) }),
+  () =>
+    S.Struct({
+      ApplicationArn: S.optional(S.String),
+      InstanceArn: S.optional(S.String),
+      IdentityStoreArn: S.optional(S.String),
+    }),
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
@@ -837,6 +845,7 @@ export interface DescribeApplicationResponse {
   Name?: string;
   ApplicationAccount?: string;
   InstanceArn?: string;
+  IdentityStoreArn?: string;
   Status?: ApplicationStatus;
   PortalOptions?: PortalOptions;
   Description?: string;
@@ -851,6 +860,7 @@ export const DescribeApplicationResponse =
       Name: S.optional(S.String),
       ApplicationAccount: S.optional(S.String),
       InstanceArn: S.optional(S.String),
+      IdentityStoreArn: S.optional(S.String),
       Status: S.optional(ApplicationStatus),
       PortalOptions: S.optional(PortalOptions),
       Description: S.optional(S.String),
@@ -1797,6 +1807,7 @@ export interface Application {
   Name?: string;
   ApplicationAccount?: string;
   InstanceArn?: string;
+  IdentityStoreArn?: string;
   Status?: ApplicationStatus;
   PortalOptions?: PortalOptions;
   Description?: string;
@@ -1810,6 +1821,7 @@ export const Application = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Name: S.optional(S.String),
     ApplicationAccount: S.optional(S.String),
     InstanceArn: S.optional(S.String),
+    IdentityStoreArn: S.optional(S.String),
     Status: S.optional(ApplicationStatus),
     PortalOptions: S.optional(PortalOptions),
     Description: S.optional(S.String),

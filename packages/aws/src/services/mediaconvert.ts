@@ -170,6 +170,7 @@ export type __stringMin1Max256 = string;
 export type __stringPatternAZaZ0902 = string;
 export type __stringPatternArnAwsUsGovCnKmsAZ26EastWestCentralNorthSouthEastWest1912D12KeyAFAF098AFAF094AFAF094AFAF094AFAF0912MrkAFAF0932 =
   string;
+export type __integerMin1Max9999 = number;
 export type __stringMin32Max32Pattern09aFAF32 = string;
 export type __stringPatternArnAwsUsGovAcm = string;
 export type __stringMin36Max36Pattern09aFAF809aFAF409aFAF409aFAF409aFAF12 =
@@ -278,6 +279,7 @@ export type __integerMin10Max48 = number;
 export type __stringPattern = string;
 export type __stringPattern0940191020191209301 = string;
 export type __timestampUnix = Date;
+export type __integerMin0 = number;
 export type __integerMin1Max20 = number;
 export type __stringMax100 = string;
 
@@ -2234,8 +2236,6 @@ export const DestinationSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DestinationSettings",
 }) as any as S.Schema<DestinationSettings>;
-export type HlsClearLead = "ENABLED" | "DISABLED" | (string & {});
-export const HlsClearLead = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CmafEncryptionType = "SAMPLE_AES" | "AES_CTR" | (string & {});
 export const CmafEncryptionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CmafInitializationVectorInManifest =
@@ -2348,7 +2348,7 @@ export const StaticKeyProvider = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type CmafKeyProviderType = "SPEKE" | "STATIC_KEY" | (string & {});
 export const CmafKeyProviderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CmafEncryptionSettings {
-  ClearLead?: HlsClearLead;
+  ClearLeadSegments?: number;
   ConstantInitializationVector?: string;
   EncryptionMethod?: CmafEncryptionType;
   InitializationVectorInManifest?: CmafInitializationVectorInManifest;
@@ -2359,7 +2359,7 @@ export interface CmafEncryptionSettings {
 export const CmafEncryptionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      ClearLead: S.optional(HlsClearLead),
+      ClearLeadSegments: S.optional(S.Number),
       ConstantInitializationVector: S.optional(S.String),
       EncryptionMethod: S.optional(CmafEncryptionType),
       InitializationVectorInManifest: S.optional(
@@ -2370,7 +2370,7 @@ export const CmafEncryptionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Type: S.optional(CmafKeyProviderType),
     }).pipe(
       S.encodeKeys({
-        ClearLead: "clearLead",
+        ClearLeadSegments: "clearLeadSegments",
         ConstantInitializationVector: "constantInitializationVector",
         EncryptionMethod: "encryptionMethod",
         InitializationVectorInManifest: "initializationVectorInManifest",
@@ -2387,6 +2387,7 @@ export type CmafImageBasedTrickPlay =
   | "THUMBNAIL"
   | "THUMBNAIL_AND_FULLFRAME"
   | "ADVANCED"
+  | "VARIANTS"
   | (string & {});
 export const CmafImageBasedTrickPlay = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CmafIntervalCadence =
@@ -2425,6 +2426,40 @@ export const CmafImageBasedTrickPlaySettings =
   ).annotate({
     identifier: "CmafImageBasedTrickPlaySettings",
   }) as any as S.Schema<CmafImageBasedTrickPlaySettings>;
+export interface CmafImageBasedTrickPlayVariant {
+  IntervalCadence?: CmafIntervalCadence;
+  ThumbnailHeight?: number;
+  ThumbnailInterval?: number;
+  ThumbnailWidth?: number;
+  TileHeight?: number;
+  TileWidth?: number;
+}
+export const CmafImageBasedTrickPlayVariant =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IntervalCadence: S.optional(CmafIntervalCadence),
+      ThumbnailHeight: S.optional(S.Number),
+      ThumbnailInterval: S.optional(S.Number),
+      ThumbnailWidth: S.optional(S.Number),
+      TileHeight: S.optional(S.Number),
+      TileWidth: S.optional(S.Number),
+    }).pipe(
+      S.encodeKeys({
+        IntervalCadence: "intervalCadence",
+        ThumbnailHeight: "thumbnailHeight",
+        ThumbnailInterval: "thumbnailInterval",
+        ThumbnailWidth: "thumbnailWidth",
+        TileHeight: "tileHeight",
+        TileWidth: "tileWidth",
+      }),
+    ),
+  ).annotate({
+    identifier: "CmafImageBasedTrickPlayVariant",
+  }) as any as S.Schema<CmafImageBasedTrickPlayVariant>;
+export type __listOfCmafImageBasedTrickPlayVariant =
+  CmafImageBasedTrickPlayVariant[];
+export const __listOfCmafImageBasedTrickPlayVariant =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CmafImageBasedTrickPlayVariant);
 export type CmafManifestCompression = "GZIP" | "NONE" | (string & {});
 export const CmafManifestCompression = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type CmafManifestDurationFormat =
@@ -2490,6 +2525,7 @@ export interface CmafGroupSettings {
   FragmentLength?: number;
   ImageBasedTrickPlay?: CmafImageBasedTrickPlay;
   ImageBasedTrickPlaySettings?: CmafImageBasedTrickPlaySettings;
+  ImageBasedTrickPlayVariants?: CmafImageBasedTrickPlayVariant[];
   ManifestCompression?: CmafManifestCompression;
   ManifestDurationFormat?: CmafManifestDurationFormat;
   MinBufferTime?: number;
@@ -2521,6 +2557,9 @@ export const CmafGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     FragmentLength: S.optional(S.Number),
     ImageBasedTrickPlay: S.optional(CmafImageBasedTrickPlay),
     ImageBasedTrickPlaySettings: S.optional(CmafImageBasedTrickPlaySettings),
+    ImageBasedTrickPlayVariants: S.optional(
+      __listOfCmafImageBasedTrickPlayVariant,
+    ),
     ManifestCompression: S.optional(CmafManifestCompression),
     ManifestDurationFormat: S.optional(CmafManifestDurationFormat),
     MinBufferTime: S.optional(S.Number),
@@ -2555,6 +2594,7 @@ export const CmafGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       FragmentLength: "fragmentLength",
       ImageBasedTrickPlay: "imageBasedTrickPlay",
       ImageBasedTrickPlaySettings: "imageBasedTrickPlaySettings",
+      ImageBasedTrickPlayVariants: "imageBasedTrickPlayVariants",
       ManifestCompression: "manifestCompression",
       ManifestDurationFormat: "manifestDurationFormat",
       MinBufferTime: "minBufferTime",
@@ -2671,6 +2711,7 @@ export type DashIsoImageBasedTrickPlay =
   | "THUMBNAIL"
   | "THUMBNAIL_AND_FULLFRAME"
   | "ADVANCED"
+  | "VARIANTS"
   | (string & {});
 export const DashIsoImageBasedTrickPlay = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type DashIsoIntervalCadence =
@@ -2709,6 +2750,40 @@ export const DashIsoImageBasedTrickPlaySettings =
   ).annotate({
     identifier: "DashIsoImageBasedTrickPlaySettings",
   }) as any as S.Schema<DashIsoImageBasedTrickPlaySettings>;
+export interface DashIsoImageBasedTrickPlayVariant {
+  IntervalCadence?: DashIsoIntervalCadence;
+  ThumbnailHeight?: number;
+  ThumbnailInterval?: number;
+  ThumbnailWidth?: number;
+  TileHeight?: number;
+  TileWidth?: number;
+}
+export const DashIsoImageBasedTrickPlayVariant =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IntervalCadence: S.optional(DashIsoIntervalCadence),
+      ThumbnailHeight: S.optional(S.Number),
+      ThumbnailInterval: S.optional(S.Number),
+      ThumbnailWidth: S.optional(S.Number),
+      TileHeight: S.optional(S.Number),
+      TileWidth: S.optional(S.Number),
+    }).pipe(
+      S.encodeKeys({
+        IntervalCadence: "intervalCadence",
+        ThumbnailHeight: "thumbnailHeight",
+        ThumbnailInterval: "thumbnailInterval",
+        ThumbnailWidth: "thumbnailWidth",
+        TileHeight: "tileHeight",
+        TileWidth: "tileWidth",
+      }),
+    ),
+  ).annotate({
+    identifier: "DashIsoImageBasedTrickPlayVariant",
+  }) as any as S.Schema<DashIsoImageBasedTrickPlayVariant>;
+export type __listOfDashIsoImageBasedTrickPlayVariant =
+  DashIsoImageBasedTrickPlayVariant[];
+export const __listOfDashIsoImageBasedTrickPlayVariant =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DashIsoImageBasedTrickPlayVariant);
 export type DashIsoMpdManifestBandwidthType = "AVERAGE" | "MAX" | (string & {});
 export const DashIsoMpdManifestBandwidthType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -2759,6 +2834,7 @@ export interface DashIsoGroupSettings {
   HbbtvCompliance?: DashIsoHbbtvCompliance;
   ImageBasedTrickPlay?: DashIsoImageBasedTrickPlay;
   ImageBasedTrickPlaySettings?: DashIsoImageBasedTrickPlaySettings;
+  ImageBasedTrickPlayVariants?: DashIsoImageBasedTrickPlayVariant[];
   MinBufferTime?: number;
   MinFinalSegmentLength?: number;
   MpdManifestBandwidthType?: DashIsoMpdManifestBandwidthType;
@@ -2786,6 +2862,9 @@ export const DashIsoGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     HbbtvCompliance: S.optional(DashIsoHbbtvCompliance),
     ImageBasedTrickPlay: S.optional(DashIsoImageBasedTrickPlay),
     ImageBasedTrickPlaySettings: S.optional(DashIsoImageBasedTrickPlaySettings),
+    ImageBasedTrickPlayVariants: S.optional(
+      __listOfDashIsoImageBasedTrickPlayVariant,
+    ),
     MinBufferTime: S.optional(S.Number),
     MinFinalSegmentLength: S.optional(S.Number),
     MpdManifestBandwidthType: S.optional(DashIsoMpdManifestBandwidthType),
@@ -2812,6 +2891,7 @@ export const DashIsoGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       HbbtvCompliance: "hbbtvCompliance",
       ImageBasedTrickPlay: "imageBasedTrickPlay",
       ImageBasedTrickPlaySettings: "imageBasedTrickPlaySettings",
+      ImageBasedTrickPlayVariants: "imageBasedTrickPlayVariants",
       MinBufferTime: "minBufferTime",
       MinFinalSegmentLength: "minFinalSegmentLength",
       MpdManifestBandwidthType: "mpdManifestBandwidthType",
@@ -2971,6 +3051,7 @@ export type HlsImageBasedTrickPlay =
   | "THUMBNAIL"
   | "THUMBNAIL_AND_FULLFRAME"
   | "ADVANCED"
+  | "VARIANTS"
   | (string & {});
 export const HlsImageBasedTrickPlay = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type HlsIntervalCadence =
@@ -3009,6 +3090,40 @@ export const HlsImageBasedTrickPlaySettings =
   ).annotate({
     identifier: "HlsImageBasedTrickPlaySettings",
   }) as any as S.Schema<HlsImageBasedTrickPlaySettings>;
+export interface HlsImageBasedTrickPlayVariant {
+  IntervalCadence?: HlsIntervalCadence;
+  ThumbnailHeight?: number;
+  ThumbnailInterval?: number;
+  ThumbnailWidth?: number;
+  TileHeight?: number;
+  TileWidth?: number;
+}
+export const HlsImageBasedTrickPlayVariant =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IntervalCadence: S.optional(HlsIntervalCadence),
+      ThumbnailHeight: S.optional(S.Number),
+      ThumbnailInterval: S.optional(S.Number),
+      ThumbnailWidth: S.optional(S.Number),
+      TileHeight: S.optional(S.Number),
+      TileWidth: S.optional(S.Number),
+    }).pipe(
+      S.encodeKeys({
+        IntervalCadence: "intervalCadence",
+        ThumbnailHeight: "thumbnailHeight",
+        ThumbnailInterval: "thumbnailInterval",
+        ThumbnailWidth: "thumbnailWidth",
+        TileHeight: "tileHeight",
+        TileWidth: "tileWidth",
+      }),
+    ),
+  ).annotate({
+    identifier: "HlsImageBasedTrickPlayVariant",
+  }) as any as S.Schema<HlsImageBasedTrickPlayVariant>;
+export type __listOfHlsImageBasedTrickPlayVariant =
+  HlsImageBasedTrickPlayVariant[];
+export const __listOfHlsImageBasedTrickPlayVariant =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(HlsImageBasedTrickPlayVariant);
 export type HlsManifestCompression = "GZIP" | "NONE" | (string & {});
 export const HlsManifestCompression = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type HlsManifestDurationFormat =
@@ -3066,6 +3181,7 @@ export interface HlsGroupSettings {
   Encryption?: HlsEncryptionSettings;
   ImageBasedTrickPlay?: HlsImageBasedTrickPlay;
   ImageBasedTrickPlaySettings?: HlsImageBasedTrickPlaySettings;
+  ImageBasedTrickPlayVariants?: HlsImageBasedTrickPlayVariant[];
   ManifestCompression?: HlsManifestCompression;
   ManifestDurationFormat?: HlsManifestDurationFormat;
   MinFinalSegmentLength?: number;
@@ -3101,6 +3217,9 @@ export const HlsGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Encryption: S.optional(HlsEncryptionSettings),
     ImageBasedTrickPlay: S.optional(HlsImageBasedTrickPlay),
     ImageBasedTrickPlaySettings: S.optional(HlsImageBasedTrickPlaySettings),
+    ImageBasedTrickPlayVariants: S.optional(
+      __listOfHlsImageBasedTrickPlayVariant,
+    ),
     ManifestCompression: S.optional(HlsManifestCompression),
     ManifestDurationFormat: S.optional(HlsManifestDurationFormat),
     MinFinalSegmentLength: S.optional(S.Number),
@@ -3137,6 +3256,7 @@ export const HlsGroupSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       Encryption: "encryption",
       ImageBasedTrickPlay: "imageBasedTrickPlay",
       ImageBasedTrickPlaySettings: "imageBasedTrickPlaySettings",
+      ImageBasedTrickPlayVariants: "imageBasedTrickPlayVariants",
       ManifestCompression: "manifestCompression",
       ManifestDurationFormat: "manifestDurationFormat",
       MinFinalSegmentLength: "minFinalSegmentLength",
@@ -7496,6 +7616,7 @@ export type ScalingBehavior =
   | "FIT"
   | "FIT_NO_UPSCALE"
   | "FILL"
+  | "SMART_CROP"
   | (string & {});
 export const ScalingBehavior = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type VideoTimecodeInsertion =
@@ -8225,6 +8346,50 @@ export type AccelerationStatus =
 export const AccelerationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type JobPhase = "PROBING" | "TRANSCODING" | "UPLOADING" | (string & {});
 export const JobPhase = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ElementalInferenceFeature = "SMART_CROP" | (string & {});
+export const ElementalInferenceFeature = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type __listOfElementalInferenceFeature = ElementalInferenceFeature[];
+export const __listOfElementalInferenceFeature =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ElementalInferenceFeature);
+export type ElementalInferenceFeedManagementState =
+  | "CREATED"
+  | "ASSOCIATED"
+  | "PENDING_DELETION"
+  | "DELETED"
+  | (string & {});
+export const ElementalInferenceFeedManagementState =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ElementalInferenceFeed {
+  Arn?: string;
+  FeedManagementState?: ElementalInferenceFeedManagementState;
+}
+export const ElementalInferenceFeed = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Arn: S.optional(S.String),
+      FeedManagementState: S.optional(ElementalInferenceFeedManagementState),
+    }).pipe(
+      S.encodeKeys({ Arn: "arn", FeedManagementState: "feedManagementState" }),
+    ),
+).annotate({
+  identifier: "ElementalInferenceFeed",
+}) as any as S.Schema<ElementalInferenceFeed>;
+export type __listOfElementalInferenceFeed = ElementalInferenceFeed[];
+export const __listOfElementalInferenceFeed =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ElementalInferenceFeed);
+export interface ElementalInferenceConfiguration {
+  Features?: ElementalInferenceFeature[];
+  Feeds?: ElementalInferenceFeed[];
+}
+export const ElementalInferenceConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Features: S.optional(__listOfElementalInferenceFeature),
+      Feeds: S.optional(__listOfElementalInferenceFeed),
+    }).pipe(S.encodeKeys({ Features: "features", Feeds: "feeds" })),
+  ).annotate({
+    identifier: "ElementalInferenceConfiguration",
+  }) as any as S.Schema<ElementalInferenceConfiguration>;
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface JobMessages {
@@ -8349,6 +8514,7 @@ export interface Job {
   ClientRequestToken?: string;
   CreatedAt?: Date;
   CurrentPhase?: JobPhase;
+  ElementalInferenceConfiguration?: ElementalInferenceConfiguration;
   ErrorCode?: number;
   ErrorMessage?: string;
   HopDestinations?: HopDestination[];
@@ -8383,6 +8549,9 @@ export const Job = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ClientRequestToken: S.optional(S.String),
     CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     CurrentPhase: S.optional(JobPhase),
+    ElementalInferenceConfiguration: S.optional(
+      ElementalInferenceConfiguration,
+    ),
     ErrorCode: S.optional(S.Number),
     ErrorMessage: S.optional(S.String),
     HopDestinations: S.optional(__listOfHopDestination),
@@ -8416,6 +8585,7 @@ export const Job = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       ClientRequestToken: "clientRequestToken",
       CreatedAt: "createdAt",
       CurrentPhase: "currentPhase",
+      ElementalInferenceConfiguration: "elementalInferenceConfiguration",
       ErrorCode: "errorCode",
       ErrorMessage: "errorMessage",
       HopDestinations: "hopDestinations",
@@ -8870,6 +9040,7 @@ export const QueueStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateQueueRequest {
   ConcurrentJobs?: number;
   Description?: string;
+  MaximumConcurrentFeeds?: number;
   Name?: string;
   PricingPlan?: PricingPlan;
   ReservationPlanSettings?: ReservationPlanSettings;
@@ -8880,6 +9051,7 @@ export const CreateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     ConcurrentJobs: S.optional(S.Number),
     Description: S.optional(S.String),
+    MaximumConcurrentFeeds: S.optional(S.Number),
     Name: S.optional(S.String),
     PricingPlan: S.optional(PricingPlan),
     ReservationPlanSettings: S.optional(ReservationPlanSettings),
@@ -8890,6 +9062,7 @@ export const CreateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       S.encodeKeys({
         ConcurrentJobs: "concurrentJobs",
         Description: "description",
+        MaximumConcurrentFeeds: "maximumConcurrentFeeds",
         Name: "name",
         PricingPlan: "pricingPlan",
         ReservationPlanSettings: "reservationPlanSettings",
@@ -8973,6 +9146,7 @@ export interface Queue {
   CreatedAt?: Date;
   Description?: string;
   LastUpdated?: Date;
+  MaximumConcurrentFeeds?: number;
   Name?: string;
   PricingPlan?: PricingPlan;
   ProgressingJobsCount?: number;
@@ -8989,6 +9163,7 @@ export const Queue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Description: S.optional(S.String),
     LastUpdated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    MaximumConcurrentFeeds: S.optional(S.Number),
     Name: S.optional(S.String),
     PricingPlan: S.optional(PricingPlan),
     ProgressingJobsCount: S.optional(S.Number),
@@ -9004,6 +9179,7 @@ export const Queue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       CreatedAt: "createdAt",
       Description: "description",
       LastUpdated: "lastUpdated",
+      MaximumConcurrentFeeds: "maximumConcurrentFeeds",
       Name: "name",
       PricingPlan: "pricingPlan",
       ProgressingJobsCount: "progressingJobsCount",
@@ -9748,6 +9924,7 @@ export type Format =
   | "wave"
   | "avi"
   | "mpegts"
+  | "mpegps"
   | (string & {});
 export const Format = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface FrameRate {
@@ -9766,6 +9943,7 @@ export interface AudioProperties {
   Channels?: number;
   FrameRate?: FrameRate;
   LanguageCode?: string;
+  ObjectCount?: number;
   SampleRate?: number;
 }
 export const AudioProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -9775,6 +9953,7 @@ export const AudioProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Channels: S.optional(S.Number),
     FrameRate: S.optional(FrameRate),
     LanguageCode: S.optional(S.String),
+    ObjectCount: S.optional(S.Number),
     SampleRate: S.optional(S.Number),
   }).pipe(
     S.encodeKeys({
@@ -9783,6 +9962,7 @@ export const AudioProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       Channels: "channels",
       FrameRate: "frameRate",
       LanguageCode: "languageCode",
+      ObjectCount: "objectCount",
       SampleRate: "sampleRate",
     }),
   ),
@@ -9795,6 +9975,7 @@ export type Codec =
   | "AC3"
   | "EAC3"
   | "FLAC"
+  | "MP2"
   | "MP3"
   | "OPUS"
   | "PCM"
@@ -9848,6 +10029,23 @@ export type ColorPrimaries =
   | "LAST"
   | (string & {});
 export const ColorPrimaries = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ContentLightLevel {
+  MaxContentLightLevel?: number;
+  MaxFrameAverageLightLevel?: number;
+}
+export const ContentLightLevel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxContentLightLevel: S.optional(S.Number),
+    MaxFrameAverageLightLevel: S.optional(S.Number),
+  }).pipe(
+    S.encodeKeys({
+      MaxContentLightLevel: "maxContentLightLevel",
+      MaxFrameAverageLightLevel: "maxFrameAverageLightLevel",
+    }),
+  ),
+).annotate({
+  identifier: "ContentLightLevel",
+}) as any as S.Schema<ContentLightLevel>;
 export type MatrixCoefficients =
   | "RGB"
   | "ITU_709"
@@ -9896,10 +10094,12 @@ export interface CodecMetadata {
   ChromaSubsampling?: string;
   CodedFrameRate?: FrameRate;
   ColorPrimaries?: ColorPrimaries;
+  ContentLightLevel?: ContentLightLevel;
   Height?: number;
   Level?: string;
   MatrixCoefficients?: MatrixCoefficients;
   Profile?: string;
+  Rotation?: number;
   ScanType?: string;
   TransferCharacteristics?: TransferCharacteristics;
   Width?: number;
@@ -9910,10 +10110,12 @@ export const CodecMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ChromaSubsampling: S.optional(S.String),
     CodedFrameRate: S.optional(FrameRate),
     ColorPrimaries: S.optional(ColorPrimaries),
+    ContentLightLevel: S.optional(ContentLightLevel),
     Height: S.optional(S.Number),
     Level: S.optional(S.String),
     MatrixCoefficients: S.optional(MatrixCoefficients),
     Profile: S.optional(S.String),
+    Rotation: S.optional(S.Number),
     ScanType: S.optional(S.String),
     TransferCharacteristics: S.optional(TransferCharacteristics),
     Width: S.optional(S.Number),
@@ -9923,24 +10125,85 @@ export const CodecMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       ChromaSubsampling: "chromaSubsampling",
       CodedFrameRate: "codedFrameRate",
       ColorPrimaries: "colorPrimaries",
+      ContentLightLevel: "contentLightLevel",
       Height: "height",
       Level: "level",
       MatrixCoefficients: "matrixCoefficients",
       Profile: "profile",
+      Rotation: "rotation",
       ScanType: "scanType",
       TransferCharacteristics: "transferCharacteristics",
       Width: "width",
     }),
   ),
 ).annotate({ identifier: "CodecMetadata" }) as any as S.Schema<CodecMetadata>;
+export interface MasteringDisplayColorVolume {
+  BluePrimaryX?: number;
+  BluePrimaryY?: number;
+  GreenPrimaryX?: number;
+  GreenPrimaryY?: number;
+  MaxLuminance?: number;
+  MinLuminance?: number;
+  RedPrimaryX?: number;
+  RedPrimaryY?: number;
+  WhitePointX?: number;
+  WhitePointY?: number;
+}
+export const MasteringDisplayColorVolume =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      BluePrimaryX: S.optional(S.Number),
+      BluePrimaryY: S.optional(S.Number),
+      GreenPrimaryX: S.optional(S.Number),
+      GreenPrimaryY: S.optional(S.Number),
+      MaxLuminance: S.optional(S.Number),
+      MinLuminance: S.optional(S.Number),
+      RedPrimaryX: S.optional(S.Number),
+      RedPrimaryY: S.optional(S.Number),
+      WhitePointX: S.optional(S.Number),
+      WhitePointY: S.optional(S.Number),
+    }).pipe(
+      S.encodeKeys({
+        BluePrimaryX: "bluePrimaryX",
+        BluePrimaryY: "bluePrimaryY",
+        GreenPrimaryX: "greenPrimaryX",
+        GreenPrimaryY: "greenPrimaryY",
+        MaxLuminance: "maxLuminance",
+        MinLuminance: "minLuminance",
+        RedPrimaryX: "redPrimaryX",
+        RedPrimaryY: "redPrimaryY",
+        WhitePointX: "whitePointX",
+        WhitePointY: "whitePointY",
+      }),
+    ),
+  ).annotate({
+    identifier: "MasteringDisplayColorVolume",
+  }) as any as S.Schema<MasteringDisplayColorVolume>;
+export interface HdrMetadata {
+  ContentLightLevel?: ContentLightLevel;
+  MasteringDisplayColorVolume?: MasteringDisplayColorVolume;
+}
+export const HdrMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContentLightLevel: S.optional(ContentLightLevel),
+    MasteringDisplayColorVolume: S.optional(MasteringDisplayColorVolume),
+  }).pipe(
+    S.encodeKeys({
+      ContentLightLevel: "contentLightLevel",
+      MasteringDisplayColorVolume: "masteringDisplayColorVolume",
+    }),
+  ),
+).annotate({ identifier: "HdrMetadata" }) as any as S.Schema<HdrMetadata>;
 export interface VideoProperties {
   BitDepth?: number;
   BitRate?: number;
   CodecMetadata?: CodecMetadata;
   ColorPrimaries?: ColorPrimaries;
   FrameRate?: FrameRate;
+  HdrMetadata?: HdrMetadata;
   Height?: number;
   MatrixCoefficients?: MatrixCoefficients;
+  Rotation?: number;
   TransferCharacteristics?: TransferCharacteristics;
   Width?: number;
 }
@@ -9951,8 +10214,10 @@ export const VideoProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     CodecMetadata: S.optional(CodecMetadata),
     ColorPrimaries: S.optional(ColorPrimaries),
     FrameRate: S.optional(FrameRate),
+    HdrMetadata: S.optional(HdrMetadata),
     Height: S.optional(S.Number),
     MatrixCoefficients: S.optional(MatrixCoefficients),
+    Rotation: S.optional(S.Number),
     TransferCharacteristics: S.optional(TransferCharacteristics),
     Width: S.optional(S.Number),
   }).pipe(
@@ -9962,8 +10227,10 @@ export const VideoProperties = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       CodecMetadata: "codecMetadata",
       ColorPrimaries: "colorPrimaries",
       FrameRate: "frameRate",
+      HdrMetadata: "hdrMetadata",
       Height: "height",
       MatrixCoefficients: "matrixCoefficients",
+      Rotation: "rotation",
       TransferCharacteristics: "transferCharacteristics",
       Width: "width",
     }),
@@ -10408,6 +10675,7 @@ export const UpdatePresetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateQueueRequest {
   ConcurrentJobs?: number;
   Description?: string;
+  MaximumConcurrentFeeds?: number;
   Name: string;
   ReservationPlanSettings?: ReservationPlanSettings;
   Status?: QueueStatus;
@@ -10416,6 +10684,7 @@ export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     ConcurrentJobs: S.optional(S.Number),
     Description: S.optional(S.String),
+    MaximumConcurrentFeeds: S.optional(S.Number),
     Name: S.String.pipe(T.HttpLabel("Name")),
     ReservationPlanSettings: S.optional(ReservationPlanSettings),
     Status: S.optional(QueueStatus),
@@ -10424,6 +10693,7 @@ export const UpdateQueueRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       S.encodeKeys({
         ConcurrentJobs: "concurrentJobs",
         Description: "description",
+        MaximumConcurrentFeeds: "maximumConcurrentFeeds",
         ReservationPlanSettings: "reservationPlanSettings",
         Status: "status",
       }),
@@ -11595,7 +11865,7 @@ export type TagResourceError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+ * Add tags to a MediaConvert queue, preset, job, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-mediaconvert-resources.html.
  */
 export const tagResource: API.OperationMethod<
   TagResourceRequest,
@@ -11628,7 +11898,7 @@ export type UntagResourceError =
   | TooManyRequestsException
   | CommonErrors;
 /**
- * Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
+ * Remove tags from a MediaConvert queue, preset, job, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-mediaconvert-resources.html.
  */
 export const untagResource: API.OperationMethod<
   UntagResourceRequest,

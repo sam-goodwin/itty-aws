@@ -9,7 +9,7 @@ import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
-import type { Region } from "../region.ts";
+import type { Region as Rgn } from "../region.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "QuickSight",
@@ -98,6 +98,9 @@ export type AggFunctionParamValue = string;
 export type Expression = string | redacted.Redacted<string>;
 export type ConstantValueString = string;
 export type StatusCode = number;
+export type KbAwsAccountId = string;
+export type KnowledgeBaseId = string;
+export type KnowledgeBaseArn = string;
 export type IngestionId = string;
 export type Namespace = string;
 export type TagKey = string;
@@ -115,6 +118,17 @@ export type Email = string | redacted.Redacted<string>;
 export type RoleArn = string;
 export type ActionConnectorDescription = string | redacted.Redacted<string>;
 export type Principal = string;
+export type AgentId = string;
+export type AgentName = string;
+export type AgentDescription = string;
+export type IconId = string;
+export type StarterPrompt = string;
+export type WelcomeMessage = string | redacted.Redacted<string>;
+export type ModelProfileId = string;
+export type SubscriptionId = string;
+export type QbsAwsAccountId = string;
+export type StyleDescription = string | redacted.Redacted<string>;
+export type AgentArn = string;
 export type AnalysisName = string;
 export type NonEmptyString = string;
 export type SensitiveString = string | redacted.Redacted<string>;
@@ -131,7 +145,10 @@ export type PixelLength = string;
 export type HexColor = string;
 export type DateTimeFormat = string;
 export type SheetControlInfoIconText = string;
+export type ControlTitlePlainText = string;
+export type ControlTitleRichText = string;
 export type ColumnName = string;
+export type PercentileValue = number;
 export type TextAreaControlDelimiter = string;
 export type ShortPlainText = string;
 export type ShortRichText = string;
@@ -144,7 +161,6 @@ export type Suffix = string | redacted.Redacted<string>;
 export type DecimalPlaces = number;
 export type NullString = string | redacted.Redacted<string>;
 export type CurrencyCode = string;
-export type PercentileValue = number;
 export type PageNumber = number;
 export type TableFieldHeight = number;
 export type TableBorderThickness = number;
@@ -253,6 +269,10 @@ export type Separator = string;
 export type CellValue = string;
 export type DestinationTableAlias = string;
 export type SemanticTableAlias = string;
+export type AdditionalNotesText = string | redacted.Redacted<string>;
+export type DataSetDescriptiveText = string | redacted.Redacted<string>;
+export type InlineCustomInstructionText = string | redacted.Redacted<string>;
+export type UploadedDocumentName = string;
 export type Domain = string;
 export type WorkGroup = string;
 export type Host = string;
@@ -268,12 +288,14 @@ export type DatabaseUser = string;
 export type DatabaseGroup = string;
 export type S3Bucket = string;
 export type S3Key = string;
+export type S3TableBucketArn = string;
 export type MetadataFilesLocation = string;
 export type Warehouse = string;
 export type DatabaseAccessControlRole = string;
 export type TokenProviderUrl = string;
 export type OAuthScope = string;
 export type IdentityProviderResourceUri = string;
+export type CACertificatesBundleS3Uri = string;
 export type Query = string;
 export type SqlEndpointPath = string;
 export type ProjectId = string;
@@ -289,6 +311,14 @@ export type PrivateKeyPassphrase = string | redacted.Redacted<string>;
 export type OAuthClientId = string | redacted.Redacted<string>;
 export type OAuthClientSecret = string | redacted.Redacted<string>;
 export type OAuthUsername = string | redacted.Redacted<string>;
+export type AccountId = string;
+export type TitleInput = string;
+export type FlowDescriptionInput = string;
+export type SensitiveDocument = unknown;
+export type ActionsListMemberString = string;
+export type PermissionPrincipalString = string;
+export type CreateFlowRequestClientTokenString = string;
+export type FlowId = string;
 export type RestrictiveResourceId = string;
 export type FolderName = string;
 export type GroupName = string;
@@ -296,7 +326,15 @@ export type GroupDescription = string;
 export type GroupMemberName = string;
 export type IAMPolicyAssignmentName = string;
 export type IdentityName = string;
+export type OAuthClientApplicationId = string;
+export type OAuthTokenEndpointUrl = string | redacted.Redacted<string>;
+export type OAuthAuthorizationEndpointUrl = string | redacted.Redacted<string>;
+export type OAuthScopesString = string;
 export type DayOfMonth = string;
+export type PublicSpaceId = string;
+export type SpaceName = string;
+export type SpaceDescription = string | redacted.Redacted<string>;
+export type PublicSpaceArn = string;
 export type TemplateName = string;
 export type AliasName = string;
 export type VersionNumber = number;
@@ -312,12 +350,16 @@ export type UserName = string;
 export type VPCConnectionResourceIdUnrestricted = string;
 export type ResourceArn = string;
 export type ActionId = string;
+export type SensitiveText = string | redacted.Redacted<string>;
 export type SensitiveS3Uri = string | redacted.Redacted<string>;
 export type S3Uri = string;
 export type PositiveLong = number;
 export type AssetBundleRestrictiveResourceId = string;
 export type AutomateId = string;
 export type SensitiveIOPayload = string | redacted.Redacted<string>;
+export type Title = string;
+export type FlowDescription = string;
+export type StepId = string;
 export type MaxResults = number;
 export type CIDR = string;
 export type IpRestrictionRuleDescription = string;
@@ -325,23 +367,33 @@ export type VpcId = string;
 export type VpcIdRestrictionRuleDescription = string;
 export type VpcEndpointId = string;
 export type VpcEndpointIdRestrictionRuleDescription = string;
+export type KnowledgeBaseName = string;
+export type DataSourceArn = string;
+export type KbTemplate = unknown;
+export type KnowledgeBaseDescription = string;
+export type KbIngestionId = string;
 export type RoleName = string;
+export type MaxContributors = number;
 export type AwsAndAccountId = string;
 export type NetworkInterfaceId = string;
 export type SessionLifetimeInMinutes = number;
 export type EmbeddingUrl = string | redacted.Redacted<string>;
 export type EntryPath = string;
-export type AccountId = string;
-export type FlowId = string;
-export type Title = string;
-export type FlowDescription = string;
-export type ActionsListMemberString = string;
-export type PermissionPrincipalString = string;
+export type Region = string;
 export type StatusCode2 = number;
 export type EntryPoint = string;
+export type ListAgentsRequestMaxResultsInteger = number;
 export type FlowMaxResults = number;
 export type ListIdentityPropagationMaxResults = number;
 export type IngestionMaxResults = number;
+export type NextToken = string;
+export type SpacesMaxResults = number;
+export type FilterValue = string;
+export type CapacityBytesRangeFilterMinBytesLong = number;
+export type CapacityBytesRangeFilterMaxBytesLong = number;
+export type ListUsersIndexCapacityRequestMaxResultsInteger = number;
+export type LongValue = number;
+export type IntegerValue = number;
 export type QAQueryText = string | redacted.Redacted<string>;
 export type MaxTopicsToConsider = number;
 export type VisualTitle = string;
@@ -350,9 +402,11 @@ export type QAUrl = string;
 export type QuestionId = string;
 export type RoleSessionName = string;
 export type SearchActionConnectorsRequestMaxResultsInteger = number;
+export type AgentsMaxResults = number;
 export type AssetBundleImportBodyBlob =
   | Uint8Array
   | redacted.Redacted<Uint8Array>;
+export type UpdateFlowRequestClientTokenString = string;
 
 //# Schemas
 export interface Identifier {
@@ -1010,6 +1064,84 @@ export type ExceptionResourceType =
   | "INGESTION"
   | (string & {});
 export const ExceptionResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type BatchDeleteKnowledgeBaseRequestKnowledgeBaseIdsList = string[];
+export const BatchDeleteKnowledgeBaseRequestKnowledgeBaseIdsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface BatchDeleteKnowledgeBaseRequest {
+  AwsAccountId: string;
+  KnowledgeBaseIds: string[];
+}
+export const BatchDeleteKnowledgeBaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      KnowledgeBaseIds: BatchDeleteKnowledgeBaseRequestKnowledgeBaseIdsList,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/v1/accounts/{AwsAccountId}/knowledge-bases/batch-delete",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "BatchDeleteKnowledgeBaseRequest",
+  }) as any as S.Schema<BatchDeleteKnowledgeBaseRequest>;
+export interface BatchDeleteKnowledgeBaseSuccess {
+  KnowledgeBaseId: string;
+  KnowledgeBaseArn: string;
+}
+export const BatchDeleteKnowledgeBaseSuccess =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ KnowledgeBaseId: S.String, KnowledgeBaseArn: S.String }),
+  ).annotate({
+    identifier: "BatchDeleteKnowledgeBaseSuccess",
+  }) as any as S.Schema<BatchDeleteKnowledgeBaseSuccess>;
+export type BatchDeleteKnowledgeBaseSuccessList =
+  BatchDeleteKnowledgeBaseSuccess[];
+export const BatchDeleteKnowledgeBaseSuccessList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchDeleteKnowledgeBaseSuccess);
+export interface BatchDeleteKnowledgeBaseFailure {
+  KnowledgeBaseId: string;
+  ErrorCode: string;
+  ErrorMessage: string;
+}
+export const BatchDeleteKnowledgeBaseFailure =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      KnowledgeBaseId: S.String,
+      ErrorCode: S.String,
+      ErrorMessage: S.String,
+    }),
+  ).annotate({
+    identifier: "BatchDeleteKnowledgeBaseFailure",
+  }) as any as S.Schema<BatchDeleteKnowledgeBaseFailure>;
+export type BatchDeleteKnowledgeBaseFailureList =
+  BatchDeleteKnowledgeBaseFailure[];
+export const BatchDeleteKnowledgeBaseFailureList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchDeleteKnowledgeBaseFailure);
+export interface BatchDeleteKnowledgeBaseResponse {
+  Deleted: BatchDeleteKnowledgeBaseSuccess[];
+  Errors: BatchDeleteKnowledgeBaseFailure[];
+  RequestId?: string;
+  Status?: number;
+}
+export const BatchDeleteKnowledgeBaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Deleted: BatchDeleteKnowledgeBaseSuccessList,
+      Errors: BatchDeleteKnowledgeBaseFailureList,
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "BatchDeleteKnowledgeBaseResponse",
+  }) as any as S.Schema<BatchDeleteKnowledgeBaseResponse>;
 export type AnswerIds = string[];
 export const AnswerIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface BatchDeleteTopicReviewedAnswerRequest {
@@ -1597,6 +1729,121 @@ export const CreateActionConnectorResponse =
   ).annotate({
     identifier: "CreateActionConnectorResponse",
   }) as any as S.Schema<CreateActionConnectorResponse>;
+export type CreateAgentRequestSpacesList = string[];
+export const CreateAgentRequestSpacesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export type CreateAgentRequestActionConnectorsList = string[];
+export const CreateAgentRequestActionConnectorsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type StarterPromptList = string[];
+export const StarterPromptList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type AgentLifecycle = "PREVIEW" | "PUBLISHED" | (string & {});
+export const AgentLifecycle = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CustomPromptProfile {
+  ModelProfileId: string;
+  SubscriptionId: string;
+  QbsAwsAccountId: string;
+}
+export const CustomPromptProfile = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ModelProfileId: S.String,
+    SubscriptionId: S.String,
+    QbsAwsAccountId: S.String,
+  }),
+).annotate({
+  identifier: "CustomPromptProfile",
+}) as any as S.Schema<CustomPromptProfile>;
+export interface CustomPromptInputParameters {
+  ResponseLength?: string | redacted.Redacted<string>;
+  OutputStyle?: string | redacted.Redacted<string>;
+  Identity?: string | redacted.Redacted<string>;
+  Tone?: string | redacted.Redacted<string>;
+  CustomInstructions?: string | redacted.Redacted<string>;
+}
+export const CustomPromptInputParameters =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ResponseLength: S.optional(SensitiveString),
+      OutputStyle: S.optional(SensitiveString),
+      Identity: S.optional(SensitiveString),
+      Tone: S.optional(SensitiveString),
+      CustomInstructions: S.optional(SensitiveString),
+    }),
+  ).annotate({
+    identifier: "CustomPromptInputParameters",
+  }) as any as S.Schema<CustomPromptInputParameters>;
+export type CustomPromptInput =
+  | { ExistingPrompt: CustomPromptProfile; NewPrompt?: never }
+  | { ExistingPrompt?: never; NewPrompt: CustomPromptInputParameters };
+export const CustomPromptInput = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ ExistingPrompt: CustomPromptProfile }),
+  S.Struct({ NewPrompt: CustomPromptInputParameters }),
+]);
+export interface CreateAgentRequest {
+  Spaces?: string[];
+  ActionConnectors?: string[];
+  AwsAccountId: string;
+  AgentId: string;
+  Name: string;
+  Description?: string;
+  IconId?: string;
+  StarterPrompts?: string[];
+  WelcomeMessage?: string | redacted.Redacted<string>;
+  AgentLifecycle?: AgentLifecycle;
+  CustomPromptInput?: CustomPromptInput;
+}
+export const CreateAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Spaces: S.optional(CreateAgentRequestSpacesList),
+    ActionConnectors: S.optional(CreateAgentRequestActionConnectorsList),
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    AgentId: S.String,
+    Name: S.String,
+    Description: S.optional(S.String),
+    IconId: S.optional(S.String),
+    StarterPrompts: S.optional(StarterPromptList),
+    WelcomeMessage: S.optional(SensitiveString),
+    AgentLifecycle: S.optional(AgentLifecycle),
+    CustomPromptInput: S.optional(CustomPromptInput),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/accounts/{AwsAccountId}/agents" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateAgentRequest",
+}) as any as S.Schema<CreateAgentRequest>;
+export type AgentStatus =
+  | "ACTIVE"
+  | "UPDATING"
+  | "FAILED"
+  | "CREATING"
+  | (string & {});
+export const AgentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateAgentResponse {
+  Arn: string;
+  AgentId: string;
+  AgentStatus: AgentStatus;
+  AgentName: string;
+  RequestId?: string;
+}
+export const CreateAgentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    AgentId: S.String,
+    AgentStatus: AgentStatus,
+    AgentName: S.String,
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateAgentResponse",
+}) as any as S.Schema<CreateAgentResponse>;
 export type SensitiveStringList = string | redacted.Redacted<string>[];
 export const SensitiveStringList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
@@ -1810,19 +2057,34 @@ export const DateTimePickerControlDisplayOptions =
   ).annotate({
     identifier: "DateTimePickerControlDisplayOptions",
   }) as any as S.Schema<DateTimePickerControlDisplayOptions>;
+export interface ControlTitleFormatText {
+  PlainText?: string;
+  RichText?: string;
+}
+export const ControlTitleFormatText = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      PlainText: S.optional(S.String),
+      RichText: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ControlTitleFormatText",
+}) as any as S.Schema<ControlTitleFormatText>;
 export interface ParameterDateTimePickerControl {
   ParameterControlId: string;
-  Title: string;
+  Title?: string;
   SourceParameterName: string;
   DisplayOptions?: DateTimePickerControlDisplayOptions;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const ParameterDateTimePickerControl =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       ParameterControlId: S.String,
-      Title: S.String,
+      Title: S.optional(S.String),
       SourceParameterName: S.String,
       DisplayOptions: S.optional(DateTimePickerControlDisplayOptions),
+      ControlTitleFormatText: S.optional(ControlTitleFormatText),
     }),
   ).annotate({
     identifier: "ParameterDateTimePickerControl",
@@ -1918,24 +2180,161 @@ export const CascadingControlConfiguration =
   ).annotate({
     identifier: "CascadingControlConfiguration",
   }) as any as S.Schema<CascadingControlConfiguration>;
+export type ControlSortDirection =
+  | "ASC"
+  | "DESC"
+  | "USER_DEFINED_ORDER"
+  | (string & {});
+export const ControlSortDirection = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SelectableValuesSort {
+  Direction: ControlSortDirection;
+}
+export const SelectableValuesSort = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Direction: ControlSortDirection }),
+).annotate({
+  identifier: "SelectableValuesSort",
+}) as any as S.Schema<SelectableValuesSort>;
+export type SortDirection = "ASC" | "DESC" | (string & {});
+export const SortDirection = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SimpleNumericalAggregationFunction =
+  | "SUM"
+  | "AVERAGE"
+  | "MIN"
+  | "MAX"
+  | "COUNT"
+  | "DISTINCT_COUNT"
+  | "VAR"
+  | "VARP"
+  | "STDEV"
+  | "STDEVP"
+  | "MEDIAN"
+  | (string & {});
+export const SimpleNumericalAggregationFunction =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface PercentileAggregation {
+  PercentileValue?: number;
+}
+export const PercentileAggregation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ PercentileValue: S.optional(S.Number) }),
+).annotate({
+  identifier: "PercentileAggregation",
+}) as any as S.Schema<PercentileAggregation>;
+export interface NumericalAggregationFunction {
+  SimpleNumericalAggregation?: SimpleNumericalAggregationFunction;
+  PercentileAggregation?: PercentileAggregation;
+}
+export const NumericalAggregationFunction =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SimpleNumericalAggregation: S.optional(
+        SimpleNumericalAggregationFunction,
+      ),
+      PercentileAggregation: S.optional(PercentileAggregation),
+    }),
+  ).annotate({
+    identifier: "NumericalAggregationFunction",
+  }) as any as S.Schema<NumericalAggregationFunction>;
+export type CategoricalAggregationFunction =
+  | "COUNT"
+  | "DISTINCT_COUNT"
+  | (string & {});
+export const CategoricalAggregationFunction =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type DateAggregationFunction =
+  | "COUNT"
+  | "DISTINCT_COUNT"
+  | "MIN"
+  | "MAX"
+  | (string & {});
+export const DateAggregationFunction = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SimpleAttributeAggregationFunction = "UNIQUE_VALUE" | (string & {});
+export const SimpleAttributeAggregationFunction =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AttributeAggregationFunction {
+  SimpleAttributeAggregation?: SimpleAttributeAggregationFunction;
+  ValueForMultipleValues?: string;
+}
+export const AttributeAggregationFunction =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      SimpleAttributeAggregation: S.optional(
+        SimpleAttributeAggregationFunction,
+      ),
+      ValueForMultipleValues: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AttributeAggregationFunction",
+  }) as any as S.Schema<AttributeAggregationFunction>;
+export interface AggregationFunction {
+  NumericalAggregationFunction?: NumericalAggregationFunction;
+  CategoricalAggregationFunction?: CategoricalAggregationFunction;
+  DateAggregationFunction?: DateAggregationFunction;
+  AttributeAggregationFunction?: AttributeAggregationFunction;
+}
+export const AggregationFunction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NumericalAggregationFunction: S.optional(NumericalAggregationFunction),
+    CategoricalAggregationFunction: S.optional(CategoricalAggregationFunction),
+    DateAggregationFunction: S.optional(DateAggregationFunction),
+    AttributeAggregationFunction: S.optional(AttributeAggregationFunction),
+  }),
+).annotate({
+  identifier: "AggregationFunction",
+}) as any as S.Schema<AggregationFunction>;
+export interface AggregationSortConfiguration {
+  Column: ColumnIdentifier;
+  SortDirection: SortDirection;
+  AggregationFunction?: AggregationFunction;
+}
+export const AggregationSortConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Column: ColumnIdentifier,
+      SortDirection: SortDirection,
+      AggregationFunction: S.optional(AggregationFunction),
+    }),
+  ).annotate({
+    identifier: "AggregationSortConfiguration",
+  }) as any as S.Schema<AggregationSortConfiguration>;
+export interface ControlSortConfiguration {
+  SelectableValuesSort?: SelectableValuesSort;
+  ControlColumnSort?: AggregationSortConfiguration;
+}
+export const ControlSortConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      SelectableValuesSort: S.optional(SelectableValuesSort),
+      ControlColumnSort: S.optional(AggregationSortConfiguration),
+    }),
+).annotate({
+  identifier: "ControlSortConfiguration",
+}) as any as S.Schema<ControlSortConfiguration>;
+export type ControlSortConfigurationList = ControlSortConfiguration[];
+export const ControlSortConfigurationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ControlSortConfiguration,
+);
 export interface ParameterListControl {
   ParameterControlId: string;
-  Title: string;
+  Title?: string;
   SourceParameterName: string;
   DisplayOptions?: ListControlDisplayOptions;
   Type?: SheetControlListType;
   SelectableValues?: ParameterSelectableValues;
   CascadingControlConfiguration?: CascadingControlConfiguration;
+  ControlSortConfigurations?: ControlSortConfiguration[];
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const ParameterListControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     ParameterControlId: S.String,
-    Title: S.String,
+    Title: S.optional(S.String),
     SourceParameterName: S.String,
     DisplayOptions: S.optional(ListControlDisplayOptions),
     Type: S.optional(SheetControlListType),
     SelectableValues: S.optional(ParameterSelectableValues),
     CascadingControlConfiguration: S.optional(CascadingControlConfiguration),
+    ControlSortConfigurations: S.optional(ControlSortConfigurationList),
+    ControlTitleFormatText: S.optional(ControlTitleFormatText),
   }),
 ).annotate({
   identifier: "ParameterListControl",
@@ -1959,25 +2358,29 @@ export type CommitMode = "AUTO" | "MANUAL" | (string & {});
 export const CommitMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ParameterDropDownControl {
   ParameterControlId: string;
-  Title: string;
+  Title?: string;
   SourceParameterName: string;
   DisplayOptions?: DropDownControlDisplayOptions;
   Type?: SheetControlListType;
   SelectableValues?: ParameterSelectableValues;
   CascadingControlConfiguration?: CascadingControlConfiguration;
   CommitMode?: CommitMode;
+  ControlSortConfigurations?: ControlSortConfiguration[];
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const ParameterDropDownControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       ParameterControlId: S.String,
-      Title: S.String,
+      Title: S.optional(S.String),
       SourceParameterName: S.String,
       DisplayOptions: S.optional(DropDownControlDisplayOptions),
       Type: S.optional(SheetControlListType),
       SelectableValues: S.optional(ParameterSelectableValues),
       CascadingControlConfiguration: S.optional(CascadingControlConfiguration),
       CommitMode: S.optional(CommitMode),
+      ControlSortConfigurations: S.optional(ControlSortConfigurationList),
+      ControlTitleFormatText: S.optional(ControlTitleFormatText),
     }),
 ).annotate({
   identifier: "ParameterDropDownControl",
@@ -2008,17 +2411,19 @@ export const TextFieldControlDisplayOptions =
   }) as any as S.Schema<TextFieldControlDisplayOptions>;
 export interface ParameterTextFieldControl {
   ParameterControlId: string;
-  Title: string;
+  Title?: string;
   SourceParameterName: string;
   DisplayOptions?: TextFieldControlDisplayOptions;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const ParameterTextFieldControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       ParameterControlId: S.String,
-      Title: S.String,
+      Title: S.optional(S.String),
       SourceParameterName: S.String,
       DisplayOptions: S.optional(TextFieldControlDisplayOptions),
+      ControlTitleFormatText: S.optional(ControlTitleFormatText),
     }),
 ).annotate({
   identifier: "ParameterTextFieldControl",
@@ -2040,19 +2445,21 @@ export const TextAreaControlDisplayOptions =
   }) as any as S.Schema<TextAreaControlDisplayOptions>;
 export interface ParameterTextAreaControl {
   ParameterControlId: string;
-  Title: string;
+  Title?: string;
   SourceParameterName: string;
   Delimiter?: string;
   DisplayOptions?: TextAreaControlDisplayOptions;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const ParameterTextAreaControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       ParameterControlId: S.String,
-      Title: S.String,
+      Title: S.optional(S.String),
       SourceParameterName: S.String,
       Delimiter: S.optional(S.String),
       DisplayOptions: S.optional(TextAreaControlDisplayOptions),
+      ControlTitleFormatText: S.optional(ControlTitleFormatText),
     }),
 ).annotate({
   identifier: "ParameterTextAreaControl",
@@ -2072,23 +2479,25 @@ export const SliderControlDisplayOptions =
   }) as any as S.Schema<SliderControlDisplayOptions>;
 export interface ParameterSliderControl {
   ParameterControlId: string;
-  Title: string;
+  Title?: string;
   SourceParameterName: string;
   DisplayOptions?: SliderControlDisplayOptions;
   MaximumValue: number;
   MinimumValue: number;
   StepSize: number;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const ParameterSliderControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       ParameterControlId: S.String,
-      Title: S.String,
+      Title: S.optional(S.String),
       SourceParameterName: S.String,
       DisplayOptions: S.optional(SliderControlDisplayOptions),
       MaximumValue: S.Number,
       MinimumValue: S.Number,
       StepSize: S.Number,
+      ControlTitleFormatText: S.optional(ControlTitleFormatText),
     }),
 ).annotate({
   identifier: "ParameterSliderControl",
@@ -2124,21 +2533,23 @@ export const SheetControlDateTimePickerType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface FilterDateTimePickerControl {
   FilterControlId: string;
-  Title: string;
+  Title?: string;
   SourceFilterId: string;
   DisplayOptions?: DateTimePickerControlDisplayOptions;
   Type?: SheetControlDateTimePickerType;
   CommitMode?: CommitMode;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const FilterDateTimePickerControl =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       FilterControlId: S.String,
-      Title: S.String,
+      Title: S.optional(S.String),
       SourceFilterId: S.String,
       DisplayOptions: S.optional(DateTimePickerControlDisplayOptions),
       Type: S.optional(SheetControlDateTimePickerType),
       CommitMode: S.optional(CommitMode),
+      ControlTitleFormatText: S.optional(ControlTitleFormatText),
     }),
   ).annotate({
     identifier: "FilterDateTimePickerControl",
@@ -2153,81 +2564,93 @@ export const FilterSelectableValues = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<FilterSelectableValues>;
 export interface FilterListControl {
   FilterControlId: string;
-  Title: string;
+  Title?: string;
   SourceFilterId: string;
   DisplayOptions?: ListControlDisplayOptions;
   Type?: SheetControlListType;
   SelectableValues?: FilterSelectableValues;
   CascadingControlConfiguration?: CascadingControlConfiguration;
+  ControlSortConfigurations?: ControlSortConfiguration[];
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const FilterListControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     FilterControlId: S.String,
-    Title: S.String,
+    Title: S.optional(S.String),
     SourceFilterId: S.String,
     DisplayOptions: S.optional(ListControlDisplayOptions),
     Type: S.optional(SheetControlListType),
     SelectableValues: S.optional(FilterSelectableValues),
     CascadingControlConfiguration: S.optional(CascadingControlConfiguration),
+    ControlSortConfigurations: S.optional(ControlSortConfigurationList),
+    ControlTitleFormatText: S.optional(ControlTitleFormatText),
   }),
 ).annotate({
   identifier: "FilterListControl",
 }) as any as S.Schema<FilterListControl>;
 export interface FilterDropDownControl {
   FilterControlId: string;
-  Title: string;
+  Title?: string;
   SourceFilterId: string;
   DisplayOptions?: DropDownControlDisplayOptions;
   Type?: SheetControlListType;
   SelectableValues?: FilterSelectableValues;
   CascadingControlConfiguration?: CascadingControlConfiguration;
   CommitMode?: CommitMode;
+  ControlSortConfigurations?: ControlSortConfiguration[];
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const FilterDropDownControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     FilterControlId: S.String,
-    Title: S.String,
+    Title: S.optional(S.String),
     SourceFilterId: S.String,
     DisplayOptions: S.optional(DropDownControlDisplayOptions),
     Type: S.optional(SheetControlListType),
     SelectableValues: S.optional(FilterSelectableValues),
     CascadingControlConfiguration: S.optional(CascadingControlConfiguration),
     CommitMode: S.optional(CommitMode),
+    ControlSortConfigurations: S.optional(ControlSortConfigurationList),
+    ControlTitleFormatText: S.optional(ControlTitleFormatText),
   }),
 ).annotate({
   identifier: "FilterDropDownControl",
 }) as any as S.Schema<FilterDropDownControl>;
 export interface FilterTextFieldControl {
   FilterControlId: string;
-  Title: string;
+  Title?: string;
   SourceFilterId: string;
   DisplayOptions?: TextFieldControlDisplayOptions;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const FilterTextFieldControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       FilterControlId: S.String,
-      Title: S.String,
+      Title: S.optional(S.String),
       SourceFilterId: S.String,
       DisplayOptions: S.optional(TextFieldControlDisplayOptions),
+      ControlTitleFormatText: S.optional(ControlTitleFormatText),
     }),
 ).annotate({
   identifier: "FilterTextFieldControl",
 }) as any as S.Schema<FilterTextFieldControl>;
 export interface FilterTextAreaControl {
   FilterControlId: string;
-  Title: string;
+  Title?: string;
   SourceFilterId: string;
   Delimiter?: string;
   DisplayOptions?: TextAreaControlDisplayOptions;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const FilterTextAreaControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     FilterControlId: S.String,
-    Title: S.String,
+    Title: S.optional(S.String),
     SourceFilterId: S.String,
     Delimiter: S.optional(S.String),
     DisplayOptions: S.optional(TextAreaControlDisplayOptions),
+    ControlTitleFormatText: S.optional(ControlTitleFormatText),
   }),
 ).annotate({
   identifier: "FilterTextAreaControl",
@@ -2236,24 +2659,26 @@ export type SheetControlSliderType = "SINGLE_POINT" | "RANGE" | (string & {});
 export const SheetControlSliderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface FilterSliderControl {
   FilterControlId: string;
-  Title: string;
+  Title?: string;
   SourceFilterId: string;
   DisplayOptions?: SliderControlDisplayOptions;
   Type?: SheetControlSliderType;
   MaximumValue: number;
   MinimumValue: number;
   StepSize: number;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const FilterSliderControl = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     FilterControlId: S.String,
-    Title: S.String,
+    Title: S.optional(S.String),
     SourceFilterId: S.String,
     DisplayOptions: S.optional(SliderControlDisplayOptions),
     Type: S.optional(SheetControlSliderType),
     MaximumValue: S.Number,
     MinimumValue: S.Number,
     StepSize: S.Number,
+    ControlTitleFormatText: S.optional(ControlTitleFormatText),
   }),
 ).annotate({
   identifier: "FilterSliderControl",
@@ -2275,19 +2700,21 @@ export const RelativeDateTimeControlDisplayOptions =
   }) as any as S.Schema<RelativeDateTimeControlDisplayOptions>;
 export interface FilterRelativeDateTimeControl {
   FilterControlId: string;
-  Title: string;
+  Title?: string;
   SourceFilterId: string;
   DisplayOptions?: RelativeDateTimeControlDisplayOptions;
   CommitMode?: CommitMode;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const FilterRelativeDateTimeControl =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     S.Struct({
       FilterControlId: S.String,
-      Title: S.String,
+      Title: S.optional(S.String),
       SourceFilterId: S.String,
       DisplayOptions: S.optional(RelativeDateTimeControlDisplayOptions),
       CommitMode: S.optional(CommitMode),
+      ControlTitleFormatText: S.optional(ControlTitleFormatText),
     }),
   ).annotate({
     identifier: "FilterRelativeDateTimeControl",
@@ -2627,44 +3054,6 @@ export const DimensionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type DimensionFieldList = DimensionField[];
 export const DimensionFieldList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(DimensionField);
-export type SimpleNumericalAggregationFunction =
-  | "SUM"
-  | "AVERAGE"
-  | "MIN"
-  | "MAX"
-  | "COUNT"
-  | "DISTINCT_COUNT"
-  | "VAR"
-  | "VARP"
-  | "STDEV"
-  | "STDEVP"
-  | "MEDIAN"
-  | (string & {});
-export const SimpleNumericalAggregationFunction =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
-export interface PercentileAggregation {
-  PercentileValue?: number;
-}
-export const PercentileAggregation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ PercentileValue: S.optional(S.Number) }),
-).annotate({
-  identifier: "PercentileAggregation",
-}) as any as S.Schema<PercentileAggregation>;
-export interface NumericalAggregationFunction {
-  SimpleNumericalAggregation?: SimpleNumericalAggregationFunction;
-  PercentileAggregation?: PercentileAggregation;
-}
-export const NumericalAggregationFunction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SimpleNumericalAggregation: S.optional(
-        SimpleNumericalAggregationFunction,
-      ),
-      PercentileAggregation: S.optional(PercentileAggregation),
-    }),
-  ).annotate({
-    identifier: "NumericalAggregationFunction",
-  }) as any as S.Schema<NumericalAggregationFunction>;
 export interface NumericalMeasureField {
   FieldId: string;
   Column: ColumnIdentifier;
@@ -2681,12 +3070,6 @@ export const NumericalMeasureField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NumericalMeasureField",
 }) as any as S.Schema<NumericalMeasureField>;
-export type CategoricalAggregationFunction =
-  | "COUNT"
-  | "DISTINCT_COUNT"
-  | (string & {});
-export const CategoricalAggregationFunction =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CategoricalMeasureField {
   FieldId: string;
   Column: ColumnIdentifier;
@@ -2704,13 +3087,6 @@ export const CategoricalMeasureField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CategoricalMeasureField",
 }) as any as S.Schema<CategoricalMeasureField>;
-export type DateAggregationFunction =
-  | "COUNT"
-  | "DISTINCT_COUNT"
-  | "MIN"
-  | "MAX"
-  | (string & {});
-export const DateAggregationFunction = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DateMeasureField {
   FieldId: string;
   Column: ColumnIdentifier;
@@ -2818,8 +3194,6 @@ export const TableFieldWells = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableFieldWells",
 }) as any as S.Schema<TableFieldWells>;
-export type SortDirection = "ASC" | "DESC" | (string & {});
-export const SortDirection = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface FieldSort {
   FieldId: string;
   Direction: SortDirection;
@@ -2827,40 +3201,6 @@ export interface FieldSort {
 export const FieldSort = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ FieldId: S.String, Direction: SortDirection }),
 ).annotate({ identifier: "FieldSort" }) as any as S.Schema<FieldSort>;
-export type SimpleAttributeAggregationFunction = "UNIQUE_VALUE" | (string & {});
-export const SimpleAttributeAggregationFunction =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
-export interface AttributeAggregationFunction {
-  SimpleAttributeAggregation?: SimpleAttributeAggregationFunction;
-  ValueForMultipleValues?: string;
-}
-export const AttributeAggregationFunction =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SimpleAttributeAggregation: S.optional(
-        SimpleAttributeAggregationFunction,
-      ),
-      ValueForMultipleValues: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AttributeAggregationFunction",
-  }) as any as S.Schema<AttributeAggregationFunction>;
-export interface AggregationFunction {
-  NumericalAggregationFunction?: NumericalAggregationFunction;
-  CategoricalAggregationFunction?: CategoricalAggregationFunction;
-  DateAggregationFunction?: DateAggregationFunction;
-  AttributeAggregationFunction?: AttributeAggregationFunction;
-}
-export const AggregationFunction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NumericalAggregationFunction: S.optional(NumericalAggregationFunction),
-    CategoricalAggregationFunction: S.optional(CategoricalAggregationFunction),
-    DateAggregationFunction: S.optional(DateAggregationFunction),
-    AttributeAggregationFunction: S.optional(AttributeAggregationFunction),
-  }),
-).annotate({
-  identifier: "AggregationFunction",
-}) as any as S.Schema<AggregationFunction>;
 export interface ColumnSort {
   SortBy: ColumnIdentifier;
   Direction: SortDirection;
@@ -10256,6 +10596,7 @@ export interface DefaultFilterListControlOptions {
   DisplayOptions?: ListControlDisplayOptions;
   Type?: SheetControlListType;
   SelectableValues?: FilterSelectableValues;
+  ControlSortConfigurations?: ControlSortConfiguration[];
 }
 export const DefaultFilterListControlOptions =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -10263,6 +10604,7 @@ export const DefaultFilterListControlOptions =
       DisplayOptions: S.optional(ListControlDisplayOptions),
       Type: S.optional(SheetControlListType),
       SelectableValues: S.optional(FilterSelectableValues),
+      ControlSortConfigurations: S.optional(ControlSortConfigurationList),
     }),
   ).annotate({
     identifier: "DefaultFilterListControlOptions",
@@ -10272,6 +10614,7 @@ export interface DefaultFilterDropDownControlOptions {
   Type?: SheetControlListType;
   SelectableValues?: FilterSelectableValues;
   CommitMode?: CommitMode;
+  ControlSortConfigurations?: ControlSortConfiguration[];
 }
 export const DefaultFilterDropDownControlOptions =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -10280,6 +10623,7 @@ export const DefaultFilterDropDownControlOptions =
       Type: S.optional(SheetControlListType),
       SelectableValues: S.optional(FilterSelectableValues),
       CommitMode: S.optional(CommitMode),
+      ControlSortConfigurations: S.optional(ControlSortConfigurationList),
     }),
   ).annotate({
     identifier: "DefaultFilterDropDownControlOptions",
@@ -10366,12 +10710,17 @@ export const DefaultFilterControlOptions =
     identifier: "DefaultFilterControlOptions",
   }) as any as S.Schema<DefaultFilterControlOptions>;
 export interface DefaultFilterControlConfiguration {
-  Title: string;
+  Title?: string;
   ControlOptions: DefaultFilterControlOptions;
+  ControlTitleFormatText?: ControlTitleFormatText;
 }
 export const DefaultFilterControlConfiguration =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Title: S.String, ControlOptions: DefaultFilterControlOptions }),
+    S.Struct({
+      Title: S.optional(S.String),
+      ControlOptions: DefaultFilterControlOptions,
+      ControlTitleFormatText: S.optional(ControlTitleFormatText),
+    }),
   ).annotate({
     identifier: "DefaultFilterControlConfiguration",
   }) as any as S.Schema<DefaultFilterControlConfiguration>;
@@ -10609,21 +10958,6 @@ export const RelativeDatesFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RelativeDatesFilter",
 }) as any as S.Schema<RelativeDatesFilter>;
-export interface AggregationSortConfiguration {
-  Column: ColumnIdentifier;
-  SortDirection: SortDirection;
-  AggregationFunction?: AggregationFunction;
-}
-export const AggregationSortConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Column: ColumnIdentifier,
-      SortDirection: SortDirection,
-      AggregationFunction: S.optional(AggregationFunction),
-    }),
-  ).annotate({
-    identifier: "AggregationSortConfiguration",
-  }) as any as S.Schema<AggregationSortConfiguration>;
 export type AggregationSortConfigurationList = AggregationSortConfiguration[];
 export const AggregationSortConfigurationList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(AggregationSortConfiguration);
@@ -11429,6 +11763,11 @@ export interface Capabilities {
   Analysis?: CapabilityState;
   Automate?: CapabilityState;
   Flow?: CapabilityState;
+  Apps?: CapabilityState;
+  CreateAndUpdateApps?: CapabilityState;
+  ShareApps?: CapabilityState;
+  InvokeAppsAIInference?: CapabilityState;
+  AccessAppsNativeDataStore?: CapabilityState;
   PublishWithoutApproval?: CapabilityState;
   UseBedrockModels?: CapabilityState;
   PerformFlowUiTask?: CapabilityState;
@@ -11622,6 +11961,9 @@ export interface Capabilities {
   SelfUpgradeUserRole?: CapabilityState;
   Extension?: CapabilityState;
   ManageSharedFolders?: CapabilityState;
+  GenerateAnalyses?: CapabilityState;
+  Story?: CapabilityState;
+  Scenario?: CapabilityState;
 }
 export const Capabilities = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11652,6 +11994,11 @@ export const Capabilities = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Analysis: S.optional(CapabilityState),
     Automate: S.optional(CapabilityState),
     Flow: S.optional(CapabilityState),
+    Apps: S.optional(CapabilityState),
+    CreateAndUpdateApps: S.optional(CapabilityState),
+    ShareApps: S.optional(CapabilityState),
+    InvokeAppsAIInference: S.optional(CapabilityState),
+    AccessAppsNativeDataStore: S.optional(CapabilityState),
     PublishWithoutApproval: S.optional(CapabilityState),
     UseBedrockModels: S.optional(CapabilityState),
     PerformFlowUiTask: S.optional(CapabilityState),
@@ -11845,6 +12192,9 @@ export const Capabilities = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SelfUpgradeUserRole: S.optional(CapabilityState),
     Extension: S.optional(CapabilityState),
     ManageSharedFolders: S.optional(CapabilityState),
+    GenerateAnalyses: S.optional(CapabilityState),
+    Story: S.optional(CapabilityState),
+    Scenario: S.optional(CapabilityState),
   }),
 ).annotate({ identifier: "Capabilities" }) as any as S.Schema<Capabilities>;
 export interface CreateCustomPermissionsRequest {
@@ -13689,10 +14039,72 @@ export const RowLevelPermissionConfiguration =
   ).annotate({
     identifier: "RowLevelPermissionConfiguration",
   }) as any as S.Schema<RowLevelPermissionConfiguration>;
+export type ColumnNameList = string[];
+export const ColumnNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface AdditionalNotes {
+  Text?: string | redacted.Redacted<string>;
+}
+export const AdditionalNotes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Text: S.optional(SensitiveString) }),
+).annotate({
+  identifier: "AdditionalNotes",
+}) as any as S.Schema<AdditionalNotes>;
+export interface ColumnSemanticType {
+  GeographicalRole?: GeoSpatialDataRole;
+}
+export const ColumnSemanticType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ GeographicalRole: S.optional(GeoSpatialDataRole) }),
+).annotate({
+  identifier: "ColumnSemanticType",
+}) as any as S.Schema<ColumnSemanticType>;
+export interface ColumnSemanticProperty {
+  Description?: ColumnDescription;
+  AdditionalNotes?: AdditionalNotes;
+  SemanticType?: ColumnSemanticType;
+}
+export const ColumnSemanticProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Description: S.optional(ColumnDescription),
+      AdditionalNotes: S.optional(AdditionalNotes),
+      SemanticType: S.optional(ColumnSemanticType),
+    }),
+).annotate({
+  identifier: "ColumnSemanticProperty",
+}) as any as S.Schema<ColumnSemanticProperty>;
+export type ColumnSemanticPropertyList = ColumnSemanticProperty[];
+export const ColumnSemanticPropertyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ColumnSemanticProperty,
+);
+export interface SharedColumnSemanticMetadata {
+  ColumnNames?: string[];
+  ColumnProperties: ColumnSemanticProperty[];
+}
+export const SharedColumnSemanticMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ColumnNames: S.optional(ColumnNameList),
+      ColumnProperties: ColumnSemanticPropertyList,
+    }),
+  ).annotate({
+    identifier: "SharedColumnSemanticMetadata",
+  }) as any as S.Schema<SharedColumnSemanticMetadata>;
+export type SharedColumnSemanticMetadataList = SharedColumnSemanticMetadata[];
+export const SharedColumnSemanticMetadataList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SharedColumnSemanticMetadata);
+export interface TableSemanticMetadata {
+  ColumnMetadata?: SharedColumnSemanticMetadata[];
+}
+export const TableSemanticMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ ColumnMetadata: S.optional(SharedColumnSemanticMetadataList) }),
+).annotate({
+  identifier: "TableSemanticMetadata",
+}) as any as S.Schema<TableSemanticMetadata>;
 export interface SemanticTable {
   Alias: string;
   DestinationTableId: string;
   RowLevelPermissionConfiguration?: RowLevelPermissionConfiguration;
+  SemanticMetadata?: TableSemanticMetadata;
 }
 export const SemanticTable = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13701,6 +14113,7 @@ export const SemanticTable = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     RowLevelPermissionConfiguration: S.optional(
       RowLevelPermissionConfiguration,
     ),
+    SemanticMetadata: S.optional(TableSemanticMetadata),
   }),
 ).annotate({ identifier: "SemanticTable" }) as any as S.Schema<SemanticTable>;
 export type SemanticTableMap = { [key: string]: SemanticTable | undefined };
@@ -13708,11 +14121,73 @@ export const SemanticTableMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
   S.String,
   SemanticTable.pipe(S.optional),
 );
+export interface DataSetSemanticDescription {
+  Text: string | redacted.Redacted<string>;
+}
+export const DataSetSemanticDescription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Text: SensitiveString }),
+).annotate({
+  identifier: "DataSetSemanticDescription",
+}) as any as S.Schema<DataSetSemanticDescription>;
+export interface UploadedDocumentMetadata {
+  Name?: string;
+}
+export const UploadedDocumentMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Name: S.optional(S.String) }),
+).annotate({
+  identifier: "UploadedDocumentMetadata",
+}) as any as S.Schema<UploadedDocumentMetadata>;
+export interface InlineCustomInstruction {
+  InstructionText: string | redacted.Redacted<string>;
+  UploadedDocumentMetadata?: UploadedDocumentMetadata;
+}
+export const InlineCustomInstruction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      InstructionText: SensitiveString,
+      UploadedDocumentMetadata: S.optional(UploadedDocumentMetadata),
+    }),
+).annotate({
+  identifier: "InlineCustomInstruction",
+}) as any as S.Schema<InlineCustomInstruction>;
+export interface CustomInstruction {
+  InlineCustomInstruction?: InlineCustomInstruction;
+}
+export const CustomInstruction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ InlineCustomInstruction: S.optional(InlineCustomInstruction) }),
+).annotate({
+  identifier: "CustomInstruction",
+}) as any as S.Schema<CustomInstruction>;
+export type CustomInstructionList = CustomInstruction[];
+export const CustomInstructionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(CustomInstruction);
+export interface DataSetSemanticMetadata {
+  Description?: DataSetSemanticDescription;
+  CustomInstructions?: CustomInstruction[];
+}
+export const DataSetSemanticMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Description: S.optional(DataSetSemanticDescription),
+      CustomInstructions: S.optional(CustomInstructionList),
+    }),
+).annotate({
+  identifier: "DataSetSemanticMetadata",
+}) as any as S.Schema<DataSetSemanticMetadata>;
+export type DataSetSemanticMetadataList = DataSetSemanticMetadata[];
+export const DataSetSemanticMetadataList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  DataSetSemanticMetadata,
+);
 export interface SemanticModelConfiguration {
   TableMap?: { [key: string]: SemanticTable | undefined };
+  SemanticMetadata?: DataSetSemanticMetadata[];
 }
 export const SemanticModelConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ TableMap: S.optional(SemanticTableMap) }),
+  () =>
+    S.Struct({
+      TableMap: S.optional(SemanticTableMap),
+      SemanticMetadata: S.optional(DataSetSemanticMetadataList),
+    }),
 ).annotate({
   identifier: "SemanticModelConfiguration",
 }) as any as S.Schema<SemanticModelConfiguration>;
@@ -13811,6 +14286,7 @@ export type DataSourceType =
   | "PRESTO"
   | "REDSHIFT"
   | "S3"
+  | "S3_TABLES"
   | "SALESFORCE"
   | "SERVICENOW"
   | "SNOWFLAKE"
@@ -13856,12 +14332,14 @@ export const IdentityCenterConfiguration =
 export interface AthenaParameters {
   WorkGroup?: string;
   RoleArn?: string;
+  ConsumerAccountRoleArn?: string;
   IdentityCenterConfiguration?: IdentityCenterConfiguration;
 }
 export const AthenaParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     WorkGroup: S.optional(S.String),
     RoleArn: S.optional(S.String),
+    ConsumerAccountRoleArn: S.optional(S.String),
     IdentityCenterConfiguration: S.optional(IdentityCenterConfiguration),
   }),
 ).annotate({
@@ -14021,6 +14499,14 @@ export const S3Parameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     RoleArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "S3Parameters" }) as any as S.Schema<S3Parameters>;
+export interface S3TablesParameters {
+  TableBucketArn?: string;
+}
+export const S3TablesParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ TableBucketArn: S.optional(S.String) }),
+).annotate({
+  identifier: "S3TablesParameters",
+}) as any as S.Schema<S3TablesParameters>;
 export interface S3KnowledgeBaseParameters {
   RoleArn?: string;
   BucketUrl: string;
@@ -14064,6 +14550,7 @@ export interface OAuthParameters {
   OAuthScope?: string;
   IdentityProviderVpcConnectionProperties?: VpcConnectionProperties;
   IdentityProviderResourceUri?: string;
+  IdentityProviderCACertificatesBundleS3Uri?: string;
 }
 export const OAuthParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14073,6 +14560,7 @@ export const OAuthParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       VpcConnectionProperties,
     ),
     IdentityProviderResourceUri: S.optional(S.String),
+    IdentityProviderCACertificatesBundleS3Uri: S.optional(S.String),
   }),
 ).annotate({
   identifier: "OAuthParameters",
@@ -14292,6 +14780,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14326,6 +14815,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14360,6 +14850,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14394,6 +14885,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14428,6 +14920,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14462,6 +14955,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14496,6 +14990,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14530,6 +15025,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14564,6 +15060,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14598,6 +15095,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14632,6 +15130,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14666,6 +15165,7 @@ export type DataSourceParameters =
       RdsParameters: RdsParameters;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14700,6 +15200,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters: RedshiftParameters;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14734,6 +15235,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters: S3Parameters;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14768,6 +15270,42 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters: S3TablesParameters;
+      S3KnowledgeBaseParameters?: never;
+      ServiceNowParameters?: never;
+      SnowflakeParameters?: never;
+      SparkParameters?: never;
+      SqlServerParameters?: never;
+      TeradataParameters?: never;
+      TwitterParameters?: never;
+      AmazonOpenSearchParameters?: never;
+      ExasolParameters?: never;
+      DatabricksParameters?: never;
+      StarburstParameters?: never;
+      TrinoParameters?: never;
+      BigQueryParameters?: never;
+      ImpalaParameters?: never;
+      CustomConnectionParameters?: never;
+      WebCrawlerParameters?: never;
+      ConfluenceParameters?: never;
+      QBusinessParameters?: never;
+    }
+  | {
+      AmazonElasticsearchParameters?: never;
+      AthenaParameters?: never;
+      AuroraParameters?: never;
+      AuroraPostgreSqlParameters?: never;
+      AwsIotAnalyticsParameters?: never;
+      JiraParameters?: never;
+      MariaDbParameters?: never;
+      MySqlParameters?: never;
+      OracleParameters?: never;
+      PostgreSqlParameters?: never;
+      PrestoParameters?: never;
+      RdsParameters?: never;
+      RedshiftParameters?: never;
+      S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters: S3KnowledgeBaseParameters;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14802,6 +15340,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters: ServiceNowParameters;
       SnowflakeParameters?: never;
@@ -14836,6 +15375,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters: SnowflakeParameters;
@@ -14870,6 +15410,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14904,6 +15445,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14938,6 +15480,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -14972,6 +15515,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15006,6 +15550,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15040,6 +15585,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15074,6 +15620,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15108,6 +15655,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15142,6 +15690,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15176,6 +15725,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15210,6 +15760,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15244,6 +15795,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15278,6 +15830,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15312,6 +15865,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15346,6 +15900,7 @@ export type DataSourceParameters =
       RdsParameters?: never;
       RedshiftParameters?: never;
       S3Parameters?: never;
+      S3TablesParameters?: never;
       S3KnowledgeBaseParameters?: never;
       ServiceNowParameters?: never;
       SnowflakeParameters?: never;
@@ -15380,6 +15935,7 @@ export const DataSourceParameters = /*@__PURE__*/ /*#__PURE__*/ S.Union([
   S.Struct({ RdsParameters: RdsParameters }),
   S.Struct({ RedshiftParameters: RedshiftParameters }),
   S.Struct({ S3Parameters: S3Parameters }),
+  S.Struct({ S3TablesParameters: S3TablesParameters }),
   S.Struct({ S3KnowledgeBaseParameters: S3KnowledgeBaseParameters }),
   S.Struct({ ServiceNowParameters: ServiceNowParameters }),
   S.Struct({ SnowflakeParameters: SnowflakeParameters }),
@@ -15540,6 +16096,62 @@ export const CreateDataSourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDataSourceResponse",
 }) as any as S.Schema<CreateDataSourceResponse>;
+export type ActionsList = string[];
+export const ActionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface Permission {
+  Actions: string[];
+  Principal: string;
+}
+export const Permission = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Actions: ActionsList, Principal: S.String }),
+).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
+export type PermissionsList = Permission[];
+export const PermissionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Permission);
+export interface CreateFlowRequest {
+  AwsAccountId: string;
+  Name: string;
+  Description?: string;
+  FlowDefinition: any;
+  Permissions?: Permission[];
+  ClientToken?: string;
+}
+export const CreateFlowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    Name: S.String,
+    Description: S.optional(S.String),
+    FlowDefinition: S.Any,
+    Permissions: S.optional(PermissionsList),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/accounts/{AwsAccountId}/flows" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateFlowRequest",
+}) as any as S.Schema<CreateFlowRequest>;
+export interface CreateFlowResponse {
+  Arn: string;
+  FlowId: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const CreateFlowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    FlowId: S.String,
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "CreateFlowResponse",
+}) as any as S.Schema<CreateFlowResponse>;
 export type FolderType = "SHARED" | "RESTRICTED" | (string & {});
 export const FolderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type SharingModel = "ACCOUNT" | "NAMESPACE" | (string & {});
@@ -15951,6 +16563,75 @@ export const CreateNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateNamespaceResponse",
 }) as any as S.Schema<CreateNamespaceResponse>;
+export type OAuthClientAuthenticationType = "TOKEN" | (string & {});
+export const OAuthClientAuthenticationType =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateOAuthClientApplicationRequest {
+  AwsAccountId: string;
+  OAuthClientApplicationId: string;
+  Name: string;
+  OAuthClientAuthenticationType: OAuthClientAuthenticationType;
+  ClientId: string | redacted.Redacted<string>;
+  ClientSecret: string | redacted.Redacted<string>;
+  OAuthTokenEndpointUrl: string | redacted.Redacted<string>;
+  OAuthAuthorizationEndpointUrl?: string | redacted.Redacted<string>;
+  OAuthScopes?: string;
+  DataSourceType?: DataSourceType;
+  IdentityProviderVpcConnectionProperties?: VpcConnectionProperties;
+  Tags?: Tag[];
+}
+export const CreateOAuthClientApplicationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      OAuthClientApplicationId: S.String,
+      Name: S.String,
+      OAuthClientAuthenticationType: OAuthClientAuthenticationType,
+      ClientId: SensitiveString,
+      ClientSecret: SensitiveString,
+      OAuthTokenEndpointUrl: SensitiveString,
+      OAuthAuthorizationEndpointUrl: S.optional(SensitiveString),
+      OAuthScopes: S.optional(S.String),
+      DataSourceType: S.optional(DataSourceType),
+      IdentityProviderVpcConnectionProperties: S.optional(
+        VpcConnectionProperties,
+      ),
+      Tags: S.optional(TagList),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{AwsAccountId}/oauth-client-applications",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "CreateOAuthClientApplicationRequest",
+  }) as any as S.Schema<CreateOAuthClientApplicationRequest>;
+export interface CreateOAuthClientApplicationResponse {
+  Arn?: string;
+  OAuthClientApplicationId?: string;
+  CreationStatus?: ResourceStatus;
+  RequestId?: string;
+  Status?: number;
+}
+export const CreateOAuthClientApplicationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Arn: S.optional(S.String),
+      OAuthClientApplicationId: S.optional(S.String),
+      CreationStatus: S.optional(ResourceStatus),
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "CreateOAuthClientApplicationResponse",
+  }) as any as S.Schema<CreateOAuthClientApplicationResponse>;
 export type RefreshInterval =
   | "MINUTE15"
   | "MINUTE30"
@@ -16114,6 +16795,45 @@ export const CreateRoleMembershipResponse =
   ).annotate({
     identifier: "CreateRoleMembershipResponse",
   }) as any as S.Schema<CreateRoleMembershipResponse>;
+export interface CreateSpaceRequest {
+  AwsAccountId: string;
+  SpaceId: string;
+  Name: string;
+  Description?: string | redacted.Redacted<string>;
+}
+export const CreateSpaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    SpaceId: S.String,
+    Name: S.String,
+    Description: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/v1/accounts/{AwsAccountId}/spaces" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateSpaceRequest",
+}) as any as S.Schema<CreateSpaceRequest>;
+export interface CreateSpaceResponse {
+  spaceId: string;
+  spaceArn?: string;
+  RequestId?: string;
+}
+export const CreateSpaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spaceId: S.String,
+    spaceArn: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateSpaceResponse",
+}) as any as S.Schema<CreateSpaceResponse>;
 export interface TemplateSourceAnalysis {
   Arn: string;
   DataSetReferences: DataSetReference[];
@@ -16519,6 +17239,19 @@ export const VisualSubtitleFontConfiguration =
   ).annotate({
     identifier: "VisualSubtitleFontConfiguration",
   }) as any as S.Schema<VisualSubtitleFontConfiguration>;
+export interface ControlTitleFontConfiguration {
+  FontConfiguration?: FontConfiguration;
+  TextAlignment?: HorizontalTextAlignment;
+}
+export const ControlTitleFontConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      FontConfiguration: S.optional(FontConfiguration),
+      TextAlignment: S.optional(HorizontalTextAlignment),
+    }),
+  ).annotate({
+    identifier: "ControlTitleFontConfiguration",
+  }) as any as S.Schema<ControlTitleFontConfiguration>;
 export interface Typography {
   FontFamilies?: Font[];
   AxisTitleFontConfiguration?: FontConfiguration;
@@ -16528,6 +17261,7 @@ export interface Typography {
   DataLabelFontConfiguration?: FontConfiguration;
   VisualTitleFontConfiguration?: VisualTitleFontConfiguration;
   VisualSubtitleFontConfiguration?: VisualSubtitleFontConfiguration;
+  ControlTitleFontConfiguration?: ControlTitleFontConfiguration;
 }
 export const Typography = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -16541,6 +17275,7 @@ export const Typography = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     VisualSubtitleFontConfiguration: S.optional(
       VisualSubtitleFontConfiguration,
     ),
+    ControlTitleFontConfiguration: S.optional(ControlTitleFontConfiguration),
   }),
 ).annotate({ identifier: "Typography" }) as any as S.Schema<Typography>;
 export interface ThemeConfiguration {
@@ -17612,6 +18347,38 @@ export const DeleteActionConnectorResponse =
   ).annotate({
     identifier: "DeleteActionConnectorResponse",
   }) as any as S.Schema<DeleteActionConnectorResponse>;
+export interface DeleteAgentRequest {
+  AgentId: string;
+  AwsAccountId: string;
+}
+export const DeleteAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AgentId: S.String.pipe(T.HttpLabel("AgentId")),
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{AwsAccountId}/agents/{AgentId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteAgentRequest",
+}) as any as S.Schema<DeleteAgentRequest>;
+export interface DeleteAgentResponse {
+  RequestId?: string;
+}
+export const DeleteAgentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ RequestId: S.optional(S.String) }),
+).annotate({
+  identifier: "DeleteAgentResponse",
+}) as any as S.Schema<DeleteAgentResponse>;
 export interface DeleteAnalysisRequest {
   AwsAccountId: string;
   AnalysisId: string;
@@ -17969,6 +18736,42 @@ export const DeleteDefaultQBusinessApplicationResponse =
   ).annotate({
     identifier: "DeleteDefaultQBusinessApplicationResponse",
   }) as any as S.Schema<DeleteDefaultQBusinessApplicationResponse>;
+export interface DeleteFlowRequest {
+  AwsAccountId: string;
+  FlowId: string;
+}
+export const DeleteFlowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    FlowId: S.String.pipe(T.HttpLabel("FlowId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{AwsAccountId}/flows/{FlowId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteFlowRequest",
+}) as any as S.Schema<DeleteFlowRequest>;
+export interface DeleteFlowResponse {
+  RequestId?: string;
+  Status?: number;
+}
+export const DeleteFlowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "DeleteFlowResponse",
+}) as any as S.Schema<DeleteFlowResponse>;
 export interface DeleteFolderRequest {
   AwsAccountId: string;
   FolderId: string;
@@ -18210,6 +19013,48 @@ export const DeleteIdentityPropagationConfigResponse =
   ).annotate({
     identifier: "DeleteIdentityPropagationConfigResponse",
   }) as any as S.Schema<DeleteIdentityPropagationConfigResponse>;
+export interface DeleteKnowledgeBaseRequest {
+  AwsAccountId: string;
+  KnowledgeBaseId: string;
+}
+export const DeleteKnowledgeBaseRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      KnowledgeBaseId: S.String.pipe(T.HttpLabel("KnowledgeBaseId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteKnowledgeBaseRequest",
+}) as any as S.Schema<DeleteKnowledgeBaseRequest>;
+export interface DeleteKnowledgeBaseResponse {
+  KnowledgeBaseArn: string;
+  KnowledgeBaseId: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const DeleteKnowledgeBaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      KnowledgeBaseArn: S.String,
+      KnowledgeBaseId: S.String,
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "DeleteKnowledgeBaseResponse",
+  }) as any as S.Schema<DeleteKnowledgeBaseResponse>;
 export interface DeleteNamespaceRequest {
   AwsAccountId: string;
   Namespace: string;
@@ -18248,6 +19093,50 @@ export const DeleteNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteNamespaceResponse",
 }) as any as S.Schema<DeleteNamespaceResponse>;
+export interface DeleteOAuthClientApplicationRequest {
+  AwsAccountId: string;
+  OAuthClientApplicationId: string;
+}
+export const DeleteOAuthClientApplicationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      OAuthClientApplicationId: S.String.pipe(
+        T.HttpLabel("OAuthClientApplicationId"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/accounts/{AwsAccountId}/oauth-client-applications/{OAuthClientApplicationId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteOAuthClientApplicationRequest",
+  }) as any as S.Schema<DeleteOAuthClientApplicationRequest>;
+export interface DeleteOAuthClientApplicationResponse {
+  Arn?: string;
+  OAuthClientApplicationId?: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const DeleteOAuthClientApplicationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Arn: S.optional(S.String),
+      OAuthClientApplicationId: S.optional(S.String),
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "DeleteOAuthClientApplicationResponse",
+  }) as any as S.Schema<DeleteOAuthClientApplicationResponse>;
 export interface DeleteRefreshScheduleRequest {
   DataSetId: string;
   AwsAccountId: string;
@@ -18371,6 +19260,44 @@ export const DeleteRoleMembershipResponse =
   ).annotate({
     identifier: "DeleteRoleMembershipResponse",
   }) as any as S.Schema<DeleteRoleMembershipResponse>;
+export interface DeleteSpaceRequest {
+  AwsAccountId: string;
+  SpaceId: string;
+}
+export const DeleteSpaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    SpaceId: S.String.pipe(T.HttpLabel("SpaceId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteSpaceRequest",
+}) as any as S.Schema<DeleteSpaceRequest>;
+export interface DeleteSpaceResponse {
+  spaceId: string;
+  spaceArn?: string;
+  RequestId?: string;
+}
+export const DeleteSpaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spaceId: S.String,
+    spaceArn: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteSpaceResponse",
+}) as any as S.Schema<DeleteSpaceResponse>;
 export interface DeleteTemplateRequest {
   AwsAccountId: string;
   TemplateId: string;
@@ -19306,6 +20233,151 @@ export const DescribeActionConnectorPermissionsResponse =
   ).annotate({
     identifier: "DescribeActionConnectorPermissionsResponse",
   }) as any as S.Schema<DescribeActionConnectorPermissionsResponse>;
+export interface DescribeAgentRequest {
+  AgentId: string;
+  AwsAccountId: string;
+}
+export const DescribeAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AgentId: S.String.pipe(T.HttpLabel("AgentId")),
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{AwsAccountId}/agents/{AgentId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeAgentRequest",
+}) as any as S.Schema<DescribeAgentRequest>;
+export type AgentSpacesList = string[];
+export const AgentSpacesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type AgentActionConnectorsList = string[];
+export const AgentActionConnectorsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface CustomPromptInterface {
+  ModelProfileId: string;
+  SubscriptionId: string;
+  QbsAwsAccountId: string;
+  ResponseLength?: string | redacted.Redacted<string>;
+  OutputStyle?: string | redacted.Redacted<string>;
+  Identity?: string | redacted.Redacted<string>;
+  Tone?: string | redacted.Redacted<string>;
+  CustomInstructions?: string | redacted.Redacted<string>;
+  promptSummary?: string | redacted.Redacted<string>;
+}
+export const CustomPromptInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ModelProfileId: S.String,
+    SubscriptionId: S.String,
+    QbsAwsAccountId: S.String,
+    ResponseLength: S.optional(SensitiveString),
+    OutputStyle: S.optional(SensitiveString),
+    Identity: S.optional(SensitiveString),
+    Tone: S.optional(SensitiveString),
+    CustomInstructions: S.optional(SensitiveString),
+    promptSummary: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "CustomPromptInterface",
+}) as any as S.Schema<CustomPromptInterface>;
+export interface Agent {
+  Spaces?: string[];
+  ActionConnectors?: string[];
+  Description?: string;
+  IconId?: string;
+  Name: string;
+  StarterPrompts?: string[];
+  WelcomeMessage?: string | redacted.Redacted<string>;
+  Arn: string;
+  AgentId: string;
+  AgentLifecycle: AgentLifecycle;
+  AgentStatus: AgentStatus;
+  CreatedAt: Date;
+  Creator: string;
+  CustomPromptInterface?: CustomPromptInterface;
+  ErrorMessage?: string;
+  UpdatedAt: Date;
+}
+export const Agent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Spaces: S.optional(AgentSpacesList),
+    ActionConnectors: S.optional(AgentActionConnectorsList),
+    Description: S.optional(S.String),
+    IconId: S.optional(S.String),
+    Name: S.String,
+    StarterPrompts: S.optional(StarterPromptList),
+    WelcomeMessage: S.optional(SensitiveString),
+    Arn: S.String,
+    AgentId: S.String,
+    AgentLifecycle: AgentLifecycle,
+    AgentStatus: AgentStatus,
+    CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    Creator: S.String,
+    CustomPromptInterface: S.optional(CustomPromptInterface),
+    ErrorMessage: S.optional(S.String),
+    UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "Agent" }) as any as S.Schema<Agent>;
+export interface DescribeAgentResponse {
+  Agent: Agent;
+  RequestId?: string;
+}
+export const DescribeAgentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Agent: Agent, RequestId: S.optional(S.String) }),
+).annotate({
+  identifier: "DescribeAgentResponse",
+}) as any as S.Schema<DescribeAgentResponse>;
+export interface DescribeAgentPermissionsRequest {
+  AgentId: string;
+  AwsAccountId: string;
+}
+export const DescribeAgentPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AgentId: S.String.pipe(T.HttpLabel("AgentId")),
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{AwsAccountId}/agents/{AgentId}/permissions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeAgentPermissionsRequest",
+  }) as any as S.Schema<DescribeAgentPermissionsRequest>;
+export interface DescribeAgentPermissionsResponse {
+  Arn: string;
+  AgentId: string;
+  Permissions: ResourcePermission[];
+  RequestId: string;
+}
+export const DescribeAgentPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Arn: S.String,
+      AgentId: S.String,
+      Permissions: ResourcePermissionList,
+      RequestId: S.String,
+    }),
+  ).annotate({
+    identifier: "DescribeAgentPermissionsResponse",
+  }) as any as S.Schema<DescribeAgentPermissionsResponse>;
 export interface DescribeAnalysisRequest {
   AwsAccountId: string;
   AnalysisId: string;
@@ -21949,6 +23021,91 @@ export const DescribeDefaultQBusinessApplicationResponse =
   ).annotate({
     identifier: "DescribeDefaultQBusinessApplicationResponse",
   }) as any as S.Schema<DescribeDefaultQBusinessApplicationResponse>;
+export type FlowPublishState =
+  | "PUBLISHED"
+  | "DRAFT"
+  | "PENDING_APPROVAL"
+  | (string & {});
+export const FlowPublishState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DescribeFlowRequest {
+  AwsAccountId: string;
+  FlowId: string;
+  PublishState: FlowPublishState;
+}
+export const DescribeFlowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    FlowId: S.String.pipe(T.HttpLabel("FlowId")),
+    PublishState: FlowPublishState.pipe(T.HttpQuery("publish-state")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/accounts/{AwsAccountId}/flows/{FlowId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeFlowRequest",
+}) as any as S.Schema<DescribeFlowRequest>;
+export interface StepAliasMapping {
+  StepId: string;
+  StepAlias: string;
+}
+export const StepAliasMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ StepId: S.String, StepAlias: S.String }),
+).annotate({
+  identifier: "StepAliasMapping",
+}) as any as S.Schema<StepAliasMapping>;
+export type StepAliasList = StepAliasMapping[];
+export const StepAliasList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(StepAliasMapping);
+export interface FlowDetail {
+  Arn: string;
+  FlowId: string;
+  Name: string;
+  Description?: string;
+  PublishState: FlowPublishState;
+  CreatedTime: Date;
+  CreatedBy?: string;
+  LastUpdatedTime?: Date;
+  LastUpdatedBy?: string;
+  FlowDefinition: any;
+  StepAliases?: StepAliasMapping[];
+}
+export const FlowDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    FlowId: S.String,
+    Name: S.String,
+    Description: S.optional(S.String),
+    PublishState: FlowPublishState,
+    CreatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    CreatedBy: S.optional(S.String),
+    LastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    LastUpdatedBy: S.optional(S.String),
+    FlowDefinition: S.Any,
+    StepAliases: S.optional(StepAliasList),
+  }),
+).annotate({ identifier: "FlowDetail" }) as any as S.Schema<FlowDetail>;
+export interface DescribeFlowResponse {
+  Flow: FlowDetail;
+  RequestId?: string;
+  Status?: number;
+}
+export const DescribeFlowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Flow: FlowDetail,
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "DescribeFlowResponse",
+}) as any as S.Schema<DescribeFlowResponse>;
 export interface DescribeFolderRequest {
   AwsAccountId: string;
   FolderId: string;
@@ -22556,6 +23713,248 @@ export const DescribeKeyRegistrationResponse =
   ).annotate({
     identifier: "DescribeKeyRegistrationResponse",
   }) as any as S.Schema<DescribeKeyRegistrationResponse>;
+export interface DescribeKnowledgeBaseRequest {
+  AwsAccountId: string;
+  KnowledgeBaseId: string;
+}
+export const DescribeKnowledgeBaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      KnowledgeBaseId: S.String.pipe(T.HttpLabel("KnowledgeBaseId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeKnowledgeBaseRequest",
+  }) as any as S.Schema<DescribeKnowledgeBaseRequest>;
+export type DataSetStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "ACTIVE"
+  | "FAILED"
+  | "DELETING"
+  | (string & {});
+export const DataSetStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface KbTemplateConfiguration {
+  template?: any;
+}
+export const KbTemplateConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ template: S.optional(S.Any) }),
+).annotate({
+  identifier: "KbTemplateConfiguration",
+}) as any as S.Schema<KbTemplateConfiguration>;
+export interface KnowledgeBaseConfiguration {
+  templateConfiguration?: KbTemplateConfiguration;
+  eventEnabled?: boolean;
+}
+export const KnowledgeBaseConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      templateConfiguration: S.optional(KbTemplateConfiguration),
+      eventEnabled: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "KnowledgeBaseConfiguration",
+}) as any as S.Schema<KnowledgeBaseConfiguration>;
+export type ImageExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
+export const ImageExtractionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ImageExtractionConfiguration {
+  imageExtractionStatus: ImageExtractionStatus;
+}
+export const ImageExtractionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ imageExtractionStatus: ImageExtractionStatus }),
+  ).annotate({
+    identifier: "ImageExtractionConfiguration",
+  }) as any as S.Schema<ImageExtractionConfiguration>;
+export type AudioExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
+export const AudioExtractionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AudioExtractionConfiguration {
+  audioExtractionStatus: AudioExtractionStatus;
+}
+export const AudioExtractionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ audioExtractionStatus: AudioExtractionStatus }),
+  ).annotate({
+    identifier: "AudioExtractionConfiguration",
+  }) as any as S.Schema<AudioExtractionConfiguration>;
+export type VideoExtractionStatus = "ENABLED" | "DISABLED" | (string & {});
+export const VideoExtractionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type VideoExtractionType =
+  | "AUDIO_TRANSCRIPTION_ONLY"
+  | "VISUAL_CONTENT_AND_AUDIO_TRANSCRIPTION"
+  | (string & {});
+export const VideoExtractionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface VideoExtractionConfiguration {
+  videoExtractionStatus: VideoExtractionStatus;
+  videoExtractionType?: VideoExtractionType;
+}
+export const VideoExtractionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      videoExtractionStatus: VideoExtractionStatus,
+      videoExtractionType: S.optional(VideoExtractionType),
+    }),
+  ).annotate({
+    identifier: "VideoExtractionConfiguration",
+  }) as any as S.Schema<VideoExtractionConfiguration>;
+export interface MediaExtractionConfiguration {
+  imageExtractionConfiguration?: ImageExtractionConfiguration;
+  audioExtractionConfiguration?: AudioExtractionConfiguration;
+  videoExtractionConfiguration?: VideoExtractionConfiguration;
+}
+export const MediaExtractionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      imageExtractionConfiguration: S.optional(ImageExtractionConfiguration),
+      audioExtractionConfiguration: S.optional(AudioExtractionConfiguration),
+      videoExtractionConfiguration: S.optional(VideoExtractionConfiguration),
+    }),
+  ).annotate({
+    identifier: "MediaExtractionConfiguration",
+  }) as any as S.Schema<MediaExtractionConfiguration>;
+export type KbIngestionStatus =
+  | "QUEUED"
+  | "RUNNING"
+  | "FAILED"
+  | "COMPLETED"
+  | "INCOMPLETE"
+  | "CANCELLED"
+  | "CANCELLING"
+  | "TIMEOUT"
+  | (string & {});
+export const KbIngestionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface KnowledgeBaseIngestionSummary {
+  IngestionId: string;
+  IngestionStatus: KbIngestionStatus;
+  StartTime?: Date;
+  EndTime?: Date;
+}
+export const KnowledgeBaseIngestionSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      IngestionId: S.String,
+      IngestionStatus: KbIngestionStatus,
+      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    }),
+  ).annotate({
+    identifier: "KnowledgeBaseIngestionSummary",
+  }) as any as S.Schema<KnowledgeBaseIngestionSummary>;
+export interface KnowledgeBase {
+  KnowledgeBaseArn: string;
+  KnowledgeBaseId: string;
+  Name: string;
+  Status: DataSetStatus;
+  DataSourceArn: string;
+  KnowledgeBaseConfiguration: KnowledgeBaseConfiguration;
+  MediaExtractionConfiguration?: MediaExtractionConfiguration;
+  Type?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  Description?: string;
+  IsEmailNotificationOptedForIngestionFailures?: boolean;
+  FirstCompletedIngestionSummary?: KnowledgeBaseIngestionSummary;
+  FirstIncompleteIngestionSummary?: KnowledgeBaseIngestionSummary;
+  LatestIngestionSummary?: KnowledgeBaseIngestionSummary;
+  KnowledgeBaseSizeBytes?: number;
+  DocumentCount?: number;
+  PrimaryOwnerArn?: string;
+  PrimaryOwnerUsername?: string | redacted.Redacted<string>;
+}
+export const KnowledgeBase = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KnowledgeBaseArn: S.String,
+    KnowledgeBaseId: S.String,
+    Name: S.String,
+    Status: DataSetStatus,
+    DataSourceArn: S.String,
+    KnowledgeBaseConfiguration: KnowledgeBaseConfiguration,
+    MediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
+    Type: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Description: S.optional(S.String),
+    IsEmailNotificationOptedForIngestionFailures: S.optional(S.Boolean),
+    FirstCompletedIngestionSummary: S.optional(KnowledgeBaseIngestionSummary),
+    FirstIncompleteIngestionSummary: S.optional(KnowledgeBaseIngestionSummary),
+    LatestIngestionSummary: S.optional(KnowledgeBaseIngestionSummary),
+    KnowledgeBaseSizeBytes: S.optional(S.Number),
+    DocumentCount: S.optional(S.Number),
+    PrimaryOwnerArn: S.optional(S.String),
+    PrimaryOwnerUsername: S.optional(SensitiveString),
+  }),
+).annotate({ identifier: "KnowledgeBase" }) as any as S.Schema<KnowledgeBase>;
+export interface DescribeKnowledgeBaseResponse {
+  KnowledgeBase: KnowledgeBase;
+  RequestId?: string;
+  Status?: number;
+}
+export const DescribeKnowledgeBaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      KnowledgeBase: KnowledgeBase,
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "DescribeKnowledgeBaseResponse",
+  }) as any as S.Schema<DescribeKnowledgeBaseResponse>;
+export interface DescribeKnowledgeBasePermissionsRequest {
+  AwsAccountId: string;
+  KnowledgeBaseId: string;
+}
+export const DescribeKnowledgeBasePermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      KnowledgeBaseId: S.String.pipe(T.HttpLabel("KnowledgeBaseId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}/permissions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeKnowledgeBasePermissionsRequest",
+  }) as any as S.Schema<DescribeKnowledgeBasePermissionsRequest>;
+export interface DescribeKnowledgeBasePermissionsResponse {
+  KnowledgeBaseArn: string;
+  KnowledgeBaseId: string;
+  Permissions?: ResourcePermission[];
+  RequestId?: string;
+  Status?: number;
+}
+export const DescribeKnowledgeBasePermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      KnowledgeBaseArn: S.String,
+      KnowledgeBaseId: S.String,
+      Permissions: S.optional(ResourcePermissionList),
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "DescribeKnowledgeBasePermissionsResponse",
+  }) as any as S.Schema<DescribeKnowledgeBasePermissionsResponse>;
 export interface DescribeNamespaceRequest {
   AwsAccountId: string;
   Namespace: string;
@@ -22635,6 +24034,83 @@ export const DescribeNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeNamespaceResponse",
 }) as any as S.Schema<DescribeNamespaceResponse>;
+export interface DescribeOAuthClientApplicationRequest {
+  AwsAccountId: string;
+  OAuthClientApplicationId: string;
+}
+export const DescribeOAuthClientApplicationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      OAuthClientApplicationId: S.String.pipe(
+        T.HttpLabel("OAuthClientApplicationId"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{AwsAccountId}/oauth-client-applications/{OAuthClientApplicationId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeOAuthClientApplicationRequest",
+  }) as any as S.Schema<DescribeOAuthClientApplicationRequest>;
+export interface OAuthClientApplication {
+  OAuthClientApplicationId?: string;
+  Name?: string;
+  OAuthClientAuthenticationType?: OAuthClientAuthenticationType;
+  OAuthTokenEndpointUrl?: string | redacted.Redacted<string>;
+  OAuthAuthorizationEndpointUrl?: string | redacted.Redacted<string>;
+  OAuthScopes?: string;
+  DataSourceType?: DataSourceType;
+  IdentityProviderVpcConnectionProperties?: VpcConnectionProperties;
+  CreatedTime?: Date;
+  LastUpdatedTime?: Date;
+  Arn?: string;
+}
+export const OAuthClientApplication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      OAuthClientApplicationId: S.optional(S.String),
+      Name: S.optional(S.String),
+      OAuthClientAuthenticationType: S.optional(OAuthClientAuthenticationType),
+      OAuthTokenEndpointUrl: S.optional(SensitiveString),
+      OAuthAuthorizationEndpointUrl: S.optional(SensitiveString),
+      OAuthScopes: S.optional(S.String),
+      DataSourceType: S.optional(DataSourceType),
+      IdentityProviderVpcConnectionProperties: S.optional(
+        VpcConnectionProperties,
+      ),
+      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      LastUpdatedTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+      Arn: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "OAuthClientApplication",
+}) as any as S.Schema<OAuthClientApplication>;
+export interface DescribeOAuthClientApplicationResponse {
+  OAuthClientApplication?: OAuthClientApplication;
+  RequestId?: string;
+  Status?: number;
+}
+export const DescribeOAuthClientApplicationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      OAuthClientApplication: S.optional(OAuthClientApplication),
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "DescribeOAuthClientApplicationResponse",
+  }) as any as S.Schema<DescribeOAuthClientApplicationResponse>;
 export interface DescribeQPersonalizationConfigurationRequest {
   AwsAccountId: string;
 }
@@ -22850,6 +24326,161 @@ export const DescribeSelfUpgradeConfigurationResponse =
   ).annotate({
     identifier: "DescribeSelfUpgradeConfigurationResponse",
   }) as any as S.Schema<DescribeSelfUpgradeConfigurationResponse>;
+export interface DescribeSpaceRequest {
+  AwsAccountId: string;
+  SpaceId: string;
+  MaxContributors?: number;
+}
+export const DescribeSpaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    SpaceId: S.String.pipe(T.HttpLabel("SpaceId")),
+    MaxContributors: S.optional(S.Number).pipe(T.HttpQuery("maxContributors")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeSpaceRequest",
+}) as any as S.Schema<DescribeSpaceRequest>;
+export type SpaceQuickSightResourceType =
+  | "TOPIC"
+  | "DASHBOARD"
+  | "KNOWLEDGE_BASE"
+  | "ACTION_CONNECTOR"
+  | "DATA_SET"
+  | (string & {});
+export const SpaceQuickSightResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SpaceQuickSightResourceDetails = { resourceArn: string };
+export const SpaceQuickSightResourceDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.Union([S.Struct({ resourceArn: S.String })]);
+export interface SpaceQuickSightResource {
+  resourceType: SpaceQuickSightResourceType;
+  resourceDetails: SpaceQuickSightResourceDetails;
+}
+export const SpaceQuickSightResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resourceType: SpaceQuickSightResourceType,
+      resourceDetails: SpaceQuickSightResourceDetails,
+    }),
+).annotate({
+  identifier: "SpaceQuickSightResource",
+}) as any as S.Schema<SpaceQuickSightResource>;
+export type SpaceQuickSightResources = SpaceQuickSightResource[];
+export const SpaceQuickSightResources = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  SpaceQuickSightResource,
+);
+export interface SpaceDetails {
+  name?: string;
+  description?: string | redacted.Redacted<string>;
+  resources?: SpaceQuickSightResource[];
+  createdAt?: Date;
+  updatedAt?: Date;
+  consumedSourceSize?: number;
+  consumedSourceDocCount?: number;
+  createdBy?: string;
+  createdByArn?: string;
+}
+export const SpaceDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    resources: S.optional(SpaceQuickSightResources),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    consumedSourceSize: S.optional(S.Number),
+    consumedSourceDocCount: S.optional(S.Number),
+    createdBy: S.optional(S.String),
+    createdByArn: S.optional(S.String),
+  }),
+).annotate({ identifier: "SpaceDetails" }) as any as S.Schema<SpaceDetails>;
+export interface SpaceContributor {
+  userName?: string;
+  rawFileSizeBytes: number;
+  percentage?: number;
+}
+export const SpaceContributor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userName: S.optional(S.String),
+    rawFileSizeBytes: S.Number,
+    percentage: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SpaceContributor",
+}) as any as S.Schema<SpaceContributor>;
+export type SpaceContributorList = SpaceContributor[];
+export const SpaceContributorList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SpaceContributor);
+export interface DescribeSpaceResponse {
+  spaceId: string;
+  spaceArn?: string;
+  Space: SpaceDetails;
+  Contributors?: SpaceContributor[];
+  RequestId?: string;
+}
+export const DescribeSpaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spaceId: S.String,
+    spaceArn: S.optional(S.String),
+    Space: SpaceDetails,
+    Contributors: S.optional(SpaceContributorList),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeSpaceResponse",
+}) as any as S.Schema<DescribeSpaceResponse>;
+export interface DescribeSpacePermissionsRequest {
+  AwsAccountId: string;
+  SpaceId: string;
+}
+export const DescribeSpacePermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      SpaceId: S.String.pipe(T.HttpLabel("SpaceId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}/permissions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeSpacePermissionsRequest",
+  }) as any as S.Schema<DescribeSpacePermissionsRequest>;
+export interface DescribeSpacePermissionsResponse {
+  spaceId: string;
+  spaceArn?: string;
+  Permissions?: ResourcePermission[];
+  RequestId?: string;
+}
+export const DescribeSpacePermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      spaceId: S.String,
+      spaceArn: S.optional(S.String),
+      Permissions: S.optional(ResourcePermissionList),
+      RequestId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DescribeSpacePermissionsResponse",
+  }) as any as S.Schema<DescribeSpacePermissionsResponse>;
 export interface DescribeTemplateRequest {
   AwsAccountId: string;
   TemplateId: string;
@@ -23922,6 +25553,15 @@ export const ThresholdAlertsConfigurations =
   ).annotate({
     identifier: "ThresholdAlertsConfigurations",
   }) as any as S.Schema<ThresholdAlertsConfigurations>;
+export interface DashboardCustomizationSummaryConfigurations {
+  Enabled: boolean;
+}
+export const DashboardCustomizationSummaryConfigurations =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Enabled: S.Boolean }),
+  ).annotate({
+    identifier: "DashboardCustomizationSummaryConfigurations",
+  }) as any as S.Schema<DashboardCustomizationSummaryConfigurations>;
 export interface RegisteredUserDashboardFeatureConfigurations {
   StatePersistence?: StatePersistenceConfigurations;
   Bookmarks?: BookmarksConfigurations;
@@ -23930,6 +25570,7 @@ export interface RegisteredUserDashboardFeatureConfigurations {
   Schedules?: SchedulesConfigurations;
   RecentSnapshots?: RecentSnapshotsConfigurations;
   ThresholdAlerts?: ThresholdAlertsConfigurations;
+  DashboardCustomizationSummary?: DashboardCustomizationSummaryConfigurations;
 }
 export const RegisteredUserDashboardFeatureConfigurations =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -23943,6 +25584,9 @@ export const RegisteredUserDashboardFeatureConfigurations =
       Schedules: S.optional(SchedulesConfigurations),
       RecentSnapshots: S.optional(RecentSnapshotsConfigurations),
       ThresholdAlerts: S.optional(ThresholdAlertsConfigurations),
+      DashboardCustomizationSummary: S.optional(
+        DashboardCustomizationSummaryConfigurations,
+      ),
     }),
   ).annotate({
     identifier: "RegisteredUserDashboardFeatureConfigurations",
@@ -24011,6 +25655,7 @@ export interface RegisteredUserConsoleFeatureConfigurations {
   Schedules?: SchedulesConfigurations;
   RecentSnapshots?: RecentSnapshotsConfigurations;
   ThresholdAlerts?: ThresholdAlertsConfigurations;
+  DashboardCustomizationSummary?: DashboardCustomizationSummaryConfigurations;
 }
 export const RegisteredUserConsoleFeatureConfigurations =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -24021,6 +25666,9 @@ export const RegisteredUserConsoleFeatureConfigurations =
       Schedules: S.optional(SchedulesConfigurations),
       RecentSnapshots: S.optional(RecentSnapshotsConfigurations),
       ThresholdAlerts: S.optional(ThresholdAlertsConfigurations),
+      DashboardCustomizationSummary: S.optional(
+        DashboardCustomizationSummaryConfigurations,
+      ),
     }),
   ).annotate({
     identifier: "RegisteredUserConsoleFeatureConfigurations",
@@ -24287,12 +25935,6 @@ export const GetFlowMetadataInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFlowMetadataInput",
 }) as any as S.Schema<GetFlowMetadataInput>;
-export type FlowPublishState =
-  | "PUBLISHED"
-  | "DRAFT"
-  | "PENDING_APPROVAL"
-  | (string & {});
-export const FlowPublishState = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface GetFlowMetadataOutput {
   Arn: string;
   FlowId: string;
@@ -24350,17 +25992,6 @@ export const GetFlowPermissionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetFlowPermissionsInput",
 }) as any as S.Schema<GetFlowPermissionsInput>;
-export type ActionsList = string[];
-export const ActionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
-export interface Permission {
-  Actions: string[];
-  Principal: string;
-}
-export const Permission = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ Actions: ActionsList, Principal: S.String }),
-).annotate({ identifier: "Permission" }) as any as S.Schema<Permission>;
-export type PermissionsList = Permission[];
-export const PermissionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Permission);
 export interface GetFlowPermissionsOutput {
   Arn: string;
   FlowId: string;
@@ -24402,6 +26033,7 @@ export interface GetIdentityContextRequest {
   UserIdentifier: UserIdentifier;
   Namespace?: string;
   SessionExpiresAt?: Date;
+  ContextRegion?: string;
 }
 export const GetIdentityContextRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -24412,6 +26044,7 @@ export const GetIdentityContextRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       SessionExpiresAt: S.optional(
         S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       ),
+      ContextRegion: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({
@@ -24562,6 +26195,65 @@ export const ListActionConnectorsResponse =
   ).annotate({
     identifier: "ListActionConnectorsResponse",
   }) as any as S.Schema<ListActionConnectorsResponse>;
+export interface ListAgentsRequest {
+  AwsAccountId: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListAgentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/accounts/{AwsAccountId}/agents" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAgentsRequest",
+}) as any as S.Schema<ListAgentsRequest>;
+export interface AgentSummary {
+  Arn: string;
+  AgentId: string;
+  Name: string;
+  Description?: string;
+  CreatedAt: Date;
+  UpdatedAt: Date;
+  IconId?: string;
+}
+export const AgentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    AgentId: S.String,
+    Name: S.String,
+    Description: S.optional(S.String),
+    CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    UpdatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    IconId: S.optional(S.String),
+  }),
+).annotate({ identifier: "AgentSummary" }) as any as S.Schema<AgentSummary>;
+export type AgentSummaries = AgentSummary[];
+export const AgentSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(AgentSummary);
+export interface ListAgentsResponse {
+  RequestId?: string;
+  AgentSummaries: AgentSummary[];
+  NextToken?: string;
+}
+export const ListAgentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RequestId: S.optional(S.String),
+    AgentSummaries: AgentSummaries,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAgentsResponse",
+}) as any as S.Schema<ListAgentsResponse>;
 export interface ListAnalysesRequest {
   AwsAccountId: string;
   NextToken?: string;
@@ -25725,6 +27417,85 @@ export const ListIngestionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListIngestionsResponse",
 }) as any as S.Schema<ListIngestionsResponse>;
+export interface ListKnowledgeBasesRequest {
+  AwsAccountId: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListKnowledgeBasesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/v1/accounts/{AwsAccountId}/knowledge-bases",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListKnowledgeBasesRequest",
+}) as any as S.Schema<ListKnowledgeBasesRequest>;
+export interface KnowledgeBaseSummary {
+  KnowledgeBaseArn: string;
+  KnowledgeBaseId: string;
+  Name: string;
+  Status: DataSetStatus;
+  DataSourceArn: string;
+  Type?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  KnowledgeBaseSizeBytes?: number;
+  DocumentCount?: number;
+  PrimaryOwnerArn?: string;
+  PrimaryOwnerUsername?: string | redacted.Redacted<string>;
+}
+export const KnowledgeBaseSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KnowledgeBaseArn: S.String,
+    KnowledgeBaseId: S.String,
+    Name: S.String,
+    Status: DataSetStatus,
+    DataSourceArn: S.String,
+    Type: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    KnowledgeBaseSizeBytes: S.optional(S.Number),
+    DocumentCount: S.optional(S.Number),
+    PrimaryOwnerArn: S.optional(S.String),
+    PrimaryOwnerUsername: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "KnowledgeBaseSummary",
+}) as any as S.Schema<KnowledgeBaseSummary>;
+export type KnowledgeBaseSummaries = KnowledgeBaseSummary[];
+export const KnowledgeBaseSummaries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(KnowledgeBaseSummary);
+export interface ListKnowledgeBasesResponse {
+  KnowledgeBaseSummaries: KnowledgeBaseSummary[];
+  NextToken?: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const ListKnowledgeBasesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      KnowledgeBaseSummaries: KnowledgeBaseSummaries,
+      NextToken: S.optional(S.String),
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+).annotate({
+  identifier: "ListKnowledgeBasesResponse",
+}) as any as S.Schema<ListKnowledgeBasesResponse>;
 export interface ListNamespacesRequest {
   AwsAccountId: string;
   NextToken?: string;
@@ -25767,6 +27538,82 @@ export const ListNamespacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListNamespacesResponse",
 }) as any as S.Schema<ListNamespacesResponse>;
+export interface ListOAuthClientApplicationsRequest {
+  AwsAccountId: string;
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListOAuthClientApplicationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/accounts/{AwsAccountId}/oauth-client-applications",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListOAuthClientApplicationsRequest",
+  }) as any as S.Schema<ListOAuthClientApplicationsRequest>;
+export interface OAuthClientApplicationSummary {
+  OAuthClientApplicationId?: string;
+  Name?: string;
+  OAuthClientAuthenticationType?: OAuthClientAuthenticationType;
+  DataSourceType?: DataSourceType;
+  IdentityProviderVpcConnectionProperties?: VpcConnectionProperties;
+  CreatedTime?: Date;
+  LastUpdatedTime?: Date;
+  Arn?: string;
+}
+export const OAuthClientApplicationSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      OAuthClientApplicationId: S.optional(S.String),
+      Name: S.optional(S.String),
+      OAuthClientAuthenticationType: S.optional(OAuthClientAuthenticationType),
+      DataSourceType: S.optional(DataSourceType),
+      IdentityProviderVpcConnectionProperties: S.optional(
+        VpcConnectionProperties,
+      ),
+      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      LastUpdatedTime: S.optional(
+        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      ),
+      Arn: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "OAuthClientApplicationSummary",
+  }) as any as S.Schema<OAuthClientApplicationSummary>;
+export type OAuthClientApplicationSummaryList = OAuthClientApplicationSummary[];
+export const OAuthClientApplicationSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(OAuthClientApplicationSummary);
+export interface ListOAuthClientApplicationsResponse {
+  OAuthClientApplications?: OAuthClientApplicationSummary[];
+  NextToken?: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const ListOAuthClientApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      OAuthClientApplications: S.optional(OAuthClientApplicationSummaryList),
+      NextToken: S.optional(S.String),
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "ListOAuthClientApplicationsResponse",
+  }) as any as S.Schema<ListOAuthClientApplicationsResponse>;
 export interface ListRefreshSchedulesRequest {
   AwsAccountId: string;
   DataSetId: string;
@@ -25943,6 +27790,138 @@ export const ListSelfUpgradesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListSelfUpgradesResponse",
 }) as any as S.Schema<ListSelfUpgradesResponse>;
+export interface ListSpaceResourcesRequest {
+  AwsAccountId: string;
+  SpaceId: string;
+}
+export const ListSpaceResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      SpaceId: S.String.pipe(T.HttpLabel("SpaceId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}/resources",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListSpaceResourcesRequest",
+}) as any as S.Schema<ListSpaceResourcesRequest>;
+export interface SpaceResourceSummary {
+  ResourceType: SpaceQuickSightResourceType;
+  ResourceDetails: SpaceQuickSightResourceDetails;
+  ResourceName?: string;
+  UpdatedAt?: Date;
+}
+export const SpaceResourceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceType: SpaceQuickSightResourceType,
+    ResourceDetails: SpaceQuickSightResourceDetails,
+    ResourceName: S.optional(S.String),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "SpaceResourceSummary",
+}) as any as S.Schema<SpaceResourceSummary>;
+export type SpaceResourceSummaries = SpaceResourceSummary[];
+export const SpaceResourceSummaries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SpaceResourceSummary);
+export interface ListSpaceResourcesResponse {
+  spaceId: string;
+  spaceArn?: string;
+  SpaceResources: SpaceResourceSummary[];
+  RequestId?: string;
+}
+export const ListSpaceResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      spaceId: S.String,
+      spaceArn: S.optional(S.String),
+      SpaceResources: SpaceResourceSummaries,
+      RequestId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListSpaceResourcesResponse",
+}) as any as S.Schema<ListSpaceResourcesResponse>;
+export interface ListSpacesRequest {
+  AwsAccountId: string;
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/accounts/{AwsAccountId}/spaces" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListSpacesRequest",
+}) as any as S.Schema<ListSpacesRequest>;
+export interface SpaceSummary {
+  spaceId: string;
+  spaceArn?: string;
+  name?: string;
+  description?: string | redacted.Redacted<string>;
+  updatedAt?: Date;
+  consumedSourceSize?: number;
+  consumedSourceDocCount?: number;
+  createdAt?: Date;
+  createdBy?: string;
+  createdByArn?: string;
+  resourcesCount?: number;
+}
+export const SpaceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spaceId: S.String,
+    spaceArn: S.optional(S.String),
+    name: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    consumedSourceSize: S.optional(S.Number),
+    consumedSourceDocCount: S.optional(S.Number),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    createdBy: S.optional(S.String),
+    createdByArn: S.optional(S.String),
+    resourcesCount: S.optional(S.Number),
+  }),
+).annotate({ identifier: "SpaceSummary" }) as any as S.Schema<SpaceSummary>;
+export type SpaceSummaries = SpaceSummary[];
+export const SpaceSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(SpaceSummary);
+export interface ListSpacesResponse {
+  spaceId: string;
+  spaceArn?: string;
+  SpaceSummaries: SpaceSummary[];
+  NextToken?: string;
+  RequestId?: string;
+}
+export const ListSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spaceId: S.String,
+    spaceArn: S.optional(S.String),
+    SpaceSummaries: SpaceSummaries,
+    NextToken: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSpacesResponse",
+}) as any as S.Schema<ListSpacesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -26618,6 +28597,121 @@ export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUsersResponse",
 }) as any as S.Schema<ListUsersResponse>;
+export interface UserNameOrEmailFilter {
+  prefix: string;
+}
+export const UserNameOrEmailFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ prefix: S.String }),
+).annotate({
+  identifier: "UserNameOrEmailFilter",
+}) as any as S.Schema<UserNameOrEmailFilter>;
+export interface CapacityBytesRangeFilter {
+  minBytes?: number;
+  maxBytes?: number;
+}
+export const CapacityBytesRangeFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      minBytes: S.optional(S.Number),
+      maxBytes: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "CapacityBytesRangeFilter",
+}) as any as S.Schema<CapacityBytesRangeFilter>;
+export type UserIndexCapacityFilter =
+  | { userNameOrEmail: UserNameOrEmailFilter; totalCapacityBytes?: never }
+  | { userNameOrEmail?: never; totalCapacityBytes: CapacityBytesRangeFilter };
+export const UserIndexCapacityFilter = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ userNameOrEmail: UserNameOrEmailFilter }),
+  S.Struct({ totalCapacityBytes: CapacityBytesRangeFilter }),
+]);
+export type UserIndexCapacityFilters = UserIndexCapacityFilter[];
+export const UserIndexCapacityFilters = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  UserIndexCapacityFilter,
+);
+export type UserIndexCapacitySortBy = "TOTAL_CAPACITY_BYTES" | (string & {});
+export const UserIndexCapacitySortBy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type UserIndexCapacitySortOrder = "ASC" | "DESC" | (string & {});
+export const UserIndexCapacitySortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ListUsersIndexCapacityRequest {
+  awsAccountId: string;
+  namespace?: string;
+  filters?: UserIndexCapacityFilter[];
+  sortBy?: UserIndexCapacitySortBy;
+  sortOrder?: UserIndexCapacitySortOrder;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListUsersIndexCapacityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      awsAccountId: S.String.pipe(T.HttpLabel("awsAccountId")),
+      namespace: S.optional(S.String),
+      filters: S.optional(UserIndexCapacityFilters),
+      sortBy: S.optional(UserIndexCapacitySortBy),
+      sortOrder: S.optional(UserIndexCapacitySortOrder),
+      maxResults: S.optional(S.Number),
+      nextToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/accounts/{awsAccountId}/quick-index/user-capacity",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListUsersIndexCapacityRequest",
+  }) as any as S.Schema<ListUsersIndexCapacityRequest>;
+export interface UserIndexCapacity {
+  userArn?: string;
+  userName?: string;
+  email?: string;
+  role?: string;
+  totalCapacityBytes?: number;
+  totalKBCapacityBytes?: number;
+  totalSpaceCapacityBytes?: number;
+  kbCount?: number;
+  spaceCount?: number;
+}
+export const UserIndexCapacity = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userArn: S.optional(S.String),
+    userName: S.optional(S.String),
+    email: S.optional(S.String),
+    role: S.optional(S.String),
+    totalCapacityBytes: S.optional(S.Number),
+    totalKBCapacityBytes: S.optional(S.Number),
+    totalSpaceCapacityBytes: S.optional(S.Number),
+    kbCount: S.optional(S.Number),
+    spaceCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UserIndexCapacity",
+}) as any as S.Schema<UserIndexCapacity>;
+export type UserIndexCapacityList = UserIndexCapacity[];
+export const UserIndexCapacityList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(UserIndexCapacity);
+export interface ListUsersIndexCapacityResponse {
+  users?: UserIndexCapacity[];
+  nextToken?: string;
+  requestId?: string;
+}
+export const ListUsersIndexCapacityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      users: S.optional(UserIndexCapacityList),
+      nextToken: S.optional(S.String),
+      requestId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListUsersIndexCapacityResponse",
+  }) as any as S.Schema<ListUsersIndexCapacityResponse>;
 export interface ListVPCConnectionsRequest {
   AwsAccountId: string;
   NextToken?: string;
@@ -27049,6 +29143,75 @@ export const SearchActionConnectorsResponse =
   ).annotate({
     identifier: "SearchActionConnectorsResponse",
   }) as any as S.Schema<SearchActionConnectorsResponse>;
+export type AgentOwnershipFilterAttribute =
+  | "DIRECT_QUICKSIGHT_OWNER"
+  | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
+  | "DIRECT_QUICKSIGHT_SOLE_OWNER"
+  | "AGENT_NAME"
+  | (string & {});
+export const AgentOwnershipFilterAttribute =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type ComparisonOperator = "StringEquals" | "StringLike" | (string & {});
+export const ComparisonOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AgentSearchFilter {
+  Name?: AgentOwnershipFilterAttribute;
+  Operator?: ComparisonOperator;
+  Value?: string;
+}
+export const AgentSearchFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(AgentOwnershipFilterAttribute),
+    Operator: S.optional(ComparisonOperator),
+    Value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentSearchFilter",
+}) as any as S.Schema<AgentSearchFilter>;
+export type AgentSearchFilterList = AgentSearchFilter[];
+export const AgentSearchFilterList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgentSearchFilter);
+export interface SearchAgentsRequest {
+  AwsAccountId: string;
+  Filters: AgentSearchFilter[];
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const SearchAgentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    Filters: AgentSearchFilterList,
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/accounts/{AwsAccountId}/search/agents" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SearchAgentsRequest",
+}) as any as S.Schema<SearchAgentsRequest>;
+export type AgentSummaryList = AgentSummary[];
+export const AgentSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AgentSummary);
+export interface SearchAgentsResponse {
+  AgentSummaries?: AgentSummary[];
+  NextToken?: string;
+  RequestId?: string;
+}
+export const SearchAgentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AgentSummaries: S.optional(AgentSummaryList),
+    NextToken: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchAgentsResponse",
+}) as any as S.Schema<SearchAgentsResponse>;
 export type AnalysisFilterAttribute =
   | "QUICKSIGHT_USER"
   | "QUICKSIGHT_VIEWER_OR_OWNER"
@@ -27575,6 +29738,190 @@ export const SearchGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchGroupsResponse",
 }) as any as S.Schema<SearchGroupsResponse>;
+export type KnowledgeBaseSearchFilterName =
+  | "KNOWLEDGE_BASE_ID"
+  | "KNOWLEDGE_BASE_NAME"
+  | "DIRECT_QUICKSIGHT_OWNER"
+  | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
+  | "DIRECT_QUICKSIGHT_SOLE_OWNER"
+  | "KNOWLEDGE_BASE_SIZE_BYTES"
+  | "PRIMARY_OWNER"
+  | (string & {});
+export const KnowledgeBaseSearchFilterName =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type KnowledgeBaseSearchOperator =
+  | "STRING_EQUALS"
+  | "STRING_LIKE"
+  | "GREATER_THAN_OR_EQUALS"
+  | "LESS_THAN_OR_EQUALS"
+  | (string & {});
+export const KnowledgeBaseSearchOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface KnowledgeBaseSearchFilter {
+  name: KnowledgeBaseSearchFilterName;
+  operator: KnowledgeBaseSearchOperator;
+  value: string;
+}
+export const KnowledgeBaseSearchFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: KnowledgeBaseSearchFilterName,
+      operator: KnowledgeBaseSearchOperator,
+      value: S.String,
+    }),
+).annotate({
+  identifier: "KnowledgeBaseSearchFilter",
+}) as any as S.Schema<KnowledgeBaseSearchFilter>;
+export type KnowledgeBaseSearchFilters = KnowledgeBaseSearchFilter[];
+export const KnowledgeBaseSearchFilters = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  KnowledgeBaseSearchFilter,
+);
+export type KnowledgeBaseSortByField =
+  | "KNOWLEDGE_BASE_SIZE_BYTES"
+  | "CREATED_AT"
+  | (string & {});
+export const KnowledgeBaseSortByField = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SortOrder = "ASC" | "DESC" | (string & {});
+export const SortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface KnowledgeBaseSortBy {
+  sortByField: KnowledgeBaseSortByField;
+  sortOrder: SortOrder;
+}
+export const KnowledgeBaseSortBy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ sortByField: KnowledgeBaseSortByField, sortOrder: SortOrder }),
+).annotate({
+  identifier: "KnowledgeBaseSortBy",
+}) as any as S.Schema<KnowledgeBaseSortBy>;
+export interface SearchKnowledgeBasesRequest {
+  AwsAccountId: string;
+  NextToken?: string;
+  MaxResults?: number;
+  Filters?: KnowledgeBaseSearchFilter[];
+  SortBy?: KnowledgeBaseSortBy;
+}
+export const SearchKnowledgeBasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      NextToken: S.optional(S.String),
+      MaxResults: S.optional(S.Number),
+      Filters: S.optional(KnowledgeBaseSearchFilters),
+      SortBy: S.optional(KnowledgeBaseSortBy),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/v1/accounts/{AwsAccountId}/search/knowledge-bases",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "SearchKnowledgeBasesRequest",
+  }) as any as S.Schema<SearchKnowledgeBasesRequest>;
+export interface SearchKnowledgeBasesResponse {
+  KnowledgeBaseSummaries: KnowledgeBaseSummary[];
+  NextToken?: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const SearchKnowledgeBasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      KnowledgeBaseSummaries: KnowledgeBaseSummaries,
+      NextToken: S.optional(S.String),
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "SearchKnowledgeBasesResponse",
+  }) as any as S.Schema<SearchKnowledgeBasesResponse>;
+export type SpaceQuickSightSearchFilterName =
+  | "SPACE_ID"
+  | "SPACE_NAME"
+  | "DIRECT_QUICKSIGHT_OWNER"
+  | "DIRECT_QUICKSIGHT_VIEWER_OR_OWNER"
+  | "DIRECT_QUICKSIGHT_SOLE_OWNER"
+  | "CONTRIBUTED_BY"
+  | "CONSUMED_SOURCE_SIZE"
+  | "CREATED_BY"
+  | (string & {});
+export const SpaceQuickSightSearchFilterName =
+  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SpaceSearchOperator =
+  | "STRING_EQUALS"
+  | "STRING_LIKE"
+  | "NUMBER_RANGE"
+  | (string & {});
+export const SpaceSearchOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SpaceQuicksightSearchFilter {
+  name: SpaceQuickSightSearchFilterName;
+  operator: SpaceSearchOperator;
+  value: string;
+}
+export const SpaceQuicksightSearchFilter =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: SpaceQuickSightSearchFilterName,
+      operator: SpaceSearchOperator,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "SpaceQuicksightSearchFilter",
+  }) as any as S.Schema<SpaceQuicksightSearchFilter>;
+export type SpaceQuicksightSearchFilters = SpaceQuicksightSearchFilter[];
+export const SpaceQuicksightSearchFilters = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  SpaceQuicksightSearchFilter,
+);
+export interface SearchSpacesRequest {
+  AwsAccountId: string;
+  NextToken?: string;
+  MaxResults?: number;
+  Filters: SpaceQuicksightSearchFilter[];
+}
+export const SearchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    Filters: SpaceQuicksightSearchFilters,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v1/accounts/{AwsAccountId}/search/spaces",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SearchSpacesRequest",
+}) as any as S.Schema<SearchSpacesRequest>;
+export interface SearchSpacesResponse {
+  spaceId: string;
+  spaceArn?: string;
+  SpaceSummaries: SpaceSummary[];
+  NextToken?: string;
+  RequestId?: string;
+}
+export const SearchSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spaceId: S.String,
+    spaceArn: S.optional(S.String),
+    SpaceSummaries: SpaceSummaries,
+    NextToken: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchSpacesResponse",
+}) as any as S.Schema<SearchSpacesResponse>;
 export type TopicFilterOperator = "StringEquals" | "StringLike" | (string & {});
 export const TopicFilterOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type TopicFilterAttribute =
@@ -28217,6 +30564,166 @@ export const UpdateActionConnectorPermissionsResponse =
   ).annotate({
     identifier: "UpdateActionConnectorPermissionsResponse",
   }) as any as S.Schema<UpdateActionConnectorPermissionsResponse>;
+export type UpdateAgentRequestSpacesToAddList = string[];
+export const UpdateAgentRequestSpacesToAddList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type UpdateAgentRequestSpacesToRemoveList = string[];
+export const UpdateAgentRequestSpacesToRemoveList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type UpdateAgentRequestActionConnectorsToAddList = string[];
+export const UpdateAgentRequestActionConnectorsToAddList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type UpdateAgentRequestActionConnectorsToRemoveList = string[];
+export const UpdateAgentRequestActionConnectorsToRemoveList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface UpdateAgentRequest {
+  AgentId: string;
+  AwsAccountId: string;
+  Name: string;
+  Description?: string;
+  IconId?: string;
+  StarterPrompts?: string[];
+  WelcomeMessage?: string | redacted.Redacted<string>;
+  CustomPromptInput?: CustomPromptInput;
+  SpacesToAdd?: string[];
+  SpacesToRemove?: string[];
+  ActionConnectorsToAdd?: string[];
+  ActionConnectorsToRemove?: string[];
+}
+export const UpdateAgentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AgentId: S.String.pipe(T.HttpLabel("AgentId")),
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    Name: S.String,
+    Description: S.optional(S.String),
+    IconId: S.optional(S.String),
+    StarterPrompts: S.optional(StarterPromptList),
+    WelcomeMessage: S.optional(SensitiveString),
+    CustomPromptInput: S.optional(CustomPromptInput),
+    SpacesToAdd: S.optional(UpdateAgentRequestSpacesToAddList),
+    SpacesToRemove: S.optional(UpdateAgentRequestSpacesToRemoveList),
+    ActionConnectorsToAdd: S.optional(
+      UpdateAgentRequestActionConnectorsToAddList,
+    ),
+    ActionConnectorsToRemove: S.optional(
+      UpdateAgentRequestActionConnectorsToRemoveList,
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{AwsAccountId}/agents/{AgentId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateAgentRequest",
+}) as any as S.Schema<UpdateAgentRequest>;
+export interface FailedToUpdateAssociation {
+  Arn?: string;
+  ErrorMessage?: string;
+  ErrorCode?: string;
+}
+export const FailedToUpdateAssociation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Arn: S.optional(S.String),
+      ErrorMessage: S.optional(S.String),
+      ErrorCode: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "FailedToUpdateAssociation",
+}) as any as S.Schema<FailedToUpdateAssociation>;
+export type FailedToUpdateAssociationList = FailedToUpdateAssociation[];
+export const FailedToUpdateAssociationList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(FailedToUpdateAssociation);
+export interface UpdateAgentResponse {
+  Arn: string;
+  AgentId: string;
+  AgentStatus: AgentStatus;
+  FailedToAddSpaces?: FailedToUpdateAssociation[];
+  FailedToRemoveSpaces?: FailedToUpdateAssociation[];
+  FailedToAddActionConnectors?: FailedToUpdateAssociation[];
+  FailedToRemoveActionConnectors?: FailedToUpdateAssociation[];
+  RequestId?: string;
+}
+export const UpdateAgentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    AgentId: S.String,
+    AgentStatus: AgentStatus,
+    FailedToAddSpaces: S.optional(FailedToUpdateAssociationList),
+    FailedToRemoveSpaces: S.optional(FailedToUpdateAssociationList),
+    FailedToAddActionConnectors: S.optional(FailedToUpdateAssociationList),
+    FailedToRemoveActionConnectors: S.optional(FailedToUpdateAssociationList),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateAgentResponse",
+}) as any as S.Schema<UpdateAgentResponse>;
+export type UpdateAgentPermissionsRequestGrantPermissionsList =
+  ResourcePermission[];
+export const UpdateAgentPermissionsRequestGrantPermissionsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourcePermission);
+export type UpdateAgentPermissionsRequestRevokePermissionsList =
+  ResourcePermission[];
+export const UpdateAgentPermissionsRequestRevokePermissionsList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourcePermission);
+export interface UpdateAgentPermissionsRequest {
+  AgentId: string;
+  AwsAccountId: string;
+  GrantPermissions?: ResourcePermission[];
+  RevokePermissions?: ResourcePermission[];
+}
+export const UpdateAgentPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AgentId: S.String.pipe(T.HttpLabel("AgentId")),
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      GrantPermissions: S.optional(
+        UpdateAgentPermissionsRequestGrantPermissionsList,
+      ),
+      RevokePermissions: S.optional(
+        UpdateAgentPermissionsRequestRevokePermissionsList,
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{AwsAccountId}/agents/{AgentId}/permissions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateAgentPermissionsRequest",
+  }) as any as S.Schema<UpdateAgentPermissionsRequest>;
+export interface UpdateAgentPermissionsResponse {
+  Arn: string;
+  AgentId: string;
+  RequestId?: string;
+  Permissions?: ResourcePermission[];
+}
+export const UpdateAgentPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Arn: S.String,
+      AgentId: S.String,
+      RequestId: S.optional(S.String),
+      Permissions: S.optional(ResourcePermissionList),
+    }),
+  ).annotate({
+    identifier: "UpdateAgentPermissionsResponse",
+  }) as any as S.Schema<UpdateAgentPermissionsResponse>;
 export interface UpdateAnalysisRequest {
   AwsAccountId: string;
   AnalysisId: string;
@@ -29027,6 +31534,51 @@ export const UpdateDefaultQBusinessApplicationResponse =
   ).annotate({
     identifier: "UpdateDefaultQBusinessApplicationResponse",
   }) as any as S.Schema<UpdateDefaultQBusinessApplicationResponse>;
+export interface UpdateFlowRequest {
+  AwsAccountId: string;
+  FlowId: string;
+  Name?: string;
+  Description?: string;
+  FlowDefinition?: any;
+  ClientToken?: string;
+}
+export const UpdateFlowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    FlowId: S.String.pipe(T.HttpLabel("FlowId")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    FlowDefinition: S.optional(S.Any),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/accounts/{AwsAccountId}/flows/{FlowId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateFlowRequest",
+}) as any as S.Schema<UpdateFlowRequest>;
+export interface UpdateFlowResponse {
+  Arn: string;
+  FlowId: string;
+  RequestId?: string;
+  Status?: number;
+}
+export const UpdateFlowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    FlowId: S.String,
+    RequestId: S.optional(S.String),
+    Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+  }),
+).annotate({
+  identifier: "UpdateFlowResponse",
+}) as any as S.Schema<UpdateFlowResponse>;
 export type UpdateFlowPermissionsInputGrantPermissionsList = Permission[];
 export const UpdateFlowPermissionsInputGrantPermissionsList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(Permission);
@@ -29435,6 +31987,118 @@ export const UpdateKeyRegistrationResponse =
   ).annotate({
     identifier: "UpdateKeyRegistrationResponse",
   }) as any as S.Schema<UpdateKeyRegistrationResponse>;
+export interface UpdateKnowledgeBasePermissionsRequest {
+  AwsAccountId: string;
+  KnowledgeBaseId: string;
+  GrantPermissions?: ResourcePermission[];
+  RevokePermissions?: ResourcePermission[];
+}
+export const UpdateKnowledgeBasePermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      KnowledgeBaseId: S.String.pipe(T.HttpLabel("KnowledgeBaseId")),
+      GrantPermissions: S.optional(ResourcePermissionList),
+      RevokePermissions: S.optional(ResourcePermissionList),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/v1/accounts/{AwsAccountId}/knowledge-bases/{KnowledgeBaseId}/permissions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateKnowledgeBasePermissionsRequest",
+  }) as any as S.Schema<UpdateKnowledgeBasePermissionsRequest>;
+export interface UpdateKnowledgeBasePermissionsResponse {
+  KnowledgeBaseArn: string;
+  KnowledgeBaseId: string;
+  Permissions?: ResourcePermission[];
+  RequestId?: string;
+  Status?: number;
+}
+export const UpdateKnowledgeBasePermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      KnowledgeBaseArn: S.String,
+      KnowledgeBaseId: S.String,
+      Permissions: S.optional(ResourcePermissionList),
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "UpdateKnowledgeBasePermissionsResponse",
+  }) as any as S.Schema<UpdateKnowledgeBasePermissionsResponse>;
+export interface UpdateOAuthClientApplicationRequest {
+  AwsAccountId: string;
+  OAuthClientApplicationId: string;
+  Name: string;
+  ClientId?: string | redacted.Redacted<string>;
+  ClientSecret?: string | redacted.Redacted<string>;
+  OAuthTokenEndpointUrl?: string | redacted.Redacted<string>;
+  OAuthAuthorizationEndpointUrl?: string | redacted.Redacted<string>;
+  OAuthScopes?: string;
+  DataSourceType?: DataSourceType;
+  IdentityProviderVpcConnectionProperties?: VpcConnectionProperties;
+}
+export const UpdateOAuthClientApplicationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      OAuthClientApplicationId: S.String.pipe(
+        T.HttpLabel("OAuthClientApplicationId"),
+      ),
+      Name: S.String,
+      ClientId: S.optional(SensitiveString),
+      ClientSecret: S.optional(SensitiveString),
+      OAuthTokenEndpointUrl: S.optional(SensitiveString),
+      OAuthAuthorizationEndpointUrl: S.optional(SensitiveString),
+      OAuthScopes: S.optional(S.String),
+      DataSourceType: S.optional(DataSourceType),
+      IdentityProviderVpcConnectionProperties: S.optional(
+        VpcConnectionProperties,
+      ),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/accounts/{AwsAccountId}/oauth-client-applications/{OAuthClientApplicationId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateOAuthClientApplicationRequest",
+  }) as any as S.Schema<UpdateOAuthClientApplicationRequest>;
+export interface UpdateOAuthClientApplicationResponse {
+  Arn?: string;
+  OAuthClientApplicationId?: string;
+  UpdateStatus?: ResourceStatus;
+  RequestId?: string;
+  Status?: number;
+}
+export const UpdateOAuthClientApplicationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Arn: S.optional(S.String),
+      OAuthClientApplicationId: S.optional(S.String),
+      UpdateStatus: S.optional(ResourceStatus),
+      RequestId: S.optional(S.String),
+      Status: S.optional(S.Number).pipe(T.HttpResponseCode()),
+    }),
+  ).annotate({
+    identifier: "UpdateOAuthClientApplicationResponse",
+  }) as any as S.Schema<UpdateOAuthClientApplicationResponse>;
 export interface UpdatePublicSharingSettingsRequest {
   AwsAccountId: string;
   PublicSharingEnabled?: boolean;
@@ -29726,6 +32390,175 @@ export const UpdateSelfUpgradeConfigurationResponse =
   ).annotate({
     identifier: "UpdateSelfUpgradeConfigurationResponse",
   }) as any as S.Schema<UpdateSelfUpgradeConfigurationResponse>;
+export interface UpdateSpaceRequest {
+  AwsAccountId: string;
+  SpaceId: string;
+  Name?: string;
+  Description?: string | redacted.Redacted<string>;
+}
+export const UpdateSpaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+    SpaceId: S.String.pipe(T.HttpLabel("SpaceId")),
+    Name: S.optional(S.String),
+    Description: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateSpaceRequest",
+}) as any as S.Schema<UpdateSpaceRequest>;
+export interface UpdateSpaceResponse {
+  spaceId: string;
+  spaceArn?: string;
+  RequestId?: string;
+}
+export const UpdateSpaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spaceId: S.String,
+    spaceArn: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateSpaceResponse",
+}) as any as S.Schema<UpdateSpaceResponse>;
+export interface UpdateSpacePermissionsRequest {
+  AwsAccountId: string;
+  SpaceId: string;
+  GrantPermissions?: ResourcePermission[];
+  RevokePermissions?: ResourcePermission[];
+}
+export const UpdateSpacePermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      SpaceId: S.String.pipe(T.HttpLabel("SpaceId")),
+      GrantPermissions: S.optional(ResourcePermissionList),
+      RevokePermissions: S.optional(ResourcePermissionList),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}/permissions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateSpacePermissionsRequest",
+  }) as any as S.Schema<UpdateSpacePermissionsRequest>;
+export interface UpdateSpacePermissionsResponse {
+  spaceId: string;
+  spaceArn?: string;
+  permissions?: ResourcePermission[];
+  requestId?: string;
+}
+export const UpdateSpacePermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      spaceId: S.String,
+      spaceArn: S.optional(S.String),
+      permissions: S.optional(ResourcePermissionList),
+      requestId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "UpdateSpacePermissionsResponse",
+  }) as any as S.Schema<UpdateSpacePermissionsResponse>;
+export interface SpaceResourceOperation {
+  ResourceType: SpaceQuickSightResourceType;
+  ResourceDetails: SpaceQuickSightResourceDetails;
+}
+export const SpaceResourceOperation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ResourceType: SpaceQuickSightResourceType,
+      ResourceDetails: SpaceQuickSightResourceDetails,
+    }),
+).annotate({
+  identifier: "SpaceResourceOperation",
+}) as any as S.Schema<SpaceResourceOperation>;
+export type SpaceResourceOperations = SpaceResourceOperation[];
+export const SpaceResourceOperations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  SpaceResourceOperation,
+);
+export interface UpdateSpaceResourcesRequest {
+  AwsAccountId: string;
+  SpaceId: string;
+  AddResources?: SpaceResourceOperation[];
+  RemoveResources?: SpaceResourceOperation[];
+}
+export const UpdateSpaceResourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AwsAccountId: S.String.pipe(T.HttpLabel("AwsAccountId")),
+      SpaceId: S.String.pipe(T.HttpLabel("SpaceId")),
+      AddResources: S.optional(SpaceResourceOperations),
+      RemoveResources: S.optional(SpaceResourceOperations),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/v1/accounts/{AwsAccountId}/spaces/{SpaceId}/resources",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "UpdateSpaceResourcesRequest",
+  }) as any as S.Schema<UpdateSpaceResourcesRequest>;
+export interface FailedSpaceResourceOperation {
+  ResourceType: SpaceQuickSightResourceType;
+  ResourceDetails?: SpaceQuickSightResourceDetails;
+  ErrorMessage: string;
+}
+export const FailedSpaceResourceOperation =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ResourceType: SpaceQuickSightResourceType,
+      ResourceDetails: S.optional(SpaceQuickSightResourceDetails),
+      ErrorMessage: S.String,
+    }),
+  ).annotate({
+    identifier: "FailedSpaceResourceOperation",
+  }) as any as S.Schema<FailedSpaceResourceOperation>;
+export type FailedSpaceResourceOperations = FailedSpaceResourceOperation[];
+export const FailedSpaceResourceOperations =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(FailedSpaceResourceOperation);
+export interface UpdateSpaceResourcesResponse {
+  spaceId: string;
+  spaceArn?: string;
+  FailedResourceOperations?: FailedSpaceResourceOperation[];
+  RequestId?: string;
+}
+export const UpdateSpaceResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      spaceId: S.String,
+      spaceArn: S.optional(S.String),
+      FailedResourceOperations: S.optional(FailedSpaceResourceOperations),
+      RequestId: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "UpdateSpaceResourcesResponse",
+  }) as any as S.Schema<UpdateSpaceResourcesResponse>;
 export type PurchaseMode = "MANUAL" | "AUTO_PURCHASE" | (string & {});
 export const PurchaseMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface UpdateSPICECapacityConfigurationRequest {
@@ -30377,6 +33210,22 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
   "ThrottlingException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
 ).pipe(C.withThrottlingError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(ExceptionResourceType),
+    RequestId: S.optional(S.String),
+  },
+).pipe(C.withConflictError) {}
+export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
+  "PreconditionNotMetException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
@@ -30397,18 +33246,6 @@ export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUna
     RequestId: S.optional(S.String),
   },
 ).pipe(C.withServerError) {}
-export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
-  "PreconditionNotMetException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(ExceptionResourceType),
-    RequestId: S.optional(S.String),
-  },
-).pipe(C.withConflictError) {}
 export class UnsupportedUserEditionException extends S.TaggedErrorClass<UnsupportedUserEditionException>()(
   "UnsupportedUserEditionException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
@@ -30417,10 +33254,6 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
   "InternalServerException",
   { Message: S.String },
 ).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
 export class InvalidDataSetParameterValueException extends S.TaggedErrorClass<InvalidDataSetParameterValueException>()(
   "InvalidDataSetParameterValueException",
   { Message: S.optional(S.String), RequestId: S.optional(S.String) },
@@ -30477,7 +33310,7 @@ export const batchCreateTopicReviewedAnswer: API.OperationMethod<
   BatchCreateTopicReviewedAnswerRequest,
   BatchCreateTopicReviewedAnswerResponse,
   BatchCreateTopicReviewedAnswerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateTopicReviewedAnswerRequest,
   output: BatchCreateTopicReviewedAnswerResponse,
@@ -30491,6 +33324,39 @@ export const batchCreateTopicReviewedAnswer: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "BatchCreateTopicReviewedAnswer",
+}));
+export type BatchDeleteKnowledgeBaseError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | InvalidRequestException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes one or more knowledge bases.
+ */
+export const batchDeleteKnowledgeBase: API.OperationMethod<
+  BatchDeleteKnowledgeBaseRequest,
+  BatchDeleteKnowledgeBaseResponse,
+  BatchDeleteKnowledgeBaseError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchDeleteKnowledgeBaseRequest,
+  output: BatchDeleteKnowledgeBaseResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    InvalidRequestException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "BatchDeleteKnowledgeBase",
 }));
 export type BatchDeleteTopicReviewedAnswerError =
   | AccessDeniedException
@@ -30507,7 +33373,7 @@ export const batchDeleteTopicReviewedAnswer: API.OperationMethod<
   BatchDeleteTopicReviewedAnswerRequest,
   BatchDeleteTopicReviewedAnswerResponse,
   BatchDeleteTopicReviewedAnswerError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteTopicReviewedAnswerRequest,
   output: BatchDeleteTopicReviewedAnswerResponse,
@@ -30538,7 +33404,7 @@ export const cancelIngestion: API.OperationMethod<
   CancelIngestionRequest,
   CancelIngestionResponse,
   CancelIngestionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelIngestionRequest,
   output: CancelIngestionResponse,
@@ -30594,7 +33460,7 @@ export const createAccountCustomization: API.OperationMethod<
   CreateAccountCustomizationRequest,
   CreateAccountCustomizationResponse,
   CreateAccountCustomizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountCustomizationRequest,
   output: CreateAccountCustomizationResponse,
@@ -30656,7 +33522,7 @@ export const createAccountSubscription: API.OperationMethod<
   CreateAccountSubscriptionRequest,
   CreateAccountSubscriptionResponse,
   CreateAccountSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountSubscriptionRequest,
   output: CreateAccountSubscriptionResponse,
@@ -30692,7 +33558,7 @@ export const createActionConnector: API.OperationMethod<
   CreateActionConnectorRequest,
   CreateActionConnectorResponse,
   CreateActionConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateActionConnectorRequest,
   output: CreateActionConnectorResponse,
@@ -30707,6 +33573,41 @@ export const createActionConnector: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateActionConnector",
+}));
+export type CreateAgentError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ResourceExistsException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates an agent in Amazon QuickSight.
+ */
+export const createAgent: API.OperationMethod<
+  CreateAgentRequest,
+  CreateAgentResponse,
+  CreateAgentError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateAgentRequest,
+  output: CreateAgentResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ResourceExistsException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateAgent",
 }));
 export type CreateAnalysisError =
   | ConflictException
@@ -30725,7 +33626,7 @@ export const createAnalysis: API.OperationMethod<
   CreateAnalysisRequest,
   CreateAnalysisResponse,
   CreateAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAnalysisRequest,
   output: CreateAnalysisResponse,
@@ -30758,7 +33659,7 @@ export const createBrand: API.OperationMethod<
   CreateBrandRequest,
   CreateBrandResponse,
   CreateBrandError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBrandRequest,
   output: CreateBrandResponse,
@@ -30793,7 +33694,7 @@ export const createCustomPermissions: API.OperationMethod<
   CreateCustomPermissionsRequest,
   CreateCustomPermissionsResponse,
   CreateCustomPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomPermissionsRequest,
   output: CreateCustomPermissionsResponse,
@@ -30839,7 +33740,7 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardRequest,
   CreateDashboardResponse,
   CreateDashboardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDashboardRequest,
   output: CreateDashboardResponse,
@@ -30877,7 +33778,7 @@ export const createDataSet: API.OperationMethod<
   CreateDataSetRequest,
   CreateDataSetResponse,
   CreateDataSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataSetRequest,
   output: CreateDataSetResponse,
@@ -30915,7 +33816,7 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceRequest,
   CreateDataSourceResponse,
   CreateDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDataSourceRequest,
   output: CreateDataSourceResponse,
@@ -30933,6 +33834,43 @@ export const createDataSource: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateDataSource",
+}));
+export type CreateFlowError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceExistsException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates a new flow in the specified Amazon Web Services account. Creates both a DRAFT and PUBLISHED (auto-published) version.
+ *
+ * This operation is idempotent. Supply a `ClientToken` to safely retry without creating duplicate resources.
+ */
+export const createFlow: API.OperationMethod<
+  CreateFlowRequest,
+  CreateFlowResponse,
+  CreateFlowError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateFlowRequest,
+  output: CreateFlowResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceExistsException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateFlow",
 }));
 export type CreateFolderError =
   | AccessDeniedException
@@ -30952,7 +33890,7 @@ export const createFolder: API.OperationMethod<
   CreateFolderRequest,
   CreateFolderResponse,
   CreateFolderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFolderRequest,
   output: CreateFolderResponse,
@@ -30988,7 +33926,7 @@ export const createFolderMembership: API.OperationMethod<
   CreateFolderMembershipRequest,
   CreateFolderMembershipResponse,
   CreateFolderMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFolderMembershipRequest,
   output: CreateFolderMembershipResponse,
@@ -31030,7 +33968,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupRequest,
   CreateGroupResponse,
   CreateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResponse,
@@ -31065,7 +34003,7 @@ export const createGroupMembership: API.OperationMethod<
   CreateGroupMembershipRequest,
   CreateGroupMembershipResponse,
   CreateGroupMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupMembershipRequest,
   output: CreateGroupMembershipResponse,
@@ -31102,7 +34040,7 @@ export const createIAMPolicyAssignment: API.OperationMethod<
   CreateIAMPolicyAssignmentRequest,
   CreateIAMPolicyAssignmentResponse,
   CreateIAMPolicyAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIAMPolicyAssignmentRequest,
   output: CreateIAMPolicyAssignmentResponse,
@@ -31142,7 +34080,7 @@ export const createIngestion: API.OperationMethod<
   CreateIngestionRequest,
   CreateIngestionResponse,
   CreateIngestionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateIngestionRequest,
   output: CreateIngestionResponse,
@@ -31186,7 +34124,7 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceRequest,
   CreateNamespaceResponse,
   CreateNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNamespaceRequest,
   output: CreateNamespaceResponse,
@@ -31206,6 +34144,41 @@ export const createNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNamespace",
 }));
+export type CreateOAuthClientApplicationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceExistsException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates an OAuthClientApplication.
+ */
+export const createOAuthClientApplication: API.OperationMethod<
+  CreateOAuthClientApplicationRequest,
+  CreateOAuthClientApplicationResponse,
+  CreateOAuthClientApplicationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateOAuthClientApplicationRequest,
+  output: CreateOAuthClientApplicationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceExistsException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateOAuthClientApplication",
+}));
 export type CreateRefreshScheduleError =
   | AccessDeniedException
   | InternalFailureException
@@ -31223,7 +34196,7 @@ export const createRefreshSchedule: API.OperationMethod<
   CreateRefreshScheduleRequest,
   CreateRefreshScheduleResponse,
   CreateRefreshScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRefreshScheduleRequest,
   output: CreateRefreshScheduleResponse,
@@ -31257,7 +34230,7 @@ export const createRoleMembership: API.OperationMethod<
   CreateRoleMembershipRequest,
   CreateRoleMembershipResponse,
   CreateRoleMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRoleMembershipRequest,
   output: CreateRoleMembershipResponse,
@@ -31273,6 +34246,39 @@ export const createRoleMembership: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateRoleMembership",
+}));
+export type CreateSpaceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceExistsException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates a new Amazon QuickSight space. A space is a collection of resources that can be used to organize and manage QuickSight assets.
+ */
+export const createSpace: API.OperationMethod<
+  CreateSpaceRequest,
+  CreateSpaceResponse,
+  CreateSpaceError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateSpaceRequest,
+  output: CreateSpaceResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceExistsException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateSpace",
 }));
 export type CreateTemplateError =
   | AccessDeniedException
@@ -31300,7 +34306,7 @@ export const createTemplate: API.OperationMethod<
   CreateTemplateRequest,
   CreateTemplateResponse,
   CreateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTemplateRequest,
   output: CreateTemplateResponse,
@@ -31335,7 +34341,7 @@ export const createTemplateAlias: API.OperationMethod<
   CreateTemplateAliasRequest,
   CreateTemplateAliasResponse,
   CreateTemplateAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTemplateAliasRequest,
   output: CreateTemplateAliasResponse,
@@ -31373,7 +34379,7 @@ export const createTheme: API.OperationMethod<
   CreateThemeRequest,
   CreateThemeResponse,
   CreateThemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateThemeRequest,
   output: CreateThemeResponse,
@@ -31408,7 +34414,7 @@ export const createThemeAlias: API.OperationMethod<
   CreateThemeAliasRequest,
   CreateThemeAliasResponse,
   CreateThemeAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateThemeAliasRequest,
   output: CreateThemeAliasResponse,
@@ -31443,7 +34449,7 @@ export const createTopic: API.OperationMethod<
   CreateTopicRequest,
   CreateTopicResponse,
   CreateTopicError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTopicRequest,
   output: CreateTopicResponse,
@@ -31478,7 +34484,7 @@ export const createTopicRefreshSchedule: API.OperationMethod<
   CreateTopicRefreshScheduleRequest,
   CreateTopicRefreshScheduleResponse,
   CreateTopicRefreshScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTopicRefreshScheduleRequest,
   output: CreateTopicRefreshScheduleResponse,
@@ -31513,7 +34519,7 @@ export const createVPCConnection: API.OperationMethod<
   CreateVPCConnectionRequest,
   CreateVPCConnectionResponse,
   CreateVPCConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateVPCConnectionRequest,
   output: CreateVPCConnectionResponse,
@@ -31559,7 +34565,7 @@ export const deleteAccountCustomization: API.OperationMethod<
   DeleteAccountCustomizationRequest,
   DeleteAccountCustomizationResponse,
   DeleteAccountCustomizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountCustomizationRequest,
   output: DeleteAccountCustomizationResponse,
@@ -31592,7 +34598,7 @@ export const deleteAccountCustomPermission: API.OperationMethod<
   DeleteAccountCustomPermissionRequest,
   DeleteAccountCustomPermissionResponse,
   DeleteAccountCustomPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountCustomPermissionRequest,
   output: DeleteAccountCustomPermissionResponse,
@@ -31639,7 +34645,7 @@ export const deleteAccountSubscription: API.OperationMethod<
   DeleteAccountSubscriptionRequest,
   DeleteAccountSubscriptionResponse,
   DeleteAccountSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountSubscriptionRequest,
   output: DeleteAccountSubscriptionResponse,
@@ -31670,7 +34676,7 @@ export const deleteActionConnector: API.OperationMethod<
   DeleteActionConnectorRequest,
   DeleteActionConnectorResponse,
   DeleteActionConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteActionConnectorRequest,
   output: DeleteActionConnectorResponse,
@@ -31684,6 +34690,37 @@ export const deleteActionConnector: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteActionConnector",
+}));
+export type DeleteAgentError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes an agent.
+ */
+export const deleteAgent: API.OperationMethod<
+  DeleteAgentRequest,
+  DeleteAgentResponse,
+  DeleteAgentError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAgentRequest,
+  output: DeleteAgentResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteAgent",
 }));
 export type DeleteAnalysisError =
   | ConflictException
@@ -31713,7 +34750,7 @@ export const deleteAnalysis: API.OperationMethod<
   DeleteAnalysisRequest,
   DeleteAnalysisResponse,
   DeleteAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAnalysisRequest,
   output: DeleteAnalysisResponse,
@@ -31754,7 +34791,7 @@ export const deleteBrand: API.OperationMethod<
   DeleteBrandRequest,
   DeleteBrandResponse,
   DeleteBrandError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBrandRequest,
   output: DeleteBrandResponse,
@@ -31785,7 +34822,7 @@ export const deleteBrandAssignment: API.OperationMethod<
   DeleteBrandAssignmentRequest,
   DeleteBrandAssignmentResponse,
   DeleteBrandAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBrandAssignmentRequest,
   output: DeleteBrandAssignmentResponse,
@@ -31819,7 +34856,7 @@ export const deleteCustomPermissions: API.OperationMethod<
   DeleteCustomPermissionsRequest,
   DeleteCustomPermissionsResponse,
   DeleteCustomPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomPermissionsRequest,
   output: DeleteCustomPermissionsResponse,
@@ -31853,7 +34890,7 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardRequest,
   DeleteDashboardResponse,
   DeleteDashboardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDashboardRequest,
   output: DeleteDashboardResponse,
@@ -31883,7 +34920,7 @@ export const deleteDataSet: API.OperationMethod<
   DeleteDataSetRequest,
   DeleteDataSetResponse,
   DeleteDataSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataSetRequest,
   output: DeleteDataSetResponse,
@@ -31914,7 +34951,7 @@ export const deleteDataSetRefreshProperties: API.OperationMethod<
   DeleteDataSetRefreshPropertiesRequest,
   DeleteDataSetRefreshPropertiesResponse,
   DeleteDataSetRefreshPropertiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataSetRefreshPropertiesRequest,
   output: DeleteDataSetRefreshPropertiesResponse,
@@ -31946,7 +34983,7 @@ export const deleteDataSource: API.OperationMethod<
   DeleteDataSourceRequest,
   DeleteDataSourceResponse,
   DeleteDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataSourceRequest,
   output: DeleteDataSourceResponse,
@@ -31975,7 +35012,7 @@ export const deleteDefaultQBusinessApplication: API.OperationMethod<
   DeleteDefaultQBusinessApplicationRequest,
   DeleteDefaultQBusinessApplicationResponse,
   DeleteDefaultQBusinessApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDefaultQBusinessApplicationRequest,
   output: DeleteDefaultQBusinessApplicationResponse,
@@ -31989,6 +35026,37 @@ export const deleteDefaultQBusinessApplication: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteDefaultQBusinessApplication",
+}));
+export type DeleteFlowError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Permanently deletes a flow from the specified Amazon Web Services account. This operation cannot be undone.
+ */
+export const deleteFlow: API.OperationMethod<
+  DeleteFlowRequest,
+  DeleteFlowResponse,
+  DeleteFlowError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteFlowRequest,
+  output: DeleteFlowResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteFlow",
 }));
 export type DeleteFolderError =
   | AccessDeniedException
@@ -32007,7 +35075,7 @@ export const deleteFolder: API.OperationMethod<
   DeleteFolderRequest,
   DeleteFolderResponse,
   DeleteFolderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFolderRequest,
   output: DeleteFolderResponse,
@@ -32040,7 +35108,7 @@ export const deleteFolderMembership: API.OperationMethod<
   DeleteFolderMembershipRequest,
   DeleteFolderMembershipResponse,
   DeleteFolderMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFolderMembershipRequest,
   output: DeleteFolderMembershipResponse,
@@ -32072,7 +35140,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupRequest,
   DeleteGroupResponse,
   DeleteGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
@@ -32105,7 +35173,7 @@ export const deleteGroupMembership: API.OperationMethod<
   DeleteGroupMembershipRequest,
   DeleteGroupMembershipResponse,
   DeleteGroupMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupMembershipRequest,
   output: DeleteGroupMembershipResponse,
@@ -32138,7 +35206,7 @@ export const deleteIAMPolicyAssignment: API.OperationMethod<
   DeleteIAMPolicyAssignmentRequest,
   DeleteIAMPolicyAssignmentResponse,
   DeleteIAMPolicyAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIAMPolicyAssignmentRequest,
   output: DeleteIAMPolicyAssignmentResponse,
@@ -32171,7 +35239,7 @@ export const deleteIdentityPropagationConfig: API.OperationMethod<
   DeleteIdentityPropagationConfigRequest,
   DeleteIdentityPropagationConfigResponse,
   DeleteIdentityPropagationConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteIdentityPropagationConfigRequest,
   output: DeleteIdentityPropagationConfigResponse,
@@ -32185,6 +35253,43 @@ export const deleteIdentityPropagationConfig: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteIdentityPropagationConfig",
+}));
+export type DeleteKnowledgeBaseError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | InvalidRequestException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a knowledge base.
+ */
+export const deleteKnowledgeBase: API.OperationMethod<
+  DeleteKnowledgeBaseRequest,
+  DeleteKnowledgeBaseResponse,
+  DeleteKnowledgeBaseError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteKnowledgeBaseRequest,
+  output: DeleteKnowledgeBaseResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    InvalidRequestException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteKnowledgeBase",
 }));
 export type DeleteNamespaceError =
   | AccessDeniedException
@@ -32204,7 +35309,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceRequest,
   DeleteNamespaceResponse,
   DeleteNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
@@ -32221,6 +35326,37 @@ export const deleteNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNamespace",
 }));
+export type DeleteOAuthClientApplicationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes an OAuthClientApplication.
+ */
+export const deleteOAuthClientApplication: API.OperationMethod<
+  DeleteOAuthClientApplicationRequest,
+  DeleteOAuthClientApplicationResponse,
+  DeleteOAuthClientApplicationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteOAuthClientApplicationRequest,
+  output: DeleteOAuthClientApplicationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteOAuthClientApplication",
+}));
 export type DeleteRefreshScheduleError =
   | AccessDeniedException
   | InternalFailureException
@@ -32236,7 +35372,7 @@ export const deleteRefreshSchedule: API.OperationMethod<
   DeleteRefreshScheduleRequest,
   DeleteRefreshScheduleResponse,
   DeleteRefreshScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRefreshScheduleRequest,
   output: DeleteRefreshScheduleResponse,
@@ -32268,7 +35404,7 @@ export const deleteRoleCustomPermission: API.OperationMethod<
   DeleteRoleCustomPermissionRequest,
   DeleteRoleCustomPermissionResponse,
   DeleteRoleCustomPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRoleCustomPermissionRequest,
   output: DeleteRoleCustomPermissionResponse,
@@ -32301,7 +35437,7 @@ export const deleteRoleMembership: API.OperationMethod<
   DeleteRoleMembershipRequest,
   DeleteRoleMembershipResponse,
   DeleteRoleMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRoleMembershipRequest,
   output: DeleteRoleMembershipResponse,
@@ -32317,6 +35453,35 @@ export const deleteRoleMembership: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteRoleMembership",
+}));
+export type DeleteSpaceError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes an Amazon QuickSight space.
+ */
+export const deleteSpace: API.OperationMethod<
+  DeleteSpaceRequest,
+  DeleteSpaceResponse,
+  DeleteSpaceError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteSpaceRequest,
+  output: DeleteSpaceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteSpace",
 }));
 export type DeleteTemplateError =
   | ConflictException
@@ -32334,7 +35499,7 @@ export const deleteTemplate: API.OperationMethod<
   DeleteTemplateRequest,
   DeleteTemplateResponse,
   DeleteTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
@@ -32366,7 +35531,7 @@ export const deleteTemplateAlias: API.OperationMethod<
   DeleteTemplateAliasRequest,
   DeleteTemplateAliasResponse,
   DeleteTemplateAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTemplateAliasRequest,
   output: DeleteTemplateAliasResponse,
@@ -32397,7 +35562,7 @@ export const deleteTheme: API.OperationMethod<
   DeleteThemeRequest,
   DeleteThemeResponse,
   DeleteThemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteThemeRequest,
   output: DeleteThemeResponse,
@@ -32431,7 +35596,7 @@ export const deleteThemeAlias: API.OperationMethod<
   DeleteThemeAliasRequest,
   DeleteThemeAliasResponse,
   DeleteThemeAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteThemeAliasRequest,
   output: DeleteThemeAliasResponse,
@@ -32462,7 +35627,7 @@ export const deleteTopic: API.OperationMethod<
   DeleteTopicRequest,
   DeleteTopicResponse,
   DeleteTopicError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTopicRequest,
   output: DeleteTopicResponse,
@@ -32495,7 +35660,7 @@ export const deleteTopicRefreshSchedule: API.OperationMethod<
   DeleteTopicRefreshScheduleRequest,
   DeleteTopicRefreshScheduleResponse,
   DeleteTopicRefreshScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTopicRefreshScheduleRequest,
   output: DeleteTopicRefreshScheduleResponse,
@@ -32531,7 +35696,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserRequest,
   DeleteUserResponse,
   DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResponse,
@@ -32564,7 +35729,7 @@ export const deleteUserByPrincipalId: API.OperationMethod<
   DeleteUserByPrincipalIdRequest,
   DeleteUserByPrincipalIdResponse,
   DeleteUserByPrincipalIdError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserByPrincipalIdRequest,
   output: DeleteUserByPrincipalIdResponse,
@@ -32598,7 +35763,7 @@ export const deleteUserCustomPermission: API.OperationMethod<
   DeleteUserCustomPermissionRequest,
   DeleteUserCustomPermissionResponse,
   DeleteUserCustomPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserCustomPermissionRequest,
   output: DeleteUserCustomPermissionResponse,
@@ -32632,7 +35797,7 @@ export const deleteVPCConnection: API.OperationMethod<
   DeleteVPCConnectionRequest,
   DeleteVPCConnectionResponse,
   DeleteVPCConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVPCConnectionRequest,
   output: DeleteVPCConnectionResponse,
@@ -32703,7 +35868,7 @@ export const describeAccountCustomization: API.OperationMethod<
   DescribeAccountCustomizationRequest,
   DescribeAccountCustomizationResponse,
   DescribeAccountCustomizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAccountCustomizationRequest,
   output: DescribeAccountCustomizationResponse,
@@ -32733,7 +35898,7 @@ export const describeAccountCustomPermission: API.OperationMethod<
   DescribeAccountCustomPermissionRequest,
   DescribeAccountCustomPermissionResponse,
   DescribeAccountCustomPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAccountCustomPermissionRequest,
   output: DescribeAccountCustomPermissionResponse,
@@ -32764,7 +35929,7 @@ export const describeAccountSettings: API.OperationMethod<
   DescribeAccountSettingsRequest,
   DescribeAccountSettingsResponse,
   DescribeAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAccountSettingsRequest,
   output: DescribeAccountSettingsResponse,
@@ -32795,7 +35960,7 @@ export const describeAccountSubscription: API.OperationMethod<
   DescribeAccountSubscriptionRequest,
   DescribeAccountSubscriptionResponse,
   DescribeAccountSubscriptionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAccountSubscriptionRequest,
   output: DescribeAccountSubscriptionResponse,
@@ -32825,7 +35990,7 @@ export const describeActionConnector: API.OperationMethod<
   DescribeActionConnectorRequest,
   DescribeActionConnectorResponse,
   DescribeActionConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeActionConnectorRequest,
   output: DescribeActionConnectorResponse,
@@ -32854,7 +36019,7 @@ export const describeActionConnectorPermissions: API.OperationMethod<
   DescribeActionConnectorPermissionsRequest,
   DescribeActionConnectorPermissionsResponse,
   DescribeActionConnectorPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeActionConnectorPermissionsRequest,
   output: DescribeActionConnectorPermissionsResponse,
@@ -32868,6 +36033,68 @@ export const describeActionConnectorPermissions: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeActionConnectorPermissions",
+}));
+export type DescribeAgentError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes an agent.
+ */
+export const describeAgent: API.OperationMethod<
+  DescribeAgentRequest,
+  DescribeAgentResponse,
+  DescribeAgentError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeAgentRequest,
+  output: DescribeAgentResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeAgent",
+}));
+export type DescribeAgentPermissionsError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes the resource permissions for an agent.
+ */
+export const describeAgentPermissions: API.OperationMethod<
+  DescribeAgentPermissionsRequest,
+  DescribeAgentPermissionsResponse,
+  DescribeAgentPermissionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeAgentPermissionsRequest,
+  output: DescribeAgentPermissionsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeAgentPermissions",
 }));
 export type DescribeAnalysisError =
   | AccessDeniedException
@@ -32884,7 +36111,7 @@ export const describeAnalysis: API.OperationMethod<
   DescribeAnalysisRequest,
   DescribeAnalysisResponse,
   DescribeAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAnalysisRequest,
   output: DescribeAnalysisResponse,
@@ -32923,7 +36150,7 @@ export const describeAnalysisDefinition: API.OperationMethod<
   DescribeAnalysisDefinitionRequest,
   DescribeAnalysisDefinitionResponse,
   DescribeAnalysisDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAnalysisDefinitionRequest,
   output: DescribeAnalysisDefinitionResponse,
@@ -32955,7 +36182,7 @@ export const describeAnalysisPermissions: API.OperationMethod<
   DescribeAnalysisPermissionsRequest,
   DescribeAnalysisPermissionsResponse,
   DescribeAnalysisPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAnalysisPermissionsRequest,
   output: DescribeAnalysisPermissionsResponse,
@@ -32989,7 +36216,7 @@ export const describeAssetBundleExportJob: API.OperationMethod<
   DescribeAssetBundleExportJobRequest,
   DescribeAssetBundleExportJobResponse,
   DescribeAssetBundleExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAssetBundleExportJobRequest,
   output: DescribeAssetBundleExportJobResponse,
@@ -33017,7 +36244,7 @@ export const describeAssetBundleImportJob: API.OperationMethod<
   DescribeAssetBundleImportJobRequest,
   DescribeAssetBundleImportJobResponse,
   DescribeAssetBundleImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAssetBundleImportJobRequest,
   output: DescribeAssetBundleImportJobResponse,
@@ -33044,7 +36271,7 @@ export const describeAutomationJob: API.OperationMethod<
   DescribeAutomationJobRequest,
   DescribeAutomationJobResponse,
   DescribeAutomationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeAutomationJobRequest,
   output: DescribeAutomationJobResponse,
@@ -33074,7 +36301,7 @@ export const describeBrand: API.OperationMethod<
   DescribeBrandRequest,
   DescribeBrandResponse,
   DescribeBrandError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeBrandRequest,
   output: DescribeBrandResponse,
@@ -33105,7 +36332,7 @@ export const describeBrandAssignment: API.OperationMethod<
   DescribeBrandAssignmentRequest,
   DescribeBrandAssignmentResponse,
   DescribeBrandAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeBrandAssignmentRequest,
   output: DescribeBrandAssignmentResponse,
@@ -33136,7 +36363,7 @@ export const describeBrandPublishedVersion: API.OperationMethod<
   DescribeBrandPublishedVersionRequest,
   DescribeBrandPublishedVersionResponse,
   DescribeBrandPublishedVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeBrandPublishedVersionRequest,
   output: DescribeBrandPublishedVersionResponse,
@@ -33168,7 +36395,7 @@ export const describeCustomPermissions: API.OperationMethod<
   DescribeCustomPermissionsRequest,
   DescribeCustomPermissionsResponse,
   DescribeCustomPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeCustomPermissionsRequest,
   output: DescribeCustomPermissionsResponse,
@@ -33200,7 +36427,7 @@ export const describeDashboard: API.OperationMethod<
   DescribeDashboardRequest,
   DescribeDashboardResponse,
   DescribeDashboardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDashboardRequest,
   output: DescribeDashboardResponse,
@@ -33239,7 +36466,7 @@ export const describeDashboardDefinition: API.OperationMethod<
   DescribeDashboardDefinitionRequest,
   DescribeDashboardDefinitionResponse,
   DescribeDashboardDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDashboardDefinitionRequest,
   output: DescribeDashboardDefinitionResponse,
@@ -33271,7 +36498,7 @@ export const describeDashboardPermissions: API.OperationMethod<
   DescribeDashboardPermissionsRequest,
   DescribeDashboardPermissionsResponse,
   DescribeDashboardPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDashboardPermissionsRequest,
   output: DescribeDashboardPermissionsResponse,
@@ -33316,7 +36543,7 @@ export const describeDashboardSnapshotJob: API.OperationMethod<
   DescribeDashboardSnapshotJobRequest,
   DescribeDashboardSnapshotJobResponse,
   DescribeDashboardSnapshotJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDashboardSnapshotJobRequest,
   output: DescribeDashboardSnapshotJobResponse,
@@ -33381,7 +36608,7 @@ export const describeDashboardSnapshotJobResult: API.OperationMethod<
   DescribeDashboardSnapshotJobResultRequest,
   DescribeDashboardSnapshotJobResultResponse,
   DescribeDashboardSnapshotJobResultError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDashboardSnapshotJobResultRequest,
   output: DescribeDashboardSnapshotJobResultResponse,
@@ -33413,7 +36640,7 @@ export const describeDashboardsQAConfiguration: API.OperationMethod<
   DescribeDashboardsQAConfigurationRequest,
   DescribeDashboardsQAConfigurationResponse,
   DescribeDashboardsQAConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDashboardsQAConfigurationRequest,
   output: DescribeDashboardsQAConfigurationResponse,
@@ -33444,7 +36671,7 @@ export const describeDataSet: API.OperationMethod<
   DescribeDataSetRequest,
   DescribeDataSetResponse,
   DescribeDataSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDataSetRequest,
   output: DescribeDataSetResponse,
@@ -33476,7 +36703,7 @@ export const describeDataSetPermissions: API.OperationMethod<
   DescribeDataSetPermissionsRequest,
   DescribeDataSetPermissionsResponse,
   DescribeDataSetPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDataSetPermissionsRequest,
   output: DescribeDataSetPermissionsResponse,
@@ -33507,7 +36734,7 @@ export const describeDataSetRefreshProperties: API.OperationMethod<
   DescribeDataSetRefreshPropertiesRequest,
   DescribeDataSetRefreshPropertiesResponse,
   DescribeDataSetRefreshPropertiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDataSetRefreshPropertiesRequest,
   output: DescribeDataSetRefreshPropertiesResponse,
@@ -33538,7 +36765,7 @@ export const describeDataSource: API.OperationMethod<
   DescribeDataSourceRequest,
   DescribeDataSourceResponse,
   DescribeDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDataSourceRequest,
   output: DescribeDataSourceResponse,
@@ -33567,7 +36794,7 @@ export const describeDataSourcePermissions: API.OperationMethod<
   DescribeDataSourcePermissionsRequest,
   DescribeDataSourcePermissionsResponse,
   DescribeDataSourcePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDataSourcePermissionsRequest,
   output: DescribeDataSourcePermissionsResponse,
@@ -33596,7 +36823,7 @@ export const describeDefaultQBusinessApplication: API.OperationMethod<
   DescribeDefaultQBusinessApplicationRequest,
   DescribeDefaultQBusinessApplicationResponse,
   DescribeDefaultQBusinessApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeDefaultQBusinessApplicationRequest,
   output: DescribeDefaultQBusinessApplicationResponse,
@@ -33610,6 +36837,35 @@ export const describeDefaultQBusinessApplication: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeDefaultQBusinessApplication",
+}));
+export type DescribeFlowError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Returns the full details of a flow for the latest version of the requested publish state.
+ */
+export const describeFlow: API.OperationMethod<
+  DescribeFlowRequest,
+  DescribeFlowResponse,
+  DescribeFlowError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeFlowRequest,
+  output: DescribeFlowResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeFlow",
 }));
 export type DescribeFolderError =
   | AccessDeniedException
@@ -33626,7 +36882,7 @@ export const describeFolder: API.OperationMethod<
   DescribeFolderRequest,
   DescribeFolderResponse,
   DescribeFolderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeFolderRequest,
   output: DescribeFolderResponse,
@@ -33658,21 +36914,21 @@ export const describeFolderPermissions: API.OperationMethod<
   DescribeFolderPermissionsRequest,
   DescribeFolderPermissionsResponse,
   DescribeFolderPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeFolderPermissionsRequest,
   ) => stream.Stream<
     DescribeFolderPermissionsResponse,
     DescribeFolderPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: DescribeFolderPermissionsRequest,
   ) => stream.Stream<
     ResourcePermission,
     DescribeFolderPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeFolderPermissionsRequest,
@@ -33712,21 +36968,21 @@ export const describeFolderResolvedPermissions: API.OperationMethod<
   DescribeFolderResolvedPermissionsRequest,
   DescribeFolderResolvedPermissionsResponse,
   DescribeFolderResolvedPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: DescribeFolderResolvedPermissionsRequest,
   ) => stream.Stream<
     DescribeFolderResolvedPermissionsResponse,
     DescribeFolderResolvedPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: DescribeFolderResolvedPermissionsRequest,
   ) => stream.Stream<
     ResourcePermission,
     DescribeFolderResolvedPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: DescribeFolderResolvedPermissionsRequest,
@@ -33766,7 +37022,7 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupRequest,
   DescribeGroupResponse,
   DescribeGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeGroupRequest,
   output: DescribeGroupResponse,
@@ -33801,7 +37057,7 @@ export const describeGroupMembership: API.OperationMethod<
   DescribeGroupMembershipRequest,
   DescribeGroupMembershipResponse,
   DescribeGroupMembershipError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeGroupMembershipRequest,
   output: DescribeGroupMembershipResponse,
@@ -33834,7 +37090,7 @@ export const describeIAMPolicyAssignment: API.OperationMethod<
   DescribeIAMPolicyAssignmentRequest,
   DescribeIAMPolicyAssignmentResponse,
   DescribeIAMPolicyAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeIAMPolicyAssignmentRequest,
   output: DescribeIAMPolicyAssignmentResponse,
@@ -33865,7 +37121,7 @@ export const describeIngestion: API.OperationMethod<
   DescribeIngestionRequest,
   DescribeIngestionResponse,
   DescribeIngestionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeIngestionRequest,
   output: DescribeIngestionResponse,
@@ -33895,7 +37151,7 @@ export const describeIpRestriction: API.OperationMethod<
   DescribeIpRestrictionRequest,
   DescribeIpRestrictionResponse,
   DescribeIpRestrictionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeIpRestrictionRequest,
   output: DescribeIpRestrictionResponse,
@@ -33923,7 +37179,7 @@ export const describeKeyRegistration: API.OperationMethod<
   DescribeKeyRegistrationRequest,
   DescribeKeyRegistrationResponse,
   DescribeKeyRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeKeyRegistrationRequest,
   output: DescribeKeyRegistrationResponse,
@@ -33936,6 +37192,76 @@ export const describeKeyRegistration: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeKeyRegistration",
+}));
+export type DescribeKnowledgeBaseError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | InvalidRequestException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes a knowledge base.
+ */
+export const describeKnowledgeBase: API.OperationMethod<
+  DescribeKnowledgeBaseRequest,
+  DescribeKnowledgeBaseResponse,
+  DescribeKnowledgeBaseError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeKnowledgeBaseRequest,
+  output: DescribeKnowledgeBaseResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    InvalidRequestException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeKnowledgeBase",
+}));
+export type DescribeKnowledgeBasePermissionsError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | InvalidRequestException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes the resource permissions for a knowledge base.
+ */
+export const describeKnowledgeBasePermissions: API.OperationMethod<
+  DescribeKnowledgeBasePermissionsRequest,
+  DescribeKnowledgeBasePermissionsResponse,
+  DescribeKnowledgeBasePermissionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeKnowledgeBasePermissionsRequest,
+  output: DescribeKnowledgeBasePermissionsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    InvalidRequestException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeKnowledgeBasePermissions",
 }));
 export type DescribeNamespaceError =
   | AccessDeniedException
@@ -33952,7 +37278,7 @@ export const describeNamespace: API.OperationMethod<
   DescribeNamespaceRequest,
   DescribeNamespaceResponse,
   DescribeNamespaceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeNamespaceRequest,
   output: DescribeNamespaceResponse,
@@ -33967,6 +37293,35 @@ export const describeNamespace: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeNamespace",
+}));
+export type DescribeOAuthClientApplicationError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes an OAuthClientApplication.
+ */
+export const describeOAuthClientApplication: API.OperationMethod<
+  DescribeOAuthClientApplicationRequest,
+  DescribeOAuthClientApplicationResponse,
+  DescribeOAuthClientApplicationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeOAuthClientApplicationRequest,
+  output: DescribeOAuthClientApplicationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeOAuthClientApplication",
 }));
 export type DescribeQPersonalizationConfigurationError =
   | AccessDeniedException
@@ -33983,7 +37338,7 @@ export const describeQPersonalizationConfiguration: API.OperationMethod<
   DescribeQPersonalizationConfigurationRequest,
   DescribeQPersonalizationConfigurationResponse,
   DescribeQPersonalizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeQPersonalizationConfigurationRequest,
   output: DescribeQPersonalizationConfigurationResponse,
@@ -34014,7 +37369,7 @@ export const describeQuickSightQSearchConfiguration: API.OperationMethod<
   DescribeQuickSightQSearchConfigurationRequest,
   DescribeQuickSightQSearchConfigurationResponse,
   DescribeQuickSightQSearchConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeQuickSightQSearchConfigurationRequest,
   output: DescribeQuickSightQSearchConfigurationResponse,
@@ -34045,7 +37400,7 @@ export const describeRefreshSchedule: API.OperationMethod<
   DescribeRefreshScheduleRequest,
   DescribeRefreshScheduleResponse,
   DescribeRefreshScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRefreshScheduleRequest,
   output: DescribeRefreshScheduleResponse,
@@ -34077,7 +37432,7 @@ export const describeRoleCustomPermission: API.OperationMethod<
   DescribeRoleCustomPermissionRequest,
   DescribeRoleCustomPermissionResponse,
   DescribeRoleCustomPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeRoleCustomPermissionRequest,
   output: DescribeRoleCustomPermissionResponse,
@@ -34111,7 +37466,7 @@ export const describeSelfUpgradeConfiguration: API.OperationMethod<
   DescribeSelfUpgradeConfigurationRequest,
   DescribeSelfUpgradeConfigurationResponse,
   DescribeSelfUpgradeConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeSelfUpgradeConfigurationRequest,
   output: DescribeSelfUpgradeConfigurationResponse,
@@ -34128,6 +37483,64 @@ export const describeSelfUpgradeConfiguration: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DescribeSelfUpgradeConfiguration",
+}));
+export type DescribeSpaceError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes an Amazon QuickSight space.
+ */
+export const describeSpace: API.OperationMethod<
+  DescribeSpaceRequest,
+  DescribeSpaceResponse,
+  DescribeSpaceError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeSpaceRequest,
+  output: DescribeSpaceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeSpace",
+}));
+export type DescribeSpacePermissionsError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Describes the permissions for an Amazon QuickSight space.
+ */
+export const describeSpacePermissions: API.OperationMethod<
+  DescribeSpacePermissionsRequest,
+  DescribeSpacePermissionsResponse,
+  DescribeSpacePermissionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeSpacePermissionsRequest,
+  output: DescribeSpacePermissionsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeSpacePermissions",
 }));
 export type DescribeTemplateError =
   | AccessDeniedException
@@ -34146,7 +37559,7 @@ export const describeTemplate: API.OperationMethod<
   DescribeTemplateRequest,
   DescribeTemplateResponse,
   DescribeTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTemplateRequest,
   output: DescribeTemplateResponse,
@@ -34177,7 +37590,7 @@ export const describeTemplateAlias: API.OperationMethod<
   DescribeTemplateAliasRequest,
   DescribeTemplateAliasResponse,
   DescribeTemplateAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTemplateAliasRequest,
   output: DescribeTemplateAliasResponse,
@@ -34214,7 +37627,7 @@ export const describeTemplateDefinition: API.OperationMethod<
   DescribeTemplateDefinitionRequest,
   DescribeTemplateDefinitionResponse,
   DescribeTemplateDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTemplateDefinitionRequest,
   output: DescribeTemplateDefinitionResponse,
@@ -34247,7 +37660,7 @@ export const describeTemplatePermissions: API.OperationMethod<
   DescribeTemplatePermissionsRequest,
   DescribeTemplatePermissionsResponse,
   DescribeTemplatePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTemplatePermissionsRequest,
   output: DescribeTemplatePermissionsResponse,
@@ -34279,7 +37692,7 @@ export const describeTheme: API.OperationMethod<
   DescribeThemeRequest,
   DescribeThemeResponse,
   DescribeThemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeThemeRequest,
   output: DescribeThemeResponse,
@@ -34311,7 +37724,7 @@ export const describeThemeAlias: API.OperationMethod<
   DescribeThemeAliasRequest,
   DescribeThemeAliasResponse,
   DescribeThemeAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeThemeAliasRequest,
   output: DescribeThemeAliasResponse,
@@ -34342,7 +37755,7 @@ export const describeThemePermissions: API.OperationMethod<
   DescribeThemePermissionsRequest,
   DescribeThemePermissionsResponse,
   DescribeThemePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeThemePermissionsRequest,
   output: DescribeThemePermissionsResponse,
@@ -34372,7 +37785,7 @@ export const describeTopic: API.OperationMethod<
   DescribeTopicRequest,
   DescribeTopicResponse,
   DescribeTopicError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTopicRequest,
   output: DescribeTopicResponse,
@@ -34401,7 +37814,7 @@ export const describeTopicPermissions: API.OperationMethod<
   DescribeTopicPermissionsRequest,
   DescribeTopicPermissionsResponse,
   DescribeTopicPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTopicPermissionsRequest,
   output: DescribeTopicPermissionsResponse,
@@ -34430,7 +37843,7 @@ export const describeTopicRefresh: API.OperationMethod<
   DescribeTopicRefreshRequest,
   DescribeTopicRefreshResponse,
   DescribeTopicRefreshError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTopicRefreshRequest,
   output: DescribeTopicRefreshResponse,
@@ -34462,7 +37875,7 @@ export const describeTopicRefreshSchedule: API.OperationMethod<
   DescribeTopicRefreshScheduleRequest,
   DescribeTopicRefreshScheduleResponse,
   DescribeTopicRefreshScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeTopicRefreshScheduleRequest,
   output: DescribeTopicRefreshScheduleResponse,
@@ -34496,7 +37909,7 @@ export const describeUser: API.OperationMethod<
   DescribeUserRequest,
   DescribeUserResponse,
   DescribeUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeUserRequest,
   output: DescribeUserResponse,
@@ -34528,7 +37941,7 @@ export const describeVPCConnection: API.OperationMethod<
   DescribeVPCConnectionRequest,
   DescribeVPCConnectionResponse,
   DescribeVPCConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DescribeVPCConnectionRequest,
   output: DescribeVPCConnectionResponse,
@@ -34584,7 +37997,7 @@ export const generateEmbedUrlForAnonymousUser: API.OperationMethod<
   GenerateEmbedUrlForAnonymousUserRequest,
   GenerateEmbedUrlForAnonymousUserResponse,
   GenerateEmbedUrlForAnonymousUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateEmbedUrlForAnonymousUserRequest,
   output: GenerateEmbedUrlForAnonymousUserResponse,
@@ -34644,7 +38057,7 @@ export const generateEmbedUrlForRegisteredUser: API.OperationMethod<
   GenerateEmbedUrlForRegisteredUserRequest,
   GenerateEmbedUrlForRegisteredUserResponse,
   GenerateEmbedUrlForRegisteredUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateEmbedUrlForRegisteredUserRequest,
   output: GenerateEmbedUrlForRegisteredUserResponse,
@@ -34692,7 +38105,7 @@ export const generateEmbedUrlForRegisteredUserWithIdentity: API.OperationMethod<
   GenerateEmbedUrlForRegisteredUserWithIdentityRequest,
   GenerateEmbedUrlForRegisteredUserWithIdentityResponse,
   GenerateEmbedUrlForRegisteredUserWithIdentityError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateEmbedUrlForRegisteredUserWithIdentityRequest,
   output: GenerateEmbedUrlForRegisteredUserWithIdentityResponse,
@@ -34758,7 +38171,7 @@ export const getDashboardEmbedUrl: API.OperationMethod<
   GetDashboardEmbedUrlRequest,
   GetDashboardEmbedUrlResponse,
   GetDashboardEmbedUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDashboardEmbedUrlRequest,
   output: GetDashboardEmbedUrlResponse,
@@ -34793,7 +38206,7 @@ export const getFlowMetadata: API.OperationMethod<
   GetFlowMetadataInput,
   GetFlowMetadataOutput,
   GetFlowMetadataError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFlowMetadataInput,
   output: GetFlowMetadataOutput,
@@ -34820,7 +38233,7 @@ export const getFlowPermissions: API.OperationMethod<
   GetFlowPermissionsInput,
   GetFlowPermissionsOutput,
   GetFlowPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFlowPermissionsInput,
   output: GetFlowPermissionsOutput,
@@ -34887,7 +38300,7 @@ export const getIdentityContext: API.OperationMethod<
   GetIdentityContextRequest,
   GetIdentityContextResponse,
   GetIdentityContextError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdentityContextRequest,
   output: GetIdentityContextResponse,
@@ -34938,7 +38351,7 @@ export const getSessionEmbedUrl: API.OperationMethod<
   GetSessionEmbedUrlRequest,
   GetSessionEmbedUrlResponse,
   GetSessionEmbedUrlError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSessionEmbedUrlRequest,
   output: GetSessionEmbedUrlResponse,
@@ -34971,21 +38384,21 @@ export const listActionConnectors: API.OperationMethod<
   ListActionConnectorsRequest,
   ListActionConnectorsResponse,
   ListActionConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListActionConnectorsRequest,
   ) => stream.Stream<
     ListActionConnectorsResponse,
     ListActionConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListActionConnectorsRequest,
   ) => stream.Stream<
     ActionConnectorSummary,
     ListActionConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListActionConnectorsRequest,
@@ -35007,6 +38420,39 @@ export const listActionConnectors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type ListAgentsError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidNextTokenException
+  | InvalidParameterValueException
+  | PreconditionNotMetException
+  | ThrottlingException
+  | UnsupportedUserEditionException
+  | CommonErrors;
+/**
+ * Lists all agents in an Amazon QuickSight account.
+ */
+export const listAgents: API.OperationMethod<
+  ListAgentsRequest,
+  ListAgentsResponse,
+  ListAgentsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListAgentsRequest,
+  output: ListAgentsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidNextTokenException,
+    InvalidParameterValueException,
+    PreconditionNotMetException,
+    ThrottlingException,
+    UnsupportedUserEditionException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAgents",
+}));
 export type ListAnalysesError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -35020,21 +38466,21 @@ export const listAnalyses: API.OperationMethod<
   ListAnalysesRequest,
   ListAnalysesResponse,
   ListAnalysesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAnalysesRequest,
   ) => stream.Stream<
     ListAnalysesResponse,
     ListAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListAnalysesRequest,
   ) => stream.Stream<
     AnalysisSummary,
     ListAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAnalysesRequest,
@@ -35072,21 +38518,21 @@ export const listAssetBundleExportJobs: API.OperationMethod<
   ListAssetBundleExportJobsRequest,
   ListAssetBundleExportJobsResponse,
   ListAssetBundleExportJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAssetBundleExportJobsRequest,
   ) => stream.Stream<
     ListAssetBundleExportJobsResponse,
     ListAssetBundleExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListAssetBundleExportJobsRequest,
   ) => stream.Stream<
     AssetBundleExportJobSummary,
     ListAssetBundleExportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssetBundleExportJobsRequest,
@@ -35125,21 +38571,21 @@ export const listAssetBundleImportJobs: API.OperationMethod<
   ListAssetBundleImportJobsRequest,
   ListAssetBundleImportJobsResponse,
   ListAssetBundleImportJobsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListAssetBundleImportJobsRequest,
   ) => stream.Stream<
     ListAssetBundleImportJobsResponse,
     ListAssetBundleImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListAssetBundleImportJobsRequest,
   ) => stream.Stream<
     AssetBundleImportJobSummary,
     ListAssetBundleImportJobsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssetBundleImportJobsRequest,
@@ -35174,21 +38620,21 @@ export const listBrands: API.OperationMethod<
   ListBrandsRequest,
   ListBrandsResponse,
   ListBrandsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListBrandsRequest,
   ) => stream.Stream<
     ListBrandsResponse,
     ListBrandsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListBrandsRequest,
   ) => stream.Stream<
     BrandSummary,
     ListBrandsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBrandsRequest,
@@ -35225,21 +38671,21 @@ export const listCustomPermissions: API.OperationMethod<
   ListCustomPermissionsRequest,
   ListCustomPermissionsResponse,
   ListCustomPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListCustomPermissionsRequest,
   ) => stream.Stream<
     ListCustomPermissionsResponse,
     ListCustomPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListCustomPermissionsRequest,
   ) => stream.Stream<
     CustomPermissions,
     ListCustomPermissionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomPermissionsRequest,
@@ -35276,21 +38722,21 @@ export const listDashboards: API.OperationMethod<
   ListDashboardsRequest,
   ListDashboardsResponse,
   ListDashboardsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDashboardsRequest,
   ) => stream.Stream<
     ListDashboardsResponse,
     ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListDashboardsRequest,
   ) => stream.Stream<
     DashboardSummary,
     ListDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardsRequest,
@@ -35326,21 +38772,21 @@ export const listDashboardVersions: API.OperationMethod<
   ListDashboardVersionsRequest,
   ListDashboardVersionsResponse,
   ListDashboardVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDashboardVersionsRequest,
   ) => stream.Stream<
     ListDashboardVersionsResponse,
     ListDashboardVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListDashboardVersionsRequest,
   ) => stream.Stream<
     DashboardVersionSummary,
     ListDashboardVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDashboardVersionsRequest,
@@ -35381,21 +38827,21 @@ export const listDataSets: API.OperationMethod<
   ListDataSetsRequest,
   ListDataSetsResponse,
   ListDataSetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataSetsRequest,
   ) => stream.Stream<
     ListDataSetsResponse,
     ListDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListDataSetsRequest,
   ) => stream.Stream<
     DataSetSummary,
     ListDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetsRequest,
@@ -35431,21 +38877,21 @@ export const listDataSources: API.OperationMethod<
   ListDataSourcesRequest,
   ListDataSourcesResponse,
   ListDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListDataSourcesRequest,
   ) => stream.Stream<
     ListDataSourcesResponse,
     ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListDataSourcesRequest,
   ) => stream.Stream<
     DataSource,
     ListDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDataSourcesRequest,
@@ -35480,21 +38926,21 @@ export const listFlows: API.OperationMethod<
   ListFlowsInput,
   ListFlowsOutput,
   ListFlowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFlowsInput,
   ) => stream.Stream<
     ListFlowsOutput,
     ListFlowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListFlowsInput,
   ) => stream.Stream<
     FlowSummary,
     ListFlowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFlowsInput,
@@ -35531,21 +38977,21 @@ export const listFolderMembers: API.OperationMethod<
   ListFolderMembersRequest,
   ListFolderMembersResponse,
   ListFolderMembersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFolderMembersRequest,
   ) => stream.Stream<
     ListFolderMembersResponse,
     ListFolderMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListFolderMembersRequest,
   ) => stream.Stream<
     MemberIdArnPair,
     ListFolderMembersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFolderMembersRequest,
@@ -35585,21 +39031,21 @@ export const listFolders: API.OperationMethod<
   ListFoldersRequest,
   ListFoldersResponse,
   ListFoldersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFoldersRequest,
   ) => stream.Stream<
     ListFoldersResponse,
     ListFoldersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListFoldersRequest,
   ) => stream.Stream<
     FolderSummary,
     ListFoldersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersRequest,
@@ -35639,21 +39085,21 @@ export const listFoldersForResource: API.OperationMethod<
   ListFoldersForResourceRequest,
   ListFoldersForResourceResponse,
   ListFoldersForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListFoldersForResourceRequest,
   ) => stream.Stream<
     ListFoldersForResourceResponse,
     ListFoldersForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListFoldersForResourceRequest,
   ) => stream.Stream<
     Arn,
     ListFoldersForResourceError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersForResourceRequest,
@@ -35694,21 +39140,21 @@ export const listGroupMemberships: API.OperationMethod<
   ListGroupMembershipsRequest,
   ListGroupMembershipsResponse,
   ListGroupMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGroupMembershipsRequest,
   ) => stream.Stream<
     ListGroupMembershipsResponse,
     ListGroupMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListGroupMembershipsRequest,
   ) => stream.Stream<
     GroupMember,
     ListGroupMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembershipsRequest,
@@ -35750,21 +39196,21 @@ export const listGroups: API.OperationMethod<
   ListGroupsRequest,
   ListGroupsResponse,
   ListGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListGroupsRequest,
   ) => stream.Stream<
     ListGroupsResponse,
     ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListGroupsRequest,
   ) => stream.Stream<
     Group,
     ListGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
@@ -35806,21 +39252,21 @@ export const listIAMPolicyAssignments: API.OperationMethod<
   ListIAMPolicyAssignmentsRequest,
   ListIAMPolicyAssignmentsResponse,
   ListIAMPolicyAssignmentsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIAMPolicyAssignmentsRequest,
   ) => stream.Stream<
     ListIAMPolicyAssignmentsResponse,
     ListIAMPolicyAssignmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListIAMPolicyAssignmentsRequest,
   ) => stream.Stream<
     IAMPolicyAssignmentSummary,
     ListIAMPolicyAssignmentsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIAMPolicyAssignmentsRequest,
@@ -35865,21 +39311,21 @@ export const listIAMPolicyAssignmentsForUser: API.OperationMethod<
   ListIAMPolicyAssignmentsForUserRequest,
   ListIAMPolicyAssignmentsForUserResponse,
   ListIAMPolicyAssignmentsForUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIAMPolicyAssignmentsForUserRequest,
   ) => stream.Stream<
     ListIAMPolicyAssignmentsForUserResponse,
     ListIAMPolicyAssignmentsForUserError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListIAMPolicyAssignmentsForUserRequest,
   ) => stream.Stream<
     ActiveIAMPolicyAssignment,
     ListIAMPolicyAssignmentsForUserError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIAMPolicyAssignmentsForUserRequest,
@@ -35919,7 +39365,7 @@ export const listIdentityPropagationConfigs: API.OperationMethod<
   ListIdentityPropagationConfigsRequest,
   ListIdentityPropagationConfigsResponse,
   ListIdentityPropagationConfigsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListIdentityPropagationConfigsRequest,
   output: ListIdentityPropagationConfigsResponse,
@@ -35950,21 +39396,21 @@ export const listIngestions: API.OperationMethod<
   ListIngestionsRequest,
   ListIngestionsResponse,
   ListIngestionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListIngestionsRequest,
   ) => stream.Stream<
     ListIngestionsResponse,
     ListIngestionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListIngestionsRequest,
   ) => stream.Stream<
     Ingestion,
     ListIngestionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIngestionsRequest,
@@ -35988,6 +39434,58 @@ export const listIngestions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type ListKnowledgeBasesError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | InvalidRequestException
+  | PreconditionNotMetException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists all knowledge bases in an Amazon QuickSight account.
+ */
+export const listKnowledgeBases: API.OperationMethod<
+  ListKnowledgeBasesRequest,
+  ListKnowledgeBasesResponse,
+  ListKnowledgeBasesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListKnowledgeBasesRequest,
+  ) => stream.Stream<
+    ListKnowledgeBasesResponse,
+    ListKnowledgeBasesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListKnowledgeBasesRequest,
+  ) => stream.Stream<
+    KnowledgeBaseSummary,
+    ListKnowledgeBasesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListKnowledgeBasesRequest,
+  output: ListKnowledgeBasesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    InvalidRequestException,
+    PreconditionNotMetException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListKnowledgeBases",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "KnowledgeBaseSummaries",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type ListNamespacesError =
   | AccessDeniedException
   | InternalFailureException
@@ -36005,21 +39503,21 @@ export const listNamespaces: API.OperationMethod<
   ListNamespacesRequest,
   ListNamespacesResponse,
   ListNamespacesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListNamespacesRequest,
   ) => stream.Stream<
     ListNamespacesResponse,
     ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListNamespacesRequest,
   ) => stream.Stream<
     NamespaceInfoV2,
     ListNamespacesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
@@ -36044,6 +39542,58 @@ export const listNamespaces: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type ListOAuthClientApplicationsError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidNextTokenException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists all OAuthClientApplications in the current Amazon Web Services Region that belong to this Amazon Web Services account.
+ */
+export const listOAuthClientApplications: API.OperationMethod<
+  ListOAuthClientApplicationsRequest,
+  ListOAuthClientApplicationsResponse,
+  ListOAuthClientApplicationsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListOAuthClientApplicationsRequest,
+  ) => stream.Stream<
+    ListOAuthClientApplicationsResponse,
+    ListOAuthClientApplicationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOAuthClientApplicationsRequest,
+  ) => stream.Stream<
+    OAuthClientApplicationSummary,
+    ListOAuthClientApplicationsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListOAuthClientApplicationsRequest,
+  output: ListOAuthClientApplicationsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidNextTokenException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListOAuthClientApplications",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "OAuthClientApplications",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type ListRefreshSchedulesError =
   | AccessDeniedException
   | InternalFailureException
@@ -36059,7 +39609,7 @@ export const listRefreshSchedules: API.OperationMethod<
   ListRefreshSchedulesRequest,
   ListRefreshSchedulesResponse,
   ListRefreshSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRefreshSchedulesRequest,
   output: ListRefreshSchedulesResponse,
@@ -36093,21 +39643,21 @@ export const listRoleMemberships: API.OperationMethod<
   ListRoleMembershipsRequest,
   ListRoleMembershipsResponse,
   ListRoleMembershipsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListRoleMembershipsRequest,
   ) => stream.Stream<
     ListRoleMembershipsResponse,
     ListRoleMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListRoleMembershipsRequest,
   ) => stream.Stream<
     string,
     ListRoleMembershipsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRoleMembershipsRequest,
@@ -36151,7 +39701,7 @@ export const listSelfUpgrades: API.OperationMethod<
   ListSelfUpgradesRequest,
   ListSelfUpgradesResponse,
   ListSelfUpgradesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSelfUpgradesRequest,
   output: ListSelfUpgradesResponse,
@@ -36170,6 +39720,64 @@ export const listSelfUpgrades: API.OperationMethod<
   retry: Retry,
   operationName: "ListSelfUpgrades",
 }));
+export type ListSpaceResourcesError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists the resources in an Amazon QuickSight space.
+ */
+export const listSpaceResources: API.OperationMethod<
+  ListSpaceResourcesRequest,
+  ListSpaceResourcesResponse,
+  ListSpaceResourcesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListSpaceResourcesRequest,
+  output: ListSpaceResourcesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListSpaceResources",
+}));
+export type ListSpacesError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists all Amazon QuickSight spaces in an Amazon Web Services account.
+ */
+export const listSpaces: API.OperationMethod<
+  ListSpacesRequest,
+  ListSpacesResponse,
+  ListSpacesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListSpacesRequest,
+  output: ListSpacesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListSpaces",
+}));
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalFailureException
@@ -36184,7 +39792,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceRequest,
   ListTagsForResourceResponse,
   ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
@@ -36213,21 +39821,21 @@ export const listTemplateAliases: API.OperationMethod<
   ListTemplateAliasesRequest,
   ListTemplateAliasesResponse,
   ListTemplateAliasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTemplateAliasesRequest,
   ) => stream.Stream<
     ListTemplateAliasesResponse,
     ListTemplateAliasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListTemplateAliasesRequest,
   ) => stream.Stream<
     TemplateAlias,
     ListTemplateAliasesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateAliasesRequest,
@@ -36264,21 +39872,21 @@ export const listTemplates: API.OperationMethod<
   ListTemplatesRequest,
   ListTemplatesResponse,
   ListTemplatesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTemplatesRequest,
   ) => stream.Stream<
     ListTemplatesResponse,
     ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListTemplatesRequest,
   ) => stream.Stream<
     TemplateSummary,
     ListTemplatesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTemplatesRequest,
@@ -36316,21 +39924,21 @@ export const listTemplateVersions: API.OperationMethod<
   ListTemplateVersionsRequest,
   ListTemplateVersionsResponse,
   ListTemplateVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTemplateVersionsRequest,
   ) => stream.Stream<
     ListTemplateVersionsResponse,
     ListTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListTemplateVersionsRequest,
   ) => stream.Stream<
     TemplateVersionSummary,
     ListTemplateVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTemplateVersionsRequest,
@@ -36369,7 +39977,7 @@ export const listThemeAliases: API.OperationMethod<
   ListThemeAliasesRequest,
   ListThemeAliasesResponse,
   ListThemeAliasesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListThemeAliasesRequest,
   output: ListThemeAliasesResponse,
@@ -36402,21 +40010,21 @@ export const listThemes: API.OperationMethod<
   ListThemesRequest,
   ListThemesResponse,
   ListThemesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListThemesRequest,
   ) => stream.Stream<
     ListThemesResponse,
     ListThemesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListThemesRequest,
   ) => stream.Stream<
     ThemeSummary,
     ListThemesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListThemesRequest,
@@ -36456,21 +40064,21 @@ export const listThemeVersions: API.OperationMethod<
   ListThemeVersionsRequest,
   ListThemeVersionsResponse,
   ListThemeVersionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListThemeVersionsRequest,
   ) => stream.Stream<
     ListThemeVersionsResponse,
     ListThemeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListThemeVersionsRequest,
   ) => stream.Stream<
     ThemeVersionSummary,
     ListThemeVersionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListThemeVersionsRequest,
@@ -36511,7 +40119,7 @@ export const listTopicRefreshSchedules: API.OperationMethod<
   ListTopicRefreshSchedulesRequest,
   ListTopicRefreshSchedulesResponse,
   ListTopicRefreshSchedulesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTopicRefreshSchedulesRequest,
   output: ListTopicRefreshSchedulesResponse,
@@ -36543,7 +40151,7 @@ export const listTopicReviewedAnswers: API.OperationMethod<
   ListTopicReviewedAnswersRequest,
   ListTopicReviewedAnswersResponse,
   ListTopicReviewedAnswersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTopicReviewedAnswersRequest,
   output: ListTopicReviewedAnswersResponse,
@@ -36572,21 +40180,21 @@ export const listTopics: API.OperationMethod<
   ListTopicsRequest,
   ListTopicsResponse,
   ListTopicsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListTopicsRequest,
   ) => stream.Stream<
     ListTopicsResponse,
     ListTopicsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListTopicsRequest,
   ) => stream.Stream<
     unknown,
     ListTopicsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsRequest,
@@ -36623,21 +40231,21 @@ export const listUserGroups: API.OperationMethod<
   ListUserGroupsRequest,
   ListUserGroupsResponse,
   ListUserGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListUserGroupsRequest,
   ) => stream.Stream<
     ListUserGroupsResponse,
     ListUserGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListUserGroupsRequest,
   ) => stream.Stream<
     Group,
     ListUserGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserGroupsRequest,
@@ -36678,21 +40286,21 @@ export const listUsers: API.OperationMethod<
   ListUsersRequest,
   ListUsersResponse,
   ListUsersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListUsersRequest,
   ) => stream.Stream<
     ListUsersResponse,
     ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListUsersRequest,
   ) => stream.Stream<
     User,
     ListUsersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
@@ -36717,6 +40325,37 @@ export const listUsers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type ListUsersIndexCapacityError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidRequestException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists per-user index capacity consumption for an account.
+ */
+export const listUsersIndexCapacity: API.OperationMethod<
+  ListUsersIndexCapacityRequest,
+  ListUsersIndexCapacityResponse,
+  ListUsersIndexCapacityError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListUsersIndexCapacityRequest,
+  output: ListUsersIndexCapacityResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidRequestException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListUsersIndexCapacity",
+}));
 export type ListVPCConnectionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -36733,21 +40372,21 @@ export const listVPCConnections: API.OperationMethod<
   ListVPCConnectionsRequest,
   ListVPCConnectionsResponse,
   ListVPCConnectionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: ListVPCConnectionsRequest,
   ) => stream.Stream<
     ListVPCConnectionsResponse,
     ListVPCConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: ListVPCConnectionsRequest,
   ) => stream.Stream<
     unknown,
     ListVPCConnectionsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVPCConnectionsRequest,
@@ -36786,7 +40425,7 @@ export const predictQAResults: API.OperationMethod<
   PredictQAResultsRequest,
   PredictQAResultsResponse,
   PredictQAResultsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PredictQAResultsRequest,
   output: PredictQAResultsResponse,
@@ -36817,7 +40456,7 @@ export const putDataSetRefreshProperties: API.OperationMethod<
   PutDataSetRefreshPropertiesRequest,
   PutDataSetRefreshPropertiesResponse,
   PutDataSetRefreshPropertiesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutDataSetRefreshPropertiesRequest,
   output: PutDataSetRefreshPropertiesResponse,
@@ -36853,7 +40492,7 @@ export const registerUser: API.OperationMethod<
   RegisterUserRequest,
   RegisterUserResponse,
   RegisterUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterUserRequest,
   output: RegisterUserResponse,
@@ -36889,7 +40528,7 @@ export const restoreAnalysis: API.OperationMethod<
   RestoreAnalysisRequest,
   RestoreAnalysisResponse,
   RestoreAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreAnalysisRequest,
   output: RestoreAnalysisResponse,
@@ -36920,21 +40559,21 @@ export const searchActionConnectors: API.OperationMethod<
   SearchActionConnectorsRequest,
   SearchActionConnectorsResponse,
   SearchActionConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchActionConnectorsRequest,
   ) => stream.Stream<
     SearchActionConnectorsResponse,
     SearchActionConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: SearchActionConnectorsRequest,
   ) => stream.Stream<
     ActionConnectorSummary,
     SearchActionConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchActionConnectorsRequest,
@@ -36955,6 +40594,37 @@ export const searchActionConnectors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type SearchAgentsError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | PreconditionNotMetException
+  | ResourceExistsException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Searches for agents based on specified filters.
+ */
+export const searchAgents: API.OperationMethod<
+  SearchAgentsRequest,
+  SearchAgentsResponse,
+  SearchAgentsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SearchAgentsRequest,
+  output: SearchAgentsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    PreconditionNotMetException,
+    ResourceExistsException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SearchAgents",
+}));
 export type SearchAnalysesError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -36972,21 +40642,21 @@ export const searchAnalyses: API.OperationMethod<
   SearchAnalysesRequest,
   SearchAnalysesResponse,
   SearchAnalysesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchAnalysesRequest,
   ) => stream.Stream<
     SearchAnalysesResponse,
     SearchAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: SearchAnalysesRequest,
   ) => stream.Stream<
     AnalysisSummary,
     SearchAnalysesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAnalysesRequest,
@@ -37027,21 +40697,21 @@ export const searchDashboards: API.OperationMethod<
   SearchDashboardsRequest,
   SearchDashboardsResponse,
   SearchDashboardsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchDashboardsRequest,
   ) => stream.Stream<
     SearchDashboardsResponse,
     SearchDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: SearchDashboardsRequest,
   ) => stream.Stream<
     DashboardSummary,
     SearchDashboardsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchDashboardsRequest,
@@ -37080,21 +40750,21 @@ export const searchDataSets: API.OperationMethod<
   SearchDataSetsRequest,
   SearchDataSetsResponse,
   SearchDataSetsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchDataSetsRequest,
   ) => stream.Stream<
     SearchDataSetsResponse,
     SearchDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: SearchDataSetsRequest,
   ) => stream.Stream<
     DataSetSummary,
     SearchDataSetsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchDataSetsRequest,
@@ -37133,21 +40803,21 @@ export const searchDataSources: API.OperationMethod<
   SearchDataSourcesRequest,
   SearchDataSourcesResponse,
   SearchDataSourcesError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchDataSourcesRequest,
   ) => stream.Stream<
     SearchDataSourcesResponse,
     SearchDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: SearchDataSourcesRequest,
   ) => stream.Stream<
     DataSourceSummary,
     SearchDataSourcesError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchDataSourcesRequest,
@@ -37183,21 +40853,21 @@ export const searchFlows: API.OperationMethod<
   SearchFlowsInput,
   SearchFlowsOutput,
   SearchFlowsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchFlowsInput,
   ) => stream.Stream<
     SearchFlowsOutput,
     SearchFlowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: SearchFlowsInput,
   ) => stream.Stream<
     FlowSummary,
     SearchFlowsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchFlowsInput,
@@ -37235,21 +40905,21 @@ export const searchFolders: API.OperationMethod<
   SearchFoldersRequest,
   SearchFoldersResponse,
   SearchFoldersError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchFoldersRequest,
   ) => stream.Stream<
     SearchFoldersResponse,
     SearchFoldersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: SearchFoldersRequest,
   ) => stream.Stream<
     FolderSummary,
     SearchFoldersError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchFoldersRequest,
@@ -37291,21 +40961,21 @@ export const searchGroups: API.OperationMethod<
   SearchGroupsRequest,
   SearchGroupsResponse,
   SearchGroupsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchGroupsRequest,
   ) => stream.Stream<
     SearchGroupsResponse,
     SearchGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: SearchGroupsRequest,
   ) => stream.Stream<
     Group,
     SearchGroupsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchGroupsRequest,
@@ -37330,6 +41000,89 @@ export const searchGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+export type SearchKnowledgeBasesError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidNextTokenException
+  | InvalidParameterValueException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Searches for a subset of knowledge bases based on specified filters.
+ */
+export const searchKnowledgeBases: API.OperationMethod<
+  SearchKnowledgeBasesRequest,
+  SearchKnowledgeBasesResponse,
+  SearchKnowledgeBasesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchKnowledgeBasesRequest,
+  ) => stream.Stream<
+    SearchKnowledgeBasesResponse,
+    SearchKnowledgeBasesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchKnowledgeBasesRequest,
+  ) => stream.Stream<
+    KnowledgeBaseSummary,
+    SearchKnowledgeBasesError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: SearchKnowledgeBasesRequest,
+  output: SearchKnowledgeBasesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidNextTokenException,
+    InvalidParameterValueException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SearchKnowledgeBases",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "KnowledgeBaseSummaries",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type SearchSpacesError =
+  | AccessDeniedException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Searches for Amazon QuickSight spaces that match the specified filters.
+ */
+export const searchSpaces: API.OperationMethod<
+  SearchSpacesRequest,
+  SearchSpacesResponse,
+  SearchSpacesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SearchSpacesRequest,
+  output: SearchSpacesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SearchSpaces",
+}));
 export type SearchTopicsError =
   | InternalFailureException
   | InvalidNextTokenException
@@ -37345,21 +41098,21 @@ export const searchTopics: API.OperationMethod<
   SearchTopicsRequest,
   SearchTopicsResponse,
   SearchTopicsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > & {
   pages: (
     input: SearchTopicsRequest,
   ) => stream.Stream<
     SearchTopicsResponse,
     SearchTopicsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
   items: (
     input: SearchTopicsRequest,
   ) => stream.Stream<
     TopicSummary,
     SearchTopicsError,
-    Credentials | Region | HttpClient.HttpClient
+    Credentials | Rgn | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchTopicsRequest,
@@ -37409,7 +41162,7 @@ export const startAssetBundleExportJob: API.OperationMethod<
   StartAssetBundleExportJobRequest,
   StartAssetBundleExportJobResponse,
   StartAssetBundleExportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAssetBundleExportJobRequest,
   output: StartAssetBundleExportJobResponse,
@@ -37453,7 +41206,7 @@ export const startAssetBundleImportJob: API.OperationMethod<
   StartAssetBundleImportJobRequest,
   StartAssetBundleImportJobResponse,
   StartAssetBundleImportJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAssetBundleImportJobRequest,
   output: StartAssetBundleImportJobResponse,
@@ -37485,7 +41238,7 @@ export const startAutomationJob: API.OperationMethod<
   StartAutomationJobRequest,
   StartAutomationJobResponse,
   StartAutomationJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAutomationJobRequest,
   output: StartAutomationJobResponse,
@@ -37605,7 +41358,7 @@ export const startDashboardSnapshotJob: API.OperationMethod<
   StartDashboardSnapshotJobRequest,
   StartDashboardSnapshotJobResponse,
   StartDashboardSnapshotJobError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartDashboardSnapshotJobRequest,
   output: StartDashboardSnapshotJobResponse,
@@ -37644,7 +41397,7 @@ export const startDashboardSnapshotJobSchedule: API.OperationMethod<
   StartDashboardSnapshotJobScheduleRequest,
   StartDashboardSnapshotJobScheduleResponse,
   StartDashboardSnapshotJobScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartDashboardSnapshotJobScheduleRequest,
   output: StartDashboardSnapshotJobScheduleResponse,
@@ -37696,7 +41449,7 @@ export const tagResource: API.OperationMethod<
   TagResourceRequest,
   TagResourceResponse,
   TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
@@ -37726,7 +41479,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceRequest,
   UntagResourceResponse,
   UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
@@ -37762,7 +41515,7 @@ export const updateAccountCustomization: API.OperationMethod<
   UpdateAccountCustomizationRequest,
   UpdateAccountCustomizationResponse,
   UpdateAccountCustomizationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountCustomizationRequest,
   output: UpdateAccountCustomizationResponse,
@@ -37793,7 +41546,7 @@ export const updateAccountCustomPermission: API.OperationMethod<
   UpdateAccountCustomPermissionRequest,
   UpdateAccountCustomPermissionResponse,
   UpdateAccountCustomPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountCustomPermissionRequest,
   output: UpdateAccountCustomPermissionResponse,
@@ -37823,7 +41576,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsRequest,
   UpdateAccountSettingsResponse,
   UpdateAccountSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsRequest,
   output: UpdateAccountSettingsResponse,
@@ -37856,7 +41609,7 @@ export const updateActionConnector: API.OperationMethod<
   UpdateActionConnectorRequest,
   UpdateActionConnectorResponse,
   UpdateActionConnectorError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateActionConnectorRequest,
   output: UpdateActionConnectorResponse,
@@ -37889,7 +41642,7 @@ export const updateActionConnectorPermissions: API.OperationMethod<
   UpdateActionConnectorPermissionsRequest,
   UpdateActionConnectorPermissionsResponse,
   UpdateActionConnectorPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateActionConnectorPermissionsRequest,
   output: UpdateActionConnectorPermissionsResponse,
@@ -37907,6 +41660,78 @@ export const updateActionConnectorPermissions: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateActionConnectorPermissions",
 }));
+export type UpdateAgentError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates an existing agent.
+ */
+export const updateAgent: API.OperationMethod<
+  UpdateAgentRequest,
+  UpdateAgentResponse,
+  UpdateAgentError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAgentRequest,
+  output: UpdateAgentResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAgent",
+}));
+export type UpdateAgentPermissionsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnsupportedUserEditionException
+  | CommonErrors;
+/**
+ * Updates the resource permissions for an agent.
+ */
+export const updateAgentPermissions: API.OperationMethod<
+  UpdateAgentPermissionsRequest,
+  UpdateAgentPermissionsResponse,
+  UpdateAgentPermissionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAgentPermissionsRequest,
+  output: UpdateAgentPermissionsResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnsupportedUserEditionException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAgentPermissions",
+}));
 export type UpdateAnalysisError =
   | ConflictException
   | InternalFailureException
@@ -37923,7 +41748,7 @@ export const updateAnalysis: API.OperationMethod<
   UpdateAnalysisRequest,
   UpdateAnalysisResponse,
   UpdateAnalysisError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAnalysisRequest,
   output: UpdateAnalysisResponse,
@@ -37956,7 +41781,7 @@ export const updateAnalysisPermissions: API.OperationMethod<
   UpdateAnalysisPermissionsRequest,
   UpdateAnalysisPermissionsResponse,
   UpdateAnalysisPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAnalysisPermissionsRequest,
   output: UpdateAnalysisPermissionsResponse,
@@ -37989,7 +41814,7 @@ export const updateApplicationWithTokenExchangeGrant: API.OperationMethod<
   UpdateApplicationWithTokenExchangeGrantRequest,
   UpdateApplicationWithTokenExchangeGrantResponse,
   UpdateApplicationWithTokenExchangeGrantError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApplicationWithTokenExchangeGrantRequest,
   output: UpdateApplicationWithTokenExchangeGrantResponse,
@@ -38021,7 +41846,7 @@ export const updateBrand: API.OperationMethod<
   UpdateBrandRequest,
   UpdateBrandResponse,
   UpdateBrandError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBrandRequest,
   output: UpdateBrandResponse,
@@ -38052,7 +41877,7 @@ export const updateBrandAssignment: API.OperationMethod<
   UpdateBrandAssignmentRequest,
   UpdateBrandAssignmentResponse,
   UpdateBrandAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBrandAssignmentRequest,
   output: UpdateBrandAssignmentResponse,
@@ -38083,7 +41908,7 @@ export const updateBrandPublishedVersion: API.OperationMethod<
   UpdateBrandPublishedVersionRequest,
   UpdateBrandPublishedVersionResponse,
   UpdateBrandPublishedVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBrandPublishedVersionRequest,
   output: UpdateBrandPublishedVersionResponse,
@@ -38116,7 +41941,7 @@ export const updateCustomPermissions: API.OperationMethod<
   UpdateCustomPermissionsRequest,
   UpdateCustomPermissionsResponse,
   UpdateCustomPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCustomPermissionsRequest,
   output: UpdateCustomPermissionsResponse,
@@ -38156,7 +41981,7 @@ export const updateDashboard: API.OperationMethod<
   UpdateDashboardRequest,
   UpdateDashboardResponse,
   UpdateDashboardError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDashboardRequest,
   output: UpdateDashboardResponse,
@@ -38189,7 +42014,7 @@ export const updateDashboardLinks: API.OperationMethod<
   UpdateDashboardLinksRequest,
   UpdateDashboardLinksResponse,
   UpdateDashboardLinksError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDashboardLinksRequest,
   output: UpdateDashboardLinksResponse,
@@ -38222,7 +42047,7 @@ export const updateDashboardPermissions: API.OperationMethod<
   UpdateDashboardPermissionsRequest,
   UpdateDashboardPermissionsResponse,
   UpdateDashboardPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDashboardPermissionsRequest,
   output: UpdateDashboardPermissionsResponse,
@@ -38254,7 +42079,7 @@ export const updateDashboardPublishedVersion: API.OperationMethod<
   UpdateDashboardPublishedVersionRequest,
   UpdateDashboardPublishedVersionResponse,
   UpdateDashboardPublishedVersionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDashboardPublishedVersionRequest,
   output: UpdateDashboardPublishedVersionResponse,
@@ -38285,7 +42110,7 @@ export const updateDashboardsQAConfiguration: API.OperationMethod<
   UpdateDashboardsQAConfigurationRequest,
   UpdateDashboardsQAConfigurationResponse,
   UpdateDashboardsQAConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDashboardsQAConfigurationRequest,
   output: UpdateDashboardsQAConfigurationResponse,
@@ -38320,7 +42145,7 @@ export const updateDataSet: API.OperationMethod<
   UpdateDataSetRequest,
   UpdateDataSetResponse,
   UpdateDataSetError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataSetRequest,
   output: UpdateDataSetResponse,
@@ -38357,7 +42182,7 @@ export const updateDataSetPermissions: API.OperationMethod<
   UpdateDataSetPermissionsRequest,
   UpdateDataSetPermissionsResponse,
   UpdateDataSetPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataSetPermissionsRequest,
   output: UpdateDataSetPermissionsResponse,
@@ -38389,7 +42214,7 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceRequest,
   UpdateDataSourceResponse,
   UpdateDataSourceError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataSourceRequest,
   output: UpdateDataSourceResponse,
@@ -38421,7 +42246,7 @@ export const updateDataSourcePermissions: API.OperationMethod<
   UpdateDataSourcePermissionsRequest,
   UpdateDataSourcePermissionsResponse,
   UpdateDataSourcePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataSourcePermissionsRequest,
   output: UpdateDataSourcePermissionsResponse,
@@ -38452,7 +42277,7 @@ export const updateDefaultQBusinessApplication: API.OperationMethod<
   UpdateDefaultQBusinessApplicationRequest,
   UpdateDefaultQBusinessApplicationResponse,
   UpdateDefaultQBusinessApplicationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDefaultQBusinessApplicationRequest,
   output: UpdateDefaultQBusinessApplicationResponse,
@@ -38468,6 +42293,39 @@ export const updateDefaultQBusinessApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDefaultQBusinessApplication",
 }));
+export type UpdateFlowError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates an existing flow. Supply only the fields you want to change. Updates both DRAFT and PUBLISHED versions. When `FlowDefinition` is provided, all existing steps are replaced with the new definition.
+ */
+export const updateFlow: API.OperationMethod<
+  UpdateFlowRequest,
+  UpdateFlowResponse,
+  UpdateFlowError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateFlowRequest,
+  output: UpdateFlowResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateFlow",
+}));
 export type UpdateFlowPermissionsError =
   | AccessDeniedException
   | InternalFailureException
@@ -38481,7 +42339,7 @@ export const updateFlowPermissions: API.OperationMethod<
   UpdateFlowPermissionsInput,
   UpdateFlowPermissionsOutput,
   UpdateFlowPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFlowPermissionsInput,
   output: UpdateFlowPermissionsOutput,
@@ -38512,7 +42370,7 @@ export const updateFolder: API.OperationMethod<
   UpdateFolderRequest,
   UpdateFolderResponse,
   UpdateFolderError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFolderRequest,
   output: UpdateFolderResponse,
@@ -38546,7 +42404,7 @@ export const updateFolderPermissions: API.OperationMethod<
   UpdateFolderPermissionsRequest,
   UpdateFolderPermissionsResponse,
   UpdateFolderPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFolderPermissionsRequest,
   output: UpdateFolderPermissionsResponse,
@@ -38579,7 +42437,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupRequest,
   UpdateGroupResponse,
   UpdateGroupError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
@@ -38614,7 +42472,7 @@ export const updateIAMPolicyAssignment: API.OperationMethod<
   UpdateIAMPolicyAssignmentRequest,
   UpdateIAMPolicyAssignmentResponse,
   UpdateIAMPolicyAssignmentError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIAMPolicyAssignmentRequest,
   output: UpdateIAMPolicyAssignmentResponse,
@@ -38647,7 +42505,7 @@ export const updateIdentityPropagationConfig: API.OperationMethod<
   UpdateIdentityPropagationConfigRequest,
   UpdateIdentityPropagationConfigResponse,
   UpdateIdentityPropagationConfigError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIdentityPropagationConfigRequest,
   output: UpdateIdentityPropagationConfigResponse,
@@ -38677,7 +42535,7 @@ export const updateIpRestriction: API.OperationMethod<
   UpdateIpRestrictionRequest,
   UpdateIpRestrictionResponse,
   UpdateIpRestrictionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIpRestrictionRequest,
   output: UpdateIpRestrictionResponse,
@@ -38706,7 +42564,7 @@ export const updateKeyRegistration: API.OperationMethod<
   UpdateKeyRegistrationRequest,
   UpdateKeyRegistrationResponse,
   UpdateKeyRegistrationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKeyRegistrationRequest,
   output: UpdateKeyRegistrationResponse,
@@ -38719,6 +42577,76 @@ export const updateKeyRegistration: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateKeyRegistration",
+}));
+export type UpdateKnowledgeBasePermissionsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | InvalidRequestException
+  | LimitExceededException
+  | PreconditionNotMetException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates the resource permissions for a knowledge base.
+ */
+export const updateKnowledgeBasePermissions: API.OperationMethod<
+  UpdateKnowledgeBasePermissionsRequest,
+  UpdateKnowledgeBasePermissionsResponse,
+  UpdateKnowledgeBasePermissionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateKnowledgeBasePermissionsRequest,
+  output: UpdateKnowledgeBasePermissionsResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    InvalidRequestException,
+    LimitExceededException,
+    PreconditionNotMetException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateKnowledgeBasePermissions",
+}));
+export type UpdateOAuthClientApplicationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates an OAuthClientApplication.
+ */
+export const updateOAuthClientApplication: API.OperationMethod<
+  UpdateOAuthClientApplicationRequest,
+  UpdateOAuthClientApplicationResponse,
+  UpdateOAuthClientApplicationError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateOAuthClientApplicationRequest,
+  output: UpdateOAuthClientApplicationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateOAuthClientApplication",
 }));
 export type UpdatePublicSharingSettingsError =
   | AccessDeniedException
@@ -38756,7 +42684,7 @@ export const updatePublicSharingSettings: API.OperationMethod<
   UpdatePublicSharingSettingsRequest,
   UpdatePublicSharingSettingsResponse,
   UpdatePublicSharingSettingsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePublicSharingSettingsRequest,
   output: UpdatePublicSharingSettingsResponse,
@@ -38788,7 +42716,7 @@ export const updateQPersonalizationConfiguration: API.OperationMethod<
   UpdateQPersonalizationConfigurationRequest,
   UpdateQPersonalizationConfigurationResponse,
   UpdateQPersonalizationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQPersonalizationConfigurationRequest,
   output: UpdateQPersonalizationConfigurationResponse,
@@ -38820,7 +42748,7 @@ export const updateQuickSightQSearchConfiguration: API.OperationMethod<
   UpdateQuickSightQSearchConfigurationRequest,
   UpdateQuickSightQSearchConfigurationResponse,
   UpdateQuickSightQSearchConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateQuickSightQSearchConfigurationRequest,
   output: UpdateQuickSightQSearchConfigurationResponse,
@@ -38852,7 +42780,7 @@ export const updateRefreshSchedule: API.OperationMethod<
   UpdateRefreshScheduleRequest,
   UpdateRefreshScheduleResponse,
   UpdateRefreshScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRefreshScheduleRequest,
   output: UpdateRefreshScheduleResponse,
@@ -38885,7 +42813,7 @@ export const updateRoleCustomPermission: API.OperationMethod<
   UpdateRoleCustomPermissionRequest,
   UpdateRoleCustomPermissionResponse,
   UpdateRoleCustomPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRoleCustomPermissionRequest,
   output: UpdateRoleCustomPermissionResponse,
@@ -38920,7 +42848,7 @@ export const updateSelfUpgrade: API.OperationMethod<
   UpdateSelfUpgradeRequest,
   UpdateSelfUpgradeResponse,
   UpdateSelfUpgradeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSelfUpgradeRequest,
   output: UpdateSelfUpgradeResponse,
@@ -38956,7 +42884,7 @@ export const updateSelfUpgradeConfiguration: API.OperationMethod<
   UpdateSelfUpgradeConfigurationRequest,
   UpdateSelfUpgradeConfigurationResponse,
   UpdateSelfUpgradeConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSelfUpgradeConfigurationRequest,
   output: UpdateSelfUpgradeConfigurationResponse,
@@ -38974,6 +42902,107 @@ export const updateSelfUpgradeConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSelfUpgradeConfiguration",
 }));
+export type UpdateSpaceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates the metadata of an Amazon QuickSight space.
+ */
+export const updateSpace: API.OperationMethod<
+  UpdateSpaceRequest,
+  UpdateSpaceResponse,
+  UpdateSpaceError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateSpaceRequest,
+  output: UpdateSpaceResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateSpace",
+}));
+export type UpdateSpacePermissionsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnsupportedUserEditionException
+  | CommonErrors;
+/**
+ * Updates the permissions for an Amazon QuickSight space.
+ */
+export const updateSpacePermissions: API.OperationMethod<
+  UpdateSpacePermissionsRequest,
+  UpdateSpacePermissionsResponse,
+  UpdateSpacePermissionsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateSpacePermissionsRequest,
+  output: UpdateSpacePermissionsResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnsupportedUserEditionException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateSpacePermissions",
+}));
+export type UpdateSpaceResourcesError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalFailureException
+  | InvalidParameterValueException
+  | LimitExceededException
+  | ResourceExistsException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Adds or removes resources from an Amazon QuickSight space.
+ */
+export const updateSpaceResources: API.OperationMethod<
+  UpdateSpaceResourcesRequest,
+  UpdateSpaceResourcesResponse,
+  UpdateSpaceResourcesError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateSpaceResourcesRequest,
+  output: UpdateSpaceResourcesResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalFailureException,
+    InvalidParameterValueException,
+    LimitExceededException,
+    ResourceExistsException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateSpaceResources",
+}));
 export type UpdateSPICECapacityConfigurationError =
   | AccessDeniedException
   | InternalFailureException
@@ -38988,7 +43017,7 @@ export const updateSPICECapacityConfiguration: API.OperationMethod<
   UpdateSPICECapacityConfigurationRequest,
   UpdateSPICECapacityConfigurationResponse,
   UpdateSPICECapacityConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSPICECapacityConfigurationRequest,
   output: UpdateSPICECapacityConfigurationResponse,
@@ -39020,7 +43049,7 @@ export const updateTemplate: API.OperationMethod<
   UpdateTemplateRequest,
   UpdateTemplateResponse,
   UpdateTemplateError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
@@ -39052,7 +43081,7 @@ export const updateTemplateAlias: API.OperationMethod<
   UpdateTemplateAliasRequest,
   UpdateTemplateAliasResponse,
   UpdateTemplateAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTemplateAliasRequest,
   output: UpdateTemplateAliasResponse,
@@ -39083,7 +43112,7 @@ export const updateTemplatePermissions: API.OperationMethod<
   UpdateTemplatePermissionsRequest,
   UpdateTemplatePermissionsResponse,
   UpdateTemplatePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTemplatePermissionsRequest,
   output: UpdateTemplatePermissionsResponse,
@@ -39117,7 +43146,7 @@ export const updateTheme: API.OperationMethod<
   UpdateThemeRequest,
   UpdateThemeResponse,
   UpdateThemeError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateThemeRequest,
   output: UpdateThemeResponse,
@@ -39151,7 +43180,7 @@ export const updateThemeAlias: API.OperationMethod<
   UpdateThemeAliasRequest,
   UpdateThemeAliasResponse,
   UpdateThemeAliasError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateThemeAliasRequest,
   output: UpdateThemeAliasResponse,
@@ -39224,7 +43253,7 @@ export const updateThemePermissions: API.OperationMethod<
   UpdateThemePermissionsRequest,
   UpdateThemePermissionsResponse,
   UpdateThemePermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateThemePermissionsRequest,
   output: UpdateThemePermissionsResponse,
@@ -39258,7 +43287,7 @@ export const updateTopic: API.OperationMethod<
   UpdateTopicRequest,
   UpdateTopicResponse,
   UpdateTopicError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTopicRequest,
   output: UpdateTopicResponse,
@@ -39293,7 +43322,7 @@ export const updateTopicPermissions: API.OperationMethod<
   UpdateTopicPermissionsRequest,
   UpdateTopicPermissionsResponse,
   UpdateTopicPermissionsError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTopicPermissionsRequest,
   output: UpdateTopicPermissionsResponse,
@@ -39328,7 +43357,7 @@ export const updateTopicRefreshSchedule: API.OperationMethod<
   UpdateTopicRefreshScheduleRequest,
   UpdateTopicRefreshScheduleResponse,
   UpdateTopicRefreshScheduleError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTopicRefreshScheduleRequest,
   output: UpdateTopicRefreshScheduleResponse,
@@ -39362,7 +43391,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserRequest,
   UpdateUserResponse,
   UpdateUserError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
@@ -39396,7 +43425,7 @@ export const updateUserCustomPermission: API.OperationMethod<
   UpdateUserCustomPermissionRequest,
   UpdateUserCustomPermissionResponse,
   UpdateUserCustomPermissionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserCustomPermissionRequest,
   output: UpdateUserCustomPermissionResponse,
@@ -39431,7 +43460,7 @@ export const updateVPCConnection: API.OperationMethod<
   UpdateVPCConnectionRequest,
   UpdateVPCConnectionResponse,
   UpdateVPCConnectionError,
-  Credentials | Region | HttpClient.HttpClient
+  Credentials | Rgn | HttpClient.HttpClient
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVPCConnectionRequest,
   output: UpdateVPCConnectionResponse,

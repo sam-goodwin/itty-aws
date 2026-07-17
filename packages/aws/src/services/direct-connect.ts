@@ -122,6 +122,7 @@ export type SecretARN = string;
 export type Ckn = string;
 export type State = string;
 export type StartOnDate = string;
+export type Count = number;
 export type PartnerInterconnectMacSecCapable = boolean;
 export type VirtualInterfaceName = string;
 export type ASN = number;
@@ -130,6 +131,7 @@ export type MTU = number;
 export type BGPAuthKey = string;
 export type AmazonAddress = string;
 export type CustomerAddress = string;
+export type RateLimit = string;
 export type VirtualInterfaceId = string;
 export type VirtualInterfaceType = string;
 export type RouterConfig = string;
@@ -142,7 +144,6 @@ export type RequestMACSec = boolean;
 export type DirectConnectGatewayName = string;
 export type GatewayIdToAssociate = string;
 export type InterconnectName = string;
-export type Count = number;
 export type LagName = string;
 export type BooleanFlag = boolean;
 export type EnableSiteLink = boolean;
@@ -364,6 +365,22 @@ export const MacSecKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MacSecKey" }) as any as S.Schema<MacSecKey>;
 export type MacSecKeyList = MacSecKey[];
 export const MacSecKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(MacSecKey);
+export interface RateLimiterStatus {
+  maxAllowed?: number;
+  inUse?: number;
+  remaining?: number;
+  totalBandwidth?: string;
+}
+export const RateLimiterStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxAllowed: S.optional(S.Number),
+    inUse: S.optional(S.Number),
+    remaining: S.optional(S.Number),
+    totalBandwidth: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RateLimiterStatus",
+}) as any as S.Schema<RateLimiterStatus>;
 export interface Connection {
   ownerAccount?: string;
   connectionId?: string;
@@ -387,6 +404,7 @@ export interface Connection {
   portEncryptionStatus?: string;
   encryptionMode?: string;
   macSecKeys?: MacSecKey[];
+  rateLimiterStatus?: RateLimiterStatus;
   partnerInterconnectMacSecCapable?: boolean;
 }
 export const Connection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -413,6 +431,7 @@ export const Connection = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     portEncryptionStatus: S.optional(S.String),
     encryptionMode: S.optional(S.String),
     macSecKeys: S.optional(MacSecKeyList),
+    rateLimiterStatus: S.optional(RateLimiterStatus),
     partnerInterconnectMacSecCapable: S.optional(S.Boolean),
   }).pipe(ns),
 ).annotate({ identifier: "Connection" }) as any as S.Schema<Connection>;
@@ -460,6 +479,7 @@ export interface NewPrivateVirtualInterfaceAllocation {
   addressFamily?: AddressFamily;
   customerAddress?: string;
   tags?: Tag[];
+  rateLimit?: string;
 }
 export const NewPrivateVirtualInterfaceAllocation =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -474,6 +494,7 @@ export const NewPrivateVirtualInterfaceAllocation =
       addressFamily: S.optional(AddressFamily),
       customerAddress: S.optional(S.String),
       tags: S.optional(TagList),
+      rateLimit: S.optional(S.String),
     }),
   ).annotate({
     identifier: "NewPrivateVirtualInterfaceAllocation",
@@ -585,6 +606,7 @@ export interface VirtualInterface {
   awsLogicalDeviceId?: string;
   tags?: Tag[];
   siteLinkEnabled?: boolean;
+  rateLimit?: string;
 }
 export const VirtualInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -615,6 +637,7 @@ export const VirtualInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     awsLogicalDeviceId: S.optional(S.String),
     tags: S.optional(TagList),
     siteLinkEnabled: S.optional(S.Boolean),
+    rateLimit: S.optional(S.String),
   }).pipe(ns),
 ).annotate({
   identifier: "VirtualInterface",
@@ -630,6 +653,7 @@ export interface NewPublicVirtualInterfaceAllocation {
   addressFamily?: AddressFamily;
   routeFilterPrefixes?: RouteFilterPrefix[];
   tags?: Tag[];
+  rateLimit?: string;
 }
 export const NewPublicVirtualInterfaceAllocation =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -644,6 +668,7 @@ export const NewPublicVirtualInterfaceAllocation =
       addressFamily: S.optional(AddressFamily),
       routeFilterPrefixes: S.optional(RouteFilterPrefixList),
       tags: S.optional(TagList),
+      rateLimit: S.optional(S.String),
     }),
   ).annotate({
     identifier: "NewPublicVirtualInterfaceAllocation",
@@ -684,6 +709,7 @@ export interface NewTransitVirtualInterfaceAllocation {
   customerAddress?: string;
   addressFamily?: AddressFamily;
   tags?: Tag[];
+  rateLimit?: string;
 }
 export const NewTransitVirtualInterfaceAllocation =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -698,6 +724,7 @@ export const NewTransitVirtualInterfaceAllocation =
       customerAddress: S.optional(S.String),
       addressFamily: S.optional(AddressFamily),
       tags: S.optional(TagList),
+      rateLimit: S.optional(S.String),
     }),
   ).annotate({
     identifier: "NewTransitVirtualInterfaceAllocation",
@@ -1417,6 +1444,7 @@ export interface Lag {
   macSecCapable?: boolean;
   encryptionMode?: string;
   macSecKeys?: MacSecKey[];
+  rateLimiterStatus?: RateLimiterStatus;
 }
 export const Lag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1441,6 +1469,7 @@ export const Lag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     macSecCapable: S.optional(S.Boolean),
     encryptionMode: S.optional(S.String),
     macSecKeys: S.optional(MacSecKeyList),
+    rateLimiterStatus: S.optional(RateLimiterStatus),
   }).pipe(ns),
 ).annotate({ identifier: "Lag" }) as any as S.Schema<Lag>;
 export interface NewPrivateVirtualInterface {
@@ -1457,6 +1486,7 @@ export interface NewPrivateVirtualInterface {
   directConnectGatewayId?: string;
   tags?: Tag[];
   enableSiteLink?: boolean;
+  rateLimit?: string;
 }
 export const NewPrivateVirtualInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1474,6 +1504,7 @@ export const NewPrivateVirtualInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       directConnectGatewayId: S.optional(S.String),
       tags: S.optional(TagList),
       enableSiteLink: S.optional(S.Boolean),
+      rateLimit: S.optional(S.String),
     }),
 ).annotate({
   identifier: "NewPrivateVirtualInterface",
@@ -1512,6 +1543,7 @@ export interface NewPublicVirtualInterface {
   addressFamily?: AddressFamily;
   routeFilterPrefixes?: RouteFilterPrefix[];
   tags?: Tag[];
+  rateLimit?: string;
 }
 export const NewPublicVirtualInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1526,6 +1558,7 @@ export const NewPublicVirtualInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       addressFamily: S.optional(AddressFamily),
       routeFilterPrefixes: S.optional(RouteFilterPrefixList),
       tags: S.optional(TagList),
+      rateLimit: S.optional(S.String),
     }),
 ).annotate({
   identifier: "NewPublicVirtualInterface",
@@ -1566,6 +1599,7 @@ export interface NewTransitVirtualInterface {
   directConnectGatewayId?: string;
   tags?: Tag[];
   enableSiteLink?: boolean;
+  rateLimit?: string;
 }
 export const NewTransitVirtualInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -1582,6 +1616,7 @@ export const NewTransitVirtualInterface = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       directConnectGatewayId: S.optional(S.String),
       tags: S.optional(TagList),
       enableSiteLink: S.optional(S.Boolean),
+      rateLimit: S.optional(S.String),
     }),
 ).annotate({
   identifier: "NewTransitVirtualInterface",
@@ -2978,6 +3013,7 @@ export interface UpdateVirtualInterfaceAttributesRequest {
   mtu?: number;
   enableSiteLink?: boolean;
   virtualInterfaceName?: string;
+  rateLimit?: string;
 }
 export const UpdateVirtualInterfaceAttributesRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -2986,6 +3022,7 @@ export const UpdateVirtualInterfaceAttributesRequest =
       mtu: S.optional(S.Number),
       enableSiteLink: S.optional(S.Boolean),
       virtualInterfaceName: S.optional(S.String),
+      rateLimit: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -3018,6 +3055,10 @@ export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsExceptio
   "TooManyTagsException",
   { message: S.optional(S.String) },
 ) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type AcceptDirectConnectGatewayAssociationProposalError =
@@ -3102,6 +3143,7 @@ export type AllocatePrivateVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
   | DuplicateTagKeysException
+  | LimitExceededException
   | TooManyTagsException
   | CommonErrors;
 /**
@@ -3122,6 +3164,7 @@ export const allocatePrivateVirtualInterface: API.OperationMethod<
     DirectConnectClientException,
     DirectConnectServerException,
     DuplicateTagKeysException,
+    LimitExceededException,
     TooManyTagsException,
   ],
   protocol: AwsProtocol,
@@ -3132,6 +3175,7 @@ export type AllocatePublicVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
   | DuplicateTagKeysException
+  | LimitExceededException
   | TooManyTagsException
   | CommonErrors;
 /**
@@ -3157,6 +3201,7 @@ export const allocatePublicVirtualInterface: API.OperationMethod<
     DirectConnectClientException,
     DirectConnectServerException,
     DuplicateTagKeysException,
+    LimitExceededException,
     TooManyTagsException,
   ],
   protocol: AwsProtocol,
@@ -3167,6 +3212,7 @@ export type AllocateTransitVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
   | DuplicateTagKeysException
+  | LimitExceededException
   | TooManyTagsException
   | CommonErrors;
 /**
@@ -3188,6 +3234,7 @@ export const allocateTransitVirtualInterface: API.OperationMethod<
     DirectConnectClientException,
     DirectConnectServerException,
     DuplicateTagKeysException,
+    LimitExceededException,
     TooManyTagsException,
   ],
   protocol: AwsProtocol,
@@ -3197,6 +3244,7 @@ export const allocateTransitVirtualInterface: API.OperationMethod<
 export type AssociateConnectionWithLagError =
   | DirectConnectClientException
   | DirectConnectServerException
+  | LimitExceededException
   | CommonErrors;
 /**
  * Associates an existing connection with a link aggregation group (LAG). The connection
@@ -3224,7 +3272,11 @@ export const associateConnectionWithLag: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AssociateConnectionWithLagRequest,
   output: Connection,
-  errors: [DirectConnectClientException, DirectConnectServerException],
+  errors: [
+    DirectConnectClientException,
+    DirectConnectServerException,
+    LimitExceededException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "AssociateConnectionWithLag",
@@ -3662,6 +3714,7 @@ export type CreatePrivateVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
   | DuplicateTagKeysException
+  | LimitExceededException
   | TooManyTagsException
   | CommonErrors;
 /**
@@ -3690,6 +3743,7 @@ export const createPrivateVirtualInterface: API.OperationMethod<
     DirectConnectClientException,
     DirectConnectServerException,
     DuplicateTagKeysException,
+    LimitExceededException,
     TooManyTagsException,
   ],
   protocol: AwsProtocol,
@@ -3700,6 +3754,7 @@ export type CreatePublicVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
   | DuplicateTagKeysException
+  | LimitExceededException
   | TooManyTagsException
   | CommonErrors;
 /**
@@ -3721,6 +3776,7 @@ export const createPublicVirtualInterface: API.OperationMethod<
     DirectConnectClientException,
     DirectConnectServerException,
     DuplicateTagKeysException,
+    LimitExceededException,
     TooManyTagsException,
   ],
   protocol: AwsProtocol,
@@ -3731,6 +3787,7 @@ export type CreateTransitVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
   | DuplicateTagKeysException
+  | LimitExceededException
   | TooManyTagsException
   | CommonErrors;
 /**
@@ -3757,6 +3814,7 @@ export const createTransitVirtualInterface: API.OperationMethod<
     DirectConnectClientException,
     DirectConnectServerException,
     DuplicateTagKeysException,
+    LimitExceededException,
     TooManyTagsException,
   ],
   protocol: AwsProtocol,
@@ -4350,7 +4408,7 @@ export type DescribeVirtualInterfacesError =
  *
  * A virtual interface (VLAN) transmits the traffic between the Direct Connect location and the customer network.
  *
- * - If you're using an `asn`, the response includes ASN value in both the `asn` and `asnLong` fields.
+ * - If you're using an `asn`, the response includes the ASN value in both the `asn` and `asnLong` fields.
  *
  * - If you're using `asnLong`, the response returns a value of `0` (zero) for the `asn` attribute because it exceeds the highest ASN value of 2,147,483,647 that it can support
  */

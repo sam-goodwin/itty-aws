@@ -125,6 +125,16 @@ export type PreventWillMessage = boolean;
 export type ErrorMessage = string;
 export type ThingName = string;
 export type ShadowName = string;
+export type IncludeSocketInformation = boolean;
+export type Connected = boolean;
+export type SourceIp = string;
+export type SourcePort = number;
+export type TargetIp = string;
+export type TargetPort = number;
+export type KeepAliveDuration = number;
+export type DisconnectReason = string;
+export type SessionExpiry = number;
+export type VpcEndpointId = string;
 export type Topic = string;
 export type Payload = Uint8Array;
 export type Qos = number;
@@ -133,12 +143,17 @@ export type NextToken = string;
 export type PageSize = number;
 export type MaxResults = number;
 export type PayloadSize = number;
+export type TopicFilter = string;
 export type Retain = boolean;
 export type SynthesizedJsonUserProperties = string;
 export type ContentType = string;
 export type ResponseTopic = string;
 export type CorrelationData = string;
 export type MessageExpiry = number;
+export type Confirmation = boolean;
+export type TimeoutInSeconds = number;
+export type ResponseMessage = string;
+export type TraceId = string;
 
 //# Schemas
 export interface DeleteConnectionRequest {
@@ -203,6 +218,65 @@ export const DeleteThingShadowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteThingShadowResponse",
 }) as any as S.Schema<DeleteThingShadowResponse>;
+export interface GetConnectionRequest {
+  clientId: string;
+  includeSocketInformation?: boolean;
+}
+export const GetConnectionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String.pipe(T.HttpLabel("clientId")),
+    includeSocketInformation: S.optional(S.Boolean).pipe(
+      T.HttpQuery("includeSocketInformation"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/connections/{clientId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetConnectionRequest",
+}) as any as S.Schema<GetConnectionRequest>;
+export interface GetConnectionResponse {
+  connected?: boolean;
+  thingName?: string;
+  cleanSession?: boolean;
+  sourceIp?: string;
+  sourcePort?: number;
+  targetIp?: string;
+  targetPort?: number;
+  keepAliveDuration?: number;
+  connectedSince?: number;
+  disconnectedSince?: number;
+  disconnectReason?: string;
+  sessionExpiry?: number;
+  clientId?: string;
+  vpcEndpointId?: string;
+}
+export const GetConnectionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connected: S.optional(S.Boolean),
+    thingName: S.optional(S.String),
+    cleanSession: S.optional(S.Boolean),
+    sourceIp: S.optional(S.String),
+    sourcePort: S.optional(S.Number),
+    targetIp: S.optional(S.String),
+    targetPort: S.optional(S.Number),
+    keepAliveDuration: S.optional(S.Number),
+    connectedSince: S.optional(S.Number),
+    disconnectedSince: S.optional(S.Number),
+    disconnectReason: S.optional(S.String),
+    sessionExpiry: S.optional(S.Number),
+    clientId: S.optional(S.String),
+    vpcEndpointId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetConnectionResponse",
+}) as any as S.Schema<GetConnectionResponse>;
 export interface GetRetainedMessageRequest {
   topic: string;
 }
@@ -370,6 +444,55 @@ export const ListRetainedMessagesResponse =
   ).annotate({
     identifier: "ListRetainedMessagesResponse",
   }) as any as S.Schema<ListRetainedMessagesResponse>;
+export interface ListSubscriptionsRequest {
+  clientId: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListSubscriptionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clientId: S.String.pipe(T.HttpLabel("clientId")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/connections/{clientId}/subscriptions" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListSubscriptionsRequest",
+}) as any as S.Schema<ListSubscriptionsRequest>;
+export interface SubscriptionSummary {
+  topicFilter: string;
+  qos: number;
+}
+export const SubscriptionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ topicFilter: S.String, qos: S.Number }),
+).annotate({
+  identifier: "SubscriptionSummary",
+}) as any as S.Schema<SubscriptionSummary>;
+export type SubscriptionList = SubscriptionSummary[];
+export const SubscriptionList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SubscriptionSummary);
+export interface ListSubscriptionsResponse {
+  subscriptions?: SubscriptionSummary[];
+  nextToken?: string;
+}
+export const ListSubscriptionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptions: S.optional(SubscriptionList),
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListSubscriptionsResponse",
+}) as any as S.Schema<ListSubscriptionsResponse>;
 export type PayloadFormatIndicator =
   | "UNSPECIFIED_BYTES"
   | "UTF8_DATA"
@@ -422,6 +545,60 @@ export const PublishResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PublishResponse",
 }) as any as S.Schema<PublishResponse>;
+export interface SendDirectMessageRequest {
+  clientId: string;
+  topic: string;
+  contentType?: string;
+  responseTopic?: string;
+  confirmation?: boolean;
+  timeout?: number;
+  payload?: T.StreamingInputBody;
+  userProperties?: string;
+  payloadFormatIndicator?: PayloadFormatIndicator;
+  correlationData?: string;
+}
+export const SendDirectMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clientId: S.String.pipe(T.HttpLabel("clientId")),
+      topic: S.String.pipe(T.HttpQuery("topic")),
+      contentType: S.optional(S.String).pipe(T.HttpQuery("contentType")),
+      responseTopic: S.optional(S.String).pipe(T.HttpQuery("responseTopic")),
+      confirmation: S.optional(S.Boolean).pipe(T.HttpQuery("confirmation")),
+      timeout: S.optional(S.Number).pipe(T.HttpQuery("timeout")),
+      payload: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+      userProperties: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-mqtt5-user-properties"),
+      ),
+      payloadFormatIndicator: S.optional(PayloadFormatIndicator).pipe(
+        T.HttpHeader("x-amz-mqtt5-payload-format-indicator"),
+      ),
+      correlationData: S.optional(S.String).pipe(
+        T.HttpHeader("x-amz-mqtt5-correlation-data"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/connections/{clientId}/messages" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "SendDirectMessageRequest",
+}) as any as S.Schema<SendDirectMessageRequest>;
+export interface SendDirectMessageResponse {
+  message?: string;
+  traceId?: string;
+}
+export const SendDirectMessageResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ message: S.optional(S.String), traceId: S.optional(S.String) }),
+).annotate({
+  identifier: "SendDirectMessageResponse",
+}) as any as S.Schema<SendDirectMessageResponse>;
 export interface UpdateThingShadowRequest {
   thingName: string;
   shadowName?: string;
@@ -493,14 +670,18 @@ export class UnsupportedDocumentEncodingException extends S.TaggedErrorClass<Uns
   "UnsupportedDocumentEncodingException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
+export class GatewayTimeoutException extends S.TaggedErrorClass<GatewayTimeoutException>()(
+  "GatewayTimeoutException",
   { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
+).pipe(C.withTimeoutError) {}
 export class RequestEntityTooLargeException extends S.TaggedErrorClass<RequestEntityTooLargeException>()(
   "RequestEntityTooLargeException",
   { message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError) {}
 
 //# Operations
 export type DeleteConnectionError =
@@ -512,6 +693,8 @@ export type DeleteConnectionError =
   | CommonErrors;
 /**
  * Disconnects a connected MQTT client from Amazon Web Services IoT Core. When you disconnect a client, Amazon Web Services IoT Core closes the client's network connection and optionally cleans the session state.
+ *
+ * Requires permission to access the DeleteConnection action.
  */
 export const deleteConnection: API.OperationMethod<
   DeleteConnectionRequest,
@@ -570,6 +753,37 @@ export const deleteThingShadow: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteThingShadow",
+}));
+export type GetConnectionError =
+  | ForbiddenException
+  | InternalFailureException
+  | InvalidRequestException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves connection information for the specified MQTT client.
+ *
+ * Requires permission to access the GetConnection action.
+ */
+export const getConnection: API.OperationMethod<
+  GetConnectionRequest,
+  GetConnectionResponse,
+  GetConnectionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetConnectionRequest,
+  output: GetConnectionResponse,
+  errors: [
+    ForbiddenException,
+    InternalFailureException,
+    InvalidRequestException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetConnection",
 }));
 export type GetRetainedMessageError =
   | InternalFailureException
@@ -753,6 +967,58 @@ export const listRetainedMessages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+export type ListSubscriptionsError =
+  | ForbiddenException
+  | InternalFailureException
+  | InvalidRequestException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Returns a list of all subscriptions for MQTT clients with active sessions, including offline clients with persistent sessions.
+ *
+ * Requires permission to access the ListSubscriptions action.
+ */
+export const listSubscriptions: API.OperationMethod<
+  ListSubscriptionsRequest,
+  ListSubscriptionsResponse,
+  ListSubscriptionsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListSubscriptionsRequest,
+  ) => stream.Stream<
+    ListSubscriptionsResponse,
+    ListSubscriptionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListSubscriptionsRequest,
+  ) => stream.Stream<
+    SubscriptionSummary,
+    ListSubscriptionsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListSubscriptionsRequest,
+  output: ListSubscriptionsResponse,
+  errors: [
+    ForbiddenException,
+    InternalFailureException,
+    InvalidRequestException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListSubscriptions",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "subscriptions",
+    pageSize: "maxResults",
+  } as const,
+}));
 export type PublishError =
   | InternalFailureException
   | InvalidRequestException
@@ -790,6 +1056,49 @@ export const publish: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "Publish",
+}));
+export type SendDirectMessageError =
+  | ForbiddenException
+  | GatewayTimeoutException
+  | InternalFailureException
+  | InvalidRequestException
+  | RequestEntityTooLargeException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | CommonErrors;
+/**
+ * Sends an MQTT message directly to a specific client identified by its client ID.
+ *
+ * `SendDirectMessage` targets a single client ID. The receiving client does not
+ * need to subscribe to the topic, but the receiver's policy must allow `iot:Receive` on the specified topic.
+ *
+ * Requires permission to access the SendDirectMessage action.
+ *
+ * For more information about messaging costs, see Amazon Web Services IoT Core
+ * pricing.
+ */
+export const sendDirectMessage: API.OperationMethod<
+  SendDirectMessageRequest,
+  SendDirectMessageResponse,
+  SendDirectMessageError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: SendDirectMessageRequest,
+  output: SendDirectMessageResponse,
+  errors: [
+    ForbiddenException,
+    GatewayTimeoutException,
+    InternalFailureException,
+    InvalidRequestException,
+    RequestEntityTooLargeException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SendDirectMessage",
 }));
 export type UpdateThingShadowError =
   | ConflictException

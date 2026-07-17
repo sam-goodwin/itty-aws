@@ -1760,11 +1760,28 @@ export const BlueprintItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type BlueprintItems = BlueprintItem[];
 export const BlueprintItems =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(BlueprintItem);
+export type FallbackBlueprintItems = BlueprintItem[];
+export const FallbackBlueprintItems =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(BlueprintItem);
+export interface DocumentCustomOutputConfiguration {
+  fallbackBlueprints?: BlueprintItem[];
+}
+export const DocumentCustomOutputConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ fallbackBlueprints: S.optional(FallbackBlueprintItems) }),
+  ).annotate({
+    identifier: "DocumentCustomOutputConfiguration",
+  }) as any as S.Schema<DocumentCustomOutputConfiguration>;
 export interface CustomOutputConfiguration {
   blueprints?: BlueprintItem[];
+  document?: DocumentCustomOutputConfiguration;
 }
 export const CustomOutputConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ blueprints: S.optional(BlueprintItems) }),
+  () =>
+    S.Struct({
+      blueprints: S.optional(BlueprintItems),
+      document: S.optional(DocumentCustomOutputConfiguration),
+    }),
 ).annotate({
   identifier: "CustomOutputConfiguration",
 }) as any as S.Schema<CustomOutputConfiguration>;

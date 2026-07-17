@@ -253,6 +253,7 @@ export type BusinessValidationCode =
   | "INVALID_ACCOUNT_LINKING_STATUS"
   | "INVALID_ACCOUNT_STATE"
   | "INCOMPATIBLE_DOMAIN"
+  | "INELIGIBLE_ACCOUNT_TIER"
   | (string & {});
 export const BusinessValidationCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface BusinessValidationError {
@@ -333,6 +334,8 @@ export type ServiceQuotaExceededExceptionReason =
   | "LIMIT_EXCEEDED_NUMBER_OF_CONNECTION_INVITATION_PER_DAY"
   | "LIMIT_EXCEEDED_NUMBER_OF_ACTIVE_CONNECTION"
   | "LIMIT_EXCEEDED_NUMBER_OF_OPEN_CONNECTION_INVITATION"
+  | "LIMIT_EXCEEDED_NUMBER_OF_PROFILE_UPDATE_PER_DAY"
+  | "LIMIT_EXCEEDED_NUMBER_OF_PROFILE_VISIBILITY_UPDATE_PER_DAY"
   | (string & {});
 export const ServiceQuotaExceededExceptionReason =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -2640,6 +2643,7 @@ export type PutProfileVisibilityError =
   | AccessDeniedException
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -2658,6 +2662,7 @@ export const putProfileVisibility: API.OperationMethod<
     AccessDeniedException,
     InternalServerException,
     ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],
@@ -2670,6 +2675,7 @@ export type StartProfileUpdateTaskError =
   | ConflictException
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
@@ -2689,6 +2695,7 @@ export const startProfileUpdateTask: API.OperationMethod<
     ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],

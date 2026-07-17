@@ -121,15 +121,15 @@ export type LastUpdated = Date;
 export type PackageVersion = string;
 export type ReferencePath = string;
 export type ErrorType = string;
+export type Id = string;
+export type ClientToken = string;
 export type AWSAccount = string;
 export type DryRun = boolean;
 export type GUID = string;
 export type DeploymentCloseDateTimeStamp = Date;
-export type ClientToken = string;
 export type ApplicationName = string;
 export type AppConfigValue = string;
 export type KmsKeyArn = string;
-export type Id = string;
 export type VersionString = string;
 export type IntegerClass = number;
 export type UserPoolId = string;
@@ -144,6 +144,7 @@ export type SAMLEntityId = string;
 export type BackendRole = string;
 export type SubjectKey = string;
 export type RolesKey = string;
+export type JwksUrl = string;
 export type IAMFederationSubjectKey = string;
 export type IAMFederationRolesKey = string;
 export type IdentityCenterInstanceARN = string;
@@ -670,14 +671,90 @@ export const AssociatePackagesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociatePackagesResponse",
 }) as any as S.Schema<AssociatePackagesResponse>;
+export interface WorkspaceConfigurationInput {
+  name: string;
+  workspaceType: string;
+}
+export const WorkspaceConfigurationInput =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ name: S.String, workspaceType: S.String }),
+  ).annotate({
+    identifier: "WorkspaceConfigurationInput",
+  }) as any as S.Schema<WorkspaceConfigurationInput>;
+export interface AttachDataSourceRequest {
+  id: string;
+  dataSourceArn: string;
+  workspaceId?: string;
+  workspaceConfiguration?: WorkspaceConfigurationInput;
+  clientToken?: string;
+}
+export const AttachDataSourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String.pipe(T.HttpLabel("id")),
+      dataSourceArn: S.String,
+      workspaceId: S.optional(S.String),
+      workspaceConfiguration: S.optional(WorkspaceConfigurationInput),
+      clientToken: S.optional(S.String),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "POST",
+          uri: "/2021-01-01/opensearch/application/{id}/attachDataSource",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "AttachDataSourceRequest",
+}) as any as S.Schema<AttachDataSourceRequest>;
+export type DataSourceAttachmentStatus =
+  | "PENDING"
+  | "ATTACHED"
+  | "FAILED"
+  | (string & {});
+export const DataSourceAttachmentStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AttachDataSourceResponse {
+  attachmentId?: string;
+  id?: string;
+  arn?: string;
+  dataSourceArn?: string;
+  status?: DataSourceAttachmentStatus;
+}
+export const AttachDataSourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      attachmentId: S.optional(S.String),
+      id: S.optional(S.String),
+      arn: S.optional(S.String),
+      dataSourceArn: S.optional(S.String),
+      status: S.optional(DataSourceAttachmentStatus),
+    }).pipe(ns),
+).annotate({
+  identifier: "AttachDataSourceResponse",
+}) as any as S.Schema<AttachDataSourceResponse>;
 export type AWSServicePrincipal =
   | "application.opensearchservice.amazonaws.com"
   | (string & {});
 export const AWSServicePrincipal = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type RegionsList = string[];
+export const RegionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface ServiceOptions {
+  SupportedRegions?: string[];
+}
+export const ServiceOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ SupportedRegions: S.optional(RegionsList) }),
+).annotate({ identifier: "ServiceOptions" }) as any as S.Schema<ServiceOptions>;
 export interface AuthorizeVpcEndpointAccessRequest {
   DomainName: string;
   Account?: string;
   Service?: AWSServicePrincipal;
+  ServiceOptions?: ServiceOptions;
 }
 export const AuthorizeVpcEndpointAccessRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -685,6 +762,7 @@ export const AuthorizeVpcEndpointAccessRequest =
       DomainName: S.String.pipe(T.HttpLabel("DomainName")),
       Account: S.optional(S.String),
       Service: S.optional(AWSServicePrincipal),
+      ServiceOptions: S.optional(ServiceOptions),
     }).pipe(
       T.all(
         ns,
@@ -707,11 +785,13 @@ export const PrincipalType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface AuthorizedPrincipal {
   PrincipalType?: PrincipalType;
   Principal?: string;
+  ServiceOptions?: ServiceOptions;
 }
 export const AuthorizedPrincipal = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     PrincipalType: S.optional(PrincipalType),
     Principal: S.optional(S.String),
+    ServiceOptions: S.optional(ServiceOptions),
   }),
 ).annotate({
   identifier: "AuthorizedPrincipal",
@@ -1196,11 +1276,13 @@ export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface VPCOptions {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
+  EgressEnabled?: boolean;
 }
 export const VPCOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     SubnetIds: S.optional(StringList),
     SecurityGroupIds: S.optional(StringList),
+    EgressEnabled: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "VPCOptions" }) as any as S.Schema<VPCOptions>;
 export interface CognitoOptions {
@@ -1340,6 +1422,7 @@ export interface JWTOptionsInput {
   Enabled?: boolean;
   SubjectKey?: string;
   RolesKey?: string;
+  JwksUrl?: string;
   PublicKey?: string;
 }
 export const JWTOptionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1347,6 +1430,7 @@ export const JWTOptionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Enabled: S.optional(S.Boolean),
     SubjectKey: S.optional(S.String),
     RolesKey: S.optional(S.String),
+    JwksUrl: S.optional(S.String),
     PublicKey: S.optional(S.String),
   }),
 ).annotate({
@@ -1401,6 +1485,7 @@ export const RolesKeyIdCOption = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface IdentityCenterOptionsInput {
   EnabledAPIAccess?: boolean;
   IdentityCenterInstanceARN?: string;
+  IdentityCenterInstanceRegion?: string;
   SubjectKey?: SubjectKeyIdCOption;
   RolesKey?: RolesKeyIdCOption;
 }
@@ -1409,6 +1494,7 @@ export const IdentityCenterOptionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       EnabledAPIAccess: S.optional(S.Boolean),
       IdentityCenterInstanceARN: S.optional(S.String),
+      IdentityCenterInstanceRegion: S.optional(S.String),
       SubjectKey: S.optional(SubjectKeyIdCOption),
       RolesKey: S.optional(RolesKeyIdCOption),
     }),
@@ -1487,9 +1573,13 @@ export const OffPeakWindowOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OffPeakWindowOptions>;
 export interface SoftwareUpdateOptions {
   AutoSoftwareUpdateEnabled?: boolean;
+  UseLatestServiceSoftwareForBlueGreen?: boolean;
 }
 export const SoftwareUpdateOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ AutoSoftwareUpdateEnabled: S.optional(S.Boolean) }),
+  S.Struct({
+    AutoSoftwareUpdateEnabled: S.optional(S.Boolean),
+    UseLatestServiceSoftwareForBlueGreen: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "SoftwareUpdateOptions",
 }) as any as S.Schema<SoftwareUpdateOptions>;
@@ -1556,6 +1646,21 @@ export const DeploymentStrategyOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeploymentStrategyOptions",
 }) as any as S.Schema<DeploymentStrategyOptions>;
+export interface AutomatedSnapshotPauseRequestOptions {
+  Enabled: boolean;
+  StartTime?: Date;
+  EndTime?: Date;
+}
+export const AutomatedSnapshotPauseRequestOptions =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Enabled: S.Boolean,
+      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    }),
+  ).annotate({
+    identifier: "AutomatedSnapshotPauseRequestOptions",
+  }) as any as S.Schema<AutomatedSnapshotPauseRequestOptions>;
 export interface CreateDomainRequest {
   DomainName: string;
   EngineVersion?: string;
@@ -1579,6 +1684,7 @@ export interface CreateDomainRequest {
   SoftwareUpdateOptions?: SoftwareUpdateOptions;
   AIMLOptions?: AIMLOptionsInput;
   DeploymentStrategyOptions?: DeploymentStrategyOptions;
+  AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseRequestOptions;
 }
 export const CreateDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1604,6 +1710,9 @@ export const CreateDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SoftwareUpdateOptions: S.optional(SoftwareUpdateOptions),
     AIMLOptions: S.optional(AIMLOptionsInput),
     DeploymentStrategyOptions: S.optional(DeploymentStrategyOptions),
+    AutomatedSnapshotPauseOptions: S.optional(
+      AutomatedSnapshotPauseRequestOptions,
+    ),
   }).pipe(
     T.all(
       ns,
@@ -1628,6 +1737,7 @@ export interface VPCDerivedInfo {
   SubnetIds?: string[];
   AvailabilityZones?: string[];
   SecurityGroupIds?: string[];
+  EgressEnabled?: boolean;
 }
 export const VPCDerivedInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1635,6 +1745,7 @@ export const VPCDerivedInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SubnetIds: S.optional(StringList),
     AvailabilityZones: S.optional(StringList),
     SecurityGroupIds: S.optional(StringList),
+    EgressEnabled: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "VPCDerivedInfo" }) as any as S.Schema<VPCDerivedInfo>;
 export interface SAMLOptionsOutput {
@@ -1659,6 +1770,7 @@ export interface JWTOptionsOutput {
   Enabled?: boolean;
   SubjectKey?: string;
   RolesKey?: string;
+  JwksUrl?: string;
   PublicKey?: string;
 }
 export const JWTOptionsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -1666,6 +1778,7 @@ export const JWTOptionsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Enabled: S.optional(S.Boolean),
     SubjectKey: S.optional(S.String),
     RolesKey: S.optional(S.String),
+    JwksUrl: S.optional(S.String),
     PublicKey: S.optional(S.String),
   }),
 ).annotate({
@@ -1714,6 +1827,7 @@ export const AdvancedSecurityOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface IdentityCenterOptions {
   EnabledAPIAccess?: boolean;
   IdentityCenterInstanceARN?: string;
+  IdentityCenterInstanceRegion?: string;
   SubjectKey?: SubjectKeyIdCOption;
   RolesKey?: RolesKeyIdCOption;
   IdentityCenterApplicationARN?: string;
@@ -1723,6 +1837,7 @@ export const IdentityCenterOptions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     EnabledAPIAccess: S.optional(S.Boolean),
     IdentityCenterInstanceARN: S.optional(S.String),
+    IdentityCenterInstanceRegion: S.optional(S.String),
     SubjectKey: S.optional(SubjectKeyIdCOption),
     RolesKey: S.optional(RolesKeyIdCOption),
     IdentityCenterApplicationARN: S.optional(S.String),
@@ -1866,6 +1981,30 @@ export const AIMLOptionsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AIMLOptionsOutput",
 }) as any as S.Schema<AIMLOptionsOutput>;
+export type PauseState =
+  | "Active"
+  | "Completed"
+  | "Scheduled"
+  | "Disabled"
+  | (string & {});
+export const PauseState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface AutomatedSnapshotPauseOptions {
+  Enabled: boolean;
+  StartTime?: Date;
+  EndTime?: Date;
+  State?: PauseState;
+}
+export const AutomatedSnapshotPauseOptions =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Enabled: S.Boolean,
+      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      State: S.optional(PauseState),
+    }),
+  ).annotate({
+    identifier: "AutomatedSnapshotPauseOptions",
+  }) as any as S.Schema<AutomatedSnapshotPauseOptions>;
 export interface DomainStatus {
   DomainId: string;
   DomainName: string;
@@ -1902,6 +2041,7 @@ export interface DomainStatus {
   ModifyingProperties?: ModifyingProperties[];
   AIMLOptions?: AIMLOptionsOutput;
   DeploymentStrategyOptions?: DeploymentStrategyOptions;
+  AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseOptions;
 }
 export const DomainStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1940,6 +2080,7 @@ export const DomainStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ModifyingProperties: S.optional(ModifyingPropertiesList),
     AIMLOptions: S.optional(AIMLOptionsOutput),
     DeploymentStrategyOptions: S.optional(DeploymentStrategyOptions),
+    AutomatedSnapshotPauseOptions: S.optional(AutomatedSnapshotPauseOptions),
   }),
 ).annotate({ identifier: "DomainStatus" }) as any as S.Schema<DomainStatus>;
 export interface CreateDomainResponse {
@@ -2666,6 +2807,51 @@ export const DeregisterCapabilityResponse =
   ).annotate({
     identifier: "DeregisterCapabilityResponse",
   }) as any as S.Schema<DeregisterCapabilityResponse>;
+export interface DescribeDataSourceAttachmentRequest {
+  id: string;
+  dataSourceArn: string;
+}
+export const DescribeDataSourceAttachmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String.pipe(T.HttpLabel("id")),
+      dataSourceArn: S.String,
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "POST",
+          uri: "/2021-01-01/opensearch/application/{id}/describeDataSourceAttachment",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DescribeDataSourceAttachmentRequest",
+  }) as any as S.Schema<DescribeDataSourceAttachmentRequest>;
+export interface DescribeDataSourceAttachmentResponse {
+  attachmentId?: string;
+  id?: string;
+  arn?: string;
+  dataSourceArn?: string;
+  status?: DataSourceAttachmentStatus;
+}
+export const DescribeDataSourceAttachmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attachmentId: S.optional(S.String),
+      id: S.optional(S.String),
+      arn: S.optional(S.String),
+      dataSourceArn: S.optional(S.String),
+      status: S.optional(DataSourceAttachmentStatus),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "DescribeDataSourceAttachmentResponse",
+  }) as any as S.Schema<DescribeDataSourceAttachmentResponse>;
 export interface DescribeDomainRequest {
   DomainName: string;
 }
@@ -3166,6 +3352,16 @@ export const DeploymentStrategyOptionsStatus =
   ).annotate({
     identifier: "DeploymentStrategyOptionsStatus",
   }) as any as S.Schema<DeploymentStrategyOptionsStatus>;
+export interface AutomatedSnapshotPauseOptionsStatus {
+  Options: AutomatedSnapshotPauseOptions;
+  Status: OptionStatus;
+}
+export const AutomatedSnapshotPauseOptionsStatus =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ Options: AutomatedSnapshotPauseOptions, Status: OptionStatus }),
+  ).annotate({
+    identifier: "AutomatedSnapshotPauseOptionsStatus",
+  }) as any as S.Schema<AutomatedSnapshotPauseOptionsStatus>;
 export interface DomainConfig {
   EngineVersion?: VersionStatus;
   ClusterConfig?: ClusterConfigStatus;
@@ -3189,6 +3385,7 @@ export interface DomainConfig {
   ModifyingProperties?: ModifyingProperties[];
   AIMLOptions?: AIMLOptionsStatus;
   DeploymentStrategyOptions?: DeploymentStrategyOptionsStatus;
+  AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseOptionsStatus;
 }
 export const DomainConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3214,6 +3411,9 @@ export const DomainConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ModifyingProperties: S.optional(ModifyingPropertiesList),
     AIMLOptions: S.optional(AIMLOptionsStatus),
     DeploymentStrategyOptions: S.optional(DeploymentStrategyOptionsStatus),
+    AutomatedSnapshotPauseOptions: S.optional(
+      AutomatedSnapshotPauseOptionsStatus,
+    ),
   }),
 ).annotate({ identifier: "DomainConfig" }) as any as S.Schema<DomainConfig>;
 export interface DescribeDomainConfigResponse {
@@ -4107,6 +4307,47 @@ export const DescribeVpcEndpointsResponse =
   ).annotate({
     identifier: "DescribeVpcEndpointsResponse",
   }) as any as S.Schema<DescribeVpcEndpointsResponse>;
+export interface DetachDataSourceRequest {
+  id: string;
+  dataSourceArn: string;
+}
+export const DetachDataSourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String.pipe(T.HttpLabel("id")),
+      dataSourceArn: S.String,
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "POST",
+          uri: "/2021-01-01/opensearch/application/{id}/detachDataSource",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DetachDataSourceRequest",
+}) as any as S.Schema<DetachDataSourceRequest>;
+export interface DetachDataSourceResponse {
+  id?: string;
+  arn?: string;
+  dataSourceArn?: string;
+}
+export const DetachDataSourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      arn: S.optional(S.String),
+      dataSourceArn: S.optional(S.String),
+    }).pipe(ns),
+).annotate({
+  identifier: "DetachDataSourceResponse",
+}) as any as S.Schema<DetachDataSourceResponse>;
 export interface DissociatePackageRequest {
   PackageID: string;
   DomainName: string;
@@ -4833,6 +5074,65 @@ export const ListApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListApplicationsResponse",
 }) as any as S.Schema<ListApplicationsResponse>;
+export interface ListDataSourceAttachmentsRequest {
+  id: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListDataSourceAttachmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String.pipe(T.HttpLabel("id")),
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "POST",
+          uri: "/2021-01-01/opensearch/application/{id}/listDataSourceAttachments",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "ListDataSourceAttachmentsRequest",
+  }) as any as S.Schema<ListDataSourceAttachmentsRequest>;
+export interface DataSourceAttachmentSummary {
+  attachmentId?: string;
+  dataSourceArn?: string;
+  status?: DataSourceAttachmentStatus;
+}
+export const DataSourceAttachmentSummary =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attachmentId: S.optional(S.String),
+      dataSourceArn: S.optional(S.String),
+      status: S.optional(DataSourceAttachmentStatus),
+    }),
+  ).annotate({
+    identifier: "DataSourceAttachmentSummary",
+  }) as any as S.Schema<DataSourceAttachmentSummary>;
+export type DataSourceAttachmentSummaryList = DataSourceAttachmentSummary[];
+export const DataSourceAttachmentSummaryList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataSourceAttachmentSummary);
+export interface ListDataSourceAttachmentsResponse {
+  attachments?: DataSourceAttachmentSummary[];
+  nextToken?: string;
+}
+export const ListDataSourceAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attachments: S.optional(DataSourceAttachmentSummaryList),
+      nextToken: S.optional(S.String),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "ListDataSourceAttachmentsResponse",
+  }) as any as S.Schema<ListDataSourceAttachmentsResponse>;
 export interface ListDataSourcesRequest {
   DomainName: string;
 }
@@ -5761,6 +6061,7 @@ export interface RevokeVpcEndpointAccessRequest {
   DomainName: string;
   Account?: string;
   Service?: AWSServicePrincipal;
+  ServiceOptions?: ServiceOptions;
 }
 export const RevokeVpcEndpointAccessRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -5768,6 +6069,7 @@ export const RevokeVpcEndpointAccessRequest =
       DomainName: S.String.pipe(T.HttpLabel("DomainName")),
       Account: S.optional(S.String),
       Service: S.optional(AWSServicePrincipal),
+      ServiceOptions: S.optional(ServiceOptions),
     }).pipe(
       T.all(
         ns,
@@ -5790,6 +6092,58 @@ export const RevokeVpcEndpointAccessResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "RevokeVpcEndpointAccessResponse",
   }) as any as S.Schema<RevokeVpcEndpointAccessResponse>;
+export interface RollbackServiceSoftwareUpdateRequest {
+  DomainName: string;
+}
+export const RollbackServiceSoftwareUpdateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ DomainName: S.String }).pipe(
+      T.all(
+        ns,
+        T.Http({
+          method: "POST",
+          uri: "/2021-01-01/opensearch/serviceSoftwareUpdate/rollback",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "RollbackServiceSoftwareUpdateRequest",
+  }) as any as S.Schema<RollbackServiceSoftwareUpdateRequest>;
+export interface RollbackServiceSoftwareOptions {
+  CurrentVersion?: string;
+  NewVersion?: string;
+  RollbackAvailable?: boolean;
+  Description?: string;
+}
+export const RollbackServiceSoftwareOptions =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      CurrentVersion: S.optional(S.String),
+      NewVersion: S.optional(S.String),
+      RollbackAvailable: S.optional(S.Boolean),
+      Description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RollbackServiceSoftwareOptions",
+  }) as any as S.Schema<RollbackServiceSoftwareOptions>;
+export interface RollbackServiceSoftwareUpdateResponse {
+  RollbackServiceSoftwareOptions?: RollbackServiceSoftwareOptions;
+}
+export const RollbackServiceSoftwareUpdateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      RollbackServiceSoftwareOptions: S.optional(
+        RollbackServiceSoftwareOptions,
+      ),
+    }).pipe(ns),
+  ).annotate({
+    identifier: "RollbackServiceSoftwareUpdateResponse",
+  }) as any as S.Schema<RollbackServiceSoftwareUpdateResponse>;
 export interface StartDomainMaintenanceRequest {
   DomainName: string;
   Action: MaintenanceType;
@@ -5876,6 +6230,7 @@ export interface UpdateApplicationRequest {
   id: string;
   dataSources?: DataSource[];
   appConfigs?: AppConfig[];
+  iamIdentityCenterOptions?: IamIdentityCenterOptionsInput;
 }
 export const UpdateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -5883,6 +6238,7 @@ export const UpdateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       id: S.String.pipe(T.HttpLabel("id")),
       dataSources: S.optional(DataSources),
       appConfigs: S.optional(AppConfigs),
+      iamIdentityCenterOptions: S.optional(IamIdentityCenterOptionsInput),
     }).pipe(
       T.all(
         ns,
@@ -6033,6 +6389,7 @@ export interface UpdateDomainConfigRequest {
   SoftwareUpdateOptions?: SoftwareUpdateOptions;
   AIMLOptions?: AIMLOptionsInput;
   DeploymentStrategyOptions?: DeploymentStrategyOptions;
+  AutomatedSnapshotPauseOptions?: AutomatedSnapshotPauseRequestOptions;
 }
 export const UpdateDomainConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6059,6 +6416,9 @@ export const UpdateDomainConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       SoftwareUpdateOptions: S.optional(SoftwareUpdateOptions),
       AIMLOptions: S.optional(AIMLOptionsInput),
       DeploymentStrategyOptions: S.optional(DeploymentStrategyOptions),
+      AutomatedSnapshotPauseOptions: S.optional(
+        AutomatedSnapshotPauseRequestOptions,
+      ),
     }).pipe(
       T.all(
         ns,
@@ -6582,6 +6942,37 @@ export const associatePackages: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "AssociatePackages",
+}));
+export type AttachDataSourceError =
+  | AccessDeniedException
+  | ConflictException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Attaches a data source to an OpenSearch application. The data source can be an Amazon OpenSearch Service domain or an Amazon OpenSearch Serverless collection. If both the application and data source are in the `ACTIVE` state, the attachment completes immediately and returns a status of `ATTACHED`. If either resource is not yet active, the operation stores the request and returns a status of `PENDING`. A background process then completes the attachment when both resources become active. Pending attachments that are not completed within 24 hours are marked as `FAILED`. This operation is idempotent. If a data source is already attached or pending for the same application, the existing attachment is returned.
+ */
+export const attachDataSource: API.OperationMethod<
+  AttachDataSourceRequest,
+  AttachDataSourceResponse,
+  AttachDataSourceError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AttachDataSourceRequest,
+  output: AttachDataSourceResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "AttachDataSource",
 }));
 export type AuthorizeVpcEndpointAccessError =
   | BaseException
@@ -7158,6 +7549,35 @@ export const deregisterCapability: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterCapability",
 }));
+export type DescribeDataSourceAttachmentError =
+  | AccessDeniedException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the current status and details of a specific data source attachment for an OpenSearch application. Throws a `ResourceNotFoundException` if no attachment record exists for the specified application and data source combination.
+ */
+export const describeDataSourceAttachment: API.OperationMethod<
+  DescribeDataSourceAttachmentRequest,
+  DescribeDataSourceAttachmentResponse,
+  DescribeDataSourceAttachmentError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DescribeDataSourceAttachmentRequest,
+  output: DescribeDataSourceAttachmentResponse,
+  errors: [
+    AccessDeniedException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeDataSourceAttachment",
+}));
 export type DescribeDomainError =
   | BaseException
   | InternalException
@@ -7728,6 +8148,37 @@ export const describeVpcEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcEndpoints",
 }));
+export type DetachDataSourceError =
+  | AccessDeniedException
+  | ConflictException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Removes a data source from an OpenSearch application. The application must be in the `ACTIVE` state. This operation removes the data source saved object from the application and deletes the attachment record. Throws a `ConflictException` if the specified data source has a `PENDING` attachment, and a `ResourceNotFoundException` if the data source is not currently attached to the application.
+ */
+export const detachDataSource: API.OperationMethod<
+  DetachDataSourceRequest,
+  DetachDataSourceResponse,
+  DetachDataSourceError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DetachDataSourceRequest,
+  output: DetachDataSourceResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DetachDataSource",
+}));
 export type DissociatePackageError =
   | AccessDeniedException
   | BaseException
@@ -8220,6 +8671,35 @@ export const listApplications: API.OperationMethod<
     items: "ApplicationSummaries",
     pageSize: "maxResults",
   } as const,
+}));
+export type ListDataSourceAttachmentsError =
+  | AccessDeniedException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a paginated list of all data source attachments for an OpenSearch application, including attachments in all states (`PENDING`, `ATTACHED`, and `FAILED`).
+ */
+export const listDataSourceAttachments: API.OperationMethod<
+  ListDataSourceAttachmentsRequest,
+  ListDataSourceAttachmentsResponse,
+  ListDataSourceAttachmentsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: ListDataSourceAttachmentsRequest,
+  output: ListDataSourceAttachmentsResponse,
+  errors: [
+    AccessDeniedException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListDataSourceAttachments",
 }));
 export type ListDataSourcesError =
   | BaseException
@@ -8910,6 +9390,37 @@ export const revokeVpcEndpointAccess: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "RevokeVpcEndpointAccess",
+}));
+export type RollbackServiceSoftwareUpdateError =
+  | BaseException
+  | DisabledOperationException
+  | InternalException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Rolls back a service software update for a domain to the previous version. For more
+ * information, see Service
+ * software updates in Amazon OpenSearch Service.
+ */
+export const rollbackServiceSoftwareUpdate: API.OperationMethod<
+  RollbackServiceSoftwareUpdateRequest,
+  RollbackServiceSoftwareUpdateResponse,
+  RollbackServiceSoftwareUpdateError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: RollbackServiceSoftwareUpdateRequest,
+  output: RollbackServiceSoftwareUpdateResponse,
+  errors: [
+    BaseException,
+    DisabledOperationException,
+    InternalException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RollbackServiceSoftwareUpdate",
 }));
 export type StartDomainMaintenanceError =
   | BaseException

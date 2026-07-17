@@ -69,6 +69,11 @@ export type NextToken = string;
 export type PolicyVersion = string;
 export type ServiceName = string;
 export type ClusterVpcEndpoint = string;
+export type KinesisStreamArn = string;
+export type RoleArn = string;
+export type StreamId = string;
+export type StreamArn = string;
+export type StreamCreationTime = Date;
 
 //# Schemas
 export interface ListTagsForResourceInput {
@@ -584,6 +589,251 @@ export const PutClusterPolicyOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PutClusterPolicyOutput",
 }) as any as S.Schema<PutClusterPolicyOutput>;
+export interface KinesisTargetDefinition {
+  streamArn: string;
+  roleArn: string;
+}
+export const KinesisTargetDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ streamArn: S.String, roleArn: S.String }),
+).annotate({
+  identifier: "KinesisTargetDefinition",
+}) as any as S.Schema<KinesisTargetDefinition>;
+export type TargetDefinition = { kinesis: KinesisTargetDefinition };
+export const TargetDefinition = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ kinesis: KinesisTargetDefinition }),
+]);
+export type StreamOrdering = "UNORDERED" | (string & {});
+export const StreamOrdering = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type StreamFormat = "JSON" | (string & {});
+export const StreamFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateStreamInput {
+  clusterIdentifier: string;
+  targetDefinition: TargetDefinition;
+  ordering: StreamOrdering;
+  format: StreamFormat;
+  tags?: { [key: string]: string | undefined };
+  clientToken?: string;
+}
+export const CreateStreamInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
+    targetDefinition: TargetDefinition,
+    ordering: StreamOrdering,
+    format: StreamFormat,
+    tags: S.optional(TagMap),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/stream/{clusterIdentifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateStreamInput",
+}) as any as S.Schema<CreateStreamInput>;
+export type StreamStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "DELETING"
+  | "DELETED"
+  | "FAILED"
+  | "IMPAIRED"
+  | (string & {});
+export const StreamStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateStreamOutput {
+  clusterIdentifier: string;
+  streamIdentifier: string;
+  arn: string;
+  status: StreamStatus;
+  creationTime: Date;
+  ordering: StreamOrdering;
+  format: StreamFormat;
+}
+export const CreateStreamOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentifier: S.String,
+    streamIdentifier: S.String,
+    arn: S.String,
+    status: StreamStatus,
+    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ordering: StreamOrdering,
+    format: StreamFormat,
+  }),
+).annotate({
+  identifier: "CreateStreamOutput",
+}) as any as S.Schema<CreateStreamOutput>;
+export interface GetStreamInput {
+  clusterIdentifier: string;
+  streamIdentifier: string;
+}
+export const GetStreamInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
+    streamIdentifier: S.String.pipe(T.HttpLabel("streamIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/stream/{clusterIdentifier}/{streamIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "GetStreamInput" }) as any as S.Schema<GetStreamInput>;
+export type StreamFailureErrorCode =
+  | "KINESIS_THROUGHPUT_EXCEEDED"
+  | "KINESIS_STREAM_NOT_FOUND"
+  | "ROLE_ACCESS_DENIED"
+  | "KINESIS_ACCESS_DENIED"
+  | "KINESIS_KMS_ACCESS_DENIED"
+  | "KINESIS_OVERSIZE_RECORD"
+  | "CLUSTER_CMK_INACCESSIBLE"
+  | "INTERNAL_ERROR"
+  | (string & {});
+export const StreamFailureErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface StatusReason {
+  error: StreamFailureErrorCode;
+  updatedAt: Date;
+}
+export const StatusReason = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    error: StreamFailureErrorCode,
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "StatusReason" }) as any as S.Schema<StatusReason>;
+export interface GetStreamOutput {
+  clusterIdentifier: string;
+  streamIdentifier: string;
+  arn: string;
+  status: StreamStatus;
+  creationTime: Date;
+  ordering: StreamOrdering;
+  format: StreamFormat;
+  targetDefinition?: TargetDefinition;
+  statusReason?: StatusReason;
+  tags?: { [key: string]: string | undefined };
+}
+export const GetStreamOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentifier: S.String,
+    streamIdentifier: S.String,
+    arn: S.String,
+    status: StreamStatus,
+    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ordering: StreamOrdering,
+    format: StreamFormat,
+    targetDefinition: S.optional(TargetDefinition),
+    statusReason: S.optional(StatusReason),
+    tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "GetStreamOutput",
+}) as any as S.Schema<GetStreamOutput>;
+export interface DeleteStreamInput {
+  clusterIdentifier: string;
+  streamIdentifier: string;
+  clientToken?: string;
+}
+export const DeleteStreamInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
+    streamIdentifier: S.String.pipe(T.HttpLabel("streamIdentifier")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("client-token"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/stream/{clusterIdentifier}/{streamIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteStreamInput",
+}) as any as S.Schema<DeleteStreamInput>;
+export interface DeleteStreamOutput {
+  clusterIdentifier: string;
+  streamIdentifier: string;
+  arn: string;
+  status: StreamStatus;
+  creationTime: Date;
+}
+export const DeleteStreamOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentifier: S.String,
+    streamIdentifier: S.String,
+    arn: S.String,
+    status: StreamStatus,
+    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "DeleteStreamOutput",
+}) as any as S.Schema<DeleteStreamOutput>;
+export interface ListStreamsInput {
+  clusterIdentifier: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListStreamsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentifier: S.String.pipe(T.HttpLabel("clusterIdentifier")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/stream/{clusterIdentifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListStreamsInput",
+}) as any as S.Schema<ListStreamsInput>;
+export interface StreamSummary {
+  clusterIdentifier: string;
+  streamIdentifier: string;
+  arn: string;
+  creationTime: Date;
+  status: StreamStatus;
+}
+export const StreamSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterIdentifier: S.String,
+    streamIdentifier: S.String,
+    arn: S.String,
+    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    status: StreamStatus,
+  }),
+).annotate({ identifier: "StreamSummary" }) as any as S.Schema<StreamSummary>;
+export type StreamList = StreamSummary[];
+export const StreamList = /*@__PURE__*/ /*#__PURE__*/ S.Array(StreamSummary);
+export interface ListStreamsOutput {
+  nextToken?: string;
+  streams: StreamSummary[];
+}
+export const ListStreamsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ nextToken: S.optional(S.String), streams: StreamList }),
+).annotate({
+  identifier: "ListStreamsOutput",
+}) as any as S.Schema<ListStreamsOutput>;
 
 //# Errors
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
@@ -995,4 +1245,126 @@ export const putClusterPolicy: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "PutClusterPolicy",
+}));
+export type CreateStreamError =
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new change data capture (CDC) stream for a cluster. The stream captures database changes and delivers them to the specified target destination.
+ *
+ * **Required permissions**
+ *
+ * ### dsql:CreateStream
+ *
+ * Permission to create a new stream.
+ *
+ * Resources: `arn:aws:dsql:region:account-id:cluster/cluster-id`
+ *
+ * ### iam:PassRole
+ *
+ * Permission to pass the IAM role specified in the target definition to the service.
+ *
+ * Resources: ARN of the IAM role specified in `targetDefinition.kinesis.roleArn`
+ *
+ * ### kms:Decrypt
+ *
+ * Required when the cluster uses a customer managed KMS key (CMK). Permission to decrypt data using the cluster's CMK.
+ *
+ * Resources: ARN of the KMS key used by the cluster
+ */
+export const createStream: API.OperationMethod<
+  CreateStreamInput,
+  CreateStreamOutput,
+  CreateStreamError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateStreamInput,
+  output: CreateStreamOutput,
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateStream",
+}));
+export type GetStreamError = ResourceNotFoundException | CommonErrors;
+/**
+ * Retrieves information about a stream.
+ */
+export const getStream: API.OperationMethod<
+  GetStreamInput,
+  GetStreamOutput,
+  GetStreamError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetStreamInput,
+  output: GetStreamOutput,
+  errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetStream",
+}));
+export type DeleteStreamError =
+  | ConflictException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Deletes a stream from a cluster.
+ */
+export const deleteStream: API.OperationMethod<
+  DeleteStreamInput,
+  DeleteStreamOutput,
+  DeleteStreamError,
+  Credentials | Rgn | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteStreamInput,
+  output: DeleteStreamOutput,
+  errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteStream",
+}));
+export type ListStreamsError = ResourceNotFoundException | CommonErrors;
+/**
+ * Retrieves information about a list of streams for a cluster.
+ */
+export const listStreams: API.OperationMethod<
+  ListStreamsInput,
+  ListStreamsOutput,
+  ListStreamsError,
+  Credentials | Rgn | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStreamsInput,
+  ) => stream.Stream<
+    ListStreamsOutput,
+    ListStreamsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStreamsInput,
+  ) => stream.Stream<
+    StreamSummary,
+    ListStreamsError,
+    Credentials | Rgn | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListStreamsInput,
+  output: ListStreamsOutput,
+  errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListStreams",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "streams",
+    pageSize: "maxResults",
+  } as const,
 }));

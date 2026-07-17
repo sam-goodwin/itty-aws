@@ -101,6 +101,8 @@ export type FilterDescription = string;
 export type FilterRank = number;
 export type Match = string;
 export type NotMatch = string;
+export type TriggerPrompt = string;
+export type InvestigationId = string;
 export type Name = string;
 export type Location = string;
 export type AccountId = string;
@@ -126,7 +128,12 @@ export type SignalDescription = string;
 export type IndicatorValueString = string;
 export type IndicatorTitle = string;
 export type MaxResults100 = number;
+export type TriggeredBy = string;
+export type RiskDetails = string;
+export type InvestigationErrorDetails = string;
 export type NonNegativeInteger = number;
+export type NextToken = string;
+export type InvestigationTitle = string;
 export type GuardDutyArn = string;
 export type ResourceArn = string;
 
@@ -636,6 +643,51 @@ export const CreateFilterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFilterResponse",
 }) as any as S.Schema<CreateFilterResponse>;
+export interface CreateInvestigationRequest {
+  DetectorId: string;
+  TriggerPrompt?: string;
+  ClientToken?: string;
+}
+export const CreateInvestigationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+      TriggerPrompt: S.optional(S.String),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    })
+      .pipe(
+        S.encodeKeys({
+          TriggerPrompt: "triggerPrompt",
+          ClientToken: "clientToken",
+        }),
+      )
+      .pipe(
+        T.all(
+          T.Http({
+            method: "POST",
+            uri: "/detector/{DetectorId}/investigation",
+          }),
+          svc,
+          auth,
+          proto,
+          ver,
+          rules,
+        ),
+      ),
+).annotate({
+  identifier: "CreateInvestigationRequest",
+}) as any as S.Schema<CreateInvestigationRequest>;
+export interface CreateInvestigationResponse {
+  InvestigationId: string;
+}
+export const CreateInvestigationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ InvestigationId: S.optional(S.String) }).pipe(
+      S.encodeKeys({ InvestigationId: "investigationId" }),
+    ),
+  ).annotate({
+    identifier: "CreateInvestigationResponse",
+  }) as any as S.Schema<CreateInvestigationResponse>;
 export type IpSetFormat =
   | "TXT"
   | "STIX"
@@ -4424,6 +4476,10 @@ export type FlagsList = string[];
 export const FlagsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type MemoryRegionsList = string[];
 export const MemoryRegionsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export type RelatedFilePathsList = string[];
+export const RelatedFilePathsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
 export interface RuntimeContext {
   ModifyingProcess?: ProcessDetails;
   ModifiedAt?: Date;
@@ -4450,6 +4506,9 @@ export interface RuntimeContext {
   ServiceName?: string;
   CommandLineExample?: string;
   ThreatFilePath?: string;
+  FileOperation?: string;
+  FilePath?: string;
+  RelatedFilePaths?: string[];
 }
 export const RuntimeContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -4478,6 +4537,9 @@ export const RuntimeContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ServiceName: S.optional(S.String),
     CommandLineExample: S.optional(S.String),
     ThreatFilePath: S.optional(S.String),
+    FileOperation: S.optional(S.String),
+    FilePath: S.optional(S.String),
+    RelatedFilePaths: S.optional(RelatedFilePathsList),
   }).pipe(
     S.encodeKeys({
       ModifyingProcess: "modifyingProcess",
@@ -4505,6 +4567,9 @@ export const RuntimeContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       ServiceName: "serviceName",
       CommandLineExample: "commandLineExample",
       ThreatFilePath: "threatFilePath",
+      FileOperation: "fileOperation",
+      FilePath: "filePath",
+      RelatedFilePaths: "relatedFilePaths",
     }),
   ),
 ).annotate({ identifier: "RuntimeContext" }) as any as S.Schema<RuntimeContext>;
@@ -5287,6 +5352,11 @@ export type IndicatorType =
   | "CRYPTOMINING_DOMAIN"
   | "CRYPTOMINING_PROCESS"
   | "MALICIOUS_FILE"
+  | "VULNERABILITY"
+  | "MALICIOUS_PACKAGE"
+  | "MISCONFIGURATION"
+  | "REACHABILITY"
+  | "SENSITIVE_DATA"
   | (string & {});
 export const IndicatorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type IndicatorValues = string[];
@@ -5981,6 +6051,161 @@ export const GetFindingsStatisticsResponse =
   ).annotate({
     identifier: "GetFindingsStatisticsResponse",
   }) as any as S.Schema<GetFindingsStatisticsResponse>;
+export interface GetInvestigationRequest {
+  DetectorId: string;
+  InvestigationId: string;
+}
+export const GetInvestigationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+      InvestigationId: S.String.pipe(T.HttpLabel("InvestigationId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/detector/{DetectorId}/investigation/{InvestigationId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetInvestigationRequest",
+}) as any as S.Schema<GetInvestigationRequest>;
+export type InvestigationStatus =
+  | "RUNNING"
+  | "COMPLETED"
+  | "FAILED"
+  | (string & {});
+export const InvestigationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface Product {
+  Name?: string;
+  Feature?: string;
+}
+export const Product = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.optional(S.String), Feature: S.optional(S.String) }).pipe(
+    S.encodeKeys({ Name: "name", Feature: "feature" }),
+  ),
+).annotate({ identifier: "Product" }) as any as S.Schema<Product>;
+export interface InvestigationMetadata {
+  Version?: string;
+  Product?: Product;
+}
+export const InvestigationMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Version: S.optional(S.String),
+    Product: S.optional(Product),
+  }).pipe(S.encodeKeys({ Version: "version", Product: "product" })),
+).annotate({
+  identifier: "InvestigationMetadata",
+}) as any as S.Schema<InvestigationMetadata>;
+export type CloudProvider = "AWS" | (string & {});
+export const CloudProvider = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CloudDetails {
+  Provider?: CloudProvider;
+  Region?: string;
+  Account?: string;
+}
+export const CloudDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Provider: S.optional(CloudProvider),
+    Region: S.optional(S.String),
+    Account: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({
+      Provider: "provider",
+      Region: "region",
+      Account: "account",
+    }),
+  ),
+).annotate({ identifier: "CloudDetails" }) as any as S.Schema<CloudDetails>;
+export type RiskLevel =
+  | "Info"
+  | "Low"
+  | "Medium"
+  | "High"
+  | "Critical"
+  | (string & {});
+export const RiskLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type Confidence = "Unknown" | "Low" | "Medium" | "High" | (string & {});
+export const Confidence = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface Investigation {
+  InvestigationId?: string;
+  Status?: InvestigationStatus;
+  TriggerPrompt?: string;
+  TriggeredBy?: string;
+  Metadata?: InvestigationMetadata;
+  Cloud?: CloudDetails;
+  RiskLevel?: RiskLevel;
+  Risk?: string;
+  Confidence?: Confidence;
+  Summary?: string;
+  StartTime?: Date;
+  EndTime?: Date;
+  Error?: string;
+}
+export const Investigation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InvestigationId: S.optional(S.String),
+    Status: S.optional(InvestigationStatus),
+    TriggerPrompt: S.optional(S.String),
+    TriggeredBy: S.optional(S.String),
+    Metadata: S.optional(InvestigationMetadata),
+    Cloud: S.optional(CloudDetails),
+    RiskLevel: S.optional(RiskLevel),
+    Risk: S.optional(S.String),
+    Confidence: S.optional(Confidence),
+    Summary: S.optional(S.String),
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Error: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({
+      InvestigationId: "investigationId",
+      Status: "status",
+      TriggerPrompt: "triggerPrompt",
+      TriggeredBy: "triggeredBy",
+      Metadata: "metadata",
+      Cloud: "cloud",
+      RiskLevel: "riskLevel",
+      Risk: "risk",
+      Confidence: "confidence",
+      Summary: "summary",
+      StartTime: "startTime",
+      EndTime: "endTime",
+      Error: "error",
+    }),
+  ),
+).annotate({ identifier: "Investigation" }) as any as S.Schema<Investigation>;
+export interface GetInvestigationResponse {
+  Investigation: Investigation & {
+    InvestigationId: InvestigationId;
+    Status: InvestigationStatus;
+    TriggerPrompt: TriggerPrompt;
+    TriggeredBy: TriggeredBy;
+    Metadata: InvestigationMetadata & {
+      Version: string;
+      Product: Product & { Name: string };
+    };
+    Cloud: CloudDetails & {
+      Provider: CloudProvider;
+      Region: string;
+      Account: string;
+    };
+  };
+}
+export const GetInvestigationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ Investigation: S.optional(Investigation) }).pipe(
+      S.encodeKeys({ Investigation: "investigation" }),
+    ),
+).annotate({
+  identifier: "GetInvestigationResponse",
+}) as any as S.Schema<GetInvestigationResponse>;
 export interface GetInvitationsCountRequest {}
 export const GetInvitationsCountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -6178,6 +6403,7 @@ export type MalwareProtectionResourceType =
   | "EC2_RECOVERY_POINT"
   | "S3_RECOVERY_POINT"
   | "S3_BUCKET"
+  | "S3_POINT_IN_TIME_RECOVERY"
   | (string & {});
 export const MalwareProtectionResourceType =
   /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -6261,13 +6487,33 @@ export const ScannedResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ScannedResources = ScannedResource[];
 export const ScannedResources =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(ScannedResource);
+export interface ScanConfigurationContinuousScanDetails {
+  StartTime?: Date;
+  EndTime: Date;
+}
+export const ScanConfigurationContinuousScanDetails =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    }).pipe(S.encodeKeys({ StartTime: "startTime", EndTime: "endTime" })),
+  ).annotate({
+    identifier: "ScanConfigurationContinuousScanDetails",
+  }) as any as S.Schema<ScanConfigurationContinuousScanDetails>;
 export interface ScanConfigurationRecoveryPoint {
   BackupVaultName?: string;
+  ContinuousScanDetails?: ScanConfigurationContinuousScanDetails;
 }
 export const ScanConfigurationRecoveryPoint =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ BackupVaultName: S.optional(S.String) }).pipe(
-      S.encodeKeys({ BackupVaultName: "backupVaultName" }),
+    S.Struct({
+      BackupVaultName: S.optional(S.String),
+      ContinuousScanDetails: S.optional(ScanConfigurationContinuousScanDetails),
+    }).pipe(
+      S.encodeKeys({
+        BackupVaultName: "backupVaultName",
+        ContinuousScanDetails: "continuousScanDetails",
+      }),
     ),
   ).annotate({
     identifier: "ScanConfigurationRecoveryPoint",
@@ -7988,6 +8234,125 @@ export const ListFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFindingsResponse",
 }) as any as S.Schema<ListFindingsResponse>;
+export type InvestigationSortField =
+  | "START_TIME"
+  | "END_TIME"
+  | "STATUS"
+  | "RISK_LEVEL"
+  | "CONFIDENCE"
+  | (string & {});
+export const InvestigationSortField = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface InvestigationSortCriteria {
+  AttributeName?: InvestigationSortField;
+  OrderBy?: OrderBy;
+}
+export const InvestigationSortCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AttributeName: S.optional(InvestigationSortField),
+      OrderBy: S.optional(OrderBy),
+    }).pipe(
+      S.encodeKeys({ AttributeName: "attributeName", OrderBy: "orderBy" }),
+    ),
+).annotate({
+  identifier: "InvestigationSortCriteria",
+}) as any as S.Schema<InvestigationSortCriteria>;
+export interface ListInvestigationsRequest {
+  DetectorId: string;
+  SortCriteria?: InvestigationSortCriteria;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListInvestigationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      DetectorId: S.String.pipe(T.HttpLabel("DetectorId")),
+      SortCriteria: S.optional(InvestigationSortCriteria),
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    })
+      .pipe(
+        S.encodeKeys({
+          SortCriteria: "sortCriteria",
+          MaxResults: "maxResults",
+          NextToken: "nextToken",
+        }),
+      )
+      .pipe(
+        T.all(
+          T.Http({
+            method: "POST",
+            uri: "/detector/{DetectorId}/investigation/list",
+          }),
+          svc,
+          auth,
+          proto,
+          ver,
+          rules,
+        ),
+      ),
+).annotate({
+  identifier: "ListInvestigationsRequest",
+}) as any as S.Schema<ListInvestigationsRequest>;
+export interface InvestigationSummary {
+  InvestigationId?: string;
+  Status?: InvestigationStatus;
+  TriggerPrompt?: string;
+  RiskLevel?: RiskLevel;
+  Confidence?: Confidence;
+  Title?: string;
+  AccountId?: string;
+  StartTime?: Date;
+  EndTime?: Date;
+}
+export const InvestigationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InvestigationId: S.optional(S.String),
+    Status: S.optional(InvestigationStatus),
+    TriggerPrompt: S.optional(S.String),
+    RiskLevel: S.optional(RiskLevel),
+    Confidence: S.optional(Confidence),
+    Title: S.optional(S.String),
+    AccountId: S.optional(S.String),
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }).pipe(
+    S.encodeKeys({
+      InvestigationId: "investigationId",
+      Status: "status",
+      TriggerPrompt: "triggerPrompt",
+      RiskLevel: "riskLevel",
+      Confidence: "confidence",
+      Title: "title",
+      AccountId: "accountId",
+      StartTime: "startTime",
+      EndTime: "endTime",
+    }),
+  ),
+).annotate({
+  identifier: "InvestigationSummary",
+}) as any as S.Schema<InvestigationSummary>;
+export type InvestigationSummaries = InvestigationSummary[];
+export const InvestigationSummaries =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(InvestigationSummary);
+export interface ListInvestigationsResponse {
+  Investigations: InvestigationSummary[];
+  NextToken?: string;
+}
+export const ListInvestigationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Investigations: S.optional(InvestigationSummaries),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      S.encodeKeys({
+        Investigations: "investigations",
+        NextToken: "nextToken",
+      }),
+    ),
+).annotate({
+  identifier: "ListInvestigationsResponse",
+}) as any as S.Schema<ListInvestigationsResponse>;
 export interface ListInvitationsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -8643,12 +9008,31 @@ export const SendObjectMalwareScanResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "SendObjectMalwareScanResponse",
   }) as any as S.Schema<SendObjectMalwareScanResponse>;
+export interface ContinuousScanDetails {
+  StartTime?: Date;
+  EndTime: Date;
+}
+export const ContinuousScanDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }).pipe(S.encodeKeys({ StartTime: "startTime", EndTime: "endTime" })),
+).annotate({
+  identifier: "ContinuousScanDetails",
+}) as any as S.Schema<ContinuousScanDetails>;
 export interface RecoveryPoint {
   BackupVaultName?: string;
+  ContinuousScanDetails?: ContinuousScanDetails;
 }
 export const RecoveryPoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ BackupVaultName: S.optional(S.String) }).pipe(
-    S.encodeKeys({ BackupVaultName: "backupVaultName" }),
+  S.Struct({
+    BackupVaultName: S.optional(S.String),
+    ContinuousScanDetails: S.optional(ContinuousScanDetails),
+  }).pipe(
+    S.encodeKeys({
+      BackupVaultName: "backupVaultName",
+      ContinuousScanDetails: "continuousScanDetails",
+    }),
   ),
 ).annotate({ identifier: "RecoveryPoint" }) as any as S.Schema<RecoveryPoint>;
 export interface StartMalwareScanConfiguration {
@@ -9752,6 +10136,39 @@ export const createFilter: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFilter",
 }));
+export type CreateInvestigationError =
+  | AccessDeniedException
+  | BadRequestException
+  | InternalServerErrorException
+  | CommonErrors;
+/**
+ * This API is currently available as a preview. During the preview, you can initiate up to 10 investigations per account per day, with a total limit of 100 investigations per account. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+ *
+ * Initiates a GuardDuty investigation that automatically analyzes security findings, correlates related activity, performs account-level analysis, and produces a structured investigation summary with recommended next steps.
+ *
+ * Only the administrator account can create an investigation. Member accounts don't have permission to create investigations from their accounts.
+ *
+ * To use this operation, the `AI_ANALYST` feature must be enabled on your detector.
+ *
+ * This feature uses Amazon Bedrock models that leverage Cross-Region Inference (CRIS), which automatically selects the optimal Amazon Web Services Region within your geography to process the investigation analysis and generate the investigation report. This maximizes available compute resources, model availability, and delivers the best customer experience. Your data remains stored only in the Region where the investigation request originates, however, investigation data and summary results may be processed outside that Region. All data is transmitted encrypted across Amazon's secure network. For more information, see GuardDuty Investigation.
+ */
+export const createInvestigation: API.OperationMethod<
+  CreateInvestigationRequest,
+  CreateInvestigationResponse,
+  CreateInvestigationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateInvestigationRequest,
+  output: CreateInvestigationResponse,
+  errors: [
+    AccessDeniedException,
+    BadRequestException,
+    InternalServerErrorException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateInvestigation",
+}));
 export type CreateIPSetError =
   | AccessDeniedException
   | BadRequestException
@@ -9879,7 +10296,7 @@ export type CreateThreatEntitySetError =
   | InternalServerErrorException
   | CommonErrors;
 /**
- * Creates a new threat entity set. In a threat entity set, you can provide known malicious IP addresses and domains for your Amazon Web Services environment. GuardDuty generates findings based on the entries in the threat entity sets. Only users of the administrator account can manage entity sets, which automatically apply to member accounts.
+ * Creates a new threat entity set. In a threat entity set, you can provide known malicious threat entities for your Amazon Web Services environment. GuardDuty generates findings based on the entries in the threat entity sets. Only users of the administrator account can manage entity sets, which automatically apply to member accounts.
  */
 export const createThreatEntitySet: API.OperationMethod<
   CreateThreatEntitySetRequest,
@@ -10523,6 +10940,37 @@ export const getFindingsStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetFindingsStatistics",
 }));
+export type GetInvestigationError =
+  | AccessDeniedException
+  | BadRequestException
+  | InternalServerErrorException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+ *
+ * Retrieves the results and status of a specific GuardDuty investigation.
+ *
+ * An administrator account can retrieve any investigation within the organization. Member accounts can only retrieve investigations that belong to them.
+ */
+export const getInvestigation: API.OperationMethod<
+  GetInvestigationRequest,
+  GetInvestigationResponse,
+  GetInvestigationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetInvestigationRequest,
+  output: GetInvestigationResponse,
+  errors: [
+    AccessDeniedException,
+    BadRequestException,
+    InternalServerErrorException,
+    ResourceNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetInvestigation",
+}));
 export type GetInvitationsCountError =
   | BadRequestException
   | InternalServerErrorException
@@ -11036,6 +11484,56 @@ export const listFindings: API.OperationMethod<
     inputToken: "NextToken",
     outputToken: "NextToken",
     items: "FindingIds",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type ListInvestigationsError =
+  | AccessDeniedException
+  | BadRequestException
+  | InternalServerErrorException
+  | CommonErrors;
+/**
+ * This API is currently available as a preview. This feature is available in the following Amazon Web Services Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Stockholm), and Asia Pacific (Tokyo).
+ *
+ * Returns a list of investigations associated with the specified GuardDuty detector.
+ *
+ * An administrator account sees all investigations across the organization. Member accounts see only the investigations that belong to them.
+ */
+export const listInvestigations: API.OperationMethod<
+  ListInvestigationsRequest,
+  ListInvestigationsResponse,
+  ListInvestigationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInvestigationsRequest,
+  ) => stream.Stream<
+    ListInvestigationsResponse,
+    ListInvestigationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInvestigationsRequest,
+  ) => stream.Stream<
+    InvestigationSummary,
+    ListInvestigationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListInvestigationsRequest,
+  output: ListInvestigationsResponse,
+  errors: [
+    AccessDeniedException,
+    BadRequestException,
+    InternalServerErrorException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListInvestigations",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Investigations",
     pageSize: "MaxResults",
   } as const,
 }));

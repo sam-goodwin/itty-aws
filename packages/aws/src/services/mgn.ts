@@ -194,6 +194,7 @@ export type NetworkMigrationMapperSegmentType = string;
 export type SegmentName = string;
 export type SegmentDescription = string;
 export type SecurityGroupMappingStrategy = string;
+export type CidrBlock = string;
 export type SecurityGroupID = string;
 export type EC2InstanceType = string;
 export type ReplicationConfigurationDefaultLargeStagingDiskType = string;
@@ -201,10 +202,16 @@ export type ReplicationConfigurationEbsEncryption = string;
 export type BandwidthThrottling = number;
 export type ReplicationConfigurationDataPlaneRouting = string;
 export type InternetProtocol = string;
-export type ReplicationConfigurationTemplateID = string;
+export type StorageType = string;
+export type StorageVirtualMachineId = string;
 export type SecretArn = string;
+export type ReplicationConfigurationTemplateID = string;
 export type ConnectorArn = string;
+export type UserProvidedId = string;
+export type FqdnForActionFramework = string;
 export type FirstBoot = string;
+export type LastKnownCheckType = string;
+export type LastKnownCheckStatus = string;
 export type ISO8601DurationString = string;
 export type DataReplicationState = string;
 export type DataReplicationInitiationStepName = string;
@@ -214,7 +221,6 @@ export type ReplicatorID = string;
 export type LifeCycleState = string;
 export type ReplicationType = string;
 export type VcenterClientID = string;
-export type UserProvidedId = string;
 export type ChangeServerLifeCycleStateSourceServerLifecycleState = string;
 export type SmallBoundedString = string;
 export type ReplicationConfigurationReplicatedDiskStagingDiskType = string;
@@ -2474,6 +2480,7 @@ export interface NetworkMigrationMapperSegmentConstruct {
   name?: string;
   description?: string;
   logicalID?: string;
+  excluded?: boolean;
   createdAt?: Date;
   updatedAt?: Date;
   properties?: { [key: string]: string | undefined };
@@ -2486,6 +2493,7 @@ export const NetworkMigrationMapperSegmentConstruct =
       name: S.optional(S.String),
       description: S.optional(S.String),
       logicalID: S.optional(S.String),
+      excluded: S.optional(S.Boolean),
       createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       properties: S.optional(ConstructProperties),
@@ -2889,6 +2897,10 @@ export type NetworkMigrationCodeGenerationArtifacts =
   NetworkMigrationCodeGenerationArtifact[];
 export const NetworkMigrationCodeGenerationArtifacts =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkMigrationCodeGenerationArtifact);
+export type ReferencedSegmentsList = string[];
+export const ReferencedSegmentsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
 export interface NetworkMigrationCodeGenerationSegment {
   jobID?: string;
   networkMigrationExecutionID?: string;
@@ -2898,6 +2910,7 @@ export interface NetworkMigrationCodeGenerationSegment {
   logicalID?: string;
   mapperSegmentID?: string;
   artifacts?: NetworkMigrationCodeGenerationArtifact[];
+  referencedSegments?: string[];
   createdAt?: Date;
 }
 export const NetworkMigrationCodeGenerationSegment =
@@ -2911,6 +2924,7 @@ export const NetworkMigrationCodeGenerationSegment =
       logicalID: S.optional(S.String),
       mapperSegmentID: S.optional(S.String),
       artifacts: S.optional(NetworkMigrationCodeGenerationArtifacts),
+      referencedSegments: S.optional(ReferencedSegmentsList),
       createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     }),
   ).annotate({
@@ -3313,10 +3327,6 @@ export const ListNetworkMigrationMapperSegmentsRequest =
   ).annotate({
     identifier: "ListNetworkMigrationMapperSegmentsRequest",
   }) as any as S.Schema<ListNetworkMigrationMapperSegmentsRequest>;
-export type ReferencedSegmentsList = string[];
-export const ReferencedSegmentsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
 export interface NetworkMigrationMapperSegment {
   jobID?: string;
   networkMigrationExecutionID?: string;
@@ -3686,16 +3696,69 @@ export const StartNetworkMigrationMappingResponse =
   ).annotate({
     identifier: "StartNetworkMigrationMappingResponse",
   }) as any as S.Schema<StartNetworkMigrationMappingResponse>;
+export interface MergeConstruct {
+  segmentID?: string;
+  constructID?: string;
+}
+export const MergeConstruct = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    segmentID: S.optional(S.String),
+    constructID: S.optional(S.String),
+  }),
+).annotate({ identifier: "MergeConstruct" }) as any as S.Schema<MergeConstruct>;
+export type MergeConstructs = MergeConstruct[];
+export const MergeConstructs =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(MergeConstruct);
+export interface MergeOperation {
+  mergeConstructs?: MergeConstruct[];
+}
+export const MergeOperation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ mergeConstructs: S.optional(MergeConstructs) }),
+).annotate({ identifier: "MergeOperation" }) as any as S.Schema<MergeOperation>;
+export interface SplitConstruct {
+  cidrBlock?: string;
+}
+export const SplitConstruct = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ cidrBlock: S.optional(S.String) }),
+).annotate({ identifier: "SplitConstruct" }) as any as S.Schema<SplitConstruct>;
+export type SplitConstructs = SplitConstruct[];
+export const SplitConstructs =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SplitConstruct);
+export interface SplitOperation {
+  splitConstructs?: SplitConstruct[];
+}
+export const SplitOperation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ splitConstructs: S.optional(SplitConstructs) }),
+).annotate({ identifier: "SplitOperation" }) as any as S.Schema<SplitOperation>;
+export interface DeleteOperation {}
+export const DeleteOperation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteOperation",
+}) as any as S.Schema<DeleteOperation>;
 export interface UpdateOperation {
+  name?: string;
+  excluded?: boolean;
   properties?: { [key: string]: string | undefined };
 }
 export const UpdateOperation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ properties: S.optional(ConstructProperties) }),
+  S.Struct({
+    name: S.optional(S.String),
+    excluded: S.optional(S.Boolean),
+    properties: S.optional(ConstructProperties),
+  }),
 ).annotate({
   identifier: "UpdateOperation",
 }) as any as S.Schema<UpdateOperation>;
-export type OperationUnion = { update: UpdateOperation };
+export type OperationUnion =
+  | { merge: MergeOperation; split?: never; delete?: never; update?: never }
+  | { merge?: never; split: SplitOperation; delete?: never; update?: never }
+  | { merge?: never; split?: never; delete: DeleteOperation; update?: never }
+  | { merge?: never; split?: never; delete?: never; update: UpdateOperation };
 export const OperationUnion = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ merge: MergeOperation }),
+  S.Struct({ split: SplitOperation }),
+  S.Struct({ delete: DeleteOperation }),
   S.Struct({ update: UpdateOperation }),
 ]);
 export interface StartNetworkMigrationMappingUpdateConstruct {
@@ -3812,6 +3875,30 @@ export const UpdateNetworkMigrationMapperSegmentRequest =
 export type ReplicationServersSecurityGroupsIDs = string[];
 export const ReplicationServersSecurityGroupsIDs =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface FsxOntapConfiguration {
+  storageVirtualMachineId: string;
+  credentialsSecretArn: string;
+}
+export const FsxOntapConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageVirtualMachineId: S.String,
+    credentialsSecretArn: S.String,
+  }),
+).annotate({
+  identifier: "FsxOntapConfiguration",
+}) as any as S.Schema<FsxOntapConfiguration>;
+export interface StorageConfiguration {
+  storageType: string;
+  fsxOntapConfiguration?: FsxOntapConfiguration;
+}
+export const StorageConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    storageType: S.String,
+    fsxOntapConfiguration: S.optional(FsxOntapConfiguration),
+  }),
+).annotate({
+  identifier: "StorageConfiguration",
+}) as any as S.Schema<StorageConfiguration>;
 export interface CreateReplicationConfigurationTemplateRequest {
   stagingAreaSubnetId: string;
   associateDefaultSecurityGroup: boolean;
@@ -3829,6 +3916,7 @@ export interface CreateReplicationConfigurationTemplateRequest {
   tags?: { [key: string]: string | undefined };
   internetProtocol?: string;
   storeSnapshotOnLocalZone?: boolean;
+  storageConfiguration?: StorageConfiguration;
 }
 export const CreateReplicationConfigurationTemplateRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3849,6 +3937,7 @@ export const CreateReplicationConfigurationTemplateRequest =
       tags: S.optional(TagsMap),
       internetProtocol: S.optional(S.String),
       storeSnapshotOnLocalZone: S.optional(S.Boolean),
+      storageConfiguration: S.optional(StorageConfiguration),
     }).pipe(
       T.all(
         T.Http({
@@ -3884,6 +3973,7 @@ export interface ReplicationConfigurationTemplate {
   tags?: { [key: string]: string | undefined };
   internetProtocol?: string;
   storeSnapshotOnLocalZone?: boolean;
+  storageConfiguration?: StorageConfiguration;
 }
 export const ReplicationConfigurationTemplate =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3908,6 +3998,7 @@ export const ReplicationConfigurationTemplate =
       tags: S.optional(TagsMap),
       internetProtocol: S.optional(S.String),
       storeSnapshotOnLocalZone: S.optional(S.Boolean),
+      storageConfiguration: S.optional(StorageConfiguration),
     }),
   ).annotate({
     identifier: "ReplicationConfigurationTemplate",
@@ -3930,6 +4021,7 @@ export interface UpdateReplicationConfigurationTemplateRequest {
   useFipsEndpoint?: boolean;
   internetProtocol?: string;
   storeSnapshotOnLocalZone?: boolean;
+  storageConfiguration?: StorageConfiguration;
 }
 export const UpdateReplicationConfigurationTemplateRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -3953,6 +4045,7 @@ export const UpdateReplicationConfigurationTemplateRequest =
       useFipsEndpoint: S.optional(S.Boolean),
       internetProtocol: S.optional(S.String),
       storeSnapshotOnLocalZone: S.optional(S.Boolean),
+      storageConfiguration: S.optional(StorageConfiguration),
     }).pipe(
       T.all(
         T.Http({
@@ -4061,6 +4154,9 @@ export interface UpdateSourceServerRequest {
   accountID?: string;
   sourceServerID: string;
   connectorAction?: SourceServerConnectorAction;
+  userProvidedID?: string;
+  fqdnForActionFramework?: string;
+  platform?: string;
 }
 export const UpdateSourceServerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -4068,6 +4164,9 @@ export const UpdateSourceServerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       accountID: S.optional(S.String),
       sourceServerID: S.String,
       connectorAction: S.optional(SourceServerConnectorAction),
+      userProvidedID: S.optional(S.String),
+      fqdnForActionFramework: S.optional(S.String),
+      platform: S.optional(S.String),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/UpdateSourceServer" }),
@@ -4081,16 +4180,39 @@ export const UpdateSourceServerRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateSourceServerRequest",
 }) as any as S.Schema<UpdateSourceServerRequest>;
+export interface LastKnownCheck {
+  type?: string;
+  name?: string;
+  status?: string;
+  error?: string;
+  checkedAt?: Date;
+}
+export const LastKnownCheck = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.optional(S.String),
+    error: S.optional(S.String),
+    checkedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "LastKnownCheck" }) as any as S.Schema<LastKnownCheck>;
+export type LastKnownChecksList = LastKnownCheck[];
+export const LastKnownChecksList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(LastKnownCheck);
 export interface LaunchedInstance {
   ec2InstanceID?: string;
   jobID?: string;
   firstBoot?: string;
+  lastKnownChecks?: LastKnownCheck[];
+  lastKnownFsxChecksStatus?: string;
 }
 export const LaunchedInstance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     ec2InstanceID: S.optional(S.String),
     jobID: S.optional(S.String),
     firstBoot: S.optional(S.String),
+    lastKnownChecks: S.optional(LastKnownChecksList),
+    lastKnownFsxChecksStatus: S.optional(S.String),
   }),
 ).annotate({
   identifier: "LaunchedInstance",
@@ -4700,6 +4822,7 @@ export interface ReplicationConfiguration {
   useFipsEndpoint?: boolean;
   internetProtocol?: string;
   storeSnapshotOnLocalZone?: boolean;
+  storageConfiguration?: StorageConfiguration;
 }
 export const ReplicationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -4724,6 +4847,7 @@ export const ReplicationConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       useFipsEndpoint: S.optional(S.Boolean),
       internetProtocol: S.optional(S.String),
       storeSnapshotOnLocalZone: S.optional(S.Boolean),
+      storageConfiguration: S.optional(StorageConfiguration),
     }),
 ).annotate({
   identifier: "ReplicationConfiguration",
@@ -5080,6 +5204,7 @@ export interface UpdateReplicationConfigurationRequest {
   accountID?: string;
   internetProtocol?: string;
   storeSnapshotOnLocalZone?: boolean;
+  storageConfiguration?: StorageConfiguration;
 }
 export const UpdateReplicationConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -5105,6 +5230,7 @@ export const UpdateReplicationConfigurationRequest =
       accountID: S.optional(S.String),
       internetProtocol: S.optional(S.String),
       storeSnapshotOnLocalZone: S.optional(S.Boolean),
+      storageConfiguration: S.optional(StorageConfiguration),
     }).pipe(
       T.all(
         T.Http({ method: "POST", uri: "/UpdateReplicationConfiguration" }),

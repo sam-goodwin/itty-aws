@@ -2405,6 +2405,7 @@ export interface UpdateGlobalResolverInput {
   observabilityRegion?: string;
   description?: string;
   ipAddressType?: GlobalResolverIpAddressType;
+  regions?: string[];
 }
 export const UpdateGlobalResolverInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2414,6 +2415,7 @@ export const UpdateGlobalResolverInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       observabilityRegion: S.optional(S.String),
       description: S.optional(S.String),
       ipAddressType: S.optional(GlobalResolverIpAddressType),
+      regions: S.optional(Regions),
     }).pipe(
       T.all(
         T.Http({ method: "PATCH", uri: "/global-resolver/{globalResolverId}" }),
@@ -3374,6 +3376,7 @@ export const updateAccessToken: API.OperationMethod<
 }));
 export type DeleteAccessTokenError =
   | AccessDeniedException
+  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
@@ -3394,6 +3397,7 @@ export const deleteAccessToken: API.OperationMethod<
   output: DeleteAccessTokenOutput,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,

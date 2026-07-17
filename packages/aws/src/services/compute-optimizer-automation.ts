@@ -185,6 +185,18 @@ export type ComparisonOperator =
   | "NumericLessThanEquals"
   | "NumericGreaterThan"
   | "NumericGreaterThanEquals"
+  | "StringEqualsIfExists"
+  | "StringNotEqualsIfExists"
+  | "StringEqualsIgnoreCaseIfExists"
+  | "StringNotEqualsIgnoreCaseIfExists"
+  | "StringLikeIfExists"
+  | "StringNotLikeIfExists"
+  | "NumericEqualsIfExists"
+  | "NumericNotEqualsIfExists"
+  | "NumericLessThanIfExists"
+  | "NumericLessThanEqualsIfExists"
+  | "NumericGreaterThanIfExists"
+  | "NumericGreaterThanEqualsIfExists"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type StringCriteriaValues = string[];

@@ -1122,7 +1122,11 @@ export const TenantConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TenantConfig" }) as any as S.Schema<TenantConfig>;
 export type ConnectionMode = "direct" | "tenant-only" | (string & {});
 export const ConnectionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type ViewerMtlsMode = "required" | "optional" | (string & {});
+export type ViewerMtlsMode =
+  | "required"
+  | "optional"
+  | "passthrough"
+  | (string & {});
 export const ViewerMtlsMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface TrustStoreConfig {
   TrustStoreId: string;
@@ -1159,6 +1163,12 @@ export const ConnectionFunctionAssociation =
   ).annotate({
     identifier: "ConnectionFunctionAssociation",
   }) as any as S.Schema<ConnectionFunctionAssociation>;
+export interface CacheTagConfig {
+  HeaderName: string;
+}
+export const CacheTagConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ HeaderName: S.String }),
+).annotate({ identifier: "CacheTagConfig" }) as any as S.Schema<CacheTagConfig>;
 export interface DistributionConfig {
   CallerReference: string;
   Aliases?: Aliases;
@@ -1184,6 +1194,7 @@ export interface DistributionConfig {
   ConnectionMode?: ConnectionMode;
   ViewerMtlsConfig?: ViewerMtlsConfig;
   ConnectionFunctionAssociation?: ConnectionFunctionAssociation;
+  CacheTagConfig?: CacheTagConfig;
 }
 export const DistributionConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1211,6 +1222,7 @@ export const DistributionConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ConnectionMode: S.optional(ConnectionMode),
     ViewerMtlsConfig: S.optional(ViewerMtlsConfig),
     ConnectionFunctionAssociation: S.optional(ConnectionFunctionAssociation),
+    CacheTagConfig: S.optional(CacheTagConfig),
   }),
 ).annotate({
   identifier: "DistributionConfig",
@@ -2524,12 +2536,14 @@ export interface CreateFunctionRequest {
   Name: string;
   FunctionConfig: FunctionConfig;
   FunctionCode: Uint8Array | redacted.Redacted<Uint8Array>;
+  Tags?: Tags;
 }
 export const CreateFunctionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     FunctionConfig: FunctionConfig,
     FunctionCode: SensitiveBlob,
+    Tags: S.optional(Tags),
   }).pipe(
     T.all(
       ns,
@@ -2794,6 +2808,7 @@ export interface CreateKeyValueStoreRequest {
   Name: string;
   Comment?: string;
   ImportSource?: ImportSource;
+  Tags?: Tags;
 }
 export const CreateKeyValueStoreRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -2801,6 +2816,7 @@ export const CreateKeyValueStoreRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       Name: S.String,
       Comment: S.optional(S.String),
       ImportSource: S.optional(ImportSource),
+      Tags: S.optional(Tags),
     }).pipe(
       T.all(
         ns,
@@ -3848,6 +3864,7 @@ export const CaCertificatesBundleSource = /*@__PURE__*/ /*#__PURE__*/ S.Union([
 export interface CreateTrustStoreRequest {
   Name: string;
   CaCertificatesBundleSource: CaCertificatesBundleSource;
+  UseClientCertificateOCSPEndpoint?: boolean;
   Tags?: Tags;
 }
 export const CreateTrustStoreRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
@@ -3855,6 +3872,7 @@ export const CreateTrustStoreRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
     S.Struct({
       Name: S.String,
       CaCertificatesBundleSource: CaCertificatesBundleSource,
+      UseClientCertificateOCSPEndpoint: S.optional(S.Boolean),
       Tags: S.optional(Tags),
     }).pipe(
       T.all(
@@ -3880,6 +3898,7 @@ export interface TrustStore {
   NumberOfCaCertificates?: number;
   LastModifiedTime?: Date;
   Reason?: string;
+  UseClientCertificateOCSPEndpoint?: boolean;
 }
 export const TrustStore = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3890,6 +3909,7 @@ export const TrustStore = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     NumberOfCaCertificates: S.optional(S.Number),
     LastModifiedTime: S.optional(T.DateFromString),
     Reason: S.optional(S.String),
+    UseClientCertificateOCSPEndpoint: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "TrustStore" }) as any as S.Schema<TrustStore>;
 export interface CreateTrustStoreResult {
@@ -10025,15 +10045,19 @@ export const UpdateStreamingDistributionResult =
   }) as any as S.Schema<UpdateStreamingDistributionResult>;
 export interface UpdateTrustStoreRequest {
   Id: string;
-  CaCertificatesBundleSource: CaCertificatesBundleSource;
+  CaCertificatesBundleSource?: CaCertificatesBundleSource;
+  UseClientCertificateOCSPEndpoint?: boolean;
   IfMatch: string;
 }
 export const UpdateTrustStoreRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       Id: S.String.pipe(T.HttpLabel("Id")),
-      CaCertificatesBundleSource: CaCertificatesBundleSource.pipe(
+      CaCertificatesBundleSource: S.optional(CaCertificatesBundleSource).pipe(
         T.HttpPayload(),
+      ),
+      UseClientCertificateOCSPEndpoint: S.optional(S.Boolean).pipe(
+        T.HttpHeader("UseClientCertificateOCSPEndpoint"),
       ),
       IfMatch: S.String.pipe(T.HttpHeader("If-Match")),
     }).pipe(

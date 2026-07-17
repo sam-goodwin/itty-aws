@@ -85,6 +85,10 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 //# Newtypes
+export type AssetId = string;
+export type GlossaryTermId = string;
+export type HashString = string;
+export type MessageString = string;
 export type CatalogIdString = string;
 export type NameString = string;
 export type ValueString = string;
@@ -101,7 +105,6 @@ export type SchemaRegistryNameString = string;
 export type SchemaVersionIdString = string;
 export type VersionLongNumber = number;
 export type DescriptionString = string;
-export type MessageString = string;
 export type TransactionIdString = string;
 export type VersionString = string;
 export type OrchestrationNameString = string;
@@ -124,7 +127,6 @@ export type VersionId = number;
 export type CrawlerConfiguration = string;
 export type CrawlerSecurityConfiguration = string;
 export type AccountId = string;
-export type HashString = string;
 export type GenericBoundedDouble = number;
 export type PreProcessingQueryString = string;
 export type DataQualityRuleResultDescription =
@@ -136,6 +138,15 @@ export type DataQualityObservationDescription =
 export type RoleArn = string;
 export type IntegerValue = number;
 export type GlueVersionString = string;
+export type IterableFormName = string;
+export type ItemIdentifier = string;
+export type ItemId = string;
+export type ItemName = string;
+export type AssetFormKey = string;
+export type FormTypeId = string;
+export type FormContent = string;
+export type ItemErrorCode = string;
+export type ItemErrorMessage = string;
 export type UriString = string;
 export type RoleString = string;
 export type MaxConcurrentRuns = number;
@@ -240,6 +251,12 @@ export type CredentialKey = string;
 export type CredentialValue = string;
 export type URI = string;
 export type DataQualityRulesetString = string;
+export type GlossaryName = string;
+export type MetadataDescription = string;
+export type GlossaryId = string;
+export type GlossaryTermName = string;
+export type GlossaryShortDescription = string;
+export type GlossaryLongDescription = string;
 export type IdentityCenterInstanceArn = string;
 export type IdentityCenterScope = string;
 export type ApplicationArn = string;
@@ -272,6 +289,8 @@ export type IcebergDocument = unknown;
 export type IcebergTransformString = string;
 export type ConfigValueString = string;
 export type WorkflowDescriptionString = string;
+export type AssetTypeId = string;
+export type AttachmentName = string;
 export type VersionsString = string;
 export type ErrorCodeString = string;
 export type ErrorMessageString = string;
@@ -295,6 +314,13 @@ export type EntityFieldName = string;
 export type FieldLabel = string;
 export type FieldDescription = string;
 export type IntegrationInteger = number;
+export type AssetName = string;
+export type AssetDescription = string;
+export type CreatedAt = Date;
+export type UpdatedAt = Date;
+export type IterableFormKey = string;
+export type AssetTypeName = string;
+export type AssetTypeFormKey = string;
 export type BlueprintParameters = string;
 export type OrchestrationIAMRoleArn = string;
 export type PageSize = number;
@@ -306,12 +332,15 @@ export type TableName = string;
 export type PositiveInteger = number;
 export type LongValueString = string;
 export type ConnectionSchemaVersion = number;
+export type SensitiveUrl = string | redacted.Redacted<string>;
 export type CatalogGetterPageSize = number;
 export type OptionKey = string;
 export type OptionValue = string;
 export type FilterPredicate = string;
 export type Limit = number;
 export type Record = unknown;
+export type FormTypeName = string;
+export type FormTypeSchema = string;
 export type JobName = string;
 export type RunId = string;
 export type JsonValue = string;
@@ -332,7 +361,10 @@ export type UpdatedTimestamp = string;
 export type PolicyJsonString = string;
 export type LatestSchemaVersionBoolean = boolean;
 export type SchemaDefinitionDiff = string;
+export type SparkConnectEndpointUrl = string;
+export type SensitiveString = string | redacted.Redacted<string>;
 export type LongValue = number;
+export type TableIdString = string;
 export type FilterString = string;
 export type OrchestrationPageSize25 = number;
 export type MaxResults = number;
@@ -346,6 +378,7 @@ export type IsParentEntity = boolean;
 export type EntityDescription = string;
 export type Category = string;
 export type String1024 = string;
+export type ItemDescription = string;
 export type MaxResultsNumber = number;
 export type SchemaRegistryTokenString = string;
 export type OrchestrationToken = string;
@@ -355,6 +388,14 @@ export type MetadataKeyString = string;
 export type MetadataValueString = string;
 export type QuerySchemaVersionMetadataMaxResults = number;
 export type OrchestrationStatementCodeString = string;
+export type SearchText = string;
+export type SearchMaxResults = number;
+export type SearchNextToken = string;
+export type SearchAttribute = string;
+export type SearchFilterStringValue = string;
+export type SearchFilterLongValue = number;
+export type SearchMapKey = string;
+export type SearchResultName = string;
 export type DescriptionStringRemovable = string;
 export type CommitIdString = string;
 export type AuthTokenString = string;
@@ -362,6 +403,48 @@ export type EncryptionKeyIdString = string;
 export type EncryptedKeyMetadataString = string;
 
 //# Schemas
+export type GlossaryTermIdList = string[];
+export const GlossaryTermIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface AssociateGlossaryTermsRequest {
+  AssetIdentifier: string;
+  GlossaryTermIdentifiers: string[];
+  ClientToken?: string;
+}
+export const AssociateGlossaryTermsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AssetIdentifier: S.String.pipe(T.HttpLabel("AssetIdentifier")),
+      GlossaryTermIdentifiers: GlossaryTermIdList,
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/assets/{AssetIdentifier}/associate-glossary-terms",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "AssociateGlossaryTermsRequest",
+  }) as any as S.Schema<AssociateGlossaryTermsRequest>;
+export interface AssociateGlossaryTermsResponse {
+  AssetIdentifier?: string;
+  GlossaryTerms?: string[];
+}
+export const AssociateGlossaryTermsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AssetIdentifier: S.optional(S.String),
+      GlossaryTerms: S.optional(GlossaryTermIdList),
+    }),
+  ).annotate({
+    identifier: "AssociateGlossaryTermsResponse",
+  }) as any as S.Schema<AssociateGlossaryTermsResponse>;
 export type ValueStringList = string[];
 export const ValueStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export type ParametersMap = { [key: string]: string | undefined };
@@ -1578,6 +1661,95 @@ export const BatchGetDevEndpointsResponse =
   ).annotate({
     identifier: "BatchGetDevEndpointsResponse",
   }) as any as S.Schema<BatchGetDevEndpointsResponse>;
+export type ItemIdentifierList = string[];
+export const ItemIdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface BatchGetIterableFormsRequest {
+  AssetIdentifier: string;
+  IterableFormName: string;
+  ItemIdentifiers: string[];
+}
+export const BatchGetIterableFormsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AssetIdentifier: S.String.pipe(T.HttpLabel("AssetIdentifier")),
+      IterableFormName: S.String.pipe(T.HttpLabel("IterableFormName")),
+      ItemIdentifiers: ItemIdentifierList,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/assets/{AssetIdentifier}/iterable-forms/{IterableFormName}/batch-get",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "BatchGetIterableFormsRequest",
+  }) as any as S.Schema<BatchGetIterableFormsRequest>;
+export interface AssetFormEntry {
+  FormTypeId?: string;
+  Content?: string;
+}
+export const AssetFormEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ FormTypeId: S.optional(S.String), Content: S.optional(S.String) }),
+).annotate({ identifier: "AssetFormEntry" }) as any as S.Schema<AssetFormEntry>;
+export type AssetFormMap = { [key: string]: AssetFormEntry | undefined };
+export const AssetFormMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  AssetFormEntry.pipe(S.optional),
+);
+export interface IterableFormItem {
+  ItemId?: string;
+  ItemName?: string;
+  GlossaryTerms?: string[];
+  Forms?: { [key: string]: AssetFormEntry | undefined };
+  Attachments?: { [key: string]: AssetFormEntry | undefined };
+}
+export const IterableFormItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ItemId: S.optional(S.String),
+    ItemName: S.optional(S.String),
+    GlossaryTerms: S.optional(GlossaryTermIdList),
+    Forms: S.optional(AssetFormMap),
+    Attachments: S.optional(AssetFormMap),
+  }),
+).annotate({
+  identifier: "IterableFormItem",
+}) as any as S.Schema<IterableFormItem>;
+export type IterableFormItemList = IterableFormItem[];
+export const IterableFormItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(IterableFormItem);
+export interface ItemError {
+  ItemIdentifier?: string;
+  Code?: string;
+  Message?: string;
+}
+export const ItemError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ItemIdentifier: S.optional(S.String),
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+  }),
+).annotate({ identifier: "ItemError" }) as any as S.Schema<ItemError>;
+export type ItemErrorList = ItemError[];
+export const ItemErrorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ItemError);
+export interface BatchGetIterableFormsResponse {
+  Items?: IterableFormItem[];
+  Errors?: ItemError[];
+}
+export const BatchGetIterableFormsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Items: S.optional(IterableFormItemList),
+      Errors: S.optional(ItemErrorList),
+    }),
+  ).annotate({
+    identifier: "BatchGetIterableFormsResponse",
+  }) as any as S.Schema<BatchGetIterableFormsResponse>;
 export type JobNameList = string[];
 export const JobNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
 export interface BatchGetJobsRequest {
@@ -6544,6 +6716,91 @@ export const CreateDevEndpointResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDevEndpointResponse",
 }) as any as S.Schema<CreateDevEndpointResponse>;
+export interface CreateGlossaryRequest {
+  Name: string;
+  Description?: string;
+  ClientToken?: string;
+}
+export const CreateGlossaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Description: S.optional(S.String),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/glossaries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateGlossaryRequest",
+}) as any as S.Schema<CreateGlossaryRequest>;
+export interface CreateGlossaryResponse {
+  Id?: string;
+  Name?: string;
+  Description?: string;
+}
+export const CreateGlossaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Id: S.optional(S.String),
+      Name: S.optional(S.String),
+      Description: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CreateGlossaryResponse",
+}) as any as S.Schema<CreateGlossaryResponse>;
+export interface CreateGlossaryTermRequest {
+  GlossaryIdentifier: string;
+  Name: string;
+  ShortDescription?: string;
+  LongDescription?: string;
+  ClientToken?: string;
+}
+export const CreateGlossaryTermRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      GlossaryIdentifier: S.String,
+      Name: S.String,
+      ShortDescription: S.optional(S.String),
+      LongDescription: S.optional(S.String),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/glossary-terms" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreateGlossaryTermRequest",
+}) as any as S.Schema<CreateGlossaryTermRequest>;
+export interface CreateGlossaryTermResponse {
+  Id?: string;
+  GlossaryId?: string;
+  Name?: string;
+  ShortDescription?: string;
+  LongDescription?: string;
+}
+export const CreateGlossaryTermResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Id: S.optional(S.String),
+      GlossaryId: S.optional(S.String),
+      Name: S.optional(S.String),
+      ShortDescription: S.optional(S.String),
+      LongDescription: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CreateGlossaryTermResponse",
+}) as any as S.Schema<CreateGlossaryTermResponse>;
 export type IdentityCenterScopesList = string[];
 export const IdentityCenterScopesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
   S.String,
@@ -7390,6 +7647,8 @@ export const OrchestrationArgumentsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type SessionType = "LIVY" | "SPARK_CONNECT" | (string & {});
+export const SessionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface CreateSessionRequest {
   Id: string;
   Description?: string;
@@ -7406,6 +7665,7 @@ export interface CreateSessionRequest {
   GlueVersion?: string;
   Tags?: { [key: string]: string | undefined };
   RequestOrigin?: string;
+  SessionType?: SessionType;
 }
 export const CreateSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7424,6 +7684,7 @@ export const CreateSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     GlueVersion: S.optional(S.String),
     Tags: S.optional(TagsMap),
     RequestOrigin: S.optional(S.String),
+    SessionType: S.optional(SessionType),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -7460,6 +7721,7 @@ export interface Session {
   DPUSeconds?: number;
   IdleTimeout?: number;
   ProfileName?: string;
+  SessionType?: SessionType;
 }
 export const Session = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -7483,6 +7745,7 @@ export const Session = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DPUSeconds: S.optional(S.Number),
     IdleTimeout: S.optional(S.Number),
     ProfileName: S.optional(S.String),
+    SessionType: S.optional(SessionType),
   }),
 ).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
 export interface CreateSessionResponse {
@@ -8012,6 +8275,92 @@ export const CreateWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateWorkflowResponse",
 }) as any as S.Schema<CreateWorkflowResponse>;
+export interface DeleteAssetRequest {
+  Identifier: string;
+}
+export const DeleteAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/assets/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteAssetRequest",
+}) as any as S.Schema<DeleteAssetRequest>;
+export interface DeleteAssetResponse {}
+export const DeleteAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAssetResponse",
+}) as any as S.Schema<DeleteAssetResponse>;
+export interface DeleteAssetTypeRequest {
+  Identifier: string;
+}
+export const DeleteAssetTypeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+      T.all(
+        T.Http({ method: "DELETE", uri: "/asset-types/{Identifier}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteAssetTypeRequest",
+}) as any as S.Schema<DeleteAssetTypeRequest>;
+export interface DeleteAssetTypeResponse {}
+export const DeleteAssetTypeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteAssetTypeResponse",
+}) as any as S.Schema<DeleteAssetTypeResponse>;
+export interface DeleteAttachmentRequest {
+  AssetIdentifier: string;
+  IterableFormName?: string;
+  ItemIdentifier?: string;
+  AttachmentName: string;
+}
+export const DeleteAttachmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AssetIdentifier: S.String.pipe(T.HttpLabel("AssetIdentifier")),
+      IterableFormName: S.optional(S.String).pipe(
+        T.HttpQuery("iterableFormName"),
+      ),
+      ItemIdentifier: S.optional(S.String).pipe(T.HttpQuery("itemIdentifier")),
+      AttachmentName: S.String.pipe(T.HttpLabel("AttachmentName")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/assets/{AssetIdentifier}/attachments/{AttachmentName}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteAttachmentRequest",
+}) as any as S.Schema<DeleteAttachmentRequest>;
+export interface DeleteAttachmentResponse {
+  AssetIdentifier?: string;
+}
+export const DeleteAttachmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ AssetIdentifier: S.optional(S.String) }),
+).annotate({
+  identifier: "DeleteAttachmentResponse",
+}) as any as S.Schema<DeleteAttachmentResponse>;
 export interface DeleteBlueprintRequest {
   Name: string;
 }
@@ -8254,6 +8603,76 @@ export const DeleteDevEndpointResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteDevEndpointResponse",
 }) as any as S.Schema<DeleteDevEndpointResponse>;
+export interface DeleteFormTypeRequest {
+  Identifier: string;
+}
+export const DeleteFormTypeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/form-types/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteFormTypeRequest",
+}) as any as S.Schema<DeleteFormTypeRequest>;
+export interface DeleteFormTypeResponse {}
+export const DeleteFormTypeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteFormTypeResponse",
+}) as any as S.Schema<DeleteFormTypeResponse>;
+export interface DeleteGlossaryRequest {
+  Identifier: string;
+}
+export const DeleteGlossaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/glossaries/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteGlossaryRequest",
+}) as any as S.Schema<DeleteGlossaryRequest>;
+export interface DeleteGlossaryResponse {}
+export const DeleteGlossaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteGlossaryResponse",
+}) as any as S.Schema<DeleteGlossaryResponse>;
+export interface DeleteGlossaryTermRequest {
+  Identifier: string;
+}
+export const DeleteGlossaryTermRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+      T.all(
+        T.Http({ method: "DELETE", uri: "/glossary-terms/{Identifier}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteGlossaryTermRequest",
+}) as any as S.Schema<DeleteGlossaryTermRequest>;
+export interface DeleteGlossaryTermResponse {}
+export const DeleteGlossaryTermResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteGlossaryTermResponse",
+}) as any as S.Schema<DeleteGlossaryTermResponse>;
 export interface DeleteGlueIdentityCenterConfigurationRequest {}
 export const DeleteGlueIdentityCenterConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -9351,6 +9770,146 @@ export const DescribeIntegrationsResponse =
   ).annotate({
     identifier: "DescribeIntegrationsResponse",
   }) as any as S.Schema<DescribeIntegrationsResponse>;
+export interface DisassociateGlossaryTermsRequest {
+  AssetIdentifier: string;
+  GlossaryTermIdentifiers: string[];
+  ClientToken?: string;
+}
+export const DisassociateGlossaryTermsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AssetIdentifier: S.String.pipe(T.HttpLabel("AssetIdentifier")),
+      GlossaryTermIdentifiers: GlossaryTermIdList,
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/assets/{AssetIdentifier}/disassociate-glossary-terms",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DisassociateGlossaryTermsRequest",
+  }) as any as S.Schema<DisassociateGlossaryTermsRequest>;
+export interface DisassociateGlossaryTermsResponse {
+  AssetIdentifier?: string;
+  GlossaryTerms?: string[];
+}
+export const DisassociateGlossaryTermsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AssetIdentifier: S.optional(S.String),
+      GlossaryTerms: S.optional(GlossaryTermIdList),
+    }),
+  ).annotate({
+    identifier: "DisassociateGlossaryTermsResponse",
+  }) as any as S.Schema<DisassociateGlossaryTermsResponse>;
+export interface GetAssetInput {
+  Identifier: string;
+}
+export const GetAssetInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/assets/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "GetAssetInput" }) as any as S.Schema<GetAssetInput>;
+export interface IterableFormEntry {
+  FormTypeId?: string;
+}
+export const IterableFormEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ FormTypeId: S.optional(S.String) }),
+).annotate({
+  identifier: "IterableFormEntry",
+}) as any as S.Schema<IterableFormEntry>;
+export type IterableFormMap = { [key: string]: IterableFormEntry | undefined };
+export const IterableFormMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  IterableFormEntry.pipe(S.optional),
+);
+export interface GetAssetOutput {
+  Id: string;
+  Name?: string;
+  Description?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  AssetTypeId: string;
+  GlossaryTerms?: string[];
+  Forms?: { [key: string]: AssetFormEntry | undefined };
+  Attachments?: { [key: string]: AssetFormEntry | undefined };
+  IterableForms?: { [key: string]: IterableFormEntry | undefined };
+}
+export const GetAssetOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String,
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AssetTypeId: S.String,
+    GlossaryTerms: S.optional(GlossaryTermIdList),
+    Forms: S.optional(AssetFormMap),
+    Attachments: S.optional(AssetFormMap),
+    IterableForms: S.optional(IterableFormMap),
+  }),
+).annotate({ identifier: "GetAssetOutput" }) as any as S.Schema<GetAssetOutput>;
+export interface GetAssetTypeRequest {
+  Identifier: string;
+}
+export const GetAssetTypeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/asset-types/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAssetTypeRequest",
+}) as any as S.Schema<GetAssetTypeRequest>;
+export interface AssetTypeFormReference {
+  FormTypeIdentifier: string;
+}
+export const AssetTypeFormReference = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ FormTypeIdentifier: S.String }),
+).annotate({
+  identifier: "AssetTypeFormReference",
+}) as any as S.Schema<AssetTypeFormReference>;
+export type AssetTypeFormsMap = {
+  [key: string]: AssetTypeFormReference | undefined;
+};
+export const AssetTypeFormsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+  S.String,
+  AssetTypeFormReference.pipe(S.optional),
+);
+export interface GetAssetTypeResponse {
+  Id?: string;
+  Name?: string;
+  Forms?: { [key: string]: AssetTypeFormReference | undefined };
+}
+export const GetAssetTypeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Forms: S.optional(AssetTypeFormsMap),
+  }),
+).annotate({
+  identifier: "GetAssetTypeResponse",
+}) as any as S.Schema<GetAssetTypeResponse>;
 export interface GetBlueprintRequest {
   Name: string;
   IncludeBlueprint?: boolean;
@@ -9615,6 +10174,7 @@ export interface GetCatalogsRequest {
   MaxResults?: number;
   Recursive?: boolean;
   IncludeRoot?: boolean;
+  HasDatabases?: boolean;
 }
 export const GetCatalogsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -9623,6 +10183,7 @@ export const GetCatalogsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     MaxResults: S.optional(S.Number),
     Recursive: S.optional(S.Boolean),
     IncludeRoot: S.optional(S.Boolean),
+    HasDatabases: S.optional(S.Boolean),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -10512,6 +11073,33 @@ export const GetCustomEntityTypeResponse =
   ).annotate({
     identifier: "GetCustomEntityTypeResponse",
   }) as any as S.Schema<GetCustomEntityTypeResponse>;
+export type GlueResourceType = "JOB" | "SESSION" | (string & {});
+export const GlueResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface GetDashboardUrlRequest {
+  ResourceId: string;
+  ResourceType: GlueResourceType;
+  RequestOrigin?: string;
+}
+export const GetDashboardUrlRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ResourceId: S.String,
+      ResourceType: GlueResourceType,
+      RequestOrigin: S.optional(S.String),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "GetDashboardUrlRequest",
+}) as any as S.Schema<GetDashboardUrlRequest>;
+export interface GetDashboardUrlResponse {
+  Url: string | redacted.Redacted<string>;
+}
+export const GetDashboardUrlResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ Url: SensitiveString }),
+).annotate({
+  identifier: "GetDashboardUrlResponse",
+}) as any as S.Schema<GetDashboardUrlResponse>;
 export interface GetDatabaseRequest {
   CatalogId?: string;
   Name: string;
@@ -10924,6 +11512,7 @@ export interface DataQualityEvaluationRunAdditionalRunOptions {
   CloudWatchMetricsEnabled?: boolean;
   ResultsS3Prefix?: string;
   CompositeRuleEvaluationMethod?: DQCompositeRuleEvaluationMethod;
+  CustomLogGroupPrefix?: string;
 }
 export const DataQualityEvaluationRunAdditionalRunOptions =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -10933,6 +11522,7 @@ export const DataQualityEvaluationRunAdditionalRunOptions =
       CompositeRuleEvaluationMethod: S.optional(
         DQCompositeRuleEvaluationMethod,
       ),
+      CustomLogGroupPrefix: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DataQualityEvaluationRunAdditionalRunOptions",
@@ -11087,6 +11677,105 @@ export const GetEntityRecordsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetEntityRecordsResponse",
 }) as any as S.Schema<GetEntityRecordsResponse>;
+export interface GetFormTypeRequest {
+  Identifier: string;
+}
+export const GetFormTypeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/form-types/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetFormTypeRequest",
+}) as any as S.Schema<GetFormTypeRequest>;
+export interface GetFormTypeResponse {
+  Id?: string;
+  Name?: string;
+  Schema?: string;
+}
+export const GetFormTypeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Schema: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetFormTypeResponse",
+}) as any as S.Schema<GetFormTypeResponse>;
+export interface GetGlossaryRequest {
+  Identifier: string;
+}
+export const GetGlossaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/glossaries/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetGlossaryRequest",
+}) as any as S.Schema<GetGlossaryRequest>;
+export interface GetGlossaryResponse {
+  Id?: string;
+  Name?: string;
+  Description?: string;
+}
+export const GetGlossaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetGlossaryResponse",
+}) as any as S.Schema<GetGlossaryResponse>;
+export interface GetGlossaryTermRequest {
+  Identifier: string;
+}
+export const GetGlossaryTermRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/glossary-terms/{Identifier}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetGlossaryTermRequest",
+}) as any as S.Schema<GetGlossaryTermRequest>;
+export interface GetGlossaryTermResponse {
+  Id?: string;
+  GlossaryId?: string;
+  Name?: string;
+  ShortDescription?: string;
+  LongDescription?: string;
+}
+export const GetGlossaryTermResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Id: S.optional(S.String),
+      GlossaryId: S.optional(S.String),
+      Name: S.optional(S.String),
+      ShortDescription: S.optional(S.String),
+      LongDescription: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GetGlossaryTermResponse",
+}) as any as S.Schema<GetGlossaryTermResponse>;
 export interface GetGlueIdentityCenterConfigurationRequest {}
 export const GetGlueIdentityCenterConfigurationRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -11925,6 +12614,7 @@ export interface GetPartitionRequest {
   DatabaseName: string;
   TableName: string;
   PartitionValues: string[];
+  AuditContext?: AuditContext;
 }
 export const GetPartitionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -11932,6 +12622,7 @@ export const GetPartitionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     DatabaseName: S.String,
     TableName: S.String,
     PartitionValues: ValueStringList,
+    AuditContext: S.optional(AuditContext),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -12060,6 +12751,7 @@ export interface GetPartitionsRequest {
   ExcludeColumnSchema?: boolean;
   TransactionId?: string;
   QueryAsOfTime?: Date;
+  AuditContext?: AuditContext;
 }
 export const GetPartitionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12073,6 +12765,7 @@ export const GetPartitionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ExcludeColumnSchema: S.optional(S.Boolean),
     TransactionId: S.optional(S.String),
     QueryAsOfTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AuditContext: S.optional(AuditContext),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -12474,6 +13167,42 @@ export const GetSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSessionResponse",
 }) as any as S.Schema<GetSessionResponse>;
+export interface GetSessionEndpointRequest {
+  SessionId: string;
+}
+export const GetSessionEndpointRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ SessionId: S.String }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "GetSessionEndpointRequest",
+}) as any as S.Schema<GetSessionEndpointRequest>;
+export interface SessionEndpoint {
+  Url: string;
+  AuthToken: string | redacted.Redacted<string>;
+  AuthTokenExpirationTime: Date;
+}
+export const SessionEndpoint = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Url: S.String,
+    AuthToken: SensitiveString,
+    AuthTokenExpirationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "SessionEndpoint",
+}) as any as S.Schema<SessionEndpoint>;
+export interface GetSessionEndpointResponse {
+  SparkConnect: SessionEndpoint;
+}
+export const GetSessionEndpointResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ SparkConnect: SessionEndpoint }).pipe(
+      S.encodeKeys({ SparkConnect: "SPARK_CONNECT" }),
+    ),
+).annotate({
+  identifier: "GetSessionEndpointResponse",
+}) as any as S.Schema<GetSessionEndpointResponse>;
 export interface GetStatementRequest {
   SessionId: string;
   Id: number;
@@ -12555,6 +13284,16 @@ export const GetStatementResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStatementResponse",
 }) as any as S.Schema<GetStatementResponse>;
+export type TableAttributes =
+  | "NAME"
+  | "TABLE_TYPE"
+  | "DEFAULT"
+  | "LATEST_ICEBERG_METADATA"
+  | (string & {});
+export const TableAttributes = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type TableAttributesList = TableAttributes[];
+export const TableAttributesList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(TableAttributes);
 export interface GetTableRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -12563,6 +13302,7 @@ export interface GetTableRequest {
   QueryAsOfTime?: Date;
   AuditContext?: AuditContext;
   IncludeStatusDetails?: boolean;
+  AttributesToGet?: TableAttributes[];
 }
 export const GetTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -12573,6 +13313,7 @@ export const GetTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     QueryAsOfTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     AuditContext: S.optional(AuditContext),
     IncludeStatusDetails: S.optional(S.Boolean),
+    AttributesToGet: S.optional(TableAttributesList),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -12640,6 +13381,47 @@ export const ViewDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     Representations: S.optional(ViewRepresentationList),
   }),
 ).annotate({ identifier: "ViewDefinition" }) as any as S.Schema<ViewDefinition>;
+export type IcebergSchemaList = IcebergSchema[];
+export const IcebergSchemaList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(IcebergSchema);
+export type IcebergPartitionSpecList = IcebergPartitionSpec[];
+export const IcebergPartitionSpecList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(IcebergPartitionSpec);
+export type IcebergSortOrderList = IcebergSortOrder[];
+export const IcebergSortOrderList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(IcebergSortOrder);
+export interface IcebergTableMetadata {
+  FormatVersion?: string;
+  TableUuid?: string;
+  Location?: string;
+  Properties?: { [key: string]: string | undefined };
+  Schemas?: IcebergSchema[];
+  CurrentSchemaId?: number;
+  LastColumnId?: number;
+  PartitionSpecs?: IcebergPartitionSpec[];
+  DefaultSpecId?: number;
+  LastPartitionId?: number;
+  SortOrders?: IcebergSortOrder[];
+  DefaultSortOrderId?: number;
+}
+export const IcebergTableMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FormatVersion: S.optional(S.String),
+    TableUuid: S.optional(S.String),
+    Location: S.optional(S.String),
+    Properties: S.optional(StringToStringMap),
+    Schemas: S.optional(IcebergSchemaList),
+    CurrentSchemaId: S.optional(S.Number),
+    LastColumnId: S.optional(S.Number),
+    PartitionSpecs: S.optional(IcebergPartitionSpecList),
+    DefaultSpecId: S.optional(S.Number),
+    LastPartitionId: S.optional(S.Number),
+    SortOrders: S.optional(IcebergSortOrderList),
+    DefaultSortOrderId: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "IcebergTableMetadata",
+}) as any as S.Schema<IcebergTableMetadata>;
 export type ResourceAction = "UPDATE" | "CREATE" | (string & {});
 export const ResourceAction = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type ResourceState =
@@ -12734,6 +13516,7 @@ export interface Table {
   ViewDefinition?: ViewDefinition;
   IsMultiDialectView?: boolean;
   IsMaterializedView?: boolean;
+  IcebergTableMetadata?: IcebergTableMetadata;
   Status?: TableStatus;
 }
 export const Table = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -12764,6 +13547,7 @@ export const Table = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     ViewDefinition: S.optional(ViewDefinition),
     IsMultiDialectView: S.optional(S.Boolean),
     IsMaterializedView: S.optional(S.Boolean),
+    IcebergTableMetadata: S.optional(IcebergTableMetadata),
     Status: S.optional(
       S.suspend((): S.Schema<TableStatus> => TableStatus).annotate({
         identifier: "TableStatus",
@@ -12815,11 +13599,6 @@ export const GetTableOptimizerResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetTableOptimizerResponse",
 }) as any as S.Schema<GetTableOptimizerResponse>;
-export type TableAttributes = "NAME" | "TABLE_TYPE" | (string & {});
-export const TableAttributes = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type TableAttributesList = TableAttributes[];
-export const TableAttributesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TableAttributes);
 export interface GetTablesRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -12871,6 +13650,7 @@ export interface GetTableVersionRequest {
   DatabaseName: string;
   TableName: string;
   VersionId?: string;
+  AuditContext?: AuditContext;
 }
 export const GetTableVersionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -12879,6 +13659,7 @@ export const GetTableVersionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       DatabaseName: S.String,
       TableName: S.String,
       VersionId: S.optional(S.String),
+      AuditContext: S.optional(AuditContext),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -12906,6 +13687,7 @@ export interface GetTableVersionsRequest {
   TableName: string;
   NextToken?: string;
   MaxResults?: number;
+  AuditContext?: AuditContext;
 }
 export const GetTableVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -12915,6 +13697,7 @@ export const GetTableVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       TableName: S.String,
       NextToken: S.optional(S.String),
       MaxResults: S.optional(S.Number),
+      AuditContext: S.optional(AuditContext),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -13442,6 +14225,50 @@ export const ImportCatalogToGlueResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "ImportCatalogToGlueResponse",
   }) as any as S.Schema<ImportCatalogToGlueResponse>;
+export interface ListAssetTypesRequest {
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListAssetTypesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/asset-types" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAssetTypesRequest",
+}) as any as S.Schema<ListAssetTypesRequest>;
+export interface AssetTypeItem {
+  Id?: string;
+  Name?: string;
+}
+export const AssetTypeItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String) }),
+).annotate({ identifier: "AssetTypeItem" }) as any as S.Schema<AssetTypeItem>;
+export type AssetTypeItemList = AssetTypeItem[];
+export const AssetTypeItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(AssetTypeItem);
+export interface ListAssetTypesResponse {
+  Items?: AssetTypeItem[];
+  NextToken?: string;
+}
+export const ListAssetTypesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Items: S.optional(AssetTypeItemList),
+      NextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListAssetTypesResponse",
+}) as any as S.Schema<ListAssetTypesResponse>;
 export interface ListBlueprintsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -13880,6 +14707,7 @@ export interface DataQualityRulesetEvaluationRunFilter {
   DataSource: DataSource;
   StartedBefore?: Date;
   StartedAfter?: Date;
+  RulesetName?: string;
 }
 export const DataQualityRulesetEvaluationRunFilter =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -13889,6 +14717,7 @@ export const DataQualityRulesetEvaluationRunFilter =
         S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       ),
       StartedAfter: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      RulesetName: S.optional(S.String),
     }),
   ).annotate({
     identifier: "DataQualityRulesetEvaluationRunFilter",
@@ -14293,6 +15122,149 @@ export const ListEntitiesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEntitiesResponse",
 }) as any as S.Schema<ListEntitiesResponse>;
+export interface ListFormTypesRequest {
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListFormTypesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/form-types" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListFormTypesRequest",
+}) as any as S.Schema<ListFormTypesRequest>;
+export interface FormTypeItem {
+  Id?: string;
+  Name?: string;
+}
+export const FormTypeItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.optional(S.String), Name: S.optional(S.String) }),
+).annotate({ identifier: "FormTypeItem" }) as any as S.Schema<FormTypeItem>;
+export type FormTypeItemList = FormTypeItem[];
+export const FormTypeItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(FormTypeItem);
+export interface ListFormTypesResponse {
+  Items: FormTypeItem[];
+  NextToken?: string;
+}
+export const ListFormTypesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Items: FormTypeItemList, NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListFormTypesResponse",
+}) as any as S.Schema<ListFormTypesResponse>;
+export interface ListGlossariesRequest {
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListGlossariesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/glossaries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListGlossariesRequest",
+}) as any as S.Schema<ListGlossariesRequest>;
+export interface GlossaryItem {
+  Id?: string;
+  Name?: string;
+  Description?: string;
+}
+export const GlossaryItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+  }),
+).annotate({ identifier: "GlossaryItem" }) as any as S.Schema<GlossaryItem>;
+export type GlossaryItemList = GlossaryItem[];
+export const GlossaryItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(GlossaryItem);
+export interface ListGlossariesResponse {
+  Items?: GlossaryItem[];
+  NextToken?: string;
+}
+export const ListGlossariesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Items: S.optional(GlossaryItemList),
+      NextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListGlossariesResponse",
+}) as any as S.Schema<ListGlossariesResponse>;
+export interface ListGlossaryTermsRequest {
+  GlossaryIdentifier: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListGlossaryTermsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      GlossaryIdentifier: S.String.pipe(T.HttpQuery("glossaryIdentifier")),
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/glossary-terms" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListGlossaryTermsRequest",
+}) as any as S.Schema<ListGlossaryTermsRequest>;
+export interface GlossaryTermItem {
+  Id?: string;
+  Name?: string;
+  ShortDescription?: string;
+}
+export const GlossaryTermItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    ShortDescription: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GlossaryTermItem",
+}) as any as S.Schema<GlossaryTermItem>;
+export type GlossaryTermItemList = GlossaryTermItem[];
+export const GlossaryTermItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(GlossaryTermItem);
+export interface ListGlossaryTermsResponse {
+  Items?: GlossaryTermItem[];
+  NextToken?: string;
+}
+export const ListGlossaryTermsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Items: S.optional(GlossaryTermItemList),
+      NextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListGlossaryTermsResponse",
+}) as any as S.Schema<ListGlossaryTermsResponse>;
 export type IntegrationResourcePropertyFilterValues = string[];
 export const IntegrationResourcePropertyFilterValues =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
@@ -14365,6 +15337,67 @@ export const ListIntegrationResourcePropertiesResponse =
   ).annotate({
     identifier: "ListIntegrationResourcePropertiesResponse",
   }) as any as S.Schema<ListIntegrationResourcePropertiesResponse>;
+export interface ListIterableFormsRequest {
+  AssetIdentifier: string;
+  IterableFormName: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListIterableFormsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AssetIdentifier: S.String.pipe(T.HttpLabel("AssetIdentifier")),
+      IterableFormName: S.String.pipe(T.HttpLabel("IterableFormName")),
+      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/assets/{AssetIdentifier}/iterable-forms/{IterableFormName}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListIterableFormsRequest",
+}) as any as S.Schema<ListIterableFormsRequest>;
+export interface IterableFormListItem {
+  ItemId?: string;
+  ItemName?: string;
+  Description?: string;
+  GlossaryTerms?: string[];
+}
+export const IterableFormListItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ItemId: S.optional(S.String),
+    ItemName: S.optional(S.String),
+    Description: S.optional(S.String),
+    GlossaryTerms: S.optional(GlossaryTermIdList),
+  }),
+).annotate({
+  identifier: "IterableFormListItem",
+}) as any as S.Schema<IterableFormListItem>;
+export type IterableFormListItemList = IterableFormListItem[];
+export const IterableFormListItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(IterableFormListItem);
+export interface ListIterableFormsResponse {
+  Items?: IterableFormListItem[];
+  NextToken?: string;
+}
+export const ListIterableFormsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Items: S.optional(IterableFormListItemList),
+      NextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListIterableFormsResponse",
+}) as any as S.Schema<ListIterableFormsResponse>;
 export interface ListJobsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -14899,6 +15932,139 @@ export const ModifyIntegrationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ModifyIntegrationResponse",
 }) as any as S.Schema<ModifyIntegrationResponse>;
+export interface PutAssetRequest {
+  AssetTypeId: string;
+  Identifier: string;
+  Name: string;
+  Description?: string;
+  Forms: { [key: string]: AssetFormEntry | undefined };
+  ClientToken?: string;
+}
+export const PutAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssetTypeId: S.String,
+    Identifier: S.String,
+    Name: S.String,
+    Description: S.optional(S.String),
+    Forms: AssetFormMap,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/assets" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutAssetRequest",
+}) as any as S.Schema<PutAssetRequest>;
+export interface PutAssetResponse {
+  Id: string;
+  Name: string;
+  Description?: string;
+  CreatedAt?: Date;
+  Forms?: { [key: string]: AssetFormEntry | undefined };
+}
+export const PutAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String,
+    Name: S.String,
+    Description: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Forms: S.optional(AssetFormMap),
+  }),
+).annotate({
+  identifier: "PutAssetResponse",
+}) as any as S.Schema<PutAssetResponse>;
+export interface PutAssetTypeRequest {
+  Name: string;
+  Forms: { [key: string]: AssetTypeFormReference | undefined };
+  ClientToken?: string;
+}
+export const PutAssetTypeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Forms: AssetTypeFormsMap,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/asset-types" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutAssetTypeRequest",
+}) as any as S.Schema<PutAssetTypeRequest>;
+export interface PutAssetTypeResponse {
+  Id?: string;
+  Name?: string;
+  Forms?: { [key: string]: AssetTypeFormReference | undefined };
+}
+export const PutAssetTypeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Forms: S.optional(AssetTypeFormsMap),
+  }),
+).annotate({
+  identifier: "PutAssetTypeResponse",
+}) as any as S.Schema<PutAssetTypeResponse>;
+export interface PutAttachmentRequest {
+  AssetIdentifier: string;
+  IterableFormName?: string;
+  ItemIdentifier?: string;
+  AttachmentName: string;
+  Content: string;
+  FormTypeId: string;
+  ClientToken?: string;
+}
+export const PutAttachmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssetIdentifier: S.String.pipe(T.HttpLabel("AssetIdentifier")),
+    IterableFormName: S.optional(S.String),
+    ItemIdentifier: S.optional(S.String),
+    AttachmentName: S.String,
+    Content: S.String,
+    FormTypeId: S.String,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/assets/{AssetIdentifier}/attachment" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutAttachmentRequest",
+}) as any as S.Schema<PutAttachmentRequest>;
+export interface PutAttachmentResponse {
+  AssetIdentifier?: string;
+  IterableFormName?: string;
+  ItemIdentifier?: string;
+  AttachmentName?: string;
+  FormTypeId?: string;
+}
+export const PutAttachmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AssetIdentifier: S.optional(S.String),
+    IterableFormName: S.optional(S.String),
+    ItemIdentifier: S.optional(S.String),
+    AttachmentName: S.optional(S.String),
+    FormTypeId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PutAttachmentResponse",
+}) as any as S.Schema<PutAttachmentResponse>;
 export interface PutDataCatalogEncryptionSettingsRequest {
   CatalogId?: string;
   DataCatalogEncryptionSettings: DataCatalogEncryptionSettings;
@@ -14939,6 +16105,43 @@ export const PutDataQualityProfileAnnotationResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutDataQualityProfileAnnotationResponse",
   }) as any as S.Schema<PutDataQualityProfileAnnotationResponse>;
+export interface PutFormTypeRequest {
+  Name: string;
+  Schema: string;
+  ClientToken?: string;
+}
+export const PutFormTypeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Schema: S.String,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/form-types" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutFormTypeRequest",
+}) as any as S.Schema<PutFormTypeRequest>;
+export interface PutFormTypeResponse {
+  Id?: string;
+  Name?: string;
+  Schema?: string;
+}
+export const PutFormTypeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Schema: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PutFormTypeResponse",
+}) as any as S.Schema<PutFormTypeResponse>;
 export type ExistCondition =
   | "MUST_EXIST"
   | "NOT_EXIST"
@@ -15459,6 +16662,164 @@ export const RunStatementResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RunStatementResponse",
 }) as any as S.Schema<RunStatementResponse>;
+export type SearchSortOrder = "ASCENDING" | "DESCENDING" | (string & {});
+export const SearchSortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface SearchSort {
+  Attribute: string;
+  Order?: SearchSortOrder;
+}
+export const SearchSort = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Attribute: S.String, Order: S.optional(SearchSortOrder) }),
+).annotate({ identifier: "SearchSort" }) as any as S.Schema<SearchSort>;
+export type SearchFilterClauseList = SearchFilterClause[];
+export const SearchFilterClauseList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.suspend(() => SearchFilterClause).annotate({
+    identifier: "SearchFilterClause",
+  }),
+) as any as S.Schema<SearchFilterClauseList>;
+export type SearchFilterOperator =
+  | "equals"
+  | "greaterThan"
+  | "greaterThanOrEquals"
+  | "lessThan"
+  | "lessThanOrEquals"
+  | "notExists"
+  | (string & {});
+export const SearchFilterOperator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type SearchFilterValue =
+  | { StringValue: string; LongValue?: never }
+  | { StringValue?: never; LongValue: number };
+export const SearchFilterValue = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ StringValue: S.String }),
+  S.Struct({ LongValue: S.Number }),
+]);
+export interface SearchAttributeFilter {
+  Attribute: string;
+  Operator: SearchFilterOperator;
+  Value?: SearchFilterValue;
+}
+export const SearchAttributeFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Attribute: S.String,
+    Operator: SearchFilterOperator,
+    Value: S.optional(SearchFilterValue),
+  }),
+).annotate({
+  identifier: "SearchAttributeFilter",
+}) as any as S.Schema<SearchAttributeFilter>;
+export type SearchMapFilterValue = { StringValue: string };
+export const SearchMapFilterValue = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({ StringValue: S.String }),
+]);
+export interface SearchMapFilter {
+  Attribute: string;
+  Key: string;
+  Value: SearchMapFilterValue;
+}
+export const SearchMapFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ Attribute: S.String, Key: S.String, Value: SearchMapFilterValue }),
+).annotate({
+  identifier: "SearchMapFilter",
+}) as any as S.Schema<SearchMapFilter>;
+export type SearchFilterClause =
+  | {
+      AndAllFilters: SearchFilterClause[];
+      OrAnyFilters?: never;
+      AttributeFilter?: never;
+      MapFilter?: never;
+    }
+  | {
+      AndAllFilters?: never;
+      OrAnyFilters: SearchFilterClause[];
+      AttributeFilter?: never;
+      MapFilter?: never;
+    }
+  | {
+      AndAllFilters?: never;
+      OrAnyFilters?: never;
+      AttributeFilter: SearchAttributeFilter;
+      MapFilter?: never;
+    }
+  | {
+      AndAllFilters?: never;
+      OrAnyFilters?: never;
+      AttributeFilter?: never;
+      MapFilter: SearchMapFilter;
+    };
+export const SearchFilterClause = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+  S.Struct({
+    AndAllFilters: S.suspend(() => SearchFilterClauseList).annotate({
+      identifier: "SearchFilterClauseList",
+    }),
+  }),
+  S.Struct({
+    OrAnyFilters: S.suspend(() => SearchFilterClauseList).annotate({
+      identifier: "SearchFilterClauseList",
+    }),
+  }),
+  S.Struct({ AttributeFilter: SearchAttributeFilter }),
+  S.Struct({ MapFilter: SearchMapFilter }),
+]) as any as S.Schema<SearchFilterClause>;
+export interface SearchAssetsInput {
+  SearchText?: string;
+  MaxResults?: number;
+  NextToken?: string;
+  Sort?: SearchSort;
+  FilterClause?: SearchFilterClause;
+}
+export const SearchAssetsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SearchText: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    Sort: S.optional(SearchSort),
+    FilterClause: S.optional(SearchFilterClause),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/search-assets" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SearchAssetsInput",
+}) as any as S.Schema<SearchAssetsInput>;
+export interface SearchResultItem {
+  Id?: string;
+  AssetName?: string;
+  AssetDescription?: string;
+  UpdatedAt?: Date;
+  AssetTypeId?: string;
+}
+export const SearchResultItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    AssetName: S.optional(S.String),
+    AssetDescription: S.optional(S.String),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AssetTypeId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchResultItem",
+}) as any as S.Schema<SearchResultItem>;
+export type SearchResultItemList = SearchResultItem[];
+export const SearchResultItemList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(SearchResultItem);
+export interface SearchAssetsOutput {
+  Items?: SearchResultItem[];
+  NextToken?: string;
+}
+export const SearchAssetsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Items: S.optional(SearchResultItemList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchAssetsOutput",
+}) as any as S.Schema<SearchAssetsOutput>;
 export type Comparator =
   | "EQUALS"
   | "GREATER_THAN"
@@ -16129,6 +17490,47 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateAssetRequest {
+  Identifier: string;
+  Name?: string;
+  Description?: string;
+  ClientToken?: string;
+}
+export const UpdateAssetRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/assets/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateAssetRequest",
+}) as any as S.Schema<UpdateAssetRequest>;
+export interface UpdateAssetResponse {
+  Id: string;
+  Name?: string;
+  Description?: string;
+  UpdatedAt?: Date;
+}
+export const UpdateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String,
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "UpdateAssetResponse",
+}) as any as S.Schema<UpdateAssetResponse>;
 export interface UpdateBlueprintRequest {
   Name: string;
   Description?: string;
@@ -16560,6 +17962,93 @@ export const UpdateDevEndpointResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateDevEndpointResponse",
 }) as any as S.Schema<UpdateDevEndpointResponse>;
+export interface UpdateGlossaryRequest {
+  Identifier: string;
+  Name?: string;
+  Description?: string;
+  ClientToken?: string;
+}
+export const UpdateGlossaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/glossaries/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateGlossaryRequest",
+}) as any as S.Schema<UpdateGlossaryRequest>;
+export interface UpdateGlossaryResponse {
+  Id?: string;
+  Name?: string;
+  Description?: string;
+}
+export const UpdateGlossaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Id: S.optional(S.String),
+      Name: S.optional(S.String),
+      Description: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "UpdateGlossaryResponse",
+}) as any as S.Schema<UpdateGlossaryResponse>;
+export interface UpdateGlossaryTermRequest {
+  Identifier: string;
+  Name?: string;
+  ShortDescription?: string;
+  LongDescription?: string;
+  ClientToken?: string;
+}
+export const UpdateGlossaryTermRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+      Name: S.optional(S.String),
+      ShortDescription: S.optional(S.String),
+      LongDescription: S.optional(S.String),
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    }).pipe(
+      T.all(
+        T.Http({ method: "PUT", uri: "/glossary-terms/{Identifier}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateGlossaryTermRequest",
+}) as any as S.Schema<UpdateGlossaryTermRequest>;
+export interface UpdateGlossaryTermResponse {
+  Id?: string;
+  GlossaryId?: string;
+  Name?: string;
+  ShortDescription?: string;
+  LongDescription?: string;
+}
+export const UpdateGlossaryTermResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Id: S.optional(S.String),
+      GlossaryId: S.optional(S.String),
+      Name: S.optional(S.String),
+      ShortDescription: S.optional(S.String),
+      LongDescription: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "UpdateGlossaryTermResponse",
+}) as any as S.Schema<UpdateGlossaryTermResponse>;
 export interface UpdateGlueIdentityCenterConfigurationRequest {
   Scopes?: string[];
   UserBackgroundSessionsEnabled?: boolean;
@@ -17175,20 +18664,20 @@ export const UpdateWorkflowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateWorkflowResponse>;
 
 //# Errors
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
   { Message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
+).pipe(C.withAuthError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+) {}
 export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundException>()(
   "EntityNotFoundException",
   {
     Message: S.optional(S.String),
     FromFederationSource: S.optional(S.Boolean),
   },
-) {}
-export class GlueEncryptionException extends S.TaggedErrorClass<GlueEncryptionException>()(
-  "GlueEncryptionException",
-  { Message: S.optional(S.String) },
 ) {}
 export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
   "InternalServiceException",
@@ -17200,6 +18689,18 @@ export class InvalidInputException extends S.TaggedErrorClass<InvalidInputExcept
     Message: S.optional(S.String),
     FromFederationSource: S.optional(S.Boolean),
   },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+) {}
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class GlueEncryptionException extends S.TaggedErrorClass<GlueEncryptionException>()(
+  "GlueEncryptionException",
+  { Message: S.optional(S.String) },
 ) {}
 export class OperationTimeoutException extends S.TaggedErrorClass<OperationTimeoutException>()(
   "OperationTimeoutException",
@@ -17213,10 +18714,6 @@ export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotRea
   "ResourceNotReadyException",
   { Message: S.optional(S.String) },
 ) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
 export class FederationSourceException extends S.TaggedErrorClass<FederationSourceException>()(
   "FederationSourceException",
   {
@@ -17232,16 +18729,8 @@ export class InvalidStateException extends S.TaggedErrorClass<InvalidStateExcept
   "InvalidStateException",
   { Message: S.optional(S.String) },
 ) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-) {}
 export class IllegalSessionStateException extends S.TaggedErrorClass<IllegalSessionStateException>()(
   "IllegalSessionStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
   { Message: S.optional(S.String) },
 ) {}
 export class FederatedResourceAlreadyExistsException extends S.TaggedErrorClass<FederatedResourceAlreadyExistsException>()(
@@ -17327,6 +18816,10 @@ export class IllegalWorkflowStateException extends S.TaggedErrorClass<IllegalWor
   "IllegalWorkflowStateException",
   { Message: S.optional(S.String) },
 ) {}
+export class SessionBusyException extends S.TaggedErrorClass<SessionBusyException>()(
+  "SessionBusyException",
+  { Message: S.optional(S.String) },
+) {}
 export class IllegalBlueprintStateException extends S.TaggedErrorClass<IllegalBlueprintStateException>()(
   "IllegalBlueprintStateException",
   { Message: S.optional(S.String) },
@@ -17381,6 +18874,37 @@ export class VersionMismatchException extends S.TaggedErrorClass<VersionMismatch
 ) {}
 
 //# Operations
+export type AssociateGlossaryTermsError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Associates one or more glossary terms with an asset in Glue Data Catalog.
+ */
+export const associateGlossaryTerms: API.OperationMethod<
+  AssociateGlossaryTermsRequest,
+  AssociateGlossaryTermsResponse,
+  AssociateGlossaryTermsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: AssociateGlossaryTermsRequest,
+  output: AssociateGlossaryTermsResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "AssociateGlossaryTerms",
+}));
 export type BatchCreatePartitionError =
   | AlreadyExistsException
   | EntityNotFoundException
@@ -17653,6 +19177,35 @@ export const batchGetDevEndpoints: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "BatchGetDevEndpoints",
+}));
+export type BatchGetIterableFormsError =
+  | AccessDeniedException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves multiple items from an iterable form on an asset in Glue Data Catalog in a single request.
+ */
+export const batchGetIterableForms: API.OperationMethod<
+  BatchGetIterableFormsRequest,
+  BatchGetIterableFormsResponse,
+  BatchGetIterableFormsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: BatchGetIterableFormsRequest,
+  output: BatchGetIterableFormsResponse,
+  errors: [
+    AccessDeniedException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "BatchGetIterableForms",
 }));
 export type BatchGetJobsError =
   | InternalServiceException
@@ -18345,6 +19898,70 @@ export const createDevEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDevEndpoint",
 }));
+export type CreateGlossaryError =
+  | AccessDeniedException
+  | AlreadyExistsException
+  | ConcurrentModificationException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates a business glossary in Glue Data Catalog. A glossary is a container for glossary terms that define business concepts.
+ */
+export const createGlossary: API.OperationMethod<
+  CreateGlossaryRequest,
+  CreateGlossaryResponse,
+  CreateGlossaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateGlossaryRequest,
+  output: CreateGlossaryResponse,
+  errors: [
+    AccessDeniedException,
+    AlreadyExistsException,
+    ConcurrentModificationException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateGlossary",
+}));
+export type CreateGlossaryTermError =
+  | AccessDeniedException
+  | AlreadyExistsException
+  | ConcurrentModificationException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates a glossary term within a business glossary in Glue Data Catalog.
+ */
+export const createGlossaryTerm: API.OperationMethod<
+  CreateGlossaryTermRequest,
+  CreateGlossaryTermResponse,
+  CreateGlossaryTermError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateGlossaryTermRequest,
+  output: CreateGlossaryTermResponse,
+  errors: [
+    AccessDeniedException,
+    AlreadyExistsException,
+    ConcurrentModificationException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateGlossaryTerm",
+}));
 export type CreateGlueIdentityCenterConfigurationError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -18760,6 +20377,7 @@ export type CreateSessionError =
   | IdempotentParameterMismatchException
   | InternalServiceException
   | InvalidInputException
+  | OperationNotSupportedException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
   | ValidationException
@@ -18781,6 +20399,7 @@ export const createSession: API.OperationMethod<
     IdempotentParameterMismatchException,
     InternalServiceException,
     InvalidInputException,
+    OperationNotSupportedException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
     ValidationException,
@@ -18994,6 +20613,95 @@ export const createWorkflow: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateWorkflow",
+}));
+export type DeleteAssetError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes an asset from Glue Data Catalog.
+ */
+export const deleteAsset: API.OperationMethod<
+  DeleteAssetRequest,
+  DeleteAssetResponse,
+  DeleteAssetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAssetRequest,
+  output: DeleteAssetResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteAsset",
+}));
+export type DeleteAssetTypeError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes an asset type from Glue Data Catalog.
+ */
+export const deleteAssetType: API.OperationMethod<
+  DeleteAssetTypeRequest,
+  DeleteAssetTypeResponse,
+  DeleteAssetTypeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAssetTypeRequest,
+  output: DeleteAssetTypeResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteAssetType",
+}));
+export type DeleteAttachmentError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a form attachment from an asset in Glue Data Catalog.
+ */
+export const deleteAttachment: API.OperationMethod<
+  DeleteAttachmentRequest,
+  DeleteAttachmentResponse,
+  DeleteAttachmentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteAttachmentRequest,
+  output: DeleteAttachmentResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteAttachment",
 }));
 export type DeleteBlueprintError =
   | InternalServiceException
@@ -19374,6 +21082,97 @@ export const deleteDevEndpoint: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteDevEndpoint",
+}));
+export type DeleteFormTypeError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | ConflictException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a form type from Glue Data Catalog. A form type cannot be deleted if it is still referenced by an asset type.
+ */
+export const deleteFormType: API.OperationMethod<
+  DeleteFormTypeRequest,
+  DeleteFormTypeResponse,
+  DeleteFormTypeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteFormTypeRequest,
+  output: DeleteFormTypeResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    ConflictException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteFormType",
+}));
+export type DeleteGlossaryError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | ConflictException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a business glossary from Glue Data Catalog. A glossary cannot be deleted if it still contains glossary terms.
+ */
+export const deleteGlossary: API.OperationMethod<
+  DeleteGlossaryRequest,
+  DeleteGlossaryResponse,
+  DeleteGlossaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteGlossaryRequest,
+  output: DeleteGlossaryResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    ConflictException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteGlossary",
+}));
+export type DeleteGlossaryTermError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a glossary term from Glue Data Catalog.
+ */
+export const deleteGlossaryTerm: API.OperationMethod<
+  DeleteGlossaryTermRequest,
+  DeleteGlossaryTermResponse,
+  DeleteGlossaryTermError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteGlossaryTermRequest,
+  output: DeleteGlossaryTermResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteGlossaryTerm",
 }));
 export type DeleteGlueIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -20168,6 +21967,95 @@ export const describeIntegrations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIntegrations",
 }));
+export type DisassociateGlossaryTermsError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Removes the association of one or more glossary terms from an asset in Glue Data Catalog.
+ */
+export const disassociateGlossaryTerms: API.OperationMethod<
+  DisassociateGlossaryTermsRequest,
+  DisassociateGlossaryTermsResponse,
+  DisassociateGlossaryTermsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DisassociateGlossaryTermsRequest,
+  output: DisassociateGlossaryTermsResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DisassociateGlossaryTerms",
+}));
+export type GetAssetError =
+  | AccessDeniedException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves the metadata for an asset in Glue Data Catalog, including its forms, additional attachments, and associated glossary terms.
+ */
+export const getAsset: API.OperationMethod<
+  GetAssetInput,
+  GetAssetOutput,
+  GetAssetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAssetInput,
+  output: GetAssetOutput,
+  errors: [
+    AccessDeniedException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAsset",
+}));
+export type GetAssetTypeError =
+  | AccessDeniedException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves an asset type in Glue Data Catalog by its identifier.
+ */
+export const getAssetType: API.OperationMethod<
+  GetAssetTypeRequest,
+  GetAssetTypeResponse,
+  GetAssetTypeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetAssetTypeRequest,
+  output: GetAssetTypeResponse,
+  errors: [
+    AccessDeniedException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAssetType",
+}));
 export type GetBlueprintError =
   | EntityNotFoundException
   | InternalServiceException
@@ -20763,6 +22651,35 @@ export const getCustomEntityType: API.OperationMethod<
   retry: Retry,
   operationName: "GetCustomEntityType",
 }));
+export type GetDashboardUrlError =
+  | AccessDeniedException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | OperationNotSupportedException
+  | CommonErrors;
+/**
+ * Retrieves the URL for the Spark monitoring dashboard for a Glue resource.
+ */
+export const getDashboardUrl: API.OperationMethod<
+  GetDashboardUrlRequest,
+  GetDashboardUrlResponse,
+  GetDashboardUrlError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDashboardUrlRequest,
+  output: GetDashboardUrlResponse,
+  errors: [
+    AccessDeniedException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    OperationNotSupportedException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDashboardUrl",
+}));
 export type GetDatabaseError =
   | EntityNotFoundException
   | FederationSourceException
@@ -21179,6 +23096,89 @@ export const getEntityRecords: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetEntityRecords",
+}));
+export type GetFormTypeError =
+  | AccessDeniedException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves a form type in Glue Data Catalog by its identifier.
+ */
+export const getFormType: API.OperationMethod<
+  GetFormTypeRequest,
+  GetFormTypeResponse,
+  GetFormTypeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetFormTypeRequest,
+  output: GetFormTypeResponse,
+  errors: [
+    AccessDeniedException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetFormType",
+}));
+export type GetGlossaryError =
+  | AccessDeniedException
+  | EntityNotFoundException
+  | InternalServiceException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves a business glossary in Glue Data Catalog by its identifier.
+ */
+export const getGlossary: API.OperationMethod<
+  GetGlossaryRequest,
+  GetGlossaryResponse,
+  GetGlossaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetGlossaryRequest,
+  output: GetGlossaryResponse,
+  errors: [
+    AccessDeniedException,
+    EntityNotFoundException,
+    InternalServiceException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetGlossary",
+}));
+export type GetGlossaryTermError =
+  | AccessDeniedException
+  | EntityNotFoundException
+  | InternalServiceException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Retrieves a glossary term in Glue Data Catalog by its identifier.
+ */
+export const getGlossaryTerm: API.OperationMethod<
+  GetGlossaryTermRequest,
+  GetGlossaryTermResponse,
+  GetGlossaryTermError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetGlossaryTermRequest,
+  output: GetGlossaryTermResponse,
+  errors: [
+    AccessDeniedException,
+    EntityNotFoundException,
+    InternalServiceException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetGlossaryTerm",
 }));
 export type GetGlueIdentityCenterConfigurationError =
   | AccessDeniedException
@@ -22173,6 +24173,39 @@ export const getSession: API.OperationMethod<
   retry: Retry,
   operationName: "GetSession",
 }));
+export type GetSessionEndpointError =
+  | AccessDeniedException
+  | EntityNotFoundException
+  | IllegalSessionStateException
+  | InternalServiceException
+  | InvalidInputException
+  | OperationNotSupportedException
+  | OperationTimeoutException
+  | CommonErrors;
+/**
+ * Returns the Spark Connect endpoint URL and authentication token for an interactive session.
+ */
+export const getSessionEndpoint: API.OperationMethod<
+  GetSessionEndpointRequest,
+  GetSessionEndpointResponse,
+  GetSessionEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetSessionEndpointRequest,
+  output: GetSessionEndpointResponse,
+  errors: [
+    AccessDeniedException,
+    EntityNotFoundException,
+    IllegalSessionStateException,
+    InternalServiceException,
+    InvalidInputException,
+    OperationNotSupportedException,
+    OperationTimeoutException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetSessionEndpoint",
+}));
 export type GetStatementError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -22893,6 +24926,54 @@ export const importCatalogToGlue: API.OperationMethod<
   retry: Retry,
   operationName: "ImportCatalogToGlue",
 }));
+export type ListAssetTypesError =
+  | AccessDeniedException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists the asset types defined in Glue Data Catalog.
+ */
+export const listAssetTypes: API.OperationMethod<
+  ListAssetTypesRequest,
+  ListAssetTypesResponse,
+  ListAssetTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAssetTypesRequest,
+  ) => stream.Stream<
+    ListAssetTypesResponse,
+    ListAssetTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAssetTypesRequest,
+  ) => stream.Stream<
+    AssetTypeItem,
+    ListAssetTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListAssetTypesRequest,
+  output: ListAssetTypesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAssetTypes",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type ListBlueprintsError =
   | InternalServiceException
   | InvalidInputException
@@ -23477,6 +25558,150 @@ export const listEntities: API.OperationMethod<
     items: "Entities",
   } as const,
 }));
+export type ListFormTypesError =
+  | AccessDeniedException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists the form types defined in Glue Data Catalog.
+ */
+export const listFormTypes: API.OperationMethod<
+  ListFormTypesRequest,
+  ListFormTypesResponse,
+  ListFormTypesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListFormTypesRequest,
+  ) => stream.Stream<
+    ListFormTypesResponse,
+    ListFormTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListFormTypesRequest,
+  ) => stream.Stream<
+    FormTypeItem,
+    ListFormTypesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListFormTypesRequest,
+  output: ListFormTypesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListFormTypes",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type ListGlossariesError =
+  | AccessDeniedException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists business glossaries in Glue Data Catalog.
+ */
+export const listGlossaries: API.OperationMethod<
+  ListGlossariesRequest,
+  ListGlossariesResponse,
+  ListGlossariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGlossariesRequest,
+  ) => stream.Stream<
+    ListGlossariesResponse,
+    ListGlossariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGlossariesRequest,
+  ) => stream.Stream<
+    GlossaryItem,
+    ListGlossariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListGlossariesRequest,
+  output: ListGlossariesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListGlossaries",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+    pageSize: "MaxResults",
+  } as const,
+}));
+export type ListGlossaryTermsError =
+  | AccessDeniedException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists glossary terms within a business glossary in Glue Data Catalog.
+ */
+export const listGlossaryTerms: API.OperationMethod<
+  ListGlossaryTermsRequest,
+  ListGlossaryTermsResponse,
+  ListGlossaryTermsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListGlossaryTermsRequest,
+  ) => stream.Stream<
+    ListGlossaryTermsResponse,
+    ListGlossaryTermsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGlossaryTermsRequest,
+  ) => stream.Stream<
+    GlossaryTermItem,
+    ListGlossaryTermsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListGlossaryTermsRequest,
+  output: ListGlossaryTermsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListGlossaryTerms",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+    pageSize: "MaxResults",
+  } as const,
+}));
 export type ListIntegrationResourcePropertiesError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23509,6 +25734,56 @@ export const listIntegrationResourceProperties: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListIntegrationResourceProperties",
+}));
+export type ListIterableFormsError =
+  | AccessDeniedException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Lists the items in an iterable form on an asset in Glue Data Catalog. For example, lists the columns of a table asset.
+ */
+export const listIterableForms: API.OperationMethod<
+  ListIterableFormsRequest,
+  ListIterableFormsResponse,
+  ListIterableFormsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIterableFormsRequest,
+  ) => stream.Stream<
+    ListIterableFormsResponse,
+    ListIterableFormsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIterableFormsRequest,
+  ) => stream.Stream<
+    IterableFormListItem,
+    ListIterableFormsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListIterableFormsRequest,
+  output: ListIterableFormsResponse,
+  errors: [
+    AccessDeniedException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListIterableForms",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+    pageSize: "MaxResults",
+  } as const,
 }));
 export type ListJobsError =
   | EntityNotFoundException
@@ -24119,6 +26394,97 @@ export const modifyIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIntegration",
 }));
+export type PutAssetError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates or updates an asset in Glue Data Catalog. If the asset already exists, this operation updates it; otherwise, a new asset is created.
+ */
+export const putAsset: API.OperationMethod<
+  PutAssetRequest,
+  PutAssetResponse,
+  PutAssetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutAssetRequest,
+  output: PutAssetResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutAsset",
+}));
+export type PutAssetTypeError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates or updates an asset type in Glue Data Catalog. An asset type defines the structure of assets by specifying which forms they include. If an asset type with the given name already exists, it is updated.
+ */
+export const putAssetType: API.OperationMethod<
+  PutAssetTypeRequest,
+  PutAssetTypeResponse,
+  PutAssetTypeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutAssetTypeRequest,
+  output: PutAssetTypeResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutAssetType",
+}));
+export type PutAttachmentError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Attaches a form to an asset or an iterable form item in Glue Data Catalog. If an attachment with the same name already exists, it is overwritten.
+ */
+export const putAttachment: API.OperationMethod<
+  PutAttachmentRequest,
+  PutAttachmentResponse,
+  PutAttachmentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutAttachmentRequest,
+  output: PutAttachmentResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutAttachment",
+}));
 export type PutDataCatalogEncryptionSettingsError =
   | InternalServiceException
   | InvalidInputException
@@ -24169,6 +26535,35 @@ export const putDataQualityProfileAnnotation: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "PutDataQualityProfileAnnotation",
+}));
+export type PutFormTypeError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Creates or updates a form type in Glue Data Catalog. A form type defines the schema for structured metadata that can be attached to assets.
+ */
+export const putFormType: API.OperationMethod<
+  PutFormTypeRequest,
+  PutFormTypeResponse,
+  PutFormTypeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutFormTypeRequest,
+  output: PutFormTypeResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutFormType",
 }));
 export type PutResourcePolicyError =
   | ConditionCheckFailureException
@@ -24453,8 +26848,10 @@ export type RunStatementError =
   | IllegalSessionStateException
   | InternalServiceException
   | InvalidInputException
+  | OperationNotSupportedException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
+  | SessionBusyException
   | ValidationException
   | CommonErrors;
 /**
@@ -24474,13 +26871,63 @@ export const runStatement: API.OperationMethod<
     IllegalSessionStateException,
     InternalServiceException,
     InvalidInputException,
+    OperationNotSupportedException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
+    SessionBusyException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "RunStatement",
+}));
+export type SearchAssetsError =
+  | AccessDeniedException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Searches for assets in Glue Data Catalog using full-text search, filters, sorting, and aggregations. Returns matching assets with relevance-ranked results.
+ */
+export const searchAssets: API.OperationMethod<
+  SearchAssetsInput,
+  SearchAssetsOutput,
+  SearchAssetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: SearchAssetsInput,
+  ) => stream.Stream<
+    SearchAssetsOutput,
+    SearchAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: SearchAssetsInput,
+  ) => stream.Stream<
+    SearchResultItem,
+    SearchAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: SearchAssetsInput,
+  output: SearchAssetsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SearchAssets",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+    pageSize: "MaxResults",
+  } as const,
 }));
 export type SearchTablesError =
   | InternalServiceException
@@ -25354,6 +27801,37 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+export type UpdateAssetError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates the name and description of an existing asset in Glue Data Catalog. Only the fields that you provide are updated.
+ */
+export const updateAsset: API.OperationMethod<
+  UpdateAssetRequest,
+  UpdateAssetResponse,
+  UpdateAssetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateAssetRequest,
+  output: UpdateAssetResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAsset",
+}));
 export type UpdateBlueprintError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -25725,6 +28203,72 @@ export const updateDevEndpoint: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateDevEndpoint",
+}));
+export type UpdateGlossaryError =
+  | AccessDeniedException
+  | AlreadyExistsException
+  | ConcurrentModificationException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates a business glossary in Glue Data Catalog.
+ */
+export const updateGlossary: API.OperationMethod<
+  UpdateGlossaryRequest,
+  UpdateGlossaryResponse,
+  UpdateGlossaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateGlossaryRequest,
+  output: UpdateGlossaryResponse,
+  errors: [
+    AccessDeniedException,
+    AlreadyExistsException,
+    ConcurrentModificationException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateGlossary",
+}));
+export type UpdateGlossaryTermError =
+  | AccessDeniedException
+  | AlreadyExistsException
+  | ConcurrentModificationException
+  | EntityNotFoundException
+  | InternalServiceException
+  | InvalidInputException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Updates a glossary term in Glue Data Catalog.
+ */
+export const updateGlossaryTerm: API.OperationMethod<
+  UpdateGlossaryTermRequest,
+  UpdateGlossaryTermResponse,
+  UpdateGlossaryTermError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateGlossaryTermRequest,
+  output: UpdateGlossaryTermResponse,
+  errors: [
+    AccessDeniedException,
+    AlreadyExistsException,
+    ConcurrentModificationException,
+    EntityNotFoundException,
+    InternalServiceException,
+    InvalidInputException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateGlossaryTerm",
 }));
 export type UpdateGlueIdentityCenterConfigurationError =
   | AccessDeniedException

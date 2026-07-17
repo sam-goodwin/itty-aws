@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "@distilled.cloud/core/api";
@@ -9,6 +10,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "evs",
   serviceShapeName: "AmazonElasticVMwareService",
@@ -94,15 +96,15 @@ export type EnvironmentName = string;
 export type SecurityGroupId = string;
 export type VpcId = string;
 export type SubnetId = string;
-export type SolutionKey = string;
-export type VSanLicenseKey = string;
 export type Cidr = string;
 export type NetworkAclId = string;
+export type RouteServerPeering = string;
+export type SolutionKey = string | redacted.Redacted<string>;
+export type VSanLicenseKey = string | redacted.Redacted<string>;
 export type HostName = string;
 export type KeyName = string;
 export type PlacementGroupId = string;
 export type DedicatedHostId = string;
-export type RouteServerPeering = string;
 export type EnvironmentId = string;
 export type StateDetails = string;
 export type PaginationToken = string;
@@ -111,6 +113,11 @@ export type AllocationId = string;
 export type VlanId = number;
 export type AssociationId = string;
 export type IpAddress = string;
+export type ConnectorId = string;
+export type VmId = string;
+export type VmName = string;
+export type ApplianceFqdn = string;
+export type SecretIdentifier = string;
 export type EsxVersion = string;
 export type NetworkInterfaceId = string;
 
@@ -123,9 +130,13 @@ export const GetVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetVersionsRequest",
 }) as any as S.Schema<GetVersionsRequest>;
-export type VcfVersion = "VCF-5.2.1" | "VCF-5.2.2" | (string & {});
+export type VcfVersion =
+  | "VCF-5.2.1"
+  | "VCF-5.2.2"
+  | "SELF_DEPLOYED"
+  | (string & {});
 export const VcfVersion = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type InstanceType = "i4i.metal" | (string & {});
+export type InstanceType = "i4i.metal" | "i7i.metal-24xl" | (string & {});
 export const InstanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type InstanceTypeList = InstanceType[];
 export const InstanceTypeList =
@@ -252,15 +263,6 @@ export const ServiceAccessSecurityGroups =
   ).annotate({
     identifier: "ServiceAccessSecurityGroups",
   }) as any as S.Schema<ServiceAccessSecurityGroups>;
-export interface LicenseInfo {
-  solutionKey: string;
-  vsanKey: string;
-}
-export const LicenseInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ solutionKey: S.String, vsanKey: S.String }),
-).annotate({ identifier: "LicenseInfo" }) as any as S.Schema<LicenseInfo>;
-export type LicenseInfoList = LicenseInfo[];
-export const LicenseInfoList = /*@__PURE__*/ /*#__PURE__*/ S.Array(LicenseInfo);
 export interface InitialVlanInfo {
   cidr: string;
 }
@@ -299,6 +301,27 @@ export const InitialVlans = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     hcxNetworkAclId: S.optional(S.String),
   }),
 ).annotate({ identifier: "InitialVlans" }) as any as S.Schema<InitialVlans>;
+export type RouteServerPeeringList = string[];
+export const RouteServerPeeringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  S.String,
+);
+export interface ConnectivityInfo {
+  privateRouteServerPeerings: string[];
+}
+export const ConnectivityInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ privateRouteServerPeerings: RouteServerPeeringList }),
+).annotate({
+  identifier: "ConnectivityInfo",
+}) as any as S.Schema<ConnectivityInfo>;
+export interface LicenseInfo {
+  solutionKey: string | redacted.Redacted<string>;
+  vsanKey: string | redacted.Redacted<string>;
+}
+export const LicenseInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ solutionKey: SensitiveString, vsanKey: SensitiveString }),
+).annotate({ identifier: "LicenseInfo" }) as any as S.Schema<LicenseInfo>;
+export type LicenseInfoList = LicenseInfo[];
+export const LicenseInfoList = /*@__PURE__*/ /*#__PURE__*/ S.Array(LicenseInfo);
 export interface HostInfoForCreate {
   hostName: string;
   keyName: string;
@@ -320,18 +343,6 @@ export const HostInfoForCreate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type HostInfoForCreateList = HostInfoForCreate[];
 export const HostInfoForCreateList =
   /*@__PURE__*/ /*#__PURE__*/ S.Array(HostInfoForCreate);
-export type RouteServerPeeringList = string[];
-export const RouteServerPeeringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
-export interface ConnectivityInfo {
-  privateRouteServerPeerings: string[];
-}
-export const ConnectivityInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-  S.Struct({ privateRouteServerPeerings: RouteServerPeeringList }),
-).annotate({
-  identifier: "ConnectivityInfo",
-}) as any as S.Schema<ConnectivityInfo>;
 export interface VcfHostnames {
   vCenter: string;
   nsx: string;
@@ -366,12 +377,12 @@ export interface CreateEnvironmentRequest {
   serviceAccessSubnetId: string;
   vcfVersion: VcfVersion;
   termsAccepted: boolean;
-  licenseInfo: LicenseInfo[];
   initialVlans: InitialVlans;
-  hosts: HostInfoForCreate[];
-  connectivityInfo: ConnectivityInfo;
-  vcfHostnames: VcfHostnames;
-  siteId: string;
+  connectivityInfo?: ConnectivityInfo;
+  licenseInfo?: LicenseInfo[];
+  hosts?: HostInfoForCreate[];
+  vcfHostnames?: VcfHostnames;
+  siteId?: string;
 }
 export const CreateEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -385,12 +396,12 @@ export const CreateEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       serviceAccessSubnetId: S.String,
       vcfVersion: VcfVersion,
       termsAccepted: S.Boolean,
-      licenseInfo: LicenseInfoList,
       initialVlans: InitialVlans,
-      hosts: HostInfoForCreateList,
-      connectivityInfo: ConnectivityInfo,
-      vcfHostnames: VcfHostnames,
-      siteId: S.String,
+      connectivityInfo: S.optional(ConnectivityInfo),
+      licenseInfo: S.optional(LicenseInfoList),
+      hosts: S.optional(HostInfoForCreateList),
+      vcfHostnames: S.optional(VcfHostnames),
+      siteId: S.optional(S.String),
     }).pipe(
       T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
@@ -412,16 +423,27 @@ export type CheckType =
   | "KEY_COVERAGE"
   | "REACHABILITY"
   | "HOST_COUNT"
+  | "VCENTER_REACHABILITY"
+  | "VCENTER_VM_SYNC"
+  | "VCENTER_VM_EVENT"
+  | "OPERATIONS_MANAGER_REACHABILITY"
+  | "SDDC_MANAGER_REACHABILITY"
+  | "SDDC_MANAGER_HOST_COUNT"
+  | "SDDC_MANAGER_KEY_COVERAGE"
+  | "SDDC_MANAGER_KEY_REUSE"
+  | "CONNECTOR_HEALTH"
   | (string & {});
 export const CheckType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface Check {
   type?: CheckType;
+  id?: string;
   result?: CheckResult;
   impairedSince?: Date;
 }
 export const Check = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(CheckType),
+    id: S.optional(S.String),
     result: S.optional(CheckResult),
     impairedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
@@ -691,6 +713,177 @@ export const AssociateEipToVlanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateEipToVlanResponse",
 }) as any as S.Schema<AssociateEipToVlanResponse>;
+export type EntitlementType = "WINDOWS_SERVER" | (string & {});
+export const EntitlementType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type VmIdList = string[];
+export const VmIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export interface CreateEntitlementRequest {
+  clientToken?: string;
+  environmentId: string;
+  connectorId: string;
+  entitlementType: EntitlementType;
+  vmIds: string[];
+}
+export const CreateEntitlementRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      environmentId: S.String,
+      connectorId: S.String,
+      entitlementType: EntitlementType,
+      vmIds: VmIdList,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "CreateEntitlementRequest",
+}) as any as S.Schema<CreateEntitlementRequest>;
+export type EntitlementStatus =
+  | "CREATING"
+  | "CREATED"
+  | "DELETED"
+  | "AT_RISK"
+  | "ENTITLEMENT_REMOVED"
+  | "CREATE_FAILED"
+  | (string & {});
+export const EntitlementStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ErrorDetail {
+  errorCode: string;
+  errorMessage: string;
+}
+export const ErrorDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ errorCode: S.String, errorMessage: S.String }),
+).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
+export interface VmEntitlement {
+  vmId?: string;
+  environmentId?: string;
+  connectorId?: string;
+  vmName?: string;
+  type?: EntitlementType;
+  status?: EntitlementStatus;
+  lastSyncedAt?: Date;
+  startedAt?: Date;
+  stoppedAt?: Date;
+  errorDetail?: ErrorDetail;
+}
+export const VmEntitlement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vmId: S.optional(S.String),
+    environmentId: S.optional(S.String),
+    connectorId: S.optional(S.String),
+    vmName: S.optional(S.String),
+    type: S.optional(EntitlementType),
+    status: S.optional(EntitlementStatus),
+    lastSyncedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    stoppedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    errorDetail: S.optional(ErrorDetail),
+  }),
+).annotate({ identifier: "VmEntitlement" }) as any as S.Schema<VmEntitlement>;
+export type VmEntitlementList = VmEntitlement[];
+export const VmEntitlementList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(VmEntitlement);
+export interface CreateEntitlementResponse {
+  entitlements?: VmEntitlement[];
+}
+export const CreateEntitlementResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ entitlements: S.optional(VmEntitlementList) }),
+).annotate({
+  identifier: "CreateEntitlementResponse",
+}) as any as S.Schema<CreateEntitlementResponse>;
+export type ConnectorType =
+  | "OPERATIONS_MANAGER"
+  | "SDDC_MANAGER"
+  | "VCENTER"
+  | (string & {});
+export const ConnectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface CreateEnvironmentConnectorRequest {
+  clientToken?: string;
+  environmentId: string;
+  type: ConnectorType;
+  applianceFqdn: string;
+  secretIdentifier: string;
+}
+export const CreateEnvironmentConnectorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+      type: ConnectorType,
+      applianceFqdn: S.String,
+      secretIdentifier: S.String,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "CreateEnvironmentConnectorRequest",
+  }) as any as S.Schema<CreateEnvironmentConnectorRequest>;
+export type ConnectorState =
+  | "CREATING"
+  | "CREATE_FAILED"
+  | "ACTIVE"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "DELETING"
+  | "DELETED"
+  | (string & {});
+export const ConnectorState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ConnectorCheck {
+  type?: CheckType;
+  result?: CheckResult;
+  lastCheckAttempt?: Date;
+  impairedSince?: Date;
+}
+export const ConnectorCheck = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(CheckType),
+    result: S.optional(CheckResult),
+    lastCheckAttempt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    impairedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "ConnectorCheck" }) as any as S.Schema<ConnectorCheck>;
+export type ConnectorsChecksList = ConnectorCheck[];
+export const ConnectorsChecksList =
+  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConnectorCheck);
+export interface Connector {
+  environmentId?: string;
+  connectorId?: string;
+  type?: ConnectorType;
+  applianceFqdn?: string;
+  secretArn?: string;
+  state?: ConnectorState;
+  stateDetails?: string;
+  status?: CheckResult;
+  checks?: ConnectorCheck[];
+  createdAt?: Date;
+  modifiedAt?: Date;
+}
+export const Connector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.String),
+    connectorId: S.optional(S.String),
+    type: S.optional(ConnectorType),
+    applianceFqdn: S.optional(S.String),
+    secretArn: S.optional(S.String),
+    state: S.optional(ConnectorState),
+    stateDetails: S.optional(S.String),
+    status: S.optional(CheckResult),
+    checks: S.optional(ConnectorsChecksList),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    modifiedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({ identifier: "Connector" }) as any as S.Schema<Connector>;
+export interface CreateEnvironmentConnectorResponse {
+  connector?: Connector;
+}
+export const CreateEnvironmentConnectorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ connector: S.optional(Connector) }),
+  ).annotate({
+    identifier: "CreateEnvironmentConnectorResponse",
+  }) as any as S.Schema<CreateEnvironmentConnectorResponse>;
 export interface CreateEnvironmentHostRequest {
   clientToken?: string;
   environmentId: string;
@@ -774,6 +967,65 @@ export const CreateEnvironmentHostResponse =
   ).annotate({
     identifier: "CreateEnvironmentHostResponse",
   }) as any as S.Schema<CreateEnvironmentHostResponse>;
+export interface DeleteEntitlementRequest {
+  clientToken?: string;
+  environmentId: string;
+  connectorId: string;
+  entitlementType: EntitlementType;
+  vmIds: string[];
+}
+export const DeleteEntitlementRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      environmentId: S.String,
+      connectorId: S.String,
+      entitlementType: EntitlementType,
+      vmIds: VmIdList,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "DeleteEntitlementRequest",
+}) as any as S.Schema<DeleteEntitlementRequest>;
+export interface DeleteEntitlementResponse {
+  entitlements?: VmEntitlement[];
+}
+export const DeleteEntitlementResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ entitlements: S.optional(VmEntitlementList) }),
+).annotate({
+  identifier: "DeleteEntitlementResponse",
+}) as any as S.Schema<DeleteEntitlementResponse>;
+export interface DeleteEnvironmentConnectorRequest {
+  clientToken?: string;
+  environmentId: string;
+  connectorId: string;
+}
+export const DeleteEnvironmentConnectorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+      connectorId: S.String.pipe(T.HttpLabel("connectorId")),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DeleteEnvironmentConnectorRequest",
+  }) as any as S.Schema<DeleteEnvironmentConnectorRequest>;
+export interface DeleteEnvironmentConnectorResponse {
+  connector?: Connector;
+  environmentSummary?: EnvironmentSummary;
+}
+export const DeleteEnvironmentConnectorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      connector: S.optional(Connector),
+      environmentSummary: S.optional(EnvironmentSummary),
+    }),
+  ).annotate({
+    identifier: "DeleteEnvironmentConnectorResponse",
+  }) as any as S.Schema<DeleteEnvironmentConnectorResponse>;
 export interface DeleteEnvironmentHostRequest {
   clientToken?: string;
   environmentId: string;
@@ -832,6 +1084,61 @@ export const DisassociateEipFromVlanResponse =
   ).annotate({
     identifier: "DisassociateEipFromVlanResponse",
   }) as any as S.Schema<DisassociateEipFromVlanResponse>;
+export interface GetDepotUrlRequest {
+  environmentId: string;
+  rotate?: boolean;
+}
+export const GetDepotUrlRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+    rotate: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetDepotUrlRequest",
+}) as any as S.Schema<GetDepotUrlRequest>;
+export interface GetDepotUrlResponse {
+  depotUrl: string;
+  token: string;
+}
+export const GetDepotUrlResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ depotUrl: S.String, token: S.String }),
+).annotate({
+  identifier: "GetDepotUrlResponse",
+}) as any as S.Schema<GetDepotUrlResponse>;
+export interface ListEnvironmentConnectorsRequest {
+  nextToken?: string;
+  maxResults?: number;
+  environmentId: string;
+}
+export const ListEnvironmentConnectorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListEnvironmentConnectorsRequest",
+  }) as any as S.Schema<ListEnvironmentConnectorsRequest>;
+export type ConnectorList = Connector[];
+export const ConnectorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Connector);
+export interface ListEnvironmentConnectorsResponse {
+  nextToken?: string;
+  connectors?: Connector[];
+}
+export const ListEnvironmentConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      connectors: S.optional(ConnectorList),
+    }),
+  ).annotate({
+    identifier: "ListEnvironmentConnectorsResponse",
+  }) as any as S.Schema<ListEnvironmentConnectorsResponse>;
 export interface ListEnvironmentHostsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -896,6 +1203,70 @@ export const ListEnvironmentVlansResponse =
   ).annotate({
     identifier: "ListEnvironmentVlansResponse",
   }) as any as S.Schema<ListEnvironmentVlansResponse>;
+export interface ListVmEntitlementsRequest {
+  nextToken?: string;
+  maxResults?: number;
+  environmentId: string;
+  connectorId: string;
+  entitlementType: EntitlementType;
+}
+export const ListVmEntitlementsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      environmentId: S.String,
+      connectorId: S.String,
+      entitlementType: EntitlementType,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "ListVmEntitlementsRequest",
+}) as any as S.Schema<ListVmEntitlementsRequest>;
+export interface ListVmEntitlementsResponse {
+  nextToken?: string;
+  entitlements?: VmEntitlement[];
+}
+export const ListVmEntitlementsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      entitlements: S.optional(VmEntitlementList),
+    }),
+).annotate({
+  identifier: "ListVmEntitlementsResponse",
+}) as any as S.Schema<ListVmEntitlementsResponse>;
+export interface UpdateEnvironmentConnectorRequest {
+  clientToken?: string;
+  environmentId: string;
+  connectorId: string;
+  applianceFqdn?: string;
+  secretIdentifier?: string;
+}
+export const UpdateEnvironmentConnectorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+      connectorId: S.String.pipe(T.HttpLabel("connectorId")),
+      applianceFqdn: S.optional(S.String),
+      secretIdentifier: S.optional(S.String),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "UpdateEnvironmentConnectorRequest",
+  }) as any as S.Schema<UpdateEnvironmentConnectorRequest>;
+export interface UpdateEnvironmentConnectorResponse {
+  connector?: Connector;
+}
+export const UpdateEnvironmentConnectorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ connector: S.optional(Connector) }),
+  ).annotate({
+    identifier: "UpdateEnvironmentConnectorResponse",
+  }) as any as S.Schema<UpdateEnvironmentConnectorResponse>;
 
 //# Errors
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
@@ -1025,11 +1396,11 @@ export type CreateEnvironmentError = ValidationException | CommonErrors;
 /**
  * Creates an Amazon EVS environment that runs VCF software, such as SDDC Manager, NSX Manager, and vCenter Server.
  *
- * During environment creation, Amazon EVS performs validations on DNS settings, provisions VLAN subnets and hosts, and deploys the supplied version of VCF.
+ * When you specify `SELF_DEPLOYED` for `vcfVersion`, Amazon EVS provisions only the VLAN subnets; no hosts are added and no VCF installation is performed. After the environment is created, you can add hosts with `CreateEnvironmentHost` and install VCF yourself. The `licenseInfo`, `hosts`, `vcfHostnames`, `siteId`, and `connectivityInfo` parameters are not supported in this mode.
  *
- * It can take several hours to create an environment. After the deployment completes, you can configure VCF in the vSphere user interface according to your needs.
+ * When you specify any other VCF version, Amazon EVS installs and configures VCF for you. For more information, see Self-deployed mode in the *Amazon EVS User Guide*.
  *
- * When creating a new environment, the default ESX version for the selected VCF version will be used, you cannot choose a specific ESX version in `CreateEnvironment` action. When a host has been added with a specific ESX version, it can only be upgraded using vCenter Lifecycle Manager.
+ * When Amazon EVS installs VCF, the default ESX version for the selected VCF version will be used. After a host is added with a specific ESX version, it can only be upgraded using vCenter Lifecycle Manager.
  *
  * You cannot use the `dedicatedHostId` and `placementGroupId` parameters together in the same `CreateEnvironment` action. This results in a `ValidationException` response.
  */
@@ -1149,12 +1520,58 @@ export const associateEipToVlan: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateEipToVlan",
 }));
+export type CreateEntitlementError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a Windows Server License entitlement for virtual machines in an Amazon EVS environment using the provided vCenter Server connector. This is an asynchronous operation. Amazon EVS validates the specified virtual machines before starting usage tracking.
+ */
+export const createEntitlement: API.OperationMethod<
+  CreateEntitlementRequest,
+  CreateEntitlementResponse,
+  CreateEntitlementError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateEntitlementRequest,
+  output: CreateEntitlementResponse,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateEntitlement",
+}));
+export type CreateEnvironmentConnectorError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a connector for an Amazon EVS environment. A connector allows the Amazon EVS control plane to interface with VCF appliances using a fully qualified domain name.
+ *
+ * You can create only one connector of each type per environment. For environments where Amazon EVS installs VCF, the `SDDC_MANAGER` connector is created automatically.
+ *
+ * Amazon EVS requires an active connector to SDDC Manager or VCF Operations Manager to monitor environment health and license compliance.
+ */
+export const createEnvironmentConnector: API.OperationMethod<
+  CreateEnvironmentConnectorRequest,
+  CreateEnvironmentConnectorResponse,
+  CreateEnvironmentConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: CreateEnvironmentConnectorRequest,
+  output: CreateEnvironmentConnectorResponse,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateEnvironmentConnector",
+}));
 export type CreateEnvironmentHostError =
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Creates an ESX host and adds it to an Amazon EVS environment. Amazon EVS supports 4-16 hosts per environment.
+ * Creates an ESX host and adds it to an Amazon EVS environment.
  *
  * This action can only be used after the Amazon EVS environment is deployed.
  *
@@ -1162,7 +1579,7 @@ export type CreateEnvironmentHostError =
  *
  * You can use the `placementGroupId` parameter to specify a cluster or partition placement group to launch EC2 instances into.
  *
- * If you don't specify an ESX version when adding hosts using `CreateEnvironmentHost` action, Amazon EVS automatically uses the default ESX version associated with your environment's VCF version. To find the default ESX version for a particular VCF version, use the `GetVersions` action.
+ * If you don't specify an ESX version when adding hosts using `CreateEnvironmentHost` action, Amazon EVS automatically uses the default ESX version for your environment's VCF version. To find the available ESX versions for a particular VCF version, use the `GetVersions` action.
  *
  * You cannot use the `dedicatedHostId` and `placementGroupId` parameters together in the same `CreateEnvironmentHost` action. This results in a `ValidationException` response.
  */
@@ -1178,6 +1595,50 @@ export const createEnvironmentHost: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateEnvironmentHost",
+}));
+export type DeleteEntitlementError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a Windows Server License entitlement for virtual machines in an Amazon EVS environment. Deleting an entitlement stops usage tracking for the specified virtual machines.
+ */
+export const deleteEntitlement: API.OperationMethod<
+  DeleteEntitlementRequest,
+  DeleteEntitlementResponse,
+  DeleteEntitlementError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteEntitlementRequest,
+  output: DeleteEntitlementResponse,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteEntitlement",
+}));
+export type DeleteEnvironmentConnectorError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a connector from an Amazon EVS environment.
+ *
+ * Before deleting a connector, you must remove all entitlements that are associated with the same vCenter.
+ */
+export const deleteEnvironmentConnector: API.OperationMethod<
+  DeleteEnvironmentConnectorRequest,
+  DeleteEnvironmentConnectorResponse,
+  DeleteEnvironmentConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteEnvironmentConnectorRequest,
+  output: DeleteEnvironmentConnectorResponse,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteEnvironmentConnector",
 }));
 export type DeleteEnvironmentHostError =
   | ResourceNotFoundException
@@ -1221,6 +1682,70 @@ export const disassociateEipFromVlan: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DisassociateEipFromVlan",
+}));
+export type GetDepotUrlError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a URL and authentication token for accessing the Amazon EVS Custom Addon depot. Configure the depot URL as a download source in vSphere Lifecycle Manager (vLCM) to sync and install the Amazon EVS Custom Addon.
+ *
+ * The depot URL remains active until you rotate the authentication token by calling this action with `rotate` set to `true`.
+ */
+export const getDepotUrl: API.OperationMethod<
+  GetDepotUrlRequest,
+  GetDepotUrlResponse,
+  GetDepotUrlError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetDepotUrlRequest,
+  output: GetDepotUrlResponse,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDepotUrl",
+}));
+export type ListEnvironmentConnectorsError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the connectors within an environment. Returns the status of each connector and its applicable checks, among other connector details.
+ */
+export const listEnvironmentConnectors: API.OperationMethod<
+  ListEnvironmentConnectorsRequest,
+  ListEnvironmentConnectorsResponse,
+  ListEnvironmentConnectorsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEnvironmentConnectorsRequest,
+  ) => stream.Stream<
+    ListEnvironmentConnectorsResponse,
+    ListEnvironmentConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEnvironmentConnectorsRequest,
+  ) => stream.Stream<
+    Connector,
+    ListEnvironmentConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListEnvironmentConnectorsRequest,
+  output: ListEnvironmentConnectorsResponse,
+  errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListEnvironmentConnectors",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "connectors",
+    pageSize: "maxResults",
+  } as const,
 }));
 export type ListEnvironmentHostsError =
   | ResourceNotFoundException
@@ -1303,4 +1828,68 @@ export const listEnvironmentVlans: API.OperationMethod<
     items: "environmentVlans",
     pageSize: "maxResults",
   } as const,
+}));
+export type ListVmEntitlementsError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the Windows Server License entitlements for virtual machines in an Amazon EVS environment. Returns existing entitlements for virtual machines associated with the specified environment and connector.
+ */
+export const listVmEntitlements: API.OperationMethod<
+  ListVmEntitlementsRequest,
+  ListVmEntitlementsResponse,
+  ListVmEntitlementsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListVmEntitlementsRequest,
+  ) => stream.Stream<
+    ListVmEntitlementsResponse,
+    ListVmEntitlementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListVmEntitlementsRequest,
+  ) => stream.Stream<
+    VmEntitlement,
+    ListVmEntitlementsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+  input: ListVmEntitlementsRequest,
+  output: ListVmEntitlementsResponse,
+  errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListVmEntitlements",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "entitlements",
+    pageSize: "maxResults",
+  } as const,
+}));
+export type UpdateEnvironmentConnectorError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a connector for an Amazon EVS environment. You can update the Amazon Web Services Secrets Manager secret ARN or the appliance FQDN to reconfigure the connector metadata.
+ *
+ * You cannot update both the secret and the FQDN in the same request.
+ */
+export const updateEnvironmentConnector: API.OperationMethod<
+  UpdateEnvironmentConnectorRequest,
+  UpdateEnvironmentConnectorResponse,
+  UpdateEnvironmentConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: UpdateEnvironmentConnectorRequest,
+  output: UpdateEnvironmentConnectorResponse,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateEnvironmentConnector",
 }));

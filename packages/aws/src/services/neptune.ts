@@ -575,6 +575,7 @@ export interface CreateDBClusterMessage {
   ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
   GlobalClusterIdentifier?: string;
   StorageType?: string;
+  NetworkType?: string;
 }
 export const CreateDBClusterMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -609,6 +610,7 @@ export const CreateDBClusterMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       ),
       GlobalClusterIdentifier: S.optional(S.String),
       StorageType: S.optional(S.String),
+      NetworkType: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -729,6 +731,7 @@ export interface ClusterPendingModifiedValues {
   StorageType?: string;
   AllocatedStorage?: number;
   Iops?: number;
+  NetworkType?: string;
 }
 export const ClusterPendingModifiedValues =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -741,6 +744,7 @@ export const ClusterPendingModifiedValues =
       StorageType: S.optional(S.String),
       AllocatedStorage: S.optional(S.Number),
       Iops: S.optional(S.Number),
+      NetworkType: S.optional(S.String),
     }),
   ).annotate({
     identifier: "ClusterPendingModifiedValues",
@@ -804,6 +808,7 @@ export interface DBCluster {
   GlobalClusterIdentifier?: string;
   IOOptimizedNextAllowedModificationTime?: Date;
   StorageType?: string;
+  NetworkType?: string;
 }
 export const DBCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -866,6 +871,7 @@ export const DBCluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
     StorageType: S.optional(S.String),
+    NetworkType: S.optional(S.String),
   }),
 ).annotate({ identifier: "DBCluster" }) as any as S.Schema<DBCluster>;
 export interface CreateDBClusterResult {
@@ -1201,6 +1207,7 @@ export interface DBSubnetGroup {
   SubnetGroupStatus?: string;
   Subnets?: Subnet[];
   DBSubnetGroupArn?: string;
+  SupportedNetworkTypes?: string[];
 }
 export const DBSubnetGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1210,6 +1217,7 @@ export const DBSubnetGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     SubnetGroupStatus: S.optional(S.String),
     Subnets: S.optional(SubnetList),
     DBSubnetGroupArn: S.optional(S.String),
+    SupportedNetworkTypes: S.optional(StringList),
   }),
 ).annotate({ identifier: "DBSubnetGroup" }) as any as S.Schema<DBSubnetGroup>;
 export interface PendingModifiedValues {
@@ -1374,6 +1382,7 @@ export interface DBInstance {
   PerformanceInsightsKMSKeyId?: string;
   EnabledCloudwatchLogsExports?: string[];
   DeletionProtection?: boolean;
+  NetworkType?: string;
 }
 export const DBInstance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1438,6 +1447,7 @@ export const DBInstance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     PerformanceInsightsKMSKeyId: S.optional(S.String),
     EnabledCloudwatchLogsExports: S.optional(LogTypeList),
     DeletionProtection: S.optional(S.Boolean),
+    NetworkType: S.optional(S.String),
   }),
 ).annotate({ identifier: "DBInstance" }) as any as S.Schema<DBInstance>;
 export interface CreateDBInstanceResult {
@@ -3011,6 +3021,7 @@ export interface OrderableDBInstanceOption {
   MinIopsPerGib?: number;
   MaxIopsPerGib?: number;
   SupportsGlobalDatabases?: boolean;
+  SupportedNetworkTypes?: string[];
 }
 export const OrderableDBInstanceOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3036,6 +3047,7 @@ export const OrderableDBInstanceOption = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       MinIopsPerGib: S.optional(S.Number),
       MaxIopsPerGib: S.optional(S.Number),
       SupportsGlobalDatabases: S.optional(S.Boolean),
+      SupportedNetworkTypes: S.optional(StringList),
     }),
 ).annotate({
   identifier: "OrderableDBInstanceOption",
@@ -3328,6 +3340,7 @@ export interface ModifyDBClusterMessage {
   CopyTagsToSnapshot?: boolean;
   ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
   StorageType?: string;
+  NetworkType?: string;
 }
 export const ModifyDBClusterMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -3356,6 +3369,7 @@ export const ModifyDBClusterMessage = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
         ServerlessV2ScalingConfiguration,
       ),
       StorageType: S.optional(S.String),
+      NetworkType: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -4002,6 +4016,7 @@ export interface RestoreDBClusterFromSnapshotMessage {
   CopyTagsToSnapshot?: boolean;
   ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
   StorageType?: string;
+  NetworkType?: string;
 }
 export const RestoreDBClusterFromSnapshotMessage =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4027,6 +4042,7 @@ export const RestoreDBClusterFromSnapshotMessage =
         ServerlessV2ScalingConfiguration,
       ),
       StorageType: S.optional(S.String),
+      NetworkType: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -4068,6 +4084,7 @@ export interface RestoreDBClusterToPointInTimeMessage {
   DeletionProtection?: boolean;
   ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
   StorageType?: string;
+  NetworkType?: string;
 }
 export const RestoreDBClusterToPointInTimeMessage =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
@@ -4093,6 +4110,7 @@ export const RestoreDBClusterToPointInTimeMessage =
         ServerlessV2ScalingConfiguration,
       ),
       StorageType: S.optional(S.String),
+      NetworkType: S.optional(S.String),
     }).pipe(
       T.all(
         ns,
@@ -4400,6 +4418,11 @@ export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNe
     code: "InvalidVPCNetworkStateFault",
     httpResponseCode: 400,
   }),
+).pipe(C.withBadRequestError) {}
+export class NetworkTypeNotSupportedFault extends S.TaggedErrorClass<NetworkTypeNotSupportedFault>()(
+  "NetworkTypeNotSupportedFault",
+  { message: S.optional(S.String) },
+  T.AwsQueryError({ code: "NetworkTypeNotSupported", httpResponseCode: 400 }),
 ).pipe(C.withBadRequestError) {}
 export class StorageQuotaExceededFault extends S.TaggedErrorClass<StorageQuotaExceededFault>()(
   "StorageQuotaExceededFault",
@@ -4846,6 +4869,7 @@ export type CreateDBClusterError =
   | InvalidSubnet
   | InvalidVPCNetworkStateFault
   | KMSKeyNotAccessibleFault
+  | NetworkTypeNotSupportedFault
   | StorageQuotaExceededFault
   | CommonErrors;
 /**
@@ -4884,6 +4908,7 @@ export const createDBCluster: API.OperationMethod<
     InvalidSubnet,
     InvalidVPCNetworkStateFault,
     KMSKeyNotAccessibleFault,
+    NetworkTypeNotSupportedFault,
     StorageQuotaExceededFault,
   ],
   protocol: AwsProtocol,
@@ -6303,6 +6328,7 @@ export type ModifyDBClusterError =
   | InvalidDBSubnetGroupStateFault
   | InvalidSubnet
   | InvalidVPCNetworkStateFault
+  | NetworkTypeNotSupportedFault
   | StorageQuotaExceededFault
   | StorageTypeNotSupportedFault
   | CommonErrors;
@@ -6329,6 +6355,7 @@ export const modifyDBCluster: API.OperationMethod<
     InvalidDBSubnetGroupStateFault,
     InvalidSubnet,
     InvalidVPCNetworkStateFault,
+    NetworkTypeNotSupportedFault,
     StorageQuotaExceededFault,
     StorageTypeNotSupportedFault,
   ],
@@ -6682,7 +6709,7 @@ export type RemoveFromGlobalClusterError =
 /**
  * Detaches a Neptune DB cluster from a Neptune global database. A secondary
  * cluster becomes a normal standalone cluster with read-write capability
- * instead of being read-only, and no longer receives data from a the
+ * instead of being read-only, and no longer receives data from the
  * primary cluster.
  */
 export const removeFromGlobalCluster: API.OperationMethod<
@@ -6841,6 +6868,7 @@ export type RestoreDBClusterFromSnapshotError =
   | InvalidSubnet
   | InvalidVPCNetworkStateFault
   | KMSKeyNotAccessibleFault
+  | NetworkTypeNotSupportedFault
   | OptionGroupNotFoundFault
   | StorageQuotaExceededFault
   | CommonErrors;
@@ -6877,6 +6905,7 @@ export const restoreDBClusterFromSnapshot: API.OperationMethod<
     InvalidSubnet,
     InvalidVPCNetworkStateFault,
     KMSKeyNotAccessibleFault,
+    NetworkTypeNotSupportedFault,
     OptionGroupNotFoundFault,
     StorageQuotaExceededFault,
   ],
@@ -6900,6 +6929,7 @@ export type RestoreDBClusterToPointInTimeError =
   | InvalidSubnet
   | InvalidVPCNetworkStateFault
   | KMSKeyNotAccessibleFault
+  | NetworkTypeNotSupportedFault
   | OptionGroupNotFoundFault
   | StorageQuotaExceededFault
   | CommonErrors;
@@ -6941,6 +6971,7 @@ export const restoreDBClusterToPointInTime: API.OperationMethod<
     InvalidSubnet,
     InvalidVPCNetworkStateFault,
     KMSKeyNotAccessibleFault,
+    NetworkTypeNotSupportedFault,
     OptionGroupNotFoundFault,
     StorageQuotaExceededFault,
   ],

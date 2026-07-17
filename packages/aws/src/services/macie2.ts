@@ -2115,12 +2115,14 @@ export const GetClassificationExportConfigurationRequest =
   }) as any as S.Schema<GetClassificationExportConfigurationRequest>;
 export interface S3Destination {
   bucketName?: string;
+  expectedBucketOwner?: string;
   keyPrefix?: string;
   kmsKeyArn?: string;
 }
 export const S3Destination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     bucketName: S.optional(S.String),
+    expectedBucketOwner: S.optional(S.String),
     keyPrefix: S.optional(S.String),
     kmsKeyArn: S.optional(S.String),
   }),

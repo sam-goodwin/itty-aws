@@ -532,6 +532,8 @@ export type MetricType =
   | "WorkSpacesAverageUserSessionsCapacityUtilization"
   | "SageMakerInferenceComponentConcurrentRequestsPerCopyHighResolution"
   | "SageMakerVariantConcurrentRequestsPerModelHighResolution"
+  | "ECSServiceAverageCPUUtilizationHighResolution"
+  | "ECSServiceAverageMemoryUtilizationHighResolution"
   | (string & {});
 export const MetricType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface PredefinedMetricSpecification {

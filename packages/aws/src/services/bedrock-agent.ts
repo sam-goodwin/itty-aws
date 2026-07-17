@@ -88,6 +88,10 @@ const rules = T.EndpointResolver((p, _) => {
 });
 
 //# Newtypes
+export type ResourceArn = string;
+export type RevisionId = string;
+export type NonBlankString = string;
+export type ResourcePolicy = string;
 export type FlowNodeName = string;
 export type FlowKnowledgeBaseId = string;
 export type KnowledgeBaseModelIdentifier = string;
@@ -118,7 +122,6 @@ export type FlowNodeInputName = string;
 export type FlowNodeInputExpression = string | redacted.Redacted<string>;
 export type FlowNodeOutputName = string;
 export type FlowConnectionName = string;
-export type NonBlankString = string;
 export type ErrorMessage = string;
 export type Id = string;
 export type DraftVersion = string;
@@ -236,6 +239,115 @@ export type PromptIdentifier = string;
 export type TaggableResourcesArn = string;
 
 //# Schemas
+export interface DeleteResourcePolicyRequest {
+  resourceArn: string;
+  expectedRevisionId?: string;
+}
+export const DeleteResourcePolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+      expectedRevisionId: S.optional(S.String).pipe(
+        T.HttpQuery("expectedRevisionId"),
+      ),
+    }).pipe(
+      T.all(
+        T.Http({ method: "DELETE", uri: "/resourcepolicy/{resourceArn}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+  ).annotate({
+    identifier: "DeleteResourcePolicyRequest",
+  }) as any as S.Schema<DeleteResourcePolicyRequest>;
+export interface DeleteResourcePolicyResponse {
+  resourceArn: string;
+  revisionId?: string;
+}
+export const DeleteResourcePolicyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ resourceArn: S.String, revisionId: S.optional(S.String) }),
+  ).annotate({
+    identifier: "DeleteResourcePolicyResponse",
+  }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export interface GetResourcePolicyRequest {
+  resourceArn: string;
+}
+export const GetResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/resourcepolicy/{resourceArn}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetResourcePolicyRequest",
+}) as any as S.Schema<GetResourcePolicyRequest>;
+export interface GetResourcePolicyResponse {
+  resourceArn: string;
+  policy: string;
+  revisionId: string;
+}
+export const GetResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ resourceArn: S.String, policy: S.String, revisionId: S.String }),
+).annotate({
+  identifier: "GetResourcePolicyResponse",
+}) as any as S.Schema<GetResourcePolicyResponse>;
+export interface PutResourcePolicyRequest {
+  resourceArn: string;
+  policy: string;
+  expectedRevisionId?: string;
+}
+export const PutResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+      policy: S.String,
+      expectedRevisionId: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({ method: "PUT", uri: "/resourcepolicy/{resourceArn}" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "PutResourcePolicyRequest",
+}) as any as S.Schema<PutResourcePolicyRequest>;
+export interface PutResourcePolicyResponse {
+  resourceArn: string;
+  revisionId: string;
+}
+export const PutResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () => S.Struct({ resourceArn: S.String, revisionId: S.String }),
+).annotate({
+  identifier: "PutResourcePolicyResponse",
+}) as any as S.Schema<PutResourcePolicyResponse>;
 export type FlowNodeType =
   | "Input"
   | "Output"
@@ -2894,19 +3006,6 @@ export const ValidateFlowDefinitionResponse =
   ).annotate({
     identifier: "ValidateFlowDefinitionResponse",
   }) as any as S.Schema<ValidateFlowDefinitionResponse>;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
 export type ActionGroupSignature =
   | "AMAZON.UserInput"
   | "AMAZON.CodeInterpreter"
@@ -4297,8 +4396,83 @@ export type DataSourceType =
   | "SHAREPOINT"
   | "CUSTOM"
   | "REDSHIFT_METADATA"
+  | "MANAGED_KNOWLEDGE_BASE_CONNECTOR"
   | (string & {});
 export const DataSourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type EnabledOrDisabledState = "ENABLED" | "DISABLED" | (string & {});
+export const EnabledOrDisabledState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DeletionProtectionConfiguration {
+  deletionProtectionStatus: EnabledOrDisabledState;
+  deletionProtectionThreshold?: number;
+}
+export const DeletionProtectionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deletionProtectionStatus: EnabledOrDisabledState,
+      deletionProtectionThreshold: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "DeletionProtectionConfiguration",
+  }) as any as S.Schema<DeletionProtectionConfiguration>;
+export interface ImageExtractionConfiguration {
+  imageExtractionStatus: EnabledOrDisabledState;
+}
+export const ImageExtractionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ imageExtractionStatus: EnabledOrDisabledState }),
+  ).annotate({
+    identifier: "ImageExtractionConfiguration",
+  }) as any as S.Schema<ImageExtractionConfiguration>;
+export interface AudioExtractionConfiguration {
+  audioExtractionStatus: EnabledOrDisabledState;
+}
+export const AudioExtractionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ audioExtractionStatus: EnabledOrDisabledState }),
+  ).annotate({
+    identifier: "AudioExtractionConfiguration",
+  }) as any as S.Schema<AudioExtractionConfiguration>;
+export interface VideoExtractionConfiguration {
+  videoExtractionStatus: EnabledOrDisabledState;
+}
+export const VideoExtractionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({ videoExtractionStatus: EnabledOrDisabledState }),
+  ).annotate({
+    identifier: "VideoExtractionConfiguration",
+  }) as any as S.Schema<VideoExtractionConfiguration>;
+export interface MediaExtractionConfiguration {
+  imageExtractionConfiguration?: ImageExtractionConfiguration;
+  audioExtractionConfiguration?: AudioExtractionConfiguration;
+  videoExtractionConfiguration?: VideoExtractionConfiguration;
+}
+export const MediaExtractionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      imageExtractionConfiguration: S.optional(ImageExtractionConfiguration),
+      audioExtractionConfiguration: S.optional(AudioExtractionConfiguration),
+      videoExtractionConfiguration: S.optional(VideoExtractionConfiguration),
+    }),
+  ).annotate({
+    identifier: "MediaExtractionConfiguration",
+  }) as any as S.Schema<MediaExtractionConfiguration>;
+export interface ManagedKnowledgeBaseConnectorConfiguration {
+  deletionProtectionConfiguration?: DeletionProtectionConfiguration;
+  mediaExtractionConfiguration?: MediaExtractionConfiguration;
+  connectorParameters?: any;
+}
+export const ManagedKnowledgeBaseConnectorConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deletionProtectionConfiguration: S.optional(
+        DeletionProtectionConfiguration,
+      ),
+      mediaExtractionConfiguration: S.optional(MediaExtractionConfiguration),
+      connectorParameters: S.optional(S.Any),
+    }),
+  ).annotate({
+    identifier: "ManagedKnowledgeBaseConnectorConfiguration",
+  }) as any as S.Schema<ManagedKnowledgeBaseConnectorConfiguration>;
 export type S3Prefixes = string | redacted.Redacted<string>[];
 export const S3Prefixes = /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
 export interface S3DataSourceConfiguration {
@@ -4568,6 +4742,7 @@ export const SharePointDataSourceConfiguration =
   }) as any as S.Schema<SharePointDataSourceConfiguration>;
 export interface DataSourceConfiguration {
   type: DataSourceType;
+  managedKnowledgeBaseConnectorConfiguration?: ManagedKnowledgeBaseConnectorConfiguration;
   s3Configuration?: S3DataSourceConfiguration;
   webConfiguration?: WebDataSourceConfiguration;
   confluenceConfiguration?: ConfluenceDataSourceConfiguration;
@@ -4578,6 +4753,9 @@ export const DataSourceConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
     S.Struct({
       type: DataSourceType,
+      managedKnowledgeBaseConnectorConfiguration: S.optional(
+        ManagedKnowledgeBaseConnectorConfiguration,
+      ),
       s3Configuration: S.optional(S3DataSourceConfiguration),
       webConfiguration: S.optional(WebDataSourceConfiguration),
       confluenceConfiguration: S.optional(ConfluenceDataSourceConfiguration),
@@ -4739,6 +4917,7 @@ export const CustomTransformationConfiguration =
 export type ParsingStrategy =
   | "BEDROCK_FOUNDATION_MODEL"
   | "BEDROCK_DATA_AUTOMATION"
+  | "SMART_PARSING"
   | (string & {});
 export const ParsingStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ParsingPrompt {
@@ -4898,6 +5077,9 @@ export type DataSourceStatus =
   | "AVAILABLE"
   | "DELETING"
   | "DELETE_UNSUCCESSFUL"
+  | "CREATING"
+  | "UPDATING"
+  | "FAILED"
   | (string & {});
 export const DataSourceStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface DataSource {
@@ -5190,12 +5372,16 @@ export const CreateFlowResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFlowResponse",
 }) as any as S.Schema<CreateFlowResponse>;
+export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
+export const IncludedData = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface GetFlowRequest {
   flowIdentifier: string;
+  includedData?: IncludedData;
 }
 export const GetFlowRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
+    includedData: S.optional(IncludedData).pipe(T.HttpQuery("includedData")),
   }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/flows/{flowIdentifier}/" }),
@@ -5761,11 +5947,13 @@ export const CreateFlowVersionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export interface GetFlowVersionRequest {
   flowIdentifier: string;
   flowVersion: string;
+  includedData?: IncludedData;
 }
 export const GetFlowVersionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     flowIdentifier: S.String.pipe(T.HttpLabel("flowIdentifier")),
     flowVersion: S.String.pipe(T.HttpLabel("flowVersion")),
+    includedData: S.optional(IncludedData).pipe(T.HttpQuery("includedData")),
   }).pipe(
     T.all(
       T.Http({
@@ -5951,6 +6139,7 @@ export interface IngestionJobStatistics {
   numberOfMetadataDocumentsModified?: number;
   numberOfDocumentsDeleted?: number;
   numberOfDocumentsFailed?: number;
+  numberOfDocumentsSkipped?: number;
 }
 export const IngestionJobStatistics = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
   () =>
@@ -5962,6 +6151,7 @@ export const IngestionJobStatistics = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       numberOfMetadataDocumentsModified: S.optional(S.Number),
       numberOfDocumentsDeleted: S.optional(S.Number),
       numberOfDocumentsFailed: S.optional(S.Number),
+      numberOfDocumentsSkipped: S.optional(S.Number),
     }),
 ).annotate({
   identifier: "IngestionJobStatistics",
@@ -6382,16 +6572,41 @@ export const CustomS3Location = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomS3Location",
 }) as any as S.Schema<CustomS3Location>;
+export type AccessControlPrincipalType = "USER" | (string & {});
+export const AccessControlPrincipalType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export type AccessControlAccess = "ALLOW" | "DENY" | (string & {});
+export const AccessControlAccess = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface DocumentAccessControlEntry {
+  name: string;
+  type: AccessControlPrincipalType;
+  access: AccessControlAccess;
+}
+export const DocumentAccessControlEntry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      type: AccessControlPrincipalType,
+      access: AccessControlAccess,
+    }),
+).annotate({
+  identifier: "DocumentAccessControlEntry",
+}) as any as S.Schema<DocumentAccessControlEntry>;
+export type DocumentAccessControlList = DocumentAccessControlEntry[];
+export const DocumentAccessControlList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+  DocumentAccessControlEntry,
+);
 export interface DocumentMetadata {
   type: MetadataSourceType;
   inlineAttributes?: MetadataAttribute[];
   s3Location?: CustomS3Location;
+  accessControlList?: DocumentAccessControlEntry[];
 }
 export const DocumentMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     type: MetadataSourceType,
     inlineAttributes: S.optional(MetadataAttributes),
     s3Location: S.optional(CustomS3Location),
+    accessControlList: S.optional(DocumentAccessControlList),
   }),
 ).annotate({
   identifier: "DocumentMetadata",
@@ -6619,7 +6834,12 @@ export const AssociateAgentKnowledgeBaseResponse =
   ).annotate({
     identifier: "AssociateAgentKnowledgeBaseResponse",
   }) as any as S.Schema<AssociateAgentKnowledgeBaseResponse>;
-export type KnowledgeBaseType = "VECTOR" | "KENDRA" | "SQL" | (string & {});
+export type KnowledgeBaseType =
+  | "VECTOR"
+  | "KENDRA"
+  | "SQL"
+  | "MANAGED"
+  | (string & {});
 export const KnowledgeBaseType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type EmbeddingDataType = "FLOAT32" | "BINARY" | (string & {});
 export const EmbeddingDataType = /*@__PURE__*/ /*#__PURE__*/ S.String;
@@ -6739,6 +6959,27 @@ export const VectorKnowledgeBaseConfiguration =
   ).annotate({
     identifier: "VectorKnowledgeBaseConfiguration",
   }) as any as S.Schema<VectorKnowledgeBaseConfiguration>;
+export type EmbeddingModelType = "CUSTOM" | "MANAGED" | (string & {});
+export const EmbeddingModelType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export interface ManagedKnowledgeBaseConfiguration {
+  embeddingModelType?: EmbeddingModelType;
+  embeddingModelArn?: string;
+  embeddingModelConfiguration?: EmbeddingModelConfiguration;
+  serverSideEncryptionConfiguration?: ServerSideEncryptionConfiguration;
+}
+export const ManagedKnowledgeBaseConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+    S.Struct({
+      embeddingModelType: S.optional(EmbeddingModelType),
+      embeddingModelArn: S.optional(S.String),
+      embeddingModelConfiguration: S.optional(EmbeddingModelConfiguration),
+      serverSideEncryptionConfiguration: S.optional(
+        ServerSideEncryptionConfiguration,
+      ),
+    }),
+  ).annotate({
+    identifier: "ManagedKnowledgeBaseConfiguration",
+  }) as any as S.Schema<ManagedKnowledgeBaseConfiguration>;
 export interface KendraKnowledgeBaseConfiguration {
   kendraIndexArn: string;
 }
@@ -6990,6 +7231,7 @@ export const SqlKnowledgeBaseConfiguration =
 export interface KnowledgeBaseConfiguration {
   type: KnowledgeBaseType;
   vectorKnowledgeBaseConfiguration?: VectorKnowledgeBaseConfiguration;
+  managedKnowledgeBaseConfiguration?: ManagedKnowledgeBaseConfiguration;
   kendraKnowledgeBaseConfiguration?: KendraKnowledgeBaseConfiguration;
   sqlKnowledgeBaseConfiguration?: SqlKnowledgeBaseConfiguration;
 }
@@ -6999,6 +7241,9 @@ export const KnowledgeBaseConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
       type: KnowledgeBaseType,
       vectorKnowledgeBaseConfiguration: S.optional(
         VectorKnowledgeBaseConfiguration,
+      ),
+      managedKnowledgeBaseConfiguration: S.optional(
+        ManagedKnowledgeBaseConfiguration,
       ),
       kendraKnowledgeBaseConfiguration: S.optional(
         KendraKnowledgeBaseConfiguration,
@@ -7323,6 +7568,7 @@ export type KnowledgeBaseStatus =
   | "UPDATING"
   | "FAILED"
   | "DELETE_UNSUCCESSFUL"
+  | "UPDATE_UNSUCCESSFUL"
   | (string & {});
 export const KnowledgeBaseStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface KnowledgeBase {
@@ -7797,11 +8043,13 @@ export const CreatePromptResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPromptRequest {
   promptIdentifier: string;
   promptVersion?: string;
+  includedData?: IncludedData;
 }
 export const GetPromptRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     promptIdentifier: S.String.pipe(T.HttpLabel("promptIdentifier")),
     promptVersion: S.optional(S.String).pipe(T.HttpQuery("promptVersion")),
+    includedData: S.optional(IncludedData).pipe(T.HttpQuery("includedData")),
   }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/prompts/{promptIdentifier}/" }),
@@ -8317,10 +8565,18 @@ export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedExcept
   "AccessDeniedException",
   { message: S.optional(S.String) },
 ).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
 ).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
@@ -8332,20 +8588,103 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     fieldList: S.optional(ValidationExceptionFieldList),
   },
 ).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
 ).pipe(C.withQuotaError) {}
 
 //# Operations
+export type DeleteResourcePolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Removes the resource policy associated with a knowledge base. After deletion, other AWS accounts can no longer access the knowledge base using cross-account permissions.
+ */
+export const deleteResourcePolicy: API.OperationMethod<
+  DeleteResourcePolicyRequest,
+  DeleteResourcePolicyResponse,
+  DeleteResourcePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: DeleteResourcePolicyRequest,
+  output: DeleteResourcePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteResourcePolicy",
+}));
+export type GetResourcePolicyError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the resource policy associated with a knowledge base.
+ */
+export const getResourcePolicy: API.OperationMethod<
+  GetResourcePolicyRequest,
+  GetResourcePolicyResponse,
+  GetResourcePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: GetResourcePolicyRequest,
+  output: GetResourcePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetResourcePolicy",
+}));
+export type PutResourcePolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Associates a resource policy with a knowledge base. A resource policy allows other AWS accounts to access the knowledge base. For more information, see Cross-account access for knowledge bases.
+ */
+export const putResourcePolicy: API.OperationMethod<
+  PutResourcePolicyRequest,
+  PutResourcePolicyResponse,
+  PutResourcePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+  input: PutResourcePolicyRequest,
+  output: PutResourcePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutResourcePolicy",
+}));
 export type ValidateFlowDefinitionError =
   | AccessDeniedException
   | InternalServerException
@@ -10160,15 +10499,17 @@ export type CreateKnowledgeBaseError =
 /**
  * Creates a knowledge base. A knowledge base contains your data sources so that Large Language Models (LLMs) can use your data. To create a knowledge base, you must first set up your data sources and configure a supported vector store. For more information, see Set up a knowledge base.
  *
- * If you prefer to let Amazon Bedrock create and manage a vector store for you in Amazon OpenSearch Service, use the console. For more information, see Create a knowledge base.
+ * To create a managed knowledge base, provide a `managedKnowledgeBaseConfiguration` during creation. For more information, see Build a managed knowledge base.
  *
  * - Provide the `name` and an optional `description`.
  *
  * - Provide the Amazon Resource Name (ARN) with permissions to create a knowledge base in the `roleArn` field.
  *
- * - Provide the embedding model to use in the `embeddingModelArn` field in the `knowledgeBaseConfiguration` object.
+ * - For managed knowledge bases, set `embeddingModelType` to `MANAGED` to use the service-managed embedding model, or `CUSTOM` with an `embeddingModelArn` to use your own. To use your own KMS key for encryption, provide the ARN in `serverSideEncryptionConfiguration`. No vector store configuration is required for managed knowledge bases.
  *
- * - Provide the configuration for your vector store in the `storageConfiguration` object.
+ * - For self-managed knowledge bases, provide the embedding model to use in the `embeddingModelArn` field in the `knowledgeBaseConfiguration` object.
+ *
+ * - For self-managed knowledge bases, provide the configuration for your vector store in the `storageConfiguration` object.
  *
  * - For an Amazon OpenSearch Service database, use the `opensearchServerlessConfiguration` object. For more information, see Create a vector store in Amazon OpenSearch Service.
  *

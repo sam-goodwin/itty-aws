@@ -273,8 +273,10 @@ export type UpdateType =
   | "AutoModeUpdate"
   | "RemoteNetworkConfigUpdate"
   | "DeletionProtectionUpdate"
+  | "CapabilityUpdate"
   | "ControlPlaneScalingConfigUpdate"
   | "VendedLogsUpdate"
+  | "ControlPlaneEgressUpdate"
   | (string & {});
 export const UpdateType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export type UpdateParamType =
@@ -316,6 +318,11 @@ export type UpdateParamType =
   | "RemoteNetworkConfig"
   | "DeletionProtection"
   | "NodeRepairConfig"
+  | "RoleArn"
+  | "RoleMappingsToAddOrUpdate"
+  | "RoleMappingsToRemove"
+  | "NetworkAccess"
+  | "VendedLogs"
   | "UpdatedTier"
   | "PreviousTier"
   | "WarmPoolEnabled"
@@ -323,6 +330,7 @@ export type UpdateParamType =
   | "WarmPoolMinSize"
   | "WarmPoolState"
   | "WarmPoolReuseOnScaleIn"
+  | "ControlPlaneEgressMode"
   | (string & {});
 export const UpdateParamType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface UpdateParam {
@@ -949,12 +957,19 @@ export const CreateCapabilityResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateCapabilityResponse",
 }) as any as S.Schema<CreateCapabilityResponse>;
+export type ControlPlaneEgressModeType =
+  | "AWS_MANAGED"
+  | "CUSTOMER_ROUTED"
+  | "CUSTOMER_ISOLATED"
+  | (string & {});
+export const ControlPlaneEgressModeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface VpcConfigRequest {
   subnetIds?: string[];
   securityGroupIds?: string[];
   endpointPublicAccess?: boolean;
   endpointPrivateAccess?: boolean;
   publicAccessCidrs?: string[];
+  controlPlaneEgressMode?: ControlPlaneEgressModeType;
 }
 export const VpcConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -963,6 +978,7 @@ export const VpcConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     endpointPublicAccess: S.optional(S.Boolean),
     endpointPrivateAccess: S.optional(S.Boolean),
     publicAccessCidrs: S.optional(StringList),
+    controlPlaneEgressMode: S.optional(ControlPlaneEgressModeType),
   }),
 ).annotate({
   identifier: "VpcConfigRequest",
@@ -1017,25 +1033,43 @@ export interface Logging {
 export const Logging = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({ clusterLogging: S.optional(LogSetups) }),
 ).annotate({ identifier: "Logging" }) as any as S.Schema<Logging>;
+export type SpreadLevel = "host" | "rack" | (string & {});
+export const SpreadLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
 export interface ControlPlanePlacementRequest {
   groupName?: string;
+  spreadLevel?: SpreadLevel;
 }
 export const ControlPlanePlacementRequest =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ groupName: S.optional(S.String) }),
+    S.Struct({
+      groupName: S.optional(S.String),
+      spreadLevel: S.optional(SpreadLevel),
+    }),
   ).annotate({
     identifier: "ControlPlanePlacementRequest",
   }) as any as S.Schema<ControlPlanePlacementRequest>;
+export interface EtcdPlacementRequest {
+  spreadLevel?: SpreadLevel;
+}
+export const EtcdPlacementRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ spreadLevel: S.optional(SpreadLevel) }),
+).annotate({
+  identifier: "EtcdPlacementRequest",
+}) as any as S.Schema<EtcdPlacementRequest>;
 export interface OutpostConfigRequest {
   outpostArns: string[];
   controlPlaneInstanceType: string;
   controlPlanePlacement?: ControlPlanePlacementRequest;
+  etcdInstanceType?: string;
+  etcdPlacement?: EtcdPlacementRequest;
 }
 export const OutpostConfigRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     outpostArns: StringList,
     controlPlaneInstanceType: S.String,
     controlPlanePlacement: S.optional(ControlPlanePlacementRequest),
+    etcdInstanceType: S.optional(S.String),
+    etcdPlacement: S.optional(EtcdPlacementRequest),
   }),
 ).annotate({
   identifier: "OutpostConfigRequest",
@@ -1219,6 +1253,7 @@ export interface VpcConfigResponse {
   endpointPublicAccess?: boolean;
   endpointPrivateAccess?: boolean;
   publicAccessCidrs?: string[];
+  controlPlaneEgressMode?: ControlPlaneEgressModeType;
 }
 export const VpcConfigResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1229,6 +1264,7 @@ export const VpcConfigResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     endpointPublicAccess: S.optional(S.Boolean),
     endpointPrivateAccess: S.optional(S.Boolean),
     publicAccessCidrs: S.optional(StringList),
+    controlPlaneEgressMode: S.optional(ControlPlaneEgressModeType),
   }),
 ).annotate({
   identifier: "VpcConfigResponse",
@@ -1343,23 +1379,39 @@ export const ClusterHealth = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterHealth" }) as any as S.Schema<ClusterHealth>;
 export interface ControlPlanePlacementResponse {
   groupName?: string;
+  spreadLevel?: SpreadLevel;
 }
 export const ControlPlanePlacementResponse =
   /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ groupName: S.optional(S.String) }),
+    S.Struct({
+      groupName: S.optional(S.String),
+      spreadLevel: S.optional(SpreadLevel),
+    }),
   ).annotate({
     identifier: "ControlPlanePlacementResponse",
   }) as any as S.Schema<ControlPlanePlacementResponse>;
+export interface EtcdPlacementResponse {
+  spreadLevel?: SpreadLevel;
+}
+export const EtcdPlacementResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  S.Struct({ spreadLevel: S.optional(SpreadLevel) }),
+).annotate({
+  identifier: "EtcdPlacementResponse",
+}) as any as S.Schema<EtcdPlacementResponse>;
 export interface OutpostConfigResponse {
   outpostArns: string[];
   controlPlaneInstanceType: string;
   controlPlanePlacement?: ControlPlanePlacementResponse;
+  etcdInstanceType?: string;
+  etcdPlacement?: EtcdPlacementResponse;
 }
 export const OutpostConfigResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   S.Struct({
     outpostArns: StringList,
     controlPlaneInstanceType: S.String,
     controlPlanePlacement: S.optional(ControlPlanePlacementResponse),
+    etcdInstanceType: S.optional(S.String),
+    etcdPlacement: S.optional(EtcdPlacementResponse),
   }),
 ).annotate({
   identifier: "OutpostConfigResponse",
