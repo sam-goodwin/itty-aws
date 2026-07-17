@@ -19,7 +19,13 @@ import type { RuleSetObject } from "./rules-engine/expression.ts";
 import {
   all,
   annotationMetaSymbol,
+  headerSymbol as coreHeaderSymbol,
+  httpBodySymbol as coreHttpBodySymbol,
+  httpSymbol as coreHttpSymbol,
+  labelSymbol as coreLabelSymbol,
   makeAnnotation,
+  querySymbol as coreQuerySymbol,
+  responseCodeSymbol as coreResponseCodeSymbol,
   type Annotation,
 } from "@distilled.cloud/core/trait";
 
@@ -40,17 +46,22 @@ type Annotatable = {
 // HTTP Binding Traits (smithy.api#http*)
 // =============================================================================
 
+// The generic HTTP binding traits are keyed to core's shared symbols
+// (`@distilled.cloud/core/trait`) — the same annotations the cloudflare
+// SDK stamps. The builders keep their smithy-flavored names because the
+// generator emits them; only the underlying keys are shared.
+
 /** smithy.api#httpHeader - Bind member to an HTTP header */
-export const httpHeaderSymbol = "distilled-aws/http-header" as const;
+export const httpHeaderSymbol = coreHeaderSymbol;
 export const HttpHeader = (name: string) =>
   makeAnnotation(httpHeaderSymbol, name);
 
 /** smithy.api#httpPayload - Bind member to the HTTP body */
-export const httpPayloadSymbol = "distilled-aws/http-payload" as const;
+export const httpPayloadSymbol = coreHttpBodySymbol;
 export const HttpPayload = () => makeAnnotation(httpPayloadSymbol, true);
 
 /** smithy.api#httpLabel - Bind member to a URI label (path parameter) */
-export const httpLabelSymbol = "distilled-aws/http-label" as const;
+export const httpLabelSymbol = coreLabelSymbol;
 /**
  * HttpLabel trait - binds a member to a URI label (path parameter).
  * @param labelName - Optional. The name to use in the URI template. If provided, this name
@@ -62,7 +73,7 @@ export const HttpLabel = (labelName?: string) =>
   makeAnnotation(httpLabelSymbol, labelName ?? true);
 
 /** smithy.api#httpQuery - Bind member to a query string parameter */
-export const httpQuerySymbol = "distilled-aws/http-query" as const;
+export const httpQuerySymbol = coreQuerySymbol;
 export const HttpQuery = (name: string) =>
   makeAnnotation(httpQuerySymbol, name);
 
@@ -78,8 +89,7 @@ export const HttpPrefixHeaders = (prefix: string) =>
   makeAnnotation(httpPrefixHeadersSymbol, prefix);
 
 /** smithy.api#httpResponseCode - Bind member to the HTTP response status code */
-export const httpResponseCodeSymbol =
-  "distilled-aws/http-response-code" as const;
+export const httpResponseCodeSymbol = coreResponseCodeSymbol;
 export const HttpResponseCode = () =>
   makeAnnotation(httpResponseCodeSymbol, true);
 
@@ -207,7 +217,7 @@ export const TimestampFormat = (format: TimestampFormatType) => {
 // =============================================================================
 
 /** smithy.api#http - HTTP binding for an operation (applied to request schema) */
-export const httpSymbol = "distilled-aws/smithy.api#http" as const;
+export const httpSymbol = coreHttpSymbol;
 export interface HttpTrait {
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "OPTIONS";
   uri: string;
@@ -788,14 +798,14 @@ export const getEventPayloadMap = (
 
 export const getAnnotation = <T>(
   ast: AST.AST,
-  symbol: string,
+  symbol: string | symbol,
 ): T | undefined => {
   return ast.annotations?.[symbol] as T | undefined;
 };
 
 export const getPropAnnotation = <T>(
   prop: AST.PropertySignature,
-  symbol: string,
+  symbol: string | symbol,
 ): T | undefined => {
   // @ts-expect-error
   const propAnnot = prop.annotations?.[symbol] as T | undefined;
@@ -805,7 +815,7 @@ export const getPropAnnotation = <T>(
 
 export const hasPropAnnotation = (
   prop: AST.PropertySignature,
-  symbol: string,
+  symbol: string | symbol,
 ): boolean => {
   // @ts-expect-error
   if (prop.annotations?.[symbol] !== undefined) return true;
@@ -846,7 +856,10 @@ export const getXmlName = (ast: AST.AST): string | undefined => {
   return getAnnotationUnwrap(ast, xmlNameSymbol);
 };
 
-export const hasAnnotation = (ast: AST.AST, symbol: string): boolean => {
+export const hasAnnotation = (
+  ast: AST.AST,
+  symbol: string | symbol,
+): boolean => {
   if (ast.annotations?.[symbol] !== undefined) return true;
   if (ast._tag === "Suspend") {
     return hasAnnotation(ast.thunk(), symbol);
@@ -869,7 +882,7 @@ export const hasAnnotation = (ast: AST.AST, symbol: string): boolean => {
 
 export const getAnnotationUnwrap = <T>(
   ast: AST.AST,
-  symbol: string,
+  symbol: string | symbol,
 ): T | undefined => {
   const direct = ast.annotations?.[symbol] as T | undefined;
   if (direct !== undefined) return direct;
