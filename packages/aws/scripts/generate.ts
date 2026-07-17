@@ -19,6 +19,7 @@ import { loadServiceSpecPatch, type ServiceSpec } from "./spec-schema.ts";
 import type { RuleSetObject } from "./compile-rules.ts";
 import { generateRuleSetCode } from "./compile-rules.ts";
 import { cyclicShapeIds } from "@distilled.cloud/core/codegen/graph";
+import { mergePaginated } from "@distilled.cloud/core/codegen/pagination";
 import {
   barrel,
   enumDecl,
@@ -2700,7 +2701,7 @@ const generateClient = Effect.fn(function* (
 
         // Extract pagination trait from operation (smithy.api#paginated)
         // Operations may only specify partial pagination (e.g., just `items`)
-        // and inherit inputToken/outputToken from service-level pagination
+        // and inherit the unset properties from service-level pagination
         const operationPaginatedTrait = operationShape.traits?.[
           "smithy.api#paginated"
         ] as
@@ -2726,20 +2727,10 @@ const generateClient = Effect.fn(function* (
 
         // Merge operation pagination with service-level pagination
         // Operation-level traits override service-level traits
-        const paginatedTrait = operationPaginatedTrait
-          ? {
-              inputToken:
-                operationPaginatedTrait.inputToken ??
-                servicePaginatedTrait?.inputToken,
-              outputToken:
-                operationPaginatedTrait.outputToken ??
-                servicePaginatedTrait?.outputToken,
-              items: operationPaginatedTrait.items,
-              pageSize:
-                operationPaginatedTrait.pageSize ??
-                servicePaginatedTrait?.pageSize,
-            }
-          : undefined;
+        const paginatedTrait = mergePaginated(
+          operationPaginatedTrait,
+          servicePaginatedTrait,
+        );
 
         // Build operation object - include pagination metadata if present
         // Use 'as const' on pagination to preserve literal types for type inference

@@ -19436,7 +19436,7 @@ export const listAssetRevisions: API.OperationMethod<
   items: (
     input: ListAssetRevisionsInput,
   ) => stream.Stream<
-    unknown,
+    AssetRevision,
     ListAssetRevisionsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
@@ -19456,6 +19456,7 @@ export const listAssetRevisions: API.OperationMethod<
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
+    items: "items",
     pageSize: "maxResults",
   } as const,
 }));
