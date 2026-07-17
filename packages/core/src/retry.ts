@@ -83,9 +83,7 @@ export const jittered = Schedule.addDelay(() =>
  */
 export const capped = (max: Duration.Duration) =>
   Schedule.modifyDelay(({ duration }) =>
-    Effect.succeed(
-      Duration.isGreaterThan(duration, max) ? Duration.millis(5000) : duration,
-    ),
+    Effect.succeed(Duration.isGreaterThan(duration, max) ? max : duration),
   );
 
 // ============================================================================
@@ -225,16 +223,20 @@ const honorServerHint = (
  */
 export const makeDefault: Factory = (lastError) => ({
   while: (error) => isTransientError(error),
+  // The 5s cap applies to the exponential backoff BEFORE the server hint is
+  // considered, so a server-provided retryAfter longer than 5s is honored in
+  // full (bounded only by the 60s hint cap inside honorServerHint). Capping
+  // after the hint would silently clamp e.g. a Retry-After: 30 to 5s.
   schedule: Schedule.max([
     pipe(
       Schedule.exponential(250, 2),
+      capped(Duration.seconds(5)),
       honorServerHint(lastError, (duration, error) => {
         if (isThrottling(error) && Duration.toMillis(duration) < 500) {
           return Duration.millis(500);
         }
         return duration;
       }),
-      capped(Duration.seconds(5)),
       jittered,
     ),
     Schedule.recurs(8),
@@ -249,8 +251,8 @@ export const throttlingFactory: Factory = (lastError) => ({
   while: (error) => isThrottling(error),
   schedule: pipe(
     Schedule.exponential(1000, 2),
-    honorServerHint(lastError),
     capped(Duration.seconds(5)),
+    honorServerHint(lastError),
     jittered,
   ),
 });
@@ -279,8 +281,8 @@ export const transientFactory: Factory = (lastError) => ({
   while: isTransientError,
   schedule: pipe(
     Schedule.exponential(1000, 2),
-    honorServerHint(lastError),
     capped(Duration.seconds(5)),
+    honorServerHint(lastError),
     jittered,
   ),
 });

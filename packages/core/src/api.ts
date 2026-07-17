@@ -281,8 +281,29 @@ export function make<
       );
     },
   };
+  Object.assign(fn, Proto);
 
-  return Object.assign(fn, Proto) as any;
+  // Debug/introspection surface carried over from the distilled client:
+  // the operation's metadata is readable off the exported callable
+  // (e.g. `iam.listRoles.input` / `.output` / `.errors` / `.operationName`
+  // / `.pagination`). Lazy getters, so importing a service module doesn't
+  // force its suspended schemas.
+  Object.defineProperties(fn, {
+    input: { get: () => prepare().cfg.input, configurable: true },
+    output: { get: () => prepare().cfg.output, configurable: true },
+    errors: { get: () => prepare().cfg.errors ?? [], configurable: true },
+    operationName: {
+      get: () => prepare().cfg.operationName,
+      configurable: true,
+    },
+    pagination: {
+      get: () =>
+        (prepare().cfg as PaginatedOperationConfig<I, O, PE, PR, E>).pagination,
+      configurable: true,
+    },
+  });
+
+  return fn as any;
 }
 
 //#endregion

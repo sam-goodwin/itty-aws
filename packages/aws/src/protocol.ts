@@ -95,6 +95,12 @@ const prepare = (config: API.ProtocolOperationConfig): Prepared => {
     parseResponse: makeResponseParser(op, {
       service: serviceSdkId,
       operation: operationName,
+      // v0's makeUnvalidated escape hatch, env-gated: return raw deserialized
+      // responses without output-schema validation (useful for discovering
+      // missing enum values / schema drift against the live API).
+      skipValidation:
+        typeof process !== "undefined" &&
+        !!process.env?.DISTILLED_AWS_SKIP_VALIDATION,
     }),
     sigv4: getAwsAuthSigv4(inputAst),
     resolveEndpoint: makeEndpointResolver(op),
