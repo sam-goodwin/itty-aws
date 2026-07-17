@@ -8,20 +8,48 @@ type Annotatable = {
 
 export interface Annotation {
   <A extends Annotatable>(schema: A): A;
-  readonly [annotationMetaSymbol]: Array<{ symbol: symbol; value: unknown }>;
+  readonly [annotationMetaSymbol]: Array<{
+    symbol: symbol | string;
+    value: unknown;
+  }>;
   readonly [key: symbol]: unknown;
+  readonly [key: string]: unknown;
 }
 
 /**
  * Build a pipeable schema annotation carrying `value` under `sym`. Exported
  * so SDK packages can define their own protocol traits (e.g. cloudflare's
- * envelope traits) with the same mechanics as the generic ones here.
+ * envelope traits, aws's smithy traits) with the same mechanics as the
+ * generic ones here. Keys may be symbols or plain strings — effect Schema
+ * annotation dictionaries accept both.
  */
-export function makeAnnotation<T>(sym: symbol, value: T): Annotation {
+export function makeAnnotation<T>(sym: symbol | string, value: T): Annotation {
   const fn = <A extends Annotatable>(schema: A): A =>
     schema.annotate({ [sym]: value }) as A;
   (fn as any)[annotationMetaSymbol] = [{ symbol: sym, value }];
   (fn as any)[sym] = value;
+  return fn as Annotation;
+}
+
+/**
+ * Combine several annotations into one — needed where only a single
+ * annotations object can be supplied (e.g. the second argument of
+ * `S.Class`).
+ */
+export function all(...annotations: Annotation[]): Annotation {
+  const entries: Array<{ symbol: symbol | string; value: unknown }> = [];
+  const raw: Record<symbol | string, unknown> = {};
+  for (const a of annotations) {
+    for (const entry of a[annotationMetaSymbol]) {
+      entries.push(entry);
+      raw[entry.symbol] = entry.value;
+    }
+  }
+  const fn = <A extends Annotatable>(schema: A): A => schema.annotate(raw) as A;
+  (fn as any)[annotationMetaSymbol] = entries;
+  for (const { symbol: sym, value } of entries) {
+    (fn as any)[sym] = value;
+  }
   return fn as Annotation;
 }
 

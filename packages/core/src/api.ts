@@ -19,6 +19,26 @@ import type * as HttpClientResponse from "effect/unstable/http/HttpClientRespons
 //#region Protocol
 
 /**
+ * The view of an operation's config that protocols receive on every
+ * encode/decode call. The object is the same memoized config instance for
+ * every call to a given operation, so protocols can key per-operation
+ * preprocessing (handler construction, error maps) off its identity in a
+ * WeakMap.
+ */
+export interface ProtocolOperationConfig {
+  readonly input?: S.Top;
+  readonly output?: S.Top;
+  readonly errors?: ReadonlyArray<ApiErrorClass>;
+  /**
+   * The wire operation name (e.g. the Smithy operation shape name). RPC-style
+   * protocols address operations by name (AWS JSON's `X-Amz-Target`, AWS
+   * Query's `Action=`) and unwrap responses by it; REST protocols ignore it.
+   */
+  readonly operationName?: string;
+  readonly pagination?: Pagination.PaginatedTrait;
+}
+
+/**
  * The Protocol service knows how to turn a value into an HTTP request using
  * only the input schema's trait annotations, and how to turn a response back
  * into an output value using the output schema's trait annotations.
@@ -31,6 +51,8 @@ export class Protocol extends Context.Service<
     readonly encode: (args: {
       readonly input: unknown;
       readonly inputAst: AST.AST;
+      /** The operation's config (memoized per operation — see {@link ProtocolOperationConfig}). */
+      readonly config: ProtocolOperationConfig;
     }) => Effect.Effect<HttpClientRequest.HttpClientRequest>;
     readonly decode: (args: {
       readonly response: HttpClientResponse.HttpClientResponse;
@@ -41,6 +63,8 @@ export class Protocol extends Context.Service<
        * errors — e.g. by consulting matcher metadata stamped on the class.
        */
       readonly errors: ReadonlyArray<ApiErrorClass>;
+      /** The operation's config (memoized per operation — see {@link ProtocolOperationConfig}). */
+      readonly config: ProtocolOperationConfig;
     }) => Effect.Effect<unknown>;
   }
 >()("Protocol") {}
@@ -140,6 +164,11 @@ export interface OperationConfig<
    * per that policy (e.g. `Layer.succeed(Cloudflare.Retry.Retry, factory)`).
    */
   retry?: Context.Key<any, RetryPolicy>;
+  /**
+   * The wire operation name for RPC-style protocols (see
+   * {@link ProtocolOperationConfig.operationName}).
+   */
+  operationName?: string;
 }
 
 /**
@@ -217,12 +246,17 @@ export function make<
           Effect.gen(function* () {
             const protocol = yield* Protocol;
             const client = yield* HttpClient.HttpClient;
-            const request = yield* protocol.encode({ input, inputAst });
+            const request = yield* protocol.encode({
+              input,
+              inputAst,
+              config: cfg,
+            });
             const response = yield* client.execute(request);
             return yield* protocol.decode({
               response,
               outputAst,
               errors: cfg.errors ?? [],
+              config: cfg,
             });
           }).pipe(Effect.provideContext(protocolCtx)),
       );
