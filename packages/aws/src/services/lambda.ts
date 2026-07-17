@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5824,6 +5826,8 @@ export const checkpointDurableExecution: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckpointDurableExecution",
 }));
 export type DeleteFunctionError =
@@ -5855,6 +5859,8 @@ export const deleteFunction: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunction",
 }));
 export type DeleteFunctionEventInvokeConfigError =
@@ -5888,6 +5894,8 @@ export const deleteFunctionEventInvokeConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunctionEventInvokeConfig",
 }));
 export type GetAccountSettingsError =
@@ -5906,6 +5914,8 @@ export const getAccountSettings: API.OperationMethod<
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
   errors: [ServiceException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountSettings",
 }));
 export type GetDurableExecutionError =
@@ -5931,6 +5941,8 @@ export const getDurableExecution: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDurableExecution",
 }));
 export type GetDurableExecutionHistoryError =
@@ -5973,6 +5985,8 @@ export const getDurableExecutionHistory: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDurableExecutionHistory",
   pagination: {
     inputToken: "Marker",
@@ -6019,6 +6033,8 @@ export const getDurableExecutionState: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDurableExecutionState",
   pagination: {
     inputToken: "Marker",
@@ -6056,6 +6072,8 @@ export const getFunctionEventInvokeConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionEventInvokeConfig",
 }));
 export type ListDurableExecutionsByFunctionError =
@@ -6096,6 +6114,8 @@ export const listDurableExecutionsByFunction: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDurableExecutionsByFunction",
   pagination: {
     inputToken: "Marker",
@@ -6148,6 +6168,8 @@ export const listFunctionEventInvokeConfigs: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFunctionEventInvokeConfigs",
   pagination: {
     inputToken: "Marker",
@@ -6183,6 +6205,8 @@ export const listTags: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
 }));
 export type PutFunctionEventInvokeConfigError =
@@ -6220,6 +6244,8 @@ export const putFunctionEventInvokeConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFunctionEventInvokeConfig",
 }));
 export type SendDurableExecutionCallbackFailureError =
@@ -6245,6 +6271,8 @@ export const sendDurableExecutionCallbackFailure: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDurableExecutionCallbackFailure",
 }));
 export type SendDurableExecutionCallbackHeartbeatError =
@@ -6270,6 +6298,8 @@ export const sendDurableExecutionCallbackHeartbeat: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDurableExecutionCallbackHeartbeat",
 }));
 export type SendDurableExecutionCallbackSuccessError =
@@ -6295,6 +6325,8 @@ export const sendDurableExecutionCallbackSuccess: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDurableExecutionCallbackSuccess",
 }));
 export type StopDurableExecutionError =
@@ -6320,6 +6352,8 @@ export const stopDurableExecution: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDurableExecution",
 }));
 export type TagResourceError =
@@ -6351,6 +6385,8 @@ export const tagResource: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6382,6 +6418,8 @@ export const untagResource: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateFunctionEventInvokeConfigError =
@@ -6411,6 +6449,8 @@ export const updateFunctionEventInvokeConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFunctionEventInvokeConfig",
 }));
 export type CreateCapacityProviderError =
@@ -6438,6 +6478,8 @@ export const createCapacityProvider: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapacityProvider",
 }));
 export type GetCapacityProviderError =
@@ -6463,6 +6505,8 @@ export const getCapacityProvider: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapacityProvider",
 }));
 export type UpdateCapacityProviderError =
@@ -6490,6 +6534,8 @@ export const updateCapacityProvider: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCapacityProvider",
 }));
 export type DeleteCapacityProviderError =
@@ -6517,6 +6563,8 @@ export const deleteCapacityProvider: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCapacityProvider",
 }));
 export type ListCapacityProvidersError =
@@ -6555,6 +6603,8 @@ export const listCapacityProviders: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCapacityProviders",
   pagination: {
     inputToken: "Marker",
@@ -6601,6 +6651,8 @@ export const listFunctionVersionsByCapacityProvider: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFunctionVersionsByCapacityProvider",
   pagination: {
     inputToken: "Marker",
@@ -6625,6 +6677,8 @@ export const createCodeSigningConfig: API.OperationMethod<
   input: CreateCodeSigningConfigRequest,
   output: CreateCodeSigningConfigResponse,
   errors: [InvalidParameterValueException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCodeSigningConfig",
 }));
 export type ListCodeSigningConfigsError =
@@ -6658,6 +6712,8 @@ export const listCodeSigningConfigs: API.OperationMethod<
   input: ListCodeSigningConfigsRequest,
   output: ListCodeSigningConfigsResponse,
   errors: [InvalidParameterValueException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCodeSigningConfigs",
   pagination: {
     inputToken: "Marker",
@@ -6693,6 +6749,8 @@ export const deleteCodeSigningConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCodeSigningConfig",
 }));
 export type GetCodeSigningConfigError =
@@ -6720,6 +6778,8 @@ export const getCodeSigningConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCodeSigningConfig",
 }));
 export type ListFunctionsByCodeSigningConfigError =
@@ -6758,6 +6818,8 @@ export const listFunctionsByCodeSigningConfig: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFunctionsByCodeSigningConfig",
   pagination: {
     inputToken: "Marker",
@@ -6787,6 +6849,8 @@ export const updateCodeSigningConfig: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCodeSigningConfig",
 }));
 export type CreateEventSourceMappingError =
@@ -6864,6 +6928,8 @@ export const createEventSourceMapping: API.OperationMethod<
     RequestLimitExceeded,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventSourceMapping",
 }));
 export type GetEventSourceMappingError =
@@ -6889,6 +6955,8 @@ export const getEventSourceMapping: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventSourceMapping",
 }));
 export type UpdateEventSourceMappingError =
@@ -6968,6 +7036,8 @@ export const updateEventSourceMapping: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventSourceMapping",
 }));
 export type DeleteEventSourceMappingError =
@@ -6999,6 +7069,8 @@ export const deleteEventSourceMapping: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventSourceMapping",
 }));
 export type ListEventSourceMappingsError =
@@ -7039,6 +7111,8 @@ export const listEventSourceMappings: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventSourceMappings",
   pagination: {
     inputToken: "Marker",
@@ -7098,6 +7172,8 @@ export const createFunction: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFunction",
 }));
 export type ListFunctionsError =
@@ -7140,6 +7216,8 @@ export const listFunctions: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFunctions",
   pagination: {
     inputToken: "Marker",
@@ -7177,6 +7255,8 @@ export const createFunctionUrlConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFunctionUrlConfig",
 }));
 export type DeleteFunctionConcurrencyError =
@@ -7208,6 +7288,8 @@ export const deleteFunctionConcurrency: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunctionConcurrency",
 }));
 export type DeleteFunctionUrlConfigError =
@@ -7237,6 +7319,8 @@ export const deleteFunctionUrlConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunctionUrlConfig",
 }));
 export type GetFunctionConcurrencyError =
@@ -7266,6 +7350,8 @@ export const getFunctionConcurrency: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionConcurrency",
 }));
 export type GetFunctionUrlConfigError =
@@ -7291,6 +7377,8 @@ export const getFunctionUrlConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionUrlConfig",
 }));
 export type ListFunctionUrlConfigsError =
@@ -7331,6 +7419,8 @@ export const listFunctionUrlConfigs: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFunctionUrlConfigs",
   pagination: {
     inputToken: "Marker",
@@ -7381,6 +7471,8 @@ export const listProvisionedConcurrencyConfigs: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisionedConcurrencyConfigs",
   pagination: {
     inputToken: "Marker",
@@ -7422,6 +7514,8 @@ export const putFunctionConcurrency: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFunctionConcurrency",
 }));
 export type UpdateFunctionCodeError =
@@ -7473,6 +7567,8 @@ export const updateFunctionCode: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFunctionCode",
 }));
 export type UpdateFunctionConfigurationError =
@@ -7518,6 +7614,8 @@ export const updateFunctionConfiguration: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFunctionConfiguration",
 }));
 export type UpdateFunctionUrlConfigError =
@@ -7549,6 +7647,8 @@ export const updateFunctionUrlConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFunctionUrlConfig",
 }));
 export type DeleteFunctionCodeSigningConfigError =
@@ -7578,6 +7678,8 @@ export const deleteFunctionCodeSigningConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunctionCodeSigningConfig",
 }));
 export type GetFunctionError =
@@ -7603,6 +7705,8 @@ export const getFunction: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunction",
 }));
 export type GetFunctionCodeSigningConfigError =
@@ -7628,6 +7732,8 @@ export const getFunctionCodeSigningConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionCodeSigningConfig",
 }));
 export type GetFunctionConfigurationError =
@@ -7655,6 +7761,8 @@ export const getFunctionConfiguration: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionConfiguration",
 }));
 export type GetFunctionRecursionConfigError =
@@ -7684,6 +7792,8 @@ export const getFunctionRecursionConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionRecursionConfig",
 }));
 export type GetFunctionScalingConfigError =
@@ -7709,6 +7819,8 @@ export const getFunctionScalingConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionScalingConfig",
 }));
 export type GetPolicyError =
@@ -7734,6 +7846,8 @@ export const getPolicy: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
 export type GetRuntimeManagementConfigError =
@@ -7759,6 +7873,8 @@ export const getRuntimeManagementConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRuntimeManagementConfig",
 }));
 export type InvokeError =
@@ -7866,6 +7982,8 @@ export const invoke: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Invoke",
 }));
 export type InvokeAsyncError =
@@ -7899,6 +8017,8 @@ export const invokeAsync: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeAsync",
 }));
 export type InvokeWithResponseStreamError =
@@ -7988,6 +8108,8 @@ export const invokeWithResponseStream: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedMediaTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeWithResponseStream",
 }));
 export type PutFunctionCodeSigningConfigError =
@@ -8021,6 +8143,8 @@ export const putFunctionCodeSigningConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFunctionCodeSigningConfig",
 }));
 export type PutFunctionRecursionConfigError =
@@ -8056,6 +8180,8 @@ export const putFunctionRecursionConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFunctionRecursionConfig",
 }));
 export type PutFunctionScalingConfigError =
@@ -8083,6 +8209,8 @@ export const putFunctionScalingConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFunctionScalingConfig",
 }));
 export type PutRuntimeManagementConfigError =
@@ -8110,6 +8238,8 @@ export const putRuntimeManagementConfig: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRuntimeManagementConfig",
 }));
 export type CreateAliasError =
@@ -8143,6 +8273,8 @@ export const createAlias: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlias",
 }));
 export type GetAliasError =
@@ -8168,6 +8300,8 @@ export const getAlias: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAlias",
 }));
 export type UpdateAliasError =
@@ -8201,6 +8335,8 @@ export const updateAlias: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAlias",
 }));
 export type DeleteAliasError =
@@ -8230,6 +8366,8 @@ export const deleteAlias: API.OperationMethod<
     RequestLimitExceeded,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlias",
 }));
 export type ListAliasesError =
@@ -8270,6 +8408,8 @@ export const listAliases: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAliases",
   pagination: {
     inputToken: "Marker",
@@ -8317,6 +8457,8 @@ export const publishVersion: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishVersion",
 }));
 export type ListVersionsByFunctionError =
@@ -8357,6 +8499,8 @@ export const listVersionsByFunction: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVersionsByFunction",
   pagination: {
     inputToken: "Marker",
@@ -8401,6 +8545,8 @@ export const listLayers: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLayers",
   pagination: {
     inputToken: "Marker",
@@ -8451,6 +8597,8 @@ export const listLayerVersions: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLayerVersions",
   pagination: {
     inputToken: "Marker",
@@ -8494,6 +8642,8 @@ export const addLayerVersionPermission: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddLayerVersionPermission",
 }));
 export type DeleteLayerVersionError =
@@ -8519,6 +8669,8 @@ export const deleteLayerVersion: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLayerVersion",
 }));
 export type GetLayerVersionError =
@@ -8548,6 +8700,8 @@ export const getLayerVersion: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLayerVersion",
 }));
 export type GetLayerVersionByArnError =
@@ -8573,6 +8727,8 @@ export const getLayerVersionByArn: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLayerVersionByArn",
 }));
 export type GetLayerVersionPolicyError =
@@ -8602,6 +8758,8 @@ export const getLayerVersionPolicy: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLayerVersionPolicy",
 }));
 export type PublishLayerVersionError =
@@ -8635,6 +8793,8 @@ export const publishLayerVersion: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishLayerVersion",
 }));
 export type RemoveLayerVersionPermissionError =
@@ -8666,6 +8826,8 @@ export const removeLayerVersionPermission: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveLayerVersionPermission",
 }));
 export type AddPermissionError =
@@ -8705,6 +8867,8 @@ export const addPermission: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddPermission",
 }));
 export type RemovePermissionError =
@@ -8732,6 +8896,8 @@ export const removePermission: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemovePermission",
 }));
 export type PutProvisionedConcurrencyConfigError =
@@ -8763,6 +8929,8 @@ export const putProvisionedConcurrencyConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProvisionedConcurrencyConfig",
 }));
 export type GetProvisionedConcurrencyConfigError =
@@ -8794,6 +8962,8 @@ export const getProvisionedConcurrencyConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProvisionedConcurrencyConfig",
 }));
 export type DeleteProvisionedConcurrencyConfigError =
@@ -8825,5 +8995,7 @@ export const deleteProvisionedConcurrencyConfig: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProvisionedConcurrencyConfig",
 }));

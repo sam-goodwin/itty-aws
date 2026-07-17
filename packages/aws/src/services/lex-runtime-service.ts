@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -765,6 +767,8 @@ export const deleteSession: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSession",
 }));
 export type GetSessionError =
@@ -791,6 +795,8 @@ export const getSession: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSession",
 }));
 export type PostContentError =
@@ -888,6 +894,8 @@ export const postContent: API.OperationMethod<
     RequestTimeoutException,
     UnsupportedMediaTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostContent",
 }));
 export type PostTextError =
@@ -976,6 +984,8 @@ export const postText: API.OperationMethod<
     LoopDetectedException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostText",
 }));
 export type PutSessionError =
@@ -1014,5 +1024,7 @@ export const putSession: API.OperationMethod<
     NotAcceptableException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSession",
 }));

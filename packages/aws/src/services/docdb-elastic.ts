@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -971,6 +973,8 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplyPendingMaintenanceAction",
 }));
 export type CopyClusterSnapshotError =
@@ -1002,6 +1006,8 @@ export const copyClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyClusterSnapshot",
 }));
 export type CreateClusterError =
@@ -1031,6 +1037,8 @@ export const createCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateClusterSnapshotError =
@@ -1062,6 +1070,8 @@ export const createClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterSnapshot",
 }));
 export type DeleteClusterError =
@@ -1091,6 +1101,8 @@ export const deleteCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type DeleteClusterSnapshotError =
@@ -1120,6 +1132,8 @@ export const deleteClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterSnapshot",
 }));
 export type GetClusterError =
@@ -1147,6 +1161,8 @@ export const getCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCluster",
 }));
 export type GetClusterSnapshotError =
@@ -1174,6 +1190,8 @@ export const getClusterSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterSnapshot",
 }));
 export type GetPendingMaintenanceActionError =
@@ -1203,6 +1221,8 @@ export const getPendingMaintenanceAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPendingMaintenanceAction",
 }));
 export type ListClustersError =
@@ -1243,6 +1263,8 @@ export const listClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
@@ -1289,6 +1311,8 @@ export const listClusterSnapshots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusterSnapshots",
   pagination: {
     inputToken: "nextToken",
@@ -1335,6 +1359,8 @@ export const listPendingMaintenanceActions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPendingMaintenanceActions",
   pagination: {
     inputToken: "nextToken",
@@ -1366,6 +1392,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RestoreClusterFromSnapshotError =
@@ -1397,6 +1425,8 @@ export const restoreClusterFromSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreClusterFromSnapshot",
 }));
 export type StartClusterError =
@@ -1424,6 +1454,8 @@ export const startCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCluster",
 }));
 export type StopClusterError =
@@ -1452,6 +1484,8 @@ export const stopCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCluster",
 }));
 export type TagResourceError =
@@ -1477,6 +1511,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1502,6 +1538,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateClusterError =
@@ -1532,5 +1570,7 @@ export const updateCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));

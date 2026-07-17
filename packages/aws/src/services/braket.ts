@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1235,6 +1237,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1258,6 +1262,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1281,6 +1287,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type GetDeviceError =
@@ -1310,6 +1318,8 @@ export const getDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevice",
 }));
 export type SearchDevicesError =
@@ -1350,6 +1360,8 @@ export const searchDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchDevices",
   pagination: {
     inputToken: "nextToken",
@@ -1389,6 +1401,8 @@ export const createJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJob",
 }));
 export type GetJobError =
@@ -1416,6 +1430,8 @@ export const getJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJob",
 }));
 export type CancelJobError =
@@ -1445,6 +1461,8 @@ export const cancelJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelJob",
 }));
 export type SearchJobsError =
@@ -1485,6 +1503,8 @@ export const searchJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchJobs",
   pagination: {
     inputToken: "nextToken",
@@ -1522,6 +1542,8 @@ export const createQuantumTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQuantumTask",
 }));
 export type GetQuantumTaskError =
@@ -1549,6 +1571,8 @@ export const getQuantumTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQuantumTask",
 }));
 export type CancelQuantumTaskError =
@@ -1578,6 +1602,8 @@ export const cancelQuantumTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelQuantumTask",
 }));
 export type SearchQuantumTasksError =
@@ -1618,6 +1644,8 @@ export const searchQuantumTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchQuantumTasks",
   pagination: {
     inputToken: "nextToken",
@@ -1651,6 +1679,8 @@ export const createSpendingLimit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSpendingLimit",
 }));
 export type UpdateSpendingLimitError =
@@ -1678,6 +1708,8 @@ export const updateSpendingLimit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSpendingLimit",
 }));
 export type DeleteSpendingLimitError =
@@ -1705,6 +1737,8 @@ export const deleteSpendingLimit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSpendingLimit",
 }));
 export type SearchSpendingLimitsError =
@@ -1745,6 +1779,8 @@ export const searchSpendingLimits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSpendingLimits",
   pagination: {
     inputToken: "nextToken",

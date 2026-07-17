@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -440,6 +442,8 @@ export const search: API.OperationMethod<
   input: SearchRequest,
   output: SearchResponse,
   errors: [SearchException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Search",
 }));
 export type SuggestError = SearchException | CommonErrors;
@@ -459,6 +463,8 @@ export const suggest: API.OperationMethod<
   input: SuggestRequest,
   output: SuggestResponse,
   errors: [SearchException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Suggest",
 }));
 export type UploadDocumentsError = DocumentServiceException | CommonErrors;
@@ -479,5 +485,7 @@ export const uploadDocuments: API.OperationMethod<
   input: UploadDocumentsRequest,
   output: UploadDocumentsResponse,
   errors: [DocumentServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadDocuments",
 }));

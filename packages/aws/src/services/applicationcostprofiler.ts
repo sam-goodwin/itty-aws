@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -402,6 +404,8 @@ export const deleteReportDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReportDefinition",
 }));
 export type GetReportDefinitionError =
@@ -427,6 +431,8 @@ export const getReportDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReportDefinition",
 }));
 export type ImportApplicationUsageError =
@@ -456,6 +462,8 @@ export const importApplicationUsage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportApplicationUsage",
 }));
 export type ListReportDefinitionsError =
@@ -498,6 +506,8 @@ export const listReportDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReportDefinitions",
   pagination: {
     inputToken: "nextToken",
@@ -531,6 +541,8 @@ export const putReportDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutReportDefinition",
 }));
 export type UpdateReportDefinitionError =
@@ -556,5 +568,7 @@ export const updateReportDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReportDefinition",
 }));

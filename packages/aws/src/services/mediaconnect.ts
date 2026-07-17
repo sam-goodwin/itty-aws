@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -8397,6 +8399,8 @@ export const listEntitlements: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntitlements",
   pagination: {
     inputToken: "NextToken",
@@ -8426,6 +8430,8 @@ export const listTagsForGlobalResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForGlobalResource",
 }));
 export type ListTagsForResourceError =
@@ -8449,6 +8455,8 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagGlobalResourceError =
@@ -8472,6 +8480,8 @@ export const tagGlobalResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagGlobalResource",
 }));
 export type TagResourceError =
@@ -8495,6 +8505,8 @@ export const tagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagGlobalResourceError =
@@ -8518,6 +8530,8 @@ export const untagGlobalResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagGlobalResource",
 }));
 export type UntagResourceError =
@@ -8541,6 +8555,8 @@ export const untagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateBridgeError =
@@ -8572,6 +8588,8 @@ export const createBridge: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBridge",
 }));
 export type DescribeBridgeError =
@@ -8603,6 +8621,8 @@ export const describeBridge: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBridge",
 }));
 export type UpdateBridgeError =
@@ -8634,6 +8654,8 @@ export const updateBridge: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBridge",
 }));
 export type DeleteBridgeError =
@@ -8665,6 +8687,8 @@ export const deleteBridge: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBridge",
 }));
 export type ListBridgesError =
@@ -8707,6 +8731,8 @@ export const listBridges: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBridges",
   pagination: {
     inputToken: "NextToken",
@@ -8744,6 +8770,8 @@ export const addBridgeOutputs: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddBridgeOutputs",
 }));
 export type AddBridgeSourcesError =
@@ -8775,6 +8803,8 @@ export const addBridgeSources: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddBridgeSources",
 }));
 export type RemoveBridgeOutputError =
@@ -8806,6 +8836,8 @@ export const removeBridgeOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveBridgeOutput",
 }));
 export type RemoveBridgeSourceError =
@@ -8837,6 +8869,8 @@ export const removeBridgeSource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveBridgeSource",
 }));
 export type UpdateBridgeOutputError =
@@ -8868,6 +8902,8 @@ export const updateBridgeOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBridgeOutput",
 }));
 export type UpdateBridgeSourceError =
@@ -8899,6 +8935,8 @@ export const updateBridgeSource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBridgeSource",
 }));
 export type UpdateBridgeStateError =
@@ -8930,6 +8968,8 @@ export const updateBridgeState: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBridgeState",
 }));
 export type CreateFlowError =
@@ -8959,6 +8999,8 @@ export const createFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFlow",
 }));
 export type DescribeFlowError =
@@ -8988,6 +9030,8 @@ export const describeFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlow",
 }));
 export type UpdateFlowError =
@@ -9031,6 +9075,8 @@ export const updateFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlow",
 }));
 export type DeleteFlowError =
@@ -9060,6 +9106,8 @@ export const deleteFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFlow",
 }));
 export type ListFlowsError =
@@ -9100,6 +9148,8 @@ export const listFlows: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlows",
   pagination: {
     inputToken: "NextToken",
@@ -9135,6 +9185,8 @@ export const addFlowMediaStreams: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddFlowMediaStreams",
 }));
 export type AddFlowOutputsError =
@@ -9166,6 +9218,8 @@ export const addFlowOutputs: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddFlowOutputs",
 }));
 export type AddFlowSourcesError =
@@ -9195,6 +9249,8 @@ export const addFlowSources: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddFlowSources",
 }));
 export type AddFlowVpcInterfacesError =
@@ -9224,6 +9280,8 @@ export const addFlowVpcInterfaces: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddFlowVpcInterfaces",
 }));
 export type DescribeFlowSourceMetadataError =
@@ -9253,6 +9311,8 @@ export const describeFlowSourceMetadata: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlowSourceMetadata",
 }));
 export type DescribeFlowSourceThumbnailError =
@@ -9282,6 +9342,8 @@ export const describeFlowSourceThumbnail: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlowSourceThumbnail",
 }));
 export type GrantFlowEntitlementsError =
@@ -9313,6 +9375,8 @@ export const grantFlowEntitlements: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GrantFlowEntitlements",
 }));
 export type RemoveFlowMediaStreamError =
@@ -9342,6 +9406,8 @@ export const removeFlowMediaStream: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveFlowMediaStream",
 }));
 export type RemoveFlowOutputError =
@@ -9371,6 +9437,8 @@ export const removeFlowOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveFlowOutput",
 }));
 export type RemoveFlowSourceError =
@@ -9400,6 +9468,8 @@ export const removeFlowSource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveFlowSource",
 }));
 export type RemoveFlowVpcInterfaceError =
@@ -9429,6 +9499,8 @@ export const removeFlowVpcInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveFlowVpcInterface",
 }));
 export type RevokeFlowEntitlementError =
@@ -9458,6 +9530,8 @@ export const revokeFlowEntitlement: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeFlowEntitlement",
 }));
 export type StartFlowError =
@@ -9487,6 +9561,8 @@ export const startFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFlow",
 }));
 export type StopFlowError =
@@ -9516,6 +9592,8 @@ export const stopFlow: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopFlow",
 }));
 export type UpdateFlowEntitlementError =
@@ -9545,6 +9623,8 @@ export const updateFlowEntitlement: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlowEntitlement",
 }));
 export type UpdateFlowMediaStreamError =
@@ -9574,6 +9654,8 @@ export const updateFlowMediaStream: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlowMediaStream",
 }));
 export type UpdateFlowOutputError =
@@ -9603,6 +9685,8 @@ export const updateFlowOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlowOutput",
 }));
 export type UpdateFlowSourceError =
@@ -9646,6 +9730,8 @@ export const updateFlowSource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlowSource",
 }));
 export type DescribeGatewayInstanceError =
@@ -9677,6 +9763,8 @@ export const describeGatewayInstance: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGatewayInstance",
 }));
 export type UpdateGatewayInstanceError =
@@ -9708,6 +9796,8 @@ export const updateGatewayInstance: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGatewayInstance",
 }));
 export type DeregisterGatewayInstanceError =
@@ -9739,6 +9829,8 @@ export const deregisterGatewayInstance: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterGatewayInstance",
 }));
 export type ListGatewayInstancesError =
@@ -9781,6 +9873,8 @@ export const listGatewayInstances: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGatewayInstances",
   pagination: {
     inputToken: "NextToken",
@@ -9818,6 +9912,8 @@ export const createGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGateway",
 }));
 export type DescribeGatewayError =
@@ -9849,6 +9945,8 @@ export const describeGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGateway",
 }));
 export type DeleteGatewayError =
@@ -9880,6 +9978,8 @@ export const deleteGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGateway",
 }));
 export type ListGatewaysError =
@@ -9922,6 +10022,8 @@ export const listGateways: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGateways",
   pagination: {
     inputToken: "NextToken",
@@ -9955,6 +10057,8 @@ export const describeOffering: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOffering",
 }));
 export type ListOfferingsError =
@@ -9995,6 +10099,8 @@ export const listOfferings: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -10030,6 +10136,8 @@ export const purchaseOffering: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseOffering",
 }));
 export type DescribeReservationError =
@@ -10057,6 +10165,8 @@ export const describeReservation: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservation",
 }));
 export type ListReservationsError =
@@ -10097,6 +10207,8 @@ export const listReservations: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReservations",
   pagination: {
     inputToken: "NextToken",
@@ -10134,6 +10246,8 @@ export const createRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRouterInput",
 }));
 export type GetRouterInputError =
@@ -10165,6 +10279,8 @@ export const getRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouterInput",
 }));
 export type UpdateRouterInputError =
@@ -10196,6 +10312,8 @@ export const updateRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRouterInput",
 }));
 export type DeleteRouterInputError =
@@ -10227,6 +10345,8 @@ export const deleteRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouterInput",
 }));
 export type ListRouterInputsError =
@@ -10269,6 +10389,8 @@ export const listRouterInputs: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRouterInputs",
   pagination: {
     inputToken: "NextToken",
@@ -10304,6 +10426,8 @@ export const getRouterInputSourceMetadata: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouterInputSourceMetadata",
 }));
 export type GetRouterInputThumbnailError =
@@ -10333,6 +10457,8 @@ export const getRouterInputThumbnail: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouterInputThumbnail",
 }));
 export type RestartRouterInputError =
@@ -10364,6 +10490,8 @@ export const restartRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestartRouterInput",
 }));
 export type StartRouterInputError =
@@ -10395,6 +10523,8 @@ export const startRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRouterInput",
 }));
 export type StopRouterInputError =
@@ -10426,6 +10556,8 @@ export const stopRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRouterInput",
 }));
 export type BatchGetRouterInputError =
@@ -10453,6 +10585,8 @@ export const batchGetRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetRouterInput",
 }));
 export type CreateRouterNetworkInterfaceError =
@@ -10484,6 +10618,8 @@ export const createRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRouterNetworkInterface",
 }));
 export type GetRouterNetworkInterfaceError =
@@ -10515,6 +10651,8 @@ export const getRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouterNetworkInterface",
 }));
 export type UpdateRouterNetworkInterfaceError =
@@ -10544,6 +10682,8 @@ export const updateRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRouterNetworkInterface",
 }));
 export type DeleteRouterNetworkInterfaceError =
@@ -10575,6 +10715,8 @@ export const deleteRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouterNetworkInterface",
 }));
 export type ListRouterNetworkInterfacesError =
@@ -10617,6 +10759,8 @@ export const listRouterNetworkInterfaces: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRouterNetworkInterfaces",
   pagination: {
     inputToken: "NextToken",
@@ -10650,6 +10794,8 @@ export const batchGetRouterNetworkInterface: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetRouterNetworkInterface",
 }));
 export type CreateRouterOutputError =
@@ -10681,6 +10827,8 @@ export const createRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRouterOutput",
 }));
 export type GetRouterOutputError =
@@ -10712,6 +10860,8 @@ export const getRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouterOutput",
 }));
 export type UpdateRouterOutputError =
@@ -10743,6 +10893,8 @@ export const updateRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRouterOutput",
 }));
 export type DeleteRouterOutputError =
@@ -10774,6 +10926,8 @@ export const deleteRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouterOutput",
 }));
 export type ListRouterOutputsError =
@@ -10816,6 +10970,8 @@ export const listRouterOutputs: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRouterOutputs",
   pagination: {
     inputToken: "NextToken",
@@ -10853,6 +11009,8 @@ export const restartRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestartRouterOutput",
 }));
 export type StartRouterOutputError =
@@ -10884,6 +11042,8 @@ export const startRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRouterOutput",
 }));
 export type StopRouterOutputError =
@@ -10915,6 +11075,8 @@ export const stopRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRouterOutput",
 }));
 export type TakeRouterInputError =
@@ -10946,6 +11108,8 @@ export const takeRouterInput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TakeRouterInput",
 }));
 export type BatchGetRouterOutputError =
@@ -10973,5 +11137,7 @@ export const batchGetRouterOutput: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetRouterOutput",
 }));

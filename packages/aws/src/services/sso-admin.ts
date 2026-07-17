@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3034,6 +3036,8 @@ export const addRegion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddRegion",
 }));
 export type AttachCustomerManagedPolicyReferenceToPermissionSetError =
@@ -3065,6 +3069,8 @@ export const attachCustomerManagedPolicyReferenceToPermissionSet: API.OperationM
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachCustomerManagedPolicyReferenceToPermissionSet",
 }));
 export type AttachManagedPolicyToPermissionSetError =
@@ -3098,6 +3104,8 @@ export const attachManagedPolicyToPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachManagedPolicyToPermissionSet",
 }));
 export type CreateAccountAssignmentError =
@@ -3135,6 +3143,8 @@ export const createAccountAssignment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccountAssignment",
 }));
 export type CreateApplicationError =
@@ -3168,6 +3178,8 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateApplicationAssignmentError =
@@ -3199,6 +3211,8 @@ export const createApplicationAssignment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplicationAssignment",
 }));
 export type CreateInstanceError =
@@ -3234,6 +3248,8 @@ export const createInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstance",
 }));
 export type CreateInstanceAccessControlAttributeConfigurationError =
@@ -3265,6 +3281,8 @@ export const createInstanceAccessControlAttributeConfiguration: API.OperationMet
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceAccessControlAttributeConfiguration",
 }));
 export type CreatePermissionSetError =
@@ -3298,6 +3316,8 @@ export const createPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePermissionSet",
 }));
 export type CreateTrustedTokenIssuerError =
@@ -3329,6 +3349,8 @@ export const createTrustedTokenIssuer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrustedTokenIssuer",
 }));
 export type DeleteAccountAssignmentError =
@@ -3360,6 +3382,8 @@ export const deleteAccountAssignment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountAssignment",
 }));
 export type DeleteApplicationError =
@@ -3389,6 +3413,8 @@ export const deleteApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteApplicationAssignmentError =
@@ -3418,6 +3444,8 @@ export const deleteApplicationAssignment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationAssignment",
 }));
 export type DeleteInlinePolicyFromPermissionSetError =
@@ -3447,6 +3475,8 @@ export const deleteInlinePolicyFromPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInlinePolicyFromPermissionSet",
 }));
 export type DeleteInstanceError =
@@ -3474,6 +3504,8 @@ export const deleteInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstance",
 }));
 export type DeleteInstanceAccessControlAttributeConfigurationError =
@@ -3503,6 +3535,8 @@ export const deleteInstanceAccessControlAttributeConfiguration: API.OperationMet
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceAccessControlAttributeConfiguration",
 }));
 export type DeletePermissionsBoundaryFromPermissionSetError =
@@ -3532,6 +3566,8 @@ export const deletePermissionsBoundaryFromPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermissionsBoundaryFromPermissionSet",
 }));
 export type DeletePermissionSetError =
@@ -3561,6 +3597,8 @@ export const deletePermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermissionSet",
 }));
 export type DeleteTrustedTokenIssuerError =
@@ -3592,6 +3630,8 @@ export const deleteTrustedTokenIssuer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrustedTokenIssuer",
 }));
 export type DescribeAccountAssignmentCreationStatusError =
@@ -3619,6 +3659,8 @@ export const describeAccountAssignmentCreationStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAssignmentCreationStatus",
 }));
 export type DescribeAccountAssignmentDeletionStatusError =
@@ -3646,6 +3688,8 @@ export const describeAccountAssignmentDeletionStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAssignmentDeletionStatus",
 }));
 export type DescribeApplicationError =
@@ -3673,6 +3717,8 @@ export const describeApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplication",
 }));
 export type DescribeApplicationAssignmentError =
@@ -3700,6 +3746,8 @@ export const describeApplicationAssignment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationAssignment",
 }));
 export type DescribeApplicationProviderError =
@@ -3727,6 +3775,8 @@ export const describeApplicationProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationProvider",
 }));
 export type DescribeInstanceError =
@@ -3758,6 +3808,8 @@ export const describeInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstance",
 }));
 export type DescribeInstanceAccessControlAttributeConfigurationError =
@@ -3785,6 +3837,8 @@ export const describeInstanceAccessControlAttributeConfiguration: API.OperationM
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceAccessControlAttributeConfiguration",
 }));
 export type DescribePermissionSetError =
@@ -3812,6 +3866,8 @@ export const describePermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePermissionSet",
 }));
 export type DescribePermissionSetProvisioningStatusError =
@@ -3839,6 +3895,8 @@ export const describePermissionSetProvisioningStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePermissionSetProvisioningStatus",
 }));
 export type DescribeRegionError =
@@ -3874,6 +3932,8 @@ export const describeRegion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegion",
 }));
 export type DescribeTrustedTokenIssuerError =
@@ -3901,6 +3961,8 @@ export const describeTrustedTokenIssuer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrustedTokenIssuer",
 }));
 export type DetachCustomerManagedPolicyReferenceFromPermissionSetError =
@@ -3930,6 +3992,8 @@ export const detachCustomerManagedPolicyReferenceFromPermissionSet: API.Operatio
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachCustomerManagedPolicyReferenceFromPermissionSet",
 }));
 export type DetachManagedPolicyFromPermissionSetError =
@@ -3959,6 +4023,8 @@ export const detachManagedPolicyFromPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachManagedPolicyFromPermissionSet",
 }));
 export type GetApplicationAssignmentConfigurationError =
@@ -3986,6 +4052,8 @@ export const getApplicationAssignmentConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationAssignmentConfiguration",
 }));
 export type GetApplicationSessionConfigurationError =
@@ -4015,6 +4083,8 @@ export const getApplicationSessionConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationSessionConfiguration",
 }));
 export type GetInlinePolicyForPermissionSetError =
@@ -4042,6 +4112,8 @@ export const getInlinePolicyForPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInlinePolicyForPermissionSet",
 }));
 export type GetPermissionsBoundaryForPermissionSetError =
@@ -4069,6 +4141,8 @@ export const getPermissionsBoundaryForPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPermissionsBoundaryForPermissionSet",
 }));
 export type ListAccountAssignmentCreationStatusError =
@@ -4111,6 +4185,8 @@ export const listAccountAssignmentCreationStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountAssignmentCreationStatus",
   pagination: {
     inputToken: "NextToken",
@@ -4159,6 +4235,8 @@ export const listAccountAssignmentDeletionStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountAssignmentDeletionStatus",
   pagination: {
     inputToken: "NextToken",
@@ -4207,6 +4285,8 @@ export const listAccountAssignments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountAssignments",
   pagination: {
     inputToken: "NextToken",
@@ -4255,6 +4335,8 @@ export const listAccountAssignmentsForPrincipal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountAssignmentsForPrincipal",
   pagination: {
     inputToken: "NextToken",
@@ -4303,6 +4385,8 @@ export const listAccountsForProvisionedPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountsForProvisionedPermissionSet",
   pagination: {
     inputToken: "NextToken",
@@ -4351,6 +4435,8 @@ export const listApplicationAssignments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationAssignments",
   pagination: {
     inputToken: "NextToken",
@@ -4399,6 +4485,8 @@ export const listApplicationAssignmentsForPrincipal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationAssignmentsForPrincipal",
   pagination: {
     inputToken: "NextToken",
@@ -4445,6 +4533,8 @@ export const listApplicationProviders: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationProviders",
   pagination: {
     inputToken: "NextToken",
@@ -4491,6 +4581,8 @@ export const listApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -4539,6 +4631,8 @@ export const listCustomerManagedPolicyReferencesInPermissionSet: API.OperationMe
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomerManagedPolicyReferencesInPermissionSet",
   pagination: {
     inputToken: "NextToken",
@@ -4585,6 +4679,8 @@ export const listInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstances",
   pagination: {
     inputToken: "NextToken",
@@ -4633,6 +4729,8 @@ export const listManagedPoliciesInPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedPoliciesInPermissionSet",
   pagination: {
     inputToken: "NextToken",
@@ -4681,6 +4779,8 @@ export const listPermissionSetProvisioningStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissionSetProvisioningStatus",
   pagination: {
     inputToken: "NextToken",
@@ -4729,6 +4829,8 @@ export const listPermissionSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissionSets",
   pagination: {
     inputToken: "NextToken",
@@ -4777,6 +4879,8 @@ export const listPermissionSetsProvisionedToAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissionSetsProvisionedToAccount",
   pagination: {
     inputToken: "NextToken",
@@ -4831,6 +4935,8 @@ export const listRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegions",
   pagination: {
     inputToken: "NextToken",
@@ -4879,6 +4985,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -4924,6 +5032,8 @@ export const listTrustedTokenIssuers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrustedTokenIssuers",
   pagination: {
     inputToken: "NextToken",
@@ -4959,6 +5069,8 @@ export const provisionPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvisionPermissionSet",
 }));
 export type PutApplicationAssignmentConfigurationError =
@@ -4988,6 +5100,8 @@ export const putApplicationAssignmentConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutApplicationAssignmentConfiguration",
 }));
 export type PutApplicationSessionConfigurationError =
@@ -5019,6 +5133,8 @@ export const putApplicationSessionConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutApplicationSessionConfiguration",
 }));
 export type PutInlinePolicyToPermissionSetError =
@@ -5052,6 +5168,8 @@ export const putInlinePolicyToPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInlinePolicyToPermissionSet",
 }));
 export type PutPermissionsBoundaryToPermissionSetError =
@@ -5081,6 +5199,8 @@ export const putPermissionsBoundaryToPermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPermissionsBoundaryToPermissionSet",
 }));
 export type RemoveRegionError =
@@ -5118,6 +5238,8 @@ export const removeRegion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveRegion",
 }));
 export type TagResourceError =
@@ -5149,6 +5271,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5178,6 +5302,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
@@ -5207,6 +5333,8 @@ export const updateApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateInstanceError =
@@ -5236,6 +5364,8 @@ export const updateInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstance",
 }));
 export type UpdateInstanceAccessControlAttributeConfigurationError =
@@ -5265,6 +5395,8 @@ export const updateInstanceAccessControlAttributeConfiguration: API.OperationMet
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstanceAccessControlAttributeConfiguration",
 }));
 export type UpdatePermissionSetError =
@@ -5294,6 +5426,8 @@ export const updatePermissionSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePermissionSet",
 }));
 export type UpdateTrustedTokenIssuerError =
@@ -5325,6 +5459,8 @@ export const updateTrustedTokenIssuer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrustedTokenIssuer",
 }));
 export type PutApplicationAccessScopeError =
@@ -5354,6 +5490,8 @@ export const putApplicationAccessScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutApplicationAccessScope",
 }));
 export type GetApplicationAccessScopeError =
@@ -5381,6 +5519,8 @@ export const getApplicationAccessScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationAccessScope",
 }));
 export type DeleteApplicationAccessScopeError =
@@ -5410,6 +5550,8 @@ export const deleteApplicationAccessScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationAccessScope",
 }));
 export type ListApplicationAccessScopesError =
@@ -5452,6 +5594,8 @@ export const listApplicationAccessScopes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationAccessScopes",
   pagination: {
     inputToken: "NextToken",
@@ -5487,6 +5631,8 @@ export const putApplicationAuthenticationMethod: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutApplicationAuthenticationMethod",
 }));
 export type GetApplicationAuthenticationMethodError =
@@ -5514,6 +5660,8 @@ export const getApplicationAuthenticationMethod: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationAuthenticationMethod",
 }));
 export type DeleteApplicationAuthenticationMethodError =
@@ -5543,6 +5691,8 @@ export const deleteApplicationAuthenticationMethod: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationAuthenticationMethod",
 }));
 export type ListApplicationAuthenticationMethodsError =
@@ -5585,6 +5735,8 @@ export const listApplicationAuthenticationMethods: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationAuthenticationMethods",
   pagination: {
     inputToken: "NextToken",
@@ -5644,6 +5796,8 @@ export const putApplicationGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutApplicationGrant",
 }));
 export type GetApplicationGrantError =
@@ -5671,6 +5825,8 @@ export const getApplicationGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationGrant",
 }));
 export type DeleteApplicationGrantError =
@@ -5700,6 +5856,8 @@ export const deleteApplicationGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationGrant",
 }));
 export type ListApplicationGrantsError =
@@ -5742,6 +5900,8 @@ export const listApplicationGrants: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationGrants",
   pagination: {
     inputToken: "NextToken",

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2064,6 +2066,8 @@ export const createBroker: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBroker",
 }));
 export type CreateConfigurationError =
@@ -2089,6 +2093,8 @@ export const createConfiguration: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfiguration",
 }));
 export type CreateTagsError =
@@ -2114,6 +2120,8 @@ export const createTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTags",
 }));
 export type CreateUserError =
@@ -2143,6 +2151,8 @@ export const createUser: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DeleteBrokerError =
@@ -2168,6 +2178,8 @@ export const deleteBroker: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBroker",
 }));
 export type DeleteConfigurationError =
@@ -2195,6 +2207,8 @@ export const deleteConfiguration: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfiguration",
 }));
 export type DeleteTagsError =
@@ -2220,6 +2234,8 @@ export const deleteTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
 export type DeleteUserError =
@@ -2245,6 +2261,8 @@ export const deleteUser: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DescribeBrokerError =
@@ -2270,6 +2288,8 @@ export const describeBroker: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBroker",
 }));
 export type DescribeBrokerEngineTypesError =
@@ -2293,6 +2313,8 @@ export const describeBrokerEngineTypes: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBrokerEngineTypes",
 }));
 export type DescribeBrokerInstanceOptionsError =
@@ -2316,6 +2338,8 @@ export const describeBrokerInstanceOptions: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBrokerInstanceOptions",
 }));
 export type DescribeConfigurationError =
@@ -2341,6 +2365,8 @@ export const describeConfiguration: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfiguration",
 }));
 export type DescribeConfigurationRevisionError =
@@ -2366,6 +2392,8 @@ export const describeConfigurationRevision: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationRevision",
 }));
 export type DescribeUserError =
@@ -2391,6 +2419,8 @@ export const describeUser: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUser",
 }));
 export type ListBrokersError =
@@ -2429,6 +2459,8 @@ export const listBrokers: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBrokers",
   pagination: {
     inputToken: "NextToken",
@@ -2460,6 +2492,8 @@ export const listConfigurationRevisions: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationRevisions",
 }));
 export type ListConfigurationsError =
@@ -2483,6 +2517,8 @@ export const listConfigurations: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurations",
 }));
 export type ListTagsError =
@@ -2508,6 +2544,8 @@ export const listTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
 }));
 export type ListUsersError =
@@ -2533,6 +2571,8 @@ export const listUsers: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
 }));
 export type PromoteError =
@@ -2558,6 +2598,8 @@ export const promote: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Promote",
 }));
 export type RebootBrokerError =
@@ -2583,6 +2625,8 @@ export const rebootBroker: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootBroker",
 }));
 export type UpdateBrokerError =
@@ -2610,6 +2654,8 @@ export const updateBroker: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBroker",
 }));
 export type UpdateConfigurationError =
@@ -2637,6 +2683,8 @@ export const updateConfiguration: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfiguration",
 }));
 export type UpdateUserError =
@@ -2664,5 +2712,7 @@ export const updateUser: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));

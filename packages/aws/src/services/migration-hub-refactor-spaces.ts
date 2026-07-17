@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1729,6 +1731,8 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateEnvironmentError =
@@ -1770,6 +1774,8 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
 export type CreateRouteError =
@@ -1868,6 +1874,8 @@ export const createRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoute",
 }));
 export type CreateServiceError =
@@ -1907,6 +1915,8 @@ export const createService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateService",
 }));
 export type DeleteApplicationError =
@@ -1937,6 +1947,8 @@ export const deleteApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteEnvironmentError =
@@ -1967,6 +1979,8 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
 export type DeleteResourcePolicyError =
@@ -1994,6 +2008,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteRouteError =
@@ -2023,6 +2039,8 @@ export const deleteRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoute",
 }));
 export type DeleteServiceError =
@@ -2052,6 +2070,8 @@ export const deleteService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteService",
 }));
 export type GetApplicationError =
@@ -2079,6 +2099,8 @@ export const getApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type GetEnvironmentError =
@@ -2106,6 +2128,8 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
 export type GetResourcePolicyError =
@@ -2133,6 +2157,8 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetRouteError =
@@ -2160,6 +2186,8 @@ export const getRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRoute",
 }));
 export type GetServiceError =
@@ -2187,6 +2215,8 @@ export const getService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetService",
 }));
 export type ListApplicationsError =
@@ -2233,6 +2263,8 @@ export const listApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -2282,6 +2314,8 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
   pagination: {
     inputToken: "NextToken",
@@ -2331,6 +2365,8 @@ export const listEnvironmentVpcs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironmentVpcs",
   pagination: {
     inputToken: "NextToken",
@@ -2383,6 +2419,8 @@ export const listRoutes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoutes",
   pagination: {
     inputToken: "NextToken",
@@ -2435,6 +2473,8 @@ export const listServices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
@@ -2465,6 +2505,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutResourcePolicyError =
@@ -2497,6 +2539,8 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type TagResourceError =
@@ -2525,6 +2569,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2550,6 +2596,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateRouteError =
@@ -2577,5 +2625,7 @@ export const updateRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoute",
 }));

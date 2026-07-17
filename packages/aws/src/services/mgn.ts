@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5672,6 +5674,8 @@ export const initializeService: API.OperationMethod<
   input: InitializeServiceRequest,
   output: InitializeServiceResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitializeService",
 }));
 export type ListImportFileEnrichmentsError = ValidationException | CommonErrors;
@@ -5702,6 +5706,8 @@ export const listImportFileEnrichments: API.OperationMethod<
   input: ListImportFileEnrichmentsRequest,
   output: ListImportFileEnrichmentsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImportFileEnrichments",
   pagination: {
     inputToken: "nextToken",
@@ -5741,6 +5747,8 @@ export const listManagedAccounts: API.OperationMethod<
   input: ListManagedAccountsRequest,
   output: ListManagedAccountsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -5774,6 +5782,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartImportFileEnrichmentError =
@@ -5801,6 +5811,8 @@ export const startImportFileEnrichment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImportFileEnrichment",
 }));
 export type TagResourceError =
@@ -5828,6 +5840,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5855,6 +5869,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateApplicationError =
@@ -5878,6 +5894,8 @@ export const createApplication: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type DeleteApplicationError =
@@ -5901,6 +5919,8 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type ListApplicationsError =
@@ -5933,6 +5953,8 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [UninitializedAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
@@ -5964,6 +5986,8 @@ export const archiveApplication: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ArchiveApplication",
 }));
 export type AssociateSourceServersError =
@@ -5989,6 +6013,8 @@ export const associateSourceServers: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSourceServers",
 }));
 export type DisassociateSourceServersError =
@@ -6012,6 +6038,8 @@ export const disassociateSourceServers: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSourceServers",
 }));
 export type UnarchiveApplicationError =
@@ -6035,6 +6063,8 @@ export const unarchiveApplication: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnarchiveApplication",
 }));
 export type UpdateApplicationError =
@@ -6058,6 +6088,8 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type CreateConnectorError =
@@ -6076,6 +6108,8 @@ export const createConnector: API.OperationMethod<
   input: CreateConnectorRequest,
   output: Connector,
   errors: [UninitializedAccountException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnector",
 }));
 export type UpdateConnectorError =
@@ -6099,6 +6133,8 @@ export const updateConnector: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnector",
 }));
 export type DeleteConnectorError =
@@ -6122,6 +6158,8 @@ export const deleteConnector: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnector",
 }));
 export type ListConnectorsError =
@@ -6155,6 +6193,8 @@ export const listConnectors: API.OperationMethod<
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectors",
   pagination: {
     inputToken: "nextToken",
@@ -6184,6 +6224,8 @@ export const startExport: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExport",
 }));
 export type ListExportsError = UninitializedAccountException | CommonErrors;
@@ -6214,6 +6256,8 @@ export const listExports: API.OperationMethod<
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [UninitializedAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExports",
   pagination: {
     inputToken: "nextToken",
@@ -6253,6 +6297,8 @@ export const listExportErrors: API.OperationMethod<
   input: ListExportErrorsRequest,
   output: ListExportErrorsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExportErrors",
   pagination: {
     inputToken: "nextToken",
@@ -6286,6 +6332,8 @@ export const startImport: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImport",
 }));
 export type ListImportsError =
@@ -6319,6 +6367,8 @@ export const listImports: API.OperationMethod<
   input: ListImportsRequest,
   output: ListImportsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImports",
   pagination: {
     inputToken: "nextToken",
@@ -6358,6 +6408,8 @@ export const listImportErrors: API.OperationMethod<
   input: ListImportErrorsRequest,
   output: ListImportErrorsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImportErrors",
   pagination: {
     inputToken: "nextToken",
@@ -6387,6 +6439,8 @@ export const deleteJob: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJob",
 }));
 export type DescribeJobsError =
@@ -6420,6 +6474,8 @@ export const describeJobs: API.OperationMethod<
   input: DescribeJobsRequest,
   output: DescribeJobsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobs",
   pagination: {
     inputToken: "nextToken",
@@ -6459,6 +6515,8 @@ export const describeJobLogItems: API.OperationMethod<
   input: DescribeJobLogItemsRequest,
   output: DescribeJobLogItemsResponse,
   errors: [UninitializedAccountException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobLogItems",
   pagination: {
     inputToken: "nextToken",
@@ -6488,6 +6546,8 @@ export const createLaunchConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLaunchConfigurationTemplate",
 }));
 export type UpdateLaunchConfigurationTemplateError =
@@ -6513,6 +6573,8 @@ export const updateLaunchConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLaunchConfigurationTemplate",
 }));
 export type DeleteLaunchConfigurationTemplateError =
@@ -6536,6 +6598,8 @@ export const deleteLaunchConfigurationTemplate: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLaunchConfigurationTemplate",
 }));
 export type DescribeLaunchConfigurationTemplatesError =
@@ -6574,6 +6638,8 @@ export const describeLaunchConfigurationTemplates: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLaunchConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -6613,6 +6679,8 @@ export const listTemplateActions: API.OperationMethod<
   input: ListTemplateActionsRequest,
   output: ListTemplateActionsResponse,
   errors: [ResourceNotFoundException, UninitializedAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateActions",
   pagination: {
     inputToken: "nextToken",
@@ -6644,6 +6712,8 @@ export const putTemplateAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTemplateAction",
 }));
 export type RemoveTemplateActionError =
@@ -6667,6 +6737,8 @@ export const removeTemplateAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTemplateAction",
 }));
 export type CreateNetworkMigrationDefinitionError =
@@ -6685,6 +6757,8 @@ export const createNetworkMigrationDefinition: API.OperationMethod<
   input: CreateNetworkMigrationDefinitionRequest,
   output: NetworkMigrationDefinition,
   errors: [ServiceQuotaExceededException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkMigrationDefinition",
 }));
 export type UpdateNetworkMigrationDefinitionError =
@@ -6708,6 +6782,8 @@ export const updateNetworkMigrationDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetworkMigrationDefinition",
 }));
 export type DeleteNetworkMigrationDefinitionError =
@@ -6727,6 +6803,8 @@ export const deleteNetworkMigrationDefinition: API.OperationMethod<
   input: DeleteNetworkMigrationDefinitionRequest,
   output: DeleteNetworkMigrationDefinitionResponse,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkMigrationDefinition",
 }));
 export type ListNetworkMigrationDefinitionsError =
@@ -6759,6 +6837,8 @@ export const listNetworkMigrationDefinitions: API.OperationMethod<
   input: ListNetworkMigrationDefinitionsRequest,
   output: ListNetworkMigrationDefinitionsResponse,
   errors: [AccessDeniedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationDefinitions",
   pagination: {
     inputToken: "nextToken",
@@ -6783,6 +6863,8 @@ export const getNetworkMigrationDefinition: API.OperationMethod<
   input: GetNetworkMigrationDefinitionRequest,
   output: NetworkMigrationDefinition,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkMigrationDefinition",
 }));
 export type GetNetworkMigrationMapperSegmentConstructError =
@@ -6806,6 +6888,8 @@ export const getNetworkMigrationMapperSegmentConstruct: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkMigrationMapperSegmentConstruct",
 }));
 export type ListNetworkMigrationAnalysesError =
@@ -6846,6 +6930,8 @@ export const listNetworkMigrationAnalyses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationAnalyses",
   pagination: {
     inputToken: "nextToken",
@@ -6892,6 +6978,8 @@ export const listNetworkMigrationAnalysisResults: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationAnalysisResults",
   pagination: {
     inputToken: "nextToken",
@@ -6938,6 +7026,8 @@ export const listNetworkMigrationCodeGenerations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationCodeGenerations",
   pagination: {
     inputToken: "nextToken",
@@ -6984,6 +7074,8 @@ export const listNetworkMigrationCodeGenerationSegments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationCodeGenerationSegments",
   pagination: {
     inputToken: "nextToken",
@@ -7030,6 +7122,8 @@ export const listNetworkMigrationDeployedStacks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationDeployedStacks",
   pagination: {
     inputToken: "nextToken",
@@ -7076,6 +7170,8 @@ export const listNetworkMigrationDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationDeployments",
   pagination: {
     inputToken: "nextToken",
@@ -7115,6 +7211,8 @@ export const listNetworkMigrationExecutions: API.OperationMethod<
   input: ListNetworkMigrationExecutionsRequest,
   output: ListNetworkMigrationExecutionsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -7161,6 +7259,8 @@ export const listNetworkMigrationMapperSegmentConstructs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationMapperSegmentConstructs",
   pagination: {
     inputToken: "nextToken",
@@ -7207,6 +7307,8 @@ export const listNetworkMigrationMapperSegments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationMapperSegments",
   pagination: {
     inputToken: "nextToken",
@@ -7253,6 +7355,8 @@ export const listNetworkMigrationMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationMappings",
   pagination: {
     inputToken: "nextToken",
@@ -7299,6 +7403,8 @@ export const listNetworkMigrationMappingUpdates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkMigrationMappingUpdates",
   pagination: {
     inputToken: "nextToken",
@@ -7334,6 +7440,8 @@ export const startNetworkMigrationAnalysis: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNetworkMigrationAnalysis",
 }));
 export type StartNetworkMigrationCodeGenerationError =
@@ -7363,6 +7471,8 @@ export const startNetworkMigrationCodeGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNetworkMigrationCodeGeneration",
 }));
 export type StartNetworkMigrationDeploymentError =
@@ -7392,6 +7502,8 @@ export const startNetworkMigrationDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNetworkMigrationDeployment",
 }));
 export type StartNetworkMigrationMappingError =
@@ -7421,6 +7533,8 @@ export const startNetworkMigrationMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNetworkMigrationMapping",
 }));
 export type StartNetworkMigrationMappingUpdateError =
@@ -7450,6 +7564,8 @@ export const startNetworkMigrationMappingUpdate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNetworkMigrationMappingUpdate",
 }));
 export type UpdateNetworkMigrationMapperSegmentError =
@@ -7473,6 +7589,8 @@ export const updateNetworkMigrationMapperSegment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetworkMigrationMapperSegment",
 }));
 export type CreateReplicationConfigurationTemplateError =
@@ -7496,6 +7614,8 @@ export const createReplicationConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationConfigurationTemplate",
 }));
 export type UpdateReplicationConfigurationTemplateError =
@@ -7521,6 +7641,8 @@ export const updateReplicationConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReplicationConfigurationTemplate",
 }));
 export type DeleteReplicationConfigurationTemplateError =
@@ -7544,6 +7666,8 @@ export const deleteReplicationConfigurationTemplate: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationConfigurationTemplate",
 }));
 export type DescribeReplicationConfigurationTemplatesError =
@@ -7582,6 +7706,8 @@ export const describeReplicationConfigurationTemplates: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -7611,6 +7737,8 @@ export const updateSourceServer: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSourceServer",
 }));
 export type DeleteSourceServerError =
@@ -7634,6 +7762,8 @@ export const deleteSourceServer: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSourceServer",
 }));
 export type DescribeSourceServersError =
@@ -7667,6 +7797,8 @@ export const describeSourceServers: API.OperationMethod<
   input: DescribeSourceServersRequest,
   output: DescribeSourceServersResponse,
   errors: [UninitializedAccountException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSourceServers",
   pagination: {
     inputToken: "nextToken",
@@ -7698,6 +7830,8 @@ export const changeServerLifeCycleState: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ChangeServerLifeCycleState",
 }));
 export type DisconnectFromServiceError =
@@ -7721,6 +7855,8 @@ export const disconnectFromService: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisconnectFromService",
 }));
 export type FinalizeCutoverError =
@@ -7746,6 +7882,8 @@ export const finalizeCutover: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FinalizeCutover",
 }));
 export type GetLaunchConfigurationError =
@@ -7764,6 +7902,8 @@ export const getLaunchConfiguration: API.OperationMethod<
   input: GetLaunchConfigurationRequest,
   output: LaunchConfiguration,
   errors: [ResourceNotFoundException, UninitializedAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLaunchConfiguration",
 }));
 export type GetReplicationConfigurationError =
@@ -7782,6 +7922,8 @@ export const getReplicationConfiguration: API.OperationMethod<
   input: GetReplicationConfigurationRequest,
   output: ReplicationConfiguration,
   errors: [ResourceNotFoundException, UninitializedAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReplicationConfiguration",
 }));
 export type ListSourceServerActionsError =
@@ -7815,6 +7957,8 @@ export const listSourceServerActions: API.OperationMethod<
   input: ListSourceServerActionsRequest,
   output: ListSourceServerActionsResponse,
   errors: [ResourceNotFoundException, UninitializedAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourceServerActions",
   pagination: {
     inputToken: "nextToken",
@@ -7844,6 +7988,8 @@ export const markAsArchived: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MarkAsArchived",
 }));
 export type PauseReplicationError =
@@ -7871,6 +8017,8 @@ export const pauseReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PauseReplication",
 }));
 export type PutSourceServerActionError =
@@ -7896,6 +8044,8 @@ export const putSourceServerAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSourceServerAction",
 }));
 export type RemoveSourceServerActionError =
@@ -7919,6 +8069,8 @@ export const removeSourceServerAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveSourceServerAction",
 }));
 export type ResumeReplicationError =
@@ -7946,6 +8098,8 @@ export const resumeReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeReplication",
 }));
 export type RetryDataReplicationError =
@@ -7969,6 +8123,8 @@ export const retryDataReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetryDataReplication",
 }));
 export type StartReplicationError =
@@ -7996,6 +8152,8 @@ export const startReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplication",
 }));
 export type StopReplicationError =
@@ -8023,6 +8181,8 @@ export const stopReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopReplication",
 }));
 export type UpdateLaunchConfigurationError =
@@ -8050,6 +8210,8 @@ export const updateLaunchConfiguration: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLaunchConfiguration",
 }));
 export type UpdateReplicationConfigurationError =
@@ -8077,6 +8239,8 @@ export const updateReplicationConfiguration: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReplicationConfiguration",
 }));
 export type UpdateSourceServerReplicationTypeError =
@@ -8104,6 +8268,8 @@ export const updateSourceServerReplicationType: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSourceServerReplicationType",
 }));
 export type StartCutoverError =
@@ -8127,6 +8293,8 @@ export const startCutover: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCutover",
 }));
 export type StartTestError =
@@ -8150,6 +8318,8 @@ export const startTest: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTest",
 }));
 export type TerminateTargetInstancesError =
@@ -8173,6 +8343,8 @@ export const terminateTargetInstances: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateTargetInstances",
 }));
 export type DeleteVcenterClientError =
@@ -8196,6 +8368,8 @@ export const deleteVcenterClient: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVcenterClient",
 }));
 export type DescribeVcenterClientsError =
@@ -8234,6 +8408,8 @@ export const describeVcenterClients: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVcenterClients",
   pagination: {
     inputToken: "nextToken",
@@ -8263,6 +8439,8 @@ export const createWave: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWave",
 }));
 export type DeleteWaveError =
@@ -8286,6 +8464,8 @@ export const deleteWave: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWave",
 }));
 export type ListWavesError = UninitializedAccountException | CommonErrors;
@@ -8316,6 +8496,8 @@ export const listWaves: API.OperationMethod<
   input: ListWavesRequest,
   output: ListWavesResponse,
   errors: [UninitializedAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWaves",
   pagination: {
     inputToken: "nextToken",
@@ -8347,6 +8529,8 @@ export const archiveWave: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ArchiveWave",
 }));
 export type AssociateApplicationsError =
@@ -8372,6 +8556,8 @@ export const associateApplications: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateApplications",
 }));
 export type DisassociateApplicationsError =
@@ -8395,6 +8581,8 @@ export const disassociateApplications: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateApplications",
 }));
 export type UnarchiveWaveError =
@@ -8418,6 +8606,8 @@ export const unarchiveWave: API.OperationMethod<
     ServiceQuotaExceededException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnarchiveWave",
 }));
 export type UpdateWaveError =
@@ -8441,5 +8631,7 @@ export const updateWave: API.OperationMethod<
     ResourceNotFoundException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWave",
 }));

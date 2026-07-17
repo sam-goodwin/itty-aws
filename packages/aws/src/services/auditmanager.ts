@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3605,6 +3607,8 @@ export const associateAssessmentReportEvidenceFolder: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAssessmentReportEvidenceFolder",
 }));
 export type BatchAssociateAssessmentReportEvidenceError =
@@ -3631,6 +3635,8 @@ export const batchAssociateAssessmentReportEvidence: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateAssessmentReportEvidence",
 }));
 export type BatchCreateDelegationByAssessmentError =
@@ -3656,6 +3662,8 @@ export const batchCreateDelegationByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateDelegationByAssessment",
 }));
 export type BatchDeleteDelegationByAssessmentError =
@@ -3681,6 +3689,8 @@ export const batchDeleteDelegationByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteDelegationByAssessment",
 }));
 export type BatchDisassociateAssessmentReportEvidenceError =
@@ -3706,6 +3716,8 @@ export const batchDisassociateAssessmentReportEvidence: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateAssessmentReportEvidence",
 }));
 export type BatchImportEvidenceToAssessmentControlError =
@@ -3752,6 +3764,8 @@ export const batchImportEvidenceToAssessmentControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchImportEvidenceToAssessmentControl",
 }));
 export type CreateAssessmentError =
@@ -3781,6 +3795,8 @@ export const createAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssessment",
 }));
 export type CreateAssessmentFrameworkError =
@@ -3808,6 +3824,8 @@ export const createAssessmentFramework: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssessmentFramework",
 }));
 export type CreateAssessmentReportError =
@@ -3833,6 +3851,8 @@ export const createAssessmentReport: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssessmentReport",
 }));
 export type CreateControlError =
@@ -3860,6 +3880,8 @@ export const createControl: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateControl",
 }));
 export type DeleteAssessmentError =
@@ -3885,6 +3907,8 @@ export const deleteAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessment",
 }));
 export type DeleteAssessmentFrameworkError =
@@ -3910,6 +3934,8 @@ export const deleteAssessmentFramework: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessmentFramework",
 }));
 export type DeleteAssessmentFrameworkShareError =
@@ -3935,6 +3961,8 @@ export const deleteAssessmentFrameworkShare: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessmentFrameworkShare",
 }));
 export type DeleteAssessmentReportError =
@@ -3980,6 +4008,8 @@ export const deleteAssessmentReport: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessmentReport",
 }));
 export type DeleteControlError =
@@ -4010,6 +4040,8 @@ export const deleteControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteControl",
 }));
 export type DeregisterAccountError =
@@ -4043,6 +4075,8 @@ export const deregisterAccount: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterAccount",
 }));
 export type DeregisterOrganizationAdminAccountError =
@@ -4120,6 +4154,8 @@ export const deregisterOrganizationAdminAccount: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterOrganizationAdminAccount",
 }));
 export type DisassociateAssessmentReportEvidenceFolderError =
@@ -4145,6 +4181,8 @@ export const disassociateAssessmentReportEvidenceFolder: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAssessmentReportEvidenceFolder",
 }));
 export type GetAccountStatusError = InternalServerException | CommonErrors;
@@ -4160,6 +4198,8 @@ export const getAccountStatus: API.OperationMethod<
   input: GetAccountStatusRequest,
   output: GetAccountStatusResponse,
   errors: [InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountStatus",
 }));
 export type GetAssessmentError =
@@ -4185,6 +4225,8 @@ export const getAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssessment",
 }));
 export type GetAssessmentFrameworkError =
@@ -4210,6 +4252,8 @@ export const getAssessmentFramework: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssessmentFramework",
 }));
 export type GetAssessmentReportUrlError =
@@ -4235,6 +4279,8 @@ export const getAssessmentReportUrl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssessmentReportUrl",
 }));
 export type GetChangeLogsError =
@@ -4275,6 +4321,8 @@ export const getChangeLogs: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChangeLogs",
   pagination: {
     inputToken: "nextToken",
@@ -4305,6 +4353,8 @@ export const getControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetControl",
 }));
 export type GetDelegationsError =
@@ -4339,6 +4389,8 @@ export const getDelegations: API.OperationMethod<
   input: GetDelegationsRequest,
   output: GetDelegationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDelegations",
   pagination: {
     inputToken: "nextToken",
@@ -4369,6 +4421,8 @@ export const getEvidence: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvidence",
 }));
 export type GetEvidenceByEvidenceFolderError =
@@ -4409,6 +4463,8 @@ export const getEvidenceByEvidenceFolder: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvidenceByEvidenceFolder",
   pagination: {
     inputToken: "nextToken",
@@ -4452,6 +4508,8 @@ export const getEvidenceFileUploadUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvidenceFileUploadUrl",
 }));
 export type GetEvidenceFolderError =
@@ -4477,6 +4535,8 @@ export const getEvidenceFolder: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvidenceFolder",
 }));
 export type GetEvidenceFoldersByAssessmentError =
@@ -4517,6 +4577,8 @@ export const getEvidenceFoldersByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvidenceFoldersByAssessment",
   pagination: {
     inputToken: "nextToken",
@@ -4563,6 +4625,8 @@ export const getEvidenceFoldersByAssessmentControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvidenceFoldersByAssessmentControl",
   pagination: {
     inputToken: "nextToken",
@@ -4586,6 +4650,8 @@ export const getInsights: API.OperationMethod<
   input: GetInsightsRequest,
   output: GetInsightsResponse,
   errors: [AccessDeniedException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsights",
 }));
 export type GetInsightsByAssessmentError =
@@ -4611,6 +4677,8 @@ export const getInsightsByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsightsByAssessment",
 }));
 export type GetOrganizationAdminAccountError =
@@ -4637,6 +4705,8 @@ export const getOrganizationAdminAccount: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOrganizationAdminAccount",
 }));
 export type GetServicesInScopeError =
@@ -4667,6 +4737,8 @@ export const getServicesInScope: API.OperationMethod<
   input: GetServicesInScopeRequest,
   output: GetServicesInScopeResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServicesInScope",
 }));
 export type GetSettingsError =
@@ -4685,6 +4757,8 @@ export const getSettings: API.OperationMethod<
   input: GetSettingsRequest,
   output: GetSettingsResponse,
   errors: [AccessDeniedException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSettings",
 }));
 export type ListAssessmentControlInsightsByControlDomainError =
@@ -4731,6 +4805,8 @@ export const listAssessmentControlInsightsByControlDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentControlInsightsByControlDomain",
   pagination: {
     inputToken: "nextToken",
@@ -4771,6 +4847,8 @@ export const listAssessmentFrameworks: API.OperationMethod<
   input: ListAssessmentFrameworksRequest,
   output: ListAssessmentFrameworksResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentFrameworks",
   pagination: {
     inputToken: "nextToken",
@@ -4810,6 +4888,8 @@ export const listAssessmentFrameworkShareRequests: API.OperationMethod<
   input: ListAssessmentFrameworkShareRequestsRequest,
   output: ListAssessmentFrameworkShareRequestsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentFrameworkShareRequests",
   pagination: {
     inputToken: "nextToken",
@@ -4849,6 +4929,8 @@ export const listAssessmentReports: API.OperationMethod<
   input: ListAssessmentReportsRequest,
   output: ListAssessmentReportsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentReports",
   pagination: {
     inputToken: "nextToken",
@@ -4888,6 +4970,8 @@ export const listAssessments: API.OperationMethod<
   input: ListAssessmentsRequest,
   output: ListAssessmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessments",
   pagination: {
     inputToken: "nextToken",
@@ -4946,6 +5030,8 @@ export const listControlDomainInsights: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListControlDomainInsights",
   pagination: {
     inputToken: "nextToken",
@@ -5003,6 +5089,8 @@ export const listControlDomainInsightsByAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListControlDomainInsightsByAssessment",
   pagination: {
     inputToken: "nextToken",
@@ -5054,6 +5142,8 @@ export const listControlInsightsByControlDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListControlInsightsByControlDomain",
   pagination: {
     inputToken: "nextToken",
@@ -5093,6 +5183,8 @@ export const listControls: API.OperationMethod<
   input: ListControlsRequest,
   output: ListControlsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListControls",
   pagination: {
     inputToken: "nextToken",
@@ -5133,6 +5225,8 @@ export const listKeywordsForDataSource: API.OperationMethod<
   input: ListKeywordsForDataSourceRequest,
   output: ListKeywordsForDataSourceResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeywordsForDataSource",
   pagination: {
     inputToken: "nextToken",
@@ -5172,6 +5266,8 @@ export const listNotifications: API.OperationMethod<
   input: ListNotificationsRequest,
   output: ListNotificationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotifications",
   pagination: {
     inputToken: "nextToken",
@@ -5200,6 +5296,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RegisterAccountError =
@@ -5227,6 +5325,8 @@ export const registerAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterAccount",
 }));
 export type RegisterOrganizationAdminAccountError =
@@ -5255,6 +5355,8 @@ export const registerOrganizationAdminAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOrganizationAdminAccount",
 }));
 export type StartAssessmentFrameworkShareError =
@@ -5314,6 +5416,8 @@ export const startAssessmentFrameworkShare: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAssessmentFrameworkShare",
 }));
 export type TagResourceError =
@@ -5337,6 +5441,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5360,6 +5466,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAssessmentError =
@@ -5389,6 +5497,8 @@ export const updateAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssessment",
 }));
 export type UpdateAssessmentControlError =
@@ -5414,6 +5524,8 @@ export const updateAssessmentControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssessmentControl",
 }));
 export type UpdateAssessmentControlSetStatusError =
@@ -5439,6 +5551,8 @@ export const updateAssessmentControlSetStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssessmentControlSetStatus",
 }));
 export type UpdateAssessmentFrameworkError =
@@ -5466,6 +5580,8 @@ export const updateAssessmentFramework: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssessmentFramework",
 }));
 export type UpdateAssessmentFrameworkShareError =
@@ -5493,6 +5609,8 @@ export const updateAssessmentFrameworkShare: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssessmentFrameworkShare",
 }));
 export type UpdateAssessmentStatusError =
@@ -5520,6 +5638,8 @@ export const updateAssessmentStatus: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssessmentStatus",
 }));
 export type UpdateControlError =
@@ -5545,6 +5665,8 @@ export const updateControl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateControl",
 }));
 export type UpdateSettingsError =
@@ -5564,6 +5686,8 @@ export const updateSettings: API.OperationMethod<
   input: UpdateSettingsRequest,
   output: UpdateSettingsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSettings",
 }));
 export type ValidateAssessmentReportIntegrityError =
@@ -5589,5 +5713,7 @@ export const validateAssessmentReportIntegrity: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateAssessmentReportIntegrity",
 }));

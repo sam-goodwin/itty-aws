@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2729,6 +2731,8 @@ export const createBotVersion: API.OperationMethod<
     NotFoundException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBotVersion",
 }));
 export type CreateIntentVersionError =
@@ -2772,6 +2776,8 @@ export const createIntentVersion: API.OperationMethod<
     NotFoundException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntentVersion",
 }));
 export type CreateSlotTypeVersionError =
@@ -2815,6 +2821,8 @@ export const createSlotTypeVersion: API.OperationMethod<
     NotFoundException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSlotTypeVersion",
 }));
 export type DeleteBotError =
@@ -2862,6 +2870,8 @@ export const deleteBot: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBot",
 }));
 export type DeleteBotAliasError =
@@ -2900,6 +2910,8 @@ export const deleteBotAlias: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotAlias",
 }));
 export type DeleteBotChannelAssociationError =
@@ -2931,6 +2943,8 @@ export const deleteBotChannelAssociation: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotChannelAssociation",
 }));
 export type DeleteBotVersionError =
@@ -2964,6 +2978,8 @@ export const deleteBotVersion: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotVersion",
 }));
 export type DeleteIntentError =
@@ -3010,6 +3026,8 @@ export const deleteIntent: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntent",
 }));
 export type DeleteIntentVersionError =
@@ -3043,6 +3061,8 @@ export const deleteIntentVersion: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntentVersion",
 }));
 export type DeleteSlotTypeError =
@@ -3089,6 +3109,8 @@ export const deleteSlotType: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSlotType",
 }));
 export type DeleteSlotTypeVersionError =
@@ -3122,6 +3144,8 @@ export const deleteSlotTypeVersion: API.OperationMethod<
     NotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSlotTypeVersion",
 }));
 export type DeleteUtterancesError =
@@ -3161,6 +3185,8 @@ export const deleteUtterances: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUtterances",
 }));
 export type GetBotError =
@@ -3190,6 +3216,8 @@ export const getBot: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBot",
 }));
 export type GetBotAliasError =
@@ -3219,6 +3247,8 @@ export const getBotAlias: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotAlias",
 }));
 export type GetBotAliasesError =
@@ -3260,6 +3290,8 @@ export const getBotAliases: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotAliases",
   pagination: {
     inputToken: "nextToken",
@@ -3294,6 +3326,8 @@ export const getBotChannelAssociation: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotChannelAssociation",
 }));
 export type GetBotChannelAssociationsError =
@@ -3337,6 +3371,8 @@ export const getBotChannelAssociations: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotChannelAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -3393,6 +3429,8 @@ export const getBots: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBots",
   pagination: {
     inputToken: "nextToken",
@@ -3451,6 +3489,8 @@ export const getBotVersions: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3484,6 +3524,8 @@ export const getBuiltinIntent: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBuiltinIntent",
 }));
 export type GetBuiltinIntentsError =
@@ -3526,6 +3568,8 @@ export const getBuiltinIntents: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBuiltinIntents",
   pagination: {
     inputToken: "nextToken",
@@ -3576,6 +3620,8 @@ export const getBuiltinSlotTypes: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBuiltinSlotTypes",
   pagination: {
     inputToken: "nextToken",
@@ -3606,6 +3652,8 @@ export const getExport: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExport",
 }));
 export type GetImportError =
@@ -3632,6 +3680,8 @@ export const getImport: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImport",
 }));
 export type GetIntentError =
@@ -3661,6 +3711,8 @@ export const getIntent: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntent",
 }));
 export type GetIntentsError =
@@ -3712,6 +3764,8 @@ export const getIntents: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntents",
   pagination: {
     inputToken: "nextToken",
@@ -3770,6 +3824,8 @@ export const getIntentVersions: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntentVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3802,6 +3858,8 @@ export const getMigration: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMigration",
 }));
 export type GetMigrationsError =
@@ -3840,6 +3898,8 @@ export const getMigrations: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMigrations",
   pagination: {
     inputToken: "nextToken",
@@ -3875,6 +3935,8 @@ export const getSlotType: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSlotType",
 }));
 export type GetSlotTypesError =
@@ -3926,6 +3988,8 @@ export const getSlotTypes: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSlotTypes",
   pagination: {
     inputToken: "nextToken",
@@ -3984,6 +4048,8 @@ export const getSlotTypeVersions: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSlotTypeVersions",
   pagination: {
     inputToken: "nextToken",
@@ -4040,6 +4106,8 @@ export const getUtterancesView: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUtterancesView",
 }));
 export type ListTagsForResourceError =
@@ -4066,6 +4134,8 @@ export const listTagsForResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutBotError =
@@ -4111,6 +4181,8 @@ export const putBot: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBot",
 }));
 export type PutBotAliasError =
@@ -4144,6 +4216,8 @@ export const putBotAlias: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBotAlias",
 }));
 export type PutIntentError =
@@ -4222,6 +4296,8 @@ export const putIntent: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutIntent",
 }));
 export type PutSlotTypeError =
@@ -4266,6 +4342,8 @@ export const putSlotType: API.OperationMethod<
     LimitExceededException,
     PreconditionFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSlotType",
 }));
 export type StartImportError =
@@ -4289,6 +4367,8 @@ export const startImport: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImport",
 }));
 export type StartMigrationError =
@@ -4320,6 +4400,8 @@ export const startMigration: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMigration",
 }));
 export type TagResourceError =
@@ -4348,6 +4430,8 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4375,5 +4459,7 @@ export const untagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

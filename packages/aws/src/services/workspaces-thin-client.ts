@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1052,6 +1054,8 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
 export type DeleteDeviceError =
@@ -1081,6 +1085,8 @@ export const deleteDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDevice",
 }));
 export type DeleteEnvironmentError =
@@ -1110,6 +1116,8 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
 export type DeregisterDeviceError =
@@ -1139,6 +1147,8 @@ export const deregisterDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterDevice",
 }));
 export type GetDeviceError =
@@ -1166,6 +1176,8 @@ export const getDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevice",
 }));
 export type GetEnvironmentError =
@@ -1193,6 +1205,8 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
 export type GetSoftwareSetError =
@@ -1220,6 +1234,8 @@ export const getSoftwareSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSoftwareSet",
 }));
 export type ListDevicesError =
@@ -1260,6 +1276,8 @@ export const listDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevices",
   pagination: {
     inputToken: "nextToken",
@@ -1306,6 +1324,8 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",
@@ -1352,6 +1372,8 @@ export const listSoftwareSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSoftwareSets",
   pagination: {
     inputToken: "nextToken",
@@ -1385,6 +1407,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1414,6 +1438,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1443,6 +1469,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDeviceError =
@@ -1470,6 +1498,8 @@ export const updateDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDevice",
 }));
 export type UpdateEnvironmentError =
@@ -1499,6 +1529,8 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
 }));
 export type UpdateSoftwareSetError =
@@ -1526,5 +1558,7 @@ export const updateSoftwareSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSoftwareSet",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2168,6 +2170,8 @@ export const addCustomRoutingEndpoints: API.OperationMethod<
     InvalidArgumentException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddCustomRoutingEndpoints",
 }));
 export type AddEndpointsError =
@@ -2214,6 +2218,8 @@ export const addEndpoints: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddEndpoints",
 }));
 export type AdvertiseByoipCidrError =
@@ -2249,6 +2255,8 @@ export const advertiseByoipCidr: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdvertiseByoipCidr",
 }));
 export type AllowCustomRoutingTrafficError =
@@ -2278,6 +2286,8 @@ export const allowCustomRoutingTraffic: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllowCustomRoutingTraffic",
 }));
 export type CreateAcceleratorError =
@@ -2310,6 +2320,8 @@ export const createAccelerator: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccelerator",
 }));
 export type CreateCrossAccountAttachmentError =
@@ -2356,6 +2368,8 @@ export const createCrossAccountAttachment: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCrossAccountAttachment",
 }));
 export type CreateCustomRoutingAcceleratorError =
@@ -2393,6 +2407,8 @@ export const createCustomRoutingAccelerator: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomRoutingAccelerator",
 }));
 export type CreateCustomRoutingEndpointGroupError =
@@ -2428,6 +2444,8 @@ export const createCustomRoutingEndpointGroup: API.OperationMethod<
     LimitExceededException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomRoutingEndpointGroup",
 }));
 export type CreateCustomRoutingListenerError =
@@ -2456,6 +2474,8 @@ export const createCustomRoutingListener: API.OperationMethod<
     InvalidPortRangeException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomRoutingListener",
 }));
 export type CreateEndpointGroupError =
@@ -2492,6 +2512,8 @@ export const createEndpointGroup: API.OperationMethod<
     LimitExceededException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpointGroup",
 }));
 export type CreateListenerError =
@@ -2520,6 +2542,8 @@ export const createListener: API.OperationMethod<
     InvalidPortRangeException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateListener",
 }));
 export type DeleteAcceleratorError =
@@ -2561,6 +2585,8 @@ export const deleteAccelerator: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccelerator",
 }));
 export type DeleteCrossAccountAttachmentError =
@@ -2594,6 +2620,8 @@ export const deleteCrossAccountAttachment: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCrossAccountAttachment",
 }));
 export type DeleteCustomRoutingAcceleratorError =
@@ -2635,6 +2663,8 @@ export const deleteCustomRoutingAccelerator: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomRoutingAccelerator",
 }));
 export type DeleteCustomRoutingEndpointGroupError =
@@ -2658,6 +2688,8 @@ export const deleteCustomRoutingEndpointGroup: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomRoutingEndpointGroup",
 }));
 export type DeleteCustomRoutingListenerError =
@@ -2683,6 +2715,8 @@ export const deleteCustomRoutingListener: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomRoutingListener",
 }));
 export type DeleteEndpointGroupError =
@@ -2706,6 +2740,8 @@ export const deleteEndpointGroup: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpointGroup",
 }));
 export type DeleteListenerError =
@@ -2731,6 +2767,8 @@ export const deleteListener: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteListener",
 }));
 export type DenyCustomRoutingTrafficError =
@@ -2760,6 +2798,8 @@ export const denyCustomRoutingTraffic: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DenyCustomRoutingTraffic",
 }));
 export type DeprovisionByoipCidrError =
@@ -2794,6 +2834,8 @@ export const deprovisionByoipCidr: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprovisionByoipCidr",
 }));
 export type DescribeAcceleratorError =
@@ -2817,6 +2859,8 @@ export const describeAccelerator: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccelerator",
 }));
 export type DescribeAcceleratorAttributesError =
@@ -2840,6 +2884,8 @@ export const describeAcceleratorAttributes: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAcceleratorAttributes",
 }));
 export type DescribeCrossAccountAttachmentError =
@@ -2865,6 +2911,8 @@ export const describeCrossAccountAttachment: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCrossAccountAttachment",
 }));
 export type DescribeCustomRoutingAcceleratorError =
@@ -2888,6 +2936,8 @@ export const describeCustomRoutingAccelerator: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomRoutingAccelerator",
 }));
 export type DescribeCustomRoutingAcceleratorAttributesError =
@@ -2911,6 +2961,8 @@ export const describeCustomRoutingAcceleratorAttributes: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomRoutingAcceleratorAttributes",
 }));
 export type DescribeCustomRoutingEndpointGroupError =
@@ -2934,6 +2986,8 @@ export const describeCustomRoutingEndpointGroup: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomRoutingEndpointGroup",
 }));
 export type DescribeCustomRoutingListenerError =
@@ -2957,6 +3011,8 @@ export const describeCustomRoutingListener: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomRoutingListener",
 }));
 export type DescribeEndpointGroupError =
@@ -2980,6 +3036,8 @@ export const describeEndpointGroup: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointGroup",
 }));
 export type DescribeListenerError =
@@ -3003,6 +3061,8 @@ export const describeListener: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeListener",
 }));
 export type ListAcceleratorsError =
@@ -3041,6 +3101,8 @@ export const listAccelerators: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccelerators",
   pagination: {
     inputToken: "NextToken",
@@ -3088,6 +3150,8 @@ export const listByoipCidrs: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListByoipCidrs",
   pagination: {
     inputToken: "NextToken",
@@ -3134,6 +3198,8 @@ export const listCrossAccountAttachments: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCrossAccountAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -3162,6 +3228,8 @@ export const listCrossAccountResourceAccounts: API.OperationMethod<
   input: ListCrossAccountResourceAccountsRequest,
   output: ListCrossAccountResourceAccountsResponse,
   errors: [AccessDeniedException, InternalServiceErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCrossAccountResourceAccounts",
 }));
 export type ListCrossAccountResourcesError =
@@ -3204,6 +3272,8 @@ export const listCrossAccountResources: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCrossAccountResources",
   pagination: {
     inputToken: "NextToken",
@@ -3248,6 +3318,8 @@ export const listCustomRoutingAccelerators: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomRoutingAccelerators",
   pagination: {
     inputToken: "NextToken",
@@ -3294,6 +3366,8 @@ export const listCustomRoutingEndpointGroups: API.OperationMethod<
     InvalidNextTokenException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomRoutingEndpointGroups",
   pagination: {
     inputToken: "NextToken",
@@ -3340,6 +3414,8 @@ export const listCustomRoutingListeners: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomRoutingListeners",
   pagination: {
     inputToken: "NextToken",
@@ -3398,6 +3474,8 @@ export const listCustomRoutingPortMappings: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomRoutingPortMappings",
   pagination: {
     inputToken: "NextToken",
@@ -3447,6 +3525,8 @@ export const listCustomRoutingPortMappingsByDestination: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomRoutingPortMappingsByDestination",
   pagination: {
     inputToken: "NextToken",
@@ -3493,6 +3573,8 @@ export const listEndpointGroups: API.OperationMethod<
     InvalidNextTokenException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEndpointGroups",
   pagination: {
     inputToken: "NextToken",
@@ -3539,6 +3621,8 @@ export const listListeners: API.OperationMethod<
     InvalidArgumentException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListListeners",
   pagination: {
     inputToken: "NextToken",
@@ -3577,6 +3661,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArgumentException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ProvisionByoipCidrError =
@@ -3610,6 +3696,8 @@ export const provisionByoipCidr: API.OperationMethod<
     InvalidArgumentException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvisionByoipCidr",
 }));
 export type RemoveCustomRoutingEndpointsError =
@@ -3639,6 +3727,8 @@ export const removeCustomRoutingEndpoints: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveCustomRoutingEndpoints",
 }));
 export type RemoveEndpointsError =
@@ -3679,6 +3769,8 @@ export const removeEndpoints: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveEndpoints",
 }));
 export type TagResourceError =
@@ -3705,6 +3797,8 @@ export const tagResource: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3732,6 +3826,8 @@ export const untagResource: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAcceleratorError =
@@ -3777,6 +3873,8 @@ export const updateAccelerator: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccelerator",
 }));
 export type UpdateAcceleratorAttributesError =
@@ -3804,6 +3902,8 @@ export const updateAcceleratorAttributes: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAcceleratorAttributes",
 }));
 export type UpdateCrossAccountAttachmentError =
@@ -3839,6 +3939,8 @@ export const updateCrossAccountAttachment: API.OperationMethod<
     LimitExceededException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCrossAccountAttachment",
 }));
 export type UpdateCustomRoutingAcceleratorError =
@@ -3866,6 +3968,8 @@ export const updateCustomRoutingAccelerator: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomRoutingAccelerator",
 }));
 export type UpdateCustomRoutingAcceleratorAttributesError =
@@ -3893,6 +3997,8 @@ export const updateCustomRoutingAcceleratorAttributes: API.OperationMethod<
     InvalidArgumentException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomRoutingAcceleratorAttributes",
 }));
 export type UpdateCustomRoutingListenerError =
@@ -3920,6 +4026,8 @@ export const updateCustomRoutingListener: API.OperationMethod<
     LimitExceededException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomRoutingListener",
 }));
 export type UpdateEndpointGroupError =
@@ -3947,6 +4055,8 @@ export const updateEndpointGroup: API.OperationMethod<
     InvalidArgumentException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpointGroup",
 }));
 export type UpdateListenerError =
@@ -3974,6 +4084,8 @@ export const updateListener: API.OperationMethod<
     LimitExceededException,
     ListenerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateListener",
 }));
 export type WithdrawByoipCidrError =
@@ -4009,5 +4121,7 @@ export const withdrawByoipCidr: API.OperationMethod<
     InternalServiceErrorException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "WithdrawByoipCidr",
 }));

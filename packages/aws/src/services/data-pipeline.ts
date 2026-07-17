@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -972,6 +974,8 @@ export const activatePipeline: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivatePipeline",
 }));
 export type AddTagsError =
@@ -997,6 +1001,8 @@ export const addTags: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
 export type CreatePipelineError =
@@ -1035,6 +1041,8 @@ export const createPipeline: API.OperationMethod<
   input: CreatePipelineInput,
   output: CreatePipelineOutput,
   errors: [InternalServiceError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePipeline",
 }));
 export type DeactivatePipelineError =
@@ -1064,6 +1072,8 @@ export const deactivatePipeline: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivatePipeline",
 }));
 export type DeletePipelineError =
@@ -1109,6 +1119,8 @@ export const deletePipeline: API.OperationMethod<
     InvalidRequestException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePipeline",
 }));
 export type DescribeObjectsError =
@@ -1197,6 +1209,8 @@ export const describeObjects: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeObjects",
   pagination: {
     inputToken: "marker",
@@ -1280,6 +1294,8 @@ export const describePipelines: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePipelines",
 }));
 export type EvaluateExpressionError =
@@ -1327,6 +1343,8 @@ export const evaluateExpression: API.OperationMethod<
     PipelineNotFoundException,
     TaskNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EvaluateExpression",
 }));
 export type GetPipelineDefinitionError =
@@ -1406,6 +1424,8 @@ export const getPipelineDefinition: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipelineDefinition",
 }));
 export type ListPipelinesError =
@@ -1464,6 +1484,8 @@ export const listPipelines: API.OperationMethod<
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InternalServiceError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelines",
   pagination: {
     inputToken: "marker",
@@ -1560,6 +1582,8 @@ export const pollForTask: API.OperationMethod<
     InvalidRequestException,
     TaskNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PollForTask",
 }));
 export type PutPipelineDefinitionError =
@@ -1724,6 +1748,8 @@ export const putPipelineDefinition: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPipelineDefinition",
 }));
 export type QueryObjectsError =
@@ -1792,6 +1818,8 @@ export const queryObjects: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "QueryObjects",
   pagination: {
     inputToken: "marker",
@@ -1823,6 +1851,8 @@ export const removeTags: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
 export type ReportTaskProgressError =
@@ -1879,6 +1909,8 @@ export const reportTaskProgress: API.OperationMethod<
     PipelineNotFoundException,
     TaskNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReportTaskProgress",
 }));
 export type ReportTaskRunnerHeartbeatError =
@@ -1919,6 +1951,8 @@ export const reportTaskRunnerHeartbeat: API.OperationMethod<
   input: ReportTaskRunnerHeartbeatInput,
   output: ReportTaskRunnerHeartbeatOutput,
   errors: [InternalServiceError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReportTaskRunnerHeartbeat",
 }));
 export type SetStatusError =
@@ -1966,6 +2000,8 @@ export const setStatus: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetStatus",
 }));
 export type SetTaskStatusError =
@@ -2013,6 +2049,8 @@ export const setTaskStatus: API.OperationMethod<
     PipelineNotFoundException,
     TaskNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTaskStatus",
 }));
 export type ValidatePipelineDefinitionError =
@@ -2169,5 +2207,7 @@ export const validatePipelineDefinition: API.OperationMethod<
     PipelineDeletedException,
     PipelineNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidatePipelineDefinition",
 }));

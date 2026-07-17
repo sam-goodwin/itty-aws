@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1287,6 +1289,8 @@ export const createCertificateAuthority: API.OperationMethod<
     InvalidTagException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCertificateAuthority",
 }));
 export type CreateCertificateAuthorityAuditReportError =
@@ -1322,6 +1326,8 @@ export const createCertificateAuthorityAuditReport: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCertificateAuthorityAuditReport",
 }));
 export type CreatePermissionError =
@@ -1360,6 +1366,8 @@ export const createPermission: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePermission",
 }));
 export type DeleteCertificateAuthorityError =
@@ -1395,6 +1403,8 @@ export const deleteCertificateAuthority: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificateAuthority",
 }));
 export type DeletePermissionError =
@@ -1431,6 +1441,8 @@ export const deletePermission: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermission",
 }));
 export type DeletePolicyError =
@@ -1475,6 +1487,8 @@ export const deletePolicy: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicy",
 }));
 export type DescribeCertificateAuthorityError =
@@ -1507,6 +1521,8 @@ export const describeCertificateAuthority: API.OperationMethod<
   input: DescribeCertificateAuthorityRequest,
   output: DescribeCertificateAuthorityResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificateAuthority",
 }));
 export type DescribeCertificateAuthorityAuditReportError =
@@ -1530,6 +1546,8 @@ export const describeCertificateAuthorityAuditReport: API.OperationMethod<
     InvalidArnException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificateAuthorityAuditReport",
 }));
 export type GetCertificateError =
@@ -1557,6 +1575,8 @@ export const getCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCertificate",
 }));
 export type GetCertificateAuthorityCertificateError =
@@ -1580,6 +1600,8 @@ export const getCertificateAuthorityCertificate: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCertificateAuthorityCertificate",
 }));
 export type GetCertificateAuthorityCsrError =
@@ -1607,6 +1629,8 @@ export const getCertificateAuthorityCsr: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCertificateAuthorityCsr",
 }));
 export type GetPolicyError =
@@ -1643,6 +1667,8 @@ export const getPolicy: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
 export type ImportCertificateAuthorityCertificateError =
@@ -1752,6 +1778,8 @@ export const importCertificateAuthorityCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportCertificateAuthorityCertificate",
 }));
 export type IssueCertificateError =
@@ -1783,6 +1811,8 @@ export const issueCertificate: API.OperationMethod<
     MalformedCSRException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IssueCertificate",
 }));
 export type ListCertificateAuthoritiesError =
@@ -1815,6 +1845,8 @@ export const listCertificateAuthorities: API.OperationMethod<
   input: ListCertificateAuthoritiesRequest,
   output: ListCertificateAuthoritiesResponse,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCertificateAuthorities",
   pagination: {
     inputToken: "NextToken",
@@ -1874,6 +1906,8 @@ export const listPermissions: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissions",
   pagination: {
     inputToken: "NextToken",
@@ -1920,6 +1954,8 @@ export const listTags: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
@@ -1970,6 +2006,8 @@ export const putPolicy: API.OperationMethod<
     RequestFailedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPolicy",
 }));
 export type RestoreCertificateAuthorityError =
@@ -1993,6 +2031,8 @@ export const restoreCertificateAuthority: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreCertificateAuthority",
 }));
 export type RevokeCertificateError =
@@ -2034,6 +2074,8 @@ export const revokeCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeCertificate",
 }));
 export type TagCertificateAuthorityError =
@@ -2063,6 +2105,8 @@ export const tagCertificateAuthority: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagCertificateAuthority",
 }));
 export type UntagCertificateAuthorityError =
@@ -2088,6 +2132,8 @@ export const untagCertificateAuthority: API.OperationMethod<
     InvalidTagException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagCertificateAuthority",
 }));
 export type UpdateCertificateAuthorityError =
@@ -2119,5 +2165,7 @@ export const updateCertificateAuthority: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCertificateAuthority",
 }));

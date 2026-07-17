@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2776,6 +2778,8 @@ export const addTagsToStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToStream",
 }));
 export type CreateStreamError =
@@ -2839,6 +2843,8 @@ export const createStream: API.OperationMethod<
     ResourceInUseException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStream",
 }));
 export type DecreaseStreamRetentionPeriodError =
@@ -2876,6 +2882,8 @@ export const decreaseStreamRetentionPeriod: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DecreaseStreamRetentionPeriod",
 }));
 export type DeleteResourcePolicyError =
@@ -2907,6 +2915,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteStreamError =
@@ -2959,6 +2969,8 @@ export const deleteStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStream",
 }));
 export type DeregisterStreamConsumerError =
@@ -2990,6 +3002,8 @@ export const deregisterStreamConsumer: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterStreamConsumer",
 }));
 export type DescribeAccountSettingsError =
@@ -3009,6 +3023,8 @@ export const describeAccountSettings: API.OperationMethod<
   input: DescribeAccountSettingsInput,
   output: DescribeAccountSettingsOutput,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountSettings",
 }));
 export type DescribeLimitsError = LimitExceededException | CommonErrors;
@@ -3029,6 +3045,8 @@ export const describeLimits: API.OperationMethod<
   input: DescribeLimitsInput,
   output: DescribeLimitsOutput,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLimits",
 }));
 export type DescribeStreamError =
@@ -3080,6 +3098,8 @@ export const describeStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStream",
 }));
 export type DescribeStreamConsumerError =
@@ -3113,6 +3133,8 @@ export const describeStreamConsumer: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStreamConsumer",
 }));
 export type DescribeStreamSummaryError =
@@ -3150,6 +3172,8 @@ export const describeStreamSummary: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStreamSummary",
 }));
 export type DisableEnhancedMonitoringError =
@@ -3181,6 +3205,8 @@ export const disableEnhancedMonitoring: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableEnhancedMonitoring",
 }));
 export type EnableEnhancedMonitoringError =
@@ -3212,6 +3238,8 @@ export const enableEnhancedMonitoring: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableEnhancedMonitoring",
 }));
 export type GetRecordsError =
@@ -3311,6 +3339,8 @@ export const getRecords: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecords",
 }));
 export type GetResourcePolicyError =
@@ -3342,6 +3372,8 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetShardIteratorError =
@@ -3411,6 +3443,8 @@ export const getShardIterator: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetShardIterator",
 }));
 export type IncreaseStreamRetentionPeriodError =
@@ -3451,6 +3485,8 @@ export const increaseStreamRetentionPeriod: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IncreaseStreamRetentionPeriod",
 }));
 export type ListShardsError =
@@ -3494,6 +3530,8 @@ export const listShards: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListShards",
 }));
 export type ListStreamConsumersError =
@@ -3539,6 +3577,8 @@ export const listStreamConsumers: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamConsumers",
   pagination: {
     inputToken: "NextToken",
@@ -3599,6 +3639,8 @@ export const listStreams: API.OperationMethod<
     InvalidArgumentException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreams",
   pagination: {
     inputToken: "NextToken",
@@ -3633,6 +3675,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTagsForStreamError =
@@ -3663,6 +3707,8 @@ export const listTagsForStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForStream",
 }));
 export type MergeShardsError =
@@ -3736,6 +3782,8 @@ export const mergeShards: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergeShards",
 }));
 export type PutRecordError =
@@ -3820,6 +3868,8 @@ export const putRecord: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecord",
 }));
 export type PutRecordsError =
@@ -3927,6 +3977,8 @@ export const putRecords: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecords",
 }));
 export type PutResourcePolicyError =
@@ -3966,6 +4018,8 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type RegisterStreamConsumerError =
@@ -4009,6 +4063,8 @@ export const registerStreamConsumer: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterStreamConsumer",
 }));
 export type RemoveTagsFromStreamError =
@@ -4046,6 +4102,8 @@ export const removeTagsFromStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromStream",
 }));
 export type SplitShardError =
@@ -4125,6 +4183,8 @@ export const splitShard: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SplitShard",
 }));
 export type StartStreamEncryptionError =
@@ -4186,6 +4246,8 @@ export const startStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartStreamEncryption",
 }));
 export type StopStreamEncryptionError =
@@ -4234,6 +4296,8 @@ export const stopStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopStreamEncryption",
 }));
 export type SubscribeToShardError =
@@ -4287,6 +4351,8 @@ export const subscribeToShard: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubscribeToShard",
 }));
 export type TagResourceError =
@@ -4314,6 +4380,8 @@ export const tagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4341,6 +4409,8 @@ export const untagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccountSettingsError =
@@ -4372,6 +4442,8 @@ export const updateAccountSettings: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
 export type UpdateMaxRecordSizeError =
@@ -4401,6 +4473,8 @@ export const updateMaxRecordSize: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMaxRecordSize",
 }));
 export type UpdateShardCountError =
@@ -4476,6 +4550,8 @@ export const updateShardCount: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateShardCount",
 }));
 export type UpdateStreamModeError =
@@ -4507,6 +4583,8 @@ export const updateStreamMode: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStreamMode",
 }));
 export type UpdateStreamWarmThroughputError =
@@ -4551,5 +4629,7 @@ export const updateStreamWarmThroughput: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStreamWarmThroughput",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1932,6 +1934,8 @@ export const acceptQualificationRequest: API.OperationMethod<
   input: AcceptQualificationRequestRequest,
   output: AcceptQualificationRequestResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptQualificationRequest",
 }));
 export type ApproveAssignmentError = RequestError | ServiceFault | CommonErrors;
@@ -1963,6 +1967,8 @@ export const approveAssignment: API.OperationMethod<
   input: ApproveAssignmentRequest,
   output: ApproveAssignmentResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApproveAssignment",
 }));
 export type AssociateQualificationWithWorkerError =
@@ -1993,6 +1999,8 @@ export const associateQualificationWithWorker: API.OperationMethod<
   input: AssociateQualificationWithWorkerRequest,
   output: AssociateQualificationWithWorkerResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateQualificationWithWorker",
 }));
 export type CreateAdditionalAssignmentsForHITError =
@@ -2024,6 +2032,8 @@ export const createAdditionalAssignmentsForHIT: API.OperationMethod<
   input: CreateAdditionalAssignmentsForHITRequest,
   output: CreateAdditionalAssignmentsForHITResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAdditionalAssignmentsForHIT",
 }));
 export type CreateHITError = RequestError | ServiceFault | CommonErrors;
@@ -2052,6 +2062,8 @@ export const createHIT: API.OperationMethod<
   input: CreateHITRequest,
   output: CreateHITResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHIT",
 }));
 export type CreateHITTypeError = RequestError | ServiceFault | CommonErrors;
@@ -2070,6 +2082,8 @@ export const createHITType: API.OperationMethod<
   input: CreateHITTypeRequest,
   output: CreateHITTypeResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHITType",
 }));
 export type CreateHITWithHITTypeError =
@@ -2099,6 +2113,8 @@ export const createHITWithHITType: API.OperationMethod<
   input: CreateHITWithHITTypeRequest,
   output: CreateHITWithHITTypeResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHITWithHITType",
 }));
 export type CreateQualificationTypeError =
@@ -2121,6 +2137,8 @@ export const createQualificationType: API.OperationMethod<
   input: CreateQualificationTypeRequest,
   output: CreateQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQualificationType",
 }));
 export type CreateWorkerBlockError = RequestError | ServiceFault | CommonErrors;
@@ -2136,6 +2154,8 @@ export const createWorkerBlock: API.OperationMethod<
   input: CreateWorkerBlockRequest,
   output: CreateWorkerBlockResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkerBlock",
 }));
 export type DeleteHITError = RequestError | ServiceFault | CommonErrors;
@@ -2167,6 +2187,8 @@ export const deleteHIT: API.OperationMethod<
   input: DeleteHITRequest,
   output: DeleteHITResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHIT",
 }));
 export type DeleteQualificationTypeError =
@@ -2201,6 +2223,8 @@ export const deleteQualificationType: API.OperationMethod<
   input: DeleteQualificationTypeRequest,
   output: DeleteQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQualificationType",
 }));
 export type DeleteWorkerBlockError = RequestError | ServiceFault | CommonErrors;
@@ -2216,6 +2240,8 @@ export const deleteWorkerBlock: API.OperationMethod<
   input: DeleteWorkerBlockRequest,
   output: DeleteWorkerBlockResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkerBlock",
 }));
 export type DisassociateQualificationFromWorkerError =
@@ -2238,6 +2264,8 @@ export const disassociateQualificationFromWorker: API.OperationMethod<
   input: DisassociateQualificationFromWorkerRequest,
   output: DisassociateQualificationFromWorkerResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateQualificationFromWorker",
 }));
 export type GetAccountBalanceError = RequestError | ServiceFault | CommonErrors;
@@ -2255,6 +2283,8 @@ export const getAccountBalance: API.OperationMethod<
   input: GetAccountBalanceRequest,
   output: GetAccountBalanceResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountBalance",
 }));
 export type GetAssignmentError = RequestError | ServiceFault | CommonErrors;
@@ -2270,6 +2300,8 @@ export const getAssignment: API.OperationMethod<
   input: GetAssignmentRequest,
   output: GetAssignmentResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssignment",
 }));
 export type GetFileUploadURLError = RequestError | ServiceFault | CommonErrors;
@@ -2299,6 +2331,8 @@ export const getFileUploadURL: API.OperationMethod<
   input: GetFileUploadURLRequest,
   output: GetFileUploadURLResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFileUploadURL",
 }));
 export type GetHITError = RequestError | ServiceFault | CommonErrors;
@@ -2314,6 +2348,8 @@ export const getHIT: API.OperationMethod<
   input: GetHITRequest,
   output: GetHITResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHIT",
 }));
 export type GetQualificationScoreError =
@@ -2343,6 +2379,8 @@ export const getQualificationScore: API.OperationMethod<
   input: GetQualificationScoreRequest,
   output: GetQualificationScoreResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQualificationScore",
 }));
 export type GetQualificationTypeError =
@@ -2361,6 +2399,8 @@ export const getQualificationType: API.OperationMethod<
   input: GetQualificationTypeRequest,
   output: GetQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQualificationType",
 }));
 export type ListAssignmentsForHITError =
@@ -2418,6 +2458,8 @@ export const listAssignmentsForHIT: API.OperationMethod<
   input: ListAssignmentsForHITRequest,
   output: ListAssignmentsForHITResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssignmentsForHIT",
   pagination: {
     inputToken: "NextToken",
@@ -2456,6 +2498,8 @@ export const listBonusPayments: API.OperationMethod<
   input: ListBonusPaymentsRequest,
   output: ListBonusPaymentsResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBonusPayments",
   pagination: {
     inputToken: "NextToken",
@@ -2495,6 +2539,8 @@ export const listHITs: API.OperationMethod<
   input: ListHITsRequest,
   output: ListHITsResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHITs",
   pagination: {
     inputToken: "NextToken",
@@ -2536,6 +2582,8 @@ export const listHITsForQualificationType: API.OperationMethod<
   input: ListHITsForQualificationTypeRequest,
   output: ListHITsForQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHITsForQualificationType",
   pagination: {
     inputToken: "NextToken",
@@ -2579,6 +2627,8 @@ export const listQualificationRequests: API.OperationMethod<
   input: ListQualificationRequestsRequest,
   output: ListQualificationRequestsResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQualificationRequests",
   pagination: {
     inputToken: "NextToken",
@@ -2620,6 +2670,8 @@ export const listQualificationTypes: API.OperationMethod<
   input: ListQualificationTypesRequest,
   output: ListQualificationTypesResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQualificationTypes",
   pagination: {
     inputToken: "NextToken",
@@ -2659,6 +2711,8 @@ export const listReviewableHITs: API.OperationMethod<
   input: ListReviewableHITsRequest,
   output: ListReviewableHITsResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReviewableHITs",
   pagination: {
     inputToken: "NextToken",
@@ -2701,6 +2755,8 @@ export const listReviewPolicyResultsForHIT: API.OperationMethod<
   input: ListReviewPolicyResultsForHITRequest,
   output: ListReviewPolicyResultsForHITResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReviewPolicyResultsForHIT",
   pagination: {
     inputToken: "NextToken",
@@ -2736,6 +2792,8 @@ export const listWorkerBlocks: API.OperationMethod<
   input: ListWorkerBlocksRequest,
   output: ListWorkerBlocksResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkerBlocks",
   pagination: {
     inputToken: "NextToken",
@@ -2775,6 +2833,8 @@ export const listWorkersWithQualificationType: API.OperationMethod<
   input: ListWorkersWithQualificationTypeRequest,
   output: ListWorkersWithQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkersWithQualificationType",
   pagination: {
     inputToken: "NextToken",
@@ -2802,6 +2862,8 @@ export const notifyWorkers: API.OperationMethod<
   input: NotifyWorkersRequest,
   output: NotifyWorkersResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyWorkers",
 }));
 export type RejectAssignmentError = RequestError | ServiceFault | CommonErrors;
@@ -2825,6 +2887,8 @@ export const rejectAssignment: API.OperationMethod<
   input: RejectAssignmentRequest,
   output: RejectAssignmentResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectAssignment",
 }));
 export type RejectQualificationRequestError =
@@ -2848,6 +2912,8 @@ export const rejectQualificationRequest: API.OperationMethod<
   input: RejectQualificationRequestRequest,
   output: RejectQualificationRequestResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectQualificationRequest",
 }));
 export type SendBonusError = RequestError | ServiceFault | CommonErrors;
@@ -2874,6 +2940,8 @@ export const sendBonus: API.OperationMethod<
   input: SendBonusRequest,
   output: SendBonusResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendBonus",
 }));
 export type SendTestEventNotificationError =
@@ -2896,6 +2964,8 @@ export const sendTestEventNotification: API.OperationMethod<
   input: SendTestEventNotificationRequest,
   output: SendTestEventNotificationResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendTestEventNotification",
 }));
 export type UpdateExpirationForHITError =
@@ -2915,6 +2985,8 @@ export const updateExpirationForHIT: API.OperationMethod<
   input: UpdateExpirationForHITRequest,
   output: UpdateExpirationForHITResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateExpirationForHIT",
 }));
 export type UpdateHITReviewStatusError =
@@ -2935,6 +3007,8 @@ export const updateHITReviewStatus: API.OperationMethod<
   input: UpdateHITReviewStatusRequest,
   output: UpdateHITReviewStatusResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHITReviewStatus",
 }));
 export type UpdateHITTypeOfHITError =
@@ -2958,6 +3032,8 @@ export const updateHITTypeOfHIT: API.OperationMethod<
   input: UpdateHITTypeOfHITRequest,
   output: UpdateHITTypeOfHITResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHITTypeOfHIT",
 }));
 export type UpdateNotificationSettingsError =
@@ -2985,6 +3061,8 @@ export const updateNotificationSettings: API.OperationMethod<
   input: UpdateNotificationSettingsRequest,
   output: UpdateNotificationSettingsResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotificationSettings",
 }));
 export type UpdateQualificationTypeError =
@@ -3039,5 +3117,7 @@ export const updateQualificationType: API.OperationMethod<
   input: UpdateQualificationTypeRequest,
   output: UpdateQualificationTypeResponse,
   errors: [RequestError, ServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQualificationType",
 }));

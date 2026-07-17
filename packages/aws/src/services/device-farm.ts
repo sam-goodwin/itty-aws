@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3996,6 +3998,8 @@ export const createDevicePool: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDevicePool",
 }));
 export type CreateInstanceProfileError =
@@ -4022,6 +4026,8 @@ export const createInstanceProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceProfile",
 }));
 export type CreateNetworkProfileError =
@@ -4047,6 +4053,8 @@ export const createNetworkProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkProfile",
 }));
 export type CreateProjectError =
@@ -4074,6 +4082,8 @@ export const createProject: API.OperationMethod<
     ServiceAccountException,
     TagOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProject",
 }));
 export type CreateRemoteAccessSessionError =
@@ -4099,6 +4109,8 @@ export const createRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRemoteAccessSession",
 }));
 export type CreateTestGridProjectError =
@@ -4119,6 +4131,8 @@ export const createTestGridProject: API.OperationMethod<
   input: CreateTestGridProjectRequest,
   output: CreateTestGridProjectResult,
   errors: [ArgumentException, InternalServiceException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTestGridProject",
 }));
 export type CreateTestGridUrlError =
@@ -4139,6 +4153,8 @@ export const createTestGridUrl: API.OperationMethod<
   input: CreateTestGridUrlRequest,
   output: CreateTestGridUrlResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTestGridUrl",
 }));
 export type CreateUploadError =
@@ -4164,6 +4180,8 @@ export const createUpload: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUpload",
 }));
 export type CreateVPCEConfigurationError =
@@ -4184,6 +4202,8 @@ export const createVPCEConfiguration: API.OperationMethod<
   input: CreateVPCEConfigurationRequest,
   output: CreateVPCEConfigurationResult,
   errors: [ArgumentException, LimitExceededException, ServiceAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVPCEConfiguration",
 }));
 export type DeleteDevicePoolError =
@@ -4210,6 +4230,8 @@ export const deleteDevicePool: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDevicePool",
 }));
 export type DeleteInstanceProfileError =
@@ -4235,6 +4257,8 @@ export const deleteInstanceProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceProfile",
 }));
 export type DeleteNetworkProfileError =
@@ -4260,6 +4284,8 @@ export const deleteNetworkProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkProfile",
 }));
 export type DeleteProjectError =
@@ -4287,6 +4313,8 @@ export const deleteProject: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProject",
 }));
 export type DeleteRemoteAccessSessionError =
@@ -4314,6 +4342,8 @@ export const deleteRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRemoteAccessSession",
 }));
 export type DeleteRunError =
@@ -4341,6 +4371,8 @@ export const deleteRun: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRun",
 }));
 export type DeleteTestGridProjectError =
@@ -4368,6 +4400,8 @@ export const deleteTestGridProject: API.OperationMethod<
     InternalServiceException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTestGridProject",
 }));
 export type DeleteUploadError =
@@ -4393,6 +4427,8 @@ export const deleteUpload: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUpload",
 }));
 export type DeleteVPCEConfigurationError =
@@ -4418,6 +4454,8 @@ export const deleteVPCEConfiguration: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVPCEConfiguration",
 }));
 export type GetAccountSettingsError =
@@ -4444,6 +4482,8 @@ export const getAccountSettings: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountSettings",
 }));
 export type GetDeviceError =
@@ -4469,6 +4509,8 @@ export const getDevice: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevice",
 }));
 export type GetDeviceInstanceError =
@@ -4494,6 +4536,8 @@ export const getDeviceInstance: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeviceInstance",
 }));
 export type GetDevicePoolError =
@@ -4519,6 +4563,8 @@ export const getDevicePool: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevicePool",
 }));
 export type GetDevicePoolCompatibilityError =
@@ -4544,6 +4590,8 @@ export const getDevicePoolCompatibility: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevicePoolCompatibility",
 }));
 export type GetInstanceProfileError =
@@ -4569,6 +4617,8 @@ export const getInstanceProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceProfile",
 }));
 export type GetJobError =
@@ -4594,6 +4644,8 @@ export const getJob: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJob",
 }));
 export type GetNetworkProfileError =
@@ -4619,6 +4671,8 @@ export const getNetworkProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkProfile",
 }));
 export type GetOfferingStatusError =
@@ -4664,6 +4718,8 @@ export const getOfferingStatus: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOfferingStatus",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
@@ -4690,6 +4746,8 @@ export const getProject: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProject",
 }));
 export type GetRemoteAccessSessionError =
@@ -4715,6 +4773,8 @@ export const getRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRemoteAccessSession",
 }));
 export type GetRunError =
@@ -4740,6 +4800,8 @@ export const getRun: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRun",
 }));
 export type GetSuiteError =
@@ -4765,6 +4827,8 @@ export const getSuite: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSuite",
 }));
 export type GetTestError =
@@ -4790,6 +4854,8 @@ export const getTest: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTest",
 }));
 export type GetTestGridProjectError =
@@ -4809,6 +4875,8 @@ export const getTestGridProject: API.OperationMethod<
   input: GetTestGridProjectRequest,
   output: GetTestGridProjectResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTestGridProject",
 }));
 export type GetTestGridSessionError =
@@ -4832,6 +4900,8 @@ export const getTestGridSession: API.OperationMethod<
   input: GetTestGridSessionRequest,
   output: GetTestGridSessionResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTestGridSession",
 }));
 export type GetUploadError =
@@ -4857,6 +4927,8 @@ export const getUpload: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUpload",
 }));
 export type GetVPCEConfigurationError =
@@ -4877,6 +4949,8 @@ export const getVPCEConfiguration: API.OperationMethod<
   input: GetVPCEConfigurationRequest,
   output: GetVPCEConfigurationResult,
   errors: [ArgumentException, NotFoundException, ServiceAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVPCEConfiguration",
 }));
 export type InstallToRemoteAccessSessionError =
@@ -4904,6 +4978,8 @@ export const installToRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InstallToRemoteAccessSession",
 }));
 export type ListArtifactsError =
@@ -4944,6 +5020,8 @@ export const listArtifacts: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListArtifacts",
   pagination: {
     inputToken: "nextToken",
@@ -4975,6 +5053,8 @@ export const listDeviceInstances: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeviceInstances",
 }));
 export type ListDevicePoolsError =
@@ -5015,6 +5095,8 @@ export const listDevicePools: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevicePools",
   pagination: {
     inputToken: "nextToken",
@@ -5060,6 +5142,8 @@ export const listDevices: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevices",
   pagination: {
     inputToken: "nextToken",
@@ -5090,6 +5174,8 @@ export const listInstanceProfiles: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceProfiles",
 }));
 export type ListJobsError =
@@ -5130,6 +5216,8 @@ export const listJobs: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "nextToken",
@@ -5160,6 +5248,8 @@ export const listNetworkProfiles: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkProfiles",
 }));
 export type ListOfferingPromotionsError =
@@ -5189,6 +5279,8 @@ export const listOfferingPromotions: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOfferingPromotions",
 }));
 export type ListOfferingsError =
@@ -5234,6 +5326,8 @@ export const listOfferings: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOfferings",
   pagination: {
     inputToken: "nextToken",
@@ -5284,6 +5378,8 @@ export const listOfferingTransactions: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOfferingTransactions",
   pagination: {
     inputToken: "nextToken",
@@ -5329,6 +5425,8 @@ export const listProjects: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjects",
   pagination: {
     inputToken: "nextToken",
@@ -5359,6 +5457,8 @@ export const listRemoteAccessSessions: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRemoteAccessSessions",
 }));
 export type ListRunsError =
@@ -5399,6 +5499,8 @@ export const listRuns: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuns",
   pagination: {
     inputToken: "nextToken",
@@ -5444,6 +5546,8 @@ export const listSamples: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSamples",
   pagination: {
     inputToken: "nextToken",
@@ -5489,6 +5593,8 @@ export const listSuites: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSuites",
   pagination: {
     inputToken: "nextToken",
@@ -5513,6 +5619,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ArgumentException, NotFoundException, TagOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTestGridProjectsError =
@@ -5546,6 +5654,8 @@ export const listTestGridProjects: API.OperationMethod<
   input: ListTestGridProjectsRequest,
   output: ListTestGridProjectsResult,
   errors: [ArgumentException, InternalServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestGridProjects",
   pagination: {
     inputToken: "nextToken",
@@ -5585,6 +5695,8 @@ export const listTestGridSessionActions: API.OperationMethod<
   input: ListTestGridSessionActionsRequest,
   output: ListTestGridSessionActionsResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestGridSessionActions",
   pagination: {
     inputToken: "nextToken",
@@ -5624,6 +5736,8 @@ export const listTestGridSessionArtifacts: API.OperationMethod<
   input: ListTestGridSessionArtifactsRequest,
   output: ListTestGridSessionArtifactsResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestGridSessionArtifacts",
   pagination: {
     inputToken: "nextToken",
@@ -5663,6 +5777,8 @@ export const listTestGridSessions: API.OperationMethod<
   input: ListTestGridSessionsRequest,
   output: ListTestGridSessionsResult,
   errors: [ArgumentException, InternalServiceException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestGridSessions",
   pagination: {
     inputToken: "nextToken",
@@ -5708,6 +5824,8 @@ export const listTests: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTests",
   pagination: {
     inputToken: "nextToken",
@@ -5758,6 +5876,8 @@ export const listUniqueProblems: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUniqueProblems",
   pagination: {
     inputToken: "nextToken",
@@ -5803,6 +5923,8 @@ export const listUploads: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUploads",
   pagination: {
     inputToken: "nextToken",
@@ -5827,6 +5949,8 @@ export const listVPCEConfigurations: API.OperationMethod<
   input: ListVPCEConfigurationsRequest,
   output: ListVPCEConfigurationsResult,
   errors: [ArgumentException, ServiceAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVPCEConfigurations",
 }));
 export type PurchaseOfferingError =
@@ -5857,6 +5981,8 @@ export const purchaseOffering: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseOffering",
 }));
 export type RenewOfferingError =
@@ -5886,6 +6012,8 @@ export const renewOffering: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RenewOffering",
 }));
 export type ScheduleRunError =
@@ -5913,6 +6041,8 @@ export const scheduleRun: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ScheduleRun",
 }));
 export type StopJobError =
@@ -5941,6 +6071,8 @@ export const stopJob: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopJob",
 }));
 export type StopRemoteAccessSessionError =
@@ -5966,6 +6098,8 @@ export const stopRemoteAccessSession: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRemoteAccessSession",
 }));
 export type StopRunError =
@@ -5994,6 +6128,8 @@ export const stopRun: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRun",
 }));
 export type TagResourceError =
@@ -6023,6 +6159,8 @@ export const tagResource: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6042,6 +6180,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ArgumentException, NotFoundException, TagOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDeviceInstanceError =
@@ -6067,6 +6207,8 @@ export const updateDeviceInstance: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeviceInstance",
 }));
 export type UpdateDevicePoolError =
@@ -6094,6 +6236,8 @@ export const updateDevicePool: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDevicePool",
 }));
 export type UpdateInstanceProfileError =
@@ -6119,6 +6263,8 @@ export const updateInstanceProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstanceProfile",
 }));
 export type UpdateNetworkProfileError =
@@ -6144,6 +6290,8 @@ export const updateNetworkProfile: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetworkProfile",
 }));
 export type UpdateProjectError =
@@ -6170,6 +6318,8 @@ export const updateProject: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProject",
 }));
 export type UpdateTestGridProjectError =
@@ -6195,6 +6345,8 @@ export const updateTestGridProject: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTestGridProject",
 }));
 export type UpdateUploadError =
@@ -6220,6 +6372,8 @@ export const updateUpload: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUpload",
 }));
 export type UpdateVPCEConfigurationError =
@@ -6245,5 +6399,7 @@ export const updateVPCEConfiguration: API.OperationMethod<
     NotFoundException,
     ServiceAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVPCEConfiguration",
 }));

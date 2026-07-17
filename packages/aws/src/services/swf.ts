@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3422,6 +3424,8 @@ export const countClosedWorkflowExecutions: API.OperationMethod<
   input: CountClosedWorkflowExecutionsInput,
   output: WorkflowExecutionCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CountClosedWorkflowExecutions",
 }));
 export type CountOpenWorkflowExecutionsError =
@@ -3473,6 +3477,8 @@ export const countOpenWorkflowExecutions: API.OperationMethod<
   input: CountOpenWorkflowExecutionsInput,
   output: WorkflowExecutionCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CountOpenWorkflowExecutions",
 }));
 export type CountPendingActivityTasksError =
@@ -3514,6 +3520,8 @@ export const countPendingActivityTasks: API.OperationMethod<
   input: CountPendingActivityTasksInput,
   output: PendingTaskCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CountPendingActivityTasks",
 }));
 export type CountPendingDecisionTasksError =
@@ -3555,6 +3563,8 @@ export const countPendingDecisionTasks: API.OperationMethod<
   input: CountPendingDecisionTasksInput,
   output: PendingTaskCount,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CountPendingDecisionTasks",
 }));
 export type DeleteActivityTypeError =
@@ -3607,6 +3617,8 @@ export const deleteActivityType: API.OperationMethod<
     TypeNotDeprecatedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteActivityType",
 }));
 export type DeleteWorkflowTypeError =
@@ -3660,6 +3672,8 @@ export const deleteWorkflowType: API.OperationMethod<
     TypeNotDeprecatedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflowType",
 }));
 export type DeprecateActivityTypeError =
@@ -3711,6 +3725,8 @@ export const deprecateActivityType: API.OperationMethod<
     TypeDeprecatedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprecateActivityType",
 }));
 export type DeprecateDomainError =
@@ -3760,6 +3776,8 @@ export const deprecateDomain: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprecateDomain",
 }));
 export type DeprecateWorkflowTypeError =
@@ -3815,6 +3833,8 @@ export const deprecateWorkflowType: API.OperationMethod<
     TypeDeprecatedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprecateWorkflowType",
 }));
 export type DescribeActivityTypeError =
@@ -3861,6 +3881,8 @@ export const describeActivityType: API.OperationMethod<
   input: DescribeActivityTypeInput,
   output: ActivityTypeDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeActivityType",
 }));
 export type DescribeDomainError =
@@ -3899,6 +3921,8 @@ export const describeDomain: API.OperationMethod<
   input: DescribeDomainInput,
   output: DomainDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomain",
 }));
 export type DescribeWorkflowExecutionError =
@@ -3940,6 +3964,8 @@ export const describeWorkflowExecution: API.OperationMethod<
   input: DescribeWorkflowExecutionInput,
   output: WorkflowExecutionDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkflowExecution",
 }));
 export type DescribeWorkflowTypeError =
@@ -3986,6 +4012,8 @@ export const describeWorkflowType: API.OperationMethod<
   input: DescribeWorkflowTypeInput,
   output: WorkflowTypeDetail,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkflowType",
 }));
 export type GetWorkflowExecutionHistoryError =
@@ -4043,6 +4071,8 @@ export const getWorkflowExecutionHistory: API.OperationMethod<
   input: GetWorkflowExecutionHistoryInput,
   output: History,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowExecutionHistory",
   pagination: {
     inputToken: "nextPageToken",
@@ -4105,6 +4135,8 @@ export const listActivityTypes: API.OperationMethod<
   input: ListActivityTypesInput,
   output: ActivityTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActivityTypes",
   pagination: {
     inputToken: "nextPageToken",
@@ -4178,6 +4210,8 @@ export const listClosedWorkflowExecutions: API.OperationMethod<
   input: ListClosedWorkflowExecutionsInput,
   output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClosedWorkflowExecutions",
   pagination: {
     inputToken: "nextPageToken",
@@ -4240,6 +4274,8 @@ export const listDomains: API.OperationMethod<
   input: ListDomainsInput,
   output: DomainInfos,
   errors: [OperationNotPermittedFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomains",
   pagination: {
     inputToken: "nextPageToken",
@@ -4313,6 +4349,8 @@ export const listOpenWorkflowExecutions: API.OperationMethod<
   input: ListOpenWorkflowExecutionsInput,
   output: WorkflowExecutionInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpenWorkflowExecutions",
   pagination: {
     inputToken: "nextPageToken",
@@ -4342,6 +4380,8 @@ export const listTagsForResource: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWorkflowTypesError =
@@ -4395,6 +4435,8 @@ export const listWorkflowTypes: API.OperationMethod<
   input: ListWorkflowTypesInput,
   output: WorkflowTypeInfos,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowTypes",
   pagination: {
     inputToken: "nextPageToken",
@@ -4454,6 +4496,8 @@ export const pollForActivityTask: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PollForActivityTask",
 }));
 export type PollForDecisionTaskError =
@@ -4534,6 +4578,8 @@ export const pollForDecisionTask: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PollForDecisionTask",
   pagination: {
     inputToken: "nextPageToken",
@@ -4600,6 +4646,8 @@ export const recordActivityTaskHeartbeat: API.OperationMethod<
   input: RecordActivityTaskHeartbeatInput,
   output: ActivityTaskStatus,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RecordActivityTaskHeartbeat",
 }));
 export type RegisterActivityTypeError =
@@ -4658,6 +4706,8 @@ export const registerActivityType: API.OperationMethod<
     TypeAlreadyExistsFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterActivityType",
 }));
 export type RegisterDomainError =
@@ -4702,6 +4752,8 @@ export const registerDomain: API.OperationMethod<
     OperationNotPermittedFault,
     TooManyTagsFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterDomain",
 }));
 export type RegisterWorkflowTypeError =
@@ -4762,6 +4814,8 @@ export const registerWorkflowType: API.OperationMethod<
     TypeAlreadyExistsFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterWorkflowType",
 }));
 export type RequestCancelWorkflowExecutionError =
@@ -4810,6 +4864,8 @@ export const requestCancelWorkflowExecution: API.OperationMethod<
   input: RequestCancelWorkflowExecutionInput,
   output: RequestCancelWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestCancelWorkflowExecution",
 }));
 export type RespondActivityTaskCanceledError =
@@ -4862,6 +4918,8 @@ export const respondActivityTaskCanceled: API.OperationMethod<
   input: RespondActivityTaskCanceledInput,
   output: RespondActivityTaskCanceledResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RespondActivityTaskCanceled",
 }));
 export type RespondActivityTaskCompletedError =
@@ -4912,6 +4970,8 @@ export const respondActivityTaskCompleted: API.OperationMethod<
   input: RespondActivityTaskCompletedInput,
   output: RespondActivityTaskCompletedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RespondActivityTaskCompleted",
 }));
 export type RespondActivityTaskFailedError =
@@ -4957,6 +5017,8 @@ export const respondActivityTaskFailed: API.OperationMethod<
   input: RespondActivityTaskFailedInput,
   output: RespondActivityTaskFailedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RespondActivityTaskFailed",
 }));
 export type RespondDecisionTaskCompletedError =
@@ -4992,6 +5054,8 @@ export const respondDecisionTaskCompleted: API.OperationMethod<
   input: RespondDecisionTaskCompletedInput,
   output: RespondDecisionTaskCompletedResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RespondDecisionTaskCompleted",
 }));
 export type SignalWorkflowExecutionError =
@@ -5039,6 +5103,8 @@ export const signalWorkflowExecution: API.OperationMethod<
   input: SignalWorkflowExecutionInput,
   output: SignalWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SignalWorkflowExecution",
 }));
 export type StartWorkflowExecutionError =
@@ -5110,6 +5176,8 @@ export const startWorkflowExecution: API.OperationMethod<
     UnknownResourceFault,
     WorkflowExecutionAlreadyStartedFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWorkflowExecution",
 }));
 export type TagResourceError =
@@ -5137,6 +5205,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TerminateWorkflowExecutionError =
@@ -5187,6 +5257,8 @@ export const terminateWorkflowExecution: API.OperationMethod<
   input: TerminateWorkflowExecutionInput,
   output: TerminateWorkflowExecutionResponse,
   errors: [OperationNotPermittedFault, UnknownResourceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateWorkflowExecution",
 }));
 export type UndeprecateActivityTypeError =
@@ -5240,6 +5312,8 @@ export const undeprecateActivityType: API.OperationMethod<
     TypeAlreadyExistsFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UndeprecateActivityType",
 }));
 export type UndeprecateDomainError =
@@ -5286,6 +5360,8 @@ export const undeprecateDomain: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UndeprecateDomain",
 }));
 export type UndeprecateWorkflowTypeError =
@@ -5339,6 +5415,8 @@ export const undeprecateWorkflowType: API.OperationMethod<
     TypeAlreadyExistsFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UndeprecateWorkflowType",
 }));
 export type UntagResourceError =
@@ -5362,5 +5440,7 @@ export const untagResource: API.OperationMethod<
     OperationNotPermittedFault,
     UnknownResourceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

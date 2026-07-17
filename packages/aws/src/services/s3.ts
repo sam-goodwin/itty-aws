@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -12275,6 +12277,8 @@ export const abortMultipartUpload: API.OperationMethod<
     NoSuchBucket,
     NotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AbortMultipartUpload",
 }));
 export type CompleteMultipartUploadError = CommonErrors;
@@ -12400,6 +12404,8 @@ export const completeMultipartUpload: API.OperationMethod<
   input: CompleteMultipartUploadRequest,
   output: CompleteMultipartUploadOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteMultipartUpload",
 }));
 export type CopyObjectError =
@@ -12585,6 +12591,8 @@ export const copyObject: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyObject",
 }));
 export type CreateBucketError =
@@ -12729,6 +12737,8 @@ export const createBucket: API.OperationMethod<
     InvalidBucketName,
     InvalidLocationConstraint,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBucket",
 }));
 export type CreateBucketMetadataConfigurationError = CommonErrors;
@@ -12797,6 +12807,8 @@ export const createBucketMetadataConfiguration: API.OperationMethod<
   input: CreateBucketMetadataConfigurationRequest,
   output: CreateBucketMetadataConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBucketMetadataConfiguration",
 }));
 export type CreateBucketMetadataTableConfigurationError = CommonErrors;
@@ -12857,6 +12869,8 @@ export const createBucketMetadataTableConfiguration: API.OperationMethod<
   input: CreateBucketMetadataTableConfigurationRequest,
   output: CreateBucketMetadataTableConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBucketMetadataTableConfiguration",
 }));
 export type CreateMultipartUploadError =
@@ -13048,6 +13062,8 @@ export const createMultipartUpload: API.OperationMethod<
   input: CreateMultipartUploadRequest,
   output: CreateMultipartUploadOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMultipartUpload",
 }));
 export type CreateSessionError = NoSuchBucket | CommonErrors;
@@ -13155,6 +13171,8 @@ export const createSession: API.OperationMethod<
   input: CreateSessionRequest,
   output: CreateSessionOutput,
   errors: [NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSession",
 }));
 export type DeleteBucketError =
@@ -13214,6 +13232,8 @@ export const deleteBucket: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucket",
 }));
 export type DeleteBucketAnalyticsConfigurationError =
@@ -13254,6 +13274,8 @@ export const deleteBucketAnalyticsConfiguration: API.OperationMethod<
   input: DeleteBucketAnalyticsConfigurationRequest,
   output: DeleteBucketAnalyticsConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketAnalyticsConfiguration",
 }));
 export type DeleteBucketCorsError =
@@ -13289,6 +13311,8 @@ export const deleteBucketCors: API.OperationMethod<
   input: DeleteBucketCorsRequest,
   output: DeleteBucketCorsResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketCors",
 }));
 export type DeleteBucketEncryptionError =
@@ -13343,6 +13367,8 @@ export const deleteBucketEncryption: API.OperationMethod<
   input: DeleteBucketEncryptionRequest,
   output: DeleteBucketEncryptionResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketEncryption",
 }));
 export type DeleteBucketIntelligentTieringConfigurationError =
@@ -13380,6 +13406,8 @@ export const deleteBucketIntelligentTieringConfiguration: API.OperationMethod<
   input: DeleteBucketIntelligentTieringConfigurationRequest,
   output: DeleteBucketIntelligentTieringConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketIntelligentTieringConfiguration",
 }));
 export type DeleteBucketInventoryConfigurationError =
@@ -13421,6 +13449,8 @@ export const deleteBucketInventoryConfiguration: API.OperationMethod<
   input: DeleteBucketInventoryConfigurationRequest,
   output: DeleteBucketInventoryConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketInventoryConfiguration",
 }));
 export type DeleteBucketLifecycleError =
@@ -13486,6 +13516,8 @@ export const deleteBucketLifecycle: API.OperationMethod<
   input: DeleteBucketLifecycleRequest,
   output: DeleteBucketLifecycleResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketLifecycle",
 }));
 export type DeleteBucketMetadataConfigurationError =
@@ -13533,6 +13565,8 @@ export const deleteBucketMetadataConfiguration: API.OperationMethod<
   input: DeleteBucketMetadataConfigurationRequest,
   output: DeleteBucketMetadataConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketMetadataConfiguration",
 }));
 export type DeleteBucketMetadataTableConfigurationError =
@@ -13586,6 +13620,8 @@ export const deleteBucketMetadataTableConfiguration: API.OperationMethod<
   input: DeleteBucketMetadataTableConfigurationRequest,
   output: DeleteBucketMetadataTableConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketMetadataTableConfiguration",
 }));
 export type DeleteBucketMetricsConfigurationError =
@@ -13648,6 +13684,8 @@ export const deleteBucketMetricsConfiguration: API.OperationMethod<
   input: DeleteBucketMetricsConfigurationRequest,
   output: DeleteBucketMetricsConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketMetricsConfiguration",
 }));
 export type DeleteBucketOwnershipControlsError =
@@ -13682,6 +13720,8 @@ export const deleteBucketOwnershipControls: API.OperationMethod<
   input: DeleteBucketOwnershipControlsRequest,
   output: DeleteBucketOwnershipControlsResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketOwnershipControls",
 }));
 export type DeleteBucketPolicyError =
@@ -13755,6 +13795,8 @@ export const deleteBucketPolicy: API.OperationMethod<
     PermanentRedirect,
     SignatureDoesNotMatch,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketPolicy",
 }));
 export type DeleteBucketReplicationError =
@@ -13794,6 +13836,8 @@ export const deleteBucketReplication: API.OperationMethod<
   input: DeleteBucketReplicationRequest,
   output: DeleteBucketReplicationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketReplication",
 }));
 export type DeleteBucketTaggingError =
@@ -13826,6 +13870,8 @@ export const deleteBucketTagging: API.OperationMethod<
   input: DeleteBucketTaggingRequest,
   output: DeleteBucketTaggingResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketTagging",
 }));
 export type DeleteBucketWebsiteError =
@@ -13866,6 +13912,8 @@ export const deleteBucketWebsite: API.OperationMethod<
   input: DeleteBucketWebsiteRequest,
   output: DeleteBucketWebsiteResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketWebsite",
 }));
 export type DeleteObjectError =
@@ -13980,6 +14028,8 @@ export const deleteObject: API.OperationMethod<
     PermanentRedirect,
     NotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteObject",
 }));
 export type DeleteObjectsError =
@@ -14089,6 +14139,8 @@ export const deleteObjects: API.OperationMethod<
   input: DeleteObjectsRequest,
   output: DeleteObjectsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteObjects",
 }));
 export type DeleteObjectTaggingError =
@@ -14127,6 +14179,8 @@ export const deleteObjectTagging: API.OperationMethod<
   input: DeleteObjectTaggingRequest,
   output: DeleteObjectTaggingOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchKey, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteObjectTagging",
 }));
 export type DeletePublicAccessBlockError =
@@ -14166,6 +14220,8 @@ export const deletePublicAccessBlock: API.OperationMethod<
   input: DeletePublicAccessBlockRequest,
   output: DeletePublicAccessBlockResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePublicAccessBlock",
 }));
 export type GetBucketAbacError =
@@ -14185,6 +14241,8 @@ export const getBucketAbac: API.OperationMethod<
   input: GetBucketAbacRequest,
   output: GetBucketAbacOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketAbac",
 }));
 export type GetBucketAccelerateConfigurationError =
@@ -14231,6 +14289,8 @@ export const getBucketAccelerateConfiguration: API.OperationMethod<
   input: GetBucketAccelerateConfigurationRequest,
   output: GetBucketAccelerateConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketAccelerateConfiguration",
 }));
 export type GetBucketAclError =
@@ -14275,6 +14335,8 @@ export const getBucketAcl: API.OperationMethod<
   input: GetBucketAclRequest,
   output: GetBucketAclOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketAcl",
 }));
 export type GetBucketAnalyticsConfigurationError =
@@ -14316,6 +14378,8 @@ export const getBucketAnalyticsConfiguration: API.OperationMethod<
   input: GetBucketAnalyticsConfigurationRequest,
   output: GetBucketAnalyticsConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketAnalyticsConfiguration",
 }));
 export type GetBucketCorsError =
@@ -14366,6 +14430,8 @@ export const getBucketCors: API.OperationMethod<
     NoSuchCORSConfiguration,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketCors",
 }));
 export type GetBucketEncryptionError =
@@ -14428,6 +14494,8 @@ export const getBucketEncryption: API.OperationMethod<
     ParseError,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketEncryption",
 }));
 export type GetBucketIntelligentTieringConfigurationError =
@@ -14466,6 +14534,8 @@ export const getBucketIntelligentTieringConfiguration: API.OperationMethod<
   input: GetBucketIntelligentTieringConfigurationRequest,
   output: GetBucketIntelligentTieringConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketIntelligentTieringConfiguration",
 }));
 export type GetBucketInventoryConfigurationError =
@@ -14506,6 +14576,8 @@ export const getBucketInventoryConfiguration: API.OperationMethod<
   input: GetBucketInventoryConfigurationRequest,
   output: GetBucketInventoryConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketInventoryConfiguration",
 }));
 export type GetBucketLifecycleConfigurationError =
@@ -14596,6 +14668,8 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
     NoSuchLifecycleConfiguration,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketLifecycleConfiguration",
 }));
 export type GetBucketLocationError =
@@ -14647,6 +14721,8 @@ export const getBucketLocation: API.OperationMethod<
   input: GetBucketLocationRequest,
   output: GetBucketLocationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketLocation",
 }));
 export type GetBucketLoggingError =
@@ -14678,6 +14754,8 @@ export const getBucketLogging: API.OperationMethod<
   input: GetBucketLoggingRequest,
   output: GetBucketLoggingOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketLogging",
 }));
 export type GetBucketMetadataConfigurationError =
@@ -14724,6 +14802,8 @@ export const getBucketMetadataConfiguration: API.OperationMethod<
   input: GetBucketMetadataConfigurationRequest,
   output: GetBucketMetadataConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketMetadataConfiguration",
 }));
 export type GetBucketMetadataTableConfigurationError =
@@ -14776,6 +14856,8 @@ export const getBucketMetadataTableConfiguration: API.OperationMethod<
   input: GetBucketMetadataTableConfigurationRequest,
   output: GetBucketMetadataTableConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketMetadataTableConfiguration",
 }));
 export type GetBucketMetricsConfigurationError =
@@ -14840,6 +14922,8 @@ export const getBucketMetricsConfiguration: API.OperationMethod<
   input: GetBucketMetricsConfigurationRequest,
   output: GetBucketMetricsConfigurationOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, NoSuchConfiguration],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketMetricsConfiguration",
 }));
 export type GetBucketNotificationConfigurationError =
@@ -14885,6 +14969,8 @@ export const getBucketNotificationConfiguration: API.OperationMethod<
   input: GetBucketNotificationConfigurationRequest,
   output: NotificationConfiguration,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketNotificationConfiguration",
 }));
 export type GetBucketOwnershipControlsError =
@@ -14935,6 +15021,8 @@ export const getBucketOwnershipControls: API.OperationMethod<
     NoSuchBucket,
     OwnershipControlsNotFoundError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketOwnershipControls",
 }));
 export type GetBucketPolicyError =
@@ -15016,6 +15104,8 @@ export const getBucketPolicy: API.OperationMethod<
     PermanentRedirect,
     SignatureDoesNotMatch,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketPolicy",
 }));
 export type GetBucketPolicyStatusError =
@@ -15055,6 +15145,8 @@ export const getBucketPolicyStatus: API.OperationMethod<
   input: GetBucketPolicyStatusRequest,
   output: GetBucketPolicyStatusOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketPolicyStatus",
 }));
 export type GetBucketReplicationError =
@@ -15107,6 +15199,8 @@ export const getBucketReplication: API.OperationMethod<
     NoSuchBucket,
     ReplicationConfigurationNotFoundError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketReplication",
 }));
 export type GetBucketRequestPaymentError =
@@ -15136,6 +15230,8 @@ export const getBucketRequestPayment: API.OperationMethod<
   input: GetBucketRequestPaymentRequest,
   output: GetBucketRequestPaymentOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketRequestPayment",
 }));
 export type GetBucketTaggingError =
@@ -15182,6 +15278,8 @@ export const getBucketTagging: API.OperationMethod<
     NoSuchTagSet,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketTagging",
 }));
 export type GetBucketVersioningError =
@@ -15220,6 +15318,8 @@ export const getBucketVersioning: API.OperationMethod<
   input: GetBucketVersioningRequest,
   output: GetBucketVersioningOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketVersioning",
 }));
 export type GetBucketWebsiteError =
@@ -15263,6 +15363,8 @@ export const getBucketWebsite: API.OperationMethod<
     NoSuchWebsiteConfiguration,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketWebsite",
 }));
 export type GetObjectError =
@@ -15421,6 +15523,8 @@ export const getObject: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObject",
 }));
 export type GetObjectAclError =
@@ -15475,6 +15579,8 @@ export const getObjectAcl: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectAcl",
 }));
 export type GetObjectAttributesError = NoSuchKey | CommonErrors;
@@ -15627,6 +15733,8 @@ export const getObjectAttributes: API.OperationMethod<
   input: GetObjectAttributesRequest,
   output: GetObjectAttributesOutput,
   errors: [NoSuchKey],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectAttributes",
 }));
 export type GetObjectLegalHoldError =
@@ -15656,6 +15764,8 @@ export const getObjectLegalHold: API.OperationMethod<
   input: GetObjectLegalHoldRequest,
   output: GetObjectLegalHoldOutput,
   errors: [RequestLimitExceeded, SlowDown, InvalidRequest],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectLegalHold",
 }));
 export type GetObjectLockConfigurationError =
@@ -15693,6 +15803,8 @@ export const getObjectLockConfiguration: API.OperationMethod<
     ObjectLockConfigurationNotFoundError,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectLockConfiguration",
 }));
 export type GetObjectRetentionError =
@@ -15722,6 +15834,8 @@ export const getObjectRetention: API.OperationMethod<
   input: GetObjectRetentionRequest,
   output: GetObjectRetentionOutput,
   errors: [RequestLimitExceeded, SlowDown, InvalidRequest],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectRetention",
 }));
 export type GetObjectTaggingError =
@@ -15772,6 +15886,8 @@ export const getObjectTagging: API.OperationMethod<
     NoSuchKey,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectTagging",
 }));
 export type GetObjectTorrentError = CommonErrors;
@@ -15803,6 +15919,8 @@ export const getObjectTorrent: API.OperationMethod<
   input: GetObjectTorrentRequest,
   output: GetObjectTorrentOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectTorrent",
 }));
 export type GetPublicAccessBlockError =
@@ -15860,6 +15978,8 @@ export const getPublicAccessBlock: API.OperationMethod<
     NoSuchPublicAccessBlockConfiguration,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPublicAccessBlock",
 }));
 export type HeadBucketError =
@@ -15941,6 +16061,8 @@ export const headBucket: API.OperationMethod<
   input: HeadBucketRequest,
   output: HeadBucketOutput,
   errors: [NotFound, RequestLimitExceeded, SlowDown, ParseError, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "HeadBucket",
 }));
 export type HeadObjectError =
@@ -16067,6 +16189,8 @@ export const headObject: API.OperationMethod<
   input: HeadObjectRequest,
   output: HeadObjectOutput,
   errors: [NotFound, RequestLimitExceeded, SlowDown, ParseError, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "HeadObject",
 }));
 export type ListBucketAnalyticsConfigurationsError =
@@ -16115,6 +16239,8 @@ export const listBucketAnalyticsConfigurations: API.OperationMethod<
   input: ListBucketAnalyticsConfigurationsRequest,
   output: ListBucketAnalyticsConfigurationsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBucketAnalyticsConfigurations",
 }));
 export type ListBucketIntelligentTieringConfigurationsError =
@@ -16152,6 +16278,8 @@ export const listBucketIntelligentTieringConfigurations: API.OperationMethod<
   input: ListBucketIntelligentTieringConfigurationsRequest,
   output: ListBucketIntelligentTieringConfigurationsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBucketIntelligentTieringConfigurations",
 }));
 export type ListBucketInventoryConfigurationsError =
@@ -16198,6 +16326,8 @@ export const listBucketInventoryConfigurations: API.OperationMethod<
   input: ListBucketInventoryConfigurationsRequest,
   output: ListBucketInventoryConfigurationsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBucketInventoryConfigurations",
 }));
 export type ListBucketMetricsConfigurationsError =
@@ -16266,6 +16396,8 @@ export const listBucketMetricsConfigurations: API.OperationMethod<
   input: ListBucketMetricsConfigurationsRequest,
   output: ListBucketMetricsConfigurationsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBucketMetricsConfigurations",
 }));
 export type ListBucketsError =
@@ -16315,6 +16447,8 @@ export const listBuckets: API.OperationMethod<
   input: ListBucketsRequest,
   output: ListBucketsOutput,
   errors: [RequestLimitExceeded, SlowDown, RequestError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBuckets",
   pagination: {
     inputToken: "ContinuationToken",
@@ -16375,6 +16509,8 @@ export const listDirectoryBuckets: API.OperationMethod<
   input: ListDirectoryBucketsRequest,
   output: ListDirectoryBucketsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDirectoryBuckets",
   pagination: {
     inputToken: "ContinuationToken",
@@ -16485,6 +16621,8 @@ export const listMultipartUploads: API.OperationMethod<
   input: ListMultipartUploadsRequest,
   output: ListMultipartUploadsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMultipartUploads",
 }));
 export type ListObjectsError =
@@ -16528,6 +16666,8 @@ export const listObjects: API.OperationMethod<
   input: ListObjectsRequest,
   output: ListObjectsOutput,
   errors: [NoSuchBucket, RequestLimitExceeded, SlowDown, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjects",
 }));
 export type ListObjectsV2Error =
@@ -16626,6 +16766,8 @@ export const listObjectsV2: API.OperationMethod<
   input: ListObjectsV2Request,
   output: ListObjectsV2Output,
   errors: [NoSuchBucket, RequestLimitExceeded, SlowDown, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectsV2",
   pagination: {
     inputToken: "ContinuationToken",
@@ -16674,6 +16816,8 @@ export const listObjectVersions: API.OperationMethod<
   input: ListObjectVersionsRequest,
   output: ListObjectVersionsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectVersions",
 }));
 export type ListPartsError =
@@ -16767,6 +16911,8 @@ export const listParts: API.OperationMethod<
   input: ListPartsRequest,
   output: ListPartsOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListParts",
   pagination: {
     inputToken: "PartNumberMarker",
@@ -16788,6 +16934,8 @@ export const putBucketAbac: API.OperationMethod<
   input: PutBucketAbacRequest,
   output: PutBucketAbacResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketAbac",
 }));
 export type PutBucketAccelerateConfigurationError =
@@ -16841,6 +16989,8 @@ export const putBucketAccelerateConfiguration: API.OperationMethod<
   input: PutBucketAccelerateConfigurationRequest,
   output: PutBucketAccelerateConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketAccelerateConfiguration",
 }));
 export type PutBucketAclError =
@@ -17003,6 +17153,8 @@ export const putBucketAcl: API.OperationMethod<
   input: PutBucketAclRequest,
   output: PutBucketAclResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketAcl",
 }));
 export type PutBucketAnalyticsConfigurationError = CommonErrors;
@@ -17078,6 +17230,8 @@ export const putBucketAnalyticsConfiguration: API.OperationMethod<
   input: PutBucketAnalyticsConfigurationRequest,
   output: PutBucketAnalyticsConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketAnalyticsConfiguration",
 }));
 export type PutBucketCorsError =
@@ -17141,6 +17295,8 @@ export const putBucketCors: API.OperationMethod<
   input: PutBucketCorsRequest,
   output: PutBucketCorsResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketCors",
 }));
 export type PutBucketEncryptionError =
@@ -17243,6 +17399,8 @@ export const putBucketEncryption: API.OperationMethod<
   input: PutBucketEncryptionRequest,
   output: PutBucketEncryptionResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketEncryption",
 }));
 export type PutBucketIntelligentTieringConfigurationError =
@@ -17306,6 +17464,8 @@ export const putBucketIntelligentTieringConfiguration: API.OperationMethod<
   input: PutBucketIntelligentTieringConfigurationRequest,
   output: PutBucketIntelligentTieringConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketIntelligentTieringConfiguration",
 }));
 export type PutBucketInventoryConfigurationError =
@@ -17394,6 +17554,8 @@ export const putBucketInventoryConfiguration: API.OperationMethod<
   input: PutBucketInventoryConfigurationRequest,
   output: PutBucketInventoryConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketInventoryConfiguration",
 }));
 export type PutBucketLifecycleConfigurationError =
@@ -17516,6 +17678,8 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketLifecycleConfiguration",
 }));
 export type PutBucketLoggingError =
@@ -17601,6 +17765,8 @@ export const putBucketLogging: API.OperationMethod<
   input: PutBucketLoggingRequest,
   output: PutBucketLoggingResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketLogging",
 }));
 export type PutBucketMetricsConfigurationError =
@@ -17672,6 +17838,8 @@ export const putBucketMetricsConfiguration: API.OperationMethod<
   input: PutBucketMetricsConfigurationRequest,
   output: PutBucketMetricsConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketMetricsConfiguration",
 }));
 export type PutBucketNotificationConfigurationError =
@@ -17741,6 +17909,8 @@ export const putBucketNotificationConfiguration: API.OperationMethod<
   input: PutBucketNotificationConfigurationRequest,
   output: PutBucketNotificationConfigurationResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketNotificationConfiguration",
 }));
 export type PutBucketOwnershipControlsError =
@@ -17774,6 +17944,8 @@ export const putBucketOwnershipControls: API.OperationMethod<
   input: PutBucketOwnershipControlsRequest,
   output: PutBucketOwnershipControlsResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketOwnershipControls",
 }));
 export type PutBucketPolicyError =
@@ -17865,6 +18037,8 @@ export const putBucketPolicy: API.OperationMethod<
     PermanentRedirect,
     SignatureDoesNotMatch,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketPolicy",
 }));
 export type PutBucketReplicationError =
@@ -17943,6 +18117,8 @@ export const putBucketReplication: API.OperationMethod<
   input: PutBucketReplicationRequest,
   output: PutBucketReplicationResponse,
   errors: [RequestLimitExceeded, SlowDown, InvalidRequest, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketReplication",
 }));
 export type PutBucketRequestPaymentError =
@@ -17976,6 +18152,8 @@ export const putBucketRequestPayment: API.OperationMethod<
   input: PutBucketRequestPaymentRequest,
   output: PutBucketRequestPaymentResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketRequestPayment",
 }));
 export type PutBucketTaggingError =
@@ -18035,6 +18213,8 @@ export const putBucketTagging: API.OperationMethod<
   input: PutBucketTaggingRequest,
   output: PutBucketTaggingResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketTagging",
 }));
 export type PutBucketVersioningError =
@@ -18095,6 +18275,8 @@ export const putBucketVersioning: API.OperationMethod<
   input: PutBucketVersioningRequest,
   output: PutBucketVersioningResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketVersioning",
 }));
 export type PutBucketWebsiteError =
@@ -18183,6 +18365,8 @@ export const putBucketWebsite: API.OperationMethod<
   input: PutBucketWebsiteRequest,
   output: PutBucketWebsiteResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketWebsite",
 }));
 export type PutObjectError =
@@ -18340,6 +18524,8 @@ export const putObject: API.OperationMethod<
     PreconditionFailed,
     ConditionalRequestConflict,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutObject",
 }));
 export type PutObjectAclError =
@@ -18500,6 +18686,8 @@ export const putObjectAcl: API.OperationMethod<
   input: PutObjectAclRequest,
   output: PutObjectAclOutput,
   errors: [NoSuchKey, RequestLimitExceeded, SlowDown, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutObjectAcl",
 }));
 export type PutObjectLegalHoldError =
@@ -18525,6 +18713,8 @@ export const putObjectLegalHold: API.OperationMethod<
   input: PutObjectLegalHoldRequest,
   output: PutObjectLegalHoldOutput,
   errors: [RequestLimitExceeded, SlowDown, MalformedXML],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutObjectLegalHold",
 }));
 export type PutObjectLockConfigurationError =
@@ -18568,6 +18758,8 @@ export const putObjectLockConfiguration: API.OperationMethod<
     NoSuchBucket,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutObjectLockConfiguration",
 }));
 export type PutObjectRetentionError =
@@ -18596,6 +18788,8 @@ export const putObjectRetention: API.OperationMethod<
   input: PutObjectRetentionRequest,
   output: PutObjectRetentionOutput,
   errors: [RequestLimitExceeded, SlowDown, InvalidRequest],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutObjectRetention",
 }));
 export type PutObjectTaggingError =
@@ -18653,6 +18847,8 @@ export const putObjectTagging: API.OperationMethod<
   input: PutObjectTaggingRequest,
   output: PutObjectTaggingOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchKey, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutObjectTagging",
 }));
 export type PutPublicAccessBlockError =
@@ -18700,6 +18896,8 @@ export const putPublicAccessBlock: API.OperationMethod<
   input: PutPublicAccessBlockRequest,
   output: PutPublicAccessBlockResponse,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPublicAccessBlock",
 }));
 export type RenameObjectError = IdempotencyParameterMismatch | CommonErrors;
@@ -18757,6 +18955,8 @@ export const renameObject: API.OperationMethod<
   input: RenameObjectRequest,
   output: RenameObjectOutput,
   errors: [IdempotencyParameterMismatch],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RenameObject",
 }));
 export type RestoreObjectError =
@@ -18921,6 +19121,8 @@ export const restoreObject: API.OperationMethod<
     NoSuchKey,
     PermanentRedirect,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreObject",
 }));
 export type SelectObjectContentError =
@@ -19028,6 +19230,8 @@ export const selectObjectContent: API.OperationMethod<
   input: SelectObjectContentRequest,
   output: SelectObjectContentOutput,
   errors: [RequestLimitExceeded, SlowDown, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SelectObjectContent",
 }));
 export type UpdateBucketMetadataInventoryTableConfigurationError = CommonErrors;
@@ -19086,6 +19290,8 @@ export const updateBucketMetadataInventoryTableConfiguration: API.OperationMetho
   input: UpdateBucketMetadataInventoryTableConfigurationRequest,
   output: UpdateBucketMetadataInventoryTableConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBucketMetadataInventoryTableConfiguration",
 }));
 export type UpdateBucketMetadataJournalTableConfigurationError = CommonErrors;
@@ -19122,6 +19328,8 @@ export const updateBucketMetadataJournalTableConfiguration: API.OperationMethod<
   input: UpdateBucketMetadataJournalTableConfigurationRequest,
   output: UpdateBucketMetadataJournalTableConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBucketMetadataJournalTableConfiguration",
 }));
 export type UpdateObjectEncryptionError =
@@ -19249,6 +19457,8 @@ export const updateObjectEncryption: API.OperationMethod<
   input: UpdateObjectEncryptionRequest,
   output: UpdateObjectEncryptionResponse,
   errors: [AccessDenied, InvalidRequest, NoSuchKey],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateObjectEncryption",
 }));
 export type UploadPartError =
@@ -19406,6 +19616,8 @@ export const uploadPart: API.OperationMethod<
   input: UploadPartRequest,
   output: UploadPartOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket, PermanentRedirect],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadPart",
 }));
 export type UploadPartCopyError =
@@ -19583,6 +19795,8 @@ export const uploadPartCopy: API.OperationMethod<
   input: UploadPartCopyRequest,
   output: UploadPartCopyOutput,
   errors: [RequestLimitExceeded, SlowDown, NoSuchBucket],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadPartCopy",
 }));
 export type WriteGetObjectResponseError = CommonErrors;
@@ -19638,5 +19852,7 @@ export const writeGetObjectResponse: API.OperationMethod<
   input: WriteGetObjectResponseRequest,
   output: WriteGetObjectResponseResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "WriteGetObjectResponse",
 }));

@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -727,6 +729,8 @@ export const addTagsToResource: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
 export type CreateHapgError =
@@ -762,6 +766,8 @@ export const createHapg: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHapg",
 }));
 export type CreateHsmError =
@@ -805,6 +811,8 @@ export const createHsm: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHsm",
 }));
 export type CreateLunaClientError =
@@ -839,6 +847,8 @@ export const createLunaClient: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLunaClient",
 }));
 export type DeleteHapgError =
@@ -873,6 +883,8 @@ export const deleteHapg: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHapg",
 }));
 export type DeleteHsmError =
@@ -908,6 +920,8 @@ export const deleteHsm: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHsm",
 }));
 export type DeleteLunaClientError =
@@ -942,6 +956,8 @@ export const deleteLunaClient: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLunaClient",
 }));
 export type DescribeHapgError =
@@ -976,6 +992,8 @@ export const describeHapg: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHapg",
 }));
 export type DescribeHsmError =
@@ -1011,6 +1029,8 @@ export const describeHsm: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHsm",
 }));
 export type DescribeLunaClientError =
@@ -1045,6 +1065,8 @@ export const describeLunaClient: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLunaClient",
 }));
 export type GetConfigError =
@@ -1080,6 +1102,8 @@ export const getConfig: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfig",
 }));
 export type ListAvailableZonesError =
@@ -1114,6 +1138,8 @@ export const listAvailableZones: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAvailableZones",
 }));
 export type ListHapgsError =
@@ -1153,6 +1179,8 @@ export const listHapgs: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHapgs",
 }));
 export type ListHsmsError =
@@ -1193,6 +1221,8 @@ export const listHsms: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHsms",
 }));
 export type ListLunaClientsError =
@@ -1232,6 +1262,8 @@ export const listLunaClients: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLunaClients",
 }));
 export type ListTagsForResourceError =
@@ -1266,6 +1298,8 @@ export const listTagsForResource: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ModifyHapgError =
@@ -1300,6 +1334,8 @@ export const modifyHapg: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyHapg",
 }));
 export type ModifyHsmError =
@@ -1339,6 +1375,8 @@ export const modifyHsm: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyHsm",
 }));
 export type ModifyLunaClientError = CloudHsmServiceException | CommonErrors;
@@ -1368,6 +1406,8 @@ export const modifyLunaClient: API.OperationMethod<
   input: ModifyLunaClientRequest,
   output: ModifyLunaClientResponse,
   errors: [CloudHsmServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyLunaClient",
 }));
 export type RemoveTagsFromResourceError =
@@ -1405,5 +1445,7 @@ export const removeTagsFromResource: API.OperationMethod<
     CloudHsmServiceException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));

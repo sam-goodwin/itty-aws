@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2807,6 +2809,8 @@ export const associatePhoneNumberWithUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePhoneNumberWithUser",
 }));
 export type AssociateSigninDelegateGroupsWithAccountError =
@@ -2838,6 +2842,8 @@ export const associateSigninDelegateGroupsWithAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSigninDelegateGroupsWithAccount",
 }));
 export type BatchCreateRoomMembershipError =
@@ -2870,6 +2876,8 @@ export const batchCreateRoomMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateRoomMembership",
 }));
 export type BatchDeletePhoneNumberError =
@@ -2905,6 +2913,8 @@ export const batchDeletePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeletePhoneNumber",
 }));
 export type BatchSuspendUserError =
@@ -2950,6 +2960,8 @@ export const batchSuspendUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchSuspendUser",
 }));
 export type BatchUnsuspendUserError =
@@ -2990,6 +3002,8 @@ export const batchUnsuspendUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUnsuspendUser",
 }));
 export type BatchUpdatePhoneNumberError =
@@ -3025,6 +3039,8 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdatePhoneNumber",
 }));
 export type BatchUpdateUserError =
@@ -3056,6 +3072,8 @@ export const batchUpdateUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateUser",
 }));
 export type CreateAccountError =
@@ -3090,6 +3108,8 @@ export const createAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccount",
 }));
 export type CreateBotError =
@@ -3123,6 +3143,8 @@ export const createBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBot",
 }));
 export type CreateMeetingDialOutError =
@@ -3162,6 +3184,8 @@ export const createMeetingDialOut: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMeetingDialOut",
 }));
 export type CreatePhoneNumberOrderError =
@@ -3196,6 +3220,8 @@ export const createPhoneNumberOrder: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePhoneNumberOrder",
 }));
 export type CreateRoomError =
@@ -3229,6 +3255,8 @@ export const createRoom: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoom",
 }));
 export type CreateRoomMembershipError =
@@ -3264,6 +3292,8 @@ export const createRoomMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoomMembership",
 }));
 export type CreateUserError =
@@ -3297,6 +3327,8 @@ export const createUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DeleteAccountError =
@@ -3343,6 +3375,8 @@ export const deleteAccount: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccount",
 }));
 export type DeleteEventsConfigurationError =
@@ -3372,6 +3406,8 @@ export const deleteEventsConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventsConfiguration",
 }));
 export type DeletePhoneNumberError =
@@ -3409,6 +3445,8 @@ export const deletePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePhoneNumber",
 }));
 export type DeleteRoomError =
@@ -3440,6 +3478,8 @@ export const deleteRoom: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoom",
 }));
 export type DeleteRoomMembershipError =
@@ -3471,6 +3511,8 @@ export const deleteRoomMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoomMembership",
 }));
 export type DisassociatePhoneNumberFromUserError =
@@ -3502,6 +3544,8 @@ export const disassociatePhoneNumberFromUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociatePhoneNumberFromUser",
 }));
 export type DisassociateSigninDelegateGroupsFromAccountError =
@@ -3533,6 +3577,8 @@ export const disassociateSigninDelegateGroupsFromAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSigninDelegateGroupsFromAccount",
 }));
 export type GetAccountError =
@@ -3565,6 +3611,8 @@ export const getAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccount",
 }));
 export type GetAccountSettingsError =
@@ -3598,6 +3646,8 @@ export const getAccountSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountSettings",
 }));
 export type GetBotError =
@@ -3629,6 +3679,8 @@ export const getBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBot",
 }));
 export type GetEventsConfigurationError =
@@ -3660,6 +3712,8 @@ export const getEventsConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventsConfiguration",
 }));
 export type GetGlobalSettingsError =
@@ -3690,6 +3744,8 @@ export const getGlobalSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGlobalSettings",
 }));
 export type GetPhoneNumberError =
@@ -3721,6 +3777,8 @@ export const getPhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPhoneNumber",
 }));
 export type GetPhoneNumberOrderError =
@@ -3753,6 +3811,8 @@ export const getPhoneNumberOrder: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPhoneNumberOrder",
 }));
 export type GetPhoneNumberSettingsError =
@@ -3782,6 +3842,8 @@ export const getPhoneNumberSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPhoneNumberSettings",
 }));
 export type GetRetentionSettingsError =
@@ -3814,6 +3876,8 @@ export const getRetentionSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRetentionSettings",
 }));
 export type GetRoomError =
@@ -3845,6 +3909,8 @@ export const getRoom: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRoom",
 }));
 export type GetUserError =
@@ -3879,6 +3945,8 @@ export const getUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUser",
 }));
 export type GetUserSettingsError =
@@ -3910,6 +3978,8 @@ export const getUserSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserSettings",
 }));
 export type InviteUsersError =
@@ -3943,6 +4013,8 @@ export const inviteUsers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InviteUsers",
 }));
 export type ListAccountsError =
@@ -3991,6 +4063,8 @@ export const listAccounts: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccounts",
   pagination: {
     inputToken: "NextToken",
@@ -4042,6 +4116,8 @@ export const listBots: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBots",
   pagination: {
     inputToken: "NextToken",
@@ -4091,6 +4167,8 @@ export const listPhoneNumberOrders: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPhoneNumberOrders",
   pagination: {
     inputToken: "NextToken",
@@ -4142,6 +4220,8 @@ export const listPhoneNumbers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPhoneNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -4194,6 +4274,8 @@ export const listRoomMemberships: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoomMemberships",
   pagination: {
     inputToken: "NextToken",
@@ -4245,6 +4327,8 @@ export const listRooms: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRooms",
   pagination: {
     inputToken: "NextToken",
@@ -4281,6 +4365,8 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSupportedPhoneNumberCountries",
 }));
 export type ListUsersError =
@@ -4328,6 +4414,8 @@ export const listUsers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
@@ -4364,6 +4452,8 @@ export const logoutUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LogoutUser",
 }));
 export type PutEventsConfigurationError =
@@ -4397,6 +4487,8 @@ export const putEventsConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEventsConfiguration",
 }));
 export type PutRetentionSettingsError =
@@ -4440,6 +4532,8 @@ export const putRetentionSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRetentionSettings",
 }));
 export type RedactConversationMessageError =
@@ -4471,6 +4565,8 @@ export const redactConversationMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RedactConversationMessage",
 }));
 export type RedactRoomMessageError =
@@ -4502,6 +4598,8 @@ export const redactRoomMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RedactRoomMessage",
 }));
 export type RegenerateSecurityTokenError =
@@ -4533,6 +4631,8 @@ export const regenerateSecurityToken: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegenerateSecurityToken",
 }));
 export type ResetPersonalPINError =
@@ -4565,6 +4665,8 @@ export const resetPersonalPIN: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetPersonalPIN",
 }));
 export type RestorePhoneNumberError =
@@ -4599,6 +4701,8 @@ export const restorePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestorePhoneNumber",
 }));
 export type SearchAvailablePhoneNumbersError =
@@ -4649,6 +4753,8 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchAvailablePhoneNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -4685,6 +4791,8 @@ export const updateAccount: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccount",
 }));
 export type UpdateAccountSettingsError =
@@ -4722,6 +4830,8 @@ export const updateAccountSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
 export type UpdateBotError =
@@ -4753,6 +4863,8 @@ export const updateBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBot",
 }));
 export type UpdateGlobalSettingsError =
@@ -4782,6 +4894,8 @@ export const updateGlobalSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalSettings",
 }));
 export type UpdatePhoneNumberError =
@@ -4819,6 +4933,8 @@ export const updatePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePhoneNumber",
 }));
 export type UpdatePhoneNumberSettingsError =
@@ -4850,6 +4966,8 @@ export const updatePhoneNumberSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePhoneNumberSettings",
 }));
 export type UpdateRoomError =
@@ -4881,6 +4999,8 @@ export const updateRoom: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoom",
 }));
 export type UpdateRoomMembershipError =
@@ -4915,6 +5035,8 @@ export const updateRoomMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoomMembership",
 }));
 export type UpdateUserError =
@@ -4946,6 +5068,8 @@ export const updateUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));
 export type UpdateUserSettingsError =
@@ -4977,5 +5101,7 @@ export const updateUserSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserSettings",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2205,6 +2207,8 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   input: AssociateServiceRoleToAccountRequest,
   output: AssociateServiceRoleToAccountResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateServiceRoleToAccount",
 }));
 export type BatchAssociateClientDeviceWithCoreDeviceError =
@@ -2242,6 +2246,8 @@ export const batchAssociateClientDeviceWithCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateClientDeviceWithCoreDevice",
 }));
 export type BatchDisassociateClientDeviceFromCoreDeviceError =
@@ -2271,6 +2277,8 @@ export const batchDisassociateClientDeviceFromCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateClientDeviceFromCoreDevice",
 }));
 export type CancelDeploymentError =
@@ -2302,6 +2310,8 @@ export const cancelDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDeployment",
 }));
 export type CreateComponentVersionError =
@@ -2362,6 +2372,8 @@ export const createComponentVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComponentVersion",
 }));
 export type CreateDeploymentError =
@@ -2406,6 +2418,8 @@ export const createDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeployment",
 }));
 export type DeleteComponentError =
@@ -2440,6 +2454,8 @@ export const deleteComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComponent",
 }));
 export type DeleteCoreDeviceError =
@@ -2472,6 +2488,8 @@ export const deleteCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCoreDevice",
 }));
 export type DeleteDeploymentError =
@@ -2506,6 +2524,8 @@ export const deleteDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeployment",
 }));
 export type DescribeComponentError =
@@ -2533,6 +2553,8 @@ export const describeComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComponent",
 }));
 export type DisassociateServiceRoleFromAccountError =
@@ -2553,6 +2575,8 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   input: DisassociateServiceRoleFromAccountRequest,
   output: DisassociateServiceRoleFromAccountResponse,
   errors: [InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateServiceRoleFromAccount",
 }));
 export type GetComponentError =
@@ -2580,6 +2604,8 @@ export const getComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponent",
 }));
 export type GetComponentVersionArtifactError =
@@ -2609,6 +2635,8 @@ export const getComponentVersionArtifact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponentVersionArtifact",
 }));
 export type GetConnectivityInfoError =
@@ -2634,6 +2662,8 @@ export const getConnectivityInfo: API.OperationMethod<
   input: GetConnectivityInfoRequest,
   output: GetConnectivityInfoResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectivityInfo",
 }));
 export type GetCoreDeviceError =
@@ -2680,6 +2710,8 @@ export const getCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoreDevice",
 }));
 export type GetDeploymentError =
@@ -2707,6 +2739,8 @@ export const getDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployment",
 }));
 export type GetServiceRoleForAccountError =
@@ -2727,6 +2761,8 @@ export const getServiceRoleForAccount: API.OperationMethod<
   input: GetServiceRoleForAccountRequest,
   output: GetServiceRoleForAccountResponse,
   errors: [InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceRoleForAccount",
 }));
 export type ListClientDevicesAssociatedWithCoreDeviceError =
@@ -2770,6 +2806,8 @@ export const listClientDevicesAssociatedWithCoreDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClientDevicesAssociatedWithCoreDevice",
   pagination: {
     inputToken: "nextToken",
@@ -2819,6 +2857,8 @@ export const listComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
@@ -2868,6 +2908,8 @@ export const listComponentVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponentVersions",
   pagination: {
     inputToken: "nextToken",
@@ -2938,6 +2980,8 @@ export const listCoreDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoreDevices",
   pagination: {
     inputToken: "nextToken",
@@ -2984,6 +3028,8 @@ export const listDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
@@ -3032,6 +3078,8 @@ export const listEffectiveDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEffectiveDeployments",
   pagination: {
     inputToken: "nextToken",
@@ -3102,6 +3150,8 @@ export const listInstalledComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstalledComponents",
   pagination: {
     inputToken: "nextToken",
@@ -3131,6 +3181,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ResolveComponentCandidatesError =
@@ -3175,6 +3227,8 @@ export const resolveComponentCandidates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResolveComponentCandidates",
 }));
 export type TagResourceError =
@@ -3199,6 +3253,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3222,6 +3278,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateConnectivityInfoError =
@@ -3247,5 +3305,7 @@ export const updateConnectivityInfo: API.OperationMethod<
   input: UpdateConnectivityInfoRequest,
   output: UpdateConnectivityInfoResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectivityInfo",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -10508,6 +10510,8 @@ export const associateCertificate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateCertificate",
 }));
 export type CancelJobError =
@@ -10539,6 +10543,8 @@ export const cancelJob: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelJob",
 }));
 export type CreateJobError =
@@ -10570,6 +10576,8 @@ export const createJob: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJob",
 }));
 export type CreateJobTemplateError =
@@ -10601,6 +10609,8 @@ export const createJobTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJobTemplate",
 }));
 export type CreatePresetError =
@@ -10632,6 +10642,8 @@ export const createPreset: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePreset",
 }));
 export type CreateQueueError =
@@ -10663,6 +10675,8 @@ export const createQueue: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQueue",
 }));
 export type CreateResourceShareError =
@@ -10694,6 +10708,8 @@ export const createResourceShare: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceShare",
 }));
 export type DeleteJobTemplateError =
@@ -10725,6 +10741,8 @@ export const deleteJobTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJobTemplate",
 }));
 export type DeletePolicyError =
@@ -10756,6 +10774,8 @@ export const deletePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicy",
 }));
 export type DeletePresetError =
@@ -10787,6 +10807,8 @@ export const deletePreset: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePreset",
 }));
 export type DeleteQueueError =
@@ -10818,6 +10840,8 @@ export const deleteQueue: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueue",
 }));
 export type DescribeEndpointsError =
@@ -10864,6 +10888,8 @@ export const describeEndpoints: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -10901,6 +10927,8 @@ export const disassociateCertificate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateCertificate",
 }));
 export type GetJobError =
@@ -10932,6 +10960,8 @@ export const getJob: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJob",
 }));
 export type GetJobsQueryResultsError =
@@ -10963,6 +10993,8 @@ export const getJobsQueryResults: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobsQueryResults",
 }));
 export type GetJobTemplateError =
@@ -10994,6 +11026,8 @@ export const getJobTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobTemplate",
 }));
 export type GetPolicyError =
@@ -11025,6 +11059,8 @@ export const getPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
 export type GetPresetError =
@@ -11056,6 +11092,8 @@ export const getPreset: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPreset",
 }));
 export type GetQueueError =
@@ -11087,6 +11125,8 @@ export const getQueue: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueue",
 }));
 export type ListJobsError =
@@ -11133,6 +11173,8 @@ export const listJobs: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
@@ -11185,6 +11227,8 @@ export const listJobTemplates: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -11237,6 +11281,8 @@ export const listPresets: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPresets",
   pagination: {
     inputToken: "NextToken",
@@ -11289,6 +11335,8 @@ export const listQueues: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueues",
   pagination: {
     inputToken: "NextToken",
@@ -11326,6 +11374,8 @@ export const listTagsForResource: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListVersionsError =
@@ -11372,6 +11422,8 @@ export const listVersions: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVersions",
   pagination: {
     inputToken: "NextToken",
@@ -11409,6 +11461,8 @@ export const probe: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Probe",
 }));
 export type PutPolicyError =
@@ -11440,6 +11494,8 @@ export const putPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPolicy",
 }));
 export type SearchJobsError =
@@ -11486,6 +11542,8 @@ export const searchJobs: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchJobs",
   pagination: {
     inputToken: "NextToken",
@@ -11523,6 +11581,8 @@ export const startJobsQuery: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartJobsQuery",
 }));
 export type TagResourceError =
@@ -11554,6 +11614,8 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -11585,6 +11647,8 @@ export const untagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateJobTemplateError =
@@ -11616,6 +11680,8 @@ export const updateJobTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJobTemplate",
 }));
 export type UpdatePresetError =
@@ -11647,6 +11713,8 @@ export const updatePreset: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePreset",
 }));
 export type UpdateQueueError =
@@ -11678,5 +11746,7 @@ export const updateQueue: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQueue",
 }));

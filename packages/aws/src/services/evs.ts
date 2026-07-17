@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -951,6 +953,8 @@ export const getVersions: API.OperationMethod<
   input: GetVersionsRequest,
   output: GetVersionsResponse,
   errors: [InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVersions",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
@@ -966,6 +970,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -991,6 +997,8 @@ export const tagResource: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1009,6 +1017,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, TagPolicyException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateEnvironmentError = ValidationException | CommonErrors;
@@ -1032,6 +1042,8 @@ export const createEnvironment: API.OperationMethod<
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
 export type GetEnvironmentError =
@@ -1050,6 +1062,8 @@ export const getEnvironment: API.OperationMethod<
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
 export type DeleteEnvironmentError =
@@ -1072,6 +1086,8 @@ export const deleteEnvironment: API.OperationMethod<
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
 export type ListEnvironmentsError = ValidationException | CommonErrors;
@@ -1102,6 +1118,8 @@ export const listEnvironments: API.OperationMethod<
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",
@@ -1127,6 +1145,8 @@ export const associateEipToVlan: API.OperationMethod<
   input: AssociateEipToVlanRequest,
   output: AssociateEipToVlanResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateEipToVlan",
 }));
 export type CreateEnvironmentHostError =
@@ -1155,6 +1175,8 @@ export const createEnvironmentHost: API.OperationMethod<
   input: CreateEnvironmentHostRequest,
   output: CreateEnvironmentHostResponse,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironmentHost",
 }));
 export type DeleteEnvironmentHostError =
@@ -1175,6 +1197,8 @@ export const deleteEnvironmentHost: API.OperationMethod<
   input: DeleteEnvironmentHostRequest,
   output: DeleteEnvironmentHostResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironmentHost",
 }));
 export type DisassociateEipFromVlanError =
@@ -1194,6 +1218,8 @@ export const disassociateEipFromVlan: API.OperationMethod<
   input: DisassociateEipFromVlanRequest,
   output: DisassociateEipFromVlanResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateEipFromVlan",
 }));
 export type ListEnvironmentHostsError =
@@ -1227,6 +1253,8 @@ export const listEnvironmentHosts: API.OperationMethod<
   input: ListEnvironmentHostsRequest,
   output: ListEnvironmentHostsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironmentHosts",
   pagination: {
     inputToken: "nextToken",
@@ -1266,6 +1294,8 @@ export const listEnvironmentVlans: API.OperationMethod<
   input: ListEnvironmentVlansRequest,
   output: ListEnvironmentVlansResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironmentVlans",
   pagination: {
     inputToken: "nextToken",

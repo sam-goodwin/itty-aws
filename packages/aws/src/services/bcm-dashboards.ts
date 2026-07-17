@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1052,6 +1054,8 @@ export const createDashboard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDashboard",
 }));
 export type CreateScheduledReportError =
@@ -1081,6 +1085,8 @@ export const createScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScheduledReport",
 }));
 export type DeleteDashboardError =
@@ -1106,6 +1112,8 @@ export const deleteDashboard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDashboard",
 }));
 export type DeleteScheduledReportError =
@@ -1133,6 +1141,8 @@ export const deleteScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScheduledReport",
 }));
 export type ExecuteScheduledReportError =
@@ -1164,6 +1174,8 @@ export const executeScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteScheduledReport",
 }));
 export type GetDashboardError =
@@ -1191,6 +1203,8 @@ export const getDashboard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDashboard",
 }));
 export type GetResourcePolicyError =
@@ -1218,6 +1232,8 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetScheduledReportError =
@@ -1245,6 +1261,8 @@ export const getScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScheduledReport",
 }));
 export type ListDashboardsError =
@@ -1285,6 +1303,8 @@ export const listDashboards: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDashboards",
   pagination: {
     inputToken: "nextToken",
@@ -1331,6 +1351,8 @@ export const listScheduledReports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScheduledReports",
   pagination: {
     inputToken: "nextToken",
@@ -1362,6 +1384,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1387,6 +1411,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1412,6 +1438,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDashboardError =
@@ -1439,6 +1467,8 @@ export const updateDashboard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDashboard",
 }));
 export type UpdateScheduledReportError =
@@ -1468,5 +1498,7 @@ export const updateScheduledReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScheduledReport",
 }));

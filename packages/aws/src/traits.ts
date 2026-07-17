@@ -16,76 +16,25 @@ import { restJson1Protocol } from "./protocols/rest-json.ts";
 import { restXmlProtocol } from "./protocols/rest-xml.ts";
 import type { RuleSetObject } from "./rules-engine/expression.ts";
 
-/**
- * Internal symbol for annotation metadata storage
- */
-const annotationMetaSymbol = "distilled-aws/annotation-meta" as const;
+import {
+  all,
+  annotationMetaSymbol,
+  makeAnnotation,
+  type Annotation,
+} from "@distilled.cloud/core/trait";
+
+// The annotation machinery (pipeable builders usable as S.Class annotation
+// objects, the `all` combinator) is core's; this module supplies the AWS
+// trait vocabulary on top of it.
+export { all, type Annotation };
 
 /**
  * Any type that has an .annotate() method returning itself.
  * This includes Schema.Schema and Schema.PropertySignature (from S.optional).
- * We use `any` for the annotations parameter because Effect Schema uses
- * specific annotation types for different schema types.
  */
 type Annotatable = {
   annotate(annotations: any): Annotatable;
 };
-
-/**
- * An Annotation is a callable that can be used with .pipe() AND
- * has symbol properties so it works directly with S.Class() second argument.
- *
- * The index signatures allow TypeScript to accept this as a valid annotations object.
- */
-export interface Annotation {
-  <A extends Annotatable>(schema: A): A;
-  readonly [annotationMetaSymbol]: Array<{ symbol: string; value: unknown }>;
-  // Index signatures for compatibility with Schema.Annotations
-  readonly [key: symbol]: unknown;
-  readonly [key: string]: unknown;
-}
-
-/**
- * Create an annotation builder for a given symbol and value
- */
-function makeAnnotation<T>(sym: string, value: T): Annotation {
-  const fn = <A extends Annotatable>(schema: A): A =>
-    schema.annotate({ [sym]: value }) as A;
-
-  (fn as any)[annotationMetaSymbol] = [{ symbol: sym, value }];
-  (fn as any)[sym] = value;
-
-  return fn as Annotation;
-}
-
-/**
- * Combine multiple annotations into one.
- * Use with S.Class when you need multiple class-level annotations:
- *
- * @example
- * class Foo extends S.Class<Foo>("Foo")({ ... }, A.all(A.XmlName("Foo"), A.OtherAnnotation())) {}
- */
-export function all(...annotations: Annotation[]): Annotation {
-  const entries: Array<{ symbol: string; value: unknown }> = [];
-  const raw: Record<string, unknown> = {};
-
-  for (const a of annotations) {
-    for (const entry of a[annotationMetaSymbol]) {
-      entries.push(entry);
-      raw[entry.symbol] = entry.value;
-    }
-  }
-
-  const fn = <A extends Annotatable>(schema: A): A => schema.annotate(raw) as A;
-
-  (fn as any)[annotationMetaSymbol] = entries;
-
-  for (const { symbol, value } of entries) {
-    (fn as any)[symbol] = value;
-  }
-
-  return fn as Annotation;
-}
 
 // =============================================================================
 // HTTP Binding Traits (smithy.api#http*)

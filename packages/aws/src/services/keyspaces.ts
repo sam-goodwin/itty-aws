@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1134,6 +1136,8 @@ export const createKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKeyspace",
 }));
 export type CreateTableError =
@@ -1167,6 +1171,8 @@ export const createTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTable",
 }));
 export type CreateTypeError =
@@ -1200,6 +1206,8 @@ export const createType: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateType",
 }));
 export type DeleteKeyspaceError =
@@ -1229,6 +1237,8 @@ export const deleteKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKeyspace",
 }));
 export type DeleteTableError =
@@ -1258,6 +1268,8 @@ export const deleteTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTable",
 }));
 export type DeleteTypeError =
@@ -1289,6 +1301,8 @@ export const deleteType: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteType",
 }));
 export type GetKeyspaceError =
@@ -1316,6 +1330,8 @@ export const getKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyspace",
 }));
 export type GetTableError =
@@ -1345,6 +1361,8 @@ export const getTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTable",
 }));
 export type GetTableAutoScalingSettingsError =
@@ -1382,6 +1400,8 @@ export const getTableAutoScalingSettings: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableAutoScalingSettings",
 }));
 export type GetTypeError =
@@ -1411,6 +1431,8 @@ export const getType: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetType",
 }));
 export type ListKeyspacesError =
@@ -1453,6 +1475,8 @@ export const listKeyspaces: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyspaces",
   pagination: {
     inputToken: "nextToken",
@@ -1503,6 +1527,8 @@ export const listTables: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "nextToken",
@@ -1553,6 +1579,8 @@ export const listTagsForResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
@@ -1603,6 +1631,8 @@ export const listTypes: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypes",
   pagination: {
     inputToken: "nextToken",
@@ -1664,6 +1694,8 @@ export const restoreTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTable",
 }));
 export type TagResourceError =
@@ -1695,6 +1727,8 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1724,6 +1758,8 @@ export const untagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateKeyspaceError =
@@ -1793,6 +1829,8 @@ export const updateKeyspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKeyspace",
 }));
 export type UpdateTableError =
@@ -1822,5 +1860,7 @@ export const updateTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTable",
 }));

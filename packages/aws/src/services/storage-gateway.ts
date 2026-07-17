@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4623,6 +4625,8 @@ export const activateGateway: API.OperationMethod<
   input: ActivateGatewayInput,
   output: ActivateGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateGateway",
 }));
 export type AddCacheError =
@@ -4645,6 +4649,8 @@ export const addCache: API.OperationMethod<
   input: AddCacheInput,
   output: AddCacheOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddCache",
 }));
 export type AddTagsToResourceError =
@@ -4679,6 +4685,8 @@ export const addTagsToResource: API.OperationMethod<
   input: AddTagsToResourceInput,
   output: AddTagsToResourceOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
 export type AddUploadBufferError =
@@ -4703,6 +4711,8 @@ export const addUploadBuffer: API.OperationMethod<
   input: AddUploadBufferInput,
   output: AddUploadBufferOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddUploadBuffer",
 }));
 export type AddWorkingStorageError =
@@ -4731,6 +4741,8 @@ export const addWorkingStorage: API.OperationMethod<
   input: AddWorkingStorageInput,
   output: AddWorkingStorageOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddWorkingStorage",
 }));
 export type AssignTapePoolError =
@@ -4752,6 +4764,8 @@ export const assignTapePool: API.OperationMethod<
   input: AssignTapePoolInput,
   output: AssignTapePoolOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssignTapePool",
 }));
 export type AssociateFileSystemError =
@@ -4773,6 +4787,8 @@ export const associateFileSystem: API.OperationMethod<
   input: AssociateFileSystemInput,
   output: AssociateFileSystemOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateFileSystem",
 }));
 export type AttachVolumeError =
@@ -4794,6 +4810,8 @@ export const attachVolume: API.OperationMethod<
   input: AttachVolumeInput,
   output: AttachVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachVolume",
 }));
 export type CancelArchivalError =
@@ -4813,6 +4831,8 @@ export const cancelArchival: API.OperationMethod<
   input: CancelArchivalInput,
   output: CancelArchivalOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelArchival",
 }));
 export type CancelCacheReportError =
@@ -4835,6 +4855,8 @@ export const cancelCacheReport: API.OperationMethod<
   input: CancelCacheReportInput,
   output: CancelCacheReportOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelCacheReport",
 }));
 export type CancelRetrievalError =
@@ -4855,6 +4877,8 @@ export const cancelRetrieval: API.OperationMethod<
   input: CancelRetrievalInput,
   output: CancelRetrievalOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelRetrieval",
 }));
 export type CreateCachediSCSIVolumeError =
@@ -4888,6 +4912,8 @@ export const createCachediSCSIVolume: API.OperationMethod<
   input: CreateCachediSCSIVolumeInput,
   output: CreateCachediSCSIVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCachediSCSIVolume",
 }));
 export type CreateNFSFileShareError =
@@ -4920,6 +4946,8 @@ export const createNFSFileShare: API.OperationMethod<
   input: CreateNFSFileShareInput,
   output: CreateNFSFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNFSFileShare",
 }));
 export type CreateSMBFileShareError =
@@ -4952,6 +4980,8 @@ export const createSMBFileShare: API.OperationMethod<
   input: CreateSMBFileShareInput,
   output: CreateSMBFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSMBFileShare",
 }));
 export type CreateSnapshotError =
@@ -4998,6 +5028,8 @@ export const createSnapshot: API.OperationMethod<
     InvalidGatewayRequestException,
     ServiceUnavailableError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshot",
 }));
 export type CreateSnapshotFromVolumeRecoveryPointError =
@@ -5039,6 +5071,8 @@ export const createSnapshotFromVolumeRecoveryPoint: API.OperationMethod<
     InvalidGatewayRequestException,
     ServiceUnavailableError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshotFromVolumeRecoveryPoint",
 }));
 export type CreateStorediSCSIVolumeError =
@@ -5068,6 +5102,8 @@ export const createStorediSCSIVolume: API.OperationMethod<
   input: CreateStorediSCSIVolumeInput,
   output: CreateStorediSCSIVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStorediSCSIVolume",
 }));
 export type CreateTapePoolError =
@@ -5087,6 +5123,8 @@ export const createTapePool: API.OperationMethod<
   input: CreateTapePoolInput,
   output: CreateTapePoolOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTapePool",
 }));
 export type CreateTapesError =
@@ -5109,6 +5147,8 @@ export const createTapes: API.OperationMethod<
   input: CreateTapesInput,
   output: CreateTapesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTapes",
 }));
 export type CreateTapeWithBarcodeError =
@@ -5133,6 +5173,8 @@ export const createTapeWithBarcode: API.OperationMethod<
   input: CreateTapeWithBarcodeInput,
   output: CreateTapeWithBarcodeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTapeWithBarcode",
 }));
 export type DeleteAutomaticTapeCreationPolicyError =
@@ -5153,6 +5195,8 @@ export const deleteAutomaticTapeCreationPolicy: API.OperationMethod<
   input: DeleteAutomaticTapeCreationPolicyInput,
   output: DeleteAutomaticTapeCreationPolicyOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAutomaticTapeCreationPolicy",
 }));
 export type DeleteBandwidthRateLimitError =
@@ -5175,6 +5219,8 @@ export const deleteBandwidthRateLimit: API.OperationMethod<
   input: DeleteBandwidthRateLimitInput,
   output: DeleteBandwidthRateLimitOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBandwidthRateLimit",
 }));
 export type DeleteCacheReportError =
@@ -5197,6 +5243,8 @@ export const deleteCacheReport: API.OperationMethod<
   input: DeleteCacheReportInput,
   output: DeleteCacheReportOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCacheReport",
 }));
 export type DeleteChapCredentialsError =
@@ -5217,6 +5265,8 @@ export const deleteChapCredentials: API.OperationMethod<
   input: DeleteChapCredentialsInput,
   output: DeleteChapCredentialsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChapCredentials",
 }));
 export type DeleteFileShareError =
@@ -5236,6 +5286,8 @@ export const deleteFileShare: API.OperationMethod<
   input: DeleteFileShareInput,
   output: DeleteFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFileShare",
 }));
 export type DeleteGatewayError =
@@ -5269,6 +5321,8 @@ export const deleteGateway: API.OperationMethod<
   input: DeleteGatewayInput,
   output: DeleteGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGateway",
 }));
 export type DeleteSnapshotScheduleError =
@@ -5298,6 +5352,8 @@ export const deleteSnapshotSchedule: API.OperationMethod<
   input: DeleteSnapshotScheduleInput,
   output: DeleteSnapshotScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshotSchedule",
 }));
 export type DeleteTapeError =
@@ -5317,6 +5373,8 @@ export const deleteTape: API.OperationMethod<
   input: DeleteTapeInput,
   output: DeleteTapeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTape",
 }));
 export type DeleteTapeArchiveError =
@@ -5336,6 +5394,8 @@ export const deleteTapeArchive: API.OperationMethod<
   input: DeleteTapeArchiveInput,
   output: DeleteTapeArchiveOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTapeArchive",
 }));
 export type DeleteTapePoolError =
@@ -5356,6 +5416,8 @@ export const deleteTapePool: API.OperationMethod<
   input: DeleteTapePoolInput,
   output: DeleteTapePoolOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTapePool",
 }));
 export type DeleteVolumeError =
@@ -5386,6 +5448,8 @@ export const deleteVolume: API.OperationMethod<
   input: DeleteVolumeInput,
   output: DeleteVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVolume",
 }));
 export type DescribeAvailabilityMonitorTestError =
@@ -5406,6 +5470,8 @@ export const describeAvailabilityMonitorTest: API.OperationMethod<
   input: DescribeAvailabilityMonitorTestInput,
   output: DescribeAvailabilityMonitorTestOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAvailabilityMonitorTest",
 }));
 export type DescribeBandwidthRateLimitError =
@@ -5432,6 +5498,8 @@ export const describeBandwidthRateLimit: API.OperationMethod<
   input: DescribeBandwidthRateLimitInput,
   output: DescribeBandwidthRateLimitOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBandwidthRateLimit",
 }));
 export type DescribeBandwidthRateLimitScheduleError =
@@ -5466,6 +5534,8 @@ export const describeBandwidthRateLimitSchedule: API.OperationMethod<
   input: DescribeBandwidthRateLimitScheduleInput,
   output: DescribeBandwidthRateLimitScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBandwidthRateLimitSchedule",
 }));
 export type DescribeCacheError =
@@ -5488,6 +5558,8 @@ export const describeCache: API.OperationMethod<
   input: DescribeCacheInput,
   output: DescribeCacheOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCache",
 }));
 export type DescribeCachediSCSIVolumesError =
@@ -5511,6 +5583,8 @@ export const describeCachediSCSIVolumes: API.OperationMethod<
   input: DescribeCachediSCSIVolumesInput,
   output: DescribeCachediSCSIVolumesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCachediSCSIVolumes",
 }));
 export type DescribeCacheReportError =
@@ -5530,6 +5604,8 @@ export const describeCacheReport: API.OperationMethod<
   input: DescribeCacheReportInput,
   output: DescribeCacheReportOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCacheReport",
 }));
 export type DescribeChapCredentialsError =
@@ -5550,6 +5626,8 @@ export const describeChapCredentials: API.OperationMethod<
   input: DescribeChapCredentialsInput,
   output: DescribeChapCredentialsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChapCredentials",
 }));
 export type DescribeFileSystemAssociationsError =
@@ -5569,6 +5647,8 @@ export const describeFileSystemAssociations: API.OperationMethod<
   input: DescribeFileSystemAssociationsInput,
   output: DescribeFileSystemAssociationsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFileSystemAssociations",
 }));
 export type DescribeGatewayInformationError =
@@ -5589,6 +5669,8 @@ export const describeGatewayInformation: API.OperationMethod<
   input: DescribeGatewayInformationInput,
   output: DescribeGatewayInformationOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGatewayInformation",
 }));
 export type DescribeMaintenanceStartTimeError =
@@ -5609,6 +5691,8 @@ export const describeMaintenanceStartTime: API.OperationMethod<
   input: DescribeMaintenanceStartTimeInput,
   output: DescribeMaintenanceStartTimeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceStartTime",
 }));
 export type DescribeNFSFileSharesError =
@@ -5628,6 +5712,8 @@ export const describeNFSFileShares: API.OperationMethod<
   input: DescribeNFSFileSharesInput,
   output: DescribeNFSFileSharesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNFSFileShares",
 }));
 export type DescribeSMBFileSharesError =
@@ -5647,6 +5733,8 @@ export const describeSMBFileShares: API.OperationMethod<
   input: DescribeSMBFileSharesInput,
   output: DescribeSMBFileSharesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSMBFileShares",
 }));
 export type DescribeSMBSettingsError =
@@ -5666,6 +5754,8 @@ export const describeSMBSettings: API.OperationMethod<
   input: DescribeSMBSettingsInput,
   output: DescribeSMBSettingsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSMBSettings",
 }));
 export type DescribeSnapshotScheduleError =
@@ -5687,6 +5777,8 @@ export const describeSnapshotSchedule: API.OperationMethod<
   input: DescribeSnapshotScheduleInput,
   output: DescribeSnapshotScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshotSchedule",
 }));
 export type DescribeStorediSCSIVolumesError =
@@ -5707,6 +5799,8 @@ export const describeStorediSCSIVolumes: API.OperationMethod<
   input: DescribeStorediSCSIVolumesInput,
   output: DescribeStorediSCSIVolumesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStorediSCSIVolumes",
 }));
 export type DescribeTapeArchivesError =
@@ -5744,6 +5838,8 @@ export const describeTapeArchives: API.OperationMethod<
   input: DescribeTapeArchivesInput,
   output: DescribeTapeArchivesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTapeArchives",
   pagination: {
     inputToken: "Marker",
@@ -5789,6 +5885,8 @@ export const describeTapeRecoveryPoints: API.OperationMethod<
   input: DescribeTapeRecoveryPointsInput,
   output: DescribeTapeRecoveryPointsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTapeRecoveryPoints",
   pagination: {
     inputToken: "Marker",
@@ -5838,6 +5936,8 @@ export const describeTapes: API.OperationMethod<
   input: DescribeTapesInput,
   output: DescribeTapesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTapes",
   pagination: {
     inputToken: "Marker",
@@ -5866,6 +5966,8 @@ export const describeUploadBuffer: API.OperationMethod<
   input: DescribeUploadBufferInput,
   output: DescribeUploadBufferOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUploadBuffer",
 }));
 export type DescribeVTLDevicesError =
@@ -5902,6 +6004,8 @@ export const describeVTLDevices: API.OperationMethod<
   input: DescribeVTLDevicesInput,
   output: DescribeVTLDevicesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVTLDevices",
   pagination: {
     inputToken: "Marker",
@@ -5934,6 +6038,8 @@ export const describeWorkingStorage: API.OperationMethod<
   input: DescribeWorkingStorageInput,
   output: DescribeWorkingStorageOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkingStorage",
 }));
 export type DetachVolumeError =
@@ -5956,6 +6062,8 @@ export const detachVolume: API.OperationMethod<
   input: DetachVolumeInput,
   output: DetachVolumeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachVolume",
 }));
 export type DisableGatewayError =
@@ -5980,6 +6088,8 @@ export const disableGateway: API.OperationMethod<
   input: DisableGatewayInput,
   output: DisableGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableGateway",
 }));
 export type DisassociateFileSystemError =
@@ -6000,6 +6110,8 @@ export const disassociateFileSystem: API.OperationMethod<
   input: DisassociateFileSystemInput,
   output: DisassociateFileSystemOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFileSystem",
 }));
 export type EvictFilesFailingUploadError =
@@ -6029,6 +6141,8 @@ export const evictFilesFailingUpload: API.OperationMethod<
   input: EvictFilesFailingUploadInput,
   output: EvictFilesFailingUploadOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EvictFilesFailingUpload",
 }));
 export type JoinDomainError =
@@ -6057,6 +6171,8 @@ export const joinDomain: API.OperationMethod<
   input: JoinDomainInput,
   output: JoinDomainOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "JoinDomain",
 }));
 export type ListAutomaticTapeCreationPoliciesError =
@@ -6078,6 +6194,8 @@ export const listAutomaticTapeCreationPolicies: API.OperationMethod<
   input: ListAutomaticTapeCreationPoliciesInput,
   output: ListAutomaticTapeCreationPoliciesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomaticTapeCreationPolicies",
 }));
 export type ListCacheReportsError =
@@ -6114,6 +6232,8 @@ export const listCacheReports: API.OperationMethod<
   input: ListCacheReportsInput,
   output: ListCacheReportsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCacheReports",
   pagination: {
     inputToken: "Marker",
@@ -6154,6 +6274,8 @@ export const listFileShares: API.OperationMethod<
   input: ListFileSharesInput,
   output: ListFileSharesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFileShares",
   pagination: {
     inputToken: "Marker",
@@ -6195,6 +6317,8 @@ export const listFileSystemAssociations: API.OperationMethod<
   input: ListFileSystemAssociationsInput,
   output: ListFileSystemAssociationsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFileSystemAssociations",
   pagination: {
     inputToken: "Marker",
@@ -6244,6 +6368,8 @@ export const listGateways: API.OperationMethod<
   input: ListGatewaysInput,
   output: ListGatewaysOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGateways",
   pagination: {
     inputToken: "Marker",
@@ -6276,6 +6402,8 @@ export const listLocalDisks: API.OperationMethod<
   input: ListLocalDisksInput,
   output: ListLocalDisksOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLocalDisks",
 }));
 export type ListTagsForResourceError =
@@ -6310,6 +6438,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "Marker",
@@ -6357,6 +6487,8 @@ export const listTapePools: API.OperationMethod<
   input: ListTapePoolsInput,
   output: ListTapePoolsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTapePools",
   pagination: {
     inputToken: "Marker",
@@ -6406,6 +6538,8 @@ export const listTapes: API.OperationMethod<
   input: ListTapesInput,
   output: ListTapesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTapes",
   pagination: {
     inputToken: "Marker",
@@ -6432,6 +6566,8 @@ export const listVolumeInitiators: API.OperationMethod<
   input: ListVolumeInitiatorsInput,
   output: ListVolumeInitiatorsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVolumeInitiators",
 }));
 export type ListVolumeRecoveryPointsError =
@@ -6456,6 +6592,8 @@ export const listVolumeRecoveryPoints: API.OperationMethod<
   input: ListVolumeRecoveryPointsInput,
   output: ListVolumeRecoveryPointsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVolumeRecoveryPoints",
 }));
 export type ListVolumesError =
@@ -6498,6 +6636,8 @@ export const listVolumes: API.OperationMethod<
   input: ListVolumesInput,
   output: ListVolumesOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVolumes",
   pagination: {
     inputToken: "Marker",
@@ -6534,6 +6674,8 @@ export const notifyWhenUploaded: API.OperationMethod<
   input: NotifyWhenUploadedInput,
   output: NotifyWhenUploadedOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyWhenUploaded",
 }));
 export type RefreshCacheError =
@@ -6589,6 +6731,8 @@ export const refreshCache: API.OperationMethod<
   input: RefreshCacheInput,
   output: RefreshCacheOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RefreshCache",
 }));
 export type RemoveTagsFromResourceError =
@@ -6608,6 +6752,8 @@ export const removeTagsFromResource: API.OperationMethod<
   input: RemoveTagsFromResourceInput,
   output: RemoveTagsFromResourceOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
 export type ResetCacheError =
@@ -6636,6 +6782,8 @@ export const resetCache: API.OperationMethod<
   input: ResetCacheInput,
   output: ResetCacheOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetCache",
 }));
 export type RetrieveTapeArchiveError =
@@ -6661,6 +6809,8 @@ export const retrieveTapeArchive: API.OperationMethod<
   input: RetrieveTapeArchiveInput,
   output: RetrieveTapeArchiveOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetrieveTapeArchive",
 }));
 export type RetrieveTapeRecoveryPointError =
@@ -6688,6 +6838,8 @@ export const retrieveTapeRecoveryPoint: API.OperationMethod<
   input: RetrieveTapeRecoveryPointInput,
   output: RetrieveTapeRecoveryPointOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetrieveTapeRecoveryPoint",
 }));
 export type SetLocalConsolePasswordError =
@@ -6709,6 +6861,8 @@ export const setLocalConsolePassword: API.OperationMethod<
   input: SetLocalConsolePasswordInput,
   output: SetLocalConsolePasswordOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetLocalConsolePassword",
 }));
 export type SetSMBGuestPasswordError =
@@ -6729,6 +6883,8 @@ export const setSMBGuestPassword: API.OperationMethod<
   input: SetSMBGuestPasswordInput,
   output: SetSMBGuestPasswordOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetSMBGuestPassword",
 }));
 export type ShutdownGatewayError =
@@ -6769,6 +6925,8 @@ export const shutdownGateway: API.OperationMethod<
   input: ShutdownGatewayInput,
   output: ShutdownGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ShutdownGateway",
 }));
 export type StartAvailabilityMonitorTestError =
@@ -6793,6 +6951,8 @@ export const startAvailabilityMonitorTest: API.OperationMethod<
   input: StartAvailabilityMonitorTestInput,
   output: StartAvailabilityMonitorTestOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAvailabilityMonitorTest",
 }));
 export type StartCacheReportError =
@@ -6838,6 +6998,8 @@ export const startCacheReport: API.OperationMethod<
   input: StartCacheReportInput,
   output: StartCacheReportOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCacheReport",
 }));
 export type StartGatewayError =
@@ -6866,6 +7028,8 @@ export const startGateway: API.OperationMethod<
   input: StartGatewayInput,
   output: StartGatewayOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartGateway",
 }));
 export type UpdateAutomaticTapeCreationPolicyError =
@@ -6890,6 +7054,8 @@ export const updateAutomaticTapeCreationPolicy: API.OperationMethod<
   input: UpdateAutomaticTapeCreationPolicyInput,
   output: UpdateAutomaticTapeCreationPolicyOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAutomaticTapeCreationPolicy",
 }));
 export type UpdateBandwidthRateLimitError =
@@ -6919,6 +7085,8 @@ export const updateBandwidthRateLimit: API.OperationMethod<
   input: UpdateBandwidthRateLimitInput,
   output: UpdateBandwidthRateLimitOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBandwidthRateLimit",
 }));
 export type UpdateBandwidthRateLimitScheduleError =
@@ -6942,6 +7110,8 @@ export const updateBandwidthRateLimitSchedule: API.OperationMethod<
   input: UpdateBandwidthRateLimitScheduleInput,
   output: UpdateBandwidthRateLimitScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBandwidthRateLimitSchedule",
 }));
 export type UpdateChapCredentialsError =
@@ -6966,6 +7136,8 @@ export const updateChapCredentials: API.OperationMethod<
   input: UpdateChapCredentialsInput,
   output: UpdateChapCredentialsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChapCredentials",
 }));
 export type UpdateFileSystemAssociationError =
@@ -6985,6 +7157,8 @@ export const updateFileSystemAssociation: API.OperationMethod<
   input: UpdateFileSystemAssociationInput,
   output: UpdateFileSystemAssociationOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFileSystemAssociation",
 }));
 export type UpdateGatewayInformationError =
@@ -7009,6 +7183,8 @@ export const updateGatewayInformation: API.OperationMethod<
   input: UpdateGatewayInformationInput,
   output: UpdateGatewayInformationOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGatewayInformation",
 }));
 export type UpdateGatewaySoftwareNowError =
@@ -7038,6 +7214,8 @@ export const updateGatewaySoftwareNow: API.OperationMethod<
   input: UpdateGatewaySoftwareNowInput,
   output: UpdateGatewaySoftwareNowOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGatewaySoftwareNow",
 }));
 export type UpdateMaintenanceStartTimeError =
@@ -7071,6 +7249,8 @@ export const updateMaintenanceStartTime: API.OperationMethod<
   input: UpdateMaintenanceStartTimeInput,
   output: UpdateMaintenanceStartTimeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMaintenanceStartTime",
 }));
 export type UpdateNFSFileShareError =
@@ -7105,6 +7285,8 @@ export const updateNFSFileShare: API.OperationMethod<
   input: UpdateNFSFileShareInput,
   output: UpdateNFSFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNFSFileShare",
 }));
 export type UpdateSMBFileShareError =
@@ -7138,6 +7320,8 @@ export const updateSMBFileShare: API.OperationMethod<
   input: UpdateSMBFileShareInput,
   output: UpdateSMBFileShareOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSMBFileShare",
 }));
 export type UpdateSMBFileShareVisibilityError =
@@ -7157,6 +7341,8 @@ export const updateSMBFileShareVisibility: API.OperationMethod<
   input: UpdateSMBFileShareVisibilityInput,
   output: UpdateSMBFileShareVisibilityOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSMBFileShareVisibility",
 }));
 export type UpdateSMBLocalGroupsError =
@@ -7176,6 +7362,8 @@ export const updateSMBLocalGroups: API.OperationMethod<
   input: UpdateSMBLocalGroupsInput,
   output: UpdateSMBLocalGroupsOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSMBLocalGroups",
 }));
 export type UpdateSMBSecurityStrategyError =
@@ -7201,6 +7389,8 @@ export const updateSMBSecurityStrategy: API.OperationMethod<
   input: UpdateSMBSecurityStrategyInput,
   output: UpdateSMBSecurityStrategyOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSMBSecurityStrategy",
 }));
 export type UpdateSnapshotScheduleError =
@@ -7228,6 +7418,8 @@ export const updateSnapshotSchedule: API.OperationMethod<
   input: UpdateSnapshotScheduleInput,
   output: UpdateSnapshotScheduleOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSnapshotSchedule",
 }));
 export type UpdateVTLDeviceTypeError =
@@ -7249,5 +7441,7 @@ export const updateVTLDeviceType: API.OperationMethod<
   input: UpdateVTLDeviceTypeInput,
   output: UpdateVTLDeviceTypeOutput,
   errors: [InternalServerError, InvalidGatewayRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVTLDeviceType",
 }));

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3094,6 +3096,8 @@ export const acceptMarketplaceRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptMarketplaceRegistration",
 }));
 export type AssociateIamRoleToResourceError =
@@ -3123,6 +3127,8 @@ export const associateIamRoleToResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateIamRoleToResource",
 }));
 export type DisassociateIamRoleFromResourceError =
@@ -3152,6 +3158,8 @@ export const disassociateIamRoleFromResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateIamRoleFromResource",
 }));
 export type GetOciOnboardingStatusError =
@@ -3177,6 +3185,8 @@ export const getOciOnboardingStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOciOnboardingStatus",
 }));
 export type InitializeServiceError =
@@ -3202,6 +3212,8 @@ export const initializeService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitializeService",
 }));
 export type ListDbSystemShapesError =
@@ -3242,6 +3254,8 @@ export const listDbSystemShapes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDbSystemShapes",
   pagination: {
     inputToken: "nextToken",
@@ -3288,6 +3302,8 @@ export const listGiVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGiVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3336,6 +3352,8 @@ export const listSystemVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSystemVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3357,6 +3375,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -3375,6 +3395,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -3390,6 +3412,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateCloudAutonomousVmClusterError =
@@ -3421,6 +3445,8 @@ export const createCloudAutonomousVmCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudAutonomousVmCluster",
 }));
 export type GetCloudAutonomousVmClusterError =
@@ -3448,6 +3474,8 @@ export const getCloudAutonomousVmCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudAutonomousVmCluster",
 }));
 export type DeleteCloudAutonomousVmClusterError =
@@ -3475,6 +3503,8 @@ export const deleteCloudAutonomousVmCluster: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCloudAutonomousVmCluster",
 }));
 export type ListCloudAutonomousVmClustersError =
@@ -3517,6 +3547,8 @@ export const listCloudAutonomousVmClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCloudAutonomousVmClusters",
   pagination: {
     inputToken: "nextToken",
@@ -3565,6 +3597,8 @@ export const listAutonomousVirtualMachines: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutonomousVirtualMachines",
   pagination: {
     inputToken: "nextToken",
@@ -3600,6 +3634,8 @@ export const createCloudExadataInfrastructure: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudExadataInfrastructure",
 }));
 export type GetCloudExadataInfrastructureError =
@@ -3627,6 +3663,8 @@ export const getCloudExadataInfrastructure: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudExadataInfrastructure",
 }));
 export type UpdateCloudExadataInfrastructureError =
@@ -3656,6 +3694,8 @@ export const updateCloudExadataInfrastructure: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCloudExadataInfrastructure",
 }));
 export type DeleteCloudExadataInfrastructureError =
@@ -3685,6 +3725,8 @@ export const deleteCloudExadataInfrastructure: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCloudExadataInfrastructure",
 }));
 export type ListCloudExadataInfrastructuresError =
@@ -3725,6 +3767,8 @@ export const listCloudExadataInfrastructures: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCloudExadataInfrastructures",
   pagination: {
     inputToken: "nextToken",
@@ -3758,6 +3802,8 @@ export const getCloudExadataInfrastructureUnallocatedResources: API.OperationMet
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudExadataInfrastructureUnallocatedResources",
 }));
 export type GetDbServerError =
@@ -3785,6 +3831,8 @@ export const getDbServer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDbServer",
 }));
 export type ListDbServersError =
@@ -3827,6 +3875,8 @@ export const listDbServers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDbServers",
   pagination: {
     inputToken: "nextToken",
@@ -3864,6 +3914,8 @@ export const createCloudVmCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudVmCluster",
 }));
 export type GetCloudVmClusterError =
@@ -3891,6 +3943,8 @@ export const getCloudVmCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudVmCluster",
 }));
 export type DeleteCloudVmClusterError =
@@ -3918,6 +3972,8 @@ export const deleteCloudVmCluster: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCloudVmCluster",
 }));
 export type ListCloudVmClustersError =
@@ -3960,6 +4016,8 @@ export const listCloudVmClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCloudVmClusters",
   pagination: {
     inputToken: "nextToken",
@@ -3993,6 +4051,8 @@ export const getDbNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDbNode",
 }));
 export type ListDbNodesError =
@@ -4035,6 +4095,8 @@ export const listDbNodes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDbNodes",
   pagination: {
     inputToken: "nextToken",
@@ -4068,6 +4130,8 @@ export const rebootDbNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootDbNode",
 }));
 export type StartDbNodeError =
@@ -4095,6 +4159,8 @@ export const startDbNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDbNode",
 }));
 export type StopDbNodeError =
@@ -4122,6 +4188,8 @@ export const stopDbNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDbNode",
 }));
 export type CreateOdbNetworkError =
@@ -4151,6 +4219,8 @@ export const createOdbNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOdbNetwork",
 }));
 export type GetOdbNetworkError =
@@ -4178,6 +4248,8 @@ export const getOdbNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOdbNetwork",
 }));
 export type UpdateOdbNetworkError =
@@ -4207,6 +4279,8 @@ export const updateOdbNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOdbNetwork",
 }));
 export type DeleteOdbNetworkError =
@@ -4234,6 +4308,8 @@ export const deleteOdbNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOdbNetwork",
 }));
 export type ListOdbNetworksError =
@@ -4274,6 +4350,8 @@ export const listOdbNetworks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOdbNetworks",
   pagination: {
     inputToken: "nextToken",
@@ -4311,6 +4389,8 @@ export const createOdbPeeringConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOdbPeeringConnection",
 }));
 export type GetOdbPeeringConnectionError =
@@ -4338,6 +4418,8 @@ export const getOdbPeeringConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOdbPeeringConnection",
 }));
 export type UpdateOdbPeeringConnectionError =
@@ -4367,6 +4449,8 @@ export const updateOdbPeeringConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOdbPeeringConnection",
 }));
 export type DeleteOdbPeeringConnectionError =
@@ -4396,6 +4480,8 @@ export const deleteOdbPeeringConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOdbPeeringConnection",
 }));
 export type ListOdbPeeringConnectionsError =
@@ -4438,6 +4524,8 @@ export const listOdbPeeringConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOdbPeeringConnections",
   pagination: {
     inputToken: "nextToken",

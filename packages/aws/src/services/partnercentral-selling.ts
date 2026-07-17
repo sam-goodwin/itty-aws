@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4275,6 +4277,8 @@ export const createEngagementContext: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEngagementContext",
 }));
 export type GetSellingSystemSettingsError =
@@ -4302,6 +4306,8 @@ export const getSellingSystemSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSellingSystemSettings",
 }));
 export type ListTagsForResourceError =
@@ -4329,6 +4335,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutSellingSystemSettingsError =
@@ -4356,6 +4364,8 @@ export const putSellingSystemSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSellingSystemSettings",
 }));
 export type TagResourceError =
@@ -4385,6 +4395,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4414,6 +4426,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateEngagementContextError =
@@ -4445,6 +4459,8 @@ export const updateEngagementContext: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEngagementContext",
 }));
 export type CreateEngagementError =
@@ -4476,6 +4492,8 @@ export const createEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEngagement",
 }));
 export type GetEngagementError =
@@ -4503,6 +4521,8 @@ export const getEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEngagement",
 }));
 export type ListEngagementsError =
@@ -4545,6 +4565,8 @@ export const listEngagements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngagements",
   pagination: {
     inputToken: "NextToken",
@@ -4593,6 +4615,8 @@ export const listEngagementMembers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngagementMembers",
   pagination: {
     inputToken: "NextToken",
@@ -4630,6 +4654,8 @@ export const startEngagementByAcceptingInvitationTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEngagementByAcceptingInvitationTask",
 }));
 export type ListEngagementByAcceptingInvitationTasksError =
@@ -4672,6 +4698,8 @@ export const listEngagementByAcceptingInvitationTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngagementByAcceptingInvitationTasks",
   pagination: {
     inputToken: "NextToken",
@@ -4709,6 +4737,8 @@ export const startEngagementFromOpportunityTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEngagementFromOpportunityTask",
 }));
 export type ListEngagementFromOpportunityTasksError =
@@ -4751,6 +4781,8 @@ export const listEngagementFromOpportunityTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngagementFromOpportunityTasks",
   pagination: {
     inputToken: "NextToken",
@@ -4788,6 +4820,8 @@ export const createEngagementInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEngagementInvitation",
 }));
 export type GetEngagementInvitationError =
@@ -4815,6 +4849,8 @@ export const getEngagementInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEngagementInvitation",
 }));
 export type ListEngagementInvitationsError =
@@ -4857,6 +4893,8 @@ export const listEngagementInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngagementInvitations",
   pagination: {
     inputToken: "NextToken",
@@ -4892,6 +4930,8 @@ export const acceptEngagementInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptEngagementInvitation",
 }));
 export type RejectEngagementInvitationError =
@@ -4921,6 +4961,8 @@ export const rejectEngagementInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectEngagementInvitation",
 }));
 export type CreateOpportunityError =
@@ -4962,6 +5004,8 @@ export const createOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOpportunity",
 }));
 export type GetOpportunityError =
@@ -4991,6 +5035,8 @@ export const getOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpportunity",
 }));
 export type UpdateOpportunityError =
@@ -5022,6 +5068,8 @@ export const updateOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOpportunity",
 }));
 export type ListOpportunitiesError =
@@ -5074,6 +5122,8 @@ export const listOpportunities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpportunities",
   pagination: {
     inputToken: "NextToken",
@@ -5109,6 +5159,8 @@ export const assignOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssignOpportunity",
 }));
 export type AssociateOpportunityError =
@@ -5150,6 +5202,8 @@ export const associateOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateOpportunity",
 }));
 export type DisassociateOpportunityError =
@@ -5179,6 +5233,8 @@ export const disassociateOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateOpportunity",
 }));
 export type GetAwsOpportunitySummaryError =
@@ -5206,6 +5262,8 @@ export const getAwsOpportunitySummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAwsOpportunitySummary",
 }));
 export type SubmitOpportunityError =
@@ -5233,6 +5291,8 @@ export const submitOpportunity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitOpportunity",
 }));
 export type StartOpportunityFromEngagementTaskError =
@@ -5264,6 +5324,8 @@ export const startOpportunityFromEngagementTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartOpportunityFromEngagementTask",
 }));
 export type ListOpportunityFromEngagementTasksError =
@@ -5306,6 +5368,8 @@ export const listOpportunityFromEngagementTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpportunityFromEngagementTasks",
   pagination: {
     inputToken: "NextToken",
@@ -5343,6 +5407,8 @@ export const createResourceSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceSnapshot",
 }));
 export type GetResourceSnapshotError =
@@ -5370,6 +5436,8 @@ export const getResourceSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceSnapshot",
 }));
 export type ListEngagementResourceAssociationsError =
@@ -5412,6 +5480,8 @@ export const listEngagementResourceAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngagementResourceAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -5470,6 +5540,8 @@ export const listResourceSnapshots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceSnapshots",
   pagination: {
     inputToken: "NextToken",
@@ -5507,6 +5579,8 @@ export const createResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceSnapshotJob",
 }));
 export type GetResourceSnapshotJobError =
@@ -5534,6 +5608,8 @@ export const getResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceSnapshotJob",
 }));
 export type DeleteResourceSnapshotJobError =
@@ -5563,6 +5639,8 @@ export const deleteResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceSnapshotJob",
 }));
 export type ListResourceSnapshotJobsError =
@@ -5605,6 +5683,8 @@ export const listResourceSnapshotJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceSnapshotJobs",
   pagination: {
     inputToken: "NextToken",
@@ -5638,6 +5718,8 @@ export const startResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartResourceSnapshotJob",
 }));
 export type StopResourceSnapshotJobError =
@@ -5665,6 +5747,8 @@ export const stopResourceSnapshotJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopResourceSnapshotJob",
 }));
 export type ListSolutionsError =
@@ -5707,6 +5791,8 @@ export const listSolutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSolutions",
   pagination: {
     inputToken: "NextToken",

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4087,6 +4089,8 @@ export const acceptResourceGroupingRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptResourceGroupingRecommendations",
 }));
 export type AddDraftAppVersionResourceMappingsError =
@@ -4123,6 +4127,8 @@ export const addDraftAppVersionResourceMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddDraftAppVersionResourceMappings",
 }));
 export type BatchUpdateRecommendationStatusError =
@@ -4150,6 +4156,8 @@ export const batchUpdateRecommendationStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateRecommendationStatus",
 }));
 export type CreateAppError =
@@ -4192,6 +4200,8 @@ export const createApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApp",
 }));
 export type CreateAppVersionAppComponentError =
@@ -4227,6 +4237,8 @@ export const createAppVersionAppComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppVersionAppComponent",
 }));
 export type CreateAppVersionResourceError =
@@ -4269,6 +4281,8 @@ export const createAppVersionResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppVersionResource",
 }));
 export type CreateRecommendationTemplateError =
@@ -4300,6 +4314,8 @@ export const createRecommendationTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecommendationTemplate",
 }));
 export type CreateResiliencyPolicyError =
@@ -4337,6 +4353,8 @@ export const createResiliencyPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResiliencyPolicy",
 }));
 export type DeleteAppError =
@@ -4365,6 +4383,8 @@ export const deleteApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApp",
 }));
 export type DeleteAppAssessmentError =
@@ -4395,6 +4415,8 @@ export const deleteAppAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppAssessment",
 }));
 export type DeleteAppInputSourceError =
@@ -4425,6 +4447,8 @@ export const deleteAppInputSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppInputSource",
 }));
 export type DeleteAppVersionAppComponentError =
@@ -4461,6 +4485,8 @@ export const deleteAppVersionAppComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppVersionAppComponent",
 }));
 export type DeleteAppVersionResourceError =
@@ -4499,6 +4525,8 @@ export const deleteAppVersionResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppVersionResource",
 }));
 export type DeleteRecommendationTemplateError =
@@ -4527,6 +4555,8 @@ export const deleteRecommendationTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecommendationTemplate",
 }));
 export type DeleteResiliencyPolicyError =
@@ -4556,6 +4586,8 @@ export const deleteResiliencyPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResiliencyPolicy",
 }));
 export type DescribeAppError =
@@ -4583,6 +4615,8 @@ export const describeApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApp",
 }));
 export type DescribeAppAssessmentError =
@@ -4610,6 +4644,8 @@ export const describeAppAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppAssessment",
 }));
 export type DescribeAppVersionError =
@@ -4637,6 +4673,8 @@ export const describeAppVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppVersion",
 }));
 export type DescribeAppVersionAppComponentError =
@@ -4666,6 +4704,8 @@ export const describeAppVersionAppComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppVersionAppComponent",
 }));
 export type DescribeAppVersionResourceError =
@@ -4704,6 +4744,8 @@ export const describeAppVersionResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppVersionResource",
 }));
 export type DescribeAppVersionResourcesResolutionStatusError =
@@ -4733,6 +4775,8 @@ export const describeAppVersionResourcesResolutionStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppVersionResourcesResolutionStatus",
 }));
 export type DescribeAppVersionTemplateError =
@@ -4760,6 +4804,8 @@ export const describeAppVersionTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppVersionTemplate",
 }));
 export type DescribeDraftAppVersionResourcesImportStatusError =
@@ -4793,6 +4839,8 @@ export const describeDraftAppVersionResourcesImportStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDraftAppVersionResourcesImportStatus",
 }));
 export type DescribeMetricsExportError =
@@ -4820,6 +4868,8 @@ export const describeMetricsExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetricsExport",
 }));
 export type DescribeResiliencyPolicyError =
@@ -4849,6 +4899,8 @@ export const describeResiliencyPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResiliencyPolicy",
 }));
 export type DescribeResourceGroupingRecommendationTaskError =
@@ -4876,6 +4928,8 @@ export const describeResourceGroupingRecommendationTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourceGroupingRecommendationTask",
 }));
 export type ImportResourcesToDraftAppVersionError =
@@ -4909,6 +4963,8 @@ export const importResourcesToDraftAppVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportResourcesToDraftAppVersion",
 }));
 export type ListAlarmRecommendationsError =
@@ -4951,6 +5007,8 @@ export const listAlarmRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlarmRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -4997,6 +5055,8 @@ export const listAppAssessmentComplianceDrifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppAssessmentComplianceDrifts",
   pagination: {
     inputToken: "nextToken",
@@ -5043,6 +5103,8 @@ export const listAppAssessmentResourceDrifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppAssessmentResourceDrifts",
   pagination: {
     inputToken: "nextToken",
@@ -5092,6 +5154,8 @@ export const listAppAssessments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppAssessments",
   pagination: {
     inputToken: "nextToken",
@@ -5139,6 +5203,8 @@ export const listAppComponentCompliances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppComponentCompliances",
   pagination: {
     inputToken: "nextToken",
@@ -5186,6 +5252,8 @@ export const listAppComponentRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppComponentRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -5235,6 +5303,8 @@ export const listAppInputSources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppInputSources",
   pagination: {
     inputToken: "nextToken",
@@ -5287,6 +5357,8 @@ export const listApps: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApps",
   pagination: {
     inputToken: "nextToken",
@@ -5336,6 +5408,8 @@ export const listAppVersionAppComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppVersionAppComponents",
   pagination: {
     inputToken: "nextToken",
@@ -5385,6 +5459,8 @@ export const listAppVersionResourceMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppVersionResourceMappings",
   pagination: {
     inputToken: "nextToken",
@@ -5434,6 +5510,8 @@ export const listAppVersionResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppVersionResources",
   pagination: {
     inputToken: "nextToken",
@@ -5479,6 +5557,8 @@ export const listAppVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppVersions",
   pagination: {
     inputToken: "nextToken",
@@ -5524,6 +5604,8 @@ export const listMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMetrics",
   pagination: {
     inputToken: "nextToken",
@@ -5570,6 +5652,8 @@ export const listRecommendationTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendationTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -5617,6 +5701,8 @@ export const listResiliencyPolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResiliencyPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -5664,6 +5750,8 @@ export const listResourceGroupingRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceGroupingRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -5714,6 +5802,8 @@ export const listSopRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSopRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -5762,6 +5852,8 @@ export const listSuggestedResiliencyPolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSuggestedResiliencyPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -5794,6 +5886,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTestRecommendationsError =
@@ -5838,6 +5932,8 @@ export const listTestRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -5889,6 +5985,8 @@ export const listUnsupportedAppVersionResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUnsupportedAppVersionResources",
   pagination: {
     inputToken: "nextToken",
@@ -5923,6 +6021,8 @@ export const publishAppVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishAppVersion",
 }));
 export type PutDraftAppVersionTemplateError =
@@ -5953,6 +6053,8 @@ export const putDraftAppVersionTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDraftAppVersionTemplate",
 }));
 export type RejectResourceGroupingRecommendationsError =
@@ -5980,6 +6082,8 @@ export const rejectResourceGroupingRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectResourceGroupingRecommendations",
 }));
 export type RemoveDraftAppVersionResourceMappingsError =
@@ -6009,6 +6113,8 @@ export const removeDraftAppVersionResourceMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveDraftAppVersionResourceMappings",
 }));
 export type ResolveAppVersionResourcesError =
@@ -6038,6 +6144,8 @@ export const resolveAppVersionResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResolveAppVersionResources",
 }));
 export type StartAppAssessmentError =
@@ -6069,6 +6177,8 @@ export const startAppAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAppAssessment",
 }));
 export type StartMetricsExportError =
@@ -6098,6 +6208,8 @@ export const startMetricsExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetricsExport",
 }));
 export type StartResourceGroupingRecommendationTaskError =
@@ -6127,6 +6239,8 @@ export const startResourceGroupingRecommendationTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartResourceGroupingRecommendationTask",
 }));
 export type TagResourceError =
@@ -6154,6 +6268,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6181,6 +6297,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAppError =
@@ -6210,6 +6328,8 @@ export const updateApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApp",
 }));
 export type UpdateAppVersionError =
@@ -6243,6 +6363,8 @@ export const updateAppVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppVersion",
 }));
 export type UpdateAppVersionAppComponentError =
@@ -6276,6 +6398,8 @@ export const updateAppVersionAppComponent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppVersionAppComponent",
 }));
 export type UpdateAppVersionResourceError =
@@ -6316,6 +6440,8 @@ export const updateAppVersionResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppVersionResource",
 }));
 export type UpdateResiliencyPolicyError =
@@ -6353,5 +6479,7 @@ export const updateResiliencyPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResiliencyPolicy",
 }));

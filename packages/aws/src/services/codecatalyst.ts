@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2183,6 +2185,8 @@ export const getUserDetails: API.OperationMethod<
   input: GetUserDetailsRequest,
   output: GetUserDetailsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserDetails",
 }));
 export type VerifySessionError = CommonErrors;
@@ -2198,6 +2202,8 @@ export const verifySession: API.OperationMethod<
   input: VerifySessionRequest,
   output: VerifySessionResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifySession",
 }));
 export type CreateAccessTokenError = CommonErrors;
@@ -2217,6 +2223,8 @@ export const createAccessToken: API.OperationMethod<
   input: CreateAccessTokenRequest,
   output: CreateAccessTokenResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessToken",
 }));
 export type DeleteAccessTokenError = CommonErrors;
@@ -2232,6 +2240,8 @@ export const deleteAccessToken: API.OperationMethod<
   input: DeleteAccessTokenRequest,
   output: DeleteAccessTokenResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessToken",
 }));
 export type ListAccessTokensError = CommonErrors;
@@ -2262,6 +2272,8 @@ export const listAccessTokens: API.OperationMethod<
   input: ListAccessTokensRequest,
   output: ListAccessTokensResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessTokens",
   pagination: {
     inputToken: "nextToken",
@@ -2283,6 +2295,8 @@ export const getSpace: API.OperationMethod<
   input: GetSpaceRequest,
   output: GetSpaceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSpace",
 }));
 export type UpdateSpaceError = CommonErrors;
@@ -2298,6 +2312,8 @@ export const updateSpace: API.OperationMethod<
   input: UpdateSpaceRequest,
   output: UpdateSpaceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSpace",
 }));
 export type DeleteSpaceError = CommonErrors;
@@ -2315,6 +2331,8 @@ export const deleteSpace: API.OperationMethod<
   input: DeleteSpaceRequest,
   output: DeleteSpaceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSpace",
 }));
 export type ListSpacesError = CommonErrors;
@@ -2345,6 +2363,8 @@ export const listSpaces: API.OperationMethod<
   input: ListSpacesRequest,
   output: ListSpacesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpaces",
   pagination: {
     inputToken: "nextToken",
@@ -2380,6 +2400,8 @@ export const listDevEnvironments: API.OperationMethod<
   input: ListDevEnvironmentsRequest,
   output: ListDevEnvironmentsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevEnvironments",
   pagination: {
     inputToken: "nextToken",
@@ -2424,6 +2446,8 @@ export const listEventLogs: API.OperationMethod<
   input: ListEventLogsRequest,
   output: ListEventLogsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventLogs",
   pagination: {
     inputToken: "nextToken",
@@ -2445,6 +2469,8 @@ export const createProject: API.OperationMethod<
   input: CreateProjectRequest,
   output: CreateProjectResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProject",
 }));
 export type GetProjectError = CommonErrors;
@@ -2460,6 +2486,8 @@ export const getProject: API.OperationMethod<
   input: GetProjectRequest,
   output: GetProjectResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProject",
 }));
 export type UpdateProjectError = CommonErrors;
@@ -2475,6 +2503,8 @@ export const updateProject: API.OperationMethod<
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProject",
 }));
 export type DeleteProjectError = CommonErrors;
@@ -2490,6 +2520,8 @@ export const deleteProject: API.OperationMethod<
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProject",
 }));
 export type ListProjectsError = CommonErrors;
@@ -2520,6 +2552,8 @@ export const listProjects: API.OperationMethod<
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjects",
   pagination: {
     inputToken: "nextToken",
@@ -2545,6 +2579,8 @@ export const createDevEnvironment: API.OperationMethod<
   input: CreateDevEnvironmentRequest,
   output: CreateDevEnvironmentResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDevEnvironment",
 }));
 export type GetDevEnvironmentError = CommonErrors;
@@ -2560,6 +2596,8 @@ export const getDevEnvironment: API.OperationMethod<
   input: GetDevEnvironmentRequest,
   output: GetDevEnvironmentResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevEnvironment",
 }));
 export type UpdateDevEnvironmentError = CommonErrors;
@@ -2575,6 +2613,8 @@ export const updateDevEnvironment: API.OperationMethod<
   input: UpdateDevEnvironmentRequest,
   output: UpdateDevEnvironmentResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDevEnvironment",
 }));
 export type DeleteDevEnvironmentError = CommonErrors;
@@ -2590,6 +2630,8 @@ export const deleteDevEnvironment: API.OperationMethod<
   input: DeleteDevEnvironmentRequest,
   output: DeleteDevEnvironmentResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDevEnvironment",
 }));
 export type ListDevEnvironmentSessionsError = CommonErrors;
@@ -2620,6 +2662,8 @@ export const listDevEnvironmentSessions: API.OperationMethod<
   input: ListDevEnvironmentSessionsRequest,
   output: ListDevEnvironmentSessionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevEnvironmentSessions",
   pagination: {
     inputToken: "nextToken",
@@ -2641,6 +2685,8 @@ export const startDevEnvironment: API.OperationMethod<
   input: StartDevEnvironmentRequest,
   output: StartDevEnvironmentResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDevEnvironment",
 }));
 export type StartDevEnvironmentSessionError = CommonErrors;
@@ -2656,6 +2702,8 @@ export const startDevEnvironmentSession: API.OperationMethod<
   input: StartDevEnvironmentSessionRequest,
   output: StartDevEnvironmentSessionResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDevEnvironmentSession",
 }));
 export type StopDevEnvironmentError = CommonErrors;
@@ -2671,6 +2719,8 @@ export const stopDevEnvironment: API.OperationMethod<
   input: StopDevEnvironmentRequest,
   output: StopDevEnvironmentResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDevEnvironment",
 }));
 export type StopDevEnvironmentSessionError = CommonErrors;
@@ -2686,6 +2736,8 @@ export const stopDevEnvironmentSession: API.OperationMethod<
   input: StopDevEnvironmentSessionRequest,
   output: StopDevEnvironmentSessionResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDevEnvironmentSession",
 }));
 export type CreateSourceRepositoryError = CommonErrors;
@@ -2702,6 +2754,8 @@ export const createSourceRepository: API.OperationMethod<
   input: CreateSourceRepositoryRequest,
   output: CreateSourceRepositoryResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSourceRepository",
 }));
 export type GetSourceRepositoryError = CommonErrors;
@@ -2717,6 +2771,8 @@ export const getSourceRepository: API.OperationMethod<
   input: GetSourceRepositoryRequest,
   output: GetSourceRepositoryResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSourceRepository",
 }));
 export type DeleteSourceRepositoryError = CommonErrors;
@@ -2732,6 +2788,8 @@ export const deleteSourceRepository: API.OperationMethod<
   input: DeleteSourceRepositoryRequest,
   output: DeleteSourceRepositoryResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSourceRepository",
 }));
 export type ListSourceRepositoriesError = CommonErrors;
@@ -2762,6 +2820,8 @@ export const listSourceRepositories: API.OperationMethod<
   input: ListSourceRepositoriesRequest,
   output: ListSourceRepositoriesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourceRepositories",
   pagination: {
     inputToken: "nextToken",
@@ -2784,6 +2844,8 @@ export const getSourceRepositoryCloneUrls: API.OperationMethod<
   input: GetSourceRepositoryCloneUrlsRequest,
   output: GetSourceRepositoryCloneUrlsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSourceRepositoryCloneUrls",
 }));
 export type CreateSourceRepositoryBranchError = CommonErrors;
@@ -2801,6 +2863,8 @@ export const createSourceRepositoryBranch: API.OperationMethod<
   input: CreateSourceRepositoryBranchRequest,
   output: CreateSourceRepositoryBranchResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSourceRepositoryBranch",
 }));
 export type ListSourceRepositoryBranchesError = CommonErrors;
@@ -2831,6 +2895,8 @@ export const listSourceRepositoryBranches: API.OperationMethod<
   input: ListSourceRepositoryBranchesRequest,
   output: ListSourceRepositoryBranchesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourceRepositoryBranches",
   pagination: {
     inputToken: "nextToken",
@@ -2852,6 +2918,8 @@ export const getWorkflow: API.OperationMethod<
   input: GetWorkflowRequest,
   output: GetWorkflowResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflow",
 }));
 export type ListWorkflowsError = CommonErrors;
@@ -2882,6 +2950,8 @@ export const listWorkflows: API.OperationMethod<
   input: ListWorkflowsRequest,
   output: ListWorkflowsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflows",
   pagination: {
     inputToken: "nextToken",
@@ -2903,6 +2973,8 @@ export const startWorkflowRun: API.OperationMethod<
   input: StartWorkflowRunRequest,
   output: StartWorkflowRunResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWorkflowRun",
 }));
 export type GetWorkflowRunError = CommonErrors;
@@ -2918,6 +2990,8 @@ export const getWorkflowRun: API.OperationMethod<
   input: GetWorkflowRunRequest,
   output: GetWorkflowRunResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowRun",
 }));
 export type ListWorkflowRunsError = CommonErrors;
@@ -2948,6 +3022,8 @@ export const listWorkflowRuns: API.OperationMethod<
   input: ListWorkflowRunsRequest,
   output: ListWorkflowRunsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowRuns",
   pagination: {
     inputToken: "nextToken",
@@ -2970,5 +3046,7 @@ export const getSubscription: API.OperationMethod<
   input: GetSubscriptionRequest,
   output: GetSubscriptionResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscription",
 }));

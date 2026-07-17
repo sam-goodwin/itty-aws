@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -10347,6 +10349,8 @@ export const batchCreateCustomVocabularyItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateCustomVocabularyItem",
 }));
 export type BatchDeleteCustomVocabularyItemError =
@@ -10375,6 +10379,8 @@ export const batchDeleteCustomVocabularyItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteCustomVocabularyItem",
 }));
 export type BatchUpdateCustomVocabularyItemError =
@@ -10403,6 +10409,8 @@ export const batchUpdateCustomVocabularyItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateCustomVocabularyItem",
 }));
 export type BuildBotLocaleError =
@@ -10434,6 +10442,8 @@ export const buildBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BuildBotLocale",
 }));
 export type CreateBotError =
@@ -10463,6 +10473,8 @@ export const createBot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBot",
 }));
 export type CreateBotAliasError =
@@ -10497,6 +10509,8 @@ export const createBotAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBotAlias",
 }));
 export type CreateBotLocaleError =
@@ -10529,6 +10543,8 @@ export const createBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBotLocale",
 }));
 export type CreateBotReplicaError =
@@ -10558,6 +10574,8 @@ export const createBotReplica: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBotReplica",
 }));
 export type CreateBotVersionError =
@@ -10591,6 +10609,8 @@ export const createBotVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBotVersion",
 }));
 export type CreateExportError =
@@ -10630,6 +10650,8 @@ export const createExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExport",
 }));
 export type CreateIntentError =
@@ -10690,6 +10712,8 @@ export const createIntent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntent",
 }));
 export type CreateResourcePolicyError =
@@ -10720,6 +10744,8 @@ export const createResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourcePolicy",
 }));
 export type CreateResourcePolicyStatementError =
@@ -10759,6 +10785,8 @@ export const createResourcePolicyStatement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourcePolicyStatement",
 }));
 export type CreateSlotError =
@@ -10792,6 +10820,8 @@ export const createSlot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSlot",
 }));
 export type CreateSlotTypeError =
@@ -10825,6 +10855,8 @@ export const createSlotType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSlotType",
 }));
 export type CreateTestSetDiscrepancyReportError =
@@ -10854,6 +10886,8 @@ export const createTestSetDiscrepancyReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTestSetDiscrepancyReport",
 }));
 export type CreateUploadUrlError =
@@ -10882,6 +10916,8 @@ export const createUploadUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUploadUrl",
 }));
 export type DeleteBotError =
@@ -10922,6 +10958,8 @@ export const deleteBot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBot",
 }));
 export type DeleteBotAliasError =
@@ -10951,6 +10989,8 @@ export const deleteBotAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotAlias",
 }));
 export type DeleteBotAnalyzerRecommendationError =
@@ -10978,6 +11018,8 @@ export const deleteBotAnalyzerRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotAnalyzerRecommendation",
 }));
 export type DeleteBotLocaleError =
@@ -11010,6 +11052,8 @@ export const deleteBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotLocale",
 }));
 export type DeleteBotReplicaError =
@@ -11039,6 +11083,8 @@ export const deleteBotReplica: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotReplica",
 }));
 export type DeleteBotVersionError =
@@ -11069,6 +11115,8 @@ export const deleteBotVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBotVersion",
 }));
 export type DeleteCustomVocabularyError =
@@ -11099,6 +11147,8 @@ export const deleteCustomVocabulary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomVocabulary",
 }));
 export type DeleteExportError =
@@ -11127,6 +11177,8 @@ export const deleteExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExport",
 }));
 export type DeleteImportError =
@@ -11155,6 +11207,8 @@ export const deleteImport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImport",
 }));
 export type DeleteIntentError =
@@ -11187,6 +11241,8 @@ export const deleteIntent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntent",
 }));
 export type DeleteResourcePolicyError =
@@ -11213,6 +11269,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteResourcePolicyStatementError =
@@ -11245,6 +11303,8 @@ export const deleteResourcePolicyStatement: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicyStatement",
 }));
 export type DeleteSlotError =
@@ -11274,6 +11334,8 @@ export const deleteSlot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSlot",
 }));
 export type DeleteSlotTypeError =
@@ -11308,6 +11370,8 @@ export const deleteSlotType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSlotType",
 }));
 export type DeleteTestSetError =
@@ -11337,6 +11401,8 @@ export const deleteTestSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTestSet",
 }));
 export type DeleteUtterancesError =
@@ -11369,6 +11435,8 @@ export const deleteUtterances: API.OperationMethod<
   input: DeleteUtterancesRequest,
   output: DeleteUtterancesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUtterances",
 }));
 export type DescribeBotError =
@@ -11396,6 +11464,8 @@ export const describeBot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBot",
 }));
 export type DescribeBotAliasError =
@@ -11423,6 +11493,8 @@ export const describeBotAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBotAlias",
 }));
 export type DescribeBotAnalyzerRecommendationError =
@@ -11465,6 +11537,8 @@ export const describeBotAnalyzerRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBotAnalyzerRecommendation",
   pagination: {
     inputToken: "nextToken",
@@ -11498,6 +11572,8 @@ export const describeBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBotLocale",
 }));
 export type DescribeBotRecommendationError =
@@ -11527,6 +11603,8 @@ export const describeBotRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBotRecommendation",
 }));
 export type DescribeBotReplicaError =
@@ -11554,6 +11632,8 @@ export const describeBotReplica: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBotReplica",
 }));
 export type DescribeBotResourceGenerationError =
@@ -11582,6 +11662,8 @@ export const describeBotResourceGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBotResourceGeneration",
 }));
 export type DescribeBotVersionError =
@@ -11609,6 +11691,8 @@ export const describeBotVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBotVersion",
 }));
 export type DescribeCustomVocabularyMetadataError =
@@ -11636,6 +11720,8 @@ export const describeCustomVocabularyMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomVocabularyMetadata",
 }));
 export type DescribeExportError =
@@ -11661,6 +11747,8 @@ export const describeExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExport",
 }));
 export type DescribeImportError =
@@ -11686,6 +11774,8 @@ export const describeImport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImport",
 }));
 export type DescribeIntentError =
@@ -11713,6 +11803,8 @@ export const describeIntent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIntent",
 }));
 export type DescribeResourcePolicyError =
@@ -11737,6 +11829,8 @@ export const describeResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
 export type DescribeSlotError =
@@ -11764,6 +11858,8 @@ export const describeSlot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSlot",
 }));
 export type DescribeSlotTypeError =
@@ -11791,6 +11887,8 @@ export const describeSlotType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSlotType",
 }));
 export type DescribeTestExecutionError =
@@ -11818,6 +11916,8 @@ export const describeTestExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTestExecution",
 }));
 export type DescribeTestSetError =
@@ -11845,6 +11945,8 @@ export const describeTestSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTestSet",
 }));
 export type DescribeTestSetDiscrepancyReportError =
@@ -11872,6 +11974,8 @@ export const describeTestSetDiscrepancyReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTestSetDiscrepancyReport",
 }));
 export type DescribeTestSetGenerationError =
@@ -11899,6 +12003,8 @@ export const describeTestSetGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTestSetGeneration",
 }));
 export type GenerateBotElementError =
@@ -11930,6 +12036,8 @@ export const generateBotElement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateBotElement",
 }));
 export type GetTestExecutionArtifactsUrlError =
@@ -11957,6 +12065,8 @@ export const getTestExecutionArtifactsUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTestExecutionArtifactsUrl",
 }));
 export type ListAggregatedUtterancesError =
@@ -12020,6 +12130,8 @@ export const listAggregatedUtterances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAggregatedUtterances",
   pagination: {
     inputToken: "nextToken",
@@ -12065,6 +12177,8 @@ export const listBotAliases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBotAliases",
   pagination: {
     inputToken: "nextToken",
@@ -12110,6 +12224,8 @@ export const listBotAliasReplicas: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBotAliasReplicas",
   pagination: {
     inputToken: "nextToken",
@@ -12157,6 +12273,8 @@ export const listBotAnalyzerHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBotAnalyzerHistory",
   pagination: {
     inputToken: "nextToken",
@@ -12203,6 +12321,8 @@ export const listBotLocales: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBotLocales",
   pagination: {
     inputToken: "nextToken",
@@ -12249,6 +12369,8 @@ export const listBotRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBotRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -12279,6 +12401,8 @@ export const listBotReplicas: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBotReplicas",
 }));
 export type ListBotResourceGenerationsError =
@@ -12319,6 +12443,8 @@ export const listBotResourceGenerations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBotResourceGenerations",
   pagination: {
     inputToken: "nextToken",
@@ -12364,6 +12490,8 @@ export const listBots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBots",
   pagination: {
     inputToken: "nextToken",
@@ -12409,6 +12537,8 @@ export const listBotVersionReplicas: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBotVersionReplicas",
   pagination: {
     inputToken: "nextToken",
@@ -12463,6 +12593,8 @@ export const listBotVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBotVersions",
   pagination: {
     inputToken: "nextToken",
@@ -12514,6 +12646,8 @@ export const listBuiltInIntents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBuiltInIntents",
   pagination: {
     inputToken: "nextToken",
@@ -12560,6 +12694,8 @@ export const listBuiltInSlotTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBuiltInSlotTypes",
   pagination: {
     inputToken: "nextToken",
@@ -12608,6 +12744,8 @@ export const listCustomVocabularyItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomVocabularyItems",
   pagination: {
     inputToken: "nextToken",
@@ -12648,6 +12786,8 @@ export const listExports: API.OperationMethod<
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExports",
   pagination: {
     inputToken: "nextToken",
@@ -12688,6 +12828,8 @@ export const listImports: API.OperationMethod<
   input: ListImportsRequest,
   output: ListImportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImports",
   pagination: {
     inputToken: "nextToken",
@@ -12747,6 +12889,8 @@ export const listIntentMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntentMetrics",
   pagination: {
     inputToken: "nextToken",
@@ -12785,6 +12929,8 @@ export const listIntentPaths: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntentPaths",
 }));
 export type ListIntentsError =
@@ -12825,6 +12971,8 @@ export const listIntents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntents",
   pagination: {
     inputToken: "nextToken",
@@ -12884,6 +13032,8 @@ export const listIntentStageMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntentStageMetrics",
   pagination: {
     inputToken: "nextToken",
@@ -12933,6 +13083,8 @@ export const listRecommendedIntents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendedIntents",
   pagination: {
     inputToken: "nextToken",
@@ -12984,6 +13136,8 @@ export const listSessionAnalyticsData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessionAnalyticsData",
   pagination: {
     inputToken: "nextToken",
@@ -13043,6 +13197,8 @@ export const listSessionMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessionMetrics",
   pagination: {
     inputToken: "nextToken",
@@ -13088,6 +13244,8 @@ export const listSlots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSlots",
   pagination: {
     inputToken: "nextToken",
@@ -13133,6 +13291,8 @@ export const listSlotTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSlotTypes",
   pagination: {
     inputToken: "nextToken",
@@ -13164,6 +13324,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTestExecutionResultItemsError =
@@ -13206,6 +13368,8 @@ export const listTestExecutionResultItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestExecutionResultItems",
   pagination: {
     inputToken: "nextToken",
@@ -13251,6 +13415,8 @@ export const listTestExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -13298,6 +13464,8 @@ export const listTestSetRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestSetRecords",
   pagination: {
     inputToken: "nextToken",
@@ -13343,6 +13511,8 @@ export const listTestSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestSets",
   pagination: {
     inputToken: "nextToken",
@@ -13403,6 +13573,8 @@ export const listUtteranceAnalyticsData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUtteranceAnalyticsData",
   pagination: {
     inputToken: "nextToken",
@@ -13467,6 +13639,8 @@ export const listUtteranceMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUtteranceMetrics",
   pagination: {
     inputToken: "nextToken",
@@ -13500,6 +13674,8 @@ export const searchAssociatedTranscripts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchAssociatedTranscripts",
 }));
 export type StartBotAnalyzerError =
@@ -13529,6 +13705,8 @@ export const startBotAnalyzer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBotAnalyzer",
 }));
 export type StartBotRecommendationError =
@@ -13561,6 +13739,8 @@ export const startBotRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBotRecommendation",
 }));
 export type StartBotResourceGenerationError =
@@ -13594,6 +13774,8 @@ export const startBotResourceGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBotResourceGeneration",
 }));
 export type StartImportError =
@@ -13624,6 +13806,8 @@ export const startImport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImport",
 }));
 export type StartTestExecutionError =
@@ -13653,6 +13837,8 @@ export const startTestExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTestExecution",
 }));
 export type StartTestSetGenerationError =
@@ -13682,6 +13868,8 @@ export const startTestSetGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTestSetGeneration",
 }));
 export type StopBotAnalyzerError =
@@ -13707,6 +13895,8 @@ export const stopBotAnalyzer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopBotAnalyzer",
 }));
 export type StopBotRecommendationError =
@@ -13738,6 +13928,8 @@ export const stopBotRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopBotRecommendation",
 }));
 export type TagResourceError =
@@ -13765,6 +13957,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -13790,6 +13984,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateBotError =
@@ -13819,6 +14015,8 @@ export const updateBot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBot",
 }));
 export type UpdateBotAliasError =
@@ -13848,6 +14046,8 @@ export const updateBotAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBotAlias",
 }));
 export type UpdateBotLocaleError =
@@ -13877,6 +14077,8 @@ export const updateBotLocale: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBotLocale",
 }));
 export type UpdateBotRecommendationError =
@@ -13908,6 +14110,8 @@ export const updateBotRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBotRecommendation",
 }));
 export type UpdateExportError =
@@ -13942,6 +14146,8 @@ export const updateExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateExport",
 }));
 export type UpdateIntentError =
@@ -13971,6 +14177,8 @@ export const updateIntent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIntent",
 }));
 export type UpdateResourcePolicyError =
@@ -14002,6 +14210,8 @@ export const updateResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourcePolicy",
 }));
 export type UpdateSlotError =
@@ -14031,6 +14241,8 @@ export const updateSlot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSlot",
 }));
 export type UpdateSlotTypeError =
@@ -14060,6 +14272,8 @@ export const updateSlotType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSlotType",
 }));
 export type UpdateTestSetError =
@@ -14089,5 +14303,7 @@ export const updateTestSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTestSet",
 }));

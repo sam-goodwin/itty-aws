@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3264,6 +3266,8 @@ export const configureLogsForPlaybackConfiguration: API.OperationMethod<
   input: ConfigureLogsForPlaybackConfigurationRequest,
   output: ConfigureLogsForPlaybackConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfigureLogsForPlaybackConfiguration",
 }));
 export type ListAlertsError = CommonErrors;
@@ -3294,6 +3298,8 @@ export const listAlerts: API.OperationMethod<
   input: ListAlertsRequest,
   output: ListAlertsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlerts",
   pagination: {
     inputToken: "NextToken",
@@ -3315,6 +3321,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError = BadRequestException | CommonErrors;
@@ -3330,6 +3338,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = BadRequestException | CommonErrors;
@@ -3345,6 +3355,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateChannelError = CommonErrors;
@@ -3360,6 +3372,8 @@ export const createChannel: API.OperationMethod<
   input: CreateChannelRequest,
   output: CreateChannelResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
 export type DescribeChannelError = CommonErrors;
@@ -3375,6 +3389,8 @@ export const describeChannel: API.OperationMethod<
   input: DescribeChannelRequest,
   output: DescribeChannelResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannel",
 }));
 export type UpdateChannelError = CommonErrors;
@@ -3390,6 +3406,8 @@ export const updateChannel: API.OperationMethod<
   input: UpdateChannelRequest,
   output: UpdateChannelResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
 export type DeleteChannelError = CommonErrors;
@@ -3405,6 +3423,8 @@ export const deleteChannel: API.OperationMethod<
   input: DeleteChannelRequest,
   output: DeleteChannelResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannel",
 }));
 export type ListChannelsError = CommonErrors;
@@ -3435,6 +3455,8 @@ export const listChannels: API.OperationMethod<
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
@@ -3456,6 +3478,8 @@ export const configureLogsForChannel: API.OperationMethod<
   input: ConfigureLogsForChannelRequest,
   output: ConfigureLogsForChannelResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfigureLogsForChannel",
 }));
 export type GetChannelScheduleError = CommonErrors;
@@ -3486,6 +3510,8 @@ export const getChannelSchedule: API.OperationMethod<
   input: GetChannelScheduleRequest,
   output: GetChannelScheduleResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannelSchedule",
   pagination: {
     inputToken: "NextToken",
@@ -3507,6 +3533,8 @@ export const startChannel: API.OperationMethod<
   input: StartChannelRequest,
   output: StartChannelResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartChannel",
 }));
 export type StopChannelError = CommonErrors;
@@ -3522,6 +3550,8 @@ export const stopChannel: API.OperationMethod<
   input: StopChannelRequest,
   output: StopChannelResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopChannel",
 }));
 export type PutChannelPolicyError = CommonErrors;
@@ -3537,6 +3567,8 @@ export const putChannelPolicy: API.OperationMethod<
   input: PutChannelPolicyRequest,
   output: PutChannelPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutChannelPolicy",
 }));
 export type GetChannelPolicyError = CommonErrors;
@@ -3552,6 +3584,8 @@ export const getChannelPolicy: API.OperationMethod<
   input: GetChannelPolicyRequest,
   output: GetChannelPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannelPolicy",
 }));
 export type DeleteChannelPolicyError = CommonErrors;
@@ -3567,6 +3601,8 @@ export const deleteChannelPolicy: API.OperationMethod<
   input: DeleteChannelPolicyRequest,
   output: DeleteChannelPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelPolicy",
 }));
 export type CreateProgramError = CommonErrors;
@@ -3582,6 +3618,8 @@ export const createProgram: API.OperationMethod<
   input: CreateProgramRequest,
   output: CreateProgramResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProgram",
 }));
 export type DescribeProgramError = CommonErrors;
@@ -3597,6 +3635,8 @@ export const describeProgram: API.OperationMethod<
   input: DescribeProgramRequest,
   output: DescribeProgramResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProgram",
 }));
 export type UpdateProgramError = CommonErrors;
@@ -3612,6 +3652,8 @@ export const updateProgram: API.OperationMethod<
   input: UpdateProgramRequest,
   output: UpdateProgramResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProgram",
 }));
 export type DeleteProgramError = CommonErrors;
@@ -3627,6 +3669,8 @@ export const deleteProgram: API.OperationMethod<
   input: DeleteProgramRequest,
   output: DeleteProgramResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProgram",
 }));
 export type CreateLiveSourceError = CommonErrors;
@@ -3642,6 +3686,8 @@ export const createLiveSource: API.OperationMethod<
   input: CreateLiveSourceRequest,
   output: CreateLiveSourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLiveSource",
 }));
 export type DescribeLiveSourceError = CommonErrors;
@@ -3657,6 +3703,8 @@ export const describeLiveSource: API.OperationMethod<
   input: DescribeLiveSourceRequest,
   output: DescribeLiveSourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLiveSource",
 }));
 export type UpdateLiveSourceError = CommonErrors;
@@ -3672,6 +3720,8 @@ export const updateLiveSource: API.OperationMethod<
   input: UpdateLiveSourceRequest,
   output: UpdateLiveSourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLiveSource",
 }));
 export type DeleteLiveSourceError = CommonErrors;
@@ -3687,6 +3737,8 @@ export const deleteLiveSource: API.OperationMethod<
   input: DeleteLiveSourceRequest,
   output: DeleteLiveSourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLiveSource",
 }));
 export type ListLiveSourcesError = CommonErrors;
@@ -3717,6 +3769,8 @@ export const listLiveSources: API.OperationMethod<
   input: ListLiveSourcesRequest,
   output: ListLiveSourcesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLiveSources",
   pagination: {
     inputToken: "NextToken",
@@ -3738,6 +3792,8 @@ export const putPlaybackConfiguration: API.OperationMethod<
   input: PutPlaybackConfigurationRequest,
   output: PutPlaybackConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPlaybackConfiguration",
 }));
 export type GetPlaybackConfigurationError = CommonErrors;
@@ -3753,6 +3809,8 @@ export const getPlaybackConfiguration: API.OperationMethod<
   input: GetPlaybackConfigurationRequest,
   output: GetPlaybackConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlaybackConfiguration",
 }));
 export type DeletePlaybackConfigurationError = CommonErrors;
@@ -3768,6 +3826,8 @@ export const deletePlaybackConfiguration: API.OperationMethod<
   input: DeletePlaybackConfigurationRequest,
   output: DeletePlaybackConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePlaybackConfiguration",
 }));
 export type ListPlaybackConfigurationsError = CommonErrors;
@@ -3798,6 +3858,8 @@ export const listPlaybackConfigurations: API.OperationMethod<
   input: ListPlaybackConfigurationsRequest,
   output: ListPlaybackConfigurationsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlaybackConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -3819,6 +3881,8 @@ export const createPrefetchSchedule: API.OperationMethod<
   input: CreatePrefetchScheduleRequest,
   output: CreatePrefetchScheduleResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePrefetchSchedule",
 }));
 export type GetPrefetchScheduleError = CommonErrors;
@@ -3834,6 +3898,8 @@ export const getPrefetchSchedule: API.OperationMethod<
   input: GetPrefetchScheduleRequest,
   output: GetPrefetchScheduleResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPrefetchSchedule",
 }));
 export type DeletePrefetchScheduleError = CommonErrors;
@@ -3849,6 +3915,8 @@ export const deletePrefetchSchedule: API.OperationMethod<
   input: DeletePrefetchScheduleRequest,
   output: DeletePrefetchScheduleResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePrefetchSchedule",
 }));
 export type ListPrefetchSchedulesError = CommonErrors;
@@ -3879,6 +3947,8 @@ export const listPrefetchSchedules: API.OperationMethod<
   input: ListPrefetchSchedulesRequest,
   output: ListPrefetchSchedulesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrefetchSchedules",
   pagination: {
     inputToken: "NextToken",
@@ -3900,6 +3970,8 @@ export const createSourceLocation: API.OperationMethod<
   input: CreateSourceLocationRequest,
   output: CreateSourceLocationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSourceLocation",
 }));
 export type DescribeSourceLocationError = CommonErrors;
@@ -3915,6 +3987,8 @@ export const describeSourceLocation: API.OperationMethod<
   input: DescribeSourceLocationRequest,
   output: DescribeSourceLocationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSourceLocation",
 }));
 export type UpdateSourceLocationError = CommonErrors;
@@ -3930,6 +4004,8 @@ export const updateSourceLocation: API.OperationMethod<
   input: UpdateSourceLocationRequest,
   output: UpdateSourceLocationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSourceLocation",
 }));
 export type DeleteSourceLocationError = CommonErrors;
@@ -3945,6 +4021,8 @@ export const deleteSourceLocation: API.OperationMethod<
   input: DeleteSourceLocationRequest,
   output: DeleteSourceLocationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSourceLocation",
 }));
 export type ListSourceLocationsError = CommonErrors;
@@ -3975,6 +4053,8 @@ export const listSourceLocations: API.OperationMethod<
   input: ListSourceLocationsRequest,
   output: ListSourceLocationsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourceLocations",
   pagination: {
     inputToken: "NextToken",
@@ -3996,6 +4076,8 @@ export const createVodSource: API.OperationMethod<
   input: CreateVodSourceRequest,
   output: CreateVodSourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVodSource",
 }));
 export type DescribeVodSourceError = CommonErrors;
@@ -4011,6 +4093,8 @@ export const describeVodSource: API.OperationMethod<
   input: DescribeVodSourceRequest,
   output: DescribeVodSourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVodSource",
 }));
 export type UpdateVodSourceError = CommonErrors;
@@ -4026,6 +4110,8 @@ export const updateVodSource: API.OperationMethod<
   input: UpdateVodSourceRequest,
   output: UpdateVodSourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVodSource",
 }));
 export type DeleteVodSourceError = CommonErrors;
@@ -4041,6 +4127,8 @@ export const deleteVodSource: API.OperationMethod<
   input: DeleteVodSourceRequest,
   output: DeleteVodSourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVodSource",
 }));
 export type ListVodSourcesError = CommonErrors;
@@ -4071,6 +4159,8 @@ export const listVodSources: API.OperationMethod<
   input: ListVodSourcesRequest,
   output: ListVodSourcesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVodSources",
   pagination: {
     inputToken: "NextToken",

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2175,6 +2177,8 @@ export const createCentralizationRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCentralizationRuleForOrganization",
 }));
 export type CreateS3TableIntegrationError =
@@ -2204,6 +2208,8 @@ export const createS3TableIntegration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateS3TableIntegration",
 }));
 export type CreateTelemetryRuleError =
@@ -2233,6 +2239,8 @@ export const createTelemetryRule: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTelemetryRule",
 }));
 export type CreateTelemetryRuleForOrganizationError =
@@ -2262,6 +2270,8 @@ export const createTelemetryRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTelemetryRuleForOrganization",
 }));
 export type DeleteCentralizationRuleForOrganizationError =
@@ -2289,6 +2299,8 @@ export const deleteCentralizationRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCentralizationRuleForOrganization",
 }));
 export type DeleteS3TableIntegrationError =
@@ -2318,6 +2330,8 @@ export const deleteS3TableIntegration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteS3TableIntegration",
 }));
 export type DeleteTelemetryRuleError =
@@ -2345,6 +2359,8 @@ export const deleteTelemetryRule: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTelemetryRule",
 }));
 export type DeleteTelemetryRuleForOrganizationError =
@@ -2372,6 +2388,8 @@ export const deleteTelemetryRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTelemetryRuleForOrganization",
 }));
 export type GetCentralizationRuleForOrganizationError =
@@ -2399,6 +2417,8 @@ export const getCentralizationRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCentralizationRuleForOrganization",
 }));
 export type GetS3TableIntegrationError =
@@ -2426,6 +2446,8 @@ export const getS3TableIntegration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetS3TableIntegration",
 }));
 export type GetTelemetryEnrichmentStatusError =
@@ -2451,6 +2473,8 @@ export const getTelemetryEnrichmentStatus: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryEnrichmentStatus",
 }));
 export type GetTelemetryEvaluationStatusError =
@@ -2474,6 +2498,8 @@ export const getTelemetryEvaluationStatus: API.OperationMethod<
     InternalServerException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryEvaluationStatus",
 }));
 export type GetTelemetryEvaluationStatusForOrganizationError =
@@ -2499,6 +2525,8 @@ export const getTelemetryEvaluationStatusForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryEvaluationStatusForOrganization",
 }));
 export type GetTelemetryRuleError =
@@ -2526,6 +2554,8 @@ export const getTelemetryRule: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryRule",
 }));
 export type GetTelemetryRuleForOrganizationError =
@@ -2553,6 +2583,8 @@ export const getTelemetryRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryRuleForOrganization",
 }));
 export type ListCentralizationRulesForOrganizationError =
@@ -2593,6 +2625,8 @@ export const listCentralizationRulesForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCentralizationRulesForOrganization",
   pagination: {
     inputToken: "NextToken",
@@ -2639,6 +2673,8 @@ export const listResourceTelemetry: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceTelemetry",
   pagination: {
     inputToken: "NextToken",
@@ -2685,6 +2721,8 @@ export const listResourceTelemetryForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceTelemetryForOrganization",
   pagination: {
     inputToken: "NextToken",
@@ -2731,6 +2769,8 @@ export const listS3TableIntegrations: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListS3TableIntegrations",
   pagination: {
     inputToken: "NextToken",
@@ -2764,6 +2804,8 @@ export const listTagsForResource: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTelemetryRulesError =
@@ -2804,6 +2846,8 @@ export const listTelemetryRules: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTelemetryRules",
   pagination: {
     inputToken: "NextToken",
@@ -2850,6 +2894,8 @@ export const listTelemetryRulesForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTelemetryRulesForOrganization",
   pagination: {
     inputToken: "NextToken",
@@ -2881,6 +2927,8 @@ export const startTelemetryEnrichment: API.OperationMethod<
     InternalServerException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTelemetryEnrichment",
 }));
 export type StartTelemetryEvaluationError =
@@ -2906,6 +2954,8 @@ export const startTelemetryEvaluation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTelemetryEvaluation",
 }));
 export type StartTelemetryEvaluationForOrganizationError =
@@ -2931,6 +2981,8 @@ export const startTelemetryEvaluationForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTelemetryEvaluationForOrganization",
 }));
 export type StopTelemetryEnrichmentError =
@@ -2956,6 +3008,8 @@ export const stopTelemetryEnrichment: API.OperationMethod<
     InternalServerException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTelemetryEnrichment",
 }));
 export type StopTelemetryEvaluationError =
@@ -2981,6 +3035,8 @@ export const stopTelemetryEvaluation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTelemetryEvaluation",
 }));
 export type StopTelemetryEvaluationForOrganizationError =
@@ -3006,6 +3062,8 @@ export const stopTelemetryEvaluationForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTelemetryEvaluationForOrganization",
 }));
 export type TagResourceError =
@@ -3035,6 +3093,8 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestTelemetryPipelineError =
@@ -3060,6 +3120,8 @@ export const testTelemetryPipeline: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestTelemetryPipeline",
 }));
 export type UntagResourceError =
@@ -3087,6 +3149,8 @@ export const untagResource: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateCentralizationRuleForOrganizationError =
@@ -3116,6 +3180,8 @@ export const updateCentralizationRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCentralizationRuleForOrganization",
 }));
 export type UpdateTelemetryRuleError =
@@ -3147,6 +3213,8 @@ export const updateTelemetryRule: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTelemetryRule",
 }));
 export type UpdateTelemetryRuleForOrganizationError =
@@ -3176,6 +3244,8 @@ export const updateTelemetryRuleForOrganization: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTelemetryRuleForOrganization",
 }));
 export type ValidateTelemetryPipelineConfigurationError =
@@ -3201,6 +3271,8 @@ export const validateTelemetryPipelineConfiguration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateTelemetryPipelineConfiguration",
 }));
 export type CreateTelemetryPipelineError =
@@ -3230,6 +3302,8 @@ export const createTelemetryPipeline: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTelemetryPipeline",
 }));
 export type GetTelemetryPipelineError =
@@ -3257,6 +3331,8 @@ export const getTelemetryPipeline: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryPipeline",
 }));
 export type UpdateTelemetryPipelineError =
@@ -3332,6 +3408,8 @@ export const updateTelemetryPipeline: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTelemetryPipeline",
 }));
 export type DeleteTelemetryPipelineError =
@@ -3361,6 +3439,8 @@ export const deleteTelemetryPipeline: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTelemetryPipeline",
 }));
 export type ListTelemetryPipelinesError =
@@ -3401,6 +3481,8 @@ export const listTelemetryPipelines: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTelemetryPipelines",
   pagination: {
     inputToken: "NextToken",

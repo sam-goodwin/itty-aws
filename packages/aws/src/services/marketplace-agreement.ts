@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1709,6 +1711,8 @@ export const batchCreateBillingAdjustmentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateBillingAdjustmentRequest",
 }));
 export type CancelAgreementCancellationRequestError =
@@ -1740,6 +1744,8 @@ export const cancelAgreementCancellationRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelAgreementCancellationRequest",
 }));
 export type CancelAgreementPaymentRequestError =
@@ -1771,6 +1777,8 @@ export const cancelAgreementPaymentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelAgreementPaymentRequest",
 }));
 export type DescribeAgreementError =
@@ -1798,6 +1806,8 @@ export const describeAgreement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAgreement",
 }));
 export type GetAgreementCancellationRequestError =
@@ -1827,6 +1837,8 @@ export const getAgreementCancellationRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAgreementCancellationRequest",
 }));
 export type GetAgreementPaymentRequestError =
@@ -1856,6 +1868,8 @@ export const getAgreementPaymentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAgreementPaymentRequest",
 }));
 export type GetAgreementTermsError =
@@ -1908,6 +1922,8 @@ export const getAgreementTerms: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAgreementTerms",
   pagination: {
     inputToken: "nextToken",
@@ -1942,6 +1958,8 @@ export const getBillingAdjustmentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBillingAdjustmentRequest",
 }));
 export type ListAgreementCancellationRequestsError =
@@ -1984,6 +2002,8 @@ export const listAgreementCancellationRequests: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAgreementCancellationRequests",
   pagination: {
     inputToken: "nextToken",
@@ -2034,6 +2054,8 @@ export const listAgreementInvoiceLineItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAgreementInvoiceLineItems",
   pagination: {
     inputToken: "nextToken",
@@ -2082,6 +2104,8 @@ export const listAgreementPaymentRequests: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAgreementPaymentRequests",
   pagination: {
     inputToken: "nextToken",
@@ -2130,6 +2154,8 @@ export const listBillingAdjustmentRequests: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillingAdjustmentRequests",
   pagination: {
     inputToken: "nextToken",
@@ -2252,6 +2278,8 @@ export const searchAgreements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchAgreements",
   pagination: {
     inputToken: "nextToken",
@@ -2286,6 +2314,8 @@ export const sendAgreementCancellationRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendAgreementCancellationRequest",
 }));
 export type SendAgreementPaymentRequestError =
@@ -2317,5 +2347,7 @@ export const sendAgreementPaymentRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendAgreementPaymentRequest",
 }));

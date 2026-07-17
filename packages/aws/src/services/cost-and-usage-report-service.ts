@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -401,6 +403,8 @@ export const deleteReportDefinition: API.OperationMethod<
   input: DeleteReportDefinitionRequest,
   output: DeleteReportDefinitionResponse,
   errors: [InternalErrorException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReportDefinition",
 }));
 export type DescribeReportDefinitionsError =
@@ -433,6 +437,8 @@ export const describeReportDefinitions: API.OperationMethod<
   input: DescribeReportDefinitionsRequest,
   output: DescribeReportDefinitionsResponse,
   errors: [InternalErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReportDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -461,6 +467,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ModifyReportDefinitionError =
@@ -479,6 +487,8 @@ export const modifyReportDefinition: API.OperationMethod<
   input: ModifyReportDefinitionRequest,
   output: ModifyReportDefinitionResponse,
   errors: [InternalErrorException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReportDefinition",
 }));
 export type PutReportDefinitionError =
@@ -506,6 +516,8 @@ export const putReportDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutReportDefinition",
 }));
 export type TagResourceError =
@@ -529,6 +541,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -552,5 +566,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

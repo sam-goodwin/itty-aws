@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1067,6 +1069,8 @@ export const associateUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateUser",
 }));
 export type CreateLicenseServerEndpointError =
@@ -1098,6 +1102,8 @@ export const createLicenseServerEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLicenseServerEndpoint",
 }));
 export type DeleteLicenseServerEndpointError =
@@ -1129,6 +1135,8 @@ export const deleteLicenseServerEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLicenseServerEndpoint",
 }));
 export type DeregisterIdentityProviderError =
@@ -1160,6 +1168,8 @@ export const deregisterIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterIdentityProvider",
 }));
 export type DisassociateUserError =
@@ -1191,6 +1201,8 @@ export const disassociateUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateUser",
 }));
 export type ListIdentityProvidersError =
@@ -1237,6 +1249,8 @@ export const listIdentityProviders: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentityProviders",
   pagination: {
     inputToken: "NextToken",
@@ -1289,6 +1303,8 @@ export const listInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstances",
   pagination: {
     inputToken: "NextToken",
@@ -1339,6 +1355,8 @@ export const listLicenseServerEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenseServerEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -1391,6 +1409,8 @@ export const listProductSubscriptions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProductSubscriptions",
   pagination: {
     inputToken: "NextToken",
@@ -1420,6 +1440,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListUserAssociationsError =
@@ -1466,6 +1488,8 @@ export const listUserAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -1503,6 +1527,8 @@ export const registerIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterIdentityProvider",
 }));
 export type StartProductSubscriptionError =
@@ -1536,6 +1562,8 @@ export const startProductSubscription: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartProductSubscription",
 }));
 export type StopProductSubscriptionError =
@@ -1567,6 +1595,8 @@ export const stopProductSubscription: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopProductSubscription",
 }));
 export type TagResourceError =
@@ -1590,6 +1620,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1608,6 +1640,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateIdentityProviderSettingsError =
@@ -1633,5 +1667,7 @@ export const updateIdentityProviderSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdentityProviderSettings",
 }));

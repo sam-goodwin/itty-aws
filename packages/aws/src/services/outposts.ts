@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2404,6 +2406,8 @@ export const cancelCapacityTask: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelCapacityTask",
 }));
 export type CancelOrderError =
@@ -2431,6 +2435,8 @@ export const cancelOrder: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelOrder",
 }));
 export type CreateOrderError =
@@ -2460,6 +2466,8 @@ export const createOrder: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOrder",
 }));
 export type CreateOutpostError =
@@ -2491,6 +2499,8 @@ export const createOutpost: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOutpost",
 }));
 export type CreateRenewalError =
@@ -2516,6 +2526,8 @@ export const createRenewal: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRenewal",
 }));
 export type CreateSiteError =
@@ -2543,6 +2555,8 @@ export const createSite: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSite",
 }));
 export type DeleteOutpostError =
@@ -2570,6 +2584,8 @@ export const deleteOutpost: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOutpost",
 }));
 export type DeleteSiteError =
@@ -2597,6 +2613,8 @@ export const deleteSite: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSite",
 }));
 export type GetCapacityTaskError =
@@ -2622,6 +2640,8 @@ export const getCapacityTask: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapacityTask",
 }));
 export type GetCatalogItemError =
@@ -2647,6 +2667,8 @@ export const getCatalogItem: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCatalogItem",
 }));
 export type GetConnectionError =
@@ -2679,6 +2701,8 @@ export const getConnection: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnection",
 }));
 export type GetOrderError =
@@ -2698,6 +2722,8 @@ export const getOrder: API.OperationMethod<
   input: GetOrderInput,
   output: GetOrderOutput,
   errors: [InternalServerException, NotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOrder",
 }));
 export type GetOutpostError =
@@ -2723,6 +2749,8 @@ export const getOutpost: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOutpost",
 }));
 export type GetOutpostBillingInformationError =
@@ -2757,6 +2785,8 @@ export const getOutpostBillingInformation: API.OperationMethod<
   input: GetOutpostBillingInformationInput,
   output: GetOutpostBillingInformationOutput,
   errors: [AccessDeniedException, InternalServerException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOutpostBillingInformation",
   pagination: {
     inputToken: "NextToken",
@@ -2803,6 +2833,8 @@ export const getOutpostInstanceTypes: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOutpostInstanceTypes",
   pagination: {
     inputToken: "NextToken",
@@ -2851,6 +2883,8 @@ export const getOutpostSupportedInstanceTypes: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOutpostSupportedInstanceTypes",
   pagination: {
     inputToken: "NextToken",
@@ -2882,6 +2916,8 @@ export const getRenewalPricing: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRenewalPricing",
 }));
 export type GetSiteError =
@@ -2907,6 +2943,8 @@ export const getSite: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSite",
 }));
 export type GetSiteAddressError =
@@ -2932,6 +2970,8 @@ export const getSiteAddress: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSiteAddress",
 }));
 export type ListAssetInstancesError =
@@ -2973,6 +3013,8 @@ export const listAssetInstances: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetInstances",
   pagination: {
     inputToken: "NextToken",
@@ -3023,6 +3065,8 @@ export const listAssets: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssets",
   pagination: {
     inputToken: "NextToken",
@@ -3071,6 +3115,8 @@ export const listBlockingInstancesForCapacityTask: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBlockingInstancesForCapacityTask",
   pagination: {
     inputToken: "NextToken",
@@ -3121,6 +3167,8 @@ export const listCapacityTasks: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCapacityTasks",
   pagination: {
     inputToken: "NextToken",
@@ -3171,6 +3219,8 @@ export const listCatalogItems: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCatalogItems",
   pagination: {
     inputToken: "NextToken",
@@ -3217,6 +3267,8 @@ export const listOrders: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrders",
   pagination: {
     inputToken: "NextToken",
@@ -3261,6 +3313,8 @@ export const listOutposts: API.OperationMethod<
   input: ListOutpostsInput,
   output: ListOutpostsOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOutposts",
   pagination: {
     inputToken: "NextToken",
@@ -3306,6 +3360,8 @@ export const listSites: API.OperationMethod<
   input: ListSitesInput,
   output: ListSitesOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSites",
   pagination: {
     inputToken: "NextToken",
@@ -3331,6 +3387,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalServerException, NotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartCapacityTaskError =
@@ -3359,6 +3417,8 @@ export const startCapacityTask: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCapacityTask",
 }));
 export type StartConnectionError =
@@ -3391,6 +3451,8 @@ export const startConnection: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartConnection",
 }));
 export type StartOutpostDecommissionError =
@@ -3418,6 +3480,8 @@ export const startOutpostDecommission: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartOutpostDecommission",
 }));
 export type TagResourceError =
@@ -3437,6 +3501,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalServerException, NotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3456,6 +3522,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, NotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateOutpostError =
@@ -3483,6 +3551,8 @@ export const updateOutpost: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOutpost",
 }));
 export type UpdateSiteError =
@@ -3510,6 +3580,8 @@ export const updateSite: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSite",
 }));
 export type UpdateSiteAddressError =
@@ -3543,6 +3615,8 @@ export const updateSiteAddress: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSiteAddress",
 }));
 export type UpdateSiteRackPhysicalPropertiesError =
@@ -3575,5 +3649,7 @@ export const updateSiteRackPhysicalProperties: API.OperationMethod<
     NotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSiteRackPhysicalProperties",
 }));

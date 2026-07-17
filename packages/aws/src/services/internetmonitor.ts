@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1125,6 +1127,8 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1154,6 +1158,8 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1181,6 +1187,8 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type GetInternetEventError =
@@ -1212,6 +1220,8 @@ export const getInternetEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInternetEvent",
 }));
 export type ListInternetEventsError =
@@ -1261,6 +1271,8 @@ export const listInternetEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInternetEvents",
   pagination: {
     inputToken: "NextToken",
@@ -1305,6 +1317,8 @@ export const createMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMonitor",
 }));
 export type GetMonitorError =
@@ -1331,6 +1345,8 @@ export const getMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMonitor",
 }));
 export type UpdateMonitorError =
@@ -1364,6 +1380,8 @@ export const updateMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMonitor",
 }));
 export type DeleteMonitorError =
@@ -1389,6 +1407,8 @@ export const deleteMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMonitor",
 }));
 export type ListMonitorsError =
@@ -1429,6 +1449,8 @@ export const listMonitors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitors",
   pagination: {
     inputToken: "NextToken",
@@ -1482,6 +1504,8 @@ export const getQueryResults: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryResults",
   pagination: {
     inputToken: "NextToken",
@@ -1525,6 +1549,8 @@ export const getQueryStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryStatus",
 }));
 export type StartQueryError =
@@ -1558,6 +1584,8 @@ export const startQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQuery",
 }));
 export type StopQueryError =
@@ -1585,6 +1613,8 @@ export const stopQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopQuery",
 }));
 export type GetHealthEventError =
@@ -1616,6 +1646,8 @@ export const getHealthEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHealthEvent",
 }));
 export type ListHealthEventsError =
@@ -1659,6 +1691,8 @@ export const listHealthEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHealthEvents",
   pagination: {
     inputToken: "NextToken",

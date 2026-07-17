@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -9656,6 +9658,8 @@ export const acceptAdministratorInvitation: API.OperationMethod<
   input: AcceptAdministratorInvitationRequest,
   output: AcceptAdministratorInvitationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptAdministratorInvitation",
 }));
 export type AcceptInvitationError =
@@ -9674,6 +9678,8 @@ export const acceptInvitation: API.OperationMethod<
   input: AcceptInvitationRequest,
   output: AcceptInvitationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptInvitation",
 }));
 export type ArchiveFindingsError =
@@ -9694,6 +9700,8 @@ export const archiveFindings: API.OperationMethod<
   input: ArchiveFindingsRequest,
   output: ArchiveFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ArchiveFindings",
 }));
 export type CreateDetectorError =
@@ -9720,6 +9728,8 @@ export const createDetector: API.OperationMethod<
   input: CreateDetectorRequest,
   output: CreateDetectorResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDetector",
 }));
 export type CreateFilterError =
@@ -9738,6 +9748,8 @@ export const createFilter: API.OperationMethod<
   input: CreateFilterRequest,
   output: CreateFilterResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFilter",
 }));
 export type CreateIPSetError =
@@ -9761,6 +9773,8 @@ export const createIPSet: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIPSet",
 }));
 export type CreateMalwareProtectionPlanError =
@@ -9788,6 +9802,8 @@ export const createMalwareProtectionPlan: API.OperationMethod<
     ConflictException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMalwareProtectionPlan",
 }));
 export type CreateMembersError =
@@ -9814,6 +9830,8 @@ export const createMembers: API.OperationMethod<
   input: CreateMembersRequest,
   output: CreateMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMembers",
 }));
 export type CreatePublishingDestinationError =
@@ -9832,6 +9850,8 @@ export const createPublishingDestination: API.OperationMethod<
   input: CreatePublishingDestinationRequest,
   output: CreatePublishingDestinationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePublishingDestination",
 }));
 export type CreateSampleFindingsError =
@@ -9850,6 +9870,8 @@ export const createSampleFindings: API.OperationMethod<
   input: CreateSampleFindingsRequest,
   output: CreateSampleFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSampleFindings",
 }));
 export type CreateThreatEntitySetError =
@@ -9868,6 +9890,8 @@ export const createThreatEntitySet: API.OperationMethod<
   input: CreateThreatEntitySetRequest,
   output: CreateThreatEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateThreatEntitySet",
 }));
 export type CreateThreatIntelSetError =
@@ -9891,6 +9915,8 @@ export const createThreatIntelSet: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateThreatIntelSet",
 }));
 export type CreateTrustedEntitySetError =
@@ -9911,6 +9937,8 @@ export const createTrustedEntitySet: API.OperationMethod<
   input: CreateTrustedEntitySetRequest,
   output: CreateTrustedEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrustedEntitySet",
 }));
 export type DeclineInvitationsError =
@@ -9929,6 +9957,8 @@ export const declineInvitations: API.OperationMethod<
   input: DeclineInvitationsRequest,
   output: DeclineInvitationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeclineInvitations",
 }));
 export type DeleteDetectorError =
@@ -9947,6 +9977,8 @@ export const deleteDetector: API.OperationMethod<
   input: DeleteDetectorRequest,
   output: DeleteDetectorResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDetector",
 }));
 export type DeleteFilterError =
@@ -9965,6 +9997,8 @@ export const deleteFilter: API.OperationMethod<
   input: DeleteFilterRequest,
   output: DeleteFilterResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFilter",
 }));
 export type DeleteInvitationsError =
@@ -9983,6 +10017,8 @@ export const deleteInvitations: API.OperationMethod<
   input: DeleteInvitationsRequest,
   output: DeleteInvitationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInvitations",
 }));
 export type DeleteIPSetError =
@@ -10001,6 +10037,8 @@ export const deleteIPSet: API.OperationMethod<
   input: DeleteIPSetRequest,
   output: DeleteIPSetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIPSet",
 }));
 export type DeleteMalwareProtectionPlanError =
@@ -10026,6 +10064,8 @@ export const deleteMalwareProtectionPlan: API.OperationMethod<
     InternalServerErrorException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMalwareProtectionPlan",
 }));
 export type DeleteMembersError =
@@ -10046,6 +10086,8 @@ export const deleteMembers: API.OperationMethod<
   input: DeleteMembersRequest,
   output: DeleteMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMembers",
 }));
 export type DeletePublishingDestinationError =
@@ -10064,6 +10106,8 @@ export const deletePublishingDestination: API.OperationMethod<
   input: DeletePublishingDestinationRequest,
   output: DeletePublishingDestinationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePublishingDestination",
 }));
 export type DeleteThreatEntitySetError =
@@ -10082,6 +10126,8 @@ export const deleteThreatEntitySet: API.OperationMethod<
   input: DeleteThreatEntitySetRequest,
   output: DeleteThreatEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThreatEntitySet",
 }));
 export type DeleteThreatIntelSetError =
@@ -10100,6 +10146,8 @@ export const deleteThreatIntelSet: API.OperationMethod<
   input: DeleteThreatIntelSetRequest,
   output: DeleteThreatIntelSetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThreatIntelSet",
 }));
 export type DeleteTrustedEntitySetError =
@@ -10118,6 +10166,8 @@ export const deleteTrustedEntitySet: API.OperationMethod<
   input: DeleteTrustedEntitySetRequest,
   output: DeleteTrustedEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrustedEntitySet",
 }));
 export type DescribeMalwareScansError =
@@ -10153,6 +10203,8 @@ export const describeMalwareScans: API.OperationMethod<
   input: DescribeMalwareScansRequest,
   output: DescribeMalwareScansResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMalwareScans",
   pagination: {
     inputToken: "NextToken",
@@ -10194,6 +10246,8 @@ export const describeOrganizationConfiguration: API.OperationMethod<
   input: DescribeOrganizationConfigurationRequest,
   output: DescribeOrganizationConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConfiguration",
   pagination: {
     inputToken: "NextToken",
@@ -10217,6 +10271,8 @@ export const describePublishingDestination: API.OperationMethod<
   input: DescribePublishingDestinationRequest,
   output: DescribePublishingDestinationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePublishingDestination",
 }));
 export type DisableOrganizationAdminAccountError =
@@ -10235,6 +10291,8 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
   input: DisableOrganizationAdminAccountRequest,
   output: DisableOrganizationAdminAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableOrganizationAdminAccount",
 }));
 export type DisassociateFromAdministratorAccountError =
@@ -10257,6 +10315,8 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
   input: DisassociateFromAdministratorAccountRequest,
   output: DisassociateFromAdministratorAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFromAdministratorAccount",
 }));
 export type DisassociateFromMasterAccountError =
@@ -10277,6 +10337,8 @@ export const disassociateFromMasterAccount: API.OperationMethod<
   input: DisassociateFromMasterAccountRequest,
   output: DisassociateFromMasterAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFromMasterAccount",
 }));
 export type DisassociateMembersError =
@@ -10303,6 +10365,8 @@ export const disassociateMembers: API.OperationMethod<
   input: DisassociateMembersRequest,
   output: DisassociateMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMembers",
 }));
 export type EnableOrganizationAdminAccountError =
@@ -10321,6 +10385,8 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
   input: EnableOrganizationAdminAccountRequest,
   output: EnableOrganizationAdminAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableOrganizationAdminAccount",
 }));
 export type GetAdministratorAccountError =
@@ -10347,6 +10413,8 @@ export const getAdministratorAccount: API.OperationMethod<
   input: GetAdministratorAccountRequest,
   output: GetAdministratorAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAdministratorAccount",
 }));
 export type GetCoverageStatisticsError =
@@ -10365,6 +10433,8 @@ export const getCoverageStatistics: API.OperationMethod<
   input: GetCoverageStatisticsRequest,
   output: GetCoverageStatisticsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoverageStatistics",
 }));
 export type GetDetectorError =
@@ -10385,6 +10455,8 @@ export const getDetector: API.OperationMethod<
   input: GetDetectorRequest,
   output: GetDetectorResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDetector",
 }));
 export type GetFilterError =
@@ -10403,6 +10475,8 @@ export const getFilter: API.OperationMethod<
   input: GetFilterRequest,
   output: GetFilterResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFilter",
 }));
 export type GetFindingsError =
@@ -10421,6 +10495,8 @@ export const getFindings: API.OperationMethod<
   input: GetFindingsRequest,
   output: GetFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindings",
 }));
 export type GetFindingsStatisticsError =
@@ -10443,6 +10519,8 @@ export const getFindingsStatistics: API.OperationMethod<
   input: GetFindingsStatisticsRequest,
   output: GetFindingsStatisticsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingsStatistics",
 }));
 export type GetInvitationsCountError =
@@ -10461,6 +10539,8 @@ export const getInvitationsCount: API.OperationMethod<
   input: GetInvitationsCountRequest,
   output: GetInvitationsCountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInvitationsCount",
 }));
 export type GetIPSetError =
@@ -10479,6 +10559,8 @@ export const getIPSet: API.OperationMethod<
   input: GetIPSetRequest,
   output: GetIPSetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIPSet",
 }));
 export type GetMalwareProtectionPlanError =
@@ -10504,6 +10586,8 @@ export const getMalwareProtectionPlan: API.OperationMethod<
     InternalServerErrorException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMalwareProtectionPlan",
 }));
 export type GetMalwareScanError =
@@ -10529,6 +10613,8 @@ export const getMalwareScan: API.OperationMethod<
     InternalServerErrorException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMalwareScan",
 }));
 export type GetMalwareScanSettingsError =
@@ -10549,6 +10635,8 @@ export const getMalwareScanSettings: API.OperationMethod<
   input: GetMalwareScanSettingsRequest,
   output: GetMalwareScanSettingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMalwareScanSettings",
 }));
 export type GetMasterAccountError =
@@ -10567,6 +10655,8 @@ export const getMasterAccount: API.OperationMethod<
   input: GetMasterAccountRequest,
   output: GetMasterAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMasterAccount",
 }));
 export type GetMemberDetectorsError =
@@ -10587,6 +10677,8 @@ export const getMemberDetectors: API.OperationMethod<
   input: GetMemberDetectorsRequest,
   output: GetMemberDetectorsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMemberDetectors",
 }));
 export type GetMembersError =
@@ -10605,6 +10697,8 @@ export const getMembers: API.OperationMethod<
   input: GetMembersRequest,
   output: GetMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMembers",
 }));
 export type GetOrganizationStatisticsError =
@@ -10625,6 +10719,8 @@ export const getOrganizationStatistics: API.OperationMethod<
   input: GetOrganizationStatisticsRequest,
   output: GetOrganizationStatisticsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOrganizationStatistics",
 }));
 export type GetRemainingFreeTrialDaysError =
@@ -10643,6 +10739,8 @@ export const getRemainingFreeTrialDays: API.OperationMethod<
   input: GetRemainingFreeTrialDaysRequest,
   output: GetRemainingFreeTrialDaysResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRemainingFreeTrialDays",
 }));
 export type GetThreatEntitySetError =
@@ -10661,6 +10759,8 @@ export const getThreatEntitySet: API.OperationMethod<
   input: GetThreatEntitySetRequest,
   output: GetThreatEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetThreatEntitySet",
 }));
 export type GetThreatIntelSetError =
@@ -10679,6 +10779,8 @@ export const getThreatIntelSet: API.OperationMethod<
   input: GetThreatIntelSetRequest,
   output: GetThreatIntelSetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetThreatIntelSet",
 }));
 export type GetTrustedEntitySetError =
@@ -10697,6 +10799,8 @@ export const getTrustedEntitySet: API.OperationMethod<
   input: GetTrustedEntitySetRequest,
   output: GetTrustedEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrustedEntitySet",
 }));
 export type GetUsageStatisticsError =
@@ -10730,6 +10834,8 @@ export const getUsageStatistics: API.OperationMethod<
   input: GetUsageStatisticsRequest,
   output: GetUsageStatisticsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsageStatistics",
   pagination: {
     inputToken: "NextToken",
@@ -10761,6 +10867,8 @@ export const inviteMembers: API.OperationMethod<
   input: InviteMembersRequest,
   output: InviteMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InviteMembers",
 }));
 export type ListCoverageError =
@@ -10796,6 +10904,8 @@ export const listCoverage: API.OperationMethod<
   input: ListCoverageRequest,
   output: ListCoverageResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoverage",
   pagination: {
     inputToken: "NextToken",
@@ -10835,6 +10945,8 @@ export const listDetectors: API.OperationMethod<
   input: ListDetectorsRequest,
   output: ListDetectorsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDetectors",
   pagination: {
     inputToken: "NextToken",
@@ -10874,6 +10986,8 @@ export const listFilters: API.OperationMethod<
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFilters",
   pagination: {
     inputToken: "NextToken",
@@ -10915,6 +11029,8 @@ export const listFindings: API.OperationMethod<
   input: ListFindingsRequest,
   output: ListFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindings",
   pagination: {
     inputToken: "NextToken",
@@ -10954,6 +11070,8 @@ export const listInvitations: API.OperationMethod<
   input: ListInvitationsRequest,
   output: ListInvitationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvitations",
   pagination: {
     inputToken: "NextToken",
@@ -10993,6 +11111,8 @@ export const listIPSets: API.OperationMethod<
   input: ListIPSetsRequest,
   output: ListIPSetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIPSets",
   pagination: {
     inputToken: "NextToken",
@@ -11022,6 +11142,8 @@ export const listMalwareProtectionPlans: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMalwareProtectionPlans",
 }));
 export type ListMalwareScansError =
@@ -11055,6 +11177,8 @@ export const listMalwareScans: API.OperationMethod<
   input: ListMalwareScansRequest,
   output: ListMalwareScansResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMalwareScans",
   pagination: {
     inputToken: "NextToken",
@@ -11094,6 +11218,8 @@ export const listMembers: API.OperationMethod<
   input: ListMembersRequest,
   output: ListMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMembers",
   pagination: {
     inputToken: "NextToken",
@@ -11133,6 +11259,8 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
   input: ListOrganizationAdminAccountsRequest,
   output: ListOrganizationAdminAccountsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationAdminAccounts",
   pagination: {
     inputToken: "NextToken",
@@ -11172,6 +11300,8 @@ export const listPublishingDestinations: API.OperationMethod<
   input: ListPublishingDestinationsRequest,
   output: ListPublishingDestinationsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPublishingDestinations",
   pagination: {
     inputToken: "NextToken",
@@ -11200,6 +11330,8 @@ export const listTagsForResource: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListThreatEntitySetsError =
@@ -11233,6 +11365,8 @@ export const listThreatEntitySets: API.OperationMethod<
   input: ListThreatEntitySetsRequest,
   output: ListThreatEntitySetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThreatEntitySets",
   pagination: {
     inputToken: "NextToken",
@@ -11272,6 +11406,8 @@ export const listThreatIntelSets: API.OperationMethod<
   input: ListThreatIntelSetsRequest,
   output: ListThreatIntelSetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThreatIntelSets",
   pagination: {
     inputToken: "NextToken",
@@ -11311,6 +11447,8 @@ export const listTrustedEntitySets: API.OperationMethod<
   input: ListTrustedEntitySetsRequest,
   output: ListTrustedEntitySetsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrustedEntitySets",
   pagination: {
     inputToken: "NextToken",
@@ -11342,6 +11480,8 @@ export const sendObjectMalwareScan: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendObjectMalwareScan",
 }));
 export type StartMalwareScanError =
@@ -11369,6 +11509,8 @@ export const startMalwareScan: API.OperationMethod<
     ConflictException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMalwareScan",
 }));
 export type StartMonitoringMembersError =
@@ -11387,6 +11529,8 @@ export const startMonitoringMembers: API.OperationMethod<
   input: StartMonitoringMembersRequest,
   output: StartMonitoringMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMonitoringMembers",
 }));
 export type StopMonitoringMembersError =
@@ -11407,6 +11551,8 @@ export const stopMonitoringMembers: API.OperationMethod<
   input: StopMonitoringMembersRequest,
   output: StopMonitoringMembersResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopMonitoringMembers",
 }));
 export type TagResourceError =
@@ -11430,6 +11576,8 @@ export const tagResource: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UnarchiveFindingsError =
@@ -11448,6 +11596,8 @@ export const unarchiveFindings: API.OperationMethod<
   input: UnarchiveFindingsRequest,
   output: UnarchiveFindingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnarchiveFindings",
 }));
 export type UntagResourceError =
@@ -11471,6 +11621,8 @@ export const untagResource: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDetectorError =
@@ -11493,6 +11645,8 @@ export const updateDetector: API.OperationMethod<
   input: UpdateDetectorRequest,
   output: UpdateDetectorResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDetector",
 }));
 export type UpdateFilterError =
@@ -11511,6 +11665,8 @@ export const updateFilter: API.OperationMethod<
   input: UpdateFilterRequest,
   output: UpdateFilterResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFilter",
 }));
 export type UpdateFindingsFeedbackError =
@@ -11529,6 +11685,8 @@ export const updateFindingsFeedback: API.OperationMethod<
   input: UpdateFindingsFeedbackRequest,
   output: UpdateFindingsFeedbackResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFindingsFeedback",
 }));
 export type UpdateIPSetError =
@@ -11552,6 +11710,8 @@ export const updateIPSet: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIPSet",
 }));
 export type UpdateMalwareProtectionPlanError =
@@ -11577,6 +11737,8 @@ export const updateMalwareProtectionPlan: API.OperationMethod<
     InternalServerErrorException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMalwareProtectionPlan",
 }));
 export type UpdateMalwareScanSettingsError =
@@ -11597,6 +11759,8 @@ export const updateMalwareScanSettings: API.OperationMethod<
   input: UpdateMalwareScanSettingsRequest,
   output: UpdateMalwareScanSettingsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMalwareScanSettings",
 }));
 export type UpdateMemberDetectorsError =
@@ -11619,6 +11783,8 @@ export const updateMemberDetectors: API.OperationMethod<
   input: UpdateMemberDetectorsRequest,
   output: UpdateMemberDetectorsResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMemberDetectors",
 }));
 export type UpdateOrganizationConfigurationError =
@@ -11641,6 +11807,8 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   input: UpdateOrganizationConfigurationRequest,
   output: UpdateOrganizationConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOrganizationConfiguration",
 }));
 export type UpdatePublishingDestinationError =
@@ -11659,6 +11827,8 @@ export const updatePublishingDestination: API.OperationMethod<
   input: UpdatePublishingDestinationRequest,
   output: UpdatePublishingDestinationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePublishingDestination",
 }));
 export type UpdateThreatEntitySetError =
@@ -11677,6 +11847,8 @@ export const updateThreatEntitySet: API.OperationMethod<
   input: UpdateThreatEntitySetRequest,
   output: UpdateThreatEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThreatEntitySet",
 }));
 export type UpdateThreatIntelSetError =
@@ -11700,6 +11872,8 @@ export const updateThreatIntelSet: API.OperationMethod<
     BadRequestException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThreatIntelSet",
 }));
 export type UpdateTrustedEntitySetError =
@@ -11718,5 +11892,7 @@ export const updateTrustedEntitySet: API.OperationMethod<
   input: UpdateTrustedEntitySetRequest,
   output: UpdateTrustedEntitySetResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrustedEntitySet",
 }));

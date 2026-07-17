@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -1162,6 +1164,8 @@ export const createIdentityPool: API.OperationMethod<
     ResourceConflictException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdentityPool",
 }));
 export type DeleteIdentitiesError =
@@ -1189,6 +1193,8 @@ export const deleteIdentities: API.OperationMethod<
     InvalidParameterException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentities",
 }));
 export type DeleteIdentityPoolError =
@@ -1220,6 +1226,8 @@ export const deleteIdentityPool: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentityPool",
 }));
 export type DescribeIdentityError =
@@ -1251,6 +1259,8 @@ export const describeIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIdentity",
 }));
 export type DescribeIdentityPoolError =
@@ -1282,6 +1292,8 @@ export const describeIdentityPool: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIdentityPool",
 }));
 export type GetCredentialsForIdentityError =
@@ -1319,6 +1331,8 @@ export const getCredentialsForIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCredentialsForIdentity",
 }));
 export type GetIdError =
@@ -1355,6 +1369,8 @@ export const getId: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetId",
 }));
 export type GetIdentityPoolRolesError =
@@ -1387,6 +1403,8 @@ export const getIdentityPoolRoles: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityPoolRoles",
 }));
 export type GetOpenIdTokenError =
@@ -1424,6 +1442,8 @@ export const getOpenIdToken: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpenIdToken",
 }));
 export type GetOpenIdTokenForDeveloperIdentityError =
@@ -1470,6 +1490,8 @@ export const getOpenIdTokenForDeveloperIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpenIdTokenForDeveloperIdentity",
 }));
 export type GetPrincipalTagAttributeMapError =
@@ -1498,6 +1520,8 @@ export const getPrincipalTagAttributeMap: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPrincipalTagAttributeMap",
 }));
 export type ListIdentitiesError =
@@ -1528,6 +1552,8 @@ export const listIdentities: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentities",
 }));
 export type ListIdentityPoolsError =
@@ -1573,6 +1599,8 @@ export const listIdentityPools: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentityPools",
   pagination: {
     inputToken: "NextToken",
@@ -1611,6 +1639,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type LookupDeveloperIdentityError =
@@ -1658,6 +1688,8 @@ export const lookupDeveloperIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LookupDeveloperIdentity",
 }));
 export type MergeDeveloperIdentitiesError =
@@ -1702,6 +1734,8 @@ export const mergeDeveloperIdentities: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergeDeveloperIdentities",
 }));
 export type SetIdentityPoolRolesError =
@@ -1736,6 +1770,8 @@ export const setIdentityPoolRoles: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIdentityPoolRoles",
 }));
 export type SetPrincipalTagAttributeMapError =
@@ -1764,6 +1800,8 @@ export const setPrincipalTagAttributeMap: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetPrincipalTagAttributeMap",
 }));
 export type TagResourceError =
@@ -1808,6 +1846,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UnlinkDeveloperIdentityError =
@@ -1843,6 +1883,8 @@ export const unlinkDeveloperIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnlinkDeveloperIdentity",
 }));
 export type UnlinkIdentityError =
@@ -1878,6 +1920,8 @@ export const unlinkIdentity: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnlinkIdentity",
 }));
 export type UntagResourceError =
@@ -1906,6 +1950,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateIdentityPoolError =
@@ -1944,5 +1990,7 @@ export const updateIdentityPool: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdentityPool",
 }));

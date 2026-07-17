@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -19113,6 +19115,8 @@ export const acceptAdministratorInvitation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptAdministratorInvitation",
 }));
 export type AcceptInvitationError =
@@ -19151,6 +19155,8 @@ export const acceptInvitation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptInvitation",
 }));
 export type BatchDeleteAutomationRulesError =
@@ -19178,6 +19184,8 @@ export const batchDeleteAutomationRules: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteAutomationRules",
 }));
 export type BatchDisableStandardsError =
@@ -19209,6 +19217,8 @@ export const batchDisableStandards: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisableStandards",
 }));
 export type BatchEnableStandardsError =
@@ -19241,6 +19251,8 @@ export const batchEnableStandards: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchEnableStandards",
 }));
 export type BatchGetAutomationRulesError =
@@ -19271,6 +19283,8 @@ export const batchGetAutomationRules: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetAutomationRules",
 }));
 export type BatchGetConfigurationPolicyAssociationsError =
@@ -19302,6 +19316,8 @@ export const batchGetConfigurationPolicyAssociations: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetConfigurationPolicyAssociations",
 }));
 export type BatchGetSecurityControlsError =
@@ -19327,6 +19343,8 @@ export const batchGetSecurityControls: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetSecurityControls",
 }));
 export type BatchGetStandardsControlAssociationsError =
@@ -19354,6 +19372,8 @@ export const batchGetStandardsControlAssociations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetStandardsControlAssociations",
 }));
 export type BatchImportFindingsError =
@@ -19422,6 +19442,8 @@ export const batchImportFindings: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchImportFindings",
 }));
 export type BatchUpdateAutomationRulesError =
@@ -19450,6 +19472,8 @@ export const batchUpdateAutomationRules: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateAutomationRules",
 }));
 export type BatchUpdateFindingsError =
@@ -19504,6 +19528,8 @@ export const batchUpdateFindings: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateFindings",
 }));
 export type BatchUpdateFindingsV2Error =
@@ -19536,6 +19562,8 @@ export const batchUpdateFindingsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateFindingsV2",
 }));
 export type BatchUpdateStandardsControlAssociationsError =
@@ -19563,6 +19591,8 @@ export const batchUpdateStandardsControlAssociations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateStandardsControlAssociations",
 }));
 export type CreateActionTargetError =
@@ -19593,6 +19623,8 @@ export const createActionTarget: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateActionTarget",
 }));
 export type CreateAggregatorV2Error =
@@ -19624,6 +19656,8 @@ export const createAggregatorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAggregatorV2",
 }));
 export type CreateAutomationRuleError =
@@ -19651,6 +19685,8 @@ export const createAutomationRule: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutomationRule",
 }));
 export type CreateAutomationRuleV2Error =
@@ -19680,6 +19716,8 @@ export const createAutomationRuleV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutomationRuleV2",
 }));
 export type CreateConfigurationPolicyError =
@@ -19710,6 +19748,8 @@ export const createConfigurationPolicy: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationPolicy",
 }));
 export type CreateConnectorV2Error =
@@ -19741,6 +19781,8 @@ export const createConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectorV2",
 }));
 export type CreateFindingAggregatorError =
@@ -19772,6 +19814,8 @@ export const createFindingAggregator: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFindingAggregator",
 }));
 export type CreateInsightError =
@@ -19803,6 +19847,8 @@ export const createInsight: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInsight",
 }));
 export type CreateMembersError =
@@ -19864,6 +19910,8 @@ export const createMembers: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMembers",
 }));
 export type CreateTicketV2Error =
@@ -19893,6 +19941,8 @@ export const createTicketV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTicketV2",
 }));
 export type DeclineInvitationsError =
@@ -19927,6 +19977,8 @@ export const declineInvitations: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeclineInvitations",
 }));
 export type DeleteActionTargetError =
@@ -19955,6 +20007,8 @@ export const deleteActionTarget: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteActionTarget",
 }));
 export type DeleteAggregatorV2Error =
@@ -19984,6 +20038,8 @@ export const deleteAggregatorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAggregatorV2",
 }));
 export type DeleteAutomationRuleV2Error =
@@ -20013,6 +20069,8 @@ export const deleteAutomationRuleV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAutomationRuleV2",
 }));
 export type DeleteConfigurationPolicyError =
@@ -20046,6 +20104,8 @@ export const deleteConfigurationPolicy: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationPolicy",
 }));
 export type DeleteConnectorV2Error =
@@ -20075,6 +20135,8 @@ export const deleteConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectorV2",
 }));
 export type DeleteFindingAggregatorError =
@@ -20110,6 +20172,8 @@ export const deleteFindingAggregator: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFindingAggregator",
 }));
 export type DeleteInsightError =
@@ -20137,6 +20201,8 @@ export const deleteInsight: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInsight",
 }));
 export type DeleteInvitationsError =
@@ -20173,6 +20239,8 @@ export const deleteInvitations: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInvitations",
 }));
 export type DeleteMembersError =
@@ -20203,6 +20271,8 @@ export const deleteMembers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMembers",
 }));
 export type DescribeActionTargetsError =
@@ -20243,6 +20313,8 @@ export const describeActionTargets: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeActionTargets",
   pagination: {
     inputToken: "NextToken",
@@ -20277,6 +20349,8 @@ export const describeHub: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHub",
 }));
 export type DescribeOrganizationConfigurationError =
@@ -20303,6 +20377,8 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConfiguration",
 }));
 export type DescribeProductsError =
@@ -20349,6 +20425,8 @@ export const describeProducts: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProducts",
   pagination: {
     inputToken: "NextToken",
@@ -20397,6 +20475,8 @@ export const describeProductsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProductsV2",
   pagination: {
     inputToken: "NextToken",
@@ -20428,6 +20508,8 @@ export const describeSecurityHubV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityHubV2",
 }));
 export type DescribeStandardsError =
@@ -20464,6 +20546,8 @@ export const describeStandards: API.OperationMethod<
   input: DescribeStandardsRequest,
   output: DescribeStandardsResponse,
   errors: [InternalException, InvalidAccessException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStandards",
   pagination: {
     inputToken: "NextToken",
@@ -20515,6 +20599,8 @@ export const describeStandardsControls: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStandardsControls",
   pagination: {
     inputToken: "NextToken",
@@ -20549,6 +20635,8 @@ export const disableImportFindingsForProduct: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableImportFindingsForProduct",
 }));
 export type DisableOrganizationAdminAccountError =
@@ -20577,6 +20665,8 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableOrganizationAdminAccount",
 }));
 export type DisableSecurityHubError =
@@ -20614,6 +20704,8 @@ export const disableSecurityHub: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableSecurityHub",
 }));
 export type DisableSecurityHubV2Error =
@@ -20639,6 +20731,8 @@ export const disableSecurityHubV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableSecurityHubV2",
 }));
 export type DisassociateFromAdministratorAccountError =
@@ -20671,6 +20765,8 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFromAdministratorAccount",
 }));
 export type DisassociateFromMasterAccountError =
@@ -20707,6 +20803,8 @@ export const disassociateFromMasterAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFromMasterAccount",
 }));
 export type DisassociateMembersError =
@@ -20739,6 +20837,8 @@ export const disassociateMembers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMembers",
 }));
 export type EnableImportFindingsForProductError =
@@ -20770,6 +20870,8 @@ export const enableImportFindingsForProduct: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableImportFindingsForProduct",
 }));
 export type EnableOrganizationAdminAccountError =
@@ -20798,6 +20900,8 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableOrganizationAdminAccount",
 }));
 export type EnableSecurityHubError =
@@ -20846,6 +20950,8 @@ export const enableSecurityHub: API.OperationMethod<
     LimitExceededException,
     ResourceConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSecurityHub",
 }));
 export type EnableSecurityHubV2Error =
@@ -20871,6 +20977,8 @@ export const enableSecurityHubV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSecurityHubV2",
 }));
 export type GetAdministratorAccountError =
@@ -20901,6 +21009,8 @@ export const getAdministratorAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAdministratorAccount",
 }));
 export type GetAggregatorV2Error =
@@ -20930,6 +21040,8 @@ export const getAggregatorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAggregatorV2",
 }));
 export type GetAutomationRuleV2Error =
@@ -20959,6 +21071,8 @@ export const getAutomationRuleV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomationRuleV2",
 }));
 export type GetConfigurationPolicyError =
@@ -20989,6 +21103,8 @@ export const getConfigurationPolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationPolicy",
 }));
 export type GetConfigurationPolicyAssociationError =
@@ -21020,6 +21136,8 @@ export const getConfigurationPolicyAssociation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationPolicyAssociation",
 }));
 export type GetConnectorV2Error =
@@ -21049,6 +21167,8 @@ export const getConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectorV2",
 }));
 export type GetEnabledStandardsError =
@@ -21089,6 +21209,8 @@ export const getEnabledStandards: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnabledStandards",
   pagination: {
     inputToken: "NextToken",
@@ -21127,6 +21249,8 @@ export const getFindingAggregator: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingAggregator",
 }));
 export type GetFindingHistoryError =
@@ -21175,6 +21299,8 @@ export const getFindingHistory: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingHistory",
   pagination: {
     inputToken: "NextToken",
@@ -21223,6 +21349,8 @@ export const getFindings: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindings",
   pagination: {
     inputToken: "NextToken",
@@ -21258,6 +21386,8 @@ export const getFindingStatisticsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingStatisticsV2",
 }));
 export type GetFindingsTrendsV2Error =
@@ -21298,6 +21428,8 @@ export const getFindingsTrendsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingsTrendsV2",
   pagination: {
     inputToken: "NextToken",
@@ -21348,6 +21480,8 @@ export const getFindingsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingsV2",
   pagination: {
     inputToken: "NextToken",
@@ -21381,6 +21515,8 @@ export const getInsightResults: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsightResults",
 }));
 export type GetInsightsError =
@@ -21423,6 +21559,8 @@ export const getInsights: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsights",
   pagination: {
     inputToken: "NextToken",
@@ -21459,6 +21597,8 @@ export const getInvitationsCount: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInvitationsCount",
 }));
 export type GetMasterAccountError =
@@ -21493,6 +21633,8 @@ export const getMasterAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMasterAccount",
 }));
 export type GetMembersError =
@@ -21526,6 +21668,8 @@ export const getMembers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMembers",
 }));
 export type GetResourcesStatisticsV2Error =
@@ -21555,6 +21699,8 @@ export const getResourcesStatisticsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcesStatisticsV2",
 }));
 export type GetResourcesTrendsV2Error =
@@ -21595,6 +21741,8 @@ export const getResourcesTrendsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcesTrendsV2",
   pagination: {
     inputToken: "NextToken",
@@ -21645,6 +21793,8 @@ export const getResourcesV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcesV2",
   pagination: {
     inputToken: "NextToken",
@@ -21678,6 +21828,8 @@ export const getSecurityControlDefinition: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSecurityControlDefinition",
 }));
 export type InviteMembersError =
@@ -21718,6 +21870,8 @@ export const inviteMembers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InviteMembers",
 }));
 export type ListAggregatorsV2Error =
@@ -21762,6 +21916,8 @@ export const listAggregatorsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAggregatorsV2",
   pagination: {
     inputToken: "NextToken",
@@ -21795,6 +21951,8 @@ export const listAutomationRules: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomationRules",
 }));
 export type ListAutomationRulesV2Error =
@@ -21822,6 +21980,8 @@ export const listAutomationRulesV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomationRulesV2",
 }));
 export type ListConfigurationPoliciesError =
@@ -21865,6 +22025,8 @@ export const listConfigurationPolicies: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -21914,6 +22076,8 @@ export const listConfigurationPolicyAssociations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationPolicyAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -21949,6 +22113,8 @@ export const listConnectorsV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectorsV2",
 }));
 export type ListEnabledProductsForImportError =
@@ -21984,6 +22150,8 @@ export const listEnabledProductsForImport: API.OperationMethod<
   input: ListEnabledProductsForImportRequest,
   output: ListEnabledProductsForImportResponse,
   errors: [InternalException, InvalidAccessException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnabledProductsForImport",
   pagination: {
     inputToken: "NextToken",
@@ -22033,6 +22201,8 @@ export const listFindingAggregators: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindingAggregators",
   pagination: {
     inputToken: "NextToken",
@@ -22086,6 +22256,8 @@ export const listInvitations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvitations",
   pagination: {
     inputToken: "NextToken",
@@ -22136,6 +22308,8 @@ export const listMembers: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMembers",
   pagination: {
     inputToken: "NextToken",
@@ -22183,6 +22357,8 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationAdminAccounts",
   pagination: {
     inputToken: "NextToken",
@@ -22229,6 +22405,8 @@ export const listSecurityControlDefinitions: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityControlDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -22277,6 +22455,8 @@ export const listStandardsControlAssociations: API.OperationMethod<
     InvalidInputException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStandardsControlAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -22302,6 +22482,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RegisterConnectorV2Error =
@@ -22331,6 +22513,8 @@ export const registerConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterConnectorV2",
 }));
 export type StartConfigurationPolicyAssociationError =
@@ -22362,6 +22546,8 @@ export const startConfigurationPolicyAssociation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartConfigurationPolicyAssociation",
 }));
 export type StartConfigurationPolicyDisassociationError =
@@ -22395,6 +22581,8 @@ export const startConfigurationPolicyDisassociation: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartConfigurationPolicyDisassociation",
 }));
 export type TagResourceError =
@@ -22414,6 +22602,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalException, InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -22433,6 +22623,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalException, InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateActionTargetError =
@@ -22458,6 +22650,8 @@ export const updateActionTarget: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateActionTarget",
 }));
 export type UpdateAggregatorV2Error =
@@ -22487,6 +22681,8 @@ export const updateAggregatorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAggregatorV2",
 }));
 export type UpdateAutomationRuleV2Error =
@@ -22516,6 +22712,8 @@ export const updateAutomationRuleV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAutomationRuleV2",
 }));
 export type UpdateConfigurationPolicyError =
@@ -22548,6 +22746,8 @@ export const updateConfigurationPolicy: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationPolicy",
 }));
 export type UpdateConnectorV2Error =
@@ -22577,6 +22777,8 @@ export const updateConnectorV2: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectorV2",
 }));
 export type UpdateFindingAggregatorError =
@@ -22611,6 +22813,8 @@ export const updateFindingAggregator: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFindingAggregator",
 }));
 export type UpdateFindingsError =
@@ -22647,6 +22851,8 @@ export const updateFindings: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFindings",
 }));
 export type UpdateInsightError =
@@ -22674,6 +22880,8 @@ export const updateInsight: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInsight",
 }));
 export type UpdateOrganizationConfigurationError =
@@ -22706,6 +22914,8 @@ export const updateOrganizationConfiguration: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOrganizationConfiguration",
 }));
 export type UpdateSecurityControlError =
@@ -22737,6 +22947,8 @@ export const updateSecurityControl: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityControl",
 }));
 export type UpdateSecurityHubConfigurationError =
@@ -22766,6 +22978,8 @@ export const updateSecurityHubConfiguration: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityHubConfiguration",
 }));
 export type UpdateStandardsControlError =
@@ -22796,5 +23010,7 @@ export const updateStandardsControl: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStandardsControl",
 }));

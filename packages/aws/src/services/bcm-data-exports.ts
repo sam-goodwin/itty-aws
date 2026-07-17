@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -743,6 +745,8 @@ export const getExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExecution",
 }));
 export type GetTableError =
@@ -762,6 +766,8 @@ export const getTable: API.OperationMethod<
   input: GetTableRequest,
   output: GetTableResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTable",
 }));
 export type ListExecutionsError =
@@ -802,6 +808,8 @@ export const listExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -842,6 +850,8 @@ export const listTables: API.OperationMethod<
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "NextToken",
@@ -875,6 +885,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -902,6 +914,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -929,6 +943,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateExportError =
@@ -962,6 +978,8 @@ export const createExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExport",
 }));
 export type GetExportError =
@@ -987,6 +1005,8 @@ export const getExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExport",
 }));
 export type UpdateExportError =
@@ -1012,6 +1032,8 @@ export const updateExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateExport",
 }));
 export type DeleteExportError =
@@ -1037,6 +1059,8 @@ export const deleteExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExport",
 }));
 export type ListExportsError =
@@ -1071,6 +1095,8 @@ export const listExports: API.OperationMethod<
   input: ListExportsRequest,
   output: ListExportsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExports",
   pagination: {
     inputToken: "NextToken",

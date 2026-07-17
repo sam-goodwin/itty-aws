@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -1706,6 +1708,8 @@ export const cancelJobRun: API.OperationMethod<
   input: CancelJobRunRequest,
   output: CancelJobRunResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelJobRun",
 }));
 export type CreateJobTemplateError =
@@ -1732,6 +1736,8 @@ export const createJobTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJobTemplate",
 }));
 export type CreateManagedEndpointError =
@@ -1756,6 +1762,8 @@ export const createManagedEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateManagedEndpoint",
 }));
 export type CreateSecurityConfigurationError =
@@ -1777,6 +1785,8 @@ export const createSecurityConfiguration: API.OperationMethod<
   input: CreateSecurityConfigurationRequest,
   output: CreateSecurityConfigurationResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityConfiguration",
 }));
 export type CreateVirtualClusterError =
@@ -1805,6 +1815,8 @@ export const createVirtualCluster: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVirtualCluster",
 }));
 export type DeleteJobTemplateError =
@@ -1826,6 +1838,8 @@ export const deleteJobTemplate: API.OperationMethod<
   input: DeleteJobTemplateRequest,
   output: DeleteJobTemplateResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJobTemplate",
 }));
 export type DeleteManagedEndpointError =
@@ -1845,6 +1859,8 @@ export const deleteManagedEndpoint: API.OperationMethod<
   input: DeleteManagedEndpointRequest,
   output: DeleteManagedEndpointResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteManagedEndpoint",
 }));
 export type DeleteVirtualClusterError =
@@ -1866,6 +1882,8 @@ export const deleteVirtualCluster: API.OperationMethod<
   input: DeleteVirtualClusterRequest,
   output: DeleteVirtualClusterResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVirtualCluster",
 }));
 export type DescribeJobRunError =
@@ -1890,6 +1908,8 @@ export const describeJobRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobRun",
 }));
 export type DescribeJobTemplateError =
@@ -1916,6 +1936,8 @@ export const describeJobTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobTemplate",
 }));
 export type DescribeManagedEndpointError =
@@ -1940,6 +1962,8 @@ export const describeManagedEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeManagedEndpoint",
 }));
 export type DescribeSecurityConfigurationError =
@@ -1967,6 +1991,8 @@ export const describeSecurityConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityConfiguration",
 }));
 export type DescribeVirtualClusterError =
@@ -1995,6 +2021,8 @@ export const describeVirtualCluster: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVirtualCluster",
 }));
 export type GetManagedEndpointSessionCredentialsError =
@@ -2020,6 +2048,8 @@ export const getManagedEndpointSessionCredentials: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedEndpointSessionCredentials",
 }));
 export type ListJobRunsError =
@@ -2054,6 +2084,8 @@ export const listJobRuns: API.OperationMethod<
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobRuns",
   pagination: {
     inputToken: "nextToken",
@@ -2096,6 +2128,8 @@ export const listJobTemplates: API.OperationMethod<
   input: ListJobTemplatesRequest,
   output: ListJobTemplatesResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -2136,6 +2170,8 @@ export const listManagedEndpoints: API.OperationMethod<
   input: ListManagedEndpointsRequest,
   output: ListManagedEndpointsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedEndpoints",
   pagination: {
     inputToken: "nextToken",
@@ -2179,6 +2215,8 @@ export const listSecurityConfigurations: API.OperationMethod<
   input: ListSecurityConfigurationsRequest,
   output: ListSecurityConfigurationsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -2208,6 +2246,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListVirtualClustersError =
@@ -2246,6 +2286,8 @@ export const listVirtualClusters: API.OperationMethod<
   input: ListVirtualClustersRequest,
   output: ListVirtualClustersResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVirtualClusters",
   pagination: {
     inputToken: "nextToken",
@@ -2276,6 +2318,8 @@ export const startJobRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartJobRun",
 }));
 export type TagResourceError =
@@ -2307,6 +2351,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2330,5 +2376,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

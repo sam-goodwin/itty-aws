@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4634,6 +4636,8 @@ export const associateLenses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateLenses",
 }));
 export type AssociateProfilesError =
@@ -4663,6 +4667,8 @@ export const associateProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateProfiles",
 }));
 export type CreateLensShareError =
@@ -4715,6 +4721,8 @@ export const createLensShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLensShare",
 }));
 export type CreateLensVersionError =
@@ -4753,6 +4761,8 @@ export const createLensVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLensVersion",
 }));
 export type CreateMilestoneError =
@@ -4784,6 +4794,8 @@ export const createMilestone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMilestone",
 }));
 export type CreateProfileError =
@@ -4813,6 +4825,8 @@ export const createProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProfile",
 }));
 export type CreateProfileShareError =
@@ -4844,6 +4858,8 @@ export const createProfileShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProfileShare",
 }));
 export type CreateReviewTemplateError =
@@ -4884,6 +4900,8 @@ export const createReviewTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReviewTemplate",
 }));
 export type CreateTemplateShareError =
@@ -4930,6 +4948,8 @@ export const createTemplateShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTemplateShare",
 }));
 export type CreateWorkloadError =
@@ -4984,6 +5004,8 @@ export const createWorkload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkload",
 }));
 export type CreateWorkloadShareError =
@@ -5025,6 +5047,8 @@ export const createWorkloadShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkloadShare",
 }));
 export type DeleteLensError =
@@ -5066,6 +5090,8 @@ export const deleteLens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLens",
 }));
 export type DeleteLensShareError =
@@ -5108,6 +5134,8 @@ export const deleteLensShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLensShare",
 }));
 export type DeleteProfileError =
@@ -5146,6 +5174,8 @@ export const deleteProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfile",
 }));
 export type DeleteProfileShareError =
@@ -5175,6 +5205,8 @@ export const deleteProfileShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfileShare",
 }));
 export type DeleteReviewTemplateError =
@@ -5210,6 +5242,8 @@ export const deleteReviewTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReviewTemplate",
 }));
 export type DeleteTemplateShareError =
@@ -5243,6 +5277,8 @@ export const deleteTemplateShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTemplateShare",
 }));
 export type DeleteWorkloadError =
@@ -5272,6 +5308,8 @@ export const deleteWorkload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkload",
 }));
 export type DeleteWorkloadShareError =
@@ -5301,6 +5339,8 @@ export const deleteWorkloadShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkloadShare",
 }));
 export type DisassociateLensesError =
@@ -5335,6 +5375,8 @@ export const disassociateLenses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateLenses",
 }));
 export type DisassociateProfilesError =
@@ -5364,6 +5406,8 @@ export const disassociateProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateProfiles",
 }));
 export type ExportLensError =
@@ -5406,6 +5450,8 @@ export const exportLens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportLens",
 }));
 export type GetAnswerError =
@@ -5433,6 +5479,8 @@ export const getAnswer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAnswer",
 }));
 export type GetConsolidatedReportError =
@@ -5477,6 +5525,8 @@ export const getConsolidatedReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConsolidatedReport",
   pagination: {
     inputToken: "NextToken",
@@ -5507,6 +5557,8 @@ export const getGlobalSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGlobalSettings",
 }));
 export type GetLensError =
@@ -5534,6 +5586,8 @@ export const getLens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLens",
 }));
 export type GetLensReviewError =
@@ -5561,6 +5615,8 @@ export const getLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLensReview",
 }));
 export type GetLensReviewReportError =
@@ -5588,6 +5644,8 @@ export const getLensReviewReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLensReviewReport",
 }));
 export type GetLensVersionDifferenceError =
@@ -5615,6 +5673,8 @@ export const getLensVersionDifference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLensVersionDifference",
 }));
 export type GetMilestoneError =
@@ -5642,6 +5702,8 @@ export const getMilestone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMilestone",
 }));
 export type GetProfileError =
@@ -5669,6 +5731,8 @@ export const getProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfile",
 }));
 export type GetProfileTemplateError =
@@ -5696,6 +5760,8 @@ export const getProfileTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfileTemplate",
 }));
 export type GetReviewTemplateError =
@@ -5723,6 +5789,8 @@ export const getReviewTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReviewTemplate",
 }));
 export type GetReviewTemplateAnswerError =
@@ -5750,6 +5818,8 @@ export const getReviewTemplateAnswer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReviewTemplateAnswer",
 }));
 export type GetReviewTemplateLensReviewError =
@@ -5777,6 +5847,8 @@ export const getReviewTemplateLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReviewTemplateLensReview",
 }));
 export type GetWorkloadError =
@@ -5804,6 +5876,8 @@ export const getWorkload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkload",
 }));
 export type ImportLensError =
@@ -5856,6 +5930,8 @@ export const importLens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportLens",
 }));
 export type ListAnswersError =
@@ -5898,6 +5974,8 @@ export const listAnswers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnswers",
   pagination: {
     inputToken: "NextToken",
@@ -5945,6 +6023,8 @@ export const listCheckDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCheckDetails",
   pagination: {
     inputToken: "NextToken",
@@ -5992,6 +6072,8 @@ export const listCheckSummaries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCheckSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -6037,6 +6119,8 @@ export const listLenses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLenses",
   pagination: {
     inputToken: "NextToken",
@@ -6084,6 +6168,8 @@ export const listLensReviewImprovements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLensReviewImprovements",
   pagination: {
     inputToken: "NextToken",
@@ -6131,6 +6217,8 @@ export const listLensReviews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLensReviews",
   pagination: {
     inputToken: "NextToken",
@@ -6178,6 +6266,8 @@ export const listLensShares: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLensShares",
   pagination: {
     inputToken: "NextToken",
@@ -6225,6 +6315,8 @@ export const listMilestones: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMilestones",
   pagination: {
     inputToken: "NextToken",
@@ -6270,6 +6362,8 @@ export const listNotifications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotifications",
   pagination: {
     inputToken: "NextToken",
@@ -6315,6 +6409,8 @@ export const listProfileNotifications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileNotifications",
   pagination: {
     inputToken: "NextToken",
@@ -6360,6 +6456,8 @@ export const listProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -6407,6 +6505,8 @@ export const listProfileShares: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileShares",
   pagination: {
     inputToken: "NextToken",
@@ -6454,6 +6554,8 @@ export const listReviewTemplateAnswers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReviewTemplateAnswers",
   pagination: {
     inputToken: "NextToken",
@@ -6499,6 +6601,8 @@ export const listReviewTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReviewTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -6548,6 +6652,8 @@ export const listShareInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListShareInvitations",
   pagination: {
     inputToken: "NextToken",
@@ -6573,6 +6679,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTemplateSharesError =
@@ -6615,6 +6723,8 @@ export const listTemplateShares: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateShares",
   pagination: {
     inputToken: "NextToken",
@@ -6660,6 +6770,8 @@ export const listWorkloads: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkloads",
   pagination: {
     inputToken: "NextToken",
@@ -6707,6 +6819,8 @@ export const listWorkloadShares: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkloadShares",
   pagination: {
     inputToken: "NextToken",
@@ -6732,6 +6846,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6756,6 +6872,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAnswerError =
@@ -6785,6 +6903,8 @@ export const updateAnswer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAnswer",
 }));
 export type UpdateGlobalSettingsError =
@@ -6812,6 +6932,8 @@ export const updateGlobalSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalSettings",
 }));
 export type UpdateIntegrationError =
@@ -6841,6 +6963,8 @@ export const updateIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIntegration",
 }));
 export type UpdateLensReviewError =
@@ -6870,6 +6994,8 @@ export const updateLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLensReview",
 }));
 export type UpdateProfileError =
@@ -6899,6 +7025,8 @@ export const updateProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProfile",
 }));
 export type UpdateReviewTemplateError =
@@ -6928,6 +7056,8 @@ export const updateReviewTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReviewTemplate",
 }));
 export type UpdateReviewTemplateAnswerError =
@@ -6957,6 +7087,8 @@ export const updateReviewTemplateAnswer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReviewTemplateAnswer",
 }));
 export type UpdateReviewTemplateLensReviewError =
@@ -6986,6 +7118,8 @@ export const updateReviewTemplateLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReviewTemplateLensReview",
 }));
 export type UpdateShareInvitationError =
@@ -7017,6 +7151,8 @@ export const updateShareInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateShareInvitation",
 }));
 export type UpdateWorkloadError =
@@ -7046,6 +7182,8 @@ export const updateWorkload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkload",
 }));
 export type UpdateWorkloadShareError =
@@ -7075,6 +7213,8 @@ export const updateWorkloadShare: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkloadShare",
 }));
 export type UpgradeLensReviewError =
@@ -7106,6 +7246,8 @@ export const upgradeLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpgradeLensReview",
 }));
 export type UpgradeProfileVersionError =
@@ -7137,6 +7279,8 @@ export const upgradeProfileVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpgradeProfileVersion",
 }));
 export type UpgradeReviewTemplateLensReviewError =
@@ -7166,5 +7310,7 @@ export const upgradeReviewTemplateLensReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpgradeReviewTemplateLensReview",
 }));

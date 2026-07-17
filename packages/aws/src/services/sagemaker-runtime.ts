@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -483,6 +485,8 @@ export const invokeEndpoint: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeEndpoint",
 }));
 export type InvokeEndpointAsyncError =
@@ -516,6 +520,8 @@ export const invokeEndpointAsync: API.OperationMethod<
   input: InvokeEndpointAsyncInput,
   output: InvokeEndpointAsyncOutput,
   errors: [InternalFailure, ServiceUnavailable, ValidationError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeEndpointAsync",
 }));
 export type InvokeEndpointWithResponseStreamError =
@@ -568,5 +574,7 @@ export const invokeEndpointWithResponseStream: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeEndpointWithResponseStream",
 }));

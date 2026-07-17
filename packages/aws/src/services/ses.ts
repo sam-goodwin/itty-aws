@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3222,6 +3224,8 @@ export const cloneReceiptRuleSet: API.OperationMethod<
     LimitExceededException,
     RuleSetDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CloneReceiptRuleSet",
 }));
 export type CreateConfigurationSetError =
@@ -3251,6 +3255,8 @@ export const createConfigurationSet: API.OperationMethod<
     InvalidConfigurationSetException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSet",
 }));
 export type CreateConfigurationSetEventDestinationError =
@@ -3290,6 +3296,8 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
     InvalidSNSDestinationException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSetEventDestination",
 }));
 export type CreateConfigurationSetTrackingOptionsError =
@@ -3318,6 +3326,8 @@ export const createConfigurationSetTrackingOptions: API.OperationMethod<
     InvalidTrackingOptionsException,
     TrackingOptionsAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSetTrackingOptions",
 }));
 export type CreateCustomVerificationEmailTemplateError =
@@ -3349,6 +3359,8 @@ export const createCustomVerificationEmailTemplate: API.OperationMethod<
     FromEmailAddressNotVerifiedException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomVerificationEmailTemplate",
 }));
 export type CreateReceiptFilterError =
@@ -3372,6 +3384,8 @@ export const createReceiptFilter: API.OperationMethod<
   input: CreateReceiptFilterRequest,
   output: CreateReceiptFilterResponse,
   errors: [AlreadyExistsException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReceiptFilter",
 }));
 export type CreateReceiptRuleError =
@@ -3408,6 +3422,8 @@ export const createReceiptRule: API.OperationMethod<
     RuleDoesNotExistException,
     RuleSetDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReceiptRule",
 }));
 export type CreateReceiptRuleSetError =
@@ -3430,6 +3446,8 @@ export const createReceiptRuleSet: API.OperationMethod<
   input: CreateReceiptRuleSetRequest,
   output: CreateReceiptRuleSetResponse,
   errors: [AlreadyExistsException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReceiptRuleSet",
 }));
 export type CreateTemplateError =
@@ -3457,6 +3475,8 @@ export const createTemplate: API.OperationMethod<
     InvalidTemplateException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTemplate",
 }));
 export type DeleteConfigurationSetError =
@@ -3478,6 +3498,8 @@ export const deleteConfigurationSet: API.OperationMethod<
   input: DeleteConfigurationSetRequest,
   output: DeleteConfigurationSetResponse,
   errors: [ConfigurationSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSet",
 }));
 export type DeleteConfigurationSetEventDestinationError =
@@ -3504,6 +3526,8 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
     ConfigurationSetDoesNotExistException,
     EventDestinationDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSetEventDestination",
 }));
 export type DeleteConfigurationSetTrackingOptionsError =
@@ -3534,6 +3558,8 @@ export const deleteConfigurationSetTrackingOptions: API.OperationMethod<
     ConfigurationSetDoesNotExistException,
     TrackingOptionsDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSetTrackingOptions",
 }));
 export type DeleteCustomVerificationEmailTemplateError = CommonErrors;
@@ -3555,6 +3581,8 @@ export const deleteCustomVerificationEmailTemplate: API.OperationMethod<
   input: DeleteCustomVerificationEmailTemplateRequest,
   output: DeleteCustomVerificationEmailTemplateResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomVerificationEmailTemplate",
 }));
 export type DeleteIdentityError = CommonErrors;
@@ -3573,6 +3601,8 @@ export const deleteIdentity: API.OperationMethod<
   input: DeleteIdentityRequest,
   output: DeleteIdentityResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentity",
 }));
 export type DeleteIdentityPolicyError = CommonErrors;
@@ -3600,6 +3630,8 @@ export const deleteIdentityPolicy: API.OperationMethod<
   input: DeleteIdentityPolicyRequest,
   output: DeleteIdentityPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentityPolicy",
 }));
 export type DeleteReceiptFilterError = CommonErrors;
@@ -3620,6 +3652,8 @@ export const deleteReceiptFilter: API.OperationMethod<
   input: DeleteReceiptFilterRequest,
   output: DeleteReceiptFilterResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReceiptFilter",
 }));
 export type DeleteReceiptRuleError =
@@ -3642,6 +3676,8 @@ export const deleteReceiptRule: API.OperationMethod<
   input: DeleteReceiptRuleRequest,
   output: DeleteReceiptRuleResponse,
   errors: [RuleSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReceiptRule",
 }));
 export type DeleteReceiptRuleSetError = CannotDeleteException | CommonErrors;
@@ -3665,6 +3701,8 @@ export const deleteReceiptRuleSet: API.OperationMethod<
   input: DeleteReceiptRuleSetRequest,
   output: DeleteReceiptRuleSetResponse,
   errors: [CannotDeleteException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReceiptRuleSet",
 }));
 export type DeleteTemplateError = CommonErrors;
@@ -3682,6 +3720,8 @@ export const deleteTemplate: API.OperationMethod<
   input: DeleteTemplateRequest,
   output: DeleteTemplateResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTemplate",
 }));
 export type DeleteVerifiedEmailAddressError = CommonErrors;
@@ -3698,6 +3738,8 @@ export const deleteVerifiedEmailAddress: API.OperationMethod<
   input: DeleteVerifiedEmailAddressRequest,
   output: DeleteVerifiedEmailAddressResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVerifiedEmailAddress",
 }));
 export type DescribeActiveReceiptRuleSetError = CommonErrors;
@@ -3718,6 +3760,8 @@ export const describeActiveReceiptRuleSet: API.OperationMethod<
   input: DescribeActiveReceiptRuleSetRequest,
   output: DescribeActiveReceiptRuleSetResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeActiveReceiptRuleSet",
 }));
 export type DescribeConfigurationSetError =
@@ -3739,6 +3783,8 @@ export const describeConfigurationSet: API.OperationMethod<
   input: DescribeConfigurationSetRequest,
   output: DescribeConfigurationSetResponse,
   errors: [ConfigurationSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationSet",
 }));
 export type DescribeReceiptRuleError =
@@ -3762,6 +3808,8 @@ export const describeReceiptRule: API.OperationMethod<
   input: DescribeReceiptRuleRequest,
   output: DescribeReceiptRuleResponse,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReceiptRule",
 }));
 export type DescribeReceiptRuleSetError =
@@ -3784,6 +3832,8 @@ export const describeReceiptRuleSet: API.OperationMethod<
   input: DescribeReceiptRuleSetRequest,
   output: DescribeReceiptRuleSetResponse,
   errors: [RuleSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReceiptRuleSet",
 }));
 export type GetAccountSendingEnabledError = CommonErrors;
@@ -3801,6 +3851,8 @@ export const getAccountSendingEnabled: API.OperationMethod<
   input: GetAccountSendingEnabledRequest,
   output: GetAccountSendingEnabledResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountSendingEnabled",
 }));
 export type GetCustomVerificationEmailTemplateError =
@@ -3825,6 +3877,8 @@ export const getCustomVerificationEmailTemplate: API.OperationMethod<
   input: GetCustomVerificationEmailTemplateRequest,
   output: GetCustomVerificationEmailTemplateResponse,
   errors: [CustomVerificationEmailTemplateDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCustomVerificationEmailTemplate",
 }));
 export type GetIdentityDkimAttributesError = CommonErrors;
@@ -3861,6 +3915,8 @@ export const getIdentityDkimAttributes: API.OperationMethod<
   input: GetIdentityDkimAttributesRequest,
   output: GetIdentityDkimAttributesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityDkimAttributes",
 }));
 export type GetIdentityMailFromDomainAttributesError = CommonErrors;
@@ -3880,6 +3936,8 @@ export const getIdentityMailFromDomainAttributes: API.OperationMethod<
   input: GetIdentityMailFromDomainAttributesRequest,
   output: GetIdentityMailFromDomainAttributesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityMailFromDomainAttributes",
 }));
 export type GetIdentityNotificationAttributesError = CommonErrors;
@@ -3902,6 +3960,8 @@ export const getIdentityNotificationAttributes: API.OperationMethod<
   input: GetIdentityNotificationAttributesRequest,
   output: GetIdentityNotificationAttributesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityNotificationAttributes",
 }));
 export type GetIdentityPoliciesError = CommonErrors;
@@ -3929,6 +3989,8 @@ export const getIdentityPolicies: API.OperationMethod<
   input: GetIdentityPoliciesRequest,
   output: GetIdentityPoliciesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityPolicies",
 }));
 export type GetIdentityVerificationAttributesError = CommonErrors;
@@ -3962,6 +4024,8 @@ export const getIdentityVerificationAttributes: API.OperationMethod<
   input: GetIdentityVerificationAttributesRequest,
   output: GetIdentityVerificationAttributesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityVerificationAttributes",
 }));
 export type GetSendQuotaError = CommonErrors;
@@ -3979,6 +4043,8 @@ export const getSendQuota: API.OperationMethod<
   input: GetSendQuotaRequest,
   output: GetSendQuotaResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSendQuota",
 }));
 export type GetSendStatisticsError = CommonErrors;
@@ -3998,6 +4064,8 @@ export const getSendStatistics: API.OperationMethod<
   input: GetSendStatisticsRequest,
   output: GetSendStatisticsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSendStatistics",
 }));
 export type GetTemplateError = TemplateDoesNotExistException | CommonErrors;
@@ -4016,6 +4084,8 @@ export const getTemplate: API.OperationMethod<
   input: GetTemplateRequest,
   output: GetTemplateResponse,
   errors: [TemplateDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplate",
 }));
 export type ListConfigurationSetsError = CommonErrors;
@@ -4041,6 +4111,8 @@ export const listConfigurationSets: API.OperationMethod<
   input: ListConfigurationSetsRequest,
   output: ListConfigurationSetsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationSets",
 }));
 export type ListCustomVerificationEmailTemplatesError = CommonErrors;
@@ -4078,6 +4150,8 @@ export const listCustomVerificationEmailTemplates: API.OperationMethod<
   input: ListCustomVerificationEmailTemplatesRequest,
   output: ListCustomVerificationEmailTemplatesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomVerificationEmailTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -4125,6 +4199,8 @@ export const listIdentities: API.OperationMethod<
   input: ListIdentitiesRequest,
   output: ListIdentitiesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentities",
   pagination: {
     inputToken: "NextToken",
@@ -4158,6 +4234,8 @@ export const listIdentityPolicies: API.OperationMethod<
   input: ListIdentityPoliciesRequest,
   output: ListIdentityPoliciesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentityPolicies",
 }));
 export type ListReceiptFiltersError = CommonErrors;
@@ -4179,6 +4257,8 @@ export const listReceiptFilters: API.OperationMethod<
   input: ListReceiptFiltersRequest,
   output: ListReceiptFiltersResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReceiptFilters",
 }));
 export type ListReceiptRuleSetsError = CommonErrors;
@@ -4202,6 +4282,8 @@ export const listReceiptRuleSets: API.OperationMethod<
   input: ListReceiptRuleSetsRequest,
   output: ListReceiptRuleSetsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReceiptRuleSets",
 }));
 export type ListTemplatesError = CommonErrors;
@@ -4220,6 +4302,8 @@ export const listTemplates: API.OperationMethod<
   input: ListTemplatesRequest,
   output: ListTemplatesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplates",
 }));
 export type ListVerifiedEmailAddressesError = CommonErrors;
@@ -4236,6 +4320,8 @@ export const listVerifiedEmailAddresses: API.OperationMethod<
   input: ListVerifiedEmailAddressesRequest,
   output: ListVerifiedEmailAddressesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVerifiedEmailAddresses",
 }));
 export type PutConfigurationSetDeliveryOptionsError =
@@ -4257,6 +4343,8 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
     ConfigurationSetDoesNotExistException,
     InvalidDeliveryOptionsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationSetDeliveryOptions",
 }));
 export type PutIdentityPolicyError = InvalidPolicyException | CommonErrors;
@@ -4283,6 +4371,8 @@ export const putIdentityPolicy: API.OperationMethod<
   input: PutIdentityPolicyRequest,
   output: PutIdentityPolicyResponse,
   errors: [InvalidPolicyException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutIdentityPolicy",
 }));
 export type ReorderReceiptRuleSetError =
@@ -4309,6 +4399,8 @@ export const reorderReceiptRuleSet: API.OperationMethod<
   input: ReorderReceiptRuleSetRequest,
   output: ReorderReceiptRuleSetResponse,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReorderReceiptRuleSet",
 }));
 export type SendBounceError = MessageRejected | CommonErrors;
@@ -4334,6 +4426,8 @@ export const sendBounce: API.OperationMethod<
   input: SendBounceRequest,
   output: SendBounceResponse,
   errors: [MessageRejected],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendBounce",
 }));
 export type SendBulkTemplatedEmailError =
@@ -4396,6 +4490,8 @@ export const sendBulkTemplatedEmail: API.OperationMethod<
     MessageRejected,
     TemplateDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendBulkTemplatedEmail",
 }));
 export type SendCustomVerificationEmailError =
@@ -4433,6 +4529,8 @@ export const sendCustomVerificationEmail: API.OperationMethod<
     MessageRejected,
     ProductionAccessNotGrantedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendCustomVerificationEmail",
 }));
 export type SendEmailError =
@@ -4492,6 +4590,8 @@ export const sendEmail: API.OperationMethod<
     MailFromDomainNotVerifiedException,
     MessageRejected,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendEmail",
 }));
 export type SendRawEmailError =
@@ -4596,6 +4696,8 @@ export const sendRawEmail: API.OperationMethod<
     MailFromDomainNotVerifiedException,
     MessageRejected,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendRawEmail",
 }));
 export type SendTemplatedEmailError =
@@ -4665,6 +4767,8 @@ export const sendTemplatedEmail: API.OperationMethod<
     MessageRejected,
     TemplateDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendTemplatedEmail",
 }));
 export type SetActiveReceiptRuleSetError =
@@ -4690,6 +4794,8 @@ export const setActiveReceiptRuleSet: API.OperationMethod<
   input: SetActiveReceiptRuleSetRequest,
   output: SetActiveReceiptRuleSetResponse,
   errors: [RuleSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetActiveReceiptRuleSet",
 }));
 export type SetIdentityDkimEnabledError = CommonErrors;
@@ -4720,6 +4826,8 @@ export const setIdentityDkimEnabled: API.OperationMethod<
   input: SetIdentityDkimEnabledRequest,
   output: SetIdentityDkimEnabledResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIdentityDkimEnabled",
 }));
 export type SetIdentityFeedbackForwardingEnabledError = CommonErrors;
@@ -4746,6 +4854,8 @@ export const setIdentityFeedbackForwardingEnabled: API.OperationMethod<
   input: SetIdentityFeedbackForwardingEnabledRequest,
   output: SetIdentityFeedbackForwardingEnabledResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIdentityFeedbackForwardingEnabled",
 }));
 export type SetIdentityHeadersInNotificationsEnabledError = CommonErrors;
@@ -4768,6 +4878,8 @@ export const setIdentityHeadersInNotificationsEnabled: API.OperationMethod<
   input: SetIdentityHeadersInNotificationsEnabledRequest,
   output: SetIdentityHeadersInNotificationsEnabledResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIdentityHeadersInNotificationsEnabled",
 }));
 export type SetIdentityMailFromDomainError = CommonErrors;
@@ -4791,6 +4903,8 @@ export const setIdentityMailFromDomain: API.OperationMethod<
   input: SetIdentityMailFromDomainRequest,
   output: SetIdentityMailFromDomainResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIdentityMailFromDomain",
 }));
 export type SetIdentityNotificationTopicError = CommonErrors;
@@ -4816,6 +4930,8 @@ export const setIdentityNotificationTopic: API.OperationMethod<
   input: SetIdentityNotificationTopicRequest,
   output: SetIdentityNotificationTopicResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIdentityNotificationTopic",
 }));
 export type SetReceiptRulePositionError =
@@ -4839,6 +4955,8 @@ export const setReceiptRulePosition: API.OperationMethod<
   input: SetReceiptRulePositionRequest,
   output: SetReceiptRulePositionResponse,
   errors: [RuleDoesNotExistException, RuleSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetReceiptRulePosition",
 }));
 export type TestRenderTemplateError =
@@ -4865,6 +4983,8 @@ export const testRenderTemplate: API.OperationMethod<
     MissingRenderingAttributeException,
     TemplateDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestRenderTemplate",
 }));
 export type UpdateAccountSendingEnabledError = CommonErrors;
@@ -4886,6 +5006,8 @@ export const updateAccountSendingEnabled: API.OperationMethod<
   input: UpdateAccountSendingEnabledRequest,
   output: UpdateAccountSendingEnabledResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountSendingEnabled",
 }));
 export type UpdateConfigurationSetEventDestinationError =
@@ -4923,6 +5045,8 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
     InvalidFirehoseDestinationException,
     InvalidSNSDestinationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationSetEventDestination",
 }));
 export type UpdateConfigurationSetReputationMetricsEnabledError =
@@ -4945,6 +5069,8 @@ export const updateConfigurationSetReputationMetricsEnabled: API.OperationMethod
   input: UpdateConfigurationSetReputationMetricsEnabledRequest,
   output: UpdateConfigurationSetReputationMetricsEnabledResponse,
   errors: [ConfigurationSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationSetReputationMetricsEnabled",
 }));
 export type UpdateConfigurationSetSendingEnabledError =
@@ -4968,6 +5094,8 @@ export const updateConfigurationSetSendingEnabled: API.OperationMethod<
   input: UpdateConfigurationSetSendingEnabledRequest,
   output: UpdateConfigurationSetSendingEnabledResponse,
   errors: [ConfigurationSetDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationSetSendingEnabled",
 }));
 export type UpdateConfigurationSetTrackingOptionsError =
@@ -4996,6 +5124,8 @@ export const updateConfigurationSetTrackingOptions: API.OperationMethod<
     InvalidTrackingOptionsException,
     TrackingOptionsDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationSetTrackingOptions",
 }));
 export type UpdateCustomVerificationEmailTemplateError =
@@ -5025,6 +5155,8 @@ export const updateCustomVerificationEmailTemplate: API.OperationMethod<
     CustomVerificationEmailTemplateDoesNotExistException,
     FromEmailAddressNotVerifiedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomVerificationEmailTemplate",
 }));
 export type UpdateReceiptRuleError =
@@ -5059,6 +5191,8 @@ export const updateReceiptRule: API.OperationMethod<
     RuleDoesNotExistException,
     RuleSetDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReceiptRule",
 }));
 export type UpdateTemplateError =
@@ -5081,6 +5215,8 @@ export const updateTemplate: API.OperationMethod<
   input: UpdateTemplateRequest,
   output: UpdateTemplateResponse,
   errors: [InvalidTemplateException, TemplateDoesNotExistException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTemplate",
 }));
 export type VerifyDomainDkimError = CommonErrors;
@@ -5128,6 +5264,8 @@ export const verifyDomainDkim: API.OperationMethod<
   input: VerifyDomainDkimRequest,
   output: VerifyDomainDkimResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyDomainDkim",
 }));
 export type VerifyDomainIdentityError = CommonErrors;
@@ -5148,6 +5286,8 @@ export const verifyDomainIdentity: API.OperationMethod<
   input: VerifyDomainIdentityRequest,
   output: VerifyDomainIdentityResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyDomainIdentity",
 }));
 export type VerifyEmailAddressError = CommonErrors;
@@ -5164,6 +5304,8 @@ export const verifyEmailAddress: API.OperationMethod<
   input: VerifyEmailAddressRequest,
   output: VerifyEmailAddressResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyEmailAddress",
 }));
 export type VerifyEmailIdentityError = CommonErrors;
@@ -5183,5 +5325,7 @@ export const verifyEmailIdentity: API.OperationMethod<
   input: VerifyEmailIdentityRequest,
   output: VerifyEmailIdentityResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyEmailIdentity",
 }));

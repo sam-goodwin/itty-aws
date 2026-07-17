@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2685,6 +2687,8 @@ export const createDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
 export type CreateInferenceSchedulerError =
@@ -2720,6 +2724,8 @@ export const createInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInferenceScheduler",
 }));
 export type CreateLabelError =
@@ -2751,6 +2757,8 @@ export const createLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLabel",
 }));
 export type CreateLabelGroupError =
@@ -2780,6 +2788,8 @@ export const createLabelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLabelGroup",
 }));
 export type CreateModelError =
@@ -2821,6 +2831,8 @@ export const createModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModel",
 }));
 export type CreateRetrainingSchedulerError =
@@ -2850,6 +2862,8 @@ export const createRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRetrainingScheduler",
 }));
 export type DeleteDatasetError =
@@ -2883,6 +2897,8 @@ export const deleteDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataset",
 }));
 export type DeleteInferenceSchedulerError =
@@ -2913,6 +2929,8 @@ export const deleteInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInferenceScheduler",
 }));
 export type DeleteLabelError =
@@ -2942,6 +2960,8 @@ export const deleteLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLabel",
 }));
 export type DeleteLabelGroupError =
@@ -2971,6 +2991,8 @@ export const deleteLabelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLabelGroup",
 }));
 export type DeleteModelError =
@@ -3001,6 +3023,8 @@ export const deleteModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModel",
 }));
 export type DeleteResourcePolicyError =
@@ -3030,6 +3054,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteRetrainingSchedulerError =
@@ -3060,6 +3086,8 @@ export const deleteRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRetrainingScheduler",
 }));
 export type DescribeDataIngestionJobError =
@@ -3088,6 +3116,8 @@ export const describeDataIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataIngestionJob",
 }));
 export type DescribeDatasetError =
@@ -3116,6 +3146,8 @@ export const describeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
 export type DescribeInferenceSchedulerError =
@@ -3144,6 +3176,8 @@ export const describeInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInferenceScheduler",
 }));
 export type DescribeLabelError =
@@ -3171,6 +3205,8 @@ export const describeLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLabel",
 }));
 export type DescribeLabelGroupError =
@@ -3198,6 +3234,8 @@ export const describeLabelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLabelGroup",
 }));
 export type DescribeModelError =
@@ -3227,6 +3265,8 @@ export const describeModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModel",
 }));
 export type DescribeModelVersionError =
@@ -3254,6 +3294,8 @@ export const describeModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeModelVersion",
 }));
 export type DescribeResourcePolicyError =
@@ -3281,6 +3323,8 @@ export const describeResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
 export type DescribeRetrainingSchedulerError =
@@ -3309,6 +3353,8 @@ export const describeRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRetrainingScheduler",
 }));
 export type ImportDatasetError =
@@ -3340,6 +3386,8 @@ export const importDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportDataset",
 }));
 export type ImportModelVersionError =
@@ -3371,6 +3419,8 @@ export const importModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportModelVersion",
 }));
 export type ListDataIngestionJobsError =
@@ -3412,6 +3462,8 @@ export const listDataIngestionJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataIngestionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -3457,6 +3509,8 @@ export const listDatasets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
@@ -3504,6 +3558,8 @@ export const listInferenceEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInferenceEvents",
   pagination: {
     inputToken: "NextToken",
@@ -3552,6 +3608,8 @@ export const listInferenceExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInferenceExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -3597,6 +3655,8 @@ export const listInferenceSchedulers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInferenceSchedulers",
   pagination: {
     inputToken: "NextToken",
@@ -3642,6 +3702,8 @@ export const listLabelGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLabelGroups",
   pagination: {
     inputToken: "NextToken",
@@ -3687,6 +3749,8 @@ export const listLabels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLabels",
   pagination: {
     inputToken: "NextToken",
@@ -3733,6 +3797,8 @@ export const listModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModels",
   pagination: {
     inputToken: "NextToken",
@@ -3782,6 +3848,8 @@ export const listModelVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelVersions",
   pagination: {
     inputToken: "NextToken",
@@ -3828,6 +3896,8 @@ export const listRetrainingSchedulers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRetrainingSchedulers",
   pagination: {
     inputToken: "NextToken",
@@ -3877,6 +3947,8 @@ export const listSensorStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSensorStatistics",
   pagination: {
     inputToken: "NextToken",
@@ -3909,6 +3981,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutResourcePolicyError =
@@ -3940,6 +4014,8 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type StartDataIngestionJobError =
@@ -3971,6 +4047,8 @@ export const startDataIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDataIngestionJob",
 }));
 export type StartInferenceSchedulerError =
@@ -4000,6 +4078,8 @@ export const startInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInferenceScheduler",
 }));
 export type StartRetrainingSchedulerError =
@@ -4029,6 +4109,8 @@ export const startRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRetrainingScheduler",
 }));
 export type StopInferenceSchedulerError =
@@ -4058,6 +4140,8 @@ export const stopInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopInferenceScheduler",
 }));
 export type StopRetrainingSchedulerError =
@@ -4087,6 +4171,8 @@ export const stopRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRetrainingScheduler",
 }));
 export type TagResourceError =
@@ -4120,6 +4206,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4147,6 +4235,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateActiveModelVersionError =
@@ -4176,6 +4266,8 @@ export const updateActiveModelVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateActiveModelVersion",
 }));
 export type UpdateInferenceSchedulerError =
@@ -4205,6 +4297,8 @@ export const updateInferenceScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInferenceScheduler",
 }));
 export type UpdateLabelGroupError =
@@ -4234,6 +4328,8 @@ export const updateLabelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLabelGroup",
 }));
 export type UpdateModelError =
@@ -4263,6 +4359,8 @@ export const updateModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateModel",
 }));
 export type UpdateRetrainingSchedulerError =
@@ -4292,5 +4390,7 @@ export const updateRetrainingScheduler: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRetrainingScheduler",
 }));

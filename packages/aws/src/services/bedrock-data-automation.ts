@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2384,6 +2386,8 @@ export const copyBlueprintStage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyBlueprintStage",
 }));
 export type CreateBlueprintVersionError =
@@ -2413,6 +2417,8 @@ export const createBlueprintVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBlueprintVersion",
 }));
 export type GetDataAutomationLibraryEntityError =
@@ -2440,6 +2446,8 @@ export const getDataAutomationLibraryEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataAutomationLibraryEntity",
 }));
 export type ListDataAutomationLibraryEntitiesError =
@@ -2482,6 +2490,8 @@ export const listDataAutomationLibraryEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataAutomationLibraryEntities",
   pagination: {
     inputToken: "nextToken",
@@ -2515,6 +2525,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2544,6 +2556,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2571,6 +2585,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type InvokeBlueprintOptimizationAsyncError =
@@ -2600,6 +2616,8 @@ export const invokeBlueprintOptimizationAsync: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeBlueprintOptimizationAsync",
 }));
 export type GetBlueprintOptimizationStatusError =
@@ -2627,6 +2645,8 @@ export const getBlueprintOptimizationStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlueprintOptimizationStatus",
 }));
 export type CreateBlueprintError =
@@ -2656,6 +2676,8 @@ export const createBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBlueprint",
 }));
 export type GetBlueprintError =
@@ -2683,6 +2705,8 @@ export const getBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlueprint",
 }));
 export type UpdateBlueprintError =
@@ -2712,6 +2736,8 @@ export const updateBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBlueprint",
 }));
 export type DeleteBlueprintError =
@@ -2739,6 +2765,8 @@ export const deleteBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBlueprint",
 }));
 export type ListBlueprintsError =
@@ -2781,6 +2809,8 @@ export const listBlueprints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBlueprints",
   pagination: {
     inputToken: "nextToken",
@@ -2818,6 +2848,8 @@ export const invokeDataAutomationLibraryIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeDataAutomationLibraryIngestionJob",
 }));
 export type GetDataAutomationLibraryIngestionJobError =
@@ -2845,6 +2877,8 @@ export const getDataAutomationLibraryIngestionJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataAutomationLibraryIngestionJob",
 }));
 export type ListDataAutomationLibraryIngestionJobsError =
@@ -2887,6 +2921,8 @@ export const listDataAutomationLibraryIngestionJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataAutomationLibraryIngestionJobs",
   pagination: {
     inputToken: "nextToken",
@@ -2922,6 +2958,8 @@ export const createDataAutomationLibrary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataAutomationLibrary",
 }));
 export type GetDataAutomationLibraryError =
@@ -2949,6 +2987,8 @@ export const getDataAutomationLibrary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataAutomationLibrary",
 }));
 export type UpdateDataAutomationLibraryError =
@@ -2978,6 +3018,8 @@ export const updateDataAutomationLibrary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataAutomationLibrary",
 }));
 export type DeleteDataAutomationLibraryError =
@@ -3007,6 +3049,8 @@ export const deleteDataAutomationLibrary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataAutomationLibrary",
 }));
 export type ListDataAutomationLibrariesError =
@@ -3047,6 +3091,8 @@ export const listDataAutomationLibraries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataAutomationLibraries",
   pagination: {
     inputToken: "nextToken",
@@ -3082,6 +3128,8 @@ export const createDataAutomationProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataAutomationProject",
 }));
 export type GetDataAutomationProjectError =
@@ -3109,6 +3157,8 @@ export const getDataAutomationProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataAutomationProject",
 }));
 export type UpdateDataAutomationProjectError =
@@ -3140,6 +3190,8 @@ export const updateDataAutomationProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataAutomationProject",
 }));
 export type DeleteDataAutomationProjectError =
@@ -3167,6 +3219,8 @@ export const deleteDataAutomationProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataAutomationProject",
 }));
 export type ListDataAutomationProjectsError =
@@ -3209,6 +3263,8 @@ export const listDataAutomationProjects: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataAutomationProjects",
   pagination: {
     inputToken: "nextToken",

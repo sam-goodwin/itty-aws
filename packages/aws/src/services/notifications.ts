@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2285,6 +2287,8 @@ export const listManagedNotificationChannelAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedNotificationChannelAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -2333,6 +2337,8 @@ export const listMemberAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMemberAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -2370,6 +2376,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2401,6 +2409,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2430,6 +2440,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type AssociateChannelError =
@@ -2461,6 +2473,8 @@ export const associateChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateChannel",
 }));
 export type DisassociateChannelError =
@@ -2488,6 +2502,8 @@ export const disassociateChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateChannel",
 }));
 export type ListChannelsError =
@@ -2530,6 +2546,8 @@ export const listChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "nextToken",
@@ -2567,6 +2585,8 @@ export const createEventRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventRule",
 }));
 export type UpdateEventRuleError =
@@ -2596,6 +2616,8 @@ export const updateEventRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventRule",
 }));
 export type GetEventRuleError =
@@ -2623,6 +2645,8 @@ export const getEventRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventRule",
 }));
 export type DeleteEventRuleError =
@@ -2652,6 +2676,8 @@ export const deleteEventRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventRule",
 }));
 export type ListEventRulesError =
@@ -2694,6 +2720,8 @@ export const listEventRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventRules",
   pagination: {
     inputToken: "nextToken",
@@ -2731,6 +2759,8 @@ export const associateManagedNotificationAccountContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateManagedNotificationAccountContact",
 }));
 export type DisassociateManagedNotificationAccountContactError =
@@ -2760,6 +2790,8 @@ export const disassociateManagedNotificationAccountContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateManagedNotificationAccountContact",
 }));
 export type AssociateManagedNotificationAdditionalChannelError =
@@ -2793,6 +2825,8 @@ export const associateManagedNotificationAdditionalChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateManagedNotificationAdditionalChannel",
 }));
 export type DisassociateManagedNotificationAdditionalChannelError =
@@ -2822,6 +2856,8 @@ export const disassociateManagedNotificationAdditionalChannel: API.OperationMeth
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateManagedNotificationAdditionalChannel",
 }));
 export type GetManagedNotificationChildEventError =
@@ -2849,6 +2885,8 @@ export const getManagedNotificationChildEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedNotificationChildEvent",
 }));
 export type ListManagedNotificationChildEventsError =
@@ -2889,6 +2927,8 @@ export const listManagedNotificationChildEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedNotificationChildEvents",
   pagination: {
     inputToken: "nextToken",
@@ -2922,6 +2962,8 @@ export const getManagedNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedNotificationConfiguration",
 }));
 export type ListManagedNotificationConfigurationsError =
@@ -2962,6 +3004,8 @@ export const listManagedNotificationConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedNotificationConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -2995,6 +3039,8 @@ export const getManagedNotificationEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedNotificationEvent",
 }));
 export type ListManagedNotificationEventsError =
@@ -3035,6 +3081,8 @@ export const listManagedNotificationEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedNotificationEvents",
   pagination: {
     inputToken: "nextToken",
@@ -3070,6 +3118,8 @@ export const createNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNotificationConfiguration",
 }));
 export type UpdateNotificationConfigurationError =
@@ -3099,6 +3149,8 @@ export const updateNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotificationConfiguration",
 }));
 export type GetNotificationConfigurationError =
@@ -3126,6 +3178,8 @@ export const getNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNotificationConfiguration",
 }));
 export type DeleteNotificationConfigurationError =
@@ -3155,6 +3209,8 @@ export const deleteNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotificationConfiguration",
 }));
 export type ListNotificationConfigurationsError =
@@ -3195,6 +3251,8 @@ export const listNotificationConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotificationConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -3230,6 +3288,8 @@ export const getNotificationEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNotificationEvent",
 }));
 export type ListNotificationEventsError =
@@ -3272,6 +3332,8 @@ export const listNotificationEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotificationEvents",
   pagination: {
     inputToken: "nextToken",
@@ -3309,6 +3371,8 @@ export const registerNotificationHub: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterNotificationHub",
 }));
 export type DeregisterNotificationHubError =
@@ -3340,6 +3404,8 @@ export const deregisterNotificationHub: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterNotificationHub",
 }));
 export type ListNotificationHubsError =
@@ -3380,6 +3446,8 @@ export const listNotificationHubs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotificationHubs",
   pagination: {
     inputToken: "nextToken",
@@ -3417,6 +3485,8 @@ export const enableNotificationsAccessForOrganization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableNotificationsAccessForOrganization",
 }));
 export type GetNotificationsAccessForOrganizationError =
@@ -3442,6 +3512,8 @@ export const getNotificationsAccessForOrganization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNotificationsAccessForOrganization",
 }));
 export type DisableNotificationsAccessForOrganizationError =
@@ -3473,6 +3545,8 @@ export const disableNotificationsAccessForOrganization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableNotificationsAccessForOrganization",
 }));
 export type AssociateOrganizationalUnitError =
@@ -3504,6 +3578,8 @@ export const associateOrganizationalUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateOrganizationalUnit",
 }));
 export type DisassociateOrganizationalUnitError =
@@ -3531,6 +3607,8 @@ export const disassociateOrganizationalUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateOrganizationalUnit",
 }));
 export type ListOrganizationalUnitsError =
@@ -3573,6 +3651,8 @@ export const listOrganizationalUnits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationalUnits",
   pagination: {
     inputToken: "nextToken",

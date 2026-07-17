@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1306,6 +1308,8 @@ export const batchGetInvoiceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetInvoiceProfile",
 }));
 export type CreateInvoiceUnitError =
@@ -1331,6 +1335,8 @@ export const createInvoiceUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInvoiceUnit",
 }));
 export type CreateProcurementPortalPreferenceError =
@@ -1360,6 +1366,8 @@ export const createProcurementPortalPreference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProcurementPortalPreference",
 }));
 export type DeleteInvoiceUnitError =
@@ -1387,6 +1395,8 @@ export const deleteInvoiceUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInvoiceUnit",
 }));
 export type DeleteProcurementPortalPreferenceError =
@@ -1416,6 +1426,8 @@ export const deleteProcurementPortalPreference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProcurementPortalPreference",
 }));
 export type GetInvoicePDFError =
@@ -1443,6 +1455,8 @@ export const getInvoicePDF: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInvoicePDF",
 }));
 export type GetInvoiceUnitError =
@@ -1470,6 +1484,8 @@ export const getInvoiceUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInvoiceUnit",
 }));
 export type GetProcurementPortalPreferenceError =
@@ -1501,6 +1517,8 @@ export const getProcurementPortalPreference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProcurementPortalPreference",
 }));
 export type ListInvoiceSummariesError =
@@ -1543,6 +1561,8 @@ export const listInvoiceSummaries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvoiceSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -1589,6 +1609,8 @@ export const listInvoiceUnits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvoiceUnits",
   pagination: {
     inputToken: "NextToken",
@@ -1639,6 +1661,8 @@ export const listProcurementPortalPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProcurementPortalPreferences",
   pagination: {
     inputToken: "NextToken",
@@ -1672,6 +1696,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutProcurementPortalPreferenceError =
@@ -1703,6 +1729,8 @@ export const putProcurementPortalPreference: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProcurementPortalPreference",
 }));
 export type TagResourceError =
@@ -1732,6 +1760,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1759,6 +1789,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateInvoiceUnitError =
@@ -1786,6 +1818,8 @@ export const updateInvoiceUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInvoiceUnit",
 }));
 export type UpdateProcurementPortalPreferenceStatusError =
@@ -1817,5 +1851,7 @@ export const updateProcurementPortalPreferenceStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProcurementPortalPreferenceStatus",
 }));

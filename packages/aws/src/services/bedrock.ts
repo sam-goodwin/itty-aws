@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -9470,6 +9472,8 @@ export const getUseCaseForModelAccess: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUseCaseForModelAccess",
 }));
 export type PutUseCaseForModelAccessError =
@@ -9495,6 +9499,8 @@ export const putUseCaseForModelAccess: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutUseCaseForModelAccess",
 }));
 export type CreateAutomatedReasoningPolicyError =
@@ -9530,6 +9536,8 @@ export const createAutomatedReasoningPolicy: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutomatedReasoningPolicy",
 }));
 export type GetAutomatedReasoningPolicyError =
@@ -9557,6 +9565,8 @@ export const getAutomatedReasoningPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomatedReasoningPolicy",
 }));
 export type UpdateAutomatedReasoningPolicyError =
@@ -9588,6 +9598,8 @@ export const updateAutomatedReasoningPolicy: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAutomatedReasoningPolicy",
 }));
 export type DeleteAutomatedReasoningPolicyError =
@@ -9619,6 +9631,8 @@ export const deleteAutomatedReasoningPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAutomatedReasoningPolicy",
 }));
 export type ListAutomatedReasoningPoliciesError =
@@ -9661,6 +9675,8 @@ export const listAutomatedReasoningPolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomatedReasoningPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -9694,6 +9710,8 @@ export const cancelAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelAutomatedReasoningPolicyBuildWorkflow",
 }));
 export type CreateAutomatedReasoningPolicyTestCaseError =
@@ -9725,6 +9743,8 @@ export const createAutomatedReasoningPolicyTestCase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutomatedReasoningPolicyTestCase",
 }));
 export type CreateAutomatedReasoningPolicyVersionError =
@@ -9758,6 +9778,8 @@ export const createAutomatedReasoningPolicyVersion: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutomatedReasoningPolicyVersion",
 }));
 export type DeleteAutomatedReasoningPolicyBuildWorkflowError =
@@ -9789,6 +9811,8 @@ export const deleteAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAutomatedReasoningPolicyBuildWorkflow",
 }));
 export type DeleteAutomatedReasoningPolicyTestCaseError =
@@ -9820,6 +9844,8 @@ export const deleteAutomatedReasoningPolicyTestCase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAutomatedReasoningPolicyTestCase",
 }));
 export type ExportAutomatedReasoningPolicyVersionError =
@@ -9847,6 +9873,8 @@ export const exportAutomatedReasoningPolicyVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportAutomatedReasoningPolicyVersion",
 }));
 export type GetAutomatedReasoningPolicyAnnotationsError =
@@ -9874,6 +9902,8 @@ export const getAutomatedReasoningPolicyAnnotations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomatedReasoningPolicyAnnotations",
 }));
 export type GetAutomatedReasoningPolicyBuildWorkflowError =
@@ -9901,6 +9931,8 @@ export const getAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomatedReasoningPolicyBuildWorkflow",
 }));
 export type GetAutomatedReasoningPolicyBuildWorkflowResultAssetsError =
@@ -9928,6 +9960,8 @@ export const getAutomatedReasoningPolicyBuildWorkflowResultAssets: API.Operation
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomatedReasoningPolicyBuildWorkflowResultAssets",
 }));
 export type GetAutomatedReasoningPolicyNextScenarioError =
@@ -9955,6 +9989,8 @@ export const getAutomatedReasoningPolicyNextScenario: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomatedReasoningPolicyNextScenario",
 }));
 export type GetAutomatedReasoningPolicyTestCaseError =
@@ -9982,6 +10018,8 @@ export const getAutomatedReasoningPolicyTestCase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomatedReasoningPolicyTestCase",
 }));
 export type GetAutomatedReasoningPolicyTestResultError =
@@ -10009,6 +10047,8 @@ export const getAutomatedReasoningPolicyTestResult: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomatedReasoningPolicyTestResult",
 }));
 export type ListAutomatedReasoningPolicyBuildWorkflowsError =
@@ -10051,6 +10091,8 @@ export const listAutomatedReasoningPolicyBuildWorkflows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomatedReasoningPolicyBuildWorkflows",
   pagination: {
     inputToken: "nextToken",
@@ -10099,6 +10141,8 @@ export const listAutomatedReasoningPolicyTestCases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomatedReasoningPolicyTestCases",
   pagination: {
     inputToken: "nextToken",
@@ -10149,6 +10193,8 @@ export const listAutomatedReasoningPolicyTestResults: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomatedReasoningPolicyTestResults",
   pagination: {
     inputToken: "nextToken",
@@ -10188,6 +10234,8 @@ export const startAutomatedReasoningPolicyBuildWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAutomatedReasoningPolicyBuildWorkflow",
 }));
 export type StartAutomatedReasoningPolicyTestWorkflowError =
@@ -10217,6 +10265,8 @@ export const startAutomatedReasoningPolicyTestWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAutomatedReasoningPolicyTestWorkflow",
 }));
 export type UpdateAutomatedReasoningPolicyAnnotationsError =
@@ -10246,6 +10296,8 @@ export const updateAutomatedReasoningPolicyAnnotations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAutomatedReasoningPolicyAnnotations",
 }));
 export type UpdateAutomatedReasoningPolicyTestCaseError =
@@ -10277,6 +10329,8 @@ export const updateAutomatedReasoningPolicyTestCase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAutomatedReasoningPolicyTestCase",
 }));
 export type CreateMarketplaceModelEndpointError =
@@ -10308,6 +10362,8 @@ export const createMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMarketplaceModelEndpoint",
 }));
 export type DeleteMarketplaceModelEndpointError =
@@ -10335,6 +10391,8 @@ export const deleteMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMarketplaceModelEndpoint",
 }));
 export type DeregisterMarketplaceModelEndpointError =
@@ -10364,6 +10422,8 @@ export const deregisterMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterMarketplaceModelEndpoint",
 }));
 export type GetMarketplaceModelEndpointError =
@@ -10391,6 +10451,8 @@ export const getMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMarketplaceModelEndpoint",
 }));
 export type ListMarketplaceModelEndpointsError =
@@ -10433,6 +10495,8 @@ export const listMarketplaceModelEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMarketplaceModelEndpoints",
   pagination: {
     inputToken: "nextToken",
@@ -10468,6 +10532,8 @@ export const registerMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterMarketplaceModelEndpoint",
 }));
 export type UpdateMarketplaceModelEndpointError =
@@ -10499,6 +10565,8 @@ export const updateMarketplaceModelEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMarketplaceModelEndpoint",
 }));
 export type CreateCustomModelDeploymentError =
@@ -10540,6 +10608,8 @@ export const createCustomModelDeployment: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomModelDeployment",
 }));
 export type DeleteCustomModelDeploymentError =
@@ -10577,6 +10647,8 @@ export const deleteCustomModelDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomModelDeployment",
 }));
 export type GetCustomModelDeploymentError =
@@ -10612,6 +10684,8 @@ export const getCustomModelDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCustomModelDeployment",
 }));
 export type ListCustomModelDeploymentsError =
@@ -10662,6 +10736,8 @@ export const listCustomModelDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomModelDeployments",
   pagination: {
     inputToken: "nextToken",
@@ -10695,6 +10771,8 @@ export const updateCustomModelDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomModelDeployment",
 }));
 export type CreateCustomModelError =
@@ -10746,6 +10824,8 @@ export const createCustomModel: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomModel",
 }));
 export type DeleteCustomModelError =
@@ -10775,6 +10855,8 @@ export const deleteCustomModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomModel",
 }));
 export type GetCustomModelError =
@@ -10802,6 +10884,8 @@ export const getCustomModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCustomModel",
 }));
 export type ListCustomModelsError =
@@ -10844,6 +10928,8 @@ export const listCustomModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomModels",
   pagination: {
     inputToken: "nextToken",
@@ -10877,6 +10963,8 @@ export const deleteEnforcedGuardrailConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnforcedGuardrailConfiguration",
 }));
 export type ListEnforcedGuardrailsConfigurationError =
@@ -10919,6 +11007,8 @@ export const listEnforcedGuardrailsConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnforcedGuardrailsConfiguration",
   pagination: {
     inputToken: "nextToken",
@@ -10953,6 +11043,8 @@ export const putEnforcedGuardrailConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEnforcedGuardrailConfiguration",
 }));
 export type BatchDeleteEvaluationJobError =
@@ -10982,6 +11074,8 @@ export const batchDeleteEvaluationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteEvaluationJob",
 }));
 export type CreateEvaluationJobError =
@@ -11013,6 +11107,8 @@ export const createEvaluationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEvaluationJob",
 }));
 export type GetEvaluationJobError =
@@ -11040,6 +11136,8 @@ export const getEvaluationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvaluationJob",
 }));
 export type ListEvaluationJobsError =
@@ -11080,6 +11178,8 @@ export const listEvaluationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEvaluationJobs",
   pagination: {
     inputToken: "nextToken",
@@ -11115,6 +11215,8 @@ export const stopEvaluationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEvaluationJob",
 }));
 export type CreateGuardrailError =
@@ -11162,6 +11264,8 @@ export const createGuardrail: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGuardrail",
 }));
 export type GetGuardrailError =
@@ -11189,6 +11293,8 @@ export const getGuardrail: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGuardrail",
 }));
 export type UpdateGuardrailError =
@@ -11240,6 +11346,8 @@ export const updateGuardrail: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGuardrail",
 }));
 export type DeleteGuardrailError =
@@ -11275,6 +11383,8 @@ export const deleteGuardrail: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGuardrail",
 }));
 export type ListGuardrailsError =
@@ -11319,6 +11429,8 @@ export const listGuardrails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGuardrails",
   pagination: {
     inputToken: "nextToken",
@@ -11356,6 +11468,8 @@ export const createGuardrailVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGuardrailVersion",
 }));
 export type CreateInferenceProfileError =
@@ -11389,6 +11503,8 @@ export const createInferenceProfile: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInferenceProfile",
 }));
 export type GetInferenceProfileError =
@@ -11416,6 +11532,8 @@ export const getInferenceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInferenceProfile",
 }));
 export type DeleteInferenceProfileError =
@@ -11445,6 +11563,8 @@ export const deleteInferenceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInferenceProfile",
 }));
 export type ListInferenceProfilesError =
@@ -11485,6 +11605,8 @@ export const listInferenceProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInferenceProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -11510,6 +11632,8 @@ export const deleteModelInvocationLoggingConfiguration: API.OperationMethod<
   input: DeleteModelInvocationLoggingConfigurationRequest,
   output: DeleteModelInvocationLoggingConfigurationResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModelInvocationLoggingConfiguration",
 }));
 export type GetModelInvocationLoggingConfigurationError =
@@ -11529,6 +11653,8 @@ export const getModelInvocationLoggingConfiguration: API.OperationMethod<
   input: GetModelInvocationLoggingConfigurationRequest,
   output: GetModelInvocationLoggingConfigurationResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModelInvocationLoggingConfiguration",
 }));
 export type PutModelInvocationLoggingConfigurationError =
@@ -11554,6 +11680,8 @@ export const putModelInvocationLoggingConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutModelInvocationLoggingConfiguration",
 }));
 export type CreateModelCopyJobError =
@@ -11579,6 +11707,8 @@ export const createModelCopyJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelCopyJob",
 }));
 export type GetModelCopyJobError =
@@ -11606,6 +11736,8 @@ export const getModelCopyJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModelCopyJob",
 }));
 export type ListModelCopyJobsError =
@@ -11648,6 +11780,8 @@ export const listModelCopyJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelCopyJobs",
   pagination: {
     inputToken: "nextToken",
@@ -11687,6 +11821,8 @@ export const createModelImportJob: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelImportJob",
 }));
 export type DeleteImportedModelError =
@@ -11716,6 +11852,8 @@ export const deleteImportedModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImportedModel",
 }));
 export type GetImportedModelError =
@@ -11743,6 +11881,8 @@ export const getImportedModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImportedModel",
 }));
 export type GetModelImportJobError =
@@ -11770,6 +11910,8 @@ export const getModelImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModelImportJob",
 }));
 export type ListImportedModelsError =
@@ -11810,6 +11952,8 @@ export const listImportedModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImportedModels",
   pagination: {
     inputToken: "nextToken",
@@ -11856,6 +12000,8 @@ export const listModelImportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelImportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -11895,6 +12041,8 @@ export const createModelInvocationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelInvocationJob",
 }));
 export type GetModelInvocationJobError =
@@ -11922,6 +12070,8 @@ export const getModelInvocationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModelInvocationJob",
 }));
 export type ListModelInvocationJobsError =
@@ -11962,6 +12112,8 @@ export const listModelInvocationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelInvocationJobs",
   pagination: {
     inputToken: "nextToken",
@@ -11997,6 +12149,8 @@ export const stopModelInvocationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopModelInvocationJob",
 }));
 export type GetFoundationModelError =
@@ -12024,6 +12178,8 @@ export const getFoundationModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFoundationModel",
 }));
 export type ListFoundationModelsError =
@@ -12049,6 +12205,8 @@ export const listFoundationModels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFoundationModels",
 }));
 export type CreatePromptRouterError =
@@ -12082,6 +12240,8 @@ export const createPromptRouter: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePromptRouter",
 }));
 export type GetPromptRouterError =
@@ -12109,6 +12269,8 @@ export const getPromptRouter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPromptRouter",
 }));
 export type DeletePromptRouterError =
@@ -12136,6 +12298,8 @@ export const deletePromptRouter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePromptRouter",
 }));
 export type ListPromptRoutersError =
@@ -12176,6 +12340,8 @@ export const listPromptRouters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPromptRouters",
   pagination: {
     inputToken: "nextToken",
@@ -12213,6 +12379,8 @@ export const createProvisionedModelThroughput: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProvisionedModelThroughput",
 }));
 export type DeleteProvisionedModelThroughputError =
@@ -12242,6 +12410,8 @@ export const deleteProvisionedModelThroughput: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProvisionedModelThroughput",
 }));
 export type GetProvisionedModelThroughputError =
@@ -12269,6 +12439,8 @@ export const getProvisionedModelThroughput: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProvisionedModelThroughput",
 }));
 export type ListProvisionedModelThroughputsError =
@@ -12309,6 +12481,8 @@ export const listProvisionedModelThroughputs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisionedModelThroughputs",
   pagination: {
     inputToken: "nextToken",
@@ -12342,6 +12516,8 @@ export const updateProvisionedModelThroughput: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProvisionedModelThroughput",
 }));
 export type DeleteResourcePolicyError =
@@ -12369,6 +12545,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type GetResourcePolicyError =
@@ -12396,6 +12574,8 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type PutResourcePolicyError =
@@ -12423,6 +12603,8 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type CreateFoundationModelAgreementError =
@@ -12452,6 +12634,8 @@ export const createFoundationModelAgreement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFoundationModelAgreement",
 }));
 export type DeleteFoundationModelAgreementError =
@@ -12481,6 +12665,8 @@ export const deleteFoundationModelAgreement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFoundationModelAgreement",
 }));
 export type GetFoundationModelAvailabilityError =
@@ -12508,6 +12694,8 @@ export const getFoundationModelAvailability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFoundationModelAvailability",
 }));
 export type ListFoundationModelAgreementOffersError =
@@ -12535,6 +12723,8 @@ export const listFoundationModelAgreementOffers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFoundationModelAgreementOffers",
 }));
 export type ListTagsForResourceError =
@@ -12564,6 +12754,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -12593,6 +12785,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -12620,6 +12814,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateModelCustomizationJobError =
@@ -12661,6 +12857,8 @@ export const createModelCustomizationJob: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModelCustomizationJob",
 }));
 export type GetModelCustomizationJobError =
@@ -12688,6 +12886,8 @@ export const getModelCustomizationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModelCustomizationJob",
 }));
 export type ListModelCustomizationJobsError =
@@ -12730,6 +12930,8 @@ export const listModelCustomizationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModelCustomizationJobs",
   pagination: {
     inputToken: "nextToken",
@@ -12765,5 +12967,7 @@ export const stopModelCustomizationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopModelCustomizationJob",
 }));

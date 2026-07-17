@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2553,6 +2555,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2571,6 +2575,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, TooManyTagsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -2586,6 +2592,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateAssistantError =
@@ -2611,6 +2619,8 @@ export const createAssistant: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssistant",
 }));
 export type GetAssistantError =
@@ -2634,6 +2644,8 @@ export const getAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssistant",
 }));
 export type DeleteAssistantError =
@@ -2657,6 +2669,8 @@ export const deleteAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssistant",
 }));
 export type ListAssistantsError =
@@ -2690,6 +2704,8 @@ export const listAssistants: API.OperationMethod<
   input: ListAssistantsRequest,
   output: ListAssistantsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssistants",
   pagination: {
     inputToken: "nextToken",
@@ -2722,6 +2738,8 @@ export const getRecommendations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendations",
 }));
 export type NotifyRecommendationsReceivedError =
@@ -2747,6 +2765,8 @@ export const notifyRecommendationsReceived: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyRecommendationsReceived",
 }));
 export type QueryAssistantError =
@@ -2788,6 +2808,8 @@ export const queryAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "QueryAssistant",
   pagination: {
     inputToken: "nextToken",
@@ -2832,6 +2854,8 @@ export const searchSessions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSessions",
   pagination: {
     inputToken: "nextToken",
@@ -2867,6 +2891,8 @@ export const createAssistantAssociation: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssistantAssociation",
 }));
 export type GetAssistantAssociationError =
@@ -2890,6 +2916,8 @@ export const getAssistantAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssistantAssociation",
 }));
 export type DeleteAssistantAssociationError =
@@ -2913,6 +2941,8 @@ export const deleteAssistantAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssistantAssociation",
 }));
 export type ListAssistantAssociationsError =
@@ -2951,6 +2981,8 @@ export const listAssistantAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssistantAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -2978,6 +3010,8 @@ export const createSession: API.OperationMethod<
   input: CreateSessionRequest,
   output: CreateSessionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSession",
 }));
 export type GetSessionError =
@@ -3001,6 +3035,8 @@ export const getSession: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSession",
 }));
 export type CreateKnowledgeBaseError =
@@ -3043,6 +3079,8 @@ export const createKnowledgeBase: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKnowledgeBase",
 }));
 export type GetKnowledgeBaseError =
@@ -3066,6 +3104,8 @@ export const getKnowledgeBase: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKnowledgeBase",
 }));
 export type DeleteKnowledgeBaseError =
@@ -3098,6 +3138,8 @@ export const deleteKnowledgeBase: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKnowledgeBase",
 }));
 export type ListKnowledgeBasesError =
@@ -3131,6 +3173,8 @@ export const listKnowledgeBases: API.OperationMethod<
   input: ListKnowledgeBasesRequest,
   output: ListKnowledgeBasesResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKnowledgeBases",
   pagination: {
     inputToken: "nextToken",
@@ -3162,6 +3206,8 @@ export const deleteImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImportJob",
 }));
 export type GetImportJobError =
@@ -3185,6 +3231,8 @@ export const getImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImportJob",
 }));
 export type ListImportJobsError =
@@ -3218,6 +3266,8 @@ export const listImportJobs: API.OperationMethod<
   input: ListImportJobsRequest,
   output: ListImportJobsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -3247,6 +3297,8 @@ export const removeKnowledgeBaseTemplateUri: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveKnowledgeBaseTemplateUri",
 }));
 export type SearchContentError =
@@ -3286,6 +3338,8 @@ export const searchContent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchContent",
   pagination: {
     inputToken: "nextToken",
@@ -3332,6 +3386,8 @@ export const searchQuickResponses: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchQuickResponses",
   pagination: {
     inputToken: "nextToken",
@@ -3364,6 +3420,8 @@ export const startContentUpload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartContentUpload",
 }));
 export type StartImportJobError =
@@ -3394,6 +3452,8 @@ export const startImportJob: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImportJob",
 }));
 export type UpdateKnowledgeBaseTemplateUriError =
@@ -3421,6 +3481,8 @@ export const updateKnowledgeBaseTemplateUri: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKnowledgeBaseTemplateUri",
 }));
 export type CreateContentError =
@@ -3449,6 +3511,8 @@ export const createContent: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContent",
 }));
 export type GetContentError =
@@ -3472,6 +3536,8 @@ export const getContent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContent",
 }));
 export type UpdateContentError =
@@ -3497,6 +3563,8 @@ export const updateContent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContent",
 }));
 export type DeleteContentError =
@@ -3520,6 +3588,8 @@ export const deleteContent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContent",
 }));
 export type ListContentsError =
@@ -3558,6 +3628,8 @@ export const listContents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContents",
   pagination: {
     inputToken: "nextToken",
@@ -3587,6 +3659,8 @@ export const getContentSummary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContentSummary",
 }));
 export type CreateQuickResponseError =
@@ -3614,6 +3688,8 @@ export const createQuickResponse: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQuickResponse",
 }));
 export type GetQuickResponseError =
@@ -3637,6 +3713,8 @@ export const getQuickResponse: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQuickResponse",
 }));
 export type UpdateQuickResponseError =
@@ -3664,6 +3742,8 @@ export const updateQuickResponse: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQuickResponse",
 }));
 export type DeleteQuickResponseError =
@@ -3687,6 +3767,8 @@ export const deleteQuickResponse: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQuickResponse",
 }));
 export type ListQuickResponsesError =
@@ -3725,6 +3807,8 @@ export const listQuickResponses: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQuickResponses",
   pagination: {
     inputToken: "nextToken",

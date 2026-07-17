@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1167,6 +1169,8 @@ export const createAccessPoint: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessPoint",
 }));
 export type CreateFileSystemError =
@@ -1194,6 +1198,8 @@ export const createFileSystem: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFileSystem",
 }));
 export type CreateMountTargetError =
@@ -1221,6 +1227,8 @@ export const createMountTarget: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMountTarget",
 }));
 export type DeleteAccessPointError =
@@ -1246,6 +1254,8 @@ export const deleteAccessPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessPoint",
 }));
 export type DeleteFileSystemError =
@@ -1271,6 +1281,8 @@ export const deleteFileSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFileSystem",
 }));
 export type DeleteFileSystemPolicyError =
@@ -1294,6 +1306,8 @@ export const deleteFileSystemPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFileSystemPolicy",
 }));
 export type DeleteMountTargetError =
@@ -1319,6 +1333,8 @@ export const deleteMountTarget: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMountTarget",
 }));
 export type GetAccessPointError =
@@ -1342,6 +1358,8 @@ export const getAccessPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPoint",
 }));
 export type GetFileSystemError =
@@ -1365,6 +1383,8 @@ export const getFileSystem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFileSystem",
 }));
 export type GetFileSystemPolicyError =
@@ -1388,6 +1408,8 @@ export const getFileSystemPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFileSystemPolicy",
 }));
 export type GetMountTargetError =
@@ -1411,6 +1433,8 @@ export const getMountTarget: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMountTarget",
 }));
 export type GetSynchronizationConfigurationError =
@@ -1434,6 +1458,8 @@ export const getSynchronizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSynchronizationConfiguration",
 }));
 export type ListAccessPointsError =
@@ -1472,6 +1498,8 @@ export const listAccessPoints: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessPoints",
   pagination: {
     inputToken: "nextToken",
@@ -1511,6 +1539,8 @@ export const listFileSystems: API.OperationMethod<
   input: ListFileSystemsRequest,
   output: ListFileSystemsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFileSystems",
   pagination: {
     inputToken: "nextToken",
@@ -1555,6 +1585,8 @@ export const listMountTargets: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMountTargets",
   pagination: {
     inputToken: "nextToken",
@@ -1599,6 +1631,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
@@ -1628,6 +1662,8 @@ export const putFileSystemPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFileSystemPolicy",
 }));
 export type PutSynchronizationConfigurationError =
@@ -1653,6 +1689,8 @@ export const putSynchronizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSynchronizationConfiguration",
 }));
 export type TagResourceError =
@@ -1676,6 +1714,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1699,6 +1739,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateMountTargetError =
@@ -1722,5 +1764,7 @@ export const updateMountTarget: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMountTarget",
 }));

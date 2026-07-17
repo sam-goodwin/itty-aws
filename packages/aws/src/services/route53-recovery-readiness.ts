@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1826,6 +1828,8 @@ export const createCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCell",
 }));
 export type CreateCrossAccountAuthorizationError =
@@ -1853,6 +1857,8 @@ export const createCrossAccountAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCrossAccountAuthorization",
 }));
 export type CreateReadinessCheckError =
@@ -1880,6 +1886,8 @@ export const createReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReadinessCheck",
 }));
 export type CreateRecoveryGroupError =
@@ -1907,6 +1915,8 @@ export const createRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecoveryGroup",
 }));
 export type CreateResourceSetError =
@@ -1934,6 +1944,8 @@ export const createResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceSet",
 }));
 export type DeleteCellError =
@@ -1961,6 +1973,8 @@ export const deleteCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCell",
 }));
 export type DeleteCrossAccountAuthorizationError =
@@ -1986,6 +2000,8 @@ export const deleteCrossAccountAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCrossAccountAuthorization",
 }));
 export type DeleteReadinessCheckError =
@@ -2013,6 +2029,8 @@ export const deleteReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReadinessCheck",
 }));
 export type DeleteRecoveryGroupError =
@@ -2040,6 +2058,8 @@ export const deleteRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecoveryGroup",
 }));
 export type DeleteResourceSetError =
@@ -2067,6 +2087,8 @@ export const deleteResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceSet",
 }));
 export type GetArchitectureRecommendationsError =
@@ -2094,6 +2116,8 @@ export const getArchitectureRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArchitectureRecommendations",
 }));
 export type GetCellError =
@@ -2121,6 +2145,8 @@ export const getCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCell",
 }));
 export type GetCellReadinessSummaryError =
@@ -2163,6 +2189,8 @@ export const getCellReadinessSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCellReadinessSummary",
   pagination: {
     inputToken: "NextToken",
@@ -2196,6 +2224,8 @@ export const getReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReadinessCheck",
 }));
 export type GetReadinessCheckResourceStatusError =
@@ -2238,6 +2268,8 @@ export const getReadinessCheckResourceStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReadinessCheckResourceStatus",
   pagination: {
     inputToken: "NextToken",
@@ -2286,6 +2318,8 @@ export const getReadinessCheckStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReadinessCheckStatus",
   pagination: {
     inputToken: "NextToken",
@@ -2319,6 +2353,8 @@ export const getRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecoveryGroup",
 }));
 export type GetRecoveryGroupReadinessSummaryError =
@@ -2361,6 +2397,8 @@ export const getRecoveryGroupReadinessSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecoveryGroupReadinessSummary",
   pagination: {
     inputToken: "NextToken",
@@ -2394,6 +2432,8 @@ export const getResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceSet",
 }));
 export type ListCellsError =
@@ -2434,6 +2474,8 @@ export const listCells: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCells",
   pagination: {
     inputToken: "NextToken",
@@ -2480,6 +2522,8 @@ export const listCrossAccountAuthorizations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCrossAccountAuthorizations",
   pagination: {
     inputToken: "NextToken",
@@ -2526,6 +2570,8 @@ export const listReadinessChecks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReadinessChecks",
   pagination: {
     inputToken: "NextToken",
@@ -2572,6 +2618,8 @@ export const listRecoveryGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecoveryGroups",
   pagination: {
     inputToken: "NextToken",
@@ -2618,6 +2666,8 @@ export const listResourceSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceSets",
   pagination: {
     inputToken: "NextToken",
@@ -2664,6 +2714,8 @@ export const listRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRules",
   pagination: {
     inputToken: "NextToken",
@@ -2693,6 +2745,8 @@ export const listTagsForResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResources",
 }));
 export type TagResourceError =
@@ -2716,6 +2770,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2739,6 +2795,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateCellError =
@@ -2766,6 +2824,8 @@ export const updateCell: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCell",
 }));
 export type UpdateReadinessCheckError =
@@ -2793,6 +2853,8 @@ export const updateReadinessCheck: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReadinessCheck",
 }));
 export type UpdateRecoveryGroupError =
@@ -2820,6 +2882,8 @@ export const updateRecoveryGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecoveryGroup",
 }));
 export type UpdateResourceSetError =
@@ -2847,5 +2911,7 @@ export const updateResourceSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceSet",
 }));

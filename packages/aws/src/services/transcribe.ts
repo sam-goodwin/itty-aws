@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2993,6 +2995,8 @@ export const createCallAnalyticsCategory: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCallAnalyticsCategory",
 }));
 export type CreateLanguageModelError =
@@ -3029,6 +3033,8 @@ export const createLanguageModel: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLanguageModel",
 }));
 export type CreateMedicalVocabularyError =
@@ -3069,6 +3075,8 @@ export const createMedicalVocabulary: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMedicalVocabulary",
 }));
 export type CreateVocabularyError =
@@ -3107,6 +3115,8 @@ export const createVocabulary: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVocabulary",
 }));
 export type CreateVocabularyFilterError =
@@ -3144,6 +3154,8 @@ export const createVocabularyFilter: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVocabularyFilter",
 }));
 export type DeleteCallAnalyticsCategoryError =
@@ -3171,6 +3183,8 @@ export const deleteCallAnalyticsCategory: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCallAnalyticsCategory",
 }));
 export type DeleteCallAnalyticsJobError =
@@ -3196,6 +3210,8 @@ export const deleteCallAnalyticsJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCallAnalyticsJob",
 }));
 export type DeleteLanguageModelError =
@@ -3221,6 +3237,8 @@ export const deleteLanguageModel: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLanguageModel",
 }));
 export type DeleteMedicalScribeJobError =
@@ -3246,6 +3264,8 @@ export const deleteMedicalScribeJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMedicalScribeJob",
 }));
 export type DeleteMedicalTranscriptionJobError =
@@ -3271,6 +3291,8 @@ export const deleteMedicalTranscriptionJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMedicalTranscriptionJob",
 }));
 export type DeleteMedicalVocabularyError =
@@ -3298,6 +3320,8 @@ export const deleteMedicalVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMedicalVocabulary",
 }));
 export type DeleteTranscriptionJobError =
@@ -3323,6 +3347,8 @@ export const deleteTranscriptionJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTranscriptionJob",
 }));
 export type DeleteVocabularyError =
@@ -3350,6 +3376,8 @@ export const deleteVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVocabulary",
 }));
 export type DeleteVocabularyFilterError =
@@ -3377,6 +3405,8 @@ export const deleteVocabularyFilter: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVocabularyFilter",
 }));
 export type DescribeLanguageModelError =
@@ -3410,6 +3440,8 @@ export const describeLanguageModel: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLanguageModel",
 }));
 export type GetCallAnalyticsCategoryError =
@@ -3437,6 +3469,8 @@ export const getCallAnalyticsCategory: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCallAnalyticsCategory",
 }));
 export type GetCallAnalyticsJobError =
@@ -3477,6 +3511,8 @@ export const getCallAnalyticsJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCallAnalyticsJob",
 }));
 export type GetMedicalScribeJobError =
@@ -3511,6 +3547,8 @@ export const getMedicalScribeJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMedicalScribeJob",
 }));
 export type GetMedicalTranscriptionJobError =
@@ -3545,6 +3583,8 @@ export const getMedicalTranscriptionJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMedicalTranscriptionJob",
 }));
 export type GetMedicalVocabularyError =
@@ -3577,6 +3617,8 @@ export const getMedicalVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMedicalVocabulary",
 }));
 export type GetTranscriptionJobError =
@@ -3614,6 +3656,8 @@ export const getTranscriptionJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTranscriptionJob",
 }));
 export type GetVocabularyError =
@@ -3647,6 +3691,8 @@ export const getVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVocabulary",
 }));
 export type GetVocabularyFilterError =
@@ -3674,6 +3720,8 @@ export const getVocabularyFilter: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVocabularyFilter",
 }));
 export type ListCallAnalyticsCategoriesError =
@@ -3715,6 +3763,8 @@ export const listCallAnalyticsCategories: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCallAnalyticsCategories",
   pagination: {
     inputToken: "NextToken",
@@ -3761,6 +3811,8 @@ export const listCallAnalyticsJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCallAnalyticsJobs",
   pagination: {
     inputToken: "NextToken",
@@ -3807,6 +3859,8 @@ export const listLanguageModels: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLanguageModels",
   pagination: {
     inputToken: "NextToken",
@@ -3853,6 +3907,8 @@ export const listMedicalScribeJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMedicalScribeJobs",
   pagination: {
     inputToken: "NextToken",
@@ -3899,6 +3955,8 @@ export const listMedicalTranscriptionJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMedicalTranscriptionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -3945,6 +4003,8 @@ export const listMedicalVocabularies: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMedicalVocabularies",
   pagination: {
     inputToken: "NextToken",
@@ -3979,6 +4039,8 @@ export const listTagsForResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTranscriptionJobsError =
@@ -4020,6 +4082,8 @@ export const listTranscriptionJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTranscriptionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -4066,6 +4130,8 @@ export const listVocabularies: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVocabularies",
   pagination: {
     inputToken: "NextToken",
@@ -4112,6 +4178,8 @@ export const listVocabularyFilters: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVocabularyFilters",
   pagination: {
     inputToken: "NextToken",
@@ -4184,6 +4252,8 @@ export const startCallAnalyticsJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCallAnalyticsJob",
 }));
 export type StartMedicalScribeJobError =
@@ -4240,6 +4310,8 @@ export const startMedicalScribeJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMedicalScribeJob",
 }));
 export type StartMedicalTranscriptionJobError =
@@ -4300,6 +4372,8 @@ export const startMedicalTranscriptionJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMedicalTranscriptionJob",
 }));
 export type StartTranscriptionJobError =
@@ -4352,6 +4426,8 @@ export const startTranscriptionJob: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTranscriptionJob",
 }));
 export type TagResourceError =
@@ -4383,6 +4459,8 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4413,6 +4491,8 @@ export const untagResource: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateCallAnalyticsCategoryError =
@@ -4445,6 +4525,8 @@ export const updateCallAnalyticsCategory: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCallAnalyticsCategory",
 }));
 export type UpdateMedicalVocabularyError =
@@ -4474,6 +4556,8 @@ export const updateMedicalVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMedicalVocabulary",
 }));
 export type UpdateVocabularyError =
@@ -4503,6 +4587,8 @@ export const updateVocabulary: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVocabulary",
 }));
 export type UpdateVocabularyFilterError =
@@ -4530,5 +4616,7 @@ export const updateVocabularyFilter: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVocabularyFilter",
 }));

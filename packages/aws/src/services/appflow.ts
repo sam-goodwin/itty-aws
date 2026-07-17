@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3985,6 +3987,8 @@ export const cancelFlowExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelFlowExecutions",
 }));
 export type CreateConnectorProfileError =
@@ -4016,6 +4020,8 @@ export const createConnectorProfile: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectorProfile",
 }));
 export type CreateFlowError =
@@ -4053,6 +4059,8 @@ export const createFlow: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFlow",
 }));
 export type DeleteConnectorProfileError =
@@ -4076,6 +4084,8 @@ export const deleteConnectorProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectorProfile",
 }));
 export type DeleteFlowError =
@@ -4100,6 +4110,8 @@ export const deleteFlow: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFlow",
 }));
 export type DescribeConnectorError =
@@ -4125,6 +4137,8 @@ export const describeConnector: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnector",
 }));
 export type DescribeConnectorEntityError =
@@ -4153,6 +4167,8 @@ export const describeConnectorEntity: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectorEntity",
 }));
 export type DescribeConnectorProfilesError =
@@ -4191,6 +4207,8 @@ export const describeConnectorProfiles: API.OperationMethod<
   input: DescribeConnectorProfilesRequest,
   output: DescribeConnectorProfilesResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectorProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -4232,6 +4250,8 @@ export const describeConnectors: API.OperationMethod<
   input: DescribeConnectorsRequest,
   output: DescribeConnectorsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectors",
   pagination: {
     inputToken: "nextToken",
@@ -4255,6 +4275,8 @@ export const describeFlow: API.OperationMethod<
   input: DescribeFlowRequest,
   output: DescribeFlowResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlow",
 }));
 export type DescribeFlowExecutionRecordsError =
@@ -4293,6 +4315,8 @@ export const describeFlowExecutionRecords: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlowExecutionRecords",
   pagination: {
     inputToken: "nextToken",
@@ -4328,6 +4352,8 @@ export const listConnectorEntities: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectorEntities",
 }));
 export type ListConnectorsError =
@@ -4363,6 +4389,8 @@ export const listConnectors: API.OperationMethod<
   input: ListConnectorsRequest,
   output: ListConnectorsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectors",
   pagination: {
     inputToken: "nextToken",
@@ -4401,6 +4429,8 @@ export const listFlows: API.OperationMethod<
   input: ListFlowsRequest,
   output: ListFlowsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlows",
   pagination: {
     inputToken: "nextToken",
@@ -4429,6 +4459,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RegisterConnectorError =
@@ -4466,6 +4498,8 @@ export const registerConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterConnector",
 }));
 export type ResetConnectorMetadataCacheError =
@@ -4498,6 +4532,8 @@ export const resetConnectorMetadataCache: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetConnectorMetadataCache",
 }));
 export type StartFlowError =
@@ -4524,6 +4560,8 @@ export const startFlow: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFlow",
 }));
 export type StopFlowError =
@@ -4551,6 +4589,8 @@ export const stopFlow: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopFlow",
 }));
 export type TagResourceError =
@@ -4574,6 +4614,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UnregisterConnectorError =
@@ -4598,6 +4640,8 @@ export const unregisterConnector: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnregisterConnector",
 }));
 export type UntagResourceError =
@@ -4621,6 +4665,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateConnectorProfileError =
@@ -4648,6 +4694,8 @@ export const updateConnectorProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectorProfile",
 }));
 export type UpdateConnectorRegistrationError =
@@ -4688,6 +4736,8 @@ export const updateConnectorRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectorRegistration",
 }));
 export type UpdateFlowError =
@@ -4721,5 +4771,7 @@ export const updateFlow: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlow",
 }));

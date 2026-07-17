@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1269,6 +1271,8 @@ export const batchGetSecretValue: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetSecretValue",
   pagination: {
     inputToken: "NextToken",
@@ -1318,6 +1322,8 @@ export const cancelRotateSecret: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelRotateSecret",
 }));
 export type CreateSecretError =
@@ -1409,6 +1415,8 @@ export const createSecret: API.OperationMethod<
     ResourceExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecret",
 }));
 export type DeleteResourcePolicyError =
@@ -1443,6 +1451,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSecretError =
@@ -1505,6 +1515,8 @@ export const deleteSecret: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecret",
 }));
 export type DescribeSecretError =
@@ -1537,6 +1549,8 @@ export const describeSecret: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecret",
 }));
 export type GetRandomPasswordError =
@@ -1573,6 +1587,8 @@ export const getRandomPassword: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRandomPassword",
 }));
 export type GetResourcePolicyError =
@@ -1607,6 +1623,8 @@ export const getResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetSecretValueError =
@@ -1655,6 +1673,8 @@ export const getSecretValue: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSecretValue",
 }));
 export type ListSecretsError =
@@ -1717,6 +1737,8 @@ export const listSecrets: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecrets",
   pagination: {
     inputToken: "NextToken",
@@ -1774,6 +1796,8 @@ export const listSecretVersionIds: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecretVersionIds",
   pagination: {
     inputToken: "NextToken",
@@ -1819,6 +1843,8 @@ export const putResourcePolicy: API.OperationMethod<
     PublicPolicyException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type PutSecretValueError =
@@ -1889,6 +1915,8 @@ export const putSecretValue: API.OperationMethod<
     ResourceExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSecretValue",
 }));
 export type RemoveRegionsFromReplicationError =
@@ -1924,6 +1952,8 @@ export const removeRegionsFromReplication: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveRegionsFromReplication",
 }));
 export type ReplicateSecretToRegionsError =
@@ -1962,6 +1992,8 @@ export const replicateSecretToRegions: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplicateSecretToRegions",
 }));
 export type RestoreSecretError =
@@ -1996,6 +2028,8 @@ export const restoreSecret: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreSecret",
 }));
 export type RotateSecretError =
@@ -2046,6 +2080,8 @@ export const rotateSecret: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateSecret",
 }));
 export type StopReplicationToReplicaError =
@@ -2083,6 +2119,8 @@ export const stopReplicationToReplica: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopReplicationToReplica",
 }));
 export type TagResourceError =
@@ -2126,6 +2164,8 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2167,6 +2207,8 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateSecretError =
@@ -2248,6 +2290,8 @@ export const updateSecret: API.OperationMethod<
     ResourceExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecret",
 }));
 export type UpdateSecretVersionStageError =
@@ -2302,6 +2346,8 @@ export const updateSecretVersionStage: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecretVersionStage",
 }));
 export type ValidateResourcePolicyError =
@@ -2349,5 +2395,7 @@ export const validateResourcePolicy: API.OperationMethod<
     MalformedPolicyDocumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateResourcePolicy",
 }));

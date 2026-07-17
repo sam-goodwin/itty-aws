@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4134,6 +4136,8 @@ export const acceptSharedDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptSharedDirectory",
 }));
 export type AddIpRoutesError =
@@ -4173,6 +4177,8 @@ export const addIpRoutes: API.OperationMethod<
     IpRouteLimitExceededException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddIpRoutes",
 }));
 export type AddRegionError =
@@ -4210,6 +4216,8 @@ export const addRegion: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddRegion",
 }));
 export type AddTagsToResourceError =
@@ -4239,6 +4247,8 @@ export const addTagsToResource: API.OperationMethod<
     ServiceException,
     TagLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
 export type CancelSchemaExtensionError =
@@ -4262,6 +4272,8 @@ export const cancelSchemaExtension: API.OperationMethod<
   input: CancelSchemaExtensionRequest,
   output: CancelSchemaExtensionResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSchemaExtension",
 }));
 export type ConnectDirectoryError =
@@ -4291,6 +4303,8 @@ export const connectDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConnectDirectory",
 }));
 export type CreateAliasError =
@@ -4322,6 +4336,8 @@ export const createAlias: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlias",
 }));
 export type CreateComputerError =
@@ -4355,6 +4371,8 @@ export const createComputer: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComputer",
 }));
 export type CreateConditionalForwarderError =
@@ -4388,6 +4406,8 @@ export const createConditionalForwarder: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConditionalForwarder",
 }));
 export type CreateDirectoryError =
@@ -4417,6 +4437,8 @@ export const createDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectory",
 }));
 export type CreateHybridADError =
@@ -4455,6 +4477,8 @@ export const createHybridAD: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHybridAD",
 }));
 export type CreateLogSubscriptionError =
@@ -4485,6 +4509,8 @@ export const createLogSubscription: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLogSubscription",
 }));
 export type CreateMicrosoftADError =
@@ -4516,6 +4542,8 @@ export const createMicrosoftAD: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMicrosoftAD",
 }));
 export type CreateSnapshotError =
@@ -4545,6 +4573,8 @@ export const createSnapshot: API.OperationMethod<
     ServiceException,
     SnapshotLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshot",
 }));
 export type CreateTrustError =
@@ -4581,6 +4611,8 @@ export const createTrust: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrust",
 }));
 export type DeleteADAssessmentError =
@@ -4613,6 +4645,8 @@ export const deleteADAssessment: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteADAssessment",
 }));
 export type DeleteConditionalForwarderError =
@@ -4643,6 +4677,8 @@ export const deleteConditionalForwarder: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConditionalForwarder",
 }));
 export type DeleteDirectoryError =
@@ -4666,6 +4702,8 @@ export const deleteDirectory: API.OperationMethod<
   input: DeleteDirectoryRequest,
   output: DeleteDirectoryResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectory",
 }));
 export type DeleteLogSubscriptionError =
@@ -4691,6 +4729,8 @@ export const deleteLogSubscription: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLogSubscription",
 }));
 export type DeleteSnapshotError =
@@ -4716,6 +4756,8 @@ export const deleteSnapshot: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshot",
 }));
 export type DeleteTrustError =
@@ -4744,6 +4786,8 @@ export const deleteTrust: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrust",
 }));
 export type DeregisterCertificateError =
@@ -4778,6 +4822,8 @@ export const deregisterCertificate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterCertificate",
 }));
 export type DeregisterEventTopicError =
@@ -4803,6 +4849,8 @@ export const deregisterEventTopic: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterEventTopic",
 }));
 export type DescribeADAssessmentError =
@@ -4832,6 +4880,8 @@ export const describeADAssessment: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeADAssessment",
 }));
 export type DescribeCAEnrollmentPolicyError =
@@ -4859,6 +4909,8 @@ export const describeCAEnrollmentPolicy: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCAEnrollmentPolicy",
 }));
 export type DescribeCertificateError =
@@ -4889,6 +4941,8 @@ export const describeCertificate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificate",
 }));
 export type DescribeClientAuthenticationSettingsError =
@@ -4936,6 +4990,8 @@ export const describeClientAuthenticationSettings: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClientAuthenticationSettings",
   pagination: {
     inputToken: "NextToken",
@@ -4974,6 +5030,8 @@ export const describeConditionalForwarders: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConditionalForwarders",
 }));
 export type DescribeDirectoriesError =
@@ -5029,6 +5087,8 @@ export const describeDirectories: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDirectories",
   pagination: {
     inputToken: "NextToken",
@@ -5063,6 +5123,8 @@ export const describeDirectoryDataAccess: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDirectoryDataAccess",
 }));
 export type DescribeDomainControllersError =
@@ -5107,6 +5169,8 @@ export const describeDomainControllers: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainControllers",
   pagination: {
     inputToken: "NextToken",
@@ -5141,6 +5205,8 @@ export const describeEventTopics: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventTopics",
 }));
 export type DescribeHybridADUpdateError =
@@ -5172,6 +5238,8 @@ export const describeHybridADUpdate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHybridADUpdate",
 }));
 export type DescribeLDAPSSettingsError =
@@ -5216,6 +5284,8 @@ export const describeLDAPSSettings: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLDAPSSettings",
   pagination: {
     inputToken: "NextToken",
@@ -5269,6 +5339,8 @@ export const describeRegions: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegions",
   pagination: {
     inputToken: "NextToken",
@@ -5303,6 +5375,8 @@ export const describeSettings: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSettings",
 }));
 export type DescribeSharedDirectoriesError =
@@ -5347,6 +5421,8 @@ export const describeSharedDirectories: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSharedDirectories",
   pagination: {
     inputToken: "NextToken",
@@ -5403,6 +5479,8 @@ export const describeSnapshots: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "NextToken",
@@ -5456,6 +5534,8 @@ export const describeTrusts: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrusts",
   pagination: {
     inputToken: "NextToken",
@@ -5506,6 +5586,8 @@ export const describeUpdateDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUpdateDirectory",
   pagination: {
     inputToken: "NextToken",
@@ -5549,6 +5631,8 @@ export const disableCAEnrollmentPolicy: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableCAEnrollmentPolicy",
 }));
 export type DisableClientAuthenticationError =
@@ -5578,6 +5662,8 @@ export const disableClientAuthentication: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableClientAuthentication",
 }));
 export type DisableDirectoryDataAccessError =
@@ -5610,6 +5696,8 @@ export const disableDirectoryDataAccess: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableDirectoryDataAccess",
 }));
 export type DisableLDAPSError =
@@ -5641,6 +5729,8 @@ export const disableLDAPS: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableLDAPS",
 }));
 export type DisableRadiusError =
@@ -5661,6 +5751,8 @@ export const disableRadius: API.OperationMethod<
   input: DisableRadiusRequest,
   output: DisableRadiusResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableRadius",
 }));
 export type DisableSsoError =
@@ -5688,6 +5780,8 @@ export const disableSso: API.OperationMethod<
     InsufficientPermissionsException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableSso",
 }));
 export type EnableCAEnrollmentPolicyError =
@@ -5729,6 +5823,8 @@ export const enableCAEnrollmentPolicy: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableCAEnrollmentPolicy",
 }));
 export type EnableClientAuthenticationError =
@@ -5760,6 +5856,8 @@ export const enableClientAuthentication: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableClientAuthentication",
 }));
 export type EnableDirectoryDataAccessError =
@@ -5792,6 +5890,8 @@ export const enableDirectoryDataAccess: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableDirectoryDataAccess",
 }));
 export type EnableLDAPSError =
@@ -5825,6 +5925,8 @@ export const enableLDAPS: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableLDAPS",
 }));
 export type EnableRadiusError =
@@ -5853,6 +5955,8 @@ export const enableRadius: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableRadius",
 }));
 export type EnableSsoError =
@@ -5882,6 +5986,8 @@ export const enableSso: API.OperationMethod<
     InsufficientPermissionsException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSso",
 }));
 export type GetDirectoryLimitsError =
@@ -5901,6 +6007,8 @@ export const getDirectoryLimits: API.OperationMethod<
   input: GetDirectoryLimitsRequest,
   output: GetDirectoryLimitsResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDirectoryLimits",
 }));
 export type GetSnapshotLimitsError =
@@ -5920,6 +6028,8 @@ export const getSnapshotLimits: API.OperationMethod<
   input: GetSnapshotLimitsRequest,
   output: GetSnapshotLimitsResult,
   errors: [ClientException, EntityDoesNotExistException, ServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSnapshotLimits",
 }));
 export type ListADAssessmentsError =
@@ -5964,6 +6074,8 @@ export const listADAssessments: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListADAssessments",
   pagination: {
     inputToken: "NextToken",
@@ -6015,6 +6127,8 @@ export const listCertificates: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCertificates",
   pagination: {
     inputToken: "NextToken",
@@ -6063,6 +6177,8 @@ export const listIpRoutes: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIpRoutes",
   pagination: {
     inputToken: "NextToken",
@@ -6109,6 +6225,8 @@ export const listLogSubscriptions: API.OperationMethod<
     InvalidNextTokenException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogSubscriptions",
   pagination: {
     inputToken: "NextToken",
@@ -6155,6 +6273,8 @@ export const listSchemaExtensions: API.OperationMethod<
     InvalidNextTokenException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemaExtensions",
   pagination: {
     inputToken: "NextToken",
@@ -6203,6 +6323,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -6244,6 +6366,8 @@ export const registerCertificate: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCertificate",
 }));
 export type RegisterEventTopicError =
@@ -6273,6 +6397,8 @@ export const registerEventTopic: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterEventTopic",
 }));
 export type RejectSharedDirectoryError =
@@ -6300,6 +6426,8 @@ export const rejectSharedDirectory: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectSharedDirectory",
 }));
 export type RemoveIpRoutesError =
@@ -6327,6 +6455,8 @@ export const removeIpRoutes: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveIpRoutes",
 }));
 export type RemoveRegionError =
@@ -6358,6 +6488,8 @@ export const removeRegion: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveRegion",
 }));
 export type RemoveTagsFromResourceError =
@@ -6383,6 +6515,8 @@ export const removeTagsFromResource: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
 export type ResetUserPasswordError =
@@ -6429,6 +6563,8 @@ export const resetUserPassword: API.OperationMethod<
     UnsupportedOperationException,
     UserDoesNotExistException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetUserPassword",
 }));
 export type RestoreFromSnapshotError =
@@ -6461,6 +6597,8 @@ export const restoreFromSnapshot: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreFromSnapshot",
 }));
 export type ShareDirectoryError =
@@ -6513,6 +6651,8 @@ export const shareDirectory: API.OperationMethod<
     ShareLimitExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ShareDirectory",
 }));
 export type StartADAssessmentError =
@@ -6562,6 +6702,8 @@ export const startADAssessment: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartADAssessment",
 }));
 export type StartSchemaExtensionError =
@@ -6591,6 +6733,8 @@ export const startSchemaExtension: API.OperationMethod<
     ServiceException,
     SnapshotLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSchemaExtension",
 }));
 export type UnshareDirectoryError =
@@ -6618,6 +6762,8 @@ export const unshareDirectory: API.OperationMethod<
     InvalidTargetException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnshareDirectory",
 }));
 export type UpdateConditionalForwarderError =
@@ -6648,6 +6794,8 @@ export const updateConditionalForwarder: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConditionalForwarder",
 }));
 export type UpdateDirectorySetupError =
@@ -6683,6 +6831,8 @@ export const updateDirectorySetup: API.OperationMethod<
     SnapshotLimitExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDirectorySetup",
 }));
 export type UpdateHybridADError =
@@ -6725,6 +6875,8 @@ export const updateHybridAD: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHybridAD",
 }));
 export type UpdateNumberOfDomainControllersError =
@@ -6760,6 +6912,8 @@ export const updateNumberOfDomainControllers: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNumberOfDomainControllers",
 }));
 export type UpdateRadiusError =
@@ -6786,6 +6940,8 @@ export const updateRadius: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRadius",
 }));
 export type UpdateSettingsError =
@@ -6819,6 +6975,8 @@ export const updateSettings: API.OperationMethod<
     UnsupportedOperationException,
     UnsupportedSettingsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSettings",
 }));
 export type UpdateTrustError =
@@ -6845,6 +7003,8 @@ export const updateTrust: API.OperationMethod<
     InvalidParameterException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrust",
 }));
 export type VerifyTrustError =
@@ -6876,5 +7036,7 @@ export const verifyTrust: API.OperationMethod<
     ServiceException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyTrust",
 }));

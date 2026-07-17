@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -492,6 +494,8 @@ export const closeTunnel: API.OperationMethod<
   input: CloseTunnelRequest,
   output: CloseTunnelResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CloseTunnel",
 }));
 export type DescribeTunnelError = ResourceNotFoundException | CommonErrors;
@@ -509,6 +513,8 @@ export const describeTunnel: API.OperationMethod<
   input: DescribeTunnelRequest,
   output: DescribeTunnelResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTunnel",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
@@ -524,6 +530,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTunnelsError = CommonErrors;
@@ -557,6 +565,8 @@ export const listTunnels: API.OperationMethod<
   input: ListTunnelsRequest,
   output: ListTunnelsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTunnels",
   pagination: {
     inputToken: "nextToken",
@@ -580,6 +590,8 @@ export const openTunnel: API.OperationMethod<
   input: OpenTunnelRequest,
   output: OpenTunnelResponse,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OpenTunnel",
 }));
 export type RotateTunnelAccessTokenError =
@@ -605,6 +617,8 @@ export const rotateTunnelAccessToken: API.OperationMethod<
   input: RotateTunnelAccessTokenRequest,
   output: RotateTunnelAccessTokenResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateTunnelAccessToken",
 }));
 export type TagResourceError = ResourceNotFoundException | CommonErrors;
@@ -620,6 +634,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -635,5 +651,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

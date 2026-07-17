@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3034,6 +3036,8 @@ export const acceptDirectConnectGatewayAssociationProposal: API.OperationMethod<
   input: AcceptDirectConnectGatewayAssociationProposalRequest,
   output: AcceptDirectConnectGatewayAssociationProposalResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptDirectConnectGatewayAssociationProposal",
 }));
 export type AllocateConnectionOnInterconnectError =
@@ -3058,6 +3062,8 @@ export const allocateConnectionOnInterconnect: API.OperationMethod<
   input: AllocateConnectionOnInterconnectRequest,
   output: Connection,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocateConnectionOnInterconnect",
 }));
 export type AllocateHostedConnectionError =
@@ -3088,6 +3094,8 @@ export const allocateHostedConnection: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocateHostedConnection",
 }));
 export type AllocatePrivateVirtualInterfaceError =
@@ -3116,6 +3124,8 @@ export const allocatePrivateVirtualInterface: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocatePrivateVirtualInterface",
 }));
 export type AllocatePublicVirtualInterfaceError =
@@ -3149,6 +3159,8 @@ export const allocatePublicVirtualInterface: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocatePublicVirtualInterface",
 }));
 export type AllocateTransitVirtualInterfaceError =
@@ -3178,6 +3190,8 @@ export const allocateTransitVirtualInterface: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocateTransitVirtualInterface",
 }));
 export type AssociateConnectionWithLagError =
@@ -3211,6 +3225,8 @@ export const associateConnectionWithLag: API.OperationMethod<
   input: AssociateConnectionWithLagRequest,
   output: Connection,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateConnectionWithLag",
 }));
 export type AssociateHostedConnectionError =
@@ -3235,6 +3251,8 @@ export const associateHostedConnection: API.OperationMethod<
   input: AssociateHostedConnectionRequest,
   output: Connection,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateHostedConnection",
 }));
 export type AssociateMacSecKeyError =
@@ -3257,6 +3275,8 @@ export const associateMacSecKey: API.OperationMethod<
   input: AssociateMacSecKeyRequest,
   output: AssociateMacSecKeyResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateMacSecKey",
 }));
 export type AssociateVirtualInterfaceError =
@@ -3286,6 +3306,8 @@ export const associateVirtualInterface: API.OperationMethod<
   input: AssociateVirtualInterfaceRequest,
   output: VirtualInterface,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateVirtualInterface",
 }));
 export type ConfirmConnectionError =
@@ -3307,6 +3329,8 @@ export const confirmConnection: API.OperationMethod<
   input: ConfirmConnectionRequest,
   output: ConfirmConnectionResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmConnection",
 }));
 export type ConfirmCustomerAgreementError =
@@ -3325,6 +3349,8 @@ export const confirmCustomerAgreement: API.OperationMethod<
   input: ConfirmCustomerAgreementRequest,
   output: ConfirmCustomerAgreementResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmCustomerAgreement",
 }));
 export type ConfirmPrivateVirtualInterfaceError =
@@ -3347,6 +3373,8 @@ export const confirmPrivateVirtualInterface: API.OperationMethod<
   input: ConfirmPrivateVirtualInterfaceRequest,
   output: ConfirmPrivateVirtualInterfaceResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmPrivateVirtualInterface",
 }));
 export type ConfirmPublicVirtualInterfaceError =
@@ -3368,6 +3396,8 @@ export const confirmPublicVirtualInterface: API.OperationMethod<
   input: ConfirmPublicVirtualInterfaceRequest,
   output: ConfirmPublicVirtualInterfaceResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmPublicVirtualInterface",
 }));
 export type ConfirmTransitVirtualInterfaceError =
@@ -3388,6 +3418,8 @@ export const confirmTransitVirtualInterface: API.OperationMethod<
   input: ConfirmTransitVirtualInterfaceRequest,
   output: ConfirmTransitVirtualInterfaceResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmTransitVirtualInterface",
 }));
 export type CreateBGPPeerError =
@@ -3424,6 +3456,8 @@ export const createBGPPeer: API.OperationMethod<
   input: CreateBGPPeerRequest,
   output: CreateBGPPeerResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBGPPeer",
 }));
 export type CreateConnectionError =
@@ -3459,6 +3493,8 @@ export const createConnection: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnection",
 }));
 export type CreateDirectConnectGatewayError =
@@ -3482,6 +3518,8 @@ export const createDirectConnectGateway: API.OperationMethod<
   input: CreateDirectConnectGatewayRequest,
   output: CreateDirectConnectGatewayResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectConnectGateway",
 }));
 export type CreateDirectConnectGatewayAssociationError =
@@ -3501,6 +3539,8 @@ export const createDirectConnectGatewayAssociation: API.OperationMethod<
   input: CreateDirectConnectGatewayAssociationRequest,
   output: CreateDirectConnectGatewayAssociationResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectConnectGatewayAssociation",
 }));
 export type CreateDirectConnectGatewayAssociationProposalError =
@@ -3521,6 +3561,8 @@ export const createDirectConnectGatewayAssociationProposal: API.OperationMethod<
   input: CreateDirectConnectGatewayAssociationProposalRequest,
   output: CreateDirectConnectGatewayAssociationProposalResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectConnectGatewayAssociationProposal",
 }));
 export type CreateInterconnectError =
@@ -3563,6 +3605,8 @@ export const createInterconnect: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInterconnect",
 }));
 export type CreateLagError =
@@ -3610,6 +3654,8 @@ export const createLag: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLag",
 }));
 export type CreatePrivateVirtualInterfaceError =
@@ -3646,6 +3692,8 @@ export const createPrivateVirtualInterface: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePrivateVirtualInterface",
 }));
 export type CreatePublicVirtualInterfaceError =
@@ -3675,6 +3723,8 @@ export const createPublicVirtualInterface: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePublicVirtualInterface",
 }));
 export type CreateTransitVirtualInterfaceError =
@@ -3709,6 +3759,8 @@ export const createTransitVirtualInterface: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitVirtualInterface",
 }));
 export type DeleteBGPPeerError =
@@ -3729,6 +3781,8 @@ export const deleteBGPPeer: API.OperationMethod<
   input: DeleteBGPPeerRequest,
   output: DeleteBGPPeerResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBGPPeer",
 }));
 export type DeleteConnectionError =
@@ -3751,6 +3805,8 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionRequest,
   output: Connection,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type DeleteDirectConnectGatewayError =
@@ -3771,6 +3827,8 @@ export const deleteDirectConnectGateway: API.OperationMethod<
   input: DeleteDirectConnectGatewayRequest,
   output: DeleteDirectConnectGatewayResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectConnectGateway",
 }));
 export type DeleteDirectConnectGatewayAssociationError =
@@ -3791,6 +3849,8 @@ export const deleteDirectConnectGatewayAssociation: API.OperationMethod<
   input: DeleteDirectConnectGatewayAssociationRequest,
   output: DeleteDirectConnectGatewayAssociationResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectConnectGatewayAssociation",
 }));
 export type DeleteDirectConnectGatewayAssociationProposalError =
@@ -3809,6 +3869,8 @@ export const deleteDirectConnectGatewayAssociationProposal: API.OperationMethod<
   input: DeleteDirectConnectGatewayAssociationProposalRequest,
   output: DeleteDirectConnectGatewayAssociationProposalResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectConnectGatewayAssociationProposal",
 }));
 export type DeleteInterconnectError =
@@ -3830,6 +3892,8 @@ export const deleteInterconnect: API.OperationMethod<
   input: DeleteInterconnectRequest,
   output: DeleteInterconnectResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInterconnect",
 }));
 export type DeleteLagError =
@@ -3849,6 +3913,8 @@ export const deleteLag: API.OperationMethod<
   input: DeleteLagRequest,
   output: Lag,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLag",
 }));
 export type DeleteVirtualInterfaceError =
@@ -3867,6 +3933,8 @@ export const deleteVirtualInterface: API.OperationMethod<
   input: DeleteVirtualInterfaceRequest,
   output: DeleteVirtualInterfaceResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVirtualInterface",
 }));
 export type DescribeConnectionLoaError =
@@ -3892,6 +3960,8 @@ export const describeConnectionLoa: API.OperationMethod<
   input: DescribeConnectionLoaRequest,
   output: DescribeConnectionLoaResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectionLoa",
 }));
 export type DescribeConnectionsError =
@@ -3910,6 +3980,8 @@ export const describeConnections: API.OperationMethod<
   input: DescribeConnectionsRequest,
   output: Connections,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnections",
 }));
 export type DescribeConnectionsOnInterconnectError =
@@ -3932,6 +4004,8 @@ export const describeConnectionsOnInterconnect: API.OperationMethod<
   input: DescribeConnectionsOnInterconnectRequest,
   output: Connections,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectionsOnInterconnect",
 }));
 export type DescribeCustomerMetadataError =
@@ -3950,6 +4024,8 @@ export const describeCustomerMetadata: API.OperationMethod<
   input: DescribeCustomerMetadataRequest,
   output: DescribeCustomerMetadataResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomerMetadata",
 }));
 export type DescribeDirectConnectGatewayAssociationProposalsError =
@@ -3968,6 +4044,8 @@ export const describeDirectConnectGatewayAssociationProposals: API.OperationMeth
   input: DescribeDirectConnectGatewayAssociationProposalsRequest,
   output: DescribeDirectConnectGatewayAssociationProposalsResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDirectConnectGatewayAssociationProposals",
 }));
 export type DescribeDirectConnectGatewayAssociationsError =
@@ -4014,6 +4092,8 @@ export const describeDirectConnectGatewayAssociations: API.OperationMethod<
   input: DescribeDirectConnectGatewayAssociationsRequest,
   output: DescribeDirectConnectGatewayAssociationsResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDirectConnectGatewayAssociations",
 }));
 export type DescribeDirectConnectGatewayAttachmentsError =
@@ -4036,6 +4116,8 @@ export const describeDirectConnectGatewayAttachments: API.OperationMethod<
   input: DescribeDirectConnectGatewayAttachmentsRequest,
   output: DescribeDirectConnectGatewayAttachmentsResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDirectConnectGatewayAttachments",
 }));
 export type DescribeDirectConnectGatewaysError =
@@ -4054,6 +4136,8 @@ export const describeDirectConnectGateways: API.OperationMethod<
   input: DescribeDirectConnectGatewaysRequest,
   output: DescribeDirectConnectGatewaysResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDirectConnectGateways",
 }));
 export type DescribeHostedConnectionsError =
@@ -4075,6 +4159,8 @@ export const describeHostedConnections: API.OperationMethod<
   input: DescribeHostedConnectionsRequest,
   output: Connections,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHostedConnections",
 }));
 export type DescribeInterconnectLoaError =
@@ -4099,6 +4185,8 @@ export const describeInterconnectLoa: API.OperationMethod<
   input: DescribeInterconnectLoaRequest,
   output: DescribeInterconnectLoaResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInterconnectLoa",
 }));
 export type DescribeInterconnectsError =
@@ -4117,6 +4205,8 @@ export const describeInterconnects: API.OperationMethod<
   input: DescribeInterconnectsRequest,
   output: Interconnects,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInterconnects",
 }));
 export type DescribeLagsError =
@@ -4135,6 +4225,8 @@ export const describeLags: API.OperationMethod<
   input: DescribeLagsRequest,
   output: Lags,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLags",
 }));
 export type DescribeLoaError =
@@ -4157,6 +4249,8 @@ export const describeLoa: API.OperationMethod<
   input: DescribeLoaRequest,
   output: Loa,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoa",
 }));
 export type DescribeLocationsError =
@@ -4176,6 +4270,8 @@ export const describeLocations: API.OperationMethod<
   input: DescribeLocationsRequest,
   output: Locations,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocations",
 }));
 export type DescribeRouterConfigurationError =
@@ -4194,6 +4290,8 @@ export const describeRouterConfiguration: API.OperationMethod<
   input: DescribeRouterConfigurationRequest,
   output: DescribeRouterConfigurationResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRouterConfiguration",
 }));
 export type DescribeTagsError =
@@ -4212,6 +4310,8 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsRequest,
   output: DescribeTagsResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
 }));
 export type DescribeVirtualGatewaysError =
@@ -4234,6 +4334,8 @@ export const describeVirtualGateways: API.OperationMethod<
   input: DescribeVirtualGatewaysRequest,
   output: VirtualGateways,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVirtualGateways",
 }));
 export type DescribeVirtualInterfacesError =
@@ -4261,6 +4363,8 @@ export const describeVirtualInterfaces: API.OperationMethod<
   input: DescribeVirtualInterfacesRequest,
   output: VirtualInterfaces,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVirtualInterfaces",
 }));
 export type DisassociateConnectionFromLagError =
@@ -4289,6 +4393,8 @@ export const disassociateConnectionFromLag: API.OperationMethod<
   input: DisassociateConnectionFromLagRequest,
   output: Connection,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateConnectionFromLag",
 }));
 export type DisassociateMacSecKeyError =
@@ -4307,6 +4413,8 @@ export const disassociateMacSecKey: API.OperationMethod<
   input: DisassociateMacSecKeyRequest,
   output: DisassociateMacSecKeyResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMacSecKey",
 }));
 export type ListVirtualInterfaceTestHistoryError =
@@ -4325,6 +4433,8 @@ export const listVirtualInterfaceTestHistory: API.OperationMethod<
   input: ListVirtualInterfaceTestHistoryRequest,
   output: ListVirtualInterfaceTestHistoryResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVirtualInterfaceTestHistory",
 }));
 export type StartBgpFailoverTestError =
@@ -4349,6 +4459,8 @@ export const startBgpFailoverTest: API.OperationMethod<
   input: StartBgpFailoverTestRequest,
   output: StartBgpFailoverTestResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBgpFailoverTest",
 }));
 export type StopBgpFailoverTestError =
@@ -4367,6 +4479,8 @@ export const stopBgpFailoverTest: API.OperationMethod<
   input: StopBgpFailoverTestRequest,
   output: StopBgpFailoverTestResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopBgpFailoverTest",
 }));
 export type TagResourceError =
@@ -4394,6 +4508,8 @@ export const tagResource: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4412,6 +4528,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateConnectionError =
@@ -4436,6 +4554,8 @@ export const updateConnection: API.OperationMethod<
   input: UpdateConnectionRequest,
   output: Connection,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnection",
 }));
 export type UpdateDirectConnectGatewayError =
@@ -4454,6 +4574,8 @@ export const updateDirectConnectGateway: API.OperationMethod<
   input: UpdateDirectConnectGatewayRequest,
   output: UpdateDirectConnectGatewayResponse,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDirectConnectGateway",
 }));
 export type UpdateDirectConnectGatewayAssociationError =
@@ -4474,6 +4596,8 @@ export const updateDirectConnectGatewayAssociation: API.OperationMethod<
   input: UpdateDirectConnectGatewayAssociationRequest,
   output: UpdateDirectConnectGatewayAssociationResult,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDirectConnectGatewayAssociation",
 }));
 export type UpdateLagError =
@@ -4509,6 +4633,8 @@ export const updateLag: API.OperationMethod<
   input: UpdateLagRequest,
   output: Lag,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLag",
 }));
 export type UpdateVirtualInterfaceAttributesError =
@@ -4534,5 +4660,7 @@ export const updateVirtualInterfaceAttributes: API.OperationMethod<
   input: UpdateVirtualInterfaceAttributesRequest,
   output: VirtualInterface,
   errors: [DirectConnectClientException, DirectConnectServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVirtualInterfaceAttributes",
 }));

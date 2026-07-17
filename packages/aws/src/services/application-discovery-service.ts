@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1813,6 +1815,8 @@ export const associateConfigurationItemsToApplication: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateConfigurationItemsToApplication",
 }));
 export type BatchDeleteAgentsError =
@@ -1840,6 +1844,8 @@ export const batchDeleteAgents: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteAgents",
 }));
 export type BatchDeleteImportDataError =
@@ -1874,6 +1880,8 @@ export const batchDeleteImportData: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteImportData",
 }));
 export type CreateApplicationError =
@@ -1901,6 +1909,8 @@ export const createApplication: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateTagsError =
@@ -1933,6 +1943,8 @@ export const createTags: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTags",
 }));
 export type DeleteApplicationsError =
@@ -1961,6 +1973,8 @@ export const deleteApplications: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplications",
 }));
 export type DeleteTagsError =
@@ -1991,6 +2005,8 @@ export const deleteTags: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
 export type DescribeAgentsError =
@@ -2035,6 +2051,8 @@ export const describeAgents: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAgents",
   pagination: {
     inputToken: "nextToken",
@@ -2066,6 +2084,8 @@ export const describeBatchDeleteConfigurationTask: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBatchDeleteConfigurationTask",
 }));
 export type DescribeConfigurationsError =
@@ -2111,6 +2131,8 @@ export const describeConfigurations: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurations",
 }));
 export type DescribeContinuousExportsError =
@@ -2159,6 +2181,8 @@ export const describeContinuousExports: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContinuousExports",
   pagination: {
     inputToken: "nextToken",
@@ -2209,6 +2233,8 @@ export const describeExportConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExportConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -2258,6 +2284,8 @@ export const describeExportTasks: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExportTasks",
   pagination: {
     inputToken: "nextToken",
@@ -2307,6 +2335,8 @@ export const describeImportTasks: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImportTasks",
   pagination: {
     inputToken: "nextToken",
@@ -2369,6 +2399,8 @@ export const describeTags: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
   pagination: {
     inputToken: "nextToken",
@@ -2402,6 +2434,8 @@ export const disassociateConfigurationItemsFromApplication: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateConfigurationItemsFromApplication",
 }));
 export type ExportConfigurationsError =
@@ -2437,6 +2471,8 @@ export const exportConfigurations: API.OperationMethod<
     OperationNotPermittedException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportConfigurations",
 }));
 export type GetDiscoverySummaryError =
@@ -2467,6 +2503,8 @@ export const getDiscoverySummary: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDiscoverySummary",
 }));
 export type ListConfigurationsError =
@@ -2513,6 +2551,8 @@ export const listConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -2547,6 +2587,8 @@ export const listServerNeighbors: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServerNeighbors",
 }));
 export type StartBatchDeleteConfigurationTaskError =
@@ -2579,6 +2621,8 @@ export const startBatchDeleteConfigurationTask: API.OperationMethod<
     OperationNotPermittedException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBatchDeleteConfigurationTask",
 }));
 export type StartContinuousExportError =
@@ -2612,6 +2656,8 @@ export const startContinuousExport: API.OperationMethod<
     ResourceInUseException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartContinuousExport",
 }));
 export type StartDataCollectionByAgentIdsError =
@@ -2639,6 +2685,8 @@ export const startDataCollectionByAgentIds: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDataCollectionByAgentIds",
 }));
 export type StartExportTaskError =
@@ -2691,6 +2739,8 @@ export const startExportTask: API.OperationMethod<
     OperationNotPermittedException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExportTask",
 }));
 export type StartImportTaskError =
@@ -2747,6 +2797,8 @@ export const startImportTask: API.OperationMethod<
     ResourceInUseException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImportTask",
 }));
 export type StopContinuousExportError =
@@ -2780,6 +2832,8 @@ export const stopContinuousExport: API.OperationMethod<
     ResourceNotFoundException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopContinuousExport",
 }));
 export type StopDataCollectionByAgentIdsError =
@@ -2807,6 +2861,8 @@ export const stopDataCollectionByAgentIds: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDataCollectionByAgentIds",
 }));
 export type UpdateApplicationError =
@@ -2834,5 +2890,7 @@ export const updateApplication: API.OperationMethod<
     InvalidParameterValueException,
     ServerInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));

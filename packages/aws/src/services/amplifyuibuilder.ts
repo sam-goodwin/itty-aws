@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2661,6 +2663,8 @@ export const exchangeCodeForToken: API.OperationMethod<
   input: ExchangeCodeForTokenRequest,
   output: ExchangeCodeForTokenResponse,
   errors: [InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExchangeCodeForToken",
 }));
 export type GetMetadataError =
@@ -2679,6 +2683,8 @@ export const getMetadata: API.OperationMethod<
   input: GetMetadataRequest,
   output: GetMetadataResponse,
   errors: [InvalidParameterException, UnauthorizedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetadata",
 }));
 export type ListTagsForResourceError =
@@ -2706,6 +2712,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutMetadataFlagError =
@@ -2724,6 +2732,8 @@ export const putMetadataFlag: API.OperationMethod<
   input: PutMetadataFlagRequest,
   output: PutMetadataFlagResponse,
   errors: [InvalidParameterException, UnauthorizedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMetadataFlag",
 }));
 export type RefreshTokenError = InvalidParameterException | CommonErrors;
@@ -2741,6 +2751,8 @@ export const refreshToken: API.OperationMethod<
   input: RefreshTokenRequest,
   output: RefreshTokenResponse,
   errors: [InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RefreshToken",
 }));
 export type TagResourceError =
@@ -2768,6 +2780,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2795,6 +2809,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type StartCodegenJobError =
@@ -2818,6 +2834,8 @@ export const startCodegenJob: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCodegenJob",
 }));
 export type GetCodegenJobError =
@@ -2843,6 +2861,8 @@ export const getCodegenJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCodegenJob",
 }));
 export type ListCodegenJobsError =
@@ -2881,6 +2901,8 @@ export const listCodegenJobs: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCodegenJobs",
   pagination: {
     inputToken: "nextToken",
@@ -2912,6 +2934,8 @@ export const createComponent: API.OperationMethod<
     ResourceConflictException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComponent",
 }));
 export type GetComponentError =
@@ -2935,6 +2959,8 @@ export const getComponent: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponent",
 }));
 export type UpdateComponentError =
@@ -2958,6 +2984,8 @@ export const updateComponent: API.OperationMethod<
     InvalidParameterException,
     ResourceConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComponent",
 }));
 export type DeleteComponentError =
@@ -2981,6 +3009,8 @@ export const deleteComponent: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComponent",
 }));
 export type ListComponentsError =
@@ -3015,6 +3045,8 @@ export const listComponents: API.OperationMethod<
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
@@ -3054,6 +3086,8 @@ export const exportComponents: API.OperationMethod<
   input: ExportComponentsRequest,
   output: ExportComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportComponents",
   pagination: {
     inputToken: "nextToken",
@@ -3084,6 +3118,8 @@ export const createForm: API.OperationMethod<
     ResourceConflictException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateForm",
 }));
 export type GetFormError =
@@ -3107,6 +3143,8 @@ export const getForm: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetForm",
 }));
 export type UpdateFormError =
@@ -3130,6 +3168,8 @@ export const updateForm: API.OperationMethod<
     InvalidParameterException,
     ResourceConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateForm",
 }));
 export type DeleteFormError =
@@ -3153,6 +3193,8 @@ export const deleteForm: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteForm",
 }));
 export type ListFormsError =
@@ -3186,6 +3228,8 @@ export const listForms: API.OperationMethod<
   input: ListFormsRequest,
   output: ListFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListForms",
   pagination: {
     inputToken: "nextToken",
@@ -3225,6 +3269,8 @@ export const exportForms: API.OperationMethod<
   input: ExportFormsRequest,
   output: ExportFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportForms",
   pagination: {
     inputToken: "nextToken",
@@ -3255,6 +3301,8 @@ export const createTheme: API.OperationMethod<
     ResourceConflictException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTheme",
 }));
 export type GetThemeError =
@@ -3278,6 +3326,8 @@ export const getTheme: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTheme",
 }));
 export type UpdateThemeError =
@@ -3301,6 +3351,8 @@ export const updateTheme: API.OperationMethod<
     InvalidParameterException,
     ResourceConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTheme",
 }));
 export type DeleteThemeError =
@@ -3324,6 +3376,8 @@ export const deleteTheme: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTheme",
 }));
 export type ListThemesError =
@@ -3358,6 +3412,8 @@ export const listThemes: API.OperationMethod<
   input: ListThemesRequest,
   output: ListThemesResponse,
   errors: [InternalServerException, InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThemes",
   pagination: {
     inputToken: "nextToken",
@@ -3397,6 +3453,8 @@ export const exportThemes: API.OperationMethod<
   input: ExportThemesRequest,
   output: ExportThemesResponse,
   errors: [InternalServerException, InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportThemes",
   pagination: {
     inputToken: "nextToken",

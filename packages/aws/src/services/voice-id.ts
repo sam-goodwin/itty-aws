@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1428,6 +1430,8 @@ export const associateFraudster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateFraudster",
 }));
 export type CreateWatchlistError =
@@ -1459,6 +1463,8 @@ export const createWatchlist: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWatchlist",
 }));
 export type DeleteFraudsterError =
@@ -1488,6 +1494,8 @@ export const deleteFraudster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFraudster",
 }));
 export type DeleteSpeakerError =
@@ -1517,6 +1525,8 @@ export const deleteSpeaker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSpeaker",
 }));
 export type DeleteWatchlistError =
@@ -1548,6 +1558,8 @@ export const deleteWatchlist: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWatchlist",
 }));
 export type DescribeFraudsterError =
@@ -1575,6 +1587,8 @@ export const describeFraudster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFraudster",
 }));
 export type DescribeFraudsterRegistrationJobError =
@@ -1602,6 +1616,8 @@ export const describeFraudsterRegistrationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFraudsterRegistrationJob",
 }));
 export type DescribeSpeakerError =
@@ -1629,6 +1645,8 @@ export const describeSpeaker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpeaker",
 }));
 export type DescribeSpeakerEnrollmentJobError =
@@ -1656,6 +1674,8 @@ export const describeSpeakerEnrollmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpeakerEnrollmentJob",
 }));
 export type DescribeWatchlistError =
@@ -1683,6 +1703,8 @@ export const describeWatchlist: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWatchlist",
 }));
 export type DisassociateFraudsterError =
@@ -1714,6 +1736,8 @@ export const disassociateFraudster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFraudster",
 }));
 export type EvaluateSessionError =
@@ -1744,6 +1768,8 @@ export const evaluateSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EvaluateSession",
 }));
 export type ListFraudsterRegistrationJobsError =
@@ -1788,6 +1814,8 @@ export const listFraudsterRegistrationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFraudsterRegistrationJobs",
   pagination: {
     inputToken: "NextToken",
@@ -1836,6 +1864,8 @@ export const listFraudsters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFraudsters",
   pagination: {
     inputToken: "NextToken",
@@ -1886,6 +1916,8 @@ export const listSpeakerEnrollmentJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpeakerEnrollmentJobs",
   pagination: {
     inputToken: "NextToken",
@@ -1934,6 +1966,8 @@ export const listSpeakers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpeakers",
   pagination: {
     inputToken: "NextToken",
@@ -1967,6 +2001,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWatchlistsError =
@@ -2009,6 +2045,8 @@ export const listWatchlists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWatchlists",
   pagination: {
     inputToken: "NextToken",
@@ -2051,6 +2089,8 @@ export const optOutSpeaker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OptOutSpeaker",
 }));
 export type StartFraudsterRegistrationJobError =
@@ -2082,6 +2122,8 @@ export const startFraudsterRegistrationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFraudsterRegistrationJob",
 }));
 export type StartSpeakerEnrollmentJobError =
@@ -2113,6 +2155,8 @@ export const startSpeakerEnrollmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSpeakerEnrollmentJob",
 }));
 export type TagResourceError =
@@ -2142,6 +2186,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2171,6 +2217,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateWatchlistError =
@@ -2200,6 +2248,8 @@ export const updateWatchlist: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWatchlist",
 }));
 export type CreateDomainError =
@@ -2232,6 +2282,8 @@ export const createDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
 export type DescribeDomainError =
@@ -2259,6 +2311,8 @@ export const describeDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomain",
 }));
 export type UpdateDomainError =
@@ -2290,6 +2344,8 @@ export const updateDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomain",
 }));
 export type DeleteDomainError =
@@ -2319,6 +2375,8 @@ export const deleteDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
 export type ListDomainsError =
@@ -2359,6 +2417,8 @@ export const listDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomains",
   pagination: {
     inputToken: "NextToken",

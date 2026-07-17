@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2603,6 +2605,8 @@ export const batchCreateUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateUser",
 }));
 export type BatchDeleteUserError =
@@ -2634,6 +2638,8 @@ export const batchDeleteUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteUser",
 }));
 export type BatchLookupUserUnameError =
@@ -2665,6 +2671,8 @@ export const batchLookupUserUname: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchLookupUserUname",
 }));
 export type BatchReinviteUserError =
@@ -2696,6 +2704,8 @@ export const batchReinviteUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchReinviteUser",
 }));
 export type BatchResetDevicesForUserError =
@@ -2727,6 +2737,8 @@ export const batchResetDevicesForUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchResetDevicesForUser",
 }));
 export type BatchToggleUserSuspendStatusError =
@@ -2758,6 +2770,8 @@ export const batchToggleUserSuspendStatus: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchToggleUserSuspendStatus",
 }));
 export type CreateBotError =
@@ -2789,6 +2803,8 @@ export const createBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBot",
 }));
 export type CreateDataRetentionBotError =
@@ -2820,6 +2836,8 @@ export const createDataRetentionBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataRetentionBot",
 }));
 export type CreateDataRetentionBotChallengeError =
@@ -2851,6 +2869,8 @@ export const createDataRetentionBotChallenge: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataRetentionBotChallenge",
 }));
 export type CreateNetworkError =
@@ -2882,6 +2902,8 @@ export const createNetwork: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetwork",
 }));
 export type CreateSecurityGroupError =
@@ -2913,6 +2935,8 @@ export const createSecurityGroup: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityGroup",
 }));
 export type DeleteBotError =
@@ -2944,6 +2968,8 @@ export const deleteBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBot",
 }));
 export type DeleteDataRetentionBotError =
@@ -2975,6 +3001,8 @@ export const deleteDataRetentionBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataRetentionBot",
 }));
 export type DeleteNetworkError =
@@ -3006,6 +3034,8 @@ export const deleteNetwork: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetwork",
 }));
 export type DeleteSecurityGroupError =
@@ -3037,6 +3067,8 @@ export const deleteSecurityGroup: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityGroup",
 }));
 export type GetBotError =
@@ -3068,6 +3100,8 @@ export const getBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBot",
 }));
 export type GetBotsCountError =
@@ -3099,6 +3133,8 @@ export const getBotsCount: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBotsCount",
 }));
 export type GetDataRetentionBotError =
@@ -3130,6 +3166,8 @@ export const getDataRetentionBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataRetentionBot",
 }));
 export type GetGuestUserHistoryCountError =
@@ -3161,6 +3199,8 @@ export const getGuestUserHistoryCount: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGuestUserHistoryCount",
 }));
 export type GetNetworkError =
@@ -3192,6 +3232,8 @@ export const getNetwork: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetwork",
 }));
 export type GetNetworkSettingsError =
@@ -3223,6 +3265,8 @@ export const getNetworkSettings: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkSettings",
 }));
 export type GetOidcInfoError =
@@ -3254,6 +3298,8 @@ export const getOidcInfo: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOidcInfo",
 }));
 export type GetOpentdfConfigError =
@@ -3285,6 +3331,8 @@ export const getOpentdfConfig: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpentdfConfig",
 }));
 export type GetSecurityGroupError =
@@ -3316,6 +3364,8 @@ export const getSecurityGroup: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSecurityGroup",
 }));
 export type GetUserError =
@@ -3347,6 +3397,8 @@ export const getUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUser",
 }));
 export type GetUsersCountError =
@@ -3378,6 +3430,8 @@ export const getUsersCount: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsersCount",
 }));
 export type ListBlockedGuestUsersError =
@@ -3424,6 +3478,8 @@ export const listBlockedGuestUsers: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBlockedGuestUsers",
   pagination: {
     inputToken: "nextToken",
@@ -3476,6 +3532,8 @@ export const listBots: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBots",
   pagination: {
     inputToken: "nextToken",
@@ -3528,6 +3586,8 @@ export const listDevicesForUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevicesForUser",
   pagination: {
     inputToken: "nextToken",
@@ -3580,6 +3640,8 @@ export const listGuestUsers: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGuestUsers",
   pagination: {
     inputToken: "nextToken",
@@ -3630,6 +3692,8 @@ export const listNetworks: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworks",
   pagination: {
     inputToken: "nextToken",
@@ -3682,6 +3746,8 @@ export const listSecurityGroups: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityGroups",
   pagination: {
     inputToken: "nextToken",
@@ -3734,6 +3800,8 @@ export const listSecurityGroupUsers: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityGroupUsers",
   pagination: {
     inputToken: "nextToken",
@@ -3786,6 +3854,8 @@ export const listUsers: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "nextToken",
@@ -3823,6 +3893,8 @@ export const registerOidcConfig: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOidcConfig",
 }));
 export type RegisterOidcConfigTestError =
@@ -3854,6 +3926,8 @@ export const registerOidcConfigTest: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOidcConfigTest",
 }));
 export type RegisterOpentdfConfigError =
@@ -3885,6 +3959,8 @@ export const registerOpentdfConfig: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOpentdfConfig",
 }));
 export type UpdateBotError =
@@ -3916,6 +3992,8 @@ export const updateBot: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBot",
 }));
 export type UpdateDataRetentionError =
@@ -3947,6 +4025,8 @@ export const updateDataRetention: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataRetention",
 }));
 export type UpdateGuestUserError =
@@ -3978,6 +4058,8 @@ export const updateGuestUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGuestUser",
 }));
 export type UpdateNetworkError =
@@ -4009,6 +4091,8 @@ export const updateNetwork: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetwork",
 }));
 export type UpdateNetworkSettingsError =
@@ -4040,6 +4124,8 @@ export const updateNetworkSettings: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetworkSettings",
 }));
 export type UpdateSecurityGroupError =
@@ -4071,6 +4157,8 @@ export const updateSecurityGroup: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityGroup",
 }));
 export type UpdateUserError =
@@ -4104,5 +4192,7 @@ export const updateUser: API.OperationMethod<
     UnauthorizedError,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));

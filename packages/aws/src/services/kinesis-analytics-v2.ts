@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3395,6 +3397,8 @@ export const addApplicationCloudWatchLoggingOption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationCloudWatchLoggingOption",
 }));
 export type AddApplicationInputError =
@@ -3432,6 +3436,8 @@ export const addApplicationInput: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationInput",
 }));
 export type AddApplicationInputProcessingConfigurationError =
@@ -3461,6 +3467,8 @@ export const addApplicationInputProcessingConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationInputProcessingConfiguration",
 }));
 export type AddApplicationOutputError =
@@ -3503,6 +3511,8 @@ export const addApplicationOutput: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationOutput",
 }));
 export type AddApplicationReferenceDataSourceError =
@@ -3536,6 +3546,8 @@ export const addApplicationReferenceDataSource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationReferenceDataSource",
 }));
 export type AddApplicationVpcConfigurationError =
@@ -3571,6 +3583,8 @@ export const addApplicationVpcConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationVpcConfiguration",
 }));
 export type CreateApplicationError =
@@ -3606,6 +3620,8 @@ export const createApplication: API.OperationMethod<
     TooManyTagsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateApplicationPresignedUrlError =
@@ -3642,6 +3658,8 @@ export const createApplicationPresignedUrl: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplicationPresignedUrl",
 }));
 export type CreateApplicationSnapshotError =
@@ -3673,6 +3691,8 @@ export const createApplicationSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplicationSnapshot",
 }));
 export type DeleteApplicationError =
@@ -3702,6 +3722,8 @@ export const deleteApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteApplicationCloudWatchLoggingOptionError =
@@ -3731,6 +3753,8 @@ export const deleteApplicationCloudWatchLoggingOption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationCloudWatchLoggingOption",
 }));
 export type DeleteApplicationInputProcessingConfigurationError =
@@ -3758,6 +3782,8 @@ export const deleteApplicationInputProcessingConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationInputProcessingConfiguration",
 }));
 export type DeleteApplicationOutputError =
@@ -3787,6 +3813,8 @@ export const deleteApplicationOutput: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationOutput",
 }));
 export type DeleteApplicationReferenceDataSourceError =
@@ -3817,6 +3845,8 @@ export const deleteApplicationReferenceDataSource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationReferenceDataSource",
 }));
 export type DeleteApplicationSnapshotError =
@@ -3846,6 +3876,8 @@ export const deleteApplicationSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationSnapshot",
 }));
 export type DeleteApplicationVpcConfigurationError =
@@ -3873,6 +3905,8 @@ export const deleteApplicationVpcConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationVpcConfiguration",
 }));
 export type DescribeApplicationError =
@@ -3899,6 +3933,8 @@ export const describeApplication: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplication",
 }));
 export type DescribeApplicationOperationError =
@@ -3924,6 +3960,8 @@ export const describeApplicationOperation: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationOperation",
 }));
 export type DescribeApplicationSnapshotError =
@@ -3947,6 +3985,8 @@ export const describeApplicationSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationSnapshot",
 }));
 export type DescribeApplicationVersionError =
@@ -3972,6 +4012,8 @@ export const describeApplicationVersion: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationVersion",
 }));
 export type DiscoverInputSchemaError =
@@ -4008,6 +4050,8 @@ export const discoverInputSchema: API.OperationMethod<
     UnableToDetectSchemaException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DiscoverInputSchema",
 }));
 export type ListApplicationOperationsError =
@@ -4051,6 +4095,8 @@ export const listApplicationOperations: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationOperations",
   pagination: {
     inputToken: "NextToken",
@@ -4092,6 +4138,8 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -4131,6 +4179,8 @@ export const listApplicationSnapshots: API.OperationMethod<
   input: ListApplicationSnapshotsRequest,
   output: ListApplicationSnapshotsResponse,
   errors: [InvalidArgumentException, UnsupportedOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationSnapshots",
   pagination: {
     inputToken: "NextToken",
@@ -4180,6 +4230,8 @@ export const listApplicationVersions: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationVersions",
   pagination: {
     inputToken: "NextToken",
@@ -4210,6 +4262,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RollbackApplicationError =
@@ -4246,6 +4300,8 @@ export const rollbackApplication: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RollbackApplication",
 }));
 export type StartApplicationError =
@@ -4274,6 +4330,8 @@ export const startApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartApplication",
 }));
 export type StopApplicationError =
@@ -4310,6 +4368,8 @@ export const stopApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopApplication",
 }));
 export type TagResourceError =
@@ -4339,6 +4399,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4367,6 +4429,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
@@ -4404,6 +4468,8 @@ export const updateApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateApplicationMaintenanceConfigurationError =
@@ -4448,5 +4514,7 @@ export const updateApplicationMaintenanceConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationMaintenanceConfiguration",
 }));

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1158,6 +1160,8 @@ export const createBatchLoadTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBatchLoadTask",
 }));
 export type CreateDatabaseError =
@@ -1191,6 +1195,8 @@ export const createDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatabase",
 }));
 export type CreateTableError =
@@ -1229,6 +1235,8 @@ export const createTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTable",
 }));
 export type DeleteDatabaseError =
@@ -1269,6 +1277,8 @@ export const deleteDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDatabase",
 }));
 export type DeleteTableError =
@@ -1306,6 +1316,8 @@ export const deleteTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTable",
 }));
 export type DescribeBatchLoadTaskError =
@@ -1336,6 +1348,8 @@ export const describeBatchLoadTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBatchLoadTask",
 }));
 export type DescribeDatabaseError =
@@ -1368,6 +1382,8 @@ export const describeDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDatabase",
 }));
 export type DescribeEndpointsError =
@@ -1403,6 +1419,8 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoints",
 }));
 export type DescribeTableError =
@@ -1435,6 +1453,8 @@ export const describeTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTable",
 }));
 export type ListBatchLoadTasksError =
@@ -1479,6 +1499,8 @@ export const listBatchLoadTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBatchLoadTasks",
   pagination: {
     inputToken: "NextToken",
@@ -1528,6 +1550,8 @@ export const listDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -1579,6 +1603,8 @@ export const listTables: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "NextToken",
@@ -1609,6 +1635,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ResumeBatchLoadTaskError =
@@ -1638,6 +1666,8 @@ export const resumeBatchLoadTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeBatchLoadTask",
 }));
 export type TagResourceError =
@@ -1667,6 +1697,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1694,6 +1726,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDatabaseError =
@@ -1730,6 +1764,8 @@ export const updateDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDatabase",
 }));
 export type UpdateTableError =
@@ -1765,6 +1801,8 @@ export const updateTable: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTable",
 }));
 export type WriteRecordsError =
@@ -1838,5 +1876,7 @@ export const writeRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "WriteRecords",
 }));

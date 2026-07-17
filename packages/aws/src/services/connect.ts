@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -25424,6 +25426,8 @@ export const activateEvaluationForm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateEvaluationForm",
 }));
 export type AssociateAnalyticsDataSetError =
@@ -25452,6 +25456,8 @@ export const associateAnalyticsDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAnalyticsDataSet",
 }));
 export type AssociateApprovedOriginError =
@@ -25485,6 +25491,8 @@ export const associateApprovedOrigin: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateApprovedOrigin",
 }));
 export type AssociateBotError =
@@ -25519,6 +25527,8 @@ export const associateBot: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateBot",
 }));
 export type AssociateContactWithUserError =
@@ -25577,6 +25587,8 @@ export const associateContactWithUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateContactWithUser",
 }));
 export type AssociateDefaultVocabularyError =
@@ -25605,6 +25617,8 @@ export const associateDefaultVocabulary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDefaultVocabulary",
 }));
 export type AssociateEmailAddressAliasError =
@@ -25689,6 +25703,8 @@ export const associateEmailAddressAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateEmailAddressAlias",
 }));
 export type AssociateFlowError =
@@ -25718,6 +25734,8 @@ export const associateFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateFlow",
 }));
 export type AssociateHoursOfOperationsError =
@@ -25749,6 +25767,8 @@ export const associateHoursOfOperations: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateHoursOfOperations",
 }));
 export type AssociateInstanceStorageConfigError =
@@ -25786,6 +25806,8 @@ export const associateInstanceStorageConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateInstanceStorageConfig",
 }));
 export type AssociateLambdaFunctionError =
@@ -25819,6 +25841,8 @@ export const associateLambdaFunction: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateLambdaFunction",
 }));
 export type AssociateLexBotError =
@@ -25853,6 +25877,8 @@ export const associateLexBot: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateLexBot",
 }));
 export type AssociatePhoneNumberContactFlowError =
@@ -25887,6 +25913,8 @@ export const associatePhoneNumberContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePhoneNumberContactFlow",
 }));
 export type AssociateQueueEmailAddressesError =
@@ -25930,6 +25958,8 @@ export const associateQueueEmailAddresses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateQueueEmailAddresses",
 }));
 export type AssociateQueueQuickConnectsError =
@@ -25959,6 +25989,8 @@ export const associateQueueQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateQueueQuickConnects",
 }));
 export type AssociateRoutingProfileQueuesError =
@@ -25986,6 +26018,8 @@ export const associateRoutingProfileQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateRoutingProfileQueues",
 }));
 export type AssociateSecurityKeyError =
@@ -26019,6 +26053,8 @@ export const associateSecurityKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSecurityKey",
 }));
 export type AssociateSecurityProfilesError =
@@ -26050,6 +26086,8 @@ export const associateSecurityProfiles: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSecurityProfiles",
 }));
 export type AssociateTrafficDistributionGroupUserError =
@@ -26080,6 +26118,8 @@ export const associateTrafficDistributionGroupUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTrafficDistributionGroupUser",
 }));
 export type AssociateUserProficienciesError =
@@ -26107,6 +26147,8 @@ export const associateUserProficiencies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateUserProficiencies",
 }));
 export type AssociateWorkspaceError =
@@ -26139,6 +26181,8 @@ export const associateWorkspace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWorkspace",
 }));
 export type BatchAssociateAnalyticsDataSetError =
@@ -26167,6 +26211,8 @@ export const batchAssociateAnalyticsDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateAnalyticsDataSet",
 }));
 export type BatchCreateDataTableValueError =
@@ -26207,6 +26253,8 @@ export const batchCreateDataTableValue: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateDataTableValue",
 }));
 export type BatchDeleteDataTableValueError =
@@ -26240,6 +26288,8 @@ export const batchDeleteDataTableValue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteDataTableValue",
 }));
 export type BatchDescribeDataTableValueError =
@@ -26271,6 +26321,8 @@ export const batchDescribeDataTableValue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDescribeDataTableValue",
 }));
 export type BatchDisassociateAnalyticsDataSetError =
@@ -26299,6 +26351,8 @@ export const batchDisassociateAnalyticsDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateAnalyticsDataSet",
 }));
 export type BatchGetAttachedFileMetadataError =
@@ -26327,6 +26381,8 @@ export const batchGetAttachedFileMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetAttachedFileMetadata",
 }));
 export type BatchGetFlowAssociationError =
@@ -26356,6 +26412,8 @@ export const batchGetFlowAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetFlowAssociation",
 }));
 export type BatchPutContactError =
@@ -26391,6 +26449,8 @@ export const batchPutContact: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutContact",
 }));
 export type BatchUpdateDataTableValueError =
@@ -26424,6 +26484,8 @@ export const batchUpdateDataTableValue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateDataTableValue",
 }));
 export type ClaimPhoneNumberError =
@@ -26479,6 +26541,8 @@ export const claimPhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ClaimPhoneNumber",
 }));
 export type CompleteAttachedFileUploadError =
@@ -26507,6 +26571,8 @@ export const completeAttachedFileUpload: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteAttachedFileUpload",
 }));
 export type CreateAgentStatusError =
@@ -26538,6 +26604,8 @@ export const createAgentStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAgentStatus",
 }));
 export type CreateContactError =
@@ -26588,6 +26656,8 @@ export const createContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContact",
 }));
 export type CreateContactFlowError =
@@ -26624,6 +26694,8 @@ export const createContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContactFlow",
 }));
 export type CreateContactFlowModuleError =
@@ -26661,6 +26733,8 @@ export const createContactFlowModule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContactFlowModule",
 }));
 export type CreateContactFlowModuleAliasError =
@@ -26694,6 +26768,8 @@ export const createContactFlowModuleAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContactFlowModuleAlias",
 }));
 export type CreateContactFlowModuleVersionError =
@@ -26726,6 +26802,8 @@ export const createContactFlowModuleVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContactFlowModuleVersion",
 }));
 export type CreateContactFlowVersionError =
@@ -26760,6 +26838,8 @@ export const createContactFlowVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContactFlowVersion",
 }));
 export type CreateDataTableError =
@@ -26797,6 +26877,8 @@ export const createDataTable: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataTable",
 }));
 export type CreateDataTableAttributeError =
@@ -26835,6 +26917,8 @@ export const createDataTableAttribute: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataTableAttribute",
 }));
 export type CreateEmailAddressError =
@@ -26874,6 +26958,8 @@ export const createEmailAddress: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEmailAddress",
 }));
 export type CreateEvaluationFormError =
@@ -26905,6 +26991,8 @@ export const createEvaluationForm: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEvaluationForm",
 }));
 export type CreateHoursOfOperationError =
@@ -26938,6 +27026,8 @@ export const createHoursOfOperation: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHoursOfOperation",
 }));
 export type CreateHoursOfOperationOverrideError =
@@ -26969,6 +27059,8 @@ export const createHoursOfOperationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHoursOfOperationOverride",
 }));
 export type CreateInstanceError =
@@ -27007,6 +27099,8 @@ export const createInstance: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstance",
 }));
 export type CreateIntegrationAssociationError =
@@ -27034,6 +27128,8 @@ export const createIntegrationAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegrationAssociation",
 }));
 export type CreateNotificationError =
@@ -27065,6 +27161,8 @@ export const createNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNotification",
 }));
 export type CreateParticipantError =
@@ -27096,6 +27194,8 @@ export const createParticipant: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateParticipant",
 }));
 export type CreatePersistentContactAssociationError =
@@ -27127,6 +27227,8 @@ export const createPersistentContactAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePersistentContactAssociation",
 }));
 export type CreatePredefinedAttributeError =
@@ -27176,6 +27278,8 @@ export const createPredefinedAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePredefinedAttribute",
 }));
 export type CreatePromptError =
@@ -27207,6 +27311,8 @@ export const createPrompt: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePrompt",
 }));
 export type CreatePushNotificationRegistrationError =
@@ -27237,6 +27343,8 @@ export const createPushNotificationRegistration: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePushNotificationRegistration",
 }));
 export type CreateQueueError =
@@ -27282,6 +27390,8 @@ export const createQueue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQueue",
 }));
 export type CreateQuickConnectError =
@@ -27313,6 +27423,8 @@ export const createQuickConnect: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQuickConnect",
 }));
 export type CreateRoutingProfileError =
@@ -27344,6 +27456,8 @@ export const createRoutingProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoutingProfile",
 }));
 export type CreateRuleError =
@@ -27378,6 +27492,8 @@ export const createRule: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRule",
 }));
 export type CreateSecurityProfileError =
@@ -27413,6 +27529,8 @@ export const createSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityProfile",
 }));
 export type CreateTaskTemplateError =
@@ -27442,6 +27560,8 @@ export const createTaskTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTaskTemplate",
 }));
 export type CreateTestCaseError =
@@ -27481,6 +27601,8 @@ export const createTestCase: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTestCase",
 }));
 export type CreateTrafficDistributionGroupError =
@@ -27524,6 +27646,8 @@ export const createTrafficDistributionGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrafficDistributionGroup",
 }));
 export type CreateUseCaseError =
@@ -27551,6 +27675,8 @@ export const createUseCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUseCase",
 }));
 export type CreateUserError =
@@ -27601,6 +27727,8 @@ export const createUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type CreateUserHierarchyGroupError =
@@ -27632,6 +27760,8 @@ export const createUserHierarchyGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserHierarchyGroup",
 }));
 export type CreateViewError =
@@ -27674,6 +27804,8 @@ export const createView: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateView",
 }));
 export type CreateViewVersionError =
@@ -27712,6 +27844,8 @@ export const createViewVersion: API.OperationMethod<
     ServiceQuotaExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateViewVersion",
 }));
 export type CreateVocabularyError =
@@ -27745,6 +27879,8 @@ export const createVocabulary: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVocabulary",
 }));
 export type CreateWorkspaceError =
@@ -27781,6 +27917,8 @@ export const createWorkspace: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspace",
 }));
 export type CreateWorkspacePageError =
@@ -27818,6 +27956,8 @@ export const createWorkspacePage: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspacePage",
 }));
 export type DeactivateEvaluationFormError =
@@ -27846,6 +27986,8 @@ export const deactivateEvaluationForm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateEvaluationForm",
 }));
 export type DeleteAttachedFileError =
@@ -27876,6 +28018,8 @@ export const deleteAttachedFile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAttachedFile",
 }));
 export type DeleteContactEvaluationError =
@@ -27903,6 +28047,8 @@ export const deleteContactEvaluation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactEvaluation",
 }));
 export type DeleteContactFlowError =
@@ -27932,6 +28078,8 @@ export const deleteContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactFlow",
 }));
 export type DeleteContactFlowModuleError =
@@ -27961,6 +28109,8 @@ export const deleteContactFlowModule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactFlowModule",
 }));
 export type DeleteContactFlowModuleAliasError =
@@ -27991,6 +28141,8 @@ export const deleteContactFlowModuleAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactFlowModuleAlias",
 }));
 export type DeleteContactFlowModuleVersionError =
@@ -28020,6 +28172,8 @@ export const deleteContactFlowModuleVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactFlowModuleVersion",
 }));
 export type DeleteContactFlowVersionError =
@@ -28049,6 +28203,8 @@ export const deleteContactFlowVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactFlowVersion",
 }));
 export type DeleteDataTableError =
@@ -28084,6 +28240,8 @@ export const deleteDataTable: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataTable",
 }));
 export type DeleteDataTableAttributeError =
@@ -28115,6 +28273,8 @@ export const deleteDataTableAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataTableAttribute",
 }));
 export type DeleteEmailAddressError =
@@ -28146,6 +28306,8 @@ export const deleteEmailAddress: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEmailAddress",
 }));
 export type DeleteEvaluationFormError =
@@ -28177,6 +28339,8 @@ export const deleteEvaluationForm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEvaluationForm",
 }));
 export type DeleteHoursOfOperationError =
@@ -28204,6 +28368,8 @@ export const deleteHoursOfOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHoursOfOperation",
 }));
 export type DeleteHoursOfOperationOverrideError =
@@ -28231,6 +28397,8 @@ export const deleteHoursOfOperationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHoursOfOperationOverride",
 }));
 export type DeleteInstanceError =
@@ -28261,6 +28429,8 @@ export const deleteInstance: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstance",
 }));
 export type DeleteIntegrationAssociationError =
@@ -28287,6 +28457,8 @@ export const deleteIntegrationAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegrationAssociation",
 }));
 export type DeleteNotificationError =
@@ -28316,6 +28488,8 @@ export const deleteNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotification",
 }));
 export type DeletePredefinedAttributeError =
@@ -28345,6 +28519,8 @@ export const deletePredefinedAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePredefinedAttribute",
 }));
 export type DeletePromptError =
@@ -28372,6 +28548,8 @@ export const deletePrompt: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePrompt",
 }));
 export type DeletePushNotificationRegistrationError =
@@ -28399,6 +28577,8 @@ export const deletePushNotificationRegistration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePushNotificationRegistration",
 }));
 export type DeleteQueueError =
@@ -28428,6 +28608,8 @@ export const deleteQueue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueue",
 }));
 export type DeleteQuickConnectError =
@@ -28465,6 +28647,8 @@ export const deleteQuickConnect: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQuickConnect",
 }));
 export type DeleteRoutingProfileError =
@@ -28494,6 +28678,8 @@ export const deleteRoutingProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoutingProfile",
 }));
 export type DeleteRuleError =
@@ -28521,6 +28707,8 @@ export const deleteRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRule",
 }));
 export type DeleteSecurityProfileError =
@@ -28552,6 +28740,8 @@ export const deleteSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityProfile",
 }));
 export type DeleteTaskTemplateError =
@@ -28579,6 +28769,8 @@ export const deleteTaskTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTaskTemplate",
 }));
 export type DeleteTestCaseError =
@@ -28608,6 +28800,8 @@ export const deleteTestCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTestCase",
 }));
 export type DeleteTrafficDistributionGroupError =
@@ -28638,6 +28832,8 @@ export const deleteTrafficDistributionGroup: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrafficDistributionGroup",
 }));
 export type DeleteUseCaseError =
@@ -28663,6 +28859,8 @@ export const deleteUseCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUseCase",
 }));
 export type DeleteUserError =
@@ -28703,6 +28901,8 @@ export const deleteUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DeleteUserHierarchyGroupError =
@@ -28733,6 +28933,8 @@ export const deleteUserHierarchyGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserHierarchyGroup",
 }));
 export type DeleteViewError =
@@ -28764,6 +28966,8 @@ export const deleteView: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteView",
 }));
 export type DeleteViewVersionError =
@@ -28795,6 +28999,8 @@ export const deleteViewVersion: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteViewVersion",
 }));
 export type DeleteVocabularyError =
@@ -28824,6 +29030,8 @@ export const deleteVocabulary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVocabulary",
 }));
 export type DeleteWorkspaceError =
@@ -28853,6 +29061,8 @@ export const deleteWorkspace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspace",
 }));
 export type DeleteWorkspaceMediaError =
@@ -28880,6 +29090,8 @@ export const deleteWorkspaceMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspaceMedia",
 }));
 export type DeleteWorkspacePageError =
@@ -28912,6 +29124,8 @@ export const deleteWorkspacePage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspacePage",
 }));
 export type DescribeAgentStatusError =
@@ -28939,6 +29153,8 @@ export const describeAgentStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAgentStatus",
 }));
 export type DescribeAuthenticationProfileError =
@@ -28969,6 +29185,8 @@ export const describeAuthenticationProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAuthenticationProfile",
 }));
 export type DescribeContactError =
@@ -29023,6 +29241,8 @@ export const describeContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContact",
 }));
 export type DescribeContactEvaluationError =
@@ -29048,6 +29268,8 @@ export const describeContactEvaluation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContactEvaluation",
 }));
 export type DescribeContactFlowError =
@@ -29091,6 +29313,8 @@ export const describeContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContactFlow",
 }));
 export type DescribeContactFlowModuleError =
@@ -29124,6 +29348,8 @@ export const describeContactFlowModule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContactFlowModule",
 }));
 export type DescribeContactFlowModuleAliasError =
@@ -29154,6 +29380,8 @@ export const describeContactFlowModuleAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContactFlowModuleAlias",
 }));
 export type DescribeDataTableError =
@@ -29185,6 +29413,8 @@ export const describeDataTable: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataTable",
 }));
 export type DescribeDataTableAttributeError =
@@ -29215,6 +29445,8 @@ export const describeDataTableAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataTableAttribute",
 }));
 export type DescribeEmailAddressError =
@@ -29244,6 +29476,8 @@ export const describeEmailAddress: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEmailAddress",
 }));
 export type DescribeEvaluationFormError =
@@ -29270,6 +29504,8 @@ export const describeEvaluationForm: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvaluationForm",
 }));
 export type DescribeHoursOfOperationError =
@@ -29297,6 +29533,8 @@ export const describeHoursOfOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHoursOfOperation",
 }));
 export type DescribeHoursOfOperationOverrideError =
@@ -29324,6 +29562,8 @@ export const describeHoursOfOperationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHoursOfOperationOverride",
 }));
 export type DescribeInstanceError =
@@ -29353,6 +29593,8 @@ export const describeInstance: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstance",
 }));
 export type DescribeInstanceAttributeError =
@@ -29382,6 +29624,8 @@ export const describeInstanceAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceAttribute",
 }));
 export type DescribeInstanceStorageConfigError =
@@ -29412,6 +29656,8 @@ export const describeInstanceStorageConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceStorageConfig",
 }));
 export type DescribeNotificationError =
@@ -29441,6 +29687,8 @@ export const describeNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotification",
 }));
 export type DescribePhoneNumberError =
@@ -29474,6 +29722,8 @@ export const describePhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePhoneNumber",
 }));
 export type DescribePredefinedAttributeError =
@@ -29514,6 +29764,8 @@ export const describePredefinedAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePredefinedAttribute",
 }));
 export type DescribePromptError =
@@ -29541,6 +29793,8 @@ export const describePrompt: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePrompt",
 }));
 export type DescribeQueueError =
@@ -29568,6 +29822,8 @@ export const describeQueue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQueue",
 }));
 export type DescribeQuickConnectError =
@@ -29595,6 +29851,8 @@ export const describeQuickConnect: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQuickConnect",
 }));
 export type DescribeRoutingProfileError =
@@ -29626,6 +29884,8 @@ export const describeRoutingProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRoutingProfile",
 }));
 export type DescribeRuleError =
@@ -29653,6 +29913,8 @@ export const describeRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRule",
 }));
 export type DescribeSecurityProfileError =
@@ -29684,6 +29946,8 @@ export const describeSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityProfile",
 }));
 export type DescribeTestCaseError =
@@ -29713,6 +29977,8 @@ export const describeTestCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTestCase",
 }));
 export type DescribeTrafficDistributionGroupError =
@@ -29740,6 +30006,8 @@ export const describeTrafficDistributionGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrafficDistributionGroup",
 }));
 export type DescribeUserError =
@@ -29769,6 +30037,8 @@ export const describeUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUser",
 }));
 export type DescribeUserHierarchyGroupError =
@@ -29796,6 +30066,8 @@ export const describeUserHierarchyGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUserHierarchyGroup",
 }));
 export type DescribeUserHierarchyStructureError =
@@ -29823,6 +30095,8 @@ export const describeUserHierarchyStructure: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUserHierarchyStructure",
 }));
 export type DescribeViewError =
@@ -29861,6 +30135,8 @@ export const describeView: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeView",
 }));
 export type DescribeVocabularyError =
@@ -29888,6 +30164,8 @@ export const describeVocabulary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVocabulary",
 }));
 export type DescribeWorkspaceError =
@@ -29917,6 +30195,8 @@ export const describeWorkspace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspace",
 }));
 export type DisassociateAnalyticsDataSetError =
@@ -29944,6 +30224,8 @@ export const disassociateAnalyticsDataSet: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAnalyticsDataSet",
 }));
 export type DisassociateApprovedOriginError =
@@ -29973,6 +30255,8 @@ export const disassociateApprovedOrigin: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateApprovedOrigin",
 }));
 export type DisassociateBotError =
@@ -30000,6 +30284,8 @@ export const disassociateBot: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateBot",
 }));
 export type DisassociateEmailAddressAliasError =
@@ -30084,6 +30370,8 @@ export const disassociateEmailAddressAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateEmailAddressAlias",
 }));
 export type DisassociateFlowError =
@@ -30113,6 +30401,8 @@ export const disassociateFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFlow",
 }));
 export type DisassociateHoursOfOperationsError =
@@ -30142,6 +30432,8 @@ export const disassociateHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateHoursOfOperations",
 }));
 export type DisassociateInstanceStorageConfigError =
@@ -30171,6 +30463,8 @@ export const disassociateInstanceStorageConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateInstanceStorageConfig",
 }));
 export type DisassociateLambdaFunctionError =
@@ -30200,6 +30494,8 @@ export const disassociateLambdaFunction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateLambdaFunction",
 }));
 export type DisassociateLexBotError =
@@ -30229,6 +30525,8 @@ export const disassociateLexBot: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateLexBot",
 }));
 export type DisassociatePhoneNumberContactFlowError =
@@ -30262,6 +30560,8 @@ export const disassociatePhoneNumberContactFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociatePhoneNumberContactFlow",
 }));
 export type DisassociateQueueEmailAddressesError =
@@ -30299,6 +30599,8 @@ export const disassociateQueueEmailAddresses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateQueueEmailAddresses",
 }));
 export type DisassociateQueueQuickConnectsError =
@@ -30326,6 +30628,8 @@ export const disassociateQueueQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateQueueQuickConnects",
 }));
 export type DisassociateRoutingProfileQueuesError =
@@ -30356,6 +30660,8 @@ export const disassociateRoutingProfileQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateRoutingProfileQueues",
 }));
 export type DisassociateSecurityKeyError =
@@ -30385,6 +30691,8 @@ export const disassociateSecurityKey: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSecurityKey",
 }));
 export type DisassociateSecurityProfilesError =
@@ -30416,6 +30724,8 @@ export const disassociateSecurityProfiles: API.OperationMethod<
     ResourceConflictException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSecurityProfiles",
 }));
 export type DisassociateTrafficDistributionGroupUserError =
@@ -30446,6 +30756,8 @@ export const disassociateTrafficDistributionGroupUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTrafficDistributionGroupUser",
 }));
 export type DisassociateUserProficienciesError =
@@ -30473,6 +30785,8 @@ export const disassociateUserProficiencies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateUserProficiencies",
 }));
 export type DisassociateWorkspaceError =
@@ -30502,6 +30816,8 @@ export const disassociateWorkspace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWorkspace",
 }));
 export type DismissUserContactError =
@@ -30533,6 +30849,8 @@ export const dismissUserContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DismissUserContact",
 }));
 export type EvaluateDataTableValuesError =
@@ -30581,6 +30899,8 @@ export const evaluateDataTableValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EvaluateDataTableValues",
   pagination: {
     inputToken: "NextToken",
@@ -30614,6 +30934,8 @@ export const getAttachedFile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAttachedFile",
 }));
 export type GetContactAttributesError =
@@ -30637,6 +30959,8 @@ export const getContactAttributes: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactAttributes",
 }));
 export type GetContactMetricsError =
@@ -30686,6 +31010,8 @@ export const getContactMetrics: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactMetrics",
 }));
 export type GetCurrentMetricDataError =
@@ -30751,6 +31077,8 @@ export const getCurrentMetricData: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCurrentMetricData",
   pagination: {
     inputToken: "NextToken",
@@ -30798,6 +31126,8 @@ export const getCurrentUserData: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCurrentUserData",
   pagination: {
     inputToken: "NextToken",
@@ -30830,6 +31160,8 @@ export const getEffectiveHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEffectiveHoursOfOperations",
 }));
 export type GetFederationTokenError =
@@ -30867,6 +31199,8 @@ export const getFederationToken: API.OperationMethod<
     ResourceNotFoundException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFederationToken",
 }));
 export type GetFlowAssociationError =
@@ -30896,6 +31230,8 @@ export const getFlowAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFlowAssociation",
 }));
 export type GetMetricDataError =
@@ -30946,6 +31282,8 @@ export const getMetricData: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetricData",
   pagination: {
     inputToken: "NextToken",
@@ -31024,6 +31362,8 @@ export const getMetricDataV2: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetricDataV2",
   pagination: {
     inputToken: "NextToken",
@@ -31056,6 +31396,8 @@ export const getPromptFile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPromptFile",
 }));
 export type GetTaskTemplateError =
@@ -31083,6 +31425,8 @@ export const getTaskTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTaskTemplate",
 }));
 export type GetTestCaseExecutionSummaryError =
@@ -31112,6 +31456,8 @@ export const getTestCaseExecutionSummary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTestCaseExecutionSummary",
 }));
 export type GetTrafficDistributionError =
@@ -31139,6 +31485,8 @@ export const getTrafficDistribution: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrafficDistribution",
 }));
 export type ImportPhoneNumberError =
@@ -31184,6 +31532,8 @@ export const importPhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportPhoneNumber",
 }));
 export type ImportWorkspaceMediaError =
@@ -31211,6 +31561,8 @@ export const importWorkspaceMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportWorkspaceMedia",
 }));
 export type ListAgentStatusesError =
@@ -31253,6 +31605,8 @@ export const listAgentStatuses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAgentStatuses",
   pagination: {
     inputToken: "NextToken",
@@ -31286,6 +31640,8 @@ export const listAnalyticsDataAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnalyticsDataAssociations",
 }));
 export type ListAnalyticsDataLakeDataSetsError =
@@ -31313,6 +31669,8 @@ export const listAnalyticsDataLakeDataSets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnalyticsDataLakeDataSets",
 }));
 export type ListApprovedOriginsError =
@@ -31357,6 +31715,8 @@ export const listApprovedOrigins: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApprovedOrigins",
   pagination: {
     inputToken: "NextToken",
@@ -31390,6 +31750,8 @@ export const listAssociatedContacts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedContacts",
 }));
 export type ListAuthenticationProfilesError =
@@ -31436,6 +31798,8 @@ export const listAuthenticationProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAuthenticationProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -31486,6 +31850,8 @@ export const listBots: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBots",
   pagination: {
     inputToken: "NextToken",
@@ -31537,6 +31903,8 @@ export const listChildHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChildHoursOfOperations",
   pagination: {
     inputToken: "NextToken",
@@ -31583,6 +31951,8 @@ export const listContactEvaluations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContactEvaluations",
   pagination: {
     inputToken: "NextToken",
@@ -31633,6 +32003,8 @@ export const listContactFlowModuleAliases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContactFlowModuleAliases",
   pagination: {
     inputToken: "NextToken",
@@ -31683,6 +32055,8 @@ export const listContactFlowModules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContactFlowModules",
   pagination: {
     inputToken: "NextToken",
@@ -31733,6 +32107,8 @@ export const listContactFlowModuleVersions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContactFlowModuleVersions",
   pagination: {
     inputToken: "NextToken",
@@ -31787,6 +32163,8 @@ export const listContactFlows: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContactFlows",
   pagination: {
     inputToken: "NextToken",
@@ -31837,6 +32215,8 @@ export const listContactFlowVersions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContactFlowVersions",
   pagination: {
     inputToken: "NextToken",
@@ -31889,6 +32269,8 @@ export const listContactReferences: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContactReferences",
   pagination: {
     inputToken: "NextToken",
@@ -31940,6 +32322,8 @@ export const listDataTableAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataTableAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -31991,6 +32375,8 @@ export const listDataTablePrimaryValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataTablePrimaryValues",
   pagination: {
     inputToken: "NextToken",
@@ -32042,6 +32428,8 @@ export const listDataTables: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataTables",
   pagination: {
     inputToken: "NextToken",
@@ -32093,6 +32481,8 @@ export const listDataTableValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataTableValues",
   pagination: {
     inputToken: "NextToken",
@@ -32139,6 +32529,8 @@ export const listDefaultVocabularies: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDefaultVocabularies",
   pagination: {
     inputToken: "NextToken",
@@ -32187,6 +32579,8 @@ export const listEntitySecurityProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntitySecurityProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -32233,6 +32627,8 @@ export const listEvaluationForms: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEvaluationForms",
   pagination: {
     inputToken: "NextToken",
@@ -32279,6 +32675,8 @@ export const listEvaluationFormVersions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEvaluationFormVersions",
   pagination: {
     inputToken: "NextToken",
@@ -32329,6 +32727,8 @@ export const listFlowAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlowAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -32377,6 +32777,8 @@ export const listHoursOfOperationOverrides: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHoursOfOperationOverrides",
   pagination: {
     inputToken: "NextToken",
@@ -32428,6 +32830,8 @@ export const listHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHoursOfOperations",
   pagination: {
     inputToken: "NextToken",
@@ -32478,6 +32882,8 @@ export const listInstanceAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -32521,6 +32927,8 @@ export const listInstances: API.OperationMethod<
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InternalServiceException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstances",
   pagination: {
     inputToken: "NextToken",
@@ -32571,6 +32979,8 @@ export const listInstanceStorageConfigs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceStorageConfigs",
   pagination: {
     inputToken: "NextToken",
@@ -32617,6 +33027,8 @@ export const listIntegrationAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntegrationAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -32668,6 +33080,8 @@ export const listLambdaFunctions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLambdaFunctions",
   pagination: {
     inputToken: "NextToken",
@@ -32719,6 +33133,8 @@ export const listLexBots: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLexBots",
   pagination: {
     inputToken: "NextToken",
@@ -32754,6 +33170,8 @@ export const listNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotifications",
 }));
 export type ListPhoneNumbersError =
@@ -32807,6 +33225,8 @@ export const listPhoneNumbers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPhoneNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -32865,6 +33285,8 @@ export const listPhoneNumbersV2: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPhoneNumbersV2",
   pagination: {
     inputToken: "NextToken",
@@ -32926,6 +33348,8 @@ export const listPredefinedAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPredefinedAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -32974,6 +33398,8 @@ export const listPrompts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrompts",
   pagination: {
     inputToken: "NextToken",
@@ -33019,6 +33445,8 @@ export const listQueueEmailAddresses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueueEmailAddresses",
 }));
 export type ListQueueQuickConnectsError =
@@ -33061,6 +33489,8 @@ export const listQueueQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueueQuickConnects",
   pagination: {
     inputToken: "NextToken",
@@ -33116,6 +33546,8 @@ export const listQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueues",
   pagination: {
     inputToken: "NextToken",
@@ -33164,6 +33596,8 @@ export const listQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQuickConnects",
   pagination: {
     inputToken: "NextToken",
@@ -33218,6 +33652,8 @@ export const listRealtimeContactAnalysisSegmentsV2: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRealtimeContactAnalysisSegmentsV2",
   pagination: {
     inputToken: "NextToken",
@@ -33282,6 +33718,8 @@ export const listRoutingProfileManualAssignmentQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoutingProfileManualAssignmentQueues",
   pagination: {
     inputToken: "NextToken",
@@ -33330,6 +33768,8 @@ export const listRoutingProfileQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoutingProfileQueues",
   pagination: {
     inputToken: "NextToken",
@@ -33380,6 +33820,8 @@ export const listRoutingProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoutingProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -33428,6 +33870,8 @@ export const listRules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRules",
   pagination: {
     inputToken: "NextToken",
@@ -33478,6 +33922,8 @@ export const listSecurityKeys: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityKeys",
   pagination: {
     inputToken: "NextToken",
@@ -33526,6 +33972,8 @@ export const listSecurityProfileApplications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityProfileApplications",
   pagination: {
     inputToken: "NextToken",
@@ -33574,6 +34022,8 @@ export const listSecurityProfileFlowModules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityProfileFlowModules",
   pagination: {
     inputToken: "NextToken",
@@ -33626,6 +34076,8 @@ export const listSecurityProfilePermissions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityProfilePermissions",
   pagination: {
     inputToken: "NextToken",
@@ -33678,6 +34130,8 @@ export const listSecurityProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -33714,6 +34168,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTaskTemplatesError =
@@ -33756,6 +34212,8 @@ export const listTaskTemplates: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTaskTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -33791,6 +34249,8 @@ export const listTestCaseExecutionRecords: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestCaseExecutionRecords",
 }));
 export type ListTestCaseExecutionsError =
@@ -33820,6 +34280,8 @@ export const listTestCaseExecutions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestCaseExecutions",
 }));
 export type ListTestCasesError =
@@ -33864,6 +34326,8 @@ export const listTestCases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTestCases",
   pagination: {
     inputToken: "NextToken",
@@ -33910,6 +34374,8 @@ export const listTrafficDistributionGroups: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrafficDistributionGroups",
   pagination: {
     inputToken: "NextToken",
@@ -33958,6 +34424,8 @@ export const listTrafficDistributionGroupUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrafficDistributionGroupUsers",
   pagination: {
     inputToken: "NextToken",
@@ -34004,6 +34472,8 @@ export const listUseCases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUseCases",
   pagination: {
     inputToken: "NextToken",
@@ -34054,6 +34524,8 @@ export const listUserHierarchyGroups: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserHierarchyGroups",
   pagination: {
     inputToken: "NextToken",
@@ -34089,6 +34561,8 @@ export const listUserNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserNotifications",
 }));
 export type ListUserProficienciesError =
@@ -34131,6 +34605,8 @@ export const listUserProficiencies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserProficiencies",
   pagination: {
     inputToken: "NextToken",
@@ -34179,6 +34655,8 @@ export const listUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
@@ -34231,6 +34709,8 @@ export const listViews: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListViews",
   pagination: {
     inputToken: "NextToken",
@@ -34283,6 +34763,8 @@ export const listViewVersions: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListViewVersions",
   pagination: {
     inputToken: "NextToken",
@@ -34318,6 +34800,8 @@ export const listWorkspaceMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspaceMedia",
 }));
 export type ListWorkspacePagesError =
@@ -34362,6 +34846,8 @@ export const listWorkspacePages: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspacePages",
   pagination: {
     inputToken: "NextToken",
@@ -34412,6 +34898,8 @@ export const listWorkspaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspaces",
   pagination: {
     inputToken: "NextToken",
@@ -34450,6 +34938,8 @@ export const monitorContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MonitorContact",
 }));
 export type PauseContactError =
@@ -34483,6 +34973,8 @@ export const pauseContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PauseContact",
 }));
 export type PutUserStatusError =
@@ -34516,6 +35008,8 @@ export const putUserStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutUserStatus",
 }));
 export type ReleasePhoneNumberError =
@@ -34570,6 +35064,8 @@ export const releasePhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReleasePhoneNumber",
 }));
 export type ReplicateInstanceError =
@@ -34607,6 +35103,8 @@ export const replicateInstance: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplicateInstance",
 }));
 export type ResumeContactError =
@@ -34638,6 +35136,8 @@ export const resumeContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeContact",
 }));
 export type ResumeContactRecordingError =
@@ -34667,6 +35167,8 @@ export const resumeContactRecording: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeContactRecording",
 }));
 export type SearchAgentStatusesError =
@@ -34709,6 +35211,8 @@ export const searchAgentStatuses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchAgentStatuses",
   pagination: {
     inputToken: "NextToken",
@@ -34757,6 +35261,8 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchAvailablePhoneNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -34806,6 +35312,8 @@ export const searchContactEvaluations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchContactEvaluations",
 }));
 export type SearchContactFlowModulesError =
@@ -34848,6 +35356,8 @@ export const searchContactFlowModules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchContactFlowModules",
   pagination: {
     inputToken: "NextToken",
@@ -34896,6 +35406,8 @@ export const searchContactFlows: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchContactFlows",
   pagination: {
     inputToken: "NextToken",
@@ -34944,6 +35456,8 @@ export const searchContacts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchContacts",
   pagination: {
     inputToken: "NextToken",
@@ -34994,6 +35508,8 @@ export const searchDataTables: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchDataTables",
   pagination: {
     inputToken: "NextToken",
@@ -35029,6 +35545,8 @@ export const searchEmailAddresses: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchEmailAddresses",
 }));
 export type SearchEvaluationFormsError =
@@ -35074,6 +35592,8 @@ export const searchEvaluationForms: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchEvaluationForms",
 }));
 export type SearchHoursOfOperationOverridesError =
@@ -35116,6 +35636,8 @@ export const searchHoursOfOperationOverrides: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchHoursOfOperationOverrides",
   pagination: {
     inputToken: "NextToken",
@@ -35164,6 +35686,8 @@ export const searchHoursOfOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchHoursOfOperations",
   pagination: {
     inputToken: "NextToken",
@@ -35199,6 +35723,8 @@ export const searchNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchNotifications",
 }));
 export type SearchPredefinedAttributesError =
@@ -35254,6 +35780,8 @@ export const searchPredefinedAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchPredefinedAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -35302,6 +35830,8 @@ export const searchPrompts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchPrompts",
   pagination: {
     inputToken: "NextToken",
@@ -35350,6 +35880,8 @@ export const searchQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchQueues",
   pagination: {
     inputToken: "NextToken",
@@ -35398,6 +35930,8 @@ export const searchQuickConnects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchQuickConnects",
   pagination: {
     inputToken: "NextToken",
@@ -35448,6 +35982,8 @@ export const searchResourceTags: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchResourceTags",
   pagination: {
     inputToken: "NextToken",
@@ -35499,6 +36035,8 @@ export const searchRoutingProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchRoutingProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -35551,6 +36089,8 @@ export const searchSecurityProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSecurityProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -35601,6 +36141,8 @@ export const searchTestCases: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchTestCases",
   pagination: {
     inputToken: "NextToken",
@@ -35652,6 +36194,8 @@ export const searchUserHierarchyGroups: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchUserHierarchyGroups",
   pagination: {
     inputToken: "NextToken",
@@ -35702,6 +36246,8 @@ export const searchUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchUsers",
   pagination: {
     inputToken: "NextToken",
@@ -35752,6 +36298,8 @@ export const searchViews: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchViews",
   pagination: {
     inputToken: "NextToken",
@@ -35799,6 +36347,8 @@ export const searchVocabularies: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchVocabularies",
   pagination: {
     inputToken: "NextToken",
@@ -35849,6 +36399,8 @@ export const searchWorkspaceAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchWorkspaceAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -35899,6 +36451,8 @@ export const searchWorkspaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchWorkspaces",
   pagination: {
     inputToken: "NextToken",
@@ -35944,6 +36498,8 @@ export const sendChatIntegrationEvent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendChatIntegrationEvent",
 }));
 export type SendOutboundEmailError =
@@ -35979,6 +36535,8 @@ export const sendOutboundEmail: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendOutboundEmail",
 }));
 export type StartAttachedFileUploadError =
@@ -36010,6 +36568,8 @@ export const startAttachedFileUpload: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAttachedFileUpload",
 }));
 export type StartChatContactError =
@@ -36059,6 +36619,8 @@ export const startChatContact: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartChatContact",
 }));
 export type StartContactEvaluationError =
@@ -36092,6 +36654,8 @@ export const startContactEvaluation: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartContactEvaluation",
 }));
 export type StartContactMediaProcessingError =
@@ -36124,6 +36688,8 @@ export const startContactMediaProcessing: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartContactMediaProcessing",
 }));
 export type StartContactRecordingError =
@@ -36166,6 +36732,8 @@ export const startContactRecording: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartContactRecording",
 }));
 export type StartContactStreamingError =
@@ -36203,6 +36771,8 @@ export const startContactStreaming: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartContactStreaming",
 }));
 export type StartEmailContactError =
@@ -36235,6 +36805,8 @@ export const startEmailContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEmailContact",
 }));
 export type StartOutboundChatContactError =
@@ -36288,6 +36860,8 @@ export const startOutboundChatContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartOutboundChatContact",
 }));
 export type StartOutboundEmailContactError =
@@ -36320,6 +36894,8 @@ export const startOutboundEmailContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartOutboundEmailContact",
 }));
 export type StartOutboundVoiceContactError =
@@ -36370,6 +36946,8 @@ export const startOutboundVoiceContact: API.OperationMethod<
     OutboundContactNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartOutboundVoiceContact",
 }));
 export type StartScreenSharingError =
@@ -36400,6 +36978,8 @@ export const startScreenSharing: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartScreenSharing",
 }));
 export type StartTaskContactError =
@@ -36461,6 +37041,8 @@ export const startTaskContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTaskContact",
 }));
 export type StartTestCaseExecutionError =
@@ -36492,6 +37074,8 @@ export const startTestCaseExecution: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTestCaseExecution",
 }));
 export type StartWebRTCContactError =
@@ -36521,6 +37105,8 @@ export const startWebRTCContact: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWebRTCContact",
 }));
 export type StopContactError =
@@ -36563,6 +37149,8 @@ export const stopContact: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopContact",
 }));
 export type StopContactMediaProcessingError =
@@ -36592,6 +37180,8 @@ export const stopContactMediaProcessing: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopContactMediaProcessing",
 }));
 export type StopContactRecordingError =
@@ -36622,6 +37212,8 @@ export const stopContactRecording: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopContactRecording",
 }));
 export type StopContactStreamingError =
@@ -36648,6 +37240,8 @@ export const stopContactStreaming: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopContactStreaming",
 }));
 export type StopTestCaseExecutionError =
@@ -36677,6 +37271,8 @@ export const stopTestCaseExecution: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTestCaseExecution",
 }));
 export type SubmitContactEvaluationError =
@@ -36709,6 +37305,8 @@ export const submitContactEvaluation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitContactEvaluation",
 }));
 export type SuspendContactRecordingError =
@@ -36742,6 +37340,8 @@ export const suspendContactRecording: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SuspendContactRecording",
 }));
 export type TagContactError =
@@ -36772,6 +37372,8 @@ export const tagContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagContact",
 }));
 export type TagResourceError =
@@ -36805,6 +37407,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TransferContactError =
@@ -36853,6 +37457,8 @@ export const transferContact: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TransferContact",
 }));
 export type UntagContactError =
@@ -36883,6 +37489,8 @@ export const untagContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagContact",
 }));
 export type UntagResourceError =
@@ -36910,6 +37518,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAgentStatusError =
@@ -36941,6 +37551,8 @@ export const updateAgentStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAgentStatus",
 }));
 export type UpdateAuthenticationProfileError =
@@ -36971,6 +37583,8 @@ export const updateAuthenticationProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAuthenticationProfile",
 }));
 export type UpdateContactError =
@@ -37009,6 +37623,8 @@ export const updateContact: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContact",
 }));
 export type UpdateContactAttributesError =
@@ -37046,6 +37662,8 @@ export const updateContactAttributes: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactAttributes",
 }));
 export type UpdateContactEvaluationError =
@@ -37075,6 +37693,8 @@ export const updateContactEvaluation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactEvaluation",
 }));
 export type UpdateContactFlowContentError =
@@ -37111,6 +37731,8 @@ export const updateContactFlowContent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactFlowContent",
 }));
 export type UpdateContactFlowMetadataError =
@@ -37140,6 +37762,8 @@ export const updateContactFlowMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactFlowMetadata",
 }));
 export type UpdateContactFlowModuleAliasError =
@@ -37173,6 +37797,8 @@ export const updateContactFlowModuleAlias: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactFlowModuleAlias",
 }));
 export type UpdateContactFlowModuleContentError =
@@ -37206,6 +37832,8 @@ export const updateContactFlowModuleContent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactFlowModuleContent",
 }));
 export type UpdateContactFlowModuleMetadataError =
@@ -37237,6 +37865,8 @@ export const updateContactFlowModuleMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactFlowModuleMetadata",
 }));
 export type UpdateContactFlowNameError =
@@ -37269,6 +37899,8 @@ export const updateContactFlowName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactFlowName",
 }));
 export type UpdateContactRoutingDataError =
@@ -37308,6 +37940,8 @@ export const updateContactRoutingData: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactRoutingData",
 }));
 export type UpdateContactScheduleError =
@@ -37337,6 +37971,8 @@ export const updateContactSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactSchedule",
 }));
 export type UpdateDataTableAttributeError =
@@ -37375,6 +38011,8 @@ export const updateDataTableAttribute: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataTableAttribute",
 }));
 export type UpdateDataTableMetadataError =
@@ -37410,6 +38048,8 @@ export const updateDataTableMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataTableMetadata",
 }));
 export type UpdateDataTablePrimaryValuesError =
@@ -37443,6 +38083,8 @@ export const updateDataTablePrimaryValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataTablePrimaryValues",
 }));
 export type UpdateEmailAddressMetadataError =
@@ -37475,6 +38117,8 @@ export const updateEmailAddressMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEmailAddressMetadata",
 }));
 export type UpdateEvaluationFormError =
@@ -37508,6 +38152,8 @@ export const updateEvaluationForm: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEvaluationForm",
 }));
 export type UpdateHoursOfOperationError =
@@ -37537,6 +38183,8 @@ export const updateHoursOfOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHoursOfOperation",
 }));
 export type UpdateHoursOfOperationOverrideError =
@@ -37568,6 +38216,8 @@ export const updateHoursOfOperationOverride: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHoursOfOperationOverride",
 }));
 export type UpdateInstanceAttributeError =
@@ -37597,6 +38247,8 @@ export const updateInstanceAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstanceAttribute",
 }));
 export type UpdateInstanceStorageConfigError =
@@ -37626,6 +38278,8 @@ export const updateInstanceStorageConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstanceStorageConfig",
 }));
 export type UpdateNotificationContentError =
@@ -37655,6 +38309,8 @@ export const updateNotificationContent: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotificationContent",
 }));
 export type UpdateParticipantAuthenticationError =
@@ -37694,6 +38350,8 @@ export const updateParticipantAuthentication: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateParticipantAuthentication",
 }));
 export type UpdateParticipantRoleConfigError =
@@ -37735,6 +38393,8 @@ export const updateParticipantRoleConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateParticipantRoleConfig",
 }));
 export type UpdatePhoneNumberError =
@@ -37772,6 +38432,8 @@ export const updatePhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePhoneNumber",
 }));
 export type UpdatePhoneNumberMetadataError =
@@ -37807,6 +38469,8 @@ export const updatePhoneNumberMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePhoneNumberMetadata",
 }));
 export type UpdatePredefinedAttributeError =
@@ -37852,6 +38516,8 @@ export const updatePredefinedAttribute: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePredefinedAttribute",
 }));
 export type UpdatePromptError =
@@ -37879,6 +38545,8 @@ export const updatePrompt: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePrompt",
 }));
 export type UpdateQueueHoursOfOperationError =
@@ -37906,6 +38574,8 @@ export const updateQueueHoursOfOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQueueHoursOfOperation",
 }));
 export type UpdateQueueMaxContactsError =
@@ -37933,6 +38603,8 @@ export const updateQueueMaxContacts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQueueMaxContacts",
 }));
 export type UpdateQueueNameError =
@@ -37962,6 +38634,8 @@ export const updateQueueName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQueueName",
 }));
 export type UpdateQueueOutboundCallerConfigError =
@@ -38003,6 +38677,8 @@ export const updateQueueOutboundCallerConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQueueOutboundCallerConfig",
 }));
 export type UpdateQueueOutboundEmailConfigError =
@@ -38034,6 +38710,8 @@ export const updateQueueOutboundEmailConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQueueOutboundEmailConfig",
 }));
 export type UpdateQueueStatusError =
@@ -38061,6 +38739,8 @@ export const updateQueueStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQueueStatus",
 }));
 export type UpdateQuickConnectConfigError =
@@ -38088,6 +38768,8 @@ export const updateQuickConnectConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQuickConnectConfig",
 }));
 export type UpdateQuickConnectNameError =
@@ -38115,6 +38797,8 @@ export const updateQuickConnectName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQuickConnectName",
 }));
 export type UpdateRoutingProfileAgentAvailabilityTimerError =
@@ -38143,6 +38827,8 @@ export const updateRoutingProfileAgentAvailabilityTimer: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoutingProfileAgentAvailabilityTimer",
 }));
 export type UpdateRoutingProfileConcurrencyError =
@@ -38170,6 +38856,8 @@ export const updateRoutingProfileConcurrency: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoutingProfileConcurrency",
 }));
 export type UpdateRoutingProfileDefaultOutboundQueueError =
@@ -38197,6 +38885,8 @@ export const updateRoutingProfileDefaultOutboundQueue: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoutingProfileDefaultOutboundQueue",
 }));
 export type UpdateRoutingProfileNameError =
@@ -38226,6 +38916,8 @@ export const updateRoutingProfileName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoutingProfileName",
 }));
 export type UpdateRoutingProfileQueuesError =
@@ -38253,6 +38945,8 @@ export const updateRoutingProfileQueues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoutingProfileQueues",
 }));
 export type UpdateRuleError =
@@ -38285,6 +38979,8 @@ export const updateRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRule",
 }));
 export type UpdateSecurityProfileError =
@@ -38316,6 +39012,8 @@ export const updateSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityProfile",
 }));
 export type UpdateTaskTemplateError =
@@ -38346,6 +39044,8 @@ export const updateTaskTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTaskTemplate",
 }));
 export type UpdateTestCaseError =
@@ -38379,6 +39079,8 @@ export const updateTestCase: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTestCase",
 }));
 export type UpdateTrafficDistributionError =
@@ -38427,6 +39129,8 @@ export const updateTrafficDistribution: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrafficDistribution",
 }));
 export type UpdateUserConfigError =
@@ -38458,6 +39162,8 @@ export const updateUserConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserConfig",
 }));
 export type UpdateUserHierarchyError =
@@ -38485,6 +39191,8 @@ export const updateUserHierarchy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserHierarchy",
 }));
 export type UpdateUserHierarchyGroupNameError =
@@ -38514,6 +39222,8 @@ export const updateUserHierarchyGroupName: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserHierarchyGroupName",
 }));
 export type UpdateUserHierarchyStructureError =
@@ -38543,6 +39253,8 @@ export const updateUserHierarchyStructure: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserHierarchyStructure",
 }));
 export type UpdateUserIdentityInfoError =
@@ -38576,6 +39288,8 @@ export const updateUserIdentityInfo: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserIdentityInfo",
 }));
 export type UpdateUserNotificationStatusError =
@@ -38605,6 +39319,8 @@ export const updateUserNotificationStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserNotificationStatus",
 }));
 export type UpdateUserPhoneConfigError =
@@ -38634,6 +39350,8 @@ export const updateUserPhoneConfig: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserPhoneConfig",
 }));
 export type UpdateUserProficienciesError =
@@ -38661,6 +39379,8 @@ export const updateUserProficiencies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserProficiencies",
 }));
 export type UpdateUserRoutingProfileError =
@@ -38688,6 +39408,8 @@ export const updateUserRoutingProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserRoutingProfile",
 }));
 export type UpdateUserSecurityProfilesError =
@@ -38715,6 +39437,8 @@ export const updateUserSecurityProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserSecurityProfiles",
 }));
 export type UpdateViewContentError =
@@ -38751,6 +39475,8 @@ export const updateViewContent: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateViewContent",
 }));
 export type UpdateViewMetadataError =
@@ -38785,6 +39511,8 @@ export const updateViewMetadata: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateViewMetadata",
 }));
 export type UpdateWorkspaceMetadataError =
@@ -38816,6 +39544,8 @@ export const updateWorkspaceMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspaceMetadata",
 }));
 export type UpdateWorkspacePageError =
@@ -38849,6 +39579,8 @@ export const updateWorkspacePage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspacePage",
 }));
 export type UpdateWorkspaceThemeError =
@@ -38878,6 +39610,8 @@ export const updateWorkspaceTheme: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspaceTheme",
 }));
 export type UpdateWorkspaceVisibilityError =
@@ -38908,5 +39642,7 @@ export const updateWorkspaceVisibility: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspaceVisibility",
 }));

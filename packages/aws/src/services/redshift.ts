@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -8586,6 +8588,8 @@ export const acceptReservedNodeExchange: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptReservedNodeExchange",
 }));
 export type AddPartnerError =
@@ -8613,6 +8617,8 @@ export const addPartner: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddPartner",
 }));
 export type AssociateDataShareConsumerError =
@@ -8633,6 +8639,8 @@ export const associateDataShareConsumer: API.OperationMethod<
   input: AssociateDataShareConsumerMessage,
   output: DataShare,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDataShareConsumer",
 }));
 export type AuthorizeClusterSecurityGroupIngressError =
@@ -8676,6 +8684,8 @@ export const authorizeClusterSecurityGroupIngress: API.OperationMethod<
     ClusterSecurityGroupNotFoundFault,
     InvalidClusterSecurityGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeClusterSecurityGroupIngress",
 }));
 export type AuthorizeDataShareError = InvalidDataShareFault | CommonErrors;
@@ -8693,6 +8703,8 @@ export const authorizeDataShare: API.OperationMethod<
   input: AuthorizeDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeDataShare",
 }));
 export type AuthorizeEndpointAccessError =
@@ -8722,6 +8734,8 @@ export const authorizeEndpointAccess: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeEndpointAccess",
 }));
 export type AuthorizeSnapshotAccessError =
@@ -8758,6 +8772,8 @@ export const authorizeSnapshotAccess: API.OperationMethod<
     LimitExceededFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeSnapshotAccess",
 }));
 export type BatchDeleteClusterSnapshotsError =
@@ -8775,6 +8791,8 @@ export const batchDeleteClusterSnapshots: API.OperationMethod<
   input: BatchDeleteClusterSnapshotsRequest,
   output: BatchDeleteClusterSnapshotsResult,
   errors: [BatchDeleteRequestSizeExceededFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteClusterSnapshots",
 }));
 export type BatchModifyClusterSnapshotsError =
@@ -8796,6 +8814,8 @@ export const batchModifyClusterSnapshots: API.OperationMethod<
     BatchModifyClusterSnapshotsLimitExceededFault,
     InvalidRetentionPeriodFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchModifyClusterSnapshots",
 }));
 export type CancelResizeError =
@@ -8821,6 +8841,8 @@ export const cancelResize: API.OperationMethod<
     ResizeNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelResize",
 }));
 export type CopyClusterSnapshotError =
@@ -8862,6 +8884,8 @@ export const copyClusterSnapshot: API.OperationMethod<
     InvalidClusterSnapshotStateFault,
     InvalidRetentionPeriodFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyClusterSnapshot",
 }));
 export type CreateAuthenticationProfileError =
@@ -8885,6 +8909,8 @@ export const createAuthenticationProfile: API.OperationMethod<
     AuthenticationProfileQuotaExceededFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAuthenticationProfile",
 }));
 export type CreateClusterError =
@@ -8981,6 +9007,8 @@ export const createCluster: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateClusterParameterGroupError =
@@ -9016,6 +9044,8 @@ export const createClusterParameterGroup: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterParameterGroup",
 }));
 export type CreateClusterSecurityGroupError =
@@ -9046,6 +9076,8 @@ export const createClusterSecurityGroup: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterSecurityGroup",
 }));
 export type CreateClusterSnapshotError =
@@ -9082,6 +9114,8 @@ export const createClusterSnapshot: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterSnapshot",
 }));
 export type CreateClusterSubnetGroupError =
@@ -9121,6 +9155,8 @@ export const createClusterSubnetGroup: API.OperationMethod<
     TagLimitExceededFault,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterSubnetGroup",
 }));
 export type CreateCustomDomainAssociationError =
@@ -9145,6 +9181,8 @@ export const createCustomDomainAssociation: API.OperationMethod<
     CustomCnameAssociationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomDomainAssociation",
 }));
 export type CreateEndpointAccessError =
@@ -9182,6 +9220,8 @@ export const createEndpointAccess: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpointAccess",
 }));
 export type CreateEventSubscriptionError =
@@ -9239,6 +9279,8 @@ export const createEventSubscription: API.OperationMethod<
     SubscriptionSeverityNotFoundFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventSubscription",
 }));
 export type CreateHsmClientCertificateError =
@@ -9272,6 +9314,8 @@ export const createHsmClientCertificate: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHsmClientCertificate",
 }));
 export type CreateHsmConfigurationError =
@@ -9304,6 +9348,8 @@ export const createHsmConfiguration: API.OperationMethod<
     InvalidTagFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHsmConfiguration",
 }));
 export type CreateIntegrationError =
@@ -9339,6 +9385,8 @@ export const createIntegration: API.OperationMethod<
     TagLimitExceededFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegration",
 }));
 export type CreateRedshiftIdcApplicationError =
@@ -9370,6 +9418,8 @@ export const createRedshiftIdcApplication: API.OperationMethod<
     TagLimitExceededFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRedshiftIdcApplication",
 }));
 export type CreateScheduledActionError =
@@ -9404,6 +9454,8 @@ export const createScheduledAction: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScheduledAction",
 }));
 export type CreateSnapshotCopyGrantError =
@@ -9439,6 +9491,8 @@ export const createSnapshotCopyGrant: API.OperationMethod<
     SnapshotCopyGrantQuotaExceededFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshotCopyGrant",
 }));
 export type CreateSnapshotScheduleError =
@@ -9468,6 +9522,8 @@ export const createSnapshotSchedule: API.OperationMethod<
     SnapshotScheduleQuotaExceededFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshotSchedule",
 }));
 export type CreateTagsError =
@@ -9499,6 +9555,8 @@ export const createTags: API.OperationMethod<
     ResourceNotFoundFault,
     TagLimitExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTags",
 }));
 export type CreateUsageLimitError =
@@ -9531,6 +9589,8 @@ export const createUsageLimit: API.OperationMethod<
     UnsupportedOperationFault,
     UsageLimitAlreadyExistsFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUsageLimit",
 }));
 export type DeauthorizeDataShareError = InvalidDataShareFault | CommonErrors;
@@ -9546,6 +9606,8 @@ export const deauthorizeDataShare: API.OperationMethod<
   input: DeauthorizeDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeauthorizeDataShare",
 }));
 export type DeleteAuthenticationProfileError =
@@ -9567,6 +9629,8 @@ export const deleteAuthenticationProfile: API.OperationMethod<
     AuthenticationProfileNotFoundFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAuthenticationProfile",
 }));
 export type DeleteClusterError =
@@ -9610,6 +9674,8 @@ export const deleteCluster: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidRetentionPeriodFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type DeleteClusterParameterGroupError =
@@ -9634,6 +9700,8 @@ export const deleteClusterParameterGroup: API.OperationMethod<
     ClusterParameterGroupNotFoundFault,
     InvalidClusterParameterGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterParameterGroup",
 }));
 export type DeleteClusterSecurityGroupError =
@@ -9662,6 +9730,8 @@ export const deleteClusterSecurityGroup: API.OperationMethod<
     ClusterSecurityGroupNotFoundFault,
     InvalidClusterSecurityGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterSecurityGroup",
 }));
 export type DeleteClusterSnapshotError =
@@ -9687,6 +9757,8 @@ export const deleteClusterSnapshot: API.OperationMethod<
   input: DeleteClusterSnapshotMessage,
   output: DeleteClusterSnapshotResult,
   errors: [ClusterSnapshotNotFoundFault, InvalidClusterSnapshotStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterSnapshot",
 }));
 export type DeleteClusterSubnetGroupError =
@@ -9710,6 +9782,8 @@ export const deleteClusterSubnetGroup: API.OperationMethod<
     InvalidClusterSubnetGroupStateFault,
     InvalidClusterSubnetStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterSubnetGroup",
 }));
 export type DeleteCustomDomainAssociationError =
@@ -9735,6 +9809,8 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
     CustomDomainAssociationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomDomainAssociation",
 }));
 export type DeleteEndpointAccessError =
@@ -9762,6 +9838,8 @@ export const deleteEndpointAccess: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidEndpointStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpointAccess",
 }));
 export type DeleteEventSubscriptionError =
@@ -9780,6 +9858,8 @@ export const deleteEventSubscription: API.OperationMethod<
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResponse,
   errors: [InvalidSubscriptionStateFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventSubscription",
 }));
 export type DeleteHsmClientCertificateError =
@@ -9801,6 +9881,8 @@ export const deleteHsmClientCertificate: API.OperationMethod<
     HsmClientCertificateNotFoundFault,
     InvalidHsmClientCertificateStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHsmClientCertificate",
 }));
 export type DeleteHsmConfigurationError =
@@ -9819,6 +9901,8 @@ export const deleteHsmConfiguration: API.OperationMethod<
   input: DeleteHsmConfigurationMessage,
   output: DeleteHsmConfigurationResponse,
   errors: [HsmConfigurationNotFoundFault, InvalidHsmConfigurationStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHsmConfiguration",
 }));
 export type DeleteIntegrationError =
@@ -9844,6 +9928,8 @@ export const deleteIntegration: API.OperationMethod<
     IntegrationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegration",
 }));
 export type DeletePartnerError =
@@ -9869,6 +9955,8 @@ export const deletePartner: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePartner",
 }));
 export type DeleteRedshiftIdcApplicationError =
@@ -9894,6 +9982,8 @@ export const deleteRedshiftIdcApplication: API.OperationMethod<
     RedshiftIdcApplicationNotExistsFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRedshiftIdcApplication",
 }));
 export type DeleteResourcePolicyError =
@@ -9912,6 +10002,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   input: DeleteResourcePolicyMessage,
   output: DeleteResourcePolicyResponse,
   errors: [ResourceNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteScheduledActionError =
@@ -9930,6 +10022,8 @@ export const deleteScheduledAction: API.OperationMethod<
   input: DeleteScheduledActionMessage,
   output: DeleteScheduledActionResponse,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScheduledAction",
 }));
 export type DeleteSnapshotCopyGrantError =
@@ -9948,6 +10042,8 @@ export const deleteSnapshotCopyGrant: API.OperationMethod<
   input: DeleteSnapshotCopyGrantMessage,
   output: DeleteSnapshotCopyGrantResponse,
   errors: [InvalidSnapshotCopyGrantStateFault, SnapshotCopyGrantNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshotCopyGrant",
 }));
 export type DeleteSnapshotScheduleError =
@@ -9969,6 +10065,8 @@ export const deleteSnapshotSchedule: API.OperationMethod<
     InvalidClusterSnapshotScheduleStateFault,
     SnapshotScheduleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshotSchedule",
 }));
 export type DeleteTagsError =
@@ -9988,6 +10086,8 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsMessage,
   output: DeleteTagsResponse,
   errors: [InvalidTagFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
 export type DeleteUsageLimitError =
@@ -10006,6 +10106,8 @@ export const deleteUsageLimit: API.OperationMethod<
   input: DeleteUsageLimitMessage,
   output: DeleteUsageLimitResponse,
   errors: [UnsupportedOperationFault, UsageLimitNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUsageLimit",
 }));
 export type DeregisterNamespaceError =
@@ -10029,6 +10131,8 @@ export const deregisterNamespace: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidNamespaceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterNamespace",
 }));
 export type DescribeAccountAttributesError = CommonErrors;
@@ -10044,6 +10148,8 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesMessage,
   output: AccountAttributeList,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
 export type DescribeAuthenticationProfilesError =
@@ -10065,6 +10171,8 @@ export const describeAuthenticationProfiles: API.OperationMethod<
     AuthenticationProfileNotFoundFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAuthenticationProfiles",
 }));
 export type DescribeClusterDbRevisionsError =
@@ -10098,6 +10206,8 @@ export const describeClusterDbRevisions: API.OperationMethod<
   input: DescribeClusterDbRevisionsMessage,
   output: ClusterDbRevisionsMessage,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterDbRevisions",
   pagination: {
     inputToken: "Marker",
@@ -10155,6 +10265,8 @@ export const describeClusterParameterGroups: API.OperationMethod<
   input: DescribeClusterParameterGroupsMessage,
   output: ClusterParameterGroupsMessage,
   errors: [ClusterParameterGroupNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterParameterGroups",
   pagination: {
     inputToken: "Marker",
@@ -10205,6 +10317,8 @@ export const describeClusterParameters: API.OperationMethod<
   input: DescribeClusterParametersMessage,
   output: ClusterParameterGroupDetails,
   errors: [ClusterParameterGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterParameters",
   pagination: {
     inputToken: "Marker",
@@ -10258,6 +10372,8 @@ export const describeClusters: API.OperationMethod<
   input: DescribeClustersMessage,
   output: ClustersMessage,
   errors: [ClusterNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusters",
   pagination: {
     inputToken: "Marker",
@@ -10313,6 +10429,8 @@ export const describeClusterSecurityGroups: API.OperationMethod<
   input: DescribeClusterSecurityGroupsMessage,
   output: ClusterSecurityGroupMessage,
   errors: [ClusterSecurityGroupNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterSecurityGroups",
   pagination: {
     inputToken: "Marker",
@@ -10373,6 +10491,8 @@ export const describeClusterSnapshots: API.OperationMethod<
     InvalidTagFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterSnapshots",
   pagination: {
     inputToken: "Marker",
@@ -10424,6 +10544,8 @@ export const describeClusterSubnetGroups: API.OperationMethod<
   input: DescribeClusterSubnetGroupsMessage,
   output: ClusterSubnetGroupMessage,
   errors: [ClusterSubnetGroupNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterSubnetGroups",
   pagination: {
     inputToken: "Marker",
@@ -10463,6 +10585,8 @@ export const describeClusterTracks: API.OperationMethod<
   input: DescribeClusterTracksMessage,
   output: TrackListMessage,
   errors: [InvalidClusterTrackFault, UnauthorizedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterTracks",
   pagination: {
     inputToken: "Marker",
@@ -10504,6 +10628,8 @@ export const describeClusterVersions: API.OperationMethod<
   input: DescribeClusterVersionsMessage,
   output: ClusterVersionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterVersions",
   pagination: {
     inputToken: "Marker",
@@ -10543,6 +10669,8 @@ export const describeCustomDomainAssociations: API.OperationMethod<
   input: DescribeCustomDomainAssociationsMessage,
   output: CustomDomainAssociationsMessage,
   errors: [CustomDomainAssociationNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomDomainAssociations",
   pagination: {
     inputToken: "Marker",
@@ -10580,6 +10708,8 @@ export const describeDataShares: API.OperationMethod<
   input: DescribeDataSharesMessage,
   output: DescribeDataSharesResult,
   errors: [InvalidDataShareFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataShares",
   pagination: {
     inputToken: "Marker",
@@ -10618,6 +10748,8 @@ export const describeDataSharesForConsumer: API.OperationMethod<
   input: DescribeDataSharesForConsumerMessage,
   output: DescribeDataSharesForConsumerResult,
   errors: [InvalidNamespaceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSharesForConsumer",
   pagination: {
     inputToken: "Marker",
@@ -10656,6 +10788,8 @@ export const describeDataSharesForProducer: API.OperationMethod<
   input: DescribeDataSharesForProducerMessage,
   output: DescribeDataSharesForProducerResult,
   errors: [InvalidNamespaceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSharesForProducer",
   pagination: {
     inputToken: "Marker",
@@ -10697,6 +10831,8 @@ export const describeDefaultClusterParameters: API.OperationMethod<
   input: DescribeDefaultClusterParametersMessage,
   output: DescribeDefaultClusterParametersResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDefaultClusterParameters",
   pagination: {
     inputToken: "Marker",
@@ -10741,6 +10877,8 @@ export const describeEndpointAccess: API.OperationMethod<
     EndpointNotFoundFault,
     InvalidClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointAccess",
   pagination: {
     inputToken: "Marker",
@@ -10780,6 +10918,8 @@ export const describeEndpointAuthorization: API.OperationMethod<
   input: DescribeEndpointAuthorizationMessage,
   output: EndpointAuthorizationList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointAuthorization",
   pagination: {
     inputToken: "Marker",
@@ -10803,6 +10943,8 @@ export const describeEventCategories: API.OperationMethod<
   input: DescribeEventCategoriesMessage,
   output: EventCategoriesMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventCategories",
 }));
 export type DescribeEventsError = CommonErrors;
@@ -10836,6 +10978,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
@@ -10887,6 +11031,8 @@ export const describeEventSubscriptions: API.OperationMethod<
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [InvalidTagFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventSubscriptions",
   pagination: {
     inputToken: "Marker",
@@ -10937,6 +11083,8 @@ export const describeHsmClientCertificates: API.OperationMethod<
   input: DescribeHsmClientCertificatesMessage,
   output: HsmClientCertificateMessage,
   errors: [HsmClientCertificateNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHsmClientCertificates",
   pagination: {
     inputToken: "Marker",
@@ -10988,6 +11136,8 @@ export const describeHsmConfigurations: API.OperationMethod<
   input: DescribeHsmConfigurationsMessage,
   output: HsmConfigurationMessage,
   errors: [HsmConfigurationNotFoundFault, InvalidTagFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHsmConfigurations",
   pagination: {
     inputToken: "Marker",
@@ -11032,6 +11182,8 @@ export const describeInboundIntegrations: API.OperationMethod<
     InvalidNamespaceFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInboundIntegrations",
   pagination: {
     inputToken: "Marker",
@@ -11071,6 +11223,8 @@ export const describeIntegrations: API.OperationMethod<
   input: DescribeIntegrationsMessage,
   output: IntegrationsMessage,
   errors: [IntegrationNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIntegrations",
   pagination: {
     inputToken: "Marker",
@@ -11096,6 +11250,8 @@ export const describeLoggingStatus: API.OperationMethod<
   input: DescribeLoggingStatusMessage,
   output: LoggingStatus,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoggingStatus",
 }));
 export type DescribeNodeConfigurationOptionsError =
@@ -11139,6 +11295,8 @@ export const describeNodeConfigurationOptions: API.OperationMethod<
     InvalidClusterSnapshotStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNodeConfigurationOptions",
   pagination: {
     inputToken: "Marker",
@@ -11183,6 +11341,8 @@ export const describeOrderableClusterOptions: API.OperationMethod<
   input: DescribeOrderableClusterOptionsMessage,
   output: OrderableClusterOptionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrderableClusterOptions",
   pagination: {
     inputToken: "Marker",
@@ -11212,6 +11372,8 @@ export const describePartners: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePartners",
 }));
 export type DescribeRedshiftIdcApplicationsError =
@@ -11252,6 +11414,8 @@ export const describeRedshiftIdcApplications: API.OperationMethod<
     RedshiftIdcApplicationNotExistsFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRedshiftIdcApplications",
   pagination: {
     inputToken: "Marker",
@@ -11297,6 +11461,8 @@ export const describeReservedNodeExchangeStatus: API.OperationMethod<
     ReservedNodeNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedNodeExchangeStatus",
   pagination: {
     inputToken: "Marker",
@@ -11350,6 +11516,8 @@ export const describeReservedNodeOfferings: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedNodeOfferings",
   pagination: {
     inputToken: "Marker",
@@ -11389,6 +11557,8 @@ export const describeReservedNodes: API.OperationMethod<
   input: DescribeReservedNodesMessage,
   output: ReservedNodesMessage,
   errors: [DependentServiceUnavailableFault, ReservedNodeNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedNodes",
   pagination: {
     inputToken: "Marker",
@@ -11424,6 +11594,8 @@ export const describeResize: API.OperationMethod<
     ResizeNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResize",
 }));
 export type DescribeScheduledActionsError =
@@ -11457,6 +11629,8 @@ export const describeScheduledActions: API.OperationMethod<
   input: DescribeScheduledActionsMessage,
   output: ScheduledActionsMessage,
   errors: [ScheduledActionNotFoundFault, UnauthorizedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScheduledActions",
   pagination: {
     inputToken: "Marker",
@@ -11501,6 +11675,8 @@ export const describeSnapshotCopyGrants: API.OperationMethod<
   input: DescribeSnapshotCopyGrantsMessage,
   output: SnapshotCopyGrantMessage,
   errors: [InvalidTagFault, SnapshotCopyGrantNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshotCopyGrants",
   pagination: {
     inputToken: "Marker",
@@ -11537,6 +11713,8 @@ export const describeSnapshotSchedules: API.OperationMethod<
   input: DescribeSnapshotSchedulesMessage,
   output: DescribeSnapshotSchedulesOutputMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshotSchedules",
   pagination: {
     inputToken: "Marker",
@@ -11558,6 +11736,8 @@ export const describeStorage: API.OperationMethod<
   input: DescribeStorageRequest,
   output: CustomerStorageMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStorage",
 }));
 export type DescribeTableRestoreStatusError =
@@ -11596,6 +11776,8 @@ export const describeTableRestoreStatus: API.OperationMethod<
   input: DescribeTableRestoreStatusMessage,
   output: TableRestoreStatusMessage,
   errors: [ClusterNotFoundFault, TableRestoreNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTableRestoreStatus",
   pagination: {
     inputToken: "Marker",
@@ -11657,6 +11839,8 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsMessage,
   output: TaggedResourceListMessage,
   errors: [InvalidTagFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
   pagination: {
     inputToken: "Marker",
@@ -11709,6 +11893,8 @@ export const describeUsageLimits: API.OperationMethod<
   input: DescribeUsageLimitsMessage,
   output: UsageLimitList,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUsageLimits",
   pagination: {
     inputToken: "Marker",
@@ -11739,6 +11925,8 @@ export const disableLogging: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableLogging",
 }));
 export type DisableSnapshotCopyError =
@@ -11771,6 +11959,8 @@ export const disableSnapshotCopy: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableSnapshotCopy",
 }));
 export type DisassociateDataShareConsumerError =
@@ -11789,6 +11979,8 @@ export const disassociateDataShareConsumer: API.OperationMethod<
   input: DisassociateDataShareConsumerMessage,
   output: DataShare,
   errors: [InvalidDataShareFault, InvalidNamespaceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDataShareConsumer",
 }));
 export type EnableLoggingError =
@@ -11821,6 +12013,8 @@ export const enableLogging: API.OperationMethod<
     InvalidS3KeyPrefixFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableLogging",
 }));
 export type EnableSnapshotCopyError =
@@ -11861,6 +12055,8 @@ export const enableSnapshotCopy: API.OperationMethod<
     UnauthorizedOperation,
     UnknownSnapshotCopyRegionFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSnapshotCopy",
 }));
 export type FailoverPrimaryComputeError =
@@ -11886,6 +12082,8 @@ export const failoverPrimaryCompute: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FailoverPrimaryCompute",
 }));
 export type GetClusterCredentialsError =
@@ -11928,6 +12126,8 @@ export const getClusterCredentials: API.OperationMethod<
   input: GetClusterCredentialsMessage,
   output: ClusterCredentials,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterCredentials",
 }));
 export type GetClusterCredentialsWithIAMError =
@@ -11956,6 +12156,8 @@ export const getClusterCredentialsWithIAM: API.OperationMethod<
   input: GetClusterCredentialsWithIAMMessage,
   output: ClusterExtendedCredentials,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterCredentialsWithIAM",
 }));
 export type GetIdentityCenterAuthTokenError =
@@ -11992,6 +12194,8 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
     RedshiftInvalidParameterFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityCenterAuthToken",
 }));
 export type GetReservedNodeExchangeConfigurationOptionsError =
@@ -12042,6 +12246,8 @@ export const getReservedNodeExchangeConfigurationOptions: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservedNodeExchangeConfigurationOptions",
   pagination: {
     inputToken: "Marker",
@@ -12093,6 +12299,8 @@ export const getReservedNodeExchangeOfferings: API.OperationMethod<
     ReservedNodeOfferingNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservedNodeExchangeOfferings",
   pagination: {
     inputToken: "Marker",
@@ -12122,6 +12330,8 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type ListRecommendationsError =
@@ -12155,6 +12365,8 @@ export const listRecommendations: API.OperationMethod<
   input: ListRecommendationsMessage,
   output: ListRecommendationsResult,
   errors: [ClusterNotFoundFault, UnsupportedOperationFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendations",
   pagination: {
     inputToken: "Marker",
@@ -12184,6 +12396,8 @@ export const modifyAquaConfiguration: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyAquaConfiguration",
 }));
 export type ModifyAuthenticationProfileError =
@@ -12207,6 +12421,8 @@ export const modifyAuthenticationProfile: API.OperationMethod<
     AuthenticationProfileQuotaExceededFault,
     InvalidAuthenticationProfileRequestFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyAuthenticationProfile",
 }));
 export type ModifyClusterError =
@@ -12296,6 +12512,8 @@ export const modifyCluster: API.OperationMethod<
     UnsupportedOperationFault,
     UnsupportedOptionFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCluster",
 }));
 export type ModifyClusterDbRevisionError =
@@ -12322,6 +12540,8 @@ export const modifyClusterDbRevision: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterDbRevision",
 }));
 export type ModifyClusterIamRolesError =
@@ -12345,6 +12565,8 @@ export const modifyClusterIamRoles: API.OperationMethod<
   input: ModifyClusterIamRolesMessage,
   output: ModifyClusterIamRolesResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterIamRoles",
 }));
 export type ModifyClusterMaintenanceError =
@@ -12363,6 +12585,8 @@ export const modifyClusterMaintenance: API.OperationMethod<
   input: ModifyClusterMaintenanceMessage,
   output: ModifyClusterMaintenanceResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterMaintenance",
 }));
 export type ModifyClusterParameterGroupError =
@@ -12388,6 +12612,8 @@ export const modifyClusterParameterGroup: API.OperationMethod<
     ClusterParameterGroupNotFoundFault,
     InvalidClusterParameterGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterParameterGroup",
 }));
 export type ModifyClusterSnapshotError =
@@ -12413,6 +12639,8 @@ export const modifyClusterSnapshot: API.OperationMethod<
     InvalidClusterSnapshotStateFault,
     InvalidRetentionPeriodFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterSnapshot",
 }));
 export type ModifyClusterSnapshotScheduleError =
@@ -12436,6 +12664,8 @@ export const modifyClusterSnapshotSchedule: API.OperationMethod<
     InvalidClusterSnapshotScheduleStateFault,
     SnapshotScheduleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterSnapshotSchedule",
 }));
 export type ModifyClusterSubnetGroupError =
@@ -12484,6 +12714,8 @@ export const modifyClusterSubnetGroup: API.OperationMethod<
     SubnetAlreadyInUse,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClusterSubnetGroup",
 }));
 export type ModifyCustomDomainAssociationError =
@@ -12509,6 +12741,8 @@ export const modifyCustomDomainAssociation: API.OperationMethod<
     CustomDomainAssociationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCustomDomainAssociation",
 }));
 export type ModifyEndpointAccessError =
@@ -12538,6 +12772,8 @@ export const modifyEndpointAccess: API.OperationMethod<
     InvalidEndpointStateFault,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEndpointAccess",
 }));
 export type ModifyEventSubscriptionError =
@@ -12573,6 +12809,8 @@ export const modifyEventSubscription: API.OperationMethod<
     SubscriptionNotFoundFault,
     SubscriptionSeverityNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEventSubscription",
 }));
 export type ModifyIntegrationError =
@@ -12600,6 +12838,8 @@ export const modifyIntegration: API.OperationMethod<
     IntegrationNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIntegration",
 }));
 export type ModifyLakehouseConfigurationError =
@@ -12631,6 +12871,8 @@ export const modifyLakehouseConfiguration: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyLakehouseConfiguration",
 }));
 export type ModifyRedshiftIdcApplicationError =
@@ -12656,6 +12898,8 @@ export const modifyRedshiftIdcApplication: API.OperationMethod<
     RedshiftIdcApplicationNotExistsFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyRedshiftIdcApplication",
 }));
 export type ModifyScheduledActionError =
@@ -12687,6 +12931,8 @@ export const modifyScheduledAction: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyScheduledAction",
 }));
 export type ModifySnapshotCopyRetentionPeriodError =
@@ -12720,6 +12966,8 @@ export const modifySnapshotCopyRetentionPeriod: API.OperationMethod<
     SnapshotCopyDisabledFault,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySnapshotCopyRetentionPeriod",
 }));
 export type ModifySnapshotScheduleError =
@@ -12744,6 +12992,8 @@ export const modifySnapshotSchedule: API.OperationMethod<
     SnapshotScheduleNotFoundFault,
     SnapshotScheduleUpdateInProgressFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySnapshotSchedule",
 }));
 export type ModifyUsageLimitError =
@@ -12768,6 +13018,8 @@ export const modifyUsageLimit: API.OperationMethod<
     UnsupportedOperationFault,
     UsageLimitNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyUsageLimit",
 }));
 export type PauseClusterError =
@@ -12791,6 +13043,8 @@ export const pauseCluster: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PauseCluster",
 }));
 export type PurchaseReservedNodeOfferingError =
@@ -12824,6 +13078,8 @@ export const purchaseReservedNodeOffering: API.OperationMethod<
     ReservedNodeQuotaExceededFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseReservedNodeOffering",
 }));
 export type PutResourcePolicyError =
@@ -12849,6 +13105,8 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type RebootClusterError =
@@ -12874,6 +13132,8 @@ export const rebootCluster: API.OperationMethod<
   input: RebootClusterMessage,
   output: RebootClusterResult,
   errors: [ClusterNotFoundFault, InvalidClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootCluster",
 }));
 export type RegisterNamespaceError =
@@ -12897,6 +13157,8 @@ export const registerNamespace: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidNamespaceFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterNamespace",
 }));
 export type RejectDataShareError = InvalidDataShareFault | CommonErrors;
@@ -12912,6 +13174,8 @@ export const rejectDataShare: API.OperationMethod<
   input: RejectDataShareMessage,
   output: DataShare,
   errors: [InvalidDataShareFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectDataShare",
 }));
 export type ResetClusterParameterGroupError =
@@ -12936,6 +13200,8 @@ export const resetClusterParameterGroup: API.OperationMethod<
     ClusterParameterGroupNotFoundFault,
     InvalidClusterParameterGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetClusterParameterGroup",
 }));
 export type ResizeClusterError =
@@ -13005,6 +13271,8 @@ export const resizeCluster: API.OperationMethod<
     UnsupportedOperationFault,
     UnsupportedOptionFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResizeCluster",
 }));
 export type RestoreFromClusterSnapshotError =
@@ -13122,6 +13390,8 @@ export const restoreFromClusterSnapshot: API.OperationMethod<
     UnauthorizedOperation,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreFromClusterSnapshot",
 }));
 export type RestoreTableFromClusterSnapshotError =
@@ -13168,6 +13438,8 @@ export const restoreTableFromClusterSnapshot: API.OperationMethod<
     InvalidTableRestoreArgumentFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTableFromClusterSnapshot",
 }));
 export type ResumeClusterError =
@@ -13193,6 +13465,8 @@ export const resumeCluster: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeCluster",
 }));
 export type RevokeClusterSecurityGroupIngressError =
@@ -13220,6 +13494,8 @@ export const revokeClusterSecurityGroupIngress: API.OperationMethod<
     ClusterSecurityGroupNotFoundFault,
     InvalidClusterSecurityGroupStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeClusterSecurityGroupIngress",
 }));
 export type RevokeEndpointAccessError =
@@ -13251,6 +13527,8 @@ export const revokeEndpointAccess: API.OperationMethod<
     InvalidClusterStateFault,
     InvalidEndpointStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeEndpointAccess",
 }));
 export type RevokeSnapshotAccessError =
@@ -13282,6 +13560,8 @@ export const revokeSnapshotAccess: API.OperationMethod<
     ClusterSnapshotNotFoundFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeSnapshotAccess",
 }));
 export type RotateEncryptionKeyError =
@@ -13307,6 +13587,8 @@ export const rotateEncryptionKey: API.OperationMethod<
     InvalidClusterStateFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateEncryptionKey",
 }));
 export type UpdatePartnerStatusError =
@@ -13332,5 +13614,7 @@ export const updatePartnerStatus: API.OperationMethod<
     UnauthorizedPartnerIntegrationFault,
     UnsupportedOperationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePartnerStatus",
 }));

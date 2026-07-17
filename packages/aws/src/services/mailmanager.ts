@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3343,6 +3345,8 @@ export const createAddressListImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAddressListImportJob",
 }));
 export type DeregisterMemberFromAddressListError =
@@ -3370,6 +3374,8 @@ export const deregisterMemberFromAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterMemberFromAddressList",
 }));
 export type GetAddressListImportJobError =
@@ -3395,6 +3401,8 @@ export const getAddressListImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAddressListImportJob",
 }));
 export type GetArchiveExportError =
@@ -3414,6 +3422,8 @@ export const getArchiveExport: API.OperationMethod<
   input: GetArchiveExportRequest,
   output: GetArchiveExportResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArchiveExport",
 }));
 export type GetArchiveMessageError =
@@ -3433,6 +3443,8 @@ export const getArchiveMessage: API.OperationMethod<
   input: GetArchiveMessageRequest,
   output: GetArchiveMessageResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArchiveMessage",
 }));
 export type GetArchiveMessageContentError =
@@ -3452,6 +3464,8 @@ export const getArchiveMessageContent: API.OperationMethod<
   input: GetArchiveMessageContentRequest,
   output: GetArchiveMessageContentResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArchiveMessageContent",
 }));
 export type GetArchiveSearchError =
@@ -3471,6 +3485,8 @@ export const getArchiveSearch: API.OperationMethod<
   input: GetArchiveSearchRequest,
   output: GetArchiveSearchResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArchiveSearch",
 }));
 export type GetArchiveSearchResultsError =
@@ -3496,6 +3512,8 @@ export const getArchiveSearchResults: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArchiveSearchResults",
 }));
 export type GetMemberOfAddressListError =
@@ -3521,6 +3539,8 @@ export const getMemberOfAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMemberOfAddressList",
 }));
 export type ListAddressListImportJobsError =
@@ -3561,6 +3581,8 @@ export const listAddressListImportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAddressListImportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -3607,6 +3629,8 @@ export const listArchiveExports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListArchiveExports",
   pagination: {
     inputToken: "NextToken",
@@ -3653,6 +3677,8 @@ export const listArchiveSearches: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListArchiveSearches",
   pagination: {
     inputToken: "NextToken",
@@ -3699,6 +3725,8 @@ export const listMembersOfAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMembersOfAddressList",
   pagination: {
     inputToken: "NextToken",
@@ -3723,6 +3751,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RegisterMemberToAddressListError =
@@ -3752,6 +3782,8 @@ export const registerMemberToAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterMemberToAddressList",
 }));
 export type StartAddressListImportJobError =
@@ -3781,6 +3813,8 @@ export const startAddressListImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAddressListImportJob",
 }));
 export type StartArchiveExportError =
@@ -3808,6 +3842,8 @@ export const startArchiveExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartArchiveExport",
 }));
 export type StartArchiveSearchError =
@@ -3837,6 +3873,8 @@ export const startArchiveSearch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartArchiveSearch",
 }));
 export type StopAddressListImportJobError =
@@ -3864,6 +3902,8 @@ export const stopAddressListImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAddressListImportJob",
 }));
 export type StopArchiveExportError =
@@ -3883,6 +3923,8 @@ export const stopArchiveExport: API.OperationMethod<
   input: StopArchiveExportRequest,
   output: StopArchiveExportResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopArchiveExport",
 }));
 export type StopArchiveSearchError =
@@ -3902,6 +3944,8 @@ export const stopArchiveSearch: API.OperationMethod<
   input: StopArchiveSearchRequest,
   output: StopArchiveSearchResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopArchiveSearch",
 }));
 export type TagResourceError =
@@ -3927,6 +3971,8 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3946,6 +3992,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateAddonInstanceError =
@@ -3971,6 +4019,8 @@ export const createAddonInstance: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAddonInstance",
 }));
 export type GetAddonInstanceError =
@@ -3989,6 +4039,8 @@ export const getAddonInstance: API.OperationMethod<
   input: GetAddonInstanceRequest,
   output: GetAddonInstanceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAddonInstance",
 }));
 export type DeleteAddonInstanceError =
@@ -4007,6 +4059,8 @@ export const deleteAddonInstance: API.OperationMethod<
   input: DeleteAddonInstanceRequest,
   output: DeleteAddonInstanceResponse,
   errors: [ConflictException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAddonInstance",
 }));
 export type ListAddonInstancesError = ValidationException | CommonErrors;
@@ -4037,6 +4091,8 @@ export const listAddonInstances: API.OperationMethod<
   input: ListAddonInstancesRequest,
   output: ListAddonInstancesResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAddonInstances",
   pagination: {
     inputToken: "NextToken",
@@ -4068,6 +4124,8 @@ export const createAddonSubscription: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAddonSubscription",
 }));
 export type GetAddonSubscriptionError =
@@ -4086,6 +4144,8 @@ export const getAddonSubscription: API.OperationMethod<
   input: GetAddonSubscriptionRequest,
   output: GetAddonSubscriptionResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAddonSubscription",
 }));
 export type DeleteAddonSubscriptionError =
@@ -4104,6 +4164,8 @@ export const deleteAddonSubscription: API.OperationMethod<
   input: DeleteAddonSubscriptionRequest,
   output: DeleteAddonSubscriptionResponse,
   errors: [ConflictException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAddonSubscription",
 }));
 export type ListAddonSubscriptionsError = ValidationException | CommonErrors;
@@ -4134,6 +4196,8 @@ export const listAddonSubscriptions: API.OperationMethod<
   input: ListAddonSubscriptionsRequest,
   output: ListAddonSubscriptionsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAddonSubscriptions",
   pagination: {
     inputToken: "NextToken",
@@ -4167,6 +4231,8 @@ export const createAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAddressList",
 }));
 export type GetAddressListError =
@@ -4192,6 +4258,8 @@ export const getAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAddressList",
 }));
 export type DeleteAddressListError =
@@ -4217,6 +4285,8 @@ export const deleteAddressList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAddressList",
 }));
 export type ListAddressListsError =
@@ -4251,6 +4321,8 @@ export const listAddressLists: API.OperationMethod<
   input: ListAddressListsRequest,
   output: ListAddressListsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAddressLists",
   pagination: {
     inputToken: "NextToken",
@@ -4284,6 +4356,8 @@ export const createArchive: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateArchive",
 }));
 export type GetArchiveError =
@@ -4309,6 +4383,8 @@ export const getArchive: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArchive",
 }));
 export type UpdateArchiveError =
@@ -4338,6 +4414,8 @@ export const updateArchive: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateArchive",
 }));
 export type DeleteArchiveError =
@@ -4363,6 +4441,8 @@ export const deleteArchive: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteArchive",
 }));
 export type ListArchivesError =
@@ -4397,6 +4477,8 @@ export const listArchives: API.OperationMethod<
   input: ListArchivesRequest,
   output: ListArchivesResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListArchives",
   pagination: {
     inputToken: "NextToken",
@@ -4426,6 +4508,8 @@ export const createIngressPoint: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIngressPoint",
 }));
 export type GetIngressPointError =
@@ -4444,6 +4528,8 @@ export const getIngressPoint: API.OperationMethod<
   input: GetIngressPointRequest,
   output: GetIngressPointResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIngressPoint",
 }));
 export type UpdateIngressPointError =
@@ -4463,6 +4549,8 @@ export const updateIngressPoint: API.OperationMethod<
   input: UpdateIngressPointRequest,
   output: UpdateIngressPointResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIngressPoint",
 }));
 export type DeleteIngressPointError =
@@ -4482,6 +4570,8 @@ export const deleteIngressPoint: API.OperationMethod<
   input: DeleteIngressPointRequest,
   output: DeleteIngressPointResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIngressPoint",
 }));
 export type ListIngressPointsError = ValidationException | CommonErrors;
@@ -4512,6 +4602,8 @@ export const listIngressPoints: API.OperationMethod<
   input: ListIngressPointsRequest,
   output: ListIngressPointsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIngressPoints",
   pagination: {
     inputToken: "NextToken",
@@ -4541,6 +4633,8 @@ export const createRelay: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRelay",
 }));
 export type GetRelayError =
@@ -4559,6 +4653,8 @@ export const getRelay: API.OperationMethod<
   input: GetRelayRequest,
   output: GetRelayResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelay",
 }));
 export type UpdateRelayError =
@@ -4578,6 +4674,8 @@ export const updateRelay: API.OperationMethod<
   input: UpdateRelayRequest,
   output: UpdateRelayResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRelay",
 }));
 export type DeleteRelayError =
@@ -4597,6 +4695,8 @@ export const deleteRelay: API.OperationMethod<
   input: DeleteRelayRequest,
   output: DeleteRelayResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRelay",
 }));
 export type ListRelaysError = ValidationException | CommonErrors;
@@ -4627,6 +4727,8 @@ export const listRelays: API.OperationMethod<
   input: ListRelaysRequest,
   output: ListRelaysResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRelays",
   pagination: {
     inputToken: "NextToken",
@@ -4656,6 +4758,8 @@ export const createRuleSet: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRuleSet",
 }));
 export type GetRuleSetError =
@@ -4674,6 +4778,8 @@ export const getRuleSet: API.OperationMethod<
   input: GetRuleSetRequest,
   output: GetRuleSetResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRuleSet",
 }));
 export type UpdateRuleSetError =
@@ -4693,6 +4799,8 @@ export const updateRuleSet: API.OperationMethod<
   input: UpdateRuleSetRequest,
   output: UpdateRuleSetResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRuleSet",
 }));
 export type DeleteRuleSetError =
@@ -4711,6 +4819,8 @@ export const deleteRuleSet: API.OperationMethod<
   input: DeleteRuleSetRequest,
   output: DeleteRuleSetResponse,
   errors: [ConflictException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRuleSet",
 }));
 export type ListRuleSetsError = ValidationException | CommonErrors;
@@ -4741,6 +4851,8 @@ export const listRuleSets: API.OperationMethod<
   input: ListRuleSetsRequest,
   output: ListRuleSetsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleSets",
   pagination: {
     inputToken: "NextToken",
@@ -4770,6 +4882,8 @@ export const createTrafficPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrafficPolicy",
 }));
 export type GetTrafficPolicyError =
@@ -4788,6 +4902,8 @@ export const getTrafficPolicy: API.OperationMethod<
   input: GetTrafficPolicyRequest,
   output: GetTrafficPolicyResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrafficPolicy",
 }));
 export type UpdateTrafficPolicyError =
@@ -4807,6 +4923,8 @@ export const updateTrafficPolicy: API.OperationMethod<
   input: UpdateTrafficPolicyRequest,
   output: UpdateTrafficPolicyResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrafficPolicy",
 }));
 export type DeleteTrafficPolicyError =
@@ -4826,6 +4944,8 @@ export const deleteTrafficPolicy: API.OperationMethod<
   input: DeleteTrafficPolicyRequest,
   output: DeleteTrafficPolicyResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrafficPolicy",
 }));
 export type ListTrafficPoliciesError = ValidationException | CommonErrors;
@@ -4856,6 +4976,8 @@ export const listTrafficPolicies: API.OperationMethod<
   input: ListTrafficPoliciesRequest,
   output: ListTrafficPoliciesResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrafficPolicies",
   pagination: {
     inputToken: "NextToken",

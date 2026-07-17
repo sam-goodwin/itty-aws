@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -7528,6 +7530,8 @@ export const acceptDelegationRequest: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptDelegationRequest",
 }));
 export type AddClientIDToOpenIDConnectProviderError =
@@ -7559,6 +7563,8 @@ export const addClientIDToOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddClientIDToOpenIDConnectProvider",
 }));
 export type AddRoleToInstanceProfileError =
@@ -7605,6 +7611,8 @@ export const addRoleToInstanceProfile: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddRoleToInstanceProfile",
 }));
 export type AddUserToGroupError =
@@ -7628,6 +7636,8 @@ export const addUserToGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddUserToGroup",
 }));
 export type AssociateDelegationRequestError =
@@ -7672,6 +7682,8 @@ export const associateDelegationRequest: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDelegationRequest",
 }));
 export type AttachGroupPolicyError =
@@ -7711,6 +7723,8 @@ export const attachGroupPolicy: API.OperationMethod<
     PolicyNotAttachableException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachGroupPolicy",
 }));
 export type AttachRolePolicyError =
@@ -7761,6 +7775,8 @@ export const attachRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachRolePolicy",
 }));
 export type AttachUserPolicyError =
@@ -7800,6 +7816,8 @@ export const attachUserPolicy: API.OperationMethod<
     PolicyNotAttachableException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachUserPolicy",
 }));
 export type ChangePasswordError =
@@ -7838,6 +7856,8 @@ export const changePassword: API.OperationMethod<
     PasswordPolicyViolationException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ChangePassword",
 }));
 export type CreateAccessKeyError =
@@ -7875,6 +7895,8 @@ export const createAccessKey: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessKey",
 }));
 export type CreateAccountAliasError =
@@ -7903,6 +7925,8 @@ export const createAccountAlias: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccountAlias",
 }));
 export type CreateDelegationRequestError =
@@ -7934,6 +7958,8 @@ export const createDelegationRequest: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDelegationRequest",
 }));
 export type CreateGroupError =
@@ -7962,6 +7988,8 @@ export const createGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
 export type CreateInstanceProfileError =
@@ -7994,6 +8022,8 @@ export const createInstanceProfile: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceProfile",
 }));
 export type CreateLoginProfileError =
@@ -8028,6 +8058,8 @@ export const createLoginProfile: API.OperationMethod<
     PasswordPolicyViolationException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoginProfile",
 }));
 export type CreateOpenIDConnectProviderError =
@@ -8093,6 +8125,8 @@ export const createOpenIDConnectProvider: API.OperationMethod<
     OpenIdIdpCommunicationErrorException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOpenIDConnectProvider",
 }));
 export type CreatePolicyError =
@@ -8135,6 +8169,8 @@ export const createPolicy: API.OperationMethod<
     MalformedPolicyDocumentException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicy",
 }));
 export type CreatePolicyVersionError =
@@ -8171,6 +8207,8 @@ export const createPolicyVersion: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicyVersion",
 }));
 export type CreateRoleError =
@@ -8205,6 +8243,8 @@ export const createRole: API.OperationMethod<
     MalformedPolicyDocumentException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRole",
 }));
 export type CreateSAMLProviderError =
@@ -8251,6 +8291,8 @@ export const createSAMLProvider: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSAMLProvider",
 }));
 export type CreateServiceLinkedRoleError =
@@ -8285,6 +8327,8 @@ export const createServiceLinkedRole: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServiceLinkedRole",
 }));
 export type CreateServiceSpecificCredentialError =
@@ -8320,6 +8364,8 @@ export const createServiceSpecificCredential: API.OperationMethod<
     NoSuchEntityException,
     ServiceNotSupportedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServiceSpecificCredential",
 }));
 export type CreateUserError =
@@ -8352,6 +8398,8 @@ export const createUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type CreateVirtualMFADeviceError =
@@ -8392,6 +8440,8 @@ export const createVirtualMFADevice: API.OperationMethod<
     LimitExceededException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVirtualMFADevice",
 }));
 export type DeactivateMFADeviceError =
@@ -8424,6 +8474,8 @@ export const deactivateMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateMFADevice",
 }));
 export type DeleteAccessKeyError =
@@ -8452,6 +8504,8 @@ export const deleteAccessKey: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessKey",
 }));
 export type DeleteAccountAliasError =
@@ -8480,6 +8534,8 @@ export const deleteAccountAlias: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountAlias",
 }));
 export type DeleteAccountPasswordPolicyError =
@@ -8503,6 +8559,8 @@ export const deleteAccountPasswordPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountPasswordPolicy",
 }));
 export type DeleteGroupError =
@@ -8529,6 +8587,8 @@ export const deleteGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
 export type DeleteGroupPolicyError =
@@ -8558,6 +8618,8 @@ export const deleteGroupPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroupPolicy",
 }));
 export type DeleteInstanceProfileError =
@@ -8592,6 +8654,8 @@ export const deleteInstanceProfile: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceProfile",
 }));
 export type DeleteLoginProfileError =
@@ -8630,6 +8694,8 @@ export const deleteLoginProfile: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoginProfile",
 }));
 export type DeleteOpenIDConnectProviderError =
@@ -8660,6 +8726,8 @@ export const deleteOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOpenIDConnectProvider",
 }));
 export type DeletePolicyError =
@@ -8706,6 +8774,8 @@ export const deletePolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicy",
 }));
 export type DeletePolicyVersionError =
@@ -8740,6 +8810,8 @@ export const deletePolicyVersion: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicyVersion",
 }));
 export type DeleteRoleError =
@@ -8785,6 +8857,8 @@ export const deleteRole: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRole",
 }));
 export type DeleteRolePermissionsBoundaryError =
@@ -8814,6 +8888,8 @@ export const deleteRolePermissionsBoundary: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRolePermissionsBoundary",
 }));
 export type DeleteRolePolicyError =
@@ -8845,6 +8921,8 @@ export const deleteRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRolePolicy",
 }));
 export type DeleteSAMLProviderError =
@@ -8876,6 +8954,8 @@ export const deleteSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSAMLProvider",
 }));
 export type DeleteServerCertificateError =
@@ -8915,6 +8995,8 @@ export const deleteServerCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServerCertificate",
 }));
 export type DeleteServiceLinkedRoleError =
@@ -8956,6 +9038,8 @@ export const deleteServiceLinkedRole: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceLinkedRole",
 }));
 export type DeleteServiceSpecificCredentialError =
@@ -8973,6 +9057,8 @@ export const deleteServiceSpecificCredential: API.OperationMethod<
   input: DeleteServiceSpecificCredentialRequest,
   output: DeleteServiceSpecificCredentialResponse,
   errors: [NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceSpecificCredential",
 }));
 export type DeleteSigningCertificateError =
@@ -9003,6 +9089,8 @@ export const deleteSigningCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSigningCertificate",
 }));
 export type DeleteSSHPublicKeyError = NoSuchEntityException | CommonErrors;
@@ -9023,6 +9111,8 @@ export const deleteSSHPublicKey: API.OperationMethod<
   input: DeleteSSHPublicKeyRequest,
   output: DeleteSSHPublicKeyResponse,
   errors: [NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSSHPublicKey",
 }));
 export type DeleteUserError =
@@ -9071,6 +9161,8 @@ export const deleteUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DeleteUserPermissionsBoundaryError =
@@ -9092,6 +9184,8 @@ export const deleteUserPermissionsBoundary: API.OperationMethod<
   input: DeleteUserPermissionsBoundaryRequest,
   output: DeleteUserPermissionsBoundaryResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserPermissionsBoundary",
 }));
 export type DeleteUserPolicyError =
@@ -9121,6 +9215,8 @@ export const deleteUserPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserPolicy",
 }));
 export type DeleteVirtualMFADeviceError =
@@ -9151,6 +9247,8 @@ export const deleteVirtualMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVirtualMFADevice",
 }));
 export type DetachGroupPolicyError =
@@ -9181,6 +9279,8 @@ export const detachGroupPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachGroupPolicy",
 }));
 export type DetachRolePolicyError =
@@ -9213,6 +9313,8 @@ export const detachRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachRolePolicy",
 }));
 export type DetachUserPolicyError =
@@ -9243,6 +9345,8 @@ export const detachUserPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachUserPolicy",
 }));
 export type DisableOrganizationsRootCredentialsManagementError =
@@ -9271,6 +9375,8 @@ export const disableOrganizationsRootCredentialsManagement: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableOrganizationsRootCredentialsManagement",
 }));
 export type DisableOrganizationsRootSessionsError =
@@ -9299,6 +9405,8 @@ export const disableOrganizationsRootSessions: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableOrganizationsRootSessions",
 }));
 export type DisableOutboundWebIdentityFederationError =
@@ -9318,6 +9426,8 @@ export const disableOutboundWebIdentityFederation: API.OperationMethod<
   input: DisableOutboundWebIdentityFederationRequest,
   output: DisableOutboundWebIdentityFederationResponse,
   errors: [FeatureDisabledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableOutboundWebIdentityFederation",
 }));
 export type EnableMFADeviceError =
@@ -9351,6 +9461,8 @@ export const enableMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableMFADevice",
 }));
 export type EnableOrganizationsRootCredentialsManagementError =
@@ -9390,6 +9502,8 @@ export const enableOrganizationsRootCredentialsManagement: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableOrganizationsRootCredentialsManagement",
 }));
 export type EnableOrganizationsRootSessionsError =
@@ -9428,6 +9542,8 @@ export const enableOrganizationsRootSessions: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableOrganizationsRootSessions",
 }));
 export type EnableOutboundWebIdentityFederationError =
@@ -9447,6 +9563,8 @@ export const enableOutboundWebIdentityFederation: API.OperationMethod<
   input: EnableOutboundWebIdentityFederationRequest,
   output: EnableOutboundWebIdentityFederationResponse,
   errors: [FeatureEnabledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableOutboundWebIdentityFederation",
 }));
 export type GenerateCredentialReportError =
@@ -9467,6 +9585,8 @@ export const generateCredentialReport: API.OperationMethod<
   input: GenerateCredentialReportRequest,
   output: GenerateCredentialReportResponse,
   errors: [LimitExceededException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateCredentialReport",
 }));
 export type GenerateOrganizationsAccessReportError =
@@ -9600,6 +9720,8 @@ export const generateOrganizationsAccessReport: API.OperationMethod<
   input: GenerateOrganizationsAccessReportRequest,
   output: GenerateOrganizationsAccessReportResponse,
   errors: [ReportGenerationLimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateOrganizationsAccessReport",
 }));
 export type GenerateServiceLastAccessedDetailsError =
@@ -9669,6 +9791,8 @@ export const generateServiceLastAccessedDetails: API.OperationMethod<
   input: GenerateServiceLastAccessedDetailsRequest,
   output: GenerateServiceLastAccessedDetailsResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateServiceLastAccessedDetails",
 }));
 export type GetAccessKeyLastUsedError = CommonErrors;
@@ -9686,6 +9810,8 @@ export const getAccessKeyLastUsed: API.OperationMethod<
   input: GetAccessKeyLastUsedRequest,
   output: GetAccessKeyLastUsedResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessKeyLastUsed",
 }));
 export type GetAccountAuthorizationDetailsError =
@@ -9732,6 +9858,8 @@ export const getAccountAuthorizationDetails: API.OperationMethod<
   input: GetAccountAuthorizationDetailsRequest,
   output: GetAccountAuthorizationDetailsResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountAuthorizationDetails",
   pagination: {
     inputToken: "Marker",
@@ -9758,6 +9886,8 @@ export const getAccountPasswordPolicy: API.OperationMethod<
   input: GetAccountPasswordPolicyRequest,
   output: GetAccountPasswordPolicyResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountPasswordPolicy",
 }));
 export type GetAccountSummaryError = ServiceFailureException | CommonErrors;
@@ -9777,6 +9907,8 @@ export const getAccountSummary: API.OperationMethod<
   input: GetAccountSummaryRequest,
   output: GetAccountSummaryResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountSummary",
 }));
 export type GetContextKeysForCustomPolicyError =
@@ -9804,6 +9936,8 @@ export const getContextKeysForCustomPolicy: API.OperationMethod<
   input: GetContextKeysForCustomPolicyRequest,
   output: GetContextKeysForPolicyResponse,
   errors: [InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContextKeysForCustomPolicy",
 }));
 export type GetContextKeysForPrincipalPolicyError =
@@ -9838,6 +9972,8 @@ export const getContextKeysForPrincipalPolicy: API.OperationMethod<
   input: GetContextKeysForPrincipalPolicyRequest,
   output: GetContextKeysForPolicyResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContextKeysForPrincipalPolicy",
 }));
 export type GetCredentialReportError =
@@ -9865,6 +10001,8 @@ export const getCredentialReport: API.OperationMethod<
     CredentialReportNotReadyException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCredentialReport",
 }));
 export type GetDelegationRequestError =
@@ -9891,6 +10029,8 @@ export const getDelegationRequest: API.OperationMethod<
   input: GetDelegationRequestRequest,
   output: GetDelegationRequestResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDelegationRequest",
 }));
 export type GetGroupError =
@@ -9925,6 +10065,8 @@ export const getGroup: API.OperationMethod<
   input: GetGroupRequest,
   output: GetGroupResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroup",
   pagination: {
     inputToken: "Marker",
@@ -9965,6 +10107,8 @@ export const getGroupPolicy: API.OperationMethod<
   input: GetGroupPolicyRequest,
   output: GetGroupPolicyResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupPolicy",
 }));
 export type GetHumanReadableSummaryError =
@@ -10003,6 +10147,8 @@ export const getHumanReadableSummary: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHumanReadableSummary",
 }));
 export type GetInstanceProfileError =
@@ -10024,6 +10170,8 @@ export const getInstanceProfile: API.OperationMethod<
   input: GetInstanceProfileRequest,
   output: GetInstanceProfileResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceProfile",
 }));
 export type GetLoginProfileError =
@@ -10053,6 +10201,8 @@ export const getLoginProfile: API.OperationMethod<
   input: GetLoginProfileRequest,
   output: GetLoginProfileResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoginProfile",
 }));
 export type GetMFADeviceError =
@@ -10071,6 +10221,8 @@ export const getMFADevice: API.OperationMethod<
   input: GetMFADeviceRequest,
   output: GetMFADeviceResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMFADevice",
 }));
 export type GetOpenIDConnectProviderError =
@@ -10095,6 +10247,8 @@ export const getOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpenIDConnectProvider",
 }));
 export type GetOrganizationsAccessReportError =
@@ -10133,6 +10287,8 @@ export const getOrganizationsAccessReport: API.OperationMethod<
   input: GetOrganizationsAccessReportRequest,
   output: GetOrganizationsAccessReportResponse,
   errors: [NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOrganizationsAccessReport",
 }));
 export type GetOutboundWebIdentityFederationInfoError =
@@ -10151,6 +10307,8 @@ export const getOutboundWebIdentityFederationInfo: API.OperationMethod<
   input: GetOutboundWebIdentityFederationInfoRequest,
   output: GetOutboundWebIdentityFederationInfoResponse,
   errors: [FeatureDisabledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOutboundWebIdentityFederationInfo",
 }));
 export type GetPolicyError =
@@ -10185,6 +10343,8 @@ export const getPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
 export type GetPolicyVersionError =
@@ -10228,6 +10388,8 @@ export const getPolicyVersion: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicyVersion",
 }));
 export type GetRoleError =
@@ -10256,6 +10418,8 @@ export const getRole: API.OperationMethod<
   input: GetRoleRequest,
   output: GetRoleResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRole",
 }));
 export type GetRolePolicyError =
@@ -10293,6 +10457,8 @@ export const getRolePolicy: API.OperationMethod<
   input: GetRolePolicyRequest,
   output: GetRolePolicyResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRolePolicy",
 }));
 export type GetSAMLProviderError =
@@ -10319,6 +10485,8 @@ export const getSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSAMLProvider",
 }));
 export type GetServerCertificateError =
@@ -10342,6 +10510,8 @@ export const getServerCertificate: API.OperationMethod<
   input: GetServerCertificateRequest,
   output: GetServerCertificateResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServerCertificate",
 }));
 export type GetServiceLastAccessedDetailsError =
@@ -10405,6 +10575,8 @@ export const getServiceLastAccessedDetails: API.OperationMethod<
   input: GetServiceLastAccessedDetailsRequest,
   output: GetServiceLastAccessedDetailsResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceLastAccessedDetails",
 }));
 export type GetServiceLastAccessedDetailsWithEntitiesError =
@@ -10445,6 +10617,8 @@ export const getServiceLastAccessedDetailsWithEntities: API.OperationMethod<
   input: GetServiceLastAccessedDetailsWithEntitiesRequest,
   output: GetServiceLastAccessedDetailsWithEntitiesResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceLastAccessedDetailsWithEntities",
 }));
 export type GetServiceLinkedRoleDeletionStatusError =
@@ -10472,6 +10646,8 @@ export const getServiceLinkedRoleDeletionStatus: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceLinkedRoleDeletionStatus",
 }));
 export type GetSSHPublicKeyError =
@@ -10495,6 +10671,8 @@ export const getSSHPublicKey: API.OperationMethod<
   input: GetSSHPublicKeyRequest,
   output: GetSSHPublicKeyResponse,
   errors: [NoSuchEntityException, UnrecognizedPublicKeyEncodingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSSHPublicKey",
 }));
 export type GetUserError =
@@ -10517,6 +10695,8 @@ export const getUser: API.OperationMethod<
   input: GetUserRequest,
   output: GetUserResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUser",
 }));
 export type GetUserPolicyError =
@@ -10551,6 +10731,8 @@ export const getUserPolicy: API.OperationMethod<
   input: GetUserPolicyRequest,
   output: GetUserPolicyResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserPolicy",
 }));
 export type ListAccessKeysError =
@@ -10600,6 +10782,8 @@ export const listAccessKeys: API.OperationMethod<
   input: ListAccessKeysRequest,
   output: ListAccessKeysResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessKeys",
   pagination: {
     inputToken: "Marker",
@@ -10639,6 +10823,8 @@ export const listAccountAliases: API.OperationMethod<
   input: ListAccountAliasesRequest,
   output: ListAccountAliasesResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountAliases",
   pagination: {
     inputToken: "Marker",
@@ -10694,6 +10880,8 @@ export const listAttachedGroupPolicies: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttachedGroupPolicies",
   pagination: {
     inputToken: "Marker",
@@ -10749,6 +10937,8 @@ export const listAttachedRolePolicies: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttachedRolePolicies",
   pagination: {
     inputToken: "Marker",
@@ -10804,6 +10994,8 @@ export const listAttachedUserPolicies: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttachedUserPolicies",
   pagination: {
     inputToken: "Marker",
@@ -10840,6 +11032,8 @@ export const listDelegationRequests: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDelegationRequests",
 }));
 export type ListEntitiesForPolicyError =
@@ -10887,6 +11081,8 @@ export const listEntitiesForPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntitiesForPolicy",
   pagination: {
     inputToken: "Marker",
@@ -10935,6 +11131,8 @@ export const listGroupPolicies: API.OperationMethod<
   input: ListGroupPoliciesRequest,
   output: ListGroupPoliciesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupPolicies",
   pagination: {
     inputToken: "Marker",
@@ -10974,6 +11172,8 @@ export const listGroups: API.OperationMethod<
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroups",
   pagination: {
     inputToken: "Marker",
@@ -11016,6 +11216,8 @@ export const listGroupsForUser: API.OperationMethod<
   input: ListGroupsForUserRequest,
   output: ListGroupsForUserResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupsForUser",
   pagination: {
     inputToken: "Marker",
@@ -11062,6 +11264,8 @@ export const listInstanceProfiles: API.OperationMethod<
   input: ListInstanceProfilesRequest,
   output: ListInstanceProfilesResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceProfiles",
   pagination: {
     inputToken: "Marker",
@@ -11107,6 +11311,8 @@ export const listInstanceProfilesForRole: API.OperationMethod<
   input: ListInstanceProfilesForRoleRequest,
   output: ListInstanceProfilesForRoleResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceProfilesForRole",
   pagination: {
     inputToken: "Marker",
@@ -11148,6 +11354,8 @@ export const listInstanceProfileTags: API.OperationMethod<
   input: ListInstanceProfileTagsRequest,
   output: ListInstanceProfileTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceProfileTags",
   pagination: {
     inputToken: "Marker",
@@ -11193,6 +11401,8 @@ export const listMFADevices: API.OperationMethod<
   input: ListMFADevicesRequest,
   output: ListMFADevicesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMFADevices",
   pagination: {
     inputToken: "Marker",
@@ -11239,6 +11449,8 @@ export const listMFADeviceTags: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMFADeviceTags",
   pagination: {
     inputToken: "Marker",
@@ -11266,6 +11478,8 @@ export const listOpenIDConnectProviders: API.OperationMethod<
   input: ListOpenIDConnectProvidersRequest,
   output: ListOpenIDConnectProvidersResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpenIDConnectProviders",
 }));
 export type ListOpenIDConnectProviderTagsError =
@@ -11309,6 +11523,8 @@ export const listOpenIDConnectProviderTags: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpenIDConnectProviderTags",
   pagination: {
     inputToken: "Marker",
@@ -11341,6 +11557,8 @@ export const listOrganizationsFeatures: API.OperationMethod<
     OrganizationNotInAllFeaturesModeException,
     ServiceAccessNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationsFeatures",
 }));
 export type ListPoliciesError = ServiceFailureException | CommonErrors;
@@ -11388,6 +11606,8 @@ export const listPolicies: API.OperationMethod<
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicies",
   pagination: {
     inputToken: "Marker",
@@ -11445,6 +11665,8 @@ export const listPoliciesGrantingServiceAccess: API.OperationMethod<
   input: ListPoliciesGrantingServiceAccessRequest,
   output: ListPoliciesGrantingServiceAccessResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPoliciesGrantingServiceAccess",
 }));
 export type ListPolicyTagsError =
@@ -11485,6 +11707,8 @@ export const listPolicyTags: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyTags",
   pagination: {
     inputToken: "Marker",
@@ -11533,6 +11757,8 @@ export const listPolicyVersions: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyVersions",
   pagination: {
     inputToken: "Marker",
@@ -11582,6 +11808,8 @@ export const listRolePolicies: API.OperationMethod<
   input: ListRolePoliciesRequest,
   output: ListRolePoliciesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRolePolicies",
   pagination: {
     inputToken: "Marker",
@@ -11634,6 +11862,8 @@ export const listRoles: API.OperationMethod<
   input: ListRolesRequest,
   output: ListRolesResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoles",
   pagination: {
     inputToken: "Marker",
@@ -11675,6 +11905,8 @@ export const listRoleTags: API.OperationMethod<
   input: ListRoleTagsRequest,
   output: ListRoleTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoleTags",
   pagination: {
     inputToken: "Marker",
@@ -11700,6 +11932,8 @@ export const listSAMLProviders: API.OperationMethod<
   input: ListSAMLProvidersRequest,
   output: ListSAMLProvidersResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSAMLProviders",
 }));
 export type ListSAMLProviderTagsError =
@@ -11743,6 +11977,8 @@ export const listSAMLProviderTags: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSAMLProviderTags",
   pagination: {
     inputToken: "Marker",
@@ -11794,6 +12030,8 @@ export const listServerCertificates: API.OperationMethod<
   input: ListServerCertificatesRequest,
   output: ListServerCertificatesResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServerCertificates",
   pagination: {
     inputToken: "Marker",
@@ -11841,6 +12079,8 @@ export const listServerCertificateTags: API.OperationMethod<
   input: ListServerCertificateTagsRequest,
   output: ListServerCertificateTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServerCertificateTags",
   pagination: {
     inputToken: "Marker",
@@ -11877,6 +12117,8 @@ export const listServiceSpecificCredentials: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInput,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceSpecificCredentials",
 }));
 export type ListSigningCertificatesError =
@@ -11921,6 +12163,8 @@ export const listSigningCertificates: API.OperationMethod<
   input: ListSigningCertificatesRequest,
   output: ListSigningCertificatesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSigningCertificates",
   pagination: {
     inputToken: "Marker",
@@ -11966,6 +12210,8 @@ export const listSSHPublicKeys: API.OperationMethod<
   input: ListSSHPublicKeysRequest,
   output: ListSSHPublicKeysResponse,
   errors: [NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSSHPublicKeys",
   pagination: {
     inputToken: "Marker",
@@ -12014,6 +12260,8 @@ export const listUserPolicies: API.OperationMethod<
   input: ListUserPoliciesRequest,
   output: ListUserPoliciesResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserPolicies",
   pagination: {
     inputToken: "Marker",
@@ -12064,6 +12312,8 @@ export const listUsers: API.OperationMethod<
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "Marker",
@@ -12104,6 +12354,8 @@ export const listUserTags: API.OperationMethod<
   input: ListUserTagsRequest,
   output: ListUserTagsResponse,
   errors: [NoSuchEntityException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserTags",
   pagination: {
     inputToken: "Marker",
@@ -12149,6 +12401,8 @@ export const listVirtualMFADevices: API.OperationMethod<
   input: ListVirtualMFADevicesRequest,
   output: ListVirtualMFADevicesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVirtualMFADevices",
   pagination: {
     inputToken: "Marker",
@@ -12199,6 +12453,8 @@ export const putGroupPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutGroupPolicy",
 }));
 export type PutRolePermissionsBoundaryError =
@@ -12237,6 +12493,8 @@ export const putRolePermissionsBoundary: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRolePermissionsBoundary",
 }));
 export type PutRolePolicyError =
@@ -12294,6 +12552,8 @@ export const putRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRolePolicy",
 }));
 export type PutUserPermissionsBoundaryError =
@@ -12328,6 +12588,8 @@ export const putUserPermissionsBoundary: API.OperationMethod<
     PolicyNotAttachableException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutUserPermissionsBoundary",
 }));
 export type PutUserPolicyError =
@@ -12372,6 +12634,8 @@ export const putUserPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutUserPolicy",
 }));
 export type RejectDelegationRequestError =
@@ -12405,6 +12669,8 @@ export const rejectDelegationRequest: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectDelegationRequest",
 }));
 export type RemoveClientIDFromOpenIDConnectProviderError =
@@ -12435,6 +12701,8 @@ export const removeClientIDFromOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveClientIDFromOpenIDConnectProvider",
 }));
 export type RemoveRoleFromInstanceProfileError =
@@ -12470,6 +12738,8 @@ export const removeRoleFromInstanceProfile: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveRoleFromInstanceProfile",
 }));
 export type RemoveUserFromGroupError =
@@ -12493,6 +12763,8 @@ export const removeUserFromGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveUserFromGroup",
 }));
 export type ResetServiceSpecificCredentialError =
@@ -12513,6 +12785,8 @@ export const resetServiceSpecificCredential: API.OperationMethod<
   input: ResetServiceSpecificCredentialRequest,
   output: ResetServiceSpecificCredentialResponse,
   errors: [NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetServiceSpecificCredential",
 }));
 export type ResyncMFADeviceError =
@@ -12544,6 +12818,8 @@ export const resyncMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResyncMFADevice",
 }));
 export type SendDelegationTokenError =
@@ -12580,6 +12856,8 @@ export const sendDelegationToken: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDelegationToken",
 }));
 export type SetDefaultPolicyVersionError =
@@ -12612,6 +12890,8 @@ export const setDefaultPolicyVersion: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDefaultPolicyVersion",
 }));
 export type SetSecurityTokenServicePreferencesError =
@@ -12650,6 +12930,8 @@ export const setSecurityTokenServicePreferences: API.OperationMethod<
   input: SetSecurityTokenServicePreferencesRequest,
   output: SetSecurityTokenServicePreferencesResponse,
   errors: [ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetSecurityTokenServicePreferences",
 }));
 export type SimulateCustomPolicyError =
@@ -12709,6 +12991,8 @@ export const simulateCustomPolicy: API.OperationMethod<
   input: SimulateCustomPolicyRequest,
   output: SimulatePolicyResponse,
   errors: [InvalidInputException, PolicyEvaluationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SimulateCustomPolicy",
   pagination: {
     inputToken: "Marker",
@@ -12788,6 +13072,8 @@ export const simulatePrincipalPolicy: API.OperationMethod<
     NoSuchEntityException,
     PolicyEvaluationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SimulatePrincipalPolicy",
   pagination: {
     inputToken: "Marker",
@@ -12845,6 +13131,8 @@ export const tagInstanceProfile: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagInstanceProfile",
 }));
 export type TagMFADeviceError =
@@ -12897,6 +13185,8 @@ export const tagMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagMFADevice",
 }));
 export type TagOpenIDConnectProviderError =
@@ -12950,6 +13240,8 @@ export const tagOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagOpenIDConnectProvider",
 }));
 export type TagPolicyError =
@@ -13001,6 +13293,8 @@ export const tagPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagPolicy",
 }));
 export type TagRoleError =
@@ -13060,6 +13354,8 @@ export const tagRole: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagRole",
 }));
 export type TagSAMLProviderError =
@@ -13113,6 +13409,8 @@ export const tagSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagSAMLProvider",
 }));
 export type TagServerCertificateError =
@@ -13173,6 +13471,8 @@ export const tagServerCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagServerCertificate",
 }));
 export type TagUserError =
@@ -13231,6 +13531,8 @@ export const tagUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagUser",
 }));
 export type UntagInstanceProfileError =
@@ -13257,6 +13559,8 @@ export const untagInstanceProfile: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagInstanceProfile",
 }));
 export type UntagMFADeviceError =
@@ -13284,6 +13588,8 @@ export const untagMFADevice: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagMFADevice",
 }));
 export type UntagOpenIDConnectProviderError =
@@ -13312,6 +13618,8 @@ export const untagOpenIDConnectProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagOpenIDConnectProvider",
 }));
 export type UntagPolicyError =
@@ -13338,6 +13646,8 @@ export const untagPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagPolicy",
 }));
 export type UntagRoleError =
@@ -13362,6 +13672,8 @@ export const untagRole: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagRole",
 }));
 export type UntagSAMLProviderError =
@@ -13390,6 +13702,8 @@ export const untagSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagSAMLProvider",
 }));
 export type UntagServerCertificateError =
@@ -13423,6 +13737,8 @@ export const untagServerCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagServerCertificate",
 }));
 export type UntagUserError =
@@ -13447,6 +13763,8 @@ export const untagUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagUser",
 }));
 export type UpdateAccessKeyError =
@@ -13484,6 +13802,8 @@ export const updateAccessKey: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccessKey",
 }));
 export type UpdateAccountPasswordPolicyError =
@@ -13519,6 +13839,8 @@ export const updateAccountPasswordPolicy: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountPasswordPolicy",
 }));
 export type UpdateAssumeRolePolicyError =
@@ -13549,6 +13871,8 @@ export const updateAssumeRolePolicy: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssumeRolePolicy",
 }));
 export type UpdateDelegationRequestError =
@@ -13580,6 +13904,8 @@ export const updateDelegationRequest: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDelegationRequest",
 }));
 export type UpdateGroupError =
@@ -13616,6 +13942,8 @@ export const updateGroup: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroup",
 }));
 export type UpdateLoginProfileError =
@@ -13650,6 +13978,8 @@ export const updateLoginProfile: API.OperationMethod<
     PasswordPolicyViolationException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLoginProfile",
 }));
 export type UpdateOpenIDConnectProviderThumbprintError =
@@ -13696,6 +14026,8 @@ export const updateOpenIDConnectProviderThumbprint: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOpenIDConnectProviderThumbprint",
 }));
 export type UpdateRoleError =
@@ -13719,6 +14051,8 @@ export const updateRole: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRole",
 }));
 export type UpdateRoleDescriptionError =
@@ -13745,6 +14079,8 @@ export const updateRoleDescription: API.OperationMethod<
     ServiceFailureException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoleDescription",
 }));
 export type UpdateSAMLProviderError =
@@ -13774,6 +14110,8 @@ export const updateSAMLProvider: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSAMLProvider",
 }));
 export type UpdateServerCertificateError =
@@ -13817,6 +14155,8 @@ export const updateServerCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServerCertificate",
 }));
 export type UpdateServiceSpecificCredentialError =
@@ -13837,6 +14177,8 @@ export const updateServiceSpecificCredential: API.OperationMethod<
   input: UpdateServiceSpecificCredentialRequest,
   output: UpdateServiceSpecificCredentialResponse,
   errors: [NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceSpecificCredential",
 }));
 export type UpdateSigningCertificateError =
@@ -13870,6 +14212,8 @@ export const updateSigningCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSigningCertificate",
 }));
 export type UpdateSSHPublicKeyError =
@@ -13895,6 +14239,8 @@ export const updateSSHPublicKey: API.OperationMethod<
   input: UpdateSSHPublicKeyRequest,
   output: UpdateSSHPublicKeyResponse,
   errors: [InvalidInputException, NoSuchEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSSHPublicKey",
 }));
 export type UpdateUserError =
@@ -13934,6 +14280,8 @@ export const updateUser: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));
 export type UploadServerCertificateError =
@@ -13990,6 +14338,8 @@ export const uploadServerCertificate: API.OperationMethod<
     MalformedCertificateException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadServerCertificate",
 }));
 export type UploadSigningCertificateError =
@@ -14043,6 +14393,8 @@ export const uploadSigningCertificate: API.OperationMethod<
     NoSuchEntityException,
     ServiceFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadSigningCertificate",
 }));
 export type UploadSSHPublicKeyError =
@@ -14075,5 +14427,7 @@ export const uploadSSHPublicKey: API.OperationMethod<
     NoSuchEntityException,
     UnrecognizedPublicKeyEncodingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadSSHPublicKey",
 }));

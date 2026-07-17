@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1778,6 +1780,8 @@ export const addTags: API.OperationMethod<
     ResourceNotFoundException,
     TagLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
 export type CreateBatchPredictionError =
@@ -1810,6 +1814,8 @@ export const createBatchPrediction: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBatchPrediction",
 }));
 export type CreateDataSourceFromRDSError =
@@ -1841,6 +1847,8 @@ export const createDataSourceFromRDS: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSourceFromRDS",
 }));
 export type CreateDataSourceFromRedshiftError =
@@ -1893,6 +1901,8 @@ export const createDataSourceFromRedshift: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSourceFromRedshift",
 }));
 export type CreateDataSourceFromS3Error =
@@ -1946,6 +1956,8 @@ export const createDataSourceFromS3: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSourceFromS3",
 }));
 export type CreateEvaluationError =
@@ -1978,6 +1990,8 @@ export const createEvaluation: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEvaluation",
 }));
 export type CreateMLModelError =
@@ -2020,6 +2034,8 @@ export const createMLModel: API.OperationMethod<
     InternalServerException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMLModel",
 }));
 export type CreateRealtimeEndpointError =
@@ -2043,6 +2059,8 @@ export const createRealtimeEndpoint: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRealtimeEndpoint",
 }));
 export type DeleteBatchPredictionError =
@@ -2071,6 +2089,8 @@ export const deleteBatchPrediction: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBatchPrediction",
 }));
 export type DeleteDataSourceError =
@@ -2098,6 +2118,8 @@ export const deleteDataSource: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataSource",
 }));
 export type DeleteEvaluationError =
@@ -2126,6 +2148,8 @@ export const deleteEvaluation: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEvaluation",
 }));
 export type DeleteMLModelError =
@@ -2154,6 +2178,8 @@ export const deleteMLModel: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMLModel",
 }));
 export type DeleteRealtimeEndpointError =
@@ -2177,6 +2203,8 @@ export const deleteRealtimeEndpoint: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRealtimeEndpoint",
 }));
 export type DeleteTagsError =
@@ -2204,6 +2232,8 @@ export const deleteTags: API.OperationMethod<
     InvalidTagException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
 export type DescribeBatchPredictionsError =
@@ -2237,6 +2267,8 @@ export const describeBatchPredictions: API.OperationMethod<
   input: DescribeBatchPredictionsInput,
   output: DescribeBatchPredictionsOutput,
   errors: [InternalServerException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBatchPredictions",
   pagination: {
     inputToken: "NextToken",
@@ -2276,6 +2308,8 @@ export const describeDataSources: API.OperationMethod<
   input: DescribeDataSourcesInput,
   output: DescribeDataSourcesOutput,
   errors: [InternalServerException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSources",
   pagination: {
     inputToken: "NextToken",
@@ -2315,6 +2349,8 @@ export const describeEvaluations: API.OperationMethod<
   input: DescribeEvaluationsInput,
   output: DescribeEvaluationsOutput,
   errors: [InternalServerException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvaluations",
   pagination: {
     inputToken: "NextToken",
@@ -2354,6 +2390,8 @@ export const describeMLModels: API.OperationMethod<
   input: DescribeMLModelsInput,
   output: DescribeMLModelsOutput,
   errors: [InternalServerException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMLModels",
   pagination: {
     inputToken: "NextToken",
@@ -2383,6 +2421,8 @@ export const describeTags: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
 }));
 export type GetBatchPredictionError =
@@ -2407,6 +2447,8 @@ export const getBatchPrediction: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBatchPrediction",
 }));
 export type GetDataSourceError =
@@ -2433,6 +2475,8 @@ export const getDataSource: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSource",
 }));
 export type GetEvaluationError =
@@ -2456,6 +2500,8 @@ export const getEvaluation: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvaluation",
 }));
 export type GetMLModelError =
@@ -2481,6 +2527,8 @@ export const getMLModel: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLModel",
 }));
 export type PredictError =
@@ -2511,6 +2559,8 @@ export const predict: API.OperationMethod<
     PredictorNotMountedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Predict",
 }));
 export type UpdateBatchPredictionError =
@@ -2536,6 +2586,8 @@ export const updateBatchPrediction: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBatchPrediction",
 }));
 export type UpdateDataSourceError =
@@ -2561,6 +2613,8 @@ export const updateDataSource: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSource",
 }));
 export type UpdateEvaluationError =
@@ -2586,6 +2640,8 @@ export const updateEvaluation: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEvaluation",
 }));
 export type UpdateMLModelError =
@@ -2611,5 +2667,7 @@ export const updateMLModel: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMLModel",
 }));

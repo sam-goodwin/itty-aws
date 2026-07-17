@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -514,6 +516,8 @@ export const createRescoreExecutionPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRescoreExecutionPlan",
 }));
 export type DeleteRescoreExecutionPlanError =
@@ -545,6 +549,8 @@ export const deleteRescoreExecutionPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRescoreExecutionPlan",
 }));
 export type DescribeRescoreExecutionPlanError =
@@ -574,6 +580,8 @@ export const describeRescoreExecutionPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRescoreExecutionPlan",
 }));
 export type ListRescoreExecutionPlansError =
@@ -616,6 +624,8 @@ export const listRescoreExecutionPlans: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRescoreExecutionPlans",
   pagination: {
     inputToken: "NextToken",
@@ -650,6 +660,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RescoreError =
@@ -682,6 +694,8 @@ export const rescore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Rescore",
 }));
 export type TagResourceError =
@@ -713,6 +727,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -743,6 +759,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateRescoreExecutionPlanError =
@@ -779,5 +797,7 @@ export const updateRescoreExecutionPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRescoreExecutionPlan",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -917,6 +919,8 @@ export const createSuiteDefinition: API.OperationMethod<
   input: CreateSuiteDefinitionRequest,
   output: CreateSuiteDefinitionResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSuiteDefinition",
 }));
 export type DeleteSuiteDefinitionError =
@@ -937,6 +941,8 @@ export const deleteSuiteDefinition: API.OperationMethod<
   input: DeleteSuiteDefinitionRequest,
   output: DeleteSuiteDefinitionResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSuiteDefinition",
 }));
 export type GetEndpointError =
@@ -960,6 +966,8 @@ export const getEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEndpoint",
 }));
 export type GetSuiteDefinitionError =
@@ -985,6 +993,8 @@ export const getSuiteDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSuiteDefinition",
 }));
 export type GetSuiteRunError =
@@ -1010,6 +1020,8 @@ export const getSuiteRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSuiteRun",
 }));
 export type GetSuiteRunReportError =
@@ -1035,6 +1047,8 @@ export const getSuiteRunReport: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSuiteRunReport",
 }));
 export type ListSuiteDefinitionsError =
@@ -1070,6 +1084,8 @@ export const listSuiteDefinitions: API.OperationMethod<
   input: ListSuiteDefinitionsRequest,
   output: ListSuiteDefinitionsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSuiteDefinitions",
   pagination: {
     inputToken: "nextToken",
@@ -1111,6 +1127,8 @@ export const listSuiteRuns: API.OperationMethod<
   input: ListSuiteRunsRequest,
   output: ListSuiteRunsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSuiteRuns",
   pagination: {
     inputToken: "nextToken",
@@ -1141,6 +1159,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartSuiteRunError =
@@ -1162,6 +1182,8 @@ export const startSuiteRun: API.OperationMethod<
   input: StartSuiteRunRequest,
   output: StartSuiteRunResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSuiteRun",
 }));
 export type StopSuiteRunError =
@@ -1187,6 +1209,8 @@ export const stopSuiteRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSuiteRun",
 }));
 export type TagResourceError =
@@ -1212,6 +1236,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1237,6 +1263,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateSuiteDefinitionError =
@@ -1257,5 +1285,7 @@ export const updateSuiteDefinition: API.OperationMethod<
   input: UpdateSuiteDefinitionRequest,
   output: UpdateSuiteDefinitionResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSuiteDefinition",
 }));

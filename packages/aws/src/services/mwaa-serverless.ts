@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1099,6 +1101,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1128,6 +1132,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1157,6 +1163,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type GetTaskInstanceError =
@@ -1186,6 +1194,8 @@ export const getTaskInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTaskInstance",
 }));
 export type ListTaskInstancesError =
@@ -1228,6 +1238,8 @@ export const listTaskInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTaskInstances",
   pagination: {
     inputToken: "NextToken",
@@ -1265,6 +1277,8 @@ export const createWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflow",
 }));
 export type GetWorkflowError =
@@ -1294,6 +1308,8 @@ export const getWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflow",
 }));
 export type UpdateWorkflowError =
@@ -1327,6 +1343,8 @@ export const updateWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkflow",
 }));
 export type DeleteWorkflowError =
@@ -1356,6 +1374,8 @@ export const deleteWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflow",
 }));
 export type ListWorkflowsError =
@@ -1398,6 +1418,8 @@ export const listWorkflows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflows",
   pagination: {
     inputToken: "NextToken",
@@ -1437,6 +1459,8 @@ export const startWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWorkflowRun",
 }));
 export type GetWorkflowRunError =
@@ -1466,6 +1490,8 @@ export const getWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowRun",
 }));
 export type StopWorkflowRunError =
@@ -1495,6 +1521,8 @@ export const stopWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopWorkflowRun",
 }));
 export type ListWorkflowRunsError =
@@ -1537,6 +1565,8 @@ export const listWorkflowRuns: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowRuns",
   pagination: {
     inputToken: "NextToken",
@@ -1585,6 +1615,8 @@ export const listWorkflowVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowVersions",
   pagination: {
     inputToken: "NextToken",

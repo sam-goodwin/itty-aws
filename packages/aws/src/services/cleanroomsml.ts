@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4430,6 +4432,8 @@ export const listCollaborationConfiguredModelAlgorithmAssociations: API.Operatio
   input: ListCollaborationConfiguredModelAlgorithmAssociationsRequest,
   output: ListCollaborationConfiguredModelAlgorithmAssociationsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCollaborationConfiguredModelAlgorithmAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -4470,6 +4474,8 @@ export const listCollaborationMLInputChannels: API.OperationMethod<
   input: ListCollaborationMLInputChannelsRequest,
   output: ListCollaborationMLInputChannelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCollaborationMLInputChannels",
   pagination: {
     inputToken: "nextToken",
@@ -4510,6 +4516,8 @@ export const listCollaborationTrainedModelExportJobs: API.OperationMethod<
   input: ListCollaborationTrainedModelExportJobsRequest,
   output: ListCollaborationTrainedModelExportJobsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCollaborationTrainedModelExportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4550,6 +4558,8 @@ export const listCollaborationTrainedModelInferenceJobs: API.OperationMethod<
   input: ListCollaborationTrainedModelInferenceJobsRequest,
   output: ListCollaborationTrainedModelInferenceJobsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCollaborationTrainedModelInferenceJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4590,6 +4600,8 @@ export const listCollaborationTrainedModels: API.OperationMethod<
   input: ListCollaborationTrainedModelsRequest,
   output: ListCollaborationTrainedModelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCollaborationTrainedModels",
   pagination: {
     inputToken: "nextToken",
@@ -4619,6 +4631,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -4642,6 +4656,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4665,6 +4681,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type StartAudienceExportJobError =
@@ -4692,6 +4710,8 @@ export const startAudienceExportJob: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAudienceExportJob",
 }));
 export type ListAudienceExportJobsError =
@@ -4725,6 +4745,8 @@ export const listAudienceExportJobs: API.OperationMethod<
   input: ListAudienceExportJobsRequest,
   output: ListAudienceExportJobsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAudienceExportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4760,6 +4782,8 @@ export const startAudienceGenerationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAudienceGenerationJob",
 }));
 export type GetAudienceGenerationJobError =
@@ -4783,6 +4807,8 @@ export const getAudienceGenerationJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAudienceGenerationJob",
 }));
 export type DeleteAudienceGenerationJobError =
@@ -4808,6 +4834,8 @@ export const deleteAudienceGenerationJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAudienceGenerationJob",
 }));
 export type ListAudienceGenerationJobsError =
@@ -4841,6 +4869,8 @@ export const listAudienceGenerationJobs: API.OperationMethod<
   input: ListAudienceGenerationJobsRequest,
   output: ListAudienceGenerationJobsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAudienceGenerationJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4874,6 +4904,8 @@ export const createAudienceModel: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAudienceModel",
 }));
 export type GetAudienceModelError =
@@ -4897,6 +4929,8 @@ export const getAudienceModel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAudienceModel",
 }));
 export type DeleteAudienceModelError =
@@ -4922,6 +4956,8 @@ export const deleteAudienceModel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAudienceModel",
 }));
 export type ListAudienceModelsError =
@@ -4955,6 +4991,8 @@ export const listAudienceModels: API.OperationMethod<
   input: ListAudienceModelsRequest,
   output: ListAudienceModelsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAudienceModels",
   pagination: {
     inputToken: "nextToken",
@@ -4988,6 +5026,8 @@ export const createConfiguredAudienceModel: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfiguredAudienceModel",
 }));
 export type GetConfiguredAudienceModelError =
@@ -5011,6 +5051,8 @@ export const getConfiguredAudienceModel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfiguredAudienceModel",
 }));
 export type UpdateConfiguredAudienceModelError =
@@ -5036,6 +5078,8 @@ export const updateConfiguredAudienceModel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfiguredAudienceModel",
 }));
 export type DeleteConfiguredAudienceModelError =
@@ -5061,6 +5105,8 @@ export const deleteConfiguredAudienceModel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfiguredAudienceModel",
 }));
 export type ListConfiguredAudienceModelsError =
@@ -5094,6 +5140,8 @@ export const listConfiguredAudienceModels: API.OperationMethod<
   input: ListConfiguredAudienceModelsRequest,
   output: ListConfiguredAudienceModelsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfiguredAudienceModels",
   pagination: {
     inputToken: "nextToken",
@@ -5123,6 +5171,8 @@ export const putConfiguredAudienceModelPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfiguredAudienceModelPolicy",
 }));
 export type GetConfiguredAudienceModelPolicyError =
@@ -5146,6 +5196,8 @@ export const getConfiguredAudienceModelPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfiguredAudienceModelPolicy",
 }));
 export type DeleteConfiguredAudienceModelPolicyError =
@@ -5169,6 +5221,8 @@ export const deleteConfiguredAudienceModelPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfiguredAudienceModelPolicy",
 }));
 export type CreateConfiguredModelAlgorithmError =
@@ -5194,6 +5248,8 @@ export const createConfiguredModelAlgorithm: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfiguredModelAlgorithm",
 }));
 export type GetConfiguredModelAlgorithmError =
@@ -5217,6 +5273,8 @@ export const getConfiguredModelAlgorithm: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfiguredModelAlgorithm",
 }));
 export type DeleteConfiguredModelAlgorithmError =
@@ -5242,6 +5300,8 @@ export const deleteConfiguredModelAlgorithm: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfiguredModelAlgorithm",
 }));
 export type ListConfiguredModelAlgorithmsError =
@@ -5275,6 +5335,8 @@ export const listConfiguredModelAlgorithms: API.OperationMethod<
   input: ListConfiguredModelAlgorithmsRequest,
   output: ListConfiguredModelAlgorithmsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfiguredModelAlgorithms",
   pagination: {
     inputToken: "nextToken",
@@ -5310,6 +5372,8 @@ export const createConfiguredModelAlgorithmAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfiguredModelAlgorithmAssociation",
 }));
 export type GetConfiguredModelAlgorithmAssociationError =
@@ -5335,6 +5399,8 @@ export const getConfiguredModelAlgorithmAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfiguredModelAlgorithmAssociation",
 }));
 export type DeleteConfiguredModelAlgorithmAssociationError =
@@ -5362,6 +5428,8 @@ export const deleteConfiguredModelAlgorithmAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfiguredModelAlgorithmAssociation",
 }));
 export type ListConfiguredModelAlgorithmAssociationsError =
@@ -5396,6 +5464,8 @@ export const listConfiguredModelAlgorithmAssociations: API.OperationMethod<
   input: ListConfiguredModelAlgorithmAssociationsRequest,
   output: ListConfiguredModelAlgorithmAssociationsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfiguredModelAlgorithmAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -5427,6 +5497,8 @@ export const getCollaborationConfiguredModelAlgorithmAssociation: API.OperationM
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCollaborationConfiguredModelAlgorithmAssociation",
 }));
 export type PutMLConfigurationError =
@@ -5446,6 +5518,8 @@ export const putMLConfiguration: API.OperationMethod<
   input: PutMLConfigurationRequest,
   output: PutMLConfigurationResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMLConfiguration",
 }));
 export type GetMLConfigurationError =
@@ -5471,6 +5545,8 @@ export const getMLConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLConfiguration",
 }));
 export type DeleteMLConfigurationError =
@@ -5496,6 +5572,8 @@ export const deleteMLConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMLConfiguration",
 }));
 export type CreateMLInputChannelError =
@@ -5525,6 +5603,8 @@ export const createMLInputChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMLInputChannel",
 }));
 export type GetMLInputChannelError =
@@ -5550,6 +5630,8 @@ export const getMLInputChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLInputChannel",
 }));
 export type DeleteMLInputChannelDataError =
@@ -5577,6 +5659,8 @@ export const deleteMLInputChannelData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMLInputChannelData",
 }));
 export type ListMLInputChannelsError =
@@ -5611,6 +5695,8 @@ export const listMLInputChannels: API.OperationMethod<
   input: ListMLInputChannelsRequest,
   output: ListMLInputChannelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMLInputChannels",
   pagination: {
     inputToken: "nextToken",
@@ -5642,6 +5728,8 @@ export const getCollaborationMLInputChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCollaborationMLInputChannel",
 }));
 export type CreateTrainedModelError =
@@ -5673,6 +5761,8 @@ export const createTrainedModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrainedModel",
 }));
 export type GetTrainedModelError =
@@ -5698,6 +5788,8 @@ export const getTrainedModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrainedModel",
 }));
 export type DeleteTrainedModelOutputError =
@@ -5725,6 +5817,8 @@ export const deleteTrainedModelOutput: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrainedModelOutput",
 }));
 export type ListTrainedModelsError =
@@ -5759,6 +5853,8 @@ export const listTrainedModels: API.OperationMethod<
   input: ListTrainedModelsRequest,
   output: ListTrainedModelsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrainedModels",
   pagination: {
     inputToken: "nextToken",
@@ -5792,6 +5888,8 @@ export const cancelTrainedModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelTrainedModel",
 }));
 export type GetCollaborationTrainedModelError =
@@ -5817,6 +5915,8 @@ export const getCollaborationTrainedModel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCollaborationTrainedModel",
 }));
 export type ListTrainedModelVersionsError =
@@ -5857,6 +5957,8 @@ export const listTrainedModelVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrainedModelVersions",
   pagination: {
     inputToken: "nextToken",
@@ -5890,6 +5992,8 @@ export const startTrainedModelExportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTrainedModelExportJob",
 }));
 export type StartTrainedModelInferenceJobError =
@@ -5919,6 +6023,8 @@ export const startTrainedModelInferenceJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTrainedModelInferenceJob",
 }));
 export type GetTrainedModelInferenceJobError =
@@ -5944,6 +6050,8 @@ export const getTrainedModelInferenceJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrainedModelInferenceJob",
 }));
 export type ListTrainedModelInferenceJobsError =
@@ -5978,6 +6086,8 @@ export const listTrainedModelInferenceJobs: API.OperationMethod<
   input: ListTrainedModelInferenceJobsRequest,
   output: ListTrainedModelInferenceJobsResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrainedModelInferenceJobs",
   pagination: {
     inputToken: "nextToken",
@@ -6011,6 +6121,8 @@ export const cancelTrainedModelInferenceJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelTrainedModelInferenceJob",
 }));
 export type CreateTrainingDatasetError =
@@ -6030,6 +6142,8 @@ export const createTrainingDataset: API.OperationMethod<
   input: CreateTrainingDatasetRequest,
   output: CreateTrainingDatasetResponse,
   errors: [AccessDeniedException, ConflictException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrainingDataset",
 }));
 export type GetTrainingDatasetError =
@@ -6053,6 +6167,8 @@ export const getTrainingDataset: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrainingDataset",
 }));
 export type DeleteTrainingDatasetError =
@@ -6078,6 +6194,8 @@ export const deleteTrainingDataset: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrainingDataset",
 }));
 export type ListTrainingDatasetsError =
@@ -6111,6 +6229,8 @@ export const listTrainingDatasets: API.OperationMethod<
   input: ListTrainingDatasetsRequest,
   output: ListTrainingDatasetsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrainingDatasets",
   pagination: {
     inputToken: "nextToken",

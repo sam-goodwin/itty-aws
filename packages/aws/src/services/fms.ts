@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3059,6 +3061,8 @@ export const associateAdminAccount: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAdminAccount",
 }));
 export type AssociateThirdPartyFirewallError =
@@ -3084,6 +3088,8 @@ export const associateThirdPartyFirewall: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateThirdPartyFirewall",
 }));
 export type BatchAssociateResourceError =
@@ -3111,6 +3117,8 @@ export const batchAssociateResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateResource",
 }));
 export type BatchDisassociateResourceError =
@@ -3136,6 +3144,8 @@ export const batchDisassociateResource: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateResource",
 }));
 export type DeleteAppsListError =
@@ -3159,6 +3169,8 @@ export const deleteAppsList: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppsList",
 }));
 export type DeleteNotificationChannelError =
@@ -3183,6 +3195,8 @@ export const deleteNotificationChannel: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotificationChannel",
 }));
 export type DeletePolicyError =
@@ -3210,6 +3224,8 @@ export const deletePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicy",
 }));
 export type DeleteProtocolsListError =
@@ -3233,6 +3249,8 @@ export const deleteProtocolsList: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProtocolsList",
 }));
 export type DeleteResourceSetError =
@@ -3258,6 +3276,8 @@ export const deleteResourceSet: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceSet",
 }));
 export type DisassociateAdminAccountError =
@@ -3283,6 +3303,8 @@ export const disassociateAdminAccount: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAdminAccount",
 }));
 export type DisassociateThirdPartyFirewallError =
@@ -3308,6 +3330,8 @@ export const disassociateThirdPartyFirewall: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateThirdPartyFirewall",
 }));
 export type GetAdminAccountError =
@@ -3332,6 +3356,8 @@ export const getAdminAccount: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAdminAccount",
 }));
 export type GetAdminScopeError =
@@ -3359,6 +3385,8 @@ export const getAdminScope: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAdminScope",
 }));
 export type GetAppsListError =
@@ -3382,6 +3410,8 @@ export const getAppsList: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAppsList",
 }));
 export type GetComplianceDetailError =
@@ -3410,6 +3440,8 @@ export const getComplianceDetail: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComplianceDetail",
 }));
 export type GetNotificationChannelError =
@@ -3435,6 +3467,8 @@ export const getNotificationChannel: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNotificationChannel",
 }));
 export type GetPolicyError =
@@ -3460,6 +3494,8 @@ export const getPolicy: API.OperationMethod<
     InvalidTypeException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
 export type GetProtectionStatusError =
@@ -3484,6 +3520,8 @@ export const getProtectionStatus: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProtectionStatus",
 }));
 export type GetProtocolsListError =
@@ -3507,6 +3545,8 @@ export const getProtocolsList: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProtocolsList",
 }));
 export type GetResourceSetError =
@@ -3532,6 +3572,8 @@ export const getResourceSet: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceSet",
 }));
 export type GetThirdPartyFirewallAssociationStatusError =
@@ -3557,6 +3599,8 @@ export const getThirdPartyFirewallAssociationStatus: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetThirdPartyFirewallAssociationStatus",
 }));
 export type GetViolationDetailsError =
@@ -3580,6 +3624,8 @@ export const getViolationDetails: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetViolationDetails",
 }));
 export type ListAdminAccountsForOrganizationError =
@@ -3622,6 +3668,8 @@ export const listAdminAccountsForOrganization: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAdminAccountsForOrganization",
   pagination: {
     inputToken: "NextToken",
@@ -3666,6 +3714,8 @@ export const listAdminsManagingAccount: API.OperationMethod<
     InvalidInputException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAdminsManagingAccount",
   pagination: {
     inputToken: "NextToken",
@@ -3712,6 +3762,8 @@ export const listAppsLists: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppsLists",
   pagination: {
     inputToken: "NextToken",
@@ -3753,6 +3805,8 @@ export const listComplianceStatus: API.OperationMethod<
   input: ListComplianceStatusRequest,
   output: ListComplianceStatusResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComplianceStatus",
   pagination: {
     inputToken: "NextToken",
@@ -3782,6 +3836,8 @@ export const listDiscoveredResources: API.OperationMethod<
     InvalidInputException,
     InvalidOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDiscoveredResources",
 }));
 export type ListMemberAccountsError =
@@ -3818,6 +3874,8 @@ export const listMemberAccounts: API.OperationMethod<
   input: ListMemberAccountsRequest,
   output: ListMemberAccountsResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMemberAccounts",
   pagination: {
     inputToken: "NextToken",
@@ -3864,6 +3922,8 @@ export const listPolicies: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -3908,6 +3968,8 @@ export const listProtocolsLists: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProtocolsLists",
   pagination: {
     inputToken: "NextToken",
@@ -3939,6 +4001,8 @@ export const listResourceSetResources: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceSetResources",
 }));
 export type ListResourceSetsError =
@@ -3962,6 +4026,8 @@ export const listResourceSets: API.OperationMethod<
     InvalidInputException,
     InvalidOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceSets",
 }));
 export type ListTagsForResourceError =
@@ -3987,6 +4053,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListThirdPartyFirewallFirewallPoliciesError =
@@ -4027,6 +4095,8 @@ export const listThirdPartyFirewallFirewallPolicies: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThirdPartyFirewallFirewallPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -4059,6 +4129,8 @@ export const putAdminAccount: API.OperationMethod<
     InvalidOperationException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAdminAccount",
 }));
 export type PutAppsListError =
@@ -4086,6 +4158,8 @@ export const putAppsList: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAppsList",
 }));
 export type PutNotificationChannelError =
@@ -4113,6 +4187,8 @@ export const putNotificationChannel: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutNotificationChannel",
 }));
 export type PutPolicyError =
@@ -4179,6 +4255,8 @@ export const putPolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPolicy",
 }));
 export type PutProtocolsListError =
@@ -4206,6 +4284,8 @@ export const putProtocolsList: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProtocolsList",
 }));
 export type PutResourceSetError =
@@ -4233,6 +4313,8 @@ export const putResourceSet: API.OperationMethod<
     InvalidOperationException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourceSet",
 }));
 export type TagResourceError =
@@ -4260,6 +4342,8 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4285,5 +4369,7 @@ export const untagResource: API.OperationMethod<
     InvalidOperationException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

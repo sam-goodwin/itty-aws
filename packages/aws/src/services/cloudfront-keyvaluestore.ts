@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -467,6 +469,8 @@ export const deleteKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKey",
 }));
 export type DescribeKeyValueStoreError =
@@ -492,6 +496,8 @@ export const describeKeyValueStore: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKeyValueStore",
 }));
 export type GetKeyError =
@@ -517,6 +523,8 @@ export const getKey: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKey",
 }));
 export type ListKeysError =
@@ -559,6 +567,8 @@ export const listKeys: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeys",
   pagination: {
     inputToken: "NextToken",
@@ -594,6 +604,8 @@ export const putKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutKey",
 }));
 export type UpdateKeysError =
@@ -623,5 +635,7 @@ export const updateKeys: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKeys",
 }));

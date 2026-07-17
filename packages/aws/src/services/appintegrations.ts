@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1410,6 +1412,8 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateDataIntegrationError =
@@ -1443,6 +1447,8 @@ export const createDataIntegration: API.OperationMethod<
     ResourceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataIntegration",
 }));
 export type CreateDataIntegrationAssociationError =
@@ -1472,6 +1478,8 @@ export const createDataIntegrationAssociation: API.OperationMethod<
     ResourceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataIntegrationAssociation",
 }));
 export type CreateEventIntegrationError =
@@ -1504,6 +1512,8 @@ export const createEventIntegration: API.OperationMethod<
     ResourceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventIntegration",
 }));
 export type DeleteApplicationError =
@@ -1532,6 +1542,8 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteDataIntegrationError =
@@ -1565,6 +1577,8 @@ export const deleteDataIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataIntegration",
 }));
 export type DeleteEventIntegrationError =
@@ -1593,6 +1607,8 @@ export const deleteEventIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventIntegration",
 }));
 export type GetApplicationError =
@@ -1620,6 +1636,8 @@ export const getApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type GetDataIntegrationError =
@@ -1651,6 +1669,8 @@ export const getDataIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataIntegration",
 }));
 export type GetEventIntegrationError =
@@ -1678,6 +1698,8 @@ export const getEventIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventIntegration",
 }));
 export type ListApplicationAssociationsError =
@@ -1720,6 +1742,8 @@ export const listApplicationAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -1766,6 +1790,8 @@ export const listApplications: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -1818,6 +1844,8 @@ export const listDataIntegrationAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataIntegrationAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -1868,6 +1896,8 @@ export const listDataIntegrations: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataIntegrations",
   pagination: {
     inputToken: "NextToken",
@@ -1916,6 +1946,8 @@ export const listEventIntegrationAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventIntegrationAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -1962,6 +1994,8 @@ export const listEventIntegrations: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventIntegrations",
   pagination: {
     inputToken: "NextToken",
@@ -1993,6 +2027,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2018,6 +2054,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2043,6 +2081,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
@@ -2072,6 +2112,8 @@ export const updateApplication: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateDataIntegrationError =
@@ -2103,6 +2145,8 @@ export const updateDataIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataIntegration",
 }));
 export type UpdateDataIntegrationAssociationError =
@@ -2132,6 +2176,8 @@ export const updateDataIntegrationAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataIntegrationAssociation",
 }));
 export type UpdateEventIntegrationError =
@@ -2159,5 +2205,7 @@ export const updateEventIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventIntegration",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1288,6 +1290,8 @@ export const createApplication: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateApplicationVersionError =
@@ -1315,6 +1319,8 @@ export const createApplicationVersion: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplicationVersion",
 }));
 export type CreateCloudFormationChangeSetError =
@@ -1340,6 +1346,8 @@ export const createCloudFormationChangeSet: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudFormationChangeSet",
 }));
 export type CreateCloudFormationTemplateError =
@@ -1367,6 +1375,8 @@ export const createCloudFormationTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudFormationTemplate",
 }));
 export type DeleteApplicationError =
@@ -1396,6 +1406,8 @@ export const deleteApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type GetApplicationError =
@@ -1423,6 +1435,8 @@ export const getApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type GetApplicationPolicyError =
@@ -1450,6 +1464,8 @@ export const getApplicationPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationPolicy",
 }));
 export type GetCloudFormationTemplateError =
@@ -1477,6 +1493,8 @@ export const getCloudFormationTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudFormationTemplate",
 }));
 export type ListApplicationDependenciesError =
@@ -1519,6 +1537,8 @@ export const listApplicationDependencies: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationDependencies",
   pagination: {
     inputToken: "NextToken",
@@ -1564,6 +1584,8 @@ export const listApplications: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -1611,6 +1633,8 @@ export const listApplicationVersions: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationVersions",
   pagination: {
     inputToken: "NextToken",
@@ -1646,6 +1670,8 @@ export const putApplicationPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutApplicationPolicy",
 }));
 export type UnshareApplicationError =
@@ -1675,6 +1701,8 @@ export const unshareApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnshareApplication",
 }));
 export type UpdateApplicationError =
@@ -1704,5 +1732,7 @@ export const updateApplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));

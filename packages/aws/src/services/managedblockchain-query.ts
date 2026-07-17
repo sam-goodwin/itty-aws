@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -891,6 +893,8 @@ export const batchGetTokenBalance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetTokenBalance",
 }));
 export type GetAssetContractError =
@@ -926,6 +930,8 @@ export const getAssetContract: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssetContract",
 }));
 export type GetTokenBalanceError =
@@ -958,6 +964,8 @@ export const getTokenBalance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTokenBalance",
 }));
 export type GetTransactionError =
@@ -991,6 +999,8 @@ export const getTransaction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransaction",
 }));
 export type ListAssetContractsError =
@@ -1037,6 +1047,8 @@ export const listAssetContracts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetContracts",
   pagination: {
     inputToken: "nextToken",
@@ -1087,6 +1099,8 @@ export const listFilteredTransactionEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFilteredTransactionEvents",
   pagination: {
     inputToken: "nextToken",
@@ -1145,6 +1159,8 @@ export const listTokenBalances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTokenBalances",
   pagination: {
     inputToken: "nextToken",
@@ -1197,6 +1213,8 @@ export const listTransactionEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTransactionEvents",
   pagination: {
     inputToken: "nextToken",
@@ -1245,6 +1263,8 @@ export const listTransactions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTransactions",
   pagination: {
     inputToken: "nextToken",

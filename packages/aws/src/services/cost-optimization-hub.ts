@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1985,6 +1987,8 @@ export const getPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPreferences",
 }));
 export type GetRecommendationError =
@@ -2014,6 +2018,8 @@ export const getRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendation",
 }));
 export type ListEfficiencyMetricsError =
@@ -2056,6 +2062,8 @@ export const listEfficiencyMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEfficiencyMetrics",
   pagination: {
     inputToken: "nextToken",
@@ -2102,6 +2110,8 @@ export const listEnrollmentStatuses: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnrollmentStatuses",
   pagination: {
     inputToken: "nextToken",
@@ -2148,6 +2158,8 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -2196,6 +2208,8 @@ export const listRecommendationSummaries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendationSummaries",
   pagination: {
     inputToken: "nextToken",
@@ -2231,6 +2245,8 @@ export const updateEnrollmentStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnrollmentStatus",
 }));
 export type UpdatePreferencesError =
@@ -2256,5 +2272,7 @@ export const updatePreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePreferences",
 }));

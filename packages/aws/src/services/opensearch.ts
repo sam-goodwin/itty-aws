@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -6414,6 +6416,8 @@ export const acceptInboundConnection: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptInboundConnection",
 }));
 export type AddDataSourceError =
@@ -6447,6 +6451,8 @@ export const addDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddDataSource",
 }));
 export type AddDirectQueryDataSourceError =
@@ -6477,6 +6483,8 @@ export const addDirectQueryDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddDirectQueryDataSource",
 }));
 export type AddTagsError =
@@ -6506,6 +6514,8 @@ export const addTags: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
 export type AssociatePackageError =
@@ -6537,6 +6547,8 @@ export const associatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePackage",
 }));
 export type AssociatePackagesError =
@@ -6567,6 +6579,8 @@ export const associatePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePackages",
 }));
 export type AuthorizeVpcEndpointAccessError =
@@ -6597,6 +6611,8 @@ export const authorizeVpcEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeVpcEndpointAccess",
 }));
 export type CancelDomainConfigChangeError =
@@ -6624,6 +6640,8 @@ export const cancelDomainConfigChange: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDomainConfigChange",
 }));
 export type CancelServiceSoftwareUpdateError =
@@ -6653,6 +6671,8 @@ export const cancelServiceSoftwareUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelServiceSoftwareUpdate",
 }));
 export type CreateApplicationError =
@@ -6682,6 +6702,8 @@ export const createApplication: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateDomainError =
@@ -6714,6 +6736,8 @@ export const createDomain: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
 export type CreateIndexError =
@@ -6747,6 +6771,8 @@ export const createIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIndex",
 }));
 export type CreateOutboundConnectionError =
@@ -6774,6 +6800,8 @@ export const createOutboundConnection: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOutboundConnection",
 }));
 export type CreatePackageError =
@@ -6807,6 +6835,8 @@ export const createPackage: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePackage",
 }));
 export type CreateVpcEndpointError =
@@ -6836,6 +6866,8 @@ export const createVpcEndpoint: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcEndpoint",
 }));
 export type DeleteApplicationError =
@@ -6867,6 +6899,8 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteDataSourceError =
@@ -6897,6 +6931,8 @@ export const deleteDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataSource",
 }));
 export type DeleteDirectQueryDataSourceError =
@@ -6925,6 +6961,8 @@ export const deleteDirectQueryDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectQueryDataSource",
 }));
 export type DeleteDomainError =
@@ -6951,6 +6989,8 @@ export const deleteDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
 export type DeleteInboundConnectionError =
@@ -6970,6 +7010,8 @@ export const deleteInboundConnection: API.OperationMethod<
   input: DeleteInboundConnectionRequest,
   output: DeleteInboundConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInboundConnection",
 }));
 export type DeleteIndexError =
@@ -7001,6 +7043,8 @@ export const deleteIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIndex",
 }));
 export type DeleteOutboundConnectionError =
@@ -7020,6 +7064,8 @@ export const deleteOutboundConnection: API.OperationMethod<
   input: DeleteOutboundConnectionRequest,
   output: DeleteOutboundConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOutboundConnection",
 }));
 export type DeletePackageError =
@@ -7050,6 +7096,8 @@ export const deletePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePackage",
 }));
 export type DeleteVpcEndpointError =
@@ -7075,6 +7123,8 @@ export const deleteVpcEndpoint: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcEndpoint",
 }));
 export type DeregisterCapabilityError =
@@ -7104,6 +7154,8 @@ export const deregisterCapability: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterCapability",
 }));
 export type DescribeDomainError =
@@ -7130,6 +7182,8 @@ export const describeDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomain",
 }));
 export type DescribeDomainAutoTunesError =
@@ -7172,6 +7226,8 @@ export const describeDomainAutoTunes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainAutoTunes",
   pagination: {
     inputToken: "NextToken",
@@ -7203,6 +7259,8 @@ export const describeDomainChangeProgress: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainChangeProgress",
 }));
 export type DescribeDomainConfigError =
@@ -7228,6 +7286,8 @@ export const describeDomainConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainConfig",
 }));
 export type DescribeDomainHealthError =
@@ -7256,6 +7316,8 @@ export const describeDomainHealth: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainHealth",
 }));
 export type DescribeDomainNodesError =
@@ -7287,6 +7349,8 @@ export const describeDomainNodes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainNodes",
 }));
 export type DescribeDomainsError =
@@ -7307,6 +7371,8 @@ export const describeDomains: API.OperationMethod<
   input: DescribeDomainsRequest,
   output: DescribeDomainsResponse,
   errors: [BaseException, InternalException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomains",
 }));
 export type DescribeDryRunProgressError =
@@ -7335,6 +7401,8 @@ export const describeDryRunProgress: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDryRunProgress",
 }));
 export type DescribeInboundConnectionsError =
@@ -7369,6 +7437,8 @@ export const describeInboundConnections: API.OperationMethod<
   input: DescribeInboundConnectionsRequest,
   output: DescribeInboundConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInboundConnections",
   pagination: {
     inputToken: "NextToken",
@@ -7405,6 +7475,8 @@ export const describeInsightDetails: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInsightDetails",
 }));
 export type DescribeInstanceTypeLimitsError =
@@ -7435,6 +7507,8 @@ export const describeInstanceTypeLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceTypeLimits",
 }));
 export type DescribeOutboundConnectionsError =
@@ -7469,6 +7543,8 @@ export const describeOutboundConnections: API.OperationMethod<
   input: DescribeOutboundConnectionsRequest,
   output: DescribeOutboundConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOutboundConnections",
   pagination: {
     inputToken: "NextToken",
@@ -7518,6 +7594,8 @@ export const describePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePackages",
   pagination: {
     inputToken: "NextToken",
@@ -7565,6 +7643,8 @@ export const describeReservedInstanceOfferings: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedInstanceOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -7612,6 +7692,8 @@ export const describeReservedInstances: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedInstances",
   pagination: {
     inputToken: "NextToken",
@@ -7642,6 +7724,8 @@ export const describeVpcEndpoints: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpoints",
 }));
 export type DissociatePackageError =
@@ -7675,6 +7759,8 @@ export const dissociatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DissociatePackage",
 }));
 export type DissociatePackagesError =
@@ -7704,6 +7790,8 @@ export const dissociatePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DissociatePackages",
 }));
 export type GetApplicationError =
@@ -7733,6 +7821,8 @@ export const getApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type GetCapabilityError =
@@ -7760,6 +7850,8 @@ export const getCapability: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapability",
 }));
 export type GetCompatibleVersionsError =
@@ -7788,6 +7880,8 @@ export const getCompatibleVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCompatibleVersions",
 }));
 export type GetDataSourceError =
@@ -7817,6 +7911,8 @@ export const getDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSource",
 }));
 export type GetDefaultApplicationSettingError =
@@ -7845,6 +7941,8 @@ export const getDefaultApplicationSetting: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDefaultApplicationSetting",
 }));
 export type GetDirectQueryDataSourceError =
@@ -7873,6 +7971,8 @@ export const getDirectQueryDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDirectQueryDataSource",
 }));
 export type GetDomainMaintenanceStatusError =
@@ -7900,6 +8000,8 @@ export const getDomainMaintenanceStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainMaintenanceStatus",
 }));
 export type GetIndexError =
@@ -7931,6 +8033,8 @@ export const getIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIndex",
 }));
 export type GetPackageVersionHistoryError =
@@ -7976,6 +8080,8 @@ export const getPackageVersionHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPackageVersionHistory",
   pagination: {
     inputToken: "NextToken",
@@ -8024,6 +8130,8 @@ export const getUpgradeHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUpgradeHistory",
   pagination: {
     inputToken: "NextToken",
@@ -8057,6 +8165,8 @@ export const getUpgradeStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUpgradeStatus",
 }));
 export type ListApplicationsError =
@@ -8101,6 +8211,8 @@ export const listApplications: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
@@ -8138,6 +8250,8 @@ export const listDataSources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSources",
 }));
 export type ListDirectQueryDataSourcesError =
@@ -8166,6 +8280,8 @@ export const listDirectQueryDataSources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDirectQueryDataSources",
 }));
 export type ListDomainMaintenancesError =
@@ -8208,6 +8324,8 @@ export const listDomainMaintenances: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainMaintenances",
   pagination: {
     inputToken: "NextToken",
@@ -8232,6 +8350,8 @@ export const listDomainNames: API.OperationMethod<
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [BaseException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainNames",
 }));
 export type ListDomainsForPackageError =
@@ -8276,6 +8396,8 @@ export const listDomainsForPackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainsForPackage",
   pagination: {
     inputToken: "NextToken",
@@ -8312,6 +8434,8 @@ export const listInsights: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInsights",
 }));
 export type ListInstanceTypeDetailsError =
@@ -8353,6 +8477,8 @@ export const listInstanceTypeDetails: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceTypeDetails",
   pagination: {
     inputToken: "NextToken",
@@ -8402,6 +8528,8 @@ export const listPackagesForDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPackagesForDomain",
   pagination: {
     inputToken: "NextToken",
@@ -8451,6 +8579,8 @@ export const listScheduledActions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScheduledActions",
   pagination: {
     inputToken: "NextToken",
@@ -8482,6 +8612,8 @@ export const listTags: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
 }));
 export type ListVersionsError =
@@ -8523,6 +8655,8 @@ export const listVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVersions",
   pagination: {
     inputToken: "NextToken",
@@ -8555,6 +8689,8 @@ export const listVpcEndpointAccess: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcEndpointAccess",
 }));
 export type ListVpcEndpointsError =
@@ -8574,6 +8710,8 @@ export const listVpcEndpoints: API.OperationMethod<
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [BaseException, DisabledOperationException, InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcEndpoints",
 }));
 export type ListVpcEndpointsForDomainError =
@@ -8600,6 +8738,8 @@ export const listVpcEndpointsForDomain: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcEndpointsForDomain",
 }));
 export type PurchaseReservedInstanceOfferingError =
@@ -8629,6 +8769,8 @@ export const purchaseReservedInstanceOffering: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseReservedInstanceOffering",
 }));
 export type PutDefaultApplicationSettingError =
@@ -8659,6 +8801,8 @@ export const putDefaultApplicationSetting: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDefaultApplicationSetting",
 }));
 export type RegisterCapabilityError =
@@ -8690,6 +8834,8 @@ export const registerCapability: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCapability",
 }));
 export type RejectInboundConnectionError =
@@ -8709,6 +8855,8 @@ export const rejectInboundConnection: API.OperationMethod<
   input: RejectInboundConnectionRequest,
   output: RejectInboundConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectInboundConnection",
 }));
 export type RemoveTagsError =
@@ -8729,6 +8877,8 @@ export const removeTags: API.OperationMethod<
   input: RemoveTagsRequest,
   output: RemoveTagsResponse,
   errors: [BaseException, InternalException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
 export type RevokeVpcEndpointAccessError =
@@ -8757,6 +8907,8 @@ export const revokeVpcEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeVpcEndpointAccess",
 }));
 export type StartDomainMaintenanceError =
@@ -8786,6 +8938,8 @@ export const startDomainMaintenance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDomainMaintenance",
 }));
 export type StartServiceSoftwareUpdateError =
@@ -8813,6 +8967,8 @@ export const startServiceSoftwareUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartServiceSoftwareUpdate",
 }));
 export type UpdateApplicationError =
@@ -8844,6 +9000,8 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateDataSourceError =
@@ -8875,6 +9033,8 @@ export const updateDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSource",
 }));
 export type UpdateDirectQueryDataSourceError =
@@ -8905,6 +9065,8 @@ export const updateDirectQueryDataSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDirectQueryDataSource",
 }));
 export type UpdateDomainConfigError =
@@ -8935,6 +9097,8 @@ export const updateDomainConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainConfig",
 }));
 export type UpdateIndexError =
@@ -8966,6 +9130,8 @@ export const updateIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIndex",
 }));
 export type UpdatePackageError =
@@ -8997,6 +9163,8 @@ export const updatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePackage",
 }));
 export type UpdatePackageScopeError =
@@ -9025,6 +9193,8 @@ export const updatePackageScope: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePackageScope",
 }));
 export type UpdateScheduledActionError =
@@ -9058,6 +9228,8 @@ export const updateScheduledAction: API.OperationMethod<
     SlotNotAvailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScheduledAction",
 }));
 export type UpdateVpcEndpointError =
@@ -9087,6 +9259,8 @@ export const updateVpcEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVpcEndpoint",
 }));
 export type UpgradeDomainError =
@@ -9117,5 +9291,7 @@ export const upgradeDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpgradeDomain",
 }));

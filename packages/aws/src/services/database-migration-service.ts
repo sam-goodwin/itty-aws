@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -8112,6 +8114,8 @@ export const addTagsToResource: API.OperationMethod<
   input: AddTagsToResourceMessage,
   output: AddTagsToResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
 export type ApplyPendingMaintenanceActionError =
@@ -8130,6 +8134,8 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   input: ApplyPendingMaintenanceActionMessage,
   output: ApplyPendingMaintenanceActionResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplyPendingMaintenanceAction",
 }));
 export type BatchStartRecommendationsError =
@@ -8157,6 +8163,8 @@ export const batchStartRecommendations: API.OperationMethod<
   input: BatchStartRecommendationsRequest,
   output: BatchStartRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchStartRecommendations",
 }));
 export type CancelMetadataModelConversionError =
@@ -8176,6 +8184,8 @@ export const cancelMetadataModelConversion: API.OperationMethod<
   input: CancelMetadataModelConversionMessage,
   output: CancelMetadataModelConversionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMetadataModelConversion",
 }));
 export type CancelMetadataModelCreationError =
@@ -8195,6 +8205,8 @@ export const cancelMetadataModelCreation: API.OperationMethod<
   input: CancelMetadataModelCreationMessage,
   output: CancelMetadataModelCreationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMetadataModelCreation",
 }));
 export type CancelReplicationTaskAssessmentRunError =
@@ -8218,6 +8230,8 @@ export const cancelReplicationTaskAssessmentRun: API.OperationMethod<
   input: CancelReplicationTaskAssessmentRunMessage,
   output: CancelReplicationTaskAssessmentRunResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelReplicationTaskAssessmentRun",
 }));
 export type CreateDataMigrationError =
@@ -8245,6 +8259,8 @@ export const createDataMigration: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataMigration",
 }));
 export type CreateDataProviderError =
@@ -8271,6 +8287,8 @@ export const createDataProvider: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataProvider",
 }));
 export type CreateEndpointError =
@@ -8309,6 +8327,8 @@ export const createEndpoint: API.OperationMethod<
     ResourceQuotaExceededFault,
     S3AccessDeniedFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpoint",
 }));
 export type CreateEventSubscriptionError =
@@ -8361,6 +8381,8 @@ export const createEventSubscription: API.OperationMethod<
     SNSInvalidTopicFault,
     SNSNoAuthorizationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventSubscription",
 }));
 export type CreateFleetAdvisorCollectorError =
@@ -8390,6 +8412,8 @@ export const createFleetAdvisorCollector: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFleetAdvisorCollector",
 }));
 export type CreateInstanceProfileError =
@@ -8425,6 +8449,8 @@ export const createInstanceProfile: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceProfile",
 }));
 export type CreateMigrationProjectError =
@@ -8459,6 +8485,8 @@ export const createMigrationProject: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMigrationProject",
 }));
 export type CreateReplicationConfigError =
@@ -8494,6 +8522,8 @@ export const createReplicationConfig: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationConfig",
 }));
 export type CreateReplicationInstanceError =
@@ -8540,6 +8570,8 @@ export const createReplicationInstance: API.OperationMethod<
     ResourceQuotaExceededFault,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationInstance",
 }));
 export type CreateReplicationSubnetGroupError =
@@ -8579,6 +8611,8 @@ export const createReplicationSubnetGroup: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationSubnetGroup",
 }));
 export type CreateReplicationTaskError =
@@ -8608,6 +8642,8 @@ export const createReplicationTask: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationTask",
 }));
 export type DeleteCertificateError =
@@ -8626,6 +8662,8 @@ export const deleteCertificate: API.OperationMethod<
   input: DeleteCertificateMessage,
   output: DeleteCertificateResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificate",
 }));
 export type DeleteConnectionError =
@@ -8645,6 +8683,8 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionMessage,
   output: DeleteConnectionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type DeleteDataMigrationError =
@@ -8668,6 +8708,8 @@ export const deleteDataMigration: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataMigration",
 }));
 export type DeleteDataProviderError =
@@ -8696,6 +8738,8 @@ export const deleteDataProvider: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataProvider",
 }));
 export type DeleteEndpointError =
@@ -8717,6 +8761,8 @@ export const deleteEndpoint: API.OperationMethod<
   input: DeleteEndpointMessage,
   output: DeleteEndpointResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpoint",
 }));
 export type DeleteEventSubscriptionError =
@@ -8736,6 +8782,8 @@ export const deleteEventSubscription: API.OperationMethod<
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventSubscription",
 }));
 export type DeleteFleetAdvisorCollectorError =
@@ -8761,6 +8809,8 @@ export const deleteFleetAdvisorCollector: API.OperationMethod<
     CollectorNotFoundFault,
     InvalidResourceStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFleetAdvisorCollector",
 }));
 export type DeleteFleetAdvisorDatabasesError =
@@ -8782,6 +8832,8 @@ export const deleteFleetAdvisorDatabases: API.OperationMethod<
   input: DeleteFleetAdvisorDatabasesRequest,
   output: DeleteFleetAdvisorDatabasesResponse,
   errors: [AccessDeniedFault, InvalidOperationFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFleetAdvisorDatabases",
 }));
 export type DeleteInstanceProfileError =
@@ -8810,6 +8862,8 @@ export const deleteInstanceProfile: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceProfile",
 }));
 export type DeleteMigrationProjectError =
@@ -8837,6 +8891,8 @@ export const deleteMigrationProject: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMigrationProject",
 }));
 export type DeleteReplicationConfigError =
@@ -8859,6 +8915,8 @@ export const deleteReplicationConfig: API.OperationMethod<
   input: DeleteReplicationConfigMessage,
   output: DeleteReplicationConfigResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationConfig",
 }));
 export type DeleteReplicationInstanceError =
@@ -8880,6 +8938,8 @@ export const deleteReplicationInstance: API.OperationMethod<
   input: DeleteReplicationInstanceMessage,
   output: DeleteReplicationInstanceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationInstance",
 }));
 export type DeleteReplicationSubnetGroupError =
@@ -8899,6 +8959,8 @@ export const deleteReplicationSubnetGroup: API.OperationMethod<
   input: DeleteReplicationSubnetGroupMessage,
   output: DeleteReplicationSubnetGroupResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationSubnetGroup",
 }));
 export type DeleteReplicationTaskError =
@@ -8917,6 +8979,8 @@ export const deleteReplicationTask: API.OperationMethod<
   input: DeleteReplicationTaskMessage,
   output: DeleteReplicationTaskResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationTask",
 }));
 export type DeleteReplicationTaskAssessmentRunError =
@@ -8940,6 +9004,8 @@ export const deleteReplicationTaskAssessmentRun: API.OperationMethod<
   input: DeleteReplicationTaskAssessmentRunMessage,
   output: DeleteReplicationTaskAssessmentRunResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationTaskAssessmentRun",
 }));
 export type DescribeAccountAttributesError = CommonErrors;
@@ -8962,6 +9028,8 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesMessage,
   output: DescribeAccountAttributesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
 export type DescribeApplicableIndividualAssessmentsError =
@@ -9014,6 +9082,8 @@ export const describeApplicableIndividualAssessments: API.OperationMethod<
   input: DescribeApplicableIndividualAssessmentsMessage,
   output: DescribeApplicableIndividualAssessmentsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicableIndividualAssessments",
   pagination: {
     inputToken: "Marker",
@@ -9049,6 +9119,8 @@ export const describeCertificates: API.OperationMethod<
   input: DescribeCertificatesMessage,
   output: DescribeCertificatesResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificates",
   pagination: {
     inputToken: "Marker",
@@ -9085,6 +9157,8 @@ export const describeConnections: API.OperationMethod<
   input: DescribeConnectionsMessage,
   output: DescribeConnectionsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnections",
   pagination: {
     inputToken: "Marker",
@@ -9107,6 +9181,8 @@ export const describeConversionConfiguration: API.OperationMethod<
   input: DescribeConversionConfigurationMessage,
   output: DescribeConversionConfigurationResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConversionConfiguration",
 }));
 export type DescribeDataMigrationsError =
@@ -9145,6 +9221,8 @@ export const describeDataMigrations: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataMigrations",
   pagination: {
     inputToken: "Marker",
@@ -9186,6 +9264,8 @@ export const describeDataProviders: API.OperationMethod<
   input: DescribeDataProvidersMessage,
   output: DescribeDataProvidersResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataProviders",
   pagination: {
     inputToken: "Marker",
@@ -9221,6 +9301,8 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsMessage,
   output: DescribeEndpointsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoints",
   pagination: {
     inputToken: "Marker",
@@ -9257,6 +9339,8 @@ export const describeEndpointSettings: API.OperationMethod<
   input: DescribeEndpointSettingsMessage,
   output: DescribeEndpointSettingsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointSettings",
   pagination: {
     inputToken: "Marker",
@@ -9292,6 +9376,8 @@ export const describeEndpointTypes: API.OperationMethod<
   input: DescribeEndpointTypesMessage,
   output: DescribeEndpointTypesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpointTypes",
   pagination: {
     inputToken: "Marker",
@@ -9327,6 +9413,8 @@ export const describeEngineVersions: API.OperationMethod<
   input: DescribeEngineVersionsMessage,
   output: DescribeEngineVersionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEngineVersions",
   pagination: {
     inputToken: "Marker",
@@ -9349,6 +9437,8 @@ export const describeEventCategories: API.OperationMethod<
   input: DescribeEventCategoriesMessage,
   output: DescribeEventCategoriesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventCategories",
 }));
 export type DescribeEventsError = CommonErrors;
@@ -9381,6 +9471,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: DescribeEventsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
@@ -9424,6 +9516,8 @@ export const describeEventSubscriptions: API.OperationMethod<
   input: DescribeEventSubscriptionsMessage,
   output: DescribeEventSubscriptionsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventSubscriptions",
   pagination: {
     inputToken: "Marker",
@@ -9461,6 +9555,8 @@ export const describeExtensionPackAssociations: API.OperationMethod<
   input: DescribeExtensionPackAssociationsMessage,
   output: DescribeExtensionPackAssociationsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExtensionPackAssociations",
   pagination: {
     inputToken: "Marker",
@@ -9500,6 +9596,8 @@ export const describeFleetAdvisorCollectors: API.OperationMethod<
   input: DescribeFleetAdvisorCollectorsRequest,
   output: DescribeFleetAdvisorCollectorsResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorCollectors",
   pagination: {
     inputToken: "NextToken",
@@ -9539,6 +9637,8 @@ export const describeFleetAdvisorDatabases: API.OperationMethod<
   input: DescribeFleetAdvisorDatabasesRequest,
   output: DescribeFleetAdvisorDatabasesResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -9579,6 +9679,8 @@ export const describeFleetAdvisorLsaAnalysis: API.OperationMethod<
   input: DescribeFleetAdvisorLsaAnalysisRequest,
   output: DescribeFleetAdvisorLsaAnalysisResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorLsaAnalysis",
   pagination: {
     inputToken: "NextToken",
@@ -9619,6 +9721,8 @@ export const describeFleetAdvisorSchemaObjectSummary: API.OperationMethod<
   input: DescribeFleetAdvisorSchemaObjectSummaryRequest,
   output: DescribeFleetAdvisorSchemaObjectSummaryResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorSchemaObjectSummary",
   pagination: {
     inputToken: "NextToken",
@@ -9658,6 +9762,8 @@ export const describeFleetAdvisorSchemas: API.OperationMethod<
   input: DescribeFleetAdvisorSchemasRequest,
   output: DescribeFleetAdvisorSchemasResponse,
   errors: [InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAdvisorSchemas",
   pagination: {
     inputToken: "NextToken",
@@ -9698,6 +9804,8 @@ export const describeInstanceProfiles: API.OperationMethod<
   input: DescribeInstanceProfilesMessage,
   output: DescribeInstanceProfilesResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceProfiles",
   pagination: {
     inputToken: "Marker",
@@ -9721,6 +9829,8 @@ export const describeMetadataModel: API.OperationMethod<
   input: DescribeMetadataModelMessage,
   output: DescribeMetadataModelResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModel",
 }));
 export type DescribeMetadataModelAssessmentsError =
@@ -9754,6 +9864,8 @@ export const describeMetadataModelAssessments: API.OperationMethod<
   input: DescribeMetadataModelAssessmentsMessage,
   output: DescribeMetadataModelAssessmentsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelAssessments",
   pagination: {
     inputToken: "Marker",
@@ -9792,6 +9904,8 @@ export const describeMetadataModelChildren: API.OperationMethod<
   input: DescribeMetadataModelChildrenMessage,
   output: DescribeMetadataModelChildrenResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelChildren",
   pagination: {
     inputToken: "Marker",
@@ -9830,6 +9944,8 @@ export const describeMetadataModelConversions: API.OperationMethod<
   input: DescribeMetadataModelConversionsMessage,
   output: DescribeMetadataModelConversionsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelConversions",
   pagination: {
     inputToken: "Marker",
@@ -9868,6 +9984,8 @@ export const describeMetadataModelCreations: API.OperationMethod<
   input: DescribeMetadataModelCreationsMessage,
   output: DescribeMetadataModelCreationsResponse,
   errors: [AccessDeniedFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelCreations",
   pagination: {
     inputToken: "Marker",
@@ -9906,6 +10024,8 @@ export const describeMetadataModelExportsAsScript: API.OperationMethod<
   input: DescribeMetadataModelExportsAsScriptMessage,
   output: DescribeMetadataModelExportsAsScriptResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelExportsAsScript",
   pagination: {
     inputToken: "Marker",
@@ -9943,6 +10063,8 @@ export const describeMetadataModelExportsToTarget: API.OperationMethod<
   input: DescribeMetadataModelExportsToTargetMessage,
   output: DescribeMetadataModelExportsToTargetResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelExportsToTarget",
   pagination: {
     inputToken: "Marker",
@@ -9980,6 +10102,8 @@ export const describeMetadataModelImports: API.OperationMethod<
   input: DescribeMetadataModelImportsMessage,
   output: DescribeMetadataModelImportsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetadataModelImports",
   pagination: {
     inputToken: "Marker",
@@ -10020,6 +10144,8 @@ export const describeMigrationProjects: API.OperationMethod<
   input: DescribeMigrationProjectsMessage,
   output: DescribeMigrationProjectsResponse,
   errors: [AccessDeniedFault, FailedDependencyFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMigrationProjects",
   pagination: {
     inputToken: "Marker",
@@ -10056,6 +10182,8 @@ export const describeOrderableReplicationInstances: API.OperationMethod<
   input: DescribeOrderableReplicationInstancesMessage,
   output: DescribeOrderableReplicationInstancesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrderableReplicationInstances",
   pagination: {
     inputToken: "Marker",
@@ -10094,6 +10222,8 @@ export const describePendingMaintenanceActions: API.OperationMethod<
   input: DescribePendingMaintenanceActionsMessage,
   output: DescribePendingMaintenanceActionsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePendingMaintenanceActions",
   pagination: {
     inputToken: "Marker",
@@ -10135,6 +10265,8 @@ export const describeRecommendationLimitations: API.OperationMethod<
   input: DescribeRecommendationLimitationsRequest,
   output: DescribeRecommendationLimitationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecommendationLimitations",
   pagination: {
     inputToken: "NextToken",
@@ -10176,6 +10308,8 @@ export const describeRecommendations: API.OperationMethod<
   input: DescribeRecommendationsRequest,
   output: DescribeRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecommendations",
   pagination: {
     inputToken: "NextToken",
@@ -10199,6 +10333,8 @@ export const describeRefreshSchemasStatus: API.OperationMethod<
   input: DescribeRefreshSchemasStatusMessage,
   output: DescribeRefreshSchemasStatusResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRefreshSchemasStatus",
 }));
 export type DescribeReplicationConfigsError =
@@ -10232,6 +10368,8 @@ export const describeReplicationConfigs: API.OperationMethod<
   input: DescribeReplicationConfigsMessage,
   output: DescribeReplicationConfigsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationConfigs",
   pagination: {
     inputToken: "Marker",
@@ -10270,6 +10408,8 @@ export const describeReplicationInstances: API.OperationMethod<
   input: DescribeReplicationInstancesMessage,
   output: DescribeReplicationInstancesResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationInstances",
   pagination: {
     inputToken: "Marker",
@@ -10308,6 +10448,8 @@ export const describeReplicationInstanceTaskLogs: API.OperationMethod<
   input: DescribeReplicationInstanceTaskLogsMessage,
   output: DescribeReplicationInstanceTaskLogsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationInstanceTaskLogs",
   pagination: {
     inputToken: "Marker",
@@ -10344,6 +10486,8 @@ export const describeReplications: API.OperationMethod<
   input: DescribeReplicationsMessage,
   output: DescribeReplicationsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplications",
   pagination: {
     inputToken: "Marker",
@@ -10381,6 +10525,8 @@ export const describeReplicationSubnetGroups: API.OperationMethod<
   input: DescribeReplicationSubnetGroupsMessage,
   output: DescribeReplicationSubnetGroupsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationSubnetGroups",
   pagination: {
     inputToken: "Marker",
@@ -10420,6 +10566,8 @@ export const describeReplicationTableStatistics: API.OperationMethod<
   input: DescribeReplicationTableStatisticsMessage,
   output: DescribeReplicationTableStatisticsResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTableStatistics",
   pagination: {
     inputToken: "Marker",
@@ -10461,6 +10609,8 @@ export const describeReplicationTaskAssessmentResults: API.OperationMethod<
   input: DescribeReplicationTaskAssessmentResultsMessage,
   output: DescribeReplicationTaskAssessmentResultsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTaskAssessmentResults",
   pagination: {
     inputToken: "Marker",
@@ -10506,6 +10656,8 @@ export const describeReplicationTaskAssessmentRuns: API.OperationMethod<
   input: DescribeReplicationTaskAssessmentRunsMessage,
   output: DescribeReplicationTaskAssessmentRunsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTaskAssessmentRuns",
   pagination: {
     inputToken: "Marker",
@@ -10546,6 +10698,8 @@ export const describeReplicationTaskIndividualAssessments: API.OperationMethod<
   input: DescribeReplicationTaskIndividualAssessmentsMessage,
   output: DescribeReplicationTaskIndividualAssessmentsResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTaskIndividualAssessments",
   pagination: {
     inputToken: "Marker",
@@ -10584,6 +10738,8 @@ export const describeReplicationTasks: API.OperationMethod<
   input: DescribeReplicationTasksMessage,
   output: DescribeReplicationTasksResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationTasks",
   pagination: {
     inputToken: "Marker",
@@ -10622,6 +10778,8 @@ export const describeSchemas: API.OperationMethod<
   input: DescribeSchemasMessage,
   output: DescribeSchemasResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSchemas",
   pagination: {
     inputToken: "Marker",
@@ -10666,6 +10824,8 @@ export const describeTableStatistics: API.OperationMethod<
   input: DescribeTableStatisticsMessage,
   output: DescribeTableStatisticsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTableStatistics",
   pagination: {
     inputToken: "Marker",
@@ -10689,6 +10849,8 @@ export const exportMetadataModelAssessment: API.OperationMethod<
   input: ExportMetadataModelAssessmentMessage,
   output: ExportMetadataModelAssessmentResponse,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportMetadataModelAssessment",
 }));
 export type GetTargetSelectionRulesError =
@@ -10708,6 +10870,8 @@ export const getTargetSelectionRules: API.OperationMethod<
   input: GetTargetSelectionRulesMessage,
   output: GetTargetSelectionRulesResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTargetSelectionRules",
 }));
 export type ImportCertificateError =
@@ -10733,6 +10897,8 @@ export const importCertificate: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportCertificate",
 }));
 export type ListTagsForResourceError =
@@ -10755,6 +10921,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceMessage,
   output: ListTagsForResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ModifyConversionConfigurationError =
@@ -10773,6 +10941,8 @@ export const modifyConversionConfiguration: API.OperationMethod<
   input: ModifyConversionConfigurationMessage,
   output: ModifyConversionConfigurationResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyConversionConfiguration",
 }));
 export type ModifyDataMigrationError =
@@ -10796,6 +10966,8 @@ export const modifyDataMigration: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDataMigration",
 }));
 export type ModifyDataProviderError =
@@ -10824,6 +10996,8 @@ export const modifyDataProvider: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDataProvider",
 }));
 export type ModifyEndpointError =
@@ -10858,6 +11032,8 @@ export const modifyEndpoint: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEndpoint",
 }));
 export type ModifyEventSubscriptionError =
@@ -10895,6 +11071,8 @@ export const modifyEventSubscription: API.OperationMethod<
     SNSInvalidTopicFault,
     SNSNoAuthorizationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEventSubscription",
 }));
 export type ModifyInstanceProfileError =
@@ -10929,6 +11107,8 @@ export const modifyInstanceProfile: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceProfile",
 }));
 export type ModifyMigrationProjectError =
@@ -10960,6 +11140,8 @@ export const modifyMigrationProject: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyMigrationProject",
 }));
 export type ModifyReplicationConfigError =
@@ -10997,6 +11179,8 @@ export const modifyReplicationConfig: API.OperationMethod<
     ReplicationSubnetGroupDoesNotCoverEnoughAZs,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationConfig",
 }));
 export type ModifyReplicationInstanceError =
@@ -11031,6 +11215,8 @@ export const modifyReplicationInstance: API.OperationMethod<
     StorageQuotaExceededFault,
     UpgradeDependencyFailureFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationInstance",
 }));
 export type ModifyReplicationSubnetGroupError =
@@ -11060,6 +11246,8 @@ export const modifyReplicationSubnetGroup: API.OperationMethod<
     ResourceQuotaExceededFault,
     SubnetAlreadyInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationSubnetGroup",
 }));
 export type ModifyReplicationTaskError =
@@ -11090,6 +11278,8 @@ export const modifyReplicationTask: API.OperationMethod<
     ResourceAlreadyExistsFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationTask",
 }));
 export type MoveReplicationTaskError =
@@ -11119,6 +11309,8 @@ export const moveReplicationTask: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MoveReplicationTask",
 }));
 export type RebootReplicationInstanceError =
@@ -11138,6 +11330,8 @@ export const rebootReplicationInstance: API.OperationMethod<
   input: RebootReplicationInstanceMessage,
   output: RebootReplicationInstanceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootReplicationInstance",
 }));
 export type RefreshSchemasError =
@@ -11165,6 +11359,8 @@ export const refreshSchemas: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RefreshSchemas",
 }));
 export type ReloadReplicationTablesError =
@@ -11187,6 +11383,8 @@ export const reloadReplicationTables: API.OperationMethod<
   input: ReloadReplicationTablesMessage,
   output: ReloadReplicationTablesResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReloadReplicationTables",
 }));
 export type ReloadTablesError =
@@ -11208,6 +11406,8 @@ export const reloadTables: API.OperationMethod<
   input: ReloadTablesMessage,
   output: ReloadTablesResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReloadTables",
 }));
 export type RemoveTagsFromResourceError =
@@ -11230,6 +11430,8 @@ export const removeTagsFromResource: API.OperationMethod<
   input: RemoveTagsFromResourceMessage,
   output: RemoveTagsFromResourceResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
 export type RunFleetAdvisorLsaAnalysisError =
@@ -11250,6 +11452,8 @@ export const runFleetAdvisorLsaAnalysis: API.OperationMethod<
   input: RunFleetAdvisorLsaAnalysisRequest,
   output: RunFleetAdvisorLsaAnalysisResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RunFleetAdvisorLsaAnalysis",
 }));
 export type StartDataMigrationError =
@@ -11277,6 +11481,8 @@ export const startDataMigration: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDataMigration",
 }));
 export type StartExtensionPackAssociationError =
@@ -11312,6 +11518,8 @@ export const startExtensionPackAssociation: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExtensionPackAssociation",
 }));
 export type StartMetadataModelAssessmentError =
@@ -11348,6 +11556,8 @@ export const startMetadataModelAssessment: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelAssessment",
 }));
 export type StartMetadataModelConversionError =
@@ -11381,6 +11591,8 @@ export const startMetadataModelConversion: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelConversion",
 }));
 export type StartMetadataModelCreationError =
@@ -11408,6 +11620,8 @@ export const startMetadataModelCreation: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelCreation",
 }));
 export type StartMetadataModelExportAsScriptError =
@@ -11442,6 +11656,8 @@ export const startMetadataModelExportAsScript: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelExportAsScript",
 }));
 export type StartMetadataModelExportToTargetError =
@@ -11475,6 +11691,8 @@ export const startMetadataModelExportToTarget: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelExportToTarget",
 }));
 export type StartMetadataModelImportError =
@@ -11511,6 +11729,8 @@ export const startMetadataModelImport: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataModelImport",
 }));
 export type StartRecommendationsError =
@@ -11535,6 +11755,8 @@ export const startRecommendations: API.OperationMethod<
   input: StartRecommendationsRequest,
   output: StartRecommendationsResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRecommendations",
 }));
 export type StartReplicationError =
@@ -11558,6 +11780,8 @@ export const startReplication: API.OperationMethod<
   input: StartReplicationMessage,
   output: StartReplicationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplication",
 }));
 export type StartReplicationTaskError =
@@ -11580,6 +11804,8 @@ export const startReplicationTask: API.OperationMethod<
   input: StartReplicationTaskMessage,
   output: StartReplicationTaskResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplicationTask",
 }));
 export type StartReplicationTaskAssessmentError =
@@ -11611,6 +11837,8 @@ export const startReplicationTaskAssessment: API.OperationMethod<
   input: StartReplicationTaskAssessmentMessage,
   output: StartReplicationTaskAssessmentResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplicationTaskAssessment",
 }));
 export type StartReplicationTaskAssessmentRunError =
@@ -11659,6 +11887,8 @@ export const startReplicationTaskAssessmentRun: API.OperationMethod<
     S3AccessDeniedFault,
     S3ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplicationTaskAssessmentRun",
 }));
 export type StopDataMigrationError =
@@ -11682,6 +11912,8 @@ export const stopDataMigration: API.OperationMethod<
     InvalidResourceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDataMigration",
 }));
 export type StopReplicationError =
@@ -11703,6 +11935,8 @@ export const stopReplication: API.OperationMethod<
   input: StopReplicationMessage,
   output: StopReplicationResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopReplication",
 }));
 export type StopReplicationTaskError =
@@ -11721,6 +11955,8 @@ export const stopReplicationTask: API.OperationMethod<
   input: StopReplicationTaskMessage,
   output: StopReplicationTaskResponse,
   errors: [InvalidResourceStateFault, ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopReplicationTask",
 }));
 export type TestConnectionError =
@@ -11748,6 +11984,8 @@ export const testConnection: API.OperationMethod<
     ResourceNotFoundFault,
     ResourceQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestConnection",
 }));
 export type UpdateSubscriptionsToEventBridgeError =
@@ -11777,5 +12015,7 @@ export const updateSubscriptionsToEventBridge: API.OperationMethod<
   input: UpdateSubscriptionsToEventBridgeMessage,
   output: UpdateSubscriptionsToEventBridgeResponse,
   errors: [AccessDeniedFault, InvalidResourceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscriptionsToEventBridge",
 }));

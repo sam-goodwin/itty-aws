@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -6622,6 +6624,8 @@ export const activateOrganizationsAccess: API.OperationMethod<
   input: ActivateOrganizationsAccessInput,
   output: ActivateOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateOrganizationsAccess",
 }));
 export type ActivateTypeError =
@@ -6653,6 +6657,8 @@ export const activateType: API.OperationMethod<
   input: ActivateTypeInput,
   output: ActivateTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateType",
 }));
 export type BatchDescribeTypeConfigurationsError =
@@ -6676,6 +6682,8 @@ export const batchDescribeTypeConfigurations: API.OperationMethod<
   input: BatchDescribeTypeConfigurationsInput,
   output: BatchDescribeTypeConfigurationsOutput,
   errors: [CFNRegistryException, TypeConfigurationNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDescribeTypeConfigurations",
 }));
 export type CancelUpdateStackError = TokenAlreadyExistsException | CommonErrors;
@@ -6694,6 +6702,8 @@ export const cancelUpdateStack: API.OperationMethod<
   input: CancelUpdateStackInput,
   output: CancelUpdateStackResponse,
   errors: [TokenAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelUpdateStack",
 }));
 export type ContinueUpdateRollbackError =
@@ -6724,6 +6734,8 @@ export const continueUpdateRollback: API.OperationMethod<
   input: ContinueUpdateRollbackInput,
   output: ContinueUpdateRollbackOutput,
   errors: [TokenAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ContinueUpdateRollback",
 }));
 export type CreateChangeSetError =
@@ -6768,6 +6780,8 @@ export const createChangeSet: API.OperationMethod<
     InsufficientCapabilitiesException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChangeSet",
 }));
 export type CreateGeneratedTemplateError =
@@ -6793,6 +6807,8 @@ export const createGeneratedTemplate: API.OperationMethod<
     ConcurrentResourcesLimitExceededException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGeneratedTemplate",
 }));
 export type CreateStackError =
@@ -6823,6 +6839,8 @@ export const createStack: API.OperationMethod<
     LimitExceededException,
     TokenAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStack",
 }));
 export type CreateStackInstancesError =
@@ -6867,6 +6885,8 @@ export const createStackInstances: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStackInstances",
 }));
 export type CreateStackRefactorError = CommonErrors;
@@ -6883,6 +6903,8 @@ export const createStackRefactor: API.OperationMethod<
   input: CreateStackRefactorInput,
   output: CreateStackRefactorOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStackRefactor",
 }));
 export type CreateStackSetError =
@@ -6906,6 +6928,8 @@ export const createStackSet: API.OperationMethod<
     LimitExceededException,
     NameAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStackSet",
 }));
 export type DeactivateOrganizationsAccessError =
@@ -6926,6 +6950,8 @@ export const deactivateOrganizationsAccess: API.OperationMethod<
   input: DeactivateOrganizationsAccessInput,
   output: DeactivateOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateOrganizationsAccess",
 }));
 export type DeactivateTypeError =
@@ -6955,6 +6981,8 @@ export const deactivateType: API.OperationMethod<
   input: DeactivateTypeInput,
   output: DeactivateTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateType",
 }));
 export type DeleteChangeSetError =
@@ -6980,6 +7008,8 @@ export const deleteChangeSet: API.OperationMethod<
   input: DeleteChangeSetInput,
   output: DeleteChangeSetOutput,
   errors: [InvalidChangeSetStatusException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChangeSet",
 }));
 export type DeleteGeneratedTemplateError =
@@ -7001,6 +7031,8 @@ export const deleteGeneratedTemplate: API.OperationMethod<
     ConcurrentResourcesLimitExceededException,
     GeneratedTemplateNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGeneratedTemplate",
 }));
 export type DeleteStackError = TokenAlreadyExistsException | CommonErrors;
@@ -7021,6 +7053,8 @@ export const deleteStack: API.OperationMethod<
   input: DeleteStackInput,
   output: DeleteStackResponse,
   errors: [TokenAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStack",
 }));
 export type DeleteStackInstancesError =
@@ -7060,6 +7094,8 @@ export const deleteStackInstances: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStackInstances",
 }));
 export type DeleteStackSetError =
@@ -7079,6 +7115,8 @@ export const deleteStackSet: API.OperationMethod<
   input: DeleteStackSetInput,
   output: DeleteStackSetOutput,
   errors: [OperationInProgressException, StackSetNotEmptyException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStackSet",
 }));
 export type DeregisterTypeError =
@@ -7114,6 +7152,8 @@ export const deregisterType: API.OperationMethod<
   input: DeregisterTypeInput,
   output: DeregisterTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterType",
 }));
 export type DescribeAccountLimitsError = CommonErrors;
@@ -7145,6 +7185,8 @@ export const describeAccountLimits: API.OperationMethod<
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountLimits",
   pagination: {
     inputToken: "NextToken",
@@ -7183,6 +7225,8 @@ export const describeChangeSet: API.OperationMethod<
   input: DescribeChangeSetInput,
   output: DescribeChangeSetOutput,
   errors: [ChangeSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChangeSet",
   pagination: {
     inputToken: "NextToken",
@@ -7206,6 +7250,8 @@ export const describeChangeSetHooks: API.OperationMethod<
   input: DescribeChangeSetHooksInput,
   output: DescribeChangeSetHooksOutput,
   errors: [ChangeSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChangeSetHooks",
 }));
 export type DescribeEventsError = CommonErrors;
@@ -7259,6 +7305,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsInput,
   output: DescribeEventsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "NextToken",
@@ -7284,6 +7332,8 @@ export const describeGeneratedTemplate: API.OperationMethod<
   input: DescribeGeneratedTemplateInput,
   output: DescribeGeneratedTemplateOutput,
   errors: [GeneratedTemplateNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGeneratedTemplate",
 }));
 export type DescribeOrganizationsAccessError =
@@ -7305,6 +7355,8 @@ export const describeOrganizationsAccess: API.OperationMethod<
   input: DescribeOrganizationsAccessInput,
   output: DescribeOrganizationsAccessOutput,
   errors: [InvalidOperationException, OperationNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationsAccess",
 }));
 export type DescribePublisherError = CFNRegistryException | CommonErrors;
@@ -7332,6 +7384,8 @@ export const describePublisher: API.OperationMethod<
   input: DescribePublisherInput,
   output: DescribePublisherOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePublisher",
 }));
 export type DescribeResourceScanError =
@@ -7349,6 +7403,8 @@ export const describeResourceScan: API.OperationMethod<
   input: DescribeResourceScanInput,
   output: DescribeResourceScanOutput,
   errors: [ResourceScanNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourceScan",
 }));
 export type DescribeStackDriftDetectionStatusError = CommonErrors;
@@ -7376,6 +7432,8 @@ export const describeStackDriftDetectionStatus: API.OperationMethod<
   input: DescribeStackDriftDetectionStatusInput,
   output: DescribeStackDriftDetectionStatusOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackDriftDetectionStatus",
 }));
 export type DescribeStackEventsError = CommonErrors;
@@ -7411,6 +7469,8 @@ export const describeStackEvents: API.OperationMethod<
   input: DescribeStackEventsInput,
   output: DescribeStackEventsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackEvents",
   pagination: {
     inputToken: "NextToken",
@@ -7437,6 +7497,8 @@ export const describeStackInstance: API.OperationMethod<
   input: DescribeStackInstanceInput,
   output: DescribeStackInstanceOutput,
   errors: [StackInstanceNotFoundException, StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackInstance",
 }));
 export type DescribeStackRefactorError =
@@ -7454,6 +7516,8 @@ export const describeStackRefactor: API.OperationMethod<
   input: DescribeStackRefactorInput,
   output: DescribeStackRefactorOutput,
   errors: [StackRefactorNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackRefactor",
 }));
 export type DescribeStackResourceError = CommonErrors;
@@ -7472,6 +7536,8 @@ export const describeStackResource: API.OperationMethod<
   input: DescribeStackResourceInput,
   output: DescribeStackResourceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackResource",
 }));
 export type DescribeStackResourceDriftsError = CommonErrors;
@@ -7514,6 +7580,8 @@ export const describeStackResourceDrifts: API.OperationMethod<
   input: DescribeStackResourceDriftsInput,
   output: DescribeStackResourceDriftsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackResourceDrifts",
   pagination: {
     inputToken: "NextToken",
@@ -7551,6 +7619,8 @@ export const describeStackResources: API.OperationMethod<
   input: DescribeStackResourcesInput,
   output: DescribeStackResourcesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackResources",
 }));
 export type DescribeStacksError = CommonErrors;
@@ -7586,6 +7656,8 @@ export const describeStacks: API.OperationMethod<
   input: DescribeStacksInput,
   output: DescribeStacksOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStacks",
   pagination: {
     inputToken: "NextToken",
@@ -7609,6 +7681,8 @@ export const describeStackSet: API.OperationMethod<
   input: DescribeStackSetInput,
   output: DescribeStackSetOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackSet",
 }));
 export type DescribeStackSetOperationError =
@@ -7630,6 +7704,8 @@ export const describeStackSetOperation: API.OperationMethod<
   input: DescribeStackSetOperationInput,
   output: DescribeStackSetOperationOutput,
   errors: [OperationNotFoundException, StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStackSetOperation",
 }));
 export type DescribeTypeError =
@@ -7657,6 +7733,8 @@ export const describeType: API.OperationMethod<
   input: DescribeTypeInput,
   output: DescribeTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeType",
 }));
 export type DescribeTypeRegistrationError = CFNRegistryException | CommonErrors;
@@ -7680,6 +7758,8 @@ export const describeTypeRegistration: API.OperationMethod<
   input: DescribeTypeRegistrationInput,
   output: DescribeTypeRegistrationOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTypeRegistration",
 }));
 export type DetectStackDriftError = CommonErrors;
@@ -7719,6 +7799,8 @@ export const detectStackDrift: API.OperationMethod<
   input: DetectStackDriftInput,
   output: DetectStackDriftOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectStackDrift",
 }));
 export type DetectStackResourceDriftError = CommonErrors;
@@ -7748,6 +7830,8 @@ export const detectStackResourceDrift: API.OperationMethod<
   input: DetectStackResourceDriftInput,
   output: DetectStackResourceDriftOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectStackResourceDrift",
 }));
 export type DetectStackSetDriftError =
@@ -7800,6 +7884,8 @@ export const detectStackSetDrift: API.OperationMethod<
     OperationInProgressException,
     StackSetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectStackSetDrift",
 }));
 export type EstimateTemplateCostError = CommonErrors;
@@ -7817,6 +7903,8 @@ export const estimateTemplateCost: API.OperationMethod<
   input: EstimateTemplateCostInput,
   output: EstimateTemplateCostOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EstimateTemplateCost",
 }));
 export type ExecuteChangeSetError =
@@ -7853,6 +7941,8 @@ export const executeChangeSet: API.OperationMethod<
     InvalidChangeSetStatusException,
     TokenAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteChangeSet",
 }));
 export type ExecuteStackRefactorError = CommonErrors;
@@ -7868,6 +7958,8 @@ export const executeStackRefactor: API.OperationMethod<
   input: ExecuteStackRefactorInput,
   output: ExecuteStackRefactorResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteStackRefactor",
 }));
 export type GetGeneratedTemplateError =
@@ -7888,6 +7980,8 @@ export const getGeneratedTemplate: API.OperationMethod<
   input: GetGeneratedTemplateInput,
   output: GetGeneratedTemplateOutput,
   errors: [GeneratedTemplateNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGeneratedTemplate",
 }));
 export type GetHookResultError = HookResultNotFoundException | CommonErrors;
@@ -7910,6 +8004,8 @@ export const getHookResult: API.OperationMethod<
   input: GetHookResultInput,
   output: GetHookResultOutput,
   errors: [HookResultNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHookResult",
 }));
 export type GetStackPolicyError = CommonErrors;
@@ -7926,6 +8022,8 @@ export const getStackPolicy: API.OperationMethod<
   input: GetStackPolicyInput,
   output: GetStackPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStackPolicy",
 }));
 export type GetTemplateError = ChangeSetNotFoundException | CommonErrors;
@@ -7947,6 +8045,8 @@ export const getTemplate: API.OperationMethod<
   input: GetTemplateInput,
   output: GetTemplateOutput,
   errors: [ChangeSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplate",
 }));
 export type GetTemplateSummaryError = StackSetNotFoundException | CommonErrors;
@@ -7971,6 +8071,8 @@ export const getTemplateSummary: API.OperationMethod<
   input: GetTemplateSummaryInput,
   output: GetTemplateSummaryOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplateSummary",
 }));
 export type ImportStacksToStackSetError =
@@ -8005,6 +8107,8 @@ export const importStacksToStackSet: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportStacksToStackSet",
 }));
 export type ListChangeSetsError = CommonErrors;
@@ -8037,6 +8141,8 @@ export const listChangeSets: API.OperationMethod<
   input: ListChangeSetsInput,
   output: ListChangeSetsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChangeSets",
   pagination: {
     inputToken: "NextToken",
@@ -8077,6 +8183,8 @@ export const listExports: API.OperationMethod<
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExports",
   pagination: {
     inputToken: "NextToken",
@@ -8112,6 +8220,8 @@ export const listGeneratedTemplates: API.OperationMethod<
   input: ListGeneratedTemplatesInput,
   output: ListGeneratedTemplatesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGeneratedTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -8146,6 +8256,8 @@ export const listHookResults: API.OperationMethod<
   input: ListHookResultsInput,
   output: ListHookResultsOutput,
   errors: [HookResultNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHookResults",
 }));
 export type ListImportsError = CommonErrors;
@@ -8180,6 +8292,8 @@ export const listImports: API.OperationMethod<
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImports",
   pagination: {
     inputToken: "NextToken",
@@ -8219,6 +8333,8 @@ export const listResourceScanRelatedResources: API.OperationMethod<
   input: ListResourceScanRelatedResourcesInput,
   output: ListResourceScanRelatedResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceScanRelatedResources",
   pagination: {
     inputToken: "NextToken",
@@ -8261,6 +8377,8 @@ export const listResourceScanResources: API.OperationMethod<
   input: ListResourceScanResourcesInput,
   output: ListResourceScanResourcesOutput,
   errors: [ResourceScanInProgressException, ResourceScanNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceScanResources",
   pagination: {
     inputToken: "NextToken",
@@ -8298,6 +8416,8 @@ export const listResourceScans: API.OperationMethod<
   input: ListResourceScansInput,
   output: ListResourceScansOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceScans",
   pagination: {
     inputToken: "NextToken",
@@ -8331,6 +8451,8 @@ export const listStackInstanceResourceDrifts: API.OperationMethod<
     StackInstanceNotFoundException,
     StackSetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackInstanceResourceDrifts",
 }));
 export type ListStackInstancesError = StackSetNotFoundException | CommonErrors;
@@ -8363,6 +8485,8 @@ export const listStackInstances: API.OperationMethod<
   input: ListStackInstancesInput,
   output: ListStackInstancesOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackInstances",
   pagination: {
     inputToken: "NextToken",
@@ -8399,6 +8523,8 @@ export const listStackRefactorActions: API.OperationMethod<
   input: ListStackRefactorActionsInput,
   output: ListStackRefactorActionsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackRefactorActions",
   pagination: {
     inputToken: "NextToken",
@@ -8435,6 +8561,8 @@ export const listStackRefactors: API.OperationMethod<
   input: ListStackRefactorsInput,
   output: ListStackRefactorsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackRefactors",
   pagination: {
     inputToken: "NextToken",
@@ -8474,6 +8602,8 @@ export const listStackResources: API.OperationMethod<
   input: ListStackResourcesInput,
   output: ListStackResourcesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackResources",
   pagination: {
     inputToken: "NextToken",
@@ -8513,6 +8643,8 @@ export const listStacks: API.OperationMethod<
   input: ListStacksInput,
   output: ListStacksOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStacks",
   pagination: {
     inputToken: "NextToken",
@@ -8535,6 +8667,8 @@ export const listStackSetAutoDeploymentTargets: API.OperationMethod<
   input: ListStackSetAutoDeploymentTargetsInput,
   output: ListStackSetAutoDeploymentTargetsOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackSetAutoDeploymentTargets",
 }));
 export type ListStackSetOperationResultsError =
@@ -8571,6 +8705,8 @@ export const listStackSetOperationResults: API.OperationMethod<
   input: ListStackSetOperationResultsInput,
   output: ListStackSetOperationResultsOutput,
   errors: [OperationNotFoundException, StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackSetOperationResults",
   pagination: {
     inputToken: "NextToken",
@@ -8612,6 +8748,8 @@ export const listStackSetOperations: API.OperationMethod<
   input: ListStackSetOperationsInput,
   output: ListStackSetOperationsOutput,
   errors: [StackSetNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackSetOperations",
   pagination: {
     inputToken: "NextToken",
@@ -8664,6 +8802,8 @@ export const listStackSets: API.OperationMethod<
   input: ListStackSetsInput,
   output: ListStackSetsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackSets",
   pagination: {
     inputToken: "NextToken",
@@ -8700,6 +8840,8 @@ export const listTypeRegistrations: API.OperationMethod<
   input: ListTypeRegistrationsInput,
   output: ListTypeRegistrationsOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypeRegistrations",
   pagination: {
     inputToken: "NextToken",
@@ -8737,6 +8879,8 @@ export const listTypes: API.OperationMethod<
   input: ListTypesInput,
   output: ListTypesOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypes",
   pagination: {
     inputToken: "NextToken",
@@ -8773,6 +8917,8 @@ export const listTypeVersions: API.OperationMethod<
   input: ListTypeVersionsInput,
   output: ListTypeVersionsOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypeVersions",
   pagination: {
     inputToken: "NextToken",
@@ -8803,6 +8949,8 @@ export const publishType: API.OperationMethod<
   input: PublishTypeInput,
   output: PublishTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishType",
 }));
 export type RecordHandlerProgressError =
@@ -8827,6 +8975,8 @@ export const recordHandlerProgress: API.OperationMethod<
     InvalidStateTransitionException,
     OperationStatusCheckFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RecordHandlerProgress",
 }));
 export type RegisterPublisherError = CFNRegistryException | CommonErrors;
@@ -8848,6 +8998,8 @@ export const registerPublisher: API.OperationMethod<
   input: RegisterPublisherInput,
   output: RegisterPublisherOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterPublisher",
 }));
 export type RegisterTypeError = CFNRegistryException | CommonErrors;
@@ -8887,6 +9039,8 @@ export const registerType: API.OperationMethod<
   input: RegisterTypeInput,
   output: RegisterTypeOutput,
   errors: [CFNRegistryException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterType",
 }));
 export type RollbackStackError = TokenAlreadyExistsException | CommonErrors;
@@ -8921,6 +9075,8 @@ export const rollbackStack: API.OperationMethod<
   input: RollbackStackInput,
   output: RollbackStackOutput,
   errors: [TokenAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RollbackStack",
 }));
 export type SetStackPolicyError = CommonErrors;
@@ -8936,6 +9092,8 @@ export const setStackPolicy: API.OperationMethod<
   input: SetStackPolicyInput,
   output: SetStackPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetStackPolicy",
 }));
 export type SetTypeConfigurationError =
@@ -8970,6 +9128,8 @@ export const setTypeConfiguration: API.OperationMethod<
   input: SetTypeConfigurationInput,
   output: SetTypeConfigurationOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTypeConfiguration",
 }));
 export type SetTypeDefaultVersionError =
@@ -8989,6 +9149,8 @@ export const setTypeDefaultVersion: API.OperationMethod<
   input: SetTypeDefaultVersionInput,
   output: SetTypeDefaultVersionOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTypeDefaultVersion",
 }));
 export type SignalResourceError = CommonErrors;
@@ -9009,6 +9171,8 @@ export const signalResource: API.OperationMethod<
   input: SignalResourceInput,
   output: SignalResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SignalResource",
 }));
 export type StartResourceScanError =
@@ -9028,6 +9192,8 @@ export const startResourceScan: API.OperationMethod<
   input: StartResourceScanInput,
   output: StartResourceScanOutput,
   errors: [ResourceScanInProgressException, ResourceScanLimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartResourceScan",
 }));
 export type StopStackSetOperationError =
@@ -9053,6 +9219,8 @@ export const stopStackSetOperation: API.OperationMethod<
     OperationNotFoundException,
     StackSetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopStackSetOperation",
 }));
 export type TestTypeError =
@@ -9096,6 +9264,8 @@ export const testType: API.OperationMethod<
   input: TestTypeInput,
   output: TestTypeOutput,
   errors: [CFNRegistryException, TypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestType",
 }));
 export type UpdateGeneratedTemplateError =
@@ -9122,6 +9292,8 @@ export const updateGeneratedTemplate: API.OperationMethod<
     GeneratedTemplateNotFoundException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGeneratedTemplate",
 }));
 export type UpdateStackError =
@@ -9148,6 +9320,8 @@ export const updateStack: API.OperationMethod<
   input: UpdateStackInput,
   output: UpdateStackOutput,
   errors: [InsufficientCapabilitiesException, TokenAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStack",
 }));
 export type UpdateStackInstancesError =
@@ -9205,6 +9379,8 @@ export const updateStackInstances: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStackInstances",
 }));
 export type UpdateStackSetError =
@@ -9252,6 +9428,8 @@ export const updateStackSet: API.OperationMethod<
     StackSetNotFoundException,
     StaleRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStackSet",
 }));
 export type UpdateTerminationProtectionError = CommonErrors;
@@ -9274,6 +9452,8 @@ export const updateTerminationProtection: API.OperationMethod<
   input: UpdateTerminationProtectionInput,
   output: UpdateTerminationProtectionOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTerminationProtection",
 }));
 export type ValidateTemplateError = CommonErrors;
@@ -9291,5 +9471,7 @@ export const validateTemplate: API.OperationMethod<
   input: ValidateTemplateInput,
   output: ValidateTemplateOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateTemplate",
 }));

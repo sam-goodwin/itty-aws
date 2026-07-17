@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1565,6 +1567,8 @@ export const addTagsToCertificate: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToCertificate",
 }));
 export type DeleteCertificateError =
@@ -1600,6 +1604,8 @@ export const deleteCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificate",
 }));
 export type DescribeCertificateError =
@@ -1620,6 +1626,8 @@ export const describeCertificate: API.OperationMethod<
   input: DescribeCertificateRequest,
   output: DescribeCertificateResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificate",
 }));
 export type ExportCertificateError =
@@ -1649,6 +1657,8 @@ export const exportCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportCertificate",
 }));
 export type GetAccountConfigurationError =
@@ -1667,6 +1677,8 @@ export const getAccountConfiguration: API.OperationMethod<
   input: GetAccountConfigurationRequest,
   output: GetAccountConfigurationResponse,
   errors: [AccessDeniedException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountConfiguration",
 }));
 export type GetCertificateError =
@@ -1690,6 +1702,8 @@ export const getCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCertificate",
 }));
 export type ImportCertificateError =
@@ -1751,6 +1765,8 @@ export const importCertificate: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportCertificate",
 }));
 export type ListCertificatesError =
@@ -1784,6 +1800,8 @@ export const listCertificates: API.OperationMethod<
   input: ListCertificatesRequest,
   output: ListCertificatesResponse,
   errors: [InvalidArgsException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCertificates",
   pagination: {
     inputToken: "NextToken",
@@ -1808,6 +1826,8 @@ export const listTagsForCertificate: API.OperationMethod<
   input: ListTagsForCertificateRequest,
   output: ListTagsForCertificateResponse,
   errors: [InvalidArnException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForCertificate",
 }));
 export type PutAccountConfigurationError =
@@ -1835,6 +1855,8 @@ export const putAccountConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountConfiguration",
 }));
 export type RemoveTagsFromCertificateError =
@@ -1866,6 +1888,8 @@ export const removeTagsFromCertificate: API.OperationMethod<
     TagPolicyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromCertificate",
 }));
 export type RenewCertificateError =
@@ -1889,6 +1913,8 @@ export const renewCertificate: API.OperationMethod<
     RequestInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RenewCertificate",
 }));
 export type RequestCertificateError =
@@ -1926,6 +1952,8 @@ export const requestCertificate: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestCertificate",
 }));
 export type ResendValidationEmailError =
@@ -1951,6 +1979,8 @@ export const resendValidationEmail: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResendValidationEmail",
 }));
 export type RevokeCertificateError =
@@ -1982,6 +2012,8 @@ export const revokeCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeCertificate",
 }));
 export type SearchCertificatesError =
@@ -2016,6 +2048,8 @@ export const searchCertificates: API.OperationMethod<
   input: SearchCertificatesRequest,
   output: SearchCertificatesResponse,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchCertificates",
   pagination: {
     inputToken: "NextToken",
@@ -2047,5 +2081,7 @@ export const updateCertificateOptions: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCertificateOptions",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -796,6 +798,8 @@ export const createFHIRDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFHIRDatastore",
 }));
 export type DeleteFHIRDatastoreError =
@@ -825,6 +829,8 @@ export const deleteFHIRDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFHIRDatastore",
 }));
 export type DescribeFHIRDatastoreError =
@@ -850,6 +856,8 @@ export const describeFHIRDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFHIRDatastore",
 }));
 export type DescribeFHIRExportJobError =
@@ -875,6 +883,8 @@ export const describeFHIRExportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFHIRExportJob",
 }));
 export type DescribeFHIRImportJobError =
@@ -900,6 +910,8 @@ export const describeFHIRImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFHIRImportJob",
 }));
 export type ListFHIRDatastoresError =
@@ -935,6 +947,8 @@ export const listFHIRDatastores: API.OperationMethod<
   input: ListFHIRDatastoresRequest,
   output: ListFHIRDatastoresResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFHIRDatastores",
   pagination: {
     inputToken: "NextToken",
@@ -982,6 +996,8 @@ export const listFHIRExportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFHIRExportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -1029,6 +1045,8 @@ export const listFHIRImportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFHIRImportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -1052,6 +1070,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartFHIRExportJobError =
@@ -1079,6 +1099,8 @@ export const startFHIRExportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFHIRExportJob",
 }));
 export type StartFHIRImportJobError =
@@ -1108,6 +1130,8 @@ export const startFHIRImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFHIRImportJob",
 }));
 export type TagResourceError =
@@ -1126,6 +1150,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1144,5 +1170,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

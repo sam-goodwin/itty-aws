@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3473,6 +3475,8 @@ export const associateDelegateToResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDelegateToResource",
 }));
 export type AssociateMemberToGroupError =
@@ -3506,6 +3510,8 @@ export const associateMemberToGroup: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateMemberToGroup",
 }));
 export type AssumeImpersonationRoleError =
@@ -3532,6 +3538,8 @@ export const assumeImpersonationRole: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssumeImpersonationRole",
 }));
 export type CancelMailboxExportJobError =
@@ -3560,6 +3568,8 @@ export const cancelMailboxExportJob: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMailboxExportJob",
 }));
 export type CreateAliasError =
@@ -3595,6 +3605,8 @@ export const createAlias: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlias",
 }));
 export type CreateAvailabilityConfigurationError =
@@ -3622,6 +3634,8 @@ export const createAvailabilityConfiguration: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAvailabilityConfiguration",
 }));
 export type CreateGroupError =
@@ -3655,6 +3669,8 @@ export const createGroup: API.OperationMethod<
     ReservedNameException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
 export type CreateIdentityCenterApplicationError =
@@ -3672,6 +3688,8 @@ export const createIdentityCenterApplication: API.OperationMethod<
   input: CreateIdentityCenterApplicationRequest,
   output: CreateIdentityCenterApplicationResponse,
   errors: [InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdentityCenterApplication",
 }));
 export type CreateImpersonationRoleError =
@@ -3706,6 +3724,8 @@ export const createImpersonationRole: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImpersonationRole",
 }));
 export type CreateMobileDeviceAccessRuleError =
@@ -3731,6 +3751,8 @@ export const createMobileDeviceAccessRule: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMobileDeviceAccessRule",
 }));
 export type CreateOrganizationError =
@@ -3768,6 +3790,8 @@ export const createOrganization: API.OperationMethod<
     LimitExceededException,
     NameAvailabilityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOrganization",
 }));
 export type CreateResourceError =
@@ -3801,6 +3825,8 @@ export const createResource: API.OperationMethod<
     ReservedNameException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResource",
 }));
 export type CreateUserError =
@@ -3836,6 +3862,8 @@ export const createUser: API.OperationMethod<
     ReservedNameException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DeleteAccessControlRuleError =
@@ -3856,6 +3884,8 @@ export const deleteAccessControlRule: API.OperationMethod<
   input: DeleteAccessControlRuleRequest,
   output: DeleteAccessControlRuleResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessControlRule",
 }));
 export type DeleteAliasError =
@@ -3884,6 +3914,8 @@ export const deleteAlias: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlias",
 }));
 export type DeleteAvailabilityConfigurationError =
@@ -3902,6 +3934,8 @@ export const deleteAvailabilityConfiguration: API.OperationMethod<
   input: DeleteAvailabilityConfigurationRequest,
   output: DeleteAvailabilityConfigurationResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAvailabilityConfiguration",
 }));
 export type DeleteEmailMonitoringConfigurationError =
@@ -3925,6 +3959,8 @@ export const deleteEmailMonitoringConfiguration: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEmailMonitoringConfiguration",
 }));
 export type DeleteGroupError =
@@ -3956,6 +3992,8 @@ export const deleteGroup: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
 export type DeleteIdentityCenterApplicationError =
@@ -3974,6 +4012,8 @@ export const deleteIdentityCenterApplication: API.OperationMethod<
   input: DeleteIdentityCenterApplicationRequest,
   output: DeleteIdentityCenterApplicationResponse,
   errors: [InvalidParameterException, OrganizationStateException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentityCenterApplication",
 }));
 export type DeleteIdentityProviderConfigurationError =
@@ -3997,6 +4037,8 @@ export const deleteIdentityProviderConfiguration: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentityProviderConfiguration",
 }));
 export type DeleteImpersonationRoleError =
@@ -4020,6 +4062,8 @@ export const deleteImpersonationRole: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImpersonationRole",
 }));
 export type DeleteMailboxPermissionsError =
@@ -4047,6 +4091,8 @@ export const deleteMailboxPermissions: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMailboxPermissions",
 }));
 export type DeleteMobileDeviceAccessOverrideError =
@@ -4074,6 +4120,8 @@ export const deleteMobileDeviceAccessOverride: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMobileDeviceAccessOverride",
 }));
 export type DeleteMobileDeviceAccessRuleError =
@@ -4099,6 +4147,8 @@ export const deleteMobileDeviceAccessRule: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMobileDeviceAccessRule",
 }));
 export type DeleteOrganizationError =
@@ -4122,6 +4172,8 @@ export const deleteOrganization: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOrganization",
 }));
 export type DeletePersonalAccessTokenError =
@@ -4145,6 +4197,8 @@ export const deletePersonalAccessToken: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePersonalAccessToken",
 }));
 export type DeleteResourceError =
@@ -4172,6 +4226,8 @@ export const deleteResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResource",
 }));
 export type DeleteRetentionPolicyError =
@@ -4195,6 +4251,8 @@ export const deleteRetentionPolicy: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRetentionPolicy",
 }));
 export type DeleteUserError =
@@ -4231,6 +4289,8 @@ export const deleteUser: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DeregisterFromWorkMailError =
@@ -4261,6 +4321,8 @@ export const deregisterFromWorkMail: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterFromWorkMail",
 }));
 export type DeregisterMailDomainError =
@@ -4289,6 +4351,8 @@ export const deregisterMailDomain: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterMailDomain",
 }));
 export type DescribeEmailMonitoringConfigurationError =
@@ -4314,6 +4378,8 @@ export const describeEmailMonitoringConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEmailMonitoringConfiguration",
 }));
 export type DescribeEntityError =
@@ -4339,6 +4405,8 @@ export const describeEntity: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntity",
 }));
 export type DescribeGroupError =
@@ -4364,6 +4432,8 @@ export const describeGroup: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGroup",
 }));
 export type DescribeIdentityProviderConfigurationError =
@@ -4389,6 +4459,8 @@ export const describeIdentityProviderConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIdentityProviderConfiguration",
 }));
 export type DescribeInboundDmarcSettingsError =
@@ -4407,6 +4479,8 @@ export const describeInboundDmarcSettings: API.OperationMethod<
   input: DescribeInboundDmarcSettingsRequest,
   output: DescribeInboundDmarcSettingsResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInboundDmarcSettings",
 }));
 export type DescribeMailboxExportJobError =
@@ -4432,6 +4506,8 @@ export const describeMailboxExportJob: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMailboxExportJob",
 }));
 export type DescribeOrganizationError =
@@ -4451,6 +4527,8 @@ export const describeOrganization: API.OperationMethod<
   input: DescribeOrganizationRequest,
   output: DescribeOrganizationResponse,
   errors: [InvalidParameterException, OrganizationNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganization",
 }));
 export type DescribeResourceError =
@@ -4478,6 +4556,8 @@ export const describeResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResource",
 }));
 export type DescribeUserError =
@@ -4507,6 +4587,8 @@ export const describeUser: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUser",
 }));
 export type DisassociateDelegateFromResourceError =
@@ -4536,6 +4618,8 @@ export const disassociateDelegateFromResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDelegateFromResource",
 }));
 export type DisassociateMemberFromGroupError =
@@ -4569,6 +4653,8 @@ export const disassociateMemberFromGroup: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMemberFromGroup",
 }));
 export type GetAccessControlEffectError =
@@ -4597,6 +4683,8 @@ export const getAccessControlEffect: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessControlEffect",
 }));
 export type GetDefaultRetentionPolicyError =
@@ -4622,6 +4710,8 @@ export const getDefaultRetentionPolicy: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDefaultRetentionPolicy",
 }));
 export type GetImpersonationRoleError =
@@ -4647,6 +4737,8 @@ export const getImpersonationRole: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImpersonationRole",
 }));
 export type GetImpersonationRoleEffectError =
@@ -4676,6 +4768,8 @@ export const getImpersonationRoleEffect: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImpersonationRoleEffect",
 }));
 export type GetMailboxDetailsError =
@@ -4701,6 +4795,8 @@ export const getMailboxDetails: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMailboxDetails",
 }));
 export type GetMailDomainError =
@@ -4726,6 +4822,8 @@ export const getMailDomain: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMailDomain",
 }));
 export type GetMobileDeviceAccessEffectError =
@@ -4750,6 +4848,8 @@ export const getMobileDeviceAccessEffect: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMobileDeviceAccessEffect",
 }));
 export type GetMobileDeviceAccessOverrideError =
@@ -4777,6 +4877,8 @@ export const getMobileDeviceAccessOverride: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMobileDeviceAccessOverride",
 }));
 export type GetPersonalAccessTokenMetadataError =
@@ -4802,6 +4904,8 @@ export const getPersonalAccessTokenMetadata: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPersonalAccessTokenMetadata",
 }));
 export type ListAccessControlRulesError =
@@ -4820,6 +4924,8 @@ export const listAccessControlRules: API.OperationMethod<
   input: ListAccessControlRulesRequest,
   output: ListAccessControlRulesResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessControlRules",
 }));
 export type ListAliasesError =
@@ -4863,6 +4969,8 @@ export const listAliases: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAliases",
   pagination: {
     inputToken: "NextToken",
@@ -4906,6 +5014,8 @@ export const listAvailabilityConfigurations: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAvailabilityConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -4955,6 +5065,8 @@ export const listGroupMembers: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupMembers",
   pagination: {
     inputToken: "NextToken",
@@ -5000,6 +5112,8 @@ export const listGroups: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
@@ -5047,6 +5161,8 @@ export const listGroupsForEntity: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupsForEntity",
   pagination: {
     inputToken: "NextToken",
@@ -5090,6 +5206,8 @@ export const listImpersonationRoles: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImpersonationRoles",
   pagination: {
     inputToken: "NextToken",
@@ -5134,6 +5252,8 @@ export const listMailboxExportJobs: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMailboxExportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -5180,6 +5300,8 @@ export const listMailboxPermissions: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMailboxPermissions",
   pagination: {
     inputToken: "NextToken",
@@ -5223,6 +5345,8 @@ export const listMailDomains: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMailDomains",
   pagination: {
     inputToken: "NextToken",
@@ -5268,6 +5392,8 @@ export const listMobileDeviceAccessOverrides: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMobileDeviceAccessOverrides",
   pagination: {
     inputToken: "NextToken",
@@ -5296,6 +5422,8 @@ export const listMobileDeviceAccessRules: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMobileDeviceAccessRules",
 }));
 export type ListOrganizationsError = InvalidParameterException | CommonErrors;
@@ -5326,6 +5454,8 @@ export const listOrganizations: API.OperationMethod<
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
   errors: [InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizations",
   pagination: {
     inputToken: "NextToken",
@@ -5373,6 +5503,8 @@ export const listPersonalAccessTokens: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPersonalAccessTokens",
   pagination: {
     inputToken: "NextToken",
@@ -5424,6 +5556,8 @@ export const listResourceDelegates: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceDelegates",
   pagination: {
     inputToken: "NextToken",
@@ -5469,6 +5603,8 @@ export const listResources: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResources",
   pagination: {
     inputToken: "NextToken",
@@ -5489,6 +5625,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListUsersError =
@@ -5527,6 +5665,8 @@ export const listUsers: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
@@ -5564,6 +5704,8 @@ export const putAccessControlRule: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccessControlRule",
 }));
 export type PutEmailMonitoringConfigurationError =
@@ -5589,6 +5731,8 @@ export const putEmailMonitoringConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEmailMonitoringConfiguration",
 }));
 export type PutIdentityProviderConfigurationError =
@@ -5615,6 +5759,8 @@ export const putIdentityProviderConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutIdentityProviderConfiguration",
 }));
 export type PutInboundDmarcSettingsError =
@@ -5633,6 +5779,8 @@ export const putInboundDmarcSettings: API.OperationMethod<
   input: PutInboundDmarcSettingsRequest,
   output: PutInboundDmarcSettingsResponse,
   errors: [OrganizationNotFoundException, OrganizationStateException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInboundDmarcSettings",
 }));
 export type PutMailboxPermissionsError =
@@ -5661,6 +5809,8 @@ export const putMailboxPermissions: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMailboxPermissions",
 }));
 export type PutMobileDeviceAccessOverrideError =
@@ -5688,6 +5838,8 @@ export const putMobileDeviceAccessOverride: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMobileDeviceAccessOverride",
 }));
 export type PutRetentionPolicyError =
@@ -5713,6 +5865,8 @@ export const putRetentionPolicy: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRetentionPolicy",
 }));
 export type RegisterMailDomainError =
@@ -5741,6 +5895,8 @@ export const registerMailDomain: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterMailDomain",
 }));
 export type RegisterToWorkMailError =
@@ -5789,6 +5945,8 @@ export const registerToWorkMail: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterToWorkMail",
 }));
 export type ResetPasswordError =
@@ -5824,6 +5982,8 @@ export const resetPassword: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetPassword",
 }));
 export type StartMailboxExportJobError =
@@ -5854,6 +6014,8 @@ export const startMailboxExportJob: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMailboxExportJob",
 }));
 export type TagResourceError =
@@ -5880,6 +6042,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestAvailabilityConfigurationError =
@@ -5911,6 +6075,8 @@ export const testAvailabilityConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestAvailabilityConfiguration",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -5927,6 +6093,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAvailabilityConfigurationError =
@@ -5953,6 +6121,8 @@ export const updateAvailabilityConfiguration: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAvailabilityConfiguration",
 }));
 export type UpdateDefaultMailDomainError =
@@ -5980,6 +6150,8 @@ export const updateDefaultMailDomain: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDefaultMailDomain",
 }));
 export type UpdateGroupError =
@@ -6009,6 +6181,8 @@ export const updateGroup: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroup",
 }));
 export type UpdateImpersonationRoleError =
@@ -6040,6 +6214,8 @@ export const updateImpersonationRole: API.OperationMethod<
     OrganizationStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateImpersonationRole",
 }));
 export type UpdateMailboxQuotaError =
@@ -6068,6 +6244,8 @@ export const updateMailboxQuota: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMailboxQuota",
 }));
 export type UpdateMobileDeviceAccessRuleError =
@@ -6093,6 +6271,8 @@ export const updateMobileDeviceAccessRule: API.OperationMethod<
     OrganizationNotFoundException,
     OrganizationStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMobileDeviceAccessRule",
 }));
 export type UpdatePrimaryEmailAddressError =
@@ -6134,6 +6314,8 @@ export const updatePrimaryEmailAddress: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePrimaryEmailAddress",
 }));
 export type UpdateResourceError =
@@ -6177,6 +6359,8 @@ export const updateResource: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResource",
 }));
 export type UpdateUserError =
@@ -6212,5 +6396,7 @@ export const updateUser: API.OperationMethod<
     OrganizationStateException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));

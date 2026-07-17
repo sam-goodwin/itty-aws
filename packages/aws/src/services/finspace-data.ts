@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -1840,6 +1842,8 @@ export const associateUserToPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateUserToPermissionGroup",
 }));
 export type CreateChangesetError =
@@ -1871,6 +1875,8 @@ export const createChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChangeset",
 }));
 export type CreateDatasetError =
@@ -1902,6 +1908,8 @@ export const createDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
 export type CreateDataViewError =
@@ -1931,6 +1939,8 @@ export const createDataView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataView",
 }));
 export type CreatePermissionGroupError =
@@ -1960,6 +1970,8 @@ export const createPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePermissionGroup",
 }));
 export type CreateUserError =
@@ -1989,6 +2001,8 @@ export const createUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DeleteDatasetError =
@@ -2020,6 +2034,8 @@ export const deleteDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataset",
 }));
 export type DeletePermissionGroupError =
@@ -2051,6 +2067,8 @@ export const deletePermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermissionGroup",
 }));
 export type DisableUserError =
@@ -2080,6 +2098,8 @@ export const disableUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableUser",
 }));
 export type DisassociateUserFromPermissionGroupError =
@@ -2109,6 +2129,8 @@ export const disassociateUserFromPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateUserFromPermissionGroup",
 }));
 export type EnableUserError =
@@ -2140,6 +2162,8 @@ export const enableUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableUser",
 }));
 export type GetChangesetError =
@@ -2169,6 +2193,8 @@ export const getChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChangeset",
 }));
 export type GetDatasetError =
@@ -2198,6 +2224,8 @@ export const getDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataset",
 }));
 export type GetDataViewError =
@@ -2225,6 +2253,8 @@ export const getDataView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataView",
 }));
 export type GetExternalDataViewAccessDetailsError =
@@ -2256,6 +2286,8 @@ export const getExternalDataViewAccessDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExternalDataViewAccessDetails",
 }));
 export type GetPermissionGroupError =
@@ -2283,6 +2315,8 @@ export const getPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPermissionGroup",
 }));
 export type GetProgrammaticAccessCredentialsError =
@@ -2308,6 +2342,8 @@ export const getProgrammaticAccessCredentials: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProgrammaticAccessCredentials",
 }));
 export type GetUserError =
@@ -2335,6 +2371,8 @@ export const getUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUser",
 }));
 export type GetWorkingLocationError =
@@ -2361,6 +2399,8 @@ export const getWorkingLocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkingLocation",
 }));
 export type ListChangesetsError =
@@ -2405,6 +2445,8 @@ export const listChangesets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChangesets",
   pagination: {
     inputToken: "nextToken",
@@ -2453,6 +2495,8 @@ export const listDatasets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
   pagination: {
     inputToken: "nextToken",
@@ -2501,6 +2545,8 @@ export const listDataViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataViews",
   pagination: {
     inputToken: "nextToken",
@@ -2547,6 +2593,8 @@ export const listPermissionGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissionGroups",
   pagination: {
     inputToken: "nextToken",
@@ -2580,6 +2628,8 @@ export const listPermissionGroupsByUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissionGroupsByUser",
 }));
 export type ListUsersError =
@@ -2620,6 +2670,8 @@ export const listUsers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "nextToken",
@@ -2653,6 +2705,8 @@ export const listUsersByPermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsersByPermissionGroup",
 }));
 export type ResetUserPasswordError =
@@ -2682,6 +2736,8 @@ export const resetUserPassword: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetUserPassword",
 }));
 export type UpdateChangesetError =
@@ -2711,6 +2767,8 @@ export const updateChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChangeset",
 }));
 export type UpdateDatasetError =
@@ -2740,6 +2798,8 @@ export const updateDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataset",
 }));
 export type UpdatePermissionGroupError =
@@ -2769,6 +2829,8 @@ export const updatePermissionGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePermissionGroup",
 }));
 export type UpdateUserError =
@@ -2798,5 +2860,7 @@ export const updateUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));

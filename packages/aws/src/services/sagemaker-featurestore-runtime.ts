@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -396,6 +398,8 @@ export const batchGetRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetRecord",
 }));
 export type DeleteRecordError =
@@ -451,6 +455,8 @@ export const deleteRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecord",
 }));
 export type GetRecordError =
@@ -480,6 +486,8 @@ export const getRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecord",
 }));
 export type PutRecordError =
@@ -523,5 +531,7 @@ export const putRecord: API.OperationMethod<
     ServiceUnavailable,
     ValidationError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecord",
 }));

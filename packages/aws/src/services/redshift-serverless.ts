@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2620,6 +2622,8 @@ export const createCustomDomainAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomDomainAssociation",
 }));
 export type DeleteCustomDomainAssociationError =
@@ -2649,6 +2653,8 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomDomainAssociation",
 }));
 export type DeleteResourcePolicyError =
@@ -2672,6 +2678,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type GetCredentialsError =
@@ -2701,6 +2709,8 @@ export const getCredentials: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCredentials",
 }));
 export type GetCustomDomainAssociationError =
@@ -2730,6 +2740,8 @@ export const getCustomDomainAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCustomDomainAssociation",
 }));
 export type GetIdentityCenterAuthTokenError =
@@ -2765,6 +2777,8 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityCenterAuthToken",
 }));
 export type GetResourcePolicyError =
@@ -2788,6 +2802,8 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetTrackError =
@@ -2819,6 +2835,8 @@ export const getTrack: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrack",
 }));
 export type ListCustomDomainAssociationsError =
@@ -2861,6 +2879,8 @@ export const listCustomDomainAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomDomainAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -2892,6 +2912,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTracksError =
@@ -2934,6 +2956,8 @@ export const listTracks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTracks",
   pagination: {
     inputToken: "nextToken",
@@ -2967,6 +2991,8 @@ export const putResourcePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type TagResourceError =
@@ -2994,6 +3020,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3019,6 +3047,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateCustomDomainAssociationError =
@@ -3048,6 +3078,8 @@ export const updateCustomDomainAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomDomainAssociation",
 }));
 export type CreateEndpointAccessError =
@@ -3077,6 +3109,8 @@ export const createEndpointAccess: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpointAccess",
 }));
 export type DeleteEndpointAccessError =
@@ -3102,6 +3136,8 @@ export const deleteEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpointAccess",
 }));
 export type GetEndpointAccessError =
@@ -3127,6 +3163,8 @@ export const getEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEndpointAccess",
 }));
 export type ListEndpointAccessError =
@@ -3167,6 +3205,8 @@ export const listEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEndpointAccess",
   pagination: {
     inputToken: "nextToken",
@@ -3200,6 +3240,8 @@ export const updateEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpointAccess",
 }));
 export type ListManagedWorkgroupsError =
@@ -3233,6 +3275,8 @@ export const listManagedWorkgroups: API.OperationMethod<
   input: ListManagedWorkgroupsRequest,
   output: ListManagedWorkgroupsResponse,
   errors: [AccessDeniedException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedWorkgroups",
   pagination: {
     inputToken: "nextToken",
@@ -3264,6 +3308,8 @@ export const createNamespace: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNamespace",
 }));
 export type GetNamespaceError =
@@ -3287,6 +3333,8 @@ export const getNamespace: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNamespace",
 }));
 export type UpdateNamespaceError =
@@ -3312,6 +3360,8 @@ export const updateNamespace: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNamespace",
 }));
 export type DeleteNamespaceError =
@@ -3337,6 +3387,8 @@ export const deleteNamespace: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNamespace",
 }));
 export type ListNamespacesError =
@@ -3370,6 +3422,8 @@ export const listNamespaces: API.OperationMethod<
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNamespaces",
   pagination: {
     inputToken: "nextToken",
@@ -3403,6 +3457,8 @@ export const updateLakehouseConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLakehouseConfiguration",
 }));
 export type ConvertRecoveryPointToSnapshotError =
@@ -3432,6 +3488,8 @@ export const convertRecoveryPointToSnapshot: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConvertRecoveryPointToSnapshot",
 }));
 export type GetRecoveryPointError =
@@ -3457,6 +3515,8 @@ export const getRecoveryPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecoveryPoint",
 }));
 export type ListRecoveryPointsError =
@@ -3490,6 +3550,8 @@ export const listRecoveryPoints: API.OperationMethod<
   input: ListRecoveryPointsRequest,
   output: ListRecoveryPointsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecoveryPoints",
   pagination: {
     inputToken: "nextToken",
@@ -3521,6 +3583,8 @@ export const restoreFromRecoveryPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreFromRecoveryPoint",
 }));
 export type RestoreTableFromRecoveryPointError =
@@ -3546,6 +3610,8 @@ export const restoreTableFromRecoveryPoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTableFromRecoveryPoint",
 }));
 export type CreateReservationError =
@@ -3577,6 +3643,8 @@ export const createReservation: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReservation",
 }));
 export type GetReservationError =
@@ -3602,6 +3670,8 @@ export const getReservation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservation",
 }));
 export type GetReservationOfferingError =
@@ -3627,6 +3697,8 @@ export const getReservationOffering: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservationOffering",
 }));
 export type ListReservationOfferingsError =
@@ -3661,6 +3733,8 @@ export const listReservationOfferings: API.OperationMethod<
   input: ListReservationOfferingsRequest,
   output: ListReservationOfferingsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReservationOfferings",
   pagination: {
     inputToken: "nextToken",
@@ -3701,6 +3775,8 @@ export const listReservations: API.OperationMethod<
   input: ListReservationsRequest,
   output: ListReservationsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReservations",
   pagination: {
     inputToken: "nextToken",
@@ -3732,6 +3808,8 @@ export const createScheduledAction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScheduledAction",
 }));
 export type DeleteScheduledActionError =
@@ -3755,6 +3833,8 @@ export const deleteScheduledAction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScheduledAction",
 }));
 export type GetScheduledActionError =
@@ -3778,6 +3858,8 @@ export const getScheduledAction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScheduledAction",
 }));
 export type ListScheduledActionsError =
@@ -3818,6 +3900,8 @@ export const listScheduledActions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScheduledActions",
   pagination: {
     inputToken: "nextToken",
@@ -3849,6 +3933,8 @@ export const updateScheduledAction: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScheduledAction",
 }));
 export type CreateSnapshotError =
@@ -3878,6 +3964,8 @@ export const createSnapshot: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshot",
 }));
 export type CreateSnapshotCopyConfigurationError =
@@ -3907,6 +3995,8 @@ export const createSnapshotCopyConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshotCopyConfiguration",
 }));
 export type DeleteSnapshotError =
@@ -3932,6 +4022,8 @@ export const deleteSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshot",
 }));
 export type DeleteSnapshotCopyConfigurationError =
@@ -3959,6 +4051,8 @@ export const deleteSnapshotCopyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshotCopyConfiguration",
 }));
 export type GetSnapshotError =
@@ -3982,6 +4076,8 @@ export const getSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSnapshot",
 }));
 export type GetTableRestoreStatusError =
@@ -4000,6 +4096,8 @@ export const getTableRestoreStatus: API.OperationMethod<
   input: GetTableRestoreStatusRequest,
   output: GetTableRestoreStatusResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableRestoreStatus",
 }));
 export type ListSnapshotCopyConfigurationsError =
@@ -4042,6 +4140,8 @@ export const listSnapshotCopyConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSnapshotCopyConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -4086,6 +4186,8 @@ export const listSnapshots: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSnapshots",
   pagination: {
     inputToken: "nextToken",
@@ -4130,6 +4232,8 @@ export const listTableRestoreStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTableRestoreStatus",
   pagination: {
     inputToken: "nextToken",
@@ -4163,6 +4267,8 @@ export const restoreFromSnapshot: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreFromSnapshot",
 }));
 export type RestoreTableFromSnapshotError =
@@ -4188,6 +4294,8 @@ export const restoreTableFromSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTableFromSnapshot",
 }));
 export type UpdateSnapshotError =
@@ -4213,6 +4321,8 @@ export const updateSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSnapshot",
 }));
 export type UpdateSnapshotCopyConfigurationError =
@@ -4240,6 +4350,8 @@ export const updateSnapshotCopyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSnapshotCopyConfiguration",
 }));
 export type CreateUsageLimitError =
@@ -4267,6 +4379,8 @@ export const createUsageLimit: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUsageLimit",
 }));
 export type DeleteUsageLimitError =
@@ -4292,6 +4406,8 @@ export const deleteUsageLimit: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUsageLimit",
 }));
 export type GetUsageLimitError =
@@ -4317,6 +4433,8 @@ export const getUsageLimit: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsageLimit",
 }));
 export type ListUsageLimitsError =
@@ -4359,6 +4477,8 @@ export const listUsageLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsageLimits",
   pagination: {
     inputToken: "nextToken",
@@ -4390,6 +4510,8 @@ export const updateUsageLimit: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUsageLimit",
 }));
 export type CreateWorkgroupError =
@@ -4431,6 +4553,8 @@ export const createWorkgroup: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkgroup",
 }));
 export type GetWorkgroupError =
@@ -4454,6 +4578,8 @@ export const getWorkgroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkgroup",
 }));
 export type UpdateWorkgroupError =
@@ -4493,6 +4619,8 @@ export const updateWorkgroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkgroup",
 }));
 export type DeleteWorkgroupError =
@@ -4518,6 +4646,8 @@ export const deleteWorkgroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkgroup",
 }));
 export type ListWorkgroupsError =
@@ -4551,6 +4681,8 @@ export const listWorkgroups: API.OperationMethod<
   input: ListWorkgroupsRequest,
   output: ListWorkgroupsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkgroups",
   pagination: {
     inputToken: "nextToken",

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1091,6 +1093,8 @@ export const createAct: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAct",
 }));
 export type ListActsError =
@@ -1135,6 +1139,8 @@ export const listActs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActs",
   pagination: {
     inputToken: "nextToken",
@@ -1172,6 +1178,8 @@ export const invokeActStep: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeActStep",
 }));
 export type UpdateActError =
@@ -1201,6 +1209,8 @@ export const updateAct: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAct",
 }));
 export type ListModelsError =
@@ -1220,6 +1230,8 @@ export const listModels: API.OperationMethod<
   input: ListModelsRequest,
   output: ListModelsResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListModels",
 }));
 export type CreateSessionError =
@@ -1251,6 +1263,8 @@ export const createSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSession",
 }));
 export type ListSessionsError =
@@ -1295,6 +1309,8 @@ export const listSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessions",
   pagination: {
     inputToken: "nextToken",
@@ -1330,6 +1346,8 @@ export const createWorkflowDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflowDefinition",
 }));
 export type GetWorkflowDefinitionError =
@@ -1357,6 +1375,8 @@ export const getWorkflowDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowDefinition",
 }));
 export type DeleteWorkflowDefinitionError =
@@ -1386,6 +1406,8 @@ export const deleteWorkflowDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflowDefinition",
 }));
 export type ListWorkflowDefinitionsError =
@@ -1426,6 +1448,8 @@ export const listWorkflowDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowDefinitions",
   pagination: {
     inputToken: "nextToken",
@@ -1461,6 +1485,8 @@ export const createWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflowRun",
 }));
 export type GetWorkflowRunError =
@@ -1490,6 +1516,8 @@ export const getWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowRun",
 }));
 export type UpdateWorkflowRunError =
@@ -1519,6 +1547,8 @@ export const updateWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkflowRun",
 }));
 export type DeleteWorkflowRunError =
@@ -1548,6 +1578,8 @@ export const deleteWorkflowRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflowRun",
 }));
 export type ListWorkflowRunsError =
@@ -1592,6 +1624,8 @@ export const listWorkflowRuns: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowRuns",
   pagination: {
     inputToken: "nextToken",

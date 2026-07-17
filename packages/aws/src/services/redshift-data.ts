@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -852,6 +854,8 @@ export const batchExecuteStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchExecuteStatement",
 }));
 export type CancelStatementError =
@@ -881,6 +885,8 @@ export const cancelStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelStatement",
 }));
 export type DescribeStatementError =
@@ -906,6 +912,8 @@ export const describeStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStatement",
 }));
 export type DescribeTableError =
@@ -960,6 +968,8 @@ export const describeTable: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTable",
   pagination: {
     inputToken: "NextToken",
@@ -1007,6 +1017,8 @@ export const executeStatement: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteStatement",
 }));
 export type GetStatementResultError =
@@ -1047,6 +1059,8 @@ export const getStatementResult: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStatementResult",
   pagination: {
     inputToken: "NextToken",
@@ -1092,6 +1106,8 @@ export const getStatementResultV2: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStatementResultV2",
   pagination: {
     inputToken: "NextToken",
@@ -1151,6 +1167,8 @@ export const listDatabases: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -1211,6 +1229,8 @@ export const listSchemas: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemas",
   pagination: {
     inputToken: "NextToken",
@@ -1259,6 +1279,8 @@ export const listStatements: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStatements",
   pagination: {
     inputToken: "NextToken",
@@ -1319,6 +1341,8 @@ export const listTables: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "NextToken",

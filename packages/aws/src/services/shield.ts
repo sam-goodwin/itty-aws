@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1723,6 +1725,8 @@ export const associateDRTLogBucket: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDRTLogBucket",
 }));
 export type AssociateDRTRoleError =
@@ -1763,6 +1767,8 @@ export const associateDRTRole: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDRTRole",
 }));
 export type AssociateHealthCheckError =
@@ -1794,6 +1800,8 @@ export const associateHealthCheck: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateHealthCheck",
 }));
 export type AssociateProactiveEngagementDetailsError =
@@ -1827,6 +1835,8 @@ export const associateProactiveEngagementDetails: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateProactiveEngagementDetails",
 }));
 export type CreateProtectionError =
@@ -1866,6 +1876,8 @@ export const createProtection: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProtection",
 }));
 export type CreateProtectionGroupError =
@@ -1895,6 +1907,8 @@ export const createProtectionGroup: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProtectionGroup",
 }));
 export type CreateSubscriptionError =
@@ -1918,6 +1932,8 @@ export const createSubscription: API.OperationMethod<
   input: CreateSubscriptionRequest,
   output: CreateSubscriptionResponse,
   errors: [InternalErrorException, ResourceAlreadyExistsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscription",
 }));
 export type DeleteProtectionError =
@@ -1941,6 +1957,8 @@ export const deleteProtection: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProtection",
 }));
 export type DeleteProtectionGroupError =
@@ -1964,6 +1982,8 @@ export const deleteProtectionGroup: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProtectionGroup",
 }));
 export type DeleteSubscriptionError =
@@ -1987,6 +2007,8 @@ export const deleteSubscription: API.OperationMethod<
     LockedSubscriptionException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubscription",
 }));
 export type DescribeAttackError =
@@ -2005,6 +2027,8 @@ export const describeAttack: API.OperationMethod<
   input: DescribeAttackRequest,
   output: DescribeAttackResponse,
   errors: [AccessDeniedException, InternalErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAttack",
 }));
 export type DescribeAttackStatisticsError =
@@ -2026,6 +2050,8 @@ export const describeAttackStatistics: API.OperationMethod<
   input: DescribeAttackStatisticsRequest,
   output: DescribeAttackStatisticsResponse,
   errors: [InternalErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAttackStatistics",
 }));
 export type DescribeDRTAccessError =
@@ -2044,6 +2070,8 @@ export const describeDRTAccess: API.OperationMethod<
   input: DescribeDRTAccessRequest,
   output: DescribeDRTAccessResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDRTAccess",
 }));
 export type DescribeEmergencyContactSettingsError =
@@ -2062,6 +2090,8 @@ export const describeEmergencyContactSettings: API.OperationMethod<
   input: DescribeEmergencyContactSettingsRequest,
   output: DescribeEmergencyContactSettingsResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEmergencyContactSettings",
 }));
 export type DescribeProtectionError =
@@ -2085,6 +2115,8 @@ export const describeProtection: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProtection",
 }));
 export type DescribeProtectionGroupError =
@@ -2103,6 +2135,8 @@ export const describeProtectionGroup: API.OperationMethod<
   input: DescribeProtectionGroupRequest,
   output: DescribeProtectionGroupResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProtectionGroup",
 }));
 export type DescribeSubscriptionError =
@@ -2121,6 +2155,8 @@ export const describeSubscription: API.OperationMethod<
   input: DescribeSubscriptionRequest,
   output: DescribeSubscriptionResponse,
   errors: [InternalErrorException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSubscription",
 }));
 export type DisableApplicationLayerAutomaticResponseError =
@@ -2149,6 +2185,8 @@ export const disableApplicationLayerAutomaticResponse: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableApplicationLayerAutomaticResponse",
 }));
 export type DisableProactiveEngagementError =
@@ -2176,6 +2214,8 @@ export const disableProactiveEngagement: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableProactiveEngagement",
 }));
 export type DisassociateDRTLogBucketError =
@@ -2205,6 +2245,8 @@ export const disassociateDRTLogBucket: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDRTLogBucket",
 }));
 export type DisassociateDRTRoleError =
@@ -2230,6 +2272,8 @@ export const disassociateDRTRole: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDRTRole",
 }));
 export type DisassociateHealthCheckError =
@@ -2259,6 +2303,8 @@ export const disassociateHealthCheck: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateHealthCheck",
 }));
 export type EnableApplicationLayerAutomaticResponseError =
@@ -2302,6 +2348,8 @@ export const enableApplicationLayerAutomaticResponse: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableApplicationLayerAutomaticResponse",
 }));
 export type EnableProactiveEngagementError =
@@ -2329,6 +2377,8 @@ export const enableProactiveEngagement: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableProactiveEngagement",
 }));
 export type GetSubscriptionStateError = InternalErrorException | CommonErrors;
@@ -2344,6 +2394,8 @@ export const getSubscriptionState: API.OperationMethod<
   input: GetSubscriptionStateRequest,
   output: GetSubscriptionStateResponse,
   errors: [InternalErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscriptionState",
 }));
 export type ListAttacksError =
@@ -2383,6 +2435,8 @@ export const listAttacks: API.OperationMethod<
     InvalidOperationException,
     InvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttacks",
   pagination: {
     inputToken: "NextToken",
@@ -2428,6 +2482,8 @@ export const listProtectionGroups: API.OperationMethod<
     InvalidPaginationTokenException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProtectionGroups",
   pagination: {
     inputToken: "NextToken",
@@ -2472,6 +2528,8 @@ export const listProtections: API.OperationMethod<
     InvalidPaginationTokenException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProtections",
   pagination: {
     inputToken: "NextToken",
@@ -2516,6 +2574,8 @@ export const listResourcesInProtectionGroup: API.OperationMethod<
     InvalidPaginationTokenException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourcesInProtectionGroup",
   pagination: {
     inputToken: "NextToken",
@@ -2544,6 +2604,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidResourceException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2569,6 +2631,8 @@ export const tagResource: API.OperationMethod<
     InvalidResourceException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2594,6 +2658,8 @@ export const untagResource: API.OperationMethod<
     InvalidResourceException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApplicationLayerAutomaticResponseError =
@@ -2621,6 +2687,8 @@ export const updateApplicationLayerAutomaticResponse: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationLayerAutomaticResponse",
 }));
 export type UpdateEmergencyContactSettingsError =
@@ -2646,6 +2714,8 @@ export const updateEmergencyContactSettings: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEmergencyContactSettings",
 }));
 export type UpdateProtectionGroupError =
@@ -2671,6 +2741,8 @@ export const updateProtectionGroup: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProtectionGroup",
 }));
 export type UpdateSubscriptionError =
@@ -2701,5 +2773,7 @@ export const updateSubscription: API.OperationMethod<
     OptimisticLockException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscription",
 }));

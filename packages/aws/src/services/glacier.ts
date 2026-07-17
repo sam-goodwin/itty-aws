@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1836,6 +1838,8 @@ export const abortMultipartUpload: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AbortMultipartUpload",
 }));
 export type AbortVaultLockError =
@@ -1878,6 +1882,8 @@ export const abortVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AbortVaultLock",
 }));
 export type AddTagsToVaultError =
@@ -1911,6 +1917,8 @@ export const addTagsToVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToVault",
 }));
 export type CompleteMultipartUploadError =
@@ -1976,6 +1984,8 @@ export const completeMultipartUpload: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteMultipartUpload",
 }));
 export type CompleteVaultLockError =
@@ -2018,6 +2028,8 @@ export const completeVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteVaultLock",
 }));
 export type CreateVaultError =
@@ -2066,6 +2078,8 @@ export const createVault: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVault",
 }));
 export type DeleteArchiveError =
@@ -2116,6 +2130,8 @@ export const deleteArchive: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteArchive",
 }));
 export type DeleteVaultError =
@@ -2163,6 +2179,8 @@ export const deleteVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVault",
 }));
 export type DeleteVaultAccessPolicyError =
@@ -2197,6 +2215,8 @@ export const deleteVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVaultAccessPolicy",
 }));
 export type DeleteVaultNotificationsError =
@@ -2237,6 +2257,8 @@ export const deleteVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVaultNotifications",
 }));
 export type DescribeJobError =
@@ -2285,6 +2307,8 @@ export const describeJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJob",
 }));
 export type DescribeVaultError =
@@ -2330,6 +2354,8 @@ export const describeVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVault",
 }));
 export type GetDataRetrievalPolicyError =
@@ -2357,6 +2383,8 @@ export const getDataRetrievalPolicy: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataRetrievalPolicy",
 }));
 export type GetJobOutputError =
@@ -2423,6 +2451,8 @@ export const getJobOutput: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobOutput",
 }));
 export type GetVaultAccessPolicyError =
@@ -2455,6 +2485,8 @@ export const getVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVaultAccessPolicy",
 }));
 export type GetVaultLockError =
@@ -2504,6 +2536,8 @@ export const getVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVaultLock",
 }));
 export type GetVaultNotificationsError =
@@ -2547,6 +2581,8 @@ export const getVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVaultNotifications",
 }));
 export type InitiateJobError =
@@ -2581,6 +2617,8 @@ export const initiateJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateJob",
 }));
 export type InitiateMultipartUploadError =
@@ -2640,6 +2678,8 @@ export const initiateMultipartUpload: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateMultipartUpload",
 }));
 export type InitiateVaultLockError =
@@ -2698,6 +2738,8 @@ export const initiateVaultLock: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateVaultLock",
 }));
 export type ListJobsError =
@@ -2773,6 +2815,8 @@ export const listJobs: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "marker",
@@ -2846,6 +2890,8 @@ export const listMultipartUploads: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMultipartUploads",
   pagination: {
     inputToken: "marker",
@@ -2916,6 +2962,8 @@ export const listParts: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListParts",
   pagination: {
     inputToken: "marker",
@@ -2948,6 +2996,8 @@ export const listProvisionedCapacity: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisionedCapacity",
 }));
 export type ListTagsForVaultError =
@@ -2977,6 +3027,8 @@ export const listTagsForVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForVault",
 }));
 export type ListVaultsError =
@@ -3038,6 +3090,8 @@ export const listVaults: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVaults",
   pagination: {
     inputToken: "marker",
@@ -3071,6 +3125,8 @@ export const purchaseProvisionedCapacity: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseProvisionedCapacity",
 }));
 export type RemoveTagsFromVaultError =
@@ -3101,6 +3157,8 @@ export const removeTagsFromVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromVault",
 }));
 export type SetDataRetrievalPolicyError =
@@ -3132,6 +3190,8 @@ export const setDataRetrievalPolicy: API.OperationMethod<
     NoLongerSupportedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDataRetrievalPolicy",
 }));
 export type SetVaultAccessPolicyError =
@@ -3164,6 +3224,8 @@ export const setVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetVaultAccessPolicy",
 }));
 export type SetVaultNotificationsError =
@@ -3221,6 +3283,8 @@ export const setVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetVaultNotifications",
 }));
 export type UploadArchiveError =
@@ -3282,6 +3346,8 @@ export const uploadArchive: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadArchive",
 }));
 export type UploadMultipartPartError =
@@ -3352,5 +3418,7 @@ export const uploadMultipartPart: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadMultipartPart",
 }));

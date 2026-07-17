@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2355,6 +2357,8 @@ export const cancelGremlinQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelGremlinQuery",
 }));
 export type CancelLoaderJobError =
@@ -2400,6 +2404,8 @@ export const cancelLoaderJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelLoaderJob",
 }));
 export type CancelMLDataProcessingJobError =
@@ -2441,6 +2447,8 @@ export const cancelMLDataProcessingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMLDataProcessingJob",
 }));
 export type CancelMLModelTrainingJobError =
@@ -2482,6 +2490,8 @@ export const cancelMLModelTrainingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMLModelTrainingJob",
 }));
 export type CancelMLModelTransformJobError =
@@ -2523,6 +2533,8 @@ export const cancelMLModelTransformJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMLModelTransformJob",
 }));
 export type CancelOpenCypherQueryError =
@@ -2572,6 +2584,8 @@ export const cancelOpenCypherQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelOpenCypherQuery",
 }));
 export type CreateMLEndpointError =
@@ -2613,6 +2627,8 @@ export const createMLEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMLEndpoint",
 }));
 export type DeleteMLEndpointError =
@@ -2654,6 +2670,8 @@ export const deleteMLEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMLEndpoint",
 }));
 export type DeletePropertygraphStatisticsError =
@@ -2699,6 +2717,8 @@ export const deletePropertygraphStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePropertygraphStatistics",
 }));
 export type DeleteSparqlStatisticsError =
@@ -2744,6 +2764,8 @@ export const deleteSparqlStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSparqlStatistics",
 }));
 export type ExecuteFastResetError =
@@ -2791,6 +2813,8 @@ export const executeFastReset: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteFastReset",
 }));
 export type ExecuteGremlinExplainQueryError =
@@ -2862,6 +2886,8 @@ export const executeGremlinExplainQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteGremlinExplainQuery",
 }));
 export type ExecuteGremlinProfileQueryError =
@@ -2923,6 +2949,8 @@ export const executeGremlinProfileQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteGremlinProfileQuery",
 }));
 export type ExecuteGremlinQueryError =
@@ -2990,6 +3018,8 @@ export const executeGremlinQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteGremlinQuery",
 }));
 export type ExecuteOpenCypherExplainQueryError =
@@ -3053,6 +3083,8 @@ export const executeOpenCypherExplainQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteOpenCypherExplainQuery",
 }));
 export type ExecuteOpenCypherQueryError =
@@ -3126,6 +3158,8 @@ export const executeOpenCypherQuery: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteOpenCypherQuery",
 }));
 export type GetEngineStatusError =
@@ -3161,6 +3195,8 @@ export const getEngineStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEngineStatus",
 }));
 export type GetGremlinQueryStatusError =
@@ -3214,6 +3250,8 @@ export const getGremlinQueryStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGremlinQueryStatus",
 }));
 export type GetLoaderJobStatusError =
@@ -3261,6 +3299,8 @@ export const getLoaderJobStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoaderJobStatus",
 }));
 export type GetMLDataProcessingJobError =
@@ -3302,6 +3342,8 @@ export const getMLDataProcessingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLDataProcessingJob",
 }));
 export type GetMLEndpointError =
@@ -3343,6 +3385,8 @@ export const getMLEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLEndpoint",
 }));
 export type GetMLModelTrainingJobError =
@@ -3384,6 +3428,8 @@ export const getMLModelTrainingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLModelTrainingJob",
 }));
 export type GetMLModelTransformJobError =
@@ -3425,6 +3471,8 @@ export const getMLModelTransformJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLModelTransformJob",
 }));
 export type GetOpenCypherQueryStatusError =
@@ -3480,6 +3528,8 @@ export const getOpenCypherQueryStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpenCypherQueryStatus",
 }));
 export type GetPropertygraphStatisticsError =
@@ -3525,6 +3575,8 @@ export const getPropertygraphStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPropertygraphStatistics",
 }));
 export type GetPropertygraphStreamError =
@@ -3584,6 +3636,8 @@ export const getPropertygraphStream: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPropertygraphStream",
 }));
 export type GetPropertygraphSummaryError =
@@ -3629,6 +3683,8 @@ export const getPropertygraphSummary: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPropertygraphSummary",
 }));
 export type GetRDFGraphSummaryError =
@@ -3674,6 +3730,8 @@ export const getRDFGraphSummary: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRDFGraphSummary",
 }));
 export type GetSparqlStatisticsError =
@@ -3717,6 +3775,8 @@ export const getSparqlStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSparqlStatistics",
 }));
 export type GetSparqlStreamError =
@@ -3768,6 +3828,8 @@ export const getSparqlStream: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSparqlStream",
 }));
 export type ListGremlinQueriesError =
@@ -3821,6 +3883,8 @@ export const listGremlinQueries: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGremlinQueries",
 }));
 export type ListLoaderJobsError =
@@ -3864,6 +3928,8 @@ export const listLoaderJobs: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLoaderJobs",
 }));
 export type ListMLDataProcessingJobsError =
@@ -3905,6 +3971,8 @@ export const listMLDataProcessingJobs: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMLDataProcessingJobs",
 }));
 export type ListMLEndpointsError =
@@ -3946,6 +4014,8 @@ export const listMLEndpoints: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMLEndpoints",
 }));
 export type ListMLModelTrainingJobsError =
@@ -3987,6 +4057,8 @@ export const listMLModelTrainingJobs: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMLModelTrainingJobs",
 }));
 export type ListMLModelTransformJobsError =
@@ -4028,6 +4100,8 @@ export const listMLModelTransformJobs: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMLModelTransformJobs",
 }));
 export type ListOpenCypherQueriesError =
@@ -4083,6 +4157,8 @@ export const listOpenCypherQueries: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpenCypherQueries",
 }));
 export type ManagePropertygraphStatisticsError =
@@ -4128,6 +4204,8 @@ export const managePropertygraphStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ManagePropertygraphStatistics",
 }));
 export type ManageSparqlStatisticsError =
@@ -4173,6 +4251,8 @@ export const manageSparqlStatistics: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ManageSparqlStatistics",
 }));
 export type StartLoaderJobError =
@@ -4220,6 +4300,8 @@ export const startLoaderJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartLoaderJob",
 }));
 export type StartMLDataProcessingJobError =
@@ -4261,6 +4343,8 @@ export const startMLDataProcessingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMLDataProcessingJob",
 }));
 export type StartMLModelTrainingJobError =
@@ -4302,6 +4386,8 @@ export const startMLModelTrainingJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMLModelTrainingJob",
 }));
 export type StartMLModelTransformJobError =
@@ -4343,5 +4429,7 @@ export const startMLModelTransformJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMLModelTransformJob",
 }));

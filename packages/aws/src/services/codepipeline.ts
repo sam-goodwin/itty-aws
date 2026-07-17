@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3777,6 +3779,8 @@ export const acknowledgeJob: API.OperationMethod<
   input: AcknowledgeJobInput,
   output: AcknowledgeJobOutput,
   errors: [InvalidNonceException, JobNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcknowledgeJob",
 }));
 export type AcknowledgeThirdPartyJobError =
@@ -3803,6 +3807,8 @@ export const acknowledgeThirdPartyJob: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcknowledgeThirdPartyJob",
 }));
 export type CreateCustomActionTypeError =
@@ -3831,6 +3837,8 @@ export const createCustomActionType: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomActionType",
 }));
 export type CreatePipelineError =
@@ -3873,6 +3881,8 @@ export const createPipeline: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePipeline",
 }));
 export type DeleteCustomActionTypeError =
@@ -3898,6 +3908,8 @@ export const deleteCustomActionType: API.OperationMethod<
   input: DeleteCustomActionTypeInput,
   output: DeleteCustomActionTypeResponse,
   errors: [ConcurrentModificationException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomActionType",
 }));
 export type DeletePipelineError =
@@ -3916,6 +3928,8 @@ export const deletePipeline: API.OperationMethod<
   input: DeletePipelineInput,
   output: DeletePipelineResponse,
   errors: [ConcurrentModificationException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePipeline",
 }));
 export type DeleteWebhookError =
@@ -3937,6 +3951,8 @@ export const deleteWebhook: API.OperationMethod<
   input: DeleteWebhookInput,
   output: DeleteWebhookOutput,
   errors: [ConcurrentModificationException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWebhook",
 }));
 export type DeregisterWebhookWithThirdPartyError =
@@ -3957,6 +3973,8 @@ export const deregisterWebhookWithThirdParty: API.OperationMethod<
   input: DeregisterWebhookWithThirdPartyInput,
   output: DeregisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterWebhookWithThirdParty",
 }));
 export type DisableStageTransitionError =
@@ -3981,6 +3999,8 @@ export const disableStageTransition: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableStageTransition",
 }));
 export type EnableStageTransitionError =
@@ -4004,6 +4024,8 @@ export const enableStageTransition: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableStageTransition",
 }));
 export type GetActionTypeError =
@@ -4024,6 +4046,8 @@ export const getActionType: API.OperationMethod<
   input: GetActionTypeInput,
   output: GetActionTypeOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetActionType",
 }));
 export type GetJobDetailsError =
@@ -4047,6 +4071,8 @@ export const getJobDetails: API.OperationMethod<
   input: GetJobDetailsInput,
   output: GetJobDetailsOutput,
   errors: [JobNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobDetails",
 }));
 export type GetPipelineError =
@@ -4072,6 +4098,8 @@ export const getPipeline: API.OperationMethod<
     PipelineVersionNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipeline",
 }));
 export type GetPipelineExecutionError =
@@ -4097,6 +4125,8 @@ export const getPipelineExecution: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipelineExecution",
 }));
 export type GetPipelineStateError =
@@ -4120,6 +4150,8 @@ export const getPipelineState: API.OperationMethod<
   input: GetPipelineStateInput,
   output: GetPipelineStateOutput,
   errors: [PipelineNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipelineState",
 }));
 export type GetThirdPartyJobDetailsError =
@@ -4151,6 +4183,8 @@ export const getThirdPartyJobDetails: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetThirdPartyJobDetails",
 }));
 export type ListActionExecutionsError =
@@ -4191,6 +4225,8 @@ export const listActionExecutions: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActionExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -4231,6 +4267,8 @@ export const listActionTypes: API.OperationMethod<
   input: ListActionTypesInput,
   output: ListActionTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActionTypes",
   pagination: {
     inputToken: "nextToken",
@@ -4276,6 +4314,8 @@ export const listDeployActionExecutionTargets: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeployActionExecutionTargets",
   pagination: {
     inputToken: "nextToken",
@@ -4324,6 +4364,8 @@ export const listPipelineExecutions: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelineExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -4363,6 +4405,8 @@ export const listPipelines: API.OperationMethod<
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelines",
   pagination: {
     inputToken: "nextToken",
@@ -4410,6 +4454,8 @@ export const listRuleExecutions: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -4436,6 +4482,8 @@ export const listRuleTypes: API.OperationMethod<
   input: ListRuleTypesInput,
   output: ListRuleTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleTypes",
 }));
 export type ListTagsForResourceError =
@@ -4477,6 +4525,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
@@ -4520,6 +4570,8 @@ export const listWebhooks: API.OperationMethod<
   input: ListWebhooksInput,
   output: ListWebhooksOutput,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWebhooks",
   pagination: {
     inputToken: "NextToken",
@@ -4559,6 +4611,8 @@ export const overrideStageCondition: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OverrideStageCondition",
 }));
 export type PollForJobsError =
@@ -4585,6 +4639,8 @@ export const pollForJobs: API.OperationMethod<
   input: PollForJobsInput,
   output: PollForJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PollForJobs",
 }));
 export type PollForThirdPartyJobsError =
@@ -4608,6 +4664,8 @@ export const pollForThirdPartyJobs: API.OperationMethod<
   input: PollForThirdPartyJobsInput,
   output: PollForThirdPartyJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PollForThirdPartyJobs",
 }));
 export type PutActionRevisionError =
@@ -4636,6 +4694,8 @@ export const putActionRevision: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutActionRevision",
 }));
 export type PutApprovalResultError =
@@ -4666,6 +4726,8 @@ export const putApprovalResult: API.OperationMethod<
     StageNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutApprovalResult",
 }));
 export type PutJobFailureResultError =
@@ -4686,6 +4748,8 @@ export const putJobFailureResult: API.OperationMethod<
   input: PutJobFailureResultInput,
   output: PutJobFailureResultResponse,
   errors: [InvalidJobStateException, JobNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutJobFailureResult",
 }));
 export type PutJobSuccessResultError =
@@ -4712,6 +4776,8 @@ export const putJobSuccessResult: API.OperationMethod<
     OutputVariablesSizeExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutJobSuccessResult",
 }));
 export type PutThirdPartyJobFailureResultError =
@@ -4738,6 +4804,8 @@ export const putThirdPartyJobFailureResult: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutThirdPartyJobFailureResult",
 }));
 export type PutThirdPartyJobSuccessResultError =
@@ -4764,6 +4832,8 @@ export const putThirdPartyJobSuccessResult: API.OperationMethod<
     JobNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutThirdPartyJobSuccessResult",
 }));
 export type PutWebhookError =
@@ -4814,6 +4884,8 @@ export const putWebhook: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutWebhook",
 }));
 export type RegisterWebhookWithThirdPartyError =
@@ -4833,6 +4905,8 @@ export const registerWebhookWithThirdParty: API.OperationMethod<
   input: RegisterWebhookWithThirdPartyInput,
   output: RegisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterWebhookWithThirdParty",
 }));
 export type RetryStageExecutionError =
@@ -4871,6 +4945,8 @@ export const retryStageExecution: API.OperationMethod<
     StageNotRetryableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetryStageExecution",
 }));
 export type RollbackStageError =
@@ -4902,6 +4978,8 @@ export const rollbackStage: API.OperationMethod<
     UnableToRollbackStageException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RollbackStage",
 }));
 export type StartPipelineExecutionError =
@@ -4928,6 +5006,8 @@ export const startPipelineExecution: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPipelineExecution",
 }));
 export type StopPipelineExecutionError =
@@ -4960,6 +5040,8 @@ export const stopPipelineExecution: API.OperationMethod<
     PipelineNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopPipelineExecution",
 }));
 export type TagResourceError =
@@ -4990,6 +5072,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5017,6 +5101,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateActionTypeError =
@@ -5043,6 +5129,8 @@ export const updateActionType: API.OperationMethod<
     RequestFailedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateActionType",
 }));
 export type UpdatePipelineError =
@@ -5075,5 +5163,7 @@ export const updatePipeline: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePipeline",
 }));

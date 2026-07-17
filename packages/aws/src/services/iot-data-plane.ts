@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -526,6 +528,8 @@ export const deleteConnection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type DeleteThingShadowError =
@@ -563,6 +567,8 @@ export const deleteThingShadow: API.OperationMethod<
     UnauthorizedException,
     UnsupportedDocumentEncodingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThingShadow",
 }));
 export type GetRetainedMessageError =
@@ -603,6 +609,8 @@ export const getRetainedMessage: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRetainedMessage",
 }));
 export type GetThingShadowError =
@@ -641,6 +649,8 @@ export const getThingShadow: API.OperationMethod<
     UnauthorizedException,
     UnsupportedDocumentEncodingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetThingShadow",
 }));
 export type ListNamedShadowsForThingError =
@@ -674,6 +684,8 @@ export const listNamedShadowsForThing: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNamedShadowsForThing",
 }));
 export type ListRetainedMessagesError =
@@ -731,6 +743,8 @@ export const listRetainedMessages: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRetainedMessages",
   pagination: {
     inputToken: "nextToken",
@@ -773,6 +787,8 @@ export const publish: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Publish",
 }));
 export type UpdateThingShadowError =
@@ -813,5 +829,7 @@ export const updateThingShadow: API.OperationMethod<
     UnauthorizedException,
     UnsupportedDocumentEncodingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThingShadow",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4287,6 +4289,8 @@ export const activateKeySigningKey: API.OperationMethod<
     InvalidSigningStatus,
     NoSuchKeySigningKey,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateKeySigningKey",
 }));
 export type AssociateVPCWithHostedZoneError =
@@ -4344,6 +4348,8 @@ export const associateVPCWithHostedZone: API.OperationMethod<
     PriorRequestNotComplete,
     PublicZoneVPCAssociation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateVPCWithHostedZone",
 }));
 export type ChangeCidrCollectionError =
@@ -4392,6 +4398,8 @@ export const changeCidrCollection: API.OperationMethod<
     LimitsExceeded,
     NoSuchCidrCollectionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ChangeCidrCollection",
 }));
 export type ChangeResourceRecordSetsError =
@@ -4502,6 +4510,8 @@ export const changeResourceRecordSets: API.OperationMethod<
     NoSuchHostedZone,
     PriorRequestNotComplete,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ChangeResourceRecordSets",
 }));
 export type ChangeTagsForResourceError =
@@ -4532,6 +4542,8 @@ export const changeTagsForResource: API.OperationMethod<
     PriorRequestNotComplete,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ChangeTagsForResource",
 }));
 export type CreateCidrCollectionError =
@@ -4557,6 +4569,8 @@ export const createCidrCollection: API.OperationMethod<
     InvalidInput,
     LimitsExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCidrCollection",
 }));
 export type CreateHealthCheckError =
@@ -4606,6 +4620,8 @@ export const createHealthCheck: API.OperationMethod<
   input: CreateHealthCheckRequest,
   output: CreateHealthCheckResponse,
   errors: [HealthCheckAlreadyExists, InvalidInput, TooManyHealthChecks],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHealthCheck",
 }));
 export type CreateHostedZoneError =
@@ -4695,6 +4711,8 @@ export const createHostedZone: API.OperationMethod<
     NoSuchDelegationSet,
     TooManyHostedZones,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHostedZone",
 }));
 export type CreateKeySigningKeyError =
@@ -4733,6 +4751,8 @@ export const createKeySigningKey: API.OperationMethod<
     NoSuchHostedZone,
     TooManyKeySigningKeys,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKeySigningKey",
 }));
 export type CreateQueryLoggingConfigError =
@@ -4902,6 +4922,8 @@ export const createQueryLoggingConfig: API.OperationMethod<
     NoSuchHostedZone,
     QueryLoggingConfigAlreadyExists,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQueryLoggingConfig",
 }));
 export type CreateReusableDelegationSetError =
@@ -4980,6 +5002,8 @@ export const createReusableDelegationSet: API.OperationMethod<
     InvalidInput,
     LimitsExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReusableDelegationSet",
 }));
 export type CreateTrafficPolicyError =
@@ -5007,6 +5031,8 @@ export const createTrafficPolicy: API.OperationMethod<
     TooManyTrafficPolicies,
     TrafficPolicyAlreadyExists,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrafficPolicy",
 }));
 export type CreateTrafficPolicyInstanceError =
@@ -5046,6 +5072,8 @@ export const createTrafficPolicyInstance: API.OperationMethod<
     TooManyTrafficPolicyInstances,
     TrafficPolicyInstanceAlreadyExists,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrafficPolicyInstance",
 }));
 export type CreateTrafficPolicyVersionError =
@@ -5079,6 +5107,8 @@ export const createTrafficPolicyVersion: API.OperationMethod<
     NoSuchTrafficPolicy,
     TooManyTrafficPolicyVersionsForCurrentPolicy,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrafficPolicyVersion",
 }));
 export type CreateVPCAssociationAuthorizationError =
@@ -5115,6 +5145,8 @@ export const createVPCAssociationAuthorization: API.OperationMethod<
     NoSuchHostedZone,
     TooManyVPCAssociationAuthorizations,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVPCAssociationAuthorization",
 }));
 export type DeactivateKeySigningKeyError =
@@ -5147,6 +5179,8 @@ export const deactivateKeySigningKey: API.OperationMethod<
     KeySigningKeyInUse,
     NoSuchKeySigningKey,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateKeySigningKey",
 }));
 export type DeleteCidrCollectionError =
@@ -5173,6 +5207,8 @@ export const deleteCidrCollection: API.OperationMethod<
     InvalidInput,
     NoSuchCidrCollectionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCidrCollection",
 }));
 export type DeleteHealthCheckError =
@@ -5206,6 +5242,8 @@ export const deleteHealthCheck: API.OperationMethod<
   input: DeleteHealthCheckRequest,
   output: DeleteHealthCheckResponse,
   errors: [HealthCheckInUse, InvalidInput, NoSuchHealthCheck],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHealthCheck",
 }));
 export type DeleteHostedZoneError =
@@ -5274,6 +5312,8 @@ export const deleteHostedZone: API.OperationMethod<
     NoSuchHostedZone,
     PriorRequestNotComplete,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHostedZone",
 }));
 export type DeleteKeySigningKeyError =
@@ -5310,6 +5350,8 @@ export const deleteKeySigningKey: API.OperationMethod<
     InvalidSigningStatus,
     NoSuchKeySigningKey,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKeySigningKey",
 }));
 export type DeleteQueryLoggingConfigError =
@@ -5333,6 +5375,8 @@ export const deleteQueryLoggingConfig: API.OperationMethod<
   input: DeleteQueryLoggingConfigRequest,
   output: DeleteQueryLoggingConfigResponse,
   errors: [ConcurrentModification, InvalidInput, NoSuchQueryLoggingConfig],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueryLoggingConfig",
 }));
 export type DeleteReusableDelegationSetError =
@@ -5365,6 +5409,8 @@ export const deleteReusableDelegationSet: API.OperationMethod<
     InvalidInput,
     NoSuchDelegationSet,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReusableDelegationSet",
 }));
 export type DeleteTrafficPolicyError =
@@ -5401,6 +5447,8 @@ export const deleteTrafficPolicy: API.OperationMethod<
     NoSuchTrafficPolicy,
     TrafficPolicyInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrafficPolicy",
 }));
 export type DeleteTrafficPolicyInstanceError =
@@ -5424,6 +5472,8 @@ export const deleteTrafficPolicyInstance: API.OperationMethod<
   input: DeleteTrafficPolicyInstanceRequest,
   output: DeleteTrafficPolicyInstanceResponse,
   errors: [InvalidInput, NoSuchTrafficPolicyInstance, PriorRequestNotComplete],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrafficPolicyInstance",
 }));
 export type DeleteVPCAssociationAuthorizationError =
@@ -5461,6 +5511,8 @@ export const deleteVPCAssociationAuthorization: API.OperationMethod<
     NoSuchHostedZone,
     VPCAssociationAuthorizationNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVPCAssociationAuthorization",
 }));
 export type DisableHostedZoneDNSSECError =
@@ -5495,6 +5547,8 @@ export const disableHostedZoneDNSSEC: API.OperationMethod<
     KeySigningKeyInParentDSRecord,
     NoSuchHostedZone,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableHostedZoneDNSSEC",
 }));
 export type DisassociateVPCFromHostedZoneError =
@@ -5558,6 +5612,8 @@ export const disassociateVPCFromHostedZone: API.OperationMethod<
     NoSuchHostedZone,
     VPCAssociationNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateVPCFromHostedZone",
 }));
 export type EnableHostedZoneDNSSECError =
@@ -5593,6 +5649,8 @@ export const enableHostedZoneDNSSEC: API.OperationMethod<
     KeySigningKeyWithActiveStatusNotFound,
     NoSuchHostedZone,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableHostedZoneDNSSEC",
 }));
 export type GetAccountLimitError = InvalidInput | CommonErrors;
@@ -5616,6 +5674,8 @@ export const getAccountLimit: API.OperationMethod<
   input: GetAccountLimitRequest,
   output: GetAccountLimitResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountLimit",
 }));
 export type GetChangeError = InvalidInput | NoSuchChange | CommonErrors;
@@ -5639,6 +5699,8 @@ export const getChange: API.OperationMethod<
   input: GetChangeRequest,
   output: GetChangeResponse,
   errors: [InvalidInput, NoSuchChange],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChange",
 }));
 export type GetCheckerIpRangesError = CommonErrors;
@@ -5661,6 +5723,8 @@ export const getCheckerIpRanges: API.OperationMethod<
   input: GetCheckerIpRangesRequest,
   output: GetCheckerIpRangesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCheckerIpRanges",
 }));
 export type GetDNSSECError =
@@ -5681,6 +5745,8 @@ export const getDNSSEC: API.OperationMethod<
   input: GetDNSSECRequest,
   output: GetDNSSECResponse,
   errors: [InvalidArgument, InvalidInput, NoSuchHostedZone],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDNSSEC",
 }));
 export type GetGeoLocationError =
@@ -5722,6 +5788,8 @@ export const getGeoLocation: API.OperationMethod<
   input: GetGeoLocationRequest,
   output: GetGeoLocationResponse,
   errors: [InvalidInput, NoSuchGeoLocation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGeoLocation",
 }));
 export type GetHealthCheckError =
@@ -5741,6 +5809,8 @@ export const getHealthCheck: API.OperationMethod<
   input: GetHealthCheckRequest,
   output: GetHealthCheckResponse,
   errors: [IncompatibleVersion, InvalidInput, NoSuchHealthCheck],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHealthCheck",
 }));
 export type GetHealthCheckCountError = CommonErrors;
@@ -5756,6 +5826,8 @@ export const getHealthCheckCount: API.OperationMethod<
   input: GetHealthCheckCountRequest,
   output: GetHealthCheckCountResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHealthCheckCount",
 }));
 export type GetHealthCheckLastFailureReasonError =
@@ -5774,6 +5846,8 @@ export const getHealthCheckLastFailureReason: API.OperationMethod<
   input: GetHealthCheckLastFailureReasonRequest,
   output: GetHealthCheckLastFailureReasonResponse,
   errors: [InvalidInput, NoSuchHealthCheck],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHealthCheckLastFailureReason",
 }));
 export type GetHealthCheckStatusError =
@@ -5796,6 +5870,8 @@ export const getHealthCheckStatus: API.OperationMethod<
   input: GetHealthCheckStatusRequest,
   output: GetHealthCheckStatusResponse,
   errors: [InvalidInput, NoSuchHealthCheck],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHealthCheckStatus",
 }));
 export type GetHostedZoneError = InvalidInput | NoSuchHostedZone | CommonErrors;
@@ -5815,6 +5891,8 @@ export const getHostedZone: API.OperationMethod<
   input: GetHostedZoneRequest,
   output: GetHostedZoneResponse,
   errors: [InvalidInput, NoSuchHostedZone],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHostedZone",
 }));
 export type GetHostedZoneCountError = InvalidInput | CommonErrors;
@@ -5830,6 +5908,8 @@ export const getHostedZoneCount: API.OperationMethod<
   input: GetHostedZoneCountRequest,
   output: GetHostedZoneCountResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHostedZoneCount",
 }));
 export type GetHostedZoneLimitError =
@@ -5854,6 +5934,8 @@ export const getHostedZoneLimit: API.OperationMethod<
   input: GetHostedZoneLimitRequest,
   output: GetHostedZoneLimitResponse,
   errors: [HostedZoneNotPrivate, InvalidInput, NoSuchHostedZone],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHostedZoneLimit",
 }));
 export type GetQueryLoggingConfigError =
@@ -5875,6 +5957,8 @@ export const getQueryLoggingConfig: API.OperationMethod<
   input: GetQueryLoggingConfigRequest,
   output: GetQueryLoggingConfigResponse,
   errors: [InvalidInput, NoSuchQueryLoggingConfig],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryLoggingConfig",
 }));
 export type GetReusableDelegationSetError =
@@ -5895,6 +5979,8 @@ export const getReusableDelegationSet: API.OperationMethod<
   input: GetReusableDelegationSetRequest,
   output: GetReusableDelegationSetResponse,
   errors: [DelegationSetNotReusable, InvalidInput, NoSuchDelegationSet],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReusableDelegationSet",
 }));
 export type GetReusableDelegationSetLimitError =
@@ -5918,6 +6004,8 @@ export const getReusableDelegationSetLimit: API.OperationMethod<
   input: GetReusableDelegationSetLimitRequest,
   output: GetReusableDelegationSetLimitResponse,
   errors: [InvalidInput, NoSuchDelegationSet],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReusableDelegationSetLimit",
 }));
 export type GetTrafficPolicyError =
@@ -5939,6 +6027,8 @@ export const getTrafficPolicy: API.OperationMethod<
   input: GetTrafficPolicyRequest,
   output: GetTrafficPolicyResponse,
   errors: [InvalidInput, NoSuchTrafficPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrafficPolicy",
 }));
 export type GetTrafficPolicyInstanceError =
@@ -5965,6 +6055,8 @@ export const getTrafficPolicyInstance: API.OperationMethod<
   input: GetTrafficPolicyInstanceRequest,
   output: GetTrafficPolicyInstanceResponse,
   errors: [InvalidInput, NoSuchTrafficPolicyInstance],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrafficPolicyInstance",
 }));
 export type GetTrafficPolicyInstanceCountError = CommonErrors;
@@ -5981,6 +6073,8 @@ export const getTrafficPolicyInstanceCount: API.OperationMethod<
   input: GetTrafficPolicyInstanceCountRequest,
   output: GetTrafficPolicyInstanceCountResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrafficPolicyInstanceCount",
 }));
 export type ListCidrBlocksError =
@@ -6019,6 +6113,8 @@ export const listCidrBlocks: API.OperationMethod<
     NoSuchCidrCollectionException,
     NoSuchCidrLocationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCidrBlocks",
   pagination: {
     inputToken: "NextToken",
@@ -6056,6 +6152,8 @@ export const listCidrCollections: API.OperationMethod<
   input: ListCidrCollectionsRequest,
   output: ListCidrCollectionsResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCidrCollections",
   pagination: {
     inputToken: "NextToken",
@@ -6096,6 +6194,8 @@ export const listCidrLocations: API.OperationMethod<
   input: ListCidrLocationsRequest,
   output: ListCidrLocationsResponse,
   errors: [InvalidInput, NoSuchCidrCollectionException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCidrLocations",
   pagination: {
     inputToken: "NextToken",
@@ -6128,6 +6228,8 @@ export const listGeoLocations: API.OperationMethod<
   input: ListGeoLocationsRequest,
   output: ListGeoLocationsResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGeoLocations",
 }));
 export type ListHealthChecksError =
@@ -6161,6 +6263,8 @@ export const listHealthChecks: API.OperationMethod<
   input: ListHealthChecksRequest,
   output: ListHealthChecksResponse,
   errors: [IncompatibleVersion, InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHealthChecks",
   pagination: {
     inputToken: "Marker",
@@ -6207,6 +6311,8 @@ export const listHostedZones: API.OperationMethod<
   input: ListHostedZonesRequest,
   output: ListHostedZonesResponse,
   errors: [DelegationSetNotReusable, InvalidInput, NoSuchDelegationSet],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHostedZones",
   pagination: {
     inputToken: "Marker",
@@ -6283,6 +6389,8 @@ export const listHostedZonesByName: API.OperationMethod<
   input: ListHostedZonesByNameRequest,
   output: ListHostedZonesByNameResponse,
   errors: [InvalidDomainName, InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHostedZonesByName",
 }));
 export type ListHostedZonesByVPCError =
@@ -6332,6 +6440,8 @@ export const listHostedZonesByVPC: API.OperationMethod<
   input: ListHostedZonesByVPCRequest,
   output: ListHostedZonesByVPCResponse,
   errors: [InvalidInput, InvalidPaginationToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHostedZonesByVPC",
 }));
 export type ListQueryLoggingConfigsError =
@@ -6372,6 +6482,8 @@ export const listQueryLoggingConfigs: API.OperationMethod<
   input: ListQueryLoggingConfigsRequest,
   output: ListQueryLoggingConfigsResponse,
   errors: [InvalidInput, InvalidPaginationToken, NoSuchHostedZone],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueryLoggingConfigs",
   pagination: {
     inputToken: "NextToken",
@@ -6465,6 +6577,8 @@ export const listResourceRecordSets: API.OperationMethod<
   input: ListResourceRecordSetsRequest,
   output: ListResourceRecordSetsResponse,
   errors: [InvalidInput, NoSuchHostedZone],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceRecordSets",
 }));
 export type ListReusableDelegationSetsError = InvalidInput | CommonErrors;
@@ -6481,6 +6595,8 @@ export const listReusableDelegationSets: API.OperationMethod<
   input: ListReusableDelegationSetsRequest,
   output: ListReusableDelegationSetsResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReusableDelegationSets",
 }));
 export type ListTagsForResourceError =
@@ -6511,6 +6627,8 @@ export const listTagsForResource: API.OperationMethod<
     PriorRequestNotComplete,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTagsForResourcesError =
@@ -6541,6 +6659,8 @@ export const listTagsForResources: API.OperationMethod<
     PriorRequestNotComplete,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResources",
 }));
 export type ListTrafficPoliciesError = InvalidInput | CommonErrors;
@@ -6561,6 +6681,8 @@ export const listTrafficPolicies: API.OperationMethod<
   input: ListTrafficPoliciesRequest,
   output: ListTrafficPoliciesResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrafficPolicies",
 }));
 export type ListTrafficPolicyInstancesError =
@@ -6589,6 +6711,8 @@ export const listTrafficPolicyInstances: API.OperationMethod<
   input: ListTrafficPolicyInstancesRequest,
   output: ListTrafficPolicyInstancesResponse,
   errors: [InvalidInput, NoSuchTrafficPolicyInstance],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrafficPolicyInstances",
 }));
 export type ListTrafficPolicyInstancesByHostedZoneError =
@@ -6619,6 +6743,8 @@ export const listTrafficPolicyInstancesByHostedZone: API.OperationMethod<
   input: ListTrafficPolicyInstancesByHostedZoneRequest,
   output: ListTrafficPolicyInstancesByHostedZoneResponse,
   errors: [InvalidInput, NoSuchHostedZone, NoSuchTrafficPolicyInstance],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrafficPolicyInstancesByHostedZone",
 }));
 export type ListTrafficPolicyInstancesByPolicyError =
@@ -6649,6 +6775,8 @@ export const listTrafficPolicyInstancesByPolicy: API.OperationMethod<
   input: ListTrafficPolicyInstancesByPolicyRequest,
   output: ListTrafficPolicyInstancesByPolicyResponse,
   errors: [InvalidInput, NoSuchTrafficPolicy, NoSuchTrafficPolicyInstance],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrafficPolicyInstancesByPolicy",
 }));
 export type ListTrafficPolicyVersionsError =
@@ -6670,6 +6798,8 @@ export const listTrafficPolicyVersions: API.OperationMethod<
   input: ListTrafficPolicyVersionsRequest,
   output: ListTrafficPolicyVersionsResponse,
   errors: [InvalidInput, NoSuchTrafficPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrafficPolicyVersions",
 }));
 export type ListVPCAssociationAuthorizationsError =
@@ -6694,6 +6824,8 @@ export const listVPCAssociationAuthorizations: API.OperationMethod<
   input: ListVPCAssociationAuthorizationsRequest,
   output: ListVPCAssociationAuthorizationsResponse,
   errors: [InvalidInput, InvalidPaginationToken, NoSuchHostedZone],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVPCAssociationAuthorizations",
 }));
 export type TestDNSAnswerError = InvalidInput | NoSuchHostedZone | CommonErrors;
@@ -6718,6 +6850,8 @@ export const testDNSAnswer: API.OperationMethod<
   input: TestDNSAnswerRequest,
   output: TestDNSAnswerResponse,
   errors: [InvalidInput, NoSuchHostedZone],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestDNSAnswer",
 }));
 export type UpdateHealthCheckError =
@@ -6741,6 +6875,8 @@ export const updateHealthCheck: API.OperationMethod<
   input: UpdateHealthCheckRequest,
   output: UpdateHealthCheckResponse,
   errors: [HealthCheckVersionMismatch, InvalidInput, NoSuchHealthCheck],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHealthCheck",
 }));
 export type UpdateHostedZoneCommentError =
@@ -6760,6 +6896,8 @@ export const updateHostedZoneComment: API.OperationMethod<
   input: UpdateHostedZoneCommentRequest,
   output: UpdateHostedZoneCommentResponse,
   errors: [InvalidInput, NoSuchHostedZone, PriorRequestNotComplete],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHostedZoneComment",
 }));
 export type UpdateHostedZoneFeaturesError =
@@ -6787,6 +6925,8 @@ export const updateHostedZoneFeatures: API.OperationMethod<
     NoSuchHostedZone,
     PriorRequestNotComplete,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHostedZoneFeatures",
 }));
 export type UpdateTrafficPolicyCommentError =
@@ -6806,6 +6946,8 @@ export const updateTrafficPolicyComment: API.OperationMethod<
   input: UpdateTrafficPolicyCommentRequest,
   output: UpdateTrafficPolicyCommentResponse,
   errors: [ConcurrentModification, InvalidInput, NoSuchTrafficPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrafficPolicyComment",
 }));
 export type UpdateTrafficPolicyInstanceError =
@@ -6855,5 +6997,7 @@ export const updateTrafficPolicyInstance: API.OperationMethod<
     NoSuchTrafficPolicyInstance,
     PriorRequestNotComplete,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrafficPolicyInstance",
 }));

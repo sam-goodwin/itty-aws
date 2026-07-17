@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1581,6 +1583,8 @@ export const createAppInstance: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppInstance",
 }));
 export type CreateAppInstanceAdminError =
@@ -1624,6 +1628,8 @@ export const createAppInstanceAdmin: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppInstanceAdmin",
 }));
 export type CreateAppInstanceBotError =
@@ -1658,6 +1664,8 @@ export const createAppInstanceBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppInstanceBot",
 }));
 export type CreateAppInstanceUserError =
@@ -1692,6 +1700,8 @@ export const createAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppInstanceUser",
 }));
 export type DeleteAppInstanceError =
@@ -1723,6 +1733,8 @@ export const deleteAppInstance: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppInstance",
 }));
 export type DeleteAppInstanceAdminError =
@@ -1758,6 +1770,8 @@ export const deleteAppInstanceAdmin: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppInstanceAdmin",
 }));
 export type DeleteAppInstanceBotError =
@@ -1791,6 +1805,8 @@ export const deleteAppInstanceBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppInstanceBot",
 }));
 export type DeleteAppInstanceUserError =
@@ -1824,6 +1840,8 @@ export const deleteAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppInstanceUser",
 }));
 export type DeregisterAppInstanceUserEndpointError =
@@ -1853,6 +1871,8 @@ export const deregisterAppInstanceUserEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterAppInstanceUserEndpoint",
 }));
 export type DescribeAppInstanceError =
@@ -1882,6 +1902,8 @@ export const describeAppInstance: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppInstance",
 }));
 export type DescribeAppInstanceAdminError =
@@ -1911,6 +1933,8 @@ export const describeAppInstanceAdmin: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppInstanceAdmin",
 }));
 export type DescribeAppInstanceBotError =
@@ -1942,6 +1966,8 @@ export const describeAppInstanceBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppInstanceBot",
 }));
 export type DescribeAppInstanceUserError =
@@ -1971,6 +1997,8 @@ export const describeAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppInstanceUser",
 }));
 export type DescribeAppInstanceUserEndpointError =
@@ -2000,6 +2028,8 @@ export const describeAppInstanceUserEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppInstanceUserEndpoint",
 }));
 export type GetAppInstanceRetentionSettingsError =
@@ -2029,6 +2059,8 @@ export const getAppInstanceRetentionSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAppInstanceRetentionSettings",
 }));
 export type ListAppInstanceAdminsError =
@@ -2075,6 +2107,8 @@ export const listAppInstanceAdmins: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppInstanceAdmins",
   pagination: {
     inputToken: "NextToken",
@@ -2126,6 +2160,8 @@ export const listAppInstanceBots: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppInstanceBots",
   pagination: {
     inputToken: "NextToken",
@@ -2176,6 +2212,8 @@ export const listAppInstances: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppInstances",
   pagination: {
     inputToken: "NextToken",
@@ -2225,6 +2263,8 @@ export const listAppInstanceUserEndpoints: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppInstanceUserEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -2275,6 +2315,8 @@ export const listAppInstanceUsers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppInstanceUsers",
   pagination: {
     inputToken: "NextToken",
@@ -2309,6 +2351,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutAppInstanceRetentionSettingsError =
@@ -2339,6 +2383,8 @@ export const putAppInstanceRetentionSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAppInstanceRetentionSettings",
 }));
 export type PutAppInstanceUserExpirationSettingsError =
@@ -2376,6 +2422,8 @@ export const putAppInstanceUserExpirationSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAppInstanceUserExpirationSettings",
 }));
 export type RegisterAppInstanceUserEndpointError =
@@ -2409,6 +2457,8 @@ export const registerAppInstanceUserEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterAppInstanceUserEndpoint",
 }));
 export type TagResourceError =
@@ -2440,6 +2490,8 @@ export const tagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2469,6 +2521,8 @@ export const untagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAppInstanceError =
@@ -2500,6 +2554,8 @@ export const updateAppInstance: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppInstance",
 }));
 export type UpdateAppInstanceBotError =
@@ -2533,6 +2589,8 @@ export const updateAppInstanceBot: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppInstanceBot",
 }));
 export type UpdateAppInstanceUserError =
@@ -2567,6 +2625,8 @@ export const updateAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppInstanceUser",
 }));
 export type UpdateAppInstanceUserEndpointError =
@@ -2598,5 +2658,7 @@ export const updateAppInstanceUserEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppInstanceUserEndpoint",
 }));

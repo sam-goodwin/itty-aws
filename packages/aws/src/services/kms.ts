@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2951,6 +2953,8 @@ export const cancelKeyDeletion: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelKeyDeletion",
 }));
 export type ConnectCustomKeyStoreError =
@@ -3059,6 +3063,8 @@ export const connectCustomKeyStore: API.OperationMethod<
     CustomKeyStoreNotFoundException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConnectCustomKeyStore",
 }));
 export type CreateAliasError =
@@ -3134,6 +3140,8 @@ export const createAlias: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlias",
 }));
 export type CreateCustomKeyStoreError =
@@ -3257,6 +3265,8 @@ export const createCustomKeyStore: API.OperationMethod<
     XksProxyVpcEndpointServiceInvalidConfigurationException,
     XksProxyVpcEndpointServiceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomKeyStore",
 }));
 export type CreateGrantError =
@@ -3342,6 +3352,8 @@ export const createGrant: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGrant",
 }));
 export type CreateKeyError =
@@ -3549,6 +3561,8 @@ export const createKey: API.OperationMethod<
     XksKeyInvalidConfigurationException,
     XksKeyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKey",
 }));
 export type DecryptError =
@@ -3657,6 +3671,8 @@ export const decrypt: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Decrypt",
 }));
 export type DeleteAliasError =
@@ -3715,6 +3731,8 @@ export const deleteAlias: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlias",
 }));
 export type DeleteCustomKeyStoreError =
@@ -3788,6 +3806,8 @@ export const deleteCustomKeyStore: API.OperationMethod<
     CustomKeyStoreNotFoundException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomKeyStore",
 }));
 export type DeleteImportedKeyMaterialError =
@@ -3851,6 +3871,8 @@ export const deleteImportedKeyMaterial: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImportedKeyMaterial",
 }));
 export type DeriveSharedSecretError =
@@ -3959,6 +3981,8 @@ export const deriveSharedSecret: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeriveSharedSecret",
 }));
 export type DescribeCustomKeyStoresError =
@@ -4045,6 +4069,8 @@ export const describeCustomKeyStores: API.OperationMethod<
     InvalidMarkerException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomKeyStores",
   pagination: {
     inputToken: "Marker",
@@ -4132,6 +4158,8 @@ export const describeKey: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKey",
 }));
 export type DisableKeyError =
@@ -4175,6 +4203,8 @@ export const disableKey: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableKey",
 }));
 export type DisableKeyRotationError =
@@ -4238,6 +4268,8 @@ export const disableKeyRotation: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableKeyRotation",
 }));
 export type DisconnectCustomKeyStoreError =
@@ -4300,6 +4332,8 @@ export const disconnectCustomKeyStore: API.OperationMethod<
     CustomKeyStoreNotFoundException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisconnectCustomKeyStore",
 }));
 export type EnableKeyError =
@@ -4342,6 +4376,8 @@ export const enableKey: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableKey",
 }));
 export type EnableKeyRotationError =
@@ -4425,6 +4461,8 @@ export const enableKeyRotation: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableKeyRotation",
 }));
 export type EncryptError =
@@ -4528,6 +4566,8 @@ export const encrypt: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Encrypt",
 }));
 export type GenerateDataKeyError =
@@ -4649,6 +4689,8 @@ export const generateDataKey: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateDataKey",
 }));
 export type GenerateDataKeyPairError =
@@ -4758,6 +4800,8 @@ export const generateDataKeyPair: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateDataKeyPair",
 }));
 export type GenerateDataKeyPairWithoutPlaintextError =
@@ -4848,6 +4892,8 @@ export const generateDataKeyPairWithoutPlaintext: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateDataKeyPairWithoutPlaintext",
 }));
 export type GenerateDataKeyWithoutPlaintextError =
@@ -4949,6 +4995,8 @@ export const generateDataKeyWithoutPlaintext: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateDataKeyWithoutPlaintext",
 }));
 export type GenerateMacError =
@@ -5013,6 +5061,8 @@ export const generateMac: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateMac",
 }));
 export type GenerateRandomError =
@@ -5065,6 +5115,8 @@ export const generateRandom: API.OperationMethod<
     KMSInternalException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateRandom",
 }));
 export type GetKeyPolicyError =
@@ -5101,6 +5153,8 @@ export const getKeyPolicy: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyPolicy",
 }));
 export type GetKeyRotationStatusError =
@@ -5182,6 +5236,8 @@ export const getKeyRotationStatus: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyRotationStatus",
 }));
 export type GetParametersForImportError =
@@ -5275,6 +5331,8 @@ export const getParametersForImport: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParametersForImport",
 }));
 export type GetPublicKeyError =
@@ -5359,6 +5417,8 @@ export const getPublicKey: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPublicKey",
 }));
 export type ImportKeyMaterialError =
@@ -5509,6 +5569,8 @@ export const importKeyMaterial: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportKeyMaterial",
 }));
 export type ListAliasesError =
@@ -5585,6 +5647,8 @@ export const listAliases: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAliases",
   pagination: {
     inputToken: "Marker",
@@ -5670,6 +5734,8 @@ export const listGrants: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGrants",
   pagination: {
     inputToken: "Marker",
@@ -5733,6 +5799,8 @@ export const listKeyPolicies: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyPolicies",
   pagination: {
     inputToken: "Marker",
@@ -5812,6 +5880,8 @@ export const listKeyRotations: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyRotations",
   pagination: {
     inputToken: "Marker",
@@ -5873,6 +5943,8 @@ export const listKeys: API.OperationMethod<
     InvalidMarkerException,
     KMSInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeys",
   pagination: {
     inputToken: "Marker",
@@ -5941,6 +6013,8 @@ export const listResourceTags: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceTags",
   pagination: {
     inputToken: "Marker",
@@ -6029,6 +6103,8 @@ export const listRetirableGrants: API.OperationMethod<
     KMSInternalException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRetirableGrants",
   pagination: {
     inputToken: "Marker",
@@ -6084,6 +6160,8 @@ export const putKeyPolicy: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutKeyPolicy",
 }));
 export type ReEncryptError =
@@ -6195,6 +6273,8 @@ export const reEncrypt: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReEncrypt",
 }));
 export type ReplicateKeyError =
@@ -6302,6 +6382,8 @@ export const replicateKey: API.OperationMethod<
     TagException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplicateKey",
 }));
 export type RetireGrantError =
@@ -6369,6 +6451,8 @@ export const retireGrant: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetireGrant",
 }));
 export type RevokeGrantError =
@@ -6433,6 +6517,8 @@ export const revokeGrant: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeGrant",
 }));
 export type RotateKeyOnDemandError =
@@ -6522,6 +6608,8 @@ export const rotateKeyOnDemand: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateKeyOnDemand",
 }));
 export type ScheduleKeyDeletionError =
@@ -6602,6 +6690,8 @@ export const scheduleKeyDeletion: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ScheduleKeyDeletion",
 }));
 export type SignError =
@@ -6687,6 +6777,8 @@ export const sign: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Sign",
 }));
 export type TagResourceError =
@@ -6753,6 +6845,8 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6811,6 +6905,8 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAliasError =
@@ -6886,6 +6982,8 @@ export const updateAlias: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAlias",
 }));
 export type UpdateCustomKeyStoreError =
@@ -7019,6 +7117,8 @@ export const updateCustomKeyStore: API.OperationMethod<
     XksProxyVpcEndpointServiceInvalidConfigurationException,
     XksProxyVpcEndpointServiceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomKeyStore",
 }));
 export type UpdateKeyDescriptionError =
@@ -7062,6 +7162,8 @@ export const updateKeyDescription: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKeyDescription",
 }));
 export type UpdatePrimaryRegionError =
@@ -7151,6 +7253,8 @@ export const updatePrimaryRegion: API.OperationMethod<
     NotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePrimaryRegion",
 }));
 export type VerifyError =
@@ -7229,6 +7333,8 @@ export const verify: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Verify",
 }));
 export type VerifyMacError =
@@ -7289,5 +7395,7 @@ export const verifyMac: API.OperationMethod<
     KMSInvalidStateException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyMac",
 }));

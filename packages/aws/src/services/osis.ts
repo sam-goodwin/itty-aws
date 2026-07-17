@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1313,6 +1315,8 @@ export const createPipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePipeline",
 }));
 export type CreatePipelineEndpointError =
@@ -1343,6 +1347,8 @@ export const createPipelineEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePipelineEndpoint",
 }));
 export type DeletePipelineError =
@@ -1373,6 +1379,8 @@ export const deletePipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePipeline",
 }));
 export type DeletePipelineEndpointError =
@@ -1398,6 +1406,8 @@ export const deletePipelineEndpoint: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePipelineEndpoint",
 }));
 export type DeleteResourcePolicyError =
@@ -1427,6 +1437,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type GetPipelineError =
@@ -1454,6 +1466,8 @@ export const getPipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipeline",
 }));
 export type GetPipelineBlueprintError =
@@ -1484,6 +1498,8 @@ export const getPipelineBlueprint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipelineBlueprint",
 }));
 export type GetPipelineChangeProgressError =
@@ -1515,6 +1531,8 @@ export const getPipelineChangeProgress: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPipelineChangeProgress",
 }));
 export type GetResourcePolicyError =
@@ -1544,6 +1562,8 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type ListPipelineBlueprintsError =
@@ -1573,6 +1593,8 @@ export const listPipelineBlueprints: API.OperationMethod<
     InvalidPaginationTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelineBlueprints",
 }));
 export type ListPipelineEndpointConnectionsError =
@@ -1615,6 +1637,8 @@ export const listPipelineEndpointConnections: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelineEndpointConnections",
   pagination: {
     inputToken: "NextToken",
@@ -1663,6 +1687,8 @@ export const listPipelineEndpoints: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelineEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -1713,6 +1739,8 @@ export const listPipelines: API.OperationMethod<
     InvalidPaginationTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPipelines",
   pagination: {
     inputToken: "NextToken",
@@ -1746,6 +1774,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutResourcePolicyError =
@@ -1776,6 +1806,8 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type RevokePipelineEndpointConnectionsError =
@@ -1803,6 +1835,8 @@ export const revokePipelineEndpointConnections: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokePipelineEndpointConnections",
 }));
 export type StartPipelineError =
@@ -1832,6 +1866,8 @@ export const startPipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPipeline",
 }));
 export type StopPipelineError =
@@ -1862,6 +1898,8 @@ export const stopPipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopPipeline",
 }));
 export type TagResourceError =
@@ -1892,6 +1930,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1920,6 +1960,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdatePipelineError =
@@ -1950,6 +1992,8 @@ export const updatePipeline: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePipeline",
 }));
 export type ValidatePipelineError =
@@ -1977,5 +2021,7 @@ export const validatePipeline: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidatePipeline",
 }));

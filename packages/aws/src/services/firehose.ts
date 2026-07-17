@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3015,6 +3017,8 @@ export const createDeliveryStream: API.OperationMethod<
     LimitExceededException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeliveryStream",
 }));
 export type DeleteDeliveryStreamError =
@@ -3048,6 +3052,8 @@ export const deleteDeliveryStream: API.OperationMethod<
   input: DeleteDeliveryStreamInput,
   output: DeleteDeliveryStreamOutput,
   errors: [ResourceInUseException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeliveryStream",
 }));
 export type DescribeDeliveryStreamError =
@@ -3072,6 +3078,8 @@ export const describeDeliveryStream: API.OperationMethod<
   input: DescribeDeliveryStreamInput,
   output: DescribeDeliveryStreamOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeliveryStream",
 }));
 export type ListDeliveryStreamsError = CommonErrors;
@@ -3095,6 +3103,8 @@ export const listDeliveryStreams: API.OperationMethod<
   input: ListDeliveryStreamsInput,
   output: ListDeliveryStreamsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeliveryStreams",
 }));
 export type ListTagsForDeliveryStreamError =
@@ -3119,6 +3129,8 @@ export const listTagsForDeliveryStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForDeliveryStream",
 }));
 export type PutRecordError =
@@ -3194,6 +3206,8 @@ export const putRecord: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecord",
 }));
 export type PutRecordBatchError =
@@ -3290,6 +3304,8 @@ export const putRecordBatch: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecordBatch",
 }));
 export type StartDeliveryStreamEncryptionError =
@@ -3362,6 +3378,8 @@ export const startDeliveryStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDeliveryStreamEncryption",
 }));
 export type StopDeliveryStreamEncryptionError =
@@ -3409,6 +3427,8 @@ export const stopDeliveryStreamEncryption: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDeliveryStreamEncryption",
 }));
 export type TagDeliveryStreamError =
@@ -3445,6 +3465,8 @@ export const tagDeliveryStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagDeliveryStream",
 }));
 export type UntagDeliveryStreamError =
@@ -3475,6 +3497,8 @@ export const untagDeliveryStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagDeliveryStream",
 }));
 export type UpdateDestinationError =
@@ -3527,5 +3551,7 @@ export const updateDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDestination",
 }));

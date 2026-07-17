@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2160,6 +2162,8 @@ export const createApplication: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateConfigurationProfileError =
@@ -2213,6 +2217,8 @@ export const createConfigurationProfile: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationProfile",
 }));
 export type CreateDeploymentStrategyError =
@@ -2239,6 +2245,8 @@ export const createDeploymentStrategy: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeploymentStrategy",
 }));
 export type CreateEnvironmentError =
@@ -2271,6 +2279,8 @@ export const createEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
 export type CreateExtensionError =
@@ -2316,6 +2326,8 @@ export const createExtension: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExtension",
 }));
 export type CreateExtensionAssociationError =
@@ -2352,6 +2364,8 @@ export const createExtensionAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExtensionAssociation",
 }));
 export type CreateHostedConfigurationVersionError =
@@ -2384,6 +2398,8 @@ export const createHostedConfigurationVersion: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHostedConfigurationVersion",
 }));
 export type DeleteApplicationError =
@@ -2407,6 +2423,8 @@ export const deleteApplication: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteConfigurationProfileError =
@@ -2436,6 +2454,8 @@ export const deleteConfigurationProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationProfile",
 }));
 export type DeleteDeploymentStrategyError =
@@ -2459,6 +2479,8 @@ export const deleteDeploymentStrategy: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeploymentStrategy",
 }));
 export type DeleteEnvironmentError =
@@ -2487,6 +2509,8 @@ export const deleteEnvironment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
 export type DeleteExtensionError =
@@ -2511,6 +2535,8 @@ export const deleteExtension: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExtension",
 }));
 export type DeleteExtensionAssociationError =
@@ -2535,6 +2561,8 @@ export const deleteExtensionAssociation: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExtensionAssociation",
 }));
 export type DeleteHostedConfigurationVersionError =
@@ -2559,6 +2587,8 @@ export const deleteHostedConfigurationVersion: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHostedConfigurationVersion",
 }));
 export type GetAccountSettingsError =
@@ -2578,6 +2608,8 @@ export const getAccountSettings: API.OperationMethod<
   input: GetAccountSettingsRequest,
   output: AccountSettings,
   errors: [BadRequestException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountSettings",
 }));
 export type GetApplicationError =
@@ -2601,6 +2633,8 @@ export const getApplication: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type GetConfigurationError =
@@ -2632,6 +2666,8 @@ export const getConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfiguration",
 }));
 export type GetConfigurationProfileError =
@@ -2655,6 +2691,8 @@ export const getConfigurationProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationProfile",
 }));
 export type GetDeploymentError =
@@ -2678,6 +2716,8 @@ export const getDeployment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployment",
 }));
 export type GetDeploymentStrategyError =
@@ -2705,6 +2745,8 @@ export const getDeploymentStrategy: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeploymentStrategy",
 }));
 export type GetEnvironmentError =
@@ -2733,6 +2775,8 @@ export const getEnvironment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
 export type GetExtensionError =
@@ -2756,6 +2800,8 @@ export const getExtension: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExtension",
 }));
 export type GetExtensionAssociationError =
@@ -2781,6 +2827,8 @@ export const getExtensionAssociation: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExtensionAssociation",
 }));
 export type GetHostedConfigurationVersionError =
@@ -2804,6 +2852,8 @@ export const getHostedConfigurationVersion: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHostedConfigurationVersion",
 }));
 export type ListApplicationsError =
@@ -2837,6 +2887,8 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: Applications,
   errors: [BadRequestException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -2881,6 +2933,8 @@ export const listConfigurationProfiles: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -2925,6 +2979,8 @@ export const listDeployments: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeployments",
   pagination: {
     inputToken: "NextToken",
@@ -2964,6 +3020,8 @@ export const listDeploymentStrategies: API.OperationMethod<
   input: ListDeploymentStrategiesRequest,
   output: DeploymentStrategies,
   errors: [BadRequestException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeploymentStrategies",
   pagination: {
     inputToken: "NextToken",
@@ -3008,6 +3066,8 @@ export const listEnvironments: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
   pagination: {
     inputToken: "NextToken",
@@ -3049,6 +3109,8 @@ export const listExtensionAssociations: API.OperationMethod<
   input: ListExtensionAssociationsRequest,
   output: ExtensionAssociations,
   errors: [BadRequestException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExtensionAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -3090,6 +3152,8 @@ export const listExtensions: API.OperationMethod<
   input: ListExtensionsRequest,
   output: Extensions,
   errors: [BadRequestException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExtensions",
   pagination: {
     inputToken: "NextToken",
@@ -3135,6 +3199,8 @@ export const listHostedConfigurationVersions: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHostedConfigurationVersions",
   pagination: {
     inputToken: "NextToken",
@@ -3164,6 +3230,8 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartDeploymentError =
@@ -3189,6 +3257,8 @@ export const startDeployment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDeployment",
 }));
 export type StopDeploymentError =
@@ -3217,6 +3287,8 @@ export const stopDeployment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDeployment",
 }));
 export type TagResourceError =
@@ -3242,6 +3314,8 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3265,6 +3339,8 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccountSettingsError =
@@ -3283,6 +3359,8 @@ export const updateAccountSettings: API.OperationMethod<
   input: UpdateAccountSettingsRequest,
   output: AccountSettings,
   errors: [BadRequestException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
 export type UpdateApplicationError =
@@ -3306,6 +3384,8 @@ export const updateApplication: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateConfigurationProfileError =
@@ -3329,6 +3409,8 @@ export const updateConfigurationProfile: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationProfile",
 }));
 export type UpdateDeploymentStrategyError =
@@ -3352,6 +3434,8 @@ export const updateDeploymentStrategy: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeploymentStrategy",
 }));
 export type UpdateEnvironmentError =
@@ -3375,6 +3459,8 @@ export const updateEnvironment: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
 }));
 export type UpdateExtensionError =
@@ -3402,6 +3488,8 @@ export const updateExtension: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateExtension",
 }));
 export type UpdateExtensionAssociationError =
@@ -3427,6 +3515,8 @@ export const updateExtensionAssociation: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateExtensionAssociation",
 }));
 export type ValidateConfigurationError =
@@ -3450,5 +3540,7 @@ export const validateConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateConfiguration",
 }));

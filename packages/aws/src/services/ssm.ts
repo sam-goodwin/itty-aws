@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -12132,6 +12134,8 @@ export const addTagsToResource: API.OperationMethod<
     TooManyTagsError,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
 export type AssociateOpsItemRelatedItemError =
@@ -12163,6 +12167,8 @@ export const associateOpsItemRelatedItem: API.OperationMethod<
     OpsItemNotFoundException,
     OpsItemRelatedItemAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateOpsItemRelatedItem",
 }));
 export type CancelCommandError =
@@ -12189,6 +12195,8 @@ export const cancelCommand: API.OperationMethod<
     InvalidCommandId,
     InvalidInstanceId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelCommand",
 }));
 export type CancelMaintenanceWindowExecutionError =
@@ -12209,6 +12217,8 @@ export const cancelMaintenanceWindowExecution: API.OperationMethod<
   input: CancelMaintenanceWindowExecutionRequest,
   output: CancelMaintenanceWindowExecutionResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMaintenanceWindowExecution",
 }));
 export type CreateActivationError =
@@ -12235,6 +12245,8 @@ export const createActivation: API.OperationMethod<
   input: CreateActivationRequest,
   output: CreateActivationResult,
   errors: [InternalServerError, InvalidParameters],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateActivation",
 }));
 export type CreateAssociationError =
@@ -12287,6 +12299,8 @@ export const createAssociation: API.OperationMethod<
     InvalidTargetMaps,
     UnsupportedPlatformType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssociation",
 }));
 export type CreateAssociationBatchError =
@@ -12336,6 +12350,8 @@ export const createAssociationBatch: API.OperationMethod<
     InvalidTargetMaps,
     UnsupportedPlatformType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssociationBatch",
 }));
 export type CreateDocumentError =
@@ -12372,6 +12388,8 @@ export const createDocument: API.OperationMethod<
     NoLongerSupportedException,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDocument",
 }));
 export type CreateMaintenanceWindowError =
@@ -12402,6 +12420,8 @@ export const createMaintenanceWindow: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMaintenanceWindow",
 }));
 export type CreateOpsItemError =
@@ -12435,6 +12455,8 @@ export const createOpsItem: API.OperationMethod<
     OpsItemInvalidParameterException,
     OpsItemLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOpsItem",
 }));
 export type CreateOpsMetadataError =
@@ -12463,6 +12485,8 @@ export const createOpsMetadata: API.OperationMethod<
     OpsMetadataLimitExceededException,
     OpsMetadataTooManyUpdatesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOpsMetadata",
 }));
 export type CreatePatchBaselineError =
@@ -12489,6 +12513,8 @@ export const createPatchBaseline: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePatchBaseline",
 }));
 export type CreateResourceDataSyncError =
@@ -12536,6 +12562,8 @@ export const createResourceDataSync: API.OperationMethod<
     ResourceDataSyncCountExceededException,
     ResourceDataSyncInvalidConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceDataSync",
 }));
 export type DeleteActivationError =
@@ -12563,6 +12591,8 @@ export const deleteActivation: API.OperationMethod<
     InvalidActivationId,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteActivation",
 }));
 export type DeleteAssociationError =
@@ -12597,6 +12627,8 @@ export const deleteAssociation: API.OperationMethod<
     InvalidInstanceId,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssociation",
 }));
 export type DeleteDocumentError =
@@ -12627,6 +12659,8 @@ export const deleteDocument: API.OperationMethod<
     InvalidDocumentOperation,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDocument",
 }));
 export type DeleteInventoryError =
@@ -12655,6 +12689,8 @@ export const deleteInventory: API.OperationMethod<
     InvalidOptionException,
     InvalidTypeNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInventory",
 }));
 export type DeleteMaintenanceWindowError = InternalServerError | CommonErrors;
@@ -12670,6 +12706,8 @@ export const deleteMaintenanceWindow: API.OperationMethod<
   input: DeleteMaintenanceWindowRequest,
   output: DeleteMaintenanceWindowResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMaintenanceWindow",
 }));
 export type DeleteOpsItemError =
@@ -12708,6 +12746,8 @@ export const deleteOpsItem: API.OperationMethod<
   input: DeleteOpsItemRequest,
   output: DeleteOpsItemResponse,
   errors: [InternalServerError, OpsItemInvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOpsItem",
 }));
 export type DeleteOpsMetadataError =
@@ -12731,6 +12771,8 @@ export const deleteOpsMetadata: API.OperationMethod<
     OpsMetadataInvalidArgumentException,
     OpsMetadataNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOpsMetadata",
 }));
 export type DeleteParameterError =
@@ -12750,6 +12792,8 @@ export const deleteParameter: API.OperationMethod<
   input: DeleteParameterRequest,
   output: DeleteParameterResult,
   errors: [InternalServerError, ParameterNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteParameter",
 }));
 export type DeleteParametersError = InternalServerError | CommonErrors;
@@ -12766,6 +12810,8 @@ export const deleteParameters: API.OperationMethod<
   input: DeleteParametersRequest,
   output: DeleteParametersResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteParameters",
 }));
 export type DeletePatchBaselineError =
@@ -12784,6 +12830,8 @@ export const deletePatchBaseline: API.OperationMethod<
   input: DeletePatchBaselineRequest,
   output: DeletePatchBaselineResult,
   errors: [InternalServerError, ResourceInUseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePatchBaseline",
 }));
 export type DeleteResourceDataSyncError =
@@ -12809,6 +12857,8 @@ export const deleteResourceDataSync: API.OperationMethod<
     ResourceDataSyncInvalidConfigurationException,
     ResourceDataSyncNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceDataSync",
 }));
 export type DeleteResourcePolicyError =
@@ -12847,6 +12897,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourcePolicyInvalidParameterException,
     ResourcePolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeregisterManagedInstanceError =
@@ -12872,6 +12924,8 @@ export const deregisterManagedInstance: API.OperationMethod<
   input: DeregisterManagedInstanceRequest,
   output: DeregisterManagedInstanceResult,
   errors: [InternalServerError, InvalidInstanceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterManagedInstance",
 }));
 export type DeregisterPatchBaselineForPatchGroupError =
@@ -12890,6 +12944,8 @@ export const deregisterPatchBaselineForPatchGroup: API.OperationMethod<
   input: DeregisterPatchBaselineForPatchGroupRequest,
   output: DeregisterPatchBaselineForPatchGroupResult,
   errors: [InternalServerError, InvalidResourceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterPatchBaselineForPatchGroup",
 }));
 export type DeregisterTargetFromMaintenanceWindowError =
@@ -12909,6 +12965,8 @@ export const deregisterTargetFromMaintenanceWindow: API.OperationMethod<
   input: DeregisterTargetFromMaintenanceWindowRequest,
   output: DeregisterTargetFromMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError, TargetInUseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterTargetFromMaintenanceWindow",
 }));
 export type DeregisterTaskFromMaintenanceWindowError =
@@ -12927,6 +12985,8 @@ export const deregisterTaskFromMaintenanceWindow: API.OperationMethod<
   input: DeregisterTaskFromMaintenanceWindowRequest,
   output: DeregisterTaskFromMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterTaskFromMaintenanceWindow",
 }));
 export type DescribeActivationsError =
@@ -12964,6 +13024,8 @@ export const describeActivations: API.OperationMethod<
   input: DescribeActivationsRequest,
   output: DescribeActivationsResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeActivations",
   pagination: {
     inputToken: "NextToken",
@@ -12999,6 +13061,8 @@ export const describeAssociation: API.OperationMethod<
     InvalidDocument,
     InvalidInstanceId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssociation",
 }));
 export type DescribeAssociationExecutionsError =
@@ -13033,6 +13097,8 @@ export const describeAssociationExecutions: API.OperationMethod<
   input: DescribeAssociationExecutionsRequest,
   output: DescribeAssociationExecutionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssociationExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -13079,6 +13145,8 @@ export const describeAssociationExecutionTargets: API.OperationMethod<
     InternalServerError,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssociationExecutionTargets",
   pagination: {
     inputToken: "NextToken",
@@ -13125,6 +13193,8 @@ export const describeAutomationExecutions: API.OperationMethod<
     InvalidFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutomationExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -13174,6 +13244,8 @@ export const describeAutomationStepExecutions: API.OperationMethod<
     InvalidFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutomationStepExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -13213,6 +13285,8 @@ export const describeAvailablePatches: API.OperationMethod<
   input: DescribeAvailablePatchesRequest,
   output: DescribeAvailablePatchesResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAvailablePatches",
   pagination: {
     inputToken: "NextToken",
@@ -13238,6 +13312,8 @@ export const describeDocument: API.OperationMethod<
   input: DescribeDocumentRequest,
   output: DescribeDocumentResult,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDocument",
 }));
 export type DescribeDocumentPermissionError =
@@ -13267,6 +13343,8 @@ export const describeDocumentPermission: API.OperationMethod<
     InvalidNextToken,
     InvalidPermissionType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDocumentPermission",
 }));
 export type DescribeEffectiveInstanceAssociationsError =
@@ -13301,6 +13379,8 @@ export const describeEffectiveInstanceAssociations: API.OperationMethod<
   input: DescribeEffectiveInstanceAssociationsRequest,
   output: DescribeEffectiveInstanceAssociationsResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEffectiveInstanceAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -13348,6 +13428,8 @@ export const describeEffectivePatchesForPatchBaseline: API.OperationMethod<
     InvalidResourceId,
     UnsupportedOperatingSystem,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEffectivePatchesForPatchBaseline",
   pagination: {
     inputToken: "NextToken",
@@ -13388,6 +13470,8 @@ export const describeInstanceAssociationsStatus: API.OperationMethod<
   input: DescribeInstanceAssociationsStatusRequest,
   output: DescribeInstanceAssociationsStatusResult,
   errors: [InternalServerError, InvalidInstanceId, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceAssociationsStatus",
   pagination: {
     inputToken: "NextToken",
@@ -13446,6 +13530,8 @@ export const describeInstanceInformation: API.OperationMethod<
     InvalidInstanceInformationFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceInformation",
   pagination: {
     inputToken: "NextToken",
@@ -13493,6 +13579,8 @@ export const describeInstancePatches: API.OperationMethod<
     InvalidInstanceId,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstancePatches",
   pagination: {
     inputToken: "NextToken",
@@ -13532,6 +13620,8 @@ export const describeInstancePatchStates: API.OperationMethod<
   input: DescribeInstancePatchStatesRequest,
   output: DescribeInstancePatchStatesResult,
   errors: [InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstancePatchStates",
   pagination: {
     inputToken: "NextToken",
@@ -13573,6 +13663,8 @@ export const describeInstancePatchStatesForPatchGroup: API.OperationMethod<
   input: DescribeInstancePatchStatesForPatchGroupRequest,
   output: DescribeInstancePatchStatesForPatchGroupResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstancePatchStatesForPatchGroup",
   pagination: {
     inputToken: "NextToken",
@@ -13626,6 +13718,8 @@ export const describeInstanceProperties: API.OperationMethod<
     InvalidInstancePropertyFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceProperties",
   pagination: {
     inputToken: "NextToken",
@@ -13666,6 +13760,8 @@ export const describeInventoryDeletions: API.OperationMethod<
   input: DescribeInventoryDeletionsRequest,
   output: DescribeInventoryDeletionsResult,
   errors: [InternalServerError, InvalidDeletionIdException, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInventoryDeletions",
   pagination: {
     inputToken: "NextToken",
@@ -13706,6 +13802,8 @@ export const describeMaintenanceWindowExecutions: API.OperationMethod<
   input: DescribeMaintenanceWindowExecutionsRequest,
   output: DescribeMaintenanceWindowExecutionsResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -13746,6 +13844,8 @@ export const describeMaintenanceWindowExecutionTaskInvocations: API.OperationMet
   input: DescribeMaintenanceWindowExecutionTaskInvocationsRequest,
   output: DescribeMaintenanceWindowExecutionTaskInvocationsResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowExecutionTaskInvocations",
   pagination: {
     inputToken: "NextToken",
@@ -13785,6 +13885,8 @@ export const describeMaintenanceWindowExecutionTasks: API.OperationMethod<
   input: DescribeMaintenanceWindowExecutionTasksRequest,
   output: DescribeMaintenanceWindowExecutionTasksResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowExecutionTasks",
   pagination: {
     inputToken: "NextToken",
@@ -13823,6 +13925,8 @@ export const describeMaintenanceWindows: API.OperationMethod<
   input: DescribeMaintenanceWindowsRequest,
   output: DescribeMaintenanceWindowsResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindows",
   pagination: {
     inputToken: "NextToken",
@@ -13862,6 +13966,8 @@ export const describeMaintenanceWindowSchedule: API.OperationMethod<
   input: DescribeMaintenanceWindowScheduleRequest,
   output: DescribeMaintenanceWindowScheduleResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowSchedule",
   pagination: {
     inputToken: "NextToken",
@@ -13901,6 +14007,8 @@ export const describeMaintenanceWindowsForTarget: API.OperationMethod<
   input: DescribeMaintenanceWindowsForTargetRequest,
   output: DescribeMaintenanceWindowsForTargetResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowsForTarget",
   pagination: {
     inputToken: "NextToken",
@@ -13940,6 +14048,8 @@ export const describeMaintenanceWindowTargets: API.OperationMethod<
   input: DescribeMaintenanceWindowTargetsRequest,
   output: DescribeMaintenanceWindowTargetsResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowTargets",
   pagination: {
     inputToken: "NextToken",
@@ -13984,6 +14094,8 @@ export const describeMaintenanceWindowTasks: API.OperationMethod<
   input: DescribeMaintenanceWindowTasksRequest,
   output: DescribeMaintenanceWindowTasksResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMaintenanceWindowTasks",
   pagination: {
     inputToken: "NextToken",
@@ -14026,6 +14138,8 @@ export const describeOpsItems: API.OperationMethod<
   input: DescribeOpsItemsRequest,
   output: DescribeOpsItemsResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOpsItems",
   pagination: {
     inputToken: "NextToken",
@@ -14091,6 +14205,8 @@ export const describeParameters: API.OperationMethod<
     InvalidFilterValue,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeParameters",
   pagination: {
     inputToken: "NextToken",
@@ -14126,6 +14242,8 @@ export const describePatchBaselines: API.OperationMethod<
   input: DescribePatchBaselinesRequest,
   output: DescribePatchBaselinesResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePatchBaselines",
   pagination: {
     inputToken: "NextToken",
@@ -14162,6 +14280,8 @@ export const describePatchGroups: API.OperationMethod<
   input: DescribePatchGroupsRequest,
   output: DescribePatchGroupsResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePatchGroups",
   pagination: {
     inputToken: "NextToken",
@@ -14186,6 +14306,8 @@ export const describePatchGroupState: API.OperationMethod<
   input: DescribePatchGroupStateRequest,
   output: DescribePatchGroupStateResult,
   errors: [InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePatchGroupState",
 }));
 export type DescribePatchPropertiesError = InternalServerError | CommonErrors;
@@ -14273,6 +14395,8 @@ export const describePatchProperties: API.OperationMethod<
   input: DescribePatchPropertiesRequest,
   output: DescribePatchPropertiesResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePatchProperties",
   pagination: {
     inputToken: "NextToken",
@@ -14314,6 +14438,8 @@ export const describeSessions: API.OperationMethod<
   input: DescribeSessionsRequest,
   output: DescribeSessionsResponse,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSessions",
   pagination: {
     inputToken: "NextToken",
@@ -14349,6 +14475,8 @@ export const disassociateOpsItemRelatedItem: API.OperationMethod<
     OpsItemNotFoundException,
     OpsItemRelatedItemAssociationNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateOpsItemRelatedItem",
 }));
 export type GetAccessTokenError =
@@ -14376,6 +14504,8 @@ export const getAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessToken",
 }));
 export type GetAutomationExecutionError =
@@ -14394,6 +14524,8 @@ export const getAutomationExecution: API.OperationMethod<
   input: GetAutomationExecutionRequest,
   output: GetAutomationExecutionResult,
   errors: [AutomationExecutionNotFoundException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomationExecution",
 }));
 export type GetCalendarStateError =
@@ -14429,6 +14561,8 @@ export const getCalendarState: API.OperationMethod<
     InvalidDocumentType,
     UnsupportedCalendarException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCalendarState",
 }));
 export type GetCommandInvocationError =
@@ -14465,6 +14599,8 @@ export const getCommandInvocation: API.OperationMethod<
     InvalidPluginName,
     InvocationDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCommandInvocation",
 }));
 export type GetConnectionStatusError = InternalServerError | CommonErrors;
@@ -14481,6 +14617,8 @@ export const getConnectionStatus: API.OperationMethod<
   input: GetConnectionStatusRequest,
   output: GetConnectionStatusResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectionStatus",
 }));
 export type GetDefaultPatchBaselineError = InternalServerError | CommonErrors;
@@ -14500,6 +14638,8 @@ export const getDefaultPatchBaseline: API.OperationMethod<
   input: GetDefaultPatchBaselineRequest,
   output: GetDefaultPatchBaselineResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDefaultPatchBaseline",
 }));
 export type GetDeployablePatchSnapshotForInstanceError =
@@ -14530,6 +14670,8 @@ export const getDeployablePatchSnapshotForInstance: API.OperationMethod<
     UnsupportedFeatureRequiredException,
     UnsupportedOperatingSystem,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployablePatchSnapshotForInstance",
 }));
 export type GetDocumentError =
@@ -14549,6 +14691,8 @@ export const getDocument: API.OperationMethod<
   input: GetDocumentRequest,
   output: GetDocumentResult,
   errors: [InternalServerError, InvalidDocument, InvalidDocumentVersion],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocument",
 }));
 export type GetExecutionPreviewError =
@@ -14568,6 +14712,8 @@ export const getExecutionPreview: API.OperationMethod<
   input: GetExecutionPreviewRequest,
   output: GetExecutionPreviewResponse,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExecutionPreview",
 }));
 export type GetInventoryError =
@@ -14615,6 +14761,8 @@ export const getInventory: API.OperationMethod<
     InvalidResultAttributeException,
     InvalidTypeNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInventory",
   pagination: {
     inputToken: "NextToken",
@@ -14656,6 +14804,8 @@ export const getInventorySchema: API.OperationMethod<
   input: GetInventorySchemaRequest,
   output: GetInventorySchemaResult,
   errors: [InternalServerError, InvalidNextToken, InvalidTypeNameException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInventorySchema",
   pagination: {
     inputToken: "NextToken",
@@ -14680,6 +14830,8 @@ export const getMaintenanceWindow: API.OperationMethod<
   input: GetMaintenanceWindowRequest,
   output: GetMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindow",
 }));
 export type GetMaintenanceWindowExecutionError =
@@ -14698,6 +14850,8 @@ export const getMaintenanceWindowExecution: API.OperationMethod<
   input: GetMaintenanceWindowExecutionRequest,
   output: GetMaintenanceWindowExecutionResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindowExecution",
 }));
 export type GetMaintenanceWindowExecutionTaskError =
@@ -14717,6 +14871,8 @@ export const getMaintenanceWindowExecutionTask: API.OperationMethod<
   input: GetMaintenanceWindowExecutionTaskRequest,
   output: GetMaintenanceWindowExecutionTaskResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindowExecutionTask",
 }));
 export type GetMaintenanceWindowExecutionTaskInvocationError =
@@ -14735,6 +14891,8 @@ export const getMaintenanceWindowExecutionTaskInvocation: API.OperationMethod<
   input: GetMaintenanceWindowExecutionTaskInvocationRequest,
   output: GetMaintenanceWindowExecutionTaskInvocationResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindowExecutionTaskInvocation",
 }));
 export type GetMaintenanceWindowTaskError =
@@ -14760,6 +14918,8 @@ export const getMaintenanceWindowTask: API.OperationMethod<
   input: GetMaintenanceWindowTaskRequest,
   output: GetMaintenanceWindowTaskResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaintenanceWindowTask",
 }));
 export type GetOpsItemError =
@@ -14790,6 +14950,8 @@ export const getOpsItem: API.OperationMethod<
     OpsItemAccessDeniedException,
     OpsItemNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpsItem",
 }));
 export type GetOpsMetadataError =
@@ -14813,6 +14975,8 @@ export const getOpsMetadata: API.OperationMethod<
     OpsMetadataInvalidArgumentException,
     OpsMetadataNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpsMetadata",
 }));
 export type GetOpsSummaryError =
@@ -14860,6 +15024,8 @@ export const getOpsSummary: API.OperationMethod<
     InvalidTypeNameException,
     ResourceDataSyncNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOpsSummary",
   pagination: {
     inputToken: "NextToken",
@@ -14897,6 +15063,8 @@ export const getParameter: API.OperationMethod<
     ParameterNotFound,
     ParameterVersionNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParameter",
 }));
 export type GetParameterHistoryError =
@@ -14946,6 +15114,8 @@ export const getParameterHistory: API.OperationMethod<
     InvalidNextToken,
     ParameterNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParameterHistory",
   pagination: {
     inputToken: "NextToken",
@@ -14976,6 +15146,8 @@ export const getParameters: API.OperationMethod<
   input: GetParametersRequest,
   output: GetParametersResult,
   errors: [InternalServerError, InvalidKeyId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParameters",
 }));
 export type GetParametersByPathError =
@@ -15031,6 +15203,8 @@ export const getParametersByPath: API.OperationMethod<
     InvalidKeyId,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParametersByPath",
   pagination: {
     inputToken: "NextToken",
@@ -15055,6 +15229,8 @@ export const getPatchBaseline: API.OperationMethod<
   input: GetPatchBaselineRequest,
   output: GetPatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPatchBaseline",
 }));
 export type GetPatchBaselineForPatchGroupError =
@@ -15072,6 +15248,8 @@ export const getPatchBaselineForPatchGroup: API.OperationMethod<
   input: GetPatchBaselineForPatchGroupRequest,
   output: GetPatchBaselineForPatchGroupResult,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPatchBaselineForPatchGroup",
 }));
 export type GetResourcePoliciesError =
@@ -15110,6 +15288,8 @@ export const getResourcePolicies: API.OperationMethod<
     ResourceNotFoundException,
     ResourcePolicyInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "NextToken",
@@ -15148,6 +15328,8 @@ export const getServiceSetting: API.OperationMethod<
   input: GetServiceSettingRequest,
   output: GetServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceSetting",
 }));
 export type LabelParameterVersionError =
@@ -15206,6 +15388,8 @@ export const labelParameterVersion: API.OperationMethod<
     ParameterVersionNotFound,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LabelParameterVersion",
 }));
 export type ListAssociationsError =
@@ -15241,6 +15425,8 @@ export const listAssociations: API.OperationMethod<
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
   errors: [InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -15281,6 +15467,8 @@ export const listAssociationVersions: API.OperationMethod<
   input: ListAssociationVersionsRequest,
   output: ListAssociationVersionsResult,
   errors: [AssociationDoesNotExist, InternalServerError, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociationVersions",
   pagination: {
     inputToken: "NextToken",
@@ -15333,6 +15521,8 @@ export const listCommandInvocations: API.OperationMethod<
     InvalidInstanceId,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCommandInvocations",
   pagination: {
     inputToken: "NextToken",
@@ -15381,6 +15571,8 @@ export const listCommands: API.OperationMethod<
     InvalidInstanceId,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCommands",
   pagination: {
     inputToken: "NextToken",
@@ -15431,6 +15623,8 @@ export const listComplianceItems: API.OperationMethod<
     InvalidResourceId,
     InvalidResourceType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComplianceItems",
   pagination: {
     inputToken: "NextToken",
@@ -15473,6 +15667,8 @@ export const listComplianceSummaries: API.OperationMethod<
   input: ListComplianceSummariesRequest,
   output: ListComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComplianceSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -15508,6 +15704,8 @@ export const listDocumentMetadataHistory: API.OperationMethod<
     InvalidDocumentVersion,
     InvalidNextToken,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentMetadataHistory",
 }));
 export type ListDocumentsError =
@@ -15543,6 +15741,8 @@ export const listDocuments: API.OperationMethod<
   input: ListDocumentsRequest,
   output: ListDocumentsResult,
   errors: [InternalServerError, InvalidFilterKey, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocuments",
   pagination: {
     inputToken: "NextToken",
@@ -15583,6 +15783,8 @@ export const listDocumentVersions: API.OperationMethod<
   input: ListDocumentVersionsRequest,
   output: ListDocumentVersionsResult,
   errors: [InternalServerError, InvalidDocument, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentVersions",
   pagination: {
     inputToken: "NextToken",
@@ -15616,6 +15818,8 @@ export const listInventoryEntries: API.OperationMethod<
     InvalidNextToken,
     InvalidTypeNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInventoryEntries",
 }));
 export type ListNodesError =
@@ -15654,6 +15858,8 @@ export const listNodes: API.OperationMethod<
     ResourceDataSyncNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
@@ -15705,6 +15911,8 @@ export const listNodesSummary: API.OperationMethod<
     ResourceDataSyncNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodesSummary",
   pagination: {
     inputToken: "NextToken",
@@ -15752,6 +15960,8 @@ export const listOpsItemEvents: API.OperationMethod<
     OpsItemLimitExceededException,
     OpsItemNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpsItemEvents",
   pagination: {
     inputToken: "NextToken",
@@ -15792,6 +16002,8 @@ export const listOpsItemRelatedItems: API.OperationMethod<
   input: ListOpsItemRelatedItemsRequest,
   output: ListOpsItemRelatedItemsResponse,
   errors: [InternalServerError, OpsItemInvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpsItemRelatedItems",
   pagination: {
     inputToken: "NextToken",
@@ -15832,6 +16044,8 @@ export const listOpsMetadata: API.OperationMethod<
   input: ListOpsMetadataRequest,
   output: ListOpsMetadataResult,
   errors: [InternalServerError, OpsMetadataInvalidArgumentException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOpsMetadata",
   pagination: {
     inputToken: "NextToken",
@@ -15874,6 +16088,8 @@ export const listResourceComplianceSummaries: API.OperationMethod<
   input: ListResourceComplianceSummariesRequest,
   output: ListResourceComplianceSummariesResult,
   errors: [InternalServerError, InvalidFilter, InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceComplianceSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -15927,6 +16143,8 @@ export const listResourceDataSync: API.OperationMethod<
     InvalidNextToken,
     ResourceDataSyncInvalidConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceDataSync",
   pagination: {
     inputToken: "NextToken",
@@ -15954,6 +16172,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [InternalServerError, InvalidResourceId, InvalidResourceType],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ModifyDocumentPermissionError =
@@ -15984,6 +16204,8 @@ export const modifyDocumentPermission: API.OperationMethod<
     InvalidDocument,
     InvalidPermissionType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDocumentPermission",
 }));
 export type PutComplianceItemsError =
@@ -16061,6 +16283,8 @@ export const putComplianceItems: API.OperationMethod<
     ItemSizeLimitExceededException,
     TotalSizeLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutComplianceItems",
 }));
 export type PutInventoryError =
@@ -16104,6 +16328,8 @@ export const putInventory: API.OperationMethod<
     UnsupportedInventoryItemContextException,
     UnsupportedInventorySchemaVersionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInventory",
 }));
 export type PutParameterError =
@@ -16151,6 +16377,8 @@ export const putParameter: API.OperationMethod<
     TooManyUpdates,
     UnsupportedParameterType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutParameter",
 }));
 export type PutResourcePolicyError =
@@ -16208,6 +16436,8 @@ export const putResourcePolicy: API.OperationMethod<
     ResourcePolicyLimitExceededException,
     ResourcePolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type RegisterDefaultPatchBaselineError =
@@ -16232,6 +16462,8 @@ export const registerDefaultPatchBaseline: API.OperationMethod<
   input: RegisterDefaultPatchBaselineRequest,
   output: RegisterDefaultPatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError, InvalidResourceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterDefaultPatchBaseline",
 }));
 export type RegisterPatchBaselineForPatchGroupError =
@@ -16259,6 +16491,8 @@ export const registerPatchBaselineForPatchGroup: API.OperationMethod<
     InvalidResourceId,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterPatchBaselineForPatchGroup",
 }));
 export type RegisterTargetWithMaintenanceWindowError =
@@ -16284,6 +16518,8 @@ export const registerTargetWithMaintenanceWindow: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterTargetWithMaintenanceWindow",
 }));
 export type RegisterTaskWithMaintenanceWindowError =
@@ -16311,6 +16547,8 @@ export const registerTaskWithMaintenanceWindow: API.OperationMethod<
     InternalServerError,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterTaskWithMaintenanceWindow",
 }));
 export type RemoveTagsFromResourceError =
@@ -16336,6 +16574,8 @@ export const removeTagsFromResource: API.OperationMethod<
     InvalidResourceType,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
 export type ResetServiceSettingError =
@@ -16370,6 +16610,8 @@ export const resetServiceSetting: API.OperationMethod<
   input: ResetServiceSettingRequest,
   output: ResetServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetServiceSetting",
 }));
 export type ResumeSessionError =
@@ -16392,6 +16634,8 @@ export const resumeSession: API.OperationMethod<
   input: ResumeSessionRequest,
   output: ResumeSessionResponse,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeSession",
 }));
 export type SendAutomationSignalError =
@@ -16418,6 +16662,8 @@ export const sendAutomationSignal: API.OperationMethod<
     InternalServerError,
     InvalidAutomationSignalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendAutomationSignal",
 }));
 export type SendCommandError =
@@ -16457,6 +16703,8 @@ export const sendCommand: API.OperationMethod<
     MaxDocumentSizeExceeded,
     UnsupportedPlatformType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendCommand",
 }));
 export type StartAccessRequestError =
@@ -16486,6 +16734,8 @@ export const startAccessRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAccessRequest",
 }));
 export type StartAssociationsOnceError =
@@ -16505,6 +16755,8 @@ export const startAssociationsOnce: API.OperationMethod<
   input: StartAssociationsOnceRequest,
   output: StartAssociationsOnceResult,
   errors: [AssociationDoesNotExist, InvalidAssociation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAssociationsOnce",
 }));
 export type StartAutomationExecutionError =
@@ -16536,6 +16788,8 @@ export const startAutomationExecution: API.OperationMethod<
     InvalidAutomationExecutionParametersException,
     InvalidTarget,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAutomationExecution",
 }));
 export type StartChangeRequestExecutionError =
@@ -16575,6 +16829,8 @@ export const startChangeRequestExecution: API.OperationMethod<
     InvalidAutomationExecutionParametersException,
     NoLongerSupportedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartChangeRequestExecution",
 }));
 export type StartExecutionPreviewError =
@@ -16594,6 +16850,8 @@ export const startExecutionPreview: API.OperationMethod<
   input: StartExecutionPreviewRequest,
   output: StartExecutionPreviewResponse,
   errors: [InternalServerError, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExecutionPreview",
 }));
 export type StartSessionError =
@@ -16622,6 +16880,8 @@ export const startSession: API.OperationMethod<
   input: StartSessionRequest,
   output: StartSessionResponse,
   errors: [InternalServerError, InvalidDocument, TargetNotConnected],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSession",
 }));
 export type StopAutomationExecutionError =
@@ -16645,6 +16905,8 @@ export const stopAutomationExecution: API.OperationMethod<
     InternalServerError,
     InvalidAutomationStatusUpdateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAutomationExecution",
 }));
 export type TerminateSessionError = InternalServerError | CommonErrors;
@@ -16661,6 +16923,8 @@ export const terminateSession: API.OperationMethod<
   input: TerminateSessionRequest,
   output: TerminateSessionResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateSession",
 }));
 export type UnlabelParameterVersionError =
@@ -16690,6 +16954,8 @@ export const unlabelParameterVersion: API.OperationMethod<
     ParameterVersionNotFound,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnlabelParameterVersion",
 }));
 export type UpdateAssociationError =
@@ -16750,6 +17016,8 @@ export const updateAssociation: API.OperationMethod<
     InvalidUpdate,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssociation",
 }));
 export type UpdateAssociationStatusError =
@@ -16784,6 +17052,8 @@ export const updateAssociationStatus: API.OperationMethod<
     StatusUnchanged,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssociationStatus",
 }));
 export type UpdateDocumentError =
@@ -16821,6 +17091,8 @@ export const updateDocument: API.OperationMethod<
     InvalidDocumentVersion,
     MaxDocumentSizeExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocument",
 }));
 export type UpdateDocumentDefaultVersionError =
@@ -16850,6 +17122,8 @@ export const updateDocumentDefaultVersion: API.OperationMethod<
     InvalidDocumentSchemaVersion,
     InvalidDocumentVersion,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocumentDefaultVersion",
 }));
 export type UpdateDocumentMetadataError =
@@ -16882,6 +17156,8 @@ export const updateDocumentMetadata: API.OperationMethod<
     InvalidDocumentVersion,
     TooManyUpdates,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocumentMetadata",
 }));
 export type UpdateMaintenanceWindowError =
@@ -16907,6 +17183,8 @@ export const updateMaintenanceWindow: API.OperationMethod<
   input: UpdateMaintenanceWindowRequest,
   output: UpdateMaintenanceWindowResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMaintenanceWindow",
 }));
 export type UpdateMaintenanceWindowTargetError =
@@ -16941,6 +17219,8 @@ export const updateMaintenanceWindowTarget: API.OperationMethod<
   input: UpdateMaintenanceWindowTargetRequest,
   output: UpdateMaintenanceWindowTargetResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMaintenanceWindowTarget",
 }));
 export type UpdateMaintenanceWindowTaskError =
@@ -16994,6 +17274,8 @@ export const updateMaintenanceWindowTask: API.OperationMethod<
   input: UpdateMaintenanceWindowTaskRequest,
   output: UpdateMaintenanceWindowTaskResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMaintenanceWindowTask",
 }));
 export type UpdateManagedInstanceRoleError =
@@ -17014,6 +17296,8 @@ export const updateManagedInstanceRole: API.OperationMethod<
   input: UpdateManagedInstanceRoleRequest,
   output: UpdateManagedInstanceRoleResult,
   errors: [InternalServerError, InvalidInstanceId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateManagedInstanceRole",
 }));
 export type UpdateOpsItemError =
@@ -17051,6 +17335,8 @@ export const updateOpsItem: API.OperationMethod<
     OpsItemLimitExceededException,
     OpsItemNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOpsItem",
 }));
 export type UpdateOpsMetadataError =
@@ -17078,6 +17364,8 @@ export const updateOpsMetadata: API.OperationMethod<
     OpsMetadataNotFoundException,
     OpsMetadataTooManyUpdatesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOpsMetadata",
 }));
 export type UpdatePatchBaselineError =
@@ -17100,6 +17388,8 @@ export const updatePatchBaseline: API.OperationMethod<
   input: UpdatePatchBaselineRequest,
   output: UpdatePatchBaselineResult,
   errors: [DoesNotExistException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePatchBaseline",
 }));
 export type UpdateResourceDataSyncError =
@@ -17133,6 +17423,8 @@ export const updateResourceDataSync: API.OperationMethod<
     ResourceDataSyncInvalidConfigurationException,
     ResourceDataSyncNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceDataSync",
 }));
 export type UpdateServiceSettingError =
@@ -17166,5 +17458,7 @@ export const updateServiceSetting: API.OperationMethod<
   input: UpdateServiceSettingRequest,
   output: UpdateServiceSettingResult,
   errors: [InternalServerError, ServiceSettingNotFound, TooManyUpdates],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceSetting",
 }));

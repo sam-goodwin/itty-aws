@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -918,6 +920,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -945,6 +949,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -972,6 +978,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateScheduleError =
@@ -1001,6 +1009,8 @@ export const createSchedule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchedule",
 }));
 export type GetScheduleError =
@@ -1026,6 +1036,8 @@ export const getSchedule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchedule",
 }));
 export type UpdateScheduleError =
@@ -1058,6 +1070,8 @@ export const updateSchedule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchedule",
 }));
 export type DeleteScheduleError =
@@ -1085,6 +1099,8 @@ export const deleteSchedule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchedule",
 }));
 export type ListSchedulesError =
@@ -1125,6 +1141,8 @@ export const listSchedules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchedules",
   pagination: {
     inputToken: "NextToken",
@@ -1158,6 +1176,8 @@ export const createScheduleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScheduleGroup",
 }));
 export type GetScheduleGroupError =
@@ -1183,6 +1203,8 @@ export const getScheduleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScheduleGroup",
 }));
 export type DeleteScheduleGroupError =
@@ -1215,6 +1237,8 @@ export const deleteScheduleGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScheduleGroup",
 }));
 export type ListScheduleGroupsError =
@@ -1249,6 +1273,8 @@ export const listScheduleGroups: API.OperationMethod<
   input: ListScheduleGroupsInput,
   output: ListScheduleGroupsOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScheduleGroups",
   pagination: {
     inputToken: "NextToken",

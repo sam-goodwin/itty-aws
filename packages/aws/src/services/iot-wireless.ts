@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -6494,6 +6496,8 @@ export const associateAwsAccountWithPartnerAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAwsAccountWithPartnerAccount",
 }));
 export type AssociateMulticastGroupWithFuotaTaskError =
@@ -6523,6 +6527,8 @@ export const associateMulticastGroupWithFuotaTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateMulticastGroupWithFuotaTask",
 }));
 export type AssociateWirelessDeviceWithFuotaTaskError =
@@ -6552,6 +6558,8 @@ export const associateWirelessDeviceWithFuotaTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWirelessDeviceWithFuotaTask",
 }));
 export type AssociateWirelessDeviceWithMulticastGroupError =
@@ -6581,6 +6589,8 @@ export const associateWirelessDeviceWithMulticastGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWirelessDeviceWithMulticastGroup",
 }));
 export type AssociateWirelessDeviceWithThingError =
@@ -6610,6 +6620,8 @@ export const associateWirelessDeviceWithThing: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWirelessDeviceWithThing",
 }));
 export type AssociateWirelessGatewayWithCertificateError =
@@ -6639,6 +6651,8 @@ export const associateWirelessGatewayWithCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWirelessGatewayWithCertificate",
 }));
 export type AssociateWirelessGatewayWithThingError =
@@ -6668,6 +6682,8 @@ export const associateWirelessGatewayWithThing: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWirelessGatewayWithThing",
 }));
 export type CancelMulticastGroupSessionError =
@@ -6697,6 +6713,8 @@ export const cancelMulticastGroupSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMulticastGroupSession",
 }));
 export type CreateDestinationError =
@@ -6726,6 +6744,8 @@ export const createDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDestination",
 }));
 export type CreateDeviceProfileError =
@@ -6753,6 +6773,8 @@ export const createDeviceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeviceProfile",
 }));
 export type CreateFuotaTaskError =
@@ -6782,6 +6804,8 @@ export const createFuotaTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFuotaTask",
 }));
 export type CreateMulticastGroupError =
@@ -6811,6 +6835,8 @@ export const createMulticastGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMulticastGroup",
 }));
 export type CreateNetworkAnalyzerConfigurationError =
@@ -6840,6 +6866,8 @@ export const createNetworkAnalyzerConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkAnalyzerConfiguration",
 }));
 export type CreateServiceProfileError =
@@ -6867,6 +6895,8 @@ export const createServiceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServiceProfile",
 }));
 export type CreateWirelessDeviceError =
@@ -6896,6 +6926,8 @@ export const createWirelessDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWirelessDevice",
 }));
 export type CreateWirelessGatewayError =
@@ -6934,6 +6966,8 @@ export const createWirelessGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWirelessGateway",
 }));
 export type CreateWirelessGatewayTaskError =
@@ -6963,6 +6997,8 @@ export const createWirelessGatewayTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWirelessGatewayTask",
 }));
 export type CreateWirelessGatewayTaskDefinitionError =
@@ -6992,6 +7028,8 @@ export const createWirelessGatewayTaskDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWirelessGatewayTaskDefinition",
 }));
 export type DeleteDestinationError =
@@ -7021,6 +7059,8 @@ export const deleteDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDestination",
 }));
 export type DeleteDeviceProfileError =
@@ -7050,6 +7090,8 @@ export const deleteDeviceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeviceProfile",
 }));
 export type DeleteFuotaTaskError =
@@ -7077,6 +7119,8 @@ export const deleteFuotaTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFuotaTask",
 }));
 export type DeleteMulticastGroupError =
@@ -7106,6 +7150,8 @@ export const deleteMulticastGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMulticastGroup",
 }));
 export type DeleteNetworkAnalyzerConfigurationError =
@@ -7135,6 +7181,8 @@ export const deleteNetworkAnalyzerConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkAnalyzerConfiguration",
 }));
 export type DeleteQueuedMessagesError =
@@ -7162,6 +7210,8 @@ export const deleteQueuedMessages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueuedMessages",
 }));
 export type DeleteServiceProfileError =
@@ -7191,6 +7241,8 @@ export const deleteServiceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceProfile",
 }));
 export type DeleteWirelessDeviceError =
@@ -7218,6 +7270,8 @@ export const deleteWirelessDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWirelessDevice",
 }));
 export type DeleteWirelessDeviceImportTaskError =
@@ -7247,6 +7301,8 @@ export const deleteWirelessDeviceImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWirelessDeviceImportTask",
 }));
 export type DeleteWirelessGatewayError =
@@ -7285,6 +7341,8 @@ export const deleteWirelessGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWirelessGateway",
 }));
 export type DeleteWirelessGatewayTaskError =
@@ -7312,6 +7370,8 @@ export const deleteWirelessGatewayTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWirelessGatewayTask",
 }));
 export type DeleteWirelessGatewayTaskDefinitionError =
@@ -7340,6 +7400,8 @@ export const deleteWirelessGatewayTaskDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWirelessGatewayTaskDefinition",
 }));
 export type DeregisterWirelessDeviceError =
@@ -7365,6 +7427,8 @@ export const deregisterWirelessDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterWirelessDevice",
 }));
 export type DisassociateAwsAccountFromPartnerAccountError =
@@ -7392,6 +7456,8 @@ export const disassociateAwsAccountFromPartnerAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAwsAccountFromPartnerAccount",
 }));
 export type DisassociateMulticastGroupFromFuotaTaskError =
@@ -7419,6 +7485,8 @@ export const disassociateMulticastGroupFromFuotaTask: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMulticastGroupFromFuotaTask",
 }));
 export type DisassociateWirelessDeviceFromFuotaTaskError =
@@ -7448,6 +7516,8 @@ export const disassociateWirelessDeviceFromFuotaTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWirelessDeviceFromFuotaTask",
 }));
 export type DisassociateWirelessDeviceFromMulticastGroupError =
@@ -7475,6 +7545,8 @@ export const disassociateWirelessDeviceFromMulticastGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWirelessDeviceFromMulticastGroup",
 }));
 export type DisassociateWirelessDeviceFromThingError =
@@ -7504,6 +7576,8 @@ export const disassociateWirelessDeviceFromThing: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWirelessDeviceFromThing",
 }));
 export type DisassociateWirelessGatewayFromCertificateError =
@@ -7531,6 +7605,8 @@ export const disassociateWirelessGatewayFromCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWirelessGatewayFromCertificate",
 }));
 export type DisassociateWirelessGatewayFromThingError =
@@ -7560,6 +7636,8 @@ export const disassociateWirelessGatewayFromThing: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWirelessGatewayFromThing",
 }));
 export type GetDestinationError =
@@ -7587,6 +7665,8 @@ export const getDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDestination",
 }));
 export type GetDeviceProfileError =
@@ -7614,6 +7694,8 @@ export const getDeviceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeviceProfile",
 }));
 export type GetEventConfigurationByResourceTypesError =
@@ -7633,6 +7715,8 @@ export const getEventConfigurationByResourceTypes: API.OperationMethod<
   input: GetEventConfigurationByResourceTypesRequest,
   output: GetEventConfigurationByResourceTypesResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventConfigurationByResourceTypes",
 }));
 export type GetFuotaTaskError =
@@ -7660,6 +7744,8 @@ export const getFuotaTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFuotaTask",
 }));
 export type GetLogLevelsByResourceTypesError =
@@ -7689,6 +7775,8 @@ export const getLogLevelsByResourceTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLogLevelsByResourceTypes",
 }));
 export type GetMetricConfigurationError =
@@ -7718,6 +7806,8 @@ export const getMetricConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetricConfiguration",
 }));
 export type GetMetricsError =
@@ -7747,6 +7837,8 @@ export const getMetrics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetrics",
 }));
 export type GetMulticastGroupError =
@@ -7774,6 +7866,8 @@ export const getMulticastGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMulticastGroup",
 }));
 export type GetMulticastGroupSessionError =
@@ -7801,6 +7895,8 @@ export const getMulticastGroupSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMulticastGroupSession",
 }));
 export type GetNetworkAnalyzerConfigurationError =
@@ -7828,6 +7924,8 @@ export const getNetworkAnalyzerConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkAnalyzerConfiguration",
 }));
 export type GetPartnerAccountError =
@@ -7854,6 +7952,8 @@ export const getPartnerAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPartnerAccount",
 }));
 export type GetPositionError =
@@ -7884,6 +7984,8 @@ export const getPosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPosition",
 }));
 export type GetPositionConfigurationError =
@@ -7914,6 +8016,8 @@ export const getPositionConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPositionConfiguration",
 }));
 export type GetPositionEstimateError =
@@ -7943,6 +8047,8 @@ export const getPositionEstimate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPositionEstimate",
 }));
 export type GetResourceEventConfigurationError =
@@ -7970,6 +8076,8 @@ export const getResourceEventConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceEventConfiguration",
 }));
 export type GetResourceLogLevelError =
@@ -7998,6 +8106,8 @@ export const getResourceLogLevel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceLogLevel",
 }));
 export type GetResourcePositionError =
@@ -8027,6 +8137,8 @@ export const getResourcePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePosition",
 }));
 export type GetServiceEndpointError =
@@ -8053,6 +8165,8 @@ export const getServiceEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceEndpoint",
 }));
 export type GetServiceProfileError =
@@ -8080,6 +8194,8 @@ export const getServiceProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceProfile",
 }));
 export type GetWirelessDeviceError =
@@ -8107,6 +8223,8 @@ export const getWirelessDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWirelessDevice",
 }));
 export type GetWirelessDeviceImportTaskError =
@@ -8137,6 +8255,8 @@ export const getWirelessDeviceImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWirelessDeviceImportTask",
 }));
 export type GetWirelessDeviceStatisticsError =
@@ -8164,6 +8284,8 @@ export const getWirelessDeviceStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWirelessDeviceStatistics",
 }));
 export type GetWirelessGatewayError =
@@ -8191,6 +8313,8 @@ export const getWirelessGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWirelessGateway",
 }));
 export type GetWirelessGatewayCertificateError =
@@ -8219,6 +8343,8 @@ export const getWirelessGatewayCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWirelessGatewayCertificate",
 }));
 export type GetWirelessGatewayFirmwareInformationError =
@@ -8246,6 +8372,8 @@ export const getWirelessGatewayFirmwareInformation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWirelessGatewayFirmwareInformation",
 }));
 export type GetWirelessGatewayStatisticsError =
@@ -8273,6 +8401,8 @@ export const getWirelessGatewayStatistics: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWirelessGatewayStatistics",
 }));
 export type GetWirelessGatewayTaskError =
@@ -8300,6 +8430,8 @@ export const getWirelessGatewayTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWirelessGatewayTask",
 }));
 export type GetWirelessGatewayTaskDefinitionError =
@@ -8327,6 +8459,8 @@ export const getWirelessGatewayTaskDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWirelessGatewayTaskDefinition",
 }));
 export type ListDestinationsError =
@@ -8367,6 +8501,8 @@ export const listDestinations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDestinations",
   pagination: {
     inputToken: "NextToken",
@@ -8412,6 +8548,8 @@ export const listDeviceProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeviceProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -8446,6 +8584,8 @@ export const listDevicesForWirelessDeviceImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevicesForWirelessDeviceImportTask",
 }));
 export type ListEventConfigurationsError =
@@ -8471,6 +8611,8 @@ export const listEventConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventConfigurations",
 }));
 export type ListFuotaTasksError =
@@ -8511,6 +8653,8 @@ export const listFuotaTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFuotaTasks",
   pagination: {
     inputToken: "NextToken",
@@ -8556,6 +8700,8 @@ export const listMulticastGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMulticastGroups",
   pagination: {
     inputToken: "NextToken",
@@ -8603,6 +8749,8 @@ export const listMulticastGroupsByFuotaTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMulticastGroupsByFuotaTask",
   pagination: {
     inputToken: "NextToken",
@@ -8648,6 +8796,8 @@ export const listNetworkAnalyzerConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkAnalyzerConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -8678,6 +8828,8 @@ export const listPartnerAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPartnerAccounts",
 }));
 export type ListPositionConfigurationsError =
@@ -8721,6 +8873,8 @@ export const listPositionConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPositionConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -8768,6 +8922,8 @@ export const listQueuedMessages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueuedMessages",
   pagination: {
     inputToken: "NextToken",
@@ -8813,6 +8969,8 @@ export const listServiceProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -8845,6 +9003,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWirelessDeviceImportTasksError =
@@ -8875,6 +9035,8 @@ export const listWirelessDeviceImportTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWirelessDeviceImportTasks",
 }));
 export type ListWirelessDevicesError =
@@ -8915,6 +9077,8 @@ export const listWirelessDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWirelessDevices",
   pagination: {
     inputToken: "NextToken",
@@ -8960,6 +9124,8 @@ export const listWirelessGateways: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWirelessGateways",
   pagination: {
     inputToken: "NextToken",
@@ -8990,6 +9156,8 @@ export const listWirelessGatewayTaskDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWirelessGatewayTaskDefinitions",
 }));
 export type PutPositionConfigurationError =
@@ -9020,6 +9188,8 @@ export const putPositionConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPositionConfiguration",
 }));
 export type PutResourceLogLevelError =
@@ -9048,6 +9218,8 @@ export const putResourceLogLevel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourceLogLevel",
 }));
 export type ResetAllResourceLogLevelsError =
@@ -9076,6 +9248,8 @@ export const resetAllResourceLogLevels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetAllResourceLogLevels",
 }));
 export type ResetResourceLogLevelError =
@@ -9104,6 +9278,8 @@ export const resetResourceLogLevel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetResourceLogLevel",
 }));
 export type SendDataToMulticastGroupError =
@@ -9133,6 +9309,8 @@ export const sendDataToMulticastGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDataToMulticastGroup",
 }));
 export type SendDataToWirelessDeviceError =
@@ -9158,6 +9336,8 @@ export const sendDataToWirelessDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDataToWirelessDevice",
 }));
 export type StartBulkAssociateWirelessDeviceWithMulticastGroupError =
@@ -9186,6 +9366,8 @@ export const startBulkAssociateWirelessDeviceWithMulticastGroup: API.OperationMe
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBulkAssociateWirelessDeviceWithMulticastGroup",
 }));
 export type StartBulkDisassociateWirelessDeviceFromMulticastGroupError =
@@ -9214,6 +9396,8 @@ export const startBulkDisassociateWirelessDeviceFromMulticastGroup: API.Operatio
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBulkDisassociateWirelessDeviceFromMulticastGroup",
 }));
 export type StartFuotaTaskError =
@@ -9243,6 +9427,8 @@ export const startFuotaTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFuotaTask",
 }));
 export type StartMulticastGroupSessionError =
@@ -9272,6 +9458,8 @@ export const startMulticastGroupSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMulticastGroupSession",
 }));
 export type StartSingleWirelessDeviceImportTaskError =
@@ -9301,6 +9489,8 @@ export const startSingleWirelessDeviceImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSingleWirelessDeviceImportTask",
 }));
 export type StartWirelessDeviceImportTaskError =
@@ -9331,6 +9521,8 @@ export const startWirelessDeviceImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWirelessDeviceImportTask",
 }));
 export type TagResourceError =
@@ -9360,6 +9552,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestWirelessDeviceError =
@@ -9386,6 +9580,8 @@ export const testWirelessDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestWirelessDevice",
 }));
 export type UntagResourceError =
@@ -9413,6 +9609,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDestinationError =
@@ -9440,6 +9638,8 @@ export const updateDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDestination",
 }));
 export type UpdateEventConfigurationByResourceTypesError =
@@ -9465,6 +9665,8 @@ export const updateEventConfigurationByResourceTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventConfigurationByResourceTypes",
 }));
 export type UpdateFuotaTaskError =
@@ -9494,6 +9696,8 @@ export const updateFuotaTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFuotaTask",
 }));
 export type UpdateLogLevelsByResourceTypesError =
@@ -9525,6 +9729,8 @@ export const updateLogLevelsByResourceTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLogLevelsByResourceTypes",
 }));
 export type UpdateMetricConfigurationError =
@@ -9554,6 +9760,8 @@ export const updateMetricConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMetricConfiguration",
 }));
 export type UpdateMulticastGroupError =
@@ -9583,6 +9791,8 @@ export const updateMulticastGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMulticastGroup",
 }));
 export type UpdateNetworkAnalyzerConfigurationError =
@@ -9610,6 +9820,8 @@ export const updateNetworkAnalyzerConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetworkAnalyzerConfiguration",
 }));
 export type UpdatePartnerAccountError =
@@ -9635,6 +9847,8 @@ export const updatePartnerAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePartnerAccount",
 }));
 export type UpdatePositionError =
@@ -9665,6 +9879,8 @@ export const updatePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePosition",
 }));
 export type UpdateResourceEventConfigurationError =
@@ -9694,6 +9910,8 @@ export const updateResourceEventConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceEventConfiguration",
 }));
 export type UpdateResourcePositionError =
@@ -9723,6 +9941,8 @@ export const updateResourcePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourcePosition",
 }));
 export type UpdateWirelessDeviceError =
@@ -9750,6 +9970,8 @@ export const updateWirelessDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWirelessDevice",
 }));
 export type UpdateWirelessDeviceImportTaskError =
@@ -9779,6 +10001,8 @@ export const updateWirelessDeviceImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWirelessDeviceImportTask",
 }));
 export type UpdateWirelessGatewayError =
@@ -9806,5 +10030,7 @@ export const updateWirelessGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWirelessGateway",
 }));

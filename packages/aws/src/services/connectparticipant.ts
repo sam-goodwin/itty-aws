@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -879,6 +881,8 @@ export const cancelParticipantAuthentication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelParticipantAuthentication",
 }));
 export type CompleteAttachmentUploadError =
@@ -918,6 +922,8 @@ export const completeAttachmentUpload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteAttachmentUpload",
 }));
 export type CreateParticipantConnectionError =
@@ -1006,6 +1012,8 @@ export const createParticipantConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateParticipantConnection",
 }));
 export type DescribeViewError =
@@ -1035,6 +1043,8 @@ export const describeView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeView",
 }));
 export type DisconnectParticipantError =
@@ -1068,6 +1078,8 @@ export const disconnectParticipant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisconnectParticipant",
 }));
 export type GetAttachmentError =
@@ -1107,6 +1119,8 @@ export const getAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAttachment",
 }));
 export type GetAuthenticationUrlError =
@@ -1147,6 +1161,8 @@ export const getAuthenticationUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAuthenticationUrl",
 }));
 export type GetTranscriptError =
@@ -1213,6 +1229,8 @@ export const getTranscript: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTranscript",
   pagination: {
     inputToken: "NextToken",
@@ -1260,6 +1278,8 @@ export const sendEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendEvent",
 }));
 export type SendMessageError =
@@ -1293,6 +1313,8 @@ export const sendMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendMessage",
 }));
 export type StartAttachmentUploadError =
@@ -1329,5 +1351,7 @@ export const startAttachmentUpload: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAttachmentUpload",
 }));

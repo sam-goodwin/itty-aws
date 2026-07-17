@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -876,6 +878,8 @@ export const createCliToken: API.OperationMethod<
   input: CreateCliTokenRequest,
   output: CreateCliTokenResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCliToken",
 }));
 export type CreateEnvironmentError =
@@ -894,6 +898,8 @@ export const createEnvironment: API.OperationMethod<
   input: CreateEnvironmentInput,
   output: CreateEnvironmentOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
 export type CreateWebLoginTokenError =
@@ -919,6 +925,8 @@ export const createWebLoginToken: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWebLoginToken",
 }));
 export type DeleteEnvironmentError =
@@ -942,6 +950,8 @@ export const deleteEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
 export type GetEnvironmentError =
@@ -965,6 +975,8 @@ export const getEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
 export type InvokeRestApiError =
@@ -995,6 +1007,8 @@ export const invokeRestApi: API.OperationMethod<
     RestApiServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeRestApi",
 }));
 export type ListEnvironmentsError =
@@ -1028,6 +1042,8 @@ export const listEnvironments: API.OperationMethod<
   input: ListEnvironmentsInput,
   output: ListEnvironmentsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
   pagination: {
     inputToken: "NextToken",
@@ -1057,6 +1073,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PublishMetricsError =
@@ -1075,6 +1093,8 @@ export const publishMetrics: API.OperationMethod<
   input: PublishMetricsInput,
   output: PublishMetricsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishMetrics",
 }));
 export type TagResourceError =
@@ -1098,6 +1118,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1121,6 +1143,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateEnvironmentError =
@@ -1144,5 +1168,7 @@ export const updateEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
 }));

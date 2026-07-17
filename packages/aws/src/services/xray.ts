@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2683,6 +2685,8 @@ export const batchGetTraces: API.OperationMethod<
   input: BatchGetTracesRequest,
   output: BatchGetTracesResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetTraces",
   pagination: {
     inputToken: "NextToken",
@@ -2711,6 +2715,8 @@ export const cancelTraceRetrieval: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelTraceRetrieval",
 }));
 export type CreateGroupError =
@@ -2729,6 +2735,8 @@ export const createGroup: API.OperationMethod<
   input: CreateGroupRequest,
   output: CreateGroupResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
 export type CreateSamplingRuleError =
@@ -2758,6 +2766,8 @@ export const createSamplingRule: API.OperationMethod<
     RuleLimitExceededException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSamplingRule",
 }));
 export type DeleteGroupError =
@@ -2776,6 +2786,8 @@ export const deleteGroup: API.OperationMethod<
   input: DeleteGroupRequest,
   output: DeleteGroupResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
 export type DeleteResourcePolicyError =
@@ -2799,6 +2811,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSamplingRuleError =
@@ -2817,6 +2831,8 @@ export const deleteSamplingRule: API.OperationMethod<
   input: DeleteSamplingRuleRequest,
   output: DeleteSamplingRuleResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSamplingRule",
 }));
 export type GetEncryptionConfigError =
@@ -2835,6 +2851,8 @@ export const getEncryptionConfig: API.OperationMethod<
   input: GetEncryptionConfigRequest,
   output: GetEncryptionConfigResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEncryptionConfig",
 }));
 export type GetGroupError =
@@ -2853,6 +2871,8 @@ export const getGroup: API.OperationMethod<
   input: GetGroupRequest,
   output: GetGroupResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroup",
 }));
 export type GetGroupsError =
@@ -2886,6 +2906,8 @@ export const getGroups: API.OperationMethod<
   input: GetGroupsRequest,
   output: GetGroupsResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroups",
   pagination: {
     inputToken: "NextToken",
@@ -2911,6 +2933,8 @@ export const getIndexingRules: API.OperationMethod<
   input: GetIndexingRulesRequest,
   output: GetIndexingRulesResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIndexingRules",
 }));
 export type GetInsightError =
@@ -2931,6 +2955,8 @@ export const getInsight: API.OperationMethod<
   input: GetInsightRequest,
   output: GetInsightResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsight",
 }));
 export type GetInsightEventsError =
@@ -2966,6 +2992,8 @@ export const getInsightEvents: API.OperationMethod<
   input: GetInsightEventsRequest,
   output: GetInsightEventsResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsightEvents",
   pagination: {
     inputToken: "NextToken",
@@ -2990,6 +3018,8 @@ export const getInsightImpactGraph: API.OperationMethod<
   input: GetInsightImpactGraphRequest,
   output: GetInsightImpactGraphResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsightImpactGraph",
 }));
 export type GetInsightSummariesError =
@@ -3023,6 +3053,8 @@ export const getInsightSummaries: API.OperationMethod<
   input: GetInsightSummariesRequest,
   output: GetInsightSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsightSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -3059,6 +3091,8 @@ export const getRetrievedTracesGraph: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRetrievedTracesGraph",
 }));
 export type GetSamplingRulesError =
@@ -3092,6 +3126,8 @@ export const getSamplingRules: API.OperationMethod<
   input: GetSamplingRulesRequest,
   output: GetSamplingRulesResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSamplingRules",
   pagination: {
     inputToken: "NextToken",
@@ -3130,6 +3166,8 @@ export const getSamplingStatisticSummaries: API.OperationMethod<
   input: GetSamplingStatisticSummariesRequest,
   output: GetSamplingStatisticSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSamplingStatisticSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -3153,6 +3191,8 @@ export const getSamplingTargets: API.OperationMethod<
   input: GetSamplingTargetsRequest,
   output: GetSamplingTargetsResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSamplingTargets",
 }));
 export type GetServiceGraphError =
@@ -3190,6 +3230,8 @@ export const getServiceGraph: API.OperationMethod<
   input: GetServiceGraphRequest,
   output: GetServiceGraphResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceGraph",
   pagination: {
     inputToken: "NextToken",
@@ -3229,6 +3271,8 @@ export const getTimeSeriesServiceStatistics: API.OperationMethod<
   input: GetTimeSeriesServiceStatisticsRequest,
   output: GetTimeSeriesServiceStatisticsResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTimeSeriesServiceStatistics",
   pagination: {
     inputToken: "NextToken",
@@ -3267,6 +3311,8 @@ export const getTraceGraph: API.OperationMethod<
   input: GetTraceGraphRequest,
   output: GetTraceGraphResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTraceGraph",
   pagination: {
     inputToken: "NextToken",
@@ -3290,6 +3336,8 @@ export const getTraceSegmentDestination: API.OperationMethod<
   input: GetTraceSegmentDestinationRequest,
   output: GetTraceSegmentDestinationResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTraceSegmentDestination",
 }));
 export type GetTraceSummariesError =
@@ -3340,6 +3388,8 @@ export const getTraceSummaries: API.OperationMethod<
   input: GetTraceSummariesRequest,
   output: GetTraceSummariesResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTraceSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -3378,6 +3428,8 @@ export const listResourcePolicies: API.OperationMethod<
   input: ListResourcePoliciesRequest,
   output: ListResourcePoliciesResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourcePolicies",
   pagination: {
     inputToken: "NextToken",
@@ -3414,6 +3466,8 @@ export const listRetrievedTraces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRetrievedTraces",
 }));
 export type ListTagsForResourceError =
@@ -3452,6 +3506,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -3475,6 +3531,8 @@ export const putEncryptionConfig: API.OperationMethod<
   input: PutEncryptionConfigRequest,
   output: PutEncryptionConfigResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEncryptionConfig",
 }));
 export type PutResourcePolicyError =
@@ -3507,6 +3565,8 @@ export const putResourcePolicy: API.OperationMethod<
     PolicySizeLimitExceededException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type PutTelemetryRecordsError =
@@ -3525,6 +3585,8 @@ export const putTelemetryRecords: API.OperationMethod<
   input: PutTelemetryRecordsRequest,
   output: PutTelemetryRecordsResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTelemetryRecords",
 }));
 export type PutTraceSegmentsError =
@@ -3594,6 +3656,8 @@ export const putTraceSegments: API.OperationMethod<
   input: PutTraceSegmentsRequest,
   output: PutTraceSegmentsResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTraceSegments",
 }));
 export type StartTraceRetrievalError =
@@ -3623,6 +3687,8 @@ export const startTraceRetrieval: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTraceRetrieval",
 }));
 export type TagResourceError =
@@ -3648,6 +3714,8 @@ export const tagResource: API.OperationMethod<
     ThrottledException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3672,6 +3740,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateGroupError =
@@ -3690,6 +3760,8 @@ export const updateGroup: API.OperationMethod<
   input: UpdateGroupRequest,
   output: UpdateGroupResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroup",
 }));
 export type UpdateIndexingRuleError =
@@ -3715,6 +3787,8 @@ export const updateIndexingRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIndexingRule",
 }));
 export type UpdateSamplingRuleError =
@@ -3733,6 +3807,8 @@ export const updateSamplingRule: API.OperationMethod<
   input: UpdateSamplingRuleRequest,
   output: UpdateSamplingRuleResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSamplingRule",
 }));
 export type UpdateTraceSegmentDestinationError =
@@ -3751,5 +3827,7 @@ export const updateTraceSegmentDestination: API.OperationMethod<
   input: UpdateTraceSegmentDestinationRequest,
   output: UpdateTraceSegmentDestinationResult,
   errors: [InvalidRequestException, ThrottledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTraceSegmentDestination",
 }));

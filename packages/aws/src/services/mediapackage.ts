@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2180,6 +2182,8 @@ export const configureLogs: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfigureLogs",
 }));
 export type CreateChannelError =
@@ -2209,6 +2213,8 @@ export const createChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
 export type CreateHarvestJobError =
@@ -2238,6 +2244,8 @@ export const createHarvestJob: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHarvestJob",
 }));
 export type CreateOriginEndpointError =
@@ -2267,6 +2275,8 @@ export const createOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOriginEndpoint",
 }));
 export type DeleteChannelError =
@@ -2296,6 +2306,8 @@ export const deleteChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannel",
 }));
 export type DeleteOriginEndpointError =
@@ -2325,6 +2337,8 @@ export const deleteOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOriginEndpoint",
 }));
 export type DescribeChannelError =
@@ -2354,6 +2368,8 @@ export const describeChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannel",
 }));
 export type DescribeHarvestJobError =
@@ -2383,6 +2399,8 @@ export const describeHarvestJob: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHarvestJob",
 }));
 export type DescribeOriginEndpointError =
@@ -2412,6 +2430,8 @@ export const describeOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOriginEndpoint",
 }));
 export type ListChannelsError =
@@ -2456,6 +2476,8 @@ export const listChannels: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
@@ -2506,6 +2528,8 @@ export const listHarvestJobs: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHarvestJobs",
   pagination: {
     inputToken: "NextToken",
@@ -2556,6 +2580,8 @@ export const listOriginEndpoints: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOriginEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -2577,6 +2603,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RotateChannelCredentialsError =
@@ -2606,6 +2634,8 @@ export const rotateChannelCredentials: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateChannelCredentials",
 }));
 export type RotateIngestEndpointCredentialsError =
@@ -2635,6 +2665,8 @@ export const rotateIngestEndpointCredentials: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RotateIngestEndpointCredentials",
 }));
 export type TagResourceError = CommonErrors;
@@ -2650,6 +2682,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
@@ -2665,6 +2699,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateChannelError =
@@ -2694,6 +2730,8 @@ export const updateChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
 export type UpdateOriginEndpointError =
@@ -2723,5 +2761,7 @@ export const updateOriginEndpoint: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOriginEndpoint",
 }));

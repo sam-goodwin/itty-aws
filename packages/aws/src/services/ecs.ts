@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -7396,6 +7398,8 @@ export const deleteAccountSetting: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountSetting",
 }));
 export type DeregisterTaskDefinitionError =
@@ -7427,6 +7431,8 @@ export const deregisterTaskDefinition: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterTaskDefinition",
 }));
 export type DescribeTaskDefinitionError =
@@ -7454,6 +7460,8 @@ export const describeTaskDefinition: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTaskDefinition",
 }));
 export type DiscoverPollEndpointError =
@@ -7481,6 +7489,8 @@ export const discoverPollEndpoint: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DiscoverPollEndpoint",
 }));
 export type ListAccountSettingsError =
@@ -7521,6 +7531,8 @@ export const listAccountSettings: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountSettings",
   pagination: {
     inputToken: "nextToken",
@@ -7569,6 +7581,8 @@ export const listServicesByNamespace: API.OperationMethod<
     NamespaceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServicesByNamespace",
   pagination: {
     inputToken: "nextToken",
@@ -7602,6 +7616,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTaskDefinitionFamiliesError =
@@ -7644,6 +7660,8 @@ export const listTaskDefinitionFamilies: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTaskDefinitionFamilies",
   pagination: {
     inputToken: "nextToken",
@@ -7677,6 +7695,8 @@ export const putAccountSetting: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountSetting",
 }));
 export type PutAccountSettingDefaultError =
@@ -7702,6 +7722,8 @@ export const putAccountSettingDefault: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountSettingDefault",
 }));
 export type TagResourceError =
@@ -7733,6 +7755,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -7762,6 +7786,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateCapacityProviderError =
@@ -7795,6 +7821,8 @@ export const createCapacityProvider: API.OperationMethod<
     UnsupportedFeatureException,
     UpdateInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapacityProvider",
 }));
 export type UpdateCapacityProviderError =
@@ -7826,6 +7854,8 @@ export const updateCapacityProvider: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCapacityProvider",
 }));
 export type DeleteCapacityProviderError =
@@ -7861,6 +7891,8 @@ export const deleteCapacityProvider: API.OperationMethod<
     UnsupportedFeatureException,
     UpdateInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCapacityProvider",
 }));
 export type DescribeCapacityProvidersError =
@@ -7890,6 +7922,8 @@ export const describeCapacityProviders: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityProviders",
 }));
 export type UpdateClusterError =
@@ -7919,6 +7953,8 @@ export const updateCluster: API.OperationMethod<
     NamespaceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
 export type DeleteClusterError =
@@ -7958,6 +7994,8 @@ export const deleteCluster: API.OperationMethod<
     ServerException,
     UpdateInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type PutClusterCapacityProvidersError =
@@ -7995,6 +8033,8 @@ export const putClusterCapacityProviders: API.OperationMethod<
     ServerException,
     UpdateInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutClusterCapacityProviders",
 }));
 export type UpdateClusterSettingsError =
@@ -8024,6 +8064,8 @@ export const updateClusterSettings: API.OperationMethod<
     ServerException,
     UpdateInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClusterSettings",
 }));
 export type CreateClusterError =
@@ -8053,6 +8095,8 @@ export const createCluster: API.OperationMethod<
     NamespaceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type DeregisterContainerInstanceError =
@@ -8086,6 +8130,8 @@ export const deregisterContainerInstance: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterContainerInstance",
 }));
 export type DescribeClustersError =
@@ -8113,6 +8159,8 @@ export const describeClusters: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusters",
 }));
 export type ExecuteCommandError =
@@ -8146,6 +8194,8 @@ export const executeCommand: API.OperationMethod<
     ServerException,
     TargetNotConnectedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteCommand",
 }));
 export type ListAttributesError =
@@ -8188,6 +8238,8 @@ export const listAttributes: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttributes",
   pagination: {
     inputToken: "nextToken",
@@ -8234,6 +8286,8 @@ export const listClusters: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
@@ -8282,6 +8336,8 @@ export const listContainerInstances: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContainerInstances",
   pagination: {
     inputToken: "nextToken",
@@ -8317,6 +8373,8 @@ export const submitAttachmentStateChanges: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitAttachmentStateChanges",
 }));
 export type SubmitContainerStateChangeError =
@@ -8346,6 +8404,8 @@ export const submitContainerStateChange: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitContainerStateChange",
 }));
 export type SubmitTaskStateChangeError =
@@ -8375,6 +8435,8 @@ export const submitTaskStateChange: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitTaskStateChange",
 }));
 export type DeleteAttributesError =
@@ -8404,6 +8466,8 @@ export const deleteAttributes: API.OperationMethod<
     ServerException,
     TargetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAttributes",
 }));
 export type DescribeContainerInstancesError =
@@ -8431,6 +8495,8 @@ export const describeContainerInstances: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContainerInstances",
 }));
 export type ListTasksError =
@@ -8477,6 +8543,8 @@ export const listTasks: API.OperationMethod<
     ServerException,
     ServiceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTasks",
   pagination: {
     inputToken: "nextToken",
@@ -8514,6 +8582,8 @@ export const putAttributes: API.OperationMethod<
     ServerException,
     TargetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAttributes",
 }));
 export type RegisterContainerInstanceError =
@@ -8543,6 +8613,8 @@ export const registerContainerInstance: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterContainerInstance",
 }));
 export type UpdateContainerAgentError =
@@ -8582,6 +8654,8 @@ export const updateContainerAgent: API.OperationMethod<
     ServerException,
     UpdateInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContainerAgent",
 }));
 export type UpdateContainerInstancesStateError =
@@ -8627,6 +8701,8 @@ export const updateContainerInstancesState: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContainerInstancesState",
 }));
 export type DescribeDaemonDeploymentsError =
@@ -8658,6 +8734,8 @@ export const describeDaemonDeployments: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDaemonDeployments",
 }));
 export type CreateDaemonError =
@@ -8695,6 +8773,8 @@ export const createDaemon: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDaemon",
 }));
 export type DeleteDaemonError =
@@ -8730,6 +8810,8 @@ export const deleteDaemon: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDaemon",
 }));
 export type DescribeDaemonError =
@@ -8761,6 +8843,8 @@ export const describeDaemon: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDaemon",
 }));
 export type ListDaemonDeploymentsError =
@@ -8790,6 +8874,8 @@ export const listDaemonDeployments: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDaemonDeployments",
 }));
 export type ListDaemonsError =
@@ -8819,6 +8905,8 @@ export const listDaemons: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDaemons",
 }));
 export type UpdateDaemonError =
@@ -8860,6 +8948,8 @@ export const updateDaemon: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDaemon",
 }));
 export type DescribeDaemonRevisionsError =
@@ -8891,6 +8981,8 @@ export const describeDaemonRevisions: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDaemonRevisions",
 }));
 export type DeleteDaemonTaskDefinitionError =
@@ -8918,6 +9010,8 @@ export const deleteDaemonTaskDefinition: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDaemonTaskDefinition",
 }));
 export type DescribeDaemonTaskDefinitionError =
@@ -8943,6 +9037,8 @@ export const describeDaemonTaskDefinition: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDaemonTaskDefinition",
 }));
 export type ListDaemonTaskDefinitionsError =
@@ -8968,6 +9064,8 @@ export const listDaemonTaskDefinitions: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDaemonTaskDefinitions",
 }));
 export type RegisterDaemonTaskDefinitionError =
@@ -8999,6 +9097,8 @@ export const registerDaemonTaskDefinition: API.OperationMethod<
     LimitExceededException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterDaemonTaskDefinition",
 }));
 export type DescribeServiceDeploymentsError =
@@ -9032,6 +9132,8 @@ export const describeServiceDeployments: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceDeployments",
 }));
 export type UpdateServicePrimaryTaskSetError =
@@ -9067,6 +9169,8 @@ export const updateServicePrimaryTaskSet: API.OperationMethod<
     TaskSetNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServicePrimaryTaskSet",
 }));
 export type CreateExpressGatewayServiceError =
@@ -9104,6 +9208,8 @@ export const createExpressGatewayService: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExpressGatewayService",
 }));
 export type CreateServiceError =
@@ -9231,6 +9337,8 @@ export const createService: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateService",
 }));
 export type DeleteExpressGatewayServiceError =
@@ -9268,6 +9376,8 @@ export const deleteExpressGatewayService: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExpressGatewayService",
 }));
 export type DeleteServiceError =
@@ -9301,6 +9411,8 @@ export const deleteService: API.OperationMethod<
     ServerException,
     ServiceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteService",
 }));
 export type DescribeExpressGatewayServiceError =
@@ -9336,6 +9448,8 @@ export const describeExpressGatewayService: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExpressGatewayService",
 }));
 export type DescribeServicesError =
@@ -9363,6 +9477,8 @@ export const describeServices: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServices",
 }));
 export type ListServiceDeploymentsError =
@@ -9398,6 +9514,8 @@ export const listServiceDeployments: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceDeployments",
 }));
 export type ListServicesError =
@@ -9440,6 +9558,8 @@ export const listServices: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "nextToken",
@@ -9485,6 +9605,8 @@ export const stopServiceDeployment: API.OperationMethod<
     ServiceDeploymentNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopServiceDeployment",
 }));
 export type UpdateExpressGatewayServiceError =
@@ -9522,6 +9644,8 @@ export const updateExpressGatewayService: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateExpressGatewayService",
 }));
 export type UpdateServiceError =
@@ -9603,6 +9727,8 @@ export const updateService: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateService",
 }));
 export type DescribeServiceRevisionsError =
@@ -9638,6 +9764,8 @@ export const describeServiceRevisions: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceRevisions",
 }));
 export type DeleteTaskDefinitionsError =
@@ -9673,6 +9801,8 @@ export const deleteTaskDefinitions: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTaskDefinitions",
 }));
 export type ListTaskDefinitionsError =
@@ -9713,6 +9843,8 @@ export const listTaskDefinitions: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTaskDefinitions",
   pagination: {
     inputToken: "nextToken",
@@ -9750,6 +9882,8 @@ export const registerTaskDefinition: API.OperationMethod<
     LimitExceededException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterTaskDefinition",
 }));
 export type DescribeTasksError =
@@ -9781,6 +9915,8 @@ export const describeTasks: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTasks",
 }));
 export type GetTaskProtectionError =
@@ -9812,6 +9948,8 @@ export const getTaskProtection: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTaskProtection",
 }));
 export type RunTaskError =
@@ -9877,6 +10015,8 @@ export const runTask: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RunTask",
 }));
 export type StartTaskError =
@@ -9916,6 +10056,8 @@ export const startTask: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTask",
 }));
 export type StopTaskError =
@@ -9949,6 +10091,8 @@ export const stopTask: API.OperationMethod<
     InvalidParameterException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTask",
 }));
 export type UpdateTaskProtectionError =
@@ -9990,6 +10134,8 @@ export const updateTaskProtection: API.OperationMethod<
     ServerException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTaskProtection",
 }));
 export type UpdateTaskSetError =
@@ -10027,6 +10173,8 @@ export const updateTaskSet: API.OperationMethod<
     TaskSetNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTaskSet",
 }));
 export type DeleteTaskSetError =
@@ -10064,6 +10212,8 @@ export const deleteTaskSet: API.OperationMethod<
     TaskSetNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTaskSet",
 }));
 export type CreateTaskSetError =
@@ -10109,6 +10259,8 @@ export const createTaskSet: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTaskSet",
 }));
 export type DescribeTaskSetsError =
@@ -10142,5 +10294,7 @@ export const describeTaskSets: API.OperationMethod<
     ServiceNotFoundException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTaskSets",
 }));

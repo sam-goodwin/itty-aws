@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1357,6 +1359,8 @@ export const disableDefaultKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableDefaultKeyReplicationRegions",
 }));
 export type EnableDefaultKeyReplicationRegionsError =
@@ -1400,6 +1404,8 @@ export const enableDefaultKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableDefaultKeyReplicationRegions",
 }));
 export type ExportKeyError =
@@ -1519,6 +1525,8 @@ export const exportKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportKey",
 }));
 export type GetCertificateSigningRequestError =
@@ -1548,6 +1556,8 @@ export const getCertificateSigningRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCertificateSigningRequest",
 }));
 export type GetDefaultKeyReplicationRegionsError =
@@ -1589,6 +1599,8 @@ export const getDefaultKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDefaultKeyReplicationRegions",
 }));
 export type GetParametersForExportError =
@@ -1634,6 +1646,8 @@ export const getParametersForExport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParametersForExport",
 }));
 export type GetParametersForImportError =
@@ -1679,6 +1693,8 @@ export const getParametersForImport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParametersForImport",
 }));
 export type GetPublicKeyCertificateError =
@@ -1712,6 +1728,8 @@ export const getPublicKeyCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPublicKeyCertificate",
 }));
 export type ImportKeyError =
@@ -1839,6 +1857,8 @@ export const importKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportKey",
 }));
 export type ListTagsForResourceError =
@@ -1893,6 +1913,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -1944,6 +1966,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1985,6 +2009,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateAliasError =
@@ -2034,6 +2060,8 @@ export const createAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlias",
 }));
 export type GetAliasError =
@@ -2075,6 +2103,8 @@ export const getAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAlias",
 }));
 export type UpdateAliasError =
@@ -2118,6 +2148,8 @@ export const updateAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAlias",
 }));
 export type DeleteAliasError =
@@ -2163,6 +2195,8 @@ export const deleteAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlias",
 }));
 export type ListAliasesError =
@@ -2221,6 +2255,8 @@ export const listAliases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAliases",
   pagination: {
     inputToken: "NextToken",
@@ -2280,6 +2316,8 @@ export const createKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKey",
 }));
 export type GetKeyError =
@@ -2319,6 +2357,8 @@ export const getKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKey",
 }));
 export type DeleteKeyError =
@@ -2364,6 +2404,8 @@ export const deleteKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKey",
 }));
 export type ListKeysError =
@@ -2420,6 +2462,8 @@ export const listKeys: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeys",
   pagination: {
     inputToken: "NextToken",
@@ -2471,6 +2515,8 @@ export const addKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddKeyReplicationRegions",
 }));
 export type RemoveKeyReplicationRegionsError =
@@ -2514,6 +2560,8 @@ export const removeKeyReplicationRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveKeyReplicationRegions",
 }));
 export type RestoreKeyError =
@@ -2559,6 +2607,8 @@ export const restoreKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreKey",
 }));
 export type StartKeyUsageError =
@@ -2598,6 +2648,8 @@ export const startKeyUsage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartKeyUsage",
 }));
 export type StopKeyUsageError =
@@ -2641,5 +2693,7 @@ export const stopKeyUsage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopKeyUsage",
 }));

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3675,6 +3677,8 @@ export const completeResourceTokenAuth: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteResourceTokenAuth",
 }));
 export type GetResourceApiKeyError =
@@ -3704,6 +3708,8 @@ export const getResourceApiKey: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceApiKey",
 }));
 export type GetResourceOauth2TokenError =
@@ -3733,6 +3739,8 @@ export const getResourceOauth2Token: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceOauth2Token",
 }));
 export type GetWorkloadAccessTokenError =
@@ -3762,6 +3770,8 @@ export const getWorkloadAccessToken: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkloadAccessToken",
 }));
 export type GetWorkloadAccessTokenForJWTError =
@@ -3791,6 +3801,8 @@ export const getWorkloadAccessTokenForJWT: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkloadAccessTokenForJWT",
 }));
 export type GetWorkloadAccessTokenForUserIdError =
@@ -3820,6 +3832,8 @@ export const getWorkloadAccessTokenForUserId: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkloadAccessTokenForUserId",
 }));
 export type InvokeCodeInterpreterError =
@@ -3861,6 +3875,8 @@ export const invokeCodeInterpreter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeCodeInterpreter",
 }));
 export type GetAgentCardError =
@@ -3892,6 +3908,8 @@ export const getAgentCard: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAgentCard",
 }));
 export type InvokeAgentRuntimeError =
@@ -3933,6 +3951,8 @@ export const invokeAgentRuntime: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeAgentRuntime",
 }));
 export type InvokeAgentRuntimeCommandError =
@@ -3968,6 +3988,8 @@ export const invokeAgentRuntimeCommand: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeAgentRuntimeCommand",
 }));
 export type StopRuntimeSessionError =
@@ -4003,6 +4025,8 @@ export const stopRuntimeSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRuntimeSession",
 }));
 export type SaveBrowserSessionProfileError =
@@ -4042,6 +4066,8 @@ export const saveBrowserSessionProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SaveBrowserSessionProfile",
 }));
 export type GetBrowserSessionError =
@@ -4079,6 +4105,8 @@ export const getBrowserSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBrowserSession",
 }));
 export type InvokeBrowserError =
@@ -4118,6 +4146,8 @@ export const invokeBrowser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeBrowser",
 }));
 export type ListBrowserSessionsError =
@@ -4155,6 +4185,8 @@ export const listBrowserSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBrowserSessions",
 }));
 export type StartBrowserSessionError =
@@ -4200,6 +4232,8 @@ export const startBrowserSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBrowserSession",
 }));
 export type StopBrowserSessionError =
@@ -4239,6 +4273,8 @@ export const stopBrowserSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopBrowserSession",
 }));
 export type UpdateBrowserStreamError =
@@ -4270,6 +4306,8 @@ export const updateBrowserStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBrowserStream",
 }));
 export type GetCodeInterpreterSessionError =
@@ -4307,6 +4345,8 @@ export const getCodeInterpreterSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCodeInterpreterSession",
 }));
 export type ListCodeInterpreterSessionsError =
@@ -4344,6 +4384,8 @@ export const listCodeInterpreterSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCodeInterpreterSessions",
 }));
 export type StartCodeInterpreterSessionError =
@@ -4385,6 +4427,8 @@ export const startCodeInterpreterSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCodeInterpreterSession",
 }));
 export type StopCodeInterpreterSessionError =
@@ -4424,6 +4468,8 @@ export const stopCodeInterpreterSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCodeInterpreterSession",
 }));
 export type EvaluateError =
@@ -4459,6 +4505,8 @@ export const evaluate: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Evaluate",
 }));
 export type BatchCreateMemoryRecordsError =
@@ -4488,6 +4536,8 @@ export const batchCreateMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateMemoryRecords",
 }));
 export type BatchDeleteMemoryRecordsError =
@@ -4517,6 +4567,8 @@ export const batchDeleteMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteMemoryRecords",
 }));
 export type BatchUpdateMemoryRecordsError =
@@ -4546,6 +4598,8 @@ export const batchUpdateMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateMemoryRecords",
 }));
 export type CreateEventError =
@@ -4583,6 +4637,8 @@ export const createEvent: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEvent",
 }));
 export type DeleteEventError =
@@ -4616,6 +4672,8 @@ export const deleteEvent: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEvent",
 }));
 export type DeleteMemoryRecordError =
@@ -4649,6 +4707,8 @@ export const deleteMemoryRecord: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMemoryRecord",
 }));
 export type GetEventError =
@@ -4682,6 +4742,8 @@ export const getEvent: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEvent",
 }));
 export type GetMemoryRecordError =
@@ -4715,6 +4777,8 @@ export const getMemoryRecord: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMemoryRecord",
 }));
 export type ListActorsError =
@@ -4763,6 +4827,8 @@ export const listActors: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActors",
   pagination: {
     inputToken: "nextToken",
@@ -4817,6 +4883,8 @@ export const listEvents: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEvents",
   pagination: {
     inputToken: "nextToken",
@@ -4869,6 +4937,8 @@ export const listMemoryExtractionJobs: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMemoryExtractionJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4923,6 +4993,8 @@ export const listMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMemoryRecords",
   pagination: {
     inputToken: "nextToken",
@@ -4979,6 +5051,8 @@ export const listSessions: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessions",
   pagination: {
     inputToken: "nextToken",
@@ -5033,6 +5107,8 @@ export const retrieveMemoryRecords: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetrieveMemoryRecords",
   pagination: {
     inputToken: "nextToken",
@@ -5070,6 +5146,8 @@ export const startMemoryExtractionJob: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMemoryExtractionJob",
 }));
 export type SearchRegistryRecordsError =
@@ -5099,5 +5177,7 @@ export const searchRegistryRecords: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchRegistryRecords",
 }));

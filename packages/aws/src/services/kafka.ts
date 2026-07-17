@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5178,6 +5180,8 @@ export const batchAssociateScramSecret: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateScramSecret",
 }));
 export type BatchDisassociateScramSecretError =
@@ -5209,6 +5213,8 @@ export const batchDisassociateScramSecret: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateScramSecret",
 }));
 export type CreateClusterError =
@@ -5240,6 +5246,8 @@ export const createCluster: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateClusterV2Error =
@@ -5271,6 +5279,8 @@ export const createClusterV2: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClusterV2",
 }));
 export type CreateConfigurationError =
@@ -5302,6 +5312,8 @@ export const createConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfiguration",
 }));
 export type CreateReplicatorError =
@@ -5335,6 +5347,8 @@ export const createReplicator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicator",
 }));
 export type CreateTopicError =
@@ -5384,6 +5398,8 @@ export const createTopic: API.OperationMethod<
     UnauthorizedException,
     UnknownTopicOrPartitionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTopic",
 }));
 export type CreateVpcConnectionError =
@@ -5413,6 +5429,8 @@ export const createVpcConnection: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcConnection",
 }));
 export type DeleteClusterError =
@@ -5438,6 +5456,8 @@ export const deleteCluster: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type DeleteClusterPolicyError =
@@ -5463,6 +5483,8 @@ export const deleteClusterPolicy: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterPolicy",
 }));
 export type DeleteConfigurationError =
@@ -5488,6 +5510,8 @@ export const deleteConfiguration: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfiguration",
 }));
 export type DeleteReplicatorError =
@@ -5519,6 +5543,8 @@ export const deleteReplicator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicator",
 }));
 export type DeleteTopicError =
@@ -5560,6 +5586,8 @@ export const deleteTopic: API.OperationMethod<
     ReassignmentInProgressException,
     UnknownTopicOrPartitionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTopic",
 }));
 export type DeleteVpcConnectionError =
@@ -5585,6 +5613,8 @@ export const deleteVpcConnection: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcConnection",
 }));
 export type DescribeClusterError =
@@ -5612,6 +5642,8 @@ export const describeCluster: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCluster",
 }));
 export type DescribeClusterOperationError =
@@ -5639,6 +5671,8 @@ export const describeClusterOperation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterOperation",
 }));
 export type DescribeClusterOperationV2Error =
@@ -5670,6 +5704,8 @@ export const describeClusterOperationV2: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterOperationV2",
 }));
 export type DescribeClusterV2Error =
@@ -5697,6 +5733,8 @@ export const describeClusterV2: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterV2",
 }));
 export type DescribeConfigurationError =
@@ -5726,6 +5764,8 @@ export const describeConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfiguration",
 }));
 export type DescribeConfigurationRevisionError =
@@ -5755,6 +5795,8 @@ export const describeConfigurationRevision: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationRevision",
 }));
 export type DescribeReplicatorError =
@@ -5786,6 +5828,8 @@ export const describeReplicator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicator",
 }));
 export type DescribeTopicError =
@@ -5813,6 +5857,8 @@ export const describeTopic: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTopic",
 }));
 export type DescribeTopicPartitionsError =
@@ -5855,6 +5901,8 @@ export const describeTopicPartitions: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTopicPartitions",
   pagination: {
     inputToken: "NextToken",
@@ -5890,6 +5938,8 @@ export const describeVpcConnection: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcConnection",
 }));
 export type GetBootstrapBrokersError =
@@ -5917,6 +5967,8 @@ export const getBootstrapBrokers: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBootstrapBrokers",
 }));
 export type GetClusterPolicyError =
@@ -5942,6 +5994,8 @@ export const getClusterPolicy: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterPolicy",
 }));
 export type GetCompatibleKafkaVersionsError =
@@ -5973,6 +6027,8 @@ export const getCompatibleKafkaVersions: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCompatibleKafkaVersions",
 }));
 export type ListClientVpcConnectionsError =
@@ -6015,6 +6071,8 @@ export const listClientVpcConnections: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClientVpcConnections",
   pagination: {
     inputToken: "NextToken",
@@ -6061,6 +6119,8 @@ export const listClusterOperations: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusterOperations",
   pagination: {
     inputToken: "NextToken",
@@ -6113,6 +6173,8 @@ export const listClusterOperationsV2: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusterOperationsV2",
   pagination: {
     inputToken: "NextToken",
@@ -6159,6 +6221,8 @@ export const listClusters: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
@@ -6205,6 +6269,8 @@ export const listClustersV2: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClustersV2",
   pagination: {
     inputToken: "NextToken",
@@ -6255,6 +6321,8 @@ export const listConfigurationRevisions: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationRevisions",
   pagination: {
     inputToken: "NextToken",
@@ -6303,6 +6371,8 @@ export const listConfigurations: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -6349,6 +6419,8 @@ export const listKafkaVersions: API.OperationMethod<
     InternalServerErrorException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKafkaVersions",
   pagination: {
     inputToken: "NextToken",
@@ -6395,6 +6467,8 @@ export const listNodes: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
@@ -6447,6 +6521,8 @@ export const listReplicators: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReplicators",
   pagination: {
     inputToken: "NextToken",
@@ -6499,6 +6575,8 @@ export const listScramSecrets: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScramSecrets",
   pagination: {
     inputToken: "NextToken",
@@ -6528,6 +6606,8 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTopicsError =
@@ -6570,6 +6650,8 @@ export const listTopics: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTopics",
   pagination: {
     inputToken: "NextToken",
@@ -6618,6 +6700,8 @@ export const listVpcConnections: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcConnections",
   pagination: {
     inputToken: "NextToken",
@@ -6647,6 +6731,8 @@ export const putClusterPolicy: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutClusterPolicy",
 }));
 export type RebootBrokerError =
@@ -6678,6 +6764,8 @@ export const rebootBroker: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootBroker",
 }));
 export type RejectClientVpcConnectionError =
@@ -6705,6 +6793,8 @@ export const rejectClientVpcConnection: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectClientVpcConnection",
 }));
 export type TagResourceError =
@@ -6728,6 +6818,8 @@ export const tagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6751,6 +6843,8 @@ export const untagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateBrokerCountError =
@@ -6778,6 +6872,8 @@ export const updateBrokerCount: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBrokerCount",
 }));
 export type UpdateBrokerStorageError =
@@ -6805,6 +6901,8 @@ export const updateBrokerStorage: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBrokerStorage",
 }));
 export type UpdateBrokerTypeError =
@@ -6836,6 +6934,8 @@ export const updateBrokerType: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBrokerType",
 }));
 export type UpdateClusterConfigurationError =
@@ -6865,6 +6965,8 @@ export const updateClusterConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClusterConfiguration",
 }));
 export type UpdateClusterKafkaVersionError =
@@ -6896,6 +6998,8 @@ export const updateClusterKafkaVersion: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClusterKafkaVersion",
 }));
 export type UpdateConfigurationError =
@@ -6925,6 +7029,8 @@ export const updateConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfiguration",
 }));
 export type UpdateConnectivityError =
@@ -6954,6 +7060,8 @@ export const updateConnectivity: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectivity",
 }));
 export type UpdateMonitoringError =
@@ -6981,6 +7089,8 @@ export const updateMonitoring: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMonitoring",
 }));
 export type UpdateRebalancingError =
@@ -7012,6 +7122,8 @@ export const updateRebalancing: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRebalancing",
 }));
 export type UpdateReplicationInfoError =
@@ -7043,6 +7155,8 @@ export const updateReplicationInfo: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReplicationInfo",
 }));
 export type UpdateSecurityError =
@@ -7074,6 +7188,8 @@ export const updateSecurity: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurity",
 }));
 export type UpdateStorageError =
@@ -7105,6 +7221,8 @@ export const updateStorage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStorage",
 }));
 export type UpdateTopicError =
@@ -7150,5 +7268,7 @@ export const updateTopic: API.OperationMethod<
     UnauthorizedException,
     UnknownTopicOrPartitionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTopic",
 }));

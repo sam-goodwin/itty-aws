@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -226,6 +228,8 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [ForbiddenException, GoneException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type GetConnectionError =
@@ -245,6 +249,8 @@ export const getConnection: API.OperationMethod<
   input: GetConnectionRequest,
   output: GetConnectionResponse,
   errors: [ForbiddenException, GoneException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnection",
 }));
 export type PostToConnectionError =
@@ -270,5 +276,7 @@ export const postToConnection: API.OperationMethod<
     LimitExceededException,
     PayloadTooLargeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostToConnection",
 }));

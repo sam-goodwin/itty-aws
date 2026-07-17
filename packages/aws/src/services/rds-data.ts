@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -885,6 +887,8 @@ export const batchExecuteStatement: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchExecuteStatement",
 }));
 export type BeginTransactionError =
@@ -941,6 +945,8 @@ export const beginTransaction: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BeginTransaction",
 }));
 export type CommitTransactionError =
@@ -989,6 +995,8 @@ export const commitTransaction: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CommitTransaction",
 }));
 export type ExecuteSqlError =
@@ -1020,6 +1028,8 @@ export const executeSql: API.OperationMethod<
     InternalServerErrorException,
     ServiceUnavailableError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteSql",
 }));
 export type ExecuteStatementError =
@@ -1075,6 +1085,8 @@ export const executeStatement: API.OperationMethod<
     TransactionNotFoundException,
     UnsupportedResultException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteStatement",
 }));
 export type RollbackTransactionError =
@@ -1122,5 +1134,7 @@ export const rollbackTransaction: API.OperationMethod<
     StatementTimeoutException,
     TransactionNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RollbackTransaction",
 }));

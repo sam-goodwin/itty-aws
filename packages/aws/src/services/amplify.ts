@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2162,6 +2164,8 @@ export const createApp: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApp",
 }));
 export type CreateBackendEnvironmentError =
@@ -2195,6 +2199,8 @@ export const createBackendEnvironment: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackendEnvironment",
 }));
 export type CreateBranchError =
@@ -2224,6 +2230,8 @@ export const createBranch: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBranch",
 }));
 export type CreateDeploymentError =
@@ -2255,6 +2263,8 @@ export const createDeployment: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeployment",
 }));
 export type CreateDomainAssociationError =
@@ -2285,6 +2295,8 @@ export const createDomainAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainAssociation",
 }));
 export type CreateWebhookError =
@@ -2314,6 +2326,8 @@ export const createWebhook: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWebhook",
 }));
 export type DeleteAppError =
@@ -2341,6 +2355,8 @@ export const deleteApp: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApp",
 }));
 export type DeleteBackendEnvironmentError =
@@ -2374,6 +2390,8 @@ export const deleteBackendEnvironment: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackendEnvironment",
 }));
 export type DeleteBranchError =
@@ -2401,6 +2419,8 @@ export const deleteBranch: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBranch",
 }));
 export type DeleteDomainAssociationError =
@@ -2428,6 +2448,8 @@ export const deleteDomainAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainAssociation",
 }));
 export type DeleteJobError =
@@ -2455,6 +2477,8 @@ export const deleteJob: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJob",
 }));
 export type DeleteWebhookError =
@@ -2482,6 +2506,8 @@ export const deleteWebhook: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWebhook",
 }));
 export type GenerateAccessLogsError =
@@ -2507,6 +2533,8 @@ export const generateAccessLogs: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateAccessLogs",
 }));
 export type GetAppError =
@@ -2532,6 +2560,8 @@ export const getApp: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApp",
 }));
 export type GetArtifactUrlError =
@@ -2559,6 +2589,8 @@ export const getArtifactUrl: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArtifactUrl",
 }));
 export type GetBackendEnvironmentError =
@@ -2590,6 +2622,8 @@ export const getBackendEnvironment: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackendEnvironment",
 }));
 export type GetBranchError =
@@ -2615,6 +2649,8 @@ export const getBranch: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBranch",
 }));
 export type GetDomainAssociationError =
@@ -2640,6 +2676,8 @@ export const getDomainAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainAssociation",
 }));
 export type GetJobError =
@@ -2667,6 +2705,8 @@ export const getJob: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJob",
 }));
 export type GetWebhookError =
@@ -2694,6 +2734,8 @@ export const getWebhook: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWebhook",
 }));
 export type ListAppsError =
@@ -2732,6 +2774,8 @@ export const listApps: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApps",
   pagination: {
     inputToken: "nextToken",
@@ -2770,6 +2814,8 @@ export const listArtifacts: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListArtifacts",
 }));
 export type ListBackendEnvironmentsError =
@@ -2799,6 +2845,8 @@ export const listBackendEnvironments: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackendEnvironments",
 }));
 export type ListBranchesError =
@@ -2837,6 +2885,8 @@ export const listBranches: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBranches",
   pagination: {
     inputToken: "nextToken",
@@ -2881,6 +2931,8 @@ export const listDomainAssociations: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -2927,6 +2979,8 @@ export const listJobs: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "nextToken",
@@ -2956,6 +3010,8 @@ export const listTagsForResource: API.OperationMethod<
     InternalFailureException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWebhooksError =
@@ -2981,6 +3037,8 @@ export const listWebhooks: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWebhooks",
 }));
 export type StartDeploymentError =
@@ -3014,6 +3072,8 @@ export const startDeployment: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDeployment",
 }));
 export type StartJobError =
@@ -3041,6 +3101,8 @@ export const startJob: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartJob",
 }));
 export type StopJobError =
@@ -3068,6 +3130,8 @@ export const stopJob: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopJob",
 }));
 export type TagResourceError =
@@ -3091,6 +3155,8 @@ export const tagResource: API.OperationMethod<
     InternalFailureException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3114,6 +3180,8 @@ export const untagResource: API.OperationMethod<
     InternalFailureException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAppError =
@@ -3139,6 +3207,8 @@ export const updateApp: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApp",
 }));
 export type UpdateBranchError =
@@ -3166,6 +3236,8 @@ export const updateBranch: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBranch",
 }));
 export type UpdateDomainAssociationError =
@@ -3193,6 +3265,8 @@ export const updateDomainAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainAssociation",
 }));
 export type UpdateWebhookError =
@@ -3220,5 +3294,7 @@ export const updateWebhook: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWebhook",
 }));

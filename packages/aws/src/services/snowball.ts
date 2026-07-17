@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1542,6 +1544,8 @@ export const cancelCluster: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelCluster",
 }));
 export type CancelJobError =
@@ -1568,6 +1572,8 @@ export const cancelJob: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelJob",
 }));
 export type CreateAddressError =
@@ -1589,6 +1595,8 @@ export const createAddress: API.OperationMethod<
   input: CreateAddressRequest,
   output: CreateAddressResult,
   errors: [InvalidAddressException, UnsupportedAddressException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAddress",
 }));
 export type CreateClusterError =
@@ -1615,6 +1623,8 @@ export const createCluster: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateJobError =
@@ -1721,6 +1731,8 @@ export const createJob: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJob",
 }));
 export type CreateLongTermPricingError =
@@ -1739,6 +1751,8 @@ export const createLongTermPricing: API.OperationMethod<
   input: CreateLongTermPricingRequest,
   output: CreateLongTermPricingResult,
   errors: [InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLongTermPricing",
 }));
 export type CreateReturnShippingLabelError =
@@ -1766,6 +1780,8 @@ export const createReturnShippingLabel: API.OperationMethod<
     InvalidResourceException,
     ReturnShippingLabelAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReturnShippingLabel",
 }));
 export type DescribeAddressError = InvalidResourceException | CommonErrors;
@@ -1782,6 +1798,8 @@ export const describeAddress: API.OperationMethod<
   input: DescribeAddressRequest,
   output: DescribeAddressResult,
   errors: [InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAddress",
 }));
 export type DescribeAddressesError =
@@ -1817,6 +1835,8 @@ export const describeAddresses: API.OperationMethod<
   input: DescribeAddressesRequest,
   output: DescribeAddressesResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAddresses",
   pagination: {
     inputToken: "NextToken",
@@ -1839,6 +1859,8 @@ export const describeCluster: API.OperationMethod<
   input: DescribeClusterRequest,
   output: DescribeClusterResult,
   errors: [InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCluster",
 }));
 export type DescribeJobError = InvalidResourceException | CommonErrors;
@@ -1855,6 +1877,8 @@ export const describeJob: API.OperationMethod<
   input: DescribeJobRequest,
   output: DescribeJobResult,
   errors: [InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJob",
 }));
 export type DescribeReturnShippingLabelError =
@@ -1878,6 +1902,8 @@ export const describeReturnShippingLabel: API.OperationMethod<
     InvalidJobStateException,
     InvalidResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReturnShippingLabel",
 }));
 export type GetJobManifestError =
@@ -1914,6 +1940,8 @@ export const getJobManifest: API.OperationMethod<
   input: GetJobManifestRequest,
   output: GetJobManifestResult,
   errors: [InvalidJobStateException, InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobManifest",
 }));
 export type GetJobUnlockCodeError =
@@ -1946,6 +1974,8 @@ export const getJobUnlockCode: API.OperationMethod<
   input: GetJobUnlockCodeRequest,
   output: GetJobUnlockCodeResult,
   errors: [InvalidJobStateException, InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobUnlockCode",
 }));
 export type GetSnowballUsageError = CommonErrors;
@@ -1965,6 +1995,8 @@ export const getSnowballUsage: API.OperationMethod<
   input: GetSnowballUsageRequest,
   output: GetSnowballUsageResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSnowballUsage",
 }));
 export type GetSoftwareUpdatesError =
@@ -1984,6 +2016,8 @@ export const getSoftwareUpdates: API.OperationMethod<
   input: GetSoftwareUpdatesRequest,
   output: GetSoftwareUpdatesResult,
   errors: [InvalidJobStateException, InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSoftwareUpdates",
 }));
 export type ListClusterJobsError =
@@ -2019,6 +2053,8 @@ export const listClusterJobs: API.OperationMethod<
   input: ListClusterJobsRequest,
   output: ListClusterJobsResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusterJobs",
   pagination: {
     inputToken: "NextToken",
@@ -2057,6 +2093,8 @@ export const listClusters: API.OperationMethod<
   input: ListClustersRequest,
   output: ListClustersResult,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
@@ -2099,6 +2137,8 @@ export const listCompatibleImages: API.OperationMethod<
   input: ListCompatibleImagesRequest,
   output: ListCompatibleImagesResult,
   errors: [Ec2RequestFailedException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCompatibleImages",
   pagination: {
     inputToken: "NextToken",
@@ -2139,6 +2179,8 @@ export const listJobs: API.OperationMethod<
   input: ListJobsRequest,
   output: ListJobsResult,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
@@ -2178,6 +2220,8 @@ export const listLongTermPricing: API.OperationMethod<
   input: ListLongTermPricingRequest,
   output: ListLongTermPricingResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLongTermPricing",
   pagination: {
     inputToken: "NextToken",
@@ -2214,6 +2258,8 @@ export const listPickupLocations: API.OperationMethod<
   input: ListPickupLocationsRequest,
   output: ListPickupLocationsResult,
   errors: [InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPickupLocations",
   pagination: {
     inputToken: "NextToken",
@@ -2238,6 +2284,8 @@ export const listServiceVersions: API.OperationMethod<
   input: ListServiceVersionsRequest,
   output: ListServiceVersionsResult,
   errors: [InvalidNextTokenException, InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceVersions",
 }));
 export type UpdateClusterError =
@@ -2268,6 +2316,8 @@ export const updateCluster: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
 export type UpdateJobError =
@@ -2299,6 +2349,8 @@ export const updateJob: API.OperationMethod<
     InvalidResourceException,
     KMSRequestFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJob",
 }));
 export type UpdateJobShipmentStateError =
@@ -2317,6 +2369,8 @@ export const updateJobShipmentState: API.OperationMethod<
   input: UpdateJobShipmentStateRequest,
   output: UpdateJobShipmentStateResult,
   errors: [InvalidJobStateException, InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJobShipmentState",
 }));
 export type UpdateLongTermPricingError =
@@ -2334,5 +2388,7 @@ export const updateLongTermPricing: API.OperationMethod<
   input: UpdateLongTermPricingRequest,
   output: UpdateLongTermPricingResult,
   errors: [InvalidResourceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLongTermPricing",
 }));

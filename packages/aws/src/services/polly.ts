@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1103,6 +1105,8 @@ export const deleteLexicon: API.OperationMethod<
   input: DeleteLexiconInput,
   output: DeleteLexiconOutput,
   errors: [LexiconNotFoundException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLexicon",
 }));
 export type DescribeVoicesError =
@@ -1140,6 +1144,8 @@ export const describeVoices: API.OperationMethod<
   input: DescribeVoicesInput,
   output: DescribeVoicesOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVoices",
 }));
 export type GetLexiconError =
@@ -1159,6 +1165,8 @@ export const getLexicon: API.OperationMethod<
   input: GetLexiconInput,
   output: GetLexiconOutput,
   errors: [LexiconNotFoundException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLexicon",
 }));
 export type GetSpeechSynthesisTaskError =
@@ -1185,6 +1193,8 @@ export const getSpeechSynthesisTask: API.OperationMethod<
     ServiceFailureException,
     SynthesisTaskNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSpeechSynthesisTask",
 }));
 export type ListLexiconsError =
@@ -1203,6 +1213,8 @@ export const listLexicons: API.OperationMethod<
   input: ListLexiconsInput,
   output: ListLexiconsOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLexicons",
 }));
 export type ListSpeechSynthesisTasksError =
@@ -1238,6 +1250,8 @@ export const listSpeechSynthesisTasks: API.OperationMethod<
   input: ListSpeechSynthesisTasksInput,
   output: ListSpeechSynthesisTasksOutput,
   errors: [InvalidNextTokenException, ServiceFailureException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpeechSynthesisTasks",
   pagination: {
     inputToken: "NextToken",
@@ -1280,6 +1294,8 @@ export const putLexicon: API.OperationMethod<
     UnsupportedPlsAlphabetException,
     UnsupportedPlsLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLexicon",
 }));
 export type StartSpeechSynthesisStreamError =
@@ -1311,6 +1327,8 @@ export const startSpeechSynthesisStream: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSpeechSynthesisStream",
 }));
 export type StartSpeechSynthesisTaskError =
@@ -1361,6 +1379,8 @@ export const startSpeechSynthesisTask: API.OperationMethod<
     SsmlMarksNotSupportedForTextTypeException,
     TextLengthExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSpeechSynthesisTask",
 }));
 export type SynthesizeSpeechError =
@@ -1400,5 +1420,7 @@ export const synthesizeSpeech: API.OperationMethod<
     SsmlMarksNotSupportedForTextTypeException,
     TextLengthExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SynthesizeSpeech",
 }));

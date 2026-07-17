@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1373,6 +1375,8 @@ export const amendBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AmendBenefitApplication",
 }));
 export type AssociateBenefitApplicationResourceError =
@@ -1402,6 +1406,8 @@ export const associateBenefitApplicationResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateBenefitApplicationResource",
 }));
 export type CancelBenefitApplicationError =
@@ -1431,6 +1437,8 @@ export const cancelBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelBenefitApplication",
 }));
 export type CreateBenefitApplicationError =
@@ -1460,6 +1468,8 @@ export const createBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBenefitApplication",
 }));
 export type DisassociateBenefitApplicationResourceError =
@@ -1489,6 +1499,8 @@ export const disassociateBenefitApplicationResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateBenefitApplicationResource",
 }));
 export type GetBenefitError =
@@ -1516,6 +1528,8 @@ export const getBenefit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBenefit",
 }));
 export type GetBenefitAllocationError =
@@ -1543,6 +1557,8 @@ export const getBenefitAllocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBenefitAllocation",
 }));
 export type GetBenefitApplicationError =
@@ -1572,6 +1588,8 @@ export const getBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBenefitApplication",
 }));
 export type ListBenefitAllocationsError =
@@ -1614,6 +1632,8 @@ export const listBenefitAllocations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBenefitAllocations",
   pagination: {
     inputToken: "NextToken",
@@ -1662,6 +1682,8 @@ export const listBenefitApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBenefitApplications",
   pagination: {
     inputToken: "NextToken",
@@ -1710,6 +1732,8 @@ export const listBenefits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBenefits",
   pagination: {
     inputToken: "NextToken",
@@ -1743,6 +1767,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RecallBenefitApplicationError =
@@ -1772,6 +1798,8 @@ export const recallBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RecallBenefitApplication",
 }));
 export type SubmitBenefitApplicationError =
@@ -1801,6 +1829,8 @@ export const submitBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitBenefitApplication",
 }));
 export type TagResourceError =
@@ -1832,6 +1862,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1863,6 +1895,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateBenefitApplicationError =
@@ -1892,5 +1926,7 @@ export const updateBenefitApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBenefitApplication",
 }));

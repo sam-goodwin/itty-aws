@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4912,6 +4914,8 @@ export const batchDetectDominantLanguage: API.OperationMethod<
     InvalidRequestException,
     TextSizeLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectDominantLanguage",
 }));
 export type BatchDetectEntitiesError =
@@ -4941,6 +4945,8 @@ export const batchDetectEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectEntities",
 }));
 export type BatchDetectKeyPhrasesError =
@@ -4968,6 +4974,8 @@ export const batchDetectKeyPhrases: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectKeyPhrases",
 }));
 export type BatchDetectSentimentError =
@@ -4997,6 +5005,8 @@ export const batchDetectSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectSentiment",
 }));
 export type BatchDetectSyntaxError =
@@ -5026,6 +5036,8 @@ export const batchDetectSyntax: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectSyntax",
 }));
 export type BatchDetectTargetedSentimentError =
@@ -5056,6 +5068,8 @@ export const batchDetectTargetedSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDetectTargetedSentiment",
 }));
 export type ClassifyDocumentError =
@@ -5101,6 +5115,8 @@ export const classifyDocument: API.OperationMethod<
     ResourceUnavailableException,
     TextSizeLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ClassifyDocument",
 }));
 export type ContainsPiiEntitiesError =
@@ -5128,6 +5144,8 @@ export const containsPiiEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ContainsPiiEntities",
 }));
 export type CreateDatasetError =
@@ -5161,6 +5179,8 @@ export const createDataset: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
 export type CreateDocumentClassifierError =
@@ -5198,6 +5218,8 @@ export const createDocumentClassifier: API.OperationMethod<
     TooManyTagsException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDocumentClassifier",
 }));
 export type CreateEndpointError =
@@ -5233,6 +5255,8 @@ export const createEndpoint: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpoint",
 }));
 export type CreateEntityRecognizerError =
@@ -5268,6 +5292,8 @@ export const createEntityRecognizer: API.OperationMethod<
     TooManyTagsException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEntityRecognizer",
 }));
 export type CreateFlywheelError =
@@ -5319,6 +5345,8 @@ export const createFlywheel: API.OperationMethod<
     TooManyTagsException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFlywheel",
 }));
 export type DeleteDocumentClassifierError =
@@ -5356,6 +5384,8 @@ export const deleteDocumentClassifier: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDocumentClassifier",
 }));
 export type DeleteEndpointError =
@@ -5385,6 +5415,8 @@ export const deleteEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpoint",
 }));
 export type DeleteEntityRecognizerError =
@@ -5422,6 +5454,8 @@ export const deleteEntityRecognizer: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEntityRecognizer",
 }));
 export type DeleteFlywheelError =
@@ -5455,6 +5489,8 @@ export const deleteFlywheel: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFlywheel",
 }));
 export type DeleteResourcePolicyError =
@@ -5478,6 +5514,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DescribeDatasetError =
@@ -5505,6 +5543,8 @@ export const describeDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
 export type DescribeDocumentClassificationJobError =
@@ -5531,6 +5571,8 @@ export const describeDocumentClassificationJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDocumentClassificationJob",
 }));
 export type DescribeDocumentClassifierError =
@@ -5556,6 +5598,8 @@ export const describeDocumentClassifier: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDocumentClassifier",
 }));
 export type DescribeDominantLanguageDetectionJobError =
@@ -5582,6 +5626,8 @@ export const describeDominantLanguageDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDominantLanguageDetectionJob",
 }));
 export type DescribeEndpointError =
@@ -5609,6 +5655,8 @@ export const describeEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoint",
 }));
 export type DescribeEntitiesDetectionJobError =
@@ -5635,6 +5683,8 @@ export const describeEntitiesDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntitiesDetectionJob",
 }));
 export type DescribeEntityRecognizerError =
@@ -5661,6 +5711,8 @@ export const describeEntityRecognizer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntityRecognizer",
 }));
 export type DescribeEventsDetectionJobError =
@@ -5686,6 +5738,8 @@ export const describeEventsDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventsDetectionJob",
 }));
 export type DescribeFlywheelError =
@@ -5712,6 +5766,8 @@ export const describeFlywheel: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlywheel",
 }));
 export type DescribeFlywheelIterationError =
@@ -5739,6 +5795,8 @@ export const describeFlywheelIteration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlywheelIteration",
 }));
 export type DescribeKeyPhrasesDetectionJobError =
@@ -5765,6 +5823,8 @@ export const describeKeyPhrasesDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKeyPhrasesDetectionJob",
 }));
 export type DescribePiiEntitiesDetectionJobError =
@@ -5791,6 +5851,8 @@ export const describePiiEntitiesDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePiiEntitiesDetectionJob",
 }));
 export type DescribeResourcePolicyError =
@@ -5815,6 +5877,8 @@ export const describeResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
 export type DescribeSentimentDetectionJobError =
@@ -5841,6 +5905,8 @@ export const describeSentimentDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSentimentDetectionJob",
 }));
 export type DescribeTargetedSentimentDetectionJobError =
@@ -5867,6 +5933,8 @@ export const describeTargetedSentimentDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTargetedSentimentDetectionJob",
 }));
 export type DescribeTopicsDetectionJobError =
@@ -5893,6 +5961,8 @@ export const describeTopicsDetectionJob: API.OperationMethod<
     JobNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTopicsDetectionJob",
 }));
 export type DetectDominantLanguageError =
@@ -5917,6 +5987,8 @@ export const detectDominantLanguage: API.OperationMethod<
     InvalidRequestException,
     TextSizeLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectDominantLanguage",
 }));
 export type DetectEntitiesError =
@@ -5961,6 +6033,8 @@ export const detectEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectEntities",
 }));
 export type DetectKeyPhrasesError =
@@ -5986,6 +6060,8 @@ export const detectKeyPhrases: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectKeyPhrases",
 }));
 export type DetectPiiEntitiesError =
@@ -6012,6 +6088,8 @@ export const detectPiiEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectPiiEntities",
 }));
 export type DetectSentimentError =
@@ -6038,6 +6116,8 @@ export const detectSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectSentiment",
 }));
 export type DetectSyntaxError =
@@ -6065,6 +6145,8 @@ export const detectSyntax: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectSyntax",
 }));
 export type DetectTargetedSentimentError =
@@ -6092,6 +6174,8 @@ export const detectTargetedSentiment: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectTargetedSentiment",
 }));
 export type DetectToxicContentError =
@@ -6119,6 +6203,8 @@ export const detectToxicContent: API.OperationMethod<
     TextSizeLimitExceededException,
     UnsupportedLanguageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectToxicContent",
 }));
 export type ImportModelError =
@@ -6161,6 +6247,8 @@ export const importModel: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportModel",
 }));
 export type ListDatasetsError =
@@ -6204,6 +6292,8 @@ export const listDatasets: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
@@ -6249,6 +6339,8 @@ export const listDocumentClassificationJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentClassificationJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6294,6 +6386,8 @@ export const listDocumentClassifiers: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentClassifiers",
   pagination: {
     inputToken: "NextToken",
@@ -6337,6 +6431,8 @@ export const listDocumentClassifierSummaries: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDocumentClassifierSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -6382,6 +6478,8 @@ export const listDominantLanguageDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDominantLanguageDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6426,6 +6524,8 @@ export const listEndpoints: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -6472,6 +6572,8 @@ export const listEntitiesDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntitiesDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6523,6 +6625,8 @@ export const listEntityRecognizers: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntityRecognizers",
   pagination: {
     inputToken: "NextToken",
@@ -6566,6 +6670,8 @@ export const listEntityRecognizerSummaries: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntityRecognizerSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -6611,6 +6717,8 @@ export const listEventsDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventsDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6660,6 +6768,8 @@ export const listFlywheelIterationHistory: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlywheelIterationHistory",
   pagination: {
     inputToken: "NextToken",
@@ -6705,6 +6815,8 @@ export const listFlywheels: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlywheels",
   pagination: {
     inputToken: "NextToken",
@@ -6750,6 +6862,8 @@ export const listKeyPhrasesDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyPhrasesDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6795,6 +6909,8 @@ export const listPiiEntitiesDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPiiEntitiesDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6841,6 +6957,8 @@ export const listSentimentDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSentimentDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6869,6 +6987,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTargetedSentimentDetectionJobsError =
@@ -6909,6 +7029,8 @@ export const listTargetedSentimentDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargetedSentimentDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6954,6 +7076,8 @@ export const listTopicsDetectionJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTopicsDetectionJobs",
   pagination: {
     inputToken: "NextToken",
@@ -6984,6 +7108,8 @@ export const putResourcePolicy: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type StartDocumentClassificationJobError =
@@ -7019,6 +7145,8 @@ export const startDocumentClassificationJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDocumentClassificationJob",
 }));
 export type StartDominantLanguageDetectionJobError =
@@ -7050,6 +7178,8 @@ export const startDominantLanguageDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDominantLanguageDetectionJob",
 }));
 export type StartEntitiesDetectionJobError =
@@ -7088,6 +7218,8 @@ export const startEntitiesDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEntitiesDetectionJob",
 }));
 export type StartEventsDetectionJobError =
@@ -7117,6 +7249,8 @@ export const startEventsDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEventsDetectionJob",
 }));
 export type StartFlywheelIterationError =
@@ -7146,6 +7280,8 @@ export const startFlywheelIteration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFlywheelIteration",
 }));
 export type StartKeyPhrasesDetectionJobError =
@@ -7177,6 +7313,8 @@ export const startKeyPhrasesDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartKeyPhrasesDetectionJob",
 }));
 export type StartPiiEntitiesDetectionJobError =
@@ -7206,6 +7344,8 @@ export const startPiiEntitiesDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPiiEntitiesDetectionJob",
 }));
 export type StartSentimentDetectionJobError =
@@ -7237,6 +7377,8 @@ export const startSentimentDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSentimentDetectionJob",
 }));
 export type StartTargetedSentimentDetectionJobError =
@@ -7268,6 +7410,8 @@ export const startTargetedSentimentDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTargetedSentimentDetectionJob",
 }));
 export type StartTopicsDetectionJobError =
@@ -7298,6 +7442,8 @@ export const startTopicsDetectionJob: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTopicsDetectionJob",
 }));
 export type StopDominantLanguageDetectionJobError =
@@ -7333,6 +7479,8 @@ export const stopDominantLanguageDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDominantLanguageDetectionJob",
 }));
 export type StopEntitiesDetectionJobError =
@@ -7368,6 +7516,8 @@ export const stopEntitiesDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEntitiesDetectionJob",
 }));
 export type StopEventsDetectionJobError =
@@ -7391,6 +7541,8 @@ export const stopEventsDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEventsDetectionJob",
 }));
 export type StopKeyPhrasesDetectionJobError =
@@ -7426,6 +7578,8 @@ export const stopKeyPhrasesDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopKeyPhrasesDetectionJob",
 }));
 export type StopPiiEntitiesDetectionJobError =
@@ -7449,6 +7603,8 @@ export const stopPiiEntitiesDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopPiiEntitiesDetectionJob",
 }));
 export type StopSentimentDetectionJobError =
@@ -7484,6 +7640,8 @@ export const stopSentimentDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSentimentDetectionJob",
 }));
 export type StopTargetedSentimentDetectionJobError =
@@ -7519,6 +7677,8 @@ export const stopTargetedSentimentDetectionJob: API.OperationMethod<
     InvalidRequestException,
     JobNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTargetedSentimentDetectionJob",
 }));
 export type StopTrainingDocumentClassifierError =
@@ -7550,6 +7710,8 @@ export const stopTrainingDocumentClassifier: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTrainingDocumentClassifier",
 }));
 export type StopTrainingEntityRecognizerError =
@@ -7581,6 +7743,8 @@ export const stopTrainingEntityRecognizer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTrainingEntityRecognizer",
 }));
 export type TagResourceError =
@@ -7610,6 +7774,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -7637,6 +7803,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagKeysException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateEndpointError =
@@ -7669,6 +7837,8 @@ export const updateEndpoint: API.OperationMethod<
     ResourceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpoint",
 }));
 export type UpdateFlywheelError =
@@ -7696,5 +7866,7 @@ export const updateFlywheel: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlywheel",
 }));

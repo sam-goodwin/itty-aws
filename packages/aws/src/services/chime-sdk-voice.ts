@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4483,6 +4485,8 @@ export const associatePhoneNumbersWithVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePhoneNumbersWithVoiceConnector",
 }));
 export type AssociatePhoneNumbersWithVoiceConnectorGroupError =
@@ -4516,6 +4520,8 @@ export const associatePhoneNumbersWithVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePhoneNumbersWithVoiceConnectorGroup",
 }));
 export type BatchDeletePhoneNumberError =
@@ -4551,6 +4557,8 @@ export const batchDeletePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeletePhoneNumber",
 }));
 export type BatchUpdatePhoneNumberError =
@@ -4585,6 +4593,8 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdatePhoneNumber",
 }));
 export type CreatePhoneNumberOrderError =
@@ -4618,6 +4628,8 @@ export const createPhoneNumberOrder: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePhoneNumberOrder",
 }));
 export type CreateProxySessionError =
@@ -4650,6 +4662,8 @@ export const createProxySession: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProxySession",
 }));
 export type CreateSipMediaApplicationError =
@@ -4686,6 +4700,8 @@ export const createSipMediaApplication: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSipMediaApplication",
 }));
 export type CreateSipMediaApplicationCallError =
@@ -4721,6 +4737,8 @@ export const createSipMediaApplicationCall: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSipMediaApplicationCall",
 }));
 export type CreateSipRuleError =
@@ -4757,6 +4775,8 @@ export const createSipRule: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSipRule",
 }));
 export type CreateVoiceConnectorError =
@@ -4793,6 +4813,8 @@ export const createVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVoiceConnector",
 }));
 export type CreateVoiceConnectorGroupError =
@@ -4832,6 +4854,8 @@ export const createVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVoiceConnectorGroup",
 }));
 export type CreateVoiceProfileError =
@@ -4877,6 +4901,8 @@ export const createVoiceProfile: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVoiceProfile",
 }));
 export type CreateVoiceProfileDomainError =
@@ -4918,6 +4944,8 @@ export const createVoiceProfileDomain: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVoiceProfileDomain",
 }));
 export type DeletePhoneNumberError =
@@ -4956,6 +4984,8 @@ export const deletePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePhoneNumber",
 }));
 export type DeleteProxySessionError =
@@ -4988,6 +5018,8 @@ export const deleteProxySession: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProxySession",
 }));
 export type DeleteSipMediaApplicationError =
@@ -5021,6 +5053,8 @@ export const deleteSipMediaApplication: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSipMediaApplication",
 }));
 export type DeleteSipRuleError =
@@ -5054,6 +5088,8 @@ export const deleteSipRule: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSipRule",
 }));
 export type DeleteVoiceConnectorError =
@@ -5089,6 +5125,8 @@ export const deleteVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceConnector",
 }));
 export type DeleteVoiceConnectorEmergencyCallingConfigurationError =
@@ -5121,6 +5159,8 @@ export const deleteVoiceConnectorEmergencyCallingConfiguration: API.OperationMet
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceConnectorEmergencyCallingConfiguration",
 }));
 export type DeleteVoiceConnectorExternalSystemsConfigurationError =
@@ -5152,6 +5192,8 @@ export const deleteVoiceConnectorExternalSystemsConfiguration: API.OperationMeth
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceConnectorExternalSystemsConfiguration",
 }));
 export type DeleteVoiceConnectorGroupError =
@@ -5187,6 +5229,8 @@ export const deleteVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceConnectorGroup",
 }));
 export type DeleteVoiceConnectorOriginationError =
@@ -5221,6 +5265,8 @@ export const deleteVoiceConnectorOrigination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceConnectorOrigination",
 }));
 export type DeleteVoiceConnectorProxyError =
@@ -5252,6 +5298,8 @@ export const deleteVoiceConnectorProxy: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceConnectorProxy",
 }));
 export type DeleteVoiceConnectorStreamingConfigurationError =
@@ -5283,6 +5331,8 @@ export const deleteVoiceConnectorStreamingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceConnectorStreamingConfiguration",
 }));
 export type DeleteVoiceConnectorTerminationError =
@@ -5317,6 +5367,8 @@ export const deleteVoiceConnectorTermination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceConnectorTermination",
 }));
 export type DeleteVoiceConnectorTerminationCredentialsError =
@@ -5349,6 +5401,8 @@ export const deleteVoiceConnectorTerminationCredentials: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceConnectorTerminationCredentials",
 }));
 export type DeleteVoiceProfileError =
@@ -5384,6 +5438,8 @@ export const deleteVoiceProfile: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceProfile",
 }));
 export type DeleteVoiceProfileDomainError =
@@ -5419,6 +5475,8 @@ export const deleteVoiceProfileDomain: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceProfileDomain",
 }));
 export type DisassociatePhoneNumbersFromVoiceConnectorError =
@@ -5451,6 +5509,8 @@ export const disassociatePhoneNumbersFromVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociatePhoneNumbersFromVoiceConnector",
 }));
 export type DisassociatePhoneNumbersFromVoiceConnectorGroupError =
@@ -5483,6 +5543,8 @@ export const disassociatePhoneNumbersFromVoiceConnectorGroup: API.OperationMetho
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociatePhoneNumbersFromVoiceConnectorGroup",
 }));
 export type GetGlobalSettingsError =
@@ -5512,6 +5574,8 @@ export const getGlobalSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGlobalSettings",
 }));
 export type GetPhoneNumberError =
@@ -5544,6 +5608,8 @@ export const getPhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPhoneNumber",
 }));
 export type GetPhoneNumberOrderError =
@@ -5577,6 +5643,8 @@ export const getPhoneNumberOrder: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPhoneNumberOrder",
 }));
 export type GetPhoneNumberSettingsError =
@@ -5607,6 +5675,8 @@ export const getPhoneNumberSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPhoneNumberSettings",
 }));
 export type GetProxySessionError =
@@ -5638,6 +5708,8 @@ export const getProxySession: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProxySession",
 }));
 export type GetSipMediaApplicationError =
@@ -5670,6 +5742,8 @@ export const getSipMediaApplication: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSipMediaApplication",
 }));
 export type GetSipMediaApplicationAlexaSkillConfigurationError =
@@ -5704,6 +5778,8 @@ export const getSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSipMediaApplicationAlexaSkillConfiguration",
 }));
 export type GetSipMediaApplicationLoggingConfigurationError =
@@ -5735,6 +5811,8 @@ export const getSipMediaApplicationLoggingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSipMediaApplicationLoggingConfiguration",
 }));
 export type GetSipRuleError =
@@ -5767,6 +5845,8 @@ export const getSipRule: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSipRule",
 }));
 export type GetSpeakerSearchTaskError =
@@ -5802,6 +5882,8 @@ export const getSpeakerSearchTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSpeakerSearchTask",
 }));
 export type GetVoiceConnectorError =
@@ -5834,6 +5916,8 @@ export const getVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnector",
 }));
 export type GetVoiceConnectorEmergencyCallingConfigurationError =
@@ -5865,6 +5949,8 @@ export const getVoiceConnectorEmergencyCallingConfiguration: API.OperationMethod
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnectorEmergencyCallingConfiguration",
 }));
 export type GetVoiceConnectorExternalSystemsConfigurationError =
@@ -5897,6 +5983,8 @@ export const getVoiceConnectorExternalSystemsConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnectorExternalSystemsConfiguration",
 }));
 export type GetVoiceConnectorGroupError =
@@ -5929,6 +6017,8 @@ export const getVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnectorGroup",
 }));
 export type GetVoiceConnectorLoggingConfigurationError =
@@ -5961,6 +6051,8 @@ export const getVoiceConnectorLoggingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnectorLoggingConfiguration",
 }));
 export type GetVoiceConnectorOriginationError =
@@ -5992,6 +6084,8 @@ export const getVoiceConnectorOrigination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnectorOrigination",
 }));
 export type GetVoiceConnectorProxyError =
@@ -6024,6 +6118,8 @@ export const getVoiceConnectorProxy: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnectorProxy",
 }));
 export type GetVoiceConnectorStreamingConfigurationError =
@@ -6057,6 +6153,8 @@ export const getVoiceConnectorStreamingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnectorStreamingConfiguration",
 }));
 export type GetVoiceConnectorTerminationError =
@@ -6088,6 +6186,8 @@ export const getVoiceConnectorTermination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnectorTermination",
 }));
 export type GetVoiceConnectorTerminationHealthError =
@@ -6121,6 +6221,8 @@ export const getVoiceConnectorTerminationHealth: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceConnectorTerminationHealth",
 }));
 export type GetVoiceProfileError =
@@ -6154,6 +6256,8 @@ export const getVoiceProfile: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceProfile",
 }));
 export type GetVoiceProfileDomainError =
@@ -6187,6 +6291,8 @@ export const getVoiceProfileDomain: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceProfileDomain",
 }));
 export type GetVoiceToneAnalysisTaskError =
@@ -6222,6 +6328,8 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceToneAnalysisTask",
 }));
 export type ListAvailableVoiceConnectorRegionsError =
@@ -6251,6 +6359,8 @@ export const listAvailableVoiceConnectorRegions: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAvailableVoiceConnectorRegions",
 }));
 export type ListPhoneNumberOrdersError =
@@ -6295,6 +6405,8 @@ export const listPhoneNumberOrders: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPhoneNumberOrders",
   pagination: {
     inputToken: "NextToken",
@@ -6348,6 +6460,8 @@ export const listPhoneNumbers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPhoneNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -6399,6 +6513,8 @@ export const listProxySessions: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProxySessions",
   pagination: {
     inputToken: "NextToken",
@@ -6448,6 +6564,8 @@ export const listSipMediaApplications: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSipMediaApplications",
   pagination: {
     inputToken: "NextToken",
@@ -6498,6 +6616,8 @@ export const listSipRules: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSipRules",
   pagination: {
     inputToken: "NextToken",
@@ -6535,6 +6655,8 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSupportedPhoneNumberCountries",
 }));
 export type ListTagsForResourceError =
@@ -6564,6 +6686,8 @@ export const listTagsForResource: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListVoiceConnectorGroupsError =
@@ -6609,6 +6733,8 @@ export const listVoiceConnectorGroups: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVoiceConnectorGroups",
   pagination: {
     inputToken: "NextToken",
@@ -6659,6 +6785,8 @@ export const listVoiceConnectors: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVoiceConnectors",
   pagination: {
     inputToken: "NextToken",
@@ -6695,6 +6823,8 @@ export const listVoiceConnectorTerminationCredentials: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVoiceConnectorTerminationCredentials",
 }));
 export type ListVoiceProfileDomainsError =
@@ -6741,6 +6871,8 @@ export const listVoiceProfileDomains: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVoiceProfileDomains",
   pagination: {
     inputToken: "NextToken",
@@ -6792,6 +6924,8 @@ export const listVoiceProfiles: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVoiceProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -6831,6 +6965,8 @@ export const putSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSipMediaApplicationAlexaSkillConfiguration",
 }));
 export type PutSipMediaApplicationLoggingConfigurationError =
@@ -6862,6 +6998,8 @@ export const putSipMediaApplicationLoggingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSipMediaApplicationLoggingConfiguration",
 }));
 export type PutVoiceConnectorEmergencyCallingConfigurationError =
@@ -6893,6 +7031,8 @@ export const putVoiceConnectorEmergencyCallingConfiguration: API.OperationMethod
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVoiceConnectorEmergencyCallingConfiguration",
 }));
 export type PutVoiceConnectorExternalSystemsConfigurationError =
@@ -6926,6 +7066,8 @@ export const putVoiceConnectorExternalSystemsConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVoiceConnectorExternalSystemsConfiguration",
 }));
 export type PutVoiceConnectorLoggingConfigurationError =
@@ -6957,6 +7099,8 @@ export const putVoiceConnectorLoggingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVoiceConnectorLoggingConfiguration",
 }));
 export type PutVoiceConnectorOriginationError =
@@ -6988,6 +7132,8 @@ export const putVoiceConnectorOrigination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVoiceConnectorOrigination",
 }));
 export type PutVoiceConnectorProxyError =
@@ -7021,6 +7167,8 @@ export const putVoiceConnectorProxy: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVoiceConnectorProxy",
 }));
 export type PutVoiceConnectorStreamingConfigurationError =
@@ -7052,6 +7200,8 @@ export const putVoiceConnectorStreamingConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVoiceConnectorStreamingConfiguration",
 }));
 export type PutVoiceConnectorTerminationError =
@@ -7085,6 +7235,8 @@ export const putVoiceConnectorTermination: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVoiceConnectorTermination",
 }));
 export type PutVoiceConnectorTerminationCredentialsError =
@@ -7116,6 +7268,8 @@ export const putVoiceConnectorTerminationCredentials: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVoiceConnectorTerminationCredentials",
 }));
 export type RestorePhoneNumberError =
@@ -7149,6 +7303,8 @@ export const restorePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestorePhoneNumber",
 }));
 export type SearchAvailablePhoneNumbersError =
@@ -7195,6 +7351,8 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchAvailablePhoneNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -7244,6 +7402,8 @@ export const startSpeakerSearchTask: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSpeakerSearchTask",
 }));
 export type StartVoiceToneAnalysisTaskError =
@@ -7290,6 +7450,8 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartVoiceToneAnalysisTask",
 }));
 export type StopSpeakerSearchTaskError =
@@ -7327,6 +7489,8 @@ export const stopSpeakerSearchTask: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSpeakerSearchTask",
 }));
 export type StopVoiceToneAnalysisTaskError =
@@ -7364,6 +7528,8 @@ export const stopVoiceToneAnalysisTask: API.OperationMethod<
     UnauthorizedClientException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopVoiceToneAnalysisTask",
 }));
 export type TagResourceError =
@@ -7395,6 +7561,8 @@ export const tagResource: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -7424,6 +7592,8 @@ export const untagResource: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateGlobalSettingsError =
@@ -7453,6 +7623,8 @@ export const updateGlobalSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalSettings",
 }));
 export type UpdatePhoneNumberError =
@@ -7495,6 +7667,8 @@ export const updatePhoneNumber: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePhoneNumber",
 }));
 export type UpdatePhoneNumberSettingsError =
@@ -7527,6 +7701,8 @@ export const updatePhoneNumberSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePhoneNumberSettings",
 }));
 export type UpdateProxySessionError =
@@ -7558,6 +7734,8 @@ export const updateProxySession: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProxySession",
 }));
 export type UpdateSipMediaApplicationError =
@@ -7591,6 +7769,8 @@ export const updateSipMediaApplication: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSipMediaApplication",
 }));
 export type UpdateSipMediaApplicationCallError =
@@ -7626,6 +7806,8 @@ export const updateSipMediaApplicationCall: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSipMediaApplicationCall",
 }));
 export type UpdateSipRuleError =
@@ -7661,6 +7843,8 @@ export const updateSipRule: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSipRule",
 }));
 export type UpdateVoiceConnectorError =
@@ -7692,6 +7876,8 @@ export const updateVoiceConnector: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVoiceConnector",
 }));
 export type UpdateVoiceConnectorGroupError =
@@ -7725,6 +7911,8 @@ export const updateVoiceConnectorGroup: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVoiceConnectorGroup",
 }));
 export type UpdateVoiceProfileError =
@@ -7771,6 +7959,8 @@ export const updateVoiceProfile: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVoiceProfile",
 }));
 export type UpdateVoiceProfileDomainError =
@@ -7804,6 +7994,8 @@ export const updateVoiceProfileDomain: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVoiceProfileDomain",
 }));
 export type ValidateE911AddressError =
@@ -7840,5 +8032,7 @@ export const validateE911Address: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateE911Address",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2289,6 +2291,8 @@ export const cancelQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelQuery",
 }));
 export type ExecuteQueryError =
@@ -2326,6 +2330,8 @@ export const executeQuery: API.OperationMethod<
     UnprocessableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteQuery",
 }));
 export type GetGraphSummaryError =
@@ -2353,6 +2359,8 @@ export const getGraphSummary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGraphSummary",
 }));
 export type GetQueryError =
@@ -2382,6 +2390,8 @@ export const getQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQuery",
 }));
 export type ListQueriesError =
@@ -2407,6 +2417,8 @@ export const listQueries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueries",
 }));
 export type ListTagsForResourceError =
@@ -2432,6 +2444,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2457,6 +2471,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2482,6 +2498,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateGraphError =
@@ -2509,6 +2527,8 @@ export const createGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGraph",
 }));
 export type DeleteGraphError =
@@ -2536,6 +2556,8 @@ export const deleteGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGraph",
 }));
 export type GetGraphError =
@@ -2561,6 +2583,8 @@ export const getGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGraph",
 }));
 export type ListGraphsError =
@@ -2599,6 +2623,8 @@ export const listGraphs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGraphs",
   pagination: {
     inputToken: "nextToken",
@@ -2632,6 +2658,8 @@ export const resetGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetGraph",
 }));
 export type RestoreGraphFromSnapshotError =
@@ -2661,6 +2689,8 @@ export const restoreGraphFromSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreGraphFromSnapshot",
 }));
 export type StartGraphError =
@@ -2688,6 +2718,8 @@ export const startGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartGraph",
 }));
 export type StopGraphError =
@@ -2715,6 +2747,8 @@ export const stopGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopGraph",
 }));
 export type UpdateGraphError =
@@ -2742,6 +2776,8 @@ export const updateGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGraph",
 }));
 export type CreatePrivateGraphEndpointError =
@@ -2773,6 +2809,8 @@ export const createPrivateGraphEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePrivateGraphEndpoint",
 }));
 export type DeletePrivateGraphEndpointError =
@@ -2800,6 +2838,8 @@ export const deletePrivateGraphEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePrivateGraphEndpoint",
 }));
 export type GetPrivateGraphEndpointError =
@@ -2825,6 +2865,8 @@ export const getPrivateGraphEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPrivateGraphEndpoint",
 }));
 export type ListPrivateGraphEndpointsError =
@@ -2865,6 +2907,8 @@ export const listPrivateGraphEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrivateGraphEndpoints",
   pagination: {
     inputToken: "nextToken",
@@ -2900,6 +2944,8 @@ export const createGraphSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGraphSnapshot",
 }));
 export type DeleteGraphSnapshotError =
@@ -2927,6 +2973,8 @@ export const deleteGraphSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGraphSnapshot",
 }));
 export type GetGraphSnapshotError =
@@ -2952,6 +3000,8 @@ export const getGraphSnapshot: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGraphSnapshot",
 }));
 export type ListGraphSnapshotsError =
@@ -2992,6 +3042,8 @@ export const listGraphSnapshots: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGraphSnapshots",
   pagination: {
     inputToken: "nextToken",
@@ -3025,6 +3077,8 @@ export const cancelExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelExportTask",
 }));
 export type CancelImportTaskError =
@@ -3052,6 +3106,8 @@ export const cancelImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelImportTask",
 }));
 export type CreateGraphUsingImportTaskError =
@@ -3081,6 +3137,8 @@ export const createGraphUsingImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGraphUsingImportTask",
 }));
 export type GetExportTaskError =
@@ -3106,6 +3164,8 @@ export const getExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExportTask",
 }));
 export type GetImportTaskError =
@@ -3131,6 +3191,8 @@ export const getImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImportTask",
 }));
 export type ListExportTasksError =
@@ -3171,6 +3233,8 @@ export const listExportTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExportTasks",
   pagination: {
     inputToken: "nextToken",
@@ -3217,6 +3281,8 @@ export const listImportTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImportTasks",
   pagination: {
     inputToken: "nextToken",
@@ -3250,6 +3316,8 @@ export const startExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExportTask",
 }));
 export type StartImportTaskError =
@@ -3277,5 +3345,7 @@ export const startImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImportTask",
 }));

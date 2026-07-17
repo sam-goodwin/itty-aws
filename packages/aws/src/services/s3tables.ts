@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2421,6 +2423,8 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2456,6 +2460,8 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2491,6 +2497,8 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateNamespaceError =
@@ -2524,6 +2532,8 @@ export const createNamespace: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNamespace",
 }));
 export type DeleteNamespaceError =
@@ -2557,6 +2567,8 @@ export const deleteNamespace: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNamespace",
 }));
 export type GetNamespaceError =
@@ -2592,6 +2604,8 @@ export const getNamespace: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNamespace",
 }));
 export type ListNamespacesError =
@@ -2642,6 +2656,8 @@ export const listNamespaces: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNamespaces",
   pagination: {
     inputToken: "continuationToken",
@@ -2681,6 +2697,8 @@ export const deleteTableBucketEncryption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTableBucketEncryption",
 }));
 export type GetTableBucketEncryptionError =
@@ -2714,6 +2732,8 @@ export const getTableBucketEncryption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableBucketEncryption",
 }));
 export type PutTableBucketEncryptionError =
@@ -2749,6 +2769,8 @@ export const putTableBucketEncryption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTableBucketEncryption",
 }));
 export type DeleteTableBucketPolicyError =
@@ -2782,6 +2804,8 @@ export const deleteTableBucketPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTableBucketPolicy",
 }));
 export type GetTableBucketPolicyError =
@@ -2815,6 +2839,8 @@ export const getTableBucketPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableBucketPolicy",
 }));
 export type PutTableBucketPolicyError =
@@ -2848,6 +2874,8 @@ export const putTableBucketPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTableBucketPolicy",
 }));
 export type DeleteTableBucketReplicationError =
@@ -2883,6 +2911,8 @@ export const deleteTableBucketReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTableBucketReplication",
 }));
 export type GetTableBucketReplicationError =
@@ -2918,6 +2948,8 @@ export const getTableBucketReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableBucketReplication",
 }));
 export type PutTableBucketReplicationError =
@@ -2969,6 +3001,8 @@ export const putTableBucketReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTableBucketReplication",
 }));
 export type CreateTableBucketError =
@@ -3008,6 +3042,8 @@ export const createTableBucket: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTableBucket",
 }));
 export type DeleteTableBucketError =
@@ -3041,6 +3077,8 @@ export const deleteTableBucket: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTableBucket",
 }));
 export type DeleteTableBucketMetricsConfigurationError =
@@ -3074,6 +3112,8 @@ export const deleteTableBucketMetricsConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTableBucketMetricsConfiguration",
 }));
 export type GetTableBucketError =
@@ -3109,6 +3149,8 @@ export const getTableBucket: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableBucket",
 }));
 export type GetTableBucketMaintenanceConfigurationError =
@@ -3142,6 +3184,8 @@ export const getTableBucketMaintenanceConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableBucketMaintenanceConfiguration",
 }));
 export type GetTableBucketMetricsConfigurationError =
@@ -3175,6 +3219,8 @@ export const getTableBucketMetricsConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableBucketMetricsConfiguration",
 }));
 export type GetTableBucketStorageClassError =
@@ -3208,6 +3254,8 @@ export const getTableBucketStorageClass: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableBucketStorageClass",
 }));
 export type ListTableBucketsError =
@@ -3258,6 +3306,8 @@ export const listTableBuckets: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTableBuckets",
   pagination: {
     inputToken: "continuationToken",
@@ -3297,6 +3347,8 @@ export const putTableBucketMaintenanceConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTableBucketMaintenanceConfiguration",
 }));
 export type PutTableBucketMetricsConfigurationError =
@@ -3330,6 +3382,8 @@ export const putTableBucketMetricsConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTableBucketMetricsConfiguration",
 }));
 export type PutTableBucketStorageClassError =
@@ -3363,6 +3417,8 @@ export const putTableBucketStorageClass: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTableBucketStorageClass",
 }));
 export type GetTableEncryptionError =
@@ -3396,6 +3452,8 @@ export const getTableEncryption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableEncryption",
 }));
 export type DeleteTablePolicyError =
@@ -3429,6 +3487,8 @@ export const deleteTablePolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTablePolicy",
 }));
 export type GetTablePolicyError =
@@ -3462,6 +3522,8 @@ export const getTablePolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTablePolicy",
 }));
 export type PutTablePolicyError =
@@ -3495,6 +3557,8 @@ export const putTablePolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTablePolicy",
 }));
 export type DeleteTableReplicationError =
@@ -3530,6 +3594,8 @@ export const deleteTableReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTableReplication",
 }));
 export type GetTableReplicationError =
@@ -3565,6 +3631,8 @@ export const getTableReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableReplication",
 }));
 export type GetTableReplicationStatusError =
@@ -3598,6 +3666,8 @@ export const getTableReplicationStatus: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableReplicationStatus",
 }));
 export type PutTableReplicationError =
@@ -3647,6 +3717,8 @@ export const putTableReplication: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTableReplication",
 }));
 export type CreateTableError =
@@ -3690,6 +3762,8 @@ export const createTable: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTable",
 }));
 export type DeleteTableError =
@@ -3723,6 +3797,8 @@ export const deleteTable: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTable",
 }));
 export type GetTableError =
@@ -3758,6 +3834,8 @@ export const getTable: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTable",
 }));
 export type GetTableMaintenanceConfigurationError =
@@ -3793,6 +3871,8 @@ export const getTableMaintenanceConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableMaintenanceConfiguration",
 }));
 export type GetTableMaintenanceJobStatusError =
@@ -3826,6 +3906,8 @@ export const getTableMaintenanceJobStatus: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableMaintenanceJobStatus",
 }));
 export type GetTableMetadataLocationError =
@@ -3859,6 +3941,8 @@ export const getTableMetadataLocation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableMetadataLocation",
 }));
 export type GetTableRecordExpirationConfigurationError =
@@ -3892,6 +3976,8 @@ export const getTableRecordExpirationConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableRecordExpirationConfiguration",
 }));
 export type GetTableRecordExpirationJobStatusError =
@@ -3925,6 +4011,8 @@ export const getTableRecordExpirationJobStatus: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableRecordExpirationJobStatus",
 }));
 export type GetTableStorageClassError =
@@ -3958,6 +4046,8 @@ export const getTableStorageClass: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableStorageClass",
 }));
 export type ListTablesError =
@@ -4006,6 +4096,8 @@ export const listTables: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "continuationToken",
@@ -4045,6 +4137,8 @@ export const putTableMaintenanceConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTableMaintenanceConfiguration",
 }));
 export type PutTableRecordExpirationConfigurationError =
@@ -4078,6 +4172,8 @@ export const putTableRecordExpirationConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTableRecordExpirationConfiguration",
 }));
 export type RenameTableError =
@@ -4111,6 +4207,8 @@ export const renameTable: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RenameTable",
 }));
 export type UpdateTableMetadataLocationError =
@@ -4144,5 +4242,7 @@ export const updateTableMetadataLocation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTableMetadataLocation",
 }));

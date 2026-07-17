@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1309,6 +1311,8 @@ export const addPermission: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddPermission",
 }));
 export type CancelMessageMoveTaskError =
@@ -1351,6 +1355,8 @@ export const cancelMessageMoveTask: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMessageMoveTask",
 }));
 export type ChangeMessageVisibilityError =
@@ -1424,6 +1430,8 @@ export const changeMessageVisibility: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ChangeMessageVisibility",
 }));
 export type ChangeMessageVisibilityBatchError =
@@ -1468,6 +1476,8 @@ export const changeMessageVisibilityBatch: API.OperationMethod<
     TooManyEntriesInBatchRequest,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ChangeMessageVisibilityBatch",
 }));
 export type CreateQueueError =
@@ -1550,6 +1560,8 @@ export const createQueue: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQueue",
 }));
 export type DeleteMessageError =
@@ -1601,6 +1613,8 @@ export const deleteMessage: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMessage",
 }));
 export type DeleteMessageBatchError =
@@ -1641,6 +1655,8 @@ export const deleteMessageBatch: API.OperationMethod<
     TooManyEntriesInBatchRequest,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMessageBatch",
 }));
 export type DeleteQueueError =
@@ -1688,6 +1704,8 @@ export const deleteQueue: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueue",
 }));
 export type GetQueueAttributesError =
@@ -1719,6 +1737,8 @@ export const getQueueAttributes: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueueAttributes",
 }));
 export type GetQueueUrlError =
@@ -1757,6 +1777,8 @@ export const getQueueUrl: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueueUrl",
 }));
 export type ListDeadLetterSourceQueuesError =
@@ -1811,6 +1833,8 @@ export const listDeadLetterSourceQueues: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeadLetterSourceQueues",
   pagination: {
     inputToken: "NextToken",
@@ -1857,6 +1881,8 @@ export const listMessageMoveTasks: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMessageMoveTasks",
 }));
 export type ListQueuesError =
@@ -1912,6 +1938,8 @@ export const listQueues: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueues",
   pagination: {
     inputToken: "NextToken",
@@ -1951,6 +1979,8 @@ export const listQueueTags: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueueTags",
 }));
 export type PurgeQueueError =
@@ -1994,6 +2024,8 @@ export const purgeQueue: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurgeQueue",
 }));
 export type ReceiveMessageError =
@@ -2078,6 +2110,8 @@ export const receiveMessage: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReceiveMessage",
 }));
 export type RemovePermissionError =
@@ -2114,6 +2148,8 @@ export const removePermission: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemovePermission",
 }));
 export type SendMessageError =
@@ -2169,6 +2205,8 @@ export const sendMessage: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendMessage",
 }));
 export type SendMessageBatchError =
@@ -2246,6 +2284,8 @@ export const sendMessageBatch: API.OperationMethod<
     InvalidParameterValueException,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendMessageBatch",
 }));
 export type SetQueueAttributesError =
@@ -2299,6 +2339,8 @@ export const setQueueAttributes: API.OperationMethod<
     CommonServiceException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetQueueAttributes",
 }));
 export type StartMessageMoveTaskError =
@@ -2346,6 +2388,8 @@ export const startMessageMoveTask: API.OperationMethod<
     CommonServiceException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMessageMoveTask",
 }));
 export type TagQueueError =
@@ -2392,6 +2436,8 @@ export const tagQueue: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagQueue",
 }));
 export type UntagQueueError =
@@ -2424,5 +2470,7 @@ export const untagQueue: API.OperationMethod<
     RequestThrottled,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagQueue",
 }));

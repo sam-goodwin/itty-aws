@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -4513,6 +4515,8 @@ export const acceptNetworkFirewallTransitGatewayAttachment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptNetworkFirewallTransitGatewayAttachment",
 }));
 export type AssociateAvailabilityZonesError =
@@ -4546,6 +4550,8 @@ export const associateAvailabilityZones: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAvailabilityZones",
 }));
 export type AssociateFirewallPolicyError =
@@ -4580,6 +4586,8 @@ export const associateFirewallPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateFirewallPolicy",
 }));
 export type AssociateSubnetsError =
@@ -4617,6 +4625,8 @@ export const associateSubnets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSubnets",
 }));
 export type AttachRuleGroupsToProxyConfigurationError =
@@ -4644,6 +4654,8 @@ export const attachRuleGroupsToProxyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachRuleGroupsToProxyConfiguration",
 }));
 export type CreateFirewallError =
@@ -4686,6 +4698,8 @@ export const createFirewall: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFirewall",
 }));
 export type CreateFirewallPolicyError =
@@ -4717,6 +4731,8 @@ export const createFirewallPolicy: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFirewallPolicy",
 }));
 export type CreateProxyError =
@@ -4752,6 +4768,8 @@ export const createProxy: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProxy",
 }));
 export type CreateProxyConfigurationError =
@@ -4785,6 +4803,8 @@ export const createProxyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProxyConfiguration",
 }));
 export type CreateProxyRuleGroupError =
@@ -4818,6 +4838,8 @@ export const createProxyRuleGroup: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProxyRuleGroup",
 }));
 export type CreateProxyRulesError =
@@ -4841,6 +4863,8 @@ export const createProxyRules: API.OperationMethod<
   input: CreateProxyRulesRequest,
   output: CreateProxyRulesResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProxyRules",
 }));
 export type CreateRuleGroupError =
@@ -4872,6 +4896,8 @@ export const createRuleGroup: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRuleGroup",
 }));
 export type CreateTLSInspectionConfigurationError =
@@ -4908,6 +4934,8 @@ export const createTLSInspectionConfiguration: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTLSInspectionConfiguration",
 }));
 export type CreateVpcEndpointAssociationError =
@@ -4939,6 +4967,8 @@ export const createVpcEndpointAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcEndpointAssociation",
 }));
 export type DeleteFirewallError =
@@ -4980,6 +5010,8 @@ export const deleteFirewall: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFirewall",
 }));
 export type DeleteFirewallPolicyError =
@@ -5009,6 +5041,8 @@ export const deleteFirewallPolicy: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFirewallPolicy",
 }));
 export type DeleteNetworkFirewallTransitGatewayAttachmentError =
@@ -5038,6 +5072,8 @@ export const deleteNetworkFirewallTransitGatewayAttachment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkFirewallTransitGatewayAttachment",
 }));
 export type DeleteProxyError =
@@ -5067,6 +5103,8 @@ export const deleteProxy: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProxy",
 }));
 export type DeleteProxyConfigurationError =
@@ -5092,6 +5130,8 @@ export const deleteProxyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProxyConfiguration",
 }));
 export type DeleteProxyRuleGroupError =
@@ -5117,6 +5157,8 @@ export const deleteProxyRuleGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProxyRuleGroup",
 }));
 export type DeleteProxyRulesError =
@@ -5142,6 +5184,8 @@ export const deleteProxyRules: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProxyRules",
 }));
 export type DeleteResourcePolicyError =
@@ -5169,6 +5213,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteRuleGroupError =
@@ -5198,6 +5244,8 @@ export const deleteRuleGroup: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRuleGroup",
 }));
 export type DeleteTLSInspectionConfigurationError =
@@ -5225,6 +5273,8 @@ export const deleteTLSInspectionConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTLSInspectionConfiguration",
 }));
 export type DeleteVpcEndpointAssociationError =
@@ -5259,6 +5309,8 @@ export const deleteVpcEndpointAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcEndpointAssociation",
 }));
 export type DescribeFirewallError =
@@ -5284,6 +5336,8 @@ export const describeFirewall: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFirewall",
 }));
 export type DescribeFirewallMetadataError =
@@ -5310,6 +5364,8 @@ export const describeFirewallMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFirewallMetadata",
 }));
 export type DescribeFirewallPolicyError =
@@ -5335,6 +5391,8 @@ export const describeFirewallPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFirewallPolicy",
 }));
 export type DescribeFlowOperationError =
@@ -5360,6 +5418,8 @@ export const describeFlowOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlowOperation",
 }));
 export type DescribeLoggingConfigurationError =
@@ -5385,6 +5445,8 @@ export const describeLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoggingConfiguration",
 }));
 export type DescribeProxyError =
@@ -5410,6 +5472,8 @@ export const describeProxy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProxy",
 }));
 export type DescribeProxyConfigurationError =
@@ -5435,6 +5499,8 @@ export const describeProxyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProxyConfiguration",
 }));
 export type DescribeProxyRuleError =
@@ -5460,6 +5526,8 @@ export const describeProxyRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProxyRule",
 }));
 export type DescribeProxyRuleGroupError =
@@ -5485,6 +5553,8 @@ export const describeProxyRuleGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProxyRuleGroup",
 }));
 export type DescribeResourcePolicyError =
@@ -5510,6 +5580,8 @@ export const describeResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
 export type DescribeRuleGroupError =
@@ -5535,6 +5607,8 @@ export const describeRuleGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRuleGroup",
 }));
 export type DescribeRuleGroupMetadataError =
@@ -5562,6 +5636,8 @@ export const describeRuleGroupMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRuleGroupMetadata",
 }));
 export type DescribeRuleGroupSummaryError =
@@ -5591,6 +5667,8 @@ export const describeRuleGroupSummary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRuleGroupSummary",
 }));
 export type DescribeTLSInspectionConfigurationError =
@@ -5616,6 +5694,8 @@ export const describeTLSInspectionConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTLSInspectionConfiguration",
 }));
 export type DescribeVpcEndpointAssociationError =
@@ -5641,6 +5721,8 @@ export const describeVpcEndpointAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpointAssociation",
 }));
 export type DetachRuleGroupsFromProxyConfigurationError =
@@ -5668,6 +5750,8 @@ export const detachRuleGroupsFromProxyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachRuleGroupsFromProxyConfiguration",
 }));
 export type DisassociateAvailabilityZonesError =
@@ -5701,6 +5785,8 @@ export const disassociateAvailabilityZones: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAvailabilityZones",
 }));
 export type DisassociateSubnetsError =
@@ -5732,6 +5818,8 @@ export const disassociateSubnets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSubnets",
 }));
 export type GetAnalysisReportResultsError =
@@ -5774,6 +5862,8 @@ export const getAnalysisReportResults: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAnalysisReportResults",
   pagination: {
     inputToken: "NextToken",
@@ -5820,6 +5910,8 @@ export const listAnalysisReports: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnalysisReports",
   pagination: {
     inputToken: "NextToken",
@@ -5862,6 +5954,8 @@ export const listFirewallPolicies: API.OperationMethod<
   input: ListFirewallPoliciesRequest,
   output: ListFirewallPoliciesResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFirewallPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -5906,6 +6000,8 @@ export const listFirewalls: API.OperationMethod<
   input: ListFirewallsRequest,
   output: ListFirewallsResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFirewalls",
   pagination: {
     inputToken: "NextToken",
@@ -5957,6 +6053,8 @@ export const listFlowOperationResults: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlowOperationResults",
   pagination: {
     inputToken: "NextToken",
@@ -6009,6 +6107,8 @@ export const listFlowOperations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlowOperations",
   pagination: {
     inputToken: "NextToken",
@@ -6051,6 +6151,8 @@ export const listProxies: API.OperationMethod<
   input: ListProxiesRequest,
   output: ListProxiesResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProxies",
   pagination: {
     inputToken: "NextToken",
@@ -6099,6 +6201,8 @@ export const listProxyConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProxyConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -6147,6 +6251,8 @@ export const listProxyRuleGroups: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProxyRuleGroups",
   pagination: {
     inputToken: "NextToken",
@@ -6189,6 +6295,8 @@ export const listRuleGroups: API.OperationMethod<
   input: ListRuleGroupsRequest,
   output: ListRuleGroupsResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleGroups",
   pagination: {
     inputToken: "NextToken",
@@ -6242,6 +6350,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -6282,6 +6392,8 @@ export const listTLSInspectionConfigurations: API.OperationMethod<
   input: ListTLSInspectionConfigurationsRequest,
   output: ListTLSInspectionConfigurationsResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTLSInspectionConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -6326,6 +6438,8 @@ export const listVpcEndpointAssociations: API.OperationMethod<
   input: ListVpcEndpointAssociationsRequest,
   output: ListVpcEndpointAssociationsResponse,
   errors: [InternalServerError, InvalidRequestException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcEndpointAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -6372,6 +6486,8 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type RejectNetworkFirewallTransitGatewayAttachmentError =
@@ -6403,6 +6519,8 @@ export const rejectNetworkFirewallTransitGatewayAttachment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectNetworkFirewallTransitGatewayAttachment",
 }));
 export type StartAnalysisReportError =
@@ -6430,6 +6548,8 @@ export const startAnalysisReport: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAnalysisReport",
 }));
 export type StartFlowCaptureError =
@@ -6463,6 +6583,8 @@ export const startFlowCapture: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFlowCapture",
 }));
 export type StartFlowFlushError =
@@ -6494,6 +6616,8 @@ export const startFlowFlush: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFlowFlush",
 }));
 export type TagResourceError =
@@ -6525,6 +6649,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6557,6 +6683,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAvailabilityZoneChangeProtectionError =
@@ -6588,6 +6716,8 @@ export const updateAvailabilityZoneChangeProtection: API.OperationMethod<
     ResourceOwnerCheckException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAvailabilityZoneChangeProtection",
 }));
 export type UpdateFirewallAnalysisSettingsError =
@@ -6615,6 +6745,8 @@ export const updateFirewallAnalysisSettings: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFirewallAnalysisSettings",
 }));
 export type UpdateFirewallDeleteProtectionError =
@@ -6647,6 +6779,8 @@ export const updateFirewallDeleteProtection: API.OperationMethod<
     ResourceOwnerCheckException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFirewallDeleteProtection",
 }));
 export type UpdateFirewallDescriptionError =
@@ -6675,6 +6809,8 @@ export const updateFirewallDescription: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFirewallDescription",
 }));
 export type UpdateFirewallEncryptionConfigurationError =
@@ -6704,6 +6840,8 @@ export const updateFirewallEncryptionConfiguration: API.OperationMethod<
     ResourceOwnerCheckException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFirewallEncryptionConfiguration",
 }));
 export type UpdateFirewallPolicyError =
@@ -6731,6 +6869,8 @@ export const updateFirewallPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFirewallPolicy",
 }));
 export type UpdateFirewallPolicyChangeProtectionError =
@@ -6762,6 +6902,8 @@ export const updateFirewallPolicyChangeProtection: API.OperationMethod<
     ResourceOwnerCheckException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFirewallPolicyChangeProtection",
 }));
 export type UpdateLoggingConfigurationError =
@@ -6814,6 +6956,8 @@ export const updateLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLoggingConfiguration",
 }));
 export type UpdateProxyError =
@@ -6841,6 +6985,8 @@ export const updateProxy: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProxy",
 }));
 export type UpdateProxyConfigurationError =
@@ -6866,6 +7012,8 @@ export const updateProxyConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProxyConfiguration",
 }));
 export type UpdateProxyRuleError =
@@ -6891,6 +7039,8 @@ export const updateProxyRule: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProxyRule",
 }));
 export type UpdateProxyRuleGroupPrioritiesError =
@@ -6916,6 +7066,8 @@ export const updateProxyRuleGroupPriorities: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProxyRuleGroupPriorities",
 }));
 export type UpdateProxyRulePrioritiesError =
@@ -6941,6 +7093,8 @@ export const updateProxyRulePriorities: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProxyRulePriorities",
 }));
 export type UpdateRuleGroupError =
@@ -6974,6 +7128,8 @@ export const updateRuleGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRuleGroup",
 }));
 export type UpdateSubnetChangeProtectionError =
@@ -7003,6 +7159,8 @@ export const updateSubnetChangeProtection: API.OperationMethod<
     ResourceOwnerCheckException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubnetChangeProtection",
 }));
 export type UpdateTLSInspectionConfigurationError =
@@ -7036,5 +7194,7 @@ export const updateTLSInspectionConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTLSInspectionConfiguration",
 }));

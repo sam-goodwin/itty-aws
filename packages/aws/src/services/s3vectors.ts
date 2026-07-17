@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -940,6 +942,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -965,6 +969,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -990,6 +996,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateVectorBucketError =
@@ -1019,6 +1027,8 @@ export const createVectorBucket: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVectorBucket",
 }));
 export type DeleteVectorBucketError =
@@ -1042,6 +1052,8 @@ export const deleteVectorBucket: API.OperationMethod<
   input: DeleteVectorBucketInput,
   output: DeleteVectorBucketOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVectorBucket",
 }));
 export type DeleteVectorBucketPolicyError =
@@ -1064,6 +1076,8 @@ export const deleteVectorBucketPolicy: API.OperationMethod<
   input: DeleteVectorBucketPolicyInput,
   output: DeleteVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVectorBucketPolicy",
 }));
 export type GetVectorBucketError =
@@ -1086,6 +1100,8 @@ export const getVectorBucket: API.OperationMethod<
   input: GetVectorBucketInput,
   output: GetVectorBucketOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVectorBucket",
 }));
 export type GetVectorBucketPolicyError =
@@ -1108,6 +1124,8 @@ export const getVectorBucketPolicy: API.OperationMethod<
   input: GetVectorBucketPolicyInput,
   output: GetVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVectorBucketPolicy",
 }));
 export type ListVectorBucketsError = ServiceUnavailableException | CommonErrors;
@@ -1142,6 +1160,8 @@ export const listVectorBuckets: API.OperationMethod<
   input: ListVectorBucketsInput,
   output: ListVectorBucketsOutput,
   errors: [ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVectorBuckets",
   pagination: {
     inputToken: "nextToken",
@@ -1170,6 +1190,8 @@ export const putVectorBucketPolicy: API.OperationMethod<
   input: PutVectorBucketPolicyInput,
   output: PutVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVectorBucketPolicy",
 }));
 export type CreateIndexError =
@@ -1201,6 +1223,8 @@ export const createIndex: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIndex",
 }));
 export type DeleteIndexError =
@@ -1223,6 +1247,8 @@ export const deleteIndex: API.OperationMethod<
   input: DeleteIndexInput,
   output: DeleteIndexOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIndex",
 }));
 export type GetIndexError =
@@ -1245,6 +1271,8 @@ export const getIndex: API.OperationMethod<
   input: GetIndexInput,
   output: GetIndexOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIndex",
 }));
 export type ListIndexesError =
@@ -1282,6 +1310,8 @@ export const listIndexes: API.OperationMethod<
   input: ListIndexesInput,
   output: ListIndexesOutput,
   errors: [NotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndexes",
   pagination: {
     inputToken: "nextToken",
@@ -1323,6 +1353,8 @@ export const deleteVectors: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVectors",
 }));
 export type GetVectorsError =
@@ -1356,6 +1388,8 @@ export const getVectors: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVectors",
 }));
 export type ListVectorsError =
@@ -1404,6 +1438,8 @@ export const listVectors: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVectors",
   pagination: {
     inputToken: "nextToken",
@@ -1451,6 +1487,8 @@ export const putVectors: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVectors",
 }));
 export type QueryVectorsError =
@@ -1490,5 +1528,7 @@ export const queryVectors: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "QueryVectors",
 }));

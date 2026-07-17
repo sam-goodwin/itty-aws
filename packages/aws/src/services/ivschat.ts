@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1033,6 +1035,8 @@ export const createChatToken: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChatToken",
 }));
 export type CreateLoggingConfigurationError =
@@ -1063,6 +1067,8 @@ export const createLoggingConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoggingConfiguration",
 }));
 export type CreateRoomError =
@@ -1092,6 +1098,8 @@ export const createRoom: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoom",
 }));
 export type DeleteLoggingConfigurationError =
@@ -1119,6 +1127,8 @@ export const deleteLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoggingConfiguration",
 }));
 export type DeleteMessageError =
@@ -1149,6 +1159,8 @@ export const deleteMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMessage",
 }));
 export type DeleteRoomError =
@@ -1174,6 +1186,8 @@ export const deleteRoom: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoom",
 }));
 export type DisconnectUserError =
@@ -1203,6 +1217,8 @@ export const disconnectUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisconnectUser",
 }));
 export type GetLoggingConfigurationError =
@@ -1226,6 +1242,8 @@ export const getLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoggingConfiguration",
 }));
 export type GetRoomError =
@@ -1249,6 +1267,8 @@ export const getRoom: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRoom",
 }));
 export type ListLoggingConfigurationsError =
@@ -1283,6 +1303,8 @@ export const listLoggingConfigurations: API.OperationMethod<
   input: ListLoggingConfigurationsRequest,
   output: ListLoggingConfigurationsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLoggingConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -1327,6 +1349,8 @@ export const listRooms: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRooms",
   pagination: {
     inputToken: "nextToken",
@@ -1355,6 +1379,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type SendEventError =
@@ -1384,6 +1410,8 @@ export const sendEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendEvent",
 }));
 export type TagResourceError =
@@ -1407,6 +1435,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1430,6 +1460,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateLoggingConfigurationError =
@@ -1457,6 +1489,8 @@ export const updateLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLoggingConfiguration",
 }));
 export type UpdateRoomError =
@@ -1482,5 +1516,7 @@ export const updateRoom: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoom",
 }));

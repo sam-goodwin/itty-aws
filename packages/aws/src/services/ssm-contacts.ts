@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1656,6 +1658,8 @@ export const acceptPage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptPage",
 }));
 export type ActivateContactChannelError =
@@ -1684,6 +1688,8 @@ export const activateContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateContactChannel",
 }));
 export type CreateContactError =
@@ -1717,6 +1723,8 @@ export const createContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContact",
 }));
 export type CreateContactChannelError =
@@ -1746,6 +1754,8 @@ export const createContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContactChannel",
 }));
 export type CreateRotationError =
@@ -1775,6 +1785,8 @@ export const createRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRotation",
 }));
 export type CreateRotationOverrideError =
@@ -1804,6 +1816,8 @@ export const createRotationOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRotationOverride",
 }));
 export type DeactivateContactChannelError =
@@ -1832,6 +1846,8 @@ export const deactivateContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateContactChannel",
 }));
 export type DeleteContactError =
@@ -1865,6 +1881,8 @@ export const deleteContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContact",
 }));
 export type DeleteContactChannelError =
@@ -1896,6 +1914,8 @@ export const deleteContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactChannel",
 }));
 export type DeleteRotationError =
@@ -1926,6 +1946,8 @@ export const deleteRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRotation",
 }));
 export type DeleteRotationOverrideError =
@@ -1953,6 +1975,8 @@ export const deleteRotationOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRotationOverride",
 }));
 export type DescribeEngagementError =
@@ -1983,6 +2007,8 @@ export const describeEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEngagement",
 }));
 export type DescribePageError =
@@ -2012,6 +2038,8 @@ export const describePage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePage",
 }));
 export type GetContactError =
@@ -2041,6 +2069,8 @@ export const getContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContact",
 }));
 export type GetContactChannelError =
@@ -2070,6 +2100,8 @@ export const getContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactChannel",
 }));
 export type GetContactPolicyError =
@@ -2098,6 +2130,8 @@ export const getContactPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactPolicy",
 }));
 export type GetRotationError =
@@ -2125,6 +2159,8 @@ export const getRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRotation",
 }));
 export type GetRotationOverrideError =
@@ -2152,6 +2188,8 @@ export const getRotationOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRotationOverride",
 }));
 export type ListContactChannelsError =
@@ -2196,6 +2234,8 @@ export const listContactChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContactChannels",
   pagination: {
     inputToken: "NextToken",
@@ -2242,6 +2282,8 @@ export const listContacts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContacts",
   pagination: {
     inputToken: "NextToken",
@@ -2288,6 +2330,8 @@ export const listEngagements: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngagements",
   pagination: {
     inputToken: "NextToken",
@@ -2336,6 +2380,8 @@ export const listPageReceipts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPageReceipts",
   pagination: {
     inputToken: "NextToken",
@@ -2388,6 +2434,8 @@ export const listPageResolutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPageResolutions",
   pagination: {
     inputToken: "NextToken",
@@ -2435,6 +2483,8 @@ export const listPagesByContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPagesByContact",
   pagination: {
     inputToken: "NextToken",
@@ -2483,6 +2533,8 @@ export const listPagesByEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPagesByEngagement",
   pagination: {
     inputToken: "NextToken",
@@ -2531,6 +2583,8 @@ export const listPreviewRotationShifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPreviewRotationShifts",
   pagination: {
     inputToken: "NextToken",
@@ -2579,6 +2633,8 @@ export const listRotationOverrides: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRotationOverrides",
   pagination: {
     inputToken: "NextToken",
@@ -2627,6 +2683,8 @@ export const listRotations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRotations",
   pagination: {
     inputToken: "NextToken",
@@ -2677,6 +2735,8 @@ export const listRotationShifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRotationShifts",
   pagination: {
     inputToken: "NextToken",
@@ -2710,6 +2770,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutContactPolicyError =
@@ -2741,6 +2803,8 @@ export const putContactPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutContactPolicy",
 }));
 export type SendActivationCodeError =
@@ -2774,6 +2838,8 @@ export const sendActivationCode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendActivationCode",
 }));
 export type StartEngagementError =
@@ -2804,6 +2870,8 @@ export const startEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEngagement",
 }));
 export type StopEngagementError =
@@ -2832,6 +2900,8 @@ export const stopEngagement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEngagement",
 }));
 export type TagResourceError =
@@ -2862,6 +2932,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2889,6 +2961,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateContactError =
@@ -2920,6 +2994,8 @@ export const updateContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContact",
 }));
 export type UpdateContactChannelError =
@@ -2951,6 +3027,8 @@ export const updateContactChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContactChannel",
 }));
 export type UpdateRotationError =
@@ -2980,5 +3058,7 @@ export const updateRotation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRotation",
 }));

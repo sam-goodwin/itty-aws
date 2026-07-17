@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1432,6 +1434,8 @@ export const batchGetUserAccessTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetUserAccessTasks",
 }));
 export type ConnectAppAuthorizationError =
@@ -1460,6 +1464,8 @@ export const connectAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConnectAppAuthorization",
 }));
 export type CreateAppAuthorizationError =
@@ -1492,6 +1498,8 @@ export const createAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppAuthorization",
 }));
 export type CreateAppBundleError =
@@ -1521,6 +1529,8 @@ export const createAppBundle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppBundle",
 }));
 export type CreateIngestionError =
@@ -1550,6 +1560,8 @@ export const createIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIngestion",
 }));
 export type CreateIngestionDestinationError =
@@ -1580,6 +1592,8 @@ export const createIngestionDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIngestionDestination",
 }));
 export type DeleteAppAuthorizationError =
@@ -1608,6 +1622,8 @@ export const deleteAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppAuthorization",
 }));
 export type DeleteAppBundleError =
@@ -1636,6 +1652,8 @@ export const deleteAppBundle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppBundle",
 }));
 export type DeleteIngestionError =
@@ -1664,6 +1682,8 @@ export const deleteIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIngestion",
 }));
 export type DeleteIngestionDestinationError =
@@ -1696,6 +1716,8 @@ export const deleteIngestionDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIngestionDestination",
 }));
 export type GetAppAuthorizationError =
@@ -1723,6 +1745,8 @@ export const getAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAppAuthorization",
 }));
 export type GetAppBundleError =
@@ -1750,6 +1774,8 @@ export const getAppBundle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAppBundle",
 }));
 export type GetIngestionError =
@@ -1777,6 +1803,8 @@ export const getIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIngestion",
 }));
 export type GetIngestionDestinationError =
@@ -1804,6 +1832,8 @@ export const getIngestionDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIngestionDestination",
 }));
 export type ListAppAuthorizationsError =
@@ -1846,6 +1876,8 @@ export const listAppAuthorizations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppAuthorizations",
   pagination: {
     inputToken: "nextToken",
@@ -1892,6 +1924,8 @@ export const listAppBundles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppBundles",
   pagination: {
     inputToken: "nextToken",
@@ -1940,6 +1974,8 @@ export const listIngestionDestinations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIngestionDestinations",
   pagination: {
     inputToken: "nextToken",
@@ -1988,6 +2024,8 @@ export const listIngestions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIngestions",
   pagination: {
     inputToken: "nextToken",
@@ -2021,6 +2059,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartIngestionError =
@@ -2050,6 +2090,8 @@ export const startIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartIngestion",
 }));
 export type StartUserAccessTasksError =
@@ -2080,6 +2122,8 @@ export const startUserAccessTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartUserAccessTasks",
 }));
 export type StopIngestionError =
@@ -2109,6 +2153,8 @@ export const stopIngestion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopIngestion",
 }));
 export type TagResourceError =
@@ -2136,6 +2182,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2163,6 +2211,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAppAuthorizationError =
@@ -2194,6 +2244,8 @@ export const updateAppAuthorization: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppAuthorization",
 }));
 export type UpdateIngestionDestinationError =
@@ -2226,5 +2278,7 @@ export const updateIngestionDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIngestionDestination",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1187,6 +1189,8 @@ export const addAttachmentsToSet: API.OperationMethod<
     AttachmentSetSizeLimitExceeded,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddAttachmentsToSet",
 }));
 export type AddCommunicationToCaseError =
@@ -1224,6 +1228,8 @@ export const addCommunicationToCase: API.OperationMethod<
     CaseIdNotFound,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddCommunicationToCase",
 }));
 export type CreateCaseError =
@@ -1274,6 +1280,8 @@ export const createCase: API.OperationMethod<
     CaseCreationLimitExceeded,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCase",
 }));
 export type DescribeAttachmentError =
@@ -1309,6 +1317,8 @@ export const describeAttachment: API.OperationMethod<
     DescribeAttachmentLimitExceeded,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAttachment",
 }));
 export type DescribeCasesError =
@@ -1364,6 +1374,8 @@ export const describeCases: API.OperationMethod<
   input: DescribeCasesRequest,
   output: DescribeCasesResponse,
   errors: [CaseIdNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCases",
   pagination: {
     inputToken: "nextToken",
@@ -1422,6 +1434,8 @@ export const describeCommunications: API.OperationMethod<
   input: DescribeCommunicationsRequest,
   output: DescribeCommunicationsResponse,
   errors: [CaseIdNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCommunications",
   pagination: {
     inputToken: "nextToken",
@@ -1457,6 +1471,8 @@ export const describeCreateCaseOptions: API.OperationMethod<
   input: DescribeCreateCaseOptionsRequest,
   output: DescribeCreateCaseOptionsResponse,
   errors: [InternalServerError, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCreateCaseOptions",
 }));
 export type DescribeServicesError = InternalServerError | CommonErrors;
@@ -1489,6 +1505,8 @@ export const describeServices: API.OperationMethod<
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServices",
 }));
 export type DescribeSeverityLevelsError = InternalServerError | CommonErrors;
@@ -1514,6 +1532,8 @@ export const describeSeverityLevels: API.OperationMethod<
   input: DescribeSeverityLevelsRequest,
   output: DescribeSeverityLevelsResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSeverityLevels",
 }));
 export type DescribeSupportedLanguagesError =
@@ -1542,6 +1562,8 @@ export const describeSupportedLanguages: API.OperationMethod<
   input: DescribeSupportedLanguagesRequest,
   output: DescribeSupportedLanguagesResponse,
   errors: [InternalServerError, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSupportedLanguages",
 }));
 export type DescribeTrustedAdvisorCheckRefreshStatusesError =
@@ -1579,6 +1601,8 @@ export const describeTrustedAdvisorCheckRefreshStatuses: API.OperationMethod<
   input: DescribeTrustedAdvisorCheckRefreshStatusesRequest,
   output: DescribeTrustedAdvisorCheckRefreshStatusesResponse,
   errors: [InternalServerError, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrustedAdvisorCheckRefreshStatuses",
 }));
 export type DescribeTrustedAdvisorCheckResultError =
@@ -1633,6 +1657,8 @@ export const describeTrustedAdvisorCheckResult: API.OperationMethod<
   input: DescribeTrustedAdvisorCheckResultRequest,
   output: DescribeTrustedAdvisorCheckResultResponse,
   errors: [InternalServerError, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrustedAdvisorCheckResult",
 }));
 export type DescribeTrustedAdvisorChecksError =
@@ -1671,6 +1697,8 @@ export const describeTrustedAdvisorChecks: API.OperationMethod<
   input: DescribeTrustedAdvisorChecksRequest,
   output: DescribeTrustedAdvisorChecksResponse,
   errors: [InternalServerError, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrustedAdvisorChecks",
 }));
 export type DescribeTrustedAdvisorCheckSummariesError =
@@ -1706,6 +1734,8 @@ export const describeTrustedAdvisorCheckSummaries: API.OperationMethod<
   input: DescribeTrustedAdvisorCheckSummariesRequest,
   output: DescribeTrustedAdvisorCheckSummariesResponse,
   errors: [InternalServerError, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrustedAdvisorCheckSummaries",
 }));
 export type RefreshTrustedAdvisorCheckError =
@@ -1745,6 +1775,8 @@ export const refreshTrustedAdvisorCheck: API.OperationMethod<
   input: RefreshTrustedAdvisorCheckRequest,
   output: RefreshTrustedAdvisorCheckResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RefreshTrustedAdvisorCheck",
 }));
 export type ResolveCaseError =
@@ -1772,5 +1804,7 @@ export const resolveCase: API.OperationMethod<
   input: ResolveCaseRequest,
   output: ResolveCaseResponse,
   errors: [CaseIdNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResolveCase",
 }));

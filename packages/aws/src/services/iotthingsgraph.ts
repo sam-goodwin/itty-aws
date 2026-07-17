@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1429,6 +1431,8 @@ export const associateEntityToThing: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateEntityToThing",
 }));
 export type CreateFlowTemplateError =
@@ -1458,6 +1462,8 @@ export const createFlowTemplate: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFlowTemplate",
 }));
 export type CreateSystemInstanceError =
@@ -1497,6 +1503,8 @@ export const createSystemInstance: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSystemInstance",
 }));
 export type CreateSystemTemplateError =
@@ -1523,6 +1531,8 @@ export const createSystemTemplate: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSystemTemplate",
 }));
 export type DeleteFlowTemplateError =
@@ -1549,6 +1559,8 @@ export const deleteFlowTemplate: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFlowTemplate",
 }));
 export type DeleteNamespaceError =
@@ -1568,6 +1580,8 @@ export const deleteNamespace: API.OperationMethod<
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [InternalFailureException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNamespace",
 }));
 export type DeleteSystemInstanceError =
@@ -1596,6 +1610,8 @@ export const deleteSystemInstance: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSystemInstance",
 }));
 export type DeleteSystemTemplateError =
@@ -1622,6 +1638,8 @@ export const deleteSystemTemplate: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSystemTemplate",
 }));
 export type DeploySystemInstanceError =
@@ -1661,6 +1679,8 @@ export const deploySystemInstance: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeploySystemInstance",
 }));
 export type DeprecateFlowTemplateError =
@@ -1686,6 +1706,8 @@ export const deprecateFlowTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprecateFlowTemplate",
 }));
 export type DeprecateSystemTemplateError =
@@ -1711,6 +1733,8 @@ export const deprecateSystemTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprecateSystemTemplate",
 }));
 export type DescribeNamespaceError =
@@ -1736,6 +1760,8 @@ export const describeNamespace: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNamespace",
 }));
 export type DissociateEntityFromThingError =
@@ -1762,6 +1788,8 @@ export const dissociateEntityFromThing: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DissociateEntityFromThing",
 }));
 export type GetEntitiesError =
@@ -1808,6 +1836,8 @@ export const getEntities: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEntities",
 }));
 export type GetFlowTemplateError =
@@ -1833,6 +1863,8 @@ export const getFlowTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFlowTemplate",
 }));
 export type GetFlowTemplateRevisionsError =
@@ -1874,6 +1906,8 @@ export const getFlowTemplateRevisions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFlowTemplateRevisions",
   pagination: {
     inputToken: "nextToken",
@@ -1903,6 +1937,8 @@ export const getNamespaceDeletionStatus: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNamespaceDeletionStatus",
 }));
 export type GetSystemInstanceError =
@@ -1928,6 +1964,8 @@ export const getSystemInstance: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSystemInstance",
 }));
 export type GetSystemTemplateError =
@@ -1953,6 +1991,8 @@ export const getSystemTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSystemTemplate",
 }));
 export type GetSystemTemplateRevisionsError =
@@ -1994,6 +2034,8 @@ export const getSystemTemplateRevisions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSystemTemplateRevisions",
   pagination: {
     inputToken: "nextToken",
@@ -2025,6 +2067,8 @@ export const getUploadStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUploadStatus",
 }));
 export type ListFlowExecutionMessagesError =
@@ -2065,6 +2109,8 @@ export const listFlowExecutionMessages: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFlowExecutionMessages",
   pagination: {
     inputToken: "nextToken",
@@ -2111,6 +2157,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
@@ -2155,6 +2203,8 @@ export const searchEntities: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchEntities",
   pagination: {
     inputToken: "nextToken",
@@ -2201,6 +2251,8 @@ export const searchFlowExecutions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchFlowExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -2245,6 +2297,8 @@ export const searchFlowTemplates: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchFlowTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -2289,6 +2343,8 @@ export const searchSystemInstances: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSystemInstances",
   pagination: {
     inputToken: "nextToken",
@@ -2333,6 +2389,8 @@ export const searchSystemTemplates: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSystemTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -2384,6 +2442,8 @@ export const searchThings: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchThings",
   pagination: {
     inputToken: "nextToken",
@@ -2415,6 +2475,8 @@ export const tagResource: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UndeploySystemInstanceError =
@@ -2442,6 +2504,8 @@ export const undeploySystemInstance: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UndeploySystemInstance",
 }));
 export type UntagResourceError =
@@ -2467,6 +2531,8 @@ export const untagResource: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateFlowTemplateError =
@@ -2493,6 +2559,8 @@ export const updateFlowTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFlowTemplate",
 }));
 export type UpdateSystemTemplateError =
@@ -2518,6 +2586,8 @@ export const updateSystemTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSystemTemplate",
 }));
 export type UploadEntityDefinitionsError =
@@ -2553,5 +2623,7 @@ export const uploadEntityDefinitions: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadEntityDefinitions",
 }));

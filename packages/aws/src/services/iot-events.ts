@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1996,6 +1998,8 @@ export const createAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlarmModel",
 }));
 export type CreateDetectorModelError =
@@ -2027,6 +2031,8 @@ export const createDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDetectorModel",
 }));
 export type CreateInputError =
@@ -2054,6 +2060,8 @@ export const createInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInput",
 }));
 export type DeleteAlarmModelError =
@@ -2084,6 +2092,8 @@ export const deleteAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlarmModel",
 }));
 export type DeleteDetectorModelError =
@@ -2114,6 +2124,8 @@ export const deleteDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDetectorModel",
 }));
 export type DeleteInputError =
@@ -2143,6 +2155,8 @@ export const deleteInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInput",
 }));
 export type DescribeAlarmModelError =
@@ -2171,6 +2185,8 @@ export const describeAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlarmModel",
 }));
 export type DescribeDetectorModelError =
@@ -2199,6 +2215,8 @@ export const describeDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDetectorModel",
 }));
 export type DescribeDetectorModelAnalysisError =
@@ -2228,6 +2246,8 @@ export const describeDetectorModelAnalysis: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDetectorModelAnalysis",
 }));
 export type DescribeInputError =
@@ -2255,6 +2275,8 @@ export const describeInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInput",
 }));
 export type DescribeLoggingOptionsError =
@@ -2284,6 +2306,8 @@ export const describeLoggingOptions: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoggingOptions",
 }));
 export type GetDetectorModelAnalysisResultsError =
@@ -2313,6 +2337,8 @@ export const getDetectorModelAnalysisResults: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDetectorModelAnalysisResults",
 }));
 export type ListAlarmModelsError =
@@ -2339,6 +2365,8 @@ export const listAlarmModels: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlarmModels",
 }));
 export type ListAlarmModelVersionsError =
@@ -2367,6 +2395,8 @@ export const listAlarmModelVersions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlarmModelVersions",
 }));
 export type ListDetectorModelsError =
@@ -2393,6 +2423,8 @@ export const listDetectorModels: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDetectorModels",
 }));
 export type ListDetectorModelVersionsError =
@@ -2421,6 +2453,8 @@ export const listDetectorModelVersions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDetectorModelVersions",
 }));
 export type ListInputRoutingsError =
@@ -2448,6 +2482,8 @@ export const listInputRoutings: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInputRoutings",
 }));
 export type ListInputsError =
@@ -2473,6 +2509,8 @@ export const listInputs: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInputs",
 }));
 export type ListTagsForResourceError =
@@ -2500,6 +2538,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutLoggingOptionsError =
@@ -2534,6 +2574,8 @@ export const putLoggingOptions: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLoggingOptions",
 }));
 export type StartDetectorModelAnalysisError =
@@ -2563,6 +2605,8 @@ export const startDetectorModelAnalysis: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDetectorModelAnalysis",
 }));
 export type TagResourceError =
@@ -2593,6 +2637,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2620,6 +2666,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAlarmModelError =
@@ -2650,6 +2698,8 @@ export const updateAlarmModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAlarmModel",
 }));
 export type UpdateDetectorModelError =
@@ -2680,6 +2730,8 @@ export const updateDetectorModel: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDetectorModel",
 }));
 export type UpdateInputError =
@@ -2709,5 +2761,7 @@ export const updateInput: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInput",
 }));

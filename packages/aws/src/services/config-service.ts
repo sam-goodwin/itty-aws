@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -6764,6 +6766,8 @@ export const associateResourceTypes: API.OperationMethod<
     NoSuchConfigurationRecorderException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateResourceTypes",
 }));
 export type BatchGetAggregateResourceConfigError =
@@ -6787,6 +6791,8 @@ export const batchGetAggregateResourceConfig: API.OperationMethod<
   input: BatchGetAggregateResourceConfigRequest,
   output: BatchGetAggregateResourceConfigResponse,
   errors: [NoSuchConfigurationAggregatorException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetAggregateResourceConfig",
 }));
 export type BatchGetResourceConfigError =
@@ -6817,6 +6823,8 @@ export const batchGetResourceConfig: API.OperationMethod<
   input: BatchGetResourceConfigRequest,
   output: BatchGetResourceConfigResponse,
   errors: [NoAvailableConfigurationRecorderException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetResourceConfig",
 }));
 export type DeleteAggregationAuthorizationError =
@@ -6835,6 +6843,8 @@ export const deleteAggregationAuthorization: API.OperationMethod<
   input: DeleteAggregationAuthorizationRequest,
   output: DeleteAggregationAuthorizationResponse,
   errors: [InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAggregationAuthorization",
 }));
 export type DeleteConfigRuleError =
@@ -6875,6 +6885,8 @@ export const deleteConfigRule: API.OperationMethod<
   input: DeleteConfigRuleRequest,
   output: DeleteConfigRuleResponse,
   errors: [NoSuchConfigRuleException, ResourceInUseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigRule",
 }));
 export type DeleteConfigurationAggregatorError =
@@ -6893,6 +6905,8 @@ export const deleteConfigurationAggregator: API.OperationMethod<
   input: DeleteConfigurationAggregatorRequest,
   output: DeleteConfigurationAggregatorResponse,
   errors: [NoSuchConfigurationAggregatorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationAggregator",
 }));
 export type DeleteConfigurationRecorderError =
@@ -6918,6 +6932,8 @@ export const deleteConfigurationRecorder: API.OperationMethod<
   input: DeleteConfigurationRecorderRequest,
   output: DeleteConfigurationRecorderResponse,
   errors: [NoSuchConfigurationRecorderException, UnmodifiableEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationRecorder",
 }));
 export type DeleteConformancePackError =
@@ -6952,6 +6968,8 @@ export const deleteConformancePack: API.OperationMethod<
   input: DeleteConformancePackRequest,
   output: DeleteConformancePackResponse,
   errors: [NoSuchConformancePackException, ResourceInUseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConformancePack",
 }));
 export type DeleteDeliveryChannelError =
@@ -6975,6 +6993,8 @@ export const deleteDeliveryChannel: API.OperationMethod<
     LastDeliveryChannelDeleteFailedException,
     NoSuchDeliveryChannelException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeliveryChannel",
 }));
 export type DeleteEvaluationResultsError =
@@ -6996,6 +7016,8 @@ export const deleteEvaluationResults: API.OperationMethod<
   input: DeleteEvaluationResultsRequest,
   output: DeleteEvaluationResultsResponse,
   errors: [NoSuchConfigRuleException, ResourceInUseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEvaluationResults",
 }));
 export type DeleteOrganizationConfigRuleError =
@@ -7038,6 +7060,8 @@ export const deleteOrganizationConfigRule: API.OperationMethod<
     OrganizationAccessDeniedException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOrganizationConfigRule",
 }));
 export type DeleteOrganizationConformancePackError =
@@ -7081,6 +7105,8 @@ export const deleteOrganizationConformancePack: API.OperationMethod<
     OrganizationAccessDeniedException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOrganizationConformancePack",
 }));
 export type DeletePendingAggregationRequestError =
@@ -7099,6 +7125,8 @@ export const deletePendingAggregationRequest: API.OperationMethod<
   input: DeletePendingAggregationRequestRequest,
   output: DeletePendingAggregationRequestResponse,
   errors: [InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePendingAggregationRequest",
 }));
 export type DeleteRemediationConfigurationError =
@@ -7124,6 +7152,8 @@ export const deleteRemediationConfiguration: API.OperationMethod<
     NoSuchRemediationConfigurationException,
     RemediationInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRemediationConfiguration",
 }));
 export type DeleteRemediationExceptionsError =
@@ -7144,6 +7174,8 @@ export const deleteRemediationExceptions: API.OperationMethod<
   input: DeleteRemediationExceptionsRequest,
   output: DeleteRemediationExceptionsResponse,
   errors: [NoSuchRemediationExceptionException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRemediationExceptions",
 }));
 export type DeleteResourceConfigError =
@@ -7162,6 +7194,8 @@ export const deleteResourceConfig: API.OperationMethod<
   input: DeleteResourceConfigRequest,
   output: DeleteResourceConfigResponse,
   errors: [NoRunningConfigurationRecorderException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceConfig",
 }));
 export type DeleteRetentionConfigurationError =
@@ -7183,6 +7217,8 @@ export const deleteRetentionConfiguration: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchRetentionConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRetentionConfiguration",
 }));
 export type DeleteServiceLinkedConfigurationRecorderError =
@@ -7216,6 +7252,8 @@ export const deleteServiceLinkedConfigurationRecorder: API.OperationMethod<
     NoSuchConfigurationRecorderException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceLinkedConfigurationRecorder",
 }));
 export type DeleteStoredQueryError =
@@ -7234,6 +7272,8 @@ export const deleteStoredQuery: API.OperationMethod<
   input: DeleteStoredQueryRequest,
   output: DeleteStoredQueryResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStoredQuery",
 }));
 export type DeliverConfigSnapshotError =
@@ -7268,6 +7308,8 @@ export const deliverConfigSnapshot: API.OperationMethod<
     NoRunningConfigurationRecorderException,
     NoSuchDeliveryChannelException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeliverConfigSnapshot",
 }));
 export type DescribeAggregateComplianceByConfigRulesError =
@@ -7313,6 +7355,8 @@ export const describeAggregateComplianceByConfigRules: API.OperationMethod<
     NoSuchConfigurationAggregatorException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAggregateComplianceByConfigRules",
   pagination: {
     inputToken: "NextToken",
@@ -7361,6 +7405,8 @@ export const describeAggregateComplianceByConformancePacks: API.OperationMethod<
     NoSuchConfigurationAggregatorException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAggregateComplianceByConformancePacks",
   pagination: {
     inputToken: "NextToken",
@@ -7406,6 +7452,8 @@ export const describeAggregationAuthorizations: API.OperationMethod<
     InvalidNextTokenException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAggregationAuthorizations",
   pagination: {
     inputToken: "NextToken",
@@ -7479,6 +7527,8 @@ export const describeComplianceByConfigRule: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchConfigRuleException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComplianceByConfigRule",
   pagination: {
     inputToken: "NextToken",
@@ -7546,6 +7596,8 @@ export const describeComplianceByResource: API.OperationMethod<
   input: DescribeComplianceByResourceRequest,
   output: DescribeComplianceByResourceResponse,
   errors: [InvalidNextTokenException, InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComplianceByResource",
   pagination: {
     inputToken: "NextToken",
@@ -7591,6 +7643,8 @@ export const describeConfigRuleEvaluationStatus: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchConfigRuleException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigRuleEvaluationStatus",
   pagination: {
     inputToken: "NextToken",
@@ -7635,6 +7689,8 @@ export const describeConfigRules: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchConfigRuleException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigRules",
   pagination: {
     inputToken: "NextToken",
@@ -7683,6 +7739,8 @@ export const describeConfigurationAggregators: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchConfigurationAggregatorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationAggregators",
   pagination: {
     inputToken: "NextToken",
@@ -7730,6 +7788,8 @@ export const describeConfigurationAggregatorSourcesStatus: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchConfigurationAggregatorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationAggregatorSourcesStatus",
   pagination: {
     inputToken: "NextToken",
@@ -7759,6 +7819,8 @@ export const describeConfigurationRecorders: API.OperationMethod<
   input: DescribeConfigurationRecordersRequest,
   output: DescribeConfigurationRecordersResponse,
   errors: [NoSuchConfigurationRecorderException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationRecorders",
 }));
 export type DescribeConfigurationRecorderStatusError =
@@ -7785,6 +7847,8 @@ export const describeConfigurationRecorderStatus: API.OperationMethod<
   input: DescribeConfigurationRecorderStatusRequest,
   output: DescribeConfigurationRecorderStatusResponse,
   errors: [NoSuchConfigurationRecorderException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationRecorderStatus",
 }));
 export type DescribeConformancePackComplianceError =
@@ -7829,6 +7893,8 @@ export const describeConformancePackCompliance: API.OperationMethod<
     NoSuchConfigRuleInConformancePackException,
     NoSuchConformancePackException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConformancePackCompliance",
   pagination: {
     inputToken: "NextToken",
@@ -7875,6 +7941,8 @@ export const describeConformancePacks: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchConformancePackException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConformancePacks",
   pagination: {
     inputToken: "NextToken",
@@ -7921,6 +7989,8 @@ export const describeConformancePackStatus: API.OperationMethod<
     InvalidNextTokenException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConformancePackStatus",
   pagination: {
     inputToken: "NextToken",
@@ -7949,6 +8019,8 @@ export const describeDeliveryChannels: API.OperationMethod<
   input: DescribeDeliveryChannelsRequest,
   output: DescribeDeliveryChannelsResponse,
   errors: [NoSuchDeliveryChannelException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeliveryChannels",
 }));
 export type DescribeDeliveryChannelStatusError =
@@ -7972,6 +8044,8 @@ export const describeDeliveryChannelStatus: API.OperationMethod<
   input: DescribeDeliveryChannelStatusRequest,
   output: DescribeDeliveryChannelStatusResponse,
   errors: [NoSuchDeliveryChannelException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeliveryChannelStatus",
 }));
 export type DescribeOrganizationConfigRulesError =
@@ -8030,6 +8104,8 @@ export const describeOrganizationConfigRules: API.OperationMethod<
     NoSuchOrganizationConfigRuleException,
     OrganizationAccessDeniedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConfigRules",
   pagination: {
     inputToken: "NextToken",
@@ -8083,6 +8159,8 @@ export const describeOrganizationConfigRuleStatuses: API.OperationMethod<
     NoSuchOrganizationConfigRuleException,
     OrganizationAccessDeniedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConfigRuleStatuses",
   pagination: {
     inputToken: "NextToken",
@@ -8147,6 +8225,8 @@ export const describeOrganizationConformancePacks: API.OperationMethod<
     NoSuchOrganizationConformancePackException,
     OrganizationAccessDeniedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConformancePacks",
   pagination: {
     inputToken: "NextToken",
@@ -8200,6 +8280,8 @@ export const describeOrganizationConformancePackStatuses: API.OperationMethod<
     NoSuchOrganizationConformancePackException,
     OrganizationAccessDeniedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConformancePackStatuses",
   pagination: {
     inputToken: "NextToken",
@@ -8244,6 +8326,8 @@ export const describePendingAggregationRequests: API.OperationMethod<
     InvalidNextTokenException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePendingAggregationRequests",
   pagination: {
     inputToken: "NextToken",
@@ -8265,6 +8349,8 @@ export const describeRemediationConfigurations: API.OperationMethod<
   input: DescribeRemediationConfigurationsRequest,
   output: DescribeRemediationConfigurationsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRemediationConfigurations",
 }));
 export type DescribeRemediationExceptionsError =
@@ -8306,6 +8392,8 @@ export const describeRemediationExceptions: API.OperationMethod<
   input: DescribeRemediationExceptionsRequest,
   output: DescribeRemediationExceptionsResponse,
   errors: [InvalidNextTokenException, InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRemediationExceptions",
   pagination: {
     inputToken: "NextToken",
@@ -8350,6 +8438,8 @@ export const describeRemediationExecutionStatus: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchRemediationConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRemediationExecutionStatus",
   pagination: {
     inputToken: "NextToken",
@@ -8400,6 +8490,8 @@ export const describeRetentionConfigurations: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchRetentionConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRetentionConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -8430,6 +8522,8 @@ export const disassociateResourceTypes: API.OperationMethod<
     NoSuchConfigurationRecorderException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateResourceTypes",
 }));
 export type GetAggregateComplianceDetailsByConfigRuleError =
@@ -8477,6 +8571,8 @@ export const getAggregateComplianceDetailsByConfigRule: API.OperationMethod<
     NoSuchConfigurationAggregatorException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAggregateComplianceDetailsByConfigRule",
   pagination: {
     inputToken: "NextToken",
@@ -8528,6 +8624,8 @@ export const getAggregateConfigRuleComplianceSummary: API.OperationMethod<
     NoSuchConfigurationAggregatorException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAggregateConfigRuleComplianceSummary",
   pagination: {
     inputToken: "NextToken",
@@ -8575,6 +8673,8 @@ export const getAggregateConformancePackComplianceSummary: API.OperationMethod<
     NoSuchConfigurationAggregatorException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAggregateConformancePackComplianceSummary",
   pagination: {
     inputToken: "NextToken",
@@ -8623,6 +8723,8 @@ export const getAggregateDiscoveredResourceCounts: API.OperationMethod<
     NoSuchConfigurationAggregatorException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAggregateDiscoveredResourceCounts",
   pagination: {
     inputToken: "NextToken",
@@ -8655,6 +8757,8 @@ export const getAggregateResourceConfig: API.OperationMethod<
     ResourceNotDiscoveredException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAggregateResourceConfig",
 }));
 export type GetComplianceDetailsByConfigRuleError =
@@ -8696,6 +8800,8 @@ export const getComplianceDetailsByConfigRule: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchConfigRuleException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComplianceDetailsByConfigRule",
   pagination: {
     inputToken: "NextToken",
@@ -8737,6 +8843,8 @@ export const getComplianceDetailsByResource: API.OperationMethod<
   input: GetComplianceDetailsByResourceRequest,
   output: GetComplianceDetailsByResourceResponse,
   errors: [InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComplianceDetailsByResource",
   pagination: {
     inputToken: "NextToken",
@@ -8758,6 +8866,8 @@ export const getComplianceSummaryByConfigRule: API.OperationMethod<
   input: GetComplianceSummaryByConfigRuleRequest,
   output: GetComplianceSummaryByConfigRuleResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComplianceSummaryByConfigRule",
 }));
 export type GetComplianceSummaryByResourceTypeError =
@@ -8778,6 +8888,8 @@ export const getComplianceSummaryByResourceType: API.OperationMethod<
   input: GetComplianceSummaryByResourceTypeRequest,
   output: GetComplianceSummaryByResourceTypeResponse,
   errors: [InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComplianceSummaryByResourceType",
 }));
 export type GetConformancePackComplianceDetailsError =
@@ -8820,6 +8932,8 @@ export const getConformancePackComplianceDetails: API.OperationMethod<
     NoSuchConfigRuleInConformancePackException,
     NoSuchConformancePackException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConformancePackComplianceDetails",
   pagination: {
     inputToken: "NextToken",
@@ -8863,6 +8977,8 @@ export const getConformancePackComplianceSummary: API.OperationMethod<
     InvalidNextTokenException,
     NoSuchConformancePackException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConformancePackComplianceSummary",
   pagination: {
     inputToken: "NextToken",
@@ -8884,6 +9000,8 @@ export const getCustomRulePolicy: API.OperationMethod<
   input: GetCustomRulePolicyRequest,
   output: GetCustomRulePolicyResponse,
   errors: [NoSuchConfigRuleException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCustomRulePolicy",
 }));
 export type GetDiscoveredResourceCountsError =
@@ -8964,6 +9082,8 @@ export const getDiscoveredResourceCounts: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDiscoveredResourceCounts",
   pagination: {
     inputToken: "nextToken",
@@ -9009,6 +9129,8 @@ export const getOrganizationConfigRuleDetailedStatus: API.OperationMethod<
     NoSuchOrganizationConfigRuleException,
     OrganizationAccessDeniedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOrganizationConfigRuleDetailedStatus",
   pagination: {
     inputToken: "NextToken",
@@ -9055,6 +9177,8 @@ export const getOrganizationConformancePackDetailedStatus: API.OperationMethod<
     NoSuchOrganizationConformancePackException,
     OrganizationAccessDeniedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOrganizationConformancePackDetailedStatus",
   pagination: {
     inputToken: "NextToken",
@@ -9082,6 +9206,8 @@ export const getOrganizationCustomRulePolicy: API.OperationMethod<
     NoSuchOrganizationConfigRuleException,
     OrganizationAccessDeniedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOrganizationCustomRulePolicy",
 }));
 export type GetResourceConfigHistoryError =
@@ -9154,6 +9280,8 @@ export const getResourceConfigHistory: API.OperationMethod<
     ResourceNotDiscoveredException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceConfigHistory",
   pagination: {
     inputToken: "nextToken",
@@ -9182,6 +9310,8 @@ export const getResourceEvaluationSummary: API.OperationMethod<
   input: GetResourceEvaluationSummaryRequest,
   output: GetResourceEvaluationSummaryResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceEvaluationSummary",
 }));
 export type GetStoredQueryError =
@@ -9200,6 +9330,8 @@ export const getStoredQuery: API.OperationMethod<
   input: GetStoredQueryRequest,
   output: GetStoredQueryResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStoredQuery",
 }));
 export type ListAggregateDiscoveredResourcesError =
@@ -9244,6 +9376,8 @@ export const listAggregateDiscoveredResources: API.OperationMethod<
     NoSuchConfigurationAggregatorException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAggregateDiscoveredResources",
   pagination: {
     inputToken: "NextToken",
@@ -9282,6 +9416,8 @@ export const listConfigurationRecorders: API.OperationMethod<
   input: ListConfigurationRecordersRequest,
   output: ListConfigurationRecordersResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationRecorders",
   pagination: {
     inputToken: "NextToken",
@@ -9331,6 +9467,8 @@ export const listConformancePackComplianceScores: API.OperationMethod<
     InvalidNextTokenException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConformancePackComplianceScores",
   pagination: {
     inputToken: "NextToken",
@@ -9409,6 +9547,8 @@ export const listDiscoveredResources: API.OperationMethod<
     NoAvailableConfigurationRecorderException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDiscoveredResources",
   pagination: {
     inputToken: "nextToken",
@@ -9453,6 +9593,8 @@ export const listResourceEvaluations: API.OperationMethod<
     InvalidParameterValueException,
     InvalidTimeRangeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceEvaluations",
   pagination: {
     inputToken: "NextToken",
@@ -9492,6 +9634,8 @@ export const listStoredQueries: API.OperationMethod<
   input: ListStoredQueriesRequest,
   output: ListStoredQueriesResponse,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStoredQueries",
   pagination: {
     inputToken: "NextToken",
@@ -9537,6 +9681,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -9568,6 +9714,8 @@ export const putAggregationAuthorization: API.OperationMethod<
   input: PutAggregationAuthorizationRequest,
   output: PutAggregationAuthorizationResponse,
   errors: [InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAggregationAuthorization",
 }));
 export type PutConfigRuleError =
@@ -9646,6 +9794,8 @@ export const putConfigRule: API.OperationMethod<
     NoAvailableConfigurationRecorderException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigRule",
 }));
 export type PutConfigurationAggregatorError =
@@ -9696,6 +9846,8 @@ export const putConfigurationAggregator: API.OperationMethod<
     OrganizationAccessDeniedException,
     OrganizationAllFeaturesNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationAggregator",
 }));
 export type PutConfigurationRecorderError =
@@ -9750,6 +9902,8 @@ export const putConfigurationRecorder: API.OperationMethod<
     UnmodifiableEntityException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationRecorder",
 }));
 export type PutConformancePackError =
@@ -9804,6 +9958,8 @@ export const putConformancePack: API.OperationMethod<
     MaxNumberOfConformancePacksExceededException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConformancePack",
 }));
 export type PutDeliveryChannelError =
@@ -9849,6 +10005,8 @@ export const putDeliveryChannel: API.OperationMethod<
     NoAvailableConfigurationRecorderException,
     NoSuchBucketException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDeliveryChannel",
 }));
 export type PutEvaluationsError =
@@ -9874,6 +10032,8 @@ export const putEvaluations: API.OperationMethod<
     InvalidResultTokenException,
     NoSuchConfigRuleException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEvaluations",
 }));
 export type PutExternalEvaluationError =
@@ -9893,6 +10053,8 @@ export const putExternalEvaluation: API.OperationMethod<
   input: PutExternalEvaluationRequest,
   output: PutExternalEvaluationResponse,
   errors: [InvalidParameterValueException, NoSuchConfigRuleException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutExternalEvaluation",
 }));
 export type PutOrganizationConfigRuleError =
@@ -9967,6 +10129,8 @@ export const putOrganizationConfigRule: API.OperationMethod<
     ResourceInUseException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutOrganizationConfigRule",
 }));
 export type PutOrganizationConformancePackError =
@@ -10034,6 +10198,8 @@ export const putOrganizationConformancePack: API.OperationMethod<
     ResourceInUseException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutOrganizationConformancePack",
 }));
 export type PutRemediationConfigurationsError =
@@ -10079,6 +10245,8 @@ export const putRemediationConfigurations: API.OperationMethod<
   input: PutRemediationConfigurationsRequest,
   output: PutRemediationConfigurationsResponse,
   errors: [InsufficientPermissionsException, InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRemediationConfigurations",
 }));
 export type PutRemediationExceptionsError =
@@ -10130,6 +10298,8 @@ export const putRemediationExceptions: API.OperationMethod<
   input: PutRemediationExceptionsRequest,
   output: PutRemediationExceptionsResponse,
   errors: [InsufficientPermissionsException, InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRemediationExceptions",
 }));
 export type PutResourceConfigError =
@@ -10164,6 +10334,8 @@ export const putResourceConfig: API.OperationMethod<
     NoRunningConfigurationRecorderException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourceConfig",
 }));
 export type PutRetentionConfigurationError =
@@ -10194,6 +10366,8 @@ export const putRetentionConfiguration: API.OperationMethod<
     InvalidParameterValueException,
     MaxNumberOfRetentionConfigurationsExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRetentionConfiguration",
 }));
 export type PutServiceLinkedConfigurationRecorderError =
@@ -10235,6 +10409,8 @@ export const putServiceLinkedConfigurationRecorder: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutServiceLinkedConfigurationRecorder",
 }));
 export type PutStoredQueryError =
@@ -10264,6 +10440,8 @@ export const putStoredQuery: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutStoredQuery",
 }));
 export type SelectAggregateResourceConfigError =
@@ -10316,6 +10494,8 @@ export const selectAggregateResourceConfig: API.OperationMethod<
     InvalidNextTokenException,
     NoSuchConfigurationAggregatorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SelectAggregateResourceConfig",
   pagination: {
     inputToken: "NextToken",
@@ -10365,6 +10545,8 @@ export const selectResourceConfig: API.OperationMethod<
     InvalidLimitException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SelectResourceConfig",
   pagination: {
     inputToken: "NextToken",
@@ -10435,6 +10617,8 @@ export const startConfigRulesEvaluation: API.OperationMethod<
     NoSuchConfigRuleException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartConfigRulesEvaluation",
 }));
 export type StartConfigurationRecorderError =
@@ -10461,6 +10645,8 @@ export const startConfigurationRecorder: API.OperationMethod<
     NoSuchConfigurationRecorderException,
     UnmodifiableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartConfigurationRecorder",
 }));
 export type StartRemediationExecutionError =
@@ -10486,6 +10672,8 @@ export const startRemediationExecution: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchRemediationConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRemediationExecution",
 }));
 export type StartResourceEvaluationError =
@@ -10515,6 +10703,8 @@ export const startResourceEvaluation: API.OperationMethod<
   input: StartResourceEvaluationRequest,
   output: StartResourceEvaluationResponse,
   errors: [IdempotentParameterMismatch, InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartResourceEvaluation",
 }));
 export type StopConfigurationRecorderError =
@@ -10533,6 +10723,8 @@ export const stopConfigurationRecorder: API.OperationMethod<
   input: StopConfigurationRecorderRequest,
   output: StopConfigurationRecorderResponse,
   errors: [NoSuchConfigurationRecorderException, UnmodifiableEntityException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopConfigurationRecorder",
 }));
 export type TagResourceError =
@@ -10557,6 +10749,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -10575,5 +10769,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

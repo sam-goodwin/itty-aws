@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2116,6 +2118,8 @@ export const decryptData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DecryptData",
 }));
 export type EncryptDataError =
@@ -2169,6 +2173,8 @@ export const encryptData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EncryptData",
 }));
 export type GenerateAs2805KekValidationError =
@@ -2204,6 +2210,8 @@ export const generateAs2805KekValidation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateAs2805KekValidation",
 }));
 export type GenerateCardValidationDataError =
@@ -2243,6 +2251,8 @@ export const generateCardValidationData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateCardValidationData",
 }));
 export type GenerateMacError =
@@ -2282,6 +2292,8 @@ export const generateMac: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateMac",
 }));
 export type GenerateMacEmvPinChangeError =
@@ -2327,6 +2339,8 @@ export const generateMacEmvPinChange: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateMacEmvPinChange",
 }));
 export type GeneratePinDataError =
@@ -2370,6 +2384,8 @@ export const generatePinData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GeneratePinData",
 }));
 export type ReEncryptDataError =
@@ -2417,6 +2433,8 @@ export const reEncryptData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReEncryptData",
 }));
 export type TranslateKeyMaterialError =
@@ -2460,6 +2478,8 @@ export const translateKeyMaterial: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TranslateKeyMaterial",
 }));
 export type TranslatePinDataError =
@@ -2509,6 +2529,8 @@ export const translatePinData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TranslatePinData",
 }));
 export type VerifyAuthRequestCryptogramError =
@@ -2550,6 +2572,8 @@ export const verifyAuthRequestCryptogram: API.OperationMethod<
     ValidationException,
     VerificationFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyAuthRequestCryptogram",
 }));
 export type VerifyCardValidationDataError =
@@ -2593,6 +2617,8 @@ export const verifyCardValidationData: API.OperationMethod<
     ValidationException,
     VerificationFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyCardValidationData",
 }));
 export type VerifyMacError =
@@ -2632,6 +2658,8 @@ export const verifyMac: API.OperationMethod<
     ValidationException,
     VerificationFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyMac",
 }));
 export type VerifyPinDataError =
@@ -2673,5 +2701,7 @@ export const verifyPinData: API.OperationMethod<
     ValidationException,
     VerificationFailedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyPinData",
 }));

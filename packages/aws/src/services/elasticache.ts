@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5465,6 +5467,8 @@ export const addTagsToResource: API.OperationMethod<
     UserGroupNotFoundFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
 export type AuthorizeCacheSecurityGroupIngressError =
@@ -5497,6 +5501,8 @@ export const authorizeCacheSecurityGroupIngress: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeCacheSecurityGroupIngress",
 }));
 export type BatchApplyUpdateActionError =
@@ -5517,6 +5523,8 @@ export const batchApplyUpdateAction: API.OperationMethod<
   input: BatchApplyUpdateActionMessage,
   output: UpdateActionResultsMessage,
   errors: [InvalidParameterValueException, ServiceUpdateNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchApplyUpdateAction",
 }));
 export type BatchStopUpdateActionError =
@@ -5537,6 +5545,8 @@ export const batchStopUpdateAction: API.OperationMethod<
   input: BatchStopUpdateActionMessage,
   output: UpdateActionResultsMessage,
   errors: [InvalidParameterValueException, ServiceUpdateNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchStopUpdateAction",
 }));
 export type CompleteMigrationError =
@@ -5560,6 +5570,8 @@ export const completeMigration: API.OperationMethod<
     ReplicationGroupNotFoundFault,
     ReplicationGroupNotUnderMigrationFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteMigration",
 }));
 export type CopyServerlessCacheSnapshotError =
@@ -5593,6 +5605,8 @@ export const copyServerlessCacheSnapshot: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyServerlessCacheSnapshot",
 }));
 export type CopySnapshotError =
@@ -5694,6 +5708,8 @@ export const copySnapshot: API.OperationMethod<
     SnapshotQuotaExceededFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopySnapshot",
 }));
 export type CreateCacheClusterError =
@@ -5742,6 +5758,8 @@ export const createCacheCluster: API.OperationMethod<
     ReplicationGroupNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCacheCluster",
 }));
 export type CreateCacheParameterGroupError =
@@ -5783,6 +5801,8 @@ export const createCacheParameterGroup: API.OperationMethod<
     InvalidParameterValueException,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCacheParameterGroup",
 }));
 export type CreateCacheSecurityGroupError =
@@ -5815,6 +5835,8 @@ export const createCacheSecurityGroup: API.OperationMethod<
     InvalidParameterValueException,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCacheSecurityGroup",
 }));
 export type CreateCacheSubnetGroupError =
@@ -5847,6 +5869,8 @@ export const createCacheSubnetGroup: API.OperationMethod<
     SubnetNotAllowedFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCacheSubnetGroup",
 }));
 export type CreateGlobalReplicationGroupError =
@@ -5885,6 +5909,8 @@ export const createGlobalReplicationGroup: API.OperationMethod<
     ReplicationGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlobalReplicationGroup",
 }));
 export type CreateReplicationGroupError =
@@ -5974,6 +6000,8 @@ export const createReplicationGroup: API.OperationMethod<
     TagQuotaPerResourceExceeded,
     UserGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationGroup",
 }));
 export type CreateServerlessCacheError =
@@ -6013,6 +6041,8 @@ export const createServerlessCache: API.OperationMethod<
     TagQuotaPerResourceExceeded,
     UserGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServerlessCache",
 }));
 export type CreateServerlessCacheSnapshotError =
@@ -6046,6 +6076,8 @@ export const createServerlessCacheSnapshot: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServerlessCacheSnapshot",
 }));
 export type CreateSnapshotError =
@@ -6086,6 +6118,8 @@ export const createSnapshot: API.OperationMethod<
     SnapshotQuotaExceededFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshot",
 }));
 export type CreateUserError =
@@ -6118,6 +6152,8 @@ export const createUser: API.OperationMethod<
     UserAlreadyExistsFault,
     UserQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type CreateUserGroupError =
@@ -6152,6 +6188,8 @@ export const createUserGroup: API.OperationMethod<
     UserGroupQuotaExceededFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserGroup",
 }));
 export type DecreaseNodeGroupsInGlobalReplicationGroupError =
@@ -6177,6 +6215,8 @@ export const decreaseNodeGroupsInGlobalReplicationGroup: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DecreaseNodeGroupsInGlobalReplicationGroup",
 }));
 export type DecreaseReplicaCountError =
@@ -6221,6 +6261,8 @@ export const decreaseReplicaCount: API.OperationMethod<
     ReplicationGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DecreaseReplicaCount",
 }));
 export type DeleteCacheClusterError =
@@ -6271,6 +6313,8 @@ export const deleteCacheCluster: API.OperationMethod<
     SnapshotFeatureNotSupportedFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCacheCluster",
 }));
 export type DeleteCacheParameterGroupError =
@@ -6298,6 +6342,8 @@ export const deleteCacheParameterGroup: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCacheParameterGroup",
 }));
 export type DeleteCacheSecurityGroupError =
@@ -6326,6 +6372,8 @@ export const deleteCacheSecurityGroup: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCacheSecurityGroup",
 }));
 export type DeleteCacheSubnetGroupError =
@@ -6347,6 +6395,8 @@ export const deleteCacheSubnetGroup: API.OperationMethod<
   input: DeleteCacheSubnetGroupMessage,
   output: DeleteCacheSubnetGroupResponse,
   errors: [CacheSubnetGroupInUse, CacheSubnetGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCacheSubnetGroup",
 }));
 export type DeleteGlobalReplicationGroupError =
@@ -6388,6 +6438,8 @@ export const deleteGlobalReplicationGroup: API.OperationMethod<
     InvalidGlobalReplicationGroupStateFault,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGlobalReplicationGroup",
 }));
 export type DeleteReplicationGroupError =
@@ -6432,6 +6484,8 @@ export const deleteReplicationGroup: API.OperationMethod<
     SnapshotFeatureNotSupportedFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationGroup",
 }));
 export type DeleteServerlessCacheError =
@@ -6466,6 +6520,8 @@ export const deleteServerlessCache: API.OperationMethod<
     ServerlessCacheSnapshotAlreadyExistsFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServerlessCache",
 }));
 export type DeleteServerlessCacheSnapshotError =
@@ -6491,6 +6547,8 @@ export const deleteServerlessCacheSnapshot: API.OperationMethod<
     ServerlessCacheSnapshotNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServerlessCacheSnapshot",
 }));
 export type DeleteSnapshotError =
@@ -6520,6 +6578,8 @@ export const deleteSnapshot: API.OperationMethod<
     InvalidSnapshotStateFault,
     SnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshot",
 }));
 export type DeleteUserError =
@@ -6549,6 +6609,8 @@ export const deleteUser: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DeleteUserGroupError =
@@ -6576,6 +6638,8 @@ export const deleteUserGroup: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     UserGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserGroup",
 }));
 export type DescribeCacheClustersError =
@@ -6634,6 +6698,8 @@ export const describeCacheClusters: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCacheClusters",
   pagination: {
     inputToken: "Marker",
@@ -6670,6 +6736,8 @@ export const describeCacheEngineVersions: API.OperationMethod<
   input: DescribeCacheEngineVersionsMessage,
   output: CacheEngineVersionMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCacheEngineVersions",
   pagination: {
     inputToken: "Marker",
@@ -6715,6 +6783,8 @@ export const describeCacheParameterGroups: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCacheParameterGroups",
   pagination: {
     inputToken: "Marker",
@@ -6759,6 +6829,8 @@ export const describeCacheParameters: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCacheParameters",
   pagination: {
     inputToken: "Marker",
@@ -6805,6 +6877,8 @@ export const describeCacheSecurityGroups: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCacheSecurityGroups",
   pagination: {
     inputToken: "Marker",
@@ -6846,6 +6920,8 @@ export const describeCacheSubnetGroups: API.OperationMethod<
   input: DescribeCacheSubnetGroupsMessage,
   output: CacheSubnetGroupMessage,
   errors: [CacheSubnetGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCacheSubnetGroups",
   pagination: {
     inputToken: "Marker",
@@ -6889,6 +6965,8 @@ export const describeEngineDefaultParameters: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEngineDefaultParameters",
   pagination: {
     inputToken: "Marker",
@@ -6936,6 +7014,8 @@ export const describeEvents: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
@@ -6981,6 +7061,8 @@ export const describeGlobalReplicationGroups: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGlobalReplicationGroups",
   pagination: {
     inputToken: "Marker",
@@ -7029,6 +7111,8 @@ export const describeReplicationGroups: API.OperationMethod<
     InvalidParameterValueException,
     ReplicationGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationGroups",
   pagination: {
     inputToken: "Marker",
@@ -7074,6 +7158,8 @@ export const describeReservedCacheNodes: API.OperationMethod<
     InvalidParameterValueException,
     ReservedCacheNodeNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedCacheNodes",
   pagination: {
     inputToken: "Marker",
@@ -7118,6 +7204,8 @@ export const describeReservedCacheNodesOfferings: API.OperationMethod<
     InvalidParameterValueException,
     ReservedCacheNodesOfferingNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedCacheNodesOfferings",
   pagination: {
     inputToken: "Marker",
@@ -7164,6 +7252,8 @@ export const describeServerlessCaches: API.OperationMethod<
     InvalidParameterValueException,
     ServerlessCacheNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServerlessCaches",
   pagination: {
     inputToken: "NextToken",
@@ -7213,6 +7303,8 @@ export const describeServerlessCacheSnapshots: API.OperationMethod<
     ServerlessCacheNotFoundFault,
     ServerlessCacheSnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServerlessCacheSnapshots",
   pagination: {
     inputToken: "NextToken",
@@ -7257,6 +7349,8 @@ export const describeServiceUpdates: API.OperationMethod<
     InvalidParameterValueException,
     ServiceUpdateNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceUpdates",
   pagination: {
     inputToken: "Marker",
@@ -7308,6 +7402,8 @@ export const describeSnapshots: API.OperationMethod<
     InvalidParameterValueException,
     SnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "Marker",
@@ -7350,6 +7446,8 @@ export const describeUpdateActions: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUpdateActions",
   pagination: {
     inputToken: "Marker",
@@ -7394,6 +7492,8 @@ export const describeUserGroups: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     UserGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUserGroups",
   pagination: {
     inputToken: "Marker",
@@ -7438,6 +7538,8 @@ export const describeUsers: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUsers",
   pagination: {
     inputToken: "Marker",
@@ -7471,6 +7573,8 @@ export const disassociateGlobalReplicationGroup: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateGlobalReplicationGroup",
 }));
 export type ExportServerlessCacheSnapshotError =
@@ -7496,6 +7600,8 @@ export const exportServerlessCacheSnapshot: API.OperationMethod<
     ServerlessCacheSnapshotNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportServerlessCacheSnapshot",
 }));
 export type FailoverGlobalReplicationGroupError =
@@ -7522,6 +7628,8 @@ export const failoverGlobalReplicationGroup: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FailoverGlobalReplicationGroup",
 }));
 export type IncreaseNodeGroupsInGlobalReplicationGroupError =
@@ -7545,6 +7653,8 @@ export const increaseNodeGroupsInGlobalReplicationGroup: API.OperationMethod<
     InvalidGlobalReplicationGroupStateFault,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IncreaseNodeGroupsInGlobalReplicationGroup",
 }));
 export type IncreaseReplicaCountError =
@@ -7589,6 +7699,8 @@ export const increaseReplicaCount: API.OperationMethod<
     NoOperationFault,
     ReplicationGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IncreaseReplicaCount",
 }));
 export type ListAllowedNodeTypeModificationsError =
@@ -7620,6 +7732,8 @@ export const listAllowedNodeTypeModifications: API.OperationMethod<
     InvalidParameterValueException,
     ReplicationGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAllowedNodeTypeModifications",
 }));
 export type ListTagsForResourceError =
@@ -7676,6 +7790,8 @@ export const listTagsForResource: API.OperationMethod<
     UserGroupNotFoundFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ModifyCacheClusterError =
@@ -7716,6 +7832,8 @@ export const modifyCacheCluster: API.OperationMethod<
     NodeQuotaForClusterExceededFault,
     NodeQuotaForCustomerExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCacheCluster",
 }));
 export type ModifyCacheParameterGroupError =
@@ -7744,6 +7862,8 @@ export const modifyCacheParameterGroup: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCacheParameterGroup",
 }));
 export type ModifyCacheSubnetGroupError =
@@ -7771,6 +7891,8 @@ export const modifyCacheSubnetGroup: API.OperationMethod<
     SubnetInUse,
     SubnetNotAllowedFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCacheSubnetGroup",
 }));
 export type ModifyGlobalReplicationGroupError =
@@ -7794,6 +7916,8 @@ export const modifyGlobalReplicationGroup: API.OperationMethod<
     InvalidGlobalReplicationGroupStateFault,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyGlobalReplicationGroup",
 }));
 export type ModifyReplicationGroupError =
@@ -7851,6 +7975,8 @@ export const modifyReplicationGroup: API.OperationMethod<
     ReplicationGroupNotFoundFault,
     UserGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationGroup",
 }));
 export type ModifyReplicationGroupShardConfigurationError =
@@ -7889,6 +8015,8 @@ export const modifyReplicationGroupShardConfiguration: API.OperationMethod<
     NodeQuotaForCustomerExceededFault,
     ReplicationGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReplicationGroupShardConfiguration",
 }));
 export type ModifyServerlessCacheError =
@@ -7922,6 +8050,8 @@ export const modifyServerlessCache: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     UserGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyServerlessCache",
 }));
 export type ModifyUserError =
@@ -7949,6 +8079,8 @@ export const modifyUser: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyUser",
 }));
 export type ModifyUserGroupError =
@@ -7982,6 +8114,8 @@ export const modifyUserGroup: API.OperationMethod<
     UserGroupNotFoundFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyUserGroup",
 }));
 export type PurchaseReservedCacheNodesOfferingError =
@@ -8012,6 +8146,8 @@ export const purchaseReservedCacheNodesOffering: API.OperationMethod<
     ReservedCacheNodesOfferingNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseReservedCacheNodesOffering",
 }));
 export type RebalanceSlotsInGlobalReplicationGroupError =
@@ -8036,6 +8172,8 @@ export const rebalanceSlotsInGlobalReplicationGroup: API.OperationMethod<
     InvalidGlobalReplicationGroupStateFault,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebalanceSlotsInGlobalReplicationGroup",
 }));
 export type RebootCacheClusterError =
@@ -8069,6 +8207,8 @@ export const rebootCacheCluster: API.OperationMethod<
   input: RebootCacheClusterMessage,
   output: RebootCacheClusterResult,
   errors: [CacheClusterNotFoundFault, InvalidCacheClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootCacheCluster",
 }));
 export type RemoveTagsFromResourceError =
@@ -8122,6 +8262,8 @@ export const removeTagsFromResource: API.OperationMethod<
     UserGroupNotFoundFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
 export type ResetCacheParameterGroupError =
@@ -8152,6 +8294,8 @@ export const resetCacheParameterGroup: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetCacheParameterGroup",
 }));
 export type RevokeCacheSecurityGroupIngressError =
@@ -8180,6 +8324,8 @@ export const revokeCacheSecurityGroupIngress: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeCacheSecurityGroupIngress",
 }));
 export type StartMigrationError =
@@ -8205,6 +8351,8 @@ export const startMigration: API.OperationMethod<
     ReplicationGroupAlreadyUnderMigrationFault,
     ReplicationGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMigration",
 }));
 export type TestFailoverError =
@@ -8290,6 +8438,8 @@ export const testFailover: API.OperationMethod<
     ReplicationGroupNotFoundFault,
     TestFailoverNotAvailableFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestFailover",
 }));
 export type TestMigrationError =
@@ -8315,5 +8465,7 @@ export const testMigration: API.OperationMethod<
     ReplicationGroupAlreadyUnderMigrationFault,
     ReplicationGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestMigration",
 }));

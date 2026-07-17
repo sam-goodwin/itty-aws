@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4087,6 +4089,8 @@ export const createAnomalyMonitor: API.OperationMethod<
   input: CreateAnomalyMonitorRequest,
   output: CreateAnomalyMonitorResponse,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAnomalyMonitor",
 }));
 export type CreateAnomalySubscriptionError =
@@ -4107,6 +4111,8 @@ export const createAnomalySubscription: API.OperationMethod<
   input: CreateAnomalySubscriptionRequest,
   output: CreateAnomalySubscriptionResponse,
   errors: [LimitExceededException, UnknownMonitorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAnomalySubscription",
 }));
 export type CreateCostCategoryDefinitionError =
@@ -4125,6 +4131,8 @@ export const createCostCategoryDefinition: API.OperationMethod<
   input: CreateCostCategoryDefinitionRequest,
   output: CreateCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCostCategoryDefinition",
 }));
 export type DeleteAnomalyMonitorError =
@@ -4143,6 +4151,8 @@ export const deleteAnomalyMonitor: API.OperationMethod<
   input: DeleteAnomalyMonitorRequest,
   output: DeleteAnomalyMonitorResponse,
   errors: [LimitExceededException, UnknownMonitorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAnomalyMonitor",
 }));
 export type DeleteAnomalySubscriptionError =
@@ -4161,6 +4171,8 @@ export const deleteAnomalySubscription: API.OperationMethod<
   input: DeleteAnomalySubscriptionRequest,
   output: DeleteAnomalySubscriptionResponse,
   errors: [LimitExceededException, UnknownSubscriptionException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAnomalySubscription",
 }));
 export type DeleteCostCategoryDefinitionError =
@@ -4180,6 +4192,8 @@ export const deleteCostCategoryDefinition: API.OperationMethod<
   input: DeleteCostCategoryDefinitionRequest,
   output: DeleteCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCostCategoryDefinition",
 }));
 export type DescribeCostCategoryDefinitionError =
@@ -4204,6 +4218,8 @@ export const describeCostCategoryDefinition: API.OperationMethod<
   input: DescribeCostCategoryDefinitionRequest,
   output: DescribeCostCategoryDefinitionResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCostCategoryDefinition",
 }));
 export type GetAnomaliesError =
@@ -4239,6 +4255,8 @@ export const getAnomalies: API.OperationMethod<
   input: GetAnomaliesRequest,
   output: GetAnomaliesResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAnomalies",
   pagination: {
     inputToken: "NextPageToken",
@@ -4284,6 +4302,8 @@ export const getAnomalyMonitors: API.OperationMethod<
     LimitExceededException,
     UnknownMonitorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAnomalyMonitors",
   pagination: {
     inputToken: "NextPageToken",
@@ -4329,6 +4349,8 @@ export const getAnomalySubscriptions: API.OperationMethod<
     LimitExceededException,
     UnknownSubscriptionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAnomalySubscriptions",
   pagination: {
     inputToken: "NextPageToken",
@@ -4354,6 +4376,8 @@ export const getApproximateUsageRecords: API.OperationMethod<
   input: GetApproximateUsageRecordsRequest,
   output: GetApproximateUsageRecordsResponse,
   errors: [DataUnavailableException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApproximateUsageRecords",
 }));
 export type GetCommitmentPurchaseAnalysisError =
@@ -4378,6 +4402,8 @@ export const getCommitmentPurchaseAnalysis: API.OperationMethod<
     DataUnavailableException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCommitmentPurchaseAnalysis",
 }));
 export type GetCostAndUsageError =
@@ -4416,6 +4442,8 @@ export const getCostAndUsage: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostAndUsage",
 }));
 export type GetCostAndUsageComparisonsError =
@@ -4460,6 +4488,8 @@ export const getCostAndUsageComparisons: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostAndUsageComparisons",
   pagination: {
     inputToken: "NextPageToken",
@@ -4510,6 +4540,8 @@ export const getCostAndUsageWithResources: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostAndUsageWithResources",
 }));
 export type GetCostCategoriesError =
@@ -4544,6 +4576,8 @@ export const getCostCategories: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostCategories",
 }));
 export type GetCostComparisonDriversError =
@@ -4588,6 +4622,8 @@ export const getCostComparisonDrivers: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostComparisonDrivers",
   pagination: {
     inputToken: "NextPageToken",
@@ -4620,6 +4656,8 @@ export const getCostForecast: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostForecast",
 }));
 export type GetDimensionValuesError =
@@ -4652,6 +4690,8 @@ export const getDimensionValues: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDimensionValues",
 }));
 export type GetReservationCoverageError =
@@ -4707,6 +4747,8 @@ export const getReservationCoverage: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservationCoverage",
 }));
 export type GetReservationPurchaseRecommendationError =
@@ -4762,6 +4804,8 @@ export const getReservationPurchaseRecommendation: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservationPurchaseRecommendation",
   pagination: {
     inputToken: "NextPageToken",
@@ -4794,6 +4838,8 @@ export const getReservationUtilization: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservationUtilization",
 }));
 export type GetRightsizingRecommendationError =
@@ -4832,6 +4878,8 @@ export const getRightsizingRecommendation: API.OperationMethod<
   input: GetRightsizingRecommendationRequest,
   output: GetRightsizingRecommendationResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRightsizingRecommendation",
   pagination: {
     inputToken: "NextPageToken",
@@ -4857,6 +4905,8 @@ export const getSavingsPlanPurchaseRecommendationDetails: API.OperationMethod<
   input: GetSavingsPlanPurchaseRecommendationDetailsRequest,
   output: GetSavingsPlanPurchaseRecommendationDetailsResponse,
   errors: [DataUnavailableException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSavingsPlanPurchaseRecommendationDetails",
 }));
 export type GetSavingsPlansCoverageError =
@@ -4910,6 +4960,8 @@ export const getSavingsPlansCoverage: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSavingsPlansCoverage",
   pagination: {
     inputToken: "NextToken",
@@ -4936,6 +4988,8 @@ export const getSavingsPlansPurchaseRecommendation: API.OperationMethod<
   input: GetSavingsPlansPurchaseRecommendationRequest,
   output: GetSavingsPlansPurchaseRecommendationResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSavingsPlansPurchaseRecommendation",
 }));
 export type GetSavingsPlansUtilizationError =
@@ -4960,6 +5014,8 @@ export const getSavingsPlansUtilization: API.OperationMethod<
   input: GetSavingsPlansUtilizationRequest,
   output: GetSavingsPlansUtilizationResponse,
   errors: [DataUnavailableException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSavingsPlansUtilization",
 }));
 export type GetSavingsPlansUtilizationDetailsError =
@@ -5007,6 +5063,8 @@ export const getSavingsPlansUtilizationDetails: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSavingsPlansUtilizationDetails",
   pagination: {
     inputToken: "NextToken",
@@ -5044,6 +5102,8 @@ export const getTags: API.OperationMethod<
     RequestChangedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTags",
 }));
 export type GetUsageForecastError =
@@ -5072,6 +5132,8 @@ export const getUsageForecast: API.OperationMethod<
     ResourceNotFoundException,
     UnresolvableUsageUnitException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsageForecast",
 }));
 export type ListCommitmentPurchaseAnalysesError =
@@ -5110,6 +5172,8 @@ export const listCommitmentPurchaseAnalyses: API.OperationMethod<
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCommitmentPurchaseAnalyses",
   pagination: {
     inputToken: "NextPageToken",
@@ -5149,6 +5213,8 @@ export const listCostAllocationTagBackfillHistory: API.OperationMethod<
   input: ListCostAllocationTagBackfillHistoryRequest,
   output: ListCostAllocationTagBackfillHistoryResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCostAllocationTagBackfillHistory",
   pagination: {
     inputToken: "NextToken",
@@ -5189,6 +5255,8 @@ export const listCostAllocationTags: API.OperationMethod<
   input: ListCostAllocationTagsRequest,
   output: ListCostAllocationTagsResponse,
   errors: [InvalidNextTokenException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCostAllocationTags",
   pagination: {
     inputToken: "NextToken",
@@ -5233,6 +5301,8 @@ export const listCostCategoryDefinitions: API.OperationMethod<
   input: ListCostCategoryDefinitionsRequest,
   output: ListCostCategoryDefinitionsResponse,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCostCategoryDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -5272,6 +5342,8 @@ export const listCostCategoryResourceAssociations: API.OperationMethod<
   input: ListCostCategoryResourceAssociationsRequest,
   output: ListCostCategoryResourceAssociationsResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCostCategoryResourceAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -5317,6 +5389,8 @@ export const listSavingsPlansPurchaseRecommendationGeneration: API.OperationMeth
     InvalidNextTokenException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSavingsPlansPurchaseRecommendationGeneration",
   pagination: {
     inputToken: "NextPageToken",
@@ -5342,6 +5416,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ProvideAnomalyFeedbackError = LimitExceededException | CommonErrors;
@@ -5357,6 +5433,8 @@ export const provideAnomalyFeedback: API.OperationMethod<
   input: ProvideAnomalyFeedbackRequest,
   output: ProvideAnomalyFeedbackResponse,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvideAnomalyFeedback",
 }));
 export type StartCommitmentPurchaseAnalysisError =
@@ -5384,6 +5462,8 @@ export const startCommitmentPurchaseAnalysis: API.OperationMethod<
     LimitExceededException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCommitmentPurchaseAnalysis",
 }));
 export type StartCostAllocationTagBackfillError =
@@ -5404,6 +5484,8 @@ export const startCostAllocationTagBackfill: API.OperationMethod<
   input: StartCostAllocationTagBackfillRequest,
   output: StartCostAllocationTagBackfillResponse,
   errors: [BackfillLimitExceededException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCostAllocationTagBackfill",
 }));
 export type StartSavingsPlansPurchaseRecommendationGenerationError =
@@ -5435,6 +5517,8 @@ export const startSavingsPlansPurchaseRecommendationGeneration: API.OperationMet
     LimitExceededException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSavingsPlansPurchaseRecommendationGeneration",
 }));
 export type TagResourceError =
@@ -5466,6 +5550,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5485,6 +5571,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [LimitExceededException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAnomalyMonitorError =
@@ -5504,6 +5592,8 @@ export const updateAnomalyMonitor: API.OperationMethod<
   input: UpdateAnomalyMonitorRequest,
   output: UpdateAnomalyMonitorResponse,
   errors: [LimitExceededException, UnknownMonitorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAnomalyMonitor",
 }));
 export type UpdateAnomalySubscriptionError =
@@ -5531,6 +5621,8 @@ export const updateAnomalySubscription: API.OperationMethod<
     UnknownMonitorException,
     UnknownSubscriptionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAnomalySubscription",
 }));
 export type UpdateCostAllocationTagsStatusError =
@@ -5551,6 +5643,8 @@ export const updateCostAllocationTagsStatus: API.OperationMethod<
   input: UpdateCostAllocationTagsStatusRequest,
   output: UpdateCostAllocationTagsStatusResponse,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCostAllocationTagsStatus",
 }));
 export type UpdateCostCategoryDefinitionError =
@@ -5576,5 +5670,7 @@ export const updateCostCategoryDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCostCategoryDefinition",
 }));

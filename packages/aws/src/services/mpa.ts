@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1544,6 +1546,8 @@ export const getPolicyVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicyVersion",
 }));
 export type GetResourcePolicyError =
@@ -1571,6 +1575,8 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type ListPoliciesError =
@@ -1611,6 +1617,8 @@ export const listPolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -1659,6 +1667,8 @@ export const listPolicyVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyVersions",
   pagination: {
     inputToken: "NextToken",
@@ -1707,6 +1717,8 @@ export const listResourcePolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourcePolicies",
   pagination: {
     inputToken: "NextToken",
@@ -1740,6 +1752,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1769,6 +1783,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1796,6 +1812,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateApprovalTeamError =
@@ -1825,6 +1843,8 @@ export const createApprovalTeam: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApprovalTeam",
 }));
 export type GetApprovalTeamError =
@@ -1852,6 +1872,8 @@ export const getApprovalTeam: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApprovalTeam",
 }));
 export type UpdateApprovalTeamError =
@@ -1887,6 +1909,8 @@ export const updateApprovalTeam: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApprovalTeam",
 }));
 export type DeleteInactiveApprovalTeamVersionError =
@@ -1918,6 +1942,8 @@ export const deleteInactiveApprovalTeamVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInactiveApprovalTeamVersion",
 }));
 export type ListApprovalTeamsError =
@@ -1958,6 +1984,8 @@ export const listApprovalTeams: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApprovalTeams",
   pagination: {
     inputToken: "NextToken",
@@ -1997,6 +2025,8 @@ export const startActiveApprovalTeamDeletion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartActiveApprovalTeamDeletion",
 }));
 export type StartApprovalTeamBaselineError =
@@ -2024,6 +2054,8 @@ export const startApprovalTeamBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartApprovalTeamBaseline",
 }));
 export type CreateIdentitySourceError =
@@ -2051,6 +2083,8 @@ export const createIdentitySource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdentitySource",
 }));
 export type GetIdentitySourceError =
@@ -2078,6 +2112,8 @@ export const getIdentitySource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentitySource",
 }));
 export type DeleteIdentitySourceError =
@@ -2105,6 +2141,8 @@ export const deleteIdentitySource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentitySource",
 }));
 export type ListIdentitySourcesError =
@@ -2145,6 +2183,8 @@ export const listIdentitySources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentitySources",
   pagination: {
     inputToken: "NextToken",
@@ -2178,6 +2218,8 @@ export const getSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSession",
 }));
 export type CancelSessionError =
@@ -2207,6 +2249,8 @@ export const cancelSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSession",
 }));
 export type ListSessionsError =
@@ -2249,6 +2293,8 @@ export const listSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessions",
   pagination: {
     inputToken: "NextToken",

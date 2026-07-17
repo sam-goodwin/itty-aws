@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -7589,6 +7591,8 @@ export const createApi: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApi",
 }));
 export type CreateApiMappingError =
@@ -7614,6 +7618,8 @@ export const createApiMapping: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApiMapping",
 }));
 export type CreateAuthorizerError =
@@ -7639,6 +7645,8 @@ export const createAuthorizer: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAuthorizer",
 }));
 export type CreateDeploymentError =
@@ -7664,6 +7672,8 @@ export const createDeployment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeployment",
 }));
 export type CreateDomainNameError =
@@ -7691,6 +7701,8 @@ export const createDomainName: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainName",
 }));
 export type CreateIntegrationError =
@@ -7716,6 +7728,8 @@ export const createIntegration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegration",
 }));
 export type CreateIntegrationResponseError =
@@ -7741,6 +7755,8 @@ export const createIntegrationResponse: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegrationResponse",
 }));
 export type CreateModelError =
@@ -7766,6 +7782,8 @@ export const createModel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModel",
 }));
 export type CreatePortalError =
@@ -7789,6 +7807,8 @@ export const createPortal: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePortal",
 }));
 export type CreatePortalProductError =
@@ -7812,6 +7832,8 @@ export const createPortalProduct: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePortalProduct",
 }));
 export type CreateProductPageError =
@@ -7837,6 +7859,8 @@ export const createProductPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProductPage",
 }));
 export type CreateProductRestEndpointPageError =
@@ -7862,6 +7886,8 @@ export const createProductRestEndpointPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProductRestEndpointPage",
 }));
 export type CreateRouteError =
@@ -7887,6 +7913,8 @@ export const createRoute: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoute",
 }));
 export type CreateRouteResponseError =
@@ -7912,6 +7940,8 @@ export const createRouteResponse: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRouteResponse",
 }));
 export type CreateRoutingRuleError =
@@ -7937,6 +7967,8 @@ export const createRoutingRule: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoutingRule",
 }));
 export type CreateStageError =
@@ -7962,6 +7994,8 @@ export const createStage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStage",
 }));
 export type CreateVpcLinkError =
@@ -7980,6 +8014,8 @@ export const createVpcLink: API.OperationMethod<
   input: CreateVpcLinkRequest,
   output: CreateVpcLinkResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcLink",
 }));
 export type DeleteAccessLogSettingsError =
@@ -7998,6 +8034,8 @@ export const deleteAccessLogSettings: API.OperationMethod<
   input: DeleteAccessLogSettingsRequest,
   output: DeleteAccessLogSettingsResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessLogSettings",
 }));
 export type DeleteApiError =
@@ -8016,6 +8054,8 @@ export const deleteApi: API.OperationMethod<
   input: DeleteApiRequest,
   output: DeleteApiResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApi",
 }));
 export type DeleteApiMappingError =
@@ -8035,6 +8075,8 @@ export const deleteApiMapping: API.OperationMethod<
   input: DeleteApiMappingRequest,
   output: DeleteApiMappingResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApiMapping",
 }));
 export type DeleteAuthorizerError =
@@ -8053,6 +8095,8 @@ export const deleteAuthorizer: API.OperationMethod<
   input: DeleteAuthorizerRequest,
   output: DeleteAuthorizerResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAuthorizer",
 }));
 export type DeleteCorsConfigurationError =
@@ -8071,6 +8115,8 @@ export const deleteCorsConfiguration: API.OperationMethod<
   input: DeleteCorsConfigurationRequest,
   output: DeleteCorsConfigurationResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCorsConfiguration",
 }));
 export type DeleteDeploymentError =
@@ -8089,6 +8135,8 @@ export const deleteDeployment: API.OperationMethod<
   input: DeleteDeploymentRequest,
   output: DeleteDeploymentResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeployment",
 }));
 export type DeleteDomainNameError =
@@ -8107,6 +8155,8 @@ export const deleteDomainName: API.OperationMethod<
   input: DeleteDomainNameRequest,
   output: DeleteDomainNameResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainName",
 }));
 export type DeleteIntegrationError =
@@ -8125,6 +8175,8 @@ export const deleteIntegration: API.OperationMethod<
   input: DeleteIntegrationRequest,
   output: DeleteIntegrationResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegration",
 }));
 export type DeleteIntegrationResponseError =
@@ -8143,6 +8195,8 @@ export const deleteIntegrationResponse: API.OperationMethod<
   input: DeleteIntegrationResponseRequest,
   output: DeleteIntegrationResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegrationResponse",
 }));
 export type DeleteModelError =
@@ -8161,6 +8215,8 @@ export const deleteModel: API.OperationMethod<
   input: DeleteModelRequest,
   output: DeleteModelResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModel",
 }));
 export type DeletePortalError =
@@ -8184,6 +8240,8 @@ export const deletePortal: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePortal",
 }));
 export type DeletePortalProductError =
@@ -8209,6 +8267,8 @@ export const deletePortalProduct: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePortalProduct",
 }));
 export type DeletePortalProductSharingPolicyError =
@@ -8234,6 +8294,8 @@ export const deletePortalProductSharingPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePortalProductSharingPolicy",
 }));
 export type DeleteProductPageError =
@@ -8259,6 +8321,8 @@ export const deleteProductPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProductPage",
 }));
 export type DeleteProductRestEndpointPageError =
@@ -8284,6 +8348,8 @@ export const deleteProductRestEndpointPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProductRestEndpointPage",
 }));
 export type DeleteRouteError =
@@ -8302,6 +8368,8 @@ export const deleteRoute: API.OperationMethod<
   input: DeleteRouteRequest,
   output: DeleteRouteResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoute",
 }));
 export type DeleteRouteRequestParameterError =
@@ -8320,6 +8388,8 @@ export const deleteRouteRequestParameter: API.OperationMethod<
   input: DeleteRouteRequestParameterRequest,
   output: DeleteRouteRequestParameterResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouteRequestParameter",
 }));
 export type DeleteRouteResponseError =
@@ -8338,6 +8408,8 @@ export const deleteRouteResponse: API.OperationMethod<
   input: DeleteRouteResponseRequest,
   output: DeleteRouteResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouteResponse",
 }));
 export type DeleteRouteSettingsError =
@@ -8356,6 +8428,8 @@ export const deleteRouteSettings: API.OperationMethod<
   input: DeleteRouteSettingsRequest,
   output: DeleteRouteSettingsResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouteSettings",
 }));
 export type DeleteRoutingRuleError =
@@ -8375,6 +8449,8 @@ export const deleteRoutingRule: API.OperationMethod<
   input: DeleteRoutingRuleRequest,
   output: DeleteRoutingRuleResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoutingRule",
 }));
 export type DeleteStageError =
@@ -8393,6 +8469,8 @@ export const deleteStage: API.OperationMethod<
   input: DeleteStageRequest,
   output: DeleteStageResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStage",
 }));
 export type DeleteVpcLinkError =
@@ -8411,6 +8489,8 @@ export const deleteVpcLink: API.OperationMethod<
   input: DeleteVpcLinkRequest,
   output: DeleteVpcLinkResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcLink",
 }));
 export type DisablePortalError =
@@ -8438,6 +8518,8 @@ export const disablePortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisablePortal",
 }));
 export type ExportApiError =
@@ -8457,6 +8539,8 @@ export const exportApi: API.OperationMethod<
   input: ExportApiRequest,
   output: ExportApiResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportApi",
 }));
 export type GetApiError =
@@ -8475,6 +8559,8 @@ export const getApi: API.OperationMethod<
   input: GetApiRequest,
   output: GetApiResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApi",
 }));
 export type GetApiMappingError =
@@ -8494,6 +8580,8 @@ export const getApiMapping: API.OperationMethod<
   input: GetApiMappingRequest,
   output: GetApiMappingResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApiMapping",
 }));
 export type GetApiMappingsError =
@@ -8513,6 +8601,8 @@ export const getApiMappings: API.OperationMethod<
   input: GetApiMappingsRequest,
   output: GetApiMappingsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApiMappings",
 }));
 export type GetApisError =
@@ -8532,6 +8622,8 @@ export const getApis: API.OperationMethod<
   input: GetApisRequest,
   output: GetApisResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApis",
 }));
 export type GetAuthorizerError =
@@ -8550,6 +8642,8 @@ export const getAuthorizer: API.OperationMethod<
   input: GetAuthorizerRequest,
   output: GetAuthorizerResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAuthorizer",
 }));
 export type GetAuthorizersError =
@@ -8569,6 +8663,8 @@ export const getAuthorizers: API.OperationMethod<
   input: GetAuthorizersRequest,
   output: GetAuthorizersResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAuthorizers",
 }));
 export type GetDeploymentError =
@@ -8587,6 +8683,8 @@ export const getDeployment: API.OperationMethod<
   input: GetDeploymentRequest,
   output: GetDeploymentResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployment",
 }));
 export type GetDeploymentsError =
@@ -8606,6 +8704,8 @@ export const getDeployments: API.OperationMethod<
   input: GetDeploymentsRequest,
   output: GetDeploymentsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployments",
 }));
 export type GetDomainNameError =
@@ -8624,6 +8724,8 @@ export const getDomainName: API.OperationMethod<
   input: GetDomainNameRequest,
   output: GetDomainNameResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainName",
 }));
 export type GetDomainNamesError =
@@ -8643,6 +8745,8 @@ export const getDomainNames: API.OperationMethod<
   input: GetDomainNamesRequest,
   output: GetDomainNamesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainNames",
 }));
 export type GetIntegrationError =
@@ -8661,6 +8765,8 @@ export const getIntegration: API.OperationMethod<
   input: GetIntegrationRequest,
   output: GetIntegrationResult,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegration",
 }));
 export type GetIntegrationResponseError =
@@ -8679,6 +8785,8 @@ export const getIntegrationResponse: API.OperationMethod<
   input: GetIntegrationResponseRequest,
   output: GetIntegrationResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegrationResponse",
 }));
 export type GetIntegrationResponsesError =
@@ -8698,6 +8806,8 @@ export const getIntegrationResponses: API.OperationMethod<
   input: GetIntegrationResponsesRequest,
   output: GetIntegrationResponsesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegrationResponses",
 }));
 export type GetIntegrationsError =
@@ -8717,6 +8827,8 @@ export const getIntegrations: API.OperationMethod<
   input: GetIntegrationsRequest,
   output: GetIntegrationsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegrations",
 }));
 export type GetModelError =
@@ -8735,6 +8847,8 @@ export const getModel: API.OperationMethod<
   input: GetModelRequest,
   output: GetModelResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModel",
 }));
 export type GetModelsError =
@@ -8754,6 +8868,8 @@ export const getModels: API.OperationMethod<
   input: GetModelsRequest,
   output: GetModelsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModels",
 }));
 export type GetModelTemplateError =
@@ -8772,6 +8888,8 @@ export const getModelTemplate: API.OperationMethod<
   input: GetModelTemplateRequest,
   output: GetModelTemplateResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModelTemplate",
 }));
 export type GetPortalError =
@@ -8797,6 +8915,8 @@ export const getPortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPortal",
 }));
 export type GetPortalProductError =
@@ -8822,6 +8942,8 @@ export const getPortalProduct: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPortalProduct",
 }));
 export type GetPortalProductSharingPolicyError =
@@ -8847,6 +8969,8 @@ export const getPortalProductSharingPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPortalProductSharingPolicy",
 }));
 export type GetProductPageError =
@@ -8872,6 +8996,8 @@ export const getProductPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProductPage",
 }));
 export type GetProductRestEndpointPageError =
@@ -8897,6 +9023,8 @@ export const getProductRestEndpointPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProductRestEndpointPage",
 }));
 export type GetRouteError =
@@ -8915,6 +9043,8 @@ export const getRoute: API.OperationMethod<
   input: GetRouteRequest,
   output: GetRouteResult,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRoute",
 }));
 export type GetRouteResponseError =
@@ -8933,6 +9063,8 @@ export const getRouteResponse: API.OperationMethod<
   input: GetRouteResponseRequest,
   output: GetRouteResponseResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouteResponse",
 }));
 export type GetRouteResponsesError =
@@ -8952,6 +9084,8 @@ export const getRouteResponses: API.OperationMethod<
   input: GetRouteResponsesRequest,
   output: GetRouteResponsesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouteResponses",
 }));
 export type GetRoutesError =
@@ -8971,6 +9105,8 @@ export const getRoutes: API.OperationMethod<
   input: GetRoutesRequest,
   output: GetRoutesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRoutes",
 }));
 export type GetRoutingRuleError =
@@ -8990,6 +9126,8 @@ export const getRoutingRule: API.OperationMethod<
   input: GetRoutingRuleRequest,
   output: GetRoutingRuleResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRoutingRule",
 }));
 export type GetStageError =
@@ -9008,6 +9146,8 @@ export const getStage: API.OperationMethod<
   input: GetStageRequest,
   output: GetStageResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStage",
 }));
 export type GetStagesError =
@@ -9027,6 +9167,8 @@ export const getStages: API.OperationMethod<
   input: GetStagesRequest,
   output: GetStagesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStages",
 }));
 export type GetTagsError =
@@ -9052,6 +9194,8 @@ export const getTags: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTags",
 }));
 export type GetVpcLinkError =
@@ -9070,6 +9214,8 @@ export const getVpcLink: API.OperationMethod<
   input: GetVpcLinkRequest,
   output: GetVpcLinkResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpcLink",
 }));
 export type GetVpcLinksError =
@@ -9088,6 +9234,8 @@ export const getVpcLinks: API.OperationMethod<
   input: GetVpcLinksRequest,
   output: GetVpcLinksResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpcLinks",
 }));
 export type ImportApiError =
@@ -9113,6 +9261,8 @@ export const importApi: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportApi",
 }));
 export type ListPortalProductsError =
@@ -9136,6 +9286,8 @@ export const listPortalProducts: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortalProducts",
 }));
 export type ListPortalsError =
@@ -9159,6 +9311,8 @@ export const listPortals: API.OperationMethod<
     BadRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortals",
 }));
 export type ListProductPagesError =
@@ -9184,6 +9338,8 @@ export const listProductPages: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProductPages",
 }));
 export type ListProductRestEndpointPagesError =
@@ -9209,6 +9365,8 @@ export const listProductRestEndpointPages: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProductRestEndpointPages",
 }));
 export type ListRoutingRulesError =
@@ -9243,6 +9401,8 @@ export const listRoutingRules: API.OperationMethod<
   input: ListRoutingRulesRequest,
   output: ListRoutingRulesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoutingRules",
   pagination: {
     inputToken: "NextToken",
@@ -9276,6 +9436,8 @@ export const previewPortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PreviewPortal",
 }));
 export type PublishPortalError =
@@ -9303,6 +9465,8 @@ export const publishPortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishPortal",
 }));
 export type PutPortalProductSharingPolicyError =
@@ -9328,6 +9492,8 @@ export const putPortalProductSharingPolicy: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPortalProductSharingPolicy",
 }));
 export type PutRoutingRuleError =
@@ -9353,6 +9519,8 @@ export const putRoutingRule: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRoutingRule",
 }));
 export type ReimportApiError =
@@ -9378,6 +9546,8 @@ export const reimportApi: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReimportApi",
 }));
 export type ResetAuthorizersCacheError =
@@ -9396,6 +9566,8 @@ export const resetAuthorizersCache: API.OperationMethod<
   input: ResetAuthorizersCacheRequest,
   output: ResetAuthorizersCacheResponse,
   errors: [NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetAuthorizersCache",
 }));
 export type TagResourceError =
@@ -9421,6 +9593,8 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -9446,6 +9620,8 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApiError =
@@ -9471,6 +9647,8 @@ export const updateApi: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApi",
 }));
 export type UpdateApiMappingError =
@@ -9496,6 +9674,8 @@ export const updateApiMapping: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApiMapping",
 }));
 export type UpdateAuthorizerError =
@@ -9521,6 +9701,8 @@ export const updateAuthorizer: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAuthorizer",
 }));
 export type UpdateDeploymentError =
@@ -9546,6 +9728,8 @@ export const updateDeployment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeployment",
 }));
 export type UpdateDomainNameError =
@@ -9571,6 +9755,8 @@ export const updateDomainName: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainName",
 }));
 export type UpdateIntegrationError =
@@ -9596,6 +9782,8 @@ export const updateIntegration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIntegration",
 }));
 export type UpdateIntegrationResponseError =
@@ -9621,6 +9809,8 @@ export const updateIntegrationResponse: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIntegrationResponse",
 }));
 export type UpdateModelError =
@@ -9646,6 +9836,8 @@ export const updateModel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateModel",
 }));
 export type UpdatePortalError =
@@ -9673,6 +9865,8 @@ export const updatePortal: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePortal",
 }));
 export type UpdatePortalProductError =
@@ -9698,6 +9892,8 @@ export const updatePortalProduct: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePortalProduct",
 }));
 export type UpdateProductPageError =
@@ -9723,6 +9919,8 @@ export const updateProductPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProductPage",
 }));
 export type UpdateProductRestEndpointPageError =
@@ -9748,6 +9946,8 @@ export const updateProductRestEndpointPage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProductRestEndpointPage",
 }));
 export type UpdateRouteError =
@@ -9773,6 +9973,8 @@ export const updateRoute: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoute",
 }));
 export type UpdateRouteResponseError =
@@ -9798,6 +10000,8 @@ export const updateRouteResponse: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRouteResponse",
 }));
 export type UpdateStageError =
@@ -9823,6 +10027,8 @@ export const updateStage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStage",
 }));
 export type UpdateVpcLinkError =
@@ -9842,5 +10048,7 @@ export const updateVpcLink: API.OperationMethod<
   input: UpdateVpcLinkRequest,
   output: UpdateVpcLinkResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVpcLink",
 }));

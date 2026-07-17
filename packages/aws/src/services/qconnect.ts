@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -8059,6 +8061,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -8077,6 +8081,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, TooManyTagsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -8092,6 +8098,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateAssistantError =
@@ -8119,6 +8127,8 @@ export const createAssistant: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssistant",
 }));
 export type GetAssistantError =
@@ -8144,6 +8154,8 @@ export const getAssistant: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssistant",
 }));
 export type DeleteAssistantError =
@@ -8169,6 +8181,8 @@ export const deleteAssistant: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssistant",
 }));
 export type ListAssistantsError =
@@ -8203,6 +8217,8 @@ export const listAssistants: API.OperationMethod<
   input: ListAssistantsRequest,
   output: ListAssistantsResponse,
   errors: [AccessDeniedException, UnauthorizedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssistants",
   pagination: {
     inputToken: "nextToken",
@@ -8234,6 +8250,8 @@ export const getRecommendations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendations",
 }));
 export type NotifyRecommendationsReceivedError =
@@ -8257,6 +8275,8 @@ export const notifyRecommendationsReceived: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyRecommendationsReceived",
 }));
 export type PutFeedbackError =
@@ -8280,6 +8300,8 @@ export const putFeedback: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFeedback",
 }));
 export type QueryAssistantError =
@@ -8322,6 +8344,8 @@ export const queryAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "QueryAssistant",
   pagination: {
     inputToken: "nextToken",
@@ -8353,6 +8377,8 @@ export const removeAssistantAIAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAssistantAIAgent",
 }));
 export type RetrieveError =
@@ -8386,6 +8412,8 @@ export const retrieve: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Retrieve",
 }));
 export type SearchSessionsError =
@@ -8426,6 +8454,8 @@ export const searchSessions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSessions",
   pagination: {
     inputToken: "nextToken",
@@ -8457,6 +8487,8 @@ export const updateAssistantAIAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssistantAIAgent",
 }));
 export type CreateAIAgentError =
@@ -8488,6 +8520,8 @@ export const createAIAgent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAIAgent",
 }));
 export type GetAIAgentError =
@@ -8515,6 +8549,8 @@ export const getAIAgent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAIAgent",
 }));
 export type UpdateAIAgentError =
@@ -8544,6 +8580,8 @@ export const updateAIAgent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAIAgent",
 }));
 export type DeleteAIAgentError =
@@ -8571,6 +8609,8 @@ export const deleteAIAgent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAIAgent",
 }));
 export type ListAIAgentsError =
@@ -8613,6 +8653,8 @@ export const listAIAgents: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAIAgents",
   pagination: {
     inputToken: "nextToken",
@@ -8650,6 +8692,8 @@ export const createAIAgentVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAIAgentVersion",
 }));
 export type DeleteAIAgentVersionError =
@@ -8679,6 +8723,8 @@ export const deleteAIAgentVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAIAgentVersion",
 }));
 export type ListAIAgentVersionsError =
@@ -8721,6 +8767,8 @@ export const listAIAgentVersions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAIAgentVersions",
   pagination: {
     inputToken: "nextToken",
@@ -8758,6 +8806,8 @@ export const createAIGuardrail: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAIGuardrail",
 }));
 export type GetAIGuardrailError =
@@ -8785,6 +8835,8 @@ export const getAIGuardrail: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAIGuardrail",
 }));
 export type UpdateAIGuardrailError =
@@ -8814,6 +8866,8 @@ export const updateAIGuardrail: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAIGuardrail",
 }));
 export type DeleteAIGuardrailError =
@@ -8843,6 +8897,8 @@ export const deleteAIGuardrail: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAIGuardrail",
 }));
 export type ListAIGuardrailsError =
@@ -8885,6 +8941,8 @@ export const listAIGuardrails: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAIGuardrails",
   pagination: {
     inputToken: "nextToken",
@@ -8922,6 +8980,8 @@ export const createAIGuardrailVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAIGuardrailVersion",
 }));
 export type DeleteAIGuardrailVersionError =
@@ -8951,6 +9011,8 @@ export const deleteAIGuardrailVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAIGuardrailVersion",
 }));
 export type ListAIGuardrailVersionsError =
@@ -8993,6 +9055,8 @@ export const listAIGuardrailVersions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAIGuardrailVersions",
   pagination: {
     inputToken: "nextToken",
@@ -9030,6 +9094,8 @@ export const createAIPrompt: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAIPrompt",
 }));
 export type GetAIPromptError =
@@ -9057,6 +9123,8 @@ export const getAIPrompt: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAIPrompt",
 }));
 export type UpdateAIPromptError =
@@ -9086,6 +9154,8 @@ export const updateAIPrompt: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAIPrompt",
 }));
 export type DeleteAIPromptError =
@@ -9113,6 +9183,8 @@ export const deleteAIPrompt: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAIPrompt",
 }));
 export type ListAIPromptsError =
@@ -9155,6 +9227,8 @@ export const listAIPrompts: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAIPrompts",
   pagination: {
     inputToken: "nextToken",
@@ -9192,6 +9266,8 @@ export const createAIPromptVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAIPromptVersion",
 }));
 export type DeleteAIPromptVersionError =
@@ -9221,6 +9297,8 @@ export const deleteAIPromptVersion: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAIPromptVersion",
 }));
 export type ListAIPromptVersionsError =
@@ -9263,6 +9341,8 @@ export const listAIPromptVersions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAIPromptVersions",
   pagination: {
     inputToken: "nextToken",
@@ -9296,6 +9376,8 @@ export const createAssistantAssociation: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssistantAssociation",
 }));
 export type GetAssistantAssociationError =
@@ -9321,6 +9403,8 @@ export const getAssistantAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssistantAssociation",
 }));
 export type DeleteAssistantAssociationError =
@@ -9346,6 +9430,8 @@ export const deleteAssistantAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssistantAssociation",
 }));
 export type ListAssistantAssociationsError =
@@ -9384,6 +9470,8 @@ export const listAssistantAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssistantAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -9419,6 +9507,8 @@ export const createSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSession",
 }));
 export type GetSessionError =
@@ -9444,6 +9534,8 @@ export const getSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSession",
 }));
 export type UpdateSessionError =
@@ -9469,6 +9561,8 @@ export const updateSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSession",
 }));
 export type GetNextMessageError =
@@ -9494,6 +9588,8 @@ export const getNextMessage: API.OperationMethod<
     UnprocessableContentException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNextMessage",
 }));
 export type ListMessagesError =
@@ -9532,6 +9628,8 @@ export const listMessages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMessages",
   pagination: {
     inputToken: "nextToken",
@@ -9576,6 +9674,8 @@ export const listSpans: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpans",
   pagination: {
     inputToken: "nextToken",
@@ -9615,6 +9715,8 @@ export const sendMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendMessage",
 }));
 export type UpdateSessionDataError =
@@ -9640,6 +9742,8 @@ export const updateSessionData: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSessionData",
 }));
 export type CreateKnowledgeBaseError =
@@ -9679,6 +9783,8 @@ export const createKnowledgeBase: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKnowledgeBase",
 }));
 export type GetKnowledgeBaseError =
@@ -9704,6 +9810,8 @@ export const getKnowledgeBase: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKnowledgeBase",
 }));
 export type DeleteKnowledgeBaseError =
@@ -9733,6 +9841,8 @@ export const deleteKnowledgeBase: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKnowledgeBase",
 }));
 export type ListKnowledgeBasesError =
@@ -9766,6 +9876,8 @@ export const listKnowledgeBases: API.OperationMethod<
   input: ListKnowledgeBasesRequest,
   output: ListKnowledgeBasesResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKnowledgeBases",
   pagination: {
     inputToken: "nextToken",
@@ -9799,6 +9911,8 @@ export const deleteImportJob: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImportJob",
 }));
 export type GetImportJobError =
@@ -9822,6 +9936,8 @@ export const getImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImportJob",
 }));
 export type ListImportJobsError =
@@ -9855,6 +9971,8 @@ export const listImportJobs: API.OperationMethod<
   input: ListImportJobsRequest,
   output: ListImportJobsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -9884,6 +10002,8 @@ export const removeKnowledgeBaseTemplateUri: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveKnowledgeBaseTemplateUri",
 }));
 export type SearchContentError =
@@ -9924,6 +10044,8 @@ export const searchContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchContent",
   pagination: {
     inputToken: "nextToken",
@@ -9972,6 +10094,8 @@ export const searchMessageTemplates: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchMessageTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -10020,6 +10144,8 @@ export const searchQuickResponses: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchQuickResponses",
   pagination: {
     inputToken: "nextToken",
@@ -10051,6 +10177,8 @@ export const startContentUpload: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartContentUpload",
 }));
 export type StartImportJobError =
@@ -10082,6 +10210,8 @@ export const startImportJob: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImportJob",
 }));
 export type UpdateKnowledgeBaseTemplateUriError =
@@ -10105,6 +10235,8 @@ export const updateKnowledgeBaseTemplateUri: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKnowledgeBaseTemplateUri",
 }));
 export type CreateContentError =
@@ -10134,6 +10266,8 @@ export const createContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContent",
 }));
 export type GetContentError =
@@ -10159,6 +10293,8 @@ export const getContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContent",
 }));
 export type UpdateContentError =
@@ -10186,6 +10322,8 @@ export const updateContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContent",
 }));
 export type DeleteContentError =
@@ -10213,6 +10351,8 @@ export const deleteContent: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContent",
 }));
 export type ListContentsError =
@@ -10251,6 +10391,8 @@ export const listContents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContents",
   pagination: {
     inputToken: "nextToken",
@@ -10282,6 +10424,8 @@ export const getContentSummary: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContentSummary",
 }));
 export type CreateContentAssociationError =
@@ -10323,6 +10467,8 @@ export const createContentAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContentAssociation",
 }));
 export type GetContentAssociationError =
@@ -10350,6 +10496,8 @@ export const getContentAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContentAssociation",
 }));
 export type DeleteContentAssociationError =
@@ -10377,6 +10525,8 @@ export const deleteContentAssociation: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContentAssociation",
 }));
 export type ListContentAssociationsError =
@@ -10419,6 +10569,8 @@ export const listContentAssociations: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContentAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -10454,6 +10606,8 @@ export const createMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMessageTemplate",
 }));
 export type GetMessageTemplateError =
@@ -10481,6 +10635,8 @@ export const getMessageTemplate: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMessageTemplate",
 }));
 export type UpdateMessageTemplateError =
@@ -10508,6 +10664,8 @@ export const updateMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMessageTemplate",
 }));
 export type DeleteMessageTemplateError =
@@ -10535,6 +10693,8 @@ export const deleteMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMessageTemplate",
 }));
 export type ListMessageTemplatesError =
@@ -10575,6 +10735,8 @@ export const listMessageTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMessageTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -10608,6 +10770,8 @@ export const activateMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateMessageTemplate",
 }));
 export type CreateMessageTemplateAttachmentError =
@@ -10639,6 +10803,8 @@ export const createMessageTemplateAttachment: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMessageTemplateAttachment",
 }));
 export type CreateMessageTemplateVersionError =
@@ -10668,6 +10834,8 @@ export const createMessageTemplateVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMessageTemplateVersion",
 }));
 export type DeactivateMessageTemplateError =
@@ -10695,6 +10863,8 @@ export const deactivateMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateMessageTemplate",
 }));
 export type DeleteMessageTemplateAttachmentError =
@@ -10722,6 +10892,8 @@ export const deleteMessageTemplateAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMessageTemplateAttachment",
 }));
 export type ListMessageTemplateVersionsError =
@@ -10762,6 +10934,8 @@ export const listMessageTemplateVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMessageTemplateVersions",
   pagination: {
     inputToken: "nextToken",
@@ -10793,6 +10967,8 @@ export const renderMessageTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RenderMessageTemplate",
 }));
 export type UpdateMessageTemplateMetadataError =
@@ -10820,6 +10996,8 @@ export const updateMessageTemplateMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMessageTemplateMetadata",
 }));
 export type CreateQuickResponseError =
@@ -10849,6 +11027,8 @@ export const createQuickResponse: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQuickResponse",
 }));
 export type GetQuickResponseError =
@@ -10874,6 +11054,8 @@ export const getQuickResponse: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQuickResponse",
 }));
 export type UpdateQuickResponseError =
@@ -10903,6 +11085,8 @@ export const updateQuickResponse: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQuickResponse",
 }));
 export type DeleteQuickResponseError =
@@ -10928,6 +11112,8 @@ export const deleteQuickResponse: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQuickResponse",
 }));
 export type ListQuickResponsesError =
@@ -10966,6 +11152,8 @@ export const listQuickResponses: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQuickResponses",
   pagination: {
     inputToken: "nextToken",

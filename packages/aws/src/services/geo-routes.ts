@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3665,6 +3667,8 @@ export const calculateIsolines: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CalculateIsolines",
 }));
 export type CalculateRouteMatrixError =
@@ -3692,6 +3696,8 @@ export const calculateRouteMatrix: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CalculateRouteMatrix",
 }));
 export type CalculateRoutesError =
@@ -3719,6 +3725,8 @@ export const calculateRoutes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CalculateRoutes",
 }));
 export type OptimizeWaypointsError =
@@ -3746,6 +3754,8 @@ export const optimizeWaypoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OptimizeWaypoints",
 }));
 export type SnapToRoadsError =
@@ -3773,5 +3783,7 @@ export const snapToRoads: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SnapToRoads",
 }));

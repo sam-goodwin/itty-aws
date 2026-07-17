@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1216,6 +1218,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutRumEventsError =
@@ -1245,6 +1249,8 @@ export const putRumEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRumEvents",
 }));
 export type TagResourceError =
@@ -1278,6 +1284,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1301,6 +1309,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type GetAppMonitorError =
@@ -1328,6 +1338,8 @@ export const getAppMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAppMonitor",
 }));
 export type UpdateAppMonitorError =
@@ -1363,6 +1375,8 @@ export const updateAppMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppMonitor",
 }));
 export type DeleteAppMonitorError =
@@ -1392,6 +1406,8 @@ export const deleteAppMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppMonitor",
 }));
 export type ListAppMonitorsError =
@@ -1432,6 +1448,8 @@ export const listAppMonitors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppMonitors",
   pagination: {
     inputToken: "NextToken",
@@ -1489,6 +1507,8 @@ export const batchCreateRumMetricDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateRumMetricDefinitions",
 }));
 export type BatchDeleteRumMetricDefinitionsError =
@@ -1522,6 +1542,8 @@ export const batchDeleteRumMetricDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteRumMetricDefinitions",
 }));
 export type BatchGetRumMetricDefinitionsError =
@@ -1562,6 +1584,8 @@ export const batchGetRumMetricDefinitions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetRumMetricDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -1603,6 +1627,8 @@ export const createAppMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppMonitor",
 }));
 export type DeleteResourcePolicyError =
@@ -1636,6 +1662,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteRumMetricsDestinationError =
@@ -1665,6 +1693,8 @@ export const deleteRumMetricsDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRumMetricsDestination",
 }));
 export type GetAppMonitorDataError =
@@ -1707,6 +1737,8 @@ export const getAppMonitorData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAppMonitorData",
   pagination: {
     inputToken: "NextToken",
@@ -1744,6 +1776,8 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type ListRumMetricsDestinationsError =
@@ -1786,6 +1820,8 @@ export const listRumMetricsDestinations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRumMetricsDestinations",
   pagination: {
     inputToken: "NextToken",
@@ -1827,6 +1863,8 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type PutRumMetricsDestinationError =
@@ -1858,6 +1896,8 @@ export const putRumMetricsDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRumMetricsDestination",
 }));
 export type UpdateRumMetricDefinitionError =
@@ -1889,5 +1929,7 @@ export const updateRumMetricDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRumMetricDefinition",
 }));

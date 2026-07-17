@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -803,6 +805,8 @@ export const createConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationManager",
 }));
 export type DeleteConfigurationManagerError =
@@ -832,6 +836,8 @@ export const deleteConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationManager",
 }));
 export type GetConfigurationError =
@@ -861,6 +867,8 @@ export const getConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfiguration",
 }));
 export type GetConfigurationManagerError =
@@ -890,6 +898,8 @@ export const getConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationManager",
 }));
 export type GetServiceSettingsError =
@@ -915,6 +925,8 @@ export const getServiceSettings: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceSettings",
 }));
 export type ListConfigurationManagersError =
@@ -957,6 +969,8 @@ export const listConfigurationManagers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationManagers",
   pagination: {
     inputToken: "StartingToken",
@@ -1005,6 +1019,8 @@ export const listConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurations",
   pagination: {
     inputToken: "StartingToken",
@@ -1036,6 +1052,8 @@ export const listQuickSetupTypes: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQuickSetupTypes",
 }));
 export type ListTagsForResourceError =
@@ -1065,6 +1083,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1094,6 +1114,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1123,6 +1145,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateConfigurationDefinitionError =
@@ -1152,6 +1176,8 @@ export const updateConfigurationDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationDefinition",
 }));
 export type UpdateConfigurationManagerError =
@@ -1181,6 +1207,8 @@ export const updateConfigurationManager: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationManager",
 }));
 export type UpdateServiceSettingsError =
@@ -1208,5 +1236,7 @@ export const updateServiceSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceSettings",
 }));

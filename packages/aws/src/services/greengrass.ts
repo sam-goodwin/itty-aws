@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4529,6 +4531,8 @@ export const associateRoleToGroup: API.OperationMethod<
   input: AssociateRoleToGroupRequest,
   output: AssociateRoleToGroupResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateRoleToGroup",
 }));
 export type AssociateServiceRoleToAccountError =
@@ -4547,6 +4551,8 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   input: AssociateServiceRoleToAccountRequest,
   output: AssociateServiceRoleToAccountResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateServiceRoleToAccount",
 }));
 export type CreateConnectorDefinitionError = BadRequestException | CommonErrors;
@@ -4562,6 +4568,8 @@ export const createConnectorDefinition: API.OperationMethod<
   input: CreateConnectorDefinitionRequest,
   output: CreateConnectorDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectorDefinition",
 }));
 export type CreateConnectorDefinitionVersionError =
@@ -4579,6 +4587,8 @@ export const createConnectorDefinitionVersion: API.OperationMethod<
   input: CreateConnectorDefinitionVersionRequest,
   output: CreateConnectorDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectorDefinitionVersion",
 }));
 export type CreateCoreDefinitionError = BadRequestException | CommonErrors;
@@ -4594,6 +4604,8 @@ export const createCoreDefinition: API.OperationMethod<
   input: CreateCoreDefinitionRequest,
   output: CreateCoreDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCoreDefinition",
 }));
 export type CreateCoreDefinitionVersionError =
@@ -4611,6 +4623,8 @@ export const createCoreDefinitionVersion: API.OperationMethod<
   input: CreateCoreDefinitionVersionRequest,
   output: CreateCoreDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCoreDefinitionVersion",
 }));
 export type CreateDeploymentError = BadRequestException | CommonErrors;
@@ -4626,6 +4640,8 @@ export const createDeployment: API.OperationMethod<
   input: CreateDeploymentRequest,
   output: CreateDeploymentResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeployment",
 }));
 export type CreateDeviceDefinitionError = BadRequestException | CommonErrors;
@@ -4641,6 +4657,8 @@ export const createDeviceDefinition: API.OperationMethod<
   input: CreateDeviceDefinitionRequest,
   output: CreateDeviceDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeviceDefinition",
 }));
 export type CreateDeviceDefinitionVersionError =
@@ -4658,6 +4676,8 @@ export const createDeviceDefinitionVersion: API.OperationMethod<
   input: CreateDeviceDefinitionVersionRequest,
   output: CreateDeviceDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeviceDefinitionVersion",
 }));
 export type CreateFunctionDefinitionError = BadRequestException | CommonErrors;
@@ -4673,6 +4693,8 @@ export const createFunctionDefinition: API.OperationMethod<
   input: CreateFunctionDefinitionRequest,
   output: CreateFunctionDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFunctionDefinition",
 }));
 export type CreateFunctionDefinitionVersionError =
@@ -4690,6 +4712,8 @@ export const createFunctionDefinitionVersion: API.OperationMethod<
   input: CreateFunctionDefinitionVersionRequest,
   output: CreateFunctionDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFunctionDefinitionVersion",
 }));
 export type CreateGroupError = BadRequestException | CommonErrors;
@@ -4705,6 +4729,8 @@ export const createGroup: API.OperationMethod<
   input: CreateGroupRequest,
   output: CreateGroupResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
 export type CreateGroupCertificateAuthorityError =
@@ -4723,6 +4749,8 @@ export const createGroupCertificateAuthority: API.OperationMethod<
   input: CreateGroupCertificateAuthorityRequest,
   output: CreateGroupCertificateAuthorityResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroupCertificateAuthority",
 }));
 export type CreateGroupVersionError = BadRequestException | CommonErrors;
@@ -4738,6 +4766,8 @@ export const createGroupVersion: API.OperationMethod<
   input: CreateGroupVersionRequest,
   output: CreateGroupVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroupVersion",
 }));
 export type CreateLoggerDefinitionError = BadRequestException | CommonErrors;
@@ -4753,6 +4783,8 @@ export const createLoggerDefinition: API.OperationMethod<
   input: CreateLoggerDefinitionRequest,
   output: CreateLoggerDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoggerDefinition",
 }));
 export type CreateLoggerDefinitionVersionError =
@@ -4770,6 +4802,8 @@ export const createLoggerDefinitionVersion: API.OperationMethod<
   input: CreateLoggerDefinitionVersionRequest,
   output: CreateLoggerDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoggerDefinitionVersion",
 }));
 export type CreateResourceDefinitionError = BadRequestException | CommonErrors;
@@ -4785,6 +4819,8 @@ export const createResourceDefinition: API.OperationMethod<
   input: CreateResourceDefinitionRequest,
   output: CreateResourceDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceDefinition",
 }));
 export type CreateResourceDefinitionVersionError =
@@ -4802,6 +4838,8 @@ export const createResourceDefinitionVersion: API.OperationMethod<
   input: CreateResourceDefinitionVersionRequest,
   output: CreateResourceDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceDefinitionVersion",
 }));
 export type CreateSoftwareUpdateJobError =
@@ -4820,6 +4858,8 @@ export const createSoftwareUpdateJob: API.OperationMethod<
   input: CreateSoftwareUpdateJobRequest,
   output: CreateSoftwareUpdateJobResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSoftwareUpdateJob",
 }));
 export type CreateSubscriptionDefinitionError =
@@ -4837,6 +4877,8 @@ export const createSubscriptionDefinition: API.OperationMethod<
   input: CreateSubscriptionDefinitionRequest,
   output: CreateSubscriptionDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscriptionDefinition",
 }));
 export type CreateSubscriptionDefinitionVersionError =
@@ -4854,6 +4896,8 @@ export const createSubscriptionDefinitionVersion: API.OperationMethod<
   input: CreateSubscriptionDefinitionVersionRequest,
   output: CreateSubscriptionDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscriptionDefinitionVersion",
 }));
 export type DeleteConnectorDefinitionError = BadRequestException | CommonErrors;
@@ -4869,6 +4913,8 @@ export const deleteConnectorDefinition: API.OperationMethod<
   input: DeleteConnectorDefinitionRequest,
   output: DeleteConnectorDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectorDefinition",
 }));
 export type DeleteCoreDefinitionError = BadRequestException | CommonErrors;
@@ -4884,6 +4930,8 @@ export const deleteCoreDefinition: API.OperationMethod<
   input: DeleteCoreDefinitionRequest,
   output: DeleteCoreDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCoreDefinition",
 }));
 export type DeleteDeviceDefinitionError = BadRequestException | CommonErrors;
@@ -4899,6 +4947,8 @@ export const deleteDeviceDefinition: API.OperationMethod<
   input: DeleteDeviceDefinitionRequest,
   output: DeleteDeviceDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeviceDefinition",
 }));
 export type DeleteFunctionDefinitionError = BadRequestException | CommonErrors;
@@ -4914,6 +4964,8 @@ export const deleteFunctionDefinition: API.OperationMethod<
   input: DeleteFunctionDefinitionRequest,
   output: DeleteFunctionDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunctionDefinition",
 }));
 export type DeleteGroupError = BadRequestException | CommonErrors;
@@ -4929,6 +4981,8 @@ export const deleteGroup: API.OperationMethod<
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
 export type DeleteLoggerDefinitionError = BadRequestException | CommonErrors;
@@ -4944,6 +4998,8 @@ export const deleteLoggerDefinition: API.OperationMethod<
   input: DeleteLoggerDefinitionRequest,
   output: DeleteLoggerDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoggerDefinition",
 }));
 export type DeleteResourceDefinitionError = BadRequestException | CommonErrors;
@@ -4959,6 +5015,8 @@ export const deleteResourceDefinition: API.OperationMethod<
   input: DeleteResourceDefinitionRequest,
   output: DeleteResourceDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceDefinition",
 }));
 export type DeleteSubscriptionDefinitionError =
@@ -4976,6 +5034,8 @@ export const deleteSubscriptionDefinition: API.OperationMethod<
   input: DeleteSubscriptionDefinitionRequest,
   output: DeleteSubscriptionDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubscriptionDefinition",
 }));
 export type DisassociateRoleFromGroupError =
@@ -4994,6 +5054,8 @@ export const disassociateRoleFromGroup: API.OperationMethod<
   input: DisassociateRoleFromGroupRequest,
   output: DisassociateRoleFromGroupResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateRoleFromGroup",
 }));
 export type DisassociateServiceRoleFromAccountError =
@@ -5011,6 +5073,8 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   input: DisassociateServiceRoleFromAccountRequest,
   output: DisassociateServiceRoleFromAccountResponse,
   errors: [InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateServiceRoleFromAccount",
 }));
 export type GetAssociatedRoleError =
@@ -5029,6 +5093,8 @@ export const getAssociatedRole: API.OperationMethod<
   input: GetAssociatedRoleRequest,
   output: GetAssociatedRoleResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssociatedRole",
 }));
 export type GetBulkDeploymentStatusError = BadRequestException | CommonErrors;
@@ -5044,6 +5110,8 @@ export const getBulkDeploymentStatus: API.OperationMethod<
   input: GetBulkDeploymentStatusRequest,
   output: GetBulkDeploymentStatusResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBulkDeploymentStatus",
 }));
 export type GetConnectivityInfoError =
@@ -5062,6 +5130,8 @@ export const getConnectivityInfo: API.OperationMethod<
   input: GetConnectivityInfoRequest,
   output: GetConnectivityInfoResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectivityInfo",
 }));
 export type GetConnectorDefinitionError = BadRequestException | CommonErrors;
@@ -5077,6 +5147,8 @@ export const getConnectorDefinition: API.OperationMethod<
   input: GetConnectorDefinitionRequest,
   output: GetConnectorDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectorDefinition",
 }));
 export type GetConnectorDefinitionVersionError =
@@ -5094,6 +5166,8 @@ export const getConnectorDefinitionVersion: API.OperationMethod<
   input: GetConnectorDefinitionVersionRequest,
   output: GetConnectorDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectorDefinitionVersion",
 }));
 export type GetCoreDefinitionError = BadRequestException | CommonErrors;
@@ -5109,6 +5183,8 @@ export const getCoreDefinition: API.OperationMethod<
   input: GetCoreDefinitionRequest,
   output: GetCoreDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoreDefinition",
 }));
 export type GetCoreDefinitionVersionError = BadRequestException | CommonErrors;
@@ -5124,6 +5200,8 @@ export const getCoreDefinitionVersion: API.OperationMethod<
   input: GetCoreDefinitionVersionRequest,
   output: GetCoreDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoreDefinitionVersion",
 }));
 export type GetDeploymentStatusError = BadRequestException | CommonErrors;
@@ -5139,6 +5217,8 @@ export const getDeploymentStatus: API.OperationMethod<
   input: GetDeploymentStatusRequest,
   output: GetDeploymentStatusResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeploymentStatus",
 }));
 export type GetDeviceDefinitionError = BadRequestException | CommonErrors;
@@ -5154,6 +5234,8 @@ export const getDeviceDefinition: API.OperationMethod<
   input: GetDeviceDefinitionRequest,
   output: GetDeviceDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeviceDefinition",
 }));
 export type GetDeviceDefinitionVersionError =
@@ -5171,6 +5253,8 @@ export const getDeviceDefinitionVersion: API.OperationMethod<
   input: GetDeviceDefinitionVersionRequest,
   output: GetDeviceDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeviceDefinitionVersion",
 }));
 export type GetFunctionDefinitionError = BadRequestException | CommonErrors;
@@ -5186,6 +5270,8 @@ export const getFunctionDefinition: API.OperationMethod<
   input: GetFunctionDefinitionRequest,
   output: GetFunctionDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionDefinition",
 }));
 export type GetFunctionDefinitionVersionError =
@@ -5203,6 +5289,8 @@ export const getFunctionDefinitionVersion: API.OperationMethod<
   input: GetFunctionDefinitionVersionRequest,
   output: GetFunctionDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunctionDefinitionVersion",
 }));
 export type GetGroupError = BadRequestException | CommonErrors;
@@ -5218,6 +5306,8 @@ export const getGroup: API.OperationMethod<
   input: GetGroupRequest,
   output: GetGroupResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroup",
 }));
 export type GetGroupCertificateAuthorityError =
@@ -5236,6 +5326,8 @@ export const getGroupCertificateAuthority: API.OperationMethod<
   input: GetGroupCertificateAuthorityRequest,
   output: GetGroupCertificateAuthorityResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupCertificateAuthority",
 }));
 export type GetGroupCertificateConfigurationError =
@@ -5254,6 +5346,8 @@ export const getGroupCertificateConfiguration: API.OperationMethod<
   input: GetGroupCertificateConfigurationRequest,
   output: GetGroupCertificateConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupCertificateConfiguration",
 }));
 export type GetGroupVersionError = BadRequestException | CommonErrors;
@@ -5269,6 +5363,8 @@ export const getGroupVersion: API.OperationMethod<
   input: GetGroupVersionRequest,
   output: GetGroupVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupVersion",
 }));
 export type GetLoggerDefinitionError = BadRequestException | CommonErrors;
@@ -5284,6 +5380,8 @@ export const getLoggerDefinition: API.OperationMethod<
   input: GetLoggerDefinitionRequest,
   output: GetLoggerDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoggerDefinition",
 }));
 export type GetLoggerDefinitionVersionError =
@@ -5301,6 +5399,8 @@ export const getLoggerDefinitionVersion: API.OperationMethod<
   input: GetLoggerDefinitionVersionRequest,
   output: GetLoggerDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoggerDefinitionVersion",
 }));
 export type GetResourceDefinitionError = BadRequestException | CommonErrors;
@@ -5316,6 +5416,8 @@ export const getResourceDefinition: API.OperationMethod<
   input: GetResourceDefinitionRequest,
   output: GetResourceDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceDefinition",
 }));
 export type GetResourceDefinitionVersionError =
@@ -5333,6 +5435,8 @@ export const getResourceDefinitionVersion: API.OperationMethod<
   input: GetResourceDefinitionVersionRequest,
   output: GetResourceDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceDefinitionVersion",
 }));
 export type GetServiceRoleForAccountError =
@@ -5350,6 +5454,8 @@ export const getServiceRoleForAccount: API.OperationMethod<
   input: GetServiceRoleForAccountRequest,
   output: GetServiceRoleForAccountResponse,
   errors: [InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceRoleForAccount",
 }));
 export type GetSubscriptionDefinitionError = BadRequestException | CommonErrors;
@@ -5365,6 +5471,8 @@ export const getSubscriptionDefinition: API.OperationMethod<
   input: GetSubscriptionDefinitionRequest,
   output: GetSubscriptionDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscriptionDefinition",
 }));
 export type GetSubscriptionDefinitionVersionError =
@@ -5382,6 +5490,8 @@ export const getSubscriptionDefinitionVersion: API.OperationMethod<
   input: GetSubscriptionDefinitionVersionRequest,
   output: GetSubscriptionDefinitionVersionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscriptionDefinitionVersion",
 }));
 export type GetThingRuntimeConfigurationError =
@@ -5400,6 +5510,8 @@ export const getThingRuntimeConfiguration: API.OperationMethod<
   input: GetThingRuntimeConfigurationRequest,
   output: GetThingRuntimeConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetThingRuntimeConfiguration",
 }));
 export type ListBulkDeploymentDetailedReportsError =
@@ -5417,6 +5529,8 @@ export const listBulkDeploymentDetailedReports: API.OperationMethod<
   input: ListBulkDeploymentDetailedReportsRequest,
   output: ListBulkDeploymentDetailedReportsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBulkDeploymentDetailedReports",
 }));
 export type ListBulkDeploymentsError = BadRequestException | CommonErrors;
@@ -5432,6 +5546,8 @@ export const listBulkDeployments: API.OperationMethod<
   input: ListBulkDeploymentsRequest,
   output: ListBulkDeploymentsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBulkDeployments",
 }));
 export type ListConnectorDefinitionsError = CommonErrors;
@@ -5447,6 +5563,8 @@ export const listConnectorDefinitions: API.OperationMethod<
   input: ListConnectorDefinitionsRequest,
   output: ListConnectorDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectorDefinitions",
 }));
 export type ListConnectorDefinitionVersionsError =
@@ -5464,6 +5582,8 @@ export const listConnectorDefinitionVersions: API.OperationMethod<
   input: ListConnectorDefinitionVersionsRequest,
   output: ListConnectorDefinitionVersionsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectorDefinitionVersions",
 }));
 export type ListCoreDefinitionsError = CommonErrors;
@@ -5479,6 +5599,8 @@ export const listCoreDefinitions: API.OperationMethod<
   input: ListCoreDefinitionsRequest,
   output: ListCoreDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoreDefinitions",
 }));
 export type ListCoreDefinitionVersionsError =
@@ -5496,6 +5618,8 @@ export const listCoreDefinitionVersions: API.OperationMethod<
   input: ListCoreDefinitionVersionsRequest,
   output: ListCoreDefinitionVersionsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoreDefinitionVersions",
 }));
 export type ListDeploymentsError = BadRequestException | CommonErrors;
@@ -5511,6 +5635,8 @@ export const listDeployments: API.OperationMethod<
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeployments",
 }));
 export type ListDeviceDefinitionsError = CommonErrors;
@@ -5526,6 +5652,8 @@ export const listDeviceDefinitions: API.OperationMethod<
   input: ListDeviceDefinitionsRequest,
   output: ListDeviceDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeviceDefinitions",
 }));
 export type ListDeviceDefinitionVersionsError =
@@ -5543,6 +5671,8 @@ export const listDeviceDefinitionVersions: API.OperationMethod<
   input: ListDeviceDefinitionVersionsRequest,
   output: ListDeviceDefinitionVersionsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeviceDefinitionVersions",
 }));
 export type ListFunctionDefinitionsError = CommonErrors;
@@ -5558,6 +5688,8 @@ export const listFunctionDefinitions: API.OperationMethod<
   input: ListFunctionDefinitionsRequest,
   output: ListFunctionDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFunctionDefinitions",
 }));
 export type ListFunctionDefinitionVersionsError =
@@ -5575,6 +5707,8 @@ export const listFunctionDefinitionVersions: API.OperationMethod<
   input: ListFunctionDefinitionVersionsRequest,
   output: ListFunctionDefinitionVersionsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFunctionDefinitionVersions",
 }));
 export type ListGroupCertificateAuthoritiesError =
@@ -5593,6 +5727,8 @@ export const listGroupCertificateAuthorities: API.OperationMethod<
   input: ListGroupCertificateAuthoritiesRequest,
   output: ListGroupCertificateAuthoritiesResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupCertificateAuthorities",
 }));
 export type ListGroupsError = CommonErrors;
@@ -5608,6 +5744,8 @@ export const listGroups: API.OperationMethod<
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroups",
 }));
 export type ListGroupVersionsError = BadRequestException | CommonErrors;
@@ -5623,6 +5761,8 @@ export const listGroupVersions: API.OperationMethod<
   input: ListGroupVersionsRequest,
   output: ListGroupVersionsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupVersions",
 }));
 export type ListLoggerDefinitionsError = CommonErrors;
@@ -5638,6 +5778,8 @@ export const listLoggerDefinitions: API.OperationMethod<
   input: ListLoggerDefinitionsRequest,
   output: ListLoggerDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLoggerDefinitions",
 }));
 export type ListLoggerDefinitionVersionsError =
@@ -5655,6 +5797,8 @@ export const listLoggerDefinitionVersions: API.OperationMethod<
   input: ListLoggerDefinitionVersionsRequest,
   output: ListLoggerDefinitionVersionsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLoggerDefinitionVersions",
 }));
 export type ListResourceDefinitionsError = CommonErrors;
@@ -5670,6 +5814,8 @@ export const listResourceDefinitions: API.OperationMethod<
   input: ListResourceDefinitionsRequest,
   output: ListResourceDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceDefinitions",
 }));
 export type ListResourceDefinitionVersionsError =
@@ -5687,6 +5833,8 @@ export const listResourceDefinitionVersions: API.OperationMethod<
   input: ListResourceDefinitionVersionsRequest,
   output: ListResourceDefinitionVersionsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceDefinitionVersions",
 }));
 export type ListSubscriptionDefinitionsError = CommonErrors;
@@ -5702,6 +5850,8 @@ export const listSubscriptionDefinitions: API.OperationMethod<
   input: ListSubscriptionDefinitionsRequest,
   output: ListSubscriptionDefinitionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptionDefinitions",
 }));
 export type ListSubscriptionDefinitionVersionsError =
@@ -5719,6 +5869,8 @@ export const listSubscriptionDefinitionVersions: API.OperationMethod<
   input: ListSubscriptionDefinitionVersionsRequest,
   output: ListSubscriptionDefinitionVersionsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptionDefinitionVersions",
 }));
 export type ListTagsForResourceError = BadRequestException | CommonErrors;
@@ -5734,6 +5886,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ResetDeploymentsError = BadRequestException | CommonErrors;
@@ -5749,6 +5903,8 @@ export const resetDeployments: API.OperationMethod<
   input: ResetDeploymentsRequest,
   output: ResetDeploymentsResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetDeployments",
 }));
 export type StartBulkDeploymentError = BadRequestException | CommonErrors;
@@ -5764,6 +5920,8 @@ export const startBulkDeployment: API.OperationMethod<
   input: StartBulkDeploymentRequest,
   output: StartBulkDeploymentResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBulkDeployment",
 }));
 export type StopBulkDeploymentError = BadRequestException | CommonErrors;
@@ -5779,6 +5937,8 @@ export const stopBulkDeployment: API.OperationMethod<
   input: StopBulkDeploymentRequest,
   output: StopBulkDeploymentResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopBulkDeployment",
 }));
 export type TagResourceError = BadRequestException | CommonErrors;
@@ -5794,6 +5954,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = BadRequestException | CommonErrors;
@@ -5809,6 +5971,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateConnectivityInfoError =
@@ -5827,6 +5991,8 @@ export const updateConnectivityInfo: API.OperationMethod<
   input: UpdateConnectivityInfoRequest,
   output: UpdateConnectivityInfoResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectivityInfo",
 }));
 export type UpdateConnectorDefinitionError = BadRequestException | CommonErrors;
@@ -5842,6 +6008,8 @@ export const updateConnectorDefinition: API.OperationMethod<
   input: UpdateConnectorDefinitionRequest,
   output: UpdateConnectorDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectorDefinition",
 }));
 export type UpdateCoreDefinitionError = BadRequestException | CommonErrors;
@@ -5857,6 +6025,8 @@ export const updateCoreDefinition: API.OperationMethod<
   input: UpdateCoreDefinitionRequest,
   output: UpdateCoreDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCoreDefinition",
 }));
 export type UpdateDeviceDefinitionError = BadRequestException | CommonErrors;
@@ -5872,6 +6042,8 @@ export const updateDeviceDefinition: API.OperationMethod<
   input: UpdateDeviceDefinitionRequest,
   output: UpdateDeviceDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeviceDefinition",
 }));
 export type UpdateFunctionDefinitionError = BadRequestException | CommonErrors;
@@ -5887,6 +6059,8 @@ export const updateFunctionDefinition: API.OperationMethod<
   input: UpdateFunctionDefinitionRequest,
   output: UpdateFunctionDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFunctionDefinition",
 }));
 export type UpdateGroupError = BadRequestException | CommonErrors;
@@ -5902,6 +6076,8 @@ export const updateGroup: API.OperationMethod<
   input: UpdateGroupRequest,
   output: UpdateGroupResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroup",
 }));
 export type UpdateGroupCertificateConfigurationError =
@@ -5920,6 +6096,8 @@ export const updateGroupCertificateConfiguration: API.OperationMethod<
   input: UpdateGroupCertificateConfigurationRequest,
   output: UpdateGroupCertificateConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroupCertificateConfiguration",
 }));
 export type UpdateLoggerDefinitionError = BadRequestException | CommonErrors;
@@ -5935,6 +6113,8 @@ export const updateLoggerDefinition: API.OperationMethod<
   input: UpdateLoggerDefinitionRequest,
   output: UpdateLoggerDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLoggerDefinition",
 }));
 export type UpdateResourceDefinitionError = BadRequestException | CommonErrors;
@@ -5950,6 +6130,8 @@ export const updateResourceDefinition: API.OperationMethod<
   input: UpdateResourceDefinitionRequest,
   output: UpdateResourceDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceDefinition",
 }));
 export type UpdateSubscriptionDefinitionError =
@@ -5967,6 +6149,8 @@ export const updateSubscriptionDefinition: API.OperationMethod<
   input: UpdateSubscriptionDefinitionRequest,
   output: UpdateSubscriptionDefinitionResponse,
   errors: [BadRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscriptionDefinition",
 }));
 export type UpdateThingRuntimeConfigurationError =
@@ -5985,5 +6169,7 @@ export const updateThingRuntimeConfiguration: API.OperationMethod<
   input: UpdateThingRuntimeConfigurationRequest,
   output: UpdateThingRuntimeConfigurationResponse,
   errors: [BadRequestException, InternalServerErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThingRuntimeConfiguration",
 }));

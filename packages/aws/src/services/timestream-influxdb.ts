@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1611,6 +1613,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1629,6 +1633,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -1644,6 +1650,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateDbClusterError =
@@ -1675,6 +1683,8 @@ export const createDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDbCluster",
 }));
 export type GetDbClusterError =
@@ -1702,6 +1712,8 @@ export const getDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDbCluster",
 }));
 export type UpdateDbClusterError =
@@ -1731,6 +1743,8 @@ export const updateDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDbCluster",
 }));
 export type DeleteDbClusterError =
@@ -1760,6 +1774,8 @@ export const deleteDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDbCluster",
 }));
 export type ListDbClustersError =
@@ -1802,6 +1818,8 @@ export const listDbClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDbClusters",
   pagination: {
     inputToken: "nextToken",
@@ -1850,6 +1868,8 @@ export const listDbInstancesForCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDbInstancesForCluster",
   pagination: {
     inputToken: "nextToken",
@@ -1885,6 +1905,8 @@ export const rebootDbCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootDbCluster",
 }));
 export type CreateDbInstanceError =
@@ -1916,6 +1938,8 @@ export const createDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDbInstance",
 }));
 export type GetDbInstanceError =
@@ -1943,6 +1967,8 @@ export const getDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDbInstance",
 }));
 export type UpdateDbInstanceError =
@@ -1972,6 +1998,8 @@ export const updateDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDbInstance",
 }));
 export type DeleteDbInstanceError =
@@ -2001,6 +2029,8 @@ export const deleteDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDbInstance",
 }));
 export type ListDbInstancesError =
@@ -2043,6 +2073,8 @@ export const listDbInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDbInstances",
   pagination: {
     inputToken: "nextToken",
@@ -2078,6 +2110,8 @@ export const rebootDbInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootDbInstance",
 }));
 export type CreateDbParameterGroupError =
@@ -2109,6 +2143,8 @@ export const createDbParameterGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDbParameterGroup",
 }));
 export type GetDbParameterGroupError =
@@ -2136,6 +2172,8 @@ export const getDbParameterGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDbParameterGroup",
 }));
 export type ListDbParameterGroupsError =
@@ -2178,6 +2216,8 @@ export const listDbParameterGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDbParameterGroups",
   pagination: {
     inputToken: "nextToken",

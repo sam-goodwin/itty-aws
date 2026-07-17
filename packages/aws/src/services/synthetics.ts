@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1497,6 +1499,8 @@ export const associateResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateResource",
 }));
 export type CreateCanaryError =
@@ -1536,6 +1540,8 @@ export const createCanary: API.OperationMethod<
     RequestEntityTooLargeException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCanary",
 }));
 export type CreateGroupError =
@@ -1576,6 +1582,8 @@ export const createGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
 export type DeleteCanaryError =
@@ -1626,6 +1634,8 @@ export const deleteCanary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCanary",
 }));
 export type DeleteGroupError =
@@ -1655,6 +1665,8 @@ export const deleteGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
 export type DescribeCanariesError =
@@ -1699,6 +1711,8 @@ export const describeCanaries: API.OperationMethod<
   input: DescribeCanariesRequest,
   output: DescribeCanariesResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCanaries",
   pagination: {
     inputToken: "NextToken",
@@ -1747,6 +1761,8 @@ export const describeCanariesLastRun: API.OperationMethod<
   input: DescribeCanariesLastRunRequest,
   output: DescribeCanariesLastRunResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCanariesLastRun",
   pagination: {
     inputToken: "NextToken",
@@ -1787,6 +1803,8 @@ export const describeRuntimeVersions: API.OperationMethod<
   input: DescribeRuntimeVersionsRequest,
   output: DescribeRuntimeVersionsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRuntimeVersions",
   pagination: {
     inputToken: "NextToken",
@@ -1817,6 +1835,8 @@ export const disassociateResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateResource",
 }));
 export type GetCanaryError =
@@ -1837,6 +1857,8 @@ export const getCanary: API.OperationMethod<
   input: GetCanaryRequest,
   output: GetCanaryResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCanary",
 }));
 export type GetCanaryRunsError =
@@ -1875,6 +1897,8 @@ export const getCanaryRuns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCanaryRuns",
   pagination: {
     inputToken: "NextToken",
@@ -1906,6 +1930,8 @@ export const getGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroup",
 }));
 export type ListAssociatedGroupsError =
@@ -1945,6 +1971,8 @@ export const listAssociatedGroups: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedGroups",
   pagination: {
     inputToken: "NextToken",
@@ -1990,6 +2018,8 @@ export const listGroupResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupResources",
   pagination: {
     inputToken: "NextToken",
@@ -2029,6 +2059,8 @@ export const listGroups: API.OperationMethod<
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
@@ -2061,6 +2093,8 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartCanaryError =
@@ -2088,6 +2122,8 @@ export const startCanary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCanary",
 }));
 export type StartCanaryDryRunError =
@@ -2115,6 +2151,8 @@ export const startCanaryDryRun: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCanaryDryRun",
 }));
 export type StopCanaryError =
@@ -2145,6 +2183,8 @@ export const stopCanary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCanary",
 }));
 export type TagResourceError =
@@ -2187,6 +2227,8 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2214,6 +2256,8 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateCanaryError =
@@ -2254,5 +2298,7 @@ export const updateCanary: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCanary",
 }));

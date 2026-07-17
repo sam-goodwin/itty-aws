@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1677,6 +1679,8 @@ export const createConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnector",
 }));
 export type CreateCustomPluginError =
@@ -1710,6 +1714,8 @@ export const createCustomPlugin: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomPlugin",
 }));
 export type CreateWorkerConfigurationError =
@@ -1743,6 +1749,8 @@ export const createWorkerConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkerConfiguration",
 }));
 export type DeleteConnectorError =
@@ -1774,6 +1782,8 @@ export const deleteConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnector",
 }));
 export type DeleteCustomPluginError =
@@ -1805,6 +1815,8 @@ export const deleteCustomPlugin: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomPlugin",
 }));
 export type DeleteWorkerConfigurationError =
@@ -1836,6 +1848,8 @@ export const deleteWorkerConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkerConfiguration",
 }));
 export type DescribeConnectorError =
@@ -1867,6 +1881,8 @@ export const describeConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnector",
 }));
 export type DescribeConnectorOperationError =
@@ -1898,6 +1914,8 @@ export const describeConnectorOperation: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectorOperation",
 }));
 export type DescribeCustomPluginError =
@@ -1929,6 +1947,8 @@ export const describeCustomPlugin: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomPlugin",
 }));
 export type DescribeWorkerConfigurationError =
@@ -1960,6 +1980,8 @@ export const describeWorkerConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkerConfiguration",
 }));
 export type ListConnectorOperationsError =
@@ -2006,6 +2028,8 @@ export const listConnectorOperations: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectorOperations",
   pagination: {
     inputToken: "nextToken",
@@ -2058,6 +2082,8 @@ export const listConnectors: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectors",
   pagination: {
     inputToken: "nextToken",
@@ -2110,6 +2136,8 @@ export const listCustomPlugins: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomPlugins",
   pagination: {
     inputToken: "nextToken",
@@ -2147,6 +2175,8 @@ export const listTagsForResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWorkerConfigurationsError =
@@ -2193,6 +2223,8 @@ export const listWorkerConfigurations: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkerConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -2232,6 +2264,8 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2263,6 +2297,8 @@ export const untagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateConnectorError =
@@ -2294,5 +2330,7 @@ export const updateConnector: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnector",
 }));

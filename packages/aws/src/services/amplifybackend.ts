@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2716,6 +2718,8 @@ export const cloneBackend: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CloneBackend",
 }));
 export type CreateBackendError =
@@ -2741,6 +2745,8 @@ export const createBackend: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackend",
 }));
 export type CreateBackendAPIError =
@@ -2766,6 +2772,8 @@ export const createBackendAPI: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackendAPI",
 }));
 export type CreateBackendAuthError =
@@ -2791,6 +2799,8 @@ export const createBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackendAuth",
 }));
 export type CreateBackendConfigError =
@@ -2816,6 +2826,8 @@ export const createBackendConfig: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackendConfig",
 }));
 export type CreateBackendStorageError =
@@ -2841,6 +2853,8 @@ export const createBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackendStorage",
 }));
 export type CreateTokenError =
@@ -2866,6 +2880,8 @@ export const createToken: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateToken",
 }));
 export type DeleteBackendError =
@@ -2891,6 +2907,8 @@ export const deleteBackend: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackend",
 }));
 export type DeleteBackendAPIError =
@@ -2916,6 +2934,8 @@ export const deleteBackendAPI: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackendAPI",
 }));
 export type DeleteBackendAuthError =
@@ -2941,6 +2961,8 @@ export const deleteBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackendAuth",
 }));
 export type DeleteBackendStorageError =
@@ -2966,6 +2988,8 @@ export const deleteBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackendStorage",
 }));
 export type DeleteTokenError =
@@ -2991,6 +3015,8 @@ export const deleteToken: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteToken",
 }));
 export type GenerateBackendAPIModelsError =
@@ -3016,6 +3042,8 @@ export const generateBackendAPIModels: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateBackendAPIModels",
 }));
 export type GetBackendError =
@@ -3041,6 +3069,8 @@ export const getBackend: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackend",
 }));
 export type GetBackendAPIError =
@@ -3066,6 +3096,8 @@ export const getBackendAPI: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackendAPI",
 }));
 export type GetBackendAPIModelsError =
@@ -3091,6 +3123,8 @@ export const getBackendAPIModels: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackendAPIModels",
 }));
 export type GetBackendAuthError =
@@ -3116,6 +3150,8 @@ export const getBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackendAuth",
 }));
 export type GetBackendJobError =
@@ -3141,6 +3177,8 @@ export const getBackendJob: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackendJob",
 }));
 export type GetBackendStorageError =
@@ -3166,6 +3204,8 @@ export const getBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackendStorage",
 }));
 export type GetTokenError =
@@ -3191,6 +3231,8 @@ export const getToken: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetToken",
 }));
 export type ImportBackendAuthError =
@@ -3216,6 +3258,8 @@ export const importBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportBackendAuth",
 }));
 export type ImportBackendStorageError =
@@ -3241,6 +3285,8 @@ export const importBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportBackendStorage",
 }));
 export type ListBackendJobsError =
@@ -3266,6 +3312,8 @@ export const listBackendJobs: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackendJobs",
 }));
 export type ListS3BucketsError =
@@ -3291,6 +3339,8 @@ export const listS3Buckets: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListS3Buckets",
 }));
 export type RemoveAllBackendsError =
@@ -3316,6 +3366,8 @@ export const removeAllBackends: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAllBackends",
 }));
 export type RemoveBackendConfigError =
@@ -3341,6 +3393,8 @@ export const removeBackendConfig: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveBackendConfig",
 }));
 export type UpdateBackendAPIError =
@@ -3366,6 +3420,8 @@ export const updateBackendAPI: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBackendAPI",
 }));
 export type UpdateBackendAuthError =
@@ -3391,6 +3447,8 @@ export const updateBackendAuth: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBackendAuth",
 }));
 export type UpdateBackendConfigError =
@@ -3416,6 +3474,8 @@ export const updateBackendConfig: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBackendConfig",
 }));
 export type UpdateBackendJobError =
@@ -3441,6 +3501,8 @@ export const updateBackendJob: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBackendJob",
 }));
 export type UpdateBackendStorageError =
@@ -3466,5 +3528,7 @@ export const updateBackendStorage: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBackendStorage",
 }));

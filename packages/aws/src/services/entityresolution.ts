@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2556,6 +2558,8 @@ export const addPolicyStatement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddPolicyStatement",
 }));
 export type BatchDeleteUniqueIdError =
@@ -2579,6 +2583,8 @@ export const batchDeleteUniqueId: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteUniqueId",
 }));
 export type CreateIdMappingWorkflowError =
@@ -2610,6 +2616,8 @@ export const createIdMappingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdMappingWorkflow",
 }));
 export type CreateIdNamespaceError =
@@ -2639,6 +2647,8 @@ export const createIdNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdNamespace",
 }));
 export type CreateMatchingWorkflowError =
@@ -2670,6 +2680,8 @@ export const createMatchingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMatchingWorkflow",
 }));
 export type CreateSchemaMappingError =
@@ -2699,6 +2711,8 @@ export const createSchemaMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchemaMapping",
 }));
 export type DeleteIdMappingWorkflowError =
@@ -2726,6 +2740,8 @@ export const deleteIdMappingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdMappingWorkflow",
 }));
 export type DeleteIdNamespaceError =
@@ -2751,6 +2767,8 @@ export const deleteIdNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdNamespace",
 }));
 export type DeleteMatchingWorkflowError =
@@ -2778,6 +2796,8 @@ export const deleteMatchingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMatchingWorkflow",
 }));
 export type DeletePolicyStatementError =
@@ -2807,6 +2827,8 @@ export const deletePolicyStatement: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicyStatement",
 }));
 export type DeleteSchemaMappingError =
@@ -2834,6 +2856,8 @@ export const deleteSchemaMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchemaMapping",
 }));
 export type GenerateMatchIdError =
@@ -2863,6 +2887,8 @@ export const generateMatchId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateMatchId",
 }));
 export type GetIdMappingJobError =
@@ -2890,6 +2916,8 @@ export const getIdMappingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdMappingJob",
 }));
 export type GetIdMappingWorkflowError =
@@ -2917,6 +2945,8 @@ export const getIdMappingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdMappingWorkflow",
 }));
 export type GetIdNamespaceError =
@@ -2944,6 +2974,8 @@ export const getIdNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdNamespace",
 }));
 export type GetMatchIdError =
@@ -2973,6 +3005,8 @@ export const getMatchId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMatchId",
 }));
 export type GetMatchingJobError =
@@ -3000,6 +3034,8 @@ export const getMatchingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMatchingJob",
 }));
 export type GetMatchingWorkflowError =
@@ -3027,6 +3063,8 @@ export const getMatchingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMatchingWorkflow",
 }));
 export type GetPolicyError =
@@ -3054,6 +3092,8 @@ export const getPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
 export type GetProviderServiceError =
@@ -3081,6 +3121,8 @@ export const getProviderService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProviderService",
 }));
 export type GetSchemaMappingError =
@@ -3108,6 +3150,8 @@ export const getSchemaMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchemaMapping",
 }));
 export type ListIdMappingJobsError =
@@ -3150,6 +3194,8 @@ export const listIdMappingJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdMappingJobs",
   pagination: {
     inputToken: "nextToken",
@@ -3196,6 +3242,8 @@ export const listIdMappingWorkflows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdMappingWorkflows",
   pagination: {
     inputToken: "nextToken",
@@ -3242,6 +3290,8 @@ export const listIdNamespaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdNamespaces",
   pagination: {
     inputToken: "nextToken",
@@ -3290,6 +3340,8 @@ export const listMatchingJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMatchingJobs",
   pagination: {
     inputToken: "nextToken",
@@ -3336,6 +3388,8 @@ export const listMatchingWorkflows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMatchingWorkflows",
   pagination: {
     inputToken: "nextToken",
@@ -3382,6 +3436,8 @@ export const listProviderServices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProviderServices",
   pagination: {
     inputToken: "nextToken",
@@ -3428,6 +3484,8 @@ export const listSchemaMappings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemaMappings",
   pagination: {
     inputToken: "nextToken",
@@ -3457,6 +3515,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutPolicyError =
@@ -3486,6 +3546,8 @@ export const putPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPolicy",
 }));
 export type StartIdMappingJobError =
@@ -3517,6 +3579,8 @@ export const startIdMappingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartIdMappingJob",
 }));
 export type StartMatchingJobError =
@@ -3548,6 +3612,8 @@ export const startMatchingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMatchingJob",
 }));
 export type TagResourceError =
@@ -3571,6 +3637,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3589,6 +3657,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateIdMappingWorkflowError =
@@ -3618,6 +3688,8 @@ export const updateIdMappingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdMappingWorkflow",
 }));
 export type UpdateIdNamespaceError =
@@ -3645,6 +3717,8 @@ export const updateIdNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdNamespace",
 }));
 export type UpdateMatchingWorkflowError =
@@ -3674,6 +3748,8 @@ export const updateMatchingWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMatchingWorkflow",
 }));
 export type UpdateSchemaMappingError =
@@ -3705,5 +3781,7 @@ export const updateSchemaMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchemaMapping",
 }));

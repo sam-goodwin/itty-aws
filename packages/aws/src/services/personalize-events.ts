@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -373,6 +375,8 @@ export const putActionInteractions: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutActionInteractions",
 }));
 export type PutActionsError =
@@ -397,6 +401,8 @@ export const putActions: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutActions",
 }));
 export type PutEventsError = InvalidInputException | CommonErrors;
@@ -413,6 +419,8 @@ export const putEvents: API.OperationMethod<
   input: PutEventsRequest,
   output: PutEventsResponse,
   errors: [InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEvents",
 }));
 export type PutItemsError =
@@ -437,6 +445,8 @@ export const putItems: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutItems",
 }));
 export type PutUsersError =
@@ -461,5 +471,7 @@ export const putUsers: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutUsers",
 }));

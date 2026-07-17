@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1292,6 +1294,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1310,6 +1314,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -1325,6 +1331,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateClusterError =
@@ -1356,6 +1364,8 @@ export const createCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type UpdateClusterError =
@@ -1387,6 +1397,8 @@ export const updateCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
 export type DeleteClusterError =
@@ -1416,6 +1428,8 @@ export const deleteCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type GetClusterError =
@@ -1445,6 +1459,8 @@ export const getCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCluster",
 }));
 export type RegisterComputeNodeGroupInstanceError =
@@ -1465,6 +1481,8 @@ export const registerComputeNodeGroupInstance: API.OperationMethod<
   input: RegisterComputeNodeGroupInstanceRequest,
   output: RegisterComputeNodeGroupInstanceResponse,
   errors: [AccessDeniedException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterComputeNodeGroupInstance",
 }));
 export type ListClustersError =
@@ -1509,6 +1527,8 @@ export const listClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
@@ -1546,6 +1566,8 @@ export const createComputeNodeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComputeNodeGroup",
 }));
 export type UpdateComputeNodeGroupError =
@@ -1577,6 +1599,8 @@ export const updateComputeNodeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComputeNodeGroup",
 }));
 export type DeleteComputeNodeGroupError =
@@ -1606,6 +1630,8 @@ export const deleteComputeNodeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComputeNodeGroup",
 }));
 export type GetComputeNodeGroupError =
@@ -1635,6 +1661,8 @@ export const getComputeNodeGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComputeNodeGroup",
 }));
 export type ListComputeNodeGroupsError =
@@ -1679,6 +1707,8 @@ export const listComputeNodeGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComputeNodeGroups",
   pagination: {
     inputToken: "nextToken",
@@ -1716,6 +1746,8 @@ export const createQueue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQueue",
 }));
 export type UpdateQueueError =
@@ -1747,6 +1779,8 @@ export const updateQueue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQueue",
 }));
 export type DeleteQueueError =
@@ -1776,6 +1810,8 @@ export const deleteQueue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueue",
 }));
 export type GetQueueError =
@@ -1805,6 +1841,8 @@ export const getQueue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueue",
 }));
 export type ListQueuesError =
@@ -1849,6 +1887,8 @@ export const listQueues: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueues",
   pagination: {
     inputToken: "nextToken",

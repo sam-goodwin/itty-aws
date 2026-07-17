@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2574,6 +2576,8 @@ export const getPreferences: API.OperationMethod<
   input: GetPreferencesRequest,
   output: GetPreferencesResponse,
   errors: [DataUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPreferences",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
@@ -2589,6 +2593,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2607,6 +2613,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -2622,6 +2630,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdatePreferencesError =
@@ -2640,6 +2650,8 @@ export const updatePreferences: API.OperationMethod<
   input: UpdatePreferencesRequest,
   output: UpdatePreferencesResponse,
   errors: [DataUnavailableException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePreferences",
 }));
 export type CreateBillEstimateError =
@@ -2663,6 +2675,8 @@ export const createBillEstimate: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBillEstimate",
 }));
 export type GetBillEstimateError =
@@ -2681,6 +2695,8 @@ export const getBillEstimate: API.OperationMethod<
   input: GetBillEstimateRequest,
   output: GetBillEstimateResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBillEstimate",
 }));
 export type UpdateBillEstimateError =
@@ -2704,6 +2720,8 @@ export const updateBillEstimate: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBillEstimate",
 }));
 export type DeleteBillEstimateError =
@@ -2722,6 +2740,8 @@ export const deleteBillEstimate: API.OperationMethod<
   input: DeleteBillEstimateRequest,
   output: DeleteBillEstimateResponse,
   errors: [ConflictException, DataUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBillEstimate",
 }));
 export type ListBillEstimatesError = DataUnavailableException | CommonErrors;
@@ -2752,6 +2772,8 @@ export const listBillEstimates: API.OperationMethod<
   input: ListBillEstimatesRequest,
   output: ListBillEstimatesResponse,
   errors: [DataUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillEstimates",
   pagination: {
     inputToken: "nextToken",
@@ -2791,6 +2813,8 @@ export const listBillEstimateCommitments: API.OperationMethod<
   input: ListBillEstimateCommitmentsRequest,
   output: ListBillEstimateCommitmentsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillEstimateCommitments",
   pagination: {
     inputToken: "nextToken",
@@ -2830,6 +2854,8 @@ export const listBillEstimateInputCommitmentModifications: API.OperationMethod<
   input: ListBillEstimateInputCommitmentModificationsRequest,
   output: ListBillEstimateInputCommitmentModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillEstimateInputCommitmentModifications",
   pagination: {
     inputToken: "nextToken",
@@ -2869,6 +2895,8 @@ export const listBillEstimateInputUsageModifications: API.OperationMethod<
   input: ListBillEstimateInputUsageModificationsRequest,
   output: ListBillEstimateInputUsageModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillEstimateInputUsageModifications",
   pagination: {
     inputToken: "nextToken",
@@ -2908,6 +2936,8 @@ export const listBillEstimateLineItems: API.OperationMethod<
   input: ListBillEstimateLineItemsRequest,
   output: ListBillEstimateLineItemsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillEstimateLineItems",
   pagination: {
     inputToken: "nextToken",
@@ -2937,6 +2967,8 @@ export const createBillScenario: API.OperationMethod<
     DataUnavailableException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBillScenario",
 }));
 export type GetBillScenarioError =
@@ -2955,6 +2987,8 @@ export const getBillScenario: API.OperationMethod<
   input: GetBillScenarioRequest,
   output: GetBillScenarioResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBillScenario",
 }));
 export type UpdateBillScenarioError =
@@ -2978,6 +3012,8 @@ export const updateBillScenario: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBillScenario",
 }));
 export type DeleteBillScenarioError =
@@ -2996,6 +3032,8 @@ export const deleteBillScenario: API.OperationMethod<
   input: DeleteBillScenarioRequest,
   output: DeleteBillScenarioResponse,
   errors: [ConflictException, DataUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBillScenario",
 }));
 export type ListBillScenariosError = DataUnavailableException | CommonErrors;
@@ -3026,6 +3064,8 @@ export const listBillScenarios: API.OperationMethod<
   input: ListBillScenariosRequest,
   output: ListBillScenariosResponse,
   errors: [DataUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillScenarios",
   pagination: {
     inputToken: "nextToken",
@@ -3065,6 +3105,8 @@ export const listBillScenarioCommitmentModifications: API.OperationMethod<
   input: ListBillScenarioCommitmentModificationsRequest,
   output: ListBillScenarioCommitmentModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillScenarioCommitmentModifications",
   pagination: {
     inputToken: "nextToken",
@@ -3096,6 +3138,8 @@ export const batchCreateBillScenarioCommitmentModification: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateBillScenarioCommitmentModification",
 }));
 export type BatchDeleteBillScenarioCommitmentModificationError =
@@ -3121,6 +3165,8 @@ export const batchDeleteBillScenarioCommitmentModification: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteBillScenarioCommitmentModification",
 }));
 export type BatchUpdateBillScenarioCommitmentModificationError =
@@ -3146,6 +3192,8 @@ export const batchUpdateBillScenarioCommitmentModification: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateBillScenarioCommitmentModification",
 }));
 export type ListBillScenarioUsageModificationsError =
@@ -3179,6 +3227,8 @@ export const listBillScenarioUsageModifications: API.OperationMethod<
   input: ListBillScenarioUsageModificationsRequest,
   output: ListBillScenarioUsageModificationsResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillScenarioUsageModifications",
   pagination: {
     inputToken: "nextToken",
@@ -3212,6 +3262,8 @@ export const batchCreateBillScenarioUsageModification: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateBillScenarioUsageModification",
 }));
 export type BatchDeleteBillScenarioUsageModificationError =
@@ -3239,6 +3291,8 @@ export const batchDeleteBillScenarioUsageModification: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteBillScenarioUsageModification",
 }));
 export type BatchUpdateBillScenarioUsageModificationError =
@@ -3266,6 +3320,8 @@ export const batchUpdateBillScenarioUsageModification: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateBillScenarioUsageModification",
 }));
 export type CreateWorkloadEstimateError =
@@ -3289,6 +3345,8 @@ export const createWorkloadEstimate: API.OperationMethod<
     DataUnavailableException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkloadEstimate",
 }));
 export type GetWorkloadEstimateError =
@@ -3307,6 +3365,8 @@ export const getWorkloadEstimate: API.OperationMethod<
   input: GetWorkloadEstimateRequest,
   output: GetWorkloadEstimateResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkloadEstimate",
 }));
 export type UpdateWorkloadEstimateError =
@@ -3330,6 +3390,8 @@ export const updateWorkloadEstimate: API.OperationMethod<
     DataUnavailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkloadEstimate",
 }));
 export type DeleteWorkloadEstimateError =
@@ -3347,6 +3409,8 @@ export const deleteWorkloadEstimate: API.OperationMethod<
   input: DeleteWorkloadEstimateRequest,
   output: DeleteWorkloadEstimateResponse,
   errors: [DataUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkloadEstimate",
 }));
 export type ListWorkloadEstimatesError =
@@ -3379,6 +3443,8 @@ export const listWorkloadEstimates: API.OperationMethod<
   input: ListWorkloadEstimatesRequest,
   output: ListWorkloadEstimatesResponse,
   errors: [DataUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkloadEstimates",
   pagination: {
     inputToken: "nextToken",
@@ -3418,6 +3484,8 @@ export const listWorkloadEstimateUsage: API.OperationMethod<
   input: ListWorkloadEstimateUsageRequest,
   output: ListWorkloadEstimateUsageResponse,
   errors: [DataUnavailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkloadEstimateUsage",
   pagination: {
     inputToken: "nextToken",
@@ -3451,6 +3519,8 @@ export const batchCreateWorkloadEstimateUsage: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateWorkloadEstimateUsage",
 }));
 export type BatchDeleteWorkloadEstimateUsageError =
@@ -3476,6 +3546,8 @@ export const batchDeleteWorkloadEstimateUsage: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteWorkloadEstimateUsage",
 }));
 export type BatchUpdateWorkloadEstimateUsageError =
@@ -3501,5 +3573,7 @@ export const batchUpdateWorkloadEstimateUsage: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateWorkloadEstimateUsage",
 }));

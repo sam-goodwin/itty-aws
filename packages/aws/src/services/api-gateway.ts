@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4948,6 +4950,8 @@ export const createApiKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApiKey",
 }));
 export type CreateAuthorizerError =
@@ -4977,6 +4981,8 @@ export const createAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAuthorizer",
 }));
 export type CreateBasePathMappingError =
@@ -5006,6 +5012,8 @@ export const createBasePathMapping: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBasePathMapping",
 }));
 export type CreateDeploymentError =
@@ -5037,6 +5045,8 @@ export const createDeployment: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeployment",
 }));
 export type CreateDocumentationPartError =
@@ -5066,6 +5076,8 @@ export const createDocumentationPart: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDocumentationPart",
 }));
 export type CreateDocumentationVersionError =
@@ -5095,6 +5107,8 @@ export const createDocumentationVersion: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDocumentationVersion",
 }));
 export type CreateDomainNameError =
@@ -5122,6 +5136,8 @@ export const createDomainName: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainName",
 }));
 export type CreateDomainNameAccessAssociationError =
@@ -5150,6 +5166,8 @@ export const createDomainNameAccessAssociation: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainNameAccessAssociation",
 }));
 export type CreateModelError =
@@ -5179,6 +5197,8 @@ export const createModel: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateModel",
 }));
 export type CreateRequestValidatorError =
@@ -5208,6 +5228,8 @@ export const createRequestValidator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRequestValidator",
 }));
 export type CreateResourceError =
@@ -5237,6 +5259,8 @@ export const createResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResource",
 }));
 export type CreateRestApiError =
@@ -5264,6 +5288,8 @@ export const createRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRestApi",
 }));
 export type CreateStageError =
@@ -5293,6 +5319,8 @@ export const createStage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStage",
 }));
 export type CreateUsagePlanError =
@@ -5322,6 +5350,8 @@ export const createUsagePlan: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUsagePlan",
 }));
 export type CreateUsagePlanKeyError =
@@ -5351,6 +5381,8 @@ export const createUsagePlanKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUsagePlanKey",
 }));
 export type CreateVpcLinkError =
@@ -5378,6 +5410,8 @@ export const createVpcLink: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcLink",
 }));
 export type DeleteApiKeyError =
@@ -5405,6 +5439,8 @@ export const deleteApiKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApiKey",
 }));
 export type DeleteAuthorizerError =
@@ -5432,6 +5468,8 @@ export const deleteAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAuthorizer",
 }));
 export type DeleteBasePathMappingError =
@@ -5459,6 +5497,8 @@ export const deleteBasePathMapping: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBasePathMapping",
 }));
 export type DeleteClientCertificateError =
@@ -5486,6 +5526,8 @@ export const deleteClientCertificate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClientCertificate",
 }));
 export type DeleteDeploymentError =
@@ -5515,6 +5557,8 @@ export const deleteDeployment: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeployment",
 }));
 export type DeleteDocumentationPartError =
@@ -5542,6 +5586,8 @@ export const deleteDocumentationPart: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDocumentationPart",
 }));
 export type DeleteDocumentationVersionError =
@@ -5569,6 +5615,8 @@ export const deleteDocumentationVersion: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDocumentationVersion",
 }));
 export type DeleteDomainNameError =
@@ -5596,6 +5644,8 @@ export const deleteDomainName: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainName",
 }));
 export type DeleteDomainNameAccessAssociationError =
@@ -5625,6 +5675,8 @@ export const deleteDomainNameAccessAssociation: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainNameAccessAssociation",
 }));
 export type DeleteGatewayResponseError =
@@ -5652,6 +5704,8 @@ export const deleteGatewayResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGatewayResponse",
 }));
 export type DeleteIntegrationError =
@@ -5679,6 +5733,8 @@ export const deleteIntegration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegration",
 }));
 export type DeleteIntegrationResponseError =
@@ -5706,6 +5762,8 @@ export const deleteIntegrationResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegrationResponse",
 }));
 export type DeleteMethodError =
@@ -5731,6 +5789,8 @@ export const deleteMethod: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMethod",
 }));
 export type DeleteMethodResponseError =
@@ -5758,6 +5818,8 @@ export const deleteMethodResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMethodResponse",
 }));
 export type DeleteModelError =
@@ -5785,6 +5847,8 @@ export const deleteModel: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteModel",
 }));
 export type DeleteRequestValidatorError =
@@ -5812,6 +5876,8 @@ export const deleteRequestValidator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRequestValidator",
 }));
 export type DeleteResourceError =
@@ -5839,6 +5905,8 @@ export const deleteResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResource",
 }));
 export type DeleteRestApiError =
@@ -5866,6 +5934,8 @@ export const deleteRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRestApi",
 }));
 export type DeleteStageError =
@@ -5895,6 +5965,8 @@ export const deleteStage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStage",
 }));
 export type DeleteUsagePlanError =
@@ -5922,6 +5994,8 @@ export const deleteUsagePlan: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUsagePlan",
 }));
 export type DeleteUsagePlanKeyError =
@@ -5949,6 +6023,8 @@ export const deleteUsagePlanKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUsagePlanKey",
 }));
 export type DeleteVpcLinkError =
@@ -5976,6 +6052,8 @@ export const deleteVpcLink: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcLink",
 }));
 export type FlushStageAuthorizersCacheError =
@@ -6005,6 +6083,8 @@ export const flushStageAuthorizersCache: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FlushStageAuthorizersCache",
 }));
 export type FlushStageCacheError =
@@ -6034,6 +6114,8 @@ export const flushStageCache: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FlushStageCache",
 }));
 export type GenerateClientCertificateError =
@@ -6061,6 +6143,8 @@ export const generateClientCertificate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateClientCertificate",
 }));
 export type GetAccountError =
@@ -6086,6 +6170,8 @@ export const getAccount: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccount",
 }));
 export type GetApiKeyError =
@@ -6111,6 +6197,8 @@ export const getApiKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApiKey",
 }));
 export type GetApiKeysError =
@@ -6151,6 +6239,8 @@ export const getApiKeys: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApiKeys",
   pagination: {
     inputToken: "position",
@@ -6182,6 +6272,8 @@ export const getAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAuthorizer",
 }));
 export type GetAuthorizersError =
@@ -6207,6 +6299,8 @@ export const getAuthorizers: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAuthorizers",
 }));
 export type GetBasePathMappingError =
@@ -6232,6 +6326,8 @@ export const getBasePathMapping: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBasePathMapping",
 }));
 export type GetBasePathMappingsError =
@@ -6272,6 +6368,8 @@ export const getBasePathMappings: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBasePathMappings",
   pagination: {
     inputToken: "position",
@@ -6303,6 +6401,8 @@ export const getClientCertificate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClientCertificate",
 }));
 export type GetClientCertificatesError =
@@ -6343,6 +6443,8 @@ export const getClientCertificates: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClientCertificates",
   pagination: {
     inputToken: "position",
@@ -6376,6 +6478,8 @@ export const getDeployment: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployment",
 }));
 export type GetDeploymentsError =
@@ -6418,6 +6522,8 @@ export const getDeployments: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployments",
   pagination: {
     inputToken: "position",
@@ -6449,6 +6555,8 @@ export const getDocumentationPart: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocumentationPart",
 }));
 export type GetDocumentationPartsError =
@@ -6474,6 +6582,8 @@ export const getDocumentationParts: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocumentationParts",
 }));
 export type GetDocumentationVersionError =
@@ -6493,6 +6603,8 @@ export const getDocumentationVersion: API.OperationMethod<
   input: GetDocumentationVersionRequest,
   output: DocumentationVersion,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocumentationVersion",
 }));
 export type GetDocumentationVersionsError =
@@ -6518,6 +6630,8 @@ export const getDocumentationVersions: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocumentationVersions",
 }));
 export type GetDomainNameError =
@@ -6543,6 +6657,8 @@ export const getDomainName: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainName",
 }));
 export type GetDomainNameAccessAssociationsError =
@@ -6568,6 +6684,8 @@ export const getDomainNameAccessAssociations: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainNameAccessAssociations",
 }));
 export type GetDomainNamesError =
@@ -6608,6 +6726,8 @@ export const getDomainNames: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainNames",
   pagination: {
     inputToken: "position",
@@ -6643,6 +6763,8 @@ export const getExport: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExport",
 }));
 export type GetGatewayResponseError =
@@ -6668,6 +6790,8 @@ export const getGatewayResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGatewayResponse",
 }));
 export type GetGatewayResponsesError =
@@ -6693,6 +6817,8 @@ export const getGatewayResponses: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGatewayResponses",
 }));
 export type GetIntegrationError =
@@ -6718,6 +6844,8 @@ export const getIntegration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegration",
 }));
 export type GetIntegrationResponseError =
@@ -6743,6 +6871,8 @@ export const getIntegrationResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegrationResponse",
 }));
 export type GetMethodError =
@@ -6762,6 +6892,8 @@ export const getMethod: API.OperationMethod<
   input: GetMethodRequest,
   output: Method,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMethod",
 }));
 export type GetMethodResponseError =
@@ -6781,6 +6913,8 @@ export const getMethodResponse: API.OperationMethod<
   input: GetMethodResponseRequest,
   output: MethodResponse,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMethodResponse",
 }));
 export type GetModelError =
@@ -6806,6 +6940,8 @@ export const getModel: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModel",
 }));
 export type GetModelsError =
@@ -6846,6 +6982,8 @@ export const getModels: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModels",
   pagination: {
     inputToken: "position",
@@ -6877,6 +7015,8 @@ export const getModelTemplate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetModelTemplate",
 }));
 export type GetRequestValidatorError =
@@ -6902,6 +7042,8 @@ export const getRequestValidator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRequestValidator",
 }));
 export type GetRequestValidatorsError =
@@ -6927,6 +7069,8 @@ export const getRequestValidators: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRequestValidators",
 }));
 export type GetResourceError =
@@ -6946,6 +7090,8 @@ export const getResource: API.OperationMethod<
   input: GetResourceRequest,
   output: Resource,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResource",
 }));
 export type GetResourcesError =
@@ -6986,6 +7132,8 @@ export const getResources: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResources",
   pagination: {
     inputToken: "position",
@@ -7017,6 +7165,8 @@ export const getRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRestApi",
 }));
 export type GetRestApisError =
@@ -7057,6 +7207,8 @@ export const getRestApis: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRestApis",
   pagination: {
     inputToken: "position",
@@ -7092,6 +7244,8 @@ export const getSdk: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSdk",
 }));
 export type GetSdkTypeError =
@@ -7117,6 +7271,8 @@ export const getSdkType: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSdkType",
 }));
 export type GetSdkTypesError =
@@ -7142,6 +7298,8 @@ export const getSdkTypes: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSdkTypes",
 }));
 export type GetStageError =
@@ -7171,6 +7329,8 @@ export const getStage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStage",
 }));
 export type GetStagesError =
@@ -7200,6 +7360,8 @@ export const getStages: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStages",
 }));
 export type GetTagsError =
@@ -7225,6 +7387,8 @@ export const getTags: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTags",
 }));
 export type GetUsageError =
@@ -7265,6 +7429,8 @@ export const getUsage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsage",
   pagination: {
     inputToken: "position",
@@ -7296,6 +7462,8 @@ export const getUsagePlan: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsagePlan",
 }));
 export type GetUsagePlanKeyError =
@@ -7321,6 +7489,8 @@ export const getUsagePlanKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsagePlanKey",
 }));
 export type GetUsagePlanKeysError =
@@ -7361,6 +7531,8 @@ export const getUsagePlanKeys: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsagePlanKeys",
   pagination: {
     inputToken: "position",
@@ -7407,6 +7579,8 @@ export const getUsagePlans: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsagePlans",
   pagination: {
     inputToken: "position",
@@ -7438,6 +7612,8 @@ export const getVpcLink: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpcLink",
 }));
 export type GetVpcLinksError =
@@ -7478,6 +7654,8 @@ export const getVpcLinks: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpcLinks",
   pagination: {
     inputToken: "position",
@@ -7513,6 +7691,8 @@ export const importApiKeys: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportApiKeys",
 }));
 export type ImportDocumentationPartsError =
@@ -7542,6 +7722,8 @@ export const importDocumentationParts: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportDocumentationParts",
 }));
 export type ImportRestApiError =
@@ -7571,6 +7753,8 @@ export const importRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportRestApi",
 }));
 export type PutGatewayResponseError =
@@ -7600,6 +7784,8 @@ export const putGatewayResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutGatewayResponse",
 }));
 export type PutIntegrationError =
@@ -7629,6 +7815,8 @@ export const putIntegration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutIntegration",
 }));
 export type PutIntegrationResponseError =
@@ -7658,6 +7846,8 @@ export const putIntegrationResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutIntegrationResponse",
 }));
 export type PutMethodError =
@@ -7687,6 +7877,8 @@ export const putMethod: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMethod",
 }));
 export type PutMethodResponseError =
@@ -7716,6 +7908,8 @@ export const putMethodResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMethodResponse",
 }));
 export type PutRestApiError =
@@ -7746,6 +7940,8 @@ export const putRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRestApi",
 }));
 export type RejectDomainNameAccessAssociationError =
@@ -7775,6 +7971,8 @@ export const rejectDomainNameAccessAssociation: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectDomainNameAccessAssociation",
 }));
 export type TagResourceError =
@@ -7804,6 +8002,8 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestInvokeAuthorizerError =
@@ -7829,6 +8029,8 @@ export const testInvokeAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestInvokeAuthorizer",
 }));
 export type TestInvokeMethodError =
@@ -7854,6 +8056,8 @@ export const testInvokeMethod: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestInvokeMethod",
 }));
 export type UntagResourceError =
@@ -7883,6 +8087,8 @@ export const untagResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccountError =
@@ -7912,6 +8118,8 @@ export const updateAccount: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccount",
 }));
 export type UpdateApiKeyError =
@@ -7941,6 +8149,8 @@ export const updateApiKey: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApiKey",
 }));
 export type UpdateAuthorizerError =
@@ -7970,6 +8180,8 @@ export const updateAuthorizer: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAuthorizer",
 }));
 export type UpdateBasePathMappingError =
@@ -7999,6 +8211,8 @@ export const updateBasePathMapping: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBasePathMapping",
 }));
 export type UpdateClientCertificateError =
@@ -8028,6 +8242,8 @@ export const updateClientCertificate: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClientCertificate",
 }));
 export type UpdateDeploymentError =
@@ -8059,6 +8275,8 @@ export const updateDeployment: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeployment",
 }));
 export type UpdateDocumentationPartError =
@@ -8088,6 +8306,8 @@ export const updateDocumentationPart: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocumentationPart",
 }));
 export type UpdateDocumentationVersionError =
@@ -8117,6 +8337,8 @@ export const updateDocumentationVersion: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocumentationVersion",
 }));
 export type UpdateDomainNameError =
@@ -8146,6 +8368,8 @@ export const updateDomainName: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainName",
 }));
 export type UpdateGatewayResponseError =
@@ -8175,6 +8399,8 @@ export const updateGatewayResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGatewayResponse",
 }));
 export type UpdateIntegrationError =
@@ -8204,6 +8430,8 @@ export const updateIntegration: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIntegration",
 }));
 export type UpdateIntegrationResponseError =
@@ -8233,6 +8461,8 @@ export const updateIntegrationResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIntegrationResponse",
 }));
 export type UpdateMethodError =
@@ -8260,6 +8490,8 @@ export const updateMethod: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMethod",
 }));
 export type UpdateMethodResponseError =
@@ -8289,6 +8521,8 @@ export const updateMethodResponse: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMethodResponse",
 }));
 export type UpdateModelError =
@@ -8318,6 +8552,8 @@ export const updateModel: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateModel",
 }));
 export type UpdateRequestValidatorError =
@@ -8347,6 +8583,8 @@ export const updateRequestValidator: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRequestValidator",
 }));
 export type UpdateResourceError =
@@ -8374,6 +8612,8 @@ export const updateResource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResource",
 }));
 export type UpdateRestApiError =
@@ -8403,6 +8643,8 @@ export const updateRestApi: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRestApi",
 }));
 export type UpdateStageError =
@@ -8432,6 +8674,8 @@ export const updateStage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStage",
 }));
 export type UpdateUsageError =
@@ -8461,6 +8705,8 @@ export const updateUsage: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUsage",
 }));
 export type UpdateUsagePlanError =
@@ -8490,6 +8736,8 @@ export const updateUsagePlan: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUsagePlan",
 }));
 export type UpdateVpcLinkError =
@@ -8519,5 +8767,7 @@ export const updateVpcLink: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVpcLink",
 }));

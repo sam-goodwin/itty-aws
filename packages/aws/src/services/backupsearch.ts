@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -911,6 +913,8 @@ export const listSearchJobBackups: API.OperationMethod<
   input: ListSearchJobBackupsInput,
   output: ListSearchJobBackupsOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSearchJobBackups",
   pagination: {
     inputToken: "NextToken",
@@ -949,6 +953,8 @@ export const listSearchJobResults: API.OperationMethod<
   input: ListSearchJobResultsInput,
   output: ListSearchJobResultsOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSearchJobResults",
   pagination: {
     inputToken: "NextToken",
@@ -970,6 +976,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError = ResourceNotFoundException | CommonErrors;
@@ -985,6 +993,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -1000,6 +1010,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type StartSearchJobError =
@@ -1025,6 +1037,8 @@ export const startSearchJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSearchJob",
 }));
 export type GetSearchJobError = ResourceNotFoundException | CommonErrors;
@@ -1040,6 +1054,8 @@ export const getSearchJob: API.OperationMethod<
   input: GetSearchJobInput,
   output: GetSearchJobOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSearchJob",
 }));
 export type StopSearchJobError =
@@ -1060,6 +1076,8 @@ export const stopSearchJob: API.OperationMethod<
   input: StopSearchJobInput,
   output: StopSearchJobOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSearchJob",
 }));
 export type ListSearchJobsError = CommonErrors;
@@ -1090,6 +1108,8 @@ export const listSearchJobs: API.OperationMethod<
   input: ListSearchJobsInput,
   output: ListSearchJobsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSearchJobs",
   pagination: {
     inputToken: "NextToken",
@@ -1119,6 +1139,8 @@ export const startSearchResultExportJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSearchResultExportJob",
 }));
 export type GetSearchResultExportJobError =
@@ -1140,6 +1162,8 @@ export const getSearchResultExportJob: API.OperationMethod<
   input: GetSearchResultExportJobInput,
   output: GetSearchResultExportJobOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSearchResultExportJob",
 }));
 export type ListSearchResultExportJobsError =
@@ -1173,6 +1197,8 @@ export const listSearchResultExportJobs: API.OperationMethod<
   input: ListSearchResultExportJobsInput,
   output: ListSearchResultExportJobsOutput,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSearchResultExportJobs",
   pagination: {
     inputToken: "NextToken",

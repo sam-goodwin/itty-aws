@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -726,6 +728,8 @@ export const putAccountName: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountName",
 }));
 export type GetAccountInformationError =
@@ -751,6 +755,8 @@ export const getAccountInformation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountInformation",
 }));
 export type PutAlternateContactError =
@@ -780,6 +786,8 @@ export const putAlternateContact: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAlternateContact",
 }));
 export type GetAlternateContactError =
@@ -811,6 +819,8 @@ export const getAlternateContact: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAlternateContact",
 }));
 export type DeleteAlternateContactError =
@@ -842,6 +852,8 @@ export const deleteAlternateContact: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlternateContact",
 }));
 export type GetGovCloudAccountInformationError =
@@ -871,6 +883,8 @@ export const getGovCloudAccountInformation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGovCloudAccountInformation",
 }));
 export type PutContactInformationError =
@@ -898,6 +912,8 @@ export const putContactInformation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutContactInformation",
 }));
 export type GetContactInformationError =
@@ -927,6 +943,8 @@ export const getContactInformation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactInformation",
 }));
 export type AcceptPrimaryEmailUpdateError =
@@ -956,6 +974,8 @@ export const acceptPrimaryEmailUpdate: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptPrimaryEmailUpdate",
 }));
 export type GetPrimaryEmailError =
@@ -983,6 +1003,8 @@ export const getPrimaryEmail: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPrimaryEmail",
 }));
 export type StartPrimaryEmailUpdateError =
@@ -1012,6 +1034,8 @@ export const startPrimaryEmailUpdate: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPrimaryEmailUpdate",
 }));
 export type DisableRegionError =
@@ -1041,6 +1065,8 @@ export const disableRegion: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableRegion",
 }));
 export type EnableRegionError =
@@ -1068,6 +1094,8 @@ export const enableRegion: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableRegion",
 }));
 export type GetRegionOptStatusError =
@@ -1093,6 +1121,8 @@ export const getRegionOptStatus: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegionOptStatus",
 }));
 export type ListRegionsError =
@@ -1133,6 +1163,8 @@ export const listRegions: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegions",
   pagination: {
     inputToken: "NextToken",

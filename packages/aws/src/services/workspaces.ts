@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5368,6 +5370,8 @@ export const acceptAccountLinkInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptAccountLinkInvitation",
 }));
 export type AssociateConnectionAliasError =
@@ -5403,6 +5407,8 @@ export const associateConnectionAlias: API.OperationMethod<
     ResourceAssociatedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateConnectionAlias",
 }));
 export type AssociateIpGroupsError =
@@ -5432,6 +5438,8 @@ export const associateIpGroups: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateIpGroups",
 }));
 export type AssociateWorkspaceApplicationError =
@@ -5469,6 +5477,8 @@ export const associateWorkspaceApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWorkspaceApplication",
 }));
 export type AuthorizeIpRulesError =
@@ -5499,6 +5509,8 @@ export const authorizeIpRules: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeIpRules",
 }));
 export type CopyWorkspaceImageError =
@@ -5540,6 +5552,8 @@ export const copyWorkspaceImage: API.OperationMethod<
     ResourceNotFoundException,
     ResourceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyWorkspaceImage",
 }));
 export type CreateAccountLinkInvitationError =
@@ -5565,6 +5579,8 @@ export const createAccountLinkInvitation: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccountLinkInvitation",
 }));
 export type CreateConnectClientAddInError =
@@ -5595,6 +5611,8 @@ export const createConnectClientAddIn: API.OperationMethod<
     ResourceCreationFailedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectClientAddIn",
 }));
 export type CreateConnectionAliasError =
@@ -5626,6 +5644,8 @@ export const createConnectionAlias: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectionAlias",
 }));
 export type CreateIpGroupError =
@@ -5663,6 +5683,8 @@ export const createIpGroup: API.OperationMethod<
     ResourceCreationFailedException,
     ResourceLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpGroup",
 }));
 export type CreateStandbyWorkspacesError =
@@ -5690,6 +5712,8 @@ export const createStandbyWorkspaces: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStandbyWorkspaces",
 }));
 export type CreateTagsError =
@@ -5713,6 +5737,8 @@ export const createTags: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTags",
 }));
 export type CreateUpdatedWorkspaceImageError =
@@ -5759,6 +5785,8 @@ export const createUpdatedWorkspaceImage: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUpdatedWorkspaceImage",
 }));
 export type CreateWorkspaceBundleError =
@@ -5790,6 +5818,8 @@ export const createWorkspaceBundle: API.OperationMethod<
     ResourceNotFoundException,
     ResourceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspaceBundle",
 }));
 export type CreateWorkspaceImageError =
@@ -5821,6 +5851,8 @@ export const createWorkspaceImage: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspaceImage",
 }));
 export type CreateWorkspacesError =
@@ -5857,6 +5889,8 @@ export const createWorkspaces: API.OperationMethod<
   input: CreateWorkspacesRequest,
   output: CreateWorkspacesResult,
   errors: [InvalidParameterValuesException, ResourceLimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspaces",
 }));
 export type CreateWorkspacesPoolError =
@@ -5886,6 +5920,8 @@ export const createWorkspacesPool: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspacesPool",
 }));
 export type DeleteAccountLinkInvitationError =
@@ -5913,6 +5949,8 @@ export const deleteAccountLinkInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountLinkInvitation",
 }));
 export type DeleteClientBrandingError =
@@ -5942,6 +5980,8 @@ export const deleteClientBranding: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClientBranding",
 }));
 export type DeleteConnectClientAddInError =
@@ -5966,6 +6006,8 @@ export const deleteConnectClientAddIn: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectClientAddIn",
 }));
 export type DeleteConnectionAliasError =
@@ -6007,6 +6049,8 @@ export const deleteConnectionAlias: API.OperationMethod<
     ResourceAssociatedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectionAlias",
 }));
 export type DeleteIpGroupError =
@@ -6034,6 +6078,8 @@ export const deleteIpGroup: API.OperationMethod<
     ResourceAssociatedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpGroup",
 }));
 export type DeleteTagsError =
@@ -6052,6 +6098,8 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsRequest,
   output: DeleteTagsResult,
   errors: [InvalidParameterValuesException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
 export type DeleteWorkspaceBundleError =
@@ -6079,6 +6127,8 @@ export const deleteWorkspaceBundle: API.OperationMethod<
     ResourceAssociatedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspaceBundle",
 }));
 export type DeleteWorkspaceImageError =
@@ -6104,6 +6154,8 @@ export const deleteWorkspaceImage: API.OperationMethod<
     InvalidResourceStateException,
     ResourceAssociatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspaceImage",
 }));
 export type DeployWorkspaceApplicationsError =
@@ -6133,6 +6185,8 @@ export const deployWorkspaceApplications: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeployWorkspaceApplications",
 }));
 export type DeregisterWorkspaceDirectoryError =
@@ -6173,6 +6227,8 @@ export const deregisterWorkspaceDirectory: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterWorkspaceDirectory",
 }));
 export type DescribeAccountError = AccessDeniedException | CommonErrors;
@@ -6189,6 +6245,8 @@ export const describeAccount: API.OperationMethod<
   input: DescribeAccountRequest,
   output: DescribeAccountResult,
   errors: [AccessDeniedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccount",
 }));
 export type DescribeAccountModificationsError =
@@ -6207,6 +6265,8 @@ export const describeAccountModifications: API.OperationMethod<
   input: DescribeAccountModificationsRequest,
   output: DescribeAccountModificationsResult,
   errors: [AccessDeniedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountModifications",
 }));
 export type DescribeApplicationAssociationsError =
@@ -6247,6 +6307,8 @@ export const describeApplicationAssociations: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -6292,6 +6354,8 @@ export const describeApplications: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplications",
   pagination: {
     inputToken: "NextToken",
@@ -6322,6 +6386,8 @@ export const describeBundleAssociations: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBundleAssociations",
 }));
 export type DescribeClientBrandingError =
@@ -6351,6 +6417,8 @@ export const describeClientBranding: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClientBranding",
 }));
 export type DescribeClientPropertiesError =
@@ -6374,6 +6442,8 @@ export const describeClientProperties: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClientProperties",
 }));
 export type DescribeConnectClientAddInsError =
@@ -6397,6 +6467,8 @@ export const describeConnectClientAddIns: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectClientAddIns",
 }));
 export type DescribeConnectionAliasesError =
@@ -6422,6 +6494,8 @@ export const describeConnectionAliases: API.OperationMethod<
     InvalidParameterValuesException,
     OperationNotSupportedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectionAliases",
 }));
 export type DescribeConnectionAliasPermissionsError =
@@ -6450,6 +6524,8 @@ export const describeConnectionAliasPermissions: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectionAliasPermissions",
 }));
 export type DescribeCustomWorkspaceImageImportError =
@@ -6468,6 +6544,8 @@ export const describeCustomWorkspaceImageImport: API.OperationMethod<
   input: DescribeCustomWorkspaceImageImportRequest,
   output: DescribeCustomWorkspaceImageImportResult,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomWorkspaceImageImport",
 }));
 export type DescribeImageAssociationsError =
@@ -6493,6 +6571,8 @@ export const describeImageAssociations: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageAssociations",
 }));
 export type DescribeIpGroupsError =
@@ -6511,6 +6591,8 @@ export const describeIpGroups: API.OperationMethod<
   input: DescribeIpGroupsRequest,
   output: DescribeIpGroupsResult,
   errors: [AccessDeniedException, InvalidParameterValuesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpGroups",
 }));
 export type DescribeTagsError = ResourceNotFoundException | CommonErrors;
@@ -6526,6 +6608,8 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsRequest,
   output: DescribeTagsResult,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
 }));
 export type DescribeWorkspaceAssociationsError =
@@ -6551,6 +6635,8 @@ export const describeWorkspaceAssociations: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaceAssociations",
 }));
 export type DescribeWorkspaceBundlesError =
@@ -6585,6 +6671,8 @@ export const describeWorkspaceBundles: API.OperationMethod<
   input: DescribeWorkspaceBundlesRequest,
   output: DescribeWorkspaceBundlesResult,
   errors: [InvalidParameterValuesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaceBundles",
   pagination: {
     inputToken: "NextToken",
@@ -6622,6 +6710,8 @@ export const describeWorkspaceDirectories: API.OperationMethod<
   input: DescribeWorkspaceDirectoriesRequest,
   output: DescribeWorkspaceDirectoriesResult,
   errors: [InvalidParameterValuesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaceDirectories",
   pagination: {
     inputToken: "NextToken",
@@ -6650,6 +6740,8 @@ export const describeWorkspaceImagePermissions: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaceImagePermissions",
 }));
 export type DescribeWorkspaceImagesError = AccessDeniedException | CommonErrors;
@@ -6666,6 +6758,8 @@ export const describeWorkspaceImages: API.OperationMethod<
   input: DescribeWorkspaceImagesRequest,
   output: DescribeWorkspaceImagesResult,
   errors: [AccessDeniedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaceImages",
 }));
 export type DescribeWorkspacesError =
@@ -6702,6 +6796,8 @@ export const describeWorkspaces: API.OperationMethod<
   input: DescribeWorkspacesRequest,
   output: DescribeWorkspacesResult,
   errors: [InvalidParameterValuesException, ResourceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaces",
   pagination: {
     inputToken: "NextToken",
@@ -6725,6 +6821,8 @@ export const describeWorkspacesConnectionStatus: API.OperationMethod<
   input: DescribeWorkspacesConnectionStatusRequest,
   output: DescribeWorkspacesConnectionStatusResult,
   errors: [InvalidParameterValuesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspacesConnectionStatus",
 }));
 export type DescribeWorkspaceSnapshotsError =
@@ -6748,6 +6846,8 @@ export const describeWorkspaceSnapshots: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaceSnapshots",
 }));
 export type DescribeWorkspacesPoolsError =
@@ -6771,6 +6871,8 @@ export const describeWorkspacesPools: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspacesPools",
 }));
 export type DescribeWorkspacesPoolSessionsError =
@@ -6794,6 +6896,8 @@ export const describeWorkspacesPoolSessions: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspacesPoolSessions",
 }));
 export type DisassociateConnectionAliasError =
@@ -6828,6 +6932,8 @@ export const disassociateConnectionAlias: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateConnectionAlias",
 }));
 export type DisassociateIpGroupsError =
@@ -6855,6 +6961,8 @@ export const disassociateIpGroups: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateIpGroups",
 }));
 export type DisassociateWorkspaceApplicationError =
@@ -6882,6 +6990,8 @@ export const disassociateWorkspaceApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWorkspaceApplication",
 }));
 export type GetAccountLinkError =
@@ -6907,6 +7017,8 @@ export const getAccountLink: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountLink",
 }));
 export type ImportClientBrandingError =
@@ -6952,6 +7064,8 @@ export const importClientBranding: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportClientBranding",
 }));
 export type ImportCustomWorkspaceImageError =
@@ -6985,6 +7099,8 @@ export const importCustomWorkspaceImage: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportCustomWorkspaceImage",
 }));
 export type ImportWorkspaceImageError =
@@ -7018,6 +7134,8 @@ export const importWorkspaceImage: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportWorkspaceImage",
 }));
 export type ListAccountLinksError =
@@ -7052,6 +7170,8 @@ export const listAccountLinks: API.OperationMethod<
   input: ListAccountLinksRequest,
   output: ListAccountLinksResult,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountLinks",
   pagination: {
     inputToken: "NextToken",
@@ -7085,6 +7205,8 @@ export const listAvailableManagementCidrRanges: API.OperationMethod<
   input: ListAvailableManagementCidrRangesRequest,
   output: ListAvailableManagementCidrRangesResult,
   errors: [AccessDeniedException, InvalidParameterValuesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAvailableManagementCidrRanges",
 }));
 export type MigrateWorkspaceError =
@@ -7126,6 +7248,8 @@ export const migrateWorkspace: API.OperationMethod<
     ResourceNotFoundException,
     ResourceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MigrateWorkspace",
 }));
 export type ModifyAccountError =
@@ -7154,6 +7278,8 @@ export const modifyAccount: API.OperationMethod<
     ResourceNotFoundException,
     ResourceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyAccount",
 }));
 export type ModifyCertificateBasedAuthPropertiesError =
@@ -7180,6 +7306,8 @@ export const modifyCertificateBasedAuthProperties: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCertificateBasedAuthProperties",
 }));
 export type ModifyClientPropertiesError =
@@ -7205,6 +7333,8 @@ export const modifyClientProperties: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClientProperties",
 }));
 export type ModifyEndpointEncryptionModeError =
@@ -7229,6 +7359,8 @@ export const modifyEndpointEncryptionMode: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEndpointEncryptionMode",
 }));
 export type ModifySamlPropertiesError =
@@ -7256,6 +7388,8 @@ export const modifySamlProperties: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySamlProperties",
 }));
 export type ModifySelfservicePermissionsError =
@@ -7282,6 +7416,8 @@ export const modifySelfservicePermissions: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySelfservicePermissions",
 }));
 export type ModifyStreamingPropertiesError =
@@ -7307,6 +7443,8 @@ export const modifyStreamingProperties: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyStreamingProperties",
 }));
 export type ModifyWorkspaceAccessPropertiesError =
@@ -7336,6 +7474,8 @@ export const modifyWorkspaceAccessProperties: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyWorkspaceAccessProperties",
 }));
 export type ModifyWorkspaceCreationPropertiesError =
@@ -7361,6 +7501,8 @@ export const modifyWorkspaceCreationProperties: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyWorkspaceCreationProperties",
 }));
 export type ModifyWorkspacePropertiesError =
@@ -7398,6 +7540,8 @@ export const modifyWorkspaceProperties: API.OperationMethod<
     ResourceUnavailableException,
     UnsupportedWorkspaceConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyWorkspaceProperties",
 }));
 export type ModifyWorkspaceStateError =
@@ -7429,6 +7573,8 @@ export const modifyWorkspaceState: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyWorkspaceState",
 }));
 export type RebootWorkspacesError =
@@ -7452,6 +7598,8 @@ export const rebootWorkspaces: API.OperationMethod<
   input: RebootWorkspacesRequest,
   output: RebootWorkspacesResult,
   errors: [OperationNotSupportedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootWorkspaces",
 }));
 export type RebuildWorkspacesError =
@@ -7480,6 +7628,8 @@ export const rebuildWorkspaces: API.OperationMethod<
   input: RebuildWorkspacesRequest,
   output: RebuildWorkspacesResult,
   errors: [OperationNotSupportedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebuildWorkspaces",
 }));
 export type RegisterWorkspaceDirectoryError =
@@ -7519,6 +7669,8 @@ export const registerWorkspaceDirectory: API.OperationMethod<
     UnsupportedNetworkConfigurationException,
     WorkspacesDefaultRoleNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterWorkspaceDirectory",
 }));
 export type RejectAccountLinkInvitationError =
@@ -7546,6 +7698,8 @@ export const rejectAccountLinkInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectAccountLinkInvitation",
 }));
 export type RestoreWorkspaceError =
@@ -7581,6 +7735,8 @@ export const restoreWorkspace: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreWorkspace",
 }));
 export type RevokeIpRulesError =
@@ -7606,6 +7762,8 @@ export const revokeIpRules: API.OperationMethod<
     InvalidResourceStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeIpRules",
 }));
 export type StartWorkspacesError = CommonErrors;
@@ -7624,6 +7782,8 @@ export const startWorkspaces: API.OperationMethod<
   input: StartWorkspacesRequest,
   output: StartWorkspacesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWorkspaces",
 }));
 export type StartWorkspacesPoolError =
@@ -7658,6 +7818,8 @@ export const startWorkspacesPool: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWorkspacesPool",
 }));
 export type StopWorkspacesError = CommonErrors;
@@ -7677,6 +7839,8 @@ export const stopWorkspaces: API.OperationMethod<
   input: StopWorkspacesRequest,
   output: StopWorkspacesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopWorkspaces",
 }));
 export type StopWorkspacesPoolError =
@@ -7707,6 +7871,8 @@ export const stopWorkspacesPool: API.OperationMethod<
     OperationInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopWorkspacesPool",
 }));
 export type TerminateWorkspacesError = CommonErrors;
@@ -7747,6 +7913,8 @@ export const terminateWorkspaces: API.OperationMethod<
   input: TerminateWorkspacesRequest,
   output: TerminateWorkspacesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateWorkspaces",
 }));
 export type TerminateWorkspacesPoolError =
@@ -7774,6 +7942,8 @@ export const terminateWorkspacesPool: API.OperationMethod<
     OperationInProgressException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateWorkspacesPool",
 }));
 export type TerminateWorkspacesPoolSessionError =
@@ -7801,6 +7971,8 @@ export const terminateWorkspacesPoolSession: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateWorkspacesPoolSession",
 }));
 export type UpdateConnectClientAddInError =
@@ -7825,6 +7997,8 @@ export const updateConnectClientAddIn: API.OperationMethod<
     InvalidParameterValuesException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectClientAddIn",
 }));
 export type UpdateConnectionAliasPermissionError =
@@ -7871,6 +8045,8 @@ export const updateConnectionAliasPermission: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectionAliasPermission",
 }));
 export type UpdateRulesOfIpGroupError =
@@ -7899,6 +8075,8 @@ export const updateRulesOfIpGroup: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRulesOfIpGroup",
 }));
 export type UpdateWorkspaceBundleError =
@@ -7932,6 +8110,8 @@ export const updateWorkspaceBundle: API.OperationMethod<
     ResourceNotFoundException,
     ResourceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspaceBundle",
 }));
 export type UpdateWorkspaceImagePermissionError =
@@ -7979,6 +8159,8 @@ export const updateWorkspaceImagePermission: API.OperationMethod<
     ResourceNotFoundException,
     ResourceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspaceImagePermission",
 }));
 export type UpdateWorkspacesPoolError =
@@ -8010,5 +8192,7 @@ export const updateWorkspacesPool: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspacesPool",
 }));

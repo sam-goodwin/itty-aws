@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1494,6 +1496,8 @@ export const describeEntitiesDetectionV2Job: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntitiesDetectionV2Job",
 }));
 export type DescribeICD10CMInferenceJobError =
@@ -1520,6 +1524,8 @@ export const describeICD10CMInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeICD10CMInferenceJob",
 }));
 export type DescribePHIDetectionJobError =
@@ -1546,6 +1552,8 @@ export const describePHIDetectionJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePHIDetectionJob",
 }));
 export type DescribeRxNormInferenceJobError =
@@ -1572,6 +1580,8 @@ export const describeRxNormInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRxNormInferenceJob",
 }));
 export type DescribeSNOMEDCTInferenceJobError =
@@ -1597,6 +1607,8 @@ export const describeSNOMEDCTInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSNOMEDCTInferenceJob",
 }));
 export type DetectEntitiesError =
@@ -1630,6 +1642,8 @@ export const detectEntities: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectEntities",
 }));
 export type DetectEntitiesV2Error =
@@ -1670,6 +1684,8 @@ export const detectEntitiesV2: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectEntitiesV2",
 }));
 export type DetectPHIError =
@@ -1701,6 +1717,8 @@ export const detectPHI: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectPHI",
 }));
 export type InferICD10CMError =
@@ -1733,6 +1751,8 @@ export const inferICD10CM: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InferICD10CM",
 }));
 export type InferRxNormError =
@@ -1764,6 +1784,8 @@ export const inferRxNorm: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InferRxNorm",
 }));
 export type InferSNOMEDCTError =
@@ -1793,6 +1815,8 @@ export const inferSNOMEDCT: API.OperationMethod<
     TextSizeLimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InferSNOMEDCT",
 }));
 export type ListEntitiesDetectionV2JobsError =
@@ -1818,6 +1842,8 @@ export const listEntitiesDetectionV2Jobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntitiesDetectionV2Jobs",
 }));
 export type ListICD10CMInferenceJobsError =
@@ -1843,6 +1869,8 @@ export const listICD10CMInferenceJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListICD10CMInferenceJobs",
 }));
 export type ListPHIDetectionJobsError =
@@ -1869,6 +1897,8 @@ export const listPHIDetectionJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPHIDetectionJobs",
 }));
 export type ListRxNormInferenceJobsError =
@@ -1894,6 +1924,8 @@ export const listRxNormInferenceJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRxNormInferenceJobs",
 }));
 export type ListSNOMEDCTInferenceJobsError =
@@ -1919,6 +1951,8 @@ export const listSNOMEDCTInferenceJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSNOMEDCTInferenceJobs",
 }));
 export type StartEntitiesDetectionV2JobError =
@@ -1945,6 +1979,8 @@ export const startEntitiesDetectionV2Job: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEntitiesDetectionV2Job",
 }));
 export type StartICD10CMInferenceJobError =
@@ -1972,6 +2008,8 @@ export const startICD10CMInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartICD10CMInferenceJob",
 }));
 export type StartPHIDetectionJobError =
@@ -1998,6 +2036,8 @@ export const startPHIDetectionJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPHIDetectionJob",
 }));
 export type StartRxNormInferenceJobError =
@@ -2025,6 +2065,8 @@ export const startRxNormInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRxNormInferenceJob",
 }));
 export type StartSNOMEDCTInferenceJobError =
@@ -2050,6 +2092,8 @@ export const startSNOMEDCTInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSNOMEDCTInferenceJob",
 }));
 export type StopEntitiesDetectionV2JobError =
@@ -2073,6 +2117,8 @@ export const stopEntitiesDetectionV2Job: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEntitiesDetectionV2Job",
 }));
 export type StopICD10CMInferenceJobError =
@@ -2096,6 +2142,8 @@ export const stopICD10CMInferenceJob: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopICD10CMInferenceJob",
 }));
 export type StopPHIDetectionJobError =
@@ -2119,6 +2167,8 @@ export const stopPHIDetectionJob: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopPHIDetectionJob",
 }));
 export type StopRxNormInferenceJobError =
@@ -2142,6 +2192,8 @@ export const stopRxNormInferenceJob: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRxNormInferenceJob",
 }));
 export type StopSNOMEDCTInferenceJobError =
@@ -2167,5 +2219,7 @@ export const stopSNOMEDCTInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSNOMEDCTInferenceJob",
 }));

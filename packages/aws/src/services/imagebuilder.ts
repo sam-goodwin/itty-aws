@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5664,6 +5666,8 @@ export const cancelImageCreation: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelImageCreation",
 }));
 export type CancelLifecycleExecutionError =
@@ -5697,6 +5701,8 @@ export const cancelLifecycleExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelLifecycleExecution",
 }));
 export type CreateComponentError =
@@ -5745,6 +5751,8 @@ export const createComponent: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComponent",
 }));
 export type CreateContainerRecipeError =
@@ -5785,6 +5793,8 @@ export const createContainerRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerRecipe",
 }));
 export type CreateDistributionConfigurationError =
@@ -5825,6 +5835,8 @@ export const createDistributionConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDistributionConfiguration",
 }));
 export type CreateImageError =
@@ -5863,6 +5875,8 @@ export const createImage: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImage",
 }));
 export type CreateImagePipelineError =
@@ -5901,6 +5915,8 @@ export const createImagePipeline: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImagePipeline",
 }));
 export type CreateImageRecipeError =
@@ -5941,6 +5957,8 @@ export const createImageRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImageRecipe",
 }));
 export type CreateInfrastructureConfigurationError =
@@ -5979,6 +5997,8 @@ export const createInfrastructureConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInfrastructureConfiguration",
 }));
 export type CreateLifecyclePolicyError =
@@ -6016,6 +6036,8 @@ export const createLifecyclePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLifecyclePolicy",
 }));
 export type CreateWorkflowError =
@@ -6057,6 +6079,8 @@ export const createWorkflow: API.OperationMethod<
     ServiceQuotaExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflow",
 }));
 export type DeleteComponentError =
@@ -6088,6 +6112,8 @@ export const deleteComponent: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComponent",
 }));
 export type DeleteContainerRecipeError =
@@ -6119,6 +6145,8 @@ export const deleteContainerRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainerRecipe",
 }));
 export type DeleteDistributionConfigurationError =
@@ -6150,6 +6178,8 @@ export const deleteDistributionConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDistributionConfiguration",
 }));
 export type DeleteImageError =
@@ -6197,6 +6227,8 @@ export const deleteImage: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImage",
 }));
 export type DeleteImagePipelineError =
@@ -6228,6 +6260,8 @@ export const deleteImagePipeline: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImagePipeline",
 }));
 export type DeleteImageRecipeError =
@@ -6259,6 +6293,8 @@ export const deleteImageRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImageRecipe",
 }));
 export type DeleteInfrastructureConfigurationError =
@@ -6290,6 +6326,8 @@ export const deleteInfrastructureConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInfrastructureConfiguration",
 }));
 export type DeleteLifecyclePolicyError =
@@ -6321,6 +6359,8 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLifecyclePolicy",
 }));
 export type DeleteWorkflowError =
@@ -6352,6 +6392,8 @@ export const deleteWorkflow: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflow",
 }));
 export type DistributeImageError =
@@ -6393,6 +6435,8 @@ export const distributeImage: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DistributeImage",
 }));
 export type GetComponentError =
@@ -6422,6 +6466,8 @@ export const getComponent: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponent",
 }));
 export type GetComponentPolicyError =
@@ -6451,6 +6497,8 @@ export const getComponentPolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponentPolicy",
 }));
 export type GetContainerRecipeError =
@@ -6480,6 +6528,8 @@ export const getContainerRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerRecipe",
 }));
 export type GetContainerRecipePolicyError =
@@ -6509,6 +6559,8 @@ export const getContainerRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerRecipePolicy",
 }));
 export type GetDistributionConfigurationError =
@@ -6538,6 +6590,8 @@ export const getDistributionConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionConfiguration",
 }));
 export type GetImageError =
@@ -6567,6 +6621,8 @@ export const getImage: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImage",
 }));
 export type GetImagePipelineError =
@@ -6596,6 +6652,8 @@ export const getImagePipeline: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImagePipeline",
 }));
 export type GetImagePolicyError =
@@ -6625,6 +6683,8 @@ export const getImagePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImagePolicy",
 }));
 export type GetImageRecipeError =
@@ -6654,6 +6714,8 @@ export const getImageRecipe: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImageRecipe",
 }));
 export type GetImageRecipePolicyError =
@@ -6683,6 +6745,8 @@ export const getImageRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImageRecipePolicy",
 }));
 export type GetInfrastructureConfigurationError =
@@ -6712,6 +6776,8 @@ export const getInfrastructureConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInfrastructureConfiguration",
 }));
 export type GetLifecycleExecutionError =
@@ -6741,6 +6807,8 @@ export const getLifecycleExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecycleExecution",
 }));
 export type GetLifecyclePolicyError =
@@ -6770,6 +6838,8 @@ export const getLifecyclePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecyclePolicy",
 }));
 export type GetMarketplaceResourceError =
@@ -6801,6 +6871,8 @@ export const getMarketplaceResource: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMarketplaceResource",
 }));
 export type GetWorkflowError =
@@ -6830,6 +6902,8 @@ export const getWorkflow: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflow",
 }));
 export type GetWorkflowExecutionError =
@@ -6860,6 +6934,8 @@ export const getWorkflowExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowExecution",
 }));
 export type GetWorkflowStepExecutionError =
@@ -6890,6 +6966,8 @@ export const getWorkflowStepExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowStepExecution",
 }));
 export type ImportComponentError =
@@ -6927,6 +7005,8 @@ export const importComponent: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportComponent",
 }));
 export type ImportDiskImageError =
@@ -6949,6 +7029,8 @@ export const importDiskImage: API.OperationMethod<
   input: ImportDiskImageRequest,
   output: ImportDiskImageResponse,
   errors: [ClientException, ServiceException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportDiskImage",
 }));
 export type ImportVmImageError =
@@ -6975,6 +7057,8 @@ export const importVmImage: API.OperationMethod<
   input: ImportVmImageRequest,
   output: ImportVmImageResponse,
   errors: [ClientException, ServiceException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportVmImage",
 }));
 export type ListComponentBuildVersionsError =
@@ -7022,6 +7106,8 @@ export const listComponentBuildVersions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponentBuildVersions",
   pagination: {
     inputToken: "nextToken",
@@ -7084,6 +7170,8 @@ export const listComponents: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
@@ -7136,6 +7224,8 @@ export const listContainerRecipes: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContainerRecipes",
   pagination: {
     inputToken: "nextToken",
@@ -7188,6 +7278,8 @@ export const listDistributionConfigurations: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -7240,6 +7332,8 @@ export const listImageBuildVersions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageBuildVersions",
   pagination: {
     inputToken: "nextToken",
@@ -7295,6 +7389,8 @@ export const listImagePackages: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImagePackages",
   pagination: {
     inputToken: "nextToken",
@@ -7349,6 +7445,8 @@ export const listImagePipelineImages: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImagePipelineImages",
   pagination: {
     inputToken: "nextToken",
@@ -7401,6 +7499,8 @@ export const listImagePipelines: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImagePipelines",
   pagination: {
     inputToken: "nextToken",
@@ -7453,6 +7553,8 @@ export const listImageRecipes: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageRecipes",
   pagination: {
     inputToken: "nextToken",
@@ -7506,6 +7608,8 @@ export const listImages: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImages",
   pagination: {
     inputToken: "nextToken",
@@ -7572,6 +7676,8 @@ export const listImageScanFindingAggregations: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageScanFindingAggregations",
   pagination: {
     inputToken: "nextToken",
@@ -7623,6 +7729,8 @@ export const listImageScanFindings: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageScanFindings",
   pagination: {
     inputToken: "nextToken",
@@ -7675,6 +7783,8 @@ export const listInfrastructureConfigurations: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInfrastructureConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -7727,6 +7837,8 @@ export const listLifecycleExecutionResources: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLifecycleExecutionResources",
   pagination: {
     inputToken: "nextToken",
@@ -7779,6 +7891,8 @@ export const listLifecycleExecutions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLifecycleExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -7831,6 +7945,8 @@ export const listLifecyclePolicies: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLifecyclePolicies",
   pagination: {
     inputToken: "nextToken",
@@ -7860,6 +7976,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWaitingWorkflowStepsError =
@@ -7907,6 +8025,8 @@ export const listWaitingWorkflowSteps: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWaitingWorkflowSteps",
   pagination: {
     inputToken: "nextToken",
@@ -7959,6 +8079,8 @@ export const listWorkflowBuildVersions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowBuildVersions",
   pagination: {
     inputToken: "nextToken",
@@ -8012,6 +8134,8 @@ export const listWorkflowExecutions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -8064,6 +8188,8 @@ export const listWorkflows: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflows",
   pagination: {
     inputToken: "nextToken",
@@ -8117,6 +8243,8 @@ export const listWorkflowStepExecutions: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowStepExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -8158,6 +8286,8 @@ export const putComponentPolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutComponentPolicy",
 }));
 export type PutContainerRecipePolicyError =
@@ -8198,6 +8328,8 @@ export const putContainerRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutContainerRecipePolicy",
 }));
 export type PutImagePolicyError =
@@ -8233,6 +8365,8 @@ export const putImagePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutImagePolicy",
 }));
 export type PutImageRecipePolicyError =
@@ -8268,6 +8402,8 @@ export const putImageRecipePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutImageRecipePolicy",
 }));
 export type RetryImageError =
@@ -8301,6 +8437,8 @@ export const retryImage: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetryImage",
 }));
 export type SendWorkflowStepActionError =
@@ -8339,6 +8477,8 @@ export const sendWorkflowStepAction: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendWorkflowStepAction",
 }));
 export type StartImagePipelineExecutionError =
@@ -8374,6 +8514,8 @@ export const startImagePipelineExecution: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImagePipelineExecution",
 }));
 export type StartResourceStateUpdateError =
@@ -8410,6 +8552,8 @@ export const startResourceStateUpdate: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartResourceStateUpdate",
 }));
 export type TagResourceError =
@@ -8433,6 +8577,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -8456,6 +8602,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDistributionConfigurationError =
@@ -8492,6 +8640,8 @@ export const updateDistributionConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDistributionConfiguration",
 }));
 export type UpdateImagePipelineError =
@@ -8531,6 +8681,8 @@ export const updateImagePipeline: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateImagePipeline",
 }));
 export type UpdateInfrastructureConfigurationError =
@@ -8565,6 +8717,8 @@ export const updateInfrastructureConfiguration: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInfrastructureConfiguration",
 }));
 export type UpdateLifecyclePolicyError =
@@ -8600,5 +8754,7 @@ export const updateLifecyclePolicy: API.OperationMethod<
     ServiceException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLifecyclePolicy",
 }));

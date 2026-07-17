@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -15256,6 +15258,8 @@ export const acceptCertificateTransfer: API.OperationMethod<
     TransferAlreadyCompletedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptCertificateTransfer",
 }));
 export type AddThingToBillingGroupError =
@@ -15283,6 +15287,8 @@ export const addThingToBillingGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddThingToBillingGroup",
 }));
 export type AddThingToThingGroupError =
@@ -15310,6 +15316,8 @@ export const addThingToThingGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddThingToThingGroup",
 }));
 export type AssociateSbomWithPackageVersionError =
@@ -15341,6 +15349,8 @@ export const associateSbomWithPackageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSbomWithPackageVersion",
 }));
 export type AssociateTargetsWithJobError =
@@ -15378,6 +15388,8 @@ export const associateTargetsWithJob: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTargetsWithJob",
 }));
 export type AttachPolicyError =
@@ -15412,6 +15424,8 @@ export const attachPolicy: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachPolicy",
 }));
 export type AttachPrincipalPolicyError =
@@ -15449,6 +15463,8 @@ export const attachPrincipalPolicy: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachPrincipalPolicy",
 }));
 export type AttachSecurityProfileError =
@@ -15481,6 +15497,8 @@ export const attachSecurityProfile: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachSecurityProfile",
 }));
 export type AttachThingPrincipalError =
@@ -15513,6 +15531,8 @@ export const attachThingPrincipal: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachThingPrincipal",
 }));
 export type CancelAuditMitigationActionsTaskError =
@@ -15542,6 +15562,8 @@ export const cancelAuditMitigationActionsTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelAuditMitigationActionsTask",
 }));
 export type CancelAuditTaskError =
@@ -15569,6 +15591,8 @@ export const cancelAuditTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelAuditTask",
 }));
 export type CancelCertificateTransferError =
@@ -15610,6 +15634,8 @@ export const cancelCertificateTransfer: API.OperationMethod<
     TransferAlreadyCompletedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelCertificateTransfer",
 }));
 export type CancelDetectMitigationActionsTaskError =
@@ -15637,6 +15663,8 @@ export const cancelDetectMitigationActionsTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDetectMitigationActionsTask",
 }));
 export type CancelJobError =
@@ -15666,6 +15694,8 @@ export const cancelJob: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelJob",
 }));
 export type CancelJobExecutionError =
@@ -15697,6 +15727,8 @@ export const cancelJobExecution: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelJobExecution",
 }));
 export type ClearDefaultAuthorizerError =
@@ -15728,6 +15760,8 @@ export const clearDefaultAuthorizer: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ClearDefaultAuthorizer",
 }));
 export type ConfirmTopicRuleDestinationError =
@@ -15760,6 +15794,8 @@ export const confirmTopicRuleDestination: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmTopicRuleDestination",
 }));
 export type CreateAuditSuppressionError =
@@ -15789,6 +15825,8 @@ export const createAuditSuppression: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAuditSuppression",
 }));
 export type CreateAuthorizerError =
@@ -15822,6 +15860,8 @@ export const createAuthorizer: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAuthorizer",
 }));
 export type CreateBillingGroupError =
@@ -15851,6 +15891,8 @@ export const createBillingGroup: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBillingGroup",
 }));
 export type CreateCertificateFromCsrError =
@@ -15921,6 +15963,8 @@ export const createCertificateFromCsr: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCertificateFromCsr",
 }));
 export type CreateCertificateProviderError =
@@ -15964,6 +16008,8 @@ export const createCertificateProvider: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCertificateProvider",
 }));
 export type CreateCommandError =
@@ -15992,6 +16038,8 @@ export const createCommand: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCommand",
 }));
 export type CreateCustomMetricError =
@@ -16024,6 +16072,8 @@ export const createCustomMetric: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomMetric",
 }));
 export type CreateDimensionError =
@@ -16054,6 +16104,8 @@ export const createDimension: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDimension",
 }));
 export type CreateDomainConfigurationError =
@@ -16089,6 +16141,8 @@ export const createDomainConfiguration: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainConfiguration",
 }));
 export type CreateDynamicThingGroupError =
@@ -16122,6 +16176,8 @@ export const createDynamicThingGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDynamicThingGroup",
 }));
 export type CreateFleetMetricError =
@@ -16163,6 +16219,8 @@ export const createFleetMetric: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFleetMetric",
 }));
 export type CreateJobError =
@@ -16194,6 +16252,8 @@ export const createJob: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJob",
 }));
 export type CreateJobTemplateError =
@@ -16225,6 +16285,8 @@ export const createJobTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJobTemplate",
 }));
 export type CreateKeysAndCertificateError =
@@ -16259,6 +16321,8 @@ export const createKeysAndCertificate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKeysAndCertificate",
 }));
 export type CreateMitigationActionError =
@@ -16289,6 +16353,8 @@ export const createMitigationAction: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMitigationAction",
 }));
 export type CreateOTAUpdateError =
@@ -16324,6 +16390,8 @@ export const createOTAUpdate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOTAUpdate",
 }));
 export type CreatePackageError =
@@ -16353,6 +16421,8 @@ export const createPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePackage",
 }));
 export type CreatePackageVersionError =
@@ -16382,6 +16452,8 @@ export const createPackageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePackageVersion",
 }));
 export type CreatePolicyError =
@@ -16419,6 +16491,8 @@ export const createPolicy: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicy",
 }));
 export type CreatePolicyVersionError =
@@ -16461,6 +16535,8 @@ export const createPolicyVersion: API.OperationMethod<
     UnauthorizedException,
     VersionsLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicyVersion",
 }));
 export type CreateProvisioningClaimError =
@@ -16492,6 +16568,8 @@ export const createProvisioningClaim: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProvisioningClaim",
 }));
 export type CreateProvisioningTemplateError =
@@ -16523,6 +16601,8 @@ export const createProvisioningTemplate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProvisioningTemplate",
 }));
 export type CreateProvisioningTemplateVersionError =
@@ -16556,6 +16636,8 @@ export const createProvisioningTemplateVersion: API.OperationMethod<
     UnauthorizedException,
     VersionsLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProvisioningTemplateVersion",
 }));
 export type CreateRoleAliasError =
@@ -16596,6 +16678,8 @@ export const createRoleAlias: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoleAlias",
 }));
 export type CreateScheduledAuditError =
@@ -16626,6 +16710,8 @@ export const createScheduledAudit: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScheduledAudit",
 }));
 export type CreateSecurityProfileError =
@@ -16653,6 +16739,8 @@ export const createSecurityProfile: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityProfile",
 }));
 export type CreateStreamError =
@@ -16690,6 +16778,8 @@ export const createStream: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStream",
 }));
 export type CreateThingError =
@@ -16729,6 +16819,8 @@ export const createThing: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateThing",
 }));
 export type CreateThingGroupError =
@@ -16762,6 +16854,8 @@ export const createThingGroup: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateThingGroup",
 }));
 export type CreateThingTypeError =
@@ -16795,6 +16889,8 @@ export const createThingType: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateThingType",
 }));
 export type CreateTopicRuleError =
@@ -16829,6 +16925,8 @@ export const createTopicRule: API.OperationMethod<
     SqlParseException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTopicRule",
 }));
 export type CreateTopicRuleDestinationError =
@@ -16860,6 +16958,8 @@ export const createTopicRuleDestination: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTopicRuleDestination",
 }));
 export type DeleteAccountAuditConfigurationError =
@@ -16889,6 +16989,8 @@ export const deleteAccountAuditConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountAuditConfiguration",
 }));
 export type DeleteAuditSuppressionError =
@@ -16914,6 +17016,8 @@ export const deleteAuditSuppression: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAuditSuppression",
 }));
 export type DeleteAuthorizerError =
@@ -16947,6 +17051,8 @@ export const deleteAuthorizer: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAuthorizer",
 }));
 export type DeleteBillingGroupError =
@@ -16974,6 +17080,8 @@ export const deleteBillingGroup: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBillingGroup",
 }));
 export type DeleteCACertificateError =
@@ -17007,6 +17115,8 @@ export const deleteCACertificate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCACertificate",
 }));
 export type DeleteCertificateError =
@@ -17046,6 +17156,8 @@ export const deleteCertificate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificate",
 }));
 export type DeleteCertificateProviderError =
@@ -17083,6 +17195,8 @@ export const deleteCertificateProvider: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificateProvider",
 }));
 export type DeleteCommandError =
@@ -17108,6 +17222,8 @@ export const deleteCommand: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCommand",
 }));
 export type DeleteCommandExecutionError =
@@ -17136,6 +17252,8 @@ export const deleteCommandExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCommandExecution",
 }));
 export type DeleteCustomMetricError =
@@ -17168,6 +17286,8 @@ export const deleteCustomMetric: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomMetric",
 }));
 export type DeleteDimensionError =
@@ -17193,6 +17313,8 @@ export const deleteDimension: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDimension",
 }));
 export type DeleteDomainConfigurationError =
@@ -17224,6 +17346,8 @@ export const deleteDomainConfiguration: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainConfiguration",
 }));
 export type DeleteDynamicThingGroupError =
@@ -17251,6 +17375,8 @@ export const deleteDynamicThingGroup: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDynamicThingGroup",
 }));
 export type DeleteFleetMetricError =
@@ -17283,6 +17409,8 @@ export const deleteFleetMetric: API.OperationMethod<
     UnauthorizedException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFleetMetric",
 }));
 export type DeleteJobError =
@@ -17322,6 +17450,8 @@ export const deleteJob: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJob",
 }));
 export type DeleteJobExecutionError =
@@ -17351,6 +17481,8 @@ export const deleteJobExecution: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJobExecution",
 }));
 export type DeleteJobTemplateError =
@@ -17376,6 +17508,8 @@ export const deleteJobTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJobTemplate",
 }));
 export type DeleteMitigationActionError =
@@ -17401,6 +17535,8 @@ export const deleteMitigationAction: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMitigationAction",
 }));
 export type DeleteOTAUpdateError =
@@ -17434,6 +17570,8 @@ export const deleteOTAUpdate: API.OperationMethod<
     UnauthorizedException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOTAUpdate",
 }));
 export type DeletePackageError =
@@ -17457,6 +17595,8 @@ export const deletePackage: API.OperationMethod<
   input: DeletePackageRequest,
   output: DeletePackageResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePackage",
 }));
 export type DeletePackageVersionError =
@@ -17478,6 +17618,8 @@ export const deletePackageVersion: API.OperationMethod<
   input: DeletePackageVersionRequest,
   output: DeletePackageVersionResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePackageVersion",
 }));
 export type DeletePolicyError =
@@ -17524,6 +17666,8 @@ export const deletePolicy: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicy",
 }));
 export type DeletePolicyVersionError =
@@ -17559,6 +17703,8 @@ export const deletePolicyVersion: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicyVersion",
 }));
 export type DeleteProvisioningTemplateError =
@@ -17592,6 +17738,8 @@ export const deleteProvisioningTemplate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProvisioningTemplate",
 }));
 export type DeleteProvisioningTemplateVersionError =
@@ -17625,6 +17773,8 @@ export const deleteProvisioningTemplateVersion: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProvisioningTemplateVersion",
 }));
 export type DeleteRegistrationCodeError =
@@ -17654,6 +17804,8 @@ export const deleteRegistrationCode: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegistrationCode",
 }));
 export type DeleteRoleAliasError =
@@ -17687,6 +17839,8 @@ export const deleteRoleAlias: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoleAlias",
 }));
 export type DeleteScheduledAuditError =
@@ -17714,6 +17868,8 @@ export const deleteScheduledAudit: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScheduledAudit",
 }));
 export type DeleteSecurityProfileError =
@@ -17741,6 +17897,8 @@ export const deleteSecurityProfile: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityProfile",
 }));
 export type DeleteStreamError =
@@ -17774,6 +17932,8 @@ export const deleteStream: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStream",
 }));
 export type DeleteThingError =
@@ -17808,6 +17968,8 @@ export const deleteThing: API.OperationMethod<
     UnauthorizedException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThing",
 }));
 export type DeleteThingGroupError =
@@ -17835,6 +17997,8 @@ export const deleteThingGroup: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThingGroup",
 }));
 export type DeleteThingTypeError =
@@ -17868,6 +18032,8 @@ export const deleteThingType: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThingType",
 }));
 export type DeleteTopicRuleError =
@@ -17897,6 +18063,8 @@ export const deleteTopicRule: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTopicRule",
 }));
 export type DeleteTopicRuleDestinationError =
@@ -17926,6 +18094,8 @@ export const deleteTopicRuleDestination: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTopicRuleDestination",
 }));
 export type DeleteV2LoggingLevelError =
@@ -17951,6 +18121,8 @@ export const deleteV2LoggingLevel: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteV2LoggingLevel",
 }));
 export type DeprecateThingTypeError =
@@ -17983,6 +18155,8 @@ export const deprecateThingType: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprecateThingType",
 }));
 export type DescribeAccountAuditConfigurationError =
@@ -18005,6 +18179,8 @@ export const describeAccountAuditConfiguration: API.OperationMethod<
   input: DescribeAccountAuditConfigurationRequest,
   output: DescribeAccountAuditConfigurationResponse,
   errors: [InternalFailureException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAuditConfiguration",
 }));
 export type DescribeAuditFindingError =
@@ -18036,6 +18212,8 @@ export const describeAuditFinding: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAuditFinding",
 }));
 export type DescribeAuditMitigationActionsTaskError =
@@ -18061,6 +18239,8 @@ export const describeAuditMitigationActionsTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAuditMitigationActionsTask",
 }));
 export type DescribeAuditSuppressionError =
@@ -18086,6 +18266,8 @@ export const describeAuditSuppression: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAuditSuppression",
 }));
 export type DescribeAuditTaskError =
@@ -18113,6 +18295,8 @@ export const describeAuditTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAuditTask",
 }));
 export type DescribeAuthorizerError =
@@ -18144,6 +18328,8 @@ export const describeAuthorizer: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAuthorizer",
 }));
 export type DescribeBillingGroupError =
@@ -18171,6 +18357,8 @@ export const describeBillingGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBillingGroup",
 }));
 export type DescribeCACertificateError =
@@ -18202,6 +18390,8 @@ export const describeCACertificate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCACertificate",
 }));
 export type DescribeCertificateError =
@@ -18233,6 +18423,8 @@ export const describeCertificate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificate",
 }));
 export type DescribeCertificateProviderError =
@@ -18264,6 +18456,8 @@ export const describeCertificateProvider: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificateProvider",
 }));
 export type DescribeCustomMetricError =
@@ -18291,6 +18485,8 @@ export const describeCustomMetric: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomMetric",
 }));
 export type DescribeDefaultAuthorizerError =
@@ -18322,6 +18518,8 @@ export const describeDefaultAuthorizer: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDefaultAuthorizer",
 }));
 export type DescribeDetectMitigationActionsTaskError =
@@ -18349,6 +18547,8 @@ export const describeDetectMitigationActionsTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDetectMitigationActionsTask",
 }));
 export type DescribeDimensionError =
@@ -18376,6 +18576,8 @@ export const describeDimension: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDimension",
 }));
 export type DescribeDomainConfigurationError =
@@ -18407,6 +18609,8 @@ export const describeDomainConfiguration: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainConfiguration",
 }));
 export type DescribeEncryptionConfigurationError =
@@ -18436,6 +18640,8 @@ export const describeEncryptionConfiguration: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEncryptionConfiguration",
 }));
 export type DescribeEndpointError =
@@ -18466,6 +18672,8 @@ export const describeEndpoint: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoint",
 }));
 export type DescribeEventConfigurationsError =
@@ -18486,6 +18694,8 @@ export const describeEventConfigurations: API.OperationMethod<
   input: DescribeEventConfigurationsRequest,
   output: DescribeEventConfigurationsResponse,
   errors: [InternalFailureException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventConfigurations",
 }));
 export type DescribeFleetMetricError =
@@ -18517,6 +18727,8 @@ export const describeFleetMetric: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetMetric",
 }));
 export type DescribeIndexError =
@@ -18548,6 +18760,8 @@ export const describeIndex: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIndex",
 }));
 export type DescribeJobError =
@@ -18575,6 +18789,8 @@ export const describeJob: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJob",
 }));
 export type DescribeJobExecutionError =
@@ -18602,6 +18818,8 @@ export const describeJobExecution: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobExecution",
 }));
 export type DescribeJobTemplateError =
@@ -18627,6 +18845,8 @@ export const describeJobTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobTemplate",
 }));
 export type DescribeManagedJobTemplateError =
@@ -18652,6 +18872,8 @@ export const describeManagedJobTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeManagedJobTemplate",
 }));
 export type DescribeMitigationActionError =
@@ -18679,6 +18901,8 @@ export const describeMitigationAction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMitigationAction",
 }));
 export type DescribeProvisioningTemplateError =
@@ -18708,6 +18932,8 @@ export const describeProvisioningTemplate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisioningTemplate",
 }));
 export type DescribeProvisioningTemplateVersionError =
@@ -18737,6 +18963,8 @@ export const describeProvisioningTemplateVersion: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisioningTemplateVersion",
 }));
 export type DescribeRoleAliasError =
@@ -18768,6 +18996,8 @@ export const describeRoleAlias: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRoleAlias",
 }));
 export type DescribeScheduledAuditError =
@@ -18795,6 +19025,8 @@ export const describeScheduledAudit: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScheduledAudit",
 }));
 export type DescribeSecurityProfileError =
@@ -18822,6 +19054,8 @@ export const describeSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityProfile",
 }));
 export type DescribeStreamError =
@@ -18853,6 +19087,8 @@ export const describeStream: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStream",
 }));
 export type DescribeThingError =
@@ -18884,6 +19120,8 @@ export const describeThing: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeThing",
 }));
 export type DescribeThingGroupError =
@@ -18911,6 +19149,8 @@ export const describeThingGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeThingGroup",
 }));
 export type DescribeThingRegistrationTaskError =
@@ -18940,6 +19180,8 @@ export const describeThingRegistrationTask: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeThingRegistrationTask",
 }));
 export type DescribeThingTypeError =
@@ -18971,6 +19213,8 @@ export const describeThingType: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeThingType",
 }));
 export type DetachPolicyError =
@@ -19005,6 +19249,8 @@ export const detachPolicy: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachPolicy",
 }));
 export type DetachPrincipalPolicyError =
@@ -19039,6 +19285,8 @@ export const detachPrincipalPolicy: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachPrincipalPolicy",
 }));
 export type DetachSecurityProfileError =
@@ -19066,6 +19314,8 @@ export const detachSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachSecurityProfile",
 }));
 export type DetachThingPrincipalError =
@@ -19102,6 +19352,8 @@ export const detachThingPrincipal: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachThingPrincipal",
 }));
 export type DisableTopicRuleError =
@@ -19131,6 +19383,8 @@ export const disableTopicRule: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableTopicRule",
 }));
 export type DisassociateSbomFromPackageVersionError =
@@ -19160,6 +19414,8 @@ export const disassociateSbomFromPackageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSbomFromPackageVersion",
 }));
 export type EnableTopicRuleError =
@@ -19189,6 +19445,8 @@ export const enableTopicRule: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableTopicRule",
 }));
 export type GetBehaviorModelTrainingSummariesError =
@@ -19231,6 +19489,8 @@ export const getBehaviorModelTrainingSummaries: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBehaviorModelTrainingSummaries",
   pagination: {
     inputToken: "nextToken",
@@ -19274,6 +19534,8 @@ export const getBucketsAggregation: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketsAggregation",
 }));
 export type GetCardinalityError =
@@ -19311,6 +19573,8 @@ export const getCardinality: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCardinality",
 }));
 export type GetCommandError =
@@ -19336,6 +19600,8 @@ export const getCommand: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCommand",
 }));
 export type GetCommandExecutionError =
@@ -19361,6 +19627,8 @@ export const getCommandExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCommandExecution",
 }));
 export type GetEffectivePoliciesError =
@@ -19395,6 +19663,8 @@ export const getEffectivePolicies: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEffectivePolicies",
 }));
 export type GetIndexingConfigurationError =
@@ -19424,6 +19694,8 @@ export const getIndexingConfiguration: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIndexingConfiguration",
 }));
 export type GetJobDocumentError =
@@ -19451,6 +19723,8 @@ export const getJobDocument: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobDocument",
 }));
 export type GetLoggingOptionsError =
@@ -19479,6 +19753,8 @@ export const getLoggingOptions: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoggingOptions",
 }));
 export type GetOTAUpdateError =
@@ -19510,6 +19786,8 @@ export const getOTAUpdate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOTAUpdate",
 }));
 export type GetPackageError =
@@ -19537,6 +19815,8 @@ export const getPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPackage",
 }));
 export type GetPackageConfigurationError =
@@ -19557,6 +19837,8 @@ export const getPackageConfiguration: API.OperationMethod<
   input: GetPackageConfigurationRequest,
   output: GetPackageConfigurationResponse,
   errors: [InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPackageConfiguration",
 }));
 export type GetPackageVersionError =
@@ -19584,6 +19866,8 @@ export const getPackageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPackageVersion",
 }));
 export type GetPercentilesError =
@@ -19629,6 +19913,8 @@ export const getPercentiles: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPercentiles",
 }));
 export type GetPolicyError =
@@ -19661,6 +19947,8 @@ export const getPolicy: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
 export type GetPolicyVersionError =
@@ -19692,6 +19980,8 @@ export const getPolicyVersion: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicyVersion",
 }));
 export type GetRegistrationCodeError =
@@ -19725,6 +20015,8 @@ export const getRegistrationCode: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegistrationCode",
 }));
 export type GetStatisticsError =
@@ -19764,6 +20056,8 @@ export const getStatistics: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStatistics",
 }));
 export type GetThingConnectivityDataError =
@@ -19795,6 +20089,8 @@ export const getThingConnectivityData: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetThingConnectivityData",
 }));
 export type GetTopicRuleError =
@@ -19822,6 +20118,8 @@ export const getTopicRule: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTopicRule",
 }));
 export type GetTopicRuleDestinationError =
@@ -19849,6 +20147,8 @@ export const getTopicRuleDestination: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTopicRuleDestination",
 }));
 export type GetV2LoggingOptionsError =
@@ -19874,6 +20174,8 @@ export const getV2LoggingOptions: API.OperationMethod<
     NotConfiguredException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetV2LoggingOptions",
 }));
 export type ListActiveViolationsError =
@@ -19916,6 +20218,8 @@ export const listActiveViolations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActiveViolations",
   pagination: {
     inputToken: "nextToken",
@@ -19970,6 +20274,8 @@ export const listAttachedPolicies: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttachedPolicies",
   pagination: {
     inputToken: "marker",
@@ -20017,6 +20323,8 @@ export const listAuditFindings: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAuditFindings",
   pagination: {
     inputToken: "nextToken",
@@ -20064,6 +20372,8 @@ export const listAuditMitigationActionsExecutions: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAuditMitigationActionsExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -20110,6 +20420,8 @@ export const listAuditMitigationActionsTasks: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAuditMitigationActionsTasks",
   pagination: {
     inputToken: "nextToken",
@@ -20156,6 +20468,8 @@ export const listAuditSuppressions: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAuditSuppressions",
   pagination: {
     inputToken: "nextToken",
@@ -20203,6 +20517,8 @@ export const listAuditTasks: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAuditTasks",
   pagination: {
     inputToken: "nextToken",
@@ -20253,6 +20569,8 @@ export const listAuthorizers: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAuthorizers",
   pagination: {
     inputToken: "marker",
@@ -20301,6 +20619,8 @@ export const listBillingGroups: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillingGroups",
   pagination: {
     inputToken: "nextToken",
@@ -20354,6 +20674,8 @@ export const listCACertificates: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCACertificates",
   pagination: {
     inputToken: "marker",
@@ -20389,6 +20711,8 @@ export const listCertificateProviders: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCertificateProviders",
 }));
 export type ListCertificatesError =
@@ -20436,6 +20760,8 @@ export const listCertificates: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCertificates",
   pagination: {
     inputToken: "marker",
@@ -20486,6 +20812,8 @@ export const listCertificatesByCA: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCertificatesByCA",
   pagination: {
     inputToken: "marker",
@@ -20547,6 +20875,8 @@ export const listCommandExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCommandExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -20587,6 +20917,8 @@ export const listCommands: API.OperationMethod<
   input: ListCommandsRequest,
   output: ListCommandsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCommands",
   pagination: {
     inputToken: "nextToken",
@@ -20633,6 +20965,8 @@ export const listCustomMetrics: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomMetrics",
   pagination: {
     inputToken: "nextToken",
@@ -20679,6 +21013,8 @@ export const listDetectMitigationActionsExecutions: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDetectMitigationActionsExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -20725,6 +21061,8 @@ export const listDetectMitigationActionsTasks: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDetectMitigationActionsTasks",
   pagination: {
     inputToken: "nextToken",
@@ -20771,6 +21109,8 @@ export const listDimensions: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDimensions",
   pagination: {
     inputToken: "nextToken",
@@ -20822,6 +21162,8 @@ export const listDomainConfigurations: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainConfigurations",
   pagination: {
     inputToken: "marker",
@@ -20872,6 +21214,8 @@ export const listFleetMetrics: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFleetMetrics",
   pagination: {
     inputToken: "nextToken",
@@ -20922,6 +21266,8 @@ export const listIndices: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndices",
   pagination: {
     inputToken: "nextToken",
@@ -20970,6 +21316,8 @@ export const listJobExecutionsForJob: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobExecutionsForJob",
   pagination: {
     inputToken: "nextToken",
@@ -21018,6 +21366,8 @@ export const listJobExecutionsForThing: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobExecutionsForThing",
   pagination: {
     inputToken: "nextToken",
@@ -21066,6 +21416,8 @@ export const listJobs: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "nextToken",
@@ -21112,6 +21464,8 @@ export const listJobTemplates: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -21158,6 +21512,8 @@ export const listManagedJobTemplates: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedJobTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -21205,6 +21561,8 @@ export const listMetricValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMetricValues",
   pagination: {
     inputToken: "nextToken",
@@ -21251,6 +21609,8 @@ export const listMitigationActions: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMitigationActions",
   pagination: {
     inputToken: "nextToken",
@@ -21301,6 +21661,8 @@ export const listOTAUpdates: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOTAUpdates",
   pagination: {
     inputToken: "nextToken",
@@ -21351,6 +21713,8 @@ export const listOutgoingCertificates: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOutgoingCertificates",
   pagination: {
     inputToken: "marker",
@@ -21393,6 +21757,8 @@ export const listPackages: API.OperationMethod<
   input: ListPackagesRequest,
   output: ListPackagesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPackages",
   pagination: {
     inputToken: "nextToken",
@@ -21435,6 +21801,8 @@ export const listPackageVersions: API.OperationMethod<
   input: ListPackageVersionsRequest,
   output: ListPackageVersionsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPackageVersions",
   pagination: {
     inputToken: "nextToken",
@@ -21485,6 +21853,8 @@ export const listPolicies: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicies",
   pagination: {
     inputToken: "marker",
@@ -21540,6 +21910,8 @@ export const listPolicyPrincipals: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyPrincipals",
   pagination: {
     inputToken: "marker",
@@ -21578,6 +21950,8 @@ export const listPolicyVersions: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyVersions",
 }));
 export type ListPrincipalPoliciesError =
@@ -21628,6 +22002,8 @@ export const listPrincipalPolicies: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrincipalPolicies",
   pagination: {
     inputToken: "marker",
@@ -21682,6 +22058,8 @@ export const listPrincipalThings: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrincipalThings",
   pagination: {
     inputToken: "nextToken",
@@ -21735,6 +22113,8 @@ export const listPrincipalThingsV2: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrincipalThingsV2",
   pagination: {
     inputToken: "nextToken",
@@ -21783,6 +22163,8 @@ export const listProvisioningTemplates: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisioningTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -21833,6 +22215,8 @@ export const listProvisioningTemplateVersions: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisioningTemplateVersions",
   pagination: {
     inputToken: "nextToken",
@@ -21903,6 +22287,8 @@ export const listRelatedResourcesForAuditFinding: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRelatedResourcesForAuditFinding",
   pagination: {
     inputToken: "nextToken",
@@ -21953,6 +22339,8 @@ export const listRoleAliases: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoleAliases",
   pagination: {
     inputToken: "marker",
@@ -22001,6 +22389,8 @@ export const listSbomValidationResults: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSbomValidationResults",
   pagination: {
     inputToken: "nextToken",
@@ -22047,6 +22437,8 @@ export const listScheduledAudits: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScheduledAudits",
   pagination: {
     inputToken: "nextToken",
@@ -22099,6 +22491,8 @@ export const listSecurityProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -22147,6 +22541,8 @@ export const listSecurityProfilesForTarget: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityProfilesForTarget",
   pagination: {
     inputToken: "nextToken",
@@ -22197,6 +22593,8 @@ export const listStreams: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreams",
   pagination: {
     inputToken: "nextToken",
@@ -22245,6 +22643,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
@@ -22298,6 +22698,8 @@ export const listTargetsForPolicy: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargetsForPolicy",
   pagination: {
     inputToken: "marker",
@@ -22346,6 +22748,8 @@ export const listTargetsForSecurityProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargetsForSecurityProfile",
   pagination: {
     inputToken: "nextToken",
@@ -22394,6 +22798,8 @@ export const listThingGroups: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThingGroups",
   pagination: {
     inputToken: "nextToken",
@@ -22442,6 +22848,8 @@ export const listThingGroupsForThing: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThingGroupsForThing",
   pagination: {
     inputToken: "nextToken",
@@ -22496,6 +22904,8 @@ export const listThingPrincipals: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThingPrincipals",
   pagination: {
     inputToken: "nextToken",
@@ -22549,6 +22959,8 @@ export const listThingPrincipalsV2: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThingPrincipalsV2",
   pagination: {
     inputToken: "nextToken",
@@ -22595,6 +23007,8 @@ export const listThingRegistrationTaskReports: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThingRegistrationTaskReports",
   pagination: {
     inputToken: "nextToken",
@@ -22643,6 +23057,8 @@ export const listThingRegistrationTasks: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThingRegistrationTasks",
   pagination: {
     inputToken: "nextToken",
@@ -22699,6 +23115,8 @@ export const listThings: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThings",
   pagination: {
     inputToken: "nextToken",
@@ -22747,6 +23165,8 @@ export const listThingsInBillingGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThingsInBillingGroup",
   pagination: {
     inputToken: "nextToken",
@@ -22795,6 +23215,8 @@ export const listThingsInThingGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThingsInThingGroup",
   pagination: {
     inputToken: "nextToken",
@@ -22845,6 +23267,8 @@ export const listThingTypes: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThingTypes",
   pagination: {
     inputToken: "nextToken",
@@ -22893,6 +23317,8 @@ export const listTopicRuleDestinations: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTopicRuleDestinations",
   pagination: {
     inputToken: "nextToken",
@@ -22941,6 +23367,8 @@ export const listTopicRules: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTopicRules",
   pagination: {
     inputToken: "nextToken",
@@ -22989,6 +23417,8 @@ export const listV2LoggingLevels: API.OperationMethod<
     NotConfiguredException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListV2LoggingLevels",
   pagination: {
     inputToken: "nextToken",
@@ -23037,6 +23467,8 @@ export const listViolationEvents: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListViolationEvents",
   pagination: {
     inputToken: "nextToken",
@@ -23066,6 +23498,8 @@ export const putVerificationStateOnViolation: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutVerificationStateOnViolation",
 }));
 export type RegisterCACertificateError =
@@ -23107,6 +23541,8 @@ export const registerCACertificate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCACertificate",
 }));
 export type RegisterCertificateError =
@@ -23146,6 +23582,8 @@ export const registerCertificate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCertificate",
 }));
 export type RegisterCertificateWithoutCAError =
@@ -23181,6 +23619,8 @@ export const registerCertificateWithoutCA: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCertificateWithoutCA",
 }));
 export type RegisterThingError =
@@ -23217,6 +23657,8 @@ export const registerThing: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterThing",
 }));
 export type RejectCertificateTransferError =
@@ -23258,6 +23700,8 @@ export const rejectCertificateTransfer: API.OperationMethod<
     TransferAlreadyCompletedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectCertificateTransfer",
 }));
 export type RemoveThingFromBillingGroupError =
@@ -23287,6 +23731,8 @@ export const removeThingFromBillingGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveThingFromBillingGroup",
 }));
 export type RemoveThingFromThingGroupError =
@@ -23319,6 +23765,8 @@ export const removeThingFromThingGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveThingFromThingGroup",
 }));
 export type ReplaceTopicRuleError =
@@ -23352,6 +23800,8 @@ export const replaceTopicRule: API.OperationMethod<
     SqlParseException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplaceTopicRule",
 }));
 export type SearchIndexError =
@@ -23387,6 +23837,8 @@ export const searchIndex: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchIndex",
 }));
 export type SetDefaultAuthorizerError =
@@ -23421,6 +23873,8 @@ export const setDefaultAuthorizer: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDefaultAuthorizer",
 }));
 export type SetDefaultPolicyVersionError =
@@ -23455,6 +23909,8 @@ export const setDefaultPolicyVersion: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDefaultPolicyVersion",
 }));
 export type SetLoggingOptionsError =
@@ -23483,6 +23939,8 @@ export const setLoggingOptions: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetLoggingOptions",
 }));
 export type SetV2LoggingLevelError =
@@ -23512,6 +23970,8 @@ export const setV2LoggingLevel: API.OperationMethod<
     NotConfiguredException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetV2LoggingLevel",
 }));
 export type SetV2LoggingOptionsError =
@@ -23537,6 +23997,8 @@ export const setV2LoggingOptions: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetV2LoggingOptions",
 }));
 export type StartAuditMitigationActionsTaskError =
@@ -23566,6 +24028,8 @@ export const startAuditMitigationActionsTask: API.OperationMethod<
     TaskAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAuditMitigationActionsTask",
 }));
 export type StartDetectMitigationActionsTaskError =
@@ -23595,6 +24059,8 @@ export const startDetectMitigationActionsTask: API.OperationMethod<
     TaskAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDetectMitigationActionsTask",
 }));
 export type StartOnDemandAuditTaskError =
@@ -23622,6 +24088,8 @@ export const startOnDemandAuditTask: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartOnDemandAuditTask",
 }));
 export type StartThingRegistrationTaskError =
@@ -23649,6 +24117,8 @@ export const startThingRegistrationTask: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartThingRegistrationTask",
 }));
 export type StopThingRegistrationTaskError =
@@ -23678,6 +24148,8 @@ export const stopThingRegistrationTask: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopThingRegistrationTask",
 }));
 export type TagResourceError =
@@ -23708,6 +24180,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestAuthorizationError =
@@ -23743,6 +24217,8 @@ export const testAuthorization: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestAuthorization",
 }));
 export type TestInvokeAuthorizerError =
@@ -23778,6 +24254,8 @@ export const testInvokeAuthorizer: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestInvokeAuthorizer",
 }));
 export type TransferCertificateError =
@@ -23837,6 +24315,8 @@ export const transferCertificate: API.OperationMethod<
     TransferConflictException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TransferCertificate",
 }));
 export type UntagResourceError =
@@ -23864,6 +24344,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccountAuditConfigurationError =
@@ -23891,6 +24373,8 @@ export const updateAccountAuditConfiguration: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountAuditConfiguration",
 }));
 export type UpdateAuditSuppressionError =
@@ -23916,6 +24400,8 @@ export const updateAuditSuppression: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAuditSuppression",
 }));
 export type UpdateAuthorizerError =
@@ -23949,6 +24435,8 @@ export const updateAuthorizer: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAuthorizer",
 }));
 export type UpdateBillingGroupError =
@@ -23978,6 +24466,8 @@ export const updateBillingGroup: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBillingGroup",
 }));
 export type UpdateCACertificateError =
@@ -24009,6 +24499,8 @@ export const updateCACertificate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCACertificate",
 }));
 export type UpdateCertificateError =
@@ -24050,6 +24542,8 @@ export const updateCertificate: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCertificate",
 }));
 export type UpdateCertificateProviderError =
@@ -24081,6 +24575,8 @@ export const updateCertificateProvider: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCertificateProvider",
 }));
 export type UpdateCommandError =
@@ -24108,6 +24604,8 @@ export const updateCommand: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCommand",
 }));
 export type UpdateCustomMetricError =
@@ -24136,6 +24634,8 @@ export const updateCustomMetric: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomMetric",
 }));
 export type UpdateDimensionError =
@@ -24168,6 +24668,8 @@ export const updateDimension: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDimension",
 }));
 export type UpdateDomainConfigurationError =
@@ -24202,6 +24704,8 @@ export const updateDomainConfiguration: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainConfiguration",
 }));
 export type UpdateDynamicThingGroupError =
@@ -24233,6 +24737,8 @@ export const updateDynamicThingGroup: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDynamicThingGroup",
 }));
 export type UpdateEncryptionConfigurationError =
@@ -24264,6 +24770,8 @@ export const updateEncryptionConfiguration: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEncryptionConfiguration",
 }));
 export type UpdateEventConfigurationsError =
@@ -24289,6 +24797,8 @@ export const updateEventConfigurations: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventConfigurations",
 }));
 export type UpdateFleetMetricError =
@@ -24328,6 +24838,8 @@ export const updateFleetMetric: API.OperationMethod<
     UnauthorizedException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFleetMetric",
 }));
 export type UpdateIndexingConfigurationError =
@@ -24357,6 +24869,8 @@ export const updateIndexingConfiguration: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIndexingConfiguration",
 }));
 export type UpdateJobError =
@@ -24384,6 +24898,8 @@ export const updateJob: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJob",
 }));
 export type UpdateMitigationActionError =
@@ -24411,6 +24927,8 @@ export const updateMitigationAction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMitigationAction",
 }));
 export type UpdatePackageError =
@@ -24440,6 +24958,8 @@ export const updatePackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePackage",
 }));
 export type UpdatePackageConfigurationError =
@@ -24467,6 +24987,8 @@ export const updatePackageConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePackageConfiguration",
 }));
 export type UpdatePackageVersionError =
@@ -24496,6 +25018,8 @@ export const updatePackageVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePackageVersion",
 }));
 export type UpdateProvisioningTemplateError =
@@ -24525,6 +25049,8 @@ export const updateProvisioningTemplate: API.OperationMethod<
     ResourceNotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProvisioningTemplate",
 }));
 export type UpdateRoleAliasError =
@@ -24563,6 +25089,8 @@ export const updateRoleAlias: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoleAlias",
 }));
 export type UpdateScheduledAuditError =
@@ -24591,6 +25119,8 @@ export const updateScheduledAudit: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScheduledAudit",
 }));
 export type UpdateSecurityProfileError =
@@ -24620,6 +25150,8 @@ export const updateSecurityProfile: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityProfile",
 }));
 export type UpdateStreamError =
@@ -24653,6 +25185,8 @@ export const updateStream: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStream",
 }));
 export type UpdateThingError =
@@ -24686,6 +25220,8 @@ export const updateThing: API.OperationMethod<
     UnauthorizedException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThing",
 }));
 export type UpdateThingGroupError =
@@ -24715,6 +25251,8 @@ export const updateThingGroup: API.OperationMethod<
     ThrottlingException,
     VersionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThingGroup",
 }));
 export type UpdateThingGroupsForThingError =
@@ -24742,6 +25280,8 @@ export const updateThingGroupsForThing: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThingGroupsForThing",
 }));
 export type UpdateThingTypeError =
@@ -24771,6 +25311,8 @@ export const updateThingType: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThingType",
 }));
 export type UpdateTopicRuleDestinationError =
@@ -24801,6 +25343,8 @@ export const updateTopicRuleDestination: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTopicRuleDestination",
 }));
 export type ValidateSecurityProfileBehaviorsError =
@@ -24826,5 +25370,7 @@ export const validateSecurityProfileBehaviors: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateSecurityProfileBehaviors",
 }));

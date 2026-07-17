@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1379,6 +1381,8 @@ export const batchCheckLayerAvailability: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCheckLayerAvailability",
 }));
 export type BatchDeleteImageError =
@@ -1412,6 +1416,8 @@ export const batchDeleteImage: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteImage",
 }));
 export type CompleteLayerUploadError =
@@ -1456,6 +1462,8 @@ export const completeLayerUpload: API.OperationMethod<
     UnsupportedCommandException,
     UploadNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteLayerUpload",
 }));
 export type CreateRepositoryError =
@@ -1488,6 +1496,8 @@ export const createRepository: API.OperationMethod<
     TooManyTagsException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRepository",
 }));
 export type DeleteRepositoryError =
@@ -1517,6 +1527,8 @@ export const deleteRepository: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRepository",
 }));
 export type DeleteRepositoryPolicyError =
@@ -1544,6 +1556,8 @@ export const deleteRepositoryPolicy: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRepositoryPolicy",
 }));
 export type DescribeImagesError =
@@ -1592,6 +1606,8 @@ export const describeImages: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImages",
   pagination: {
     inputToken: "nextToken",
@@ -1638,6 +1654,8 @@ export const describeImageTags: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageTags",
   pagination: {
     inputToken: "nextToken",
@@ -1682,6 +1700,8 @@ export const describeRegistries: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistries",
   pagination: {
     inputToken: "nextToken",
@@ -1728,6 +1748,8 @@ export const describeRepositories: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRepositories",
   pagination: {
     inputToken: "nextToken",
@@ -1761,6 +1783,8 @@ export const getAuthorizationToken: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAuthorizationToken",
 }));
 export type GetRegistryCatalogDataError =
@@ -1779,6 +1803,8 @@ export const getRegistryCatalogData: API.OperationMethod<
   input: GetRegistryCatalogDataRequest,
   output: GetRegistryCatalogDataResponse,
   errors: [ServerException, UnsupportedCommandException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegistryCatalogData",
 }));
 export type GetRepositoryCatalogDataError =
@@ -1807,6 +1833,8 @@ export const getRepositoryCatalogData: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRepositoryCatalogData",
 }));
 export type GetRepositoryPolicyError =
@@ -1834,6 +1862,8 @@ export const getRepositoryPolicy: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRepositoryPolicy",
 }));
 export type InitiateLayerUploadError =
@@ -1867,6 +1897,8 @@ export const initiateLayerUpload: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateLayerUpload",
 }));
 export type ListTagsForResourceError =
@@ -1892,6 +1924,8 @@ export const listTagsForResource: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutImageError =
@@ -1937,6 +1971,8 @@ export const putImage: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutImage",
 }));
 export type PutRegistryCatalogDataError =
@@ -1960,6 +1996,8 @@ export const putRegistryCatalogData: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRegistryCatalogData",
 }));
 export type PutRepositoryCatalogDataError =
@@ -1985,6 +2023,8 @@ export const putRepositoryCatalogData: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRepositoryCatalogData",
 }));
 export type SetRepositoryPolicyError =
@@ -2012,6 +2052,8 @@ export const setRepositoryPolicy: API.OperationMethod<
     ServerException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetRepositoryPolicy",
 }));
 export type TagResourceError =
@@ -2044,6 +2086,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2073,6 +2117,8 @@ export const untagResource: API.OperationMethod<
     TooManyTagsException,
     UnsupportedCommandException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UploadLayerPartError =
@@ -2112,5 +2158,7 @@ export const uploadLayerPart: API.OperationMethod<
     UnsupportedCommandException,
     UploadNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadLayerPart",
 }));

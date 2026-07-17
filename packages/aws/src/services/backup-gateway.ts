@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -946,6 +948,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError = ResourceNotFoundException | CommonErrors;
@@ -961,6 +965,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -976,6 +982,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateGatewayError = CommonErrors;
@@ -992,6 +1000,8 @@ export const createGateway: API.OperationMethod<
   input: CreateGatewayInput,
   output: CreateGatewayOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGateway",
 }));
 export type GetGatewayError = ResourceNotFoundException | CommonErrors;
@@ -1008,6 +1018,8 @@ export const getGateway: API.OperationMethod<
   input: GetGatewayInput,
   output: GetGatewayOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGateway",
 }));
 export type UpdateGatewayInformationError =
@@ -1027,6 +1039,8 @@ export const updateGatewayInformation: API.OperationMethod<
   input: UpdateGatewayInformationInput,
   output: UpdateGatewayInformationOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGatewayInformation",
 }));
 export type DeleteGatewayError = ResourceNotFoundException | CommonErrors;
@@ -1042,6 +1056,8 @@ export const deleteGateway: API.OperationMethod<
   input: DeleteGatewayInput,
   output: DeleteGatewayOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGateway",
 }));
 export type ListGatewaysError = CommonErrors;
@@ -1072,6 +1088,8 @@ export const listGateways: API.OperationMethod<
   input: ListGatewaysInput,
   output: ListGatewaysOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGateways",
   pagination: {
     inputToken: "NextToken",
@@ -1094,6 +1112,8 @@ export const associateGatewayToServer: API.OperationMethod<
   input: AssociateGatewayToServerInput,
   output: AssociateGatewayToServerOutput,
   errors: [ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateGatewayToServer",
 }));
 export type DisassociateGatewayFromServerError =
@@ -1113,6 +1133,8 @@ export const disassociateGatewayFromServer: API.OperationMethod<
   input: DisassociateGatewayFromServerInput,
   output: DisassociateGatewayFromServerOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateGatewayFromServer",
 }));
 export type PutMaintenanceStartTimeError =
@@ -1131,6 +1153,8 @@ export const putMaintenanceStartTime: API.OperationMethod<
   input: PutMaintenanceStartTimeInput,
   output: PutMaintenanceStartTimeOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMaintenanceStartTime",
 }));
 export type TestHypervisorConfigurationError =
@@ -1150,6 +1174,8 @@ export const testHypervisorConfiguration: API.OperationMethod<
   input: TestHypervisorConfigurationInput,
   output: TestHypervisorConfigurationOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestHypervisorConfiguration",
 }));
 export type UpdateGatewaySoftwareNowError =
@@ -1172,6 +1198,8 @@ export const updateGatewaySoftwareNow: API.OperationMethod<
   input: UpdateGatewaySoftwareNowInput,
   output: UpdateGatewaySoftwareNowOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGatewaySoftwareNow",
 }));
 export type PutBandwidthRateLimitScheduleError =
@@ -1192,6 +1220,8 @@ export const putBandwidthRateLimitSchedule: API.OperationMethod<
   input: PutBandwidthRateLimitScheduleInput,
   output: PutBandwidthRateLimitScheduleOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBandwidthRateLimitSchedule",
 }));
 export type GetBandwidthRateLimitScheduleError =
@@ -1212,6 +1242,8 @@ export const getBandwidthRateLimitSchedule: API.OperationMethod<
   input: GetBandwidthRateLimitScheduleInput,
   output: GetBandwidthRateLimitScheduleOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBandwidthRateLimitSchedule",
 }));
 export type ImportHypervisorConfigurationError =
@@ -1230,6 +1262,8 @@ export const importHypervisorConfiguration: API.OperationMethod<
   input: ImportHypervisorConfigurationInput,
   output: ImportHypervisorConfigurationOutput,
   errors: [AccessDeniedException, ConflictException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportHypervisorConfiguration",
 }));
 export type GetHypervisorError = ResourceNotFoundException | CommonErrors;
@@ -1247,6 +1281,8 @@ export const getHypervisor: API.OperationMethod<
   input: GetHypervisorInput,
   output: GetHypervisorOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHypervisor",
 }));
 export type UpdateHypervisorError =
@@ -1268,6 +1304,8 @@ export const updateHypervisor: API.OperationMethod<
   input: UpdateHypervisorInput,
   output: UpdateHypervisorOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHypervisor",
 }));
 export type DeleteHypervisorError =
@@ -1287,6 +1325,8 @@ export const deleteHypervisor: API.OperationMethod<
   input: DeleteHypervisorInput,
   output: DeleteHypervisorOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHypervisor",
 }));
 export type ListHypervisorsError = CommonErrors;
@@ -1317,6 +1357,8 @@ export const listHypervisors: API.OperationMethod<
   input: ListHypervisorsInput,
   output: ListHypervisorsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHypervisors",
   pagination: {
     inputToken: "NextToken",
@@ -1341,6 +1383,8 @@ export const startVirtualMachinesMetadataSync: API.OperationMethod<
   input: StartVirtualMachinesMetadataSyncInput,
   output: StartVirtualMachinesMetadataSyncOutput,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartVirtualMachinesMetadataSync",
 }));
 export type PutHypervisorPropertyMappingsError =
@@ -1362,6 +1406,8 @@ export const putHypervisorPropertyMappings: API.OperationMethod<
   input: PutHypervisorPropertyMappingsInput,
   output: PutHypervisorPropertyMappingsOutput,
   errors: [AccessDeniedException, ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutHypervisorPropertyMappings",
 }));
 export type GetHypervisorPropertyMappingsError =
@@ -1381,6 +1427,8 @@ export const getHypervisorPropertyMappings: API.OperationMethod<
   input: GetHypervisorPropertyMappingsInput,
   output: GetHypervisorPropertyMappingsOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHypervisorPropertyMappings",
 }));
 export type GetVirtualMachineError = ResourceNotFoundException | CommonErrors;
@@ -1396,6 +1444,8 @@ export const getVirtualMachine: API.OperationMethod<
   input: GetVirtualMachineInput,
   output: GetVirtualMachineOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVirtualMachine",
 }));
 export type ListVirtualMachinesError = CommonErrors;
@@ -1426,6 +1476,8 @@ export const listVirtualMachines: API.OperationMethod<
   input: ListVirtualMachinesInput,
   output: ListVirtualMachinesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVirtualMachines",
   pagination: {
     inputToken: "NextToken",

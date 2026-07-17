@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2141,6 +2143,8 @@ export const associateCustomDomain: API.OperationMethod<
     InvalidRequestException,
     InvalidStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateCustomDomain",
 }));
 export type CreateAutoScalingConfigurationError =
@@ -2175,6 +2179,8 @@ export const createAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutoScalingConfiguration",
 }));
 export type CreateConnectionError =
@@ -2203,6 +2209,8 @@ export const createConnection: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnection",
 }));
 export type CreateObservabilityConfigurationError =
@@ -2236,6 +2244,8 @@ export const createObservabilityConfiguration: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateObservabilityConfiguration",
 }));
 export type CreateServiceError =
@@ -2261,6 +2271,8 @@ export const createService: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateService",
 }));
 export type CreateVpcConnectorError =
@@ -2285,6 +2297,8 @@ export const createVpcConnector: API.OperationMethod<
     InvalidRequestException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcConnector",
 }));
 export type CreateVpcIngressConnectionError =
@@ -2310,6 +2324,8 @@ export const createVpcIngressConnection: API.OperationMethod<
     InvalidStateException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcIngressConnection",
 }));
 export type DeleteAutoScalingConfigurationError =
@@ -2335,6 +2351,8 @@ export const deleteAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAutoScalingConfiguration",
 }));
 export type DeleteConnectionError =
@@ -2359,6 +2377,8 @@ export const deleteConnection: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type DeleteObservabilityConfigurationError =
@@ -2383,6 +2403,8 @@ export const deleteObservabilityConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteObservabilityConfiguration",
 }));
 export type DeleteServiceError =
@@ -2413,6 +2435,8 @@ export const deleteService: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteService",
 }));
 export type DeleteVpcConnectorError =
@@ -2437,6 +2461,8 @@ export const deleteVpcConnector: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcConnector",
 }));
 export type DeleteVpcIngressConnectionError =
@@ -2470,6 +2496,8 @@ export const deleteVpcIngressConnection: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcIngressConnection",
 }));
 export type DescribeAutoScalingConfigurationError =
@@ -2493,6 +2521,8 @@ export const describeAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutoScalingConfiguration",
 }));
 export type DescribeCustomDomainsError =
@@ -2531,6 +2561,8 @@ export const describeCustomDomains: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomDomains",
   pagination: {
     inputToken: "NextToken",
@@ -2559,6 +2591,8 @@ export const describeObservabilityConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeObservabilityConfiguration",
 }));
 export type DescribeServiceError =
@@ -2582,6 +2616,8 @@ export const describeService: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeService",
 }));
 export type DescribeVpcConnectorError =
@@ -2605,6 +2641,8 @@ export const describeVpcConnector: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcConnector",
 }));
 export type DescribeVpcIngressConnectionError =
@@ -2628,6 +2666,8 @@ export const describeVpcIngressConnection: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcIngressConnection",
 }));
 export type DisassociateCustomDomainError =
@@ -2657,6 +2697,8 @@ export const disassociateCustomDomain: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateCustomDomain",
 }));
 export type ListAutoScalingConfigurationsError =
@@ -2695,6 +2737,8 @@ export const listAutoScalingConfigurations: API.OperationMethod<
   input: ListAutoScalingConfigurationsRequest,
   output: ListAutoScalingConfigurationsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutoScalingConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -2733,6 +2777,8 @@ export const listConnections: API.OperationMethod<
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnections",
   pagination: {
     inputToken: "NextToken",
@@ -2776,6 +2822,8 @@ export const listObservabilityConfigurations: API.OperationMethod<
   input: ListObservabilityConfigurationsRequest,
   output: ListObservabilityConfigurationsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObservabilityConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -2822,6 +2870,8 @@ export const listOperations: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOperations",
   pagination: {
     inputToken: "NextToken",
@@ -2860,6 +2910,8 @@ export const listServices: API.OperationMethod<
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
@@ -2903,6 +2955,8 @@ export const listServicesForAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServicesForAutoScalingConfiguration",
   pagination: {
     inputToken: "NextToken",
@@ -2933,6 +2987,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListVpcConnectorsError =
@@ -2966,6 +3022,8 @@ export const listVpcConnectors: API.OperationMethod<
   input: ListVpcConnectorsRequest,
   output: ListVpcConnectorsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcConnectors",
   pagination: {
     inputToken: "NextToken",
@@ -3004,6 +3062,8 @@ export const listVpcIngressConnections: API.OperationMethod<
   input: ListVpcIngressConnectionsRequest,
   output: ListVpcIngressConnectionsResponse,
   errors: [InternalServiceErrorException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcIngressConnections",
   pagination: {
     inputToken: "NextToken",
@@ -3038,6 +3098,8 @@ export const pauseService: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PauseService",
 }));
 export type ResumeServiceError =
@@ -3066,6 +3128,8 @@ export const resumeService: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeService",
 }));
 export type StartDeploymentError =
@@ -3096,6 +3160,8 @@ export const startDeployment: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDeployment",
 }));
 export type TagResourceError =
@@ -3121,6 +3187,8 @@ export const tagResource: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3146,6 +3214,8 @@ export const untagResource: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDefaultAutoScalingConfigurationError =
@@ -3170,6 +3240,8 @@ export const updateDefaultAutoScalingConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDefaultAutoScalingConfiguration",
 }));
 export type UpdateServiceError =
@@ -3202,6 +3274,8 @@ export const updateService: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateService",
 }));
 export type UpdateVpcIngressConnectionError =
@@ -3233,5 +3307,7 @@ export const updateVpcIngressConnection: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVpcIngressConnection",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4007,6 +4009,8 @@ export const associateApi: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateApi",
 }));
 export type AssociateMergedGraphqlApiError =
@@ -4037,6 +4041,8 @@ export const associateMergedGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateMergedGraphqlApi",
 }));
 export type AssociateSourceGraphqlApiError =
@@ -4067,6 +4073,8 @@ export const associateSourceGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSourceGraphqlApi",
 }));
 export type CreateApiError =
@@ -4096,6 +4104,8 @@ export const createApi: API.OperationMethod<
     ServiceQuotaExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApi",
 }));
 export type CreateApiCacheError =
@@ -4123,6 +4133,8 @@ export const createApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApiCache",
 }));
 export type CreateApiKeyError =
@@ -4154,6 +4166,8 @@ export const createApiKey: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApiKey",
 }));
 export type CreateChannelNamespaceError =
@@ -4185,6 +4199,8 @@ export const createChannelNamespace: API.OperationMethod<
     ServiceQuotaExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannelNamespace",
 }));
 export type CreateDataSourceError =
@@ -4212,6 +4228,8 @@ export const createDataSource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSource",
 }));
 export type CreateDomainNameError =
@@ -4235,6 +4253,8 @@ export const createDomainName: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainName",
 }));
 export type CreateFunctionError =
@@ -4265,6 +4285,8 @@ export const createFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFunction",
 }));
 export type CreateGraphqlApiError =
@@ -4294,6 +4316,8 @@ export const createGraphqlApi: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGraphqlApi",
 }));
 export type CreateResolverError =
@@ -4324,6 +4348,8 @@ export const createResolver: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResolver",
 }));
 export type CreateTypeError =
@@ -4351,6 +4377,8 @@ export const createType: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateType",
 }));
 export type DeleteApiError =
@@ -4380,6 +4408,8 @@ export const deleteApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApi",
 }));
 export type DeleteApiCacheError =
@@ -4407,6 +4437,8 @@ export const deleteApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApiCache",
 }));
 export type DeleteApiKeyError =
@@ -4432,6 +4464,8 @@ export const deleteApiKey: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApiKey",
 }));
 export type DeleteChannelNamespaceError =
@@ -4461,6 +4495,8 @@ export const deleteChannelNamespace: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelNamespace",
 }));
 export type DeleteDataSourceError =
@@ -4488,6 +4524,8 @@ export const deleteDataSource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataSource",
 }));
 export type DeleteDomainNameError =
@@ -4515,6 +4553,8 @@ export const deleteDomainName: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainName",
 }));
 export type DeleteFunctionError =
@@ -4542,6 +4582,8 @@ export const deleteFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunction",
 }));
 export type DeleteGraphqlApiError =
@@ -4571,6 +4613,8 @@ export const deleteGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGraphqlApi",
 }));
 export type DeleteResolverError =
@@ -4598,6 +4642,8 @@ export const deleteResolver: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResolver",
 }));
 export type DeleteTypeError =
@@ -4625,6 +4671,8 @@ export const deleteType: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteType",
 }));
 export type DisassociateApiError =
@@ -4652,6 +4700,8 @@ export const disassociateApi: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateApi",
 }));
 export type DisassociateMergedGraphqlApiError =
@@ -4680,6 +4730,8 @@ export const disassociateMergedGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMergedGraphqlApi",
 }));
 export type DisassociateSourceGraphqlApiError =
@@ -4708,6 +4760,8 @@ export const disassociateSourceGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSourceGraphqlApi",
 }));
 export type EvaluateCodeError =
@@ -4736,6 +4790,8 @@ export const evaluateCode: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EvaluateCode",
 }));
 export type EvaluateMappingTemplateError =
@@ -4767,6 +4823,8 @@ export const evaluateMappingTemplate: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EvaluateMappingTemplate",
 }));
 export type FlushApiCacheError =
@@ -4794,6 +4852,8 @@ export const flushApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FlushApiCache",
 }));
 export type GetApiError =
@@ -4821,6 +4881,8 @@ export const getApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApi",
 }));
 export type GetApiAssociationError =
@@ -4846,6 +4908,8 @@ export const getApiAssociation: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApiAssociation",
 }));
 export type GetApiCacheError =
@@ -4873,6 +4937,8 @@ export const getApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApiCache",
 }));
 export type GetChannelNamespaceError =
@@ -4900,6 +4966,8 @@ export const getChannelNamespace: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannelNamespace",
 }));
 export type GetDataSourceError =
@@ -4927,6 +4995,8 @@ export const getDataSource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSource",
 }));
 export type GetDataSourceIntrospectionError =
@@ -4948,6 +5018,8 @@ export const getDataSourceIntrospection: API.OperationMethod<
   input: GetDataSourceIntrospectionRequest,
   output: GetDataSourceIntrospectionResponse,
   errors: [BadRequestException, InternalFailureException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSourceIntrospection",
 }));
 export type GetDomainNameError =
@@ -4973,6 +5045,8 @@ export const getDomainName: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainName",
 }));
 export type GetFunctionError =
@@ -4996,6 +5070,8 @@ export const getFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunction",
 }));
 export type GetGraphqlApiError =
@@ -5023,6 +5099,8 @@ export const getGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGraphqlApi",
 }));
 export type GetGraphqlApiEnvironmentVariablesError =
@@ -5051,6 +5129,8 @@ export const getGraphqlApiEnvironmentVariables: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGraphqlApiEnvironmentVariables",
 }));
 export type GetIntrospectionSchemaError =
@@ -5076,6 +5156,8 @@ export const getIntrospectionSchema: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntrospectionSchema",
 }));
 export type GetResolverError =
@@ -5099,6 +5181,8 @@ export const getResolver: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResolver",
 }));
 export type GetSchemaCreationStatusError =
@@ -5124,6 +5208,8 @@ export const getSchemaCreationStatus: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchemaCreationStatus",
 }));
 export type GetSourceApiAssociationError =
@@ -5149,6 +5235,8 @@ export const getSourceApiAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSourceApiAssociation",
 }));
 export type GetTypeError =
@@ -5176,6 +5264,8 @@ export const getType: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetType",
 }));
 export type ListApiKeysError =
@@ -5221,6 +5311,8 @@ export const listApiKeys: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApiKeys",
   pagination: {
     inputToken: "nextToken",
@@ -5268,6 +5360,8 @@ export const listApis: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApis",
   pagination: {
     inputToken: "nextToken",
@@ -5317,6 +5411,8 @@ export const listChannelNamespaces: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelNamespaces",
   pagination: {
     inputToken: "nextToken",
@@ -5363,6 +5459,8 @@ export const listDataSources: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSources",
   pagination: {
     inputToken: "nextToken",
@@ -5407,6 +5505,8 @@ export const listDomainNames: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainNames",
   pagination: {
     inputToken: "nextToken",
@@ -5453,6 +5553,8 @@ export const listFunctions: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFunctions",
   pagination: {
     inputToken: "nextToken",
@@ -5497,6 +5599,8 @@ export const listGraphqlApis: API.OperationMethod<
     InternalFailureException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGraphqlApis",
   pagination: {
     inputToken: "nextToken",
@@ -5543,6 +5647,8 @@ export const listResolvers: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResolvers",
   pagination: {
     inputToken: "nextToken",
@@ -5589,6 +5695,8 @@ export const listResolversByFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResolversByFunction",
   pagination: {
     inputToken: "nextToken",
@@ -5635,6 +5743,8 @@ export const listSourceApiAssociations: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourceApiAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -5670,6 +5780,8 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTypesError =
@@ -5712,6 +5824,8 @@ export const listTypes: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypes",
   pagination: {
     inputToken: "nextToken",
@@ -5760,6 +5874,8 @@ export const listTypesByAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypesByAssociation",
   pagination: {
     inputToken: "nextToken",
@@ -5831,6 +5947,8 @@ export const putGraphqlApiEnvironmentVariables: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutGraphqlApiEnvironmentVariables",
 }));
 export type StartDataSourceIntrospectionError =
@@ -5857,6 +5975,8 @@ export const startDataSourceIntrospection: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDataSourceIntrospection",
 }));
 export type StartSchemaCreationError =
@@ -5887,6 +6007,8 @@ export const startSchemaCreation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSchemaCreation",
 }));
 export type StartSchemaMergeError =
@@ -5915,6 +6037,8 @@ export const startSchemaMerge: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSchemaMerge",
 }));
 export type TagResourceError =
@@ -5944,6 +6068,8 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5973,6 +6099,8 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApiError =
@@ -6002,6 +6130,8 @@ export const updateApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApi",
 }));
 export type UpdateApiCacheError =
@@ -6029,6 +6159,8 @@ export const updateApiCache: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApiCache",
 }));
 export type UpdateApiKeyError =
@@ -6058,6 +6190,8 @@ export const updateApiKey: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApiKey",
 }));
 export type UpdateChannelNamespaceError =
@@ -6087,6 +6221,8 @@ export const updateChannelNamespace: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannelNamespace",
 }));
 export type UpdateDataSourceError =
@@ -6114,6 +6250,8 @@ export const updateDataSource: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSource",
 }));
 export type UpdateDomainNameError =
@@ -6141,6 +6279,8 @@ export const updateDomainName: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainName",
 }));
 export type UpdateFunctionError =
@@ -6168,6 +6308,8 @@ export const updateFunction: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFunction",
 }));
 export type UpdateGraphqlApiError =
@@ -6197,6 +6339,8 @@ export const updateGraphqlApi: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGraphqlApi",
 }));
 export type UpdateResolverError =
@@ -6224,6 +6368,8 @@ export const updateResolver: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResolver",
 }));
 export type UpdateSourceApiAssociationError =
@@ -6251,6 +6397,8 @@ export const updateSourceApiAssociation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSourceApiAssociation",
 }));
 export type UpdateTypeError =
@@ -6278,5 +6426,7 @@ export const updateType: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateType",
 }));

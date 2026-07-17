@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2396,6 +2398,8 @@ export const createStarterMappingTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStarterMappingTemplate",
 }));
 export type GenerateMappingError =
@@ -2431,6 +2435,8 @@ export const generateMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateMapping",
 }));
 export type GetTransformerJobError =
@@ -2460,6 +2466,8 @@ export const getTransformerJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransformerJob",
 }));
 export type ListTagsForResourceError =
@@ -2483,6 +2491,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartTransformerJobError =
@@ -2516,6 +2526,8 @@ export const startTransformerJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTransformerJob",
 }));
 export type TagResourceError =
@@ -2543,6 +2555,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestConversionError =
@@ -2570,6 +2584,8 @@ export const testConversion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestConversion",
 }));
 export type TestMappingError =
@@ -2597,6 +2613,8 @@ export const testMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestMapping",
 }));
 export type TestParsingError =
@@ -2624,6 +2642,8 @@ export const testParsing: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestParsing",
 }));
 export type UntagResourceError =
@@ -2647,6 +2667,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateCapabilityError =
@@ -2678,6 +2700,8 @@ export const createCapability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapability",
 }));
 export type GetCapabilityError =
@@ -2705,6 +2729,8 @@ export const getCapability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapability",
 }));
 export type UpdateCapabilityError =
@@ -2736,6 +2762,8 @@ export const updateCapability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCapability",
 }));
 export type DeleteCapabilityError =
@@ -2765,6 +2793,8 @@ export const deleteCapability: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCapability",
 }));
 export type ListCapabilitiesError =
@@ -2805,6 +2835,8 @@ export const listCapabilities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCapabilities",
   pagination: {
     inputToken: "nextToken",
@@ -2842,6 +2874,8 @@ export const createPartnership: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePartnership",
 }));
 export type GetPartnershipError =
@@ -2869,6 +2903,8 @@ export const getPartnership: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPartnership",
 }));
 export type UpdatePartnershipError =
@@ -2900,6 +2936,8 @@ export const updatePartnership: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePartnership",
 }));
 export type DeletePartnershipError =
@@ -2929,6 +2967,8 @@ export const deletePartnership: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePartnership",
 }));
 export type ListPartnershipsError =
@@ -2971,6 +3011,8 @@ export const listPartnerships: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPartnerships",
   pagination: {
     inputToken: "nextToken",
@@ -3008,6 +3050,8 @@ export const createProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProfile",
 }));
 export type GetProfileError =
@@ -3035,6 +3079,8 @@ export const getProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfile",
 }));
 export type UpdateProfileError =
@@ -3066,6 +3112,8 @@ export const updateProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProfile",
 }));
 export type DeleteProfileError =
@@ -3095,6 +3143,8 @@ export const deleteProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfile",
 }));
 export type ListProfilesError =
@@ -3135,6 +3185,8 @@ export const listProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -3184,6 +3236,8 @@ export const createTransformer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransformer",
 }));
 export type GetTransformerError =
@@ -3211,6 +3265,8 @@ export const getTransformer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransformer",
 }));
 export type UpdateTransformerError =
@@ -3242,6 +3298,8 @@ export const updateTransformer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTransformer",
 }));
 export type DeleteTransformerError =
@@ -3271,6 +3329,8 @@ export const deleteTransformer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransformer",
 }));
 export type ListTransformersError =
@@ -3311,6 +3371,8 @@ export const listTransformers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTransformers",
   pagination: {
     inputToken: "nextToken",

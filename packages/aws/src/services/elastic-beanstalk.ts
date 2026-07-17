@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3149,6 +3151,8 @@ export const abortEnvironmentUpdate: API.OperationMethod<
   input: AbortEnvironmentUpdateMessage,
   output: AbortEnvironmentUpdateResponse,
   errors: [InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AbortEnvironmentUpdate",
 }));
 export type ApplyEnvironmentManagedActionError =
@@ -3172,6 +3176,8 @@ export const applyEnvironmentManagedAction: API.OperationMethod<
     ElasticBeanstalkServiceException,
     ManagedActionInvalidStateException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplyEnvironmentManagedAction",
 }));
 export type AssociateEnvironmentOperationsRoleError =
@@ -3192,6 +3198,8 @@ export const associateEnvironmentOperationsRole: API.OperationMethod<
   input: AssociateEnvironmentOperationsRoleMessage,
   output: AssociateEnvironmentOperationsRoleResponse,
   errors: [InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateEnvironmentOperationsRole",
 }));
 export type CheckDNSAvailabilityError = CommonErrors;
@@ -3207,6 +3215,8 @@ export const checkDNSAvailability: API.OperationMethod<
   input: CheckDNSAvailabilityMessage,
   output: CheckDNSAvailabilityResultMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckDNSAvailability",
 }));
 export type ComposeEnvironmentsError =
@@ -3230,6 +3240,8 @@ export const composeEnvironments: API.OperationMethod<
   input: ComposeEnvironmentsMessage,
   output: EnvironmentDescriptionsMessage,
   errors: [InsufficientPrivilegesException, TooManyEnvironmentsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ComposeEnvironments",
 }));
 export type CreateApplicationError =
@@ -3248,6 +3260,8 @@ export const createApplication: API.OperationMethod<
   input: CreateApplicationMessage,
   output: ApplicationDescriptionMessage,
   errors: [TooManyApplicationsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateApplicationVersionError =
@@ -3293,6 +3307,8 @@ export const createApplicationVersion: API.OperationMethod<
     TooManyApplicationsException,
     TooManyApplicationVersionsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplicationVersion",
 }));
 export type CreateConfigurationTemplateError =
@@ -3330,6 +3346,8 @@ export const createConfigurationTemplate: API.OperationMethod<
     TooManyBucketsException,
     TooManyConfigurationTemplatesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationTemplate",
 }));
 export type CreateEnvironmentError =
@@ -3349,6 +3367,8 @@ export const createEnvironment: API.OperationMethod<
   input: CreateEnvironmentMessage,
   output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException, TooManyEnvironmentsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
 export type CreatePlatformVersionError =
@@ -3372,6 +3392,8 @@ export const createPlatformVersion: API.OperationMethod<
     InsufficientPrivilegesException,
     TooManyPlatformsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePlatformVersion",
 }));
 export type CreateStorageLocationError =
@@ -3399,6 +3421,8 @@ export const createStorageLocation: API.OperationMethod<
     S3SubscriptionRequiredException,
     TooManyBucketsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStorageLocation",
 }));
 export type DeleteApplicationError =
@@ -3420,6 +3444,8 @@ export const deleteApplication: API.OperationMethod<
   input: DeleteApplicationMessage,
   output: DeleteApplicationResponse,
   errors: [OperationInProgressException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteApplicationVersionError =
@@ -3448,6 +3474,8 @@ export const deleteApplicationVersion: API.OperationMethod<
     S3LocationNotInServiceRegionException,
     SourceBundleDeletionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationVersion",
 }));
 export type DeleteConfigurationTemplateError =
@@ -3469,6 +3497,8 @@ export const deleteConfigurationTemplate: API.OperationMethod<
   input: DeleteConfigurationTemplateMessage,
   output: DeleteConfigurationTemplateResponse,
   errors: [OperationInProgressException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationTemplate",
 }));
 export type DeleteEnvironmentConfigurationError = CommonErrors;
@@ -3490,6 +3520,8 @@ export const deleteEnvironmentConfiguration: API.OperationMethod<
   input: DeleteEnvironmentConfigurationMessage,
   output: DeleteEnvironmentConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironmentConfiguration",
 }));
 export type DeletePlatformVersionError =
@@ -3515,6 +3547,8 @@ export const deletePlatformVersion: API.OperationMethod<
     OperationInProgressException,
     PlatformVersionStillReferencedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePlatformVersion",
 }));
 export type DescribeAccountAttributesError =
@@ -3535,6 +3569,8 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
   errors: [InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
 export type DescribeApplicationsError = CommonErrors;
@@ -3550,6 +3586,8 @@ export const describeApplications: API.OperationMethod<
   input: DescribeApplicationsMessage,
   output: ApplicationDescriptionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplications",
 }));
 export type DescribeApplicationVersionsError = CommonErrors;
@@ -3565,6 +3603,8 @@ export const describeApplicationVersions: API.OperationMethod<
   input: DescribeApplicationVersionsMessage,
   output: ApplicationVersionDescriptionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationVersions",
 }));
 export type DescribeConfigurationOptionsError =
@@ -3585,6 +3625,8 @@ export const describeConfigurationOptions: API.OperationMethod<
   input: DescribeConfigurationOptionsMessage,
   output: ConfigurationOptionsDescription,
   errors: [TooManyBucketsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationOptions",
 }));
 export type DescribeConfigurationSettingsError =
@@ -3613,6 +3655,8 @@ export const describeConfigurationSettings: API.OperationMethod<
   input: DescribeConfigurationSettingsMessage,
   output: ConfigurationSettingsDescriptions,
   errors: [TooManyBucketsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationSettings",
 }));
 export type DescribeEnvironmentHealthError =
@@ -3633,6 +3677,8 @@ export const describeEnvironmentHealth: API.OperationMethod<
   input: DescribeEnvironmentHealthRequest,
   output: DescribeEnvironmentHealthResult,
   errors: [ElasticBeanstalkServiceException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEnvironmentHealth",
 }));
 export type DescribeEnvironmentManagedActionHistoryError =
@@ -3665,6 +3711,8 @@ export const describeEnvironmentManagedActionHistory: API.OperationMethod<
   input: DescribeEnvironmentManagedActionHistoryRequest,
   output: DescribeEnvironmentManagedActionHistoryResult,
   errors: [ElasticBeanstalkServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEnvironmentManagedActionHistory",
   pagination: {
     inputToken: "NextToken",
@@ -3688,6 +3736,8 @@ export const describeEnvironmentManagedActions: API.OperationMethod<
   input: DescribeEnvironmentManagedActionsRequest,
   output: DescribeEnvironmentManagedActionsResult,
   errors: [ElasticBeanstalkServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEnvironmentManagedActions",
 }));
 export type DescribeEnvironmentResourcesError =
@@ -3705,6 +3755,8 @@ export const describeEnvironmentResources: API.OperationMethod<
   input: DescribeEnvironmentResourcesMessage,
   output: EnvironmentResourceDescriptionsMessage,
   errors: [InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEnvironmentResources",
 }));
 export type DescribeEnvironmentsError = CommonErrors;
@@ -3720,6 +3772,8 @@ export const describeEnvironments: API.OperationMethod<
   input: DescribeEnvironmentsMessage,
   output: EnvironmentDescriptionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEnvironments",
 }));
 export type DescribeEventsError = CommonErrors;
@@ -3753,6 +3807,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: EventDescriptionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "NextToken",
@@ -3779,6 +3835,8 @@ export const describeInstancesHealth: API.OperationMethod<
   input: DescribeInstancesHealthRequest,
   output: DescribeInstancesHealthResult,
   errors: [ElasticBeanstalkServiceException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstancesHealth",
 }));
 export type DescribePlatformVersionError =
@@ -3801,6 +3859,8 @@ export const describePlatformVersion: API.OperationMethod<
   input: DescribePlatformVersionRequest,
   output: DescribePlatformVersionResult,
   errors: [ElasticBeanstalkServiceException, InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePlatformVersion",
 }));
 export type DisassociateEnvironmentOperationsRoleError =
@@ -3821,6 +3881,8 @@ export const disassociateEnvironmentOperationsRole: API.OperationMethod<
   input: DisassociateEnvironmentOperationsRoleMessage,
   output: DisassociateEnvironmentOperationsRoleResponse,
   errors: [InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateEnvironmentOperationsRole",
 }));
 export type ListAvailableSolutionStacksError = CommonErrors;
@@ -3837,6 +3899,8 @@ export const listAvailableSolutionStacks: API.OperationMethod<
   input: ListAvailableSolutionStacksRequest,
   output: ListAvailableSolutionStacksResultMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAvailableSolutionStacks",
 }));
 export type ListPlatformBranchesError = CommonErrors;
@@ -3871,6 +3935,8 @@ export const listPlatformBranches: API.OperationMethod<
   input: ListPlatformBranchesRequest,
   output: ListPlatformBranchesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlatformBranches",
   pagination: {
     inputToken: "NextToken",
@@ -3914,6 +3980,8 @@ export const listPlatformVersions: API.OperationMethod<
   input: ListPlatformVersionsRequest,
   output: ListPlatformVersionsResult,
   errors: [ElasticBeanstalkServiceException, InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlatformVersions",
   pagination: {
     inputToken: "NextToken",
@@ -3947,6 +4015,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ResourceTypeNotSupportedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RebuildEnvironmentError =
@@ -3965,6 +4035,8 @@ export const rebuildEnvironment: API.OperationMethod<
   input: RebuildEnvironmentMessage,
   output: RebuildEnvironmentResponse,
   errors: [InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebuildEnvironment",
 }));
 export type RequestEnvironmentInfoError = CommonErrors;
@@ -3998,6 +4070,8 @@ export const requestEnvironmentInfo: API.OperationMethod<
   input: RequestEnvironmentInfoMessage,
   output: RequestEnvironmentInfoResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestEnvironmentInfo",
 }));
 export type RestartAppServerError = CommonErrors;
@@ -4014,6 +4088,8 @@ export const restartAppServer: API.OperationMethod<
   input: RestartAppServerMessage,
   output: RestartAppServerResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestartAppServer",
 }));
 export type RetrieveEnvironmentInfoError = CommonErrors;
@@ -4034,6 +4110,8 @@ export const retrieveEnvironmentInfo: API.OperationMethod<
   input: RetrieveEnvironmentInfoMessage,
   output: RetrieveEnvironmentInfoResultMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetrieveEnvironmentInfo",
 }));
 export type SwapEnvironmentCNAMEsError = CommonErrors;
@@ -4049,6 +4127,8 @@ export const swapEnvironmentCNAMEs: API.OperationMethod<
   input: SwapEnvironmentCNAMEsMessage,
   output: SwapEnvironmentCNAMEsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SwapEnvironmentCNAMEs",
 }));
 export type TerminateEnvironmentError =
@@ -4066,6 +4146,8 @@ export const terminateEnvironment: API.OperationMethod<
   input: TerminateEnvironmentMessage,
   output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateEnvironment",
 }));
 export type UpdateApplicationError = CommonErrors;
@@ -4084,6 +4166,8 @@ export const updateApplication: API.OperationMethod<
   input: UpdateApplicationMessage,
   output: ApplicationDescriptionMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateApplicationResourceLifecycleError =
@@ -4101,6 +4185,8 @@ export const updateApplicationResourceLifecycle: API.OperationMethod<
   input: UpdateApplicationResourceLifecycleMessage,
   output: ApplicationResourceLifecycleDescriptionMessage,
   errors: [InsufficientPrivilegesException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationResourceLifecycle",
 }));
 export type UpdateApplicationVersionError = CommonErrors;
@@ -4119,6 +4205,8 @@ export const updateApplicationVersion: API.OperationMethod<
   input: UpdateApplicationVersionMessage,
   output: ApplicationVersionDescriptionMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationVersion",
 }));
 export type UpdateConfigurationTemplateError =
@@ -4145,6 +4233,8 @@ export const updateConfigurationTemplate: API.OperationMethod<
   input: UpdateConfigurationTemplateMessage,
   output: ConfigurationSettingsDescription,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationTemplate",
 }));
 export type UpdateEnvironmentError =
@@ -4173,6 +4263,8 @@ export const updateEnvironment: API.OperationMethod<
   input: UpdateEnvironmentMessage,
   output: EnvironmentDescription,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
 }));
 export type UpdateTagsForResourceError =
@@ -4220,6 +4312,8 @@ export const updateTagsForResource: API.OperationMethod<
     ResourceTypeNotSupportedException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTagsForResource",
 }));
 export type ValidateConfigurationSettingsError =
@@ -4242,5 +4336,7 @@ export const validateConfigurationSettings: API.OperationMethod<
   input: ValidateConfigurationSettingsMessage,
   output: ConfigurationSettingsValidationMessages,
   errors: [InsufficientPrivilegesException, TooManyBucketsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateConfigurationSettings",
 }));

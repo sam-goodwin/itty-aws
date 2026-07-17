@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1790,6 +1792,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1817,6 +1821,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1844,6 +1850,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type StartEarthObservationJobError =
@@ -1875,6 +1883,8 @@ export const startEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEarthObservationJob",
 }));
 export type GetEarthObservationJobError =
@@ -1902,6 +1912,8 @@ export const getEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEarthObservationJob",
 }));
 export type DeleteEarthObservationJobError =
@@ -1931,6 +1943,8 @@ export const deleteEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEarthObservationJob",
 }));
 export type ListEarthObservationJobsError =
@@ -1973,6 +1987,8 @@ export const listEarthObservationJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEarthObservationJobs",
   pagination: {
     inputToken: "NextToken",
@@ -2009,6 +2025,8 @@ export const exportEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportEarthObservationJob",
 }));
 export type GetTileError =
@@ -2036,6 +2054,8 @@ export const getTile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTile",
 }));
 export type StopEarthObservationJobError =
@@ -2065,6 +2085,8 @@ export const stopEarthObservationJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEarthObservationJob",
 }));
 export type GetRasterDataCollectionError =
@@ -2092,6 +2114,8 @@ export const getRasterDataCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRasterDataCollection",
 }));
 export type ListRasterDataCollectionsError =
@@ -2134,6 +2158,8 @@ export const listRasterDataCollections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRasterDataCollections",
   pagination: {
     inputToken: "NextToken",
@@ -2181,6 +2207,8 @@ export const searchRasterDataCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchRasterDataCollection",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -2213,6 +2241,8 @@ export const startVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartVectorEnrichmentJob",
 }));
 export type GetVectorEnrichmentJobError =
@@ -2240,6 +2270,8 @@ export const getVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVectorEnrichmentJob",
 }));
 export type DeleteVectorEnrichmentJobError =
@@ -2269,6 +2301,8 @@ export const deleteVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVectorEnrichmentJob",
 }));
 export type ListVectorEnrichmentJobsError =
@@ -2311,6 +2345,8 @@ export const listVectorEnrichmentJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVectorEnrichmentJobs",
   pagination: {
     inputToken: "NextToken",
@@ -2347,6 +2383,8 @@ export const exportVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportVectorEnrichmentJob",
 }));
 export type StopVectorEnrichmentJobError =
@@ -2376,5 +2414,7 @@ export const stopVectorEnrichmentJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopVectorEnrichmentJob",
 }));

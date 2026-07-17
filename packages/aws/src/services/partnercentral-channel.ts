@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1546,6 +1548,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1575,6 +1579,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1604,6 +1610,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateChannelHandshakeError =
@@ -1635,6 +1643,8 @@ export const createChannelHandshake: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannelHandshake",
 }));
 export type ListChannelHandshakesError =
@@ -1677,6 +1687,8 @@ export const listChannelHandshakes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelHandshakes",
   pagination: {
     inputToken: "nextToken",
@@ -1710,6 +1722,8 @@ export const acceptChannelHandshake: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptChannelHandshake",
 }));
 export type CancelChannelHandshakeError =
@@ -1737,6 +1751,8 @@ export const cancelChannelHandshake: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelChannelHandshake",
 }));
 export type RejectChannelHandshakeError =
@@ -1764,6 +1780,8 @@ export const rejectChannelHandshake: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectChannelHandshake",
 }));
 export type CreateProgramManagementAccountError =
@@ -1795,6 +1813,8 @@ export const createProgramManagementAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProgramManagementAccount",
 }));
 export type UpdateProgramManagementAccountError =
@@ -1824,6 +1844,8 @@ export const updateProgramManagementAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProgramManagementAccount",
 }));
 export type DeleteProgramManagementAccountError =
@@ -1853,6 +1875,8 @@ export const deleteProgramManagementAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProgramManagementAccount",
 }));
 export type ListProgramManagementAccountsError =
@@ -1895,6 +1919,8 @@ export const listProgramManagementAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProgramManagementAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -1932,6 +1958,8 @@ export const createRelationship: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRelationship",
 }));
 export type GetRelationshipError =
@@ -1959,6 +1987,8 @@ export const getRelationship: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationship",
 }));
 export type UpdateRelationshipError =
@@ -1988,6 +2018,8 @@ export const updateRelationship: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRelationship",
 }));
 export type DeleteRelationshipError =
@@ -2017,6 +2049,8 @@ export const deleteRelationship: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRelationship",
 }));
 export type ListRelationshipsError =
@@ -2059,6 +2093,8 @@ export const listRelationships: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRelationships",
   pagination: {
     inputToken: "nextToken",

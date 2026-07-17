@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3222,6 +3224,8 @@ export const batchPutPropertyValues: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutPropertyValues",
 }));
 export type CancelMetadataTransferJobError =
@@ -3251,6 +3255,8 @@ export const cancelMetadataTransferJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMetadataTransferJob",
 }));
 export type CreateComponentTypeError =
@@ -3280,6 +3286,8 @@ export const createComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComponentType",
 }));
 export type CreateEntityError =
@@ -3309,6 +3317,8 @@ export const createEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEntity",
 }));
 export type CreateMetadataTransferJobError =
@@ -3340,6 +3350,8 @@ export const createMetadataTransferJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMetadataTransferJob",
 }));
 export type CreateSceneError =
@@ -3369,6 +3381,8 @@ export const createScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScene",
 }));
 export type CreateSyncJobError =
@@ -3398,6 +3412,8 @@ export const createSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSyncJob",
 }));
 export type CreateWorkspaceError =
@@ -3427,6 +3443,8 @@ export const createWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspace",
 }));
 export type DeleteComponentTypeError =
@@ -3454,6 +3472,8 @@ export const deleteComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComponentType",
 }));
 export type DeleteEntityError =
@@ -3481,6 +3501,8 @@ export const deleteEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEntity",
 }));
 export type DeleteSceneError =
@@ -3508,6 +3530,8 @@ export const deleteScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScene",
 }));
 export type DeleteSyncJobError =
@@ -3537,6 +3561,8 @@ export const deleteSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSyncJob",
 }));
 export type DeleteWorkspaceError =
@@ -3564,6 +3590,8 @@ export const deleteWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspace",
 }));
 export type ExecuteQueryError =
@@ -3612,6 +3640,8 @@ export const executeQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteQuery",
   pagination: {
     inputToken: "nextToken",
@@ -3644,6 +3674,8 @@ export const getComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponentType",
 }));
 export type GetEntityError =
@@ -3671,6 +3703,8 @@ export const getEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEntity",
 }));
 export type GetMetadataTransferJobError =
@@ -3698,6 +3732,8 @@ export const getMetadataTransferJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetadataTransferJob",
 }));
 export type GetPricingPlanError =
@@ -3723,6 +3759,8 @@ export const getPricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPricingPlan",
 }));
 export type GetPropertyValueError =
@@ -3772,6 +3810,8 @@ export const getPropertyValue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPropertyValue",
   pagination: {
     inputToken: "nextToken",
@@ -3828,6 +3868,8 @@ export const getPropertyValueHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPropertyValueHistory",
   pagination: {
     inputToken: "nextToken",
@@ -3860,6 +3902,8 @@ export const getScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScene",
 }));
 export type GetSyncJobError =
@@ -3889,6 +3933,8 @@ export const getSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSyncJob",
 }));
 export type GetWorkspaceError =
@@ -3916,6 +3962,8 @@ export const getWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkspace",
 }));
 export type ListComponentsError =
@@ -3958,6 +4006,8 @@ export const listComponents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "nextToken",
@@ -4003,6 +4053,8 @@ export const listComponentTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponentTypes",
   pagination: {
     inputToken: "nextToken",
@@ -4048,6 +4100,8 @@ export const listEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntities",
   pagination: {
     inputToken: "nextToken",
@@ -4093,6 +4147,8 @@ export const listMetadataTransferJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMetadataTransferJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4140,6 +4196,8 @@ export const listProperties: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProperties",
   pagination: {
     inputToken: "nextToken",
@@ -4185,6 +4243,8 @@ export const listScenes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScenes",
   pagination: {
     inputToken: "nextToken",
@@ -4232,6 +4292,8 @@ export const listSyncJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSyncJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4279,6 +4341,8 @@ export const listSyncResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSyncResources",
   pagination: {
     inputToken: "nextToken",
@@ -4302,6 +4366,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWorkspacesError =
@@ -4342,6 +4408,8 @@ export const listWorkspaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspaces",
   pagination: {
     inputToken: "nextToken",
@@ -4370,6 +4438,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4388,6 +4458,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateComponentTypeError =
@@ -4417,6 +4489,8 @@ export const updateComponentType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComponentType",
 }));
 export type UpdateEntityError =
@@ -4448,6 +4522,8 @@ export const updateEntity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEntity",
 }));
 export type UpdatePricingPlanError =
@@ -4473,6 +4549,8 @@ export const updatePricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePricingPlan",
 }));
 export type UpdateSceneError =
@@ -4500,6 +4578,8 @@ export const updateScene: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScene",
 }));
 export type UpdateWorkspaceError =
@@ -4529,5 +4609,7 @@ export const updateWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspace",
 }));

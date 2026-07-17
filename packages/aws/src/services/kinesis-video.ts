@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1758,6 +1760,8 @@ export const createSignalingChannel: API.OperationMethod<
     ResourceInUseException,
     TagsPerResourceExceededLimitException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSignalingChannel",
 }));
 export type CreateStreamError =
@@ -1799,6 +1803,8 @@ export const createStream: API.OperationMethod<
     ResourceInUseException,
     TagsPerResourceExceededLimitException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStream",
 }));
 export type DeleteEdgeConfigurationError =
@@ -1830,6 +1836,8 @@ export const deleteEdgeConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     StreamEdgeConfigurationNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEdgeConfiguration",
 }));
 export type DeleteSignalingChannelError =
@@ -1861,6 +1869,8 @@ export const deleteSignalingChannel: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSignalingChannel",
 }));
 export type DeleteStreamError =
@@ -1901,6 +1911,8 @@ export const deleteStream: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStream",
 }));
 export type DescribeEdgeConfigurationError =
@@ -1932,6 +1944,8 @@ export const describeEdgeConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     StreamEdgeConfigurationNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEdgeConfiguration",
 }));
 export type DescribeImageGenerationConfigurationError =
@@ -1957,6 +1971,8 @@ export const describeImageGenerationConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageGenerationConfiguration",
 }));
 export type DescribeMappedResourceConfigurationError =
@@ -1998,6 +2014,8 @@ export const describeMappedResourceConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMappedResourceConfiguration",
   pagination: {
     inputToken: "NextToken",
@@ -2030,6 +2048,8 @@ export const describeMediaStorageConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMediaStorageConfiguration",
 }));
 export type DescribeNotificationConfigurationError =
@@ -2055,6 +2075,8 @@ export const describeNotificationConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotificationConfiguration",
 }));
 export type DescribeSignalingChannelError =
@@ -2082,6 +2104,8 @@ export const describeSignalingChannel: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSignalingChannel",
 }));
 export type DescribeStreamError =
@@ -2108,6 +2132,8 @@ export const describeStream: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStream",
 }));
 export type DescribeStreamStorageConfigurationError =
@@ -2137,6 +2163,8 @@ export const describeStreamStorageConfiguration: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStreamStorageConfiguration",
 }));
 export type GetDataEndpointError =
@@ -2171,6 +2199,8 @@ export const getDataEndpoint: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataEndpoint",
 }));
 export type GetSignalingChannelEndpointError =
@@ -2212,6 +2242,8 @@ export const getSignalingChannelEndpoint: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSignalingChannelEndpoint",
 }));
 export type ListEdgeAgentConfigurationsError =
@@ -2252,6 +2284,8 @@ export const listEdgeAgentConfigurations: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEdgeAgentConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -2298,6 +2332,8 @@ export const listSignalingChannels: API.OperationMethod<
     ClientLimitExceededException,
     InvalidArgumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSignalingChannels",
   pagination: {
     inputToken: "NextToken",
@@ -2339,6 +2375,8 @@ export const listStreams: API.OperationMethod<
   input: ListStreamsInput,
   output: ListStreamsOutput,
   errors: [ClientLimitExceededException, InvalidArgumentException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreams",
   pagination: {
     inputToken: "NextToken",
@@ -2370,6 +2408,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTagsForStreamError =
@@ -2400,6 +2440,8 @@ export const listTagsForStream: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForStream",
 }));
 export type StartEdgeConfigurationUpdateError =
@@ -2444,6 +2486,8 @@ export const startEdgeConfigurationUpdate: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEdgeConfigurationUpdate",
 }));
 export type TagResourceError =
@@ -2476,6 +2520,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TagsPerResourceExceededLimitException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TagStreamError =
@@ -2517,6 +2563,8 @@ export const tagStream: API.OperationMethod<
     ResourceNotFoundException,
     TagsPerResourceExceededLimitException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagStream",
 }));
 export type UntagResourceError =
@@ -2544,6 +2592,8 @@ export const untagResource: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UntagStreamError =
@@ -2576,6 +2626,8 @@ export const untagStream: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagStream",
 }));
 export type UpdateDataRetentionError =
@@ -2624,6 +2676,8 @@ export const updateDataRetention: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataRetention",
 }));
 export type UpdateImageGenerationConfigurationError =
@@ -2653,6 +2707,8 @@ export const updateImageGenerationConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateImageGenerationConfiguration",
 }));
 export type UpdateMediaStorageConfigurationError =
@@ -2695,6 +2751,8 @@ export const updateMediaStorageConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMediaStorageConfiguration",
 }));
 export type UpdateNotificationConfigurationError =
@@ -2724,6 +2782,8 @@ export const updateNotificationConfiguration: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotificationConfiguration",
 }));
 export type UpdateSignalingChannelError =
@@ -2759,6 +2819,8 @@ export const updateSignalingChannel: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSignalingChannel",
 }));
 export type UpdateStreamError =
@@ -2799,6 +2861,8 @@ export const updateStream: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStream",
 }));
 export type UpdateStreamStorageConfigurationError =
@@ -2834,5 +2898,7 @@ export const updateStreamStorageConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStreamStorageConfiguration",
 }));

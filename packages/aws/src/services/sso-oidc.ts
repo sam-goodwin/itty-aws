@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -469,6 +471,8 @@ export const createToken: API.OperationMethod<
     UnauthorizedClientException,
     UnsupportedGrantTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateToken",
 }));
 export type CreateTokenWithIAMError =
@@ -516,6 +520,8 @@ export const createTokenWithIAM: API.OperationMethod<
     UnauthorizedClientException,
     UnsupportedGrantTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTokenWithIAM",
 }));
 export type RegisterClientError =
@@ -549,6 +555,8 @@ export const registerClient: API.OperationMethod<
     SlowDownException,
     UnsupportedGrantTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterClient",
 }));
 export type StartDeviceAuthorizationError =
@@ -577,5 +585,7 @@ export const startDeviceAuthorization: API.OperationMethod<
     SlowDownException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDeviceAuthorization",
 }));

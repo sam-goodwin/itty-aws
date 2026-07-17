@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2017,6 +2019,8 @@ export const batchGetServiceLevelObjectiveBudgetReport: API.OperationMethod<
   input: BatchGetServiceLevelObjectiveBudgetReportInput,
   output: BatchGetServiceLevelObjectiveBudgetReportOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetServiceLevelObjectiveBudgetReport",
 }));
 export type BatchUpdateExclusionWindowsError =
@@ -2036,6 +2040,8 @@ export const batchUpdateExclusionWindows: API.OperationMethod<
   input: BatchUpdateExclusionWindowsInput,
   output: BatchUpdateExclusionWindowsOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateExclusionWindows",
 }));
 export type DeleteGroupingConfigurationError =
@@ -2055,6 +2061,8 @@ export const deleteGroupingConfiguration: API.OperationMethod<
   input: DeleteGroupingConfigurationRequest,
   output: DeleteGroupingConfigurationOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroupingConfiguration",
 }));
 export type GetServiceError =
@@ -2073,6 +2081,8 @@ export const getService: API.OperationMethod<
   input: GetServiceInput,
   output: GetServiceOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetService",
 }));
 export type ListAuditFindingsError =
@@ -2091,6 +2101,8 @@ export const listAuditFindings: API.OperationMethod<
   input: ListAuditFindingsInput,
   output: ListAuditFindingsOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAuditFindings",
 }));
 export type ListEntityEventsError =
@@ -2124,6 +2136,8 @@ export const listEntityEvents: API.OperationMethod<
   input: ListEntityEventsInput,
   output: ListEntityEventsOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntityEvents",
   pagination: {
     inputToken: "NextToken",
@@ -2149,6 +2163,8 @@ export const listGroupingAttributeDefinitions: API.OperationMethod<
   input: ListGroupingAttributeDefinitionsInput,
   output: ListGroupingAttributeDefinitionsOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupingAttributeDefinitions",
 }));
 export type ListServiceDependenciesError =
@@ -2182,6 +2198,8 @@ export const listServiceDependencies: API.OperationMethod<
   input: ListServiceDependenciesInput,
   output: ListServiceDependenciesOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceDependencies",
   pagination: {
     inputToken: "NextToken",
@@ -2221,6 +2239,8 @@ export const listServiceDependents: API.OperationMethod<
   input: ListServiceDependentsInput,
   output: ListServiceDependentsOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceDependents",
   pagination: {
     inputToken: "NextToken",
@@ -2261,6 +2281,8 @@ export const listServiceLevelObjectiveExclusionWindows: API.OperationMethod<
   input: ListServiceLevelObjectiveExclusionWindowsInput,
   output: ListServiceLevelObjectiveExclusionWindowsOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceLevelObjectiveExclusionWindows",
   pagination: {
     inputToken: "NextToken",
@@ -2300,6 +2322,8 @@ export const listServiceOperations: API.OperationMethod<
   input: ListServiceOperationsInput,
   output: ListServiceOperationsOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceOperations",
   pagination: {
     inputToken: "NextToken",
@@ -2339,6 +2363,8 @@ export const listServices: API.OperationMethod<
   input: ListServicesInput,
   output: ListServicesOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
@@ -2378,6 +2404,8 @@ export const listServiceStates: API.OperationMethod<
   input: ListServiceStatesInput,
   output: ListServiceStatesOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceStates",
   pagination: {
     inputToken: "NextToken",
@@ -2402,6 +2430,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutGroupingConfigurationError =
@@ -2421,6 +2451,8 @@ export const putGroupingConfiguration: API.OperationMethod<
   input: PutGroupingConfigurationInput,
   output: PutGroupingConfigurationOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutGroupingConfiguration",
 }));
 export type StartDiscoveryError =
@@ -2458,6 +2490,8 @@ export const startDiscovery: API.OperationMethod<
   input: StartDiscoveryInput,
   output: StartDiscoveryOutput,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDiscovery",
 }));
 export type TagResourceError =
@@ -2489,6 +2523,8 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2507,6 +2543,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateServiceLevelObjectiveError =
@@ -2576,6 +2614,8 @@ export const createServiceLevelObjective: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServiceLevelObjective",
 }));
 export type GetServiceLevelObjectiveError =
@@ -2595,6 +2635,8 @@ export const getServiceLevelObjective: API.OperationMethod<
   input: GetServiceLevelObjectiveInput,
   output: GetServiceLevelObjectiveOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceLevelObjective",
 }));
 export type UpdateServiceLevelObjectiveError =
@@ -2616,6 +2658,8 @@ export const updateServiceLevelObjective: API.OperationMethod<
   input: UpdateServiceLevelObjectiveInput,
   output: UpdateServiceLevelObjectiveOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceLevelObjective",
 }));
 export type DeleteServiceLevelObjectiveError =
@@ -2635,6 +2679,8 @@ export const deleteServiceLevelObjective: API.OperationMethod<
   input: DeleteServiceLevelObjectiveInput,
   output: DeleteServiceLevelObjectiveOutput,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceLevelObjective",
 }));
 export type ListServiceLevelObjectivesError =
@@ -2668,6 +2714,8 @@ export const listServiceLevelObjectives: API.OperationMethod<
   input: ListServiceLevelObjectivesInput,
   output: ListServiceLevelObjectivesOutput,
   errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceLevelObjectives",
   pagination: {
     inputToken: "NextToken",

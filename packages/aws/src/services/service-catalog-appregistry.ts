@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1315,6 +1317,8 @@ export const associateAttributeGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAttributeGroup",
 }));
 export type AssociateResourceError =
@@ -1366,6 +1370,8 @@ export const associateResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateResource",
 }));
 export type CreateApplicationError =
@@ -1393,6 +1399,8 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateAttributeGroupError =
@@ -1421,6 +1429,8 @@ export const createAttributeGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAttributeGroup",
 }));
 export type DeleteApplicationError =
@@ -1444,6 +1454,8 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteAttributeGroupError =
@@ -1467,6 +1479,8 @@ export const deleteAttributeGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAttributeGroup",
 }));
 export type DisassociateAttributeGroupError =
@@ -1490,6 +1504,8 @@ export const disassociateAttributeGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAttributeGroup",
 }));
 export type DisassociateResourceError =
@@ -1536,6 +1552,8 @@ export const disassociateResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateResource",
 }));
 export type GetApplicationError =
@@ -1577,6 +1595,8 @@ export const getApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type GetAssociatedResourceError =
@@ -1600,6 +1620,8 @@ export const getAssociatedResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssociatedResource",
 }));
 export type GetAttributeGroupError =
@@ -1628,6 +1650,8 @@ export const getAttributeGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAttributeGroup",
 }));
 export type GetConfigurationError = InternalServerException | CommonErrors;
@@ -1644,6 +1668,8 @@ export const getConfiguration: API.OperationMethod<
   input: GetConfigurationRequest,
   output: GetConfigurationResponse,
   errors: [InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfiguration",
 }));
 export type ListApplicationsError =
@@ -1677,6 +1703,8 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
@@ -1721,6 +1749,8 @@ export const listAssociatedAttributeGroups: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedAttributeGroups",
   pagination: {
     inputToken: "nextToken",
@@ -1780,6 +1810,8 @@ export const listAssociatedResources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedResources",
   pagination: {
     inputToken: "nextToken",
@@ -1819,6 +1851,8 @@ export const listAttributeGroups: API.OperationMethod<
   input: ListAttributeGroupsRequest,
   output: ListAttributeGroupsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttributeGroups",
   pagination: {
     inputToken: "nextToken",
@@ -1863,6 +1897,8 @@ export const listAttributeGroupsForApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttributeGroupsForApplication",
   pagination: {
     inputToken: "nextToken",
@@ -1892,6 +1928,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutConfigurationError =
@@ -1912,6 +1950,8 @@ export const putConfiguration: API.OperationMethod<
   input: PutConfigurationRequest,
   output: PutConfigurationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfiguration",
 }));
 export type SyncResourceError =
@@ -1941,6 +1981,8 @@ export const syncResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SyncResource",
 }));
 export type TagResourceError =
@@ -1968,6 +2010,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1993,6 +2037,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
@@ -2020,6 +2066,8 @@ export const updateApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateAttributeGroupError =
@@ -2045,5 +2093,7 @@ export const updateAttributeGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAttributeGroup",
 }));

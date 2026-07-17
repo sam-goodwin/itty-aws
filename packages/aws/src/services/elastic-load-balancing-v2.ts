@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3723,6 +3725,8 @@ export const addListenerCertificates: API.OperationMethod<
     ListenerNotFoundException,
     TooManyCertificatesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddListenerCertificates",
 }));
 export type AddTagsError =
@@ -3759,6 +3763,8 @@ export const addTags: API.OperationMethod<
     TooManyTagsException,
     TrustStoreNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
 export type AddTrustStoreRevocationsError =
@@ -3784,6 +3790,8 @@ export const addTrustStoreRevocations: API.OperationMethod<
     TooManyTrustStoreRevocationEntriesException,
     TrustStoreNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTrustStoreRevocations",
 }));
 export type CreateListenerError =
@@ -3856,6 +3864,8 @@ export const createListener: API.OperationMethod<
     TrustStoreNotReadyException,
     UnsupportedProtocolException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateListener",
 }));
 export type CreateLoadBalancerError =
@@ -3913,6 +3923,8 @@ export const createLoadBalancer: API.OperationMethod<
     TooManyLoadBalancersException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoadBalancer",
 }));
 export type CreateRuleError =
@@ -3967,6 +3979,8 @@ export const createRule: API.OperationMethod<
     TooManyUniqueTargetGroupsPerLoadBalancerException,
     UnsupportedProtocolException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRule",
 }));
 export type CreateTargetGroupError =
@@ -4006,6 +4020,8 @@ export const createTargetGroup: API.OperationMethod<
     TooManyTagsException,
     TooManyTargetGroupsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTargetGroup",
 }));
 export type CreateTrustStoreError =
@@ -4037,6 +4053,8 @@ export const createTrustStore: API.OperationMethod<
     TooManyTagsException,
     TooManyTrustStoresException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrustStore",
 }));
 export type DeleteListenerError =
@@ -4058,6 +4076,8 @@ export const deleteListener: API.OperationMethod<
   input: DeleteListenerInput,
   output: DeleteListenerOutput,
   errors: [ListenerNotFoundException, ResourceInUseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteListener",
 }));
 export type DeleteLoadBalancerError =
@@ -4089,6 +4109,8 @@ export const deleteLoadBalancer: API.OperationMethod<
     OperationNotPermittedException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoadBalancer",
 }));
 export type DeleteRuleError =
@@ -4109,6 +4131,8 @@ export const deleteRule: API.OperationMethod<
   input: DeleteRuleInput,
   output: DeleteRuleOutput,
   errors: [OperationNotPermittedException, RuleNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRule",
 }));
 export type DeleteSharedTrustStoreAssociationError =
@@ -4132,6 +4156,8 @@ export const deleteSharedTrustStoreAssociation: API.OperationMethod<
     TrustStoreAssociationNotFoundException,
     TrustStoreNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSharedTrustStoreAssociation",
 }));
 export type DeleteTargetGroupError = ResourceInUseException | CommonErrors;
@@ -4152,6 +4178,8 @@ export const deleteTargetGroup: API.OperationMethod<
   input: DeleteTargetGroupInput,
   output: DeleteTargetGroupOutput,
   errors: [ResourceInUseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTargetGroup",
 }));
 export type DeleteTrustStoreError =
@@ -4170,6 +4198,8 @@ export const deleteTrustStore: API.OperationMethod<
   input: DeleteTrustStoreInput,
   output: DeleteTrustStoreOutput,
   errors: [TrustStoreInUseException, TrustStoreNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrustStore",
 }));
 export type DeregisterTargetsError =
@@ -4206,6 +4236,8 @@ export const deregisterTargets: API.OperationMethod<
   input: DeregisterTargetsInput,
   output: DeregisterTargetsOutput,
   errors: [InvalidTargetException, TargetGroupNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterTargets",
 }));
 export type DescribeAccountLimitsError = CommonErrors;
@@ -4248,6 +4280,8 @@ export const describeAccountLimits: API.OperationMethod<
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountLimits",
   pagination: {
     inputToken: "Marker",
@@ -4270,6 +4304,8 @@ export const describeCapacityReservation: API.OperationMethod<
   input: DescribeCapacityReservationInput,
   output: DescribeCapacityReservationOutput,
   errors: [LoadBalancerNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityReservation",
 }));
 export type DescribeListenerAttributesError =
@@ -4287,6 +4323,8 @@ export const describeListenerAttributes: API.OperationMethod<
   input: DescribeListenerAttributesInput,
   output: DescribeListenerAttributesOutput,
   errors: [ListenerNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeListenerAttributes",
 }));
 export type DescribeListenerCertificatesError =
@@ -4328,6 +4366,8 @@ export const describeListenerCertificates: API.OperationMethod<
   input: DescribeListenerCertificatesInput,
   output: DescribeListenerCertificatesOutput,
   errors: [ListenerNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeListenerCertificates",
   pagination: {
     inputToken: "Marker",
@@ -4373,6 +4413,8 @@ export const describeListeners: API.OperationMethod<
     LoadBalancerNotFoundException,
     UnsupportedProtocolException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeListeners",
   pagination: {
     inputToken: "Marker",
@@ -4407,6 +4449,8 @@ export const describeLoadBalancerAttributes: API.OperationMethod<
   input: DescribeLoadBalancerAttributesInput,
   output: DescribeLoadBalancerAttributesOutput,
   errors: [LoadBalancerNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoadBalancerAttributes",
 }));
 export type DescribeLoadBalancersError =
@@ -4439,6 +4483,8 @@ export const describeLoadBalancers: API.OperationMethod<
   input: DescribeLoadBalancersInput,
   output: DescribeLoadBalancersOutput,
   errors: [LoadBalancerNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoadBalancers",
   pagination: {
     inputToken: "Marker",
@@ -4483,6 +4529,8 @@ export const describeRules: API.OperationMethod<
     RuleNotFoundException,
     UnsupportedProtocolException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRules",
   pagination: {
     inputToken: "Marker",
@@ -4508,6 +4556,8 @@ export const describeSSLPolicies: API.OperationMethod<
   input: DescribeSSLPoliciesInput,
   output: DescribeSSLPoliciesOutput,
   errors: [SSLPolicyNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSSLPolicies",
 }));
 export type DescribeTagsError =
@@ -4537,6 +4587,8 @@ export const describeTags: API.OperationMethod<
     TargetGroupNotFoundException,
     TrustStoreNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
 }));
 export type DescribeTargetGroupAttributesError =
@@ -4565,6 +4617,8 @@ export const describeTargetGroupAttributes: API.OperationMethod<
   input: DescribeTargetGroupAttributesInput,
   output: DescribeTargetGroupAttributesOutput,
   errors: [TargetGroupNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTargetGroupAttributes",
 }));
 export type DescribeTargetGroupsError =
@@ -4601,6 +4655,8 @@ export const describeTargetGroups: API.OperationMethod<
   input: DescribeTargetGroupsInput,
   output: DescribeTargetGroupsOutput,
   errors: [LoadBalancerNotFoundException, TargetGroupNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTargetGroups",
   pagination: {
     inputToken: "Marker",
@@ -4629,6 +4685,8 @@ export const describeTargetHealth: API.OperationMethod<
     InvalidTargetException,
     TargetGroupNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTargetHealth",
 }));
 export type DescribeTrustStoreAssociationsError =
@@ -4661,6 +4719,8 @@ export const describeTrustStoreAssociations: API.OperationMethod<
   input: DescribeTrustStoreAssociationsInput,
   output: DescribeTrustStoreAssociationsOutput,
   errors: [TrustStoreNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrustStoreAssociations",
   pagination: {
     inputToken: "Marker",
@@ -4701,6 +4761,8 @@ export const describeTrustStoreRevocations: API.OperationMethod<
   input: DescribeTrustStoreRevocationsInput,
   output: DescribeTrustStoreRevocationsOutput,
   errors: [RevocationIdNotFoundException, TrustStoreNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrustStoreRevocations",
   pagination: {
     inputToken: "Marker",
@@ -4739,6 +4801,8 @@ export const describeTrustStores: API.OperationMethod<
   input: DescribeTrustStoresInput,
   output: DescribeTrustStoresOutput,
   errors: [TrustStoreNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrustStores",
   pagination: {
     inputToken: "Marker",
@@ -4760,6 +4824,8 @@ export const getResourcePolicy: API.OperationMethod<
   input: GetResourcePolicyInput,
   output: GetResourcePolicyOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetTrustStoreCaCertificatesBundleError =
@@ -4780,6 +4846,8 @@ export const getTrustStoreCaCertificatesBundle: API.OperationMethod<
   input: GetTrustStoreCaCertificatesBundleInput,
   output: GetTrustStoreCaCertificatesBundleOutput,
   errors: [TrustStoreNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrustStoreCaCertificatesBundle",
 }));
 export type GetTrustStoreRevocationContentError =
@@ -4801,6 +4869,8 @@ export const getTrustStoreRevocationContent: API.OperationMethod<
   input: GetTrustStoreRevocationContentInput,
   output: GetTrustStoreRevocationContentOutput,
   errors: [RevocationIdNotFoundException, TrustStoreNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrustStoreRevocationContent",
 }));
 export type ModifyCapacityReservationError =
@@ -4837,6 +4907,8 @@ export const modifyCapacityReservation: API.OperationMethod<
     OperationNotPermittedException,
     PriorRequestNotCompleteException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCapacityReservation",
 }));
 export type ModifyIpPoolsError = LoadBalancerNotFoundException | CommonErrors;
@@ -4852,6 +4924,8 @@ export const modifyIpPools: API.OperationMethod<
   input: ModifyIpPoolsInput,
   output: ModifyIpPoolsOutput,
   errors: [LoadBalancerNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIpPools",
 }));
 export type ModifyListenerError =
@@ -4916,6 +4990,8 @@ export const modifyListener: API.OperationMethod<
     TrustStoreNotReadyException,
     UnsupportedProtocolException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyListener",
 }));
 export type ModifyListenerAttributesError =
@@ -4934,6 +5010,8 @@ export const modifyListenerAttributes: API.OperationMethod<
   input: ModifyListenerAttributesInput,
   output: ModifyListenerAttributesOutput,
   errors: [InvalidConfigurationRequestException, ListenerNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyListenerAttributes",
 }));
 export type ModifyLoadBalancerAttributesError =
@@ -4956,6 +5034,8 @@ export const modifyLoadBalancerAttributes: API.OperationMethod<
   input: ModifyLoadBalancerAttributesInput,
   output: ModifyLoadBalancerAttributesOutput,
   errors: [InvalidConfigurationRequestException, LoadBalancerNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyLoadBalancerAttributes",
 }));
 export type ModifyRuleError =
@@ -5000,6 +5080,8 @@ export const modifyRule: API.OperationMethod<
     TooManyUniqueTargetGroupsPerLoadBalancerException,
     UnsupportedProtocolException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyRule",
 }));
 export type ModifyTargetGroupError =
@@ -5019,6 +5101,8 @@ export const modifyTargetGroup: API.OperationMethod<
   input: ModifyTargetGroupInput,
   output: ModifyTargetGroupOutput,
   errors: [InvalidConfigurationRequestException, TargetGroupNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTargetGroup",
 }));
 export type ModifyTargetGroupAttributesError =
@@ -5037,6 +5121,8 @@ export const modifyTargetGroupAttributes: API.OperationMethod<
   input: ModifyTargetGroupAttributesInput,
   output: ModifyTargetGroupAttributesOutput,
   errors: [InvalidConfigurationRequestException, TargetGroupNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTargetGroupAttributes",
 }));
 export type ModifyTrustStoreError =
@@ -5060,6 +5146,8 @@ export const modifyTrustStore: API.OperationMethod<
     InvalidCaCertificatesBundleException,
     TrustStoreNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTrustStore",
 }));
 export type RegisterTargetsError =
@@ -5104,6 +5192,8 @@ export const registerTargets: API.OperationMethod<
     TooManyRegistrationsForTargetIdException,
     TooManyTargetsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterTargets",
 }));
 export type RemoveListenerCertificatesError =
@@ -5123,6 +5213,8 @@ export const removeListenerCertificates: API.OperationMethod<
   input: RemoveListenerCertificatesInput,
   output: RemoveListenerCertificatesOutput,
   errors: [ListenerNotFoundException, OperationNotPermittedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveListenerCertificates",
 }));
 export type RemoveTagsError =
@@ -5154,6 +5246,8 @@ export const removeTags: API.OperationMethod<
     TooManyTagsException,
     TrustStoreNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
 export type RemoveTrustStoreRevocationsError =
@@ -5172,6 +5266,8 @@ export const removeTrustStoreRevocations: API.OperationMethod<
   input: RemoveTrustStoreRevocationsInput,
   output: RemoveTrustStoreRevocationsOutput,
   errors: [RevocationIdNotFoundException, TrustStoreNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTrustStoreRevocations",
 }));
 export type SetIpAddressTypeError =
@@ -5195,6 +5291,8 @@ export const setIpAddressType: API.OperationMethod<
     InvalidSubnetException,
     LoadBalancerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIpAddressType",
 }));
 export type SetRulePrioritiesError =
@@ -5221,6 +5319,8 @@ export const setRulePriorities: API.OperationMethod<
     PriorityInUseException,
     RuleNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetRulePriorities",
 }));
 export type SetSecurityGroupsError =
@@ -5251,6 +5351,8 @@ export const setSecurityGroups: API.OperationMethod<
     InvalidSecurityGroupException,
     LoadBalancerNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetSecurityGroups",
 }));
 export type SetSubnetsError =
@@ -5284,5 +5386,7 @@ export const setSubnets: API.OperationMethod<
     LoadBalancerNotFoundException,
     SubnetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetSubnets",
 }));

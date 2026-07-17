@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -843,6 +845,8 @@ export const associateProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateProfile",
 }));
 export type AssociateResourceToProfileError =
@@ -876,6 +880,8 @@ export const associateResourceToProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateResourceToProfile",
 }));
 export type CreateProfileError =
@@ -903,6 +909,8 @@ export const createProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProfile",
 }));
 export type DeleteProfileError =
@@ -930,6 +938,8 @@ export const deleteProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfile",
 }));
 export type DisassociateProfileError =
@@ -959,6 +969,8 @@ export const disassociateProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateProfile",
 }));
 export type DisassociateResourceFromProfileError =
@@ -992,6 +1004,8 @@ export const disassociateResourceFromProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateResourceFromProfile",
 }));
 export type GetProfileError =
@@ -1017,6 +1031,8 @@ export const getProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfile",
 }));
 export type GetProfileAssociationError =
@@ -1042,6 +1058,8 @@ export const getProfileAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfileAssociation",
 }));
 export type GetProfileResourceAssociationError =
@@ -1069,6 +1087,8 @@ export const getProfileResourceAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfileResourceAssociation",
 }));
 export type ListProfileAssociationsError =
@@ -1111,6 +1131,8 @@ export const listProfileAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -1163,6 +1185,8 @@ export const listProfileResourceAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileResourceAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -1211,6 +1235,8 @@ export const listProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -1244,6 +1270,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1269,6 +1297,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1296,6 +1326,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateProfileResourceAssociationError =
@@ -1329,5 +1361,7 @@ export const updateProfileResourceAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProfileResourceAssociation",
 }));

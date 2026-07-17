@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1448,6 +1450,8 @@ export const copyImageSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyImageSet",
 }));
 export type DeleteImageSetError =
@@ -1477,6 +1481,8 @@ export const deleteImageSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImageSet",
 }));
 export type GetDICOMImportJobError =
@@ -1508,6 +1514,8 @@ export const getDICOMImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDICOMImportJob",
 }));
 export type GetImageFrameError =
@@ -1541,6 +1549,8 @@ export const getImageFrame: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImageFrame",
 }));
 export type GetImageSetError =
@@ -1570,6 +1580,8 @@ export const getImageSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImageSet",
 }));
 export type GetImageSetMetadataError =
@@ -1599,6 +1611,8 @@ export const getImageSetMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImageSetMetadata",
 }));
 export type ListDICOMImportJobsError =
@@ -1643,6 +1657,8 @@ export const listDICOMImportJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDICOMImportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -1693,6 +1709,8 @@ export const listImageSetVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageSetVersions",
   pagination: {
     inputToken: "nextToken",
@@ -1726,6 +1744,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type SearchImageSetsError =
@@ -1774,6 +1794,8 @@ export const searchImageSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchImageSets",
   pagination: {
     inputToken: "nextToken",
@@ -1811,6 +1833,8 @@ export const startDICOMImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDICOMImportJob",
 }));
 export type TagResourceError =
@@ -1838,6 +1862,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1865,6 +1891,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateImageSetMetadataError =
@@ -1896,6 +1924,8 @@ export const updateImageSetMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateImageSetMetadata",
 }));
 export type CreateDatastoreError =
@@ -1927,6 +1957,8 @@ export const createDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatastore",
 }));
 export type GetDatastoreError =
@@ -1954,6 +1986,8 @@ export const getDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDatastore",
 }));
 export type DeleteDatastoreError =
@@ -1985,6 +2019,8 @@ export const deleteDatastore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDatastore",
 }));
 export type ListDatastoresError =
@@ -2025,6 +2061,8 @@ export const listDatastores: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatastores",
   pagination: {
     inputToken: "nextToken",

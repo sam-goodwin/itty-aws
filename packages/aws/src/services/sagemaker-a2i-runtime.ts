@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -387,6 +389,8 @@ export const deleteHumanLoop: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHumanLoop",
 }));
 export type DescribeHumanLoopError =
@@ -413,6 +417,8 @@ export const describeHumanLoop: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHumanLoop",
 }));
 export type ListHumanLoopsError =
@@ -453,6 +459,8 @@ export const listHumanLoops: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHumanLoops",
   pagination: {
     inputToken: "NextToken",
@@ -486,6 +494,8 @@ export const startHumanLoop: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartHumanLoop",
 }));
 export type StopHumanLoopError =
@@ -511,5 +521,7 @@ export const stopHumanLoop: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopHumanLoop",
 }));

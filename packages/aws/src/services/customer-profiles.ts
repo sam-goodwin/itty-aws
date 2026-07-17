@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -7490,6 +7492,8 @@ export const addProfileKey: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddProfileKey",
 }));
 export type BatchGetCalculatedAttributeForProfileError =
@@ -7517,6 +7521,8 @@ export const batchGetCalculatedAttributeForProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetCalculatedAttributeForProfile",
 }));
 export type BatchGetProfileError =
@@ -7544,6 +7550,8 @@ export const batchGetProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetProfile",
 }));
 export type CreateCalculatedAttributeDefinitionError =
@@ -7576,6 +7584,8 @@ export const createCalculatedAttributeDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCalculatedAttributeDefinition",
 }));
 export type CreateDomainError =
@@ -7622,6 +7632,8 @@ export const createDomain: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
 export type CreateDomainLayoutError =
@@ -7650,6 +7662,8 @@ export const createDomainLayout: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainLayout",
 }));
 export type CreateEventStreamError =
@@ -7681,6 +7695,8 @@ export const createEventStream: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventStream",
 }));
 export type CreateEventTriggerError =
@@ -7712,6 +7728,8 @@ export const createEventTrigger: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventTrigger",
 }));
 export type CreateIntegrationWorkflowError =
@@ -7740,6 +7758,8 @@ export const createIntegrationWorkflow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegrationWorkflow",
 }));
 export type CreateProfileError =
@@ -7770,6 +7790,8 @@ export const createProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProfile",
 }));
 export type CreateRecommenderError =
@@ -7797,6 +7819,8 @@ export const createRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecommender",
 }));
 export type CreateRecommenderFilterError =
@@ -7824,6 +7848,8 @@ export const createRecommenderFilter: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecommenderFilter",
 }));
 export type CreateSegmentDefinitionError =
@@ -7851,6 +7877,8 @@ export const createSegmentDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSegmentDefinition",
 }));
 export type CreateSegmentEstimateError =
@@ -7878,6 +7906,8 @@ export const createSegmentEstimate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSegmentEstimate",
 }));
 export type CreateSegmentSnapshotError =
@@ -7905,6 +7935,8 @@ export const createSegmentSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSegmentSnapshot",
 }));
 export type CreateUploadJobError =
@@ -7933,6 +7965,8 @@ export const createUploadJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUploadJob",
 }));
 export type DeleteCalculatedAttributeDefinitionError =
@@ -7963,6 +7997,8 @@ export const deleteCalculatedAttributeDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCalculatedAttributeDefinition",
 }));
 export type DeleteDomainError =
@@ -7991,6 +8027,8 @@ export const deleteDomain: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
 export type DeleteDomainLayoutError =
@@ -8019,6 +8057,8 @@ export const deleteDomainLayout: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainLayout",
 }));
 export type DeleteDomainObjectTypeError =
@@ -8046,6 +8086,8 @@ export const deleteDomainObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainObjectType",
 }));
 export type DeleteEventStreamError =
@@ -8073,6 +8115,8 @@ export const deleteEventStream: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventStream",
 }));
 export type DeleteEventTriggerError =
@@ -8102,6 +8146,8 @@ export const deleteEventTrigger: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventTrigger",
 }));
 export type DeleteIntegrationError =
@@ -8129,6 +8175,8 @@ export const deleteIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegration",
 }));
 export type DeleteProfileError =
@@ -8156,6 +8204,8 @@ export const deleteProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfile",
 }));
 export type DeleteProfileKeyError =
@@ -8183,6 +8233,8 @@ export const deleteProfileKey: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfileKey",
 }));
 export type DeleteProfileObjectError =
@@ -8210,6 +8262,8 @@ export const deleteProfileObject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfileObject",
 }));
 export type DeleteProfileObjectTypeError =
@@ -8240,6 +8294,8 @@ export const deleteProfileObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfileObjectType",
 }));
 export type DeleteRecommenderError =
@@ -8267,6 +8323,8 @@ export const deleteRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecommender",
 }));
 export type DeleteRecommenderFilterError =
@@ -8294,6 +8352,8 @@ export const deleteRecommenderFilter: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecommenderFilter",
 }));
 export type DeleteSegmentDefinitionError =
@@ -8321,6 +8381,8 @@ export const deleteSegmentDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSegmentDefinition",
 }));
 export type DeleteWorkflowError =
@@ -8349,6 +8411,8 @@ export const deleteWorkflow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflow",
 }));
 export type DetectProfileObjectTypeError =
@@ -8376,6 +8440,8 @@ export const detectProfileObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectProfileObjectType",
 }));
 export type GetAutoMergingPreviewError =
@@ -8415,6 +8481,8 @@ export const getAutoMergingPreview: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutoMergingPreview",
 }));
 export type GetCalculatedAttributeDefinitionError =
@@ -8443,6 +8511,8 @@ export const getCalculatedAttributeDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCalculatedAttributeDefinition",
 }));
 export type GetCalculatedAttributeForProfileError =
@@ -8470,6 +8540,8 @@ export const getCalculatedAttributeForProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCalculatedAttributeForProfile",
 }));
 export type GetDomainError =
@@ -8497,6 +8569,8 @@ export const getDomain: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomain",
 }));
 export type GetDomainLayoutError =
@@ -8525,6 +8599,8 @@ export const getDomainLayout: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainLayout",
 }));
 export type GetDomainObjectTypeError =
@@ -8552,6 +8628,8 @@ export const getDomainObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainObjectType",
 }));
 export type GetEventStreamError =
@@ -8579,6 +8657,8 @@ export const getEventStream: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventStream",
 }));
 export type GetEventTriggerError =
@@ -8606,6 +8686,8 @@ export const getEventTrigger: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventTrigger",
 }));
 export type GetIdentityResolutionJobError =
@@ -8636,6 +8718,8 @@ export const getIdentityResolutionJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityResolutionJob",
 }));
 export type GetIntegrationError =
@@ -8663,6 +8747,8 @@ export const getIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegration",
 }));
 export type GetMatchesError =
@@ -8727,6 +8813,8 @@ export const getMatches: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMatches",
 }));
 export type GetObjectTypeAttributeStatisticsError =
@@ -8760,6 +8848,8 @@ export const getObjectTypeAttributeStatistics: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectTypeAttributeStatistics",
 }));
 export type GetProfileHistoryRecordError =
@@ -8787,6 +8877,8 @@ export const getProfileHistoryRecord: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfileHistoryRecord",
 }));
 export type GetProfileObjectTypeError =
@@ -8814,6 +8906,8 @@ export const getProfileObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfileObjectType",
 }));
 export type GetProfileObjectTypeTemplateError =
@@ -8846,6 +8940,8 @@ export const getProfileObjectTypeTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfileObjectTypeTemplate",
 }));
 export type GetProfileRecommendationsError =
@@ -8873,6 +8969,8 @@ export const getProfileRecommendations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfileRecommendations",
 }));
 export type GetRecommenderError =
@@ -8900,6 +8998,8 @@ export const getRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommender",
 }));
 export type GetRecommenderFilterError =
@@ -8927,6 +9027,8 @@ export const getRecommenderFilter: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommenderFilter",
 }));
 export type GetSegmentDefinitionError =
@@ -8954,6 +9056,8 @@ export const getSegmentDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentDefinition",
 }));
 export type GetSegmentEstimateError =
@@ -8981,6 +9085,8 @@ export const getSegmentEstimate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentEstimate",
 }));
 export type GetSegmentMembershipError =
@@ -9008,6 +9114,8 @@ export const getSegmentMembership: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentMembership",
 }));
 export type GetSegmentSnapshotError =
@@ -9035,6 +9143,8 @@ export const getSegmentSnapshot: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentSnapshot",
 }));
 export type GetSimilarProfilesError =
@@ -9080,6 +9190,8 @@ export const getSimilarProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSimilarProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -9113,6 +9225,8 @@ export const getUploadJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUploadJob",
 }));
 export type GetUploadJobPathError =
@@ -9141,6 +9255,8 @@ export const getUploadJobPath: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUploadJobPath",
 }));
 export type GetWorkflowError =
@@ -9168,6 +9284,8 @@ export const getWorkflow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflow",
 }));
 export type GetWorkflowStepsError =
@@ -9195,6 +9313,8 @@ export const getWorkflowSteps: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowSteps",
 }));
 export type ListAccountIntegrationsError =
@@ -9222,6 +9342,8 @@ export const listAccountIntegrations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountIntegrations",
 }));
 export type ListCalculatedAttributeDefinitionsError =
@@ -9249,6 +9371,8 @@ export const listCalculatedAttributeDefinitions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCalculatedAttributeDefinitions",
 }));
 export type ListCalculatedAttributesForProfileError =
@@ -9276,6 +9400,8 @@ export const listCalculatedAttributesForProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCalculatedAttributesForProfile",
 }));
 export type ListDomainLayoutsError =
@@ -9319,6 +9445,8 @@ export const listDomainLayouts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainLayouts",
   pagination: {
     inputToken: "NextToken",
@@ -9367,6 +9495,8 @@ export const listDomainObjectTypes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainObjectTypes",
   pagination: {
     inputToken: "NextToken",
@@ -9400,6 +9530,8 @@ export const listDomains: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomains",
 }));
 export type ListEventStreamsError =
@@ -9442,6 +9574,8 @@ export const listEventStreams: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventStreams",
   pagination: {
     inputToken: "NextToken",
@@ -9490,6 +9624,8 @@ export const listEventTriggers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventTriggers",
   pagination: {
     inputToken: "NextToken",
@@ -9524,6 +9660,8 @@ export const listIdentityResolutionJobs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentityResolutionJobs",
 }));
 export type ListIntegrationsError =
@@ -9551,6 +9689,8 @@ export const listIntegrations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntegrations",
 }));
 export type ListObjectTypeAttributesError =
@@ -9593,6 +9733,8 @@ export const listObjectTypeAttributes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectTypeAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -9626,6 +9768,8 @@ export const listObjectTypeAttributeValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectTypeAttributeValues",
 }));
 export type ListProfileAttributeValuesError =
@@ -9653,6 +9797,8 @@ export const listProfileAttributeValues: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileAttributeValues",
 }));
 export type ListProfileHistoryRecordsError =
@@ -9680,6 +9826,8 @@ export const listProfileHistoryRecords: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileHistoryRecords",
 }));
 export type ListProfileObjectsError =
@@ -9707,6 +9855,8 @@ export const listProfileObjects: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileObjects",
 }));
 export type ListProfileObjectTypesError =
@@ -9734,6 +9884,8 @@ export const listProfileObjectTypes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileObjectTypes",
 }));
 export type ListProfileObjectTypeTemplatesError =
@@ -9761,6 +9913,8 @@ export const listProfileObjectTypeTemplates: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileObjectTypeTemplates",
 }));
 export type ListRecommenderFiltersError =
@@ -9803,6 +9957,8 @@ export const listRecommenderFilters: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommenderFilters",
   pagination: {
     inputToken: "NextToken",
@@ -9849,6 +10005,8 @@ export const listRecommenderRecipes: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommenderRecipes",
   pagination: {
     inputToken: "NextToken",
@@ -9897,6 +10055,8 @@ export const listRecommenders: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommenders",
   pagination: {
     inputToken: "NextToken",
@@ -9945,6 +10105,8 @@ export const listRuleBasedMatches: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleBasedMatches",
   pagination: {
     inputToken: "NextToken",
@@ -9993,6 +10155,8 @@ export const listSegmentDefinitions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSegmentDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -10023,6 +10187,8 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListUploadJobsError =
@@ -10065,6 +10231,8 @@ export const listUploadJobs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUploadJobs",
   pagination: {
     inputToken: "NextToken",
@@ -10098,6 +10266,8 @@ export const listWorkflows: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflows",
 }));
 export type MergeProfilesError =
@@ -10151,6 +10321,8 @@ export const mergeProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergeProfiles",
 }));
 export type PutDomainObjectTypeError =
@@ -10178,6 +10350,8 @@ export const putDomainObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDomainObjectType",
 }));
 export type PutIntegrationError =
@@ -10212,6 +10386,8 @@ export const putIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutIntegration",
 }));
 export type PutProfileObjectError =
@@ -10251,6 +10427,8 @@ export const putProfileObject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProfileObject",
 }));
 export type PutProfileObjectTypeError =
@@ -10281,6 +10459,8 @@ export const putProfileObjectType: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProfileObjectType",
 }));
 export type SearchProfilesError =
@@ -10314,6 +10494,8 @@ export const searchProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchProfiles",
 }));
 export type StartRecommenderError =
@@ -10341,6 +10523,8 @@ export const startRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRecommender",
 }));
 export type StartUploadJobError =
@@ -10368,6 +10552,8 @@ export const startUploadJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartUploadJob",
 }));
 export type StopRecommenderError =
@@ -10395,6 +10581,8 @@ export const stopRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRecommender",
 }));
 export type StopUploadJobError =
@@ -10422,6 +10610,8 @@ export const stopUploadJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopUploadJob",
 }));
 export type TagResourceError =
@@ -10459,6 +10649,8 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -10483,6 +10675,8 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateCalculatedAttributeDefinitionError =
@@ -10512,6 +10706,8 @@ export const updateCalculatedAttributeDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCalculatedAttributeDefinition",
 }));
 export type UpdateDomainError =
@@ -10551,6 +10747,8 @@ export const updateDomain: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomain",
 }));
 export type UpdateDomainLayoutError =
@@ -10579,6 +10777,8 @@ export const updateDomainLayout: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainLayout",
 }));
 export type UpdateEventTriggerError =
@@ -10606,6 +10806,8 @@ export const updateEventTrigger: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventTrigger",
 }));
 export type UpdateProfileError =
@@ -10638,6 +10840,8 @@ export const updateProfile: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProfile",
 }));
 export type UpdateRecommenderError =
@@ -10665,5 +10869,7 @@ export const updateRecommender: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecommender",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2097,6 +2099,8 @@ export const approvePlanExecutionStep: API.OperationMethod<
   input: ApprovePlanExecutionStepRequest,
   output: ApprovePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApprovePlanExecutionStep",
 }));
 export type CancelPlanExecutionError =
@@ -2117,6 +2121,8 @@ export const cancelPlanExecution: API.OperationMethod<
   input: CancelPlanExecutionRequest,
   output: CancelPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelPlanExecution",
 }));
 export type GetPlanEvaluationStatusError =
@@ -2150,6 +2156,8 @@ export const getPlanEvaluationStatus: API.OperationMethod<
   input: GetPlanEvaluationStatusRequest,
   output: GetPlanEvaluationStatusResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlanEvaluationStatus",
   pagination: {
     inputToken: "nextToken",
@@ -2189,6 +2197,8 @@ export const getPlanExecution: API.OperationMethod<
   input: GetPlanExecutionRequest,
   output: GetPlanExecutionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlanExecution",
   pagination: {
     inputToken: "nextToken",
@@ -2213,6 +2223,8 @@ export const getPlanInRegion: API.OperationMethod<
   input: GetPlanInRegionRequest,
   output: GetPlanInRegionResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlanInRegion",
 }));
 export type ListPlanExecutionEventsError =
@@ -2246,6 +2258,8 @@ export const listPlanExecutionEvents: API.OperationMethod<
   input: ListPlanExecutionEventsRequest,
   output: ListPlanExecutionEventsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlanExecutionEvents",
   pagination: {
     inputToken: "nextToken",
@@ -2285,6 +2299,8 @@ export const listPlanExecutions: API.OperationMethod<
   input: ListPlanExecutionsRequest,
   output: ListPlanExecutionsResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlanExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -2321,6 +2337,8 @@ export const listPlansInRegion: API.OperationMethod<
   input: ListPlansInRegionRequest,
   output: ListPlansInRegionResponse,
   errors: [AccessDeniedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlansInRegion",
   pagination: {
     inputToken: "nextToken",
@@ -2365,6 +2383,8 @@ export const listRoute53HealthChecks: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoute53HealthChecks",
   pagination: {
     inputToken: "nextToken",
@@ -2411,6 +2431,8 @@ export const listRoute53HealthChecksInRegion: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoute53HealthChecksInRegion",
   pagination: {
     inputToken: "nextToken",
@@ -2444,6 +2466,8 @@ export const startPlanExecution: API.OperationMethod<
     IllegalStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPlanExecution",
 }));
 export type UpdatePlanExecutionError =
@@ -2467,6 +2491,8 @@ export const updatePlanExecution: API.OperationMethod<
     IllegalStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePlanExecution",
 }));
 export type UpdatePlanExecutionStepError =
@@ -2485,6 +2511,8 @@ export const updatePlanExecutionStep: API.OperationMethod<
   input: UpdatePlanExecutionStepRequest,
   output: UpdatePlanExecutionStepResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePlanExecutionStep",
 }));
 export type CreatePlanError = CommonErrors;
@@ -2502,6 +2530,8 @@ export const createPlan: API.OperationMethod<
   input: CreatePlanRequest,
   output: CreatePlanResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePlan",
 }));
 export type GetPlanError = ResourceNotFoundException | CommonErrors;
@@ -2517,6 +2547,8 @@ export const getPlan: API.OperationMethod<
   input: GetPlanRequest,
   output: GetPlanResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlan",
 }));
 export type UpdatePlanError = ResourceNotFoundException | CommonErrors;
@@ -2532,6 +2564,8 @@ export const updatePlan: API.OperationMethod<
   input: UpdatePlanRequest,
   output: UpdatePlanResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePlan",
 }));
 export type DeletePlanError =
@@ -2552,6 +2586,8 @@ export const deletePlan: API.OperationMethod<
   input: DeletePlanRequest,
   output: DeletePlanResponse,
   errors: [IllegalStateException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePlan",
 }));
 export type ListPlansError = CommonErrors;
@@ -2582,6 +2618,8 @@ export const listPlans: API.OperationMethod<
   input: ListPlansRequest,
   output: ListPlansResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlans",
   pagination: {
     inputToken: "nextToken",
@@ -2606,6 +2644,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2624,6 +2664,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2642,5 +2684,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

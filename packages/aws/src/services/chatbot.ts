@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1747,6 +1749,8 @@ export const associateToConfiguration: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateToConfiguration",
 }));
 export type CreateChimeWebhookConfigurationError =
@@ -1774,6 +1778,8 @@ export const createChimeWebhookConfiguration: API.OperationMethod<
     InvalidRequestException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChimeWebhookConfiguration",
 }));
 export type CreateMicrosoftTeamsChannelConfigurationError =
@@ -1801,6 +1807,8 @@ export const createMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     InvalidRequestException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMicrosoftTeamsChannelConfiguration",
 }));
 export type CreateSlackChannelConfigurationError =
@@ -1828,6 +1836,8 @@ export const createSlackChannelConfiguration: API.OperationMethod<
     InvalidRequestException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSlackChannelConfiguration",
 }));
 export type DeleteChimeWebhookConfigurationError =
@@ -1853,6 +1863,8 @@ export const deleteChimeWebhookConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChimeWebhookConfiguration",
 }));
 export type DeleteMicrosoftTeamsChannelConfigurationError =
@@ -1878,6 +1890,8 @@ export const deleteMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMicrosoftTeamsChannelConfiguration",
 }));
 export type DeleteMicrosoftTeamsConfiguredTeamError =
@@ -1896,6 +1910,8 @@ export const deleteMicrosoftTeamsConfiguredTeam: API.OperationMethod<
   input: DeleteTeamsConfiguredTeamRequest,
   output: DeleteTeamsConfiguredTeamResult,
   errors: [DeleteTeamsConfiguredTeamException, InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMicrosoftTeamsConfiguredTeam",
 }));
 export type DeleteMicrosoftTeamsUserIdentityError =
@@ -1919,6 +1935,8 @@ export const deleteMicrosoftTeamsUserIdentity: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMicrosoftTeamsUserIdentity",
 }));
 export type DeleteSlackChannelConfigurationError =
@@ -1944,6 +1962,8 @@ export const deleteSlackChannelConfiguration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSlackChannelConfiguration",
 }));
 export type DeleteSlackUserIdentityError =
@@ -1967,6 +1987,8 @@ export const deleteSlackUserIdentity: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSlackUserIdentity",
 }));
 export type DeleteSlackWorkspaceAuthorizationError =
@@ -1985,6 +2007,8 @@ export const deleteSlackWorkspaceAuthorization: API.OperationMethod<
   input: DeleteSlackWorkspaceAuthorizationRequest,
   output: DeleteSlackWorkspaceAuthorizationResult,
   errors: [DeleteSlackWorkspaceAuthorizationFault, InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSlackWorkspaceAuthorization",
 }));
 export type DescribeChimeWebhookConfigurationsError =
@@ -2023,6 +2047,8 @@ export const describeChimeWebhookConfigurations: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChimeWebhookConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -2067,6 +2093,8 @@ export const describeSlackChannelConfigurations: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSlackChannelConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -2111,6 +2139,8 @@ export const describeSlackUserIdentities: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSlackUserIdentities",
   pagination: {
     inputToken: "NextToken",
@@ -2155,6 +2185,8 @@ export const describeSlackWorkspaces: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSlackWorkspaces",
   pagination: {
     inputToken: "NextToken",
@@ -2184,6 +2216,8 @@ export const disassociateFromConfiguration: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFromConfiguration",
 }));
 export type GetAccountPreferencesError =
@@ -2202,6 +2236,8 @@ export const getAccountPreferences: API.OperationMethod<
   input: GetAccountPreferencesRequest,
   output: GetAccountPreferencesResult,
   errors: [GetAccountPreferencesException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountPreferences",
 }));
 export type GetMicrosoftTeamsChannelConfigurationError =
@@ -2225,6 +2261,8 @@ export const getMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     InvalidParameterException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMicrosoftTeamsChannelConfiguration",
 }));
 export type ListAssociationsError = CommonErrors;
@@ -2255,6 +2293,8 @@ export const listAssociations: API.OperationMethod<
   input: ListAssociationsRequest,
   output: ListAssociationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -2299,6 +2339,8 @@ export const listMicrosoftTeamsChannelConfigurations: API.OperationMethod<
     InvalidRequestException,
     ListTeamsChannelConfigurationsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMicrosoftTeamsChannelConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -2343,6 +2385,8 @@ export const listMicrosoftTeamsConfiguredTeams: API.OperationMethod<
     InvalidRequestException,
     ListMicrosoftTeamsConfiguredTeamsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMicrosoftTeamsConfiguredTeams",
   pagination: {
     inputToken: "NextToken",
@@ -2387,6 +2431,8 @@ export const listMicrosoftTeamsUserIdentities: API.OperationMethod<
     InvalidRequestException,
     ListMicrosoftTeamsUserIdentitiesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMicrosoftTeamsUserIdentities",
   pagination: {
     inputToken: "NextToken",
@@ -2416,6 +2462,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2441,6 +2489,8 @@ export const tagResource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2464,6 +2514,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccountPreferencesError =
@@ -2487,6 +2539,8 @@ export const updateAccountPreferences: API.OperationMethod<
     InvalidRequestException,
     UpdateAccountPreferencesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountPreferences",
 }));
 export type UpdateChimeWebhookConfigurationError =
@@ -2512,6 +2566,8 @@ export const updateChimeWebhookConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UpdateChimeWebhookConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChimeWebhookConfiguration",
 }));
 export type UpdateMicrosoftTeamsChannelConfigurationError =
@@ -2537,6 +2593,8 @@ export const updateMicrosoftTeamsChannelConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UpdateTeamsChannelConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMicrosoftTeamsChannelConfiguration",
 }));
 export type UpdateSlackChannelConfigurationError =
@@ -2562,6 +2620,8 @@ export const updateSlackChannelConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UpdateSlackChannelConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSlackChannelConfiguration",
 }));
 export type CreateCustomActionError =
@@ -2589,6 +2649,8 @@ export const createCustomAction: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomAction",
 }));
 export type GetCustomActionError =
@@ -2614,6 +2676,8 @@ export const getCustomAction: API.OperationMethod<
     ResourceNotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCustomAction",
 }));
 export type UpdateCustomActionError =
@@ -2639,6 +2703,8 @@ export const updateCustomAction: API.OperationMethod<
     ResourceNotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomAction",
 }));
 export type DeleteCustomActionError =
@@ -2664,6 +2730,8 @@ export const deleteCustomAction: API.OperationMethod<
     ResourceNotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomAction",
 }));
 export type ListCustomActionsError =
@@ -2702,6 +2770,8 @@ export const listCustomActions: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomActions",
   pagination: {
     inputToken: "NextToken",

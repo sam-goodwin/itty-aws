@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5632,6 +5634,8 @@ export const acceptAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptAttachment",
 }));
 export type AssociateConnectPeerError =
@@ -5667,6 +5671,8 @@ export const associateConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateConnectPeer",
 }));
 export type AssociateCustomerGatewayError =
@@ -5708,6 +5714,8 @@ export const associateCustomerGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateCustomerGateway",
 }));
 export type AssociateLinkError =
@@ -5739,6 +5747,8 @@ export const associateLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateLink",
 }));
 export type AssociateTransitGatewayConnectPeerError =
@@ -5776,6 +5786,8 @@ export const associateTransitGatewayConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTransitGatewayConnectPeer",
 }));
 export type CreateConnectAttachmentError =
@@ -5809,6 +5821,8 @@ export const createConnectAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectAttachment",
 }));
 export type CreateConnectionError =
@@ -5838,6 +5852,8 @@ export const createConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnection",
 }));
 export type CreateConnectPeerError =
@@ -5868,6 +5884,8 @@ export const createConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectPeer",
 }));
 export type CreateCoreNetworkError =
@@ -5899,6 +5917,8 @@ export const createCoreNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCoreNetwork",
 }));
 export type CreateCoreNetworkPrefixListAssociationError =
@@ -5930,6 +5950,8 @@ export const createCoreNetworkPrefixListAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCoreNetworkPrefixListAssociation",
 }));
 export type CreateDeviceError =
@@ -5962,6 +5984,8 @@ export const createDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDevice",
 }));
 export type CreateDirectConnectGatewayAttachmentError =
@@ -5991,6 +6015,8 @@ export const createDirectConnectGatewayAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectConnectGatewayAttachment",
 }));
 export type CreateGlobalNetworkError =
@@ -6020,6 +6046,8 @@ export const createGlobalNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlobalNetwork",
 }));
 export type CreateLinkError =
@@ -6051,6 +6079,8 @@ export const createLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLink",
 }));
 export type CreateSiteError =
@@ -6082,6 +6112,8 @@ export const createSite: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSite",
 }));
 export type CreateSiteToSiteVpnAttachmentError =
@@ -6111,6 +6143,8 @@ export const createSiteToSiteVpnAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSiteToSiteVpnAttachment",
 }));
 export type CreateTransitGatewayPeeringError =
@@ -6140,6 +6174,8 @@ export const createTransitGatewayPeering: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayPeering",
 }));
 export type CreateTransitGatewayRouteTableAttachmentError =
@@ -6169,6 +6205,8 @@ export const createTransitGatewayRouteTableAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayRouteTableAttachment",
 }));
 export type CreateVpcAttachmentError =
@@ -6198,6 +6236,8 @@ export const createVpcAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcAttachment",
 }));
 export type DeleteAttachmentError =
@@ -6227,6 +6267,8 @@ export const deleteAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAttachment",
 }));
 export type DeleteConnectionError =
@@ -6256,6 +6298,8 @@ export const deleteConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type DeleteConnectPeerError =
@@ -6285,6 +6329,8 @@ export const deleteConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectPeer",
 }));
 export type DeleteCoreNetworkError =
@@ -6314,6 +6360,8 @@ export const deleteCoreNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCoreNetwork",
 }));
 export type DeleteCoreNetworkPolicyVersionError =
@@ -6343,6 +6391,8 @@ export const deleteCoreNetworkPolicyVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCoreNetworkPolicyVersion",
 }));
 export type DeleteCoreNetworkPrefixListAssociationError =
@@ -6374,6 +6424,8 @@ export const deleteCoreNetworkPrefixListAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCoreNetworkPrefixListAssociation",
 }));
 export type DeleteDeviceError =
@@ -6404,6 +6456,8 @@ export const deleteDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDevice",
 }));
 export type DeleteGlobalNetworkError =
@@ -6434,6 +6488,8 @@ export const deleteGlobalNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGlobalNetwork",
 }));
 export type DeleteLinkError =
@@ -6464,6 +6520,8 @@ export const deleteLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLink",
 }));
 export type DeletePeeringError =
@@ -6493,6 +6551,8 @@ export const deletePeering: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePeering",
 }));
 export type DeleteResourcePolicyError =
@@ -6520,6 +6580,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSiteError =
@@ -6549,6 +6611,8 @@ export const deleteSite: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSite",
 }));
 export type DeregisterTransitGatewayError =
@@ -6579,6 +6643,8 @@ export const deregisterTransitGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterTransitGateway",
 }));
 export type DescribeGlobalNetworksError =
@@ -6624,6 +6690,8 @@ export const describeGlobalNetworks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGlobalNetworks",
   pagination: {
     inputToken: "NextToken",
@@ -6659,6 +6727,8 @@ export const disassociateConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateConnectPeer",
 }));
 export type DisassociateCustomerGatewayError =
@@ -6688,6 +6758,8 @@ export const disassociateCustomerGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateCustomerGateway",
 }));
 export type DisassociateLinkError =
@@ -6718,6 +6790,8 @@ export const disassociateLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateLink",
 }));
 export type DisassociateTransitGatewayConnectPeerError =
@@ -6747,6 +6821,8 @@ export const disassociateTransitGatewayConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTransitGatewayConnectPeer",
 }));
 export type ExecuteCoreNetworkChangeSetError =
@@ -6776,6 +6852,8 @@ export const executeCoreNetworkChangeSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteCoreNetworkChangeSet",
 }));
 export type GetConnectAttachmentError =
@@ -6803,6 +6881,8 @@ export const getConnectAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectAttachment",
 }));
 export type GetConnectionsError =
@@ -6845,6 +6925,8 @@ export const getConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnections",
   pagination: {
     inputToken: "NextToken",
@@ -6878,6 +6960,8 @@ export const getConnectPeer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectPeer",
 }));
 export type GetConnectPeerAssociationsError =
@@ -6922,6 +7006,8 @@ export const getConnectPeerAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectPeerAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -6955,6 +7041,8 @@ export const getCoreNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoreNetwork",
 }));
 export type GetCoreNetworkChangeEventsError =
@@ -6997,6 +7085,8 @@ export const getCoreNetworkChangeEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoreNetworkChangeEvents",
   pagination: {
     inputToken: "NextToken",
@@ -7045,6 +7135,8 @@ export const getCoreNetworkChangeSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoreNetworkChangeSet",
   pagination: {
     inputToken: "NextToken",
@@ -7078,6 +7170,8 @@ export const getCoreNetworkPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoreNetworkPolicy",
 }));
 export type GetCustomerGatewayAssociationsError =
@@ -7123,6 +7217,8 @@ export const getCustomerGatewayAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCustomerGatewayAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -7171,6 +7267,8 @@ export const getDevices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevices",
   pagination: {
     inputToken: "NextToken",
@@ -7204,6 +7302,8 @@ export const getDirectConnectGatewayAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDirectConnectGatewayAttachment",
 }));
 export type GetLinkAssociationsError =
@@ -7247,6 +7347,8 @@ export const getLinkAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLinkAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -7297,6 +7399,8 @@ export const getLinks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLinks",
   pagination: {
     inputToken: "NextToken",
@@ -7343,6 +7447,8 @@ export const getNetworkResourceCounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkResourceCounts",
   pagination: {
     inputToken: "NextToken",
@@ -7391,6 +7497,8 @@ export const getNetworkResourceRelationships: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkResourceRelationships",
   pagination: {
     inputToken: "NextToken",
@@ -7441,6 +7549,8 @@ export const getNetworkResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkResources",
   pagination: {
     inputToken: "NextToken",
@@ -7474,6 +7584,8 @@ export const getNetworkRoutes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkRoutes",
 }));
 export type GetNetworkTelemetryError =
@@ -7516,6 +7628,8 @@ export const getNetworkTelemetry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkTelemetry",
   pagination: {
     inputToken: "NextToken",
@@ -7547,6 +7661,8 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetRouteAnalysisError =
@@ -7574,6 +7690,8 @@ export const getRouteAnalysis: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouteAnalysis",
 }));
 export type GetSitesError =
@@ -7616,6 +7734,8 @@ export const getSites: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSites",
   pagination: {
     inputToken: "NextToken",
@@ -7649,6 +7769,8 @@ export const getSiteToSiteVpnAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSiteToSiteVpnAttachment",
 }));
 export type GetTransitGatewayConnectPeerAssociationsError =
@@ -7693,6 +7815,8 @@ export const getTransitGatewayConnectPeerAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayConnectPeerAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -7726,6 +7850,8 @@ export const getTransitGatewayPeering: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayPeering",
 }));
 export type GetTransitGatewayRegistrationsError =
@@ -7769,6 +7895,8 @@ export const getTransitGatewayRegistrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayRegistrations",
   pagination: {
     inputToken: "NextToken",
@@ -7802,6 +7930,8 @@ export const getTransitGatewayRouteTableAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayRouteTableAttachment",
 }));
 export type GetVpcAttachmentError =
@@ -7829,6 +7959,8 @@ export const getVpcAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpcAttachment",
 }));
 export type ListAttachmentRoutingPolicyAssociationsError =
@@ -7871,6 +8003,8 @@ export const listAttachmentRoutingPolicyAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttachmentRoutingPolicyAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -7917,6 +8051,8 @@ export const listAttachments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -7963,6 +8099,8 @@ export const listConnectPeers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectPeers",
   pagination: {
     inputToken: "NextToken",
@@ -8011,6 +8149,8 @@ export const listCoreNetworkPolicyVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoreNetworkPolicyVersions",
   pagination: {
     inputToken: "NextToken",
@@ -8059,6 +8199,8 @@ export const listCoreNetworkPrefixListAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoreNetworkPrefixListAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -8107,6 +8249,8 @@ export const listCoreNetworkRoutingInformation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoreNetworkRoutingInformation",
   pagination: {
     inputToken: "NextToken",
@@ -8153,6 +8297,8 @@ export const listCoreNetworks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCoreNetworks",
   pagination: {
     inputToken: "NextToken",
@@ -8174,6 +8320,8 @@ export const listOrganizationServiceAccessStatus: API.OperationMethod<
   input: ListOrganizationServiceAccessStatusRequest,
   output: ListOrganizationServiceAccessStatusResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationServiceAccessStatus",
 }));
 export type ListPeeringsError =
@@ -8214,6 +8362,8 @@ export const listPeerings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPeerings",
   pagination: {
     inputToken: "NextToken",
@@ -8247,6 +8397,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutAttachmentRoutingPolicyLabelError =
@@ -8278,6 +8430,8 @@ export const putAttachmentRoutingPolicyLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAttachmentRoutingPolicyLabel",
 }));
 export type PutCoreNetworkPolicyError =
@@ -8309,6 +8463,8 @@ export const putCoreNetworkPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutCoreNetworkPolicy",
 }));
 export type PutResourcePolicyError =
@@ -8338,6 +8494,8 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type RegisterTransitGatewayError =
@@ -8371,6 +8529,8 @@ export const registerTransitGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterTransitGateway",
 }));
 export type RejectAttachmentError =
@@ -8400,6 +8560,8 @@ export const rejectAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectAttachment",
 }));
 export type RemoveAttachmentRoutingPolicyLabelError =
@@ -8431,6 +8593,8 @@ export const removeAttachmentRoutingPolicyLabel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAttachmentRoutingPolicyLabel",
 }));
 export type RestoreCoreNetworkPolicyVersionError =
@@ -8460,6 +8624,8 @@ export const restoreCoreNetworkPolicyVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreCoreNetworkPolicyVersion",
 }));
 export type StartOrganizationServiceAccessUpdateError =
@@ -8489,6 +8655,8 @@ export const startOrganizationServiceAccessUpdate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartOrganizationServiceAccessUpdate",
 }));
 export type StartRouteAnalysisError =
@@ -8519,6 +8687,8 @@ export const startRouteAnalysis: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRouteAnalysis",
 }));
 export type TagResourceError =
@@ -8550,6 +8720,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -8579,6 +8751,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateConnectionError =
@@ -8609,6 +8783,8 @@ export const updateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnection",
 }));
 export type UpdateCoreNetworkError =
@@ -8638,6 +8814,8 @@ export const updateCoreNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCoreNetwork",
 }));
 export type UpdateDeviceError =
@@ -8668,6 +8846,8 @@ export const updateDevice: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDevice",
 }));
 export type UpdateDirectConnectGatewayAttachmentError =
@@ -8697,6 +8877,8 @@ export const updateDirectConnectGatewayAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDirectConnectGatewayAttachment",
 }));
 export type UpdateGlobalNetworkError =
@@ -8727,6 +8909,8 @@ export const updateGlobalNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalNetwork",
 }));
 export type UpdateLinkError =
@@ -8759,6 +8943,8 @@ export const updateLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLink",
 }));
 export type UpdateNetworkResourceMetadataError =
@@ -8788,6 +8974,8 @@ export const updateNetworkResourceMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetworkResourceMetadata",
 }));
 export type UpdateSiteError =
@@ -8818,6 +9006,8 @@ export const updateSite: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSite",
 }));
 export type UpdateVpcAttachmentError =
@@ -8847,5 +9037,7 @@ export const updateVpcAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVpcAttachment",
 }));

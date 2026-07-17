@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -4313,6 +4315,8 @@ export const acceptPortfolioShare: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptPortfolioShare",
 }));
 export type AssociateBudgetWithResourceError =
@@ -4338,6 +4342,8 @@ export const associateBudgetWithResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateBudgetWithResource",
 }));
 export type AssociatePrincipalWithPortfolioError =
@@ -4377,6 +4383,8 @@ export const associatePrincipalWithPortfolio: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePrincipalWithPortfolio",
 }));
 export type AssociateProductWithPortfolioError =
@@ -4402,6 +4410,8 @@ export const associateProductWithPortfolio: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateProductWithPortfolio",
 }));
 export type AssociateServiceActionWithProvisioningArtifactError =
@@ -4427,6 +4437,8 @@ export const associateServiceActionWithProvisioningArtifact: API.OperationMethod
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateServiceActionWithProvisioningArtifact",
 }));
 export type AssociateTagOptionWithResourceError =
@@ -4456,6 +4468,8 @@ export const associateTagOptionWithResource: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTagOptionWithResource",
 }));
 export type BatchAssociateServiceActionWithProvisioningArtifactError =
@@ -4473,6 +4487,8 @@ export const batchAssociateServiceActionWithProvisioningArtifact: API.OperationM
   input: BatchAssociateServiceActionWithProvisioningArtifactInput,
   output: BatchAssociateServiceActionWithProvisioningArtifactOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateServiceActionWithProvisioningArtifact",
 }));
 export type BatchDisassociateServiceActionFromProvisioningArtifactError =
@@ -4490,6 +4506,8 @@ export const batchDisassociateServiceActionFromProvisioningArtifact: API.Operati
   input: BatchDisassociateServiceActionFromProvisioningArtifactInput,
   output: BatchDisassociateServiceActionFromProvisioningArtifactOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateServiceActionFromProvisioningArtifact",
 }));
 export type CopyProductError =
@@ -4516,6 +4534,8 @@ export const copyProduct: API.OperationMethod<
   input: CopyProductInput,
   output: CopyProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyProduct",
 }));
 export type CreateConstraintError =
@@ -4543,6 +4563,8 @@ export const createConstraint: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConstraint",
 }));
 export type CreatePortfolioError =
@@ -4568,6 +4590,8 @@ export const createPortfolio: API.OperationMethod<
     LimitExceededException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePortfolio",
 }));
 export type CreatePortfolioShareError =
@@ -4615,6 +4639,8 @@ export const createPortfolioShare: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePortfolioShare",
 }));
 export type CreateProductError =
@@ -4645,6 +4671,8 @@ export const createProduct: API.OperationMethod<
     LimitExceededException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProduct",
 }));
 export type CreateProvisionedProductPlanError =
@@ -4678,6 +4706,8 @@ export const createProvisionedProductPlan: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProvisionedProductPlan",
 }));
 export type CreateProvisioningArtifactError =
@@ -4707,6 +4737,8 @@ export const createProvisioningArtifact: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProvisioningArtifact",
 }));
 export type CreateServiceActionError =
@@ -4725,6 +4757,8 @@ export const createServiceAction: API.OperationMethod<
   input: CreateServiceActionInput,
   output: CreateServiceActionOutput,
   errors: [InvalidParametersException, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServiceAction",
 }));
 export type CreateTagOptionError =
@@ -4748,6 +4782,8 @@ export const createTagOption: API.OperationMethod<
     LimitExceededException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTagOption",
 }));
 export type DeleteConstraintError =
@@ -4768,6 +4804,8 @@ export const deleteConstraint: API.OperationMethod<
   input: DeleteConstraintInput,
   output: DeleteConstraintOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConstraint",
 }));
 export type DeletePortfolioError =
@@ -4798,6 +4836,8 @@ export const deletePortfolio: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePortfolio",
 }));
 export type DeletePortfolioShareError =
@@ -4827,6 +4867,8 @@ export const deletePortfolioShare: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePortfolioShare",
 }));
 export type DeleteProductError =
@@ -4856,6 +4898,8 @@ export const deleteProduct: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProduct",
 }));
 export type DeleteProvisionedProductPlanError =
@@ -4874,6 +4918,8 @@ export const deleteProvisionedProductPlan: API.OperationMethod<
   input: DeleteProvisionedProductPlanInput,
   output: DeleteProvisionedProductPlanOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProvisionedProductPlan",
 }));
 export type DeleteProvisioningArtifactError =
@@ -4901,6 +4947,8 @@ export const deleteProvisioningArtifact: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProvisioningArtifact",
 }));
 export type DeleteServiceActionError =
@@ -4924,6 +4972,8 @@ export const deleteServiceAction: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceAction",
 }));
 export type DeleteTagOptionError =
@@ -4949,6 +4999,8 @@ export const deleteTagOption: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTagOption",
 }));
 export type DescribeConstraintError = ResourceNotFoundException | CommonErrors;
@@ -4964,6 +5016,8 @@ export const describeConstraint: API.OperationMethod<
   input: DescribeConstraintInput,
   output: DescribeConstraintOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConstraint",
 }));
 export type DescribeCopyProductStatusError =
@@ -4981,6 +5035,8 @@ export const describeCopyProductStatus: API.OperationMethod<
   input: DescribeCopyProductStatusInput,
   output: DescribeCopyProductStatusOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCopyProductStatus",
 }));
 export type DescribePortfolioError = ResourceNotFoundException | CommonErrors;
@@ -4998,6 +5054,8 @@ export const describePortfolio: API.OperationMethod<
   input: DescribePortfolioInput,
   output: DescribePortfolioOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePortfolio",
 }));
 export type DescribePortfolioSharesError =
@@ -5037,6 +5095,8 @@ export const describePortfolioShares: API.OperationMethod<
   input: DescribePortfolioSharesInput,
   output: DescribePortfolioSharesOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePortfolioShares",
   pagination: {
     inputToken: "PageToken",
@@ -5066,6 +5126,8 @@ export const describePortfolioShareStatus: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePortfolioShareStatus",
 }));
 export type DescribeProductError =
@@ -5090,6 +5152,8 @@ export const describeProduct: API.OperationMethod<
   input: DescribeProductInput,
   output: DescribeProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProduct",
 }));
 export type DescribeProductAsAdminError =
@@ -5108,6 +5172,8 @@ export const describeProductAsAdmin: API.OperationMethod<
   input: DescribeProductAsAdminInput,
   output: DescribeProductAsAdminOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProductAsAdmin",
 }));
 export type DescribeProductViewError =
@@ -5126,6 +5192,8 @@ export const describeProductView: API.OperationMethod<
   input: DescribeProductViewInput,
   output: DescribeProductViewOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProductView",
 }));
 export type DescribeProvisionedProductError =
@@ -5144,6 +5212,8 @@ export const describeProvisionedProduct: API.OperationMethod<
   input: DescribeProvisionedProductInput,
   output: DescribeProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisionedProduct",
 }));
 export type DescribeProvisionedProductPlanError =
@@ -5162,6 +5232,8 @@ export const describeProvisionedProductPlan: API.OperationMethod<
   input: DescribeProvisionedProductPlanInput,
   output: DescribeProvisionedProductPlanOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisionedProductPlan",
 }));
 export type DescribeProvisioningArtifactError =
@@ -5180,6 +5252,8 @@ export const describeProvisioningArtifact: API.OperationMethod<
   input: DescribeProvisioningArtifactInput,
   output: DescribeProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisioningArtifact",
 }));
 export type DescribeProvisioningParametersError =
@@ -5206,6 +5280,8 @@ export const describeProvisioningParameters: API.OperationMethod<
   input: DescribeProvisioningParametersInput,
   output: DescribeProvisioningParametersOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProvisioningParameters",
 }));
 export type DescribeRecordError = ResourceNotFoundException | CommonErrors;
@@ -5228,6 +5304,8 @@ export const describeRecord: API.OperationMethod<
   input: DescribeRecordInput,
   output: DescribeRecordOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecord",
 }));
 export type DescribeServiceActionError =
@@ -5245,6 +5323,8 @@ export const describeServiceAction: API.OperationMethod<
   input: DescribeServiceActionInput,
   output: DescribeServiceActionOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceAction",
 }));
 export type DescribeServiceActionExecutionParametersError =
@@ -5263,6 +5343,8 @@ export const describeServiceActionExecutionParameters: API.OperationMethod<
   input: DescribeServiceActionExecutionParametersInput,
   output: DescribeServiceActionExecutionParametersOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceActionExecutionParameters",
 }));
 export type DescribeTagOptionError =
@@ -5281,6 +5363,8 @@ export const describeTagOption: API.OperationMethod<
   input: DescribeTagOptionInput,
   output: DescribeTagOptionOutput,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTagOption",
 }));
 export type DisableAWSOrganizationsAccessError =
@@ -5317,6 +5401,8 @@ export const disableAWSOrganizationsAccess: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAWSOrganizationsAccess",
 }));
 export type DisassociateBudgetFromResourceError =
@@ -5334,6 +5420,8 @@ export const disassociateBudgetFromResource: API.OperationMethod<
   input: DisassociateBudgetFromResourceInput,
   output: DisassociateBudgetFromResourceOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateBudgetFromResource",
 }));
 export type DisassociatePrincipalFromPortfolioError =
@@ -5371,6 +5459,8 @@ export const disassociatePrincipalFromPortfolio: API.OperationMethod<
   input: DisassociatePrincipalFromPortfolioInput,
   output: DisassociatePrincipalFromPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociatePrincipalFromPortfolio",
 }));
 export type DisassociateProductFromPortfolioError =
@@ -5396,6 +5486,8 @@ export const disassociateProductFromPortfolio: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateProductFromPortfolio",
 }));
 export type DisassociateServiceActionFromProvisioningArtifactError =
@@ -5414,6 +5506,8 @@ export const disassociateServiceActionFromProvisioningArtifact: API.OperationMet
   input: DisassociateServiceActionFromProvisioningArtifactInput,
   output: DisassociateServiceActionFromProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateServiceActionFromProvisioningArtifact",
 }));
 export type DisassociateTagOptionFromResourceError =
@@ -5432,6 +5526,8 @@ export const disassociateTagOptionFromResource: API.OperationMethod<
   input: DisassociateTagOptionFromResourceInput,
   output: DisassociateTagOptionFromResourceOutput,
   errors: [ResourceNotFoundException, TagOptionNotMigratedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTagOptionFromResource",
 }));
 export type EnableAWSOrganizationsAccessError =
@@ -5468,6 +5564,8 @@ export const enableAWSOrganizationsAccess: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAWSOrganizationsAccess",
 }));
 export type ExecuteProvisionedProductPlanError =
@@ -5491,6 +5589,8 @@ export const executeProvisionedProductPlan: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteProvisionedProductPlan",
 }));
 export type ExecuteProvisionedProductServiceActionError =
@@ -5514,6 +5614,8 @@ export const executeProvisionedProductServiceAction: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteProvisionedProductServiceAction",
 }));
 export type GetAWSOrganizationsAccessStatusError =
@@ -5533,6 +5635,8 @@ export const getAWSOrganizationsAccessStatus: API.OperationMethod<
   input: GetAWSOrganizationsAccessStatusInput,
   output: GetAWSOrganizationsAccessStatusOutput,
   errors: [OperationNotSupportedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAWSOrganizationsAccessStatus",
 }));
 export type GetProvisionedProductOutputsError =
@@ -5566,6 +5670,8 @@ export const getProvisionedProductOutputs: API.OperationMethod<
   input: GetProvisionedProductOutputsInput,
   output: GetProvisionedProductOutputsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProvisionedProductOutputs",
   pagination: {
     inputToken: "PageToken",
@@ -5621,6 +5727,8 @@ export const importAsProvisionedProduct: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportAsProvisionedProduct",
 }));
 export type ListAcceptedPortfolioSharesError =
@@ -5656,6 +5764,8 @@ export const listAcceptedPortfolioShares: API.OperationMethod<
   input: ListAcceptedPortfolioSharesInput,
   output: ListAcceptedPortfolioSharesOutput,
   errors: [InvalidParametersException, OperationNotSupportedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAcceptedPortfolioShares",
   pagination: {
     inputToken: "PageToken",
@@ -5694,6 +5804,8 @@ export const listBudgetsForResource: API.OperationMethod<
   input: ListBudgetsForResourceInput,
   output: ListBudgetsForResourceOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBudgetsForResource",
   pagination: {
     inputToken: "PageToken",
@@ -5732,6 +5844,8 @@ export const listConstraintsForPortfolio: API.OperationMethod<
   input: ListConstraintsForPortfolioInput,
   output: ListConstraintsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConstraintsForPortfolio",
   pagination: {
     inputToken: "PageToken",
@@ -5790,6 +5904,8 @@ export const listLaunchPaths: API.OperationMethod<
   input: ListLaunchPathsInput,
   output: ListLaunchPathsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLaunchPaths",
   pagination: {
     inputToken: "PageToken",
@@ -5837,6 +5953,8 @@ export const listOrganizationPortfolioAccess: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationPortfolioAccess",
   pagination: {
     inputToken: "PageToken",
@@ -5877,6 +5995,8 @@ export const listPortfolioAccess: API.OperationMethod<
   input: ListPortfolioAccessInput,
   output: ListPortfolioAccessOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortfolioAccess",
   pagination: {
     inputToken: "PageToken",
@@ -5912,6 +6032,8 @@ export const listPortfolios: API.OperationMethod<
   input: ListPortfoliosInput,
   output: ListPortfoliosOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortfolios",
   pagination: {
     inputToken: "PageToken",
@@ -5950,6 +6072,8 @@ export const listPortfoliosForProduct: API.OperationMethod<
   input: ListPortfoliosForProductInput,
   output: ListPortfoliosForProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortfoliosForProduct",
   pagination: {
     inputToken: "PageToken",
@@ -5988,6 +6112,8 @@ export const listPrincipalsForPortfolio: API.OperationMethod<
   input: ListPrincipalsForPortfolioInput,
   output: ListPrincipalsForPortfolioOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrincipalsForPortfolio",
   pagination: {
     inputToken: "PageToken",
@@ -6011,6 +6137,8 @@ export const listProvisionedProductPlans: API.OperationMethod<
   input: ListProvisionedProductPlansInput,
   output: ListProvisionedProductPlansOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisionedProductPlans",
 }));
 export type ListProvisioningArtifactsError =
@@ -6029,6 +6157,8 @@ export const listProvisioningArtifacts: API.OperationMethod<
   input: ListProvisioningArtifactsInput,
   output: ListProvisioningArtifactsOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisioningArtifacts",
 }));
 export type ListProvisioningArtifactsForServiceActionError =
@@ -6062,6 +6192,8 @@ export const listProvisioningArtifactsForServiceAction: API.OperationMethod<
   input: ListProvisioningArtifactsForServiceActionInput,
   output: ListProvisioningArtifactsForServiceActionOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProvisioningArtifactsForServiceAction",
   pagination: {
     inputToken: "PageToken",
@@ -6082,6 +6214,8 @@ export const listRecordHistory: API.OperationMethod<
   input: ListRecordHistoryInput,
   output: ListRecordHistoryOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecordHistory",
 }));
 export type ListResourcesForTagOptionError =
@@ -6120,6 +6254,8 @@ export const listResourcesForTagOption: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourcesForTagOption",
   pagination: {
     inputToken: "PageToken",
@@ -6155,6 +6291,8 @@ export const listServiceActions: API.OperationMethod<
   input: ListServiceActionsInput,
   output: ListServiceActionsOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceActions",
   pagination: {
     inputToken: "PageToken",
@@ -6193,6 +6331,8 @@ export const listServiceActionsForProvisioningArtifact: API.OperationMethod<
   input: ListServiceActionsForProvisioningArtifactInput,
   output: ListServiceActionsForProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceActionsForProvisioningArtifact",
   pagination: {
     inputToken: "PageToken",
@@ -6216,6 +6356,8 @@ export const listStackInstancesForProvisionedProduct: API.OperationMethod<
   input: ListStackInstancesForProvisionedProductInput,
   output: ListStackInstancesForProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStackInstancesForProvisionedProduct",
 }));
 export type ListTagOptionsError =
@@ -6249,6 +6391,8 @@ export const listTagOptions: API.OperationMethod<
   input: ListTagOptionsInput,
   output: ListTagOptionsOutput,
   errors: [InvalidParametersException, TagOptionNotMigratedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagOptions",
   pagination: {
     inputToken: "PageToken",
@@ -6273,6 +6417,8 @@ export const notifyProvisionProductEngineWorkflowResult: API.OperationMethod<
   input: NotifyProvisionProductEngineWorkflowResultInput,
   output: NotifyProvisionProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyProvisionProductEngineWorkflowResult",
 }));
 export type NotifyTerminateProvisionedProductEngineWorkflowResultError =
@@ -6292,6 +6438,8 @@ export const notifyTerminateProvisionedProductEngineWorkflowResult: API.Operatio
   input: NotifyTerminateProvisionedProductEngineWorkflowResultInput,
   output: NotifyTerminateProvisionedProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyTerminateProvisionedProductEngineWorkflowResult",
 }));
 export type NotifyUpdateProvisionedProductEngineWorkflowResultError =
@@ -6311,6 +6459,8 @@ export const notifyUpdateProvisionedProductEngineWorkflowResult: API.OperationMe
   input: NotifyUpdateProvisionedProductEngineWorkflowResultInput,
   output: NotifyUpdateProvisionedProductEngineWorkflowResultOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyUpdateProvisionedProductEngineWorkflowResult",
 }));
 export type ProvisionProductError =
@@ -6363,6 +6513,8 @@ export const provisionProduct: API.OperationMethod<
     InvalidParametersException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvisionProduct",
 }));
 export type RejectPortfolioShareError =
@@ -6380,6 +6532,8 @@ export const rejectPortfolioShare: API.OperationMethod<
   input: RejectPortfolioShareInput,
   output: RejectPortfolioShareOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectPortfolioShare",
 }));
 export type ScanProvisionedProductsError =
@@ -6399,6 +6553,8 @@ export const scanProvisionedProducts: API.OperationMethod<
   input: ScanProvisionedProductsInput,
   output: ScanProvisionedProductsOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ScanProvisionedProducts",
 }));
 export type SearchProductsError = InvalidParametersException | CommonErrors;
@@ -6429,6 +6585,8 @@ export const searchProducts: API.OperationMethod<
   input: SearchProductsInput,
   output: SearchProductsOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchProducts",
   pagination: {
     inputToken: "PageToken",
@@ -6467,6 +6625,8 @@ export const searchProductsAsAdmin: API.OperationMethod<
   input: SearchProductsAsAdminInput,
   output: SearchProductsAsAdminOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchProductsAsAdmin",
   pagination: {
     inputToken: "PageToken",
@@ -6504,6 +6664,8 @@ export const searchProvisionedProducts: API.OperationMethod<
   input: SearchProvisionedProductsInput,
   output: SearchProvisionedProductsOutput,
   errors: [InvalidParametersException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchProvisionedProducts",
   pagination: {
     inputToken: "PageToken",
@@ -6530,6 +6692,8 @@ export const terminateProvisionedProduct: API.OperationMethod<
   input: TerminateProvisionedProductInput,
   output: TerminateProvisionedProductOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateProvisionedProduct",
 }));
 export type UpdateConstraintError =
@@ -6548,6 +6712,8 @@ export const updateConstraint: API.OperationMethod<
   input: UpdateConstraintInput,
   output: UpdateConstraintOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConstraint",
 }));
 export type UpdatePortfolioError =
@@ -6575,6 +6741,8 @@ export const updatePortfolio: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePortfolio",
 }));
 export type UpdatePortfolioShareError =
@@ -6618,6 +6786,8 @@ export const updatePortfolioShare: API.OperationMethod<
     OperationNotSupportedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePortfolioShare",
 }));
 export type UpdateProductError =
@@ -6641,6 +6811,8 @@ export const updateProduct: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProduct",
 }));
 export type UpdateProvisionedProductError =
@@ -6665,6 +6837,8 @@ export const updateProvisionedProduct: API.OperationMethod<
   input: UpdateProvisionedProductInput,
   output: UpdateProvisionedProductOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProvisionedProduct",
 }));
 export type UpdateProvisionedProductPropertiesError =
@@ -6688,6 +6862,8 @@ export const updateProvisionedProductProperties: API.OperationMethod<
     InvalidStateException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProvisionedProductProperties",
 }));
 export type UpdateProvisioningArtifactError =
@@ -6708,6 +6884,8 @@ export const updateProvisioningArtifact: API.OperationMethod<
   input: UpdateProvisioningArtifactInput,
   output: UpdateProvisioningArtifactOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProvisioningArtifact",
 }));
 export type UpdateServiceActionError =
@@ -6726,6 +6904,8 @@ export const updateServiceAction: API.OperationMethod<
   input: UpdateServiceActionInput,
   output: UpdateServiceActionOutput,
   errors: [InvalidParametersException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceAction",
 }));
 export type UpdateTagOptionError =
@@ -6751,5 +6931,7 @@ export const updateTagOption: API.OperationMethod<
     ResourceNotFoundException,
     TagOptionNotMigratedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTagOption",
 }));

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1748,6 +1750,8 @@ export const createAccessor: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessor",
 }));
 export type CreateMemberError =
@@ -1785,6 +1789,8 @@ export const createMember: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMember",
 }));
 export type CreateNetworkError =
@@ -1818,6 +1824,8 @@ export const createNetwork: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetwork",
 }));
 export type CreateNodeError =
@@ -1855,6 +1863,8 @@ export const createNode: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNode",
 }));
 export type CreateProposalError =
@@ -1888,6 +1898,8 @@ export const createProposal: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProposal",
 }));
 export type DeleteAccessorError =
@@ -1921,6 +1933,8 @@ export const deleteAccessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessor",
 }));
 export type DeleteMemberError =
@@ -1952,6 +1966,8 @@ export const deleteMember: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMember",
 }));
 export type DeleteNodeError =
@@ -1983,6 +1999,8 @@ export const deleteNode: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNode",
 }));
 export type GetAccessorError =
@@ -2011,6 +2029,8 @@ export const getAccessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessor",
 }));
 export type GetMemberError =
@@ -2040,6 +2060,8 @@ export const getMember: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMember",
 }));
 export type GetNetworkError =
@@ -2069,6 +2091,8 @@ export const getNetwork: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetwork",
 }));
 export type GetNodeError =
@@ -2098,6 +2122,8 @@ export const getNode: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNode",
 }));
 export type GetProposalError =
@@ -2127,6 +2153,8 @@ export const getProposal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProposal",
 }));
 export type ListAccessorsError =
@@ -2168,6 +2196,8 @@ export const listAccessors: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessors",
   pagination: {
     inputToken: "NextToken",
@@ -2220,6 +2250,8 @@ export const listInvitations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvitations",
   pagination: {
     inputToken: "NextToken",
@@ -2267,6 +2299,8 @@ export const listMembers: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMembers",
   pagination: {
     inputToken: "NextToken",
@@ -2314,6 +2348,8 @@ export const listNetworks: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworks",
   pagination: {
     inputToken: "NextToken",
@@ -2361,6 +2397,8 @@ export const listNodes: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
@@ -2410,6 +2448,8 @@ export const listProposals: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProposals",
   pagination: {
     inputToken: "NextToken",
@@ -2457,6 +2497,8 @@ export const listProposalVotes: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProposalVotes",
   pagination: {
     inputToken: "NextToken",
@@ -2489,6 +2531,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ResourceNotReadyException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RejectInvitationError =
@@ -2520,6 +2564,8 @@ export const rejectInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectInvitation",
 }));
 export type TagResourceError =
@@ -2553,6 +2599,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotReadyException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2580,6 +2628,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ResourceNotReadyException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateMemberError =
@@ -2609,6 +2659,8 @@ export const updateMember: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMember",
 }));
 export type UpdateNodeError =
@@ -2638,6 +2690,8 @@ export const updateNode: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNode",
 }));
 export type VoteOnProposalError =
@@ -2669,5 +2723,7 @@ export const voteOnProposal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VoteOnProposal",
 }));

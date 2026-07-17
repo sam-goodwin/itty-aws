@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1380,6 +1382,8 @@ export const getFindingsReportAccountSummary: API.OperationMethod<
   input: GetFindingsReportAccountSummaryRequest,
   output: GetFindingsReportAccountSummaryResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFindingsReportAccountSummary",
   pagination: {
     inputToken: "nextToken",
@@ -1408,6 +1412,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1431,6 +1437,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1454,6 +1462,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateProfilingGroupError =
@@ -1481,6 +1491,8 @@ export const createProfilingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProfilingGroup",
 }));
 export type DescribeProfilingGroupError =
@@ -1509,6 +1521,8 @@ export const describeProfilingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProfilingGroup",
 }));
 export type UpdateProfilingGroupError =
@@ -1536,6 +1550,8 @@ export const updateProfilingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProfilingGroup",
 }));
 export type DeleteProfilingGroupError =
@@ -1563,6 +1579,8 @@ export const deleteProfilingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfilingGroup",
 }));
 export type ListProfilingGroupsError =
@@ -1600,6 +1618,8 @@ export const listProfilingGroups: API.OperationMethod<
   input: ListProfilingGroupsRequest,
   output: ListProfilingGroupsResponse,
   errors: [InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfilingGroups",
   pagination: {
     inputToken: "nextToken",
@@ -1634,6 +1654,8 @@ export const addNotificationChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddNotificationChannels",
 }));
 export type BatchGetFrameMetricDataError =
@@ -1660,6 +1682,8 @@ export const batchGetFrameMetricData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetFrameMetricData",
 }));
 export type ConfigureAgentError =
@@ -1687,6 +1711,8 @@ export const configureAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfigureAgent",
 }));
 export type GetNotificationConfigurationError =
@@ -1712,6 +1738,8 @@ export const getNotificationConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNotificationConfiguration",
 }));
 export type GetPolicyError =
@@ -1735,6 +1763,8 @@ export const getPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
 export type GetProfileError =
@@ -1799,6 +1829,8 @@ export const getProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfile",
 }));
 export type GetRecommendationsError =
@@ -1833,6 +1865,8 @@ export const getRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendations",
 }));
 export type ListFindingsReportsError =
@@ -1873,6 +1907,8 @@ export const listFindingsReports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindingsReports",
   pagination: {
     inputToken: "nextToken",
@@ -1919,6 +1955,8 @@ export const listProfileTimes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfileTimes",
   pagination: {
     inputToken: "nextToken",
@@ -1954,6 +1992,8 @@ export const postAgentProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostAgentProfile",
 }));
 export type PutPermissionError =
@@ -2000,6 +2040,8 @@ export const putPermission: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPermission",
 }));
 export type RemoveNotificationChannelError =
@@ -2025,6 +2067,8 @@ export const removeNotificationChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveNotificationChannel",
 }));
 export type RemovePermissionError =
@@ -2060,6 +2104,8 @@ export const removePermission: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemovePermission",
 }));
 export type SubmitFeedbackError =
@@ -2086,5 +2132,7 @@ export const submitFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitFeedback",
 }));

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3732,6 +3734,8 @@ export const expireSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExpireSession",
 }));
 export type GetSessionError =
@@ -3759,6 +3763,8 @@ export const getSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSession",
 }));
 export type ListSessionsError =
@@ -3801,6 +3807,8 @@ export const listSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessions",
   pagination: {
     inputToken: "nextToken",
@@ -3834,6 +3842,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -3863,6 +3873,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3890,6 +3902,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateBrowserSettingsError =
@@ -3921,6 +3935,8 @@ export const createBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBrowserSettings",
 }));
 export type GetBrowserSettingsError =
@@ -3948,6 +3964,8 @@ export const getBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBrowserSettings",
 }));
 export type UpdateBrowserSettingsError =
@@ -3975,6 +3993,8 @@ export const updateBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBrowserSettings",
 }));
 export type DeleteBrowserSettingsError =
@@ -4002,6 +4022,8 @@ export const deleteBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBrowserSettings",
 }));
 export type ListBrowserSettingsError =
@@ -4042,6 +4064,8 @@ export const listBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBrowserSettings",
   pagination: {
     inputToken: "nextToken",
@@ -4078,6 +4102,8 @@ export const createDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataProtectionSettings",
 }));
 export type GetDataProtectionSettingsError =
@@ -4105,6 +4131,8 @@ export const getDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataProtectionSettings",
 }));
 export type UpdateDataProtectionSettingsError =
@@ -4132,6 +4160,8 @@ export const updateDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataProtectionSettings",
 }));
 export type DeleteDataProtectionSettingsError =
@@ -4159,6 +4189,8 @@ export const deleteDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataProtectionSettings",
 }));
 export type ListDataProtectionSettingsError =
@@ -4199,6 +4231,8 @@ export const listDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataProtectionSettings",
   pagination: {
     inputToken: "nextToken",
@@ -4236,6 +4270,8 @@ export const createIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdentityProvider",
 }));
 export type GetIdentityProviderError =
@@ -4263,6 +4299,8 @@ export const getIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityProvider",
 }));
 export type UpdateIdentityProviderError =
@@ -4290,6 +4328,8 @@ export const updateIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdentityProvider",
 }));
 export type DeleteIdentityProviderError =
@@ -4317,6 +4357,8 @@ export const deleteIdentityProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentityProvider",
 }));
 export type ListIdentityProvidersError =
@@ -4357,6 +4399,8 @@ export const listIdentityProviders: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentityProviders",
   pagination: {
     inputToken: "nextToken",
@@ -4391,6 +4435,8 @@ export const createIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpAccessSettings",
 }));
 export type GetIpAccessSettingsError =
@@ -4418,6 +4464,8 @@ export const getIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpAccessSettings",
 }));
 export type UpdateIpAccessSettingsError =
@@ -4445,6 +4493,8 @@ export const updateIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIpAccessSettings",
 }));
 export type DeleteIpAccessSettingsError =
@@ -4472,6 +4522,8 @@ export const deleteIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpAccessSettings",
 }));
 export type ListIpAccessSettingsError =
@@ -4512,6 +4564,8 @@ export const listIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIpAccessSettings",
   pagination: {
     inputToken: "nextToken",
@@ -4546,6 +4600,8 @@ export const createNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkSettings",
 }));
 export type GetNetworkSettingsError =
@@ -4573,6 +4629,8 @@ export const getNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkSettings",
 }));
 export type UpdateNetworkSettingsError =
@@ -4600,6 +4658,8 @@ export const updateNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetworkSettings",
 }));
 export type DeleteNetworkSettingsError =
@@ -4627,6 +4687,8 @@ export const deleteNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkSettings",
 }));
 export type ListNetworkSettingsError =
@@ -4667,6 +4729,8 @@ export const listNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworkSettings",
   pagination: {
     inputToken: "nextToken",
@@ -4703,6 +4767,8 @@ export const createPortal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePortal",
 }));
 export type GetPortalError =
@@ -4730,6 +4796,8 @@ export const getPortal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPortal",
 }));
 export type UpdatePortalError =
@@ -4761,6 +4829,8 @@ export const updatePortal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePortal",
 }));
 export type DeletePortalError =
@@ -4788,6 +4858,8 @@ export const deletePortal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePortal",
 }));
 export type ListPortalsError =
@@ -4828,6 +4900,8 @@ export const listPortals: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortals",
   pagination: {
     inputToken: "nextToken",
@@ -4862,6 +4936,8 @@ export const associateBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateBrowserSettings",
 }));
 export type AssociateDataProtectionSettingsError =
@@ -4891,6 +4967,8 @@ export const associateDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDataProtectionSettings",
 }));
 export type AssociateIpAccessSettingsError =
@@ -4920,6 +4998,8 @@ export const associateIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateIpAccessSettings",
 }));
 export type AssociateNetworkSettingsError =
@@ -4949,6 +5029,8 @@ export const associateNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateNetworkSettings",
 }));
 export type AssociateSessionLoggerError =
@@ -4978,6 +5060,8 @@ export const associateSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSessionLogger",
 }));
 export type AssociateTrustStoreError =
@@ -5007,6 +5091,8 @@ export const associateTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTrustStore",
 }));
 export type AssociateUserAccessLoggingSettingsError =
@@ -5036,6 +5122,8 @@ export const associateUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateUserAccessLoggingSettings",
 }));
 export type AssociateUserSettingsError =
@@ -5065,6 +5153,8 @@ export const associateUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateUserSettings",
 }));
 export type DisassociateBrowserSettingsError =
@@ -5094,6 +5184,8 @@ export const disassociateBrowserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateBrowserSettings",
 }));
 export type DisassociateDataProtectionSettingsError =
@@ -5123,6 +5215,8 @@ export const disassociateDataProtectionSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDataProtectionSettings",
 }));
 export type DisassociateIpAccessSettingsError =
@@ -5152,6 +5246,8 @@ export const disassociateIpAccessSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateIpAccessSettings",
 }));
 export type DisassociateNetworkSettingsError =
@@ -5181,6 +5277,8 @@ export const disassociateNetworkSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateNetworkSettings",
 }));
 export type DisassociateSessionLoggerError =
@@ -5208,6 +5306,8 @@ export const disassociateSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSessionLogger",
 }));
 export type DisassociateTrustStoreError =
@@ -5237,6 +5337,8 @@ export const disassociateTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTrustStore",
 }));
 export type DisassociateUserAccessLoggingSettingsError =
@@ -5266,6 +5368,8 @@ export const disassociateUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateUserAccessLoggingSettings",
 }));
 export type DisassociateUserSettingsError =
@@ -5295,6 +5399,8 @@ export const disassociateUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateUserSettings",
 }));
 export type GetPortalServiceProviderMetadataError =
@@ -5322,6 +5428,8 @@ export const getPortalServiceProviderMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPortalServiceProviderMetadata",
 }));
 export type CreateSessionLoggerError =
@@ -5351,6 +5459,8 @@ export const createSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSessionLogger",
 }));
 export type GetSessionLoggerError =
@@ -5378,6 +5488,8 @@ export const getSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSessionLogger",
 }));
 export type UpdateSessionLoggerError =
@@ -5405,6 +5517,8 @@ export const updateSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSessionLogger",
 }));
 export type DeleteSessionLoggerError =
@@ -5432,6 +5546,8 @@ export const deleteSessionLogger: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSessionLogger",
 }));
 export type ListSessionLoggersError =
@@ -5472,6 +5588,8 @@ export const listSessionLoggers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessionLoggers",
   pagination: {
     inputToken: "nextToken",
@@ -5507,6 +5625,8 @@ export const createTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrustStore",
 }));
 export type GetTrustStoreError =
@@ -5534,6 +5654,8 @@ export const getTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrustStore",
 }));
 export type UpdateTrustStoreError =
@@ -5563,6 +5685,8 @@ export const updateTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrustStore",
 }));
 export type DeleteTrustStoreError =
@@ -5590,6 +5714,8 @@ export const deleteTrustStore: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrustStore",
 }));
 export type ListTrustStoresError =
@@ -5630,6 +5756,8 @@ export const listTrustStores: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrustStores",
   pagination: {
     inputToken: "nextToken",
@@ -5662,6 +5790,8 @@ export const getTrustStoreCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrustStoreCertificate",
 }));
 export type ListTrustStoreCertificatesError =
@@ -5704,6 +5834,8 @@ export const listTrustStoreCertificates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrustStoreCertificates",
   pagination: {
     inputToken: "nextToken",
@@ -5738,6 +5870,8 @@ export const createUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserAccessLoggingSettings",
 }));
 export type GetUserAccessLoggingSettingsError =
@@ -5765,6 +5899,8 @@ export const getUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserAccessLoggingSettings",
 }));
 export type UpdateUserAccessLoggingSettingsError =
@@ -5792,6 +5928,8 @@ export const updateUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserAccessLoggingSettings",
 }));
 export type DeleteUserAccessLoggingSettingsError =
@@ -5819,6 +5957,8 @@ export const deleteUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserAccessLoggingSettings",
 }));
 export type ListUserAccessLoggingSettingsError =
@@ -5859,6 +5999,8 @@ export const listUserAccessLoggingSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserAccessLoggingSettings",
   pagination: {
     inputToken: "nextToken",
@@ -5895,6 +6037,8 @@ export const createUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserSettings",
 }));
 export type GetUserSettingsError =
@@ -5922,6 +6066,8 @@ export const getUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserSettings",
 }));
 export type UpdateUserSettingsError =
@@ -5949,6 +6095,8 @@ export const updateUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserSettings",
 }));
 export type DeleteUserSettingsError =
@@ -5976,6 +6124,8 @@ export const deleteUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserSettings",
 }));
 export type ListUserSettingsError =
@@ -6016,6 +6166,8 @@ export const listUserSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserSettings",
   pagination: {
     inputToken: "nextToken",

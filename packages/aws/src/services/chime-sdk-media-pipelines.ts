@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2791,6 +2793,8 @@ export const createMediaCapturePipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMediaCapturePipeline",
 }));
 export type CreateMediaConcatenationPipelineError =
@@ -2822,6 +2826,8 @@ export const createMediaConcatenationPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMediaConcatenationPipeline",
 }));
 export type CreateMediaInsightsPipelineError =
@@ -2855,6 +2861,8 @@ export const createMediaInsightsPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMediaInsightsPipeline",
 }));
 export type CreateMediaInsightsPipelineConfigurationError =
@@ -2889,6 +2897,8 @@ export const createMediaInsightsPipelineConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMediaInsightsPipelineConfiguration",
 }));
 export type CreateMediaLiveConnectorPipelineError =
@@ -2920,6 +2930,8 @@ export const createMediaLiveConnectorPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMediaLiveConnectorPipeline",
 }));
 export type CreateMediaPipelineKinesisVideoStreamPoolError =
@@ -2969,6 +2981,8 @@ export const createMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMediaPipelineKinesisVideoStreamPool",
 }));
 export type CreateMediaStreamPipelineError =
@@ -3002,6 +3016,8 @@ export const createMediaStreamPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMediaStreamPipeline",
 }));
 export type DeleteMediaCapturePipelineError =
@@ -3033,6 +3049,8 @@ export const deleteMediaCapturePipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMediaCapturePipeline",
 }));
 export type DeleteMediaInsightsPipelineConfigurationError =
@@ -3066,6 +3084,8 @@ export const deleteMediaInsightsPipelineConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMediaInsightsPipelineConfiguration",
 }));
 export type DeleteMediaPipelineError =
@@ -3099,6 +3119,8 @@ export const deleteMediaPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMediaPipeline",
 }));
 export type DeleteMediaPipelineKinesisVideoStreamPoolError =
@@ -3132,6 +3154,8 @@ export const deleteMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMediaPipelineKinesisVideoStreamPool",
 }));
 export type GetMediaCapturePipelineError =
@@ -3163,6 +3187,8 @@ export const getMediaCapturePipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMediaCapturePipeline",
 }));
 export type GetMediaInsightsPipelineConfigurationError =
@@ -3194,6 +3220,8 @@ export const getMediaInsightsPipelineConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMediaInsightsPipelineConfiguration",
 }));
 export type GetMediaPipelineError =
@@ -3225,6 +3253,8 @@ export const getMediaPipeline: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMediaPipeline",
 }));
 export type GetMediaPipelineKinesisVideoStreamPoolError =
@@ -3256,6 +3286,8 @@ export const getMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMediaPipelineKinesisVideoStreamPool",
 }));
 export type GetSpeakerSearchTaskError =
@@ -3287,6 +3319,8 @@ export const getSpeakerSearchTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSpeakerSearchTask",
 }));
 export type GetVoiceToneAnalysisTaskError =
@@ -3318,6 +3352,8 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceToneAnalysisTask",
 }));
 export type ListMediaCapturePipelinesError =
@@ -3364,6 +3400,8 @@ export const listMediaCapturePipelines: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMediaCapturePipelines",
   pagination: {
     inputToken: "NextToken",
@@ -3415,6 +3453,8 @@ export const listMediaInsightsPipelineConfigurations: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMediaInsightsPipelineConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -3466,6 +3506,8 @@ export const listMediaPipelineKinesisVideoStreamPools: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMediaPipelineKinesisVideoStreamPools",
   pagination: {
     inputToken: "NextToken",
@@ -3517,6 +3559,8 @@ export const listMediaPipelines: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMediaPipelines",
   pagination: {
     inputToken: "NextToken",
@@ -3553,6 +3597,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartSpeakerSearchTaskError =
@@ -3589,6 +3635,8 @@ export const startSpeakerSearchTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSpeakerSearchTask",
 }));
 export type StartVoiceToneAnalysisTaskError =
@@ -3627,6 +3675,8 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartVoiceToneAnalysisTask",
 }));
 export type StopSpeakerSearchTaskError =
@@ -3660,6 +3710,8 @@ export const stopSpeakerSearchTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSpeakerSearchTask",
 }));
 export type StopVoiceToneAnalysisTaskError =
@@ -3693,6 +3745,8 @@ export const stopVoiceToneAnalysisTask: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopVoiceToneAnalysisTask",
 }));
 export type TagResourceError =
@@ -3724,6 +3778,8 @@ export const tagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3755,6 +3811,8 @@ export const untagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateMediaInsightsPipelineConfigurationError =
@@ -3788,6 +3846,8 @@ export const updateMediaInsightsPipelineConfiguration: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMediaInsightsPipelineConfiguration",
 }));
 export type UpdateMediaInsightsPipelineStatusError =
@@ -3821,6 +3881,8 @@ export const updateMediaInsightsPipelineStatus: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMediaInsightsPipelineStatus",
 }));
 export type UpdateMediaPipelineKinesisVideoStreamPoolError =
@@ -3854,5 +3916,7 @@ export const updateMediaPipelineKinesisVideoStreamPool: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMediaPipelineKinesisVideoStreamPool",
 }));

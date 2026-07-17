@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4280,6 +4282,8 @@ export const associateAppBlockBuilderAppBlock: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAppBlockBuilderAppBlock",
 }));
 export type AssociateApplicationFleetError =
@@ -4307,6 +4311,8 @@ export const associateApplicationFleet: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateApplicationFleet",
 }));
 export type AssociateApplicationToEntitlementError =
@@ -4332,6 +4338,8 @@ export const associateApplicationToEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateApplicationToEntitlement",
 }));
 export type AssociateFleetError =
@@ -4361,6 +4369,8 @@ export const associateFleet: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateFleet",
 }));
 export type AssociateSoftwareToImageBuilderError =
@@ -4388,6 +4398,8 @@ export const associateSoftwareToImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSoftwareToImageBuilder",
 }));
 export type BatchAssociateUserStackError =
@@ -4409,6 +4421,8 @@ export const batchAssociateUserStack: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateUserStack",
 }));
 export type BatchDisassociateUserStackError =
@@ -4430,6 +4444,8 @@ export const batchDisassociateUserStack: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateUserStack",
 }));
 export type CopyImageError =
@@ -4459,6 +4475,8 @@ export const copyImage: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyImage",
 }));
 export type CreateAppBlockError =
@@ -4492,6 +4510,8 @@ export const createAppBlock: API.OperationMethod<
     OperationNotPermittedException,
     ResourceAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppBlock",
 }));
 export type CreateAppBlockBuilderError =
@@ -4529,6 +4549,8 @@ export const createAppBlockBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppBlockBuilder",
 }));
 export type CreateAppBlockBuilderStreamingURLError =
@@ -4547,6 +4569,8 @@ export const createAppBlockBuilderStreamingURL: API.OperationMethod<
   input: CreateAppBlockBuilderStreamingURLRequest,
   output: CreateAppBlockBuilderStreamingURLResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppBlockBuilderStreamingURL",
 }));
 export type CreateApplicationError =
@@ -4582,6 +4606,8 @@ export const createApplication: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateDirectoryConfigError =
@@ -4611,6 +4637,8 @@ export const createDirectoryConfig: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectoryConfig",
 }));
 export type CreateEntitlementError =
@@ -4641,6 +4669,8 @@ export const createEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEntitlement",
 }));
 export type CreateExportImageTaskError =
@@ -4672,6 +4702,8 @@ export const createExportImageTask: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExportImageTask",
 }));
 export type CreateFleetError =
@@ -4711,6 +4743,8 @@ export const createFleet: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFleet",
 }));
 export type CreateImageBuilderError =
@@ -4752,6 +4786,8 @@ export const createImageBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImageBuilder",
 }));
 export type CreateImageBuilderStreamingURLError =
@@ -4770,6 +4806,8 @@ export const createImageBuilderStreamingURL: API.OperationMethod<
   input: CreateImageBuilderStreamingURLRequest,
   output: CreateImageBuilderStreamingURLResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImageBuilderStreamingURL",
 }));
 export type CreateImportedImageError =
@@ -4803,6 +4841,8 @@ export const createImportedImage: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImportedImage",
 }));
 export type CreateStackError =
@@ -4836,6 +4876,8 @@ export const createStack: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStack",
 }));
 export type CreateStreamingURLError =
@@ -4861,6 +4903,8 @@ export const createStreamingURL: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStreamingURL",
 }));
 export type CreateThemeForStackError =
@@ -4890,6 +4934,8 @@ export const createThemeForStack: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateThemeForStack",
 }));
 export type CreateUpdatedImageError =
@@ -4924,6 +4970,8 @@ export const createUpdatedImage: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUpdatedImage",
 }));
 export type CreateUsageReportSubscriptionError =
@@ -4947,6 +4995,8 @@ export const createUsageReportSubscription: API.OperationMethod<
     InvalidRoleException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUsageReportSubscription",
 }));
 export type CreateUserError =
@@ -4974,6 +5024,8 @@ export const createUser: API.OperationMethod<
     OperationNotPermittedException,
     ResourceAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DeleteAppBlockError =
@@ -4997,6 +5049,8 @@ export const deleteAppBlock: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppBlock",
 }));
 export type DeleteAppBlockBuilderError =
@@ -5025,6 +5079,8 @@ export const deleteAppBlockBuilder: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAppBlockBuilder",
 }));
 export type DeleteApplicationError =
@@ -5050,6 +5106,8 @@ export const deleteApplication: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteDirectoryConfigError =
@@ -5068,6 +5126,8 @@ export const deleteDirectoryConfig: API.OperationMethod<
   input: DeleteDirectoryConfigRequest,
   output: DeleteDirectoryConfigResult,
   errors: [ResourceInUseException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectoryConfig",
 }));
 export type DeleteEntitlementError =
@@ -5093,6 +5153,8 @@ export const deleteEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEntitlement",
 }));
 export type DeleteFleetError =
@@ -5116,6 +5178,8 @@ export const deleteFleet: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFleet",
 }));
 export type DeleteImageError =
@@ -5142,6 +5206,8 @@ export const deleteImage: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImage",
 }));
 export type DeleteImageBuilderError =
@@ -5165,6 +5231,8 @@ export const deleteImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImageBuilder",
 }));
 export type DeleteImagePermissionsError =
@@ -5183,6 +5251,8 @@ export const deleteImagePermissions: API.OperationMethod<
   input: DeleteImagePermissionsRequest,
   output: DeleteImagePermissionsResult,
   errors: [ResourceNotAvailableException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImagePermissions",
 }));
 export type DeleteStackError =
@@ -5208,6 +5278,8 @@ export const deleteStack: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStack",
 }));
 export type DeleteThemeForStackError =
@@ -5231,6 +5303,8 @@ export const deleteThemeForStack: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThemeForStack",
 }));
 export type DeleteUsageReportSubscriptionError =
@@ -5249,6 +5323,8 @@ export const deleteUsageReportSubscription: API.OperationMethod<
   input: DeleteUsageReportSubscriptionRequest,
   output: DeleteUsageReportSubscriptionResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUsageReportSubscription",
 }));
 export type DeleteUserError = ResourceNotFoundException | CommonErrors;
@@ -5264,6 +5340,8 @@ export const deleteUser: API.OperationMethod<
   input: DeleteUserRequest,
   output: DeleteUserResult,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DescribeAppBlockBuilderAppBlockAssociationsError =
@@ -5300,6 +5378,8 @@ export const describeAppBlockBuilderAppBlockAssociations: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppBlockBuilderAppBlockAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -5338,6 +5418,8 @@ export const describeAppBlockBuilders: API.OperationMethod<
   input: DescribeAppBlockBuildersRequest,
   output: DescribeAppBlockBuildersResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppBlockBuilders",
   pagination: {
     inputToken: "NextToken",
@@ -5361,6 +5443,8 @@ export const describeAppBlocks: API.OperationMethod<
   input: DescribeAppBlocksRequest,
   output: DescribeAppBlocksResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppBlocks",
 }));
 export type DescribeApplicationFleetAssociationsError =
@@ -5382,6 +5466,8 @@ export const describeApplicationFleetAssociations: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationFleetAssociations",
 }));
 export type DescribeApplicationsError =
@@ -5400,6 +5486,8 @@ export const describeApplications: API.OperationMethod<
   input: DescribeApplicationsRequest,
   output: DescribeApplicationsResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplications",
 }));
 export type DescribeAppLicenseUsageError =
@@ -5423,6 +5511,8 @@ export const describeAppLicenseUsage: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAppLicenseUsage",
 }));
 export type DescribeDirectoryConfigsError =
@@ -5442,6 +5532,8 @@ export const describeDirectoryConfigs: API.OperationMethod<
   input: DescribeDirectoryConfigsRequest,
   output: DescribeDirectoryConfigsResult,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDirectoryConfigs",
 }));
 export type DescribeEntitlementsError =
@@ -5465,6 +5557,8 @@ export const describeEntitlements: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntitlements",
 }));
 export type DescribeFleetsError = ResourceNotFoundException | CommonErrors;
@@ -5480,6 +5574,8 @@ export const describeFleets: API.OperationMethod<
   input: DescribeFleetsRequest,
   output: DescribeFleetsResult,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleets",
 }));
 export type DescribeImageBuildersError =
@@ -5497,6 +5593,8 @@ export const describeImageBuilders: API.OperationMethod<
   input: DescribeImageBuildersRequest,
   output: DescribeImageBuildersResult,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageBuilders",
 }));
 export type DescribeImagePermissionsError =
@@ -5529,6 +5627,8 @@ export const describeImagePermissions: API.OperationMethod<
   input: DescribeImagePermissionsRequest,
   output: DescribeImagePermissionsResult,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImagePermissions",
   pagination: {
     inputToken: "NextToken",
@@ -5567,6 +5667,8 @@ export const describeImages: API.OperationMethod<
   input: DescribeImagesRequest,
   output: DescribeImagesResult,
   errors: [InvalidParameterCombinationException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImages",
   pagination: {
     inputToken: "NextToken",
@@ -5591,6 +5693,8 @@ export const describeSessions: API.OperationMethod<
   input: DescribeSessionsRequest,
   output: DescribeSessionsResult,
   errors: [InvalidParameterCombinationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSessions",
 }));
 export type DescribeSoftwareAssociationsError =
@@ -5609,6 +5713,8 @@ export const describeSoftwareAssociations: API.OperationMethod<
   input: DescribeSoftwareAssociationsRequest,
   output: DescribeSoftwareAssociationsResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSoftwareAssociations",
 }));
 export type DescribeStacksError = ResourceNotFoundException | CommonErrors;
@@ -5624,6 +5730,8 @@ export const describeStacks: API.OperationMethod<
   input: DescribeStacksRequest,
   output: DescribeStacksResult,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStacks",
 }));
 export type DescribeThemeForStackError =
@@ -5642,6 +5750,8 @@ export const describeThemeForStack: API.OperationMethod<
   input: DescribeThemeForStackRequest,
   output: DescribeThemeForStackResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeThemeForStack",
 }));
 export type DescribeUsageReportSubscriptionsError =
@@ -5660,6 +5770,8 @@ export const describeUsageReportSubscriptions: API.OperationMethod<
   input: DescribeUsageReportSubscriptionsRequest,
   output: DescribeUsageReportSubscriptionsResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUsageReportSubscriptions",
 }));
 export type DescribeUsersError =
@@ -5683,6 +5795,8 @@ export const describeUsers: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUsers",
 }));
 export type DescribeUserStackAssociationsError =
@@ -5708,6 +5822,8 @@ export const describeUserStackAssociations: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUserStackAssociations",
 }));
 export type DisableUserError = ResourceNotFoundException | CommonErrors;
@@ -5723,6 +5839,8 @@ export const disableUser: API.OperationMethod<
   input: DisableUserRequest,
   output: DisableUserResult,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableUser",
 }));
 export type DisassociateAppBlockBuilderAppBlockError =
@@ -5748,6 +5866,8 @@ export const disassociateAppBlockBuilderAppBlock: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAppBlockBuilderAppBlock",
 }));
 export type DisassociateApplicationFleetError =
@@ -5771,6 +5891,8 @@ export const disassociateApplicationFleet: API.OperationMethod<
     InvalidParameterCombinationException,
     OperationNotPermittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateApplicationFleet",
 }));
 export type DisassociateApplicationFromEntitlementError =
@@ -5794,6 +5916,8 @@ export const disassociateApplicationFromEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateApplicationFromEntitlement",
 }));
 export type DisassociateFleetError =
@@ -5819,6 +5943,8 @@ export const disassociateFleet: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFleet",
 }));
 export type DisassociateSoftwareFromImageBuilderError =
@@ -5844,6 +5970,8 @@ export const disassociateSoftwareFromImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSoftwareFromImageBuilder",
 }));
 export type DrainSessionInstanceError =
@@ -5867,6 +5995,8 @@ export const drainSessionInstance: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DrainSessionInstance",
 }));
 export type EnableUserError =
@@ -5885,6 +6015,8 @@ export const enableUser: API.OperationMethod<
   input: EnableUserRequest,
   output: EnableUserResult,
   errors: [InvalidAccountStatusException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableUser",
 }));
 export type ExpireSessionError = CommonErrors;
@@ -5900,6 +6032,8 @@ export const expireSession: API.OperationMethod<
   input: ExpireSessionRequest,
   output: ExpireSessionResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExpireSession",
 }));
 export type GetExportImageTaskError =
@@ -5918,6 +6052,8 @@ export const getExportImageTask: API.OperationMethod<
   input: GetExportImageTaskRequest,
   output: GetExportImageTaskResult,
   errors: [OperationNotPermittedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExportImageTask",
 }));
 export type ListAssociatedFleetsError = CommonErrors;
@@ -5933,6 +6069,8 @@ export const listAssociatedFleets: API.OperationMethod<
   input: ListAssociatedFleetsRequest,
   output: ListAssociatedFleetsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedFleets",
 }));
 export type ListAssociatedStacksError = CommonErrors;
@@ -5948,6 +6086,8 @@ export const listAssociatedStacks: API.OperationMethod<
   input: ListAssociatedStacksRequest,
   output: ListAssociatedStacksResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedStacks",
 }));
 export type ListEntitledApplicationsError =
@@ -5971,6 +6111,8 @@ export const listEntitledApplications: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntitledApplications",
 }));
 export type ListExportImageTasksError =
@@ -5988,6 +6130,8 @@ export const listExportImageTasks: API.OperationMethod<
   input: ListExportImageTasksRequest,
   output: ListExportImageTasksResult,
   errors: [OperationNotPermittedException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExportImageTasks",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
@@ -6005,6 +6149,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartAppBlockBuilderError =
@@ -6042,6 +6188,8 @@ export const startAppBlockBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAppBlockBuilder",
 }));
 export type StartFleetError =
@@ -6075,6 +6223,8 @@ export const startFleet: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFleet",
 }));
 export type StartImageBuilderError =
@@ -6102,6 +6252,8 @@ export const startImageBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImageBuilder",
 }));
 export type StartSoftwareDeploymentToImageBuilderError =
@@ -6125,6 +6277,8 @@ export const startSoftwareDeploymentToImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSoftwareDeploymentToImageBuilder",
 }));
 export type StopAppBlockBuilderError =
@@ -6151,6 +6305,8 @@ export const stopAppBlockBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAppBlockBuilder",
 }));
 export type StopFleetError =
@@ -6169,6 +6325,8 @@ export const stopFleet: API.OperationMethod<
   input: StopFleetRequest,
   output: StopFleetResult,
   errors: [ConcurrentModificationException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopFleet",
 }));
 export type StopImageBuilderError =
@@ -6192,6 +6350,8 @@ export const stopImageBuilder: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopImageBuilder",
 }));
 export type TagResourceError =
@@ -6223,6 +6383,8 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -6242,6 +6404,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAppBlockBuilderError =
@@ -6284,6 +6448,8 @@ export const updateAppBlockBuilder: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAppBlockBuilder",
 }));
 export type UpdateApplicationError =
@@ -6307,6 +6473,8 @@ export const updateApplication: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateDirectoryConfigError =
@@ -6336,6 +6504,8 @@ export const updateDirectoryConfig: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDirectoryConfig",
 }));
 export type UpdateEntitlementError =
@@ -6361,6 +6531,8 @@ export const updateEntitlement: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEntitlement",
 }));
 export type UpdateFleetError =
@@ -6422,6 +6594,8 @@ export const updateFleet: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFleet",
 }));
 export type UpdateImagePermissionsError =
@@ -6445,6 +6619,8 @@ export const updateImagePermissions: API.OperationMethod<
     ResourceNotAvailableException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateImagePermissions",
 }));
 export type UpdateStackError =
@@ -6480,6 +6656,8 @@ export const updateStack: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStack",
 }));
 export type UpdateThemeForStackError =
@@ -6509,5 +6687,7 @@ export const updateThemeForStack: API.OperationMethod<
     OperationNotPermittedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThemeForStack",
 }));

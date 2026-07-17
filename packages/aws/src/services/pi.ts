@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1059,6 +1061,8 @@ export const createPerformanceAnalysisReport: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePerformanceAnalysisReport",
 }));
 export type DeletePerformanceAnalysisReportError =
@@ -1082,6 +1086,8 @@ export const deletePerformanceAnalysisReport: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePerformanceAnalysisReport",
 }));
 export type DescribeDimensionKeysError =
@@ -1123,6 +1129,8 @@ export const describeDimensionKeys: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDimensionKeys",
   pagination: {
     inputToken: "NextToken",
@@ -1154,6 +1162,8 @@ export const getDimensionKeyDetails: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDimensionKeyDetails",
 }));
 export type GetPerformanceAnalysisReportError =
@@ -1180,6 +1190,8 @@ export const getPerformanceAnalysisReport: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPerformanceAnalysisReport",
 }));
 export type GetResourceMetadataError =
@@ -1204,6 +1216,8 @@ export const getResourceMetadata: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceMetadata",
 }));
 export type GetResourceMetricsError =
@@ -1247,6 +1261,8 @@ export const getResourceMetrics: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceMetrics",
   pagination: {
     inputToken: "NextToken",
@@ -1290,6 +1306,8 @@ export const listAvailableResourceDimensions: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAvailableResourceDimensions",
   pagination: {
     inputToken: "NextToken",
@@ -1333,6 +1351,8 @@ export const listAvailableResourceMetrics: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAvailableResourceMetrics",
   pagination: {
     inputToken: "NextToken",
@@ -1376,6 +1396,8 @@ export const listPerformanceAnalysisReports: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPerformanceAnalysisReports",
   pagination: {
     inputToken: "NextToken",
@@ -1404,6 +1426,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1427,6 +1451,8 @@ export const tagResource: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1450,5 +1476,7 @@ export const untagResource: API.OperationMethod<
     InvalidArgumentException,
     NotAuthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

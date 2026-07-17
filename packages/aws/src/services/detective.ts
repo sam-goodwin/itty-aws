@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1633,6 +1635,8 @@ export const acceptInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptInvitation",
 }));
 export type BatchGetGraphMemberDatasourcesError =
@@ -1658,6 +1662,8 @@ export const batchGetGraphMemberDatasources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetGraphMemberDatasources",
 }));
 export type BatchGetMembershipDatasourcesError =
@@ -1683,6 +1689,8 @@ export const batchGetMembershipDatasources: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetMembershipDatasources",
 }));
 export type CreateGraphError =
@@ -1719,6 +1727,8 @@ export const createGraph: API.OperationMethod<
     InternalServerException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGraph",
 }));
 export type CreateMembersError =
@@ -1776,6 +1786,8 @@ export const createMembers: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMembers",
 }));
 export type DeleteGraphError =
@@ -1805,6 +1817,8 @@ export const deleteGraph: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGraph",
 }));
 export type DeleteMembersError =
@@ -1847,6 +1861,8 @@ export const deleteMembers: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMembers",
 }));
 export type DescribeOrganizationConfigurationError =
@@ -1876,6 +1892,8 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationConfiguration",
 }));
 export type DisableOrganizationAdminAccountError =
@@ -1909,6 +1927,8 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableOrganizationAdminAccount",
 }));
 export type DisassociateMembershipError =
@@ -1942,6 +1962,8 @@ export const disassociateMembership: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateMembership",
 }));
 export type EnableOrganizationAdminAccountError =
@@ -1982,6 +2004,8 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableOrganizationAdminAccount",
 }));
 export type GetInvestigationError =
@@ -2009,6 +2033,8 @@ export const getInvestigation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInvestigation",
 }));
 export type GetMembersError =
@@ -2035,6 +2061,8 @@ export const getMembers: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMembers",
 }));
 export type ListDatasourcePackagesError =
@@ -2075,6 +2103,8 @@ export const listDatasourcePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasourcePackages",
   pagination: {
     inputToken: "NextToken",
@@ -2118,6 +2148,8 @@ export const listGraphs: API.OperationMethod<
   input: ListGraphsRequest,
   output: ListGraphsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGraphs",
   pagination: {
     inputToken: "NextToken",
@@ -2150,6 +2182,8 @@ export const listIndicators: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndicators",
 }));
 export type ListInvestigationsError =
@@ -2182,6 +2216,8 @@ export const listInvestigations: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvestigations",
 }));
 export type ListInvitationsError =
@@ -2223,6 +2259,8 @@ export const listInvitations: API.OperationMethod<
   input: ListInvitationsRequest,
   output: ListInvitationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvitations",
   pagination: {
     inputToken: "NextToken",
@@ -2275,6 +2313,8 @@ export const listMembers: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMembers",
   pagination: {
     inputToken: "NextToken",
@@ -2321,6 +2361,8 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationAdminAccounts",
   pagination: {
     inputToken: "NextToken",
@@ -2351,6 +2393,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RejectInvitationError =
@@ -2384,6 +2428,8 @@ export const rejectInvitation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectInvitation",
 }));
 export type StartInvestigationError =
@@ -2411,6 +2457,8 @@ export const startInvestigation: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInvestigation",
 }));
 export type StartMonitoringMemberError =
@@ -2449,6 +2497,8 @@ export const startMonitoringMember: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMonitoringMember",
 }));
 export type TagResourceError =
@@ -2474,6 +2524,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2499,6 +2551,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDatasourcePackagesError =
@@ -2526,6 +2580,8 @@ export const updateDatasourcePackages: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDatasourcePackages",
 }));
 export type UpdateInvestigationStateError =
@@ -2553,6 +2609,8 @@ export const updateInvestigationState: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInvestigationState",
 }));
 export type UpdateOrganizationConfigurationError =
@@ -2580,5 +2638,7 @@ export const updateOrganizationConfiguration: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOrganizationConfiguration",
 }));

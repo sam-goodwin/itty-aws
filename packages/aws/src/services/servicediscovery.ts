@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1565,6 +1567,8 @@ export const createHttpNamespace: API.OperationMethod<
     ResourceLimitExceeded,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHttpNamespace",
 }));
 export type CreatePrivateDnsNamespaceError =
@@ -1599,6 +1603,8 @@ export const createPrivateDnsNamespace: API.OperationMethod<
     ResourceLimitExceeded,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePrivateDnsNamespace",
 }));
 export type CreatePublicDnsNamespaceError =
@@ -1634,6 +1640,8 @@ export const createPublicDnsNamespace: API.OperationMethod<
     ResourceLimitExceeded,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePublicDnsNamespace",
 }));
 export type CreateServiceError =
@@ -1683,6 +1691,8 @@ export const createService: API.OperationMethod<
     ServiceAlreadyExists,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateService",
 }));
 export type DeleteNamespaceError =
@@ -1704,6 +1714,8 @@ export const deleteNamespace: API.OperationMethod<
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNamespace",
 }));
 export type DeleteServiceError =
@@ -1724,6 +1736,8 @@ export const deleteService: API.OperationMethod<
   input: DeleteServiceRequest,
   output: DeleteServiceResponse,
   errors: [InvalidInput, ResourceInUse, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteService",
 }));
 export type DeleteServiceAttributesError =
@@ -1742,6 +1756,8 @@ export const deleteServiceAttributes: API.OperationMethod<
   input: DeleteServiceAttributesRequest,
   output: DeleteServiceAttributesResponse,
   errors: [InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceAttributes",
 }));
 export type DeregisterInstanceError =
@@ -1770,6 +1786,8 @@ export const deregisterInstance: API.OperationMethod<
     ResourceInUse,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterInstance",
 }));
 export type DiscoverInstancesError =
@@ -1799,6 +1817,8 @@ export const discoverInstances: API.OperationMethod<
     RequestLimitExceeded,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DiscoverInstances",
 }));
 export type DiscoverInstancesRevisionError =
@@ -1824,6 +1844,8 @@ export const discoverInstancesRevision: API.OperationMethod<
     RequestLimitExceeded,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DiscoverInstancesRevision",
 }));
 export type GetInstanceError =
@@ -1843,6 +1865,8 @@ export const getInstance: API.OperationMethod<
   input: GetInstanceRequest,
   output: GetInstanceResponse,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstance",
 }));
 export type GetInstancesHealthStatusError =
@@ -1882,6 +1906,8 @@ export const getInstancesHealthStatus: API.OperationMethod<
   input: GetInstancesHealthStatusRequest,
   output: GetInstancesHealthStatusResponse,
   errors: [InstanceNotFound, InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstancesHealthStatus",
   pagination: {
     inputToken: "NextToken",
@@ -1902,6 +1928,8 @@ export const getNamespace: API.OperationMethod<
   input: GetNamespaceRequest,
   output: GetNamespaceResponse,
   errors: [InvalidInput, NamespaceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNamespace",
 }));
 export type GetOperationError = InvalidInput | OperationNotFound | CommonErrors;
@@ -1920,6 +1948,8 @@ export const getOperation: API.OperationMethod<
   input: GetOperationRequest,
   output: GetOperationResponse,
   errors: [InvalidInput, OperationNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperation",
 }));
 export type GetServiceError = InvalidInput | ServiceNotFound | CommonErrors;
@@ -1935,6 +1965,8 @@ export const getService: API.OperationMethod<
   input: GetServiceRequest,
   output: GetServiceResponse,
   errors: [InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetService",
 }));
 export type GetServiceAttributesError =
@@ -1953,6 +1985,8 @@ export const getServiceAttributes: API.OperationMethod<
   input: GetServiceAttributesRequest,
   output: GetServiceAttributesResponse,
   errors: [InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceAttributes",
 }));
 export type ListInstancesError = InvalidInput | ServiceNotFound | CommonErrors;
@@ -1984,6 +2018,8 @@ export const listInstances: API.OperationMethod<
   input: ListInstancesRequest,
   output: ListInstancesResponse,
   errors: [InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstances",
   pagination: {
     inputToken: "NextToken",
@@ -2019,6 +2055,8 @@ export const listNamespaces: API.OperationMethod<
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNamespaces",
   pagination: {
     inputToken: "NextToken",
@@ -2054,6 +2092,8 @@ export const listOperations: API.OperationMethod<
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOperations",
   pagination: {
     inputToken: "NextToken",
@@ -2090,6 +2130,8 @@ export const listServices: API.OperationMethod<
   input: ListServicesRequest,
   output: ListServicesResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
@@ -2113,6 +2155,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RegisterInstanceError =
@@ -2172,6 +2216,8 @@ export const registerInstance: API.OperationMethod<
     ResourceLimitExceeded,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterInstance",
 }));
 export type TagResourceError =
@@ -2191,6 +2237,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException, TooManyTagsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2209,6 +2257,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InvalidInput, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateHttpNamespaceError =
@@ -2230,6 +2280,8 @@ export const updateHttpNamespace: API.OperationMethod<
   input: UpdateHttpNamespaceRequest,
   output: UpdateHttpNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHttpNamespace",
 }));
 export type UpdateInstanceCustomHealthStatusError =
@@ -2263,6 +2315,8 @@ export const updateInstanceCustomHealthStatus: API.OperationMethod<
     InvalidInput,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstanceCustomHealthStatus",
 }));
 export type UpdatePrivateDnsNamespaceError =
@@ -2284,6 +2338,8 @@ export const updatePrivateDnsNamespace: API.OperationMethod<
   input: UpdatePrivateDnsNamespaceRequest,
   output: UpdatePrivateDnsNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePrivateDnsNamespace",
 }));
 export type UpdatePublicDnsNamespaceError =
@@ -2304,6 +2360,8 @@ export const updatePublicDnsNamespace: API.OperationMethod<
   input: UpdatePublicDnsNamespaceRequest,
   output: UpdatePublicDnsNamespaceResponse,
   errors: [DuplicateRequest, InvalidInput, NamespaceNotFound, ResourceInUse],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePublicDnsNamespace",
 }));
 export type UpdateServiceError =
@@ -2351,6 +2409,8 @@ export const updateService: API.OperationMethod<
   input: UpdateServiceRequest,
   output: UpdateServiceResponse,
   errors: [DuplicateRequest, InvalidInput, ServiceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateService",
 }));
 export type UpdateServiceAttributesError =
@@ -2374,5 +2434,7 @@ export const updateServiceAttributes: API.OperationMethod<
     ServiceAttributesLimitExceededException,
     ServiceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceAttributes",
 }));

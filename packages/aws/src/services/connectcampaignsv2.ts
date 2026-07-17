@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2185,6 +2187,8 @@ export const createCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCampaign",
 }));
 export type DeleteCampaignError =
@@ -2210,6 +2214,8 @@ export const deleteCampaign: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCampaign",
 }));
 export type DeleteCampaignChannelSubtypeConfigError =
@@ -2237,6 +2243,8 @@ export const deleteCampaignChannelSubtypeConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCampaignChannelSubtypeConfig",
 }));
 export type DeleteCampaignCommunicationLimitsError =
@@ -2266,6 +2274,8 @@ export const deleteCampaignCommunicationLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCampaignCommunicationLimits",
 }));
 export type DeleteCampaignCommunicationTimeError =
@@ -2295,6 +2305,8 @@ export const deleteCampaignCommunicationTime: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCampaignCommunicationTime",
 }));
 export type DeleteConnectInstanceConfigError =
@@ -2324,6 +2336,8 @@ export const deleteConnectInstanceConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectInstanceConfig",
 }));
 export type DeleteConnectInstanceIntegrationError =
@@ -2351,6 +2365,8 @@ export const deleteConnectInstanceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectInstanceIntegration",
 }));
 export type DeleteInstanceOnboardingJobError =
@@ -2378,6 +2394,8 @@ export const deleteInstanceOnboardingJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceOnboardingJob",
 }));
 export type DescribeCampaignError =
@@ -2403,6 +2421,8 @@ export const describeCampaign: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCampaign",
 }));
 export type GetCampaignStateError =
@@ -2430,6 +2450,8 @@ export const getCampaignState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignState",
 }));
 export type GetCampaignStateBatchError =
@@ -2455,6 +2477,8 @@ export const getCampaignStateBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignStateBatch",
 }));
 export type GetConnectInstanceConfigError =
@@ -2480,6 +2504,8 @@ export const getConnectInstanceConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectInstanceConfig",
 }));
 export type GetInstanceCommunicationLimitsError =
@@ -2505,6 +2531,8 @@ export const getInstanceCommunicationLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceCommunicationLimits",
 }));
 export type GetInstanceOnboardingJobStatusError =
@@ -2530,6 +2558,8 @@ export const getInstanceOnboardingJobStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceOnboardingJobStatus",
 }));
 export type ListCampaignsError =
@@ -2564,6 +2594,8 @@ export const listCampaigns: API.OperationMethod<
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCampaigns",
   pagination: {
     inputToken: "nextToken",
@@ -2612,6 +2644,8 @@ export const listConnectInstanceIntegrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectInstanceIntegrations",
   pagination: {
     inputToken: "nextToken",
@@ -2645,6 +2679,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PauseCampaignError =
@@ -2676,6 +2712,8 @@ export const pauseCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PauseCampaign",
 }));
 export type PutConnectInstanceIntegrationError =
@@ -2705,6 +2743,8 @@ export const putConnectInstanceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConnectInstanceIntegration",
 }));
 export type PutInstanceCommunicationLimitsError =
@@ -2732,6 +2772,8 @@ export const putInstanceCommunicationLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInstanceCommunicationLimits",
 }));
 export type PutOutboundRequestBatchError =
@@ -2763,6 +2805,8 @@ export const putOutboundRequestBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutOutboundRequestBatch",
 }));
 export type PutProfileOutboundRequestBatchError =
@@ -2794,6 +2838,8 @@ export const putProfileOutboundRequestBatch: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProfileOutboundRequestBatch",
 }));
 export type ResumeCampaignError =
@@ -2825,6 +2871,8 @@ export const resumeCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeCampaign",
 }));
 export type StartCampaignError =
@@ -2856,6 +2904,8 @@ export const startCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCampaign",
 }));
 export type StartInstanceOnboardingJobError =
@@ -2885,6 +2935,8 @@ export const startInstanceOnboardingJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInstanceOnboardingJob",
 }));
 export type StopCampaignError =
@@ -2916,6 +2968,8 @@ export const stopCampaign: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCampaign",
 }));
 export type TagResourceError =
@@ -2943,6 +2997,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2970,6 +3026,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateCampaignChannelSubtypeConfigError =
@@ -2997,6 +3055,8 @@ export const updateCampaignChannelSubtypeConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignChannelSubtypeConfig",
 }));
 export type UpdateCampaignCommunicationLimitsError =
@@ -3026,6 +3086,8 @@ export const updateCampaignCommunicationLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignCommunicationLimits",
 }));
 export type UpdateCampaignCommunicationTimeError =
@@ -3055,6 +3117,8 @@ export const updateCampaignCommunicationTime: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignCommunicationTime",
 }));
 export type UpdateCampaignFlowAssociationError =
@@ -3084,6 +3148,8 @@ export const updateCampaignFlowAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignFlowAssociation",
 }));
 export type UpdateCampaignNameError =
@@ -3111,6 +3177,8 @@ export const updateCampaignName: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignName",
 }));
 export type UpdateCampaignScheduleError =
@@ -3140,6 +3208,8 @@ export const updateCampaignSchedule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignSchedule",
 }));
 export type UpdateCampaignSourceError =
@@ -3169,5 +3239,7 @@ export const updateCampaignSource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaignSource",
 }));

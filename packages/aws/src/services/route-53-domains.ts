@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1987,6 +1989,8 @@ export const acceptDomainTransferFromAnotherAwsAccount: API.OperationMethod<
     OperationLimitExceeded,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptDomainTransferFromAnotherAwsAccount",
 }));
 export type AssociateDelegationSignerToDomainError =
@@ -2024,6 +2028,8 @@ export const associateDelegationSignerToDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDelegationSignerToDomain",
 }));
 export type CancelDomainTransferToAnotherAwsAccountError =
@@ -2050,6 +2056,8 @@ export const cancelDomainTransferToAnotherAwsAccount: API.OperationMethod<
   input: CancelDomainTransferToAnotherAwsAccountRequest,
   output: CancelDomainTransferToAnotherAwsAccountResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDomainTransferToAnotherAwsAccount",
 }));
 export type CheckDomainAvailabilityError =
@@ -2070,6 +2078,8 @@ export const checkDomainAvailability: API.OperationMethod<
   input: CheckDomainAvailabilityRequest,
   output: CheckDomainAvailabilityResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckDomainAvailability",
 }));
 export type CheckDomainTransferabilityError =
@@ -2088,6 +2098,8 @@ export const checkDomainTransferability: API.OperationMethod<
   input: CheckDomainTransferabilityRequest,
   output: CheckDomainTransferabilityResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckDomainTransferability",
 }));
 export type DeleteDomainError =
@@ -2124,6 +2136,8 @@ export const deleteDomain: API.OperationMethod<
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [DuplicateRequest, InvalidInput, TLDRulesViolation, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
 export type DeleteTagsForDomainError =
@@ -2146,6 +2160,8 @@ export const deleteTagsForDomain: API.OperationMethod<
   input: DeleteTagsForDomainRequest,
   output: DeleteTagsForDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTagsForDomain",
 }));
 export type DisableDomainAutoRenewError =
@@ -2165,6 +2181,8 @@ export const disableDomainAutoRenew: API.OperationMethod<
   input: DisableDomainAutoRenewRequest,
   output: DisableDomainAutoRenewResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableDomainAutoRenew",
 }));
 export type DisableDomainTransferLockError =
@@ -2197,6 +2215,8 @@ export const disableDomainTransferLock: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableDomainTransferLock",
 }));
 export type DisassociateDelegationSignerFromDomainError =
@@ -2225,6 +2245,8 @@ export const disassociateDelegationSignerFromDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDelegationSignerFromDomain",
 }));
 export type EnableDomainAutoRenewError =
@@ -2252,6 +2274,8 @@ export const enableDomainAutoRenew: API.OperationMethod<
   input: EnableDomainAutoRenewRequest,
   output: EnableDomainAutoRenewResponse,
   errors: [InvalidInput, TLDRulesViolation, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableDomainAutoRenew",
 }));
 export type EnableDomainTransferLockError =
@@ -2283,6 +2307,8 @@ export const enableDomainTransferLock: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableDomainTransferLock",
 }));
 export type GetContactReachabilityStatusError =
@@ -2307,6 +2333,8 @@ export const getContactReachabilityStatus: API.OperationMethod<
   input: GetContactReachabilityStatusRequest,
   output: GetContactReachabilityStatusResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactReachabilityStatus",
 }));
 export type GetDomainDetailError = InvalidInput | UnsupportedTLD | CommonErrors;
@@ -2324,6 +2352,8 @@ export const getDomainDetail: API.OperationMethod<
   input: GetDomainDetailRequest,
   output: GetDomainDetailResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainDetail",
 }));
 export type GetDomainSuggestionsError =
@@ -2342,6 +2372,8 @@ export const getDomainSuggestions: API.OperationMethod<
   input: GetDomainSuggestionsRequest,
   output: GetDomainSuggestionsResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainSuggestions",
 }));
 export type GetOperationDetailError = InvalidInput | CommonErrors;
@@ -2358,6 +2390,8 @@ export const getOperationDetail: API.OperationMethod<
   input: GetOperationDetailRequest,
   output: GetOperationDetailResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperationDetail",
 }));
 export type ListDomainsError = InvalidInput | CommonErrors;
@@ -2389,6 +2423,8 @@ export const listDomains: API.OperationMethod<
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomains",
   pagination: {
     inputToken: "Marker",
@@ -2428,6 +2464,8 @@ export const listOperations: API.OperationMethod<
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOperations",
   pagination: {
     inputToken: "Marker",
@@ -2475,6 +2513,8 @@ export const listPrices: API.OperationMethod<
   input: ListPricesRequest,
   output: ListPricesResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrices",
   pagination: {
     inputToken: "Marker",
@@ -2504,6 +2544,8 @@ export const listTagsForDomain: API.OperationMethod<
   input: ListTagsForDomainRequest,
   output: ListTagsForDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForDomain",
 }));
 export type PushDomainError =
@@ -2528,6 +2570,8 @@ export const pushDomain: API.OperationMethod<
   input: PushDomainRequest,
   output: PushDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PushDomain",
 }));
 export type RegisterDomainError =
@@ -2584,6 +2628,8 @@ export const registerDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterDomain",
 }));
 export type RejectDomainTransferFromAnotherAwsAccountError =
@@ -2607,6 +2653,8 @@ export const rejectDomainTransferFromAnotherAwsAccount: API.OperationMethod<
   input: RejectDomainTransferFromAnotherAwsAccountRequest,
   output: RejectDomainTransferFromAnotherAwsAccountResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectDomainTransferFromAnotherAwsAccount",
 }));
 export type RenewDomainError =
@@ -2641,6 +2689,8 @@ export const renewDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RenewDomain",
 }));
 export type ResendContactReachabilityEmailError =
@@ -2662,6 +2712,8 @@ export const resendContactReachabilityEmail: API.OperationMethod<
   input: ResendContactReachabilityEmailRequest,
   output: ResendContactReachabilityEmailResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResendContactReachabilityEmail",
 }));
 export type ResendOperationAuthorizationError = InvalidInput | CommonErrors;
@@ -2677,6 +2729,8 @@ export const resendOperationAuthorization: API.OperationMethod<
   input: ResendOperationAuthorizationRequest,
   output: ResendOperationAuthorizationResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResendOperationAuthorization",
 }));
 export type RetrieveDomainAuthCodeError =
@@ -2696,6 +2750,8 @@ export const retrieveDomainAuthCode: API.OperationMethod<
   input: RetrieveDomainAuthCodeRequest,
   output: RetrieveDomainAuthCodeResponse,
   errors: [InvalidInput, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetrieveDomainAuthCode",
 }));
 export type TransferDomainError =
@@ -2758,6 +2814,8 @@ export const transferDomain: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TransferDomain",
 }));
 export type TransferDomainToAnotherAwsAccountError =
@@ -2802,6 +2860,8 @@ export const transferDomainToAnotherAwsAccount: API.OperationMethod<
     OperationLimitExceeded,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TransferDomainToAnotherAwsAccount",
 }));
 export type UpdateDomainContactError =
@@ -2835,6 +2895,8 @@ export const updateDomainContact: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainContact",
 }));
 export type UpdateDomainContactPrivacyError =
@@ -2882,6 +2944,8 @@ export const updateDomainContactPrivacy: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainContactPrivacy",
 }));
 export type UpdateDomainNameserversError =
@@ -2915,6 +2979,8 @@ export const updateDomainNameservers: API.OperationMethod<
     TLDRulesViolation,
     UnsupportedTLD,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainNameservers",
 }));
 export type UpdateTagsForDomainError =
@@ -2937,6 +3003,8 @@ export const updateTagsForDomain: API.OperationMethod<
   input: UpdateTagsForDomainRequest,
   output: UpdateTagsForDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTagsForDomain",
 }));
 export type ViewBillingError = InvalidInput | CommonErrors;
@@ -2967,6 +3035,8 @@ export const viewBilling: API.OperationMethod<
   input: ViewBillingRequest,
   output: ViewBillingResponse,
   errors: [InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ViewBilling",
   pagination: {
     inputToken: "Marker",

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3618,6 +3620,8 @@ export const listTagsForResource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "nextToken",
@@ -3658,6 +3662,8 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3687,6 +3693,8 @@ export const untagResource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateMeshError =
@@ -3727,6 +3735,8 @@ export const createMesh: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMesh",
 }));
 export type DescribeMeshError =
@@ -3756,6 +3766,8 @@ export const describeMesh: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMesh",
 }));
 export type UpdateMeshError =
@@ -3787,6 +3799,8 @@ export const updateMesh: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMesh",
 }));
 export type DeleteMeshError =
@@ -3821,6 +3835,8 @@ export const deleteMesh: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMesh",
 }));
 export type ListMeshesError =
@@ -3865,6 +3881,8 @@ export const listMeshes: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMeshes",
   pagination: {
     inputToken: "nextToken",
@@ -3911,6 +3929,8 @@ export const createVirtualGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVirtualGateway",
 }));
 export type DescribeVirtualGatewayError =
@@ -3940,6 +3960,8 @@ export const describeVirtualGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVirtualGateway",
 }));
 export type UpdateVirtualGatewayError =
@@ -3973,6 +3995,8 @@ export const updateVirtualGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVirtualGateway",
 }));
 export type DeleteVirtualGatewayError =
@@ -4005,6 +4029,8 @@ export const deleteVirtualGateway: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVirtualGateway",
 }));
 export type ListVirtualGatewaysError =
@@ -4049,6 +4075,8 @@ export const listVirtualGateways: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVirtualGateways",
   pagination: {
     inputToken: "nextToken",
@@ -4094,6 +4122,8 @@ export const createGatewayRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGatewayRoute",
 }));
 export type DescribeGatewayRouteError =
@@ -4123,6 +4153,8 @@ export const describeGatewayRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGatewayRoute",
 }));
 export type UpdateGatewayRouteError =
@@ -4157,6 +4189,8 @@ export const updateGatewayRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGatewayRoute",
 }));
 export type DeleteGatewayRouteError =
@@ -4188,6 +4222,8 @@ export const deleteGatewayRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGatewayRoute",
 }));
 export type ListGatewayRoutesError =
@@ -4233,6 +4269,8 @@ export const listGatewayRoutes: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGatewayRoutes",
   pagination: {
     inputToken: "nextToken",
@@ -4298,6 +4336,8 @@ export const createVirtualNode: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVirtualNode",
 }));
 export type DescribeVirtualNodeError =
@@ -4327,6 +4367,8 @@ export const describeVirtualNode: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVirtualNode",
 }));
 export type UpdateVirtualNodeError =
@@ -4360,6 +4402,8 @@ export const updateVirtualNode: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVirtualNode",
 }));
 export type DeleteVirtualNodeError =
@@ -4394,6 +4438,8 @@ export const deleteVirtualNode: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVirtualNode",
 }));
 export type ListVirtualNodesError =
@@ -4438,6 +4484,8 @@ export const listVirtualNodes: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVirtualNodes",
   pagination: {
     inputToken: "nextToken",
@@ -4485,6 +4533,8 @@ export const createVirtualRouter: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVirtualRouter",
 }));
 export type DescribeVirtualRouterError =
@@ -4514,6 +4564,8 @@ export const describeVirtualRouter: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVirtualRouter",
 }));
 export type UpdateVirtualRouterError =
@@ -4547,6 +4599,8 @@ export const updateVirtualRouter: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVirtualRouter",
 }));
 export type DeleteVirtualRouterError =
@@ -4581,6 +4635,8 @@ export const deleteVirtualRouter: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVirtualRouter",
 }));
 export type ListVirtualRoutersError =
@@ -4625,6 +4681,8 @@ export const listVirtualRouters: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVirtualRouters",
   pagination: {
     inputToken: "nextToken",
@@ -4669,6 +4727,8 @@ export const createRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoute",
 }));
 export type DescribeRouteError =
@@ -4698,6 +4758,8 @@ export const describeRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRoute",
 }));
 export type UpdateRouteError =
@@ -4731,6 +4793,8 @@ export const updateRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoute",
 }));
 export type DeleteRouteError =
@@ -4762,6 +4826,8 @@ export const deleteRoute: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoute",
 }));
 export type ListRoutesError =
@@ -4806,6 +4872,8 @@ export const listRoutes: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoutes",
   pagination: {
     inputToken: "nextToken",
@@ -4853,6 +4921,8 @@ export const createVirtualService: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVirtualService",
 }));
 export type DescribeVirtualServiceError =
@@ -4882,6 +4952,8 @@ export const describeVirtualService: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVirtualService",
 }));
 export type UpdateVirtualServiceError =
@@ -4915,6 +4987,8 @@ export const updateVirtualService: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVirtualService",
 }));
 export type DeleteVirtualServiceError =
@@ -4946,6 +5020,8 @@ export const deleteVirtualService: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVirtualService",
 }));
 export type ListVirtualServicesError =
@@ -4990,6 +5066,8 @@ export const listVirtualServices: API.OperationMethod<
     ServiceUnavailableException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVirtualServices",
   pagination: {
     inputToken: "nextToken",

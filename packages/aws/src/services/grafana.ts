@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1501,6 +1503,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListVersionsError =
@@ -1543,6 +1547,8 @@ export const listVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVersions",
   pagination: {
     inputToken: "nextToken",
@@ -1578,6 +1584,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1605,6 +1613,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateWorkspaceApiKeyError =
@@ -1638,6 +1648,8 @@ export const createWorkspaceApiKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspaceApiKey",
 }));
 export type DeleteWorkspaceApiKeyError =
@@ -1669,6 +1681,8 @@ export const deleteWorkspaceApiKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspaceApiKey",
 }));
 export type DescribeWorkspaceAuthenticationError =
@@ -1698,6 +1712,8 @@ export const describeWorkspaceAuthentication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaceAuthentication",
 }));
 export type UpdateWorkspaceAuthenticationError =
@@ -1729,6 +1745,8 @@ export const updateWorkspaceAuthentication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspaceAuthentication",
 }));
 export type DescribeWorkspaceConfigurationError =
@@ -1754,6 +1772,8 @@ export const describeWorkspaceConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaceConfiguration",
 }));
 export type UpdateWorkspaceConfigurationError =
@@ -1783,6 +1803,8 @@ export const updateWorkspaceConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspaceConfiguration",
 }));
 export type AssociateLicenseError =
@@ -1810,6 +1832,8 @@ export const associateLicense: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateLicense",
 }));
 export type DisassociateLicenseError =
@@ -1837,6 +1861,8 @@ export const disassociateLicense: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateLicense",
 }));
 export type ListPermissionsError =
@@ -1879,6 +1905,8 @@ export const listPermissions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissions",
   pagination: {
     inputToken: "nextToken",
@@ -1912,6 +1940,8 @@ export const updatePermissions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePermissions",
 }));
 export type CreateWorkspaceServiceAccountError =
@@ -1949,6 +1979,8 @@ export const createWorkspaceServiceAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspaceServiceAccount",
 }));
 export type DeleteWorkspaceServiceAccountError =
@@ -1982,6 +2014,8 @@ export const deleteWorkspaceServiceAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspaceServiceAccount",
 }));
 export type ListWorkspaceServiceAccountsError =
@@ -2028,6 +2062,8 @@ export const listWorkspaceServiceAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspaceServiceAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -2071,6 +2107,8 @@ export const createWorkspaceServiceAccountToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspaceServiceAccountToken",
 }));
 export type DeleteWorkspaceServiceAccountTokenError =
@@ -2104,6 +2142,8 @@ export const deleteWorkspaceServiceAccountToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspaceServiceAccountToken",
 }));
 export type ListWorkspaceServiceAccountTokensError =
@@ -2152,6 +2192,8 @@ export const listWorkspaceServiceAccountTokens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspaceServiceAccountTokens",
   pagination: {
     inputToken: "nextToken",
@@ -2189,6 +2231,8 @@ export const createWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspace",
 }));
 export type DescribeWorkspaceError =
@@ -2216,6 +2260,8 @@ export const describeWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspace",
 }));
 export type UpdateWorkspaceError =
@@ -2249,6 +2295,8 @@ export const updateWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspace",
 }));
 export type DeleteWorkspaceError =
@@ -2278,6 +2326,8 @@ export const deleteWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspace",
 }));
 export type ListWorkspacesError =
@@ -2312,6 +2362,8 @@ export const listWorkspaces: API.OperationMethod<
   input: ListWorkspacesRequest,
   output: ListWorkspacesResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspaces",
   pagination: {
     inputToken: "nextToken",

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -647,6 +649,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -665,6 +669,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -680,6 +686,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateClusterError =
@@ -745,6 +753,8 @@ export const createCluster: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type GetClusterError = ResourceNotFoundException | CommonErrors;
@@ -760,6 +770,8 @@ export const getCluster: API.OperationMethod<
   input: GetClusterInput,
   output: GetClusterOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCluster",
 }));
 export type UpdateClusterError =
@@ -833,6 +845,8 @@ export const updateCluster: API.OperationMethod<
   input: UpdateClusterInput,
   output: UpdateClusterOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
 export type DeleteClusterError =
@@ -851,6 +865,8 @@ export const deleteCluster: API.OperationMethod<
   input: DeleteClusterInput,
   output: DeleteClusterOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type ListClustersError = ResourceNotFoundException | CommonErrors;
@@ -881,6 +897,8 @@ export const listClusters: API.OperationMethod<
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
@@ -906,6 +924,8 @@ export const deleteClusterPolicy: API.OperationMethod<
   input: DeleteClusterPolicyInput,
   output: DeleteClusterPolicyOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClusterPolicy",
 }));
 export type GetClusterPolicyError =
@@ -924,6 +944,8 @@ export const getClusterPolicy: API.OperationMethod<
   input: GetClusterPolicyInput,
   output: GetClusterPolicyOutput,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterPolicy",
 }));
 export type GetVpcEndpointServiceNameError =
@@ -949,6 +971,8 @@ export const getVpcEndpointServiceName: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpcEndpointServiceName",
 }));
 export type PutClusterPolicyError =
@@ -968,5 +992,7 @@ export const putClusterPolicy: API.OperationMethod<
   input: PutClusterPolicyInput,
   output: PutClusterPolicyOutput,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutClusterPolicy",
 }));

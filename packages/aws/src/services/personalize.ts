@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3574,6 +3576,8 @@ export const createBatchInferenceJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBatchInferenceJob",
 }));
 export type CreateBatchSegmentJobError =
@@ -3605,6 +3609,8 @@ export const createBatchSegmentJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBatchSegmentJob",
 }));
 export type CreateCampaignError =
@@ -3688,6 +3694,8 @@ export const createCampaign: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCampaign",
 }));
 export type CreateDataDeletionJobError =
@@ -3751,6 +3759,8 @@ export const createDataDeletionJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataDeletionJob",
 }));
 export type CreateDatasetError =
@@ -3817,6 +3827,8 @@ export const createDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
 export type CreateDatasetExportJobError =
@@ -3862,6 +3874,8 @@ export const createDatasetExportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatasetExportJob",
 }));
 export type CreateDatasetGroupError =
@@ -3941,6 +3955,8 @@ export const createDatasetGroup: API.OperationMethod<
     ResourceAlreadyExistsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatasetGroup",
 }));
 export type CreateDatasetImportJobError =
@@ -4007,6 +4023,8 @@ export const createDatasetImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatasetImportJob",
 }));
 export type CreateEventTrackerError =
@@ -4065,6 +4083,8 @@ export const createEventTracker: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventTracker",
 }));
 export type CreateFilterError =
@@ -4092,6 +4112,8 @@ export const createFilter: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFilter",
 }));
 export type CreateMetricAttributionError =
@@ -4121,6 +4143,8 @@ export const createMetricAttribution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMetricAttribution",
 }));
 export type CreateRecommenderError =
@@ -4203,6 +4227,8 @@ export const createRecommender: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecommender",
 }));
 export type CreateSchemaError =
@@ -4240,6 +4266,8 @@ export const createSchema: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchema",
 }));
 export type CreateSolutionError =
@@ -4325,6 +4353,8 @@ export const createSolution: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSolution",
 }));
 export type CreateSolutionVersionError =
@@ -4393,6 +4423,8 @@ export const createSolutionVersion: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSolutionVersion",
 }));
 export type DeleteCampaignError =
@@ -4421,6 +4453,8 @@ export const deleteCampaign: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCampaign",
 }));
 export type DeleteDatasetError =
@@ -4447,6 +4481,8 @@ export const deleteDataset: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataset",
 }));
 export type DeleteDatasetGroupError =
@@ -4477,6 +4513,8 @@ export const deleteDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDatasetGroup",
 }));
 export type DeleteEventTrackerError =
@@ -4502,6 +4540,8 @@ export const deleteEventTracker: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventTracker",
 }));
 export type DeleteFilterError =
@@ -4525,6 +4565,8 @@ export const deleteFilter: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFilter",
 }));
 export type DeleteMetricAttributionError =
@@ -4548,6 +4590,8 @@ export const deleteMetricAttribution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMetricAttribution",
 }));
 export type DeleteRecommenderError =
@@ -4572,6 +4616,8 @@ export const deleteRecommender: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecommender",
 }));
 export type DeleteSchemaError =
@@ -4597,6 +4643,8 @@ export const deleteSchema: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchema",
 }));
 export type DeleteSolutionError =
@@ -4626,6 +4674,8 @@ export const deleteSolution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSolution",
 }));
 export type DescribeAlgorithmError =
@@ -4644,6 +4694,8 @@ export const describeAlgorithm: API.OperationMethod<
   input: DescribeAlgorithmRequest,
   output: DescribeAlgorithmResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlgorithm",
 }));
 export type DescribeBatchInferenceJobError =
@@ -4664,6 +4716,8 @@ export const describeBatchInferenceJob: API.OperationMethod<
   input: DescribeBatchInferenceJobRequest,
   output: DescribeBatchInferenceJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBatchInferenceJob",
 }));
 export type DescribeBatchSegmentJobError =
@@ -4684,6 +4738,8 @@ export const describeBatchSegmentJob: API.OperationMethod<
   input: DescribeBatchSegmentJobRequest,
   output: DescribeBatchSegmentJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBatchSegmentJob",
 }));
 export type DescribeCampaignError =
@@ -4713,6 +4769,8 @@ export const describeCampaign: API.OperationMethod<
   input: DescribeCampaignRequest,
   output: DescribeCampaignResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCampaign",
 }));
 export type DescribeDataDeletionJobError =
@@ -4731,6 +4789,8 @@ export const describeDataDeletionJob: API.OperationMethod<
   input: DescribeDataDeletionJobRequest,
   output: DescribeDataDeletionJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataDeletionJob",
 }));
 export type DescribeDatasetError =
@@ -4750,6 +4810,8 @@ export const describeDataset: API.OperationMethod<
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
 export type DescribeDatasetExportJobError =
@@ -4768,6 +4830,8 @@ export const describeDatasetExportJob: API.OperationMethod<
   input: DescribeDatasetExportJobRequest,
   output: DescribeDatasetExportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDatasetExportJob",
 }));
 export type DescribeDatasetGroupError =
@@ -4787,6 +4851,8 @@ export const describeDatasetGroup: API.OperationMethod<
   input: DescribeDatasetGroupRequest,
   output: DescribeDatasetGroupResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDatasetGroup",
 }));
 export type DescribeDatasetImportJobError =
@@ -4805,6 +4871,8 @@ export const describeDatasetImportJob: API.OperationMethod<
   input: DescribeDatasetImportJobRequest,
   output: DescribeDatasetImportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDatasetImportJob",
 }));
 export type DescribeEventTrackerError =
@@ -4825,6 +4893,8 @@ export const describeEventTracker: API.OperationMethod<
   input: DescribeEventTrackerRequest,
   output: DescribeEventTrackerResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventTracker",
 }));
 export type DescribeFeatureTransformationError =
@@ -4843,6 +4913,8 @@ export const describeFeatureTransformation: API.OperationMethod<
   input: DescribeFeatureTransformationRequest,
   output: DescribeFeatureTransformationResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFeatureTransformation",
 }));
 export type DescribeFilterError =
@@ -4861,6 +4933,8 @@ export const describeFilter: API.OperationMethod<
   input: DescribeFilterRequest,
   output: DescribeFilterResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFilter",
 }));
 export type DescribeMetricAttributionError =
@@ -4879,6 +4953,8 @@ export const describeMetricAttribution: API.OperationMethod<
   input: DescribeMetricAttributionRequest,
   output: DescribeMetricAttributionResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetricAttribution",
 }));
 export type DescribeRecipeError =
@@ -4912,6 +4988,8 @@ export const describeRecipe: API.OperationMethod<
   input: DescribeRecipeRequest,
   output: DescribeRecipeResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecipe",
 }));
 export type DescribeRecommenderError =
@@ -4946,6 +5024,8 @@ export const describeRecommender: API.OperationMethod<
   input: DescribeRecommenderRequest,
   output: DescribeRecommenderResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecommender",
 }));
 export type DescribeSchemaError =
@@ -4965,6 +5045,8 @@ export const describeSchema: API.OperationMethod<
   input: DescribeSchemaRequest,
   output: DescribeSchemaResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSchema",
 }));
 export type DescribeSolutionError =
@@ -4984,6 +5066,8 @@ export const describeSolution: API.OperationMethod<
   input: DescribeSolutionRequest,
   output: DescribeSolutionResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSolution",
 }));
 export type DescribeSolutionVersionError =
@@ -5002,6 +5086,8 @@ export const describeSolutionVersion: API.OperationMethod<
   input: DescribeSolutionVersionRequest,
   output: DescribeSolutionVersionResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSolutionVersion",
 }));
 export type GetSolutionMetricsError =
@@ -5025,6 +5111,8 @@ export const getSolutionMetrics: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolutionMetrics",
 }));
 export type ListBatchInferenceJobsError =
@@ -5059,6 +5147,8 @@ export const listBatchInferenceJobs: API.OperationMethod<
   input: ListBatchInferenceJobsRequest,
   output: ListBatchInferenceJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBatchInferenceJobs",
   pagination: {
     inputToken: "nextToken",
@@ -5099,6 +5189,8 @@ export const listBatchSegmentJobs: API.OperationMethod<
   input: ListBatchSegmentJobsRequest,
   output: ListBatchSegmentJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBatchSegmentJobs",
   pagination: {
     inputToken: "nextToken",
@@ -5141,6 +5233,8 @@ export const listCampaigns: API.OperationMethod<
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCampaigns",
   pagination: {
     inputToken: "nextToken",
@@ -5171,6 +5265,8 @@ export const listDataDeletionJobs: API.OperationMethod<
   input: ListDataDeletionJobsRequest,
   output: ListDataDeletionJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataDeletionJobs",
 }));
 export type ListDatasetExportJobsError =
@@ -5209,6 +5305,8 @@ export const listDatasetExportJobs: API.OperationMethod<
   input: ListDatasetExportJobsRequest,
   output: ListDatasetExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasetExportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -5247,6 +5345,8 @@ export const listDatasetGroups: API.OperationMethod<
   input: ListDatasetGroupsRequest,
   output: ListDatasetGroupsResponse,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasetGroups",
   pagination: {
     inputToken: "nextToken",
@@ -5291,6 +5391,8 @@ export const listDatasetImportJobs: API.OperationMethod<
   input: ListDatasetImportJobsRequest,
   output: ListDatasetImportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasetImportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -5332,6 +5434,8 @@ export const listDatasets: API.OperationMethod<
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
   pagination: {
     inputToken: "nextToken",
@@ -5374,6 +5478,8 @@ export const listEventTrackers: API.OperationMethod<
   input: ListEventTrackersRequest,
   output: ListEventTrackersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventTrackers",
   pagination: {
     inputToken: "nextToken",
@@ -5413,6 +5519,8 @@ export const listFilters: API.OperationMethod<
   input: ListFiltersRequest,
   output: ListFiltersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFilters",
   pagination: {
     inputToken: "nextToken",
@@ -5452,6 +5560,8 @@ export const listMetricAttributionMetrics: API.OperationMethod<
   input: ListMetricAttributionMetricsRequest,
   output: ListMetricAttributionMetricsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMetricAttributionMetrics",
   pagination: {
     inputToken: "nextToken",
@@ -5491,6 +5601,8 @@ export const listMetricAttributions: API.OperationMethod<
   input: ListMetricAttributionsRequest,
   output: ListMetricAttributionsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMetricAttributions",
   pagination: {
     inputToken: "nextToken",
@@ -5531,6 +5643,8 @@ export const listRecipes: API.OperationMethod<
   input: ListRecipesRequest,
   output: ListRecipesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecipes",
   pagination: {
     inputToken: "nextToken",
@@ -5573,6 +5687,8 @@ export const listRecommenders: API.OperationMethod<
   input: ListRecommendersRequest,
   output: ListRecommendersResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommenders",
   pagination: {
     inputToken: "nextToken",
@@ -5611,6 +5727,8 @@ export const listSchemas: API.OperationMethod<
   input: ListSchemasRequest,
   output: ListSchemasResponse,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemas",
   pagination: {
     inputToken: "nextToken",
@@ -5653,6 +5771,8 @@ export const listSolutions: API.OperationMethod<
   input: ListSolutionsRequest,
   output: ListSolutionsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSolutions",
   pagination: {
     inputToken: "nextToken",
@@ -5699,6 +5819,8 @@ export const listSolutionVersions: API.OperationMethod<
     InvalidNextTokenException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSolutionVersions",
   pagination: {
     inputToken: "nextToken",
@@ -5728,6 +5850,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartRecommenderError =
@@ -5752,6 +5876,8 @@ export const startRecommender: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRecommender",
 }));
 export type StopRecommenderError =
@@ -5775,6 +5901,8 @@ export const stopRecommender: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRecommender",
 }));
 export type StopSolutionVersionCreationError =
@@ -5809,6 +5937,8 @@ export const stopSolutionVersionCreation: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSolutionVersionCreation",
 }));
 export type TagResourceError =
@@ -5836,6 +5966,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5861,6 +5993,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagKeysException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateCampaignError =
@@ -5901,6 +6035,8 @@ export const updateCampaign: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaign",
 }));
 export type UpdateDatasetError =
@@ -5924,6 +6060,8 @@ export const updateDataset: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataset",
 }));
 export type UpdateMetricAttributionError =
@@ -5949,6 +6087,8 @@ export const updateMetricAttribution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMetricAttribution",
 }));
 export type UpdateRecommenderError =
@@ -5978,6 +6118,8 @@ export const updateRecommender: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecommender",
 }));
 export type UpdateSolutionError =
@@ -6015,5 +6157,7 @@ export const updateSolution: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSolution",
 }));

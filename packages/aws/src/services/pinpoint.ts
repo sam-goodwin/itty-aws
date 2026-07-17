@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -12147,6 +12149,8 @@ export const createApp: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApp",
 }));
 export type CreateCampaignError =
@@ -12178,6 +12182,8 @@ export const createCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCampaign",
 }));
 export type CreateEmailTemplateError =
@@ -12205,6 +12211,8 @@ export const createEmailTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEmailTemplate",
 }));
 export type CreateExportJobError =
@@ -12236,6 +12244,8 @@ export const createExportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExportJob",
 }));
 export type CreateImportJobError =
@@ -12267,6 +12277,8 @@ export const createImportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImportJob",
 }));
 export type CreateInAppTemplateError =
@@ -12294,6 +12306,8 @@ export const createInAppTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInAppTemplate",
 }));
 export type CreateJourneyError =
@@ -12325,6 +12339,8 @@ export const createJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJourney",
 }));
 export type CreatePushTemplateError =
@@ -12352,6 +12368,8 @@ export const createPushTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePushTemplate",
 }));
 export type CreateRecommenderConfigurationError =
@@ -12383,6 +12401,8 @@ export const createRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecommenderConfiguration",
 }));
 export type CreateSegmentError =
@@ -12414,6 +12434,8 @@ export const createSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSegment",
 }));
 export type CreateSmsTemplateError =
@@ -12441,6 +12463,8 @@ export const createSmsTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSmsTemplate",
 }));
 export type CreateVoiceTemplateError =
@@ -12468,6 +12492,8 @@ export const createVoiceTemplate: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVoiceTemplate",
 }));
 export type DeleteAdmChannelError =
@@ -12499,6 +12525,8 @@ export const deleteAdmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAdmChannel",
 }));
 export type DeleteApnsChannelError =
@@ -12530,6 +12558,8 @@ export const deleteApnsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApnsChannel",
 }));
 export type DeleteApnsSandboxChannelError =
@@ -12561,6 +12591,8 @@ export const deleteApnsSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApnsSandboxChannel",
 }));
 export type DeleteApnsVoipChannelError =
@@ -12592,6 +12624,8 @@ export const deleteApnsVoipChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApnsVoipChannel",
 }));
 export type DeleteApnsVoipSandboxChannelError =
@@ -12623,6 +12657,8 @@ export const deleteApnsVoipSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApnsVoipSandboxChannel",
 }));
 export type DeleteAppError =
@@ -12654,6 +12690,8 @@ export const deleteApp: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApp",
 }));
 export type DeleteBaiduChannelError =
@@ -12685,6 +12723,8 @@ export const deleteBaiduChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBaiduChannel",
 }));
 export type DeleteCampaignError =
@@ -12716,6 +12756,8 @@ export const deleteCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCampaign",
 }));
 export type DeleteEmailChannelError =
@@ -12747,6 +12789,8 @@ export const deleteEmailChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEmailChannel",
 }));
 export type DeleteEmailTemplateError =
@@ -12778,6 +12822,8 @@ export const deleteEmailTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEmailTemplate",
 }));
 export type DeleteEndpointError =
@@ -12809,6 +12855,8 @@ export const deleteEndpoint: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpoint",
 }));
 export type DeleteEventStreamError =
@@ -12840,6 +12888,8 @@ export const deleteEventStream: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventStream",
 }));
 export type DeleteGcmChannelError =
@@ -12871,6 +12921,8 @@ export const deleteGcmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGcmChannel",
 }));
 export type DeleteInAppTemplateError =
@@ -12902,6 +12954,8 @@ export const deleteInAppTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInAppTemplate",
 }));
 export type DeleteJourneyError =
@@ -12933,6 +12987,8 @@ export const deleteJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJourney",
 }));
 export type DeletePushTemplateError =
@@ -12964,6 +13020,8 @@ export const deletePushTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePushTemplate",
 }));
 export type DeleteRecommenderConfigurationError =
@@ -12995,6 +13053,8 @@ export const deleteRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecommenderConfiguration",
 }));
 export type DeleteSegmentError =
@@ -13026,6 +13086,8 @@ export const deleteSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSegment",
 }));
 export type DeleteSmsChannelError =
@@ -13057,6 +13119,8 @@ export const deleteSmsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSmsChannel",
 }));
 export type DeleteSmsTemplateError =
@@ -13088,6 +13152,8 @@ export const deleteSmsTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSmsTemplate",
 }));
 export type DeleteUserEndpointsError =
@@ -13119,6 +13185,8 @@ export const deleteUserEndpoints: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserEndpoints",
 }));
 export type DeleteVoiceChannelError =
@@ -13150,6 +13218,8 @@ export const deleteVoiceChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceChannel",
 }));
 export type DeleteVoiceTemplateError =
@@ -13181,6 +13251,8 @@ export const deleteVoiceTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceTemplate",
 }));
 export type GetAdmChannelError =
@@ -13212,6 +13284,8 @@ export const getAdmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAdmChannel",
 }));
 export type GetApnsChannelError =
@@ -13243,6 +13317,8 @@ export const getApnsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApnsChannel",
 }));
 export type GetApnsSandboxChannelError =
@@ -13274,6 +13350,8 @@ export const getApnsSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApnsSandboxChannel",
 }));
 export type GetApnsVoipChannelError =
@@ -13305,6 +13383,8 @@ export const getApnsVoipChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApnsVoipChannel",
 }));
 export type GetApnsVoipSandboxChannelError =
@@ -13336,6 +13416,8 @@ export const getApnsVoipSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApnsVoipSandboxChannel",
 }));
 export type GetAppError =
@@ -13367,6 +13449,8 @@ export const getApp: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApp",
 }));
 export type GetApplicationDateRangeKpiError =
@@ -13398,6 +13482,8 @@ export const getApplicationDateRangeKpi: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationDateRangeKpi",
 }));
 export type GetApplicationSettingsError =
@@ -13429,6 +13515,8 @@ export const getApplicationSettings: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationSettings",
 }));
 export type GetAppsError =
@@ -13460,6 +13548,8 @@ export const getApps: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApps",
 }));
 export type GetBaiduChannelError =
@@ -13491,6 +13581,8 @@ export const getBaiduChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBaiduChannel",
 }));
 export type GetCampaignError =
@@ -13522,6 +13614,8 @@ export const getCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaign",
 }));
 export type GetCampaignActivitiesError =
@@ -13553,6 +13647,8 @@ export const getCampaignActivities: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignActivities",
 }));
 export type GetCampaignDateRangeKpiError =
@@ -13584,6 +13680,8 @@ export const getCampaignDateRangeKpi: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignDateRangeKpi",
 }));
 export type GetCampaignsError =
@@ -13615,6 +13713,8 @@ export const getCampaigns: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaigns",
 }));
 export type GetCampaignVersionError =
@@ -13646,6 +13746,8 @@ export const getCampaignVersion: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignVersion",
 }));
 export type GetCampaignVersionsError =
@@ -13677,6 +13779,8 @@ export const getCampaignVersions: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCampaignVersions",
 }));
 export type GetChannelsError =
@@ -13708,6 +13812,8 @@ export const getChannels: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannels",
 }));
 export type GetEmailChannelError =
@@ -13739,6 +13845,8 @@ export const getEmailChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEmailChannel",
 }));
 export type GetEmailTemplateError =
@@ -13770,6 +13878,8 @@ export const getEmailTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEmailTemplate",
 }));
 export type GetEndpointError =
@@ -13801,6 +13911,8 @@ export const getEndpoint: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEndpoint",
 }));
 export type GetEventStreamError =
@@ -13832,6 +13944,8 @@ export const getEventStream: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventStream",
 }));
 export type GetExportJobError =
@@ -13863,6 +13977,8 @@ export const getExportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExportJob",
 }));
 export type GetExportJobsError =
@@ -13894,6 +14010,8 @@ export const getExportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExportJobs",
 }));
 export type GetGcmChannelError =
@@ -13925,6 +14043,8 @@ export const getGcmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGcmChannel",
 }));
 export type GetImportJobError =
@@ -13956,6 +14076,8 @@ export const getImportJob: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImportJob",
 }));
 export type GetImportJobsError =
@@ -13987,6 +14109,8 @@ export const getImportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImportJobs",
 }));
 export type GetInAppMessagesError =
@@ -14018,6 +14142,8 @@ export const getInAppMessages: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInAppMessages",
 }));
 export type GetInAppTemplateError =
@@ -14049,6 +14175,8 @@ export const getInAppTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInAppTemplate",
 }));
 export type GetJourneyError =
@@ -14080,6 +14208,8 @@ export const getJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourney",
 }));
 export type GetJourneyDateRangeKpiError =
@@ -14111,6 +14241,8 @@ export const getJourneyDateRangeKpi: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyDateRangeKpi",
 }));
 export type GetJourneyExecutionActivityMetricsError =
@@ -14142,6 +14274,8 @@ export const getJourneyExecutionActivityMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyExecutionActivityMetrics",
 }));
 export type GetJourneyExecutionMetricsError =
@@ -14173,6 +14307,8 @@ export const getJourneyExecutionMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyExecutionMetrics",
 }));
 export type GetJourneyRunExecutionActivityMetricsError =
@@ -14204,6 +14340,8 @@ export const getJourneyRunExecutionActivityMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyRunExecutionActivityMetrics",
 }));
 export type GetJourneyRunExecutionMetricsError =
@@ -14235,6 +14373,8 @@ export const getJourneyRunExecutionMetrics: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyRunExecutionMetrics",
 }));
 export type GetJourneyRunsError =
@@ -14266,6 +14406,8 @@ export const getJourneyRuns: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJourneyRuns",
 }));
 export type GetPushTemplateError =
@@ -14297,6 +14439,8 @@ export const getPushTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPushTemplate",
 }));
 export type GetRecommenderConfigurationError =
@@ -14328,6 +14472,8 @@ export const getRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommenderConfiguration",
 }));
 export type GetRecommenderConfigurationsError =
@@ -14359,6 +14505,8 @@ export const getRecommenderConfigurations: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommenderConfigurations",
 }));
 export type GetSegmentError =
@@ -14390,6 +14538,8 @@ export const getSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegment",
 }));
 export type GetSegmentExportJobsError =
@@ -14421,6 +14571,8 @@ export const getSegmentExportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentExportJobs",
 }));
 export type GetSegmentImportJobsError =
@@ -14452,6 +14604,8 @@ export const getSegmentImportJobs: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentImportJobs",
 }));
 export type GetSegmentsError =
@@ -14483,6 +14637,8 @@ export const getSegments: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegments",
 }));
 export type GetSegmentVersionError =
@@ -14514,6 +14670,8 @@ export const getSegmentVersion: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentVersion",
 }));
 export type GetSegmentVersionsError =
@@ -14545,6 +14703,8 @@ export const getSegmentVersions: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentVersions",
 }));
 export type GetSmsChannelError =
@@ -14576,6 +14736,8 @@ export const getSmsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSmsChannel",
 }));
 export type GetSmsTemplateError =
@@ -14607,6 +14769,8 @@ export const getSmsTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSmsTemplate",
 }));
 export type GetUserEndpointsError =
@@ -14638,6 +14802,8 @@ export const getUserEndpoints: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserEndpoints",
 }));
 export type GetVoiceChannelError =
@@ -14669,6 +14835,8 @@ export const getVoiceChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceChannel",
 }));
 export type GetVoiceTemplateError =
@@ -14700,6 +14868,8 @@ export const getVoiceTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVoiceTemplate",
 }));
 export type ListJourneysError =
@@ -14731,6 +14901,8 @@ export const listJourneys: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJourneys",
 }));
 export type ListTagsForResourceError = CommonErrors;
@@ -14746,6 +14918,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTemplatesError =
@@ -14773,6 +14947,8 @@ export const listTemplates: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplates",
 }));
 export type ListTemplateVersionsError =
@@ -14804,6 +14980,8 @@ export const listTemplateVersions: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateVersions",
 }));
 export type PhoneNumberValidateError =
@@ -14835,6 +15013,8 @@ export const phoneNumberValidate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PhoneNumberValidate",
 }));
 export type PutEventsError =
@@ -14866,6 +15046,8 @@ export const putEvents: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEvents",
 }));
 export type PutEventStreamError =
@@ -14897,6 +15079,8 @@ export const putEventStream: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEventStream",
 }));
 export type RemoveAttributesError =
@@ -14928,6 +15112,8 @@ export const removeAttributes: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAttributes",
 }));
 export type SendMessagesError =
@@ -14959,6 +15145,8 @@ export const sendMessages: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendMessages",
 }));
 export type SendOTPMessageError =
@@ -14990,6 +15178,8 @@ export const sendOTPMessage: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendOTPMessage",
 }));
 export type SendUsersMessagesError =
@@ -15021,6 +15211,8 @@ export const sendUsersMessages: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendUsersMessages",
 }));
 export type TagResourceError = CommonErrors;
@@ -15036,6 +15228,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
@@ -15051,6 +15245,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAdmChannelError =
@@ -15082,6 +15278,8 @@ export const updateAdmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAdmChannel",
 }));
 export type UpdateApnsChannelError =
@@ -15113,6 +15311,8 @@ export const updateApnsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApnsChannel",
 }));
 export type UpdateApnsSandboxChannelError =
@@ -15144,6 +15344,8 @@ export const updateApnsSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApnsSandboxChannel",
 }));
 export type UpdateApnsVoipChannelError =
@@ -15175,6 +15377,8 @@ export const updateApnsVoipChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApnsVoipChannel",
 }));
 export type UpdateApnsVoipSandboxChannelError =
@@ -15206,6 +15410,8 @@ export const updateApnsVoipSandboxChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApnsVoipSandboxChannel",
 }));
 export type UpdateApplicationSettingsError =
@@ -15237,6 +15443,8 @@ export const updateApplicationSettings: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationSettings",
 }));
 export type UpdateBaiduChannelError =
@@ -15268,6 +15476,8 @@ export const updateBaiduChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBaiduChannel",
 }));
 export type UpdateCampaignError =
@@ -15299,6 +15509,8 @@ export const updateCampaign: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCampaign",
 }));
 export type UpdateEmailChannelError =
@@ -15330,6 +15542,8 @@ export const updateEmailChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEmailChannel",
 }));
 export type UpdateEmailTemplateError =
@@ -15361,6 +15575,8 @@ export const updateEmailTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEmailTemplate",
 }));
 export type UpdateEndpointError =
@@ -15392,6 +15608,8 @@ export const updateEndpoint: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpoint",
 }));
 export type UpdateEndpointsBatchError =
@@ -15423,6 +15641,8 @@ export const updateEndpointsBatch: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpointsBatch",
 }));
 export type UpdateGcmChannelError =
@@ -15454,6 +15674,8 @@ export const updateGcmChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGcmChannel",
 }));
 export type UpdateInAppTemplateError =
@@ -15485,6 +15707,8 @@ export const updateInAppTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInAppTemplate",
 }));
 export type UpdateJourneyError =
@@ -15518,6 +15742,8 @@ export const updateJourney: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJourney",
 }));
 export type UpdateJourneyStateError =
@@ -15549,6 +15775,8 @@ export const updateJourneyState: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJourneyState",
 }));
 export type UpdatePushTemplateError =
@@ -15580,6 +15808,8 @@ export const updatePushTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePushTemplate",
 }));
 export type UpdateRecommenderConfigurationError =
@@ -15611,6 +15841,8 @@ export const updateRecommenderConfiguration: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecommenderConfiguration",
 }));
 export type UpdateSegmentError =
@@ -15642,6 +15874,8 @@ export const updateSegment: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSegment",
 }));
 export type UpdateSmsChannelError =
@@ -15673,6 +15907,8 @@ export const updateSmsChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSmsChannel",
 }));
 export type UpdateSmsTemplateError =
@@ -15704,6 +15940,8 @@ export const updateSmsTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSmsTemplate",
 }));
 export type UpdateTemplateActiveVersionError =
@@ -15735,6 +15973,8 @@ export const updateTemplateActiveVersion: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTemplateActiveVersion",
 }));
 export type UpdateVoiceChannelError =
@@ -15766,6 +16006,8 @@ export const updateVoiceChannel: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVoiceChannel",
 }));
 export type UpdateVoiceTemplateError =
@@ -15797,6 +16039,8 @@ export const updateVoiceTemplate: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVoiceTemplate",
 }));
 export type VerifyOTPMessageError =
@@ -15828,5 +16072,7 @@ export const verifyOTPMessage: API.OperationMethod<
     PayloadTooLargeException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyOTPMessage",
 }));

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1156,6 +1158,8 @@ export const batchUpdateRecommendationResourceExclusion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateRecommendationResourceExclusion",
 }));
 export type GetOrganizationRecommendationError =
@@ -1183,6 +1187,8 @@ export const getOrganizationRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOrganizationRecommendation",
 }));
 export type GetRecommendationError =
@@ -1210,6 +1216,8 @@ export const getRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendation",
 }));
 export type ListChecksError =
@@ -1250,6 +1258,8 @@ export const listChecks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChecks",
   pagination: {
     inputToken: "nextToken",
@@ -1298,6 +1308,8 @@ export const listOrganizationRecommendationAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationRecommendationAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -1346,6 +1358,8 @@ export const listOrganizationRecommendationResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationRecommendationResources",
   pagination: {
     inputToken: "nextToken",
@@ -1392,6 +1406,8 @@ export const listOrganizationRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -1440,6 +1456,8 @@ export const listRecommendationResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendationResources",
   pagination: {
     inputToken: "nextToken",
@@ -1486,6 +1504,8 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -1521,6 +1541,8 @@ export const updateOrganizationRecommendationLifecycle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOrganizationRecommendationLifecycle",
 }));
 export type UpdateRecommendationLifecycleError =
@@ -1550,5 +1572,7 @@ export const updateRecommendationLifecycle: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecommendationLifecycle",
 }));

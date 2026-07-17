@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -582,6 +584,8 @@ export const completeSnapshot: API.OperationMethod<
     ValidationException,
     InvalidSignatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteSnapshot",
 }));
 export type GetSnapshotBlockError =
@@ -616,6 +620,8 @@ export const getSnapshotBlock: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSnapshotBlock",
 }));
 export type ListChangedBlocksError =
@@ -666,6 +672,8 @@ export const listChangedBlocks: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChangedBlocks",
   pagination: {
     inputToken: "NextToken",
@@ -720,6 +728,8 @@ export const listSnapshotBlocks: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSnapshotBlocks",
   pagination: {
     inputToken: "NextToken",
@@ -765,6 +775,8 @@ export const putSnapshotBlock: API.OperationMethod<
     ValidationException,
     InvalidSignatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSnapshotBlock",
 }));
 export type StartSnapshotError =
@@ -807,5 +819,7 @@ export const startSnapshot: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSnapshot",
 }));

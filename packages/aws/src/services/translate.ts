@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1127,6 +1129,8 @@ export const createParallelData: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateParallelData",
 }));
 export type DeleteParallelDataError =
@@ -1152,6 +1156,8 @@ export const deleteParallelData: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteParallelData",
 }));
 export type DeleteTerminologyError =
@@ -1177,6 +1183,8 @@ export const deleteTerminology: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTerminology",
 }));
 export type DescribeTextTranslationJobError =
@@ -1201,6 +1209,8 @@ export const describeTextTranslationJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTextTranslationJob",
 }));
 export type GetParallelDataError =
@@ -1226,6 +1236,8 @@ export const getParallelData: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParallelData",
 }));
 export type GetTerminologyError =
@@ -1251,6 +1263,8 @@ export const getTerminology: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTerminology",
 }));
 export type ImportTerminologyError =
@@ -1288,6 +1302,8 @@ export const importTerminology: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportTerminology",
 }));
 export type ListLanguagesError =
@@ -1328,6 +1344,8 @@ export const listLanguages: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedDisplayLanguageCodeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLanguages",
   pagination: {
     inputToken: "NextToken",
@@ -1371,6 +1389,8 @@ export const listParallelData: API.OperationMethod<
     InvalidParameterValueException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListParallelData",
   pagination: {
     inputToken: "NextToken",
@@ -1401,6 +1421,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTerminologiesError =
@@ -1439,6 +1461,8 @@ export const listTerminologies: API.OperationMethod<
     InvalidParameterValueException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTerminologies",
   pagination: {
     inputToken: "NextToken",
@@ -1484,6 +1508,8 @@ export const listTextTranslationJobs: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTextTranslationJobs",
   pagination: {
     inputToken: "NextToken",
@@ -1526,6 +1552,8 @@ export const startTextTranslationJob: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedLanguagePairException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTextTranslationJob",
 }));
 export type StopTextTranslationJobError =
@@ -1557,6 +1585,8 @@ export const stopTextTranslationJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTextTranslationJob",
 }));
 export type TagResourceError =
@@ -1587,6 +1617,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TranslateDocumentError =
@@ -1627,6 +1659,8 @@ export const translateDocument: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedLanguagePairException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TranslateDocument",
 }));
 export type TranslateTextError =
@@ -1661,6 +1695,8 @@ export const translateText: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedLanguagePairException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TranslateText",
 }));
 export type UntagResourceError =
@@ -1688,6 +1724,8 @@ export const untagResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateParallelDataError =
@@ -1722,5 +1760,7 @@ export const updateParallelData: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateParallelData",
 }));

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -2679,6 +2681,8 @@ export const cancelTaskExecution: API.OperationMethod<
   input: CancelTaskExecutionRequest,
   output: CancelTaskExecutionResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelTaskExecution",
 }));
 export type CreateAgentError =
@@ -2701,6 +2705,8 @@ export const createAgent: API.OperationMethod<
   input: CreateAgentRequest,
   output: CreateAgentResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAgent",
 }));
 export type CreateLocationAzureBlobError =
@@ -2724,6 +2730,8 @@ export const createLocationAzureBlob: API.OperationMethod<
   input: CreateLocationAzureBlobRequest,
   output: CreateLocationAzureBlobResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationAzureBlob",
 }));
 export type CreateLocationEfsError =
@@ -2748,6 +2756,8 @@ export const createLocationEfs: API.OperationMethod<
   input: CreateLocationEfsRequest,
   output: CreateLocationEfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationEfs",
 }));
 export type CreateLocationFsxLustreError =
@@ -2771,6 +2781,8 @@ export const createLocationFsxLustre: API.OperationMethod<
   input: CreateLocationFsxLustreRequest,
   output: CreateLocationFsxLustreResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationFsxLustre",
 }));
 export type CreateLocationFsxOntapError =
@@ -2794,6 +2806,8 @@ export const createLocationFsxOntap: API.OperationMethod<
   input: CreateLocationFsxOntapRequest,
   output: CreateLocationFsxOntapResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationFsxOntap",
 }));
 export type CreateLocationFsxOpenZfsError =
@@ -2821,6 +2835,8 @@ export const createLocationFsxOpenZfs: API.OperationMethod<
   input: CreateLocationFsxOpenZfsRequest,
   output: CreateLocationFsxOpenZfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationFsxOpenZfs",
 }));
 export type CreateLocationFsxWindowsError =
@@ -2845,6 +2861,8 @@ export const createLocationFsxWindows: API.OperationMethod<
   input: CreateLocationFsxWindowsRequest,
   output: CreateLocationFsxWindowsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationFsxWindows",
 }));
 export type CreateLocationHdfsError =
@@ -2869,6 +2887,8 @@ export const createLocationHdfs: API.OperationMethod<
   input: CreateLocationHdfsRequest,
   output: CreateLocationHdfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationHdfs",
 }));
 export type CreateLocationNfsError =
@@ -2893,6 +2913,8 @@ export const createLocationNfs: API.OperationMethod<
   input: CreateLocationNfsRequest,
   output: CreateLocationNfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationNfs",
 }));
 export type CreateLocationObjectStorageError =
@@ -2915,6 +2937,8 @@ export const createLocationObjectStorage: API.OperationMethod<
   input: CreateLocationObjectStorageRequest,
   output: CreateLocationObjectStorageResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationObjectStorage",
 }));
 export type CreateLocationS3Error =
@@ -2945,6 +2969,8 @@ export const createLocationS3: API.OperationMethod<
   input: CreateLocationS3Request,
   output: CreateLocationS3Response,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationS3",
 }));
 export type CreateLocationSmbError =
@@ -2968,6 +2994,8 @@ export const createLocationSmb: API.OperationMethod<
   input: CreateLocationSmbRequest,
   output: CreateLocationSmbResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocationSmb",
 }));
 export type CreateTaskError =
@@ -2995,6 +3023,8 @@ export const createTask: API.OperationMethod<
   input: CreateTaskRequest,
   output: CreateTaskResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTask",
 }));
 export type DeleteAgentError =
@@ -3018,6 +3048,8 @@ export const deleteAgent: API.OperationMethod<
   input: DeleteAgentRequest,
   output: DeleteAgentResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAgent",
 }));
 export type DeleteLocationError =
@@ -3036,6 +3068,8 @@ export const deleteLocation: API.OperationMethod<
   input: DeleteLocationRequest,
   output: DeleteLocationResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLocation",
 }));
 export type DeleteTaskError =
@@ -3054,6 +3088,8 @@ export const deleteTask: API.OperationMethod<
   input: DeleteTaskRequest,
   output: DeleteTaskResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTask",
 }));
 export type DescribeAgentError =
@@ -3073,6 +3109,8 @@ export const describeAgent: API.OperationMethod<
   input: DescribeAgentRequest,
   output: DescribeAgentResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAgent",
 }));
 export type DescribeLocationAzureBlobError =
@@ -3092,6 +3130,8 @@ export const describeLocationAzureBlob: API.OperationMethod<
   input: DescribeLocationAzureBlobRequest,
   output: DescribeLocationAzureBlobResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationAzureBlob",
 }));
 export type DescribeLocationEfsError =
@@ -3110,6 +3150,8 @@ export const describeLocationEfs: API.OperationMethod<
   input: DescribeLocationEfsRequest,
   output: DescribeLocationEfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationEfs",
 }));
 export type DescribeLocationFsxLustreError =
@@ -3128,6 +3170,8 @@ export const describeLocationFsxLustre: API.OperationMethod<
   input: DescribeLocationFsxLustreRequest,
   output: DescribeLocationFsxLustreResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationFsxLustre",
 }));
 export type DescribeLocationFsxOntapError =
@@ -3149,6 +3193,8 @@ export const describeLocationFsxOntap: API.OperationMethod<
   input: DescribeLocationFsxOntapRequest,
   output: DescribeLocationFsxOntapResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationFsxOntap",
 }));
 export type DescribeLocationFsxOpenZfsError =
@@ -3170,6 +3216,8 @@ export const describeLocationFsxOpenZfs: API.OperationMethod<
   input: DescribeLocationFsxOpenZfsRequest,
   output: DescribeLocationFsxOpenZfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationFsxOpenZfs",
 }));
 export type DescribeLocationFsxWindowsError =
@@ -3188,6 +3236,8 @@ export const describeLocationFsxWindows: API.OperationMethod<
   input: DescribeLocationFsxWindowsRequest,
   output: DescribeLocationFsxWindowsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationFsxWindows",
 }));
 export type DescribeLocationHdfsError =
@@ -3207,6 +3257,8 @@ export const describeLocationHdfs: API.OperationMethod<
   input: DescribeLocationHdfsRequest,
   output: DescribeLocationHdfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationHdfs",
 }));
 export type DescribeLocationNfsError =
@@ -3226,6 +3278,8 @@ export const describeLocationNfs: API.OperationMethod<
   input: DescribeLocationNfsRequest,
   output: DescribeLocationNfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationNfs",
 }));
 export type DescribeLocationObjectStorageError =
@@ -3245,6 +3299,8 @@ export const describeLocationObjectStorage: API.OperationMethod<
   input: DescribeLocationObjectStorageRequest,
   output: DescribeLocationObjectStorageResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationObjectStorage",
 }));
 export type DescribeLocationS3Error =
@@ -3264,6 +3320,8 @@ export const describeLocationS3: API.OperationMethod<
   input: DescribeLocationS3Request,
   output: DescribeLocationS3Response,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationS3",
 }));
 export type DescribeLocationSmbError =
@@ -3283,6 +3341,8 @@ export const describeLocationSmb: API.OperationMethod<
   input: DescribeLocationSmbRequest,
   output: DescribeLocationSmbResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocationSmb",
 }));
 export type DescribeTaskError =
@@ -3302,6 +3362,8 @@ export const describeTask: API.OperationMethod<
   input: DescribeTaskRequest,
   output: DescribeTaskResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTask",
 }));
 export type DescribeTaskExecutionError =
@@ -3326,6 +3388,8 @@ export const describeTaskExecution: API.OperationMethod<
   input: DescribeTaskExecutionRequest,
   output: DescribeTaskExecutionResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTaskExecution",
 }));
 export type ListAgentsError =
@@ -3370,6 +3434,8 @@ export const listAgents: API.OperationMethod<
   input: ListAgentsRequest,
   output: ListAgentsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAgents",
   pagination: {
     inputToken: "NextToken",
@@ -3413,6 +3479,8 @@ export const listLocations: API.OperationMethod<
   input: ListLocationsRequest,
   output: ListLocationsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLocations",
   pagination: {
     inputToken: "NextToken",
@@ -3452,6 +3520,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -3491,6 +3561,8 @@ export const listTaskExecutions: API.OperationMethod<
   input: ListTaskExecutionsRequest,
   output: ListTaskExecutionsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTaskExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -3530,6 +3602,8 @@ export const listTasks: API.OperationMethod<
   input: ListTasksRequest,
   output: ListTasksResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTasks",
   pagination: {
     inputToken: "NextToken",
@@ -3562,6 +3636,8 @@ export const startTaskExecution: API.OperationMethod<
   input: StartTaskExecutionRequest,
   output: StartTaskExecutionResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTaskExecution",
 }));
 export type TagResourceError =
@@ -3584,6 +3660,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3602,6 +3680,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAgentError =
@@ -3620,6 +3700,8 @@ export const updateAgent: API.OperationMethod<
   input: UpdateAgentRequest,
   output: UpdateAgentResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAgent",
 }));
 export type UpdateLocationAzureBlobError =
@@ -3641,6 +3723,8 @@ export const updateLocationAzureBlob: API.OperationMethod<
   input: UpdateLocationAzureBlobRequest,
   output: UpdateLocationAzureBlobResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationAzureBlob",
 }));
 export type UpdateLocationEfsError =
@@ -3663,6 +3747,8 @@ export const updateLocationEfs: API.OperationMethod<
   input: UpdateLocationEfsRequest,
   output: UpdateLocationEfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationEfs",
 }));
 export type UpdateLocationFsxLustreError =
@@ -3685,6 +3771,8 @@ export const updateLocationFsxLustre: API.OperationMethod<
   input: UpdateLocationFsxLustreRequest,
   output: UpdateLocationFsxLustreResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationFsxLustre",
 }));
 export type UpdateLocationFsxOntapError =
@@ -3707,6 +3795,8 @@ export const updateLocationFsxOntap: API.OperationMethod<
   input: UpdateLocationFsxOntapRequest,
   output: UpdateLocationFsxOntapResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationFsxOntap",
 }));
 export type UpdateLocationFsxOpenZfsError =
@@ -3732,6 +3822,8 @@ export const updateLocationFsxOpenZfs: API.OperationMethod<
   input: UpdateLocationFsxOpenZfsRequest,
   output: UpdateLocationFsxOpenZfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationFsxOpenZfs",
 }));
 export type UpdateLocationFsxWindowsError =
@@ -3754,6 +3846,8 @@ export const updateLocationFsxWindows: API.OperationMethod<
   input: UpdateLocationFsxWindowsRequest,
   output: UpdateLocationFsxWindowsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationFsxWindows",
 }));
 export type UpdateLocationHdfsError =
@@ -3776,6 +3870,8 @@ export const updateLocationHdfs: API.OperationMethod<
   input: UpdateLocationHdfsRequest,
   output: UpdateLocationHdfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationHdfs",
 }));
 export type UpdateLocationNfsError =
@@ -3798,6 +3894,8 @@ export const updateLocationNfs: API.OperationMethod<
   input: UpdateLocationNfsRequest,
   output: UpdateLocationNfsResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationNfs",
 }));
 export type UpdateLocationObjectStorageError =
@@ -3820,6 +3918,8 @@ export const updateLocationObjectStorage: API.OperationMethod<
   input: UpdateLocationObjectStorageRequest,
   output: UpdateLocationObjectStorageResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationObjectStorage",
 }));
 export type UpdateLocationS3Error =
@@ -3846,6 +3946,8 @@ export const updateLocationS3: API.OperationMethod<
   input: UpdateLocationS3Request,
   output: UpdateLocationS3Response,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationS3",
 }));
 export type UpdateLocationSmbError =
@@ -3868,6 +3970,8 @@ export const updateLocationSmb: API.OperationMethod<
   input: UpdateLocationSmbRequest,
   output: UpdateLocationSmbResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLocationSmb",
 }));
 export type UpdateTaskError =
@@ -3887,6 +3991,8 @@ export const updateTask: API.OperationMethod<
   input: UpdateTaskRequest,
   output: UpdateTaskResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTask",
 }));
 export type UpdateTaskExecutionError =
@@ -3911,5 +4017,7 @@ export const updateTaskExecution: API.OperationMethod<
   input: UpdateTaskExecutionRequest,
   output: UpdateTaskExecutionResponse,
   errors: [InternalException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTaskExecution",
 }));

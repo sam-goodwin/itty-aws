@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -582,6 +584,8 @@ export const cancelResourceRequest: API.OperationMethod<
   input: CancelResourceRequestInput,
   output: CancelResourceRequestOutput,
   errors: [ConcurrentModificationException, RequestTokenNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelResourceRequest",
 }));
 export type CreateResourceError =
@@ -642,6 +646,8 @@ export const createResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResource",
 }));
 export type DeleteResourceError =
@@ -702,6 +708,8 @@ export const deleteResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResource",
 }));
 export type GetResourceError =
@@ -757,6 +765,8 @@ export const getResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResource",
 }));
 export type GetResourceRequestStatusError =
@@ -776,6 +786,8 @@ export const getResourceRequestStatus: API.OperationMethod<
   input: GetResourceRequestStatusInput,
   output: GetResourceRequestStatusOutput,
   errors: [RequestTokenNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceRequestStatus",
 }));
 export type ListResourceRequestsError = CommonErrors;
@@ -810,6 +822,8 @@ export const listResourceRequests: API.OperationMethod<
   input: ListResourceRequestsInput,
   output: ListResourceRequestsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceRequests",
   pagination: {
     inputToken: "NextToken",
@@ -885,6 +899,8 @@ export const listResources: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResources",
   pagination: {
     inputToken: "NextToken",
@@ -961,5 +977,7 @@ export const updateResource: API.OperationMethod<
     TypeNotFoundException,
     UnsupportedActionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResource",
 }));

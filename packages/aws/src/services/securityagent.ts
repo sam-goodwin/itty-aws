@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3149,6 +3151,8 @@ export const addArtifact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddArtifact",
 }));
 export type BatchDeletePentestsError = CommonErrors;
@@ -3164,6 +3168,8 @@ export const batchDeletePentests: API.OperationMethod<
   input: BatchDeletePentestsInput,
   output: BatchDeletePentestsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeletePentests",
 }));
 export type BatchGetArtifactMetadataError =
@@ -3191,6 +3197,8 @@ export const batchGetArtifactMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetArtifactMetadata",
 }));
 export type BatchGetFindingsError = CommonErrors;
@@ -3206,6 +3214,8 @@ export const batchGetFindings: API.OperationMethod<
   input: BatchGetFindingsInput,
   output: BatchGetFindingsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetFindings",
 }));
 export type BatchGetPentestJobsError = CommonErrors;
@@ -3221,6 +3231,8 @@ export const batchGetPentestJobs: API.OperationMethod<
   input: BatchGetPentestJobsInput,
   output: BatchGetPentestJobsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetPentestJobs",
 }));
 export type BatchGetPentestJobTasksError = CommonErrors;
@@ -3236,6 +3248,8 @@ export const batchGetPentestJobTasks: API.OperationMethod<
   input: BatchGetPentestJobTasksInput,
   output: BatchGetPentestJobTasksOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetPentestJobTasks",
 }));
 export type BatchGetPentestsError = CommonErrors;
@@ -3251,6 +3265,8 @@ export const batchGetPentests: API.OperationMethod<
   input: BatchGetPentestsInput,
   output: BatchGetPentestsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetPentests",
 }));
 export type CreateMembershipError = CommonErrors;
@@ -3266,6 +3282,8 @@ export const createMembership: API.OperationMethod<
   input: CreateMembershipRequest,
   output: CreateMembershipResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMembership",
 }));
 export type CreatePentestError = CommonErrors;
@@ -3281,6 +3299,8 @@ export const createPentest: API.OperationMethod<
   input: CreatePentestInput,
   output: CreatePentestOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePentest",
 }));
 export type DeleteArtifactError =
@@ -3308,6 +3328,8 @@ export const deleteArtifact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteArtifact",
 }));
 export type DeleteMembershipError = CommonErrors;
@@ -3323,6 +3345,8 @@ export const deleteMembership: API.OperationMethod<
   input: DeleteMembershipRequest,
   output: DeleteMembershipResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMembership",
 }));
 export type GetArtifactError =
@@ -3350,6 +3374,8 @@ export const getArtifact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetArtifact",
 }));
 export type InitiateProviderRegistrationError =
@@ -3379,6 +3405,8 @@ export const initiateProviderRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateProviderRegistration",
 }));
 export type ListArtifactsError =
@@ -3421,6 +3449,8 @@ export const listArtifacts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListArtifacts",
   pagination: {
     inputToken: "nextToken",
@@ -3457,6 +3487,8 @@ export const listDiscoveredEndpoints: API.OperationMethod<
   input: ListDiscoveredEndpointsInput,
   output: ListDiscoveredEndpointsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDiscoveredEndpoints",
   pagination: {
     inputToken: "nextToken",
@@ -3493,6 +3525,8 @@ export const listFindings: API.OperationMethod<
   input: ListFindingsInput,
   output: ListFindingsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindings",
   pagination: {
     inputToken: "nextToken",
@@ -3541,6 +3575,8 @@ export const listIntegratedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntegratedResources",
   pagination: {
     inputToken: "nextToken",
@@ -3577,6 +3613,8 @@ export const listMemberships: API.OperationMethod<
   input: ListMembershipsRequest,
   output: ListMembershipsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMemberships",
   pagination: {
     inputToken: "nextToken",
@@ -3613,6 +3651,8 @@ export const listPentestJobsForPentest: API.OperationMethod<
   input: ListPentestJobsForPentestInput,
   output: ListPentestJobsForPentestOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPentestJobsForPentest",
   pagination: {
     inputToken: "nextToken",
@@ -3649,6 +3689,8 @@ export const listPentestJobTasks: API.OperationMethod<
   input: ListPentestJobTasksInput,
   output: ListPentestJobTasksOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPentestJobTasks",
   pagination: {
     inputToken: "nextToken",
@@ -3685,6 +3727,8 @@ export const listPentests: API.OperationMethod<
   input: ListPentestsInput,
   output: ListPentestsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPentests",
   pagination: {
     inputToken: "nextToken",
@@ -3706,6 +3750,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartCodeRemediationError = CommonErrors;
@@ -3721,6 +3767,8 @@ export const startCodeRemediation: API.OperationMethod<
   input: StartCodeRemediationInput,
   output: StartCodeRemediationOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCodeRemediation",
 }));
 export type StartPentestJobError = CommonErrors;
@@ -3736,6 +3784,8 @@ export const startPentestJob: API.OperationMethod<
   input: StartPentestJobInput,
   output: StartPentestJobOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPentestJob",
 }));
 export type StopPentestJobError = CommonErrors;
@@ -3751,6 +3801,8 @@ export const stopPentestJob: API.OperationMethod<
   input: StopPentestJobInput,
   output: StopPentestJobOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopPentestJob",
 }));
 export type TagResourceError = CommonErrors;
@@ -3766,6 +3818,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
@@ -3781,6 +3835,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateFindingError = CommonErrors;
@@ -3796,6 +3852,8 @@ export const updateFinding: API.OperationMethod<
   input: UpdateFindingInput,
   output: UpdateFindingOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFinding",
 }));
 export type UpdateIntegratedResourcesError =
@@ -3825,6 +3883,8 @@ export const updateIntegratedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIntegratedResources",
 }));
 export type UpdatePentestError = CommonErrors;
@@ -3840,6 +3900,8 @@ export const updatePentest: API.OperationMethod<
   input: UpdatePentestInput,
   output: UpdatePentestOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePentest",
 }));
 export type VerifyTargetDomainError = CommonErrors;
@@ -3855,6 +3917,8 @@ export const verifyTargetDomain: API.OperationMethod<
   input: VerifyTargetDomainInput,
   output: VerifyTargetDomainOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyTargetDomain",
 }));
 export type CreateAgentSpaceError = CommonErrors;
@@ -3870,6 +3934,8 @@ export const createAgentSpace: API.OperationMethod<
   input: CreateAgentSpaceInput,
   output: CreateAgentSpaceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAgentSpace",
 }));
 export type UpdateAgentSpaceError = CommonErrors;
@@ -3885,6 +3951,8 @@ export const updateAgentSpace: API.OperationMethod<
   input: UpdateAgentSpaceInput,
   output: UpdateAgentSpaceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAgentSpace",
 }));
 export type DeleteAgentSpaceError = CommonErrors;
@@ -3900,6 +3968,8 @@ export const deleteAgentSpace: API.OperationMethod<
   input: DeleteAgentSpaceInput,
   output: DeleteAgentSpaceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAgentSpace",
 }));
 export type ListAgentSpacesError = CommonErrors;
@@ -3930,6 +4000,8 @@ export const listAgentSpaces: API.OperationMethod<
   input: ListAgentSpacesInput,
   output: ListAgentSpacesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAgentSpaces",
   pagination: {
     inputToken: "nextToken",
@@ -3951,6 +4023,8 @@ export const batchGetAgentSpaces: API.OperationMethod<
   input: BatchGetAgentSpacesInput,
   output: BatchGetAgentSpacesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetAgentSpaces",
 }));
 export type CreateApplicationError = CommonErrors;
@@ -3966,6 +4040,8 @@ export const createApplication: API.OperationMethod<
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type GetApplicationError = CommonErrors;
@@ -3981,6 +4057,8 @@ export const getApplication: API.OperationMethod<
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type UpdateApplicationError = CommonErrors;
@@ -3996,6 +4074,8 @@ export const updateApplication: API.OperationMethod<
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type DeleteApplicationError = CommonErrors;
@@ -4011,6 +4091,8 @@ export const deleteApplication: API.OperationMethod<
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type ListApplicationsError = CommonErrors;
@@ -4041,6 +4123,8 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
@@ -4076,6 +4160,8 @@ export const createIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegration",
 }));
 export type GetIntegrationError =
@@ -4103,6 +4189,8 @@ export const getIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegration",
 }));
 export type DeleteIntegrationError =
@@ -4132,6 +4220,8 @@ export const deleteIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegration",
 }));
 export type ListIntegrationsError =
@@ -4172,6 +4262,8 @@ export const listIntegrations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntegrations",
   pagination: {
     inputToken: "nextToken",
@@ -4193,6 +4285,8 @@ export const createTargetDomain: API.OperationMethod<
   input: CreateTargetDomainInput,
   output: CreateTargetDomainOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTargetDomain",
 }));
 export type UpdateTargetDomainError = CommonErrors;
@@ -4208,6 +4302,8 @@ export const updateTargetDomain: API.OperationMethod<
   input: UpdateTargetDomainInput,
   output: UpdateTargetDomainOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTargetDomain",
 }));
 export type DeleteTargetDomainError = CommonErrors;
@@ -4223,6 +4319,8 @@ export const deleteTargetDomain: API.OperationMethod<
   input: DeleteTargetDomainInput,
   output: DeleteTargetDomainOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTargetDomain",
 }));
 export type ListTargetDomainsError = CommonErrors;
@@ -4253,6 +4351,8 @@ export const listTargetDomains: API.OperationMethod<
   input: ListTargetDomainsInput,
   output: ListTargetDomainsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargetDomains",
   pagination: {
     inputToken: "nextToken",
@@ -4274,5 +4374,7 @@ export const batchGetTargetDomains: API.OperationMethod<
   input: BatchGetTargetDomainsInput,
   output: BatchGetTargetDomainsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetTargetDomains",
 }));

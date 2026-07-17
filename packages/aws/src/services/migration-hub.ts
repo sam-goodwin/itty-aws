@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -937,6 +939,8 @@ export const associateCreatedArtifact: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateCreatedArtifact",
 }));
 export type AssociateDiscoveredResourceError =
@@ -975,6 +979,8 @@ export const associateDiscoveredResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDiscoveredResource",
 }));
 export type AssociateSourceResourceError =
@@ -1009,6 +1015,8 @@ export const associateSourceResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSourceResource",
 }));
 export type CreateProgressUpdateStreamError =
@@ -1046,6 +1054,8 @@ export const createProgressUpdateStream: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProgressUpdateStream",
 }));
 export type DeleteProgressUpdateStreamError =
@@ -1103,6 +1113,8 @@ export const deleteProgressUpdateStream: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProgressUpdateStream",
 }));
 export type DescribeApplicationStateError =
@@ -1136,6 +1148,8 @@ export const describeApplicationState: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationState",
 }));
 export type DescribeMigrationTaskError =
@@ -1167,6 +1181,8 @@ export const describeMigrationTask: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMigrationTask",
 }));
 export type DisassociateCreatedArtifactError =
@@ -1213,6 +1229,8 @@ export const disassociateCreatedArtifact: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateCreatedArtifact",
 }));
 export type DisassociateDiscoveredResourceError =
@@ -1249,6 +1267,8 @@ export const disassociateDiscoveredResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDiscoveredResource",
 }));
 export type DisassociateSourceResourceError =
@@ -1282,6 +1302,8 @@ export const disassociateSourceResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSourceResource",
 }));
 export type ImportMigrationTaskError =
@@ -1321,6 +1343,8 @@ export const importMigrationTask: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportMigrationTask",
 }));
 export type ListApplicationStatesError =
@@ -1367,6 +1391,8 @@ export const listApplicationStates: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationStates",
   pagination: {
     inputToken: "NextToken",
@@ -1428,6 +1454,8 @@ export const listCreatedArtifacts: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCreatedArtifacts",
   pagination: {
     inputToken: "NextToken",
@@ -1480,6 +1508,8 @@ export const listDiscoveredResources: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDiscoveredResources",
   pagination: {
     inputToken: "NextToken",
@@ -1542,6 +1572,8 @@ export const listMigrationTasks: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMigrationTasks",
   pagination: {
     inputToken: "NextToken",
@@ -1593,6 +1625,8 @@ export const listMigrationTaskUpdates: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMigrationTaskUpdates",
   pagination: {
     inputToken: "NextToken",
@@ -1643,6 +1677,8 @@ export const listProgressUpdateStreams: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProgressUpdateStreams",
   pagination: {
     inputToken: "NextToken",
@@ -1694,6 +1730,8 @@ export const listSourceResources: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourceResources",
   pagination: {
     inputToken: "NextToken",
@@ -1740,6 +1778,8 @@ export const notifyApplicationState: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyApplicationState",
 }));
 export type NotifyMigrationTaskStateError =
@@ -1785,6 +1825,8 @@ export const notifyMigrationTaskState: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "NotifyMigrationTaskState",
 }));
 export type PutResourceAttributesError =
@@ -1837,5 +1879,7 @@ export const putResourceAttributes: API.OperationMethod<
     ThrottlingException,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourceAttributes",
 }));

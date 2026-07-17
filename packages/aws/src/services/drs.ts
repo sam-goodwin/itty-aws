@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3115,6 +3117,8 @@ export const createExtendedSourceServer: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExtendedSourceServer",
 }));
 export type DeleteLaunchActionError =
@@ -3142,6 +3146,8 @@ export const deleteLaunchAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLaunchAction",
 }));
 export type InitializeServiceError =
@@ -3167,6 +3173,8 @@ export const initializeService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitializeService",
 }));
 export type ListExtensibleSourceServersError =
@@ -3209,6 +3217,8 @@ export const listExtensibleSourceServers: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExtensibleSourceServers",
   pagination: {
     inputToken: "nextToken",
@@ -3257,6 +3267,8 @@ export const listLaunchActions: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLaunchActions",
   pagination: {
     inputToken: "nextToken",
@@ -3305,6 +3317,8 @@ export const listStagingAccounts: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStagingAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -3338,6 +3352,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutLaunchActionError =
@@ -3367,6 +3383,8 @@ export const putLaunchAction: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLaunchAction",
 }));
 export type TagResourceError =
@@ -3394,6 +3412,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3421,6 +3441,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type DeleteJobError =
@@ -3448,6 +3470,8 @@ export const deleteJob: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJob",
 }));
 export type DescribeJobsError =
@@ -3488,6 +3512,8 @@ export const describeJobs: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobs",
   pagination: {
     inputToken: "nextToken",
@@ -3534,6 +3560,8 @@ export const describeJobLogItems: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobLogItems",
   pagination: {
     inputToken: "nextToken",
@@ -3569,6 +3597,8 @@ export const createLaunchConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLaunchConfigurationTemplate",
 }));
 export type UpdateLaunchConfigurationTemplateError =
@@ -3598,6 +3628,8 @@ export const updateLaunchConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLaunchConfigurationTemplate",
 }));
 export type DeleteLaunchConfigurationTemplateError =
@@ -3625,6 +3657,8 @@ export const deleteLaunchConfigurationTemplate: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLaunchConfigurationTemplate",
 }));
 export type DescribeLaunchConfigurationTemplatesError =
@@ -3667,6 +3701,8 @@ export const describeLaunchConfigurationTemplates: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLaunchConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -3713,6 +3749,8 @@ export const describeRecoveryInstances: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecoveryInstances",
   pagination: {
     inputToken: "nextToken",
@@ -3746,6 +3784,8 @@ export const deleteRecoveryInstance: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecoveryInstance",
 }));
 export type DisconnectRecoveryInstanceError =
@@ -3775,6 +3815,8 @@ export const disconnectRecoveryInstance: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisconnectRecoveryInstance",
 }));
 export type GetFailbackReplicationConfigurationError =
@@ -3800,6 +3842,8 @@ export const getFailbackReplicationConfiguration: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFailbackReplicationConfiguration",
 }));
 export type ReverseReplicationError =
@@ -3831,6 +3875,8 @@ export const reverseReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReverseReplication",
 }));
 export type StopFailbackError =
@@ -3856,6 +3902,8 @@ export const stopFailback: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopFailback",
 }));
 export type UpdateFailbackReplicationConfigurationError =
@@ -3883,6 +3931,8 @@ export const updateFailbackReplicationConfiguration: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFailbackReplicationConfiguration",
 }));
 export type StartFailbackLaunchError =
@@ -3912,6 +3962,8 @@ export const startFailbackLaunch: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFailbackLaunch",
 }));
 export type TerminateRecoveryInstancesError =
@@ -3939,6 +3991,8 @@ export const terminateRecoveryInstances: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateRecoveryInstances",
 }));
 export type CreateReplicationConfigurationTemplateError =
@@ -3968,6 +4022,8 @@ export const createReplicationConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationConfigurationTemplate",
 }));
 export type UpdateReplicationConfigurationTemplateError =
@@ -3997,6 +4053,8 @@ export const updateReplicationConfigurationTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReplicationConfigurationTemplate",
 }));
 export type DeleteReplicationConfigurationTemplateError =
@@ -4024,6 +4082,8 @@ export const deleteReplicationConfigurationTemplate: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationConfigurationTemplate",
 }));
 export type DescribeReplicationConfigurationTemplatesError =
@@ -4066,6 +4126,8 @@ export const describeReplicationConfigurationTemplates: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -4103,6 +4165,8 @@ export const createSourceNetwork: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSourceNetwork",
 }));
 export type DeleteSourceNetworkError =
@@ -4130,6 +4194,8 @@ export const deleteSourceNetwork: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSourceNetwork",
 }));
 export type DescribeSourceNetworksError =
@@ -4170,6 +4236,8 @@ export const describeSourceNetworks: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSourceNetworks",
   pagination: {
     inputToken: "nextToken",
@@ -4207,6 +4275,8 @@ export const associateSourceNetworkStack: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSourceNetworkStack",
 }));
 export type ExportSourceNetworkCfnTemplateError =
@@ -4236,6 +4306,8 @@ export const exportSourceNetworkCfnTemplate: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportSourceNetworkCfnTemplate",
 }));
 export type StartSourceNetworkReplicationError =
@@ -4263,6 +4335,8 @@ export const startSourceNetworkReplication: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSourceNetworkReplication",
 }));
 export type StopSourceNetworkReplicationError =
@@ -4292,6 +4366,8 @@ export const stopSourceNetworkReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSourceNetworkReplication",
 }));
 export type StartSourceNetworkRecoveryError =
@@ -4321,6 +4397,8 @@ export const startSourceNetworkRecovery: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSourceNetworkRecovery",
 }));
 export type DeleteSourceServerError =
@@ -4348,6 +4426,8 @@ export const deleteSourceServer: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSourceServer",
 }));
 export type DescribeSourceServersError =
@@ -4388,6 +4468,8 @@ export const describeSourceServers: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSourceServers",
   pagination: {
     inputToken: "nextToken",
@@ -4436,6 +4518,8 @@ export const describeRecoverySnapshots: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecoverySnapshots",
   pagination: {
     inputToken: "nextToken",
@@ -4469,6 +4553,8 @@ export const disconnectSourceServer: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisconnectSourceServer",
 }));
 export type GetLaunchConfigurationError =
@@ -4494,6 +4580,8 @@ export const getLaunchConfiguration: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLaunchConfiguration",
 }));
 export type GetReplicationConfigurationError =
@@ -4521,6 +4609,8 @@ export const getReplicationConfiguration: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReplicationConfiguration",
 }));
 export type RetryDataReplicationError =
@@ -4548,6 +4638,8 @@ export const retryDataReplication: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetryDataReplication",
 }));
 export type StartReplicationError =
@@ -4575,6 +4667,8 @@ export const startReplication: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplication",
 }));
 export type StopReplicationError =
@@ -4602,6 +4696,8 @@ export const stopReplication: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopReplication",
 }));
 export type UpdateLaunchConfigurationError =
@@ -4631,6 +4727,8 @@ export const updateLaunchConfiguration: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLaunchConfiguration",
 }));
 export type UpdateReplicationConfigurationError =
@@ -4662,6 +4760,8 @@ export const updateReplicationConfiguration: API.OperationMethod<
     UninitializedAccountException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReplicationConfiguration",
 }));
 export type StartRecoveryError =
@@ -4689,5 +4789,7 @@ export const startRecovery: API.OperationMethod<
     ThrottlingException,
     UninitializedAccountException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRecovery",
 }));

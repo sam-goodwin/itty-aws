@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1290,6 +1292,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParametersException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1314,6 +1318,8 @@ export const tagResource: API.OperationMethod<
     InvalidParametersException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1337,6 +1343,8 @@ export const untagResource: API.OperationMethod<
     InvalidParametersException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type AssociateWhatsAppBusinessAccountError =
@@ -1362,6 +1370,8 @@ export const associateWhatsAppBusinessAccount: API.OperationMethod<
     LimitExceededException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWhatsAppBusinessAccount",
 }));
 export type GetLinkedWhatsAppBusinessAccountError =
@@ -1389,6 +1399,8 @@ export const getLinkedWhatsAppBusinessAccount: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLinkedWhatsAppBusinessAccount",
 }));
 export type DisassociateWhatsAppBusinessAccountError =
@@ -1414,6 +1426,8 @@ export const disassociateWhatsAppBusinessAccount: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWhatsAppBusinessAccount",
 }));
 export type ListLinkedWhatsAppBusinessAccountsError =
@@ -1454,6 +1468,8 @@ export const listLinkedWhatsAppBusinessAccounts: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLinkedWhatsAppBusinessAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -1489,6 +1505,8 @@ export const createWhatsAppMessageTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWhatsAppMessageTemplate",
 }));
 export type CreateWhatsAppMessageTemplateFromLibraryError =
@@ -1516,6 +1534,8 @@ export const createWhatsAppMessageTemplateFromLibrary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWhatsAppMessageTemplateFromLibrary",
 }));
 export type CreateWhatsAppMessageTemplateMediaError =
@@ -1543,6 +1563,8 @@ export const createWhatsAppMessageTemplateMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWhatsAppMessageTemplateMedia",
 }));
 export type DeleteWhatsAppMessageTemplateError =
@@ -1570,6 +1592,8 @@ export const deleteWhatsAppMessageTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWhatsAppMessageTemplate",
 }));
 export type GetWhatsAppMessageTemplateError =
@@ -1597,6 +1621,8 @@ export const getWhatsAppMessageTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWhatsAppMessageTemplate",
 }));
 export type ListWhatsAppMessageTemplatesError =
@@ -1639,6 +1665,8 @@ export const listWhatsAppMessageTemplates: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWhatsAppMessageTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -1687,6 +1715,8 @@ export const listWhatsAppTemplateLibrary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWhatsAppTemplateLibrary",
   pagination: {
     inputToken: "nextToken",
@@ -1716,6 +1746,8 @@ export const putWhatsAppBusinessAccountEventDestinations: API.OperationMethod<
     InvalidParametersException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutWhatsAppBusinessAccountEventDestinations",
 }));
 export type UpdateWhatsAppMessageTemplateError =
@@ -1743,6 +1775,8 @@ export const updateWhatsAppMessageTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWhatsAppMessageTemplate",
 }));
 export type GetLinkedWhatsAppBusinessAccountPhoneNumberError =
@@ -1770,6 +1804,8 @@ export const getLinkedWhatsAppBusinessAccountPhoneNumber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLinkedWhatsAppBusinessAccountPhoneNumber",
 }));
 export type DeleteWhatsAppMessageMediaError =
@@ -1799,6 +1835,8 @@ export const deleteWhatsAppMessageMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWhatsAppMessageMedia",
 }));
 export type GetWhatsAppMessageMediaError =
@@ -1832,6 +1870,8 @@ export const getWhatsAppMessageMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWhatsAppMessageMedia",
 }));
 export type PostWhatsAppMessageMediaError =
@@ -1865,6 +1905,8 @@ export const postWhatsAppMessageMedia: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostWhatsAppMessageMedia",
 }));
 export type SendWhatsAppMessageError =
@@ -1896,5 +1938,7 @@ export const sendWhatsAppMessage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendWhatsAppMessage",
 }));

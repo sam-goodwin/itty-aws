@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -19802,6 +19804,8 @@ export const acceptInputDeviceTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptInputDeviceTransfer",
 }));
 export type BatchDeleteError =
@@ -19835,6 +19839,8 @@ export const batchDelete: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDelete",
 }));
 export type BatchStartError =
@@ -19868,6 +19874,8 @@ export const batchStart: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchStart",
 }));
 export type BatchStopError =
@@ -19901,6 +19909,8 @@ export const batchStop: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchStop",
 }));
 export type BatchUpdateScheduleError =
@@ -19934,6 +19944,8 @@ export const batchUpdateSchedule: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateSchedule",
 }));
 export type CancelInputDeviceTransferError =
@@ -19969,6 +19981,8 @@ export const cancelInputDeviceTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelInputDeviceTransfer",
 }));
 export type ClaimDeviceError =
@@ -20002,6 +20016,8 @@ export const claimDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ClaimDevice",
 }));
 export type CreateChannelError =
@@ -20035,6 +20051,8 @@ export const createChannel: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
 export type CreateChannelPlacementGroupError =
@@ -20066,6 +20084,8 @@ export const createChannelPlacementGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannelPlacementGroup",
 }));
 export type CreateCloudWatchAlarmTemplateError =
@@ -20095,6 +20115,8 @@ export const createCloudWatchAlarmTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudWatchAlarmTemplate",
 }));
 export type CreateCloudWatchAlarmTemplateGroupError =
@@ -20124,6 +20146,8 @@ export const createCloudWatchAlarmTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudWatchAlarmTemplateGroup",
 }));
 export type CreateClusterError =
@@ -20155,6 +20179,8 @@ export const createCluster: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateEventBridgeRuleTemplateError =
@@ -20184,6 +20210,8 @@ export const createEventBridgeRuleTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventBridgeRuleTemplate",
 }));
 export type CreateEventBridgeRuleTemplateGroupError =
@@ -20213,6 +20241,8 @@ export const createEventBridgeRuleTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventBridgeRuleTemplateGroup",
 }));
 export type CreateInputError =
@@ -20242,6 +20272,8 @@ export const createInput: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInput",
 }));
 export type CreateInputSecurityGroupError =
@@ -20271,6 +20303,8 @@ export const createInputSecurityGroup: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInputSecurityGroup",
 }));
 export type CreateMultiplexError =
@@ -20304,6 +20338,8 @@ export const createMultiplex: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMultiplex",
 }));
 export type CreateMultiplexProgramError =
@@ -20337,6 +20373,8 @@ export const createMultiplexProgram: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMultiplexProgram",
 }));
 export type CreateNetworkError =
@@ -20368,6 +20406,8 @@ export const createNetwork: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetwork",
 }));
 export type CreateNodeError =
@@ -20399,6 +20439,8 @@ export const createNode: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNode",
 }));
 export type CreateNodeRegistrationScriptError =
@@ -20430,6 +20472,8 @@ export const createNodeRegistrationScript: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNodeRegistrationScript",
 }));
 export type CreatePartnerInputError =
@@ -20459,6 +20503,8 @@ export const createPartnerInput: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePartnerInput",
 }));
 export type CreateSdiSourceError =
@@ -20490,6 +20536,8 @@ export const createSdiSource: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSdiSource",
 }));
 export type CreateSignalMapError =
@@ -20519,6 +20567,8 @@ export const createSignalMap: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSignalMap",
 }));
 export type CreateTagsError =
@@ -20544,6 +20594,8 @@ export const createTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTags",
 }));
 export type DeleteChannelError =
@@ -20577,6 +20629,8 @@ export const deleteChannel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannel",
 }));
 export type DeleteChannelPlacementGroupError =
@@ -20610,6 +20664,8 @@ export const deleteChannelPlacementGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelPlacementGroup",
 }));
 export type DeleteCloudWatchAlarmTemplateError =
@@ -20639,6 +20695,8 @@ export const deleteCloudWatchAlarmTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCloudWatchAlarmTemplate",
 }));
 export type DeleteCloudWatchAlarmTemplateGroupError =
@@ -20668,6 +20726,8 @@ export const deleteCloudWatchAlarmTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCloudWatchAlarmTemplateGroup",
 }));
 export type DeleteClusterError =
@@ -20701,6 +20761,8 @@ export const deleteCluster: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type DeleteEventBridgeRuleTemplateError =
@@ -20730,6 +20792,8 @@ export const deleteEventBridgeRuleTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventBridgeRuleTemplate",
 }));
 export type DeleteEventBridgeRuleTemplateGroupError =
@@ -20759,6 +20823,8 @@ export const deleteEventBridgeRuleTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventBridgeRuleTemplateGroup",
 }));
 export type DeleteInputError =
@@ -20792,6 +20858,8 @@ export const deleteInput: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInput",
 }));
 export type DeleteInputSecurityGroupError =
@@ -20823,6 +20891,8 @@ export const deleteInputSecurityGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInputSecurityGroup",
 }));
 export type DeleteMultiplexError =
@@ -20856,6 +20926,8 @@ export const deleteMultiplex: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMultiplex",
 }));
 export type DeleteMultiplexProgramError =
@@ -20889,6 +20961,8 @@ export const deleteMultiplexProgram: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMultiplexProgram",
 }));
 export type DeleteNetworkError =
@@ -20922,6 +20996,8 @@ export const deleteNetwork: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetwork",
 }));
 export type DeleteNodeError =
@@ -20955,6 +21031,8 @@ export const deleteNode: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNode",
 }));
 export type DeleteReservationError =
@@ -20988,6 +21066,8 @@ export const deleteReservation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReservation",
 }));
 export type DeleteScheduleError =
@@ -21019,6 +21099,8 @@ export const deleteSchedule: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchedule",
 }));
 export type DeleteSdiSourceError =
@@ -21052,6 +21134,8 @@ export const deleteSdiSource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSdiSource",
 }));
 export type DeleteSignalMapError =
@@ -21081,6 +21165,8 @@ export const deleteSignalMap: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSignalMap",
 }));
 export type DeleteTagsError =
@@ -21106,6 +21192,8 @@ export const deleteTags: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
 export type DescribeAccountConfigurationError =
@@ -21135,6 +21223,8 @@ export const describeAccountConfiguration: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountConfiguration",
 }));
 export type DescribeChannelError =
@@ -21166,6 +21256,8 @@ export const describeChannel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannel",
 }));
 export type DescribeChannelPlacementGroupError =
@@ -21197,6 +21289,8 @@ export const describeChannelPlacementGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannelPlacementGroup",
 }));
 export type DescribeClusterError =
@@ -21228,6 +21322,8 @@ export const describeCluster: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCluster",
 }));
 export type DescribeInputError =
@@ -21259,6 +21355,8 @@ export const describeInput: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInput",
 }));
 export type DescribeInputDeviceError =
@@ -21290,6 +21388,8 @@ export const describeInputDevice: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInputDevice",
 }));
 export type DescribeInputDeviceThumbnailError =
@@ -21321,6 +21421,8 @@ export const describeInputDeviceThumbnail: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInputDeviceThumbnail",
 }));
 export type DescribeInputSecurityGroupError =
@@ -21352,6 +21454,8 @@ export const describeInputSecurityGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInputSecurityGroup",
 }));
 export type DescribeMultiplexError =
@@ -21383,6 +21487,8 @@ export const describeMultiplex: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMultiplex",
 }));
 export type DescribeMultiplexProgramError =
@@ -21414,6 +21520,8 @@ export const describeMultiplexProgram: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMultiplexProgram",
 }));
 export type DescribeNetworkError =
@@ -21445,6 +21553,8 @@ export const describeNetwork: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNetwork",
 }));
 export type DescribeNodeError =
@@ -21476,6 +21586,8 @@ export const describeNode: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNode",
 }));
 export type DescribeOfferingError =
@@ -21507,6 +21619,8 @@ export const describeOffering: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOffering",
 }));
 export type DescribeReservationError =
@@ -21538,6 +21652,8 @@ export const describeReservation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservation",
 }));
 export type DescribeScheduleError =
@@ -21584,6 +21700,8 @@ export const describeSchedule: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSchedule",
   pagination: {
     inputToken: "NextToken",
@@ -21621,6 +21739,8 @@ export const describeSdiSource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSdiSource",
 }));
 export type DescribeThumbnailsError =
@@ -21654,6 +21774,8 @@ export const describeThumbnails: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeThumbnails",
 }));
 export type GetCloudWatchAlarmTemplateError =
@@ -21681,6 +21803,8 @@ export const getCloudWatchAlarmTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudWatchAlarmTemplate",
 }));
 export type GetCloudWatchAlarmTemplateGroupError =
@@ -21708,6 +21832,8 @@ export const getCloudWatchAlarmTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudWatchAlarmTemplateGroup",
 }));
 export type GetEventBridgeRuleTemplateError =
@@ -21735,6 +21861,8 @@ export const getEventBridgeRuleTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventBridgeRuleTemplate",
 }));
 export type GetEventBridgeRuleTemplateGroupError =
@@ -21762,6 +21890,8 @@ export const getEventBridgeRuleTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventBridgeRuleTemplateGroup",
 }));
 export type GetSignalMapError =
@@ -21789,6 +21919,8 @@ export const getSignalMap: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSignalMap",
 }));
 export type ListAlertsError =
@@ -21835,6 +21967,8 @@ export const listAlerts: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlerts",
   pagination: {
     inputToken: "NextToken",
@@ -21885,6 +22019,8 @@ export const listChannelPlacementGroups: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelPlacementGroups",
   pagination: {
     inputToken: "NextToken",
@@ -21935,6 +22071,8 @@ export const listChannels: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
@@ -21983,6 +22121,8 @@ export const listCloudWatchAlarmTemplateGroups: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCloudWatchAlarmTemplateGroups",
   pagination: {
     inputToken: "NextToken",
@@ -22031,6 +22171,8 @@ export const listCloudWatchAlarmTemplates: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCloudWatchAlarmTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -22083,6 +22225,8 @@ export const listClusterAlerts: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusterAlerts",
   pagination: {
     inputToken: "NextToken",
@@ -22133,6 +22277,8 @@ export const listClusters: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
@@ -22181,6 +22327,8 @@ export const listEventBridgeRuleTemplateGroups: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventBridgeRuleTemplateGroups",
   pagination: {
     inputToken: "NextToken",
@@ -22229,6 +22377,8 @@ export const listEventBridgeRuleTemplates: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventBridgeRuleTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -22279,6 +22429,8 @@ export const listInputDevices: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInputDevices",
   pagination: {
     inputToken: "NextToken",
@@ -22331,6 +22483,8 @@ export const listInputDeviceTransfers: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInputDeviceTransfers",
   pagination: {
     inputToken: "NextToken",
@@ -22381,6 +22535,8 @@ export const listInputs: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInputs",
   pagination: {
     inputToken: "NextToken",
@@ -22431,6 +22587,8 @@ export const listInputSecurityGroups: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInputSecurityGroups",
   pagination: {
     inputToken: "NextToken",
@@ -22483,6 +22641,8 @@ export const listMultiplexAlerts: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMultiplexAlerts",
   pagination: {
     inputToken: "NextToken",
@@ -22533,6 +22693,8 @@ export const listMultiplexes: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMultiplexes",
   pagination: {
     inputToken: "NextToken",
@@ -22585,6 +22747,8 @@ export const listMultiplexPrograms: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMultiplexPrograms",
   pagination: {
     inputToken: "NextToken",
@@ -22635,6 +22799,8 @@ export const listNetworks: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNetworks",
   pagination: {
     inputToken: "NextToken",
@@ -22685,6 +22851,8 @@ export const listNodes: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
@@ -22735,6 +22903,8 @@ export const listOfferings: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -22785,6 +22955,8 @@ export const listReservations: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReservations",
   pagination: {
     inputToken: "NextToken",
@@ -22835,6 +23007,8 @@ export const listSdiSources: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSdiSources",
   pagination: {
     inputToken: "NextToken",
@@ -22883,6 +23057,8 @@ export const listSignalMaps: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSignalMaps",
   pagination: {
     inputToken: "NextToken",
@@ -22914,6 +23090,8 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListVersionsError =
@@ -22947,6 +23125,8 @@ export const listVersions: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVersions",
 }));
 export type PurchaseOfferingError =
@@ -22980,6 +23160,8 @@ export const purchaseOffering: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseOffering",
 }));
 export type RebootInputDeviceError =
@@ -23013,6 +23195,8 @@ export const rebootInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootInputDevice",
 }));
 export type RejectInputDeviceTransferError =
@@ -23048,6 +23232,8 @@ export const rejectInputDeviceTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectInputDeviceTransfer",
 }));
 export type RestartChannelPipelinesError =
@@ -23081,6 +23267,8 @@ export const restartChannelPipelines: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestartChannelPipelines",
 }));
 export type StartChannelError =
@@ -23114,6 +23302,8 @@ export const startChannel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartChannel",
 }));
 export type StartDeleteMonitorDeploymentError =
@@ -23143,6 +23333,8 @@ export const startDeleteMonitorDeployment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDeleteMonitorDeployment",
 }));
 export type StartInputDeviceError =
@@ -23176,6 +23368,8 @@ export const startInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInputDevice",
 }));
 export type StartInputDeviceMaintenanceWindowError =
@@ -23209,6 +23403,8 @@ export const startInputDeviceMaintenanceWindow: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInputDeviceMaintenanceWindow",
 }));
 export type StartMonitorDeploymentError =
@@ -23238,6 +23434,8 @@ export const startMonitorDeployment: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMonitorDeployment",
 }));
 export type StartMultiplexError =
@@ -23271,6 +23469,8 @@ export const startMultiplex: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMultiplex",
 }));
 export type StartUpdateSignalMapError =
@@ -23300,6 +23500,8 @@ export const startUpdateSignalMap: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartUpdateSignalMap",
 }));
 export type StopChannelError =
@@ -23333,6 +23535,8 @@ export const stopChannel: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopChannel",
 }));
 export type StopInputDeviceError =
@@ -23366,6 +23570,8 @@ export const stopInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopInputDevice",
 }));
 export type StopMultiplexError =
@@ -23399,6 +23605,8 @@ export const stopMultiplex: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopMultiplex",
 }));
 export type TransferInputDeviceError =
@@ -23434,6 +23642,8 @@ export const transferInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TransferInputDevice",
 }));
 export type UpdateAccountConfigurationError =
@@ -23465,6 +23675,8 @@ export const updateAccountConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountConfiguration",
 }));
 export type UpdateChannelError =
@@ -23496,6 +23708,8 @@ export const updateChannel: API.OperationMethod<
     InternalServerErrorException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
 export type UpdateChannelClassError =
@@ -23531,6 +23745,8 @@ export const updateChannelClass: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannelClass",
 }));
 export type UpdateChannelPlacementGroupError =
@@ -23564,6 +23780,8 @@ export const updateChannelPlacementGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannelPlacementGroup",
 }));
 export type UpdateCloudWatchAlarmTemplateError =
@@ -23593,6 +23811,8 @@ export const updateCloudWatchAlarmTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCloudWatchAlarmTemplate",
 }));
 export type UpdateCloudWatchAlarmTemplateGroupError =
@@ -23622,6 +23842,8 @@ export const updateCloudWatchAlarmTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCloudWatchAlarmTemplateGroup",
 }));
 export type UpdateClusterError =
@@ -23653,6 +23875,8 @@ export const updateCluster: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
 export type UpdateEventBridgeRuleTemplateError =
@@ -23682,6 +23906,8 @@ export const updateEventBridgeRuleTemplate: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventBridgeRuleTemplate",
 }));
 export type UpdateEventBridgeRuleTemplateGroupError =
@@ -23711,6 +23937,8 @@ export const updateEventBridgeRuleTemplateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventBridgeRuleTemplateGroup",
 }));
 export type UpdateInputError =
@@ -23742,6 +23970,8 @@ export const updateInput: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInput",
 }));
 export type UpdateInputDeviceError =
@@ -23775,6 +24005,8 @@ export const updateInputDevice: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInputDevice",
 }));
 export type UpdateInputSecurityGroupError =
@@ -23806,6 +24038,8 @@ export const updateInputSecurityGroup: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInputSecurityGroup",
 }));
 export type UpdateMultiplexError =
@@ -23839,6 +24073,8 @@ export const updateMultiplex: API.OperationMethod<
     NotFoundException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMultiplex",
 }));
 export type UpdateMultiplexProgramError =
@@ -23872,6 +24108,8 @@ export const updateMultiplexProgram: API.OperationMethod<
     NotFoundException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMultiplexProgram",
 }));
 export type UpdateNetworkError =
@@ -23903,6 +24141,8 @@ export const updateNetwork: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNetwork",
 }));
 export type UpdateNodeError =
@@ -23934,6 +24174,8 @@ export const updateNode: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNode",
 }));
 export type UpdateNodeStateError =
@@ -23967,6 +24209,8 @@ export const updateNodeState: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNodeState",
 }));
 export type UpdateReservationError =
@@ -24000,6 +24244,8 @@ export const updateReservation: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReservation",
 }));
 export type UpdateSdiSourceError =
@@ -24031,5 +24277,7 @@ export const updateSdiSource: API.OperationMethod<
     InternalServerErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSdiSource",
 }));

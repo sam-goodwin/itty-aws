@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2434,6 +2436,8 @@ export const createExperimentTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExperimentTemplate",
 }));
 export type CreateTargetAccountConfigurationError =
@@ -2462,6 +2466,8 @@ export const createTargetAccountConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTargetAccountConfiguration",
 }));
 export type DeleteExperimentTemplateError =
@@ -2480,6 +2486,8 @@ export const deleteExperimentTemplate: API.OperationMethod<
   input: DeleteExperimentTemplateRequest,
   output: DeleteExperimentTemplateResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExperimentTemplate",
 }));
 export type DeleteTargetAccountConfigurationError =
@@ -2498,6 +2506,8 @@ export const deleteTargetAccountConfiguration: API.OperationMethod<
   input: DeleteTargetAccountConfigurationRequest,
   output: DeleteTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTargetAccountConfiguration",
 }));
 export type GetActionError =
@@ -2516,6 +2526,8 @@ export const getAction: API.OperationMethod<
   input: GetActionRequest,
   output: GetActionResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAction",
 }));
 export type GetExperimentError =
@@ -2534,6 +2546,8 @@ export const getExperiment: API.OperationMethod<
   input: GetExperimentRequest,
   output: GetExperimentResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExperiment",
 }));
 export type GetExperimentTargetAccountConfigurationError =
@@ -2552,6 +2566,8 @@ export const getExperimentTargetAccountConfiguration: API.OperationMethod<
   input: GetExperimentTargetAccountConfigurationRequest,
   output: GetExperimentTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExperimentTargetAccountConfiguration",
 }));
 export type GetExperimentTemplateError =
@@ -2570,6 +2586,8 @@ export const getExperimentTemplate: API.OperationMethod<
   input: GetExperimentTemplateRequest,
   output: GetExperimentTemplateResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExperimentTemplate",
 }));
 export type GetSafetyLeverError = ResourceNotFoundException | CommonErrors;
@@ -2585,6 +2603,8 @@ export const getSafetyLever: API.OperationMethod<
   input: GetSafetyLeverRequest,
   output: GetSafetyLeverResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSafetyLever",
 }));
 export type GetTargetAccountConfigurationError =
@@ -2603,6 +2623,8 @@ export const getTargetAccountConfiguration: API.OperationMethod<
   input: GetTargetAccountConfigurationRequest,
   output: GetTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTargetAccountConfiguration",
 }));
 export type GetTargetResourceTypeError =
@@ -2621,6 +2643,8 @@ export const getTargetResourceType: API.OperationMethod<
   input: GetTargetResourceTypeRequest,
   output: GetTargetResourceTypeResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTargetResourceType",
 }));
 export type ListActionsError = ValidationException | CommonErrors;
@@ -2651,6 +2675,8 @@ export const listActions: API.OperationMethod<
   input: ListActionsRequest,
   output: ListActionsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActions",
   pagination: {
     inputToken: "nextToken",
@@ -2690,6 +2716,8 @@ export const listExperimentResolvedTargets: API.OperationMethod<
   input: ListExperimentResolvedTargetsRequest,
   output: ListExperimentResolvedTargetsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExperimentResolvedTargets",
   pagination: {
     inputToken: "nextToken",
@@ -2726,6 +2754,8 @@ export const listExperiments: API.OperationMethod<
   input: ListExperimentsRequest,
   output: ListExperimentsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExperiments",
   pagination: {
     inputToken: "nextToken",
@@ -2750,6 +2780,8 @@ export const listExperimentTargetAccountConfigurations: API.OperationMethod<
   input: ListExperimentTargetAccountConfigurationsRequest,
   output: ListExperimentTargetAccountConfigurationsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExperimentTargetAccountConfigurations",
 }));
 export type ListExperimentTemplatesError = ValidationException | CommonErrors;
@@ -2780,6 +2812,8 @@ export const listExperimentTemplates: API.OperationMethod<
   input: ListExperimentTemplatesRequest,
   output: ListExperimentTemplatesResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExperimentTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -2801,6 +2835,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTargetAccountConfigurationsError =
@@ -2834,6 +2870,8 @@ export const listTargetAccountConfigurations: API.OperationMethod<
   input: ListTargetAccountConfigurationsRequest,
   output: ListTargetAccountConfigurationsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargetAccountConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -2870,6 +2908,8 @@ export const listTargetResourceTypes: API.OperationMethod<
   input: ListTargetResourceTypesRequest,
   output: ListTargetResourceTypesResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargetResourceTypes",
   pagination: {
     inputToken: "nextToken",
@@ -2901,6 +2941,8 @@ export const startExperiment: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExperiment",
 }));
 export type StopExperimentError =
@@ -2919,6 +2961,8 @@ export const stopExperiment: API.OperationMethod<
   input: StopExperimentRequest,
   output: StopExperimentResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopExperiment",
 }));
 export type TagResourceError = CommonErrors;
@@ -2934,6 +2978,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
@@ -2949,6 +2995,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateExperimentTemplateError =
@@ -2972,6 +3020,8 @@ export const updateExperimentTemplate: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateExperimentTemplate",
 }));
 export type UpdateSafetyLeverStateError =
@@ -2991,6 +3041,8 @@ export const updateSafetyLeverState: API.OperationMethod<
   input: UpdateSafetyLeverStateRequest,
   output: UpdateSafetyLeverStateResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSafetyLeverState",
 }));
 export type UpdateTargetAccountConfigurationError =
@@ -3009,5 +3061,7 @@ export const updateTargetAccountConfiguration: API.OperationMethod<
   input: UpdateTargetAccountConfigurationRequest,
   output: UpdateTargetAccountConfigurationResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTargetAccountConfiguration",
 }));

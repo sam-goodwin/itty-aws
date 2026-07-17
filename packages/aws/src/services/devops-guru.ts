@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3027,6 +3029,8 @@ export const addNotificationChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddNotificationChannel",
 }));
 export type DeleteInsightError =
@@ -3056,6 +3060,8 @@ export const deleteInsight: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInsight",
 }));
 export type DescribeAccountHealthError =
@@ -3083,6 +3089,8 @@ export const describeAccountHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountHealth",
 }));
 export type DescribeAccountOverviewError =
@@ -3110,6 +3118,8 @@ export const describeAccountOverview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountOverview",
 }));
 export type DescribeAnomalyError =
@@ -3137,6 +3147,8 @@ export const describeAnomaly: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAnomaly",
 }));
 export type DescribeEventSourcesConfigError =
@@ -3165,6 +3177,8 @@ export const describeEventSourcesConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventSourcesConfig",
 }));
 export type DescribeFeedbackError =
@@ -3192,6 +3206,8 @@ export const describeFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFeedback",
 }));
 export type DescribeInsightError =
@@ -3219,6 +3235,8 @@ export const describeInsight: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInsight",
 }));
 export type DescribeOrganizationHealthError =
@@ -3245,6 +3263,8 @@ export const describeOrganizationHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationHealth",
 }));
 export type DescribeOrganizationOverviewError =
@@ -3271,6 +3291,8 @@ export const describeOrganizationOverview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationOverview",
 }));
 export type DescribeOrganizationResourceCollectionHealthError =
@@ -3313,6 +3335,8 @@ export const describeOrganizationResourceCollectionHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationResourceCollectionHealth",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -3358,6 +3382,8 @@ export const describeResourceCollectionHealth: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourceCollectionHealth",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -3388,6 +3414,8 @@ export const describeServiceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceIntegration",
 }));
 export type GetCostEstimationError =
@@ -3434,6 +3462,8 @@ export const getCostEstimation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostEstimation",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -3480,6 +3510,8 @@ export const getResourceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceCollection",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -3524,6 +3556,8 @@ export const listAnomaliesForInsight: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnomaliesForInsight",
   pagination: {
     inputToken: "NextToken",
@@ -3571,6 +3605,8 @@ export const listAnomalousLogGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnomalousLogGroups",
   pagination: {
     inputToken: "NextToken",
@@ -3619,6 +3655,8 @@ export const listEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEvents",
   pagination: {
     inputToken: "NextToken",
@@ -3667,6 +3705,8 @@ export const listInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInsights",
   pagination: {
     inputToken: "NextToken",
@@ -3712,6 +3752,8 @@ export const listMonitoredResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitoredResources",
   pagination: {
     inputToken: "NextToken",
@@ -3760,6 +3802,8 @@ export const listNotificationChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotificationChannels",
   pagination: {
     inputToken: "NextToken",
@@ -3805,6 +3849,8 @@ export const listOrganizationInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationInsights",
   pagination: {
     inputToken: "NextToken",
@@ -3853,6 +3899,8 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendations",
   pagination: {
     inputToken: "NextToken",
@@ -3887,6 +3935,8 @@ export const putFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFeedback",
 }));
 export type RemoveNotificationChannelError =
@@ -3918,6 +3968,8 @@ export const removeNotificationChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveNotificationChannel",
 }));
 export type SearchInsightsError =
@@ -3965,6 +4017,8 @@ export const searchInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchInsights",
   pagination: {
     inputToken: "NextToken",
@@ -4018,6 +4072,8 @@ export const searchOrganizationInsights: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchOrganizationInsights",
   pagination: {
     inputToken: "NextToken",
@@ -4053,6 +4109,8 @@ export const startCostEstimation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCostEstimation",
 }));
 export type UpdateEventSourcesConfigError =
@@ -4080,6 +4138,8 @@ export const updateEventSourcesConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventSourcesConfig",
 }));
 export type UpdateResourceCollectionError =
@@ -4111,6 +4171,8 @@ export const updateResourceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceCollection",
 }));
 export type UpdateServiceIntegrationError =
@@ -4140,5 +4202,7 @@ export const updateServiceIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceIntegration",
 }));

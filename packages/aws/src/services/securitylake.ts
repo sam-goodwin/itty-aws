@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1570,6 +1572,8 @@ export const createDataLakeExceptionSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataLakeExceptionSubscription",
 }));
 export type DeleteDataLakeExceptionSubscriptionError =
@@ -1600,6 +1604,8 @@ export const deleteDataLakeExceptionSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataLakeExceptionSubscription",
 }));
 export type DeregisterDataLakeDelegatedAdministratorError =
@@ -1631,6 +1637,8 @@ export const deregisterDataLakeDelegatedAdministrator: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterDataLakeDelegatedAdministrator",
 }));
 export type GetDataLakeExceptionSubscriptionError =
@@ -1660,6 +1668,8 @@ export const getDataLakeExceptionSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataLakeExceptionSubscription",
 }));
 export type ListDataLakeExceptionsError =
@@ -1705,6 +1715,8 @@ export const listDataLakeExceptions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataLakeExceptions",
   pagination: {
     inputToken: "nextToken",
@@ -1741,6 +1753,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RegisterDataLakeDelegatedAdministratorError =
@@ -1772,6 +1786,8 @@ export const registerDataLakeDelegatedAdministrator: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterDataLakeDelegatedAdministrator",
 }));
 export type TagResourceError =
@@ -1808,6 +1824,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1838,6 +1856,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDataLakeExceptionSubscriptionError =
@@ -1868,6 +1888,8 @@ export const updateDataLakeExceptionSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataLakeExceptionSubscription",
 }));
 export type CreateAwsLogSourceError =
@@ -1904,6 +1926,8 @@ export const createAwsLogSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAwsLogSource",
 }));
 export type CreateCustomLogSourceError =
@@ -1939,6 +1963,8 @@ export const createCustomLogSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomLogSource",
 }));
 export type CreateDataLakeError =
@@ -1982,6 +2008,8 @@ export const createDataLake: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataLake",
 }));
 export type CreateDataLakeOrganizationConfigurationError =
@@ -2015,6 +2043,8 @@ export const createDataLakeOrganizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataLakeOrganizationConfiguration",
 }));
 export type DeleteAwsLogSourceError =
@@ -2051,6 +2081,8 @@ export const deleteAwsLogSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAwsLogSource",
 }));
 export type DeleteCustomLogSourceError =
@@ -2081,6 +2113,8 @@ export const deleteCustomLogSource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomLogSource",
 }));
 export type DeleteDataLakeError =
@@ -2118,6 +2152,8 @@ export const deleteDataLake: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataLake",
 }));
 export type DeleteDataLakeOrganizationConfigurationError =
@@ -2149,6 +2185,8 @@ export const deleteDataLakeOrganizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataLakeOrganizationConfiguration",
 }));
 export type GetDataLakeOrganizationConfigurationError =
@@ -2180,6 +2218,8 @@ export const getDataLakeOrganizationConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataLakeOrganizationConfiguration",
 }));
 export type GetDataLakeSourcesError =
@@ -2225,6 +2265,8 @@ export const getDataLakeSources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataLakeSources",
   pagination: {
     inputToken: "nextToken",
@@ -2261,6 +2303,8 @@ export const listDataLakes: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataLakes",
 }));
 export type ListLogSourcesError =
@@ -2305,6 +2349,8 @@ export const listLogSources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogSources",
   pagination: {
     inputToken: "nextToken",
@@ -2352,6 +2398,8 @@ export const updateDataLake: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataLake",
 }));
 export type CreateSubscriberError =
@@ -2382,6 +2430,8 @@ export const createSubscriber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscriber",
 }));
 export type GetSubscriberError =
@@ -2412,6 +2462,8 @@ export const getSubscriber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscriber",
 }));
 export type UpdateSubscriberError =
@@ -2442,6 +2494,8 @@ export const updateSubscriber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscriber",
 }));
 export type DeleteSubscriberError =
@@ -2474,6 +2528,8 @@ export const deleteSubscriber: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubscriber",
 }));
 export type ListSubscribersError =
@@ -2519,6 +2575,8 @@ export const listSubscribers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscribers",
   pagination: {
     inputToken: "nextToken",
@@ -2556,6 +2614,8 @@ export const createSubscriberNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscriberNotification",
 }));
 export type DeleteSubscriberNotificationError =
@@ -2586,6 +2646,8 @@ export const deleteSubscriberNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubscriberNotification",
 }));
 export type UpdateSubscriberNotificationError =
@@ -2616,5 +2678,7 @@ export const updateSubscriberNotification: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscriberNotification",
 }));

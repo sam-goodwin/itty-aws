@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -832,6 +834,8 @@ export const copyBackupToRegion: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyBackupToRegion",
 }));
 export type CreateClusterError =
@@ -864,6 +868,8 @@ export const createCluster: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateHsmError =
@@ -894,6 +900,8 @@ export const createHsm: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHsm",
 }));
 export type DeleteBackupError =
@@ -925,6 +933,8 @@ export const deleteBackup: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackup",
 }));
 export type DeleteClusterError =
@@ -957,6 +967,8 @@ export const deleteCluster: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type DeleteHsmError =
@@ -988,6 +1000,8 @@ export const deleteHsm: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHsm",
 }));
 export type DeleteResourcePolicyError =
@@ -1019,6 +1033,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DescribeBackupsError =
@@ -1071,6 +1087,8 @@ export const describeBackups: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBackups",
   pagination: {
     inputToken: "NextToken",
@@ -1126,6 +1144,8 @@ export const describeClusters: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusters",
   pagination: {
     inputToken: "NextToken",
@@ -1160,6 +1180,8 @@ export const getResourcePolicy: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type InitializeClusterError =
@@ -1192,6 +1214,8 @@ export const initializeCluster: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitializeCluster",
 }));
 export type ListTagsError =
@@ -1244,6 +1268,8 @@ export const listTags: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
@@ -1278,6 +1304,8 @@ export const modifyBackupAttributes: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyBackupAttributes",
 }));
 export type ModifyClusterError =
@@ -1307,6 +1335,8 @@ export const modifyCluster: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCluster",
 }));
 export type PutResourcePolicyError =
@@ -1350,6 +1380,8 @@ export const putResourcePolicy: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type RestoreBackupError =
@@ -1381,6 +1413,8 @@ export const restoreBackup: API.OperationMethod<
     CloudHsmResourceNotFoundException,
     CloudHsmServiceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreBackup",
 }));
 export type TagResourceError =
@@ -1414,6 +1448,8 @@ export const tagResource: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1445,5 +1481,7 @@ export const untagResource: API.OperationMethod<
     CloudHsmServiceException,
     CloudHsmTagException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

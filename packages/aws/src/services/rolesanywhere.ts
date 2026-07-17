@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -998,6 +1000,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutNotificationSettingsError =
@@ -1025,6 +1029,8 @@ export const putNotificationSettings: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutNotificationSettings",
 }));
 export type ResetNotificationSettingsError =
@@ -1050,6 +1056,8 @@ export const resetNotificationSettings: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetNotificationSettings",
 }));
 export type TagResourceError =
@@ -1077,6 +1085,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1102,6 +1112,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type ImportCrlError =
@@ -1122,6 +1134,8 @@ export const importCrl: API.OperationMethod<
   input: ImportCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportCrl",
 }));
 export type GetCrlError = ResourceNotFoundException | CommonErrors;
@@ -1139,6 +1153,8 @@ export const getCrl: API.OperationMethod<
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCrl",
 }));
 export type UpdateCrlError =
@@ -1164,6 +1180,8 @@ export const updateCrl: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCrl",
 }));
 export type DeleteCrlError =
@@ -1184,6 +1202,8 @@ export const deleteCrl: API.OperationMethod<
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCrl",
 }));
 export type ListCrlsError =
@@ -1219,6 +1239,8 @@ export const listCrls: API.OperationMethod<
   input: ListRequest,
   output: ListCrlsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCrls",
   pagination: {
     inputToken: "nextToken",
@@ -1244,6 +1266,8 @@ export const disableCrl: API.OperationMethod<
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableCrl",
 }));
 export type EnableCrlError =
@@ -1264,6 +1288,8 @@ export const enableCrl: API.OperationMethod<
   input: ScalarCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableCrl",
 }));
 export type CreateProfileError =
@@ -1284,6 +1310,8 @@ export const createProfile: API.OperationMethod<
   input: CreateProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProfile",
 }));
 export type GetProfileError =
@@ -1304,6 +1332,8 @@ export const getProfile: API.OperationMethod<
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfile",
 }));
 export type UpdateProfileError =
@@ -1329,6 +1359,8 @@ export const updateProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProfile",
 }));
 export type DeleteProfileError =
@@ -1349,6 +1381,8 @@ export const deleteProfile: API.OperationMethod<
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfile",
 }));
 export type ListProfilesError =
@@ -1384,6 +1418,8 @@ export const listProfiles: API.OperationMethod<
   input: ListRequest,
   output: ListProfilesResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -1412,6 +1448,8 @@ export const deleteAttributeMapping: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAttributeMapping",
 }));
 export type DisableProfileError =
@@ -1432,6 +1470,8 @@ export const disableProfile: API.OperationMethod<
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableProfile",
 }));
 export type EnableProfileError =
@@ -1452,6 +1492,8 @@ export const enableProfile: API.OperationMethod<
   input: ScalarProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableProfile",
 }));
 export type PutAttributeMappingError =
@@ -1475,6 +1517,8 @@ export const putAttributeMapping: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAttributeMapping",
 }));
 export type GetSubjectError =
@@ -1495,6 +1539,8 @@ export const getSubject: API.OperationMethod<
   input: ScalarSubjectRequest,
   output: SubjectDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubject",
 }));
 export type ListSubjectsError =
@@ -1530,6 +1576,8 @@ export const listSubjects: API.OperationMethod<
   input: ListRequest,
   output: ListSubjectsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubjects",
   pagination: {
     inputToken: "nextToken",
@@ -1555,6 +1603,8 @@ export const createTrustAnchor: API.OperationMethod<
   input: CreateTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrustAnchor",
 }));
 export type GetTrustAnchorError =
@@ -1580,6 +1630,8 @@ export const getTrustAnchor: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrustAnchor",
 }));
 export type UpdateTrustAnchorError =
@@ -1605,6 +1657,8 @@ export const updateTrustAnchor: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrustAnchor",
 }));
 export type DeleteTrustAnchorError =
@@ -1625,6 +1679,8 @@ export const deleteTrustAnchor: API.OperationMethod<
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrustAnchor",
 }));
 export type ListTrustAnchorsError =
@@ -1660,6 +1716,8 @@ export const listTrustAnchors: API.OperationMethod<
   input: ListRequest,
   output: ListTrustAnchorsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrustAnchors",
   pagination: {
     inputToken: "nextToken",
@@ -1685,6 +1743,8 @@ export const disableTrustAnchor: API.OperationMethod<
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableTrustAnchor",
 }));
 export type EnableTrustAnchorError =
@@ -1705,5 +1765,7 @@ export const enableTrustAnchor: API.OperationMethod<
   input: ScalarTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableTrustAnchor",
 }));

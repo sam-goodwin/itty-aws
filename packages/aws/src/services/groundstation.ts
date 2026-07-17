@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2644,6 +2646,8 @@ export const getAgentTaskResponseUrl: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAgentTaskResponseUrl",
 }));
 export type GetMinuteUsageError =
@@ -2667,6 +2671,8 @@ export const getMinuteUsage: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMinuteUsage",
 }));
 export type ListTagsForResourceError =
@@ -2690,6 +2696,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2713,6 +2721,8 @@ export const tagResource: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2736,6 +2746,8 @@ export const untagResource: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type RegisterAgentError =
@@ -2761,6 +2773,8 @@ export const registerAgent: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterAgent",
 }));
 export type GetAgentConfigurationError =
@@ -2786,6 +2800,8 @@ export const getAgentConfiguration: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAgentConfiguration",
 }));
 export type UpdateAgentStatusError =
@@ -2811,6 +2827,8 @@ export const updateAgentStatus: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAgentStatus",
 }));
 export type CreateConfigError =
@@ -2838,6 +2856,8 @@ export const createConfig: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfig",
 }));
 export type GetConfigError =
@@ -2863,6 +2883,8 @@ export const getConfig: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfig",
 }));
 export type UpdateConfigError =
@@ -2888,6 +2910,8 @@ export const updateConfig: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfig",
 }));
 export type DeleteConfigError =
@@ -2911,6 +2935,8 @@ export const deleteConfig: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfig",
 }));
 export type ListConfigsError =
@@ -2949,6 +2975,8 @@ export const listConfigs: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigs",
   pagination: {
     inputToken: "nextToken",
@@ -2980,6 +3008,8 @@ export const reserveContact: API.OperationMethod<
     ResourceLimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReserveContact",
 }));
 export type DescribeContactError =
@@ -3003,6 +3033,8 @@ export const describeContact: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContact",
 }));
 export type CancelContactError =
@@ -3032,6 +3064,8 @@ export const cancelContact: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelContact",
 }));
 export type ListContactsError =
@@ -3072,6 +3106,8 @@ export const listContacts: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContacts",
   pagination: {
     inputToken: "nextToken",
@@ -3105,6 +3141,8 @@ export const createDataflowEndpointGroup: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataflowEndpointGroup",
 }));
 export type GetDataflowEndpointGroupError =
@@ -3128,6 +3166,8 @@ export const getDataflowEndpointGroup: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataflowEndpointGroup",
 }));
 export type DeleteDataflowEndpointGroupError =
@@ -3151,6 +3191,8 @@ export const deleteDataflowEndpointGroup: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataflowEndpointGroup",
 }));
 export type ListDataflowEndpointGroupsError =
@@ -3189,6 +3231,8 @@ export const listDataflowEndpointGroups: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataflowEndpointGroups",
   pagination: {
     inputToken: "nextToken",
@@ -3224,6 +3268,8 @@ export const createDataflowEndpointGroupV2: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataflowEndpointGroupV2",
 }));
 export type CreateEphemerisError =
@@ -3247,6 +3293,8 @@ export const createEphemeris: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEphemeris",
 }));
 export type DescribeEphemerisError =
@@ -3270,6 +3318,8 @@ export const describeEphemeris: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEphemeris",
 }));
 export type UpdateEphemerisError =
@@ -3293,6 +3343,8 @@ export const updateEphemeris: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEphemeris",
 }));
 export type DeleteEphemerisError =
@@ -3318,6 +3370,8 @@ export const deleteEphemeris: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEphemeris",
 }));
 export type ListEphemeridesError =
@@ -3356,6 +3410,8 @@ export const listEphemerides: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEphemerides",
   pagination: {
     inputToken: "nextToken",
@@ -3400,6 +3456,8 @@ export const listGroundStations: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroundStations",
   pagination: {
     inputToken: "nextToken",
@@ -3431,6 +3489,8 @@ export const createMissionProfile: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMissionProfile",
 }));
 export type GetMissionProfileError =
@@ -3454,6 +3514,8 @@ export const getMissionProfile: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMissionProfile",
 }));
 export type UpdateMissionProfileError =
@@ -3479,6 +3541,8 @@ export const updateMissionProfile: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMissionProfile",
 }));
 export type DeleteMissionProfileError =
@@ -3502,6 +3566,8 @@ export const deleteMissionProfile: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMissionProfile",
 }));
 export type ListMissionProfilesError =
@@ -3540,6 +3606,8 @@ export const listMissionProfiles: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMissionProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -3569,6 +3637,8 @@ export const getSatellite: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSatellite",
 }));
 export type ListSatellitesError =
@@ -3607,6 +3677,8 @@ export const listSatellites: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSatellites",
   pagination: {
     inputToken: "nextToken",

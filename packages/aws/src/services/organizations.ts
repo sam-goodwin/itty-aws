@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3239,6 +3241,8 @@ export const acceptHandshake: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptHandshake",
 }));
 export type AttachPolicyError =
@@ -3312,6 +3316,8 @@ export const attachPolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachPolicy",
 }));
 export type CancelHandshakeError =
@@ -3351,6 +3357,8 @@ export const cancelHandshake: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelHandshake",
 }));
 export type CloseAccountError =
@@ -3430,6 +3438,8 @@ export const closeAccount: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CloseAccount",
 }));
 export type CreateAccountError =
@@ -3529,6 +3539,8 @@ export const createAccount: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccount",
 }));
 export type CreateGovCloudAccountError =
@@ -3671,6 +3683,8 @@ export const createGovCloudAccount: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGovCloudAccount",
 }));
 export type CreateOrganizationError =
@@ -3716,6 +3730,8 @@ export const createOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOrganization",
 }));
 export type CreateOrganizationalUnitError =
@@ -3763,6 +3779,8 @@ export const createOrganizationalUnit: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOrganizationalUnit",
 }));
 export type CreatePolicyError =
@@ -3811,6 +3829,8 @@ export const createPolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicy",
 }));
 export type DeclineHandshakeError =
@@ -3850,6 +3870,8 @@ export const declineHandshake: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeclineHandshake",
 }));
 export type DeleteOrganizationError =
@@ -3884,6 +3906,8 @@ export const deleteOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOrganization",
 }));
 export type DeleteOrganizationalUnitError =
@@ -3920,6 +3944,8 @@ export const deleteOrganizationalUnit: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOrganizationalUnit",
 }));
 export type DeletePolicyError =
@@ -3959,6 +3985,8 @@ export const deletePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicy",
 }));
 export type DeleteResourcePolicyError =
@@ -3994,6 +4022,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeregisterDelegatedAdministratorError =
@@ -4044,6 +4074,8 @@ export const deregisterDelegatedAdministrator: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterDelegatedAdministrator",
 }));
 export type DescribeAccountError =
@@ -4075,6 +4107,8 @@ export const describeAccount: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccount",
 }));
 export type DescribeCreateAccountStatusError =
@@ -4108,6 +4142,8 @@ export const describeCreateAccountStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCreateAccountStatus",
 }));
 export type DescribeEffectivePolicyError =
@@ -4155,6 +4191,8 @@ export const describeEffectivePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEffectivePolicy",
 }));
 export type DescribeHandshakeError =
@@ -4190,6 +4228,8 @@ export const describeHandshake: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHandshake",
 }));
 export type DescribeOrganizationError =
@@ -4224,6 +4264,8 @@ export const describeOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganization",
 }));
 export type DescribeOrganizationalUnitError =
@@ -4255,6 +4297,8 @@ export const describeOrganizationalUnit: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrganizationalUnit",
 }));
 export type DescribePolicyError =
@@ -4288,6 +4332,8 @@ export const describePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePolicy",
 }));
 export type DescribeResourcePolicyError =
@@ -4321,6 +4367,8 @@ export const describeResourcePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
 export type DescribeResponsibilityTransferError =
@@ -4354,6 +4402,8 @@ export const describeResponsibilityTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResponsibilityTransfer",
 }));
 export type DetachPolicyError =
@@ -4410,6 +4460,8 @@ export const detachPolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachPolicy",
 }));
 export type DisableAWSServiceAccessError =
@@ -4497,6 +4549,8 @@ export const disableAWSServiceAccess: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAWSServiceAccess",
 }));
 export type DisablePolicyTypeError =
@@ -4549,6 +4603,8 @@ export const disablePolicyType: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisablePolicyType",
 }));
 export type EnableAllFeaturesError =
@@ -4609,6 +4665,8 @@ export const enableAllFeatures: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAllFeatures",
 }));
 export type EnableAWSServiceAccessError =
@@ -4660,6 +4718,8 @@ export const enableAWSServiceAccess: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAWSServiceAccess",
 }));
 export type EnablePolicyTypeError =
@@ -4714,6 +4774,8 @@ export const enablePolicyType: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnablePolicyType",
 }));
 export type InviteAccountToOrganizationError =
@@ -4767,6 +4829,8 @@ export const inviteAccountToOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InviteAccountToOrganization",
 }));
 export type InviteOrganizationToTransferResponsibilityError =
@@ -4808,6 +4872,8 @@ export const inviteOrganizationToTransferResponsibility: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InviteOrganizationToTransferResponsibility",
 }));
 export type LeaveOrganizationError =
@@ -4891,6 +4957,8 @@ export const leaveOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LeaveOrganization",
 }));
 export type ListAccountsError =
@@ -4940,6 +5008,8 @@ export const listAccounts: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccounts",
   pagination: {
     inputToken: "NextToken",
@@ -4999,6 +5069,8 @@ export const listAccountsForParent: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountsForParent",
   pagination: {
     inputToken: "NextToken",
@@ -5057,6 +5129,8 @@ export const listAccountsWithInvalidEffectivePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountsWithInvalidEffectivePolicy",
   pagination: {
     inputToken: "NextToken",
@@ -5117,6 +5191,8 @@ export const listAWSServiceAccessForOrganization: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAWSServiceAccessForOrganization",
   pagination: {
     inputToken: "NextToken",
@@ -5174,6 +5250,8 @@ export const listChildren: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChildren",
   pagination: {
     inputToken: "NextToken",
@@ -5230,6 +5308,8 @@ export const listCreateAccountStatus: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCreateAccountStatus",
   pagination: {
     inputToken: "NextToken",
@@ -5284,6 +5364,8 @@ export const listDelegatedAdministrators: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDelegatedAdministrators",
   pagination: {
     inputToken: "NextToken",
@@ -5343,6 +5425,8 @@ export const listDelegatedServicesForAccount: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDelegatedServicesForAccount",
   pagination: {
     inputToken: "NextToken",
@@ -5402,6 +5486,8 @@ export const listEffectivePolicyValidationErrors: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEffectivePolicyValidationErrors",
   pagination: {
     inputToken: "NextToken",
@@ -5460,6 +5546,8 @@ export const listHandshakesForAccount: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHandshakesForAccount",
   pagination: {
     inputToken: "NextToken",
@@ -5519,6 +5607,8 @@ export const listHandshakesForOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHandshakesForOrganization",
   pagination: {
     inputToken: "NextToken",
@@ -5562,6 +5652,8 @@ export const listInboundResponsibilityTransfers: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInboundResponsibilityTransfers",
 }));
 export type ListOrganizationalUnitsForParentError =
@@ -5612,6 +5704,8 @@ export const listOrganizationalUnitsForParent: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOrganizationalUnitsForParent",
   pagination: {
     inputToken: "NextToken",
@@ -5654,6 +5748,8 @@ export const listOutboundResponsibilityTransfers: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOutboundResponsibilityTransfers",
 }));
 export type ListParentsError =
@@ -5708,6 +5804,8 @@ export const listParents: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListParents",
   pagination: {
     inputToken: "NextToken",
@@ -5763,6 +5861,8 @@ export const listPolicies: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -5822,6 +5922,8 @@ export const listPoliciesForTarget: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPoliciesForTarget",
   pagination: {
     inputToken: "NextToken",
@@ -5881,6 +5983,8 @@ export const listRoots: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoots",
   pagination: {
     inputToken: "NextToken",
@@ -5942,6 +6046,8 @@ export const listTagsForResource: API.OperationMethod<
     TargetNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -6000,6 +6106,8 @@ export const listTargetsForPolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargetsForPolicy",
   pagination: {
     inputToken: "NextToken",
@@ -6045,6 +6153,8 @@ export const moveAccount: API.OperationMethod<
     SourceParentNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MoveAccount",
 }));
 export type PutResourcePolicyError =
@@ -6080,6 +6190,8 @@ export const putResourcePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type RegisterDelegatedAdministratorError =
@@ -6126,6 +6238,8 @@ export const registerDelegatedAdministrator: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterDelegatedAdministrator",
 }));
 export type RemoveAccountFromOrganizationError =
@@ -6186,6 +6300,8 @@ export const removeAccountFromOrganization: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAccountFromOrganization",
 }));
 export type TagResourceError =
@@ -6231,6 +6347,8 @@ export const tagResource: API.OperationMethod<
     TargetNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TerminateResponsibilityTransferError =
@@ -6272,6 +6390,8 @@ export const terminateResponsibilityTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateResponsibilityTransfer",
 }));
 export type UntagResourceError =
@@ -6317,6 +6437,8 @@ export const untagResource: API.OperationMethod<
     TargetNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateOrganizationalUnitError =
@@ -6354,6 +6476,8 @@ export const updateOrganizationalUnit: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOrganizationalUnit",
 }));
 export type UpdatePolicyError =
@@ -6399,6 +6523,8 @@ export const updatePolicy: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePolicy",
 }));
 export type UpdateResponsibilityTransferError =
@@ -6436,5 +6562,7 @@ export const updateResponsibilityTransfer: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedAPIEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResponsibilityTransfer",
 }));

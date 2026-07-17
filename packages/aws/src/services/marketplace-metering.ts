@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -458,6 +460,8 @@ export const batchMeterUsage: API.OperationMethod<
     ThrottlingException,
     TimestampOutOfBoundsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchMeterUsage",
 }));
 export type MeterUsageError =
@@ -535,6 +539,8 @@ export const meterUsage: API.OperationMethod<
     ThrottlingException,
     TimestampOutOfBoundsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MeterUsage",
 }));
 export type RegisterUsageError =
@@ -606,6 +612,8 @@ export const registerUsage: API.OperationMethod<
     PlatformNotSupportedException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterUsage",
 }));
 export type ResolveCustomerError =
@@ -648,5 +656,7 @@ export const resolveCustomer: API.OperationMethod<
     InvalidTokenException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResolveCustomer",
 }));

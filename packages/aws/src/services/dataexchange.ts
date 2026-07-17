@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2992,6 +2994,8 @@ export const acceptDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptDataGrant",
 }));
 export type CancelJobError =
@@ -3019,6 +3023,8 @@ export const cancelJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelJob",
 }));
 export type CreateDataGrantError =
@@ -3048,6 +3054,8 @@ export const createDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataGrant",
 }));
 export type CreateDataSetError =
@@ -3075,6 +3083,8 @@ export const createDataSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSet",
 }));
 export type CreateEventActionError =
@@ -3102,6 +3112,8 @@ export const createEventAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventAction",
 }));
 export type CreateJobError =
@@ -3131,6 +3143,8 @@ export const createJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJob",
 }));
 export type CreateRevisionError =
@@ -3158,6 +3172,8 @@ export const createRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRevision",
 }));
 export type DeleteAssetError =
@@ -3187,6 +3203,8 @@ export const deleteAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAsset",
 }));
 export type DeleteDataGrantError =
@@ -3214,6 +3232,8 @@ export const deleteDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataGrant",
 }));
 export type DeleteDataSetError =
@@ -3243,6 +3263,8 @@ export const deleteDataSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataSet",
 }));
 export type DeleteEventActionError =
@@ -3268,6 +3290,8 @@ export const deleteEventAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventAction",
 }));
 export type DeleteRevisionError =
@@ -3297,6 +3321,8 @@ export const deleteRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRevision",
 }));
 export type GetAssetError =
@@ -3322,6 +3348,8 @@ export const getAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAsset",
 }));
 export type GetDataGrantError =
@@ -3349,6 +3377,8 @@ export const getDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataGrant",
 }));
 export type GetDataSetError =
@@ -3374,6 +3404,8 @@ export const getDataSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSet",
 }));
 export type GetEventActionError =
@@ -3399,6 +3431,8 @@ export const getEventAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventAction",
 }));
 export type GetJobError =
@@ -3424,6 +3458,8 @@ export const getJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJob",
 }));
 export type GetReceivedDataGrantError =
@@ -3451,6 +3487,8 @@ export const getReceivedDataGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReceivedDataGrant",
 }));
 export type GetRevisionError =
@@ -3476,6 +3514,8 @@ export const getRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRevision",
 }));
 export type ListDataGrantsError =
@@ -3518,6 +3558,8 @@ export const listDataGrants: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataGrants",
   pagination: {
     inputToken: "NextToken",
@@ -3564,6 +3606,8 @@ export const listDataSetRevisions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSetRevisions",
   pagination: {
     inputToken: "NextToken",
@@ -3610,6 +3654,8 @@ export const listDataSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSets",
   pagination: {
     inputToken: "NextToken",
@@ -3656,6 +3702,8 @@ export const listEventActions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventActions",
   pagination: {
     inputToken: "NextToken",
@@ -3702,6 +3750,8 @@ export const listJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
@@ -3750,6 +3800,8 @@ export const listReceivedDataGrants: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReceivedDataGrants",
   pagination: {
     inputToken: "NextToken",
@@ -3796,6 +3848,8 @@ export const listRevisionAssets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRevisionAssets",
   pagination: {
     inputToken: "NextToken",
@@ -3817,6 +3871,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RevokeRevisionError =
@@ -3846,6 +3902,8 @@ export const revokeRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeRevision",
 }));
 export type SendApiAssetError =
@@ -3873,6 +3931,8 @@ export const sendApiAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendApiAsset",
 }));
 export type SendDataSetNotificationError =
@@ -3902,6 +3962,8 @@ export const sendDataSetNotification: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDataSetNotification",
 }));
 export type StartJobError =
@@ -3931,6 +3993,8 @@ export const startJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartJob",
 }));
 export type TagResourceError = CommonErrors;
@@ -3946,6 +4010,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
@@ -3961,6 +4027,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAssetError =
@@ -3990,6 +4058,8 @@ export const updateAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAsset",
 }));
 export type UpdateDataSetError =
@@ -4017,6 +4087,8 @@ export const updateDataSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSet",
 }));
 export type UpdateEventActionError =
@@ -4044,6 +4116,8 @@ export const updateEventAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventAction",
 }));
 export type UpdateRevisionError =
@@ -4073,5 +4147,7 @@ export const updateRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRevision",
 }));

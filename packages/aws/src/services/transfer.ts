@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3611,6 +3613,8 @@ export const createAccess: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccess",
 }));
 export type DeleteAccessError =
@@ -3636,6 +3640,8 @@ export const deleteAccess: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccess",
 }));
 export type DeleteHostKeyError =
@@ -3663,6 +3669,8 @@ export const deleteHostKey: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHostKey",
 }));
 export type DeleteSshPublicKeyError =
@@ -3690,6 +3698,8 @@ export const deleteSshPublicKey: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSshPublicKey",
 }));
 export type DescribeAccessError =
@@ -3717,6 +3727,8 @@ export const describeAccess: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccess",
 }));
 export type DescribeExecutionError =
@@ -3746,6 +3758,8 @@ export const describeExecution: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExecution",
 }));
 export type DescribeHostKeyError =
@@ -3771,6 +3785,8 @@ export const describeHostKey: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHostKey",
 }));
 export type DescribeSecurityPolicyError =
@@ -3796,6 +3812,8 @@ export const describeSecurityPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityPolicy",
 }));
 export type ImportHostKeyError =
@@ -3825,6 +3843,8 @@ export const importHostKey: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportHostKey",
 }));
 export type ImportSshPublicKeyError =
@@ -3856,6 +3876,8 @@ export const importSshPublicKey: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportSshPublicKey",
 }));
 export type ListAccessesError =
@@ -3898,6 +3920,8 @@ export const listAccesses: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccesses",
   pagination: {
     inputToken: "NextToken",
@@ -3948,6 +3972,8 @@ export const listExecutions: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -3996,6 +4022,8 @@ export const listFileTransferResults: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFileTransferResults",
   pagination: {
     inputToken: "NextToken",
@@ -4029,6 +4057,8 @@ export const listHostKeys: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHostKeys",
 }));
 export type ListSecurityPoliciesError =
@@ -4069,6 +4099,8 @@ export const listSecurityPolicies: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -4115,6 +4147,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -4152,6 +4186,8 @@ export const sendWorkflowStepState: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendWorkflowStepState",
 }));
 export type StartDirectoryListingError =
@@ -4193,6 +4229,8 @@ export const startDirectoryListing: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDirectoryListing",
 }));
 export type StartFileTransferError =
@@ -4228,6 +4266,8 @@ export const startFileTransfer: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFileTransfer",
 }));
 export type StartRemoteDeleteError =
@@ -4255,6 +4295,8 @@ export const startRemoteDelete: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRemoteDelete",
 }));
 export type StartRemoteMoveError =
@@ -4282,6 +4324,8 @@ export const startRemoteMove: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRemoteMove",
 }));
 export type StartServerError =
@@ -4313,6 +4357,8 @@ export const startServer: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartServer",
 }));
 export type StopServerError =
@@ -4346,6 +4392,8 @@ export const stopServer: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopServer",
 }));
 export type TagResourceError =
@@ -4373,6 +4421,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestConnectionError =
@@ -4398,6 +4448,8 @@ export const testConnection: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestConnection",
 }));
 export type TestIdentityProviderError =
@@ -4445,6 +4497,8 @@ export const testIdentityProvider: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestIdentityProvider",
 }));
 export type UntagResourceError =
@@ -4472,6 +4526,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccessError =
@@ -4501,6 +4557,8 @@ export const updateAccess: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccess",
 }));
 export type UpdateHostKeyError =
@@ -4528,6 +4586,8 @@ export const updateHostKey: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHostKey",
 }));
 export type CreateAgreementError =
@@ -4561,6 +4621,8 @@ export const createAgreement: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAgreement",
 }));
 export type DescribeAgreementError =
@@ -4586,6 +4648,8 @@ export const describeAgreement: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAgreement",
 }));
 export type UpdateAgreementError =
@@ -4619,6 +4683,8 @@ export const updateAgreement: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAgreement",
 }));
 export type DeleteAgreementError =
@@ -4644,6 +4710,8 @@ export const deleteAgreement: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAgreement",
 }));
 export type ListAgreementsError =
@@ -4686,6 +4754,8 @@ export const listAgreements: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAgreements",
   pagination: {
     inputToken: "NextToken",
@@ -4737,6 +4807,8 @@ export const importCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportCertificate",
 }));
 export type DescribeCertificateError =
@@ -4764,6 +4836,8 @@ export const describeCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificate",
 }));
 export type UpdateCertificateError =
@@ -4791,6 +4865,8 @@ export const updateCertificate: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCertificate",
 }));
 export type DeleteCertificateError =
@@ -4816,6 +4892,8 @@ export const deleteCertificate: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificate",
 }));
 export type ListCertificatesError =
@@ -4858,6 +4936,8 @@ export const listCertificates: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCertificates",
   pagination: {
     inputToken: "NextToken",
@@ -4895,6 +4975,8 @@ export const createConnector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnector",
 }));
 export type DescribeConnectorError =
@@ -4920,6 +5002,8 @@ export const describeConnector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnector",
 }));
 export type UpdateConnectorError =
@@ -4949,6 +5033,8 @@ export const updateConnector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnector",
 }));
 export type DeleteConnectorError =
@@ -4974,6 +5060,8 @@ export const deleteConnector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnector",
 }));
 export type ListConnectorsError =
@@ -5016,6 +5104,8 @@ export const listConnectors: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectors",
   pagination: {
     inputToken: "NextToken",
@@ -5049,6 +5139,8 @@ export const createProfile: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProfile",
 }));
 export type DescribeProfileError =
@@ -5074,6 +5166,8 @@ export const describeProfile: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProfile",
 }));
 export type UpdateProfileError =
@@ -5101,6 +5195,8 @@ export const updateProfile: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProfile",
 }));
 export type DeleteProfileError =
@@ -5126,6 +5222,8 @@ export const deleteProfile: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProfile",
 }));
 export type ListProfilesError =
@@ -5168,6 +5266,8 @@ export const listProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -5205,6 +5305,8 @@ export const createServer: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServer",
 }));
 export type DescribeServerError =
@@ -5232,6 +5334,8 @@ export const describeServer: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServer",
 }));
 export type UpdateServerError =
@@ -5267,6 +5371,8 @@ export const updateServer: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServer",
 }));
 export type DeleteServerError =
@@ -5296,6 +5402,8 @@ export const deleteServer: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServer",
 }));
 export type ListServersError =
@@ -5336,6 +5444,8 @@ export const listServers: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServers",
   pagination: {
     inputToken: "NextToken",
@@ -5369,6 +5479,8 @@ export const createUser: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DescribeUserError =
@@ -5396,6 +5508,8 @@ export const describeUser: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUser",
 }));
 export type UpdateUserError =
@@ -5431,6 +5545,8 @@ export const updateUser: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));
 export type DeleteUserError =
@@ -5460,6 +5576,8 @@ export const deleteUser: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type ListUsersError =
@@ -5502,6 +5620,8 @@ export const listUsers: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
@@ -5535,6 +5655,8 @@ export const describeWebAppCustomization: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWebAppCustomization",
 }));
 export type UpdateWebAppCustomizationError =
@@ -5564,6 +5686,8 @@ export const updateWebAppCustomization: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWebAppCustomization",
 }));
 export type DeleteWebAppCustomizationError =
@@ -5593,6 +5717,8 @@ export const deleteWebAppCustomization: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWebAppCustomization",
 }));
 export type CreateWebAppError =
@@ -5622,6 +5748,8 @@ export const createWebApp: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWebApp",
 }));
 export type DescribeWebAppError =
@@ -5651,6 +5779,8 @@ export const describeWebApp: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWebApp",
 }));
 export type UpdateWebAppError =
@@ -5682,6 +5812,8 @@ export const updateWebApp: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWebApp",
 }));
 export type DeleteWebAppError =
@@ -5709,6 +5841,8 @@ export const deleteWebApp: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWebApp",
 }));
 export type ListWebAppsError =
@@ -5751,6 +5885,8 @@ export const listWebApps: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWebApps",
   pagination: {
     inputToken: "NextToken",
@@ -5786,6 +5922,8 @@ export const createWorkflow: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflow",
 }));
 export type DescribeWorkflowError =
@@ -5811,6 +5949,8 @@ export const describeWorkflow: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkflow",
 }));
 export type DeleteWorkflowError =
@@ -5838,6 +5978,8 @@ export const deleteWorkflow: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflow",
 }));
 export type ListWorkflowsError =
@@ -5878,6 +6020,8 @@ export const listWorkflows: API.OperationMethod<
     InvalidRequestException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflows",
   pagination: {
     inputToken: "NextToken",

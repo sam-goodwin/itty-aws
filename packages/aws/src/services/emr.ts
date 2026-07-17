@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -4734,6 +4736,8 @@ export const addInstanceFleet: API.OperationMethod<
   input: AddInstanceFleetInput,
   output: AddInstanceFleetOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddInstanceFleet",
 }));
 export type AddInstanceGroupsError = InternalServerError | CommonErrors;
@@ -4749,6 +4753,8 @@ export const addInstanceGroups: API.OperationMethod<
   input: AddInstanceGroupsInput,
   output: AddInstanceGroupsOutput,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddInstanceGroups",
 }));
 export type AddJobFlowStepsError = InternalServerError | CommonErrors;
@@ -4785,6 +4791,8 @@ export const addJobFlowSteps: API.OperationMethod<
   input: AddJobFlowStepsInput,
   output: AddJobFlowStepsOutput,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddJobFlowSteps",
 }));
 export type AddTagsError =
@@ -4807,6 +4815,8 @@ export const addTags: API.OperationMethod<
   input: AddTagsInput,
   output: AddTagsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
 export type CancelStepsError =
@@ -4829,6 +4839,8 @@ export const cancelSteps: API.OperationMethod<
   input: CancelStepsInput,
   output: CancelStepsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSteps",
 }));
 export type CreatePersistentAppUIError =
@@ -4847,6 +4859,8 @@ export const createPersistentAppUI: API.OperationMethod<
   input: CreatePersistentAppUIInput,
   output: CreatePersistentAppUIOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePersistentAppUI",
 }));
 export type CreateSecurityConfigurationError =
@@ -4866,6 +4880,8 @@ export const createSecurityConfiguration: API.OperationMethod<
   input: CreateSecurityConfigurationInput,
   output: CreateSecurityConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityConfiguration",
 }));
 export type CreateStudioError =
@@ -4884,6 +4900,8 @@ export const createStudio: API.OperationMethod<
   input: CreateStudioInput,
   output: CreateStudioOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStudio",
 }));
 export type CreateStudioSessionMappingError =
@@ -4906,6 +4924,8 @@ export const createStudioSessionMapping: API.OperationMethod<
   input: CreateStudioSessionMappingInput,
   output: CreateStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStudioSessionMapping",
 }));
 export type DeleteSecurityConfigurationError =
@@ -4924,6 +4944,8 @@ export const deleteSecurityConfiguration: API.OperationMethod<
   input: DeleteSecurityConfigurationInput,
   output: DeleteSecurityConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityConfiguration",
 }));
 export type DeleteStudioError =
@@ -4942,6 +4964,8 @@ export const deleteStudio: API.OperationMethod<
   input: DeleteStudioInput,
   output: DeleteStudioResponse,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStudio",
 }));
 export type DeleteStudioSessionMappingError =
@@ -4960,6 +4984,8 @@ export const deleteStudioSessionMapping: API.OperationMethod<
   input: DeleteStudioSessionMappingInput,
   output: DeleteStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStudioSessionMapping",
 }));
 export type DescribeClusterError =
@@ -4979,6 +5005,8 @@ export const describeCluster: API.OperationMethod<
   input: DescribeClusterInput,
   output: DescribeClusterOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCluster",
 }));
 export type DescribeJobFlowsError = InternalServerError | CommonErrors;
@@ -5013,6 +5041,8 @@ export const describeJobFlows: API.OperationMethod<
   input: DescribeJobFlowsInput,
   output: DescribeJobFlowsOutput,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobFlows",
 }));
 export type DescribeNotebookExecutionError =
@@ -5031,6 +5061,8 @@ export const describeNotebookExecution: API.OperationMethod<
   input: DescribeNotebookExecutionInput,
   output: DescribeNotebookExecutionOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotebookExecution",
 }));
 export type DescribePersistentAppUIError =
@@ -5049,6 +5081,8 @@ export const describePersistentAppUI: API.OperationMethod<
   input: DescribePersistentAppUIInput,
   output: DescribePersistentAppUIOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePersistentAppUI",
 }));
 export type DescribeReleaseLabelError =
@@ -5069,6 +5103,8 @@ export const describeReleaseLabel: API.OperationMethod<
   input: DescribeReleaseLabelInput,
   output: DescribeReleaseLabelOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReleaseLabel",
 }));
 export type DescribeSecurityConfigurationError =
@@ -5088,6 +5124,8 @@ export const describeSecurityConfiguration: API.OperationMethod<
   input: DescribeSecurityConfigurationInput,
   output: DescribeSecurityConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityConfiguration",
 }));
 export type DescribeStepError =
@@ -5106,6 +5144,8 @@ export const describeStep: API.OperationMethod<
   input: DescribeStepInput,
   output: DescribeStepOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStep",
 }));
 export type DescribeStudioError =
@@ -5125,6 +5165,8 @@ export const describeStudio: API.OperationMethod<
   input: DescribeStudioInput,
   output: DescribeStudioOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStudio",
 }));
 export type GetAutoTerminationPolicyError = CommonErrors;
@@ -5140,6 +5182,8 @@ export const getAutoTerminationPolicy: API.OperationMethod<
   input: GetAutoTerminationPolicyInput,
   output: GetAutoTerminationPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutoTerminationPolicy",
 }));
 export type GetBlockPublicAccessConfigurationError =
@@ -5160,6 +5204,8 @@ export const getBlockPublicAccessConfiguration: API.OperationMethod<
   input: GetBlockPublicAccessConfigurationInput,
   output: GetBlockPublicAccessConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlockPublicAccessConfiguration",
 }));
 export type GetClusterSessionCredentialsError =
@@ -5181,6 +5227,8 @@ export const getClusterSessionCredentials: API.OperationMethod<
   input: GetClusterSessionCredentialsInput,
   output: GetClusterSessionCredentialsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClusterSessionCredentials",
 }));
 export type GetManagedScalingPolicyError = CommonErrors;
@@ -5196,6 +5244,8 @@ export const getManagedScalingPolicy: API.OperationMethod<
   input: GetManagedScalingPolicyInput,
   output: GetManagedScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedScalingPolicy",
 }));
 export type GetOnClusterAppUIPresignedURLError =
@@ -5214,6 +5264,8 @@ export const getOnClusterAppUIPresignedURL: API.OperationMethod<
   input: GetOnClusterAppUIPresignedURLInput,
   output: GetOnClusterAppUIPresignedURLOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOnClusterAppUIPresignedURL",
 }));
 export type GetPersistentAppUIPresignedURLError =
@@ -5232,6 +5284,8 @@ export const getPersistentAppUIPresignedURL: API.OperationMethod<
   input: GetPersistentAppUIPresignedURLInput,
   output: GetPersistentAppUIPresignedURLOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPersistentAppUIPresignedURL",
 }));
 export type GetStudioSessionMappingError =
@@ -5251,6 +5305,8 @@ export const getStudioSessionMapping: API.OperationMethod<
   input: GetStudioSessionMappingInput,
   output: GetStudioSessionMappingOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStudioSessionMapping",
 }));
 export type ListBootstrapActionsError =
@@ -5284,6 +5340,8 @@ export const listBootstrapActions: API.OperationMethod<
   input: ListBootstrapActionsInput,
   output: ListBootstrapActionsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBootstrapActions",
   pagination: {
     inputToken: "Marker",
@@ -5326,6 +5384,8 @@ export const listClusters: API.OperationMethod<
   input: ListClustersInput,
   output: ListClustersOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "Marker",
@@ -5367,6 +5427,8 @@ export const listInstanceFleets: API.OperationMethod<
   input: ListInstanceFleetsInput,
   output: ListInstanceFleetsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceFleets",
   pagination: {
     inputToken: "Marker",
@@ -5405,6 +5467,8 @@ export const listInstanceGroups: API.OperationMethod<
   input: ListInstanceGroupsInput,
   output: ListInstanceGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceGroups",
   pagination: {
     inputToken: "Marker",
@@ -5446,6 +5510,8 @@ export const listInstances: API.OperationMethod<
   input: ListInstancesInput,
   output: ListInstancesOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstances",
   pagination: {
     inputToken: "Marker",
@@ -5487,6 +5553,8 @@ export const listNotebookExecutions: API.OperationMethod<
   input: ListNotebookExecutionsInput,
   output: ListNotebookExecutionsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotebookExecutions",
   pagination: {
     inputToken: "Marker",
@@ -5526,6 +5594,8 @@ export const listReleaseLabels: API.OperationMethod<
   input: ListReleaseLabelsInput,
   output: ListReleaseLabelsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReleaseLabels",
   pagination: {
     inputToken: "NextToken",
@@ -5567,6 +5637,8 @@ export const listSecurityConfigurations: API.OperationMethod<
   input: ListSecurityConfigurationsInput,
   output: ListSecurityConfigurationsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityConfigurations",
   pagination: {
     inputToken: "Marker",
@@ -5610,6 +5682,8 @@ export const listSteps: API.OperationMethod<
   input: ListStepsInput,
   output: ListStepsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSteps",
   pagination: {
     inputToken: "Marker",
@@ -5649,6 +5723,8 @@ export const listStudios: API.OperationMethod<
   input: ListStudiosInput,
   output: ListStudiosOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStudios",
   pagination: {
     inputToken: "Marker",
@@ -5688,6 +5764,8 @@ export const listStudioSessionMappings: API.OperationMethod<
   input: ListStudioSessionMappingsInput,
   output: ListStudioSessionMappingsOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStudioSessionMappings",
   pagination: {
     inputToken: "Marker",
@@ -5727,6 +5805,8 @@ export const listSupportedInstanceTypes: API.OperationMethod<
   input: ListSupportedInstanceTypesInput,
   output: ListSupportedInstanceTypesOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSupportedInstanceTypes",
   pagination: { inputToken: "Marker", outputToken: "Marker" } as const,
 }));
@@ -5747,6 +5827,8 @@ export const modifyCluster: API.OperationMethod<
   input: ModifyClusterInput,
   output: ModifyClusterOutput,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCluster",
 }));
 export type ModifyInstanceFleetError =
@@ -5770,6 +5852,8 @@ export const modifyInstanceFleet: API.OperationMethod<
   input: ModifyInstanceFleetInput,
   output: ModifyInstanceFleetResponse,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceFleet",
 }));
 export type ModifyInstanceGroupsError = InternalServerError | CommonErrors;
@@ -5787,6 +5871,8 @@ export const modifyInstanceGroups: API.OperationMethod<
   input: ModifyInstanceGroupsInput,
   output: ModifyInstanceGroupsResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceGroups",
 }));
 export type PutAutoScalingPolicyError = CommonErrors;
@@ -5805,6 +5891,8 @@ export const putAutoScalingPolicy: API.OperationMethod<
   input: PutAutoScalingPolicyInput,
   output: PutAutoScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAutoScalingPolicy",
 }));
 export type PutAutoTerminationPolicyError = CommonErrors;
@@ -5827,6 +5915,8 @@ export const putAutoTerminationPolicy: API.OperationMethod<
   input: PutAutoTerminationPolicyInput,
   output: PutAutoTerminationPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAutoTerminationPolicy",
 }));
 export type PutBlockPublicAccessConfigurationError =
@@ -5848,6 +5938,8 @@ export const putBlockPublicAccessConfiguration: API.OperationMethod<
   input: PutBlockPublicAccessConfigurationInput,
   output: PutBlockPublicAccessConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBlockPublicAccessConfiguration",
 }));
 export type PutManagedScalingPolicyError = CommonErrors;
@@ -5866,6 +5958,8 @@ export const putManagedScalingPolicy: API.OperationMethod<
   input: PutManagedScalingPolicyInput,
   output: PutManagedScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutManagedScalingPolicy",
 }));
 export type RemoveAutoScalingPolicyError = CommonErrors;
@@ -5881,6 +5975,8 @@ export const removeAutoScalingPolicy: API.OperationMethod<
   input: RemoveAutoScalingPolicyInput,
   output: RemoveAutoScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAutoScalingPolicy",
 }));
 export type RemoveAutoTerminationPolicyError = CommonErrors;
@@ -5896,6 +5992,8 @@ export const removeAutoTerminationPolicy: API.OperationMethod<
   input: RemoveAutoTerminationPolicyInput,
   output: RemoveAutoTerminationPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAutoTerminationPolicy",
 }));
 export type RemoveManagedScalingPolicyError = CommonErrors;
@@ -5911,6 +6009,8 @@ export const removeManagedScalingPolicy: API.OperationMethod<
   input: RemoveManagedScalingPolicyInput,
   output: RemoveManagedScalingPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveManagedScalingPolicy",
 }));
 export type RemoveTagsError =
@@ -5934,6 +6034,8 @@ export const removeTags: API.OperationMethod<
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
 export type RunJobFlowError = InternalServerError | CommonErrors;
@@ -5973,6 +6075,8 @@ export const runJobFlow: API.OperationMethod<
   input: RunJobFlowInput,
   output: RunJobFlowOutput,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RunJobFlow",
 }));
 export type SetKeepJobFlowAliveWhenNoStepsError =
@@ -5994,6 +6098,8 @@ export const setKeepJobFlowAliveWhenNoSteps: API.OperationMethod<
   input: SetKeepJobFlowAliveWhenNoStepsInput,
   output: SetKeepJobFlowAliveWhenNoStepsResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetKeepJobFlowAliveWhenNoSteps",
 }));
 export type SetTerminationProtectionError = InternalServerError | CommonErrors;
@@ -6027,6 +6133,8 @@ export const setTerminationProtection: API.OperationMethod<
   input: SetTerminationProtectionInput,
   output: SetTerminationProtectionResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTerminationProtection",
 }));
 export type SetUnhealthyNodeReplacementError =
@@ -6057,6 +6165,8 @@ export const setUnhealthyNodeReplacement: API.OperationMethod<
   input: SetUnhealthyNodeReplacementInput,
   output: SetUnhealthyNodeReplacementResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetUnhealthyNodeReplacement",
 }));
 export type SetVisibleToAllUsersError = InternalServerError | CommonErrors;
@@ -6085,6 +6195,8 @@ export const setVisibleToAllUsers: API.OperationMethod<
   input: SetVisibleToAllUsersInput,
   output: SetVisibleToAllUsersResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetVisibleToAllUsers",
 }));
 export type StartNotebookExecutionError =
@@ -6103,6 +6215,8 @@ export const startNotebookExecution: API.OperationMethod<
   input: StartNotebookExecutionInput,
   output: StartNotebookExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNotebookExecution",
 }));
 export type StopNotebookExecutionError =
@@ -6121,6 +6235,8 @@ export const stopNotebookExecution: API.OperationMethod<
   input: StopNotebookExecutionInput,
   output: StopNotebookExecutionResponse,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopNotebookExecution",
 }));
 export type TerminateJobFlowsError = InternalServerError | CommonErrors;
@@ -6143,6 +6259,8 @@ export const terminateJobFlows: API.OperationMethod<
   input: TerminateJobFlowsInput,
   output: TerminateJobFlowsResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateJobFlows",
 }));
 export type UpdateStudioError =
@@ -6162,6 +6280,8 @@ export const updateStudio: API.OperationMethod<
   input: UpdateStudioInput,
   output: UpdateStudioResponse,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStudio",
 }));
 export type UpdateStudioSessionMappingError =
@@ -6180,5 +6300,7 @@ export const updateStudioSessionMapping: API.OperationMethod<
   input: UpdateStudioSessionMappingInput,
   output: UpdateStudioSessionMappingResponse,
   errors: [InternalServerError, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStudioSessionMapping",
 }));

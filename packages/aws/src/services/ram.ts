@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2180,6 +2182,8 @@ export const acceptResourceShareInvitation: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptResourceShareInvitation",
 }));
 export type AssociateResourceShareError =
@@ -2221,6 +2225,8 @@ export const associateResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateResourceShare",
 }));
 export type AssociateResourceSharePermissionError =
@@ -2255,6 +2261,8 @@ export const associateResourceSharePermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateResourceSharePermission",
 }));
 export type CreatePermissionError =
@@ -2293,6 +2301,8 @@ export const createPermission: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePermission",
 }));
 export type CreatePermissionVersionError =
@@ -2336,6 +2346,8 @@ export const createPermissionVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePermissionVersion",
 }));
 export type CreateResourceShareError =
@@ -2385,6 +2397,8 @@ export const createResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceShare",
 }));
 export type DeletePermissionError =
@@ -2418,6 +2432,8 @@ export const deletePermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermission",
 }));
 export type DeletePermissionVersionError =
@@ -2455,6 +2471,8 @@ export const deletePermissionVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermissionVersion",
 }));
 export type DeleteResourceShareError =
@@ -2495,6 +2513,8 @@ export const deleteResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceShare",
 }));
 export type DisassociateResourceShareError =
@@ -2535,6 +2555,8 @@ export const disassociateResourceShare: API.OperationMethod<
     ThrottlingException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateResourceShare",
 }));
 export type DisassociateResourceSharePermissionError =
@@ -2570,6 +2592,8 @@ export const disassociateResourceSharePermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateResourceSharePermission",
 }));
 export type EnableSharingWithAwsOrganizationError =
@@ -2603,6 +2627,8 @@ export const enableSharingWithAwsOrganization: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSharingWithAwsOrganization",
 }));
 export type GetPermissionError =
@@ -2632,6 +2658,8 @@ export const getPermission: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPermission",
 }));
 export type GetResourcePoliciesError =
@@ -2683,6 +2711,8 @@ export const getResourcePolicies: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "nextToken",
@@ -2741,6 +2771,8 @@ export const getResourceShareAssociations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceShareAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -2800,6 +2832,8 @@ export const getResourceShareInvitations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceShareInvitations",
   pagination: {
     inputToken: "nextToken",
@@ -2855,6 +2889,8 @@ export const getResourceShares: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceShares",
   pagination: {
     inputToken: "nextToken",
@@ -2918,6 +2954,8 @@ export const listPendingInvitationResources: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPendingInvitationResources",
   pagination: {
     inputToken: "nextToken",
@@ -2973,6 +3011,8 @@ export const listPermissionAssociations: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissionAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -3027,6 +3067,8 @@ export const listPermissions: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissions",
   pagination: {
     inputToken: "nextToken",
@@ -3084,6 +3126,8 @@ export const listPermissionVersions: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissionVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3140,6 +3184,8 @@ export const listPrincipals: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrincipals",
   pagination: {
     inputToken: "nextToken",
@@ -3192,6 +3238,8 @@ export const listReplacePermissionAssociationsWork: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReplacePermissionAssociationsWork",
   pagination: {
     inputToken: "nextToken",
@@ -3250,6 +3298,8 @@ export const listResources: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResources",
   pagination: {
     inputToken: "nextToken",
@@ -3307,6 +3357,8 @@ export const listResourceSharePermissions: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceSharePermissions",
   pagination: {
     inputToken: "nextToken",
@@ -3352,6 +3404,8 @@ export const listResourceTypes: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceTypes",
   pagination: {
     inputToken: "nextToken",
@@ -3403,6 +3457,8 @@ export const listSourceAssociations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourceAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -3468,6 +3524,8 @@ export const promotePermissionCreatedFromPolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PromotePermissionCreatedFromPolicy",
 }));
 export type PromoteResourceShareCreatedFromPolicyError =
@@ -3518,6 +3576,8 @@ export const promoteResourceShareCreatedFromPolicy: API.OperationMethod<
     UnknownResourceException,
     UnmatchedPolicyPermissionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PromoteResourceShareCreatedFromPolicy",
 }));
 export type RejectResourceShareInvitationError =
@@ -3555,6 +3615,8 @@ export const rejectResourceShareInvitation: API.OperationMethod<
     ServerInternalException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectResourceShareInvitation",
 }));
 export type ReplacePermissionAssociationsError =
@@ -3603,6 +3665,8 @@ export const replacePermissionAssociations: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplacePermissionAssociations",
 }));
 export type SetDefaultPermissionVersionError =
@@ -3636,6 +3700,8 @@ export const setDefaultPermissionVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDefaultPermissionVersion",
 }));
 export type TagResourceError =
@@ -3672,6 +3738,8 @@ export const tagResource: API.OperationMethod<
     TagPolicyViolationException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3699,6 +3767,8 @@ export const untagResource: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateResourceShareError =
@@ -3734,5 +3804,7 @@ export const updateResourceShare: API.OperationMethod<
     ServiceUnavailableException,
     UnknownResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceShare",
 }));

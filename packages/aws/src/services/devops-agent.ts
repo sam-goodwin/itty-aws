@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4190,6 +4192,8 @@ export const allowVendedLogDeliveryForResource: API.OperationMethod<
   input: AllowVendedLogDeliveryForResourceInput,
   output: AllowVendedLogDeliveryForResourceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllowVendedLogDeliveryForResource",
 }));
 export type CreateBacklogTaskError =
@@ -4219,6 +4223,8 @@ export const createBacklogTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBacklogTask",
 }));
 export type CreateChatError =
@@ -4244,6 +4250,8 @@ export const createChat: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChat",
 }));
 export type GetAccountUsageError =
@@ -4271,6 +4279,8 @@ export const getAccountUsage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountUsage",
 }));
 export type GetBacklogTaskError =
@@ -4300,6 +4310,8 @@ export const getBacklogTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBacklogTask",
 }));
 export type GetRecommendationError =
@@ -4327,6 +4339,8 @@ export const getRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendation",
 }));
 export type ListBacklogTasksError =
@@ -4367,6 +4381,8 @@ export const listBacklogTasks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBacklogTasks",
   pagination: {
     inputToken: "nextToken",
@@ -4398,6 +4414,8 @@ export const listChats: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChats",
 }));
 export type ListExecutionsError =
@@ -4440,6 +4458,8 @@ export const listExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -4486,6 +4506,8 @@ export const listGoals: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGoals",
   pagination: {
     inputToken: "nextToken",
@@ -4534,6 +4556,8 @@ export const listJournalRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJournalRecords",
   pagination: {
     inputToken: "nextToken",
@@ -4567,6 +4591,8 @@ export const listPendingMessages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPendingMessages",
 }));
 export type ListRecommendationsError =
@@ -4592,6 +4618,8 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendations",
 }));
 export type ListTagsForResourceError =
@@ -4617,6 +4645,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type SendMessageError =
@@ -4646,6 +4676,8 @@ export const sendMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendMessage",
 }));
 export type TagResourceError =
@@ -4671,6 +4703,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4696,6 +4730,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateBacklogTaskError =
@@ -4725,6 +4761,8 @@ export const updateBacklogTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBacklogTask",
 }));
 export type UpdateGoalError =
@@ -4754,6 +4792,8 @@ export const updateGoal: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGoal",
 }));
 export type UpdateRecommendationError =
@@ -4783,6 +4823,8 @@ export const updateRecommendation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecommendation",
 }));
 export type CreateAgentSpaceError =
@@ -4812,6 +4854,8 @@ export const createAgentSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAgentSpace",
 }));
 export type GetAgentSpaceError =
@@ -4837,6 +4881,8 @@ export const getAgentSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAgentSpace",
 }));
 export type UpdateAgentSpaceError =
@@ -4864,6 +4910,8 @@ export const updateAgentSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAgentSpace",
 }));
 export type DeleteAgentSpaceError =
@@ -4891,6 +4939,8 @@ export const deleteAgentSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAgentSpace",
 }));
 export type DisableOperatorAppError =
@@ -4916,6 +4966,8 @@ export const disableOperatorApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableOperatorApp",
 }));
 export type EnableOperatorAppError =
@@ -4941,6 +4993,8 @@ export const enableOperatorApp: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableOperatorApp",
 }));
 export type GetOperatorAppError =
@@ -4960,6 +5014,8 @@ export const getOperatorApp: API.OperationMethod<
   input: GetOperatorAppInput,
   output: GetOperatorAppOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperatorApp",
 }));
 export type UpdateOperatorAppIdpConfigError =
@@ -4985,6 +5041,8 @@ export const updateOperatorAppIdpConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOperatorAppIdpConfig",
 }));
 export type ListAgentSpacesError =
@@ -5019,6 +5077,8 @@ export const listAgentSpaces: API.OperationMethod<
   input: ListAgentSpacesInput,
   output: ListAgentSpacesOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAgentSpaces",
   pagination: {
     inputToken: "nextToken",
@@ -5054,6 +5114,8 @@ export const associateService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateService",
 }));
 export type GetAssociationError =
@@ -5079,6 +5141,8 @@ export const getAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssociation",
 }));
 export type UpdateAssociationError =
@@ -5104,6 +5168,8 @@ export const updateAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssociation",
 }));
 export type DisassociateServiceError =
@@ -5129,6 +5195,8 @@ export const disassociateService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateService",
 }));
 export type ListWebhooksError =
@@ -5154,6 +5222,8 @@ export const listWebhooks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWebhooks",
 }));
 export type ListAssociationsError =
@@ -5194,6 +5264,8 @@ export const listAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -5225,6 +5297,8 @@ export const validateAwsAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateAwsAssociations",
 }));
 export type CreatePrivateConnectionError =
@@ -5250,6 +5324,8 @@ export const createPrivateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePrivateConnection",
 }));
 export type DescribePrivateConnectionError =
@@ -5277,6 +5353,8 @@ export const describePrivateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePrivateConnection",
 }));
 export type DeletePrivateConnectionError =
@@ -5304,6 +5382,8 @@ export const deletePrivateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePrivateConnection",
 }));
 export type ListPrivateConnectionsError =
@@ -5329,6 +5409,8 @@ export const listPrivateConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPrivateConnections",
 }));
 export type UpdatePrivateConnectionCertificateError =
@@ -5356,6 +5438,8 @@ export const updatePrivateConnectionCertificate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePrivateConnectionCertificate",
 }));
 export type RegisterServiceError =
@@ -5381,6 +5465,8 @@ export const registerService: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterService",
 }));
 export type GetServiceError =
@@ -5406,6 +5492,8 @@ export const getService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetService",
 }));
 export type DeregisterServiceError =
@@ -5433,6 +5521,8 @@ export const deregisterService: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterService",
 }));
 export type ListServicesError =
@@ -5467,6 +5557,8 @@ export const listServices: API.OperationMethod<
   input: ListServicesInput,
   output: ListServicesOutput,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "nextToken",

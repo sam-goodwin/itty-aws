@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1752,6 +1754,8 @@ export const listRequesterGateways: API.OperationMethod<
   input: ListRequesterGatewaysRequest,
   output: ListRequesterGatewaysResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRequesterGateways",
   pagination: {
     inputToken: "nextToken",
@@ -1791,6 +1795,8 @@ export const listResponderGateways: API.OperationMethod<
   input: ListResponderGatewaysRequest,
   output: ListResponderGatewaysResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResponderGateways",
   pagination: {
     inputToken: "nextToken",
@@ -1824,6 +1830,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1851,6 +1859,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1878,6 +1888,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateLinkError =
@@ -1911,6 +1923,8 @@ export const createLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLink",
 }));
 export type GetLinkError =
@@ -1942,6 +1956,8 @@ export const getLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLink",
 }));
 export type DeleteLinkError =
@@ -1973,6 +1989,8 @@ export const deleteLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLink",
 }));
 export type ListLinksError =
@@ -2017,6 +2035,8 @@ export const listLinks: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLinks",
   pagination: {
     inputToken: "nextToken",
@@ -2054,6 +2074,8 @@ export const acceptLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptLink",
 }));
 export type RejectLinkError =
@@ -2085,6 +2107,8 @@ export const rejectLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectLink",
 }));
 export type UpdateLinkError =
@@ -2116,6 +2140,8 @@ export const updateLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLink",
 }));
 export type UpdateLinkModuleFlowError =
@@ -2147,6 +2173,8 @@ export const updateLinkModuleFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLinkModuleFlow",
 }));
 export type CreateRequesterGatewayError =
@@ -2176,6 +2204,8 @@ export const createRequesterGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRequesterGateway",
 }));
 export type GetRequesterGatewayError =
@@ -2203,6 +2233,8 @@ export const getRequesterGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRequesterGateway",
 }));
 export type DeleteRequesterGatewayError =
@@ -2230,6 +2262,8 @@ export const deleteRequesterGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRequesterGateway",
 }));
 export type UpdateRequesterGatewayError =
@@ -2259,6 +2293,8 @@ export const updateRequesterGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRequesterGateway",
 }));
 export type CreateOutboundExternalLinkError =
@@ -2288,6 +2324,8 @@ export const createOutboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOutboundExternalLink",
 }));
 export type DeleteOutboundExternalLinkError =
@@ -2317,6 +2355,8 @@ export const deleteOutboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOutboundExternalLink",
 }));
 export type GetOutboundExternalLinkError =
@@ -2344,6 +2384,8 @@ export const getOutboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOutboundExternalLink",
 }));
 export type CreateResponderGatewayError =
@@ -2375,6 +2417,8 @@ export const createResponderGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResponderGateway",
 }));
 export type GetResponderGatewayError =
@@ -2402,6 +2446,8 @@ export const getResponderGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResponderGateway",
 }));
 export type DeleteResponderGatewayError =
@@ -2429,6 +2475,8 @@ export const deleteResponderGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResponderGateway",
 }));
 export type UpdateResponderGatewayError =
@@ -2458,6 +2506,8 @@ export const updateResponderGateway: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResponderGateway",
 }));
 export type CreateInboundExternalLinkError =
@@ -2489,6 +2539,8 @@ export const createInboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInboundExternalLink",
 }));
 export type DeleteInboundExternalLinkError =
@@ -2518,6 +2570,8 @@ export const deleteInboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInboundExternalLink",
 }));
 export type GetInboundExternalLinkError =
@@ -2545,5 +2599,7 @@ export const getInboundExternalLink: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInboundExternalLink",
 }));

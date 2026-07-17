@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1631,6 +1633,8 @@ export const associateAccounts: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAccounts",
 }));
 export type CreateAutomationRuleError =
@@ -1670,6 +1674,8 @@ export const createAutomationRule: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutomationRule",
 }));
 export type DeleteAutomationRuleError =
@@ -1707,6 +1713,8 @@ export const deleteAutomationRule: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAutomationRule",
 }));
 export type DisassociateAccountsError =
@@ -1746,6 +1754,8 @@ export const disassociateAccounts: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAccounts",
 }));
 export type GetAutomationEventError =
@@ -1779,6 +1789,8 @@ export const getAutomationEvent: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomationEvent",
 }));
 export type GetAutomationRuleError =
@@ -1812,6 +1824,8 @@ export const getAutomationRule: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutomationRule",
 }));
 export type GetEnrollmentConfigurationError =
@@ -1845,6 +1859,8 @@ export const getEnrollmentConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnrollmentConfiguration",
 }));
 export type ListAccountsError =
@@ -1895,6 +1911,8 @@ export const listAccounts: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccounts",
   pagination: {
     inputToken: "nextToken",
@@ -1947,6 +1965,8 @@ export const listAutomationEvents: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomationEvents",
   pagination: {
     inputToken: "nextToken",
@@ -2001,6 +2021,8 @@ export const listAutomationEventSteps: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomationEventSteps",
   pagination: {
     inputToken: "nextToken",
@@ -2053,6 +2075,8 @@ export const listAutomationEventSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomationEventSummaries",
   pagination: {
     inputToken: "nextToken",
@@ -2105,6 +2129,8 @@ export const listAutomationRulePreview: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomationRulePreview",
   pagination: {
     inputToken: "nextToken",
@@ -2157,6 +2183,8 @@ export const listAutomationRulePreviewSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomationRulePreviewSummaries",
   pagination: {
     inputToken: "nextToken",
@@ -2209,6 +2237,8 @@ export const listAutomationRules: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutomationRules",
   pagination: {
     inputToken: "nextToken",
@@ -2263,6 +2293,8 @@ export const listRecommendedActions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendedActions",
   pagination: {
     inputToken: "nextToken",
@@ -2317,6 +2349,8 @@ export const listRecommendedActionSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendedActionSummaries",
   pagination: {
     inputToken: "nextToken",
@@ -2356,6 +2390,8 @@ export const listTagsForResource: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RollbackAutomationEventError =
@@ -2395,6 +2431,8 @@ export const rollbackAutomationEvent: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RollbackAutomationEvent",
 }));
 export type StartAutomationEventError =
@@ -2436,6 +2474,8 @@ export const startAutomationEvent: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAutomationEvent",
 }));
 export type TagResourceError =
@@ -2473,6 +2513,8 @@ export const tagResource: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2510,6 +2552,8 @@ export const untagResource: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAutomationRuleError =
@@ -2547,6 +2591,8 @@ export const updateAutomationRule: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAutomationRule",
 }));
 export type UpdateEnrollmentConfigurationError =
@@ -2586,5 +2632,7 @@ export const updateEnrollmentConfiguration: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnrollmentConfiguration",
 }));

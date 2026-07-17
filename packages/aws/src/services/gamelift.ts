@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -7874,6 +7876,8 @@ export const acceptMatch: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptMatch",
 }));
 export type ClaimGameServerError =
@@ -7940,6 +7944,8 @@ export const claimGameServer: API.OperationMethod<
     OutOfCapacityException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ClaimGameServer",
 }));
 export type CreateAliasError =
@@ -7990,6 +7996,8 @@ export const createAlias: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlias",
 }));
 export type CreateBuildError =
@@ -8054,6 +8062,8 @@ export const createBuild: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBuild",
 }));
 export type CreateContainerFleetError =
@@ -8159,6 +8169,8 @@ export const createContainerFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerFleet",
 }));
 export type CreateContainerGroupDefinitionError =
@@ -8282,6 +8294,8 @@ export const createContainerGroupDefinition: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerGroupDefinition",
 }));
 export type CreateFleetError =
@@ -8390,6 +8404,8 @@ export const createFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFleet",
 }));
 export type CreateFleetLocationsError =
@@ -8450,6 +8466,8 @@ export const createFleetLocations: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFleetLocations",
 }));
 export type CreateGameServerGroupError =
@@ -8514,6 +8532,8 @@ export const createGameServerGroup: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGameServerGroup",
 }));
 export type CreateGameSessionError =
@@ -8593,6 +8613,8 @@ export const createGameSession: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGameSession",
 }));
 export type CreateGameSessionQueueError =
@@ -8696,6 +8718,8 @@ export const createGameSessionQueue: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGameSessionQueue",
 }));
 export type CreateLocationError =
@@ -8727,6 +8751,8 @@ export const createLocation: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocation",
 }));
 export type CreateMatchmakingConfigurationError =
@@ -8782,6 +8808,8 @@ export const createMatchmakingConfiguration: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMatchmakingConfiguration",
 }));
 export type CreateMatchmakingRuleSetError =
@@ -8831,6 +8859,8 @@ export const createMatchmakingRuleSet: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMatchmakingRuleSet",
 }));
 export type CreatePlayerSessionError =
@@ -8882,6 +8912,8 @@ export const createPlayerSession: API.OperationMethod<
     TerminalRoutingStrategyException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePlayerSession",
 }));
 export type CreatePlayerSessionsError =
@@ -8933,6 +8965,8 @@ export const createPlayerSessions: API.OperationMethod<
     TerminalRoutingStrategyException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePlayerSessions",
 }));
 export type CreateScriptError =
@@ -8993,6 +9027,8 @@ export const createScript: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScript",
 }));
 export type CreateVpcPeeringAuthorizationError =
@@ -9048,6 +9084,8 @@ export const createVpcPeeringAuthorization: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcPeeringAuthorization",
 }));
 export type CreateVpcPeeringConnectionError =
@@ -9098,6 +9136,8 @@ export const createVpcPeeringConnection: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcPeeringConnection",
 }));
 export type DeleteAliasError =
@@ -9133,6 +9173,8 @@ export const deleteAlias: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlias",
 }));
 export type DeleteBuildError =
@@ -9173,6 +9215,8 @@ export const deleteBuild: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBuild",
 }));
 export type DeleteContainerFleetError =
@@ -9214,6 +9258,8 @@ export const deleteContainerFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainerFleet",
 }));
 export type DeleteContainerGroupDefinitionError =
@@ -9273,6 +9319,8 @@ export const deleteContainerGroupDefinition: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainerGroupDefinition",
 }));
 export type DeleteFleetError =
@@ -9319,6 +9367,8 @@ export const deleteFleet: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFleet",
 }));
 export type DeleteFleetLocationsError =
@@ -9361,6 +9411,8 @@ export const deleteFleetLocations: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFleetLocations",
 }));
 export type DeleteGameServerGroupError =
@@ -9415,6 +9467,8 @@ export const deleteGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGameServerGroup",
 }));
 export type DeleteGameSessionQueueError =
@@ -9445,6 +9499,8 @@ export const deleteGameSessionQueue: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGameSessionQueue",
 }));
 export type DeleteLocationError =
@@ -9475,6 +9531,8 @@ export const deleteLocation: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLocation",
 }));
 export type DeleteMatchmakingConfigurationError =
@@ -9506,6 +9564,8 @@ export const deleteMatchmakingConfiguration: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMatchmakingConfiguration",
 }));
 export type DeleteMatchmakingRuleSetError =
@@ -9542,6 +9602,8 @@ export const deleteMatchmakingRuleSet: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMatchmakingRuleSet",
 }));
 export type DeleteScalingPolicyError =
@@ -9576,6 +9638,8 @@ export const deleteScalingPolicy: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScalingPolicy",
 }));
 export type DeleteScriptError =
@@ -9620,6 +9684,8 @@ export const deleteScript: API.OperationMethod<
     TaggingFailedException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScript",
 }));
 export type DeleteVpcPeeringAuthorizationError =
@@ -9652,6 +9718,8 @@ export const deleteVpcPeeringAuthorization: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcPeeringAuthorization",
 }));
 export type DeleteVpcPeeringConnectionError =
@@ -9688,6 +9756,8 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcPeeringConnection",
 }));
 export type DeregisterComputeError =
@@ -9721,6 +9791,8 @@ export const deregisterCompute: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterCompute",
 }));
 export type DeregisterGameServerError =
@@ -9759,6 +9831,8 @@ export const deregisterGameServer: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterGameServer",
 }));
 export type DescribeAliasError =
@@ -9794,6 +9868,8 @@ export const describeAlias: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlias",
 }));
 export type DescribeBuildError =
@@ -9829,6 +9905,8 @@ export const describeBuild: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBuild",
 }));
 export type DescribeComputeError =
@@ -9886,6 +9964,8 @@ export const describeCompute: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCompute",
 }));
 export type DescribeContainerFleetError =
@@ -9930,6 +10010,8 @@ export const describeContainerFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContainerFleet",
 }));
 export type DescribeContainerGroupDefinitionError =
@@ -9977,6 +10059,8 @@ export const describeContainerGroupDefinition: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContainerGroupDefinition",
 }));
 export type DescribeEC2InstanceLimitsError =
@@ -10050,6 +10134,8 @@ export const describeEC2InstanceLimits: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEC2InstanceLimits",
 }));
 export type DescribeFleetAttributesError =
@@ -10114,6 +10200,8 @@ export const describeFleetAttributes: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -10195,6 +10283,8 @@ export const describeFleetCapacity: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetCapacity",
   pagination: {
     inputToken: "NextToken",
@@ -10242,6 +10332,8 @@ export const describeFleetDeployment: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetDeployment",
 }));
 export type DescribeFleetEventsError =
@@ -10299,6 +10391,8 @@ export const describeFleetEvents: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetEvents",
   pagination: {
     inputToken: "NextToken",
@@ -10373,6 +10467,8 @@ export const describeFleetLocationAttributes: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetLocationAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -10428,6 +10524,8 @@ export const describeFleetLocationCapacity: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetLocationCapacity",
 }));
 export type DescribeFleetLocationUtilizationError =
@@ -10475,6 +10573,8 @@ export const describeFleetLocationUtilization: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetLocationUtilization",
 }));
 export type DescribeFleetPortSettingsError =
@@ -10525,6 +10625,8 @@ export const describeFleetPortSettings: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetPortSettings",
 }));
 export type DescribeFleetUtilizationError =
@@ -10596,6 +10698,8 @@ export const describeFleetUtilization: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetUtilization",
   pagination: {
     inputToken: "NextToken",
@@ -10639,6 +10743,8 @@ export const describeGameServer: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGameServer",
 }));
 export type DescribeGameServerGroupError =
@@ -10678,6 +10784,8 @@ export const describeGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGameServerGroup",
 }));
 export type DescribeGameServerInstancesError =
@@ -10739,6 +10847,8 @@ export const describeGameServerInstances: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGameServerInstances",
   pagination: {
     inputToken: "NextToken",
@@ -10820,6 +10930,8 @@ export const describeGameSessionDetails: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGameSessionDetails",
   pagination: {
     inputToken: "NextToken",
@@ -10864,6 +10976,8 @@ export const describeGameSessionPlacement: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGameSessionPlacement",
 }));
 export type DescribeGameSessionQueuesError =
@@ -10913,6 +11027,8 @@ export const describeGameSessionQueues: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGameSessionQueues",
   pagination: {
     inputToken: "NextToken",
@@ -11001,6 +11117,8 @@ export const describeGameSessions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGameSessions",
   pagination: {
     inputToken: "NextToken",
@@ -11084,6 +11202,8 @@ export const describeInstances: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstances",
   pagination: {
     inputToken: "NextToken",
@@ -11133,6 +11253,8 @@ export const describeMatchmaking: API.OperationMethod<
     InvalidRequestException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMatchmaking",
 }));
 export type DescribeMatchmakingConfigurationsError =
@@ -11185,6 +11307,8 @@ export const describeMatchmakingConfigurations: API.OperationMethod<
     InvalidRequestException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMatchmakingConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -11241,6 +11365,8 @@ export const describeMatchmakingRuleSets: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMatchmakingRuleSets",
   pagination: {
     inputToken: "NextToken",
@@ -11312,6 +11438,8 @@ export const describePlayerSessions: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePlayerSessions",
   pagination: {
     inputToken: "NextToken",
@@ -11363,6 +11491,8 @@ export const describeRuntimeConfiguration: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRuntimeConfiguration",
 }));
 export type DescribeScalingPoliciesError =
@@ -11415,6 +11545,8 @@ export const describeScalingPolicies: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScalingPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -11459,6 +11591,8 @@ export const describeScript: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScript",
 }));
 export type DescribeVpcPeeringAuthorizationsError =
@@ -11490,6 +11624,8 @@ export const describeVpcPeeringAuthorizations: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcPeeringAuthorizations",
 }));
 export type DescribeVpcPeeringConnectionsError =
@@ -11528,6 +11664,8 @@ export const describeVpcPeeringConnections: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcPeeringConnections",
 }));
 export type GetComputeAccessError =
@@ -11580,6 +11718,8 @@ export const getComputeAccess: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComputeAccess",
 }));
 export type GetComputeAuthTokenError =
@@ -11636,6 +11776,8 @@ export const getComputeAuthToken: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComputeAuthToken",
 }));
 export type GetGameSessionLogUrlError =
@@ -11671,6 +11813,8 @@ export const getGameSessionLogUrl: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGameSessionLogUrl",
 }));
 export type GetInstanceAccessError =
@@ -11727,6 +11871,8 @@ export const getInstanceAccess: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceAccess",
 }));
 export type GetPlayerConnectionDetailsError =
@@ -11770,6 +11916,8 @@ export const getPlayerConnectionDetails: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlayerConnectionDetails",
 }));
 export type ListAliasesError =
@@ -11818,6 +11966,8 @@ export const listAliases: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAliases",
   pagination: {
     inputToken: "NextToken",
@@ -11875,6 +12025,8 @@ export const listBuilds: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBuilds",
   pagination: {
     inputToken: "NextToken",
@@ -11946,6 +12098,8 @@ export const listCompute: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCompute",
   pagination: {
     inputToken: "NextToken",
@@ -12015,6 +12169,8 @@ export const listContainerFleets: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContainerFleets",
   pagination: {
     inputToken: "NextToken",
@@ -12081,6 +12237,8 @@ export const listContainerGroupDefinitions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContainerGroupDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -12150,6 +12308,8 @@ export const listContainerGroupDefinitionVersions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContainerGroupDefinitionVersions",
   pagination: {
     inputToken: "NextToken",
@@ -12215,6 +12375,8 @@ export const listFleetDeployments: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFleetDeployments",
   pagination: {
     inputToken: "NextToken",
@@ -12285,6 +12447,8 @@ export const listFleets: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFleets",
   pagination: {
     inputToken: "NextToken",
@@ -12331,6 +12495,8 @@ export const listGameServerGroups: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGameServerGroups",
   pagination: {
     inputToken: "NextToken",
@@ -12385,6 +12551,8 @@ export const listGameServers: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGameServers",
   pagination: {
     inputToken: "NextToken",
@@ -12438,6 +12606,8 @@ export const listLocations: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLocations",
   pagination: {
     inputToken: "NextToken",
@@ -12493,6 +12663,8 @@ export const listScripts: API.OperationMethod<
     InvalidRequestException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScripts",
   pagination: {
     inputToken: "NextToken",
@@ -12543,6 +12715,8 @@ export const listTagsForResource: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutScalingPolicyError =
@@ -12639,6 +12813,8 @@ export const putScalingPolicy: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutScalingPolicy",
 }));
 export type RegisterComputeError =
@@ -12697,6 +12873,8 @@ export const registerCompute: API.OperationMethod<
     NotReadyException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCompute",
 }));
 export type RegisterGameServerError =
@@ -12745,6 +12923,8 @@ export const registerGameServer: API.OperationMethod<
     LimitExceededException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterGameServer",
 }));
 export type RequestUploadCredentialsError =
@@ -12784,6 +12964,8 @@ export const requestUploadCredentials: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestUploadCredentials",
 }));
 export type ResolveAliasError =
@@ -12822,6 +13004,8 @@ export const resolveAlias: API.OperationMethod<
     TerminalRoutingStrategyException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResolveAlias",
 }));
 export type ResumeGameServerGroupError =
@@ -12864,6 +13048,8 @@ export const resumeGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeGameServerGroup",
 }));
 export type SearchGameSessionsError =
@@ -12978,6 +13164,8 @@ export const searchGameSessions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchGameSessions",
   pagination: {
     inputToken: "NextToken",
@@ -13032,6 +13220,8 @@ export const startFleetActions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFleetActions",
 }));
 export type StartGameSessionPlacementError =
@@ -13136,6 +13326,8 @@ export const startGameSessionPlacement: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartGameSessionPlacement",
 }));
 export type StartMatchBackfillError =
@@ -13198,6 +13390,8 @@ export const startMatchBackfill: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMatchBackfill",
 }));
 export type StartMatchmakingError =
@@ -13250,6 +13444,8 @@ export const startMatchmaking: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMatchmaking",
 }));
 export type StopFleetActionsError =
@@ -13303,6 +13499,8 @@ export const stopFleetActions: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopFleetActions",
 }));
 export type StopGameSessionPlacementError =
@@ -13340,6 +13538,8 @@ export const stopGameSessionPlacement: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopGameSessionPlacement",
 }));
 export type StopMatchmakingError =
@@ -13382,6 +13582,8 @@ export const stopMatchmaking: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopMatchmaking",
 }));
 export type SuspendGameServerGroupError =
@@ -13430,6 +13632,8 @@ export const suspendGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SuspendGameServerGroup",
 }));
 export type TagResourceError =
@@ -13477,6 +13681,8 @@ export const tagResource: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TerminateGameSessionError =
@@ -13550,6 +13756,8 @@ export const terminateGameSession: API.OperationMethod<
     NotReadyException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateGameSession",
 }));
 export type UntagResourceError =
@@ -13596,6 +13804,8 @@ export const untagResource: API.OperationMethod<
     TaggingFailedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAliasError =
@@ -13631,6 +13841,8 @@ export const updateAlias: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAlias",
 }));
 export type UpdateBuildError =
@@ -13667,6 +13879,8 @@ export const updateBuild: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBuild",
 }));
 export type UpdateContainerFleetError =
@@ -13747,6 +13961,8 @@ export const updateContainerFleet: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContainerFleet",
 }));
 export type UpdateContainerGroupDefinitionError =
@@ -13813,6 +14029,8 @@ export const updateContainerGroupDefinition: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContainerGroupDefinition",
 }));
 export type UpdateFleetAttributesError =
@@ -13862,6 +14080,8 @@ export const updateFleetAttributes: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFleetAttributes",
 }));
 export type UpdateFleetCapacityError =
@@ -13945,6 +14165,8 @@ export const updateFleetCapacity: API.OperationMethod<
     UnauthorizedException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFleetCapacity",
 }));
 export type UpdateFleetPortSettingsError =
@@ -13995,6 +14217,8 @@ export const updateFleetPortSettings: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFleetPortSettings",
 }));
 export type UpdateGameServerError =
@@ -14050,6 +14274,8 @@ export const updateGameServer: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGameServer",
 }));
 export type UpdateGameServerGroupError =
@@ -14090,6 +14316,8 @@ export const updateGameServerGroup: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGameServerGroup",
 }));
 export type UpdateGameSessionError =
@@ -14130,6 +14358,8 @@ export const updateGameSession: API.OperationMethod<
     NotReadyException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGameSession",
 }));
 export type UpdateGameSessionQueueError =
@@ -14164,6 +14394,8 @@ export const updateGameSessionQueue: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGameSessionQueue",
 }));
 export type UpdateMatchmakingConfigurationError =
@@ -14198,6 +14430,8 @@ export const updateMatchmakingConfiguration: API.OperationMethod<
     NotFoundException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMatchmakingConfiguration",
 }));
 export type UpdateRuntimeConfigurationError =
@@ -14248,6 +14482,8 @@ export const updateRuntimeConfiguration: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRuntimeConfiguration",
 }));
 export type UpdateScriptError =
@@ -14295,6 +14531,8 @@ export const updateScript: API.OperationMethod<
     NotFoundException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScript",
 }));
 export type ValidateMatchmakingRuleSetError =
@@ -14327,5 +14565,7 @@ export const validateMatchmakingRuleSet: API.OperationMethod<
     InvalidRequestException,
     UnsupportedRegionException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateMatchmakingRuleSet",
 }));

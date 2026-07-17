@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1801,6 +1803,8 @@ export const batchGetIncidentFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetIncidentFindings",
 }));
 export type CreateReplicationSetError =
@@ -1831,6 +1835,8 @@ export const createReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationSet",
 }));
 export type CreateResponsePlanError =
@@ -1862,6 +1868,8 @@ export const createResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResponsePlan",
 }));
 export type CreateTimelineEventError =
@@ -1894,6 +1902,8 @@ export const createTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTimelineEvent",
 }));
 export type DeleteIncidentRecordError =
@@ -1919,6 +1929,8 @@ export const deleteIncidentRecord: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIncidentRecord",
 }));
 export type DeleteReplicationSetError =
@@ -1947,6 +1959,8 @@ export const deleteReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationSet",
 }));
 export type DeleteResourcePolicyError =
@@ -1975,6 +1989,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteResponsePlanError =
@@ -2001,6 +2017,8 @@ export const deleteResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResponsePlan",
 }));
 export type DeleteTimelineEventError =
@@ -2026,6 +2044,8 @@ export const deleteTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTimelineEvent",
 }));
 export type GetIncidentRecordError =
@@ -2053,6 +2073,8 @@ export const getIncidentRecord: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIncidentRecord",
 }));
 export type GetReplicationSetError =
@@ -2080,6 +2102,8 @@ export const getReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReplicationSet",
 }));
 export type GetResourcePoliciesError =
@@ -2122,6 +2146,8 @@ export const getResourcePolicies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "nextToken",
@@ -2155,6 +2181,8 @@ export const getResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResponsePlan",
 }));
 export type GetTimelineEventError =
@@ -2182,6 +2210,8 @@ export const getTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTimelineEvent",
 }));
 export type ListIncidentFindingsError =
@@ -2227,6 +2257,8 @@ export const listIncidentFindings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIncidentFindings",
   pagination: {
     inputToken: "nextToken",
@@ -2274,6 +2306,8 @@ export const listIncidentRecords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIncidentRecords",
   pagination: {
     inputToken: "nextToken",
@@ -2320,6 +2354,8 @@ export const listRelatedItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRelatedItems",
   pagination: {
     inputToken: "nextToken",
@@ -2366,6 +2402,8 @@ export const listReplicationSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReplicationSets",
   pagination: {
     inputToken: "nextToken",
@@ -2412,6 +2450,8 @@ export const listResponsePlans: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResponsePlans",
   pagination: {
     inputToken: "nextToken",
@@ -2445,6 +2485,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTimelineEventsError =
@@ -2485,6 +2527,8 @@ export const listTimelineEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTimelineEvents",
   pagination: {
     inputToken: "nextToken",
@@ -2520,6 +2564,8 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type StartIncidentError =
@@ -2550,6 +2596,8 @@ export const startIncident: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartIncident",
 }));
 export type TagResourceError =
@@ -2581,6 +2629,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2610,6 +2660,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDeletionProtectionError =
@@ -2638,6 +2690,8 @@ export const updateDeletionProtection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeletionProtection",
 }));
 export type UpdateIncidentRecordError =
@@ -2669,6 +2723,8 @@ export const updateIncidentRecord: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIncidentRecord",
 }));
 export type UpdateRelatedItemsError =
@@ -2698,6 +2754,8 @@ export const updateRelatedItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRelatedItems",
 }));
 export type UpdateReplicationSetError =
@@ -2727,6 +2785,8 @@ export const updateReplicationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReplicationSet",
 }));
 export type UpdateResponsePlanError =
@@ -2756,6 +2816,8 @@ export const updateResponsePlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResponsePlan",
 }));
 export type UpdateTimelineEventError =
@@ -2785,5 +2847,7 @@ export const updateTimelineEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTimelineEvent",
 }));

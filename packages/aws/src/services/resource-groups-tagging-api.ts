@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -614,6 +616,8 @@ export const describeReportCreation: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReportCreation",
 }));
 export type GetComplianceSummaryError =
@@ -668,6 +672,8 @@ export const getComplianceSummary: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComplianceSummary",
   pagination: {
     inputToken: "PaginationToken",
@@ -738,6 +744,8 @@ export const getResources: API.OperationMethod<
     PaginationTokenExpiredException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResources",
   pagination: {
     inputToken: "PaginationToken",
@@ -792,6 +800,8 @@ export const getTagKeys: API.OperationMethod<
     PaginationTokenExpiredException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTagKeys",
   pagination: {
     inputToken: "PaginationToken",
@@ -845,6 +855,8 @@ export const getTagValues: API.OperationMethod<
     PaginationTokenExpiredException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTagValues",
   pagination: {
     inputToken: "PaginationToken",
@@ -890,6 +902,8 @@ export const listRequiredTags: API.OperationMethod<
     PaginationTokenExpiredException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRequiredTags",
   pagination: {
     inputToken: "NextToken",
@@ -943,6 +957,8 @@ export const startReportCreation: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReportCreation",
 }));
 export type TagResourcesError =
@@ -1015,6 +1031,8 @@ export const tagResources: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResources",
 }));
 export type UntagResourcesError =
@@ -1067,5 +1085,7 @@ export const untagResources: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResources",
 }));

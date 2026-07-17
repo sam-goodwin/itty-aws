@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -8827,6 +8829,8 @@ export const allocateStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocateStaticIp",
 }));
 export type AttachCertificateToDistributionError =
@@ -8869,6 +8873,8 @@ export const attachCertificateToDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachCertificateToDistribution",
 }));
 export type AttachDiskError =
@@ -8907,6 +8913,8 @@ export const attachDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachDisk",
 }));
 export type AttachInstancesToLoadBalancerError =
@@ -8947,6 +8955,8 @@ export const attachInstancesToLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachInstancesToLoadBalancer",
 }));
 export type AttachLoadBalancerTlsCertificateError =
@@ -8990,6 +9000,8 @@ export const attachLoadBalancerTlsCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachLoadBalancerTlsCertificate",
 }));
 export type AttachStaticIpError =
@@ -9023,6 +9035,8 @@ export const attachStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachStaticIp",
 }));
 export type CloseInstancePublicPortsError =
@@ -9060,6 +9074,8 @@ export const closeInstancePublicPorts: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CloseInstancePublicPorts",
 }));
 export type CopySnapshotError =
@@ -9104,6 +9120,8 @@ export const copySnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopySnapshot",
 }));
 export type CreateBucketError =
@@ -9136,6 +9154,8 @@ export const createBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBucket",
 }));
 export type CreateBucketAccessKeyError =
@@ -9176,6 +9196,8 @@ export const createBucketAccessKey: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBucketAccessKey",
 }));
 export type CreateCertificateError =
@@ -9217,6 +9239,8 @@ export const createCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCertificate",
 }));
 export type CreateCloudFormationStackError =
@@ -9256,6 +9280,8 @@ export const createCloudFormationStack: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudFormationStack",
 }));
 export type CreateContactMethodError =
@@ -9295,6 +9321,8 @@ export const createContactMethod: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContactMethod",
 }));
 export type CreateContainerServiceError =
@@ -9328,6 +9356,8 @@ export const createContainerService: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerService",
 }));
 export type CreateContainerServiceDeploymentError =
@@ -9368,6 +9398,8 @@ export const createContainerServiceDeployment: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerServiceDeployment",
 }));
 export type CreateContainerServiceRegistryLoginError =
@@ -9415,6 +9447,8 @@ export const createContainerServiceRegistryLogin: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainerServiceRegistryLogin",
 }));
 export type CreateDiskError =
@@ -9452,6 +9486,8 @@ export const createDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDisk",
 }));
 export type CreateDiskFromSnapshotError =
@@ -9491,6 +9527,8 @@ export const createDiskFromSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDiskFromSnapshot",
 }));
 export type CreateDiskSnapshotError =
@@ -9545,6 +9583,8 @@ export const createDiskSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDiskSnapshot",
 }));
 export type CreateDistributionError =
@@ -9578,6 +9618,8 @@ export const createDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDistribution",
 }));
 export type CreateDomainError =
@@ -9614,6 +9656,8 @@ export const createDomain: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
 export type CreateDomainEntryError =
@@ -9653,6 +9697,8 @@ export const createDomainEntry: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainEntry",
 }));
 export type CreateGUISessionAccessDetailsError =
@@ -9687,6 +9733,8 @@ export const createGUISessionAccessDetails: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGUISessionAccessDetails",
 }));
 export type CreateInstancesError =
@@ -9723,6 +9771,8 @@ export const createInstances: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstances",
 }));
 export type CreateInstancesFromSnapshotError =
@@ -9761,6 +9811,8 @@ export const createInstancesFromSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstancesFromSnapshot",
 }));
 export type CreateInstanceSnapshotError =
@@ -9798,6 +9850,8 @@ export const createInstanceSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceSnapshot",
 }));
 export type CreateKeyPairError =
@@ -9839,6 +9893,8 @@ export const createKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKeyPair",
 }));
 export type CreateLoadBalancerError =
@@ -9881,6 +9937,8 @@ export const createLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoadBalancer",
 }));
 export type CreateLoadBalancerTlsCertificateError =
@@ -9920,6 +9978,8 @@ export const createLoadBalancerTlsCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoadBalancerTlsCertificate",
 }));
 export type CreateRelationalDatabaseError =
@@ -9956,6 +10016,8 @@ export const createRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRelationalDatabase",
 }));
 export type CreateRelationalDatabaseFromSnapshotError =
@@ -9997,6 +10059,8 @@ export const createRelationalDatabaseFromSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRelationalDatabaseFromSnapshot",
 }));
 export type CreateRelationalDatabaseSnapshotError =
@@ -10034,6 +10098,8 @@ export const createRelationalDatabaseSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRelationalDatabaseSnapshot",
 }));
 export type DeleteAlarmError =
@@ -10070,6 +10136,8 @@ export const deleteAlarm: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlarm",
 }));
 export type DeleteAutoSnapshotError =
@@ -10101,6 +10169,8 @@ export const deleteAutoSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAutoSnapshot",
 }));
 export type DeleteBucketError =
@@ -10133,6 +10203,8 @@ export const deleteBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucket",
 }));
 export type DeleteBucketAccessKeyError =
@@ -10167,6 +10239,8 @@ export const deleteBucketAccessKey: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketAccessKey",
 }));
 export type DeleteCertificateError =
@@ -10201,6 +10275,8 @@ export const deleteCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCertificate",
 }));
 export type DeleteContactMethodError =
@@ -10237,6 +10313,8 @@ export const deleteContactMethod: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContactMethod",
 }));
 export type DeleteContainerImageError =
@@ -10267,6 +10345,8 @@ export const deleteContainerImage: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainerImage",
 }));
 export type DeleteContainerServiceError =
@@ -10296,6 +10376,8 @@ export const deleteContainerService: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainerService",
 }));
 export type DeleteDiskError =
@@ -10336,6 +10418,8 @@ export const deleteDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDisk",
 }));
 export type DeleteDiskSnapshotError =
@@ -10379,6 +10463,8 @@ export const deleteDiskSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDiskSnapshot",
 }));
 export type DeleteDistributionError =
@@ -10408,6 +10494,8 @@ export const deleteDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDistribution",
 }));
 export type DeleteDomainError =
@@ -10445,6 +10533,8 @@ export const deleteDomain: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
 export type DeleteDomainEntryError =
@@ -10482,6 +10572,8 @@ export const deleteDomainEntry: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainEntry",
 }));
 export type DeleteInstanceError =
@@ -10519,6 +10611,8 @@ export const deleteInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstance",
 }));
 export type DeleteInstanceSnapshotError =
@@ -10557,6 +10651,8 @@ export const deleteInstanceSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceSnapshot",
 }));
 export type DeleteKeyPairError =
@@ -10599,6 +10695,8 @@ export const deleteKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKeyPair",
 }));
 export type DeleteKnownHostKeysError =
@@ -10639,6 +10737,8 @@ export const deleteKnownHostKeys: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKnownHostKeys",
 }));
 export type DeleteLoadBalancerError =
@@ -10678,6 +10778,8 @@ export const deleteLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoadBalancer",
 }));
 export type DeleteLoadBalancerTlsCertificateError =
@@ -10715,6 +10817,8 @@ export const deleteLoadBalancerTlsCertificate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoadBalancerTlsCertificate",
 }));
 export type DeleteRelationalDatabaseError =
@@ -10752,6 +10856,8 @@ export const deleteRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRelationalDatabase",
 }));
 export type DeleteRelationalDatabaseSnapshotError =
@@ -10789,6 +10895,8 @@ export const deleteRelationalDatabaseSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRelationalDatabaseSnapshot",
 }));
 export type DetachCertificateFromDistributionError =
@@ -10822,6 +10930,8 @@ export const detachCertificateFromDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachCertificateFromDistribution",
 }));
 export type DetachDiskError =
@@ -10861,6 +10971,8 @@ export const detachDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachDisk",
 }));
 export type DetachInstancesFromLoadBalancerError =
@@ -10901,6 +11013,8 @@ export const detachInstancesFromLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachInstancesFromLoadBalancer",
 }));
 export type DetachStaticIpError =
@@ -10934,6 +11048,8 @@ export const detachStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachStaticIp",
 }));
 export type DisableAddOnError =
@@ -10965,6 +11081,8 @@ export const disableAddOn: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAddOn",
 }));
 export type DownloadDefaultKeyPairError =
@@ -11001,6 +11119,8 @@ export const downloadDefaultKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DownloadDefaultKeyPair",
 }));
 export type EnableAddOnError =
@@ -11033,6 +11153,8 @@ export const enableAddOn: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAddOn",
 }));
 export type ExportSnapshotError =
@@ -11080,6 +11202,8 @@ export const exportSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportSnapshot",
 }));
 export type GetActiveNamesError =
@@ -11113,6 +11237,8 @@ export const getActiveNames: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetActiveNames",
 }));
 export type GetAlarmsError =
@@ -11151,6 +11277,8 @@ export const getAlarms: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAlarms",
 }));
 export type GetAutoSnapshotsError =
@@ -11183,6 +11311,8 @@ export const getAutoSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutoSnapshots",
 }));
 export type GetBlueprintsError =
@@ -11224,6 +11354,8 @@ export const getBlueprints: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlueprints",
 }));
 export type GetBucketAccessKeysError =
@@ -11257,6 +11389,8 @@ export const getBucketAccessKeys: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketAccessKeys",
 }));
 export type GetBucketBundlesError =
@@ -11290,6 +11424,8 @@ export const getBucketBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketBundles",
 }));
 export type GetBucketMetricDataError =
@@ -11323,6 +11459,8 @@ export const getBucketMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketMetricData",
 }));
 export type GetBucketsError =
@@ -11357,6 +11495,8 @@ export const getBuckets: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBuckets",
 }));
 export type GetBundlesError =
@@ -11398,6 +11538,8 @@ export const getBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBundles",
 }));
 export type GetCertificatesError =
@@ -11431,6 +11573,8 @@ export const getCertificates: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCertificates",
 }));
 export type GetCloudFormationStackRecordsError =
@@ -11468,6 +11612,8 @@ export const getCloudFormationStackRecords: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudFormationStackRecords",
 }));
 export type GetContactMethodsError =
@@ -11505,6 +11651,8 @@ export const getContactMethods: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContactMethods",
 }));
 export type GetContainerAPIMetadataError =
@@ -11531,6 +11679,8 @@ export const getContainerAPIMetadata: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerAPIMetadata",
 }));
 export type GetContainerImagesError =
@@ -11565,6 +11715,8 @@ export const getContainerImages: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerImages",
 }));
 export type GetContainerLogError =
@@ -11603,6 +11755,8 @@ export const getContainerLog: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerLog",
 }));
 export type GetContainerServiceDeploymentsError =
@@ -11643,6 +11797,8 @@ export const getContainerServiceDeployments: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerServiceDeployments",
 }));
 export type GetContainerServiceMetricDataError =
@@ -11676,6 +11832,8 @@ export const getContainerServiceMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerServiceMetricData",
 }));
 export type GetContainerServicePowersError =
@@ -11709,6 +11867,8 @@ export const getContainerServicePowers: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerServicePowers",
 }));
 export type GetContainerServicesError =
@@ -11738,6 +11898,8 @@ export const getContainerServices: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerServices",
 }));
 export type GetCostEstimateError =
@@ -11768,6 +11930,8 @@ export const getCostEstimate: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCostEstimate",
 }));
 export type GetDiskError =
@@ -11801,6 +11965,8 @@ export const getDisk: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDisk",
 }));
 export type GetDisksError =
@@ -11834,6 +12000,8 @@ export const getDisks: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDisks",
 }));
 export type GetDiskSnapshotError =
@@ -11867,6 +12035,8 @@ export const getDiskSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDiskSnapshot",
 }));
 export type GetDiskSnapshotsError =
@@ -11901,6 +12071,8 @@ export const getDiskSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDiskSnapshots",
 }));
 export type GetDistributionBundlesError =
@@ -11934,6 +12106,8 @@ export const getDistributionBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionBundles",
 }));
 export type GetDistributionLatestCacheResetError =
@@ -11964,6 +12138,8 @@ export const getDistributionLatestCacheReset: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionLatestCacheReset",
 }));
 export type GetDistributionMetricDataError =
@@ -11998,6 +12174,8 @@ export const getDistributionMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionMetricData",
 }));
 export type GetDistributionsError =
@@ -12028,6 +12206,8 @@ export const getDistributions: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributions",
 }));
 export type GetDomainError =
@@ -12061,6 +12241,8 @@ export const getDomain: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomain",
 }));
 export type GetDomainsError =
@@ -12094,6 +12276,8 @@ export const getDomains: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomains",
 }));
 export type GetExportSnapshotRecordsError =
@@ -12132,6 +12316,8 @@ export const getExportSnapshotRecords: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExportSnapshotRecords",
 }));
 export type GetInstanceError =
@@ -12166,6 +12352,8 @@ export const getInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstance",
 }));
 export type GetInstanceAccessDetailsError =
@@ -12204,6 +12392,8 @@ export const getInstanceAccessDetails: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceAccessDetails",
 }));
 export type GetInstanceMetricDataError =
@@ -12242,6 +12432,8 @@ export const getInstanceMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceMetricData",
 }));
 export type GetInstancePortStatesError =
@@ -12276,6 +12468,8 @@ export const getInstancePortStates: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstancePortStates",
 }));
 export type GetInstancesError =
@@ -12310,6 +12504,8 @@ export const getInstances: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstances",
 }));
 export type GetInstanceSnapshotError =
@@ -12343,6 +12539,8 @@ export const getInstanceSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceSnapshot",
 }));
 export type GetInstanceSnapshotsError =
@@ -12376,6 +12574,8 @@ export const getInstanceSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceSnapshots",
 }));
 export type GetInstanceStateError =
@@ -12409,6 +12609,8 @@ export const getInstanceState: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceState",
 }));
 export type GetKeyPairError =
@@ -12442,6 +12644,8 @@ export const getKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyPair",
 }));
 export type GetKeyPairsError =
@@ -12475,6 +12679,8 @@ export const getKeyPairs: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyPairs",
 }));
 export type GetLoadBalancerError =
@@ -12508,6 +12714,8 @@ export const getLoadBalancer: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancer",
 }));
 export type GetLoadBalancerMetricDataError =
@@ -12545,6 +12753,8 @@ export const getLoadBalancerMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancerMetricData",
 }));
 export type GetLoadBalancersError =
@@ -12578,6 +12788,8 @@ export const getLoadBalancers: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancers",
 }));
 export type GetLoadBalancerTlsCertificatesError =
@@ -12617,6 +12829,8 @@ export const getLoadBalancerTlsCertificates: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancerTlsCertificates",
 }));
 export type GetLoadBalancerTlsPoliciesError =
@@ -12650,6 +12864,8 @@ export const getLoadBalancerTlsPolicies: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoadBalancerTlsPolicies",
 }));
 export type GetOperationError =
@@ -12684,6 +12900,8 @@ export const getOperation: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperation",
 }));
 export type GetOperationsError =
@@ -12721,6 +12939,8 @@ export const getOperations: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperations",
 }));
 export type GetOperationsForResourceError =
@@ -12754,6 +12974,8 @@ export const getOperationsForResource: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperationsForResource",
 }));
 export type GetRegionsError =
@@ -12789,6 +13011,8 @@ export const getRegions: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegions",
 }));
 export type GetRelationalDatabaseError =
@@ -12822,6 +13046,8 @@ export const getRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabase",
 }));
 export type GetRelationalDatabaseBlueprintsError =
@@ -12859,6 +13085,8 @@ export const getRelationalDatabaseBlueprints: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseBlueprints",
 }));
 export type GetRelationalDatabaseBundlesError =
@@ -12896,6 +13124,8 @@ export const getRelationalDatabaseBundles: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseBundles",
 }));
 export type GetRelationalDatabaseEventsError =
@@ -12929,6 +13159,8 @@ export const getRelationalDatabaseEvents: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseEvents",
 }));
 export type GetRelationalDatabaseLogEventsError =
@@ -12962,6 +13194,8 @@ export const getRelationalDatabaseLogEvents: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseLogEvents",
 }));
 export type GetRelationalDatabaseLogStreamsError =
@@ -12995,6 +13229,8 @@ export const getRelationalDatabaseLogStreams: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseLogStreams",
 }));
 export type GetRelationalDatabaseMasterUserPasswordError =
@@ -13033,6 +13269,8 @@ export const getRelationalDatabaseMasterUserPassword: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseMasterUserPassword",
 }));
 export type GetRelationalDatabaseMetricDataError =
@@ -13070,6 +13308,8 @@ export const getRelationalDatabaseMetricData: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseMetricData",
 }));
 export type GetRelationalDatabaseParametersError =
@@ -13108,6 +13348,8 @@ export const getRelationalDatabaseParameters: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseParameters",
 }));
 export type GetRelationalDatabasesError =
@@ -13141,6 +13383,8 @@ export const getRelationalDatabases: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabases",
 }));
 export type GetRelationalDatabaseSnapshotError =
@@ -13174,6 +13418,8 @@ export const getRelationalDatabaseSnapshot: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseSnapshot",
 }));
 export type GetRelationalDatabaseSnapshotsError =
@@ -13207,6 +13453,8 @@ export const getRelationalDatabaseSnapshots: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRelationalDatabaseSnapshots",
 }));
 export type GetSetupHistoryError =
@@ -13237,6 +13485,8 @@ export const getSetupHistory: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSetupHistory",
 }));
 export type GetStaticIpError =
@@ -13270,6 +13520,8 @@ export const getStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStaticIp",
 }));
 export type GetStaticIpsError =
@@ -13303,6 +13555,8 @@ export const getStaticIps: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStaticIps",
 }));
 export type ImportKeyPairError =
@@ -13336,6 +13590,8 @@ export const importKeyPair: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportKeyPair",
 }));
 export type IsVpcPeeredError =
@@ -13369,6 +13625,8 @@ export const isVpcPeered: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IsVpcPeered",
 }));
 export type OpenInstancePublicPortsError =
@@ -13407,6 +13665,8 @@ export const openInstancePublicPorts: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OpenInstancePublicPorts",
 }));
 export type PeerVpcError =
@@ -13440,6 +13700,8 @@ export const peerVpc: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PeerVpc",
 }));
 export type PutAlarmError =
@@ -13487,6 +13749,8 @@ export const putAlarm: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAlarm",
 }));
 export type PutInstancePublicPortsError =
@@ -13529,6 +13793,8 @@ export const putInstancePublicPorts: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInstancePublicPorts",
 }));
 export type RebootInstanceError =
@@ -13566,6 +13832,8 @@ export const rebootInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootInstance",
 }));
 export type RebootRelationalDatabaseError =
@@ -13603,6 +13871,8 @@ export const rebootRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootRelationalDatabase",
 }));
 export type RegisterContainerImageError =
@@ -13637,6 +13907,8 @@ export const registerContainerImage: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterContainerImage",
 }));
 export type ReleaseStaticIpError =
@@ -13670,6 +13942,8 @@ export const releaseStaticIp: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReleaseStaticIp",
 }));
 export type ResetDistributionCacheError =
@@ -13703,6 +13977,8 @@ export const resetDistributionCache: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetDistributionCache",
 }));
 export type SendContactMethodVerificationError =
@@ -13747,6 +14023,8 @@ export const sendContactMethodVerification: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendContactMethodVerification",
 }));
 export type SetIpAddressTypeError =
@@ -13784,6 +14062,8 @@ export const setIpAddressType: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIpAddressType",
 }));
 export type SetResourceAccessForBucketError =
@@ -13817,6 +14097,8 @@ export const setResourceAccessForBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetResourceAccessForBucket",
 }));
 export type SetupInstanceHttpsError =
@@ -13850,6 +14132,8 @@ export const setupInstanceHttps: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetupInstanceHttps",
 }));
 export type StartGUISessionError =
@@ -13881,6 +14165,8 @@ export const startGUISession: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartGUISession",
 }));
 export type StartInstanceError =
@@ -13923,6 +14209,8 @@ export const startInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInstance",
 }));
 export type StartRelationalDatabaseError =
@@ -13961,6 +14249,8 @@ export const startRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRelationalDatabase",
 }));
 export type StopGUISessionError =
@@ -13992,6 +14282,8 @@ export const stopGUISession: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopGUISession",
 }));
 export type StopInstanceError =
@@ -14033,6 +14325,8 @@ export const stopInstance: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopInstance",
 }));
 export type StopRelationalDatabaseError =
@@ -14074,6 +14368,8 @@ export const stopRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopRelationalDatabase",
 }));
 export type TagResourceError =
@@ -14113,6 +14409,8 @@ export const tagResource: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestAlarmError =
@@ -14152,6 +14450,8 @@ export const testAlarm: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestAlarm",
 }));
 export type UnpeerVpcError =
@@ -14185,6 +14485,8 @@ export const unpeerVpc: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnpeerVpc",
 }));
 export type UntagResourceError =
@@ -14223,6 +14525,8 @@ export const untagResource: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateBucketError =
@@ -14255,6 +14559,8 @@ export const updateBucket: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBucket",
 }));
 export type UpdateBucketBundleError =
@@ -14298,6 +14604,8 @@ export const updateBucketBundle: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBucketBundle",
 }));
 export type UpdateContainerServiceError =
@@ -14328,6 +14636,8 @@ export const updateContainerService: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContainerService",
 }));
 export type UpdateDistributionError =
@@ -14359,6 +14669,8 @@ export const updateDistribution: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDistribution",
 }));
 export type UpdateDistributionBundleError =
@@ -14399,6 +14711,8 @@ export const updateDistributionBundle: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDistributionBundle",
 }));
 export type UpdateDomainEntryError =
@@ -14436,6 +14750,8 @@ export const updateDomainEntry: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainEntry",
 }));
 export type UpdateInstanceMetadataOptionsError =
@@ -14474,6 +14790,8 @@ export const updateInstanceMetadataOptions: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstanceMetadataOptions",
 }));
 export type UpdateLoadBalancerAttributeError =
@@ -14512,6 +14830,8 @@ export const updateLoadBalancerAttribute: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLoadBalancerAttribute",
 }));
 export type UpdateRelationalDatabaseError =
@@ -14552,6 +14872,8 @@ export const updateRelationalDatabase: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRelationalDatabase",
 }));
 export type UpdateRelationalDatabaseParametersError =
@@ -14596,5 +14918,7 @@ export const updateRelationalDatabaseParameters: API.OperationMethod<
     ServiceException,
     UnauthenticatedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRelationalDatabaseParameters",
 }));

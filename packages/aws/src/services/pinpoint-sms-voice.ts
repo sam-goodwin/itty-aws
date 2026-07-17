@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -528,6 +530,8 @@ export const createConfigurationSet: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSet",
 }));
 export type CreateConfigurationSetEventDestinationError =
@@ -557,6 +561,8 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSetEventDestination",
 }));
 export type DeleteConfigurationSetError =
@@ -582,6 +588,8 @@ export const deleteConfigurationSet: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSet",
 }));
 export type DeleteConfigurationSetEventDestinationError =
@@ -607,6 +615,8 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSetEventDestination",
 }));
 export type GetConfigurationSetEventDestinationsError =
@@ -632,6 +642,8 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationSetEventDestinations",
 }));
 export type ListConfigurationSetsError =
@@ -655,6 +667,8 @@ export const listConfigurationSets: API.OperationMethod<
     InternalServiceErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationSets",
 }));
 export type SendVoiceMessageError =
@@ -678,6 +692,8 @@ export const sendVoiceMessage: API.OperationMethod<
     InternalServiceErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendVoiceMessage",
 }));
 export type UpdateConfigurationSetEventDestinationError =
@@ -703,5 +719,7 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationSetEventDestination",
 }));

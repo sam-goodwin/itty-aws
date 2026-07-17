@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4978,6 +4980,8 @@ export const associateApprovalRuleTemplateWithRepository: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateApprovalRuleTemplateWithRepository",
 }));
 export type BatchAssociateApprovalRuleTemplateWithRepositoriesError =
@@ -5015,6 +5019,8 @@ export const batchAssociateApprovalRuleTemplateWithRepositories: API.OperationMe
     MaximumRepositoryNamesExceededException,
     RepositoryNamesRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateApprovalRuleTemplateWithRepositories",
 }));
 export type BatchDescribeMergeConflictsError =
@@ -5074,6 +5080,8 @@ export const batchDescribeMergeConflicts: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDescribeMergeConflicts",
 }));
 export type BatchDisassociateApprovalRuleTemplateFromRepositoriesError =
@@ -5111,6 +5119,8 @@ export const batchDisassociateApprovalRuleTemplateFromRepositories: API.Operatio
     MaximumRepositoryNamesExceededException,
     RepositoryNamesRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateApprovalRuleTemplateFromRepositories",
 }));
 export type BatchGetCommitsError =
@@ -5148,6 +5158,8 @@ export const batchGetCommits: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetCommits",
 }));
 export type BatchGetRepositoriesError =
@@ -5187,6 +5199,8 @@ export const batchGetRepositories: API.OperationMethod<
     MaximumRepositoryNamesExceededException,
     RepositoryNamesRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetRepositories",
 }));
 export type CreateApprovalRuleTemplateError =
@@ -5222,6 +5236,8 @@ export const createApprovalRuleTemplate: API.OperationMethod<
     InvalidApprovalRuleTemplateNameException,
     NumberOfRuleTemplatesExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApprovalRuleTemplate",
 }));
 export type CreateBranchError =
@@ -5269,6 +5285,8 @@ export const createBranch: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBranch",
 }));
 export type CreateCommitError =
@@ -5362,6 +5380,8 @@ export const createCommit: API.OperationMethod<
     SamePathRequestException,
     SourceFileOrContentRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCommit",
 }));
 export type CreatePullRequestError =
@@ -5429,6 +5449,8 @@ export const createPullRequest: API.OperationMethod<
     TargetsRequiredException,
     TitleRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePullRequest",
 }));
 export type CreatePullRequestApprovalRuleError =
@@ -5476,6 +5498,8 @@ export const createPullRequestApprovalRule: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePullRequestApprovalRule",
 }));
 export type CreateRepositoryError =
@@ -5527,6 +5551,8 @@ export const createRepository: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRepository",
 }));
 export type CreateUnreferencedMergeCommitError =
@@ -5622,6 +5648,8 @@ export const createUnreferencedMergeCommit: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUnreferencedMergeCommit",
 }));
 export type DeleteApprovalRuleTemplateError =
@@ -5645,6 +5673,8 @@ export const deleteApprovalRuleTemplate: API.OperationMethod<
     ApprovalRuleTemplateNameRequiredException,
     InvalidApprovalRuleTemplateNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApprovalRuleTemplate",
 }));
 export type DeleteBranchError =
@@ -5684,6 +5714,8 @@ export const deleteBranch: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBranch",
 }));
 export type DeleteCommentContentError =
@@ -5709,6 +5741,8 @@ export const deleteCommentContent: API.OperationMethod<
     CommentIdRequiredException,
     InvalidCommentIdException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCommentContent",
 }));
 export type DeleteFileError =
@@ -5772,6 +5806,8 @@ export const deleteFile: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFile",
 }));
 export type DeletePullRequestApprovalRuleError =
@@ -5815,6 +5851,8 @@ export const deletePullRequestApprovalRule: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePullRequestApprovalRule",
 }));
 export type DeleteRepositoryError =
@@ -5850,6 +5888,8 @@ export const deleteRepository: API.OperationMethod<
     InvalidRepositoryNameException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRepository",
 }));
 export type DescribeMergeConflictsError =
@@ -5930,6 +5970,8 @@ export const describeMergeConflicts: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMergeConflicts",
   pagination: {
     inputToken: "nextToken",
@@ -5993,6 +6035,8 @@ export const describePullRequestEvents: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePullRequestEvents",
   pagination: {
     inputToken: "nextToken",
@@ -6040,6 +6084,8 @@ export const disassociateApprovalRuleTemplateFromRepository: API.OperationMethod
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateApprovalRuleTemplateFromRepository",
 }));
 export type EvaluatePullRequestApprovalRulesError =
@@ -6079,6 +6125,8 @@ export const evaluatePullRequestApprovalRules: API.OperationMethod<
     RevisionIdRequiredException,
     RevisionNotCurrentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EvaluatePullRequestApprovalRules",
 }));
 export type GetApprovalRuleTemplateError =
@@ -6102,6 +6150,8 @@ export const getApprovalRuleTemplate: API.OperationMethod<
     ApprovalRuleTemplateNameRequiredException,
     InvalidApprovalRuleTemplateNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApprovalRuleTemplate",
 }));
 export type GetBlobError =
@@ -6143,6 +6193,8 @@ export const getBlob: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlob",
 }));
 export type GetBranchError =
@@ -6182,6 +6234,8 @@ export const getBranch: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBranch",
 }));
 export type GetCommentError =
@@ -6220,6 +6274,8 @@ export const getComment: API.OperationMethod<
     EncryptionKeyUnavailableException,
     InvalidCommentIdException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComment",
 }));
 export type GetCommentReactionsError =
@@ -6266,6 +6322,8 @@ export const getCommentReactions: API.OperationMethod<
     InvalidMaxResultsException,
     InvalidReactionUserArnException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCommentReactions",
   pagination: {
     inputToken: "nextToken",
@@ -6332,6 +6390,8 @@ export const getCommentsForComparedCommit: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCommentsForComparedCommit",
   pagination: {
     inputToken: "nextToken",
@@ -6406,6 +6466,8 @@ export const getCommentsForPullRequest: API.OperationMethod<
     RepositoryNameRequiredException,
     RepositoryNotAssociatedWithPullRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCommentsForPullRequest",
   pagination: {
     inputToken: "nextToken",
@@ -6450,6 +6512,8 @@ export const getCommit: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCommit",
 }));
 export type GetDifferencesError =
@@ -6516,6 +6580,8 @@ export const getDifferences: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDifferences",
   pagination: {
     inputToken: "NextToken",
@@ -6566,6 +6632,8 @@ export const getFile: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFile",
 }));
 export type GetFolderError =
@@ -6609,6 +6677,8 @@ export const getFolder: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFolder",
 }));
 export type GetMergeCommitError =
@@ -6652,6 +6722,8 @@ export const getMergeCommit: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMergeCommit",
 }));
 export type GetMergeConflictsError =
@@ -6728,6 +6800,8 @@ export const getMergeConflicts: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMergeConflicts",
   pagination: {
     inputToken: "nextToken",
@@ -6784,6 +6858,8 @@ export const getMergeOptions: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMergeOptions",
 }));
 export type GetPullRequestError =
@@ -6817,6 +6893,8 @@ export const getPullRequest: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPullRequest",
 }));
 export type GetPullRequestApprovalStatesError =
@@ -6855,6 +6933,8 @@ export const getPullRequestApprovalStates: API.OperationMethod<
     PullRequestIdRequiredException,
     RevisionIdRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPullRequestApprovalStates",
 }));
 export type GetPullRequestOverrideStateError =
@@ -6893,6 +6973,8 @@ export const getPullRequestOverrideState: API.OperationMethod<
     PullRequestIdRequiredException,
     RevisionIdRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPullRequestOverrideState",
 }));
 export type GetRepositoryError =
@@ -6932,6 +7014,8 @@ export const getRepository: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRepository",
 }));
 export type GetRepositoryTriggersError =
@@ -6965,6 +7049,8 @@ export const getRepositoryTriggers: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRepositoryTriggers",
 }));
 export type ListApprovalRuleTemplatesError =
@@ -6999,6 +7085,8 @@ export const listApprovalRuleTemplates: API.OperationMethod<
   input: ListApprovalRuleTemplatesInput,
   output: ListApprovalRuleTemplatesOutput,
   errors: [InvalidContinuationTokenException, InvalidMaxResultsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApprovalRuleTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -7056,6 +7144,8 @@ export const listAssociatedApprovalRuleTemplatesForRepository: API.OperationMeth
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedApprovalRuleTemplatesForRepository",
   pagination: {
     inputToken: "nextToken",
@@ -7111,6 +7201,8 @@ export const listBranches: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBranches",
   pagination: {
     inputToken: "nextToken",
@@ -7176,6 +7268,8 @@ export const listFileCommitHistory: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFileCommitHistory",
   pagination: {
     inputToken: "nextToken",
@@ -7240,6 +7334,8 @@ export const listPullRequests: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPullRequests",
   pagination: {
     inputToken: "nextToken",
@@ -7283,6 +7379,8 @@ export const listRepositories: API.OperationMethod<
     InvalidOrderException,
     InvalidSortByException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRepositories",
   pagination: {
     inputToken: "nextToken",
@@ -7340,6 +7438,8 @@ export const listRepositoriesForApprovalRuleTemplate: API.OperationMethod<
     InvalidContinuationTokenException,
     InvalidMaxResultsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRepositoriesForApprovalRuleTemplate",
   pagination: {
     inputToken: "nextToken",
@@ -7371,6 +7471,8 @@ export const listTagsForResource: API.OperationMethod<
     RepositoryDoesNotExistException,
     ResourceArnRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type MergeBranchesByFastForwardError =
@@ -7426,6 +7528,8 @@ export const mergeBranchesByFastForward: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergeBranchesByFastForward",
 }));
 export type MergeBranchesBySquashError =
@@ -7521,6 +7625,8 @@ export const mergeBranchesBySquash: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergeBranchesBySquash",
 }));
 export type MergeBranchesByThreeWayError =
@@ -7616,6 +7722,8 @@ export const mergeBranchesByThreeWay: API.OperationMethod<
     RepositoryNameRequiredException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergeBranchesByThreeWay",
 }));
 export type MergePullRequestByFastForwardError =
@@ -7672,6 +7780,8 @@ export const mergePullRequestByFastForward: API.OperationMethod<
     RepositoryNotAssociatedWithPullRequestException,
     TipOfSourceReferenceIsDifferentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergePullRequestByFastForward",
 }));
 export type MergePullRequestBySquashError =
@@ -7766,6 +7876,8 @@ export const mergePullRequestBySquash: API.OperationMethod<
     TipOfSourceReferenceIsDifferentException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergePullRequestBySquash",
 }));
 export type MergePullRequestByThreeWayError =
@@ -7860,6 +7972,8 @@ export const mergePullRequestByThreeWay: API.OperationMethod<
     TipOfSourceReferenceIsDifferentException,
     TipsDivergenceExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MergePullRequestByThreeWay",
 }));
 export type OverridePullRequestApprovalRulesError =
@@ -7907,6 +8021,8 @@ export const overridePullRequestApprovalRules: API.OperationMethod<
     RevisionIdRequiredException,
     RevisionNotCurrentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OverridePullRequestApprovalRules",
 }));
 export type PostCommentForComparedCommitError =
@@ -7970,6 +8086,8 @@ export const postCommentForComparedCommit: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostCommentForComparedCommit",
 }));
 export type PostCommentForPullRequestError =
@@ -8041,6 +8159,8 @@ export const postCommentForPullRequest: API.OperationMethod<
     RepositoryNameRequiredException,
     RepositoryNotAssociatedWithPullRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostCommentForPullRequest",
 }));
 export type PostCommentReplyError =
@@ -8074,6 +8194,8 @@ export const postCommentReply: API.OperationMethod<
     InvalidClientRequestTokenException,
     InvalidCommentIdException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostCommentReply",
 }));
 export type PutCommentReactionError =
@@ -8106,6 +8228,8 @@ export const putCommentReaction: API.OperationMethod<
     ReactionLimitExceededException,
     ReactionValueRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutCommentReaction",
 }));
 export type PutFileError =
@@ -8183,6 +8307,8 @@ export const putFile: API.OperationMethod<
     RepositoryNameRequiredException,
     SameFileContentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFile",
 }));
 export type PutRepositoryTriggersError =
@@ -8242,6 +8368,8 @@ export const putRepositoryTriggers: API.OperationMethod<
     RepositoryTriggerNameRequiredException,
     RepositoryTriggersListRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRepositoryTriggers",
 }));
 export type TagResourceError =
@@ -8279,6 +8407,8 @@ export const tagResource: API.OperationMethod<
     TagsMapRequiredException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestRepositoryTriggersError =
@@ -8340,6 +8470,8 @@ export const testRepositoryTriggers: API.OperationMethod<
     RepositoryTriggerNameRequiredException,
     RepositoryTriggersListRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestRepositoryTriggers",
 }));
 export type UntagResourceError =
@@ -8376,6 +8508,8 @@ export const untagResource: API.OperationMethod<
     TagPolicyException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApprovalRuleTemplateContentError =
@@ -8407,6 +8541,8 @@ export const updateApprovalRuleTemplateContent: API.OperationMethod<
     InvalidApprovalRuleTemplateNameException,
     InvalidRuleContentSha256Exception,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApprovalRuleTemplateContent",
 }));
 export type UpdateApprovalRuleTemplateDescriptionError =
@@ -8432,6 +8568,8 @@ export const updateApprovalRuleTemplateDescription: API.OperationMethod<
     InvalidApprovalRuleTemplateDescriptionException,
     InvalidApprovalRuleTemplateNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApprovalRuleTemplateDescription",
 }));
 export type UpdateApprovalRuleTemplateNameError =
@@ -8457,6 +8595,8 @@ export const updateApprovalRuleTemplateName: API.OperationMethod<
     ApprovalRuleTemplateNameRequiredException,
     InvalidApprovalRuleTemplateNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApprovalRuleTemplateName",
 }));
 export type UpdateCommentError =
@@ -8488,6 +8628,8 @@ export const updateComment: API.OperationMethod<
     CommentNotCreatedByCallerException,
     InvalidCommentIdException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComment",
 }));
 export type UpdateDefaultBranchError =
@@ -8529,6 +8671,8 @@ export const updateDefaultBranch: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDefaultBranch",
 }));
 export type UpdatePullRequestApprovalRuleContentError =
@@ -8579,6 +8723,8 @@ export const updatePullRequestApprovalRuleContent: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePullRequestApprovalRuleContent",
 }));
 export type UpdatePullRequestApprovalStateError =
@@ -8628,6 +8774,8 @@ export const updatePullRequestApprovalState: API.OperationMethod<
     RevisionIdRequiredException,
     RevisionNotCurrentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePullRequestApprovalState",
 }));
 export type UpdatePullRequestDescriptionError =
@@ -8655,6 +8803,8 @@ export const updatePullRequestDescription: API.OperationMethod<
     PullRequestDoesNotExistException,
     PullRequestIdRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePullRequestDescription",
 }));
 export type UpdatePullRequestStatusError =
@@ -8694,6 +8844,8 @@ export const updatePullRequestStatus: API.OperationMethod<
     PullRequestIdRequiredException,
     PullRequestStatusRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePullRequestStatus",
 }));
 export type UpdatePullRequestTitleError =
@@ -8723,6 +8875,8 @@ export const updatePullRequestTitle: API.OperationMethod<
     PullRequestIdRequiredException,
     TitleRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePullRequestTitle",
 }));
 export type UpdateRepositoryDescriptionError =
@@ -8764,6 +8918,8 @@ export const updateRepositoryDescription: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRepositoryDescription",
 }));
 export type UpdateRepositoryEncryptionKeyError =
@@ -8803,6 +8959,8 @@ export const updateRepositoryEncryptionKey: API.OperationMethod<
     RepositoryDoesNotExistException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRepositoryEncryptionKey",
 }));
 export type UpdateRepositoryNameError =
@@ -8832,5 +8990,7 @@ export const updateRepositoryName: API.OperationMethod<
     RepositoryNameExistsException,
     RepositoryNameRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRepositoryName",
 }));

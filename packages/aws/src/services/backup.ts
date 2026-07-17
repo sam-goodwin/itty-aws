@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -6566,6 +6568,8 @@ export const associateBackupVaultMpaApprovalTeam: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateBackupVaultMpaApprovalTeam",
 }));
 export type CancelLegalHoldError =
@@ -6594,6 +6598,8 @@ export const cancelLegalHold: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelLegalHold",
 }));
 export type CreateBackupPlanError =
@@ -6626,6 +6632,8 @@ export const createBackupPlan: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackupPlan",
 }));
 export type CreateBackupSelectionError =
@@ -6654,6 +6662,8 @@ export const createBackupSelection: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackupSelection",
 }));
 export type CreateBackupVaultError =
@@ -6686,6 +6696,8 @@ export const createBackupVault: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackupVault",
 }));
 export type CreateFrameworkError =
@@ -6716,6 +6728,8 @@ export const createFramework: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFramework",
 }));
 export type CreateLegalHoldError =
@@ -6744,6 +6758,8 @@ export const createLegalHold: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLegalHold",
 }));
 export type CreateLogicallyAirGappedBackupVaultError =
@@ -6780,6 +6796,8 @@ export const createLogicallyAirGappedBackupVault: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLogicallyAirGappedBackupVault",
 }));
 export type CreateReportPlanError =
@@ -6811,6 +6829,8 @@ export const createReportPlan: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReportPlan",
 }));
 export type CreateRestoreAccessBackupVaultError =
@@ -6842,6 +6862,8 @@ export const createRestoreAccessBackupVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRestoreAccessBackupVault",
 }));
 export type CreateRestoreTestingPlanError =
@@ -6875,6 +6897,8 @@ export const createRestoreTestingPlan: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRestoreTestingPlan",
 }));
 export type CreateRestoreTestingSelectionError =
@@ -6923,6 +6947,8 @@ export const createRestoreTestingSelection: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRestoreTestingSelection",
 }));
 export type CreateTieringConfigurationError =
@@ -6956,6 +6982,8 @@ export const createTieringConfiguration: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTieringConfiguration",
 }));
 export type DeleteBackupPlanError =
@@ -6985,6 +7013,8 @@ export const deleteBackupPlan: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackupPlan",
 }));
 export type DeleteBackupSelectionError =
@@ -7011,6 +7041,8 @@ export const deleteBackupSelection: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackupSelection",
 }));
 export type DeleteBackupVaultError =
@@ -7039,6 +7071,8 @@ export const deleteBackupVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackupVault",
 }));
 export type DeleteBackupVaultAccessPolicyError =
@@ -7064,6 +7098,8 @@ export const deleteBackupVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackupVaultAccessPolicy",
 }));
 export type DeleteBackupVaultLockConfigurationError =
@@ -7097,6 +7133,8 @@ export const deleteBackupVaultLockConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackupVaultLockConfiguration",
 }));
 export type DeleteBackupVaultNotificationsError =
@@ -7122,6 +7160,8 @@ export const deleteBackupVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackupVaultNotifications",
 }));
 export type DeleteFrameworkError =
@@ -7149,6 +7189,8 @@ export const deleteFramework: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFramework",
 }));
 export type DeleteRecoveryPointError =
@@ -7193,6 +7235,8 @@ export const deleteRecoveryPoint: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecoveryPoint",
 }));
 export type DeleteReportPlanError =
@@ -7220,6 +7264,8 @@ export const deleteReportPlan: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReportPlan",
 }));
 export type DeleteRestoreTestingPlanError =
@@ -7241,6 +7287,8 @@ export const deleteRestoreTestingPlan: API.OperationMethod<
   input: DeleteRestoreTestingPlanInput,
   output: DeleteRestoreTestingPlanResponse,
   errors: [InvalidRequestException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRestoreTestingPlan",
 }));
 export type DeleteRestoreTestingSelectionError =
@@ -7263,6 +7311,8 @@ export const deleteRestoreTestingSelection: API.OperationMethod<
   input: DeleteRestoreTestingSelectionInput,
   output: DeleteRestoreTestingSelectionResponse,
   errors: [ResourceNotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRestoreTestingSelection",
 }));
 export type DeleteTieringConfigurationError =
@@ -7288,6 +7338,8 @@ export const deleteTieringConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTieringConfiguration",
 }));
 export type DescribeBackupJobError =
@@ -7315,6 +7367,8 @@ export const describeBackupJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBackupJob",
 }));
 export type DescribeBackupVaultError =
@@ -7340,6 +7394,8 @@ export const describeBackupVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBackupVault",
 }));
 export type DescribeCopyJobError =
@@ -7365,6 +7421,8 @@ export const describeCopyJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCopyJob",
 }));
 export type DescribeFrameworkError =
@@ -7390,6 +7448,8 @@ export const describeFramework: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFramework",
 }));
 export type DescribeGlobalSettingsError =
@@ -7408,6 +7468,8 @@ export const describeGlobalSettings: API.OperationMethod<
   input: DescribeGlobalSettingsInput,
   output: DescribeGlobalSettingsOutput,
   errors: [InvalidRequestException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGlobalSettings",
 }));
 export type DescribeProtectedResourceError =
@@ -7435,6 +7497,8 @@ export const describeProtectedResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProtectedResource",
 }));
 export type DescribeRecoveryPointError =
@@ -7461,6 +7525,8 @@ export const describeRecoveryPoint: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecoveryPoint",
 }));
 export type DescribeRegionSettingsError =
@@ -7482,6 +7548,8 @@ export const describeRegionSettings: API.OperationMethod<
   input: DescribeRegionSettingsInput,
   output: DescribeRegionSettingsOutput,
   errors: [ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegionSettings",
 }));
 export type DescribeReportJobError =
@@ -7506,6 +7574,8 @@ export const describeReportJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReportJob",
 }));
 export type DescribeReportPlanError =
@@ -7531,6 +7601,8 @@ export const describeReportPlan: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReportPlan",
 }));
 export type DescribeRestoreJobError =
@@ -7558,6 +7630,8 @@ export const describeRestoreJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRestoreJob",
 }));
 export type DescribeScanJobError =
@@ -7583,6 +7657,8 @@ export const describeScanJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScanJob",
 }));
 export type DisassociateBackupVaultMpaApprovalTeamError =
@@ -7610,6 +7686,8 @@ export const disassociateBackupVaultMpaApprovalTeam: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateBackupVaultMpaApprovalTeam",
 }));
 export type DisassociateRecoveryPointError =
@@ -7643,6 +7721,8 @@ export const disassociateRecoveryPoint: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateRecoveryPoint",
 }));
 export type DisassociateRecoveryPointFromParentError =
@@ -7671,6 +7751,8 @@ export const disassociateRecoveryPointFromParent: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateRecoveryPointFromParent",
 }));
 export type ExportBackupPlanTemplateError =
@@ -7696,6 +7778,8 @@ export const exportBackupPlanTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportBackupPlanTemplate",
 }));
 export type GetBackupPlanError =
@@ -7722,6 +7806,8 @@ export const getBackupPlan: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackupPlan",
 }));
 export type GetBackupPlanFromJSONError =
@@ -7749,6 +7835,8 @@ export const getBackupPlanFromJSON: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackupPlanFromJSON",
 }));
 export type GetBackupPlanFromTemplateError =
@@ -7774,6 +7862,8 @@ export const getBackupPlanFromTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackupPlanFromTemplate",
 }));
 export type GetBackupSelectionError =
@@ -7800,6 +7890,8 @@ export const getBackupSelection: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackupSelection",
 }));
 export type GetBackupVaultAccessPolicyError =
@@ -7826,6 +7918,8 @@ export const getBackupVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackupVaultAccessPolicy",
 }));
 export type GetBackupVaultNotificationsError =
@@ -7851,6 +7945,8 @@ export const getBackupVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBackupVaultNotifications",
 }));
 export type GetLegalHoldError =
@@ -7877,6 +7973,8 @@ export const getLegalHold: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLegalHold",
 }));
 export type GetRecoveryPointIndexDetailsError =
@@ -7903,6 +8001,8 @@ export const getRecoveryPointIndexDetails: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecoveryPointIndexDetails",
 }));
 export type GetRecoveryPointRestoreMetadataError =
@@ -7928,6 +8028,8 @@ export const getRecoveryPointRestoreMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecoveryPointRestoreMetadata",
 }));
 export type GetRestoreJobMetadataError =
@@ -7953,6 +8055,8 @@ export const getRestoreJobMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRestoreJobMetadata",
 }));
 export type GetRestoreTestingInferredMetadataError =
@@ -7981,6 +8085,8 @@ export const getRestoreTestingInferredMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRestoreTestingInferredMetadata",
 }));
 export type GetRestoreTestingPlanError =
@@ -8001,6 +8107,8 @@ export const getRestoreTestingPlan: API.OperationMethod<
   input: GetRestoreTestingPlanInput,
   output: GetRestoreTestingPlanOutput,
   errors: [ResourceNotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRestoreTestingPlan",
 }));
 export type GetRestoreTestingSelectionError =
@@ -8020,6 +8128,8 @@ export const getRestoreTestingSelection: API.OperationMethod<
   input: GetRestoreTestingSelectionInput,
   output: GetRestoreTestingSelectionOutput,
   errors: [ResourceNotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRestoreTestingSelection",
 }));
 export type GetSupportedResourceTypesError =
@@ -8037,6 +8147,8 @@ export const getSupportedResourceTypes: API.OperationMethod<
   input: GetSupportedResourceTypesRequest,
   output: GetSupportedResourceTypesOutput,
   errors: [ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSupportedResourceTypes",
 }));
 export type GetTieringConfigurationError =
@@ -8064,6 +8176,8 @@ export const getTieringConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTieringConfiguration",
 }));
 export type ListBackupJobsError =
@@ -8098,6 +8212,8 @@ export const listBackupJobs: API.OperationMethod<
   input: ListBackupJobsInput,
   output: ListBackupJobsOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackupJobs",
   pagination: {
     inputToken: "NextToken",
@@ -8145,6 +8261,8 @@ export const listBackupJobSummaries: API.OperationMethod<
   input: ListBackupJobSummariesInput,
   output: ListBackupJobSummariesOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackupJobSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -8190,6 +8308,8 @@ export const listBackupPlans: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackupPlans",
   pagination: {
     inputToken: "NextToken",
@@ -8236,6 +8356,8 @@ export const listBackupPlanTemplates: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackupPlanTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -8283,6 +8405,8 @@ export const listBackupPlanVersions: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackupPlanVersions",
   pagination: {
     inputToken: "NextToken",
@@ -8330,6 +8454,8 @@ export const listBackupSelections: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackupSelections",
   pagination: {
     inputToken: "NextToken",
@@ -8377,6 +8503,8 @@ export const listBackupVaults: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackupVaults",
   pagination: {
     inputToken: "NextToken",
@@ -8416,6 +8544,8 @@ export const listCopyJobs: API.OperationMethod<
   input: ListCopyJobsInput,
   output: ListCopyJobsOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCopyJobs",
   pagination: {
     inputToken: "NextToken",
@@ -8463,6 +8593,8 @@ export const listCopyJobSummaries: API.OperationMethod<
   input: ListCopyJobSummariesInput,
   output: ListCopyJobSummariesOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCopyJobSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -8501,6 +8633,8 @@ export const listFrameworks: API.OperationMethod<
   input: ListFrameworksInput,
   output: ListFrameworksOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFrameworks",
   pagination: {
     inputToken: "NextToken",
@@ -8549,6 +8683,8 @@ export const listIndexedRecoveryPoints: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndexedRecoveryPoints",
   pagination: {
     inputToken: "NextToken",
@@ -8588,6 +8724,8 @@ export const listLegalHolds: API.OperationMethod<
   input: ListLegalHoldsInput,
   output: ListLegalHoldsOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLegalHolds",
   pagination: {
     inputToken: "NextToken",
@@ -8629,6 +8767,8 @@ export const listProtectedResources: API.OperationMethod<
   input: ListProtectedResourcesInput,
   output: ListProtectedResourcesOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProtectedResources",
   pagination: {
     inputToken: "NextToken",
@@ -8673,6 +8813,8 @@ export const listProtectedResourcesByBackupVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProtectedResourcesByBackupVault",
   pagination: {
     inputToken: "NextToken",
@@ -8719,6 +8861,8 @@ export const listRecoveryPointsByBackupVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecoveryPointsByBackupVault",
   pagination: {
     inputToken: "NextToken",
@@ -8764,6 +8908,8 @@ export const listRecoveryPointsByLegalHold: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecoveryPointsByLegalHold",
   pagination: {
     inputToken: "NextToken",
@@ -8814,6 +8960,8 @@ export const listRecoveryPointsByResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecoveryPointsByResource",
   pagination: {
     inputToken: "NextToken",
@@ -8858,6 +9006,8 @@ export const listReportJobs: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -8897,6 +9047,8 @@ export const listReportPlans: API.OperationMethod<
   input: ListReportPlansInput,
   output: ListReportPlansOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReportPlans",
   pagination: {
     inputToken: "NextToken",
@@ -8942,6 +9094,8 @@ export const listRestoreAccessBackupVaults: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRestoreAccessBackupVaults",
   pagination: {
     inputToken: "NextToken",
@@ -8989,6 +9143,8 @@ export const listRestoreJobs: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRestoreJobs",
   pagination: {
     inputToken: "NextToken",
@@ -9040,6 +9196,8 @@ export const listRestoreJobsByProtectedResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRestoreJobsByProtectedResource",
   pagination: {
     inputToken: "NextToken",
@@ -9087,6 +9245,8 @@ export const listRestoreJobSummaries: API.OperationMethod<
   input: ListRestoreJobSummariesInput,
   output: ListRestoreJobSummariesOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRestoreJobSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -9125,6 +9285,8 @@ export const listRestoreTestingPlans: API.OperationMethod<
   input: ListRestoreTestingPlansInput,
   output: ListRestoreTestingPlansOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRestoreTestingPlans",
   pagination: {
     inputToken: "NextToken",
@@ -9170,6 +9332,8 @@ export const listRestoreTestingSelections: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRestoreTestingSelections",
   pagination: {
     inputToken: "NextToken",
@@ -9209,6 +9373,8 @@ export const listScanJobs: API.OperationMethod<
   input: ListScanJobsInput,
   output: ListScanJobsOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScanJobs",
   pagination: {
     inputToken: "NextToken",
@@ -9248,6 +9414,8 @@ export const listScanJobSummaries: API.OperationMethod<
   input: ListScanJobSummariesInput,
   output: ListScanJobSummariesOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScanJobSummaries",
   pagination: {
     inputToken: "NextToken",
@@ -9308,6 +9476,8 @@ export const listTags: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
@@ -9346,6 +9516,8 @@ export const listTieringConfigurations: API.OperationMethod<
   input: ListTieringConfigurationsInput,
   output: ListTieringConfigurationsOutput,
   errors: [InvalidParameterValueException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTieringConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -9379,6 +9551,8 @@ export const putBackupVaultAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBackupVaultAccessPolicy",
 }));
 export type PutBackupVaultLockConfigurationError =
@@ -9418,6 +9592,8 @@ export const putBackupVaultLockConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBackupVaultLockConfiguration",
 }));
 export type PutBackupVaultNotificationsError =
@@ -9443,6 +9619,8 @@ export const putBackupVaultNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBackupVaultNotifications",
 }));
 export type PutRestoreValidationResultError =
@@ -9474,6 +9652,8 @@ export const putRestoreValidationResult: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRestoreValidationResult",
 }));
 export type RevokeRestoreAccessBackupVaultError =
@@ -9501,6 +9681,8 @@ export const revokeRestoreAccessBackupVault: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeRestoreAccessBackupVault",
 }));
 export type StartBackupJobError =
@@ -9530,6 +9712,8 @@ export const startBackupJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBackupJob",
 }));
 export type StartCopyJobError =
@@ -9565,6 +9749,8 @@ export const startCopyJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCopyJob",
 }));
 export type StartReportJobError =
@@ -9590,6 +9776,8 @@ export const startReportJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReportJob",
 }));
 export type StartRestoreJobError =
@@ -9617,6 +9805,8 @@ export const startRestoreJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRestoreJob",
 }));
 export type StartScanJobError =
@@ -9646,6 +9836,8 @@ export const startScanJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartScanJob",
 }));
 export type StopBackupJobError =
@@ -9693,6 +9885,8 @@ export const stopBackupJob: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopBackupJob",
 }));
 export type TagResourceError =
@@ -9720,6 +9914,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -9750,6 +9946,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateBackupPlanError =
@@ -9775,6 +9973,8 @@ export const updateBackupPlan: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBackupPlan",
 }));
 export type UpdateFrameworkError =
@@ -9806,6 +10006,8 @@ export const updateFramework: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFramework",
 }));
 export type UpdateGlobalSettingsError =
@@ -9831,6 +10033,8 @@ export const updateGlobalSettings: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalSettings",
 }));
 export type UpdateRecoveryPointIndexSettingsError =
@@ -9860,6 +10064,8 @@ export const updateRecoveryPointIndexSettings: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecoveryPointIndexSettings",
 }));
 export type UpdateRecoveryPointLifecycleError =
@@ -9905,6 +10111,8 @@ export const updateRecoveryPointLifecycle: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecoveryPointLifecycle",
 }));
 export type UpdateRegionSettingsError =
@@ -9932,6 +10140,8 @@ export const updateRegionSettings: API.OperationMethod<
     MissingParameterValueException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRegionSettings",
 }));
 export type UpdateReportPlanError =
@@ -9959,6 +10169,8 @@ export const updateReportPlan: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateReportPlan",
 }));
 export type UpdateRestoreTestingPlanError =
@@ -10000,6 +10212,8 @@ export const updateRestoreTestingPlan: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRestoreTestingPlan",
 }));
 export type UpdateRestoreTestingSelectionError =
@@ -10032,6 +10246,8 @@ export const updateRestoreTestingSelection: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRestoreTestingSelection",
 }));
 export type UpdateTieringConfigurationError =
@@ -10073,5 +10289,7 @@ export const updateTieringConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTieringConfiguration",
 }));

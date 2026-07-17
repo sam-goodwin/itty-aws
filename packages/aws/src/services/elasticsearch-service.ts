@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3739,6 +3741,8 @@ export const acceptInboundCrossClusterSearchConnection: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptInboundCrossClusterSearchConnection",
 }));
 export type AddTagsError =
@@ -3765,6 +3769,8 @@ export const addTags: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
 export type AssociatePackageError =
@@ -3794,6 +3800,8 @@ export const associatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePackage",
 }));
 export type AuthorizeVpcEndpointAccessError =
@@ -3823,6 +3831,8 @@ export const authorizeVpcEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeVpcEndpointAccess",
 }));
 export type CancelDomainConfigChangeError =
@@ -3850,6 +3860,8 @@ export const cancelDomainConfigChange: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDomainConfigChange",
 }));
 export type CancelElasticsearchServiceSoftwareUpdateError =
@@ -3875,6 +3887,8 @@ export const cancelElasticsearchServiceSoftwareUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelElasticsearchServiceSoftwareUpdate",
 }));
 export type CreateElasticsearchDomainError =
@@ -3907,6 +3921,8 @@ export const createElasticsearchDomain: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateElasticsearchDomain",
 }));
 export type CreateOutboundCrossClusterSearchConnectionError =
@@ -3932,6 +3948,8 @@ export const createOutboundCrossClusterSearchConnection: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOutboundCrossClusterSearchConnection",
 }));
 export type CreatePackageError =
@@ -3963,6 +3981,8 @@ export const createPackage: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePackage",
 }));
 export type CreateVpcEndpointError =
@@ -3992,6 +4012,8 @@ export const createVpcEndpoint: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcEndpoint",
 }));
 export type DeleteElasticsearchDomainError =
@@ -4017,6 +4039,8 @@ export const deleteElasticsearchDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteElasticsearchDomain",
 }));
 export type DeleteElasticsearchServiceRoleError =
@@ -4036,6 +4060,8 @@ export const deleteElasticsearchServiceRole: API.OperationMethod<
   input: DeleteElasticsearchServiceRoleRequest,
   output: DeleteElasticsearchServiceRoleResponse,
   errors: [BaseException, InternalException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteElasticsearchServiceRole",
 }));
 export type DeleteInboundCrossClusterSearchConnectionError =
@@ -4054,6 +4080,8 @@ export const deleteInboundCrossClusterSearchConnection: API.OperationMethod<
   input: DeleteInboundCrossClusterSearchConnectionRequest,
   output: DeleteInboundCrossClusterSearchConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInboundCrossClusterSearchConnection",
 }));
 export type DeleteOutboundCrossClusterSearchConnectionError =
@@ -4072,6 +4100,8 @@ export const deleteOutboundCrossClusterSearchConnection: API.OperationMethod<
   input: DeleteOutboundCrossClusterSearchConnectionRequest,
   output: DeleteOutboundCrossClusterSearchConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOutboundCrossClusterSearchConnection",
 }));
 export type DeletePackageError =
@@ -4101,6 +4131,8 @@ export const deletePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePackage",
 }));
 export type DeleteVpcEndpointError =
@@ -4126,6 +4158,8 @@ export const deleteVpcEndpoint: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcEndpoint",
 }));
 export type DescribeDomainAutoTunesError =
@@ -4166,6 +4200,8 @@ export const describeDomainAutoTunes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainAutoTunes",
   pagination: {
     inputToken: "NextToken",
@@ -4197,6 +4233,8 @@ export const describeDomainChangeProgress: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainChangeProgress",
 }));
 export type DescribeElasticsearchDomainError =
@@ -4222,6 +4260,8 @@ export const describeElasticsearchDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeElasticsearchDomain",
 }));
 export type DescribeElasticsearchDomainConfigError =
@@ -4247,6 +4287,8 @@ export const describeElasticsearchDomainConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeElasticsearchDomainConfig",
 }));
 export type DescribeElasticsearchDomainsError =
@@ -4266,6 +4308,8 @@ export const describeElasticsearchDomains: API.OperationMethod<
   input: DescribeElasticsearchDomainsRequest,
   output: DescribeElasticsearchDomainsResponse,
   errors: [BaseException, InternalException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeElasticsearchDomains",
 }));
 export type DescribeElasticsearchInstanceTypeLimitsError =
@@ -4300,6 +4344,8 @@ export const describeElasticsearchInstanceTypeLimits: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeElasticsearchInstanceTypeLimits",
 }));
 export type DescribeInboundCrossClusterSearchConnectionsError =
@@ -4333,6 +4379,8 @@ export const describeInboundCrossClusterSearchConnections: API.OperationMethod<
   input: DescribeInboundCrossClusterSearchConnectionsRequest,
   output: DescribeInboundCrossClusterSearchConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInboundCrossClusterSearchConnections",
   pagination: {
     inputToken: "NextToken",
@@ -4371,6 +4419,8 @@ export const describeOutboundCrossClusterSearchConnections: API.OperationMethod<
   input: DescribeOutboundCrossClusterSearchConnectionsRequest,
   output: DescribeOutboundCrossClusterSearchConnectionsResponse,
   errors: [DisabledOperationException, InvalidPaginationTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOutboundCrossClusterSearchConnections",
   pagination: {
     inputToken: "NextToken",
@@ -4418,6 +4468,8 @@ export const describePackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePackages",
   pagination: {
     inputToken: "NextToken",
@@ -4463,6 +4515,8 @@ export const describeReservedElasticsearchInstanceOfferings: API.OperationMethod
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedElasticsearchInstanceOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -4508,6 +4562,8 @@ export const describeReservedElasticsearchInstances: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedElasticsearchInstances",
   pagination: {
     inputToken: "NextToken",
@@ -4538,6 +4594,8 @@ export const describeVpcEndpoints: API.OperationMethod<
     InternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpoints",
 }));
 export type DissociatePackageError =
@@ -4567,6 +4625,8 @@ export const dissociatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DissociatePackage",
 }));
 export type GetCompatibleElasticsearchVersionsError =
@@ -4599,6 +4659,8 @@ export const getCompatibleElasticsearchVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCompatibleElasticsearchVersions",
 }));
 export type GetPackageVersionHistoryError =
@@ -4641,6 +4703,8 @@ export const getPackageVersionHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPackageVersionHistory",
   pagination: {
     inputToken: "NextToken",
@@ -4688,6 +4752,8 @@ export const getUpgradeHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUpgradeHistory",
   pagination: {
     inputToken: "NextToken",
@@ -4720,6 +4786,8 @@ export const getUpgradeStatus: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUpgradeStatus",
 }));
 export type ListDomainNamesError =
@@ -4738,6 +4806,8 @@ export const listDomainNames: API.OperationMethod<
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [BaseException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainNames",
 }));
 export type ListDomainsForPackageError =
@@ -4780,6 +4850,8 @@ export const listDomainsForPackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainsForPackage",
   pagination: {
     inputToken: "NextToken",
@@ -4825,6 +4897,8 @@ export const listElasticsearchInstanceTypes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListElasticsearchInstanceTypes",
   pagination: {
     inputToken: "NextToken",
@@ -4870,6 +4944,8 @@ export const listElasticsearchVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListElasticsearchVersions",
   pagination: {
     inputToken: "NextToken",
@@ -4917,6 +4993,8 @@ export const listPackagesForDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPackagesForDomain",
   pagination: {
     inputToken: "NextToken",
@@ -4947,6 +5025,8 @@ export const listTags: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
 }));
 export type ListVpcEndpointAccessError =
@@ -4973,6 +5053,8 @@ export const listVpcEndpointAccess: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcEndpointAccess",
 }));
 export type ListVpcEndpointsError =
@@ -4992,6 +5074,8 @@ export const listVpcEndpoints: API.OperationMethod<
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [BaseException, DisabledOperationException, InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcEndpoints",
 }));
 export type ListVpcEndpointsForDomainError =
@@ -5017,6 +5101,8 @@ export const listVpcEndpointsForDomain: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcEndpointsForDomain",
 }));
 export type PurchaseReservedElasticsearchInstanceOfferingError =
@@ -5046,6 +5132,8 @@ export const purchaseReservedElasticsearchInstanceOffering: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseReservedElasticsearchInstanceOffering",
 }));
 export type RejectInboundCrossClusterSearchConnectionError =
@@ -5064,6 +5152,8 @@ export const rejectInboundCrossClusterSearchConnection: API.OperationMethod<
   input: RejectInboundCrossClusterSearchConnectionRequest,
   output: RejectInboundCrossClusterSearchConnectionResponse,
   errors: [DisabledOperationException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectInboundCrossClusterSearchConnection",
 }));
 export type RemoveTagsError =
@@ -5083,6 +5173,8 @@ export const removeTags: API.OperationMethod<
   input: RemoveTagsRequest,
   output: RemoveTagsResponse,
   errors: [BaseException, InternalException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
 export type RevokeVpcEndpointAccessError =
@@ -5111,6 +5203,8 @@ export const revokeVpcEndpointAccess: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeVpcEndpointAccess",
 }));
 export type StartElasticsearchServiceSoftwareUpdateError =
@@ -5136,6 +5230,8 @@ export const startElasticsearchServiceSoftwareUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartElasticsearchServiceSoftwareUpdate",
 }));
 export type UpdateElasticsearchDomainConfigError =
@@ -5165,6 +5261,8 @@ export const updateElasticsearchDomainConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateElasticsearchDomainConfig",
 }));
 export type UpdatePackageError =
@@ -5194,6 +5292,8 @@ export const updatePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePackage",
 }));
 export type UpdateVpcEndpointError =
@@ -5223,6 +5323,8 @@ export const updateVpcEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVpcEndpoint",
 }));
 export type UpgradeElasticsearchDomainError =
@@ -5252,5 +5354,7 @@ export const upgradeElasticsearchDomain: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpgradeElasticsearchDomain",
 }));

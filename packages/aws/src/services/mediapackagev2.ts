@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2642,6 +2644,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError = ValidationException | CommonErrors;
@@ -2659,6 +2663,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ValidationException | CommonErrors;
@@ -2674,6 +2680,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateChannelGroupError =
@@ -2705,6 +2713,8 @@ export const createChannelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannelGroup",
 }));
 export type GetChannelGroupError =
@@ -2732,6 +2742,8 @@ export const getChannelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannelGroup",
 }));
 export type UpdateChannelGroupError =
@@ -2763,6 +2775,8 @@ export const updateChannelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannelGroup",
 }));
 export type DeleteChannelGroupError =
@@ -2790,6 +2804,8 @@ export const deleteChannelGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelGroup",
 }));
 export type ListChannelGroupsError =
@@ -2830,6 +2846,8 @@ export const listChannelGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelGroups",
   pagination: {
     inputToken: "NextToken",
@@ -2867,6 +2885,8 @@ export const createChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
 export type GetChannelError =
@@ -2894,6 +2914,8 @@ export const getChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannel",
 }));
 export type UpdateChannelError =
@@ -2925,6 +2947,8 @@ export const updateChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
 export type DeleteChannelError =
@@ -2952,6 +2976,8 @@ export const deleteChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannel",
 }));
 export type ListChannelsError =
@@ -2994,6 +3020,8 @@ export const listChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
@@ -3031,6 +3059,8 @@ export const resetChannelState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetChannelState",
 }));
 export type PutChannelPolicyError =
@@ -3060,6 +3090,8 @@ export const putChannelPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutChannelPolicy",
 }));
 export type GetChannelPolicyError =
@@ -3087,6 +3119,8 @@ export const getChannelPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannelPolicy",
 }));
 export type DeleteChannelPolicyError =
@@ -3114,6 +3148,8 @@ export const deleteChannelPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelPolicy",
 }));
 export type CreateOriginEndpointError =
@@ -3145,6 +3181,8 @@ export const createOriginEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOriginEndpoint",
 }));
 export type GetOriginEndpointError =
@@ -3172,6 +3210,8 @@ export const getOriginEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOriginEndpoint",
 }));
 export type UpdateOriginEndpointError =
@@ -3205,6 +3245,8 @@ export const updateOriginEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOriginEndpoint",
 }));
 export type DeleteOriginEndpointError =
@@ -3230,6 +3272,8 @@ export const deleteOriginEndpoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOriginEndpoint",
 }));
 export type ListOriginEndpointsError =
@@ -3272,6 +3316,8 @@ export const listOriginEndpoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOriginEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -3309,6 +3355,8 @@ export const resetOriginEndpointState: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetOriginEndpointState",
 }));
 export type PutOriginEndpointPolicyError =
@@ -3338,6 +3386,8 @@ export const putOriginEndpointPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutOriginEndpointPolicy",
 }));
 export type GetOriginEndpointPolicyError =
@@ -3365,6 +3415,8 @@ export const getOriginEndpointPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOriginEndpointPolicy",
 }));
 export type DeleteOriginEndpointPolicyError =
@@ -3392,6 +3444,8 @@ export const deleteOriginEndpointPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOriginEndpointPolicy",
 }));
 export type CreateHarvestJobError =
@@ -3423,6 +3477,8 @@ export const createHarvestJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHarvestJob",
 }));
 export type GetHarvestJobError =
@@ -3450,6 +3506,8 @@ export const getHarvestJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHarvestJob",
 }));
 export type CancelHarvestJobError =
@@ -3479,6 +3537,8 @@ export const cancelHarvestJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelHarvestJob",
 }));
 export type ListHarvestJobsError =
@@ -3521,6 +3581,8 @@ export const listHarvestJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHarvestJobs",
   pagination: {
     inputToken: "NextToken",

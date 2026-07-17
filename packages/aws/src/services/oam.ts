@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -777,6 +779,8 @@ export const createLink: API.OperationMethod<
     MissingRequiredParameterException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLink",
 }));
 export type CreateSinkError =
@@ -808,6 +812,8 @@ export const createSink: API.OperationMethod<
     MissingRequiredParameterException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSink",
 }));
 export type DeleteLinkError =
@@ -833,6 +839,8 @@ export const deleteLink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLink",
 }));
 export type DeleteSinkError =
@@ -860,6 +868,8 @@ export const deleteSink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSink",
 }));
 export type GetLinkError =
@@ -887,6 +897,8 @@ export const getLink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLink",
 }));
 export type GetSinkError =
@@ -914,6 +926,8 @@ export const getSink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSink",
 }));
 export type GetSinkPolicyError =
@@ -939,6 +953,8 @@ export const getSinkPolicy: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSinkPolicy",
 }));
 export type ListAttachedLinksError =
@@ -983,6 +999,8 @@ export const listAttachedLinks: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttachedLinks",
   pagination: {
     inputToken: "NextToken",
@@ -1029,6 +1047,8 @@ export const listLinks: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLinks",
   pagination: {
     inputToken: "NextToken",
@@ -1073,6 +1093,8 @@ export const listSinks: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSinks",
   pagination: {
     inputToken: "NextToken",
@@ -1097,6 +1119,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutSinkPolicyError =
@@ -1138,6 +1162,8 @@ export const putSinkPolicy: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSinkPolicy",
 }));
 export type TagResourceError =
@@ -1171,6 +1197,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1191,6 +1219,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateLinkError =
@@ -1220,5 +1250,7 @@ export const updateLink: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLink",
 }));

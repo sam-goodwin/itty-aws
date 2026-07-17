@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1065,6 +1067,8 @@ export const batchAcknowledgeAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAcknowledgeAlarm",
 }));
 export type BatchDeleteDetectorError =
@@ -1090,6 +1094,8 @@ export const batchDeleteDetector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteDetector",
 }));
 export type BatchDisableAlarmError =
@@ -1116,6 +1122,8 @@ export const batchDisableAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisableAlarm",
 }));
 export type BatchEnableAlarmError =
@@ -1142,6 +1150,8 @@ export const batchEnableAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchEnableAlarm",
 }));
 export type BatchPutMessageError =
@@ -1171,6 +1181,8 @@ export const batchPutMessage: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutMessage",
 }));
 export type BatchResetAlarmError =
@@ -1197,6 +1209,8 @@ export const batchResetAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchResetAlarm",
 }));
 export type BatchSnoozeAlarmError =
@@ -1223,6 +1237,8 @@ export const batchSnoozeAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchSnoozeAlarm",
 }));
 export type BatchUpdateDetectorError =
@@ -1249,6 +1265,8 @@ export const batchUpdateDetector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateDetector",
 }));
 export type DescribeAlarmError =
@@ -1276,6 +1294,8 @@ export const describeAlarm: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlarm",
 }));
 export type DescribeDetectorError =
@@ -1303,6 +1323,8 @@ export const describeDetector: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDetector",
 }));
 export type ListAlarmsError =
@@ -1331,6 +1353,8 @@ export const listAlarms: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlarms",
 }));
 export type ListDetectorsError =
@@ -1358,5 +1382,7 @@ export const listDetectors: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDetectors",
 }));

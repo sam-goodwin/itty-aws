@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -740,6 +742,8 @@ export const createNotificationRule: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNotificationRule",
 }));
 export type DeleteNotificationRuleError =
@@ -763,6 +767,8 @@ export const deleteNotificationRule: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotificationRule",
 }));
 export type DeleteTargetError = ValidationException | CommonErrors;
@@ -778,6 +784,8 @@ export const deleteTarget: API.OperationMethod<
   input: DeleteTargetRequest,
   output: DeleteTargetResult,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTarget",
 }));
 export type DescribeNotificationRuleError =
@@ -796,6 +804,8 @@ export const describeNotificationRule: API.OperationMethod<
   input: DescribeNotificationRuleRequest,
   output: DescribeNotificationRuleResult,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotificationRule",
 }));
 export type ListEventTypesError =
@@ -829,6 +839,8 @@ export const listEventTypes: API.OperationMethod<
   input: ListEventTypesRequest,
   output: ListEventTypesResult,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventTypes",
   pagination: {
     inputToken: "NextToken",
@@ -868,6 +880,8 @@ export const listNotificationRules: API.OperationMethod<
   input: ListNotificationRulesRequest,
   output: ListNotificationRulesResult,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotificationRules",
   pagination: {
     inputToken: "NextToken",
@@ -892,6 +906,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTargetsError =
@@ -925,6 +941,8 @@ export const listTargets: API.OperationMethod<
   input: ListTargetsRequest,
   output: ListTargetsResult,
   errors: [InvalidNextTokenException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargets",
   pagination: {
     inputToken: "NextToken",
@@ -956,6 +974,8 @@ export const subscribe: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Subscribe",
 }));
 export type TagResourceError =
@@ -981,6 +1001,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UnsubscribeError = ValidationException | CommonErrors;
@@ -998,6 +1020,8 @@ export const unsubscribe: API.OperationMethod<
   input: UnsubscribeRequest,
   output: UnsubscribeResult,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Unsubscribe",
 }));
 export type UntagResourceError =
@@ -1024,6 +1048,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateNotificationRuleError =
@@ -1051,5 +1077,7 @@ export const updateNotificationRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotificationRule",
 }));

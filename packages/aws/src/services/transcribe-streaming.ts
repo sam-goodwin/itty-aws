@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2017,6 +2019,8 @@ export const getMedicalScribeStream: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMedicalScribeStream",
 }));
 export type StartCallAnalyticsStreamTranscriptionError =
@@ -2056,6 +2060,8 @@ export const startCallAnalyticsStreamTranscription: API.OperationMethod<
     LimitExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCallAnalyticsStreamTranscription",
 }));
 export type StartMedicalScribeStreamError =
@@ -2111,6 +2117,8 @@ export const startMedicalScribeStream: API.OperationMethod<
     LimitExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMedicalScribeStream",
 }));
 export type StartMedicalStreamTranscriptionError =
@@ -2152,6 +2160,8 @@ export const startMedicalStreamTranscription: API.OperationMethod<
     LimitExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMedicalStreamTranscription",
 }));
 export type StartStreamTranscriptionError =
@@ -2190,5 +2200,7 @@ export const startStreamTranscription: API.OperationMethod<
     LimitExceededException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartStreamTranscription",
 }));

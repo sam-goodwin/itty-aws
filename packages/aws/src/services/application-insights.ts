@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1584,6 +1586,8 @@ export const addWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddWorkload",
 }));
 export type CreateApplicationError =
@@ -1613,6 +1617,8 @@ export const createApplication: API.OperationMethod<
     TagsAlreadyExistException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateComponentError =
@@ -1638,6 +1644,8 @@ export const createComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComponent",
 }));
 export type CreateLogPatternError =
@@ -1663,6 +1671,8 @@ export const createLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLogPattern",
 }));
 export type DeleteApplicationError =
@@ -1689,6 +1699,8 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteComponentError =
@@ -1714,6 +1726,8 @@ export const deleteComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComponent",
 }));
 export type DeleteLogPatternError =
@@ -1739,6 +1753,8 @@ export const deleteLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLogPattern",
 }));
 export type DescribeApplicationError =
@@ -1762,6 +1778,8 @@ export const describeApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplication",
 }));
 export type DescribeComponentError =
@@ -1786,6 +1804,8 @@ export const describeComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComponent",
 }));
 export type DescribeComponentConfigurationError =
@@ -1809,6 +1829,8 @@ export const describeComponentConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComponentConfiguration",
 }));
 export type DescribeComponentConfigurationRecommendationError =
@@ -1832,6 +1854,8 @@ export const describeComponentConfigurationRecommendation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComponentConfigurationRecommendation",
 }));
 export type DescribeLogPatternError =
@@ -1855,6 +1879,8 @@ export const describeLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLogPattern",
 }));
 export type DescribeObservationError =
@@ -1878,6 +1904,8 @@ export const describeObservation: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeObservation",
 }));
 export type DescribeProblemError =
@@ -1901,6 +1929,8 @@ export const describeProblem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProblem",
 }));
 export type DescribeProblemObservationsError =
@@ -1924,6 +1954,8 @@ export const describeProblemObservations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProblemObservations",
 }));
 export type DescribeWorkloadError =
@@ -1947,6 +1979,8 @@ export const describeWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkload",
 }));
 export type ListApplicationsError =
@@ -1980,6 +2014,8 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -2023,6 +2059,8 @@ export const listComponents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "NextToken",
@@ -2074,6 +2112,8 @@ export const listConfigurationHistory: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationHistory",
   pagination: {
     inputToken: "NextToken",
@@ -2117,6 +2157,8 @@ export const listLogPatterns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogPatterns",
   pagination: {
     inputToken: "NextToken",
@@ -2160,6 +2202,8 @@ export const listLogPatternSets: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogPatternSets",
   pagination: {
     inputToken: "NextToken",
@@ -2203,6 +2247,8 @@ export const listProblems: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProblems",
   pagination: {
     inputToken: "NextToken",
@@ -2231,6 +2277,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWorkloadsError =
@@ -2269,6 +2317,8 @@ export const listWorkloads: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkloads",
   pagination: {
     inputToken: "NextToken",
@@ -2297,6 +2347,8 @@ export const removeWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveWorkload",
 }));
 export type TagResourceError =
@@ -2328,6 +2380,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2346,6 +2400,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
@@ -2369,6 +2425,8 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateComponentError =
@@ -2395,6 +2453,8 @@ export const updateComponent: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComponent",
 }));
 export type UpdateComponentConfigurationError =
@@ -2422,6 +2482,8 @@ export const updateComponentConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComponentConfiguration",
 }));
 export type UpdateLogPatternError =
@@ -2447,6 +2509,8 @@ export const updateLogPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLogPattern",
 }));
 export type UpdateProblemError =
@@ -2471,6 +2535,8 @@ export const updateProblem: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProblem",
 }));
 export type UpdateWorkloadError =
@@ -2494,5 +2560,7 @@ export const updateWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkload",
 }));

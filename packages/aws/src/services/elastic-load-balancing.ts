@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1569,6 +1571,8 @@ export const addTags: API.OperationMethod<
     DuplicateTagKeysException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
 export type ApplySecurityGroupsToLoadBalancerError =
@@ -1595,6 +1599,8 @@ export const applySecurityGroupsToLoadBalancer: API.OperationMethod<
     InvalidConfigurationRequestException,
     InvalidSecurityGroupException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplySecurityGroupsToLoadBalancer",
 }));
 export type AttachLoadBalancerToSubnetsError =
@@ -1624,6 +1630,8 @@ export const attachLoadBalancerToSubnets: API.OperationMethod<
     InvalidSubnetException,
     SubnetNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachLoadBalancerToSubnets",
 }));
 export type ConfigureHealthCheckError =
@@ -1644,6 +1652,8 @@ export const configureHealthCheck: API.OperationMethod<
   input: ConfigureHealthCheckInput,
   output: ConfigureHealthCheckOutput,
   errors: [AccessPointNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfigureHealthCheck",
 }));
 export type CreateAppCookieStickinessPolicyError =
@@ -1680,6 +1690,8 @@ export const createAppCookieStickinessPolicy: API.OperationMethod<
     InvalidConfigurationRequestException,
     TooManyPoliciesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAppCookieStickinessPolicy",
 }));
 export type CreateLBCookieStickinessPolicyError =
@@ -1713,6 +1725,8 @@ export const createLBCookieStickinessPolicy: API.OperationMethod<
     InvalidConfigurationRequestException,
     TooManyPoliciesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLBCookieStickinessPolicy",
 }));
 export type CreateLoadBalancerError =
@@ -1768,6 +1782,8 @@ export const createLoadBalancer: API.OperationMethod<
     TooManyTagsException,
     UnsupportedProtocolException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoadBalancer",
 }));
 export type CreateLoadBalancerListenersError =
@@ -1798,6 +1814,8 @@ export const createLoadBalancerListeners: API.OperationMethod<
     InvalidConfigurationRequestException,
     UnsupportedProtocolException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoadBalancerListeners",
 }));
 export type CreateLoadBalancerPolicyError =
@@ -1827,6 +1845,8 @@ export const createLoadBalancerPolicy: API.OperationMethod<
     PolicyTypeNotFoundException,
     TooManyPoliciesException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoadBalancerPolicy",
 }));
 export type DeleteLoadBalancerError = CommonErrors;
@@ -1847,6 +1867,8 @@ export const deleteLoadBalancer: API.OperationMethod<
   input: DeleteAccessPointInput,
   output: DeleteAccessPointOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoadBalancer",
 }));
 export type DeleteLoadBalancerListenersError =
@@ -1864,6 +1886,8 @@ export const deleteLoadBalancerListeners: API.OperationMethod<
   input: DeleteLoadBalancerListenerInput,
   output: DeleteLoadBalancerListenerOutput,
   errors: [AccessPointNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoadBalancerListeners",
 }));
 export type DeleteLoadBalancerPolicyError =
@@ -1882,6 +1906,8 @@ export const deleteLoadBalancerPolicy: API.OperationMethod<
   input: DeleteLoadBalancerPolicyInput,
   output: DeleteLoadBalancerPolicyOutput,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoadBalancerPolicy",
 }));
 export type DeregisterInstancesFromLoadBalancerError =
@@ -1905,6 +1931,8 @@ export const deregisterInstancesFromLoadBalancer: API.OperationMethod<
   input: DeregisterEndPointsInput,
   output: DeregisterEndPointsOutput,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterInstancesFromLoadBalancer",
 }));
 export type DescribeAccountLimitsError = CommonErrors;
@@ -1923,6 +1951,8 @@ export const describeAccountLimits: API.OperationMethod<
   input: DescribeAccountLimitsInput,
   output: DescribeAccountLimitsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountLimits",
 }));
 export type DescribeInstanceHealthError =
@@ -1941,6 +1971,8 @@ export const describeInstanceHealth: API.OperationMethod<
   input: DescribeEndPointStateInput,
   output: DescribeEndPointStateOutput,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceHealth",
 }));
 export type DescribeLoadBalancerAttributesError =
@@ -1962,6 +1994,8 @@ export const describeLoadBalancerAttributes: API.OperationMethod<
     AccessPointNotFoundException,
     LoadBalancerAttributeNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoadBalancerAttributes",
 }));
 export type DescribeLoadBalancerPoliciesError =
@@ -1985,6 +2019,8 @@ export const describeLoadBalancerPolicies: API.OperationMethod<
   input: DescribeLoadBalancerPoliciesInput,
   output: DescribeLoadBalancerPoliciesOutput,
   errors: [AccessPointNotFoundException, PolicyNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoadBalancerPolicies",
 }));
 export type DescribeLoadBalancerPolicyTypesError =
@@ -2011,6 +2047,8 @@ export const describeLoadBalancerPolicyTypes: API.OperationMethod<
   input: DescribeLoadBalancerPolicyTypesInput,
   output: DescribeLoadBalancerPolicyTypesOutput,
   errors: [PolicyTypeNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoadBalancerPolicyTypes",
 }));
 export type DescribeLoadBalancersError =
@@ -2044,6 +2082,8 @@ export const describeLoadBalancers: API.OperationMethod<
   input: DescribeAccessPointsInput,
   output: DescribeAccessPointsOutput,
   errors: [AccessPointNotFoundException, DependencyThrottleException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoadBalancers",
   pagination: {
     inputToken: "Marker",
@@ -2064,6 +2104,8 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsInput,
   output: DescribeTagsOutput,
   errors: [AccessPointNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
 }));
 export type DetachLoadBalancerFromSubnetsError =
@@ -2086,6 +2128,8 @@ export const detachLoadBalancerFromSubnets: API.OperationMethod<
   input: DetachLoadBalancerFromSubnetsInput,
   output: DetachLoadBalancerFromSubnetsOutput,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachLoadBalancerFromSubnets",
 }));
 export type DisableAvailabilityZonesForLoadBalancerError =
@@ -2115,6 +2159,8 @@ export const disableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   input: RemoveAvailabilityZonesInput,
   output: RemoveAvailabilityZonesOutput,
   errors: [AccessPointNotFoundException, InvalidConfigurationRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAvailabilityZonesForLoadBalancer",
 }));
 export type EnableAvailabilityZonesForLoadBalancerError =
@@ -2139,6 +2185,8 @@ export const enableAvailabilityZonesForLoadBalancer: API.OperationMethod<
   input: AddAvailabilityZonesInput,
   output: AddAvailabilityZonesOutput,
   errors: [AccessPointNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAvailabilityZonesForLoadBalancer",
 }));
 export type ModifyLoadBalancerAttributesError =
@@ -2176,6 +2224,8 @@ export const modifyLoadBalancerAttributes: API.OperationMethod<
     InvalidConfigurationRequestException,
     LoadBalancerAttributeNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyLoadBalancerAttributes",
 }));
 export type RegisterInstancesWithLoadBalancerError =
@@ -2212,6 +2262,8 @@ export const registerInstancesWithLoadBalancer: API.OperationMethod<
   input: RegisterEndPointsInput,
   output: RegisterEndPointsOutput,
   errors: [AccessPointNotFoundException, InvalidEndPointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterInstancesWithLoadBalancer",
 }));
 export type RemoveTagsError = AccessPointNotFoundException | CommonErrors;
@@ -2227,6 +2279,8 @@ export const removeTags: API.OperationMethod<
   input: RemoveTagsInput,
   output: RemoveTagsOutput,
   errors: [AccessPointNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
 export type SetLoadBalancerListenerSSLCertificateError =
@@ -2258,6 +2312,8 @@ export const setLoadBalancerListenerSSLCertificate: API.OperationMethod<
     ListenerNotFoundException,
     UnsupportedProtocolException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetLoadBalancerListenerSSLCertificate",
 }));
 export type SetLoadBalancerPoliciesForBackendServerError =
@@ -2293,6 +2349,8 @@ export const setLoadBalancerPoliciesForBackendServer: API.OperationMethod<
     InvalidConfigurationRequestException,
     PolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetLoadBalancerPoliciesForBackendServer",
 }));
 export type SetLoadBalancerPoliciesOfListenerError =
@@ -2326,5 +2384,7 @@ export const setLoadBalancerPoliciesOfListener: API.OperationMethod<
     ListenerNotFoundException,
     PolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetLoadBalancerPoliciesOfListener",
 }));

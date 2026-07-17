@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -1170,6 +1172,8 @@ export const describeAffectedAccountsForOrganization: API.OperationMethod<
   input: DescribeAffectedAccountsForOrganizationRequest,
   output: DescribeAffectedAccountsForOrganizationResponse,
   errors: [InvalidPaginationToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAffectedAccountsForOrganization",
   pagination: {
     inputToken: "nextToken",
@@ -1220,6 +1224,8 @@ export const describeAffectedEntities: API.OperationMethod<
   input: DescribeAffectedEntitiesRequest,
   output: DescribeAffectedEntitiesResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAffectedEntities",
   pagination: {
     inputToken: "nextToken",
@@ -1273,6 +1279,8 @@ export const describeAffectedEntitiesForOrganization: API.OperationMethod<
   input: DescribeAffectedEntitiesForOrganizationRequest,
   output: DescribeAffectedEntitiesForOrganizationResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAffectedEntitiesForOrganization",
   pagination: {
     inputToken: "nextToken",
@@ -1294,6 +1302,8 @@ export const describeEntityAggregates: API.OperationMethod<
   input: DescribeEntityAggregatesRequest,
   output: DescribeEntityAggregatesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntityAggregates",
 }));
 export type DescribeEntityAggregatesForOrganizationError = CommonErrors;
@@ -1309,6 +1319,8 @@ export const describeEntityAggregatesForOrganization: API.OperationMethod<
   input: DescribeEntityAggregatesForOrganizationRequest,
   output: DescribeEntityAggregatesForOrganizationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntityAggregatesForOrganization",
 }));
 export type DescribeEventAggregatesError =
@@ -1345,6 +1357,8 @@ export const describeEventAggregates: API.OperationMethod<
   input: DescribeEventAggregatesRequest,
   output: DescribeEventAggregatesResponse,
   errors: [InvalidPaginationToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventAggregates",
   pagination: {
     inputToken: "nextToken",
@@ -1375,6 +1389,8 @@ export const describeEventDetails: API.OperationMethod<
   input: DescribeEventDetailsRequest,
   output: DescribeEventDetailsResponse,
   errors: [UnsupportedLocale],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventDetails",
 }));
 export type DescribeEventDetailsForOrganizationError =
@@ -1419,6 +1435,8 @@ export const describeEventDetailsForOrganization: API.OperationMethod<
   input: DescribeEventDetailsForOrganizationRequest,
   output: DescribeEventDetailsForOrganizationResponse,
   errors: [UnsupportedLocale],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventDetailsForOrganization",
 }));
 export type DescribeEventsError =
@@ -1469,6 +1487,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsRequest,
   output: DescribeEventsResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "nextToken",
@@ -1530,6 +1550,8 @@ export const describeEventsForOrganization: API.OperationMethod<
   input: DescribeEventsForOrganizationRequest,
   output: DescribeEventsForOrganizationResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventsForOrganization",
   pagination: {
     inputToken: "nextToken",
@@ -1575,6 +1597,8 @@ export const describeEventTypes: API.OperationMethod<
   input: DescribeEventTypesRequest,
   output: DescribeEventTypesResponse,
   errors: [InvalidPaginationToken, UnsupportedLocale],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventTypes",
   pagination: {
     inputToken: "nextToken",
@@ -1598,6 +1622,8 @@ export const describeHealthServiceStatusForOrganization: API.OperationMethod<
   input: DescribeHealthServiceStatusForOrganizationRequest,
   output: DescribeHealthServiceStatusForOrganizationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHealthServiceStatusForOrganization",
 }));
 export type DisableHealthServiceAccessForOrganizationError =
@@ -1628,6 +1654,8 @@ export const disableHealthServiceAccessForOrganization: API.OperationMethod<
   input: DisableHealthServiceAccessForOrganizationRequest,
   output: DisableHealthServiceAccessForOrganizationResponse,
   errors: [ConcurrentModificationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableHealthServiceAccessForOrganization",
 }));
 export type EnableHealthServiceAccessForOrganizationError =
@@ -1664,5 +1692,7 @@ export const enableHealthServiceAccessForOrganization: API.OperationMethod<
   input: EnableHealthServiceAccessForOrganizationRequest,
   output: EnableHealthServiceAccessForOrganizationResponse,
   errors: [ConcurrentModificationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableHealthServiceAccessForOrganization",
 }));

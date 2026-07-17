@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3319,6 +3321,8 @@ export const batchGetNamedQuery: API.OperationMethod<
   input: BatchGetNamedQueryInput,
   output: BatchGetNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetNamedQuery",
 }));
 export type BatchGetPreparedStatementError =
@@ -3341,6 +3345,8 @@ export const batchGetPreparedStatement: API.OperationMethod<
   input: BatchGetPreparedStatementInput,
   output: BatchGetPreparedStatementOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetPreparedStatement",
 }));
 export type BatchGetQueryExecutionError =
@@ -3364,6 +3370,8 @@ export const batchGetQueryExecution: API.OperationMethod<
   input: BatchGetQueryExecutionInput,
   output: BatchGetQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetQueryExecution",
 }));
 export type CancelCapacityReservationError =
@@ -3385,6 +3393,8 @@ export const cancelCapacityReservation: API.OperationMethod<
   input: CancelCapacityReservationInput,
   output: CancelCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelCapacityReservation",
 }));
 export type CreateCapacityReservationError =
@@ -3404,6 +3414,8 @@ export const createCapacityReservation: API.OperationMethod<
   input: CreateCapacityReservationInput,
   output: CreateCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapacityReservation",
 }));
 export type CreateDataCatalogError =
@@ -3438,6 +3450,8 @@ export const createDataCatalog: API.OperationMethod<
   input: CreateDataCatalogInput,
   output: CreateDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataCatalog",
 }));
 export type CreateNamedQueryError =
@@ -3457,6 +3471,8 @@ export const createNamedQuery: API.OperationMethod<
   input: CreateNamedQueryInput,
   output: CreateNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNamedQuery",
 }));
 export type CreateNotebookError =
@@ -3482,6 +3498,8 @@ export const createNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNotebook",
 }));
 export type CreatePreparedStatementError =
@@ -3500,6 +3518,8 @@ export const createPreparedStatement: API.OperationMethod<
   input: CreatePreparedStatementInput,
   output: CreatePreparedStatementOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePreparedStatement",
 }));
 export type CreatePresignedNotebookUrlError =
@@ -3527,6 +3547,8 @@ export const createPresignedNotebookUrl: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePresignedNotebookUrl",
 }));
 export type CreateWorkGroupError =
@@ -3546,6 +3568,8 @@ export const createWorkGroup: API.OperationMethod<
   input: CreateWorkGroupInput,
   output: CreateWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkGroup",
 }));
 export type DeleteCapacityReservationError =
@@ -3568,6 +3592,8 @@ export const deleteCapacityReservation: API.OperationMethod<
   input: DeleteCapacityReservationInput,
   output: DeleteCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCapacityReservation",
 }));
 export type DeleteDataCatalogError =
@@ -3586,6 +3612,8 @@ export const deleteDataCatalog: API.OperationMethod<
   input: DeleteDataCatalogInput,
   output: DeleteDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataCatalog",
 }));
 export type DeleteNamedQueryError =
@@ -3605,6 +3633,8 @@ export const deleteNamedQuery: API.OperationMethod<
   input: DeleteNamedQueryInput,
   output: DeleteNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNamedQuery",
 }));
 export type DeleteNotebookError =
@@ -3628,6 +3658,8 @@ export const deleteNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotebook",
 }));
 export type DeletePreparedStatementError =
@@ -3652,6 +3684,8 @@ export const deletePreparedStatement: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePreparedStatement",
 }));
 export type DeleteWorkGroupError =
@@ -3671,6 +3705,8 @@ export const deleteWorkGroup: API.OperationMethod<
   input: DeleteWorkGroupInput,
   output: DeleteWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkGroup",
 }));
 export type ExportNotebookError =
@@ -3694,6 +3730,8 @@ export const exportNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportNotebook",
 }));
 export type GetCalculationExecutionError =
@@ -3717,6 +3755,8 @@ export const getCalculationExecution: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCalculationExecution",
 }));
 export type GetCalculationExecutionCodeError =
@@ -3740,6 +3780,8 @@ export const getCalculationExecutionCode: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCalculationExecutionCode",
 }));
 export type GetCalculationExecutionStatusError =
@@ -3763,6 +3805,8 @@ export const getCalculationExecutionStatus: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCalculationExecutionStatus",
 }));
 export type GetCapacityAssignmentConfigurationError =
@@ -3782,6 +3826,8 @@ export const getCapacityAssignmentConfiguration: API.OperationMethod<
   input: GetCapacityAssignmentConfigurationInput,
   output: GetCapacityAssignmentConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapacityAssignmentConfiguration",
 }));
 export type GetCapacityReservationError =
@@ -3800,6 +3846,8 @@ export const getCapacityReservation: API.OperationMethod<
   input: GetCapacityReservationInput,
   output: GetCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapacityReservation",
 }));
 export type GetDatabaseError =
@@ -3819,6 +3867,8 @@ export const getDatabase: API.OperationMethod<
   input: GetDatabaseInput,
   output: GetDatabaseOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDatabase",
 }));
 export type GetDataCatalogError =
@@ -3837,6 +3887,8 @@ export const getDataCatalog: API.OperationMethod<
   input: GetDataCatalogInput,
   output: GetDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataCatalog",
 }));
 export type GetNamedQueryError =
@@ -3856,6 +3908,8 @@ export const getNamedQuery: API.OperationMethod<
   input: GetNamedQueryInput,
   output: GetNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNamedQuery",
 }));
 export type GetNotebookMetadataError =
@@ -3879,6 +3933,8 @@ export const getNotebookMetadata: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNotebookMetadata",
 }));
 export type GetPreparedStatementError =
@@ -3903,6 +3959,8 @@ export const getPreparedStatement: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPreparedStatement",
 }));
 export type GetQueryExecutionError =
@@ -3923,6 +3981,8 @@ export const getQueryExecution: API.OperationMethod<
   input: GetQueryExecutionInput,
   output: GetQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryExecution",
 }));
 export type GetQueryResultsError =
@@ -3976,6 +4036,8 @@ export const getQueryResults: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryResults",
   pagination: {
     inputToken: "NextToken",
@@ -4005,6 +4067,8 @@ export const getQueryRuntimeStatistics: API.OperationMethod<
   input: GetQueryRuntimeStatisticsInput,
   output: GetQueryRuntimeStatisticsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryRuntimeStatistics",
 }));
 export type GetResourceDashboardError =
@@ -4028,6 +4092,8 @@ export const getResourceDashboard: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceDashboard",
 }));
 export type GetSessionError =
@@ -4052,6 +4118,8 @@ export const getSession: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSession",
 }));
 export type GetSessionEndpointError =
@@ -4075,6 +4143,8 @@ export const getSessionEndpoint: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSessionEndpoint",
 }));
 export type GetSessionStatusError =
@@ -4098,6 +4168,8 @@ export const getSessionStatus: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSessionStatus",
 }));
 export type GetTableMetadataError =
@@ -4117,6 +4189,8 @@ export const getTableMetadata: API.OperationMethod<
   input: GetTableMetadataInput,
   output: GetTableMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableMetadata",
 }));
 export type GetWorkGroupError =
@@ -4135,6 +4209,8 @@ export const getWorkGroup: API.OperationMethod<
   input: GetWorkGroupInput,
   output: GetWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkGroup",
 }));
 export type ImportNotebookError =
@@ -4163,6 +4239,8 @@ export const importNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportNotebook",
 }));
 export type ListApplicationDPUSizesError =
@@ -4202,6 +4280,8 @@ export const listApplicationDPUSizes: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationDPUSizes",
   pagination: {
     inputToken: "NextToken",
@@ -4246,6 +4326,8 @@ export const listCalculationExecutions: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCalculationExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -4284,6 +4366,8 @@ export const listCapacityReservations: API.OperationMethod<
   input: ListCapacityReservationsInput,
   output: ListCapacityReservationsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCapacityReservations",
   pagination: {
     inputToken: "NextToken",
@@ -4323,6 +4407,8 @@ export const listDatabases: API.OperationMethod<
   input: ListDatabasesInput,
   output: ListDatabasesOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -4365,6 +4451,8 @@ export const listDataCatalogs: API.OperationMethod<
   input: ListDataCatalogsInput,
   output: ListDataCatalogsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataCatalogs",
   pagination: {
     inputToken: "NextToken",
@@ -4405,6 +4493,8 @@ export const listEngineVersions: API.OperationMethod<
   input: ListEngineVersionsInput,
   output: ListEngineVersionsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngineVersions",
   pagination: {
     inputToken: "NextToken",
@@ -4450,6 +4540,8 @@ export const listExecutors: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExecutors",
   pagination: {
     inputToken: "NextToken",
@@ -4490,6 +4582,8 @@ export const listNamedQueries: API.OperationMethod<
   input: ListNamedQueriesInput,
   output: ListNamedQueriesOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNamedQueries",
   pagination: {
     inputToken: "NextToken",
@@ -4518,6 +4612,8 @@ export const listNotebookMetadata: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotebookMetadata",
 }));
 export type ListNotebookSessionsError =
@@ -4544,6 +4640,8 @@ export const listNotebookSessions: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotebookSessions",
 }));
 export type ListPreparedStatementsError =
@@ -4577,6 +4675,8 @@ export const listPreparedStatements: API.OperationMethod<
   input: ListPreparedStatementsInput,
   output: ListPreparedStatementsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPreparedStatements",
   pagination: {
     inputToken: "NextToken",
@@ -4618,6 +4718,8 @@ export const listQueryExecutions: API.OperationMethod<
   input: ListQueryExecutionsInput,
   output: ListQueryExecutionsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueryExecutions",
   pagination: {
     inputToken: "NextToken",
@@ -4664,6 +4766,8 @@ export const listSessions: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessions",
   pagination: {
     inputToken: "NextToken",
@@ -4703,6 +4807,8 @@ export const listTableMetadata: API.OperationMethod<
   input: ListTableMetadataInput,
   output: ListTableMetadataOutput,
   errors: [InternalServerException, InvalidRequestException, MetadataException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTableMetadata",
   pagination: {
     inputToken: "NextToken",
@@ -4747,6 +4853,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -4786,6 +4894,8 @@ export const listWorkGroups: API.OperationMethod<
   input: ListWorkGroupsInput,
   output: ListWorkGroupsOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkGroups",
   pagination: {
     inputToken: "NextToken",
@@ -4811,6 +4921,8 @@ export const putCapacityAssignmentConfiguration: API.OperationMethod<
   input: PutCapacityAssignmentConfigurationInput,
   output: PutCapacityAssignmentConfigurationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutCapacityAssignmentConfiguration",
 }));
 export type StartCalculationExecutionError =
@@ -4840,6 +4952,8 @@ export const startCalculationExecution: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCalculationExecution",
 }));
 export type StartQueryExecutionError =
@@ -4868,6 +4982,8 @@ export const startQueryExecution: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQueryExecution",
 }));
 export type StartSessionError =
@@ -4896,6 +5012,8 @@ export const startSession: API.OperationMethod<
     SessionAlreadyExistsException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSession",
 }));
 export type StopCalculationExecutionError =
@@ -4927,6 +5045,8 @@ export const stopCalculationExecution: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCalculationExecution",
 }));
 export type StopQueryExecutionError =
@@ -4946,6 +5066,8 @@ export const stopQueryExecution: API.OperationMethod<
   input: StopQueryExecutionInput,
   output: StopQueryExecutionOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopQueryExecution",
 }));
 export type TagResourceError =
@@ -4979,6 +5101,8 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TerminateSessionError =
@@ -5006,6 +5130,8 @@ export const terminateSession: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateSession",
 }));
 export type UntagResourceError =
@@ -5029,6 +5155,8 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateCapacityReservationError =
@@ -5048,6 +5176,8 @@ export const updateCapacityReservation: API.OperationMethod<
   input: UpdateCapacityReservationInput,
   output: UpdateCapacityReservationOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCapacityReservation",
 }));
 export type UpdateDataCatalogError =
@@ -5066,6 +5196,8 @@ export const updateDataCatalog: API.OperationMethod<
   input: UpdateDataCatalogInput,
   output: UpdateDataCatalogOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataCatalog",
 }));
 export type UpdateNamedQueryError =
@@ -5085,6 +5217,8 @@ export const updateNamedQuery: API.OperationMethod<
   input: UpdateNamedQueryInput,
   output: UpdateNamedQueryOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNamedQuery",
 }));
 export type UpdateNotebookError =
@@ -5108,6 +5242,8 @@ export const updateNotebook: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotebook",
 }));
 export type UpdateNotebookMetadataError =
@@ -5131,6 +5267,8 @@ export const updateNotebookMetadata: API.OperationMethod<
     InvalidRequestException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotebookMetadata",
 }));
 export type UpdatePreparedStatementError =
@@ -5154,6 +5292,8 @@ export const updatePreparedStatement: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePreparedStatement",
 }));
 export type UpdateWorkGroupError =
@@ -5173,5 +5313,7 @@ export const updateWorkGroup: API.OperationMethod<
   input: UpdateWorkGroupInput,
   output: UpdateWorkGroupOutput,
   errors: [InternalServerException, InvalidRequestException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkGroup",
 }));

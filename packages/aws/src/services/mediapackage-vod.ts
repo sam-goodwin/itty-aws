@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1614,6 +1616,8 @@ export const configureLogs: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfigureLogs",
 }));
 export type CreateAssetError =
@@ -1643,6 +1647,8 @@ export const createAsset: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAsset",
 }));
 export type CreatePackagingConfigurationError =
@@ -1672,6 +1678,8 @@ export const createPackagingConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePackagingConfiguration",
 }));
 export type CreatePackagingGroupError =
@@ -1701,6 +1709,8 @@ export const createPackagingGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePackagingGroup",
 }));
 export type DeleteAssetError =
@@ -1730,6 +1740,8 @@ export const deleteAsset: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAsset",
 }));
 export type DeletePackagingConfigurationError =
@@ -1759,6 +1771,8 @@ export const deletePackagingConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePackagingConfiguration",
 }));
 export type DeletePackagingGroupError =
@@ -1788,6 +1802,8 @@ export const deletePackagingGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePackagingGroup",
 }));
 export type DescribeAssetError =
@@ -1817,6 +1833,8 @@ export const describeAsset: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAsset",
 }));
 export type DescribePackagingConfigurationError =
@@ -1846,6 +1864,8 @@ export const describePackagingConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePackagingConfiguration",
 }));
 export type DescribePackagingGroupError =
@@ -1875,6 +1895,8 @@ export const describePackagingGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePackagingGroup",
 }));
 export type ListAssetsError =
@@ -1919,6 +1941,8 @@ export const listAssets: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssets",
   pagination: {
     inputToken: "NextToken",
@@ -1969,6 +1993,8 @@ export const listPackagingConfigurations: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPackagingConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -2019,6 +2045,8 @@ export const listPackagingGroups: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPackagingGroups",
   pagination: {
     inputToken: "NextToken",
@@ -2040,6 +2068,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError = CommonErrors;
@@ -2055,6 +2085,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
@@ -2070,6 +2102,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdatePackagingGroupError =
@@ -2099,5 +2133,7 @@ export const updatePackagingGroup: API.OperationMethod<
     TooManyRequestsException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePackagingGroup",
 }));

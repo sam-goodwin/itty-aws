@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -967,6 +969,8 @@ export const listAutoshifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAutoshifts",
   pagination: {
     inputToken: "nextToken",
@@ -992,6 +996,8 @@ export const getAutoshiftObserverNotificationStatus: API.OperationMethod<
   input: GetAutoshiftObserverNotificationStatusRequest,
   output: GetAutoshiftObserverNotificationStatusResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutoshiftObserverNotificationStatus",
 }));
 export type UpdateAutoshiftObserverNotificationStatusError =
@@ -1021,6 +1027,8 @@ export const updateAutoshiftObserverNotificationStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAutoshiftObserverNotificationStatus",
 }));
 export type GetManagedResourceError =
@@ -1048,6 +1056,8 @@ export const getManagedResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedResource",
 }));
 export type ListManagedResourcesError =
@@ -1088,6 +1098,8 @@ export const listManagedResources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedResources",
   pagination: {
     inputToken: "nextToken",
@@ -1125,6 +1137,8 @@ export const updateZonalAutoshiftConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateZonalAutoshiftConfiguration",
 }));
 export type UpdatePracticeRunConfigurationError =
@@ -1154,6 +1168,8 @@ export const updatePracticeRunConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePracticeRunConfiguration",
 }));
 export type DeletePracticeRunConfigurationError =
@@ -1183,6 +1199,8 @@ export const deletePracticeRunConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePracticeRunConfiguration",
 }));
 export type CreatePracticeRunConfigurationError =
@@ -1216,6 +1234,8 @@ export const createPracticeRunConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePracticeRunConfiguration",
 }));
 export type CancelPracticeRunError =
@@ -1245,6 +1265,8 @@ export const cancelPracticeRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelPracticeRun",
 }));
 export type CancelZonalShiftError =
@@ -1276,6 +1298,8 @@ export const cancelZonalShift: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelZonalShift",
 }));
 export type UpdateZonalShiftError =
@@ -1305,6 +1329,8 @@ export const updateZonalShift: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateZonalShift",
 }));
 export type ListZonalShiftsError =
@@ -1347,6 +1373,8 @@ export const listZonalShifts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListZonalShifts",
   pagination: {
     inputToken: "nextToken",
@@ -1384,6 +1412,8 @@ export const startPracticeRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPracticeRun",
 }));
 export type StartZonalShiftError =
@@ -1427,5 +1457,7 @@ export const startZonalShift: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartZonalShift",
 }));

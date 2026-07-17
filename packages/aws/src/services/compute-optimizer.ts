@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4154,6 +4156,8 @@ export const deleteRecommendationPreferences: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecommendationPreferences",
 }));
 export type DescribeRecommendationExportJobsError =
@@ -4206,6 +4210,8 @@ export const describeRecommendationExportJobs: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecommendationExportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -4252,6 +4258,8 @@ export const exportAutoScalingGroupRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportAutoScalingGroupRecommendations",
 }));
 export type ExportEBSVolumeRecommendationsError =
@@ -4292,6 +4300,8 @@ export const exportEBSVolumeRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportEBSVolumeRecommendations",
 }));
 export type ExportEC2InstanceRecommendationsError =
@@ -4332,6 +4342,8 @@ export const exportEC2InstanceRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportEC2InstanceRecommendations",
 }));
 export type ExportECSServiceRecommendationsError =
@@ -4372,6 +4384,8 @@ export const exportECSServiceRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportECSServiceRecommendations",
 }));
 export type ExportIdleRecommendationsError =
@@ -4412,6 +4426,8 @@ export const exportIdleRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportIdleRecommendations",
 }));
 export type ExportLambdaFunctionRecommendationsError =
@@ -4452,6 +4468,8 @@ export const exportLambdaFunctionRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportLambdaFunctionRecommendations",
 }));
 export type ExportLicenseRecommendationsError =
@@ -4492,6 +4510,8 @@ export const exportLicenseRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportLicenseRecommendations",
 }));
 export type ExportRDSDatabaseRecommendationsError =
@@ -4532,6 +4552,8 @@ export const exportRDSDatabaseRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportRDSDatabaseRecommendations",
 }));
 export type GetAutoScalingGroupRecommendationsError =
@@ -4570,6 +4592,8 @@ export const getAutoScalingGroupRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutoScalingGroupRecommendations",
 }));
 export type GetEBSVolumeRecommendationsError =
@@ -4608,6 +4632,8 @@ export const getEBSVolumeRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEBSVolumeRecommendations",
 }));
 export type GetEC2InstanceRecommendationsError =
@@ -4646,6 +4672,8 @@ export const getEC2InstanceRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEC2InstanceRecommendations",
 }));
 export type GetEC2RecommendationProjectedMetricsError =
@@ -4685,6 +4713,8 @@ export const getEC2RecommendationProjectedMetrics: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEC2RecommendationProjectedMetrics",
 }));
 export type GetECSServiceRecommendationProjectedMetricsError =
@@ -4718,6 +4748,8 @@ export const getECSServiceRecommendationProjectedMetrics: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetECSServiceRecommendationProjectedMetrics",
 }));
 export type GetECSServiceRecommendationsError =
@@ -4757,6 +4789,8 @@ export const getECSServiceRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetECSServiceRecommendations",
 }));
 export type GetEffectiveRecommendationPreferencesError =
@@ -4796,6 +4830,8 @@ export const getEffectiveRecommendationPreferences: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEffectiveRecommendationPreferences",
 }));
 export type GetEnrollmentStatusError =
@@ -4830,6 +4866,8 @@ export const getEnrollmentStatus: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnrollmentStatus",
 }));
 export type GetEnrollmentStatusesForOrganizationError =
@@ -4877,6 +4915,8 @@ export const getEnrollmentStatusesForOrganization: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnrollmentStatusesForOrganization",
   pagination: {
     inputToken: "nextToken",
@@ -4919,6 +4959,8 @@ export const getIdleRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdleRecommendations",
 }));
 export type GetLambdaFunctionRecommendationsError =
@@ -4972,6 +5014,8 @@ export const getLambdaFunctionRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLambdaFunctionRecommendations",
   pagination: {
     inputToken: "nextToken",
@@ -5016,6 +5060,8 @@ export const getLicenseRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLicenseRecommendations",
 }));
 export type GetRDSDatabaseRecommendationProjectedMetricsError =
@@ -5049,6 +5095,8 @@ export const getRDSDatabaseRecommendationProjectedMetrics: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRDSDatabaseRecommendationProjectedMetrics",
 }));
 export type GetRDSDatabaseRecommendationsError =
@@ -5088,6 +5136,8 @@ export const getRDSDatabaseRecommendations: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRDSDatabaseRecommendations",
 }));
 export type GetRecommendationPreferencesError =
@@ -5145,6 +5195,8 @@ export const getRecommendationPreferences: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendationPreferences",
   pagination: {
     inputToken: "nextToken",
@@ -5221,6 +5273,8 @@ export const getRecommendationSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendationSummaries",
   pagination: {
     inputToken: "nextToken",
@@ -5265,6 +5319,8 @@ export const putRecommendationPreferences: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecommendationPreferences",
 }));
 export type UpdateEnrollmentStatusError =
@@ -5304,5 +5360,7 @@ export const updateEnrollmentStatus: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnrollmentStatus",
 }));

@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1037,6 +1039,8 @@ export const createLifecyclePolicy: API.OperationMethod<
     InvalidRequestException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLifecyclePolicy",
 }));
 export type DeleteLifecyclePolicyError =
@@ -1064,6 +1068,8 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLifecyclePolicy",
 }));
 export type GetLifecyclePoliciesError =
@@ -1091,6 +1097,8 @@ export const getLifecyclePolicies: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecyclePolicies",
 }));
 export type GetLifecyclePolicyError =
@@ -1114,6 +1122,8 @@ export const getLifecyclePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecyclePolicy",
 }));
 export type ListTagsForResourceError =
@@ -1137,6 +1147,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1160,6 +1172,8 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1183,6 +1197,8 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateLifecyclePolicyError =
@@ -1211,5 +1227,7 @@ export const updateLifecyclePolicy: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLifecyclePolicy",
 }));

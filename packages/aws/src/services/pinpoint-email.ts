@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2149,6 +2151,8 @@ export const createConfigurationSet: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSet",
 }));
 export type CreateConfigurationSetEventDestinationError =
@@ -2183,6 +2187,8 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSetEventDestination",
 }));
 export type CreateDedicatedIpPoolError =
@@ -2213,6 +2219,8 @@ export const createDedicatedIpPool: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDedicatedIpPool",
 }));
 export type CreateDeliverabilityTestReportError =
@@ -2254,6 +2262,8 @@ export const createDeliverabilityTestReport: API.OperationMethod<
     SendingPausedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeliverabilityTestReport",
 }));
 export type CreateEmailIdentityError =
@@ -2292,6 +2302,8 @@ export const createEmailIdentity: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEmailIdentity",
 }));
 export type DeleteConfigurationSetError =
@@ -2323,6 +2335,8 @@ export const deleteConfigurationSet: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSet",
 }));
 export type DeleteConfigurationSetEventDestinationError =
@@ -2348,6 +2362,8 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   input: DeleteConfigurationSetEventDestinationRequest,
   output: DeleteConfigurationSetEventDestinationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSetEventDestination",
 }));
 export type DeleteDedicatedIpPoolError =
@@ -2373,6 +2389,8 @@ export const deleteDedicatedIpPool: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDedicatedIpPool",
 }));
 export type DeleteEmailIdentityError =
@@ -2399,6 +2417,8 @@ export const deleteEmailIdentity: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEmailIdentity",
 }));
 export type GetAccountError =
@@ -2418,6 +2438,8 @@ export const getAccount: API.OperationMethod<
   input: GetAccountRequest,
   output: GetAccountResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccount",
 }));
 export type GetBlacklistReportsError =
@@ -2437,6 +2459,8 @@ export const getBlacklistReports: API.OperationMethod<
   input: GetBlacklistReportsRequest,
   output: GetBlacklistReportsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlacklistReports",
 }));
 export type GetConfigurationSetError =
@@ -2464,6 +2488,8 @@ export const getConfigurationSet: API.OperationMethod<
   input: GetConfigurationSetRequest,
   output: GetConfigurationSetResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationSet",
 }));
 export type GetConfigurationSetEventDestinationsError =
@@ -2490,6 +2516,8 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
   input: GetConfigurationSetEventDestinationsRequest,
   output: GetConfigurationSetEventDestinationsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationSetEventDestinations",
 }));
 export type GetDedicatedIpError =
@@ -2511,6 +2539,8 @@ export const getDedicatedIp: API.OperationMethod<
   input: GetDedicatedIpRequest,
   output: GetDedicatedIpResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDedicatedIp",
 }));
 export type GetDedicatedIpsError =
@@ -2546,6 +2576,8 @@ export const getDedicatedIps: API.OperationMethod<
   input: GetDedicatedIpsRequest,
   output: GetDedicatedIpsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDedicatedIps",
   pagination: {
     inputToken: "NextToken",
@@ -2581,6 +2613,8 @@ export const getDeliverabilityDashboardOptions: API.OperationMethod<
     LimitExceededException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeliverabilityDashboardOptions",
 }));
 export type GetDeliverabilityTestReportError =
@@ -2600,6 +2634,8 @@ export const getDeliverabilityTestReport: API.OperationMethod<
   input: GetDeliverabilityTestReportRequest,
   output: GetDeliverabilityTestReportResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeliverabilityTestReport",
 }));
 export type GetDomainDeliverabilityCampaignError =
@@ -2622,6 +2658,8 @@ export const getDomainDeliverabilityCampaign: API.OperationMethod<
   input: GetDomainDeliverabilityCampaignRequest,
   output: GetDomainDeliverabilityCampaignResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainDeliverabilityCampaign",
 }));
 export type GetDomainStatisticsReportError =
@@ -2642,6 +2680,8 @@ export const getDomainStatisticsReport: API.OperationMethod<
   input: GetDomainStatisticsReportRequest,
   output: GetDomainStatisticsReportResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainStatisticsReport",
 }));
 export type GetEmailIdentityError =
@@ -2663,6 +2703,8 @@ export const getEmailIdentity: API.OperationMethod<
   input: GetEmailIdentityRequest,
   output: GetEmailIdentityResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEmailIdentity",
 }));
 export type ListConfigurationSetsError =
@@ -2703,6 +2745,8 @@ export const listConfigurationSets: API.OperationMethod<
   input: ListConfigurationSetsRequest,
   output: ListConfigurationSetsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationSets",
   pagination: {
     inputToken: "NextToken",
@@ -2742,6 +2786,8 @@ export const listDedicatedIpPools: API.OperationMethod<
   input: ListDedicatedIpPoolsRequest,
   output: ListDedicatedIpPoolsResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDedicatedIpPools",
   pagination: {
     inputToken: "NextToken",
@@ -2783,6 +2829,8 @@ export const listDeliverabilityTestReports: API.OperationMethod<
   input: ListDeliverabilityTestReportsRequest,
   output: ListDeliverabilityTestReportsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeliverabilityTestReports",
   pagination: {
     inputToken: "NextToken",
@@ -2825,6 +2873,8 @@ export const listDomainDeliverabilityCampaigns: API.OperationMethod<
   input: ListDomainDeliverabilityCampaignsRequest,
   output: ListDomainDeliverabilityCampaignsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainDeliverabilityCampaigns",
   pagination: {
     inputToken: "NextToken",
@@ -2865,6 +2915,8 @@ export const listEmailIdentities: API.OperationMethod<
   input: ListEmailIdentitiesRequest,
   output: ListEmailIdentitiesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEmailIdentities",
   pagination: {
     inputToken: "NextToken",
@@ -2894,6 +2946,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutAccountDedicatedIpWarmupAttributesError =
@@ -2912,6 +2966,8 @@ export const putAccountDedicatedIpWarmupAttributes: API.OperationMethod<
   input: PutAccountDedicatedIpWarmupAttributesRequest,
   output: PutAccountDedicatedIpWarmupAttributesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountDedicatedIpWarmupAttributes",
 }));
 export type PutAccountSendingAttributesError =
@@ -2930,6 +2986,8 @@ export const putAccountSendingAttributes: API.OperationMethod<
   input: PutAccountSendingAttributesRequest,
   output: PutAccountSendingAttributesResponse,
   errors: [BadRequestException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountSendingAttributes",
 }));
 export type PutConfigurationSetDeliveryOptionsError =
@@ -2950,6 +3008,8 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
   input: PutConfigurationSetDeliveryOptionsRequest,
   output: PutConfigurationSetDeliveryOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationSetDeliveryOptions",
 }));
 export type PutConfigurationSetReputationOptionsError =
@@ -2970,6 +3030,8 @@ export const putConfigurationSetReputationOptions: API.OperationMethod<
   input: PutConfigurationSetReputationOptionsRequest,
   output: PutConfigurationSetReputationOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationSetReputationOptions",
 }));
 export type PutConfigurationSetSendingOptionsError =
@@ -2990,6 +3052,8 @@ export const putConfigurationSetSendingOptions: API.OperationMethod<
   input: PutConfigurationSetSendingOptionsRequest,
   output: PutConfigurationSetSendingOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationSetSendingOptions",
 }));
 export type PutConfigurationSetTrackingOptionsError =
@@ -3010,6 +3074,8 @@ export const putConfigurationSetTrackingOptions: API.OperationMethod<
   input: PutConfigurationSetTrackingOptionsRequest,
   output: PutConfigurationSetTrackingOptionsResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutConfigurationSetTrackingOptions",
 }));
 export type PutDedicatedIpInPoolError =
@@ -3035,6 +3101,8 @@ export const putDedicatedIpInPool: API.OperationMethod<
   input: PutDedicatedIpInPoolRequest,
   output: PutDedicatedIpInPoolResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDedicatedIpInPool",
 }));
 export type PutDedicatedIpWarmupAttributesError =
@@ -3054,6 +3122,8 @@ export const putDedicatedIpWarmupAttributes: API.OperationMethod<
   input: PutDedicatedIpWarmupAttributesRequest,
   output: PutDedicatedIpWarmupAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDedicatedIpWarmupAttributes",
 }));
 export type PutDeliverabilityDashboardOptionError =
@@ -3088,6 +3158,8 @@ export const putDeliverabilityDashboardOption: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDeliverabilityDashboardOption",
 }));
 export type PutEmailIdentityDkimAttributesError =
@@ -3107,6 +3179,8 @@ export const putEmailIdentityDkimAttributes: API.OperationMethod<
   input: PutEmailIdentityDkimAttributesRequest,
   output: PutEmailIdentityDkimAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEmailIdentityDkimAttributes",
 }));
 export type PutEmailIdentityFeedbackAttributesError =
@@ -3138,6 +3212,8 @@ export const putEmailIdentityFeedbackAttributes: API.OperationMethod<
   input: PutEmailIdentityFeedbackAttributesRequest,
   output: PutEmailIdentityFeedbackAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEmailIdentityFeedbackAttributes",
 }));
 export type PutEmailIdentityMailFromAttributesError =
@@ -3158,6 +3234,8 @@ export const putEmailIdentityMailFromAttributes: API.OperationMethod<
   input: PutEmailIdentityMailFromAttributesRequest,
   output: PutEmailIdentityMailFromAttributesResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEmailIdentityMailFromAttributes",
 }));
 export type SendEmailError =
@@ -3202,6 +3280,8 @@ export const sendEmail: API.OperationMethod<
     SendingPausedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendEmail",
 }));
 export type TagResourceError =
@@ -3236,6 +3316,8 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3261,6 +3343,8 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateConfigurationSetEventDestinationError =
@@ -3286,5 +3370,7 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   input: UpdateConfigurationSetEventDestinationRequest,
   output: UpdateConfigurationSetEventDestinationResponse,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConfigurationSetEventDestination",
 }));

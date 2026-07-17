@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1916,6 +1918,8 @@ export const getDataIntegrationEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataIntegrationEvent",
 }));
 export type GetDataIntegrationFlowExecutionError =
@@ -1943,6 +1947,8 @@ export const getDataIntegrationFlowExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataIntegrationFlowExecution",
 }));
 export type ListDataIntegrationEventsError =
@@ -1983,6 +1989,8 @@ export const listDataIntegrationEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataIntegrationEvents",
   pagination: {
     inputToken: "nextToken",
@@ -2031,6 +2039,8 @@ export const listDataIntegrationFlowExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataIntegrationFlowExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -2064,6 +2074,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type SendDataIntegrationEventError =
@@ -2095,6 +2107,8 @@ export const sendDataIntegrationEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDataIntegrationEvent",
 }));
 export type TagResourceError =
@@ -2122,6 +2136,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2149,6 +2165,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateBillOfMaterialsImportJobError =
@@ -2180,6 +2198,8 @@ export const createBillOfMaterialsImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBillOfMaterialsImportJob",
 }));
 export type GetBillOfMaterialsImportJobError =
@@ -2207,6 +2227,8 @@ export const getBillOfMaterialsImportJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBillOfMaterialsImportJob",
 }));
 export type CreateDataIntegrationFlowError =
@@ -2236,6 +2258,8 @@ export const createDataIntegrationFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataIntegrationFlow",
 }));
 export type GetDataIntegrationFlowError =
@@ -2263,6 +2287,8 @@ export const getDataIntegrationFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataIntegrationFlow",
 }));
 export type UpdateDataIntegrationFlowError =
@@ -2290,6 +2316,8 @@ export const updateDataIntegrationFlow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataIntegrationFlow",
 }));
 export type DeleteDataIntegrationFlowError =
@@ -2315,6 +2343,8 @@ export const deleteDataIntegrationFlow: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataIntegrationFlow",
 }));
 export type ListDataIntegrationFlowsError =
@@ -2355,6 +2385,8 @@ export const listDataIntegrationFlows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataIntegrationFlows",
   pagination: {
     inputToken: "nextToken",
@@ -2392,6 +2424,8 @@ export const createDataLakeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataLakeDataset",
 }));
 export type GetDataLakeDatasetError =
@@ -2419,6 +2453,8 @@ export const getDataLakeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataLakeDataset",
 }));
 export type UpdateDataLakeDatasetError =
@@ -2446,6 +2482,8 @@ export const updateDataLakeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataLakeDataset",
 }));
 export type DeleteDataLakeDatasetError =
@@ -2473,6 +2511,8 @@ export const deleteDataLakeDataset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataLakeDataset",
 }));
 export type ListDataLakeDatasetsError =
@@ -2515,6 +2555,8 @@ export const listDataLakeDatasets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataLakeDatasets",
   pagination: {
     inputToken: "nextToken",
@@ -2550,6 +2592,8 @@ export const createDataLakeNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataLakeNamespace",
 }));
 export type GetDataLakeNamespaceError =
@@ -2577,6 +2621,8 @@ export const getDataLakeNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataLakeNamespace",
 }));
 export type UpdateDataLakeNamespaceError =
@@ -2604,6 +2650,8 @@ export const updateDataLakeNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataLakeNamespace",
 }));
 export type DeleteDataLakeNamespaceError =
@@ -2631,6 +2679,8 @@ export const deleteDataLakeNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataLakeNamespace",
 }));
 export type ListDataLakeNamespacesError =
@@ -2671,6 +2721,8 @@ export const listDataLakeNamespaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataLakeNamespaces",
   pagination: {
     inputToken: "nextToken",
@@ -2708,6 +2760,8 @@ export const createInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstance",
 }));
 export type GetInstanceError =
@@ -2735,6 +2789,8 @@ export const getInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstance",
 }));
 export type UpdateInstanceError =
@@ -2762,6 +2818,8 @@ export const updateInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInstance",
 }));
 export type DeleteInstanceError =
@@ -2791,6 +2849,8 @@ export const deleteInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstance",
 }));
 export type ListInstancesError =
@@ -2831,6 +2891,8 @@ export const listInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstances",
   pagination: {
     inputToken: "nextToken",

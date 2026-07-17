@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -939,6 +941,8 @@ export const assumeRole: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssumeRole",
 }));
 export type AssumeRoleWithSAMLError =
@@ -1091,6 +1095,8 @@ export const assumeRoleWithSAML: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssumeRoleWithSAML",
 }));
 export type AssumeRoleWithWebIdentityError =
@@ -1239,6 +1245,8 @@ export const assumeRoleWithWebIdentity: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssumeRoleWithWebIdentity",
 }));
 export type AssumeRootError =
@@ -1277,6 +1285,8 @@ export const assumeRoot: API.OperationMethod<
   input: AssumeRootRequest,
   output: AssumeRootResponse,
   errors: [ExpiredTokenException, RegionDisabledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssumeRoot",
 }));
 export type DecodeAuthorizationMessageError =
@@ -1324,6 +1334,8 @@ export const decodeAuthorizationMessage: API.OperationMethod<
   input: DecodeAuthorizationMessageRequest,
   output: DecodeAuthorizationMessageResponse,
   errors: [InvalidAuthorizationMessageException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DecodeAuthorizationMessage",
 }));
 export type GetAccessKeyInfoError = CommonErrors;
@@ -1358,6 +1370,8 @@ export const getAccessKeyInfo: API.OperationMethod<
   input: GetAccessKeyInfoRequest,
   output: GetAccessKeyInfoResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessKeyInfo",
 }));
 export type GetCallerIdentityError = CommonErrors;
@@ -1381,6 +1395,8 @@ export const getCallerIdentity: API.OperationMethod<
   input: GetCallerIdentityRequest,
   output: GetCallerIdentityResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCallerIdentity",
 }));
 export type GetDelegatedAccessTokenError =
@@ -1407,6 +1423,8 @@ export const getDelegatedAccessToken: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDelegatedAccessToken",
 }));
 export type GetFederationTokenError =
@@ -1520,6 +1538,8 @@ export const getFederationToken: API.OperationMethod<
     PackedPolicyTooLargeException,
     RegionDisabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFederationToken",
 }));
 export type GetSessionTokenError = RegionDisabledException | CommonErrors;
@@ -1589,6 +1609,8 @@ export const getSessionToken: API.OperationMethod<
   input: GetSessionTokenRequest,
   output: GetSessionTokenResponse,
   errors: [RegionDisabledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSessionToken",
 }));
 export type GetWebIdentityTokenError =
@@ -1614,5 +1636,7 @@ export const getWebIdentityToken: API.OperationMethod<
     OutboundWebIdentityFederationDisabledException,
     SessionDurationEscalationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWebIdentityToken",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1280,6 +1282,8 @@ export const addProfilePermission: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddProfilePermission",
 }));
 export type CancelSigningProfileError =
@@ -1307,6 +1311,8 @@ export const cancelSigningProfile: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSigningProfile",
 }));
 export type DescribeSigningJobError =
@@ -1334,6 +1340,8 @@ export const describeSigningJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSigningJob",
 }));
 export type GetRevocationStatusError =
@@ -1360,6 +1368,8 @@ export const getRevocationStatus: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRevocationStatus",
 }));
 export type GetSigningPlatformError =
@@ -1385,6 +1395,8 @@ export const getSigningPlatform: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSigningPlatform",
 }));
 export type GetSigningProfileError =
@@ -1410,6 +1422,8 @@ export const getSigningProfile: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSigningProfile",
 }));
 export type ListProfilePermissionsError =
@@ -1437,6 +1451,8 @@ export const listProfilePermissions: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProfilePermissions",
 }));
 export type ListSigningJobsError =
@@ -1483,6 +1499,8 @@ export const listSigningJobs: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSigningJobs",
   pagination: {
     inputToken: "nextToken",
@@ -1534,6 +1552,8 @@ export const listSigningPlatforms: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSigningPlatforms",
   pagination: {
     inputToken: "nextToken",
@@ -1584,6 +1604,8 @@ export const listSigningProfiles: API.OperationMethod<
     InternalServiceErrorException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSigningProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -1614,6 +1636,8 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutSigningProfileError =
@@ -1642,6 +1666,8 @@ export const putSigningProfile: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSigningProfile",
 }));
 export type RemoveProfilePermissionError =
@@ -1671,6 +1697,8 @@ export const removeProfilePermission: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveProfilePermission",
 }));
 export type RevokeSignatureError =
@@ -1699,6 +1727,8 @@ export const revokeSignature: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeSignature",
 }));
 export type RevokeSigningProfileError =
@@ -1730,6 +1760,8 @@ export const revokeSigningProfile: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeSigningProfile",
 }));
 export type SignPayloadError =
@@ -1757,6 +1789,8 @@ export const signPayload: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SignPayload",
 }));
 export type StartSigningJobError =
@@ -1807,6 +1841,8 @@ export const startSigningJob: API.OperationMethod<
     TooManyRequestsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSigningJob",
 }));
 export type TagResourceError =
@@ -1835,6 +1871,8 @@ export const tagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1861,5 +1899,7 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

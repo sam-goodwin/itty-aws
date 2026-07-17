@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2243,6 +2245,8 @@ export const createApplicationInstance: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplicationInstance",
 }));
 export type CreateJobForDevicesError =
@@ -2270,6 +2274,8 @@ export const createJobForDevices: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJobForDevices",
 }));
 export type CreateNodeFromTemplateJobError =
@@ -2295,6 +2301,8 @@ export const createNodeFromTemplateJob: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNodeFromTemplateJob",
 }));
 export type CreatePackageError =
@@ -2320,6 +2328,8 @@ export const createPackage: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePackage",
 }));
 export type CreatePackageImportJobError =
@@ -2345,6 +2355,8 @@ export const createPackageImportJob: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePackageImportJob",
 }));
 export type DeleteDeviceError =
@@ -2372,6 +2384,8 @@ export const deleteDevice: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDevice",
 }));
 export type DeletePackageError =
@@ -2402,6 +2416,8 @@ export const deletePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePackage",
 }));
 export type DeregisterPackageVersionError =
@@ -2429,6 +2445,8 @@ export const deregisterPackageVersion: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterPackageVersion",
 }));
 export type DescribeApplicationInstanceError =
@@ -2456,6 +2474,8 @@ export const describeApplicationInstance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationInstance",
 }));
 export type DescribeApplicationInstanceDetailsError =
@@ -2483,6 +2503,8 @@ export const describeApplicationInstanceDetails: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplicationInstanceDetails",
 }));
 export type DescribeDeviceError =
@@ -2508,6 +2530,8 @@ export const describeDevice: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDevice",
 }));
 export type DescribeDeviceJobError =
@@ -2535,6 +2559,8 @@ export const describeDeviceJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeviceJob",
 }));
 export type DescribeNodeError =
@@ -2562,6 +2588,8 @@ export const describeNode: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNode",
 }));
 export type DescribeNodeFromTemplateJobError =
@@ -2587,6 +2615,8 @@ export const describeNodeFromTemplateJob: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNodeFromTemplateJob",
 }));
 export type DescribePackageError =
@@ -2614,6 +2644,8 @@ export const describePackage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePackage",
 }));
 export type DescribePackageImportJobError =
@@ -2639,6 +2671,8 @@ export const describePackageImportJob: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePackageImportJob",
 }));
 export type DescribePackageVersionError =
@@ -2666,6 +2700,8 @@ export const describePackageVersion: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePackageVersion",
 }));
 export type ListApplicationInstanceDependenciesError =
@@ -2699,6 +2735,8 @@ export const listApplicationInstanceDependencies: API.OperationMethod<
   input: ListApplicationInstanceDependenciesRequest,
   output: ListApplicationInstanceDependenciesResponse,
   errors: [AccessDeniedException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationInstanceDependencies",
   pagination: {
     inputToken: "NextToken",
@@ -2737,6 +2775,8 @@ export const listApplicationInstanceNodeInstances: API.OperationMethod<
   input: ListApplicationInstanceNodeInstancesRequest,
   output: ListApplicationInstanceNodeInstancesResponse,
   errors: [AccessDeniedException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationInstanceNodeInstances",
   pagination: {
     inputToken: "NextToken",
@@ -2775,6 +2815,8 @@ export const listApplicationInstances: API.OperationMethod<
   input: ListApplicationInstancesRequest,
   output: ListApplicationInstancesResponse,
   errors: [AccessDeniedException, InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationInstances",
   pagination: {
     inputToken: "NextToken",
@@ -2820,6 +2862,8 @@ export const listDevices: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevices",
   pagination: {
     inputToken: "NextToken",
@@ -2867,6 +2911,8 @@ export const listDevicesJobs: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevicesJobs",
   pagination: {
     inputToken: "NextToken",
@@ -2912,6 +2958,8 @@ export const listNodeFromTemplateJobs: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodeFromTemplateJobs",
   pagination: {
     inputToken: "NextToken",
@@ -2951,6 +2999,8 @@ export const listNodes: API.OperationMethod<
   input: ListNodesRequest,
   output: ListNodesResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodes",
   pagination: {
     inputToken: "NextToken",
@@ -2996,6 +3046,8 @@ export const listPackageImportJobs: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPackageImportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -3043,6 +3095,8 @@ export const listPackages: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPackages",
   pagination: {
     inputToken: "NextToken",
@@ -3071,6 +3125,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ProvisionDeviceError =
@@ -3101,6 +3157,8 @@ export const provisionDevice: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvisionDevice",
 }));
 export type RegisterPackageVersionError =
@@ -3126,6 +3184,8 @@ export const registerPackageVersion: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterPackageVersion",
 }));
 export type RemoveApplicationInstanceError =
@@ -3153,6 +3213,8 @@ export const removeApplicationInstance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveApplicationInstance",
 }));
 export type SignalApplicationInstanceNodeInstancesError =
@@ -3178,6 +3240,8 @@ export const signalApplicationInstanceNodeInstances: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SignalApplicationInstanceNodeInstances",
 }));
 export type TagResourceError =
@@ -3201,6 +3265,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3224,6 +3290,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDeviceMetadataError =
@@ -3251,5 +3319,7 @@ export const updateDeviceMetadata: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeviceMetadata",
 }));

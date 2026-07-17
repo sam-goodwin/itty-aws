@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -281,6 +283,8 @@ export const batchGetMetrics: API.OperationMethod<
   input: BatchGetMetricsRequest,
   output: BatchGetMetricsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetMetrics",
 }));
 export type BatchPutMetricsError = CommonErrors;
@@ -296,5 +300,7 @@ export const batchPutMetrics: API.OperationMethod<
   input: BatchPutMetricsRequest,
   output: BatchPutMetricsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutMetrics",
 }));

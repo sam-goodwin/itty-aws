@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2447,6 +2449,8 @@ export const getSignedBluinsightsUrl: API.OperationMethod<
   input: GetSignedBluinsightsUrlRequest,
   output: GetSignedBluinsightsUrlResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSignedBluinsightsUrl",
 }));
 export type ListEngineVersionsError =
@@ -2487,6 +2491,8 @@ export const listEngineVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEngineVersions",
   pagination: {
     inputToken: "nextToken",
@@ -2520,6 +2526,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2549,6 +2557,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2576,6 +2586,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateApplicationError =
@@ -2606,6 +2618,8 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type GetApplicationError =
@@ -2633,6 +2647,8 @@ export const getApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type UpdateApplicationError =
@@ -2662,6 +2678,8 @@ export const updateApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type DeleteApplicationError =
@@ -2689,6 +2707,8 @@ export const deleteApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type ListApplicationsError =
@@ -2731,6 +2751,8 @@ export const listApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
@@ -2766,6 +2788,8 @@ export const cancelBatchJobExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelBatchJobExecution",
 }));
 export type CreateDataSetExportTaskError =
@@ -2797,6 +2821,8 @@ export const createDataSetExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSetExportTask",
 }));
 export type CreateDataSetImportTaskError =
@@ -2828,6 +2854,8 @@ export const createDataSetImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSetImportTask",
 }));
 export type CreateDeploymentError =
@@ -2860,6 +2888,8 @@ export const createDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeployment",
 }));
 export type DeleteApplicationFromEnvironmentError =
@@ -2892,6 +2922,8 @@ export const deleteApplicationFromEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationFromEnvironment",
 }));
 export type GetApplicationVersionError =
@@ -2919,6 +2951,8 @@ export const getApplicationVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationVersion",
 }));
 export type GetBatchJobExecutionError =
@@ -2946,6 +2980,8 @@ export const getBatchJobExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBatchJobExecution",
 }));
 export type GetDataSetDetailsError =
@@ -2979,6 +3015,8 @@ export const getDataSetDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSetDetails",
 }));
 export type GetDataSetExportTaskError =
@@ -3006,6 +3044,8 @@ export const getDataSetExportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSetExportTask",
 }));
 export type GetDataSetImportTaskError =
@@ -3033,6 +3073,8 @@ export const getDataSetImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSetImportTask",
 }));
 export type GetDeploymentError =
@@ -3060,6 +3102,8 @@ export const getDeployment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployment",
 }));
 export type ListApplicationVersionsError =
@@ -3102,6 +3146,8 @@ export const listApplicationVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationVersions",
   pagination: {
     inputToken: "nextToken",
@@ -3152,6 +3198,8 @@ export const listBatchJobDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBatchJobDefinitions",
   pagination: {
     inputToken: "nextToken",
@@ -3201,6 +3249,8 @@ export const listBatchJobExecutions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBatchJobExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -3236,6 +3286,8 @@ export const listBatchJobRestartPoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBatchJobRestartPoints",
 }));
 export type ListDataSetExportHistoryError =
@@ -3278,6 +3330,8 @@ export const listDataSetExportHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSetExportHistory",
   pagination: {
     inputToken: "nextToken",
@@ -3326,6 +3380,8 @@ export const listDataSetImportHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSetImportHistory",
   pagination: {
     inputToken: "nextToken",
@@ -3382,6 +3438,8 @@ export const listDataSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSets",
   pagination: {
     inputToken: "nextToken",
@@ -3432,6 +3490,8 @@ export const listDeployments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
@@ -3467,6 +3527,8 @@ export const startApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartApplication",
 }));
 export type StartBatchJobError =
@@ -3497,6 +3559,8 @@ export const startBatchJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBatchJob",
 }));
 export type StopApplicationError =
@@ -3526,6 +3590,8 @@ export const stopApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopApplication",
 }));
 export type CreateEnvironmentError =
@@ -3555,6 +3621,8 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
 export type GetEnvironmentError =
@@ -3582,6 +3650,8 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
 export type UpdateEnvironmentError =
@@ -3613,6 +3683,8 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
 }));
 export type DeleteEnvironmentError =
@@ -3642,6 +3714,8 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
 export type ListEnvironmentsError =
@@ -3682,6 +3756,8 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",

@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1631,6 +1633,8 @@ export const createBudget: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBudget",
 }));
 export type CreateBudgetActionError =
@@ -1664,6 +1668,8 @@ export const createBudgetAction: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBudgetAction",
 }));
 export type CreateNotificationError =
@@ -1695,6 +1701,8 @@ export const createNotification: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNotification",
 }));
 export type CreateSubscriberError =
@@ -1726,6 +1734,8 @@ export const createSubscriber: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscriber",
 }));
 export type DeleteBudgetError =
@@ -1755,6 +1765,8 @@ export const deleteBudget: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBudget",
 }));
 export type DeleteBudgetActionError =
@@ -1784,6 +1796,8 @@ export const deleteBudgetAction: API.OperationMethod<
     ResourceLockedException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBudgetAction",
 }));
 export type DeleteNotificationError =
@@ -1813,6 +1827,8 @@ export const deleteNotification: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotification",
 }));
 export type DeleteSubscriberError =
@@ -1842,6 +1858,8 @@ export const deleteSubscriber: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubscriber",
 }));
 export type DescribeBudgetError =
@@ -1872,6 +1890,8 @@ export const describeBudget: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBudget",
 }));
 export type DescribeBudgetActionError =
@@ -1899,6 +1919,8 @@ export const describeBudgetAction: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBudgetAction",
 }));
 export type DescribeBudgetActionHistoriesError =
@@ -1943,6 +1965,8 @@ export const describeBudgetActionHistories: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBudgetActionHistories",
   pagination: {
     inputToken: "NextToken",
@@ -1991,6 +2015,8 @@ export const describeBudgetActionsForAccount: API.OperationMethod<
     InvalidParameterException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBudgetActionsForAccount",
   pagination: {
     inputToken: "NextToken",
@@ -2041,6 +2067,8 @@ export const describeBudgetActionsForBudget: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBudgetActionsForBudget",
   pagination: {
     inputToken: "NextToken",
@@ -2093,6 +2121,8 @@ export const describeBudgetNotificationsForAccount: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBudgetNotificationsForAccount",
   pagination: {
     inputToken: "NextToken",
@@ -2147,6 +2177,8 @@ export const describeBudgetPerformanceHistory: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBudgetPerformanceHistory",
   pagination: {
     inputToken: "NextToken",
@@ -2201,6 +2233,8 @@ export const describeBudgets: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBudgets",
   pagination: {
     inputToken: "NextToken",
@@ -2253,6 +2287,8 @@ export const describeNotificationsForBudget: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotificationsForBudget",
   pagination: {
     inputToken: "NextToken",
@@ -2305,6 +2341,8 @@ export const describeSubscribersForNotification: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSubscribersForNotification",
   pagination: {
     inputToken: "NextToken",
@@ -2340,6 +2378,8 @@ export const executeBudgetAction: API.OperationMethod<
     ResourceLockedException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteBudgetAction",
 }));
 export type ListTagsForResourceError =
@@ -2367,6 +2407,8 @@ export const listTagsForResource: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2396,6 +2438,8 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2423,6 +2467,8 @@ export const untagResource: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateBudgetError =
@@ -2466,6 +2512,8 @@ export const updateBudget: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBudget",
 }));
 export type UpdateBudgetActionError =
@@ -2495,6 +2543,8 @@ export const updateBudgetAction: API.OperationMethod<
     ResourceLockedException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBudgetAction",
 }));
 export type UpdateNotificationError =
@@ -2524,6 +2574,8 @@ export const updateNotification: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotification",
 }));
 export type UpdateSubscriberError =
@@ -2553,5 +2605,7 @@ export const updateSubscriber: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscriber",
 }));

@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -693,6 +695,8 @@ export const createScalingPlan: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScalingPlan",
 }));
 export type DeleteScalingPlanError =
@@ -724,6 +728,8 @@ export const deleteScalingPlan: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScalingPlan",
 }));
 export type DescribeScalingPlanResourcesError =
@@ -749,6 +755,8 @@ export const describeScalingPlanResources: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScalingPlanResources",
 }));
 export type DescribeScalingPlansError =
@@ -774,6 +782,8 @@ export const describeScalingPlans: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScalingPlans",
 }));
 export type GetScalingPlanResourceForecastDataError =
@@ -796,6 +806,8 @@ export const getScalingPlanResourceForecastData: API.OperationMethod<
   input: GetScalingPlanResourceForecastDataRequest,
   output: GetScalingPlanResourceForecastDataResponse,
   errors: [InternalServiceException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScalingPlanResourceForecastData",
 }));
 export type UpdateScalingPlanError =
@@ -824,5 +836,7 @@ export const updateScalingPlan: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScalingPlan",
 }));

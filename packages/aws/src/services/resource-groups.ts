@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1328,6 +1330,8 @@ export const cancelTagSyncTask: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelTagSyncTask",
 }));
 export type CreateGroupError =
@@ -1365,6 +1369,8 @@ export const createGroup: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
 export type DeleteGroupError =
@@ -1401,6 +1407,8 @@ export const deleteGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
 export type GetAccountSettingsError =
@@ -1428,6 +1436,8 @@ export const getAccountSettings: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountSettings",
 }));
 export type GetGroupError =
@@ -1463,6 +1473,8 @@ export const getGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroup",
 }));
 export type GetGroupConfigurationError =
@@ -1499,6 +1511,8 @@ export const getGroupConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupConfiguration",
 }));
 export type GetGroupQueryError =
@@ -1536,6 +1550,8 @@ export const getGroupQuery: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupQuery",
 }));
 export type GetTagsError =
@@ -1572,6 +1588,8 @@ export const getTags: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTags",
 }));
 export type GetTagSyncTaskError =
@@ -1609,6 +1627,8 @@ export const getTagSyncTask: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTagSyncTask",
 }));
 export type GroupResourcesError =
@@ -1655,6 +1675,8 @@ export const groupResources: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GroupResources",
 }));
 export type ListGroupingStatusesError =
@@ -1698,6 +1720,8 @@ export const listGroupingStatuses: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupingStatuses",
   pagination: {
     inputToken: "NextToken",
@@ -1763,6 +1787,8 @@ export const listGroupResources: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupResources",
   pagination: {
     inputToken: "NextToken",
@@ -1817,6 +1843,8 @@ export const listGroups: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
@@ -1874,6 +1902,8 @@ export const listTagSyncTasks: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagSyncTasks",
   pagination: {
     inputToken: "NextToken",
@@ -1917,6 +1947,8 @@ export const putGroupConfiguration: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutGroupConfiguration",
 }));
 export type SearchResourcesError =
@@ -1975,6 +2007,8 @@ export const searchResources: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchResources",
   pagination: {
     inputToken: "NextToken",
@@ -2028,6 +2062,8 @@ export const startTagSyncTask: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTagSyncTask",
 }));
 export type TagError =
@@ -2069,6 +2105,8 @@ export const tag: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Tag",
 }));
 export type UngroupResourcesError =
@@ -2107,6 +2145,8 @@ export const ungroupResources: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UngroupResources",
 }));
 export type UntagError =
@@ -2142,6 +2182,8 @@ export const untag: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Untag",
 }));
 export type UpdateAccountSettingsError =
@@ -2174,6 +2216,8 @@ export const updateAccountSettings: API.OperationMethod<
     MethodNotAllowedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
 export type UpdateGroupError =
@@ -2210,6 +2254,8 @@ export const updateGroup: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroup",
 }));
 export type UpdateGroupQueryError =
@@ -2246,5 +2292,7 @@ export const updateGroupQuery: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroupQuery",
 }));

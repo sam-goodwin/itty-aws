@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5559,6 +5561,8 @@ export const associateEntitiesToExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateEntitiesToExperience",
 }));
 export type AssociatePersonasToEntitiesError =
@@ -5592,6 +5596,8 @@ export const associatePersonasToEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePersonasToEntities",
 }));
 export type BatchDeleteDocumentError =
@@ -5632,6 +5638,8 @@ export const batchDeleteDocument: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteDocument",
 }));
 export type BatchDeleteFeaturedResultsSetError =
@@ -5661,6 +5669,8 @@ export const batchDeleteFeaturedResultsSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteFeaturedResultsSet",
 }));
 export type BatchGetDocumentStatusError =
@@ -5700,6 +5710,8 @@ export const batchGetDocumentStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetDocumentStatus",
 }));
 export type BatchPutDocumentError =
@@ -5746,6 +5758,8 @@ export const batchPutDocument: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutDocument",
 }));
 export type ClearQuerySuggestionsError =
@@ -5785,6 +5799,8 @@ export const clearQuerySuggestions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ClearQuerySuggestions",
 }));
 export type CreateAccessControlConfigurationError =
@@ -5841,6 +5857,8 @@ export const createAccessControlConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessControlConfiguration",
 }));
 export type CreateDataSourceError =
@@ -5886,6 +5904,8 @@ export const createDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSource",
 }));
 export type CreateExperienceError =
@@ -5920,6 +5940,8 @@ export const createExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExperience",
 }));
 export type CreateFaqError =
@@ -5956,6 +5978,8 @@ export const createFaq: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFaq",
 }));
 export type CreateFeaturedResultsSetError =
@@ -5994,6 +6018,8 @@ export const createFeaturedResultsSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFeaturedResultsSet",
 }));
 export type CreateIndexError =
@@ -6036,6 +6062,8 @@ export const createIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIndex",
 }));
 export type CreateQuerySuggestionsBlockListError =
@@ -6085,6 +6113,8 @@ export const createQuerySuggestionsBlockList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQuerySuggestionsBlockList",
 }));
 export type CreateThesaurusError =
@@ -6121,6 +6151,8 @@ export const createThesaurus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateThesaurus",
 }));
 export type DeleteAccessControlConfigurationError =
@@ -6153,6 +6185,8 @@ export const deleteAccessControlConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessControlConfiguration",
 }));
 export type DeleteDataSourceError =
@@ -6189,6 +6223,8 @@ export const deleteDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataSource",
 }));
 export type DeleteExperienceError =
@@ -6220,6 +6256,8 @@ export const deleteExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExperience",
 }));
 export type DeleteFaqError =
@@ -6249,6 +6287,8 @@ export const deleteFaq: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFaq",
 }));
 export type DeleteIndexError =
@@ -6280,6 +6320,8 @@ export const deleteIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIndex",
 }));
 export type DeletePrincipalMappingError =
@@ -6323,6 +6365,8 @@ export const deletePrincipalMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePrincipalMapping",
 }));
 export type DeleteQuerySuggestionsBlockListError =
@@ -6359,6 +6403,8 @@ export const deleteQuerySuggestionsBlockList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQuerySuggestionsBlockList",
 }));
 export type DeleteThesaurusError =
@@ -6388,6 +6434,8 @@ export const deleteThesaurus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteThesaurus",
 }));
 export type DescribeAccessControlConfigurationError =
@@ -6418,6 +6466,8 @@ export const describeAccessControlConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccessControlConfiguration",
 }));
 export type DescribeDataSourceError =
@@ -6445,6 +6495,8 @@ export const describeDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataSource",
 }));
 export type DescribeExperienceError =
@@ -6475,6 +6527,8 @@ export const describeExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExperience",
 }));
 export type DescribeFaqError =
@@ -6502,6 +6556,8 @@ export const describeFaq: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFaq",
 }));
 export type DescribeFeaturedResultsSetError =
@@ -6531,6 +6587,8 @@ export const describeFeaturedResultsSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFeaturedResultsSet",
 }));
 export type DescribeIndexError =
@@ -6558,6 +6616,8 @@ export const describeIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIndex",
 }));
 export type DescribePrincipalMappingError =
@@ -6592,6 +6652,8 @@ export const describePrincipalMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePrincipalMapping",
 }));
 export type DescribeQuerySuggestionsBlockListError =
@@ -6626,6 +6688,8 @@ export const describeQuerySuggestionsBlockList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQuerySuggestionsBlockList",
 }));
 export type DescribeQuerySuggestionsConfigError =
@@ -6659,6 +6723,8 @@ export const describeQuerySuggestionsConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQuerySuggestionsConfig",
 }));
 export type DescribeThesaurusError =
@@ -6686,6 +6752,8 @@ export const describeThesaurus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeThesaurus",
 }));
 export type DisassociateEntitiesFromExperienceError =
@@ -6717,6 +6785,8 @@ export const disassociateEntitiesFromExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateEntitiesFromExperience",
 }));
 export type DisassociatePersonasFromEntitiesError =
@@ -6748,6 +6818,8 @@ export const disassociatePersonasFromEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociatePersonasFromEntities",
 }));
 export type GetQuerySuggestionsError =
@@ -6782,6 +6854,8 @@ export const getQuerySuggestions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQuerySuggestions",
 }));
 export type GetSnapshotsError =
@@ -6823,6 +6897,8 @@ export const getSnapshots: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSnapshots",
   pagination: {
     inputToken: "NextToken",
@@ -6873,6 +6949,8 @@ export const listAccessControlConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessControlConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -6920,6 +6998,8 @@ export const listDataSources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSources",
   pagination: {
     inputToken: "NextToken",
@@ -6969,6 +7049,8 @@ export const listDataSourceSyncJobs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSourceSyncJobs",
   pagination: {
     inputToken: "NextToken",
@@ -7017,6 +7099,8 @@ export const listEntityPersonas: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntityPersonas",
   pagination: {
     inputToken: "NextToken",
@@ -7068,6 +7152,8 @@ export const listExperienceEntities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExperienceEntities",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -7114,6 +7200,8 @@ export const listExperiences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExperiences",
   pagination: {
     inputToken: "NextToken",
@@ -7161,6 +7249,8 @@ export const listFaqs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFaqs",
   pagination: {
     inputToken: "NextToken",
@@ -7195,6 +7285,8 @@ export const listFeaturedResultsSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFeaturedResultsSets",
 }));
 export type ListGroupsOlderThanOrderingIdError =
@@ -7242,6 +7334,8 @@ export const listGroupsOlderThanOrderingId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupsOlderThanOrderingId",
   pagination: {
     inputToken: "NextToken",
@@ -7287,6 +7381,8 @@ export const listIndices: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndices",
   pagination: {
     inputToken: "NextToken",
@@ -7341,6 +7437,8 @@ export const listQuerySuggestionsBlockLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQuerySuggestionsBlockLists",
   pagination: {
     inputToken: "NextToken",
@@ -7374,6 +7472,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListThesauriError =
@@ -7416,6 +7516,8 @@ export const listThesauri: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListThesauri",
   pagination: {
     inputToken: "NextToken",
@@ -7466,6 +7568,8 @@ export const putPrincipalMapping: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPrincipalMapping",
 }));
 export type QueryError =
@@ -7529,6 +7633,8 @@ export const query: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Query",
 }));
 export type RetrieveError =
@@ -7598,6 +7704,8 @@ export const retrieve: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Retrieve",
 }));
 export type StartDataSourceSyncJobError =
@@ -7635,6 +7743,8 @@ export const startDataSourceSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDataSourceSyncJob",
 }));
 export type StopDataSourceSyncJobError =
@@ -7663,6 +7773,8 @@ export const stopDataSourceSyncJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDataSourceSyncJob",
 }));
 export type SubmitFeedbackError =
@@ -7696,6 +7808,8 @@ export const submitFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitFeedback",
 }));
 export type TagResourceError =
@@ -7724,6 +7838,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -7751,6 +7867,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccessControlConfigurationError =
@@ -7807,6 +7925,8 @@ export const updateAccessControlConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccessControlConfiguration",
 }));
 export type UpdateDataSourceError =
@@ -7836,6 +7956,8 @@ export const updateDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSource",
 }));
 export type UpdateExperienceError =
@@ -7867,6 +7989,8 @@ export const updateExperience: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateExperience",
 }));
 export type UpdateFeaturedResultsSetError =
@@ -7900,6 +8024,8 @@ export const updateFeaturedResultsSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFeaturedResultsSet",
 }));
 export type UpdateIndexError =
@@ -7931,6 +8057,8 @@ export const updateIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIndex",
 }));
 export type UpdateQuerySuggestionsBlockListError =
@@ -7973,6 +8101,8 @@ export const updateQuerySuggestionsBlockList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQuerySuggestionsBlockList",
 }));
 export type UpdateQuerySuggestionsConfigError =
@@ -8017,6 +8147,8 @@ export const updateQuerySuggestionsConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQuerySuggestionsConfig",
 }));
 export type UpdateThesaurusError =
@@ -8046,5 +8178,7 @@ export const updateThesaurus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateThesaurus",
 }));

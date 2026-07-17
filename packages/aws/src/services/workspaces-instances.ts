@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1227,6 +1229,8 @@ export const associateVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateVolume",
 }));
 export type CreateVolumeError =
@@ -1256,6 +1260,8 @@ export const createVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVolume",
 }));
 export type CreateWorkspaceInstanceError =
@@ -1285,6 +1291,8 @@ export const createWorkspaceInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspaceInstance",
 }));
 export type DeleteVolumeError =
@@ -1314,6 +1322,8 @@ export const deleteVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVolume",
 }));
 export type DeleteWorkspaceInstanceError =
@@ -1345,6 +1355,8 @@ export const deleteWorkspaceInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspaceInstance",
 }));
 export type DisassociateVolumeError =
@@ -1374,6 +1386,8 @@ export const disassociateVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateVolume",
 }));
 export type GetWorkspaceInstanceError =
@@ -1401,6 +1415,8 @@ export const getWorkspaceInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkspaceInstance",
 }));
 export type ListInstanceTypesError =
@@ -1441,6 +1457,8 @@ export const listInstanceTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInstanceTypes",
   pagination: {
     inputToken: "NextToken",
@@ -1487,6 +1505,8 @@ export const listRegions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegions",
   pagination: {
     inputToken: "NextToken",
@@ -1520,6 +1540,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWorkspaceInstancesError =
@@ -1560,6 +1582,8 @@ export const listWorkspaceInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspaceInstances",
   pagination: {
     inputToken: "NextToken",
@@ -1593,6 +1617,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1620,5 +1646,7 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

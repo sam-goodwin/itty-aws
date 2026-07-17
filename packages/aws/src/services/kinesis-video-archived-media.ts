@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -651,6 +653,8 @@ export const getClip: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedStreamMediaTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClip",
 }));
 export type GetDASHStreamingSessionURLError =
@@ -806,6 +810,8 @@ export const getDASHStreamingSessionURL: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedStreamMediaTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDASHStreamingSessionURL",
 }));
 export type GetHLSStreamingSessionURLError =
@@ -1001,6 +1007,8 @@ export const getHLSStreamingSessionURL: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedStreamMediaTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHLSStreamingSessionURL",
 }));
 export type GetImagesError =
@@ -1044,6 +1052,8 @@ export const getImages: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImages",
   pagination: {
     inputToken: "NextToken",
@@ -1102,6 +1112,8 @@ export const getMediaForFragmentList: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMediaForFragmentList",
 }));
 export type ListFragmentsError =
@@ -1171,6 +1183,8 @@ export const listFragments: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFragments",
   pagination: {
     inputToken: "NextToken",

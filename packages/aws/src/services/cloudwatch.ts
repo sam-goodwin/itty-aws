@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3016,6 +3018,8 @@ export const deleteAlarmMuteRule: API.OperationMethod<
   input: DeleteAlarmMuteRuleInput,
   output: DeleteAlarmMuteRuleResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlarmMuteRule",
 }));
 export type DeleteAlarmsError = ResourceNotFound | CommonErrors;
@@ -3052,6 +3056,8 @@ export const deleteAlarms: API.OperationMethod<
   input: DeleteAlarmsInput,
   output: DeleteAlarmsResponse,
   errors: [ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlarms",
 }));
 export type DeleteAnomalyDetectorError =
@@ -3081,6 +3087,8 @@ export const deleteAnomalyDetector: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAnomalyDetector",
 }));
 export type DeleteDashboardsError =
@@ -3107,6 +3115,8 @@ export const deleteDashboards: API.OperationMethod<
     InternalServiceFault,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDashboards",
 }));
 export type DeleteInsightRulesError =
@@ -3128,6 +3138,8 @@ export const deleteInsightRules: API.OperationMethod<
   input: DeleteInsightRulesInput,
   output: DeleteInsightRulesOutput,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInsightRules",
 }));
 export type DeleteMetricStreamError =
@@ -3151,6 +3163,8 @@ export const deleteMetricStream: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMetricStream",
 }));
 export type DescribeAlarmContributorsError =
@@ -3169,6 +3183,8 @@ export const describeAlarmContributors: API.OperationMethod<
   input: DescribeAlarmContributorsInput,
   output: DescribeAlarmContributorsOutput,
   errors: [InvalidNextToken, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlarmContributors",
 }));
 export type DescribeAlarmHistoryError = InvalidNextToken | CommonErrors;
@@ -3208,6 +3224,8 @@ export const describeAlarmHistory: API.OperationMethod<
   input: DescribeAlarmHistoryInput,
   output: DescribeAlarmHistoryOutput,
   errors: [InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlarmHistory",
   pagination: {
     inputToken: "NextToken",
@@ -3250,6 +3268,8 @@ export const describeAlarms: API.OperationMethod<
   input: DescribeAlarmsInput,
   output: DescribeAlarmsOutput,
   errors: [InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlarms",
   pagination: {
     inputToken: "NextToken",
@@ -3275,6 +3295,8 @@ export const describeAlarmsForMetric: API.OperationMethod<
   input: DescribeAlarmsForMetricInput,
   output: DescribeAlarmsForMetricOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlarmsForMetric",
 }));
 export type DescribeAnomalyDetectorsError =
@@ -3320,6 +3342,8 @@ export const describeAnomalyDetectors: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAnomalyDetectors",
   pagination: {
     inputToken: "NextToken",
@@ -3359,6 +3383,8 @@ export const describeInsightRules: API.OperationMethod<
   input: DescribeInsightRulesInput,
   output: DescribeInsightRulesOutput,
   errors: [InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInsightRules",
   pagination: {
     inputToken: "NextToken",
@@ -3380,6 +3406,8 @@ export const disableAlarmActions: API.OperationMethod<
   input: DisableAlarmActionsInput,
   output: DisableAlarmActionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAlarmActions",
 }));
 export type DisableInsightRulesError =
@@ -3399,6 +3427,8 @@ export const disableInsightRules: API.OperationMethod<
   input: DisableInsightRulesInput,
   output: DisableInsightRulesOutput,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableInsightRules",
 }));
 export type EnableAlarmActionsError = CommonErrors;
@@ -3414,6 +3444,8 @@ export const enableAlarmActions: API.OperationMethod<
   input: EnableAlarmActionsInput,
   output: EnableAlarmActionsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAlarmActions",
 }));
 export type EnableInsightRulesError =
@@ -3438,6 +3470,8 @@ export const enableInsightRules: API.OperationMethod<
     LimitExceededException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableInsightRules",
 }));
 export type GetAlarmMuteRuleError = ResourceNotFoundException | CommonErrors;
@@ -3467,6 +3501,8 @@ export const getAlarmMuteRule: API.OperationMethod<
   input: GetAlarmMuteRuleInput,
   output: GetAlarmMuteRuleOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAlarmMuteRule",
 }));
 export type GetDashboardError =
@@ -3494,6 +3530,8 @@ export const getDashboard: API.OperationMethod<
     InternalServiceFault,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDashboard",
 }));
 export type GetInsightRuleReportError =
@@ -3548,6 +3586,8 @@ export const getInsightRuleReport: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsightRuleReport",
 }));
 export type GetMetricDataError = InvalidNextToken | CommonErrors;
@@ -3641,6 +3681,8 @@ export const getMetricData: API.OperationMethod<
   input: GetMetricDataInput,
   output: GetMetricDataOutput,
   errors: [InvalidNextToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetricData",
   pagination: {
     inputToken: "NextToken",
@@ -3725,6 +3767,8 @@ export const getMetricStatistics: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetricStatistics",
 }));
 export type GetMetricStreamError =
@@ -3752,6 +3796,8 @@ export const getMetricStream: API.OperationMethod<
     MissingRequiredParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetricStream",
 }));
 export type GetMetricWidgetImageError = CommonErrors;
@@ -3781,6 +3827,8 @@ export const getMetricWidgetImage: API.OperationMethod<
   input: GetMetricWidgetImageInput,
   output: GetMetricWidgetImageOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetricWidgetImage",
 }));
 export type GetOTelEnrichmentError = CommonErrors;
@@ -3799,6 +3847,8 @@ export const getOTelEnrichment: API.OperationMethod<
   input: GetOTelEnrichmentInput,
   output: GetOTelEnrichmentOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOTelEnrichment",
 }));
 export type ListAlarmMuteRulesError =
@@ -3840,6 +3890,8 @@ export const listAlarmMuteRules: API.OperationMethod<
   input: ListAlarmMuteRulesInput,
   output: ListAlarmMuteRulesOutput,
   errors: [InvalidNextToken, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAlarmMuteRules",
   pagination: {
     inputToken: "NextToken",
@@ -3886,6 +3938,8 @@ export const listDashboards: API.OperationMethod<
   input: ListDashboardsInput,
   output: ListDashboardsOutput,
   errors: [InternalServiceFault, InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDashboards",
   pagination: {
     inputToken: "NextToken",
@@ -3930,6 +3984,8 @@ export const listManagedInsightRules: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedInsightRules",
   pagination: {
     inputToken: "NextToken",
@@ -3981,6 +4037,8 @@ export const listMetrics: API.OperationMethod<
   input: ListMetricsInput,
   output: ListMetricsOutput,
   errors: [InternalServiceFault, InvalidParameterValueException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMetrics",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -4022,6 +4080,8 @@ export const listMetricStreams: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMetricStreams",
   pagination: {
     inputToken: "NextToken",
@@ -4051,6 +4111,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutAlarmMuteRuleError = LimitExceededFault | CommonErrors;
@@ -4080,6 +4142,8 @@ export const putAlarmMuteRule: API.OperationMethod<
   input: PutAlarmMuteRuleInput,
   output: PutAlarmMuteRuleResponse,
   errors: [LimitExceededFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAlarmMuteRule",
 }));
 export type PutAnomalyDetectorError =
@@ -4115,6 +4179,8 @@ export const putAnomalyDetector: API.OperationMethod<
     LimitExceededException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAnomalyDetector",
 }));
 export type PutCompositeAlarmError = LimitExceededFault | CommonErrors;
@@ -4185,6 +4251,8 @@ export const putCompositeAlarm: API.OperationMethod<
   input: PutCompositeAlarmInput,
   output: PutCompositeAlarmResponse,
   errors: [LimitExceededFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutCompositeAlarm",
 }));
 export type PutDashboardError =
@@ -4222,6 +4290,8 @@ export const putDashboard: API.OperationMethod<
   input: PutDashboardInput,
   output: PutDashboardOutput,
   errors: [ConflictException, DashboardInvalidInputError, InternalServiceFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDashboard",
 }));
 export type PutInsightRuleError =
@@ -4251,6 +4321,8 @@ export const putInsightRule: API.OperationMethod<
     LimitExceededException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInsightRule",
 }));
 export type PutManagedInsightRulesError =
@@ -4276,6 +4348,8 @@ export const putManagedInsightRules: API.OperationMethod<
   input: PutManagedInsightRulesInput,
   output: PutManagedInsightRulesOutput,
   errors: [InvalidParameterValueException, MissingRequiredParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutManagedInsightRules",
 }));
 export type PutMetricAlarmError = LimitExceededFault | CommonErrors;
@@ -4339,6 +4413,8 @@ export const putMetricAlarm: API.OperationMethod<
   input: PutMetricAlarmInput,
   output: PutMetricAlarmResponse,
   errors: [LimitExceededFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMetricAlarm",
 }));
 export type PutMetricDataError =
@@ -4416,6 +4492,8 @@ export const putMetricData: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMetricData",
 }));
 export type PutMetricStreamError =
@@ -4477,6 +4555,8 @@ export const putMetricStream: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMetricStream",
 }));
 export type SetAlarmStateError =
@@ -4513,6 +4593,8 @@ export const setAlarmState: API.OperationMethod<
   input: SetAlarmStateInput,
   output: SetAlarmStateResponse,
   errors: [InvalidFormatFault, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetAlarmState",
 }));
 export type StartMetricStreamsError =
@@ -4536,6 +4618,8 @@ export const startMetricStreams: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetricStreams",
 }));
 export type StartOTelEnrichmentError = CommonErrors;
@@ -4559,6 +4643,8 @@ export const startOTelEnrichment: API.OperationMethod<
   input: StartOTelEnrichmentInput,
   output: StartOTelEnrichmentOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartOTelEnrichment",
 }));
 export type StopMetricStreamsError =
@@ -4582,6 +4668,8 @@ export const stopMetricStreams: API.OperationMethod<
     InvalidParameterValueException,
     MissingRequiredParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopMetricStreams",
 }));
 export type StopOTelEnrichmentError = CommonErrors;
@@ -4600,6 +4688,8 @@ export const stopOTelEnrichment: API.OperationMethod<
   input: StopOTelEnrichmentInput,
   output: StopOTelEnrichmentOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopOTelEnrichment",
 }));
 export type TagResourceError =
@@ -4644,6 +4734,8 @@ export const tagResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4671,5 +4763,7 @@ export const untagResource: API.OperationMethod<
     InvalidParameterValueException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

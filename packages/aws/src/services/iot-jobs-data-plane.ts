@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -494,6 +496,8 @@ export const describeJobExecution: API.OperationMethod<
     TerminalStateException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobExecution",
 }));
 export type GetPendingJobExecutionsError =
@@ -523,6 +527,8 @@ export const getPendingJobExecutions: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPendingJobExecutions",
 }));
 export type StartCommandExecutionError =
@@ -553,6 +559,8 @@ export const startCommandExecution: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCommandExecution",
 }));
 export type StartNextPendingJobExecutionError =
@@ -583,6 +591,8 @@ export const startNextPendingJobExecution: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNextPendingJobExecution",
 }));
 export type UpdateJobExecutionError =
@@ -614,5 +624,7 @@ export const updateJobExecution: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJobExecution",
 }));

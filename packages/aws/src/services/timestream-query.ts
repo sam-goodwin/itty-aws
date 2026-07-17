@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1276,6 +1278,8 @@ export const cancelQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelQuery",
 }));
 export type CreateScheduledQueryError =
@@ -1311,6 +1315,8 @@ export const createScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScheduledQuery",
 }));
 export type DeleteScheduledQueryError =
@@ -1340,6 +1346,8 @@ export const deleteScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScheduledQuery",
 }));
 export type DescribeAccountSettingsError =
@@ -1367,6 +1375,8 @@ export const describeAccountSettings: API.OperationMethod<
     InvalidEndpointException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountSettings",
 }));
 export type DescribeEndpointsError =
@@ -1401,6 +1411,8 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoints",
 }));
 export type DescribeScheduledQueryError =
@@ -1430,6 +1442,8 @@ export const describeScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScheduledQuery",
 }));
 export type ExecuteScheduledQueryError =
@@ -1461,6 +1475,8 @@ export const executeScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteScheduledQuery",
 }));
 export type ListScheduledQueriesError =
@@ -1504,6 +1520,8 @@ export const listScheduledQueries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScheduledQueries",
   pagination: {
     inputToken: "NextToken",
@@ -1550,6 +1568,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -1585,6 +1605,8 @@ export const prepareQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PrepareQuery",
 }));
 export type QueryError =
@@ -1660,6 +1682,8 @@ export const query: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Query",
   pagination: {
     inputToken: "NextToken",
@@ -1695,6 +1719,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1720,6 +1746,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccountSettingsError =
@@ -1749,6 +1777,8 @@ export const updateAccountSettings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
 export type UpdateScheduledQueryError =
@@ -1778,5 +1808,7 @@ export const updateScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScheduledQuery",
 }));

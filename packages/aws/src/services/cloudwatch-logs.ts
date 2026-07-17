@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -6530,6 +6532,8 @@ export const associateKmsKey: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateKmsKey",
 }));
 export type AssociateSourceToS3TableIntegrationError =
@@ -6559,6 +6563,8 @@ export const associateSourceToS3TableIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSourceToS3TableIntegration",
 }));
 export type CancelExportTaskError =
@@ -6586,6 +6592,8 @@ export const cancelExportTask: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelExportTask",
 }));
 export type CancelImportTaskError =
@@ -6613,6 +6621,8 @@ export const cancelImportTask: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelImportTask",
 }));
 export type CreateDeliveryError =
@@ -6673,6 +6683,8 @@ export const createDelivery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDelivery",
 }));
 export type CreateExportTaskError =
@@ -6729,6 +6741,8 @@ export const createExportTask: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExportTask",
 }));
 export type CreateImportTaskError =
@@ -6794,6 +6808,8 @@ export const createImportTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImportTask",
 }));
 export type CreateLogAnomalyDetectorError =
@@ -6848,6 +6864,8 @@ export const createLogAnomalyDetector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLogAnomalyDetector",
 }));
 export type CreateLogGroupError =
@@ -6905,6 +6923,8 @@ export const createLogGroup: API.OperationMethod<
     ResourceAlreadyExistsException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLogGroup",
 }));
 export type CreateLogStreamError =
@@ -6944,6 +6964,8 @@ export const createLogStream: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLogStream",
 }));
 export type CreateLookupTableError =
@@ -6978,6 +7000,8 @@ export const createLookupTable: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLookupTable",
 }));
 export type CreateScheduledQueryError =
@@ -7012,6 +7036,8 @@ export const createScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScheduledQuery",
 }));
 export type DeleteAccountPolicyError =
@@ -7066,6 +7092,8 @@ export const deleteAccountPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountPolicy",
 }));
 export type DeleteDataProtectionPolicyError =
@@ -7093,6 +7121,8 @@ export const deleteDataProtectionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataProtectionPolicy",
 }));
 export type DeleteDeliveryError =
@@ -7126,6 +7156,8 @@ export const deleteDelivery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDelivery",
 }));
 export type DeleteDeliveryDestinationError =
@@ -7161,6 +7193,8 @@ export const deleteDeliveryDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeliveryDestination",
 }));
 export type DeleteDeliveryDestinationPolicyError =
@@ -7187,6 +7221,8 @@ export const deleteDeliveryDestinationPolicy: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeliveryDestinationPolicy",
 }));
 export type DeleteDeliverySourceError =
@@ -7222,6 +7258,8 @@ export const deleteDeliverySource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeliverySource",
 }));
 export type DeleteDestinationError =
@@ -7249,6 +7287,8 @@ export const deleteDestination: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDestination",
 }));
 export type DeleteIndexPolicyError =
@@ -7290,6 +7330,8 @@ export const deleteIndexPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIndexPolicy",
 }));
 export type DeleteIntegrationError =
@@ -7320,6 +7362,8 @@ export const deleteIntegration: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegration",
 }));
 export type DeleteLogAnomalyDetectorError =
@@ -7345,6 +7389,8 @@ export const deleteLogAnomalyDetector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLogAnomalyDetector",
 }));
 export type DeleteLogGroupError =
@@ -7373,6 +7419,8 @@ export const deleteLogGroup: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLogGroup",
 }));
 export type DeleteLogStreamError =
@@ -7401,6 +7449,8 @@ export const deleteLogStream: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLogStream",
 }));
 export type DeleteLookupTableError =
@@ -7429,6 +7479,8 @@ export const deleteLookupTable: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLookupTable",
 }));
 export type DeleteMetricFilterError =
@@ -7454,6 +7506,8 @@ export const deleteMetricFilter: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMetricFilter",
 }));
 export type DeleteQueryDefinitionError =
@@ -7483,6 +7537,8 @@ export const deleteQueryDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueryDefinition",
 }));
 export type DeleteResourcePolicyError =
@@ -7509,6 +7565,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteRetentionPolicyError =
@@ -7537,6 +7595,8 @@ export const deleteRetentionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRetentionPolicy",
 }));
 export type DeleteScheduledQueryError =
@@ -7565,6 +7625,8 @@ export const deleteScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScheduledQuery",
 }));
 export type DeleteSubscriptionFilterError =
@@ -7590,6 +7652,8 @@ export const deleteSubscriptionFilter: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubscriptionFilter",
 }));
 export type DeleteTransformerError =
@@ -7623,6 +7687,8 @@ export const deleteTransformer: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransformer",
 }));
 export type DescribeAccountPoliciesError =
@@ -7665,6 +7731,8 @@ export const describeAccountPolicies: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountPolicies",
 }));
 export type DescribeConfigurationTemplatesError =
@@ -7707,6 +7775,8 @@ export const describeConfigurationTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -7765,6 +7835,8 @@ export const describeDeliveries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeliveries",
   pagination: {
     inputToken: "nextToken",
@@ -7812,6 +7884,8 @@ export const describeDeliveryDestinations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeliveryDestinations",
   pagination: {
     inputToken: "nextToken",
@@ -7858,6 +7932,8 @@ export const describeDeliverySources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeliverySources",
   pagination: {
     inputToken: "nextToken",
@@ -7898,6 +7974,8 @@ export const describeDestinations: API.OperationMethod<
   input: DescribeDestinationsRequest,
   output: DescribeDestinationsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDestinations",
   pagination: {
     inputToken: "nextToken",
@@ -7923,6 +8001,8 @@ export const describeExportTasks: API.OperationMethod<
   input: DescribeExportTasksRequest,
   output: DescribeExportTasksResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExportTasks",
 }));
 export type DescribeFieldIndexesError =
@@ -7951,6 +8031,8 @@ export const describeFieldIndexes: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFieldIndexes",
 }));
 export type DescribeImportTaskBatchesError =
@@ -7979,6 +8061,8 @@ export const describeImportTaskBatches: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImportTaskBatches",
 }));
 export type DescribeImportTasksError =
@@ -8006,6 +8090,8 @@ export const describeImportTasks: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImportTasks",
 }));
 export type DescribeIndexPoliciesError =
@@ -8042,6 +8128,8 @@ export const describeIndexPolicies: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIndexPolicies",
 }));
 export type DescribeLogGroupsError =
@@ -8091,6 +8179,8 @@ export const describeLogGroups: API.OperationMethod<
   input: DescribeLogGroupsRequest,
   output: DescribeLogGroupsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLogGroups",
   pagination: {
     inputToken: "nextToken",
@@ -8147,6 +8237,8 @@ export const describeLogStreams: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLogStreams",
   pagination: {
     inputToken: "nextToken",
@@ -8179,6 +8271,8 @@ export const describeLookupTables: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLookupTables",
 }));
 export type DescribeMetricFiltersError =
@@ -8219,6 +8313,8 @@ export const describeMetricFilters: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMetricFilters",
   pagination: {
     inputToken: "nextToken",
@@ -8255,6 +8351,8 @@ export const describeQueries: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQueries",
 }));
 export type DescribeQueryDefinitionsError =
@@ -8278,6 +8376,8 @@ export const describeQueryDefinitions: API.OperationMethod<
   input: DescribeQueryDefinitionsRequest,
   output: DescribeQueryDefinitionsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQueryDefinitions",
 }));
 export type DescribeResourcePoliciesError =
@@ -8296,6 +8396,8 @@ export const describeResourcePolicies: API.OperationMethod<
   input: DescribeResourcePoliciesRequest,
   output: DescribeResourcePoliciesResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourcePolicies",
 }));
 export type DescribeSubscriptionFiltersError =
@@ -8336,6 +8438,8 @@ export const describeSubscriptionFilters: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSubscriptionFilters",
   pagination: {
     inputToken: "nextToken",
@@ -8387,6 +8491,8 @@ export const disassociateKmsKey: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateKmsKey",
 }));
 export type DisassociateSourceFromS3TableIntegrationError =
@@ -8415,6 +8521,8 @@ export const disassociateSourceFromS3TableIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSourceFromS3TableIntegration",
 }));
 export type FilterLogEventsError =
@@ -8496,6 +8604,8 @@ export const filterLogEvents: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FilterLogEvents",
   pagination: {
     inputToken: "nextToken",
@@ -8526,6 +8636,8 @@ export const getDataProtectionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataProtectionPolicy",
 }));
 export type GetDeliveryError =
@@ -8567,6 +8679,8 @@ export const getDelivery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDelivery",
 }));
 export type GetDeliveryDestinationError =
@@ -8594,6 +8708,8 @@ export const getDeliveryDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeliveryDestination",
 }));
 export type GetDeliveryDestinationPolicyError =
@@ -8618,6 +8734,8 @@ export const getDeliveryDestinationPolicy: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeliveryDestinationPolicy",
 }));
 export type GetDeliverySourceError =
@@ -8645,6 +8763,8 @@ export const getDeliverySource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeliverySource",
 }));
 export type GetIntegrationError =
@@ -8668,6 +8788,8 @@ export const getIntegration: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegration",
 }));
 export type GetLogAnomalyDetectorError =
@@ -8693,6 +8815,8 @@ export const getLogAnomalyDetector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLogAnomalyDetector",
 }));
 export type GetLogEventsError =
@@ -8763,6 +8887,8 @@ export const getLogEvents: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLogEvents",
   pagination: {
     inputToken: "nextToken",
@@ -8795,6 +8921,8 @@ export const getLogFields: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLogFields",
 }));
 export type GetLogGroupFieldsError =
@@ -8841,6 +8969,8 @@ export const getLogGroupFields: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLogGroupFields",
 }));
 export type GetLogObjectError =
@@ -8883,6 +9013,8 @@ export const getLogObject: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLogObject",
 }));
 export type GetLogRecordError =
@@ -8912,6 +9044,8 @@ export const getLogRecord: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLogRecord",
 }));
 export type GetLookupTableError =
@@ -8937,6 +9071,8 @@ export const getLookupTable: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLookupTable",
 }));
 export type GetQueryResultsError =
@@ -8983,6 +9119,8 @@ export const getQueryResults: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryResults",
 }));
 export type GetScheduledQueryError =
@@ -9011,6 +9149,8 @@ export const getScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScheduledQuery",
 }));
 export type GetScheduledQueryHistoryError =
@@ -9054,6 +9194,8 @@ export const getScheduledQueryHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScheduledQueryHistory",
   pagination: {
     inputToken: "nextToken",
@@ -9088,6 +9230,8 @@ export const getTransformer: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransformer",
 }));
 export type ListAggregateLogGroupSummariesError =
@@ -9137,6 +9281,8 @@ export const listAggregateLogGroupSummaries: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAggregateLogGroupSummaries",
   pagination: {
     inputToken: "nextToken",
@@ -9185,6 +9331,8 @@ export const listAnomalies: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnomalies",
   pagination: {
     inputToken: "nextToken",
@@ -9211,6 +9359,8 @@ export const listIntegrations: API.OperationMethod<
   input: ListIntegrationsRequest,
   output: ListIntegrationsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntegrations",
 }));
 export type ListLogAnomalyDetectorsError =
@@ -9251,6 +9401,8 @@ export const listLogAnomalyDetectors: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogAnomalyDetectors",
   pagination: {
     inputToken: "nextToken",
@@ -9288,6 +9440,8 @@ export const listLogGroups: API.OperationMethod<
   input: ListLogGroupsRequest,
   output: ListLogGroupsResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogGroups",
 }));
 export type ListLogGroupsForQueryError =
@@ -9334,6 +9488,8 @@ export const listLogGroupsForQuery: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLogGroupsForQuery",
   pagination: {
     inputToken: "nextToken",
@@ -9381,6 +9537,8 @@ export const listScheduledQueries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScheduledQueries",
   pagination: {
     inputToken: "nextToken",
@@ -9430,6 +9588,8 @@ export const listSourcesForS3TableIntegration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSourcesForS3TableIntegration",
   pagination: {
     inputToken: "nextToken",
@@ -9460,6 +9620,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTagsLogGroupError =
@@ -9481,6 +9643,8 @@ export const listTagsLogGroup: API.OperationMethod<
   input: ListTagsLogGroupRequest,
   output: ListTagsLogGroupResponse,
   errors: [ResourceNotFoundException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsLogGroup",
 }));
 export type PutAccountPolicyError =
@@ -9823,6 +9987,8 @@ export const putAccountPolicy: API.OperationMethod<
     OperationAbortedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountPolicy",
 }));
 export type PutBearerTokenAuthenticationError =
@@ -9856,6 +10022,8 @@ export const putBearerTokenAuthentication: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBearerTokenAuthentication",
 }));
 export type PutDataProtectionPolicyError =
@@ -9906,6 +10074,8 @@ export const putDataProtectionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDataProtectionPolicy",
 }));
 export type PutDeliveryDestinationError =
@@ -9968,6 +10138,8 @@ export const putDeliveryDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDeliveryDestination",
 }));
 export type PutDeliveryDestinationPolicyError =
@@ -10016,6 +10188,8 @@ export const putDeliveryDestinationPolicy: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDeliveryDestinationPolicy",
 }));
 export type PutDeliverySourceError =
@@ -10074,6 +10248,8 @@ export const putDeliverySource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDeliverySource",
 }));
 export type PutDestinationError =
@@ -10110,6 +10286,8 @@ export const putDestination: API.OperationMethod<
     OperationAbortedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDestination",
 }));
 export type PutDestinationPolicyError =
@@ -10136,6 +10314,8 @@ export const putDestinationPolicy: API.OperationMethod<
     OperationAbortedException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDestinationPolicy",
 }));
 export type PutIndexPolicyError =
@@ -10223,6 +10403,8 @@ export const putIndexPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutIndexPolicy",
 }));
 export type PutIntegrationError =
@@ -10257,6 +10439,8 @@ export const putIntegration: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutIntegration",
 }));
 export type PutLogEventsError =
@@ -10326,6 +10510,8 @@ export const putLogEvents: API.OperationMethod<
     ServiceUnavailableException,
     UnrecognizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLogEvents",
 }));
 export type PutLogGroupDeletionProtectionError =
@@ -10359,6 +10545,8 @@ export const putLogGroupDeletionProtection: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLogGroupDeletionProtection",
 }));
 export type PutMetricFilterError =
@@ -10414,6 +10602,8 @@ export const putMetricFilter: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMetricFilter",
 }));
 export type PutQueryDefinitionError =
@@ -10451,6 +10641,8 @@ export const putQueryDefinition: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutQueryDefinition",
 }));
 export type PutResourcePolicyError =
@@ -10495,6 +10687,8 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type PutRetentionPolicyError =
@@ -10540,6 +10734,8 @@ export const putRetentionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRetentionPolicy",
 }));
 export type PutSubscriptionFilterError =
@@ -10601,6 +10797,8 @@ export const putSubscriptionFilter: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSubscriptionFilter",
 }));
 export type PutTransformerError =
@@ -10660,6 +10858,8 @@ export const putTransformer: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTransformer",
 }));
 export type StartLiveTailError =
@@ -10729,6 +10929,8 @@ export const startLiveTail: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartLiveTail",
 }));
 export type StartQueryError =
@@ -10800,6 +11002,8 @@ export const startQuery: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQuery",
 }));
 export type StopQueryError =
@@ -10830,6 +11034,8 @@ export const stopQuery: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopQuery",
 }));
 export type TagLogGroupError =
@@ -10863,6 +11069,8 @@ export const tagLogGroup: API.OperationMethod<
   input: TagLogGroupRequest,
   output: TagLogGroupResponse,
   errors: [InvalidParameterException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagLogGroup",
 }));
 export type TagResourceError =
@@ -10904,6 +11112,8 @@ export const tagResource: API.OperationMethod<
     ServiceUnavailableException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestMetricFilterError =
@@ -10923,6 +11133,8 @@ export const testMetricFilter: API.OperationMethod<
   input: TestMetricFilterRequest,
   output: TestMetricFilterResponse,
   errors: [InvalidParameterException, ServiceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestMetricFilter",
 }));
 export type TestTransformerError =
@@ -10948,6 +11160,8 @@ export const testTransformer: API.OperationMethod<
     InvalidParameterException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestTransformer",
 }));
 export type UntagLogGroupError = ResourceNotFoundException | CommonErrors;
@@ -10972,6 +11186,8 @@ export const untagLogGroup: API.OperationMethod<
   input: UntagLogGroupRequest,
   output: UntagLogGroupResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagLogGroup",
 }));
 export type UntagResourceError =
@@ -10995,6 +11211,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAnomalyError =
@@ -11031,6 +11249,8 @@ export const updateAnomaly: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAnomaly",
 }));
 export type UpdateDeliveryConfigurationError =
@@ -11062,6 +11282,8 @@ export const updateDeliveryConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeliveryConfiguration",
 }));
 export type UpdateLogAnomalyDetectorError =
@@ -11087,6 +11309,8 @@ export const updateLogAnomalyDetector: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLogAnomalyDetector",
 }));
 export type UpdateLookupTableError =
@@ -11118,6 +11342,8 @@ export const updateLookupTable: API.OperationMethod<
     ServiceUnavailableException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLookupTable",
 }));
 export type UpdateScheduledQueryError =
@@ -11146,5 +11372,7 @@ export const updateScheduledQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScheduledQuery",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2172,6 +2174,8 @@ export const getListing: API.OperationMethod<
   input: GetListingInput,
   output: GetListingOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetListing",
 }));
 export type GetOfferError = ResourceNotFoundException | CommonErrors;
@@ -2187,6 +2191,8 @@ export const getOffer: API.OperationMethod<
   input: GetOfferInput,
   output: GetOfferOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOffer",
 }));
 export type GetOfferSetError = ResourceNotFoundException | CommonErrors;
@@ -2202,6 +2208,8 @@ export const getOfferSet: API.OperationMethod<
   input: GetOfferSetInput,
   output: GetOfferSetOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOfferSet",
 }));
 export type GetOfferTermsError = ResourceNotFoundException | CommonErrors;
@@ -2232,6 +2240,8 @@ export const getOfferTerms: API.OperationMethod<
   input: GetOfferTermsInput,
   output: GetOfferTermsOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOfferTerms",
   pagination: {
     inputToken: "nextToken",
@@ -2252,6 +2262,8 @@ export const getProduct: API.OperationMethod<
   input: GetProductInput,
   output: GetProductOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProduct",
 }));
 export type ListFulfillmentOptionsError =
@@ -2284,6 +2296,8 @@ export const listFulfillmentOptions: API.OperationMethod<
   input: ListFulfillmentOptionsInput,
   output: ListFulfillmentOptionsOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFulfillmentOptions",
   pagination: {
     inputToken: "nextToken",
@@ -2322,6 +2336,8 @@ export const listPurchaseOptions: API.OperationMethod<
   input: ListPurchaseOptionsInput,
   output: ListPurchaseOptionsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPurchaseOptions",
   pagination: {
     inputToken: "nextToken",
@@ -2357,6 +2373,8 @@ export const searchFacets: API.OperationMethod<
   input: SearchFacetsInput,
   output: SearchFacetsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchFacets",
   pagination: {
     inputToken: "nextToken",
@@ -2392,6 +2410,8 @@ export const searchListings: API.OperationMethod<
   input: SearchListingsInput,
   output: SearchListingsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchListings",
   pagination: {
     inputToken: "nextToken",

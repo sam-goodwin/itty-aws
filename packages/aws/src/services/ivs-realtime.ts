@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2526,6 +2528,8 @@ export const createEncoderConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEncoderConfiguration",
 }));
 export type CreateIngestConfigurationError =
@@ -2551,6 +2555,8 @@ export const createIngestConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIngestConfiguration",
 }));
 export type CreateParticipantTokenError =
@@ -2583,6 +2589,8 @@ export const createParticipantToken: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateParticipantToken",
 }));
 export type CreateStageError =
@@ -2608,6 +2616,8 @@ export const createStage: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStage",
 }));
 export type CreateStorageConfigurationError =
@@ -2641,6 +2651,8 @@ export const createStorageConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStorageConfiguration",
 }));
 export type DeleteEncoderConfigurationError =
@@ -2671,6 +2683,8 @@ export const deleteEncoderConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEncoderConfiguration",
 }));
 export type DeleteIngestConfigurationError =
@@ -2698,6 +2712,8 @@ export const deleteIngestConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIngestConfiguration",
 }));
 export type DeletePublicKeyError =
@@ -2726,6 +2742,8 @@ export const deletePublicKey: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePublicKey",
 }));
 export type DeleteStageError =
@@ -2755,6 +2773,8 @@ export const deleteStage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStage",
 }));
 export type DeleteStorageConfigurationError =
@@ -2788,6 +2808,8 @@ export const deleteStorageConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStorageConfiguration",
 }));
 export type DisconnectParticipantError =
@@ -2815,6 +2837,8 @@ export const disconnectParticipant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisconnectParticipant",
 }));
 export type GetCompositionError =
@@ -2844,6 +2868,8 @@ export const getComposition: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComposition",
 }));
 export type GetEncoderConfigurationError =
@@ -2873,6 +2899,8 @@ export const getEncoderConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEncoderConfiguration",
 }));
 export type GetIngestConfigurationError =
@@ -2896,6 +2924,8 @@ export const getIngestConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIngestConfiguration",
 }));
 export type GetParticipantError =
@@ -2919,6 +2949,8 @@ export const getParticipant: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetParticipant",
 }));
 export type GetPublicKeyError =
@@ -2942,6 +2974,8 @@ export const getPublicKey: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPublicKey",
 }));
 export type GetStageError =
@@ -2965,6 +2999,8 @@ export const getStage: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStage",
 }));
 export type GetStageSessionError =
@@ -2988,6 +3024,8 @@ export const getStageSession: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStageSession",
 }));
 export type GetStorageConfigurationError =
@@ -3017,6 +3055,8 @@ export const getStorageConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStorageConfiguration",
 }));
 export type ImportPublicKeyError =
@@ -3044,6 +3084,8 @@ export const importPublicKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportPublicKey",
 }));
 export type ListCompositionsError =
@@ -3087,6 +3129,8 @@ export const listCompositions: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCompositions",
   pagination: {
     inputToken: "nextToken",
@@ -3135,6 +3179,8 @@ export const listEncoderConfigurations: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEncoderConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -3173,6 +3219,8 @@ export const listIngestConfigurations: API.OperationMethod<
   input: ListIngestConfigurationsRequest,
   output: ListIngestConfigurationsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIngestConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -3213,6 +3261,8 @@ export const listParticipantEvents: API.OperationMethod<
   input: ListParticipantEventsRequest,
   output: ListParticipantEventsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListParticipantEvents",
   pagination: {
     inputToken: "nextToken",
@@ -3251,6 +3301,8 @@ export const listParticipantReplicas: API.OperationMethod<
   input: ListParticipantReplicasRequest,
   output: ListParticipantReplicasResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListParticipantReplicas",
   pagination: {
     inputToken: "nextToken",
@@ -3290,6 +3342,8 @@ export const listParticipants: API.OperationMethod<
   input: ListParticipantsRequest,
   output: ListParticipantsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListParticipants",
   pagination: {
     inputToken: "nextToken",
@@ -3328,6 +3382,8 @@ export const listPublicKeys: API.OperationMethod<
   input: ListPublicKeysRequest,
   output: ListPublicKeysResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPublicKeys",
   pagination: {
     inputToken: "nextToken",
@@ -3369,6 +3425,8 @@ export const listStages: API.OperationMethod<
   input: ListStagesRequest,
   output: ListStagesResponse,
   errors: [AccessDeniedException, ConflictException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStages",
   pagination: {
     inputToken: "nextToken",
@@ -3407,6 +3465,8 @@ export const listStageSessions: API.OperationMethod<
   input: ListStageSessionsRequest,
   output: ListStageSessionsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStageSessions",
   pagination: {
     inputToken: "nextToken",
@@ -3455,6 +3515,8 @@ export const listStorageConfigurations: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStorageConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -3483,6 +3545,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartCompositionError =
@@ -3531,6 +3595,8 @@ export const startComposition: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartComposition",
 }));
 export type StartParticipantReplicationError =
@@ -3562,6 +3628,8 @@ export const startParticipantReplication: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartParticipantReplication",
 }));
 export type StopCompositionError =
@@ -3592,6 +3660,8 @@ export const stopComposition: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopComposition",
 }));
 export type StopParticipantReplicationError =
@@ -3617,6 +3687,8 @@ export const stopParticipantReplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopParticipantReplication",
 }));
 export type TagResourceError =
@@ -3640,6 +3712,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3663,6 +3737,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateIngestConfigurationError =
@@ -3690,6 +3766,8 @@ export const updateIngestConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIngestConfiguration",
 }));
 export type UpdateStageError =
@@ -3719,5 +3797,7 @@ export const updateStage: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStage",
 }));

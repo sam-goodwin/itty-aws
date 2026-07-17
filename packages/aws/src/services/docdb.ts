@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3590,6 +3592,8 @@ export const addSourceIdentifierToSubscription: API.OperationMethod<
   input: AddSourceIdentifierToSubscriptionMessage,
   output: AddSourceIdentifierToSubscriptionResult,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddSourceIdentifierToSubscription",
 }));
 export type AddTagsToResourceError =
@@ -3616,6 +3620,8 @@ export const addTagsToResource: API.OperationMethod<
     DBInstanceNotFoundFault,
     DBSnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToResource",
 }));
 export type ApplyPendingMaintenanceActionError =
@@ -3640,6 +3646,8 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
     InvalidDBInstanceStateFault,
     ResourceNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplyPendingMaintenanceAction",
 }));
 export type CopyDBClusterParameterGroupError =
@@ -3663,6 +3671,8 @@ export const copyDBClusterParameterGroup: API.OperationMethod<
     DBParameterGroupNotFoundFault,
     DBParameterGroupQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyDBClusterParameterGroup",
 }));
 export type CopyDBClusterSnapshotError =
@@ -3703,6 +3713,8 @@ export const copyDBClusterSnapshot: API.OperationMethod<
     KMSKeyNotAccessibleFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyDBClusterSnapshot",
 }));
 export type CreateDBClusterError =
@@ -3756,6 +3768,8 @@ export const createDBCluster: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBCluster",
 }));
 export type CreateDBClusterParameterGroupError =
@@ -3796,6 +3810,8 @@ export const createDBClusterParameterGroup: API.OperationMethod<
     DBParameterGroupAlreadyExistsFault,
     DBParameterGroupQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBClusterParameterGroup",
 }));
 export type CreateDBClusterSnapshotError =
@@ -3823,6 +3839,8 @@ export const createDBClusterSnapshot: API.OperationMethod<
     InvalidDBClusterStateFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBClusterSnapshot",
 }));
 export type CreateDBInstanceError =
@@ -3870,6 +3888,8 @@ export const createDBInstance: API.OperationMethod<
     StorageQuotaExceededFault,
     StorageTypeNotSupportedFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBInstance",
 }));
 export type CreateDBSubnetGroupError =
@@ -3898,6 +3918,8 @@ export const createDBSubnetGroup: API.OperationMethod<
     DBSubnetQuotaExceededFault,
     InvalidSubnet,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDBSubnetGroup",
 }));
 export type CreateEventSubscriptionError =
@@ -3933,6 +3955,8 @@ export const createEventSubscription: API.OperationMethod<
     SubscriptionAlreadyExistFault,
     SubscriptionCategoryNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventSubscription",
 }));
 export type CreateGlobalClusterError =
@@ -3964,6 +3988,8 @@ export const createGlobalCluster: API.OperationMethod<
     GlobalClusterQuotaExceededFault,
     InvalidDBClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlobalCluster",
 }));
 export type DeleteDBClusterError =
@@ -3991,6 +4017,8 @@ export const deleteDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBCluster",
 }));
 export type DeleteDBClusterParameterGroupError =
@@ -4009,6 +4037,8 @@ export const deleteDBClusterParameterGroup: API.OperationMethod<
   input: DeleteDBClusterParameterGroupMessage,
   output: DeleteDBClusterParameterGroupResponse,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBClusterParameterGroup",
 }));
 export type DeleteDBClusterSnapshotError =
@@ -4029,6 +4059,8 @@ export const deleteDBClusterSnapshot: API.OperationMethod<
   input: DeleteDBClusterSnapshotMessage,
   output: DeleteDBClusterSnapshotResult,
   errors: [DBClusterSnapshotNotFoundFault, InvalidDBClusterSnapshotStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBClusterSnapshot",
 }));
 export type DeleteDBInstanceError =
@@ -4056,6 +4088,8 @@ export const deleteDBInstance: API.OperationMethod<
     InvalidDBInstanceStateFault,
     SnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBInstance",
 }));
 export type DeleteDBSubnetGroupError =
@@ -4082,6 +4116,8 @@ export const deleteDBSubnetGroup: API.OperationMethod<
     InvalidDBSubnetGroupStateFault,
     InvalidDBSubnetStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDBSubnetGroup",
 }));
 export type DeleteEventSubscriptionError =
@@ -4100,6 +4136,8 @@ export const deleteEventSubscription: API.OperationMethod<
   input: DeleteEventSubscriptionMessage,
   output: DeleteEventSubscriptionResult,
   errors: [InvalidEventSubscriptionStateFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventSubscription",
 }));
 export type DeleteGlobalClusterError =
@@ -4120,6 +4158,8 @@ export const deleteGlobalCluster: API.OperationMethod<
   input: DeleteGlobalClusterMessage,
   output: DeleteGlobalClusterResult,
   errors: [GlobalClusterNotFoundFault, InvalidGlobalClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGlobalCluster",
 }));
 export type DescribeCertificatesError = CertificateNotFoundFault | CommonErrors;
@@ -4150,6 +4190,8 @@ export const describeCertificates: API.OperationMethod<
   input: DescribeCertificatesMessage,
   output: CertificateMessage,
   errors: [CertificateNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCertificates",
   pagination: {
     inputToken: "Marker",
@@ -4188,6 +4230,8 @@ export const describeDBClusterParameterGroups: API.OperationMethod<
   input: DescribeDBClusterParameterGroupsMessage,
   output: DBClusterParameterGroupsMessage,
   errors: [DBParameterGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusterParameterGroups",
   pagination: {
     inputToken: "Marker",
@@ -4227,6 +4271,8 @@ export const describeDBClusterParameters: API.OperationMethod<
   input: DescribeDBClusterParametersMessage,
   output: DBClusterParameterGroupDetails,
   errors: [DBParameterGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusterParameters",
   pagination: {
     inputToken: "Marker",
@@ -4268,6 +4314,8 @@ export const describeDBClusters: API.OperationMethod<
   input: DescribeDBClustersMessage,
   output: DBClusterMessage,
   errors: [DBClusterNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusters",
   pagination: {
     inputToken: "Marker",
@@ -4295,6 +4343,8 @@ export const describeDBClusterSnapshotAttributes: API.OperationMethod<
   input: DescribeDBClusterSnapshotAttributesMessage,
   output: DescribeDBClusterSnapshotAttributesResult,
   errors: [DBClusterSnapshotNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusterSnapshotAttributes",
 }));
 export type DescribeDBClusterSnapshotsError =
@@ -4327,6 +4377,8 @@ export const describeDBClusterSnapshots: API.OperationMethod<
   input: DescribeDBClusterSnapshotsMessage,
   output: DBClusterSnapshotMessage,
   errors: [DBClusterSnapshotNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBClusterSnapshots",
   pagination: {
     inputToken: "Marker",
@@ -4363,6 +4415,8 @@ export const describeDBEngineVersions: API.OperationMethod<
   input: DescribeDBEngineVersionsMessage,
   output: DBEngineVersionMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBEngineVersions",
   pagination: {
     inputToken: "Marker",
@@ -4399,6 +4453,8 @@ export const describeDBInstances: API.OperationMethod<
   input: DescribeDBInstancesMessage,
   output: DBInstanceMessage,
   errors: [DBInstanceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBInstances",
   pagination: {
     inputToken: "Marker",
@@ -4438,6 +4494,8 @@ export const describeDBSubnetGroups: API.OperationMethod<
   input: DescribeDBSubnetGroupsMessage,
   output: DBSubnetGroupMessage,
   errors: [DBSubnetGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDBSubnetGroups",
   pagination: {
     inputToken: "Marker",
@@ -4460,6 +4518,8 @@ export const describeEngineDefaultClusterParameters: API.OperationMethod<
   input: DescribeEngineDefaultClusterParametersMessage,
   output: DescribeEngineDefaultClusterParametersResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEngineDefaultClusterParameters",
 }));
 export type DescribeEventCategoriesError = CommonErrors;
@@ -4476,6 +4536,8 @@ export const describeEventCategories: API.OperationMethod<
   input: DescribeEventCategoriesMessage,
   output: EventCategoriesMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventCategories",
 }));
 export type DescribeEventsError = CommonErrors;
@@ -4506,6 +4568,8 @@ export const describeEvents: API.OperationMethod<
   input: DescribeEventsMessage,
   output: EventsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "Marker",
@@ -4546,6 +4610,8 @@ export const describeEventSubscriptions: API.OperationMethod<
   input: DescribeEventSubscriptionsMessage,
   output: EventSubscriptionsMessage,
   errors: [SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventSubscriptions",
   pagination: {
     inputToken: "Marker",
@@ -4586,6 +4652,8 @@ export const describeGlobalClusters: API.OperationMethod<
   input: DescribeGlobalClustersMessage,
   output: GlobalClustersMessage,
   errors: [GlobalClusterNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGlobalClusters",
   pagination: {
     inputToken: "Marker",
@@ -4622,6 +4690,8 @@ export const describeOrderableDBInstanceOptions: API.OperationMethod<
   input: DescribeOrderableDBInstanceOptionsMessage,
   output: OrderableDBInstanceOptionsMessage,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOrderableDBInstanceOptions",
   pagination: {
     inputToken: "Marker",
@@ -4661,6 +4731,8 @@ export const describePendingMaintenanceActions: API.OperationMethod<
   input: DescribePendingMaintenanceActionsMessage,
   output: PendingMaintenanceActionsMessage,
   errors: [ResourceNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePendingMaintenanceActions",
   pagination: {
     inputToken: "Marker",
@@ -4694,6 +4766,8 @@ export const failoverDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidDBInstanceStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FailoverDBCluster",
 }));
 export type FailoverGlobalClusterError =
@@ -4723,6 +4797,8 @@ export const failoverGlobalCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidGlobalClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FailoverGlobalCluster",
 }));
 export type ListTagsForResourceError =
@@ -4746,6 +4822,8 @@ export const listTagsForResource: API.OperationMethod<
     DBInstanceNotFoundFault,
     DBSnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ModifyDBClusterError =
@@ -4789,6 +4867,8 @@ export const modifyDBCluster: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBCluster",
 }));
 export type ModifyDBClusterParameterGroupError =
@@ -4823,6 +4903,8 @@ export const modifyDBClusterParameterGroup: API.OperationMethod<
   input: ModifyDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBClusterParameterGroup",
 }));
 export type ModifyDBClusterSnapshotAttributeError =
@@ -4848,6 +4930,8 @@ export const modifyDBClusterSnapshotAttribute: API.OperationMethod<
     InvalidDBClusterSnapshotStateFault,
     SharedSnapshotQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBClusterSnapshotAttribute",
 }));
 export type ModifyDBInstanceError =
@@ -4891,6 +4975,8 @@ export const modifyDBInstance: API.OperationMethod<
     StorageQuotaExceededFault,
     StorageTypeNotSupportedFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBInstance",
 }));
 export type ModifyDBSubnetGroupError =
@@ -4918,6 +5004,8 @@ export const modifyDBSubnetGroup: API.OperationMethod<
     InvalidSubnet,
     SubnetAlreadyInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDBSubnetGroup",
 }));
 export type ModifyEventSubscriptionError =
@@ -4947,6 +5035,8 @@ export const modifyEventSubscription: API.OperationMethod<
     SubscriptionCategoryNotFoundFault,
     SubscriptionNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEventSubscription",
 }));
 export type ModifyGlobalClusterError =
@@ -4967,6 +5057,8 @@ export const modifyGlobalCluster: API.OperationMethod<
   input: ModifyGlobalClusterMessage,
   output: ModifyGlobalClusterResult,
   errors: [GlobalClusterNotFoundFault, InvalidGlobalClusterStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyGlobalCluster",
 }));
 export type RebootDBInstanceError =
@@ -4992,6 +5084,8 @@ export const rebootDBInstance: API.OperationMethod<
   input: RebootDBInstanceMessage,
   output: RebootDBInstanceResult,
   errors: [DBInstanceNotFoundFault, InvalidDBInstanceStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootDBInstance",
 }));
 export type RemoveFromGlobalClusterError =
@@ -5017,6 +5111,8 @@ export const removeFromGlobalCluster: API.OperationMethod<
     GlobalClusterNotFoundFault,
     InvalidGlobalClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveFromGlobalCluster",
 }));
 export type RemoveSourceIdentifierFromSubscriptionError =
@@ -5036,6 +5132,8 @@ export const removeSourceIdentifierFromSubscription: API.OperationMethod<
   input: RemoveSourceIdentifierFromSubscriptionMessage,
   output: RemoveSourceIdentifierFromSubscriptionResult,
   errors: [SourceNotFoundFault, SubscriptionNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveSourceIdentifierFromSubscription",
 }));
 export type RemoveTagsFromResourceError =
@@ -5059,6 +5157,8 @@ export const removeTagsFromResource: API.OperationMethod<
     DBInstanceNotFoundFault,
     DBSnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
 export type ResetDBClusterParameterGroupError =
@@ -5085,6 +5185,8 @@ export const resetDBClusterParameterGroup: API.OperationMethod<
   input: ResetDBClusterParameterGroupMessage,
   output: DBClusterParameterGroupNameMessage,
   errors: [DBParameterGroupNotFoundFault, InvalidDBParameterGroupStateFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetDBClusterParameterGroup",
 }));
 export type RestoreDBClusterFromSnapshotError =
@@ -5136,6 +5238,8 @@ export const restoreDBClusterFromSnapshot: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreDBClusterFromSnapshot",
 }));
 export type RestoreDBClusterToPointInTimeError =
@@ -5189,6 +5293,8 @@ export const restoreDBClusterToPointInTime: API.OperationMethod<
     NetworkTypeNotSupported,
     StorageQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreDBClusterToPointInTime",
 }));
 export type StartDBClusterError =
@@ -5214,6 +5320,8 @@ export const startDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidDBInstanceStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDBCluster",
 }));
 export type StopDBClusterError =
@@ -5240,6 +5348,8 @@ export const stopDBCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidDBInstanceStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDBCluster",
 }));
 export type SwitchoverGlobalClusterError =
@@ -5265,5 +5375,7 @@ export const switchoverGlobalCluster: API.OperationMethod<
     InvalidDBClusterStateFault,
     InvalidGlobalClusterStateFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SwitchoverGlobalCluster",
 }));

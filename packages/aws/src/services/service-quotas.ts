@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1189,6 +1191,8 @@ export const associateServiceQuotaTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateServiceQuotaTemplate",
 }));
 export type CreateSupportCaseError =
@@ -1223,6 +1227,8 @@ export const createSupportCase: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSupportCase",
 }));
 export type DeleteServiceQuotaIncreaseRequestFromTemplateError =
@@ -1259,6 +1265,8 @@ export const deleteServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServiceQuotaIncreaseRequestFromTemplate",
 }));
 export type DisassociateServiceQuotaTemplateError =
@@ -1294,6 +1302,8 @@ export const disassociateServiceQuotaTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateServiceQuotaTemplate",
 }));
 export type GetAssociationForServiceQuotaTemplateError =
@@ -1327,6 +1337,8 @@ export const getAssociationForServiceQuotaTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssociationForServiceQuotaTemplate",
 }));
 export type GetAutoManagementConfigurationError =
@@ -1355,6 +1367,8 @@ export const getAutoManagementConfiguration: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAutoManagementConfiguration",
 }));
 export type GetAWSDefaultServiceQuotaError =
@@ -1383,6 +1397,8 @@ export const getAWSDefaultServiceQuota: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAWSDefaultServiceQuota",
 }));
 export type GetQuotaUtilizationReportError =
@@ -1421,6 +1437,8 @@ export const getQuotaUtilizationReport: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQuotaUtilizationReport",
 }));
 export type GetRequestedServiceQuotaChangeError =
@@ -1448,6 +1466,8 @@ export const getRequestedServiceQuotaChange: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRequestedServiceQuotaChange",
 }));
 export type GetServiceQuotaError =
@@ -1477,6 +1497,8 @@ export const getServiceQuota: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceQuota",
 }));
 export type GetServiceQuotaIncreaseRequestFromTemplateError =
@@ -1513,6 +1535,8 @@ export const getServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceQuotaIncreaseRequestFromTemplate",
 }));
 export type ListAWSDefaultServiceQuotasError =
@@ -1558,6 +1582,8 @@ export const listAWSDefaultServiceQuotas: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAWSDefaultServiceQuotas",
   pagination: {
     inputToken: "NextToken",
@@ -1610,6 +1636,8 @@ export const listRequestedServiceQuotaChangeHistory: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRequestedServiceQuotaChangeHistory",
   pagination: {
     inputToken: "NextToken",
@@ -1661,6 +1689,8 @@ export const listRequestedServiceQuotaChangeHistoryByQuota: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRequestedServiceQuotaChangeHistoryByQuota",
   pagination: {
     inputToken: "NextToken",
@@ -1715,6 +1745,8 @@ export const listServiceQuotaIncreaseRequestsInTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceQuotaIncreaseRequestsInTemplate",
   pagination: {
     inputToken: "NextToken",
@@ -1768,6 +1800,8 @@ export const listServiceQuotas: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceQuotas",
   pagination: {
     inputToken: "NextToken",
@@ -1816,6 +1850,8 @@ export const listServices: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServices",
   pagination: {
     inputToken: "NextToken",
@@ -1849,6 +1885,8 @@ export const listTagsForResource: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutServiceQuotaIncreaseRequestIntoTemplateError =
@@ -1886,6 +1924,8 @@ export const putServiceQuotaIncreaseRequestIntoTemplate: API.OperationMethod<
     TemplatesNotAvailableInRegionException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutServiceQuotaIncreaseRequestIntoTemplate",
 }));
 export type RequestServiceQuotaIncreaseError =
@@ -1922,6 +1962,8 @@ export const requestServiceQuotaIncrease: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestServiceQuotaIncrease",
 }));
 export type StartAutoManagementError =
@@ -1951,6 +1993,8 @@ export const startAutoManagement: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAutoManagement",
 }));
 export type StartQuotaUtilizationReportError =
@@ -1986,6 +2030,8 @@ export const startQuotaUtilizationReport: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQuotaUtilizationReport",
 }));
 export type StopAutoManagementError =
@@ -2015,6 +2061,8 @@ export const stopAutoManagement: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAutoManagement",
 }));
 export type TagResourceError =
@@ -2047,6 +2095,8 @@ export const tagResource: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2075,6 +2125,8 @@ export const untagResource: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAutoManagementError =
@@ -2104,5 +2156,7 @@ export const updateAutoManagement: API.OperationMethod<
     ServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAutoManagement",
 }));

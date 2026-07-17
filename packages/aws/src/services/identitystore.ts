@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1047,6 +1049,8 @@ export const getGroupId: API.OperationMethod<
   input: GetGroupIdRequest,
   output: GetGroupIdResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupId",
 }));
 export type GetGroupMembershipIdError =
@@ -1067,6 +1071,8 @@ export const getGroupMembershipId: API.OperationMethod<
   input: GetGroupMembershipIdRequest,
   output: GetGroupMembershipIdResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupMembershipId",
 }));
 export type GetUserIdError =
@@ -1087,6 +1093,8 @@ export const getUserId: API.OperationMethod<
   input: GetUserIdRequest,
   output: GetUserIdResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserId",
 }));
 export type IsMemberInGroupsError =
@@ -1107,6 +1115,8 @@ export const isMemberInGroups: API.OperationMethod<
   input: IsMemberInGroupsRequest,
   output: IsMemberInGroupsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IsMemberInGroups",
 }));
 export type ListGroupMembershipsForMemberError =
@@ -1142,6 +1152,8 @@ export const listGroupMembershipsForMember: API.OperationMethod<
   input: ListGroupMembershipsForMemberRequest,
   output: ListGroupMembershipsForMemberResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupMembershipsForMember",
   pagination: {
     inputToken: "NextToken",
@@ -1173,6 +1185,8 @@ export const createGroupMembership: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroupMembership",
 }));
 export type DescribeGroupMembershipError =
@@ -1193,6 +1207,8 @@ export const describeGroupMembership: API.OperationMethod<
   input: DescribeGroupMembershipRequest,
   output: DescribeGroupMembershipResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGroupMembership",
 }));
 export type DeleteGroupMembershipError =
@@ -1212,6 +1228,8 @@ export const deleteGroupMembership: API.OperationMethod<
   input: DeleteGroupMembershipRequest,
   output: DeleteGroupMembershipResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroupMembership",
 }));
 export type ListGroupMembershipsError =
@@ -1247,6 +1265,8 @@ export const listGroupMemberships: API.OperationMethod<
   input: ListGroupMembershipsRequest,
   output: ListGroupMembershipsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroupMemberships",
   pagination: {
     inputToken: "NextToken",
@@ -1278,6 +1298,8 @@ export const createGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
 export type DescribeGroupError =
@@ -1298,6 +1320,8 @@ export const describeGroup: API.OperationMethod<
   input: DescribeGroupRequest,
   output: DescribeGroupResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGroup",
 }));
 export type UpdateGroupError =
@@ -1323,6 +1347,8 @@ export const updateGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroup",
 }));
 export type DeleteGroupError =
@@ -1342,6 +1368,8 @@ export const deleteGroup: API.OperationMethod<
   input: DeleteGroupRequest,
   output: DeleteGroupResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
 export type ListGroupsError =
@@ -1377,6 +1405,8 @@ export const listGroups: API.OperationMethod<
   input: ListGroupsRequest,
   output: ListGroupsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
@@ -1408,6 +1438,8 @@ export const createUser: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DescribeUserError =
@@ -1428,6 +1460,8 @@ export const describeUser: API.OperationMethod<
   input: DescribeUserRequest,
   output: DescribeUserResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUser",
 }));
 export type UpdateUserError =
@@ -1453,6 +1487,8 @@ export const updateUser: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));
 export type DeleteUserError =
@@ -1472,6 +1508,8 @@ export const deleteUser: API.OperationMethod<
   input: DeleteUserRequest,
   output: DeleteUserResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type ListUsersError =
@@ -1507,6 +1545,8 @@ export const listUsers: API.OperationMethod<
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",

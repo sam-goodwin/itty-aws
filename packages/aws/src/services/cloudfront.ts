@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -10807,6 +10809,8 @@ export const associateAlias: API.OperationMethod<
     NoSuchDistribution,
     TooManyDistributionCNAMEs,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAlias",
 }));
 export type AssociateDistributionTenantWebACLError =
@@ -10836,6 +10840,8 @@ export const associateDistributionTenantWebACL: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDistributionTenantWebACL",
 }));
 export type AssociateDistributionWebACLError =
@@ -10865,6 +10871,8 @@ export const associateDistributionWebACL: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDistributionWebACL",
 }));
 export type CreateAnycastIpListError =
@@ -10894,6 +10902,8 @@ export const createAnycastIpList: API.OperationMethod<
     InvalidTagging,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAnycastIpList",
 }));
 export type CreateCachePolicyError =
@@ -10939,6 +10949,8 @@ export const createCachePolicy: API.OperationMethod<
     TooManyHeadersInCachePolicy,
     TooManyQueryStringsInCachePolicy,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCachePolicy",
 }));
 export type CreateCloudFrontOriginAccessIdentityError =
@@ -10966,6 +10978,8 @@ export const createCloudFrontOriginAccessIdentity: API.OperationMethod<
     MissingBody,
     TooManyCloudFrontOriginAccessIdentities,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCloudFrontOriginAccessIdentity",
 }));
 export type CreateConnectionFunctionError =
@@ -10997,6 +11011,8 @@ export const createConnectionFunction: API.OperationMethod<
     InvalidTagging,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectionFunction",
 }));
 export type CreateConnectionGroupError =
@@ -11026,6 +11042,8 @@ export const createConnectionGroup: API.OperationMethod<
     InvalidArgument,
     InvalidTagging,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectionGroup",
 }));
 export type CreateContinuousDeploymentPolicyError =
@@ -11059,6 +11077,8 @@ export const createContinuousDeploymentPolicy: API.OperationMethod<
     StagingDistributionInUse,
     TooManyContinuousDeploymentPolicies,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContinuousDeploymentPolicy",
 }));
 export type CreateDistributionTenantError =
@@ -11092,6 +11112,8 @@ export const createDistributionTenant: API.OperationMethod<
     InvalidAssociation,
     InvalidTagging,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDistributionTenant",
 }));
 export type CreateFieldLevelEncryptionConfigError =
@@ -11125,6 +11147,8 @@ export const createFieldLevelEncryptionConfig: API.OperationMethod<
     TooManyFieldLevelEncryptionContentTypeProfiles,
     TooManyFieldLevelEncryptionQueryArgProfiles,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFieldLevelEncryptionConfig",
 }));
 export type CreateFieldLevelEncryptionProfileError =
@@ -11158,6 +11182,8 @@ export const createFieldLevelEncryptionProfile: API.OperationMethod<
     TooManyFieldLevelEncryptionFieldPatterns,
     TooManyFieldLevelEncryptionProfiles,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFieldLevelEncryptionProfile",
 }));
 export type CreateFunctionError =
@@ -11191,6 +11217,8 @@ export const createFunction: API.OperationMethod<
     TooManyFunctions,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFunction",
 }));
 export type CreateInvalidationError =
@@ -11222,6 +11250,8 @@ export const createInvalidation: API.OperationMethod<
     NoSuchDistribution,
     TooManyInvalidationsInProgress,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInvalidation",
 }));
 export type CreateInvalidationForDistributionTenantError =
@@ -11253,6 +11283,8 @@ export const createInvalidationForDistributionTenant: API.OperationMethod<
     MissingBody,
     TooManyInvalidationsInProgress,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInvalidationForDistributionTenant",
 }));
 export type CreateKeyGroupError =
@@ -11280,6 +11312,8 @@ export const createKeyGroup: API.OperationMethod<
     TooManyKeyGroups,
     TooManyPublicKeysInKeyGroup,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKeyGroup",
 }));
 export type CreateKeyValueStoreError =
@@ -11309,6 +11343,8 @@ export const createKeyValueStore: API.OperationMethod<
     InvalidArgument,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKeyValueStore",
 }));
 export type CreateMonitoringSubscriptionError =
@@ -11336,6 +11372,8 @@ export const createMonitoringSubscription: API.OperationMethod<
     NoSuchDistribution,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMonitoringSubscription",
 }));
 export type CreateOriginAccessControlError =
@@ -11363,6 +11401,8 @@ export const createOriginAccessControl: API.OperationMethod<
     OriginAccessControlAlreadyExists,
     TooManyOriginAccessControls,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOriginAccessControl",
 }));
 export type CreateOriginRequestPolicyError =
@@ -11408,6 +11448,8 @@ export const createOriginRequestPolicy: API.OperationMethod<
     TooManyOriginRequestPolicies,
     TooManyQueryStringsInOriginRequestPolicy,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOriginRequestPolicy",
 }));
 export type CreatePublicKeyError =
@@ -11427,6 +11469,8 @@ export const createPublicKey: API.OperationMethod<
   input: CreatePublicKeyRequest,
   output: CreatePublicKeyResult,
   errors: [InvalidArgument, PublicKeyAlreadyExists, TooManyPublicKeys],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePublicKey",
 }));
 export type CreateRealtimeLogConfigError =
@@ -11456,6 +11500,8 @@ export const createRealtimeLogConfig: API.OperationMethod<
     RealtimeLogConfigAlreadyExists,
     TooManyRealtimeLogConfigs,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRealtimeLogConfig",
 }));
 export type CreateResponseHeadersPolicyError =
@@ -11495,6 +11541,8 @@ export const createResponseHeadersPolicy: API.OperationMethod<
     TooManyRemoveHeadersInResponseHeadersPolicy,
     TooManyResponseHeadersPolicies,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResponseHeadersPolicy",
 }));
 export type CreateStreamingDistributionError =
@@ -11538,6 +11586,8 @@ export const createStreamingDistribution: API.OperationMethod<
     TooManyTrustedSigners,
     TrustedSignerDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStreamingDistribution",
 }));
 export type CreateStreamingDistributionWithTagsError =
@@ -11583,6 +11633,8 @@ export const createStreamingDistributionWithTags: API.OperationMethod<
     TooManyTrustedSigners,
     TrustedSignerDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStreamingDistributionWithTags",
 }));
 export type CreateTrustStoreError =
@@ -11612,6 +11664,8 @@ export const createTrustStore: API.OperationMethod<
     InvalidArgument,
     InvalidTagging,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrustStore",
 }));
 export type CreateVpcOriginError =
@@ -11643,6 +11697,8 @@ export const createVpcOrigin: API.OperationMethod<
     InvalidTagging,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcOrigin",
 }));
 export type DeleteAnycastIpListError =
@@ -11676,6 +11732,8 @@ export const deleteAnycastIpList: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAnycastIpList",
 }));
 export type DeleteCachePolicyError =
@@ -11709,6 +11767,8 @@ export const deleteCachePolicy: API.OperationMethod<
     NoSuchCachePolicy,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCachePolicy",
 }));
 export type DeleteCloudFrontOriginAccessIdentityError =
@@ -11736,6 +11796,8 @@ export const deleteCloudFrontOriginAccessIdentity: API.OperationMethod<
     NoSuchCloudFrontOriginAccessIdentity,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCloudFrontOriginAccessIdentity",
 }));
 export type DeleteConnectionFunctionError =
@@ -11767,6 +11829,8 @@ export const deleteConnectionFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectionFunction",
 }));
 export type DeleteConnectionGroupError =
@@ -11796,6 +11860,8 @@ export const deleteConnectionGroup: API.OperationMethod<
     PreconditionFailed,
     ResourceNotDisabled,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectionGroup",
 }));
 export type DeleteContinuousDeploymentPolicyError =
@@ -11827,6 +11893,8 @@ export const deleteContinuousDeploymentPolicy: API.OperationMethod<
     NoSuchContinuousDeploymentPolicy,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContinuousDeploymentPolicy",
 }));
 export type DeleteDistributionError =
@@ -11858,6 +11926,8 @@ export const deleteDistribution: API.OperationMethod<
     PreconditionFailed,
     ResourceInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDistribution",
 }));
 export type DeleteDistributionTenantError =
@@ -11887,6 +11957,8 @@ export const deleteDistributionTenant: API.OperationMethod<
     PreconditionFailed,
     ResourceNotDisabled,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDistributionTenant",
 }));
 export type DeleteFieldLevelEncryptionConfigError =
@@ -11914,6 +11986,8 @@ export const deleteFieldLevelEncryptionConfig: API.OperationMethod<
     NoSuchFieldLevelEncryptionConfig,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFieldLevelEncryptionConfig",
 }));
 export type DeleteFieldLevelEncryptionProfileError =
@@ -11941,6 +12015,8 @@ export const deleteFieldLevelEncryptionProfile: API.OperationMethod<
     NoSuchFieldLevelEncryptionProfile,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFieldLevelEncryptionProfile",
 }));
 export type DeleteFunctionError =
@@ -11972,6 +12048,8 @@ export const deleteFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFunction",
 }));
 export type DeleteKeyGroupError =
@@ -12001,6 +12079,8 @@ export const deleteKeyGroup: API.OperationMethod<
     PreconditionFailed,
     ResourceInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKeyGroup",
 }));
 export type DeleteKeyValueStoreError =
@@ -12030,6 +12110,8 @@ export const deleteKeyValueStore: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKeyValueStore",
 }));
 export type DeleteMonitoringSubscriptionError =
@@ -12055,6 +12137,8 @@ export const deleteMonitoringSubscription: API.OperationMethod<
     NoSuchMonitoringSubscription,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMonitoringSubscription",
 }));
 export type DeleteOriginAccessControlError =
@@ -12084,6 +12168,8 @@ export const deleteOriginAccessControl: API.OperationMethod<
     OriginAccessControlInUse,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOriginAccessControl",
 }));
 export type DeleteOriginRequestPolicyError =
@@ -12117,6 +12203,8 @@ export const deleteOriginRequestPolicy: API.OperationMethod<
     OriginRequestPolicyInUse,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOriginRequestPolicy",
 }));
 export type DeletePublicKeyError =
@@ -12144,6 +12232,8 @@ export const deletePublicKey: API.OperationMethod<
     PreconditionFailed,
     PublicKeyInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePublicKey",
 }));
 export type DeleteRealtimeLogConfigError =
@@ -12173,6 +12263,8 @@ export const deleteRealtimeLogConfig: API.OperationMethod<
     NoSuchRealtimeLogConfig,
     RealtimeLogConfigInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRealtimeLogConfig",
 }));
 export type DeleteResourcePolicyError =
@@ -12202,6 +12294,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteResponseHeadersPolicyError =
@@ -12235,6 +12329,8 @@ export const deleteResponseHeadersPolicy: API.OperationMethod<
     PreconditionFailed,
     ResponseHeadersPolicyInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResponseHeadersPolicy",
 }));
 export type DeleteStreamingDistributionError =
@@ -12282,6 +12378,8 @@ export const deleteStreamingDistribution: API.OperationMethod<
     PreconditionFailed,
     StreamingDistributionNotDisabled,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStreamingDistribution",
 }));
 export type DeleteTrustStoreError =
@@ -12311,6 +12409,8 @@ export const deleteTrustStore: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrustStore",
 }));
 export type DeleteVpcOriginError =
@@ -12344,6 +12444,8 @@ export const deleteVpcOrigin: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcOrigin",
 }));
 export type DescribeConnectionFunctionError =
@@ -12364,6 +12466,8 @@ export const describeConnectionFunction: API.OperationMethod<
   input: DescribeConnectionFunctionRequest,
   output: DescribeConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectionFunction",
 }));
 export type DescribeFunctionError =
@@ -12384,6 +12488,8 @@ export const describeFunction: API.OperationMethod<
   input: DescribeFunctionRequest,
   output: DescribeFunctionResult,
   errors: [NoSuchFunctionExists, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFunction",
 }));
 export type DescribeKeyValueStoreError =
@@ -12404,6 +12510,8 @@ export const describeKeyValueStore: API.OperationMethod<
   input: DescribeKeyValueStoreRequest,
   output: DescribeKeyValueStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKeyValueStore",
 }));
 export type DisassociateDistributionTenantWebACLError =
@@ -12431,6 +12539,8 @@ export const disassociateDistributionTenantWebACL: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDistributionTenantWebACL",
 }));
 export type DisassociateDistributionWebACLError =
@@ -12458,6 +12568,8 @@ export const disassociateDistributionWebACL: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDistributionWebACL",
 }));
 export type GetAnycastIpListError =
@@ -12478,6 +12590,8 @@ export const getAnycastIpList: API.OperationMethod<
   input: GetAnycastIpListRequest,
   output: GetAnycastIpListResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAnycastIpList",
 }));
 export type GetCachePolicyError =
@@ -12502,6 +12616,8 @@ export const getCachePolicy: API.OperationMethod<
   input: GetCachePolicyRequest,
   output: GetCachePolicyResult,
   errors: [AccessDenied, NoSuchCachePolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCachePolicy",
 }));
 export type GetCachePolicyConfigError =
@@ -12522,6 +12638,8 @@ export const getCachePolicyConfig: API.OperationMethod<
   input: GetCachePolicyConfigRequest,
   output: GetCachePolicyConfigResult,
   errors: [AccessDenied, NoSuchCachePolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCachePolicyConfig",
 }));
 export type GetCloudFrontOriginAccessIdentityError =
@@ -12540,6 +12658,8 @@ export const getCloudFrontOriginAccessIdentity: API.OperationMethod<
   input: GetCloudFrontOriginAccessIdentityRequest,
   output: GetCloudFrontOriginAccessIdentityResult,
   errors: [AccessDenied, NoSuchCloudFrontOriginAccessIdentity],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudFrontOriginAccessIdentity",
 }));
 export type GetCloudFrontOriginAccessIdentityConfigError =
@@ -12558,6 +12678,8 @@ export const getCloudFrontOriginAccessIdentityConfig: API.OperationMethod<
   input: GetCloudFrontOriginAccessIdentityConfigRequest,
   output: GetCloudFrontOriginAccessIdentityConfigResult,
   errors: [AccessDenied, NoSuchCloudFrontOriginAccessIdentity],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCloudFrontOriginAccessIdentityConfig",
 }));
 export type GetConnectionFunctionError =
@@ -12577,6 +12699,8 @@ export const getConnectionFunction: API.OperationMethod<
   input: GetConnectionFunctionRequest,
   output: GetConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectionFunction",
 }));
 export type GetConnectionGroupError =
@@ -12595,6 +12719,8 @@ export const getConnectionGroup: API.OperationMethod<
   input: GetConnectionGroupRequest,
   output: GetConnectionGroupResult,
   errors: [AccessDenied, EntityNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectionGroup",
 }));
 export type GetConnectionGroupByRoutingEndpointError =
@@ -12613,6 +12739,8 @@ export const getConnectionGroupByRoutingEndpoint: API.OperationMethod<
   input: GetConnectionGroupByRoutingEndpointRequest,
   output: GetConnectionGroupByRoutingEndpointResult,
   errors: [AccessDenied, EntityNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectionGroupByRoutingEndpoint",
 }));
 export type GetContinuousDeploymentPolicyError =
@@ -12631,6 +12759,8 @@ export const getContinuousDeploymentPolicy: API.OperationMethod<
   input: GetContinuousDeploymentPolicyRequest,
   output: GetContinuousDeploymentPolicyResult,
   errors: [AccessDenied, NoSuchContinuousDeploymentPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContinuousDeploymentPolicy",
 }));
 export type GetContinuousDeploymentPolicyConfigError =
@@ -12649,6 +12779,8 @@ export const getContinuousDeploymentPolicyConfig: API.OperationMethod<
   input: GetContinuousDeploymentPolicyConfigRequest,
   output: GetContinuousDeploymentPolicyConfigResult,
   errors: [AccessDenied, NoSuchContinuousDeploymentPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContinuousDeploymentPolicyConfig",
 }));
 export type GetDistributionError =
@@ -12667,6 +12799,8 @@ export const getDistribution: API.OperationMethod<
   input: GetDistributionRequest,
   output: GetDistributionResult,
   errors: [AccessDenied, NoSuchDistribution],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistribution",
 }));
 export type GetDistributionConfigError =
@@ -12685,6 +12819,8 @@ export const getDistributionConfig: API.OperationMethod<
   input: GetDistributionConfigRequest,
   output: GetDistributionConfigResult,
   errors: [AccessDenied, NoSuchDistribution],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionConfig",
 }));
 export type GetDistributionTenantError =
@@ -12703,6 +12839,8 @@ export const getDistributionTenant: API.OperationMethod<
   input: GetDistributionTenantRequest,
   output: GetDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionTenant",
 }));
 export type GetDistributionTenantByDomainError =
@@ -12721,6 +12859,8 @@ export const getDistributionTenantByDomain: API.OperationMethod<
   input: GetDistributionTenantByDomainRequest,
   output: GetDistributionTenantByDomainResult,
   errors: [AccessDenied, EntityNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDistributionTenantByDomain",
 }));
 export type GetFieldLevelEncryptionError =
@@ -12739,6 +12879,8 @@ export const getFieldLevelEncryption: API.OperationMethod<
   input: GetFieldLevelEncryptionRequest,
   output: GetFieldLevelEncryptionResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionConfig],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFieldLevelEncryption",
 }));
 export type GetFieldLevelEncryptionConfigError =
@@ -12757,6 +12899,8 @@ export const getFieldLevelEncryptionConfig: API.OperationMethod<
   input: GetFieldLevelEncryptionConfigRequest,
   output: GetFieldLevelEncryptionConfigResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionConfig],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFieldLevelEncryptionConfig",
 }));
 export type GetFieldLevelEncryptionProfileError =
@@ -12775,6 +12919,8 @@ export const getFieldLevelEncryptionProfile: API.OperationMethod<
   input: GetFieldLevelEncryptionProfileRequest,
   output: GetFieldLevelEncryptionProfileResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionProfile],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFieldLevelEncryptionProfile",
 }));
 export type GetFieldLevelEncryptionProfileConfigError =
@@ -12793,6 +12939,8 @@ export const getFieldLevelEncryptionProfileConfig: API.OperationMethod<
   input: GetFieldLevelEncryptionProfileConfigRequest,
   output: GetFieldLevelEncryptionProfileConfigResult,
   errors: [AccessDenied, NoSuchFieldLevelEncryptionProfile],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFieldLevelEncryptionProfileConfig",
 }));
 export type GetFunctionError =
@@ -12813,6 +12961,8 @@ export const getFunction: API.OperationMethod<
   input: GetFunctionRequest,
   output: GetFunctionResult,
   errors: [NoSuchFunctionExists, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFunction",
 }));
 export type GetInvalidationError =
@@ -12832,6 +12982,8 @@ export const getInvalidation: API.OperationMethod<
   input: GetInvalidationRequest,
   output: GetInvalidationResult,
   errors: [AccessDenied, NoSuchDistribution, NoSuchInvalidation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInvalidation",
 }));
 export type GetInvalidationForDistributionTenantError =
@@ -12851,6 +13003,8 @@ export const getInvalidationForDistributionTenant: API.OperationMethod<
   input: GetInvalidationForDistributionTenantRequest,
   output: GetInvalidationForDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound, NoSuchInvalidation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInvalidationForDistributionTenant",
 }));
 export type GetKeyGroupError = NoSuchResource | CommonErrors;
@@ -12868,6 +13022,8 @@ export const getKeyGroup: API.OperationMethod<
   input: GetKeyGroupRequest,
   output: GetKeyGroupResult,
   errors: [NoSuchResource],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyGroup",
 }));
 export type GetKeyGroupConfigError = NoSuchResource | CommonErrors;
@@ -12885,6 +13041,8 @@ export const getKeyGroupConfig: API.OperationMethod<
   input: GetKeyGroupConfigRequest,
   output: GetKeyGroupConfigResult,
   errors: [NoSuchResource],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKeyGroupConfig",
 }));
 export type GetManagedCertificateDetailsError =
@@ -12903,6 +13061,8 @@ export const getManagedCertificateDetails: API.OperationMethod<
   input: GetManagedCertificateDetailsRequest,
   output: GetManagedCertificateDetailsResult,
   errors: [AccessDenied, EntityNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedCertificateDetails",
 }));
 export type GetMonitoringSubscriptionError =
@@ -12928,6 +13088,8 @@ export const getMonitoringSubscription: API.OperationMethod<
     NoSuchMonitoringSubscription,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMonitoringSubscription",
 }));
 export type GetOriginAccessControlError =
@@ -12946,6 +13108,8 @@ export const getOriginAccessControl: API.OperationMethod<
   input: GetOriginAccessControlRequest,
   output: GetOriginAccessControlResult,
   errors: [AccessDenied, NoSuchOriginAccessControl],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOriginAccessControl",
 }));
 export type GetOriginAccessControlConfigError =
@@ -12964,6 +13128,8 @@ export const getOriginAccessControlConfig: API.OperationMethod<
   input: GetOriginAccessControlConfigRequest,
   output: GetOriginAccessControlConfigResult,
   errors: [AccessDenied, NoSuchOriginAccessControl],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOriginAccessControlConfig",
 }));
 export type GetOriginRequestPolicyError =
@@ -12988,6 +13154,8 @@ export const getOriginRequestPolicy: API.OperationMethod<
   input: GetOriginRequestPolicyRequest,
   output: GetOriginRequestPolicyResult,
   errors: [AccessDenied, NoSuchOriginRequestPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOriginRequestPolicy",
 }));
 export type GetOriginRequestPolicyConfigError =
@@ -13008,6 +13176,8 @@ export const getOriginRequestPolicyConfig: API.OperationMethod<
   input: GetOriginRequestPolicyConfigRequest,
   output: GetOriginRequestPolicyConfigResult,
   errors: [AccessDenied, NoSuchOriginRequestPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOriginRequestPolicyConfig",
 }));
 export type GetPublicKeyError = AccessDenied | NoSuchPublicKey | CommonErrors;
@@ -13023,6 +13193,8 @@ export const getPublicKey: API.OperationMethod<
   input: GetPublicKeyRequest,
   output: GetPublicKeyResult,
   errors: [AccessDenied, NoSuchPublicKey],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPublicKey",
 }));
 export type GetPublicKeyConfigError =
@@ -13041,6 +13213,8 @@ export const getPublicKeyConfig: API.OperationMethod<
   input: GetPublicKeyConfigRequest,
   output: GetPublicKeyConfigResult,
   errors: [AccessDenied, NoSuchPublicKey],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPublicKeyConfig",
 }));
 export type GetRealtimeLogConfigError =
@@ -13062,6 +13236,8 @@ export const getRealtimeLogConfig: API.OperationMethod<
   input: GetRealtimeLogConfigRequest,
   output: GetRealtimeLogConfigResult,
   errors: [AccessDenied, InvalidArgument, NoSuchRealtimeLogConfig],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRealtimeLogConfig",
 }));
 export type GetResourcePolicyError =
@@ -13082,6 +13258,8 @@ export const getResourcePolicy: API.OperationMethod<
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetResponseHeadersPolicyError =
@@ -13102,6 +13280,8 @@ export const getResponseHeadersPolicy: API.OperationMethod<
   input: GetResponseHeadersPolicyRequest,
   output: GetResponseHeadersPolicyResult,
   errors: [AccessDenied, NoSuchResponseHeadersPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResponseHeadersPolicy",
 }));
 export type GetResponseHeadersPolicyConfigError =
@@ -13122,6 +13302,8 @@ export const getResponseHeadersPolicyConfig: API.OperationMethod<
   input: GetResponseHeadersPolicyConfigRequest,
   output: GetResponseHeadersPolicyConfigResult,
   errors: [AccessDenied, NoSuchResponseHeadersPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResponseHeadersPolicyConfig",
 }));
 export type GetStreamingDistributionError =
@@ -13140,6 +13322,8 @@ export const getStreamingDistribution: API.OperationMethod<
   input: GetStreamingDistributionRequest,
   output: GetStreamingDistributionResult,
   errors: [AccessDenied, NoSuchStreamingDistribution],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStreamingDistribution",
 }));
 export type GetStreamingDistributionConfigError =
@@ -13158,6 +13342,8 @@ export const getStreamingDistributionConfig: API.OperationMethod<
   input: GetStreamingDistributionConfigRequest,
   output: GetStreamingDistributionConfigResult,
   errors: [AccessDenied, NoSuchStreamingDistribution],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStreamingDistributionConfig",
 }));
 export type GetTrustStoreError =
@@ -13177,6 +13363,8 @@ export const getTrustStore: API.OperationMethod<
   input: GetTrustStoreRequest,
   output: GetTrustStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrustStore",
 }));
 export type GetVpcOriginError =
@@ -13197,6 +13385,8 @@ export const getVpcOrigin: API.OperationMethod<
   input: GetVpcOriginRequest,
   output: GetVpcOriginResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpcOrigin",
 }));
 export type ListAnycastIpListsError =
@@ -13217,6 +13407,8 @@ export const listAnycastIpLists: API.OperationMethod<
   input: ListAnycastIpListsRequest,
   output: ListAnycastIpListsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnycastIpLists",
 }));
 export type ListCachePoliciesError =
@@ -13240,6 +13432,8 @@ export const listCachePolicies: API.OperationMethod<
   input: ListCachePoliciesRequest,
   output: ListCachePoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchCachePolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCachePolicies",
 }));
 export type ListCloudFrontOriginAccessIdentitiesError =
@@ -13272,6 +13466,8 @@ export const listCloudFrontOriginAccessIdentities: API.OperationMethod<
   input: ListCloudFrontOriginAccessIdentitiesRequest,
   output: ListCloudFrontOriginAccessIdentitiesResult,
   errors: [InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCloudFrontOriginAccessIdentities",
   pagination: {
     inputToken: "Marker",
@@ -13306,6 +13502,8 @@ export const listConflictingAliases: API.OperationMethod<
   input: ListConflictingAliasesRequest,
   output: ListConflictingAliasesResult,
   errors: [InvalidArgument, NoSuchDistribution],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConflictingAliases",
 }));
 export type ListConnectionFunctionsError =
@@ -13340,6 +13538,8 @@ export const listConnectionFunctions: API.OperationMethod<
   input: ListConnectionFunctionsRequest,
   output: ListConnectionFunctionsResult,
   errors: [AccessDenied, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectionFunctions",
   pagination: {
     inputToken: "Marker",
@@ -13380,6 +13580,8 @@ export const listConnectionGroups: API.OperationMethod<
   input: ListConnectionGroupsRequest,
   output: ListConnectionGroupsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectionGroups",
   pagination: {
     inputToken: "Marker",
@@ -13407,6 +13609,8 @@ export const listContinuousDeploymentPolicies: API.OperationMethod<
   input: ListContinuousDeploymentPoliciesRequest,
   output: ListContinuousDeploymentPoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchContinuousDeploymentPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContinuousDeploymentPolicies",
 }));
 export type ListDistributionsError = InvalidArgument | CommonErrors;
@@ -13437,6 +13641,8 @@ export const listDistributions: API.OperationMethod<
   input: ListDistributionsRequest,
   output: ListDistributionsResult,
   errors: [InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributions",
   pagination: {
     inputToken: "Marker",
@@ -13463,6 +13669,8 @@ export const listDistributionsByAnycastIpListId: API.OperationMethod<
   input: ListDistributionsByAnycastIpListIdRequest,
   output: ListDistributionsByAnycastIpListIdResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByAnycastIpListId",
 }));
 export type ListDistributionsByCachePolicyIdError =
@@ -13484,6 +13692,8 @@ export const listDistributionsByCachePolicyId: API.OperationMethod<
   input: ListDistributionsByCachePolicyIdRequest,
   output: ListDistributionsByCachePolicyIdResult,
   errors: [AccessDenied, InvalidArgument, NoSuchCachePolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByCachePolicyId",
 }));
 export type ListDistributionsByConnectionFunctionError =
@@ -13518,6 +13728,8 @@ export const listDistributionsByConnectionFunction: API.OperationMethod<
   input: ListDistributionsByConnectionFunctionRequest,
   output: ListDistributionsByConnectionFunctionResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByConnectionFunction",
   pagination: {
     inputToken: "Marker",
@@ -13557,6 +13769,8 @@ export const listDistributionsByConnectionMode: API.OperationMethod<
   input: ListDistributionsByConnectionModeRequest,
   output: ListDistributionsByConnectionModeResult,
   errors: [AccessDenied, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByConnectionMode",
   pagination: {
     inputToken: "Marker",
@@ -13583,6 +13797,8 @@ export const listDistributionsByKeyGroup: API.OperationMethod<
   input: ListDistributionsByKeyGroupRequest,
   output: ListDistributionsByKeyGroupResult,
   errors: [InvalidArgument, NoSuchResource],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByKeyGroup",
 }));
 export type ListDistributionsByOriginRequestPolicyIdError =
@@ -13604,6 +13820,8 @@ export const listDistributionsByOriginRequestPolicyId: API.OperationMethod<
   input: ListDistributionsByOriginRequestPolicyIdRequest,
   output: ListDistributionsByOriginRequestPolicyIdResult,
   errors: [AccessDenied, InvalidArgument, NoSuchOriginRequestPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByOriginRequestPolicyId",
 }));
 export type ListDistributionsByOwnedResourceError =
@@ -13624,6 +13842,8 @@ export const listDistributionsByOwnedResource: API.OperationMethod<
   input: ListDistributionsByOwnedResourceRequest,
   output: ListDistributionsByOwnedResourceResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByOwnedResource",
 }));
 export type ListDistributionsByRealtimeLogConfigError =
@@ -13645,6 +13865,8 @@ export const listDistributionsByRealtimeLogConfig: API.OperationMethod<
   input: ListDistributionsByRealtimeLogConfigRequest,
   output: ListDistributionsByRealtimeLogConfigResult,
   errors: [InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByRealtimeLogConfig",
 }));
 export type ListDistributionsByResponseHeadersPolicyIdError =
@@ -13666,6 +13888,8 @@ export const listDistributionsByResponseHeadersPolicyId: API.OperationMethod<
   input: ListDistributionsByResponseHeadersPolicyIdRequest,
   output: ListDistributionsByResponseHeadersPolicyIdResult,
   errors: [AccessDenied, InvalidArgument, NoSuchResponseHeadersPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByResponseHeadersPolicyId",
 }));
 export type ListDistributionsByTrustStoreError =
@@ -13700,6 +13924,8 @@ export const listDistributionsByTrustStore: API.OperationMethod<
   input: ListDistributionsByTrustStoreRequest,
   output: ListDistributionsByTrustStoreResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByTrustStore",
   pagination: {
     inputToken: "Marker",
@@ -13726,6 +13952,8 @@ export const listDistributionsByVpcOriginId: API.OperationMethod<
   input: ListDistributionsByVpcOriginIdRequest,
   output: ListDistributionsByVpcOriginIdResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByVpcOriginId",
 }));
 export type ListDistributionsByWebACLIdError =
@@ -13744,6 +13972,8 @@ export const listDistributionsByWebACLId: API.OperationMethod<
   input: ListDistributionsByWebACLIdRequest,
   output: ListDistributionsByWebACLIdResult,
   errors: [InvalidArgument, InvalidWebACLId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionsByWebACLId",
 }));
 export type ListDistributionTenantsError =
@@ -13778,6 +14008,8 @@ export const listDistributionTenants: API.OperationMethod<
   input: ListDistributionTenantsRequest,
   output: ListDistributionTenantsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionTenants",
   pagination: {
     inputToken: "Marker",
@@ -13820,6 +14052,8 @@ export const listDistributionTenantsByCustomization: API.OperationMethod<
   input: ListDistributionTenantsByCustomizationRequest,
   output: ListDistributionTenantsByCustomizationResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributionTenantsByCustomization",
   pagination: {
     inputToken: "Marker",
@@ -13876,6 +14110,8 @@ export const listDomainConflicts: API.OperationMethod<
   input: ListDomainConflictsRequest,
   output: ListDomainConflictsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainConflicts",
   pagination: {
     inputToken: "Marker",
@@ -13899,6 +14135,8 @@ export const listFieldLevelEncryptionConfigs: API.OperationMethod<
   input: ListFieldLevelEncryptionConfigsRequest,
   output: ListFieldLevelEncryptionConfigsResult,
   errors: [InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFieldLevelEncryptionConfigs",
 }));
 export type ListFieldLevelEncryptionProfilesError =
@@ -13916,6 +14154,8 @@ export const listFieldLevelEncryptionProfiles: API.OperationMethod<
   input: ListFieldLevelEncryptionProfilesRequest,
   output: ListFieldLevelEncryptionProfilesResult,
   errors: [InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFieldLevelEncryptionProfiles",
 }));
 export type ListFunctionsError =
@@ -13938,6 +14178,8 @@ export const listFunctions: API.OperationMethod<
   input: ListFunctionsRequest,
   output: ListFunctionsResult,
   errors: [InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFunctions",
 }));
 export type ListInvalidationsError =
@@ -13972,6 +14214,8 @@ export const listInvalidations: API.OperationMethod<
   input: ListInvalidationsRequest,
   output: ListInvalidationsResult,
   errors: [AccessDenied, InvalidArgument, NoSuchDistribution],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvalidations",
   pagination: {
     inputToken: "Marker",
@@ -14012,6 +14256,8 @@ export const listInvalidationsForDistributionTenant: API.OperationMethod<
   input: ListInvalidationsForDistributionTenantRequest,
   output: ListInvalidationsForDistributionTenantResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvalidationsForDistributionTenant",
   pagination: {
     inputToken: "Marker",
@@ -14035,6 +14281,8 @@ export const listKeyGroups: API.OperationMethod<
   input: ListKeyGroupsRequest,
   output: ListKeyGroupsResult,
   errors: [InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyGroups",
 }));
 export type ListKeyValueStoresError =
@@ -14069,6 +14317,8 @@ export const listKeyValueStores: API.OperationMethod<
   input: ListKeyValueStoresRequest,
   output: ListKeyValueStoresResult,
   errors: [AccessDenied, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeyValueStores",
   pagination: {
     inputToken: "Marker",
@@ -14109,6 +14359,8 @@ export const listOriginAccessControls: API.OperationMethod<
   input: ListOriginAccessControlsRequest,
   output: ListOriginAccessControlsResult,
   errors: [InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOriginAccessControls",
   pagination: {
     inputToken: "Marker",
@@ -14138,6 +14390,8 @@ export const listOriginRequestPolicies: API.OperationMethod<
   input: ListOriginRequestPoliciesRequest,
   output: ListOriginRequestPoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchOriginRequestPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOriginRequestPolicies",
 }));
 export type ListPublicKeysError = InvalidArgument | CommonErrors;
@@ -14168,6 +14422,8 @@ export const listPublicKeys: API.OperationMethod<
   input: ListPublicKeysRequest,
   output: ListPublicKeysResult,
   errors: [InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPublicKeys",
   pagination: {
     inputToken: "Marker",
@@ -14195,6 +14451,8 @@ export const listRealtimeLogConfigs: API.OperationMethod<
   input: ListRealtimeLogConfigsRequest,
   output: ListRealtimeLogConfigsResult,
   errors: [AccessDenied, InvalidArgument, NoSuchRealtimeLogConfig],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRealtimeLogConfigs",
 }));
 export type ListResponseHeadersPoliciesError =
@@ -14218,6 +14476,8 @@ export const listResponseHeadersPolicies: API.OperationMethod<
   input: ListResponseHeadersPoliciesRequest,
   output: ListResponseHeadersPoliciesResult,
   errors: [AccessDenied, InvalidArgument, NoSuchResponseHeadersPolicy],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResponseHeadersPolicies",
 }));
 export type ListStreamingDistributionsError = InvalidArgument | CommonErrors;
@@ -14248,6 +14508,8 @@ export const listStreamingDistributions: API.OperationMethod<
   input: ListStreamingDistributionsRequest,
   output: ListStreamingDistributionsResult,
   errors: [InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamingDistributions",
   pagination: {
     inputToken: "Marker",
@@ -14274,6 +14536,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [AccessDenied, InvalidArgument, InvalidTagging, NoSuchResource],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTrustStoresError =
@@ -14308,6 +14572,8 @@ export const listTrustStores: API.OperationMethod<
   input: ListTrustStoresRequest,
   output: ListTrustStoresResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrustStores",
   pagination: {
     inputToken: "Marker",
@@ -14334,6 +14600,8 @@ export const listVpcOrigins: API.OperationMethod<
   input: ListVpcOriginsRequest,
   output: ListVpcOriginsResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcOrigins",
 }));
 export type PublishConnectionFunctionError =
@@ -14363,6 +14631,8 @@ export const publishConnectionFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishConnectionFunction",
 }));
 export type PublishFunctionError =
@@ -14394,6 +14664,8 @@ export const publishFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishFunction",
 }));
 export type PutResourcePolicyError =
@@ -14423,6 +14695,8 @@ export const putResourcePolicy: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type TagResourceError =
@@ -14443,6 +14717,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [AccessDenied, InvalidArgument, InvalidTagging, NoSuchResource],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestConnectionFunctionError =
@@ -14472,6 +14748,8 @@ export const testConnectionFunction: API.OperationMethod<
     TestFunctionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestConnectionFunction",
 }));
 export type TestFunctionError =
@@ -14503,6 +14781,8 @@ export const testFunction: API.OperationMethod<
     TestFunctionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestFunction",
 }));
 export type UntagResourceError =
@@ -14523,6 +14803,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [AccessDenied, InvalidArgument, InvalidTagging, NoSuchResource],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAnycastIpListError =
@@ -14552,6 +14834,8 @@ export const updateAnycastIpList: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAnycastIpList",
 }));
 export type UpdateCachePolicyError =
@@ -14601,6 +14885,8 @@ export const updateCachePolicy: API.OperationMethod<
     TooManyHeadersInCachePolicy,
     TooManyQueryStringsInCachePolicy,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCachePolicy",
 }));
 export type UpdateCloudFrontOriginAccessIdentityError =
@@ -14634,6 +14920,8 @@ export const updateCloudFrontOriginAccessIdentity: API.OperationMethod<
     NoSuchCloudFrontOriginAccessIdentity,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCloudFrontOriginAccessIdentity",
 }));
 export type UpdateConnectionFunctionError =
@@ -14665,6 +14953,8 @@ export const updateConnectionFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectionFunction",
 }));
 export type UpdateConnectionGroupError =
@@ -14698,6 +14988,8 @@ export const updateConnectionGroup: API.OperationMethod<
     PreconditionFailed,
     ResourceInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectionGroup",
 }));
 export type UpdateContinuousDeploymentPolicyError =
@@ -14737,6 +15029,8 @@ export const updateContinuousDeploymentPolicy: API.OperationMethod<
     PreconditionFailed,
     StagingDistributionInUse,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContinuousDeploymentPolicy",
 }));
 export type UpdateDistributionTenantError =
@@ -14772,6 +15066,8 @@ export const updateDistributionTenant: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDistributionTenant",
 }));
 export type UpdateDomainAssociationError =
@@ -14807,6 +15103,8 @@ export const updateDomainAssociation: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainAssociation",
 }));
 export type UpdateFieldLevelEncryptionConfigError =
@@ -14846,6 +15144,8 @@ export const updateFieldLevelEncryptionConfig: API.OperationMethod<
     TooManyFieldLevelEncryptionContentTypeProfiles,
     TooManyFieldLevelEncryptionQueryArgProfiles,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFieldLevelEncryptionConfig",
 }));
 export type UpdateFieldLevelEncryptionProfileError =
@@ -14887,6 +15187,8 @@ export const updateFieldLevelEncryptionProfile: API.OperationMethod<
     TooManyFieldLevelEncryptionEncryptionEntities,
     TooManyFieldLevelEncryptionFieldPatterns,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFieldLevelEncryptionProfile",
 }));
 export type UpdateFunctionError =
@@ -14920,6 +15222,8 @@ export const updateFunction: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFunction",
 }));
 export type UpdateKeyGroupError =
@@ -14957,6 +15261,8 @@ export const updateKeyGroup: API.OperationMethod<
     PreconditionFailed,
     TooManyPublicKeysInKeyGroup,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKeyGroup",
 }));
 export type UpdateKeyValueStoreError =
@@ -14986,6 +15292,8 @@ export const updateKeyValueStore: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKeyValueStore",
 }));
 export type UpdateOriginAccessControlError =
@@ -15017,6 +15325,8 @@ export const updateOriginAccessControl: API.OperationMethod<
     OriginAccessControlAlreadyExists,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOriginAccessControl",
 }));
 export type UpdateOriginRequestPolicyError =
@@ -15064,6 +15374,8 @@ export const updateOriginRequestPolicy: API.OperationMethod<
     TooManyHeadersInOriginRequestPolicy,
     TooManyQueryStringsInOriginRequestPolicy,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateOriginRequestPolicy",
 }));
 export type UpdatePublicKeyError =
@@ -15095,6 +15407,8 @@ export const updatePublicKey: API.OperationMethod<
     NoSuchPublicKey,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePublicKey",
 }));
 export type UpdateRealtimeLogConfigError =
@@ -15124,6 +15438,8 @@ export const updateRealtimeLogConfig: API.OperationMethod<
   input: UpdateRealtimeLogConfigRequest,
   output: UpdateRealtimeLogConfigResult,
   errors: [AccessDenied, InvalidArgument, NoSuchRealtimeLogConfig],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRealtimeLogConfig",
 }));
 export type UpdateResponseHeadersPolicyError =
@@ -15171,6 +15487,8 @@ export const updateResponseHeadersPolicy: API.OperationMethod<
     TooManyCustomHeadersInResponseHeadersPolicy,
     TooManyRemoveHeadersInResponseHeadersPolicy,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResponseHeadersPolicy",
 }));
 export type UpdateStreamingDistributionError =
@@ -15216,6 +15534,8 @@ export const updateStreamingDistribution: API.OperationMethod<
     TooManyTrustedSigners,
     TrustedSignerDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStreamingDistribution",
 }));
 export type UpdateTrustStoreError =
@@ -15243,6 +15563,8 @@ export const updateTrustStore: API.OperationMethod<
     InvalidIfMatchVersion,
     PreconditionFailed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrustStore",
 }));
 export type UpdateVpcOriginError =
@@ -15282,6 +15604,8 @@ export const updateVpcOrigin: API.OperationMethod<
     PreconditionFailed,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVpcOrigin",
 }));
 export type VerifyDnsConfigurationError =
@@ -15301,6 +15625,8 @@ export const verifyDnsConfiguration: API.OperationMethod<
   input: VerifyDnsConfigurationRequest,
   output: VerifyDnsConfigurationResult,
   errors: [AccessDenied, EntityNotFound, InvalidArgument],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyDnsConfiguration",
 }));
 export type CreateDistributionError =
@@ -15452,6 +15778,8 @@ export const createDistribution: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDistribution",
 }));
 export type CreateDistributionWithTagsError =
@@ -15607,6 +15935,8 @@ export const createDistributionWithTags: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDistributionWithTags",
 }));
 export type UpdateDistributionError =
@@ -15772,6 +16102,8 @@ export const updateDistribution: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDistribution",
 }));
 export type UpdateDistributionWithStagingConfigError =
@@ -15923,6 +16255,8 @@ export const updateDistributionWithStagingConfig: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDistributionWithStagingConfig",
 }));
 export type CopyDistributionError =
@@ -16078,5 +16412,7 @@ export const copyDistribution: API.OperationMethod<
     TrustedKeyGroupDoesNotExist,
     TrustedSignerDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyDistribution",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2273,6 +2275,8 @@ export const associateLibraryItemReview: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateLibraryItemReview",
 }));
 export type AssociateQAppWithUserError =
@@ -2304,6 +2308,8 @@ export const associateQAppWithUser: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateQAppWithUser",
 }));
 export type BatchCreateCategoryError =
@@ -2335,6 +2341,8 @@ export const batchCreateCategory: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateCategory",
 }));
 export type BatchDeleteCategoryError =
@@ -2366,6 +2374,8 @@ export const batchDeleteCategory: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteCategory",
 }));
 export type BatchUpdateCategoryError =
@@ -2397,6 +2407,8 @@ export const batchUpdateCategory: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateCategory",
 }));
 export type CreateLibraryItemError =
@@ -2428,6 +2440,8 @@ export const createLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLibraryItem",
 }));
 export type CreatePresignedUrlError =
@@ -2457,6 +2471,8 @@ export const createPresignedUrl: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePresignedUrl",
 }));
 export type CreateQAppError =
@@ -2490,6 +2506,8 @@ export const createQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQApp",
 }));
 export type DeleteLibraryItemError =
@@ -2521,6 +2539,8 @@ export const deleteLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLibraryItem",
 }));
 export type DeleteQAppError =
@@ -2550,6 +2570,8 @@ export const deleteQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQApp",
 }));
 export type DescribeQAppPermissionsError =
@@ -2579,6 +2601,8 @@ export const describeQAppPermissions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQAppPermissions",
 }));
 export type DisassociateLibraryItemReviewError =
@@ -2612,6 +2636,8 @@ export const disassociateLibraryItemReview: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateLibraryItemReview",
 }));
 export type DisassociateQAppFromUserError =
@@ -2641,6 +2667,8 @@ export const disassociateQAppFromUser: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateQAppFromUser",
 }));
 export type ExportQAppSessionDataError =
@@ -2674,6 +2702,8 @@ export const exportQAppSessionData: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportQAppSessionData",
 }));
 export type GetLibraryItemError =
@@ -2703,6 +2733,8 @@ export const getLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLibraryItem",
 }));
 export type GetQAppError =
@@ -2732,6 +2764,8 @@ export const getQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQApp",
 }));
 export type GetQAppSessionError =
@@ -2763,6 +2797,8 @@ export const getQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQAppSession",
 }));
 export type GetQAppSessionMetadataError =
@@ -2794,6 +2830,8 @@ export const getQAppSessionMetadata: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQAppSessionMetadata",
 }));
 export type ImportDocumentError =
@@ -2827,6 +2865,8 @@ export const importDocument: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportDocument",
 }));
 export type ListCategoriesError =
@@ -2856,6 +2896,8 @@ export const listCategories: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCategories",
 }));
 export type ListLibraryItemsError =
@@ -2900,6 +2942,8 @@ export const listLibraryItems: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLibraryItems",
   pagination: {
     inputToken: "nextToken",
@@ -2948,6 +2992,8 @@ export const listQApps: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQApps",
   pagination: {
     inputToken: "nextToken",
@@ -2985,6 +3031,8 @@ export const listQAppSessionData: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQAppSessionData",
 }));
 export type ListTagsForResourceError =
@@ -3012,6 +3060,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PredictQAppError =
@@ -3039,6 +3089,8 @@ export const predictQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PredictQApp",
 }));
 export type StartQAppSessionError =
@@ -3072,6 +3124,8 @@ export const startQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQAppSession",
 }));
 export type StopQAppSessionError =
@@ -3103,6 +3157,8 @@ export const stopQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopQAppSession",
 }));
 export type TagResourceError =
@@ -3132,6 +3188,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3159,6 +3217,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateLibraryItemError =
@@ -3190,6 +3250,8 @@ export const updateLibraryItem: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLibraryItem",
 }));
 export type UpdateLibraryItemMetadataError =
@@ -3221,6 +3283,8 @@ export const updateLibraryItemMetadata: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLibraryItemMetadata",
 }));
 export type UpdateQAppError =
@@ -3252,6 +3316,8 @@ export const updateQApp: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQApp",
 }));
 export type UpdateQAppPermissionsError =
@@ -3281,6 +3347,8 @@ export const updateQAppPermissions: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQAppPermissions",
 }));
 export type UpdateQAppSessionError =
@@ -3312,6 +3380,8 @@ export const updateQAppSession: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQAppSession",
 }));
 export type UpdateQAppSessionMetadataError =
@@ -3343,5 +3413,7 @@ export const updateQAppSessionMetadata: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQAppSessionMetadata",
 }));

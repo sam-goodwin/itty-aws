@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5869,6 +5871,8 @@ export const associateFileSystemAliases: API.OperationMethod<
   input: AssociateFileSystemAliasesRequest,
   output: AssociateFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateFileSystemAliases",
 }));
 export type CancelDataRepositoryTaskError =
@@ -5907,6 +5911,8 @@ export const cancelDataRepositoryTask: API.OperationMethod<
     InternalServerError,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDataRepositoryTask",
 }));
 export type CopyBackupError =
@@ -5970,6 +5976,8 @@ export const copyBackup: API.OperationMethod<
     SourceBackupUnavailable,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyBackup",
 }));
 export type CopySnapshotAndUpdateVolumeError =
@@ -5996,6 +6004,8 @@ export const copySnapshotAndUpdateVolume: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopySnapshotAndUpdateVolume",
 }));
 export type CreateAndAttachS3AccessPointError =
@@ -6052,6 +6062,8 @@ export const createAndAttachS3AccessPoint: API.OperationMethod<
     UnsupportedOperation,
     VolumeNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAndAttachS3AccessPoint",
 }));
 export type CreateBackupError =
@@ -6131,6 +6143,8 @@ export const createBackup: API.OperationMethod<
     UnsupportedOperation,
     VolumeNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackup",
 }));
 export type CreateDataRepositoryAssociationError =
@@ -6176,6 +6190,8 @@ export const createDataRepositoryAssociation: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataRepositoryAssociation",
 }));
 export type CreateDataRepositoryTaskError =
@@ -6224,6 +6240,8 @@ export const createDataRepositoryTask: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataRepositoryTask",
 }));
 export type CreateFileCacheError =
@@ -6274,6 +6292,8 @@ export const createFileCache: API.OperationMethod<
     MissingFileCacheConfiguration,
     ServiceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFileCache",
 }));
 export type CreateFileSystemError =
@@ -6347,6 +6367,8 @@ export const createFileSystem: API.OperationMethod<
     MissingFileSystemConfiguration,
     ServiceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFileSystem",
 }));
 export type CreateFileSystemFromBackupError =
@@ -6412,6 +6434,8 @@ export const createFileSystemFromBackup: API.OperationMethod<
     MissingFileSystemConfiguration,
     ServiceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFileSystemFromBackup",
 }));
 export type CreateSnapshotError =
@@ -6463,6 +6487,8 @@ export const createSnapshot: API.OperationMethod<
     ServiceLimitExceeded,
     VolumeNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshot",
 }));
 export type CreateStorageVirtualMachineError =
@@ -6494,6 +6520,8 @@ export const createStorageVirtualMachine: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStorageVirtualMachine",
 }));
 export type CreateVolumeError =
@@ -6527,6 +6555,8 @@ export const createVolume: API.OperationMethod<
     StorageVirtualMachineNotFound,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVolume",
 }));
 export type CreateVolumeFromBackupError =
@@ -6561,6 +6591,8 @@ export const createVolumeFromBackup: API.OperationMethod<
     ServiceLimitExceeded,
     StorageVirtualMachineNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVolumeFromBackup",
 }));
 export type DeleteBackupError =
@@ -6599,6 +6631,8 @@ export const deleteBackup: API.OperationMethod<
     IncompatibleParameterError,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackup",
 }));
 export type DeleteDataRepositoryAssociationError =
@@ -6632,6 +6666,8 @@ export const deleteDataRepositoryAssociation: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataRepositoryAssociation",
 }));
 export type DeleteFileCacheError =
@@ -6670,6 +6706,8 @@ export const deleteFileCache: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFileCache",
 }));
 export type DeleteFileSystemError =
@@ -6742,6 +6780,8 @@ export const deleteFileSystem: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFileSystem",
 }));
 export type DeleteSnapshotError =
@@ -6766,6 +6806,8 @@ export const deleteSnapshot: API.OperationMethod<
   input: DeleteSnapshotRequest,
   output: DeleteSnapshotResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshot",
 }));
 export type DeleteStorageVirtualMachineError =
@@ -6792,6 +6834,8 @@ export const deleteStorageVirtualMachine: API.OperationMethod<
     InternalServerError,
     StorageVirtualMachineNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStorageVirtualMachine",
 }));
 export type DeleteVolumeError =
@@ -6820,6 +6864,8 @@ export const deleteVolume: API.OperationMethod<
     ServiceLimitExceeded,
     VolumeNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVolume",
 }));
 export type DescribeBackupsError =
@@ -6886,6 +6932,8 @@ export const describeBackups: API.OperationMethod<
     InternalServerError,
     VolumeNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBackups",
   pagination: {
     inputToken: "NextToken",
@@ -6953,6 +7001,8 @@ export const describeDataRepositoryAssociations: API.OperationMethod<
     InternalServerError,
     InvalidDataRepositoryType,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataRepositoryAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -7008,6 +7058,8 @@ export const describeDataRepositoryTasks: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataRepositoryTasks",
   pagination: {
     inputToken: "NextToken",
@@ -7073,6 +7125,8 @@ export const describeFileCaches: API.OperationMethod<
   input: DescribeFileCachesRequest,
   output: DescribeFileCachesResponse,
   errors: [BadRequest, FileCacheNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFileCaches",
   pagination: {
     inputToken: "NextToken",
@@ -7114,6 +7168,8 @@ export const describeFileSystemAliases: API.OperationMethod<
   input: DescribeFileSystemAliasesRequest,
   output: DescribeFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFileSystemAliases",
   pagination: {
     inputToken: "NextToken",
@@ -7179,6 +7235,8 @@ export const describeFileSystems: API.OperationMethod<
   input: DescribeFileSystemsRequest,
   output: DescribeFileSystemsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFileSystems",
   pagination: {
     inputToken: "NextToken",
@@ -7228,6 +7286,8 @@ export const describeS3AccessPointAttachments: API.OperationMethod<
     S3AccessPointAttachmentNotFound,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeS3AccessPointAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -7253,6 +7313,8 @@ export const describeSharedVpcConfiguration: API.OperationMethod<
   input: DescribeSharedVpcConfigurationRequest,
   output: DescribeSharedVpcConfigurationResponse,
   errors: [BadRequest, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSharedVpcConfiguration",
 }));
 export type DescribeSnapshotsError =
@@ -7312,6 +7374,8 @@ export const describeSnapshots: API.OperationMethod<
   input: DescribeSnapshotsRequest,
   output: DescribeSnapshotsResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "NextToken",
@@ -7352,6 +7416,8 @@ export const describeStorageVirtualMachines: API.OperationMethod<
   input: DescribeStorageVirtualMachinesRequest,
   output: DescribeStorageVirtualMachinesResponse,
   errors: [BadRequest, InternalServerError, StorageVirtualMachineNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStorageVirtualMachines",
   pagination: {
     inputToken: "NextToken",
@@ -7393,6 +7459,8 @@ export const describeVolumes: API.OperationMethod<
   input: DescribeVolumesRequest,
   output: DescribeVolumesResponse,
   errors: [BadRequest, InternalServerError, VolumeNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVolumes",
   pagination: {
     inputToken: "NextToken",
@@ -7432,6 +7500,8 @@ export const detachAndDeleteS3AccessPoint: API.OperationMethod<
     S3AccessPointAttachmentNotFound,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachAndDeleteS3AccessPoint",
 }));
 export type DisassociateFileSystemAliasesError =
@@ -7460,6 +7530,8 @@ export const disassociateFileSystemAliases: API.OperationMethod<
   input: DisassociateFileSystemAliasesRequest,
   output: DisassociateFileSystemAliasesResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFileSystemAliases",
 }));
 export type ListTagsForResourceError =
@@ -7524,6 +7596,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceDoesNotSupportTagging,
     ResourceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -7557,6 +7631,8 @@ export const releaseFileSystemNfsV3Locks: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReleaseFileSystemNfsV3Locks",
 }));
 export type RestoreVolumeFromSnapshotError =
@@ -7577,6 +7653,8 @@ export const restoreVolumeFromSnapshot: API.OperationMethod<
   input: RestoreVolumeFromSnapshotRequest,
   output: RestoreVolumeFromSnapshotResponse,
   errors: [BadRequest, InternalServerError, VolumeNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreVolumeFromSnapshot",
 }));
 export type StartMisconfiguredStateRecoveryError =
@@ -7597,6 +7675,8 @@ export const startMisconfiguredStateRecovery: API.OperationMethod<
   input: StartMisconfiguredStateRecoveryRequest,
   output: StartMisconfiguredStateRecoveryResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMisconfiguredStateRecovery",
 }));
 export type TagResourceError =
@@ -7624,6 +7704,8 @@ export const tagResource: API.OperationMethod<
     ResourceDoesNotSupportTagging,
     ResourceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -7651,6 +7733,8 @@ export const untagResource: API.OperationMethod<
     ResourceDoesNotSupportTagging,
     ResourceNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDataRepositoryAssociationError =
@@ -7681,6 +7765,8 @@ export const updateDataRepositoryAssociation: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataRepositoryAssociation",
 }));
 export type UpdateFileCacheError =
@@ -7713,6 +7799,8 @@ export const updateFileCache: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFileCache",
 }));
 export type UpdateFileSystemError =
@@ -7851,6 +7939,8 @@ export const updateFileSystem: API.OperationMethod<
     ServiceLimitExceeded,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFileSystem",
 }));
 export type UpdateSharedVpcConfigurationError =
@@ -7878,6 +7968,8 @@ export const updateSharedVpcConfiguration: API.OperationMethod<
   input: UpdateSharedVpcConfigurationRequest,
   output: UpdateSharedVpcConfigurationResponse,
   errors: [BadRequest, IncompatibleParameterError, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSharedVpcConfiguration",
 }));
 export type UpdateSnapshotError =
@@ -7897,6 +7989,8 @@ export const updateSnapshot: API.OperationMethod<
   input: UpdateSnapshotRequest,
   output: UpdateSnapshotResponse,
   errors: [BadRequest, InternalServerError, SnapshotNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSnapshot",
 }));
 export type UpdateStorageVirtualMachineError =
@@ -7924,6 +8018,8 @@ export const updateStorageVirtualMachine: API.OperationMethod<
     StorageVirtualMachineNotFound,
     UnsupportedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStorageVirtualMachine",
 }));
 export type UpdateVolumeError =
@@ -7951,5 +8047,7 @@ export const updateVolume: API.OperationMethod<
     MissingVolumeConfiguration,
     VolumeNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVolume",
 }));

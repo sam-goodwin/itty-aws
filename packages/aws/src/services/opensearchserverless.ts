@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2314,6 +2316,8 @@ export const batchGetCollection: API.OperationMethod<
   input: BatchGetCollectionRequest,
   output: BatchGetCollectionResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetCollection",
 }));
 export type BatchGetCollectionGroupError =
@@ -2332,6 +2336,8 @@ export const batchGetCollectionGroup: API.OperationMethod<
   input: BatchGetCollectionGroupRequest,
   output: BatchGetCollectionGroupResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetCollectionGroup",
 }));
 export type BatchGetEffectiveLifecyclePolicyError =
@@ -2350,6 +2356,8 @@ export const batchGetEffectiveLifecyclePolicy: API.OperationMethod<
   input: BatchGetEffectiveLifecyclePolicyRequest,
   output: BatchGetEffectiveLifecyclePolicyResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetEffectiveLifecyclePolicy",
 }));
 export type BatchGetLifecyclePolicyError =
@@ -2368,6 +2376,8 @@ export const batchGetLifecyclePolicy: API.OperationMethod<
   input: BatchGetLifecyclePolicyRequest,
   output: BatchGetLifecyclePolicyResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetLifecyclePolicy",
 }));
 export type BatchGetVpcEndpointError =
@@ -2386,6 +2396,8 @@ export const batchGetVpcEndpoint: API.OperationMethod<
   input: BatchGetVpcEndpointRequest,
   output: BatchGetVpcEndpointResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetVpcEndpoint",
 }));
 export type CreateLifecyclePolicyError =
@@ -2411,6 +2423,8 @@ export const createLifecyclePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLifecyclePolicy",
 }));
 export type CreateSecurityPolicyError =
@@ -2436,6 +2450,8 @@ export const createSecurityPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityPolicy",
 }));
 export type GetAccountSettingsError =
@@ -2454,6 +2470,8 @@ export const getAccountSettings: API.OperationMethod<
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountSettings",
 }));
 export type GetPoliciesStatsError = InternalServerException | CommonErrors;
@@ -2469,6 +2487,8 @@ export const getPoliciesStats: API.OperationMethod<
   input: GetPoliciesStatsRequest,
   output: GetPoliciesStatsResponse,
   errors: [InternalServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPoliciesStats",
 }));
 export type ListTagsForResourceError =
@@ -2492,6 +2512,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2519,6 +2541,8 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2544,6 +2568,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccountSettingsError =
@@ -2567,6 +2593,8 @@ export const updateAccountSettings: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
 export type UpdateVpcEndpointError =
@@ -2586,6 +2614,8 @@ export const updateVpcEndpoint: API.OperationMethod<
   input: UpdateVpcEndpointRequest,
   output: UpdateVpcEndpointResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateVpcEndpoint",
 }));
 export type CreateAccessPolicyError =
@@ -2611,6 +2641,8 @@ export const createAccessPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessPolicy",
 }));
 export type GetAccessPolicyError =
@@ -2634,6 +2666,8 @@ export const getAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPolicy",
 }));
 export type UpdateAccessPolicyError =
@@ -2659,6 +2693,8 @@ export const updateAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccessPolicy",
 }));
 export type DeleteAccessPolicyError =
@@ -2684,6 +2720,8 @@ export const deleteAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessPolicy",
 }));
 export type ListAccessPoliciesError =
@@ -2717,6 +2755,8 @@ export const listAccessPolicies: API.OperationMethod<
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessPolicies",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
@@ -2745,6 +2785,8 @@ export const createCollection: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCollection",
 }));
 export type UpdateCollectionError =
@@ -2764,6 +2806,8 @@ export const updateCollection: API.OperationMethod<
   input: UpdateCollectionRequest,
   output: UpdateCollectionResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCollection",
 }));
 export type DeleteCollectionError =
@@ -2789,6 +2833,8 @@ export const deleteCollection: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCollection",
 }));
 export type ListCollectionsError =
@@ -2824,6 +2870,8 @@ export const listCollections: API.OperationMethod<
   input: ListCollectionsRequest,
   output: ListCollectionsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCollections",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
@@ -2852,6 +2900,8 @@ export const createCollectionGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCollectionGroup",
 }));
 export type UpdateCollectionGroupError =
@@ -2877,6 +2927,8 @@ export const updateCollectionGroup: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCollectionGroup",
 }));
 export type DeleteCollectionGroupError =
@@ -2902,6 +2954,8 @@ export const deleteCollectionGroup: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCollectionGroup",
 }));
 export type ListCollectionGroupsError =
@@ -2935,6 +2989,8 @@ export const listCollectionGroups: API.OperationMethod<
   input: ListCollectionGroupsRequest,
   output: ListCollectionGroupsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCollectionGroups",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
@@ -2961,6 +3017,8 @@ export const createIndex: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIndex",
 }));
 export type GetIndexError =
@@ -2984,6 +3042,8 @@ export const getIndex: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIndex",
 }));
 export type UpdateIndexError =
@@ -3007,6 +3067,8 @@ export const updateIndex: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIndex",
 }));
 export type DeleteIndexError =
@@ -3030,6 +3092,8 @@ export const deleteIndex: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIndex",
 }));
 export type UpdateLifecyclePolicyError =
@@ -3057,6 +3121,8 @@ export const updateLifecyclePolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLifecyclePolicy",
 }));
 export type DeleteLifecyclePolicyError =
@@ -3082,6 +3148,8 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLifecyclePolicy",
 }));
 export type ListLifecyclePoliciesError =
@@ -3115,6 +3183,8 @@ export const listLifecyclePolicies: API.OperationMethod<
   input: ListLifecyclePoliciesRequest,
   output: ListLifecyclePoliciesResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLifecyclePolicies",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
@@ -3141,6 +3211,8 @@ export const createSecurityConfig: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityConfig",
 }));
 export type GetSecurityConfigError =
@@ -3164,6 +3236,8 @@ export const getSecurityConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSecurityConfig",
 }));
 export type UpdateSecurityConfigError =
@@ -3189,6 +3263,8 @@ export const updateSecurityConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityConfig",
 }));
 export type DeleteSecurityConfigError =
@@ -3214,6 +3290,8 @@ export const deleteSecurityConfig: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityConfig",
 }));
 export type ListSecurityConfigsError =
@@ -3247,6 +3325,8 @@ export const listSecurityConfigs: API.OperationMethod<
   input: ListSecurityConfigsRequest,
   output: ListSecurityConfigsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityConfigs",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
@@ -3271,6 +3351,8 @@ export const getSecurityPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSecurityPolicy",
 }));
 export type UpdateSecurityPolicyError =
@@ -3298,6 +3380,8 @@ export const updateSecurityPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityPolicy",
 }));
 export type DeleteSecurityPolicyError =
@@ -3323,6 +3407,8 @@ export const deleteSecurityPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityPolicy",
 }));
 export type ListSecurityPoliciesError =
@@ -3356,6 +3442,8 @@ export const listSecurityPolicies: API.OperationMethod<
   input: ListSecurityPoliciesRequest,
   output: ListSecurityPoliciesResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSecurityPolicies",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
@@ -3382,6 +3470,8 @@ export const createVpcEndpoint: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcEndpoint",
 }));
 export type DeleteVpcEndpointError =
@@ -3407,6 +3497,8 @@ export const deleteVpcEndpoint: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcEndpoint",
 }));
 export type ListVpcEndpointsError =
@@ -3440,6 +3532,8 @@ export const listVpcEndpoints: API.OperationMethod<
   input: ListVpcEndpointsRequest,
   output: ListVpcEndpointsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVpcEndpoints",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));

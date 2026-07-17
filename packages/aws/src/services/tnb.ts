@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2036,6 +2038,8 @@ export const cancelSolNetworkOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSolNetworkOperation",
 }));
 export type CreateSolFunctionPackageError =
@@ -2070,6 +2074,8 @@ export const createSolFunctionPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSolFunctionPackage",
 }));
 export type CreateSolNetworkInstanceError =
@@ -2106,6 +2112,8 @@ export const createSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSolNetworkInstance",
 }));
 export type CreateSolNetworkPackageError =
@@ -2144,6 +2152,8 @@ export const createSolNetworkPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSolNetworkPackage",
 }));
 export type DeleteSolFunctionPackageError =
@@ -2176,6 +2186,8 @@ export const deleteSolFunctionPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSolFunctionPackage",
 }));
 export type DeleteSolNetworkInstanceError =
@@ -2208,6 +2220,8 @@ export const deleteSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSolNetworkInstance",
 }));
 export type DeleteSolNetworkPackageError =
@@ -2240,6 +2254,8 @@ export const deleteSolNetworkPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSolNetworkPackage",
 }));
 export type GetSolFunctionInstanceError =
@@ -2270,6 +2286,8 @@ export const getSolFunctionInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolFunctionInstance",
 }));
 export type GetSolFunctionPackageError =
@@ -2300,6 +2318,8 @@ export const getSolFunctionPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolFunctionPackage",
 }));
 export type GetSolFunctionPackageContentError =
@@ -2329,6 +2349,8 @@ export const getSolFunctionPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolFunctionPackageContent",
 }));
 export type GetSolFunctionPackageDescriptorError =
@@ -2360,6 +2382,8 @@ export const getSolFunctionPackageDescriptor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolFunctionPackageDescriptor",
 }));
 export type GetSolNetworkInstanceError =
@@ -2389,6 +2413,8 @@ export const getSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolNetworkInstance",
 }));
 export type GetSolNetworkOperationError =
@@ -2419,6 +2445,8 @@ export const getSolNetworkOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolNetworkOperation",
 }));
 export type GetSolNetworkPackageError =
@@ -2448,6 +2476,8 @@ export const getSolNetworkPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolNetworkPackage",
 }));
 export type GetSolNetworkPackageContentError =
@@ -2477,6 +2507,8 @@ export const getSolNetworkPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolNetworkPackageContent",
 }));
 export type GetSolNetworkPackageDescriptorError =
@@ -2506,6 +2538,8 @@ export const getSolNetworkPackageDescriptor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSolNetworkPackageDescriptor",
 }));
 export type InstantiateSolNetworkInstanceError =
@@ -2540,6 +2574,8 @@ export const instantiateSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InstantiateSolNetworkInstance",
 }));
 export type ListSolFunctionInstancesError =
@@ -2582,6 +2618,8 @@ export const listSolFunctionInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSolFunctionInstances",
   pagination: {
     inputToken: "nextToken",
@@ -2630,6 +2668,8 @@ export const listSolFunctionPackages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSolFunctionPackages",
   pagination: {
     inputToken: "nextToken",
@@ -2678,6 +2718,8 @@ export const listSolNetworkInstances: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSolNetworkInstances",
   pagination: {
     inputToken: "nextToken",
@@ -2727,6 +2769,8 @@ export const listSolNetworkOperations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSolNetworkOperations",
   pagination: {
     inputToken: "nextToken",
@@ -2775,6 +2819,8 @@ export const listSolNetworkPackages: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSolNetworkPackages",
   pagination: {
     inputToken: "nextToken",
@@ -2808,6 +2854,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutSolFunctionPackageContentError =
@@ -2837,6 +2885,8 @@ export const putSolFunctionPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSolFunctionPackageContent",
 }));
 export type PutSolNetworkPackageContentError =
@@ -2866,6 +2916,8 @@ export const putSolNetworkPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSolNetworkPackageContent",
 }));
 export type TagResourceError =
@@ -2895,6 +2947,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TerminateSolNetworkInstanceError =
@@ -2928,6 +2982,8 @@ export const terminateSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateSolNetworkInstance",
 }));
 export type UntagResourceError =
@@ -2957,6 +3013,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateSolFunctionPackageError =
@@ -2986,6 +3044,8 @@ export const updateSolFunctionPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSolFunctionPackage",
 }));
 export type UpdateSolNetworkInstanceError =
@@ -3019,6 +3079,8 @@ export const updateSolNetworkInstance: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSolNetworkInstance",
 }));
 export type UpdateSolNetworkPackageError =
@@ -3050,6 +3112,8 @@ export const updateSolNetworkPackage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSolNetworkPackage",
 }));
 export type ValidateSolFunctionPackageContentError =
@@ -3080,6 +3144,8 @@ export const validateSolFunctionPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateSolFunctionPackageContent",
 }));
 export type ValidateSolNetworkPackageContentError =
@@ -3110,5 +3176,7 @@ export const validateSolNetworkPackageContent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateSolNetworkPackageContent",
 }));

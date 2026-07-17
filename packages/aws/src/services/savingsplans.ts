@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1021,6 +1023,8 @@ export const createSavingsPlan: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSavingsPlan",
 }));
 export type DeleteQueuedSavingsPlanError =
@@ -1046,6 +1050,8 @@ export const deleteQueuedSavingsPlan: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueuedSavingsPlan",
 }));
 export type DescribeSavingsPlanRatesError =
@@ -1069,6 +1075,8 @@ export const describeSavingsPlanRates: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSavingsPlanRates",
 }));
 export type DescribeSavingsPlansError =
@@ -1087,6 +1095,8 @@ export const describeSavingsPlans: API.OperationMethod<
   input: DescribeSavingsPlansRequest,
   output: DescribeSavingsPlansResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSavingsPlans",
 }));
 export type DescribeSavingsPlansOfferingRatesError =
@@ -1105,6 +1115,8 @@ export const describeSavingsPlansOfferingRates: API.OperationMethod<
   input: DescribeSavingsPlansOfferingRatesRequest,
   output: DescribeSavingsPlansOfferingRatesResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSavingsPlansOfferingRates",
 }));
 export type DescribeSavingsPlansOfferingsError =
@@ -1123,6 +1135,8 @@ export const describeSavingsPlansOfferings: API.OperationMethod<
   input: DescribeSavingsPlansOfferingsRequest,
   output: DescribeSavingsPlansOfferingsResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSavingsPlansOfferings",
 }));
 export type ListTagsForResourceError =
@@ -1146,6 +1160,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ReturnSavingsPlanError =
@@ -1171,6 +1187,8 @@ export const returnSavingsPlan: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReturnSavingsPlan",
 }));
 export type TagResourceError =
@@ -1196,6 +1214,8 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1219,5 +1239,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

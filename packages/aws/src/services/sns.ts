@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1828,6 +1830,8 @@ export const addPermission: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddPermission",
 }));
 export type CheckIfPhoneNumberIsOptedOutError =
@@ -1858,6 +1862,8 @@ export const checkIfPhoneNumberIsOptedOut: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckIfPhoneNumberIsOptedOut",
 }));
 export type ConfirmSubscriptionError =
@@ -1893,6 +1899,8 @@ export const confirmSubscription: API.OperationMethod<
     ReplayLimitExceededException,
     SubscriptionLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmSubscription",
 }));
 export type CreatePlatformApplicationError =
@@ -1953,6 +1961,8 @@ export const createPlatformApplication: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePlatformApplication",
 }));
 export type CreatePlatformEndpointError =
@@ -1996,6 +2006,8 @@ export const createPlatformEndpoint: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePlatformEndpoint",
 }));
 export type CreateSMSSandboxPhoneNumberError =
@@ -2035,6 +2047,8 @@ export const createSMSSandboxPhoneNumber: API.OperationMethod<
     ThrottledException,
     UserErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSMSSandboxPhoneNumber",
 }));
 export type CreateTopicError =
@@ -2074,6 +2088,8 @@ export const createTopic: API.OperationMethod<
     TagPolicyException,
     TopicLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTopic",
 }));
 export type DeleteEndpointError =
@@ -2106,6 +2122,8 @@ export const deleteEndpoint: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpoint",
 }));
 export type DeletePlatformApplicationError =
@@ -2136,6 +2154,8 @@ export const deletePlatformApplication: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePlatformApplication",
 }));
 export type DeleteSMSSandboxPhoneNumberError =
@@ -2175,6 +2195,8 @@ export const deleteSMSSandboxPhoneNumber: API.OperationMethod<
     ThrottledException,
     UserErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSMSSandboxPhoneNumber",
 }));
 export type DeleteTopicError =
@@ -2215,6 +2237,8 @@ export const deleteTopic: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTopic",
 }));
 export type GetDataProtectionPolicyError =
@@ -2247,6 +2271,8 @@ export const getDataProtectionPolicy: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataProtectionPolicy",
 }));
 export type GetEndpointAttributesError =
@@ -2278,6 +2304,8 @@ export const getEndpointAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEndpointAttributes",
 }));
 export type GetPlatformApplicationAttributesError =
@@ -2309,6 +2337,8 @@ export const getPlatformApplicationAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlatformApplicationAttributes",
 }));
 export type GetSMSAttributesError =
@@ -2336,6 +2366,8 @@ export const getSMSAttributes: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSMSAttributes",
 }));
 export type GetSMSSandboxAccountStatusError =
@@ -2369,6 +2401,8 @@ export const getSMSSandboxAccountStatus: API.OperationMethod<
     InternalErrorException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSMSSandboxAccountStatus",
 }));
 export type GetSubscriptionAttributesError =
@@ -2394,6 +2428,8 @@ export const getSubscriptionAttributes: API.OperationMethod<
     InvalidParameterException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscriptionAttributes",
 }));
 export type GetTopicAttributesError =
@@ -2426,6 +2462,8 @@ export const getTopicAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTopicAttributes",
 }));
 export type ListEndpointsByPlatformApplicationError =
@@ -2480,6 +2518,8 @@ export const listEndpointsByPlatformApplication: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEndpointsByPlatformApplication",
   pagination: {
     inputToken: "NextToken",
@@ -2529,6 +2569,8 @@ export const listOriginationNumbers: API.OperationMethod<
     ThrottledException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOriginationNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -2583,6 +2625,8 @@ export const listPhoneNumbersOptedOut: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPhoneNumbersOptedOut",
   pagination: {
     inputToken: "nextToken",
@@ -2636,6 +2680,8 @@ export const listPlatformApplications: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlatformApplications",
   pagination: {
     inputToken: "NextToken",
@@ -2693,6 +2739,8 @@ export const listSMSSandboxPhoneNumbers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSMSSandboxPhoneNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -2742,6 +2790,8 @@ export const listSubscriptions: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptions",
   pagination: {
     inputToken: "NextToken",
@@ -2796,6 +2846,8 @@ export const listSubscriptionsByTopic: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptionsByTopic",
   pagination: {
     inputToken: "NextToken",
@@ -2833,6 +2885,8 @@ export const listTagsForResource: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTopicsError =
@@ -2876,6 +2930,8 @@ export const listTopics: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTopics",
   pagination: {
     inputToken: "NextToken",
@@ -2909,6 +2965,8 @@ export const optInPhoneNumber: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "OptInPhoneNumber",
 }));
 export type PublishError =
@@ -2980,6 +3038,8 @@ export const publish: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Publish",
 }));
 export type PublishBatchError =
@@ -3074,6 +3134,8 @@ export const publishBatch: API.OperationMethod<
     TooManyEntriesInBatchRequestException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishBatch",
 }));
 export type PutDataProtectionPolicyError =
@@ -3106,6 +3168,8 @@ export const putDataProtectionPolicy: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDataProtectionPolicy",
 }));
 export type RemovePermissionError =
@@ -3139,6 +3203,8 @@ export const removePermission: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemovePermission",
 }));
 export type SetEndpointAttributesError =
@@ -3170,6 +3236,8 @@ export const setEndpointAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetEndpointAttributes",
 }));
 export type SetPlatformApplicationAttributesError =
@@ -3203,6 +3271,8 @@ export const setPlatformApplicationAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetPlatformApplicationAttributes",
 }));
 export type SetSMSAttributesError =
@@ -3238,6 +3308,8 @@ export const setSMSAttributes: API.OperationMethod<
     InvalidParameterException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetSMSAttributes",
 }));
 export type SetSubscriptionAttributesError =
@@ -3268,6 +3340,8 @@ export const setSubscriptionAttributes: API.OperationMethod<
     NotFoundException,
     ReplayLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetSubscriptionAttributes",
 }));
 export type SetTopicAttributesError =
@@ -3303,6 +3377,8 @@ export const setTopicAttributes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTopicAttributes",
 }));
 export type SubscribeError =
@@ -3347,6 +3423,8 @@ export const subscribe: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Subscribe",
 }));
 export type TagResourceError =
@@ -3398,6 +3476,8 @@ export const tagResource: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UnsubscribeError =
@@ -3432,6 +3512,8 @@ export const unsubscribe: API.OperationMethod<
     InvalidSecurityException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Unsubscribe",
 }));
 export type UntagResourceError =
@@ -3468,6 +3550,8 @@ export const untagResource: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientTokenId,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type VerifySMSSandboxPhoneNumberError =
@@ -3507,5 +3591,7 @@ export const verifySMSSandboxPhoneNumber: API.OperationMethod<
     ThrottledException,
     VerificationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifySMSSandboxPhoneNumber",
 }));

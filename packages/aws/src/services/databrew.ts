@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2799,6 +2801,8 @@ export const batchDeleteRecipeVersion: API.OperationMethod<
   input: BatchDeleteRecipeVersionRequest,
   output: BatchDeleteRecipeVersionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteRecipeVersion",
 }));
 export type CreateDatasetError =
@@ -2824,6 +2828,8 @@ export const createDataset: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
 export type CreateProfileJobError =
@@ -2851,6 +2857,8 @@ export const createProfileJob: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProfileJob",
 }));
 export type CreateProjectError =
@@ -2876,6 +2884,8 @@ export const createProject: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProject",
 }));
 export type CreateRecipeError =
@@ -2899,6 +2909,8 @@ export const createRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecipe",
 }));
 export type CreateRecipeJobError =
@@ -2926,6 +2938,8 @@ export const createRecipeJob: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecipeJob",
 }));
 export type CreateRulesetError =
@@ -2950,6 +2964,8 @@ export const createRuleset: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRuleset",
 }));
 export type CreateScheduleError =
@@ -2974,6 +2990,8 @@ export const createSchedule: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchedule",
 }));
 export type DeleteDatasetError =
@@ -2993,6 +3011,8 @@ export const deleteDataset: API.OperationMethod<
   input: DeleteDatasetRequest,
   output: DeleteDatasetResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataset",
 }));
 export type DeleteJobError =
@@ -3012,6 +3032,8 @@ export const deleteJob: API.OperationMethod<
   input: DeleteJobRequest,
   output: DeleteJobResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJob",
 }));
 export type DeleteProjectError =
@@ -3031,6 +3053,8 @@ export const deleteProject: API.OperationMethod<
   input: DeleteProjectRequest,
   output: DeleteProjectResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProject",
 }));
 export type DeleteRecipeVersionError =
@@ -3050,6 +3074,8 @@ export const deleteRecipeVersion: API.OperationMethod<
   input: DeleteRecipeVersionRequest,
   output: DeleteRecipeVersionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecipeVersion",
 }));
 export type DeleteRulesetError =
@@ -3069,6 +3095,8 @@ export const deleteRuleset: API.OperationMethod<
   input: DeleteRulesetRequest,
   output: DeleteRulesetResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRuleset",
 }));
 export type DeleteScheduleError =
@@ -3087,6 +3115,8 @@ export const deleteSchedule: API.OperationMethod<
   input: DeleteScheduleRequest,
   output: DeleteScheduleResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchedule",
 }));
 export type DescribeDatasetError =
@@ -3105,6 +3135,8 @@ export const describeDataset: API.OperationMethod<
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
 export type DescribeJobError =
@@ -3123,6 +3155,8 @@ export const describeJob: API.OperationMethod<
   input: DescribeJobRequest,
   output: DescribeJobResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJob",
 }));
 export type DescribeJobRunError =
@@ -3141,6 +3175,8 @@ export const describeJobRun: API.OperationMethod<
   input: DescribeJobRunRequest,
   output: DescribeJobRunResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJobRun",
 }));
 export type DescribeProjectError =
@@ -3159,6 +3195,8 @@ export const describeProject: API.OperationMethod<
   input: DescribeProjectRequest,
   output: DescribeProjectResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProject",
 }));
 export type DescribeRecipeError =
@@ -3178,6 +3216,8 @@ export const describeRecipe: API.OperationMethod<
   input: DescribeRecipeRequest,
   output: DescribeRecipeResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecipe",
 }));
 export type DescribeRulesetError =
@@ -3196,6 +3236,8 @@ export const describeRuleset: API.OperationMethod<
   input: DescribeRulesetRequest,
   output: DescribeRulesetResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRuleset",
 }));
 export type DescribeScheduleError =
@@ -3214,6 +3256,8 @@ export const describeSchedule: API.OperationMethod<
   input: DescribeScheduleRequest,
   output: DescribeScheduleResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSchedule",
 }));
 export type ListDatasetsError = ValidationException | CommonErrors;
@@ -3244,6 +3288,8 @@ export const listDatasets: API.OperationMethod<
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
@@ -3283,6 +3329,8 @@ export const listJobRuns: API.OperationMethod<
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobRuns",
   pagination: {
     inputToken: "NextToken",
@@ -3319,6 +3367,8 @@ export const listJobs: API.OperationMethod<
   input: ListJobsRequest,
   output: ListJobsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
@@ -3355,6 +3405,8 @@ export const listProjects: API.OperationMethod<
   input: ListProjectsRequest,
   output: ListProjectsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjects",
   pagination: {
     inputToken: "NextToken",
@@ -3391,6 +3443,8 @@ export const listRecipes: API.OperationMethod<
   input: ListRecipesRequest,
   output: ListRecipesResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecipes",
   pagination: {
     inputToken: "NextToken",
@@ -3428,6 +3482,8 @@ export const listRecipeVersions: API.OperationMethod<
   input: ListRecipeVersionsRequest,
   output: ListRecipeVersionsResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecipeVersions",
   pagination: {
     inputToken: "NextToken",
@@ -3468,6 +3524,8 @@ export const listRulesets: API.OperationMethod<
   input: ListRulesetsRequest,
   output: ListRulesetsResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRulesets",
   pagination: {
     inputToken: "NextToken",
@@ -3504,6 +3562,8 @@ export const listSchedules: API.OperationMethod<
   input: ListSchedulesRequest,
   output: ListSchedulesResponse,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchedules",
   pagination: {
     inputToken: "NextToken",
@@ -3533,6 +3593,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PublishRecipeError =
@@ -3556,6 +3618,8 @@ export const publishRecipe: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishRecipe",
 }));
 export type SendProjectSessionActionError =
@@ -3576,6 +3640,8 @@ export const sendProjectSessionAction: API.OperationMethod<
   input: SendProjectSessionActionRequest,
   output: SendProjectSessionActionResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendProjectSessionAction",
 }));
 export type StartJobRunError =
@@ -3601,6 +3667,8 @@ export const startJobRun: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartJobRun",
 }));
 export type StartProjectSessionError =
@@ -3627,6 +3695,8 @@ export const startProjectSession: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartProjectSession",
 }));
 export type StopJobRunError =
@@ -3645,6 +3715,8 @@ export const stopJobRun: API.OperationMethod<
   input: StopJobRunRequest,
   output: StopJobRunResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopJobRun",
 }));
 export type TagResourceError =
@@ -3669,6 +3741,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3692,6 +3766,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDatasetError =
@@ -3715,6 +3791,8 @@ export const updateDataset: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataset",
 }));
 export type UpdateProfileJobError =
@@ -3738,6 +3816,8 @@ export const updateProfileJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProfileJob",
 }));
 export type UpdateProjectError =
@@ -3756,6 +3836,8 @@ export const updateProject: API.OperationMethod<
   input: UpdateProjectRequest,
   output: UpdateProjectResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProject",
 }));
 export type UpdateRecipeError =
@@ -3775,6 +3857,8 @@ export const updateRecipe: API.OperationMethod<
   input: UpdateRecipeRequest,
   output: UpdateRecipeResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecipe",
 }));
 export type UpdateRecipeJobError =
@@ -3798,6 +3882,8 @@ export const updateRecipeJob: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecipeJob",
 }));
 export type UpdateRulesetError =
@@ -3816,6 +3902,8 @@ export const updateRuleset: API.OperationMethod<
   input: UpdateRulesetRequest,
   output: UpdateRulesetResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRuleset",
 }));
 export type UpdateScheduleError =
@@ -3839,5 +3927,7 @@ export const updateSchedule: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchedule",
 }));

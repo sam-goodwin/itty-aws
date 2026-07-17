@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2980,6 +2982,8 @@ export const createActivity: API.OperationMethod<
     KmsThrottlingException,
     TooManyTags,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateActivity",
 }));
 export type CreateStateMachineError =
@@ -3048,6 +3052,8 @@ export const createStateMachine: API.OperationMethod<
     TooManyTags,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStateMachine",
 }));
 export type CreateStateMachineAliasError =
@@ -3107,6 +3113,8 @@ export const createStateMachineAlias: API.OperationMethod<
     StateMachineDeleting,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStateMachineAlias",
 }));
 export type DeleteActivityError = InvalidArn | CommonErrors;
@@ -3122,6 +3130,8 @@ export const deleteActivity: API.OperationMethod<
   input: DeleteActivityInput,
   output: DeleteActivityOutput,
   errors: [InvalidArn],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteActivity",
 }));
 export type DeleteStateMachineError =
@@ -3161,6 +3171,8 @@ export const deleteStateMachine: API.OperationMethod<
   input: DeleteStateMachineInput,
   output: DeleteStateMachineOutput,
   errors: [InvalidArn, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStateMachine",
 }));
 export type DeleteStateMachineAliasError =
@@ -3200,6 +3212,8 @@ export const deleteStateMachineAlias: API.OperationMethod<
     ResourceNotFound,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStateMachineAlias",
 }));
 export type DeleteStateMachineVersionError =
@@ -3231,6 +3245,8 @@ export const deleteStateMachineVersion: API.OperationMethod<
   input: DeleteStateMachineVersionInput,
   output: DeleteStateMachineVersionOutput,
   errors: [ConflictException, InvalidArn, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStateMachineVersion",
 }));
 export type DescribeActivityError =
@@ -3251,6 +3267,8 @@ export const describeActivity: API.OperationMethod<
   input: DescribeActivityInput,
   output: DescribeActivityOutput,
   errors: [ActivityDoesNotExist, InvalidArn],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeActivity",
 }));
 export type DescribeExecutionError =
@@ -3285,6 +3303,8 @@ export const describeExecution: API.OperationMethod<
     KmsInvalidStateException,
     KmsThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExecution",
 }));
 export type DescribeMapRunError = InvalidArn | ResourceNotFound | CommonErrors;
@@ -3300,6 +3320,8 @@ export const describeMapRun: API.OperationMethod<
   input: DescribeMapRunInput,
   output: DescribeMapRunOutput,
   errors: [InvalidArn, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMapRun",
 }));
 export type DescribeStateMachineError =
@@ -3352,6 +3374,8 @@ export const describeStateMachine: API.OperationMethod<
     KmsThrottlingException,
     StateMachineDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStateMachine",
 }));
 export type DescribeStateMachineAliasError =
@@ -3381,6 +3405,8 @@ export const describeStateMachineAlias: API.OperationMethod<
   input: DescribeStateMachineAliasInput,
   output: DescribeStateMachineAliasOutput,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStateMachineAlias",
 }));
 export type DescribeStateMachineForExecutionError =
@@ -3415,6 +3441,8 @@ export const describeStateMachineForExecution: API.OperationMethod<
     KmsInvalidStateException,
     KmsThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStateMachineForExecution",
 }));
 export type GetActivityTaskError =
@@ -3458,6 +3486,8 @@ export const getActivityTask: API.OperationMethod<
     KmsInvalidStateException,
     KmsThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetActivityTask",
 }));
 export type GetExecutionHistoryError =
@@ -3509,6 +3539,8 @@ export const getExecutionHistory: API.OperationMethod<
     KmsInvalidStateException,
     KmsThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExecutionHistory",
   pagination: {
     inputToken: "nextToken",
@@ -3550,6 +3582,8 @@ export const listActivities: API.OperationMethod<
   input: ListActivitiesInput,
   output: ListActivitiesOutput,
   errors: [InvalidToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActivities",
   pagination: {
     inputToken: "nextToken",
@@ -3612,6 +3646,8 @@ export const listExecutions: API.OperationMethod<
     StateMachineTypeNotSupported,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -3652,6 +3688,8 @@ export const listMapRuns: API.OperationMethod<
   input: ListMapRunsInput,
   output: ListMapRunsOutput,
   errors: [ExecutionDoesNotExist, InvalidArn, InvalidToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMapRuns",
   pagination: {
     inputToken: "nextToken",
@@ -3700,6 +3738,8 @@ export const listStateMachineAliases: API.OperationMethod<
     StateMachineDeleting,
     StateMachineDoesNotExist,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStateMachineAliases",
 }));
 export type ListStateMachinesError = InvalidToken | CommonErrors;
@@ -3735,6 +3775,8 @@ export const listStateMachines: API.OperationMethod<
   input: ListStateMachinesInput,
   output: ListStateMachinesOutput,
   errors: [InvalidToken],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStateMachines",
   pagination: {
     inputToken: "nextToken",
@@ -3771,6 +3813,8 @@ export const listStateMachineVersions: API.OperationMethod<
   input: ListStateMachineVersionsInput,
   output: ListStateMachineVersionsOutput,
   errors: [InvalidArn, InvalidToken, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStateMachineVersions",
 }));
 export type ListTagsForResourceError =
@@ -3791,6 +3835,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [InvalidArn, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PublishStateMachineVersionError =
@@ -3838,6 +3884,8 @@ export const publishStateMachineVersion: API.OperationMethod<
     StateMachineDoesNotExist,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishStateMachineVersion",
 }));
 export type RedriveExecutionError =
@@ -3883,6 +3931,8 @@ export const redriveExecution: API.OperationMethod<
     InvalidArn,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RedriveExecution",
 }));
 export type SendTaskFailureError =
@@ -3917,6 +3967,8 @@ export const sendTaskFailure: API.OperationMethod<
     TaskDoesNotExist,
     TaskTimedOut,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendTaskFailure",
 }));
 export type SendTaskHeartbeatError =
@@ -3949,6 +4001,8 @@ export const sendTaskHeartbeat: API.OperationMethod<
   input: SendTaskHeartbeatInput,
   output: SendTaskHeartbeatOutput,
   errors: [InvalidToken, TaskDoesNotExist, TaskTimedOut],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendTaskHeartbeat",
 }));
 export type SendTaskSuccessError =
@@ -3982,6 +4036,8 @@ export const sendTaskSuccess: API.OperationMethod<
     TaskDoesNotExist,
     TaskTimedOut,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendTaskSuccess",
 }));
 export type StartExecutionError =
@@ -4054,6 +4110,8 @@ export const startExecution: API.OperationMethod<
     StateMachineDoesNotExist,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExecution",
 }));
 export type StartSyncExecutionError =
@@ -4098,6 +4156,8 @@ export const startSyncExecution: API.OperationMethod<
     StateMachineDoesNotExist,
     StateMachineTypeNotSupported,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSyncExecution",
 }));
 export type StopExecutionError =
@@ -4133,6 +4193,8 @@ export const stopExecution: API.OperationMethod<
     KmsThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopExecution",
 }));
 export type TagResourceError =
@@ -4159,6 +4221,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [InvalidArn, ResourceNotFound, TooManyTags],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestStateError =
@@ -4211,6 +4275,8 @@ export const testState: API.OperationMethod<
     InvalidExecutionInput,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestState",
 }));
 export type UntagResourceError = InvalidArn | ResourceNotFound | CommonErrors;
@@ -4226,6 +4292,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [InvalidArn, ResourceNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateMapRunError =
@@ -4245,6 +4313,8 @@ export const updateMapRun: API.OperationMethod<
   input: UpdateMapRunInput,
   output: UpdateMapRunOutput,
   errors: [InvalidArn, ResourceNotFound, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMapRun",
 }));
 export type UpdateStateMachineError =
@@ -4325,6 +4395,8 @@ export const updateStateMachine: API.OperationMethod<
     StateMachineDoesNotExist,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStateMachine",
 }));
 export type UpdateStateMachineAliasError =
@@ -4374,6 +4446,8 @@ export const updateStateMachineAlias: API.OperationMethod<
     StateMachineDeleting,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStateMachineAlias",
 }));
 export type ValidateStateMachineDefinitionError =
@@ -4422,5 +4496,7 @@ export const validateStateMachineDefinition: API.OperationMethod<
   input: ValidateStateMachineDefinitionInput,
   output: ValidateStateMachineDefinitionOutput,
   errors: [ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidateStateMachineDefinition",
 }));

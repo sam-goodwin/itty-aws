@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1922,6 +1924,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1940,6 +1944,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1958,6 +1964,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateWorkflowError =
@@ -1983,6 +1991,8 @@ export const createWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflow",
 }));
 export type GetWorkflowError =
@@ -2010,6 +2020,8 @@ export const getWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflow",
 }));
 export type UpdateWorkflowError =
@@ -2037,6 +2049,8 @@ export const updateWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkflow",
 }));
 export type DeleteWorkflowError =
@@ -2065,6 +2079,8 @@ export const deleteWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflow",
 }));
 export type ListWorkflowsError =
@@ -2107,6 +2123,8 @@ export const listWorkflows: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflows",
   pagination: {
     inputToken: "nextToken",
@@ -2140,6 +2158,8 @@ export const startWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWorkflow",
 }));
 export type StopWorkflowError =
@@ -2167,6 +2187,8 @@ export const stopWorkflow: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopWorkflow",
 }));
 export type CreateTemplateError =
@@ -2194,6 +2216,8 @@ export const createTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTemplate",
 }));
 export type GetTemplateError =
@@ -2219,6 +2243,8 @@ export const getTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplate",
 }));
 export type UpdateTemplateError =
@@ -2246,6 +2272,8 @@ export const updateTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTemplate",
 }));
 export type DeleteTemplateError =
@@ -2273,6 +2301,8 @@ export const deleteTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTemplate",
 }));
 export type ListTemplatesError =
@@ -2307,6 +2337,8 @@ export const listTemplates: API.OperationMethod<
   input: ListMigrationWorkflowTemplatesRequest,
   output: ListMigrationWorkflowTemplatesResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -2347,6 +2379,8 @@ export const listPlugins: API.OperationMethod<
   input: ListPluginsRequest,
   output: ListPluginsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlugins",
   pagination: {
     inputToken: "nextToken",
@@ -2380,6 +2414,8 @@ export const getTemplateStep: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplateStep",
 }));
 export type ListTemplateStepsError =
@@ -2422,6 +2458,8 @@ export const listTemplateSteps: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateSteps",
   pagination: {
     inputToken: "nextToken",
@@ -2455,6 +2493,8 @@ export const getTemplateStepGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplateStepGroup",
 }));
 export type ListTemplateStepGroupsError =
@@ -2495,6 +2535,8 @@ export const listTemplateStepGroups: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateStepGroups",
   pagination: {
     inputToken: "nextToken",
@@ -2526,6 +2568,8 @@ export const createWorkflowStep: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflowStep",
 }));
 export type GetWorkflowStepError =
@@ -2551,6 +2595,8 @@ export const getWorkflowStep: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowStep",
 }));
 export type UpdateWorkflowStepError =
@@ -2576,6 +2622,8 @@ export const updateWorkflowStep: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkflowStep",
 }));
 export type DeleteWorkflowStepError =
@@ -2604,6 +2652,8 @@ export const deleteWorkflowStep: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflowStep",
 }));
 export type ListWorkflowStepsError =
@@ -2644,6 +2694,8 @@ export const listWorkflowSteps: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowSteps",
   pagination: {
     inputToken: "nextToken",
@@ -2675,6 +2727,8 @@ export const retryWorkflowStep: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RetryWorkflowStep",
 }));
 export type CreateWorkflowStepGroupError =
@@ -2700,6 +2754,8 @@ export const createWorkflowStepGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflowStepGroup",
 }));
 export type GetWorkflowStepGroupError =
@@ -2727,6 +2783,8 @@ export const getWorkflowStepGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowStepGroup",
 }));
 export type UpdateWorkflowStepGroupError =
@@ -2754,6 +2812,8 @@ export const updateWorkflowStepGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkflowStepGroup",
 }));
 export type DeleteWorkflowStepGroupError =
@@ -2781,6 +2841,8 @@ export const deleteWorkflowStepGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflowStepGroup",
 }));
 export type ListWorkflowStepGroupsError =
@@ -2823,6 +2885,8 @@ export const listWorkflowStepGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflowStepGroups",
   pagination: {
     inputToken: "nextToken",

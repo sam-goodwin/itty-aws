@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3013,6 +3015,8 @@ export const disassociateHostedZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateHostedZone",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
@@ -3030,6 +3034,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -3055,6 +3061,8 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3075,6 +3083,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateAccessSourceError =
@@ -3108,6 +3118,8 @@ export const createAccessSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessSource",
 }));
 export type GetAccessSourceError =
@@ -3137,6 +3149,8 @@ export const getAccessSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessSource",
 }));
 export type UpdateAccessSourceError =
@@ -3170,6 +3184,8 @@ export const updateAccessSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccessSource",
 }));
 export type DeleteAccessSourceError =
@@ -3201,6 +3217,8 @@ export const deleteAccessSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessSource",
 }));
 export type ListAccessSourcesError =
@@ -3243,6 +3261,8 @@ export const listAccessSources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessSources",
   pagination: {
     inputToken: "nextToken",
@@ -3282,6 +3302,8 @@ export const createAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessToken",
 }));
 export type GetAccessTokenError =
@@ -3311,6 +3333,8 @@ export const getAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessToken",
 }));
 export type UpdateAccessTokenError =
@@ -3344,6 +3368,8 @@ export const updateAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccessToken",
 }));
 export type DeleteAccessTokenError =
@@ -3373,6 +3399,8 @@ export const deleteAccessToken: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessToken",
 }));
 export type ListAccessTokensError =
@@ -3417,6 +3445,8 @@ export const listAccessTokens: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessTokens",
   pagination: {
     inputToken: "nextToken",
@@ -3456,6 +3486,8 @@ export const createDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDNSView",
 }));
 export type GetDNSViewError =
@@ -3485,6 +3517,8 @@ export const getDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDNSView",
 }));
 export type UpdateDNSViewError =
@@ -3518,6 +3552,8 @@ export const updateDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDNSView",
 }));
 export type DeleteDNSViewError =
@@ -3549,6 +3585,8 @@ export const deleteDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDNSView",
 }));
 export type ListDNSViewsError =
@@ -3593,6 +3631,8 @@ export const listDNSViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDNSViews",
   pagination: {
     inputToken: "nextToken",
@@ -3632,6 +3672,8 @@ export const disableDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableDNSView",
 }));
 export type EnableDNSViewError =
@@ -3665,6 +3707,8 @@ export const enableDNSView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableDNSView",
 }));
 export type CreateFirewallDomainListError =
@@ -3698,6 +3742,8 @@ export const createFirewallDomainList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFirewallDomainList",
 }));
 export type GetFirewallDomainListError =
@@ -3727,6 +3773,8 @@ export const getFirewallDomainList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFirewallDomainList",
 }));
 export type DeleteFirewallDomainListError =
@@ -3758,6 +3806,8 @@ export const deleteFirewallDomainList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFirewallDomainList",
 }));
 export type ListFirewallDomainListsError =
@@ -3802,6 +3852,8 @@ export const listFirewallDomainLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFirewallDomainLists",
   pagination: {
     inputToken: "nextToken",
@@ -3841,6 +3893,8 @@ export const importFirewallDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportFirewallDomains",
 }));
 export type ListFirewallDomainsError =
@@ -3885,6 +3939,8 @@ export const listFirewallDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFirewallDomains",
   pagination: {
     inputToken: "nextToken",
@@ -3924,6 +3980,8 @@ export const updateFirewallDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFirewallDomains",
 }));
 export type CreateFirewallRuleError =
@@ -3957,6 +4015,8 @@ export const createFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFirewallRule",
 }));
 export type GetFirewallRuleError =
@@ -3986,6 +4046,8 @@ export const getFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFirewallRule",
 }));
 export type UpdateFirewallRuleError =
@@ -4019,6 +4081,8 @@ export const updateFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFirewallRule",
 }));
 export type DeleteFirewallRuleError =
@@ -4050,6 +4114,8 @@ export const deleteFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFirewallRule",
 }));
 export type ListFirewallRulesError =
@@ -4094,6 +4160,8 @@ export const listFirewallRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFirewallRules",
   pagination: {
     inputToken: "nextToken",
@@ -4127,6 +4195,8 @@ export const batchCreateFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateFirewallRule",
 }));
 export type BatchDeleteFirewallRuleError =
@@ -4154,6 +4224,8 @@ export const batchDeleteFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteFirewallRule",
 }));
 export type BatchUpdateFirewallRuleError =
@@ -4181,6 +4253,8 @@ export const batchUpdateFirewallRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateFirewallRule",
 }));
 export type CreateGlobalResolverError =
@@ -4212,6 +4286,8 @@ export const createGlobalResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlobalResolver",
 }));
 export type GetGlobalResolverError =
@@ -4241,6 +4317,8 @@ export const getGlobalResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGlobalResolver",
 }));
 export type UpdateGlobalResolverError =
@@ -4274,6 +4352,8 @@ export const updateGlobalResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalResolver",
 }));
 export type DeleteGlobalResolverError =
@@ -4305,6 +4385,8 @@ export const deleteGlobalResolver: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGlobalResolver",
 }));
 export type ListGlobalResolversError =
@@ -4347,6 +4429,8 @@ export const listGlobalResolvers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGlobalResolvers",
   pagination: {
     inputToken: "nextToken",
@@ -4386,6 +4470,8 @@ export const associateHostedZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateHostedZone",
 }));
 export type GetHostedZoneAssociationError =
@@ -4415,6 +4501,8 @@ export const getHostedZoneAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHostedZoneAssociation",
 }));
 export type UpdateHostedZoneAssociationError =
@@ -4448,6 +4536,8 @@ export const updateHostedZoneAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHostedZoneAssociation",
 }));
 export type ListHostedZoneAssociationsError =
@@ -4492,6 +4582,8 @@ export const listHostedZoneAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHostedZoneAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -4527,6 +4619,8 @@ export const getManagedFirewallDomainList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedFirewallDomainList",
 }));
 export type ListManagedFirewallDomainListsError =
@@ -4569,6 +4663,8 @@ export const listManagedFirewallDomainLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedFirewallDomainLists",
   pagination: {
     inputToken: "nextToken",

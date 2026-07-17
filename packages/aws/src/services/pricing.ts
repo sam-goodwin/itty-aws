@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -403,6 +405,8 @@ export const describeServices: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServices",
   pagination: {
     inputToken: "NextToken",
@@ -455,6 +459,8 @@ export const getAttributeValues: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAttributeValues",
   pagination: {
     inputToken: "NextToken",
@@ -492,6 +498,8 @@ export const getPriceListFileUrl: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPriceListFileUrl",
 }));
 export type GetProductsError =
@@ -538,6 +546,8 @@ export const getProducts: API.OperationMethod<
     NotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProducts",
   pagination: {
     inputToken: "NextToken",
@@ -594,6 +604,8 @@ export const listPriceLists: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPriceLists",
   pagination: {
     inputToken: "NextToken",

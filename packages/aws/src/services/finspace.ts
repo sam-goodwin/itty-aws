@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3550,6 +3552,8 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
 export type CreateKxChangesetError =
@@ -3581,6 +3585,8 @@ export const createKxChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxChangeset",
 }));
 export type CreateKxClusterError =
@@ -3612,6 +3618,8 @@ export const createKxCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxCluster",
 }));
 export type CreateKxDatabaseError =
@@ -3645,6 +3653,8 @@ export const createKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxDatabase",
 }));
 export type CreateKxDataviewError =
@@ -3678,6 +3688,8 @@ export const createKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxDataview",
 }));
 export type CreateKxEnvironmentError =
@@ -3709,6 +3721,8 @@ export const createKxEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxEnvironment",
 }));
 export type CreateKxScalingGroupError =
@@ -3740,6 +3754,8 @@ export const createKxScalingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxScalingGroup",
 }));
 export type CreateKxUserError =
@@ -3773,6 +3789,8 @@ export const createKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxUser",
 }));
 export type CreateKxVolumeError =
@@ -3806,6 +3824,8 @@ export const createKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKxVolume",
 }));
 export type DeleteEnvironmentError =
@@ -3833,6 +3853,8 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
 export type DeleteKxClusterError =
@@ -3864,6 +3886,8 @@ export const deleteKxCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxCluster",
 }));
 export type DeleteKxClusterNodeError =
@@ -3891,6 +3915,8 @@ export const deleteKxClusterNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxClusterNode",
 }));
 export type DeleteKxDatabaseError =
@@ -3920,6 +3946,8 @@ export const deleteKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxDatabase",
 }));
 export type DeleteKxDataviewError =
@@ -3949,6 +3977,8 @@ export const deleteKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxDataview",
 }));
 export type DeleteKxEnvironmentError =
@@ -3978,6 +4008,8 @@ export const deleteKxEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxEnvironment",
 }));
 export type DeleteKxScalingGroupError =
@@ -4009,6 +4041,8 @@ export const deleteKxScalingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxScalingGroup",
 }));
 export type DeleteKxUserError =
@@ -4038,6 +4072,8 @@ export const deleteKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxUser",
 }));
 export type DeleteKxVolumeError =
@@ -4069,6 +4105,8 @@ export const deleteKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKxVolume",
 }));
 export type GetEnvironmentError =
@@ -4094,6 +4132,8 @@ export const getEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
 export type GetKxChangesetError =
@@ -4121,6 +4161,8 @@ export const getKxChangeset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxChangeset",
 }));
 export type GetKxClusterError =
@@ -4152,6 +4194,8 @@ export const getKxCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxCluster",
 }));
 export type GetKxConnectionStringError =
@@ -4179,6 +4223,8 @@ export const getKxConnectionString: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxConnectionString",
 }));
 export type GetKxDatabaseError =
@@ -4206,6 +4252,8 @@ export const getKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxDatabase",
 }));
 export type GetKxDataviewError =
@@ -4233,6 +4281,8 @@ export const getKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxDataview",
 }));
 export type GetKxEnvironmentError =
@@ -4260,6 +4310,8 @@ export const getKxEnvironment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxEnvironment",
 }));
 export type GetKxScalingGroupError =
@@ -4291,6 +4343,8 @@ export const getKxScalingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxScalingGroup",
 }));
 export type GetKxUserError =
@@ -4318,6 +4372,8 @@ export const getKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxUser",
 }));
 export type GetKxVolumeError =
@@ -4349,6 +4405,8 @@ export const getKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetKxVolume",
 }));
 export type ListEnvironmentsError =
@@ -4368,6 +4426,8 @@ export const listEnvironments: API.OperationMethod<
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
 }));
 export type ListKxChangesetsError =
@@ -4410,6 +4470,8 @@ export const listKxChangesets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxChangesets",
   pagination: {
     inputToken: "nextToken",
@@ -4459,6 +4521,8 @@ export const listKxClusterNodes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxClusterNodes",
   pagination: {
     inputToken: "nextToken",
@@ -4495,6 +4559,8 @@ export const listKxClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxClusters",
 }));
 export type ListKxDatabasesError =
@@ -4537,6 +4603,8 @@ export const listKxDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxDatabases",
   pagination: {
     inputToken: "nextToken",
@@ -4584,6 +4652,8 @@ export const listKxDataviews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxDataviews",
   pagination: {
     inputToken: "nextToken",
@@ -4623,6 +4693,8 @@ export const listKxEnvironments: API.OperationMethod<
   input: ListKxEnvironmentsRequest,
   output: ListKxEnvironmentsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxEnvironments",
   pagination: {
     inputToken: "nextToken",
@@ -4675,6 +4747,8 @@ export const listKxScalingGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxScalingGroups",
   pagination: {
     inputToken: "nextToken",
@@ -4707,6 +4781,8 @@ export const listKxUsers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxUsers",
 }));
 export type ListKxVolumesError =
@@ -4738,6 +4814,8 @@ export const listKxVolumes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKxVolumes",
 }));
 export type ListTagsForResourceError =
@@ -4761,6 +4839,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -4784,6 +4864,8 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4807,6 +4889,8 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateEnvironmentError =
@@ -4834,6 +4918,8 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
 }));
 export type UpdateKxClusterCodeConfigurationError =
@@ -4866,6 +4952,8 @@ export const updateKxClusterCodeConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxClusterCodeConfiguration",
 }));
 export type UpdateKxClusterDatabasesError =
@@ -4899,6 +4987,8 @@ export const updateKxClusterDatabases: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxClusterDatabases",
 }));
 export type UpdateKxDatabaseError =
@@ -4928,6 +5018,8 @@ export const updateKxDatabase: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxDatabase",
 }));
 export type UpdateKxDataviewError =
@@ -4959,6 +5051,8 @@ export const updateKxDataview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxDataview",
 }));
 export type UpdateKxEnvironmentError =
@@ -4988,6 +5082,8 @@ export const updateKxEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxEnvironment",
 }));
 export type UpdateKxEnvironmentNetworkError =
@@ -5019,6 +5115,8 @@ export const updateKxEnvironmentNetwork: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxEnvironmentNetwork",
 }));
 export type UpdateKxUserError =
@@ -5050,6 +5148,8 @@ export const updateKxUser: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxUser",
 }));
 export type UpdateKxVolumeError =
@@ -5082,5 +5182,7 @@ export const updateKxVolume: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKxVolume",
 }));

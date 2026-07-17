@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -365,6 +367,8 @@ export const deleteObject: API.OperationMethod<
     InternalServerError,
     ObjectNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteObject",
 }));
 export type DescribeObjectError =
@@ -388,6 +392,8 @@ export const describeObject: API.OperationMethod<
     InternalServerError,
     ObjectNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeObject",
 }));
 export type GetObjectError =
@@ -413,6 +419,8 @@ export const getObject: API.OperationMethod<
     ObjectNotFoundException,
     RequestedRangeNotSatisfiableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObject",
 }));
 export type ListItemsError =
@@ -447,6 +455,8 @@ export const listItems: API.OperationMethod<
   input: ListItemsRequest,
   output: ListItemsResponse,
   errors: [ContainerNotFoundException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListItems",
   pagination: {
     inputToken: "NextToken",
@@ -470,5 +480,7 @@ export const putObject: API.OperationMethod<
   input: PutObjectRequest,
   output: PutObjectResponse,
   errors: [ContainerNotFoundException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutObject",
 }));

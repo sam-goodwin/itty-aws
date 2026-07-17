@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3925,6 +3927,8 @@ export const addTags: API.OperationMethod<
     TagsLimitExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTags",
 }));
 export type CancelQueryError =
@@ -3967,6 +3971,8 @@ export const cancelQuery: API.OperationMethod<
     QueryIdNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelQuery",
 }));
 export type CreateChannelError =
@@ -4010,6 +4016,8 @@ export const createChannel: API.OperationMethod<
     TagsLimitExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
 export type CreateDashboardError =
@@ -4059,6 +4067,8 @@ export const createDashboard: API.OperationMethod<
     ServiceQuotaExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDashboard",
 }));
 export type CreateEventDataStoreError =
@@ -4114,6 +4124,8 @@ export const createEventDataStore: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventDataStore",
 }));
 export type CreateTrailError =
@@ -4197,6 +4209,8 @@ export const createTrail: API.OperationMethod<
     TrailNotProvidedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrail",
 }));
 export type DeleteChannelError =
@@ -4222,6 +4236,8 @@ export const deleteChannel: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannel",
 }));
 export type DeleteDashboardError =
@@ -4245,6 +4261,8 @@ export const deleteDashboard: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDashboard",
 }));
 export type DeleteEventDataStoreError =
@@ -4301,6 +4319,8 @@ export const deleteEventDataStore: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventDataStore",
 }));
 export type DeleteResourcePolicyError =
@@ -4332,6 +4352,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteTrailError =
@@ -4383,6 +4405,8 @@ export const deleteTrail: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrail",
 }));
 export type DeregisterOrganizationDelegatedAdminError =
@@ -4423,6 +4447,8 @@ export const deregisterOrganizationDelegatedAdmin: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterOrganizationDelegatedAdmin",
 }));
 export type DescribeQueryError =
@@ -4463,6 +4489,8 @@ export const describeQuery: API.OperationMethod<
     QueryIdNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQuery",
 }));
 export type DescribeTrailsError =
@@ -4491,6 +4519,8 @@ export const describeTrails: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrails",
 }));
 export type DisableFederationError =
@@ -4540,6 +4570,8 @@ export const disableFederation: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableFederation",
 }));
 export type EnableFederationError =
@@ -4598,6 +4630,8 @@ export const enableFederation: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableFederation",
 }));
 export type GenerateQueryError =
@@ -4646,6 +4680,8 @@ export const generateQuery: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateQuery",
 }));
 export type GetChannelError =
@@ -4671,6 +4707,8 @@ export const getChannel: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannel",
 }));
 export type GetDashboardError =
@@ -4689,6 +4727,8 @@ export const getDashboard: API.OperationMethod<
   input: GetDashboardRequest,
   output: GetDashboardResponse,
   errors: [ResourceNotFoundException, UnsupportedOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDashboard",
 }));
 export type GetEventConfigurationError =
@@ -4730,6 +4770,8 @@ export const getEventConfiguration: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventConfiguration",
 }));
 export type GetEventDataStoreError =
@@ -4760,6 +4802,8 @@ export const getEventDataStore: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventDataStore",
 }));
 export type GetEventSelectorsError =
@@ -4810,6 +4854,8 @@ export const getEventSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEventSelectors",
 }));
 export type GetImportError =
@@ -4835,6 +4881,8 @@ export const getImport: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImport",
 }));
 export type GetInsightSelectorsError =
@@ -4881,6 +4929,8 @@ export const getInsightSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInsightSelectors",
 }));
 export type GetQueryResultsError =
@@ -4936,6 +4986,8 @@ export const getQueryResults: API.OperationMethod<
     QueryIdNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryResults",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -4966,6 +5018,8 @@ export const getResourcePolicy: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetTrailError =
@@ -4993,6 +5047,8 @@ export const getTrail: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrail",
 }));
 export type GetTrailStatusError =
@@ -5024,6 +5080,8 @@ export const getTrailStatus: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrailStatus",
 }));
 export type ListChannelsError =
@@ -5062,6 +5120,8 @@ export const listChannels: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
@@ -5082,6 +5142,8 @@ export const listDashboards: API.OperationMethod<
   input: ListDashboardsRequest,
   output: ListDashboardsResponse,
   errors: [UnsupportedOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDashboards",
 }));
 export type ListEventDataStoresError =
@@ -5125,6 +5187,8 @@ export const listEventDataStores: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventDataStores",
   pagination: {
     inputToken: "NextToken",
@@ -5170,6 +5234,8 @@ export const listImportFailures: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImportFailures",
   pagination: {
     inputToken: "NextToken",
@@ -5219,6 +5285,8 @@ export const listImports: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImports",
   pagination: {
     inputToken: "NextToken",
@@ -5278,6 +5346,8 @@ export const listInsightsData: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInsightsData",
   pagination: {
     inputToken: "NextToken",
@@ -5343,6 +5413,8 @@ export const listInsightsMetricData: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInsightsMetricData",
   pagination: {
     inputToken: "NextToken",
@@ -5395,6 +5467,8 @@ export const listPublicKeys: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPublicKeys",
   pagination: {
     inputToken: "NextToken",
@@ -5460,6 +5534,8 @@ export const listQueries: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListQueries",
   pagination: {
     inputToken: "NextToken",
@@ -5521,6 +5597,8 @@ export const listTags: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
   pagination: {
     inputToken: "NextToken",
@@ -5559,6 +5637,8 @@ export const listTrails: API.OperationMethod<
   input: ListTrailsRequest,
   output: ListTrailsResponse,
   errors: [OperationNotPermittedException, UnsupportedOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrails",
   pagination: {
     inputToken: "NextToken",
@@ -5647,6 +5727,8 @@ export const lookupEvents: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LookupEvents",
   pagination: {
     inputToken: "NextToken",
@@ -5708,6 +5790,8 @@ export const putEventConfiguration: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEventConfiguration",
 }));
 export type PutEventSelectorsError =
@@ -5804,6 +5888,8 @@ export const putEventSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEventSelectors",
 }));
 export type PutInsightSelectorsError =
@@ -5879,6 +5965,8 @@ export const putInsightSelectors: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutInsightSelectors",
 }));
 export type PutResourcePolicyError =
@@ -5912,6 +6000,8 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type RegisterOrganizationDelegatedAdminError =
@@ -5957,6 +6047,8 @@ export const registerOrganizationDelegatedAdmin: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOrganizationDelegatedAdmin",
 }));
 export type RemoveTagsError =
@@ -6004,6 +6096,8 @@ export const removeTags: API.OperationMethod<
     ResourceTypeNotSupportedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTags",
 }));
 export type RestoreEventDataStoreError =
@@ -6050,6 +6144,8 @@ export const restoreEventDataStore: API.OperationMethod<
     OrganizationsNotInUseException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreEventDataStore",
 }));
 export type SearchSampleQueriesError =
@@ -6074,6 +6170,8 @@ export const searchSampleQueries: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSampleQueries",
 }));
 export type StartDashboardRefreshError =
@@ -6104,6 +6202,8 @@ export const startDashboardRefresh: API.OperationMethod<
     ServiceQuotaExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDashboardRefresh",
 }));
 export type StartEventDataStoreIngestionError =
@@ -6144,6 +6244,8 @@ export const startEventDataStoreIngestion: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartEventDataStoreIngestion",
 }));
 export type StartImportError =
@@ -6202,6 +6304,8 @@ export const startImport: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImport",
 }));
 export type StartLoggingError =
@@ -6244,6 +6348,8 @@ export const startLogging: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartLogging",
 }));
 export type StartQueryError =
@@ -6295,6 +6401,8 @@ export const startQuery: API.OperationMethod<
     S3BucketDoesNotExistException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQuery",
 }));
 export type StopEventDataStoreIngestionError =
@@ -6335,6 +6443,8 @@ export const stopEventDataStoreIngestion: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopEventDataStoreIngestion",
 }));
 export type StopImportError =
@@ -6360,6 +6470,8 @@ export const stopImport: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopImport",
 }));
 export type StopLoggingError =
@@ -6405,6 +6517,8 @@ export const stopLogging: API.OperationMethod<
     TrailNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopLogging",
 }));
 export type UpdateChannelError =
@@ -6442,6 +6556,8 @@ export const updateChannel: API.OperationMethod<
     OperationNotPermittedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
 export type UpdateDashboardError =
@@ -6482,6 +6598,8 @@ export const updateDashboard: API.OperationMethod<
     ServiceQuotaExceededException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDashboard",
 }));
 export type UpdateEventDataStoreError =
@@ -6554,6 +6672,8 @@ export const updateEventDataStore: API.OperationMethod<
     ThrottlingException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventDataStore",
 }));
 export type UpdateTrailError =
@@ -6642,5 +6762,7 @@ export const updateTrail: API.OperationMethod<
     TrailNotProvidedException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrail",
 }));

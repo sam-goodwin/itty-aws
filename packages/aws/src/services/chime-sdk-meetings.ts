@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1134,6 +1136,8 @@ export const batchCreateAttendee: API.OperationMethod<
     UnauthorizedException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateAttendee",
 }));
 export type BatchUpdateAttendeeCapabilitiesExceptError =
@@ -1196,6 +1200,8 @@ export const batchUpdateAttendeeCapabilitiesExcept: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateAttendeeCapabilitiesExcept",
 }));
 export type CreateAttendeeError =
@@ -1234,6 +1240,8 @@ export const createAttendee: API.OperationMethod<
     UnauthorizedException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAttendee",
 }));
 export type CreateMeetingError =
@@ -1280,6 +1288,8 @@ export const createMeeting: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMeeting",
 }));
 export type CreateMeetingWithAttendeesError =
@@ -1326,6 +1336,8 @@ export const createMeetingWithAttendees: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMeetingWithAttendees",
 }));
 export type DeleteAttendeeError =
@@ -1360,6 +1372,8 @@ export const deleteAttendee: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAttendee",
 }));
 export type DeleteMeetingError =
@@ -1394,6 +1408,8 @@ export const deleteMeeting: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMeeting",
 }));
 export type GetAttendeeError =
@@ -1427,6 +1443,8 @@ export const getAttendee: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAttendee",
 }));
 export type GetMeetingError =
@@ -1460,6 +1478,8 @@ export const getMeeting: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMeeting",
 }));
 export type ListAttendeesError =
@@ -1508,6 +1528,8 @@ export const listAttendees: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttendees",
   pagination: {
     inputToken: "NextToken",
@@ -1546,6 +1568,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartMeetingTranscriptionError =
@@ -1595,6 +1619,8 @@ export const startMeetingTranscription: API.OperationMethod<
     UnauthorizedException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMeetingTranscription",
 }));
 export type StopMeetingTranscriptionError =
@@ -1637,6 +1663,8 @@ export const stopMeetingTranscription: API.OperationMethod<
     UnauthorizedException,
     UnprocessableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopMeetingTranscription",
 }));
 export type TagResourceError =
@@ -1672,6 +1700,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1720,6 +1750,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAttendeeCapabilitiesError =
@@ -1782,5 +1814,7 @@ export const updateAttendeeCapabilities: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAttendeeCapabilities",
 }));

@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1015,6 +1017,8 @@ export const bulkPublish: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BulkPublish",
 }));
 export type DeleteDatasetError =
@@ -1049,6 +1053,8 @@ export const deleteDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataset",
 }));
 export type DescribeDatasetError =
@@ -1080,6 +1086,8 @@ export const describeDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
 export type DescribeIdentityPoolUsageError =
@@ -1150,6 +1158,8 @@ export const describeIdentityPoolUsage: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIdentityPoolUsage",
 }));
 export type DescribeIdentityUsageError =
@@ -1222,6 +1232,8 @@ export const describeIdentityUsage: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIdentityUsage",
 }));
 export type GetBulkPublishDetailsError =
@@ -1249,6 +1261,8 @@ export const getBulkPublishDetails: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBulkPublishDetails",
 }));
 export type GetCognitoEventsError =
@@ -1278,6 +1292,8 @@ export const getCognitoEvents: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCognitoEvents",
 }));
 export type GetIdentityPoolConfigurationError =
@@ -1347,6 +1363,8 @@ export const getIdentityPoolConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityPoolConfiguration",
 }));
 export type ListDatasetsError =
@@ -1426,6 +1444,8 @@ export const listDatasets: API.OperationMethod<
     NotAuthorizedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
 }));
 export type ListIdentityPoolUsageError =
@@ -1505,6 +1525,8 @@ export const listIdentityPoolUsage: API.OperationMethod<
     NotAuthorizedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentityPoolUsage",
 }));
 export type ListRecordsError =
@@ -1581,6 +1603,8 @@ export const listRecords: API.OperationMethod<
     NotAuthorizedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecords",
 }));
 export type RegisterDeviceError =
@@ -1651,6 +1675,8 @@ export const registerDevice: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterDevice",
 }));
 export type SetCognitoEventsError =
@@ -1680,6 +1706,8 @@ export const setCognitoEvents: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetCognitoEvents",
 }));
 export type SetIdentityPoolConfigurationError =
@@ -1756,6 +1784,8 @@ export const setIdentityPoolConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetIdentityPoolConfiguration",
 }));
 export type SubscribeToDatasetError =
@@ -1825,6 +1855,8 @@ export const subscribeToDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubscribeToDataset",
 }));
 export type UnsubscribeFromDatasetError =
@@ -1895,6 +1927,8 @@ export const unsubscribeFromDataset: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnsubscribeFromDataset",
 }));
 export type UpdateRecordsError =
@@ -1936,5 +1970,7 @@ export const updateRecords: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRecords",
 }));

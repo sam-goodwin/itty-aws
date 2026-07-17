@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -784,6 +786,8 @@ export const createContainer: API.OperationMethod<
     InternalServerError,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateContainer",
 }));
 export type DeleteContainerError =
@@ -809,6 +813,8 @@ export const deleteContainer: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainer",
 }));
 export type DeleteContainerPolicyError =
@@ -834,6 +840,8 @@ export const deleteContainerPolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteContainerPolicy",
 }));
 export type DeleteCorsPolicyError =
@@ -864,6 +872,8 @@ export const deleteCorsPolicy: API.OperationMethod<
     CorsPolicyNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCorsPolicy",
 }));
 export type DeleteLifecyclePolicyError =
@@ -889,6 +899,8 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLifecyclePolicy",
 }));
 export type DeleteMetricPolicyError =
@@ -914,6 +926,8 @@ export const deleteMetricPolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMetricPolicy",
 }));
 export type DescribeContainerError =
@@ -938,6 +952,8 @@ export const describeContainer: API.OperationMethod<
   input: DescribeContainerInput,
   output: DescribeContainerOutput,
   errors: [ContainerNotFoundException, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContainer",
 }));
 export type GetContainerPolicyError =
@@ -965,6 +981,8 @@ export const getContainerPolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContainerPolicy",
 }));
 export type GetCorsPolicyError =
@@ -995,6 +1013,8 @@ export const getCorsPolicy: API.OperationMethod<
     CorsPolicyNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCorsPolicy",
 }));
 export type GetLifecyclePolicyError =
@@ -1020,6 +1040,8 @@ export const getLifecyclePolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecyclePolicy",
 }));
 export type GetMetricPolicyError =
@@ -1045,6 +1067,8 @@ export const getMetricPolicy: API.OperationMethod<
     InternalServerError,
     PolicyNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetricPolicy",
 }));
 export type ListContainersError = InternalServerError | CommonErrors;
@@ -1085,6 +1109,8 @@ export const listContainers: API.OperationMethod<
   input: ListContainersInput,
   output: ListContainersOutput,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContainers",
   pagination: {
     inputToken: "NextToken",
@@ -1113,6 +1139,8 @@ export const listTagsForResource: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutContainerPolicyError =
@@ -1143,6 +1171,8 @@ export const putContainerPolicy: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutContainerPolicy",
 }));
 export type PutCorsPolicyError =
@@ -1178,6 +1208,8 @@ export const putCorsPolicy: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutCorsPolicy",
 }));
 export type PutLifecyclePolicyError =
@@ -1203,6 +1235,8 @@ export const putLifecyclePolicy: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLifecyclePolicy",
 }));
 export type PutMetricPolicyError =
@@ -1226,6 +1260,8 @@ export const putMetricPolicy: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMetricPolicy",
 }));
 export type StartAccessLoggingError =
@@ -1249,6 +1285,8 @@ export const startAccessLogging: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAccessLogging",
 }));
 export type StopAccessLoggingError =
@@ -1272,6 +1310,8 @@ export const stopAccessLogging: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAccessLogging",
 }));
 export type TagResourceError =
@@ -1297,6 +1337,8 @@ export const tagResource: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1320,5 +1362,7 @@ export const untagResource: API.OperationMethod<
     ContainerNotFoundException,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

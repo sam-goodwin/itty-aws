@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1859,6 +1861,8 @@ export const getApplicationComponentDetails: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationComponentDetails",
 }));
 export type GetApplicationComponentStrategiesError =
@@ -1883,6 +1887,8 @@ export const getApplicationComponentStrategies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationComponentStrategies",
 }));
 export type GetAssessmentError =
@@ -1908,6 +1914,8 @@ export const getAssessment: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssessment",
 }));
 export type GetImportFileTaskError =
@@ -1935,6 +1943,8 @@ export const getImportFileTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImportFileTask",
 }));
 export type GetLatestAssessmentIdError =
@@ -1960,6 +1970,8 @@ export const getLatestAssessmentId: API.OperationMethod<
     InternalServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLatestAssessmentId",
 }));
 export type GetPortfolioPreferencesError =
@@ -1985,6 +1997,8 @@ export const getPortfolioPreferences: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPortfolioPreferences",
 }));
 export type GetPortfolioSummaryError =
@@ -2005,6 +2019,8 @@ export const getPortfolioSummary: API.OperationMethod<
   input: GetPortfolioSummaryRequest,
   output: GetPortfolioSummaryResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPortfolioSummary",
 }));
 export type GetRecommendationReportDetailsError =
@@ -2032,6 +2048,8 @@ export const getRecommendationReportDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendationReportDetails",
 }));
 export type GetServerDetailsError =
@@ -2074,6 +2092,8 @@ export const getServerDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServerDetails",
   pagination: {
     inputToken: "nextToken",
@@ -2107,6 +2127,8 @@ export const getServerStrategies: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServerStrategies",
 }));
 export type ListAnalyzableServersError =
@@ -2147,6 +2169,8 @@ export const listAnalyzableServers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnalyzableServers",
   pagination: {
     inputToken: "nextToken",
@@ -2193,6 +2217,8 @@ export const listApplicationComponents: API.OperationMethod<
     ServiceLinkedRoleLockClientException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationComponents",
   pagination: {
     inputToken: "nextToken",
@@ -2239,6 +2265,8 @@ export const listCollectors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCollectors",
   pagination: {
     inputToken: "nextToken",
@@ -2285,6 +2313,8 @@ export const listImportFileTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImportFileTask",
   pagination: {
     inputToken: "nextToken",
@@ -2331,6 +2361,8 @@ export const listServers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServers",
   pagination: {
     inputToken: "nextToken",
@@ -2364,6 +2396,8 @@ export const putPortfolioPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPortfolioPreferences",
 }));
 export type StartAssessmentError =
@@ -2389,6 +2423,8 @@ export const startAssessment: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAssessment",
 }));
 export type StartImportFileTaskError =
@@ -2416,6 +2452,8 @@ export const startImportFileTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImportFileTask",
 }));
 export type StartRecommendationReportGenerationError =
@@ -2443,6 +2481,8 @@ export const startRecommendationReportGeneration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartRecommendationReportGeneration",
 }));
 export type StopAssessmentError =
@@ -2468,6 +2508,8 @@ export const stopAssessment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAssessment",
 }));
 export type UpdateApplicationComponentConfigError =
@@ -2493,6 +2535,8 @@ export const updateApplicationComponentConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationComponentConfig",
 }));
 export type UpdateServerConfigError =
@@ -2518,5 +2562,7 @@ export const updateServerConfig: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServerConfig",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1911,6 +1913,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1938,6 +1942,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1965,6 +1971,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateConnectorError =
@@ -1997,6 +2005,8 @@ export const createConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnector",
 }));
 export type GetConnectorError =
@@ -2025,6 +2035,8 @@ export const getConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnector",
 }));
 export type DeleteConnectorError =
@@ -2058,6 +2070,8 @@ export const deleteConnector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnector",
 }));
 export type ListConnectorsError =
@@ -2098,6 +2112,8 @@ export const listConnectors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectors",
   pagination: {
     inputToken: "NextToken",
@@ -2134,6 +2150,8 @@ export const createDirectoryRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectoryRegistration",
 }));
 export type GetDirectoryRegistrationError =
@@ -2161,6 +2179,8 @@ export const getDirectoryRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDirectoryRegistration",
 }));
 export type DeleteDirectoryRegistrationError =
@@ -2189,6 +2209,8 @@ export const deleteDirectoryRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectoryRegistration",
 }));
 export type ListDirectoryRegistrationsError =
@@ -2230,6 +2252,8 @@ export const listDirectoryRegistrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDirectoryRegistrations",
   pagination: {
     inputToken: "NextToken",
@@ -2267,6 +2291,8 @@ export const createServicePrincipalName: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateServicePrincipalName",
 }));
 export type GetServicePrincipalNameError =
@@ -2295,6 +2321,8 @@ export const getServicePrincipalName: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServicePrincipalName",
 }));
 export type DeleteServicePrincipalNameError =
@@ -2323,6 +2351,8 @@ export const deleteServicePrincipalName: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteServicePrincipalName",
 }));
 export type ListServicePrincipalNamesError =
@@ -2366,6 +2396,8 @@ export const listServicePrincipalNames: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServicePrincipalNames",
   pagination: {
     inputToken: "NextToken",
@@ -2404,6 +2436,8 @@ export const createTemplateGroupAccessControlEntry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTemplateGroupAccessControlEntry",
 }));
 export type GetTemplateGroupAccessControlEntryError =
@@ -2431,6 +2465,8 @@ export const getTemplateGroupAccessControlEntry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplateGroupAccessControlEntry",
 }));
 export type UpdateTemplateGroupAccessControlEntryError =
@@ -2460,6 +2496,8 @@ export const updateTemplateGroupAccessControlEntry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTemplateGroupAccessControlEntry",
 }));
 export type DeleteTemplateGroupAccessControlEntryError =
@@ -2489,6 +2527,8 @@ export const deleteTemplateGroupAccessControlEntry: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTemplateGroupAccessControlEntry",
 }));
 export type ListTemplateGroupAccessControlEntriesError =
@@ -2531,6 +2571,8 @@ export const listTemplateGroupAccessControlEntries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplateGroupAccessControlEntries",
   pagination: {
     inputToken: "NextToken",
@@ -2569,6 +2611,8 @@ export const createTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTemplate",
 }));
 export type GetTemplateError =
@@ -2597,6 +2641,8 @@ export const getTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemplate",
 }));
 export type UpdateTemplateError =
@@ -2626,6 +2672,8 @@ export const updateTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTemplate",
 }));
 export type DeleteTemplateError =
@@ -2656,6 +2704,8 @@ export const deleteTemplate: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTemplate",
 }));
 export type ListTemplatesError =
@@ -2698,6 +2748,8 @@ export const listTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTemplates",
   pagination: {
     inputToken: "NextToken",

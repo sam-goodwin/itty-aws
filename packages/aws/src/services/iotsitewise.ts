@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -7226,6 +7228,8 @@ export const associateAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAssets",
 }));
 export type AssociateTimeSeriesToAssetPropertyError =
@@ -7253,6 +7257,8 @@ export const associateTimeSeriesToAssetProperty: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTimeSeriesToAssetProperty",
 }));
 export type BatchAssociateProjectAssetsError =
@@ -7280,6 +7286,8 @@ export const batchAssociateProjectAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateProjectAssets",
 }));
 export type BatchDisassociateProjectAssetsError =
@@ -7305,6 +7313,8 @@ export const batchDisassociateProjectAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateProjectAssets",
 }));
 export type BatchGetAssetPropertyAggregatesError =
@@ -7347,6 +7357,8 @@ export const batchGetAssetPropertyAggregates: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetAssetPropertyAggregates",
   pagination: {
     inputToken: "nextToken",
@@ -7393,6 +7405,8 @@ export const batchGetAssetPropertyValue: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetAssetPropertyValue",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
@@ -7435,6 +7449,8 @@ export const batchGetAssetPropertyValueHistory: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetAssetPropertyValueHistory",
   pagination: {
     inputToken: "nextToken",
@@ -7493,6 +7509,8 @@ export const batchPutAssetPropertyValue: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutAssetPropertyValue",
 }));
 export type CreateAccessPolicyError =
@@ -7523,6 +7541,8 @@ export const createAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessPolicy",
 }));
 export type CreateAssetError =
@@ -7555,6 +7575,8 @@ export const createAsset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAsset",
 }));
 export type CreateAssetModelError =
@@ -7604,6 +7626,8 @@ export const createAssetModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssetModel",
 }));
 export type CreateAssetModelCompositeModelError =
@@ -7657,6 +7681,8 @@ export const createAssetModelCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssetModelCompositeModel",
 }));
 export type CreateBulkImportJobError =
@@ -7701,6 +7727,8 @@ export const createBulkImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBulkImportJob",
 }));
 export type CreateComputationModelError =
@@ -7732,6 +7760,8 @@ export const createComputationModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComputationModel",
 }));
 export type CreateDashboardError =
@@ -7759,6 +7789,8 @@ export const createDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDashboard",
 }));
 export type CreateDatasetError =
@@ -7790,6 +7822,8 @@ export const createDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
 export type CreateGatewayError =
@@ -7819,6 +7853,8 @@ export const createGateway: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGateway",
 }));
 export type CreatePortalError =
@@ -7851,6 +7887,8 @@ export const createPortal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePortal",
 }));
 export type CreateProjectError =
@@ -7881,6 +7919,8 @@ export const createProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProject",
 }));
 export type DeleteAccessPolicyError =
@@ -7908,6 +7948,8 @@ export const deleteAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessPolicy",
 }));
 export type DeleteAssetError =
@@ -7939,6 +7981,8 @@ export const deleteAsset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAsset",
 }));
 export type DeleteAssetModelError =
@@ -7972,6 +8016,8 @@ export const deleteAssetModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssetModel",
 }));
 export type DeleteAssetModelCompositeModelError =
@@ -8005,6 +8051,8 @@ export const deleteAssetModelCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssetModelCompositeModel",
 }));
 export type DeleteAssetModelInterfaceRelationshipError =
@@ -8033,6 +8081,8 @@ export const deleteAssetModelInterfaceRelationship: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssetModelInterfaceRelationship",
 }));
 export type DeleteComputationModelError =
@@ -8060,6 +8110,8 @@ export const deleteComputationModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComputationModel",
 }));
 export type DeleteDashboardError =
@@ -8085,6 +8137,8 @@ export const deleteDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDashboard",
 }));
 export type DeleteDatasetError =
@@ -8112,6 +8166,8 @@ export const deleteDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataset",
 }));
 export type DeleteGatewayError =
@@ -8140,6 +8196,8 @@ export const deleteGateway: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGateway",
 }));
 export type DeletePortalError =
@@ -8167,6 +8225,8 @@ export const deletePortal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePortal",
 }));
 export type DeleteProjectError =
@@ -8192,6 +8252,8 @@ export const deleteProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProject",
 }));
 export type DeleteTimeSeriesError =
@@ -8233,6 +8295,8 @@ export const deleteTimeSeries: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTimeSeries",
 }));
 export type DescribeAccessPolicyError =
@@ -8259,6 +8323,8 @@ export const describeAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccessPolicy",
 }));
 export type DescribeActionError =
@@ -8284,6 +8350,8 @@ export const describeAction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAction",
 }));
 export type DescribeAssetError =
@@ -8309,6 +8377,8 @@ export const describeAsset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAsset",
 }));
 export type DescribeAssetCompositeModelError =
@@ -8337,6 +8407,8 @@ export const describeAssetCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssetCompositeModel",
 }));
 export type DescribeAssetModelError =
@@ -8364,6 +8436,8 @@ export const describeAssetModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssetModel",
 }));
 export type DescribeAssetModelCompositeModelError =
@@ -8391,6 +8465,8 @@ export const describeAssetModelCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssetModelCompositeModel",
 }));
 export type DescribeAssetModelInterfaceRelationshipError =
@@ -8417,6 +8493,8 @@ export const describeAssetModelInterfaceRelationship: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssetModelInterfaceRelationship",
 }));
 export type DescribeAssetPropertyError =
@@ -8449,6 +8527,8 @@ export const describeAssetProperty: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssetProperty",
 }));
 export type DescribeBulkImportJobError =
@@ -8475,6 +8555,8 @@ export const describeBulkImportJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBulkImportJob",
 }));
 export type DescribeComputationModelError =
@@ -8500,6 +8582,8 @@ export const describeComputationModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComputationModel",
 }));
 export type DescribeComputationModelExecutionSummaryError =
@@ -8525,6 +8609,8 @@ export const describeComputationModelExecutionSummary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComputationModelExecutionSummary",
 }));
 export type DescribeDashboardError =
@@ -8550,6 +8636,8 @@ export const describeDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDashboard",
 }));
 export type DescribeDatasetError =
@@ -8575,6 +8663,8 @@ export const describeDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
 export type DescribeDefaultEncryptionConfigurationError =
@@ -8600,6 +8690,8 @@ export const describeDefaultEncryptionConfiguration: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDefaultEncryptionConfiguration",
 }));
 export type DescribeExecutionError =
@@ -8625,6 +8717,8 @@ export const describeExecution: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExecution",
 }));
 export type DescribeGatewayError =
@@ -8650,6 +8744,8 @@ export const describeGateway: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGateway",
 }));
 export type DescribeGatewayCapabilityConfigurationError =
@@ -8687,6 +8783,8 @@ export const describeGatewayCapabilityConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGatewayCapabilityConfiguration",
 }));
 export type DescribeLoggingOptionsError =
@@ -8712,6 +8810,8 @@ export const describeLoggingOptions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoggingOptions",
 }));
 export type DescribePortalError =
@@ -8737,6 +8837,8 @@ export const describePortal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePortal",
 }));
 export type DescribeProjectError =
@@ -8762,6 +8864,8 @@ export const describeProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProject",
 }));
 export type DescribeStorageConfigurationError =
@@ -8791,6 +8895,8 @@ export const describeStorageConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStorageConfiguration",
 }));
 export type DescribeTimeSeriesError =
@@ -8828,6 +8934,8 @@ export const describeTimeSeries: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTimeSeries",
 }));
 export type DisassociateAssetsError =
@@ -8856,6 +8964,8 @@ export const disassociateAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAssets",
 }));
 export type DisassociateTimeSeriesFromAssetPropertyError =
@@ -8883,6 +8993,8 @@ export const disassociateTimeSeriesFromAssetProperty: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTimeSeriesFromAssetProperty",
 }));
 export type ExecuteActionError =
@@ -8912,6 +9024,8 @@ export const executeAction: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteAction",
 }));
 export type ExecuteQueryError =
@@ -8959,6 +9073,8 @@ export const executeQuery: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteQuery",
   pagination: {
     inputToken: "nextToken",
@@ -9015,6 +9131,8 @@ export const getAssetPropertyAggregates: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssetPropertyAggregates",
   pagination: {
     inputToken: "nextToken",
@@ -9056,6 +9174,8 @@ export const getAssetPropertyValue: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssetPropertyValue",
 }));
 export type GetAssetPropertyValueHistoryError =
@@ -9106,6 +9226,8 @@ export const getAssetPropertyValueHistory: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssetPropertyValueHistory",
   pagination: {
     inputToken: "nextToken",
@@ -9166,6 +9288,8 @@ export const getInterpolatedAssetPropertyValues: API.OperationMethod<
     ServiceUnavailableException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInterpolatedAssetPropertyValues",
   pagination: {
     inputToken: "nextToken",
@@ -9203,6 +9327,8 @@ export const invokeAssistant: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InvokeAssistant",
 }));
 export type ListAccessPoliciesError =
@@ -9242,6 +9368,8 @@ export const listAccessPolicies: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -9273,6 +9401,8 @@ export const listActions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActions",
 }));
 export type ListAssetModelCompositeModelsError =
@@ -9313,6 +9443,8 @@ export const listAssetModelCompositeModels: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetModelCompositeModels",
   pagination: {
     inputToken: "nextToken",
@@ -9361,6 +9493,8 @@ export const listAssetModelProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetModelProperties",
   pagination: {
     inputToken: "nextToken",
@@ -9405,6 +9539,8 @@ export const listAssetModels: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetModels",
   pagination: {
     inputToken: "nextToken",
@@ -9453,6 +9589,8 @@ export const listAssetProperties: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetProperties",
   pagination: {
     inputToken: "nextToken",
@@ -9501,6 +9639,8 @@ export const listAssetRelationships: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetRelationships",
   pagination: {
     inputToken: "nextToken",
@@ -9557,6 +9697,8 @@ export const listAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssets",
   pagination: {
     inputToken: "nextToken",
@@ -9609,6 +9751,8 @@ export const listAssociatedAssets: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedAssets",
   pagination: {
     inputToken: "nextToken",
@@ -9656,6 +9800,8 @@ export const listBulkImportJobs: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBulkImportJobs",
   pagination: {
     inputToken: "nextToken",
@@ -9703,6 +9849,8 @@ export const listCompositionRelationships: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCompositionRelationships",
   pagination: {
     inputToken: "nextToken",
@@ -9749,6 +9897,8 @@ export const listComputationModelDataBindingUsages: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComputationModelDataBindingUsages",
   pagination: {
     inputToken: "nextToken",
@@ -9796,6 +9946,8 @@ export const listComputationModelResolveToResources: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComputationModelResolveToResources",
   pagination: {
     inputToken: "nextToken",
@@ -9840,6 +9992,8 @@ export const listComputationModels: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComputationModels",
   pagination: {
     inputToken: "nextToken",
@@ -9884,6 +10038,8 @@ export const listDashboards: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDashboards",
   pagination: {
     inputToken: "nextToken",
@@ -9928,6 +10084,8 @@ export const listDatasets: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
   pagination: {
     inputToken: "nextToken",
@@ -9974,6 +10132,8 @@ export const listExecutions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExecutions",
   pagination: {
     inputToken: "nextToken",
@@ -10018,6 +10178,8 @@ export const listGateways: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGateways",
   pagination: {
     inputToken: "nextToken",
@@ -10065,6 +10227,8 @@ export const listInterfaceRelationships: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInterfaceRelationships",
   pagination: {
     inputToken: "nextToken",
@@ -10109,6 +10273,8 @@ export const listPortals: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPortals",
   pagination: {
     inputToken: "nextToken",
@@ -10153,6 +10319,8 @@ export const listProjectAssets: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjectAssets",
   pagination: {
     inputToken: "nextToken",
@@ -10197,6 +10365,8 @@ export const listProjects: API.OperationMethod<
     InvalidRequestException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjects",
   pagination: {
     inputToken: "nextToken",
@@ -10234,6 +10404,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTimeSeriesError =
@@ -10274,6 +10446,8 @@ export const listTimeSeries: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTimeSeries",
   pagination: {
     inputToken: "nextToken",
@@ -10310,6 +10484,8 @@ export const putAssetModelInterfaceRelationship: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAssetModelInterfaceRelationship",
 }));
 export type PutDefaultEncryptionConfigurationError =
@@ -10339,6 +10515,8 @@ export const putDefaultEncryptionConfiguration: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDefaultEncryptionConfiguration",
 }));
 export type PutLoggingOptionsError =
@@ -10366,6 +10544,8 @@ export const putLoggingOptions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLoggingOptions",
 }));
 export type PutStorageConfigurationError =
@@ -10397,6 +10577,8 @@ export const putStorageConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutStorageConfiguration",
 }));
 export type TagResourceError =
@@ -10431,6 +10613,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -10462,6 +10646,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccessPolicyError =
@@ -10488,6 +10674,8 @@ export const updateAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccessPolicy",
 }));
 export type UpdateAssetError =
@@ -10518,6 +10706,8 @@ export const updateAsset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAsset",
 }));
 export type UpdateAssetModelError =
@@ -10567,6 +10757,8 @@ export const updateAssetModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssetModel",
 }));
 export type UpdateAssetModelCompositeModelError =
@@ -10616,6 +10808,8 @@ export const updateAssetModelCompositeModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssetModelCompositeModel",
 }));
 export type UpdateAssetPropertyError =
@@ -10647,6 +10841,8 @@ export const updateAssetProperty: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssetProperty",
 }));
 export type UpdateComputationModelError =
@@ -10678,6 +10874,8 @@ export const updateComputationModel: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateComputationModel",
 }));
 export type UpdateDashboardError =
@@ -10703,6 +10901,8 @@ export const updateDashboard: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDashboard",
 }));
 export type UpdateDatasetError =
@@ -10732,6 +10932,8 @@ export const updateDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataset",
 }));
 export type UpdateGatewayError =
@@ -10759,6 +10961,8 @@ export const updateGateway: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGateway",
 }));
 export type UpdateGatewayCapabilityConfigurationError =
@@ -10804,6 +11008,8 @@ export const updateGatewayCapabilityConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGatewayCapabilityConfiguration",
 }));
 export type UpdatePortalError =
@@ -10831,6 +11037,8 @@ export const updatePortal: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePortal",
 }));
 export type UpdateProjectError =
@@ -10856,5 +11064,7 @@ export const updateProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProject",
 }));

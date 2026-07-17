@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1515,6 +1517,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1538,6 +1542,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1561,6 +1567,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateCaseError = CommonErrors;
@@ -1576,6 +1584,8 @@ export const createCase: API.OperationMethod<
   input: CreateCaseRequest,
   output: CreateCaseResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCase",
 }));
 export type GetCaseError = CommonErrors;
@@ -1591,6 +1601,8 @@ export const getCase: API.OperationMethod<
   input: GetCaseRequest,
   output: GetCaseResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCase",
 }));
 export type UpdateCaseError = CommonErrors;
@@ -1606,6 +1618,8 @@ export const updateCase: API.OperationMethod<
   input: UpdateCaseRequest,
   output: UpdateCaseResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCase",
 }));
 export type ListCasesError = CommonErrors;
@@ -1636,6 +1650,8 @@ export const listCases: API.OperationMethod<
   input: ListCasesRequest,
   output: ListCasesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCases",
   pagination: {
     inputToken: "nextToken",
@@ -1657,6 +1673,8 @@ export const closeCase: API.OperationMethod<
   input: CloseCaseRequest,
   output: CloseCaseResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CloseCase",
 }));
 export type CreateCaseCommentError = CommonErrors;
@@ -1672,6 +1690,8 @@ export const createCaseComment: API.OperationMethod<
   input: CreateCaseCommentRequest,
   output: CreateCaseCommentResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCaseComment",
 }));
 export type GetCaseAttachmentDownloadUrlError = CommonErrors;
@@ -1687,6 +1707,8 @@ export const getCaseAttachmentDownloadUrl: API.OperationMethod<
   input: GetCaseAttachmentDownloadUrlRequest,
   output: GetCaseAttachmentDownloadUrlResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCaseAttachmentDownloadUrl",
 }));
 export type GetCaseAttachmentUploadUrlError = CommonErrors;
@@ -1702,6 +1724,8 @@ export const getCaseAttachmentUploadUrl: API.OperationMethod<
   input: GetCaseAttachmentUploadUrlRequest,
   output: GetCaseAttachmentUploadUrlResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCaseAttachmentUploadUrl",
 }));
 export type ListCaseEditsError = CommonErrors;
@@ -1732,6 +1756,8 @@ export const listCaseEdits: API.OperationMethod<
   input: ListCaseEditsRequest,
   output: ListCaseEditsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCaseEdits",
   pagination: {
     inputToken: "nextToken",
@@ -1768,6 +1794,8 @@ export const listComments: API.OperationMethod<
   input: ListCommentsRequest,
   output: ListCommentsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComments",
   pagination: {
     inputToken: "nextToken",
@@ -1804,6 +1832,8 @@ export const listInvestigations: API.OperationMethod<
   input: ListInvestigationsRequest,
   output: ListInvestigationsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInvestigations",
   pagination: {
     inputToken: "nextToken",
@@ -1825,6 +1855,8 @@ export const sendFeedback: API.OperationMethod<
   input: SendFeedbackRequest,
   output: SendFeedbackResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendFeedback",
 }));
 export type UpdateCaseCommentError = CommonErrors;
@@ -1840,6 +1872,8 @@ export const updateCaseComment: API.OperationMethod<
   input: UpdateCaseCommentRequest,
   output: UpdateCaseCommentResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCaseComment",
 }));
 export type UpdateCaseStatusError = CommonErrors;
@@ -1875,6 +1909,8 @@ export const updateCaseStatus: API.OperationMethod<
   input: UpdateCaseStatusRequest,
   output: UpdateCaseStatusResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCaseStatus",
 }));
 export type UpdateResolverTypeError = CommonErrors;
@@ -1892,6 +1928,8 @@ export const updateResolverType: API.OperationMethod<
   input: UpdateResolverTypeRequest,
   output: UpdateResolverTypeResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResolverType",
 }));
 export type CreateMembershipError = CommonErrors;
@@ -1907,6 +1945,8 @@ export const createMembership: API.OperationMethod<
   input: CreateMembershipRequest,
   output: CreateMembershipResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMembership",
 }));
 export type GetMembershipError = CommonErrors;
@@ -1922,6 +1962,8 @@ export const getMembership: API.OperationMethod<
   input: GetMembershipRequest,
   output: GetMembershipResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMembership",
 }));
 export type UpdateMembershipError = CommonErrors;
@@ -1937,6 +1979,8 @@ export const updateMembership: API.OperationMethod<
   input: UpdateMembershipRequest,
   output: UpdateMembershipResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMembership",
 }));
 export type ListMembershipsError = CommonErrors;
@@ -1967,6 +2011,8 @@ export const listMemberships: API.OperationMethod<
   input: ListMembershipsRequest,
   output: ListMembershipsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMemberships",
   pagination: {
     inputToken: "nextToken",
@@ -1990,6 +2036,8 @@ export const batchGetMemberAccountDetails: API.OperationMethod<
   input: BatchGetMemberAccountDetailsRequest,
   output: BatchGetMemberAccountDetailsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetMemberAccountDetails",
 }));
 export type CancelMembershipError = CommonErrors;
@@ -2005,5 +2053,7 @@ export const cancelMembership: API.OperationMethod<
   input: CancelMembershipRequest,
   output: CancelMembershipResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMembership",
 }));

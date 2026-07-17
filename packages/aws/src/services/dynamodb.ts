@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5364,6 +5366,8 @@ export const batchExecuteStatement: API.OperationMethod<
   input: BatchExecuteStatementInput,
   output: BatchExecuteStatementOutput,
   errors: [InternalServerError, RequestLimitExceeded, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchExecuteStatement",
 }));
 export type BatchGetItemError =
@@ -5448,6 +5452,8 @@ export const batchGetItem: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetItem",
 }));
 export type BatchWriteItemError =
@@ -5564,6 +5570,8 @@ export const batchWriteItem: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchWriteItem",
 }));
 export type CreateBackupError =
@@ -5624,6 +5632,8 @@ export const createBackup: API.OperationMethod<
     TableInUseException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBackup",
 }));
 export type CreateGlobalTableError =
@@ -5694,6 +5704,8 @@ export const createGlobalTable: API.OperationMethod<
     LimitExceededException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlobalTable",
 }));
 export type CreateTableError =
@@ -5733,6 +5745,8 @@ export const createTable: API.OperationMethod<
     LimitExceededException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTable",
 }));
 export type DeleteBackupError =
@@ -5763,6 +5777,8 @@ export const deleteBackup: API.OperationMethod<
     InvalidEndpointException,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBackup",
 }));
 export type DeleteItemError =
@@ -5813,6 +5829,8 @@ export const deleteItem: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteItem",
 }));
 export type DeleteResourcePolicyError =
@@ -5860,6 +5878,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteTableError =
@@ -5907,6 +5927,8 @@ export const deleteTable: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTable",
 }));
 export type DescribeBackupError =
@@ -5933,6 +5955,8 @@ export const describeBackup: API.OperationMethod<
     InternalServerError,
     InvalidEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBackup",
 }));
 export type DescribeContinuousBackupsError =
@@ -5970,6 +5994,8 @@ export const describeContinuousBackups: API.OperationMethod<
     InvalidEndpointException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContinuousBackups",
 }));
 export type DescribeContributorInsightsError =
@@ -5989,6 +6015,8 @@ export const describeContributorInsights: API.OperationMethod<
   input: DescribeContributorInsightsInput,
   output: DescribeContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeContributorInsights",
 }));
 export type DescribeEndpointsError = CommonErrors;
@@ -6005,6 +6033,8 @@ export const describeEndpoints: API.OperationMethod<
   input: DescribeEndpointsRequest,
   output: DescribeEndpointsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoints",
 }));
 export type DescribeExportError =
@@ -6028,6 +6058,8 @@ export const describeExport: API.OperationMethod<
     InternalServerError,
     LimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExport",
 }));
 export type DescribeGlobalTableError =
@@ -6055,6 +6087,8 @@ export const describeGlobalTable: API.OperationMethod<
     InternalServerError,
     InvalidEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGlobalTable",
 }));
 export type DescribeGlobalTableSettingsError =
@@ -6082,6 +6116,8 @@ export const describeGlobalTableSettings: API.OperationMethod<
     InternalServerError,
     InvalidEndpointException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGlobalTableSettings",
 }));
 export type DescribeImportError = ImportNotFoundException | CommonErrors;
@@ -6097,6 +6133,8 @@ export const describeImport: API.OperationMethod<
   input: DescribeImportInput,
   output: DescribeImportOutput,
   errors: [ImportNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImport",
 }));
 export type DescribeKinesisStreamingDestinationError =
@@ -6120,6 +6158,8 @@ export const describeKinesisStreamingDestination: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKinesisStreamingDestination",
 }));
 export type DescribeLimitsError =
@@ -6200,6 +6240,8 @@ export const describeLimits: API.OperationMethod<
   input: DescribeLimitsInput,
   output: DescribeLimitsOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLimits",
 }));
 export type DescribeTableError =
@@ -6231,6 +6273,8 @@ export const describeTable: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTable",
 }));
 export type DescribeTableReplicaAutoScalingError =
@@ -6249,6 +6293,8 @@ export const describeTableReplicaAutoScaling: API.OperationMethod<
   input: DescribeTableReplicaAutoScalingInput,
   output: DescribeTableReplicaAutoScalingOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTableReplicaAutoScaling",
 }));
 export type DescribeTimeToLiveError =
@@ -6272,6 +6318,8 @@ export const describeTimeToLive: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTimeToLive",
 }));
 export type DisableKinesisStreamingDestinationError =
@@ -6300,6 +6348,8 @@ export const disableKinesisStreamingDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableKinesisStreamingDestination",
 }));
 export type EnableKinesisStreamingDestinationError =
@@ -6330,6 +6380,8 @@ export const enableKinesisStreamingDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableKinesisStreamingDestination",
 }));
 export type ExecuteStatementError =
@@ -6379,6 +6431,8 @@ export const executeStatement: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteStatement",
 }));
 export type ExecuteTransactionError =
@@ -6418,6 +6472,8 @@ export const executeTransaction: API.OperationMethod<
     TransactionCanceledException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExecuteTransaction",
 }));
 export type ExportTableToPointInTimeError =
@@ -6449,6 +6505,8 @@ export const exportTableToPointInTime: API.OperationMethod<
     PointInTimeRecoveryUnavailableException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportTableToPointInTime",
 }));
 export type GetItemError =
@@ -6485,6 +6543,8 @@ export const getItem: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetItem",
 }));
 export type GetResourcePolicyError =
@@ -6542,6 +6602,8 @@ export const getResourcePolicy: API.OperationMethod<
     PolicyNotFoundException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type ImportTableError =
@@ -6565,6 +6627,8 @@ export const importTable: API.OperationMethod<
     LimitExceededException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportTable",
 }));
 export type ListBackupsError =
@@ -6596,6 +6660,8 @@ export const listBackups: API.OperationMethod<
   input: ListBackupsInput,
   output: ListBackupsOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBackups",
 }));
 export type ListContributorInsightsError =
@@ -6630,6 +6696,8 @@ export const listContributorInsights: API.OperationMethod<
   input: ListContributorInsightsInput,
   output: ListContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListContributorInsights",
   pagination: {
     inputToken: "NextToken",
@@ -6668,6 +6736,8 @@ export const listExports: API.OperationMethod<
   input: ListExportsInput,
   output: ListExportsOutput,
   errors: [InternalServerError, LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExports",
   pagination: {
     inputToken: "NextToken",
@@ -6695,6 +6765,8 @@ export const listGlobalTables: API.OperationMethod<
   input: ListGlobalTablesInput,
   output: ListGlobalTablesOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGlobalTables",
 }));
 export type ListImportsError = LimitExceededException | CommonErrors;
@@ -6725,6 +6797,8 @@ export const listImports: API.OperationMethod<
   input: ListImportsInput,
   output: ListImportsOutput,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImports",
   pagination: {
     inputToken: "NextToken",
@@ -6765,6 +6839,8 @@ export const listTables: API.OperationMethod<
   input: ListTablesInput,
   output: ListTablesOutput,
   errors: [InternalServerError, InvalidEndpointException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTables",
   pagination: {
     inputToken: "ExclusiveStartTableName",
@@ -6798,6 +6874,8 @@ export const listTagsOfResource: API.OperationMethod<
     InvalidEndpointException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsOfResource",
 }));
 export type PutItemError =
@@ -6862,6 +6940,8 @@ export const putItem: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutItem",
 }));
 export type PutResourcePolicyError =
@@ -6910,6 +6990,8 @@ export const putResourcePolicy: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type QueryError =
@@ -7005,6 +7087,8 @@ export const query: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Query",
   pagination: {
     inputToken: "ExclusiveStartKey",
@@ -7060,6 +7144,8 @@ export const restoreTableFromBackup: API.OperationMethod<
     TableAlreadyExistsException,
     TableInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTableFromBackup",
 }));
 export type RestoreTableToPointInTimeError =
@@ -7130,6 +7216,8 @@ export const restoreTableToPointInTime: API.OperationMethod<
     TableInUseException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreTableToPointInTime",
 }));
 export type ScanError =
@@ -7216,6 +7304,8 @@ export const scan: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Scan",
   pagination: {
     inputToken: "ExclusiveStartKey",
@@ -7268,6 +7358,8 @@ export const tagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TransactGetItemsError =
@@ -7319,6 +7411,8 @@ export const transactGetItems: API.OperationMethod<
     ThrottlingException,
     TransactionCanceledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TransactGetItems",
 }));
 export type TransactWriteItemsError =
@@ -7409,6 +7503,8 @@ export const transactWriteItems: API.OperationMethod<
     TransactionCanceledException,
     TransactionInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TransactWriteItems",
 }));
 export type UntagResourceError =
@@ -7453,6 +7549,8 @@ export const untagResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateContinuousBackupsError =
@@ -7490,6 +7588,8 @@ export const updateContinuousBackups: API.OperationMethod<
     InvalidEndpointException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContinuousBackups",
 }));
 export type UpdateContributorInsightsError =
@@ -7514,6 +7614,8 @@ export const updateContributorInsights: API.OperationMethod<
   input: UpdateContributorInsightsInput,
   output: UpdateContributorInsightsOutput,
   errors: [InternalServerError, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateContributorInsights",
 }));
 export type UpdateGlobalTableError =
@@ -7568,6 +7670,8 @@ export const updateGlobalTable: API.OperationMethod<
     ReplicaNotFoundException,
     TableNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalTable",
 }));
 export type UpdateGlobalTableSettingsError =
@@ -7603,6 +7707,8 @@ export const updateGlobalTableSettings: API.OperationMethod<
     ReplicaNotFoundException,
     ResourceInUseException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlobalTableSettings",
 }));
 export type UpdateItemError =
@@ -7647,6 +7753,8 @@ export const updateItem: API.OperationMethod<
     ThrottlingException,
     TransactionConflictException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateItem",
 }));
 export type UpdateKinesisStreamingDestinationError =
@@ -7674,6 +7782,8 @@ export const updateKinesisStreamingDestination: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKinesisStreamingDestination",
 }));
 export type UpdateTableError =
@@ -7718,6 +7828,8 @@ export const updateTable: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTable",
 }));
 export type UpdateTableReplicaAutoScalingError =
@@ -7743,6 +7855,8 @@ export const updateTableReplicaAutoScaling: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTableReplicaAutoScaling",
 }));
 export type UpdateTimeToLiveError =
@@ -7796,5 +7910,7 @@ export const updateTimeToLive: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTimeToLive",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1221,6 +1223,8 @@ export const associateRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateRepository",
 }));
 export type CreateCodeReviewError =
@@ -1253,6 +1257,8 @@ export const createCodeReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCodeReview",
 }));
 export type DescribeCodeReviewError =
@@ -1280,6 +1286,8 @@ export const describeCodeReview: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCodeReview",
 }));
 export type DescribeRecommendationFeedbackError =
@@ -1307,6 +1315,8 @@ export const describeRecommendationFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRecommendationFeedback",
 }));
 export type DescribeRepositoryAssociationError =
@@ -1335,6 +1345,8 @@ export const describeRepositoryAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRepositoryAssociation",
 }));
 export type DisassociateRepositoryError =
@@ -1364,6 +1376,8 @@ export const disassociateRepository: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateRepository",
 }));
 export type ListCodeReviewsError =
@@ -1404,6 +1418,8 @@ export const listCodeReviews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCodeReviews",
   pagination: {
     inputToken: "NextToken",
@@ -1452,6 +1468,8 @@ export const listRecommendationFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendationFeedback",
   pagination: {
     inputToken: "NextToken",
@@ -1499,6 +1517,8 @@ export const listRecommendations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecommendations",
   pagination: {
     inputToken: "NextToken",
@@ -1539,6 +1559,8 @@ export const listRepositoryAssociations: API.OperationMethod<
   input: ListRepositoryAssociationsRequest,
   output: ListRepositoryAssociationsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRepositoryAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -1568,6 +1590,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutRecommendationFeedbackError =
@@ -1596,6 +1620,8 @@ export const putRecommendationFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRecommendationFeedback",
 }));
 export type TagResourceError =
@@ -1619,6 +1645,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1642,5 +1670,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

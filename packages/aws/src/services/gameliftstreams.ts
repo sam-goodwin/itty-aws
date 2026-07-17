@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1566,6 +1568,8 @@ export const addStreamGroupLocations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddStreamGroupLocations",
 }));
 export type AssociateApplicationsError =
@@ -1597,6 +1601,8 @@ export const associateApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateApplications",
 }));
 export type CreateStreamSessionConnectionError =
@@ -1652,6 +1658,8 @@ export const createStreamSessionConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStreamSessionConnection",
 }));
 export type DisassociateApplicationsError =
@@ -1681,6 +1689,8 @@ export const disassociateApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateApplications",
 }));
 export type ExportStreamSessionFilesError =
@@ -1722,6 +1732,8 @@ export const exportStreamSessionFiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportStreamSessionFiles",
 }));
 export type GetStreamSessionError =
@@ -1749,6 +1761,8 @@ export const getStreamSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStreamSession",
 }));
 export type ListStreamSessionsError =
@@ -1795,6 +1809,8 @@ export const listStreamSessions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamSessions",
   pagination: {
     inputToken: "NextToken",
@@ -1845,6 +1861,8 @@ export const listStreamSessionsByAccount: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamSessionsByAccount",
   pagination: {
     inputToken: "NextToken",
@@ -1882,6 +1900,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RemoveStreamGroupLocationsError =
@@ -1911,6 +1931,8 @@ export const removeStreamGroupLocations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveStreamGroupLocations",
 }));
 export type StartStreamSessionError =
@@ -1996,6 +2018,8 @@ export const startStreamSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartStreamSession",
 }));
 export type TagResourceError =
@@ -2031,6 +2055,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TerminateStreamSessionError =
@@ -2058,6 +2084,8 @@ export const terminateStreamSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateStreamSession",
 }));
 export type UntagResourceError =
@@ -2083,6 +2111,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateApplicationError =
@@ -2118,6 +2148,8 @@ export const createApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type GetApplicationError =
@@ -2145,6 +2177,8 @@ export const getApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type UpdateApplicationError =
@@ -2174,6 +2208,8 @@ export const updateApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type DeleteApplicationError =
@@ -2215,6 +2251,8 @@ export const deleteApplication: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type ListApplicationsError =
@@ -2255,6 +2293,8 @@ export const listApplications: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -2308,6 +2348,8 @@ export const createStreamGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStreamGroup",
 }));
 export type GetStreamGroupError =
@@ -2335,6 +2377,8 @@ export const getStreamGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStreamGroup",
 }));
 export type UpdateStreamGroupError =
@@ -2378,6 +2422,8 @@ export const updateStreamGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStreamGroup",
 }));
 export type DeleteStreamGroupError =
@@ -2407,6 +2453,8 @@ export const deleteStreamGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStreamGroup",
 }));
 export type ListStreamGroupsError =
@@ -2447,6 +2495,8 @@ export const listStreamGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamGroups",
   pagination: {
     inputToken: "NextToken",

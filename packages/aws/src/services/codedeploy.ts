@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3363,6 +3365,8 @@ export const addTagsToOnPremisesInstances: API.OperationMethod<
     TagLimitExceededException,
     TagRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddTagsToOnPremisesInstances",
 }));
 export type BatchGetApplicationRevisionsError =
@@ -3393,6 +3397,8 @@ export const batchGetApplicationRevisions: API.OperationMethod<
     InvalidRevisionException,
     RevisionRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetApplicationRevisions",
 }));
 export type BatchGetApplicationsError =
@@ -3419,6 +3425,8 @@ export const batchGetApplications: API.OperationMethod<
     BatchLimitExceededException,
     InvalidApplicationNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetApplications",
 }));
 export type BatchGetDeploymentGroupsError =
@@ -3450,6 +3458,8 @@ export const batchGetDeploymentGroups: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidDeploymentGroupNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetDeploymentGroups",
 }));
 export type BatchGetDeploymentInstancesError =
@@ -3487,6 +3497,8 @@ export const batchGetDeploymentInstances: API.OperationMethod<
     InvalidDeploymentIdException,
     InvalidInstanceNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetDeploymentInstances",
 }));
 export type BatchGetDeploymentsError =
@@ -3511,6 +3523,8 @@ export const batchGetDeployments: API.OperationMethod<
     DeploymentIdRequiredException,
     InvalidDeploymentIdException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetDeployments",
 }));
 export type BatchGetDeploymentTargetsError =
@@ -3563,6 +3577,8 @@ export const batchGetDeploymentTargets: API.OperationMethod<
     InvalidDeploymentIdException,
     InvalidDeploymentTargetIdException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetDeploymentTargets",
 }));
 export type BatchGetOnPremisesInstancesError =
@@ -3587,6 +3603,8 @@ export const batchGetOnPremisesInstances: API.OperationMethod<
     InstanceNameRequiredException,
     InvalidInstanceNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetOnPremisesInstances",
 }));
 export type ContinueDeploymentError =
@@ -3624,6 +3642,8 @@ export const continueDeployment: API.OperationMethod<
     InvalidDeploymentWaitTypeException,
     UnsupportedActionForDeploymentTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ContinueDeployment",
 }));
 export type CreateApplicationError =
@@ -3653,6 +3673,8 @@ export const createApplication: API.OperationMethod<
     InvalidComputePlatformException,
     InvalidTagsToAddException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type CreateDeploymentError =
@@ -3722,6 +3744,8 @@ export const createDeployment: API.OperationMethod<
     RevisionRequiredException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeployment",
 }));
 export type CreateDeploymentConfigError =
@@ -3755,6 +3779,8 @@ export const createDeploymentConfig: API.OperationMethod<
     InvalidTrafficRoutingConfigurationException,
     InvalidZonalDeploymentConfigurationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeploymentConfig",
 }));
 export type CreateDeploymentGroupError =
@@ -3838,6 +3864,8 @@ export const createDeploymentGroup: API.OperationMethod<
     ThrottlingException,
     TriggerTargetsLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeploymentGroup",
 }));
 export type DeleteApplicationError =
@@ -3861,6 +3889,8 @@ export const deleteApplication: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidRoleException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteDeploymentConfigError =
@@ -3889,6 +3919,8 @@ export const deleteDeploymentConfig: API.OperationMethod<
     InvalidDeploymentConfigNameException,
     InvalidOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeploymentConfig",
 }));
 export type DeleteDeploymentGroupError =
@@ -3916,6 +3948,8 @@ export const deleteDeploymentGroup: API.OperationMethod<
     InvalidDeploymentGroupNameException,
     InvalidRoleException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeploymentGroup",
 }));
 export type DeleteGitHubAccountTokenError =
@@ -3943,6 +3977,8 @@ export const deleteGitHubAccountToken: API.OperationMethod<
     OperationNotSupportedException,
     ResourceValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGitHubAccountToken",
 }));
 export type DeleteResourcesByExternalIdError = CommonErrors;
@@ -3964,6 +4000,8 @@ export const deleteResourcesByExternalId: API.OperationMethod<
   input: DeleteResourcesByExternalIdInput,
   output: DeleteResourcesByExternalIdOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcesByExternalId",
 }));
 export type DeregisterOnPremisesInstanceError =
@@ -3982,6 +4020,8 @@ export const deregisterOnPremisesInstance: API.OperationMethod<
   input: DeregisterOnPremisesInstanceInput,
   output: DeregisterOnPremisesInstanceResponse,
   errors: [InstanceNameRequiredException, InvalidInstanceNameException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterOnPremisesInstance",
 }));
 export type GetApplicationError =
@@ -4005,6 +4045,8 @@ export const getApplication: API.OperationMethod<
     ApplicationNameRequiredException,
     InvalidApplicationNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type GetApplicationRevisionError =
@@ -4034,6 +4076,8 @@ export const getApplicationRevision: API.OperationMethod<
     RevisionDoesNotExistException,
     RevisionRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplicationRevision",
 }));
 export type GetDeploymentError =
@@ -4062,6 +4106,8 @@ export const getDeployment: API.OperationMethod<
     DeploymentIdRequiredException,
     InvalidDeploymentIdException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployment",
 }));
 export type GetDeploymentConfigError =
@@ -4087,6 +4133,8 @@ export const getDeploymentConfig: API.OperationMethod<
     InvalidComputePlatformException,
     InvalidDeploymentConfigNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeploymentConfig",
 }));
 export type GetDeploymentGroupError =
@@ -4118,6 +4166,8 @@ export const getDeploymentGroup: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidDeploymentGroupNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeploymentGroup",
 }));
 export type GetDeploymentInstanceError =
@@ -4149,6 +4199,8 @@ export const getDeploymentInstance: API.OperationMethod<
     InvalidDeploymentIdException,
     InvalidInstanceNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeploymentInstance",
 }));
 export type GetDeploymentTargetError =
@@ -4182,6 +4234,8 @@ export const getDeploymentTarget: API.OperationMethod<
     InvalidDeploymentTargetIdException,
     InvalidInstanceNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeploymentTarget",
 }));
 export type GetOnPremisesInstanceError =
@@ -4205,6 +4259,8 @@ export const getOnPremisesInstance: API.OperationMethod<
     InstanceNotRegisteredException,
     InvalidInstanceNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOnPremisesInstance",
 }));
 export type ListApplicationRevisionsError =
@@ -4257,6 +4313,8 @@ export const listApplicationRevisions: API.OperationMethod<
     InvalidSortByException,
     InvalidSortOrderException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplicationRevisions",
   pagination: {
     inputToken: "nextToken",
@@ -4292,6 +4350,8 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsInput,
   output: ListApplicationsOutput,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "nextToken",
@@ -4329,6 +4389,8 @@ export const listDeploymentConfigs: API.OperationMethod<
   input: ListDeploymentConfigsInput,
   output: ListDeploymentConfigsOutput,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeploymentConfigs",
   pagination: {
     inputToken: "nextToken",
@@ -4375,6 +4437,8 @@ export const listDeploymentGroups: API.OperationMethod<
     InvalidApplicationNameException,
     InvalidNextTokenException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeploymentGroups",
   pagination: {
     inputToken: "nextToken",
@@ -4437,6 +4501,8 @@ export const listDeploymentInstances: API.OperationMethod<
     InvalidNextTokenException,
     InvalidTargetFilterNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeploymentInstances",
   pagination: {
     inputToken: "nextToken",
@@ -4497,6 +4563,8 @@ export const listDeployments: API.OperationMethod<
     InvalidNextTokenException,
     InvalidTimeRangeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
@@ -4537,6 +4605,8 @@ export const listDeploymentTargets: API.OperationMethod<
     InvalidNextTokenException,
     InvalidTargetFilterNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeploymentTargets",
 }));
 export type ListGitHubAccountTokenNamesError =
@@ -4560,6 +4630,8 @@ export const listGitHubAccountTokenNames: API.OperationMethod<
     OperationNotSupportedException,
     ResourceValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGitHubAccountTokenNames",
 }));
 export type ListOnPremisesInstancesError =
@@ -4587,6 +4659,8 @@ export const listOnPremisesInstances: API.OperationMethod<
     InvalidRegistrationStatusException,
     InvalidTagFilterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOnPremisesInstances",
 }));
 export type ListTagsForResourceError =
@@ -4611,6 +4685,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArnException,
     ResourceArnRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutLifecycleEventHookExecutionStatusError =
@@ -4650,6 +4726,8 @@ export const putLifecycleEventHookExecutionStatus: API.OperationMethod<
     LifecycleEventAlreadyCompletedException,
     UnsupportedActionForDeploymentTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLifecycleEventHookExecutionStatus",
 }));
 export type RegisterApplicationRevisionError =
@@ -4679,6 +4757,8 @@ export const registerApplicationRevision: API.OperationMethod<
     InvalidRevisionException,
     RevisionRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterApplicationRevision",
 }));
 export type RegisterOnPremisesInstanceError =
@@ -4718,6 +4798,8 @@ export const registerOnPremisesInstance: API.OperationMethod<
     InvalidInstanceNameException,
     MultipleIamArnsProvidedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterOnPremisesInstance",
 }));
 export type RemoveTagsFromOnPremisesInstancesError =
@@ -4749,6 +4831,8 @@ export const removeTagsFromOnPremisesInstances: API.OperationMethod<
     TagLimitExceededException,
     TagRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTagsFromOnPremisesInstances",
 }));
 export type SkipWaitTimeForInstanceTerminationError =
@@ -4779,6 +4863,8 @@ export const skipWaitTimeForInstanceTermination: API.OperationMethod<
     InvalidDeploymentIdException,
     UnsupportedActionForDeploymentTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SkipWaitTimeForInstanceTermination",
 }));
 export type StopDeploymentError =
@@ -4808,6 +4894,8 @@ export const stopDeployment: API.OperationMethod<
     InvalidDeploymentIdException,
     UnsupportedActionForDeploymentTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDeployment",
 }));
 export type TagResourceError =
@@ -4842,6 +4930,8 @@ export const tagResource: API.OperationMethod<
     ResourceArnRequiredException,
     TagRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4877,6 +4967,8 @@ export const untagResource: API.OperationMethod<
     ResourceArnRequiredException,
     TagRequiredException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
@@ -4902,6 +4994,8 @@ export const updateApplication: API.OperationMethod<
     ApplicationNameRequiredException,
     InvalidApplicationNameException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));
 export type UpdateDeploymentGroupError =
@@ -4981,5 +5075,7 @@ export const updateDeploymentGroup: API.OperationMethod<
     ThrottlingException,
     TriggerTargetsLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeploymentGroup",
 }));

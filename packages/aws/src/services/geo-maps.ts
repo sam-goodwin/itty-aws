@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -518,6 +520,8 @@ export const getGlyphs: API.OperationMethod<
   input: GetGlyphsRequest,
   output: GetGlyphsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGlyphs",
 }));
 export type GetSpritesError = CommonErrors;
@@ -535,6 +539,8 @@ export const getSprites: API.OperationMethod<
   input: GetSpritesRequest,
   output: GetSpritesResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSprites",
 }));
 export type GetStaticMapError =
@@ -570,6 +576,8 @@ export const getStaticMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStaticMap",
 }));
 export type GetStyleDescriptorError = CommonErrors;
@@ -587,6 +595,8 @@ export const getStyleDescriptor: API.OperationMethod<
   input: GetStyleDescriptorRequest,
   output: GetStyleDescriptorResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStyleDescriptor",
 }));
 export type GetTileError =
@@ -616,5 +626,7 @@ export const getTile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTile",
 }));

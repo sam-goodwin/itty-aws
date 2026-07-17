@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3856,6 +3858,8 @@ export const associateWebACL: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnavailableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWebACL",
 }));
 export type CreateByteMatchSetError =
@@ -3911,6 +3915,8 @@ export const createByteMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateByteMatchSet",
 }));
 export type CreateGeoMatchSetError =
@@ -3963,6 +3969,8 @@ export const createGeoMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGeoMatchSet",
 }));
 export type CreateIPSetError =
@@ -4020,6 +4028,8 @@ export const createIPSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIPSet",
 }));
 export type CreateRateBasedRuleError =
@@ -4127,6 +4137,8 @@ export const createRateBasedRule: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRateBasedRule",
 }));
 export type CreateRegexMatchSetError =
@@ -4178,6 +4190,8 @@ export const createRegexMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegexMatchSet",
 }));
 export type CreateRegexPatternSetError =
@@ -4225,6 +4239,8 @@ export const createRegexPatternSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegexPatternSet",
 }));
 export type CreateRuleError =
@@ -4298,6 +4314,8 @@ export const createRule: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRule",
 }));
 export type CreateRuleGroupError =
@@ -4347,6 +4365,8 @@ export const createRuleGroup: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRuleGroup",
 }));
 export type CreateSizeConstraintSetError =
@@ -4402,6 +4422,8 @@ export const createSizeConstraintSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSizeConstraintSet",
 }));
 export type CreateSqlInjectionMatchSetError =
@@ -4455,6 +4477,8 @@ export const createSqlInjectionMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSqlInjectionMatchSet",
 }));
 export type CreateWebACLError =
@@ -4523,6 +4547,8 @@ export const createWebACL: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWebACL",
 }));
 export type CreateWebACLMigrationStackError =
@@ -4558,6 +4584,8 @@ export const createWebACLMigrationStack: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWebACLMigrationStack",
 }));
 export type CreateXssMatchSetError =
@@ -4611,6 +4639,8 @@ export const createXssMatchSet: API.OperationMethod<
     WAFLimitsExceededException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateXssMatchSet",
 }));
 export type DeleteByteMatchSetError =
@@ -4659,6 +4689,8 @@ export const deleteByteMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteByteMatchSet",
 }));
 export type DeleteGeoMatchSetError =
@@ -4707,6 +4739,8 @@ export const deleteGeoMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGeoMatchSet",
 }));
 export type DeleteIPSetError =
@@ -4755,6 +4789,8 @@ export const deleteIPSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIPSet",
 }));
 export type DeleteLoggingConfigurationError =
@@ -4786,6 +4822,8 @@ export const deleteLoggingConfiguration: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoggingConfiguration",
 }));
 export type DeletePermissionPolicyError =
@@ -4818,6 +4856,8 @@ export const deletePermissionPolicy: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermissionPolicy",
 }));
 export type DeleteRateBasedRuleError =
@@ -4874,6 +4914,8 @@ export const deleteRateBasedRule: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRateBasedRule",
 }));
 export type DeleteRegexMatchSetError =
@@ -4922,6 +4964,8 @@ export const deleteRegexMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegexMatchSet",
 }));
 export type DeleteRegexPatternSetError =
@@ -4959,6 +5003,8 @@ export const deleteRegexPatternSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegexPatternSet",
 }));
 export type DeleteRuleError =
@@ -5011,6 +5057,8 @@ export const deleteRule: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRule",
 }));
 export type DeleteRuleGroupError =
@@ -5063,6 +5111,8 @@ export const deleteRuleGroup: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRuleGroup",
 }));
 export type DeleteSizeConstraintSetError =
@@ -5111,6 +5161,8 @@ export const deleteSizeConstraintSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSizeConstraintSet",
 }));
 export type DeleteSqlInjectionMatchSetError =
@@ -5160,6 +5212,8 @@ export const deleteSqlInjectionMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSqlInjectionMatchSet",
 }));
 export type DeleteWebACLError =
@@ -5209,6 +5263,8 @@ export const deleteWebACL: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWebACL",
 }));
 export type DeleteXssMatchSetError =
@@ -5258,6 +5314,8 @@ export const deleteXssMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteXssMatchSet",
 }));
 export type DisassociateWebACLError =
@@ -5290,6 +5348,8 @@ export const disassociateWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWebACL",
 }));
 export type GetByteMatchSetError =
@@ -5320,6 +5380,8 @@ export const getByteMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetByteMatchSet",
 }));
 export type GetChangeTokenError = WAFInternalErrorException | CommonErrors;
@@ -5350,6 +5412,8 @@ export const getChangeToken: API.OperationMethod<
   input: GetChangeTokenRequest,
   output: GetChangeTokenResponse,
   errors: [WAFInternalErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChangeToken",
 }));
 export type GetChangeTokenStatusError =
@@ -5383,6 +5447,8 @@ export const getChangeTokenStatus: API.OperationMethod<
   input: GetChangeTokenStatusRequest,
   output: GetChangeTokenStatusResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChangeTokenStatus",
 }));
 export type GetGeoMatchSetError =
@@ -5413,6 +5479,8 @@ export const getGeoMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGeoMatchSet",
 }));
 export type GetIPSetError =
@@ -5443,6 +5511,8 @@ export const getIPSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIPSet",
 }));
 export type GetLoggingConfigurationError =
@@ -5468,6 +5538,8 @@ export const getLoggingConfiguration: API.OperationMethod<
   input: GetLoggingConfigurationRequest,
   output: GetLoggingConfigurationResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoggingConfiguration",
 }));
 export type GetPermissionPolicyError =
@@ -5493,6 +5565,8 @@ export const getPermissionPolicy: API.OperationMethod<
   input: GetPermissionPolicyRequest,
   output: GetPermissionPolicyResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPermissionPolicy",
 }));
 export type GetRateBasedRuleError =
@@ -5525,6 +5599,8 @@ export const getRateBasedRule: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRateBasedRule",
 }));
 export type GetRateBasedRuleManagedKeysError =
@@ -5559,6 +5635,8 @@ export const getRateBasedRuleManagedKeys: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRateBasedRuleManagedKeys",
 }));
 export type GetRegexMatchSetError =
@@ -5589,6 +5667,8 @@ export const getRegexMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegexMatchSet",
 }));
 export type GetRegexPatternSetError =
@@ -5619,6 +5699,8 @@ export const getRegexPatternSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegexPatternSet",
 }));
 export type GetRuleError =
@@ -5649,6 +5731,8 @@ export const getRule: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRule",
 }));
 export type GetRuleGroupError =
@@ -5676,6 +5760,8 @@ export const getRuleGroup: API.OperationMethod<
   input: GetRuleGroupRequest,
   output: GetRuleGroupResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRuleGroup",
 }));
 export type GetSampledRequestsError =
@@ -5705,6 +5791,8 @@ export const getSampledRequests: API.OperationMethod<
   input: GetSampledRequestsRequest,
   output: GetSampledRequestsResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSampledRequests",
 }));
 export type GetSizeConstraintSetError =
@@ -5735,6 +5823,8 @@ export const getSizeConstraintSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSizeConstraintSet",
 }));
 export type GetSqlInjectionMatchSetError =
@@ -5765,6 +5855,8 @@ export const getSqlInjectionMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSqlInjectionMatchSet",
 }));
 export type GetWebACLError =
@@ -5795,6 +5887,8 @@ export const getWebACL: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWebACL",
 }));
 export type GetWebACLForResourceError =
@@ -5829,6 +5923,8 @@ export const getWebACLForResource: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnavailableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWebACLForResource",
 }));
 export type GetXssMatchSetError =
@@ -5859,6 +5955,8 @@ export const getXssMatchSet: API.OperationMethod<
     WAFInvalidAccountException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetXssMatchSet",
 }));
 export type ListActivatedRulesInRuleGroupError =
@@ -5889,6 +5987,8 @@ export const listActivatedRulesInRuleGroup: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListActivatedRulesInRuleGroup",
 }));
 export type ListByteMatchSetsError =
@@ -5914,6 +6014,8 @@ export const listByteMatchSets: API.OperationMethod<
   input: ListByteMatchSetsRequest,
   output: ListByteMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListByteMatchSets",
 }));
 export type ListGeoMatchSetsError =
@@ -5939,6 +6041,8 @@ export const listGeoMatchSets: API.OperationMethod<
   input: ListGeoMatchSetsRequest,
   output: ListGeoMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGeoMatchSets",
 }));
 export type ListIPSetsError =
@@ -5964,6 +6068,8 @@ export const listIPSets: API.OperationMethod<
   input: ListIPSetsRequest,
   output: ListIPSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIPSets",
 }));
 export type ListLoggingConfigurationsError =
@@ -5994,6 +6100,8 @@ export const listLoggingConfigurations: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLoggingConfigurations",
 }));
 export type ListRateBasedRulesError =
@@ -6019,6 +6127,8 @@ export const listRateBasedRules: API.OperationMethod<
   input: ListRateBasedRulesRequest,
   output: ListRateBasedRulesResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRateBasedRules",
 }));
 export type ListRegexMatchSetsError =
@@ -6044,6 +6154,8 @@ export const listRegexMatchSets: API.OperationMethod<
   input: ListRegexMatchSetsRequest,
   output: ListRegexMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegexMatchSets",
 }));
 export type ListRegexPatternSetsError =
@@ -6069,6 +6181,8 @@ export const listRegexPatternSets: API.OperationMethod<
   input: ListRegexPatternSetsRequest,
   output: ListRegexPatternSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegexPatternSets",
 }));
 export type ListResourcesForWebACLError =
@@ -6101,6 +6215,8 @@ export const listResourcesForWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourcesForWebACL",
 }));
 export type ListRuleGroupsError = WAFInternalErrorException | CommonErrors;
@@ -6123,6 +6239,8 @@ export const listRuleGroups: API.OperationMethod<
   input: ListRuleGroupsRequest,
   output: ListRuleGroupsResponse,
   errors: [WAFInternalErrorException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleGroups",
 }));
 export type ListRulesError =
@@ -6148,6 +6266,8 @@ export const listRules: API.OperationMethod<
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRules",
 }));
 export type ListSizeConstraintSetsError =
@@ -6173,6 +6293,8 @@ export const listSizeConstraintSets: API.OperationMethod<
   input: ListSizeConstraintSetsRequest,
   output: ListSizeConstraintSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSizeConstraintSets",
 }));
 export type ListSqlInjectionMatchSetsError =
@@ -6198,6 +6320,8 @@ export const listSqlInjectionMatchSets: API.OperationMethod<
   input: ListSqlInjectionMatchSetsRequest,
   output: ListSqlInjectionMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSqlInjectionMatchSets",
 }));
 export type ListSubscribedRuleGroupsError =
@@ -6223,6 +6347,8 @@ export const listSubscribedRuleGroups: API.OperationMethod<
   input: ListSubscribedRuleGroupsRequest,
   output: ListSubscribedRuleGroupsResponse,
   errors: [WAFInternalErrorException, WAFNonexistentItemException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscribedRuleGroups",
 }));
 export type ListTagsForResourceError =
@@ -6261,6 +6387,8 @@ export const listTagsForResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWebACLsError =
@@ -6286,6 +6414,8 @@ export const listWebACLs: API.OperationMethod<
   input: ListWebACLsRequest,
   output: ListWebACLsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWebACLs",
 }));
 export type ListXssMatchSetsError =
@@ -6311,6 +6441,8 @@ export const listXssMatchSets: API.OperationMethod<
   input: ListXssMatchSetsRequest,
   output: ListXssMatchSetsResponse,
   errors: [WAFInternalErrorException, WAFInvalidAccountException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListXssMatchSets",
 }));
 export type PutLoggingConfigurationError =
@@ -6357,6 +6489,8 @@ export const putLoggingConfiguration: API.OperationMethod<
     WAFServiceLinkedRoleErrorException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLoggingConfiguration",
 }));
 export type PutPermissionPolicyError =
@@ -6411,6 +6545,8 @@ export const putPermissionPolicy: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPermissionPolicy",
 }));
 export type TagResourceError =
@@ -6451,6 +6587,8 @@ export const tagResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6485,6 +6623,8 @@ export const untagResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateByteMatchSetError =
@@ -6554,6 +6694,8 @@ export const updateByteMatchSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateByteMatchSet",
 }));
 export type UpdateGeoMatchSetError =
@@ -6618,6 +6760,8 @@ export const updateGeoMatchSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGeoMatchSet",
 }));
 export type UpdateIPSetError =
@@ -6716,6 +6860,8 @@ export const updateIPSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIPSet",
 }));
 export type UpdateRateBasedRuleError =
@@ -6795,6 +6941,8 @@ export const updateRateBasedRule: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRateBasedRule",
 }));
 export type UpdateRegexMatchSetError =
@@ -6861,6 +7009,8 @@ export const updateRegexMatchSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRegexMatchSet",
 }));
 export type UpdateRegexPatternSetError =
@@ -6928,6 +7078,8 @@ export const updateRegexPatternSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRegexPatternSet",
 }));
 export type UpdateRuleError =
@@ -7003,6 +7155,8 @@ export const updateRule: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRule",
 }));
 export type UpdateRuleGroupError =
@@ -7062,6 +7216,8 @@ export const updateRuleGroup: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRuleGroup",
 }));
 export type UpdateSizeConstraintSetError =
@@ -7138,6 +7294,8 @@ export const updateSizeConstraintSet: API.OperationMethod<
     WAFReferencedItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSizeConstraintSet",
 }));
 export type UpdateSqlInjectionMatchSetError =
@@ -7210,6 +7368,8 @@ export const updateSqlInjectionMatchSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSqlInjectionMatchSet",
 }));
 export type UpdateWebACLError =
@@ -7315,6 +7475,8 @@ export const updateWebACL: API.OperationMethod<
     WAFStaleDataException,
     WAFSubscriptionNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWebACL",
 }));
 export type UpdateXssMatchSetError =
@@ -7389,5 +7551,7 @@ export const updateXssMatchSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFStaleDataException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateXssMatchSet",
 }));

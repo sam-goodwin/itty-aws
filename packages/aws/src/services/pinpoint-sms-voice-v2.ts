@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5422,6 +5424,8 @@ export const associateOriginationIdentity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateOriginationIdentity",
 }));
 export type AssociateProtectConfigurationError =
@@ -5451,6 +5455,8 @@ export const associateProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateProtectConfiguration",
 }));
 export type CarrierLookupError =
@@ -5478,6 +5484,8 @@ export const carrierLookup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CarrierLookup",
 }));
 export type CreateConfigurationSetError =
@@ -5511,6 +5519,8 @@ export const createConfigurationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConfigurationSet",
 }));
 export type CreateEventDestinationError =
@@ -5548,6 +5558,8 @@ export const createEventDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventDestination",
 }));
 export type CreateNotifyConfigurationError =
@@ -5579,6 +5591,8 @@ export const createNotifyConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNotifyConfiguration",
 }));
 export type CreateOptOutListError =
@@ -5612,6 +5626,8 @@ export const createOptOutList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateOptOutList",
 }));
 export type CreatePoolError =
@@ -5647,6 +5663,8 @@ export const createPool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePool",
 }));
 export type CreateProtectConfigurationError =
@@ -5676,6 +5694,8 @@ export const createProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProtectConfiguration",
 }));
 export type CreateRcsAgentError =
@@ -5707,6 +5727,8 @@ export const createRcsAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRcsAgent",
 }));
 export type CreateRegistrationError =
@@ -5736,6 +5758,8 @@ export const createRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegistration",
 }));
 export type CreateRegistrationAssociationError =
@@ -5767,6 +5791,8 @@ export const createRegistrationAssociation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegistrationAssociation",
 }));
 export type CreateRegistrationAttachmentError =
@@ -5798,6 +5824,8 @@ export const createRegistrationAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegistrationAttachment",
 }));
 export type CreateRegistrationVersionError =
@@ -5829,6 +5857,8 @@ export const createRegistrationVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegistrationVersion",
 }));
 export type CreateVerifiedDestinationNumberError =
@@ -5860,6 +5890,8 @@ export const createVerifiedDestinationNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVerifiedDestinationNumber",
 }));
 export type DeleteAccountDefaultProtectConfigurationError =
@@ -5887,6 +5919,8 @@ export const deleteAccountDefaultProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountDefaultProtectConfiguration",
 }));
 export type DeleteConfigurationSetError =
@@ -5916,6 +5950,8 @@ export const deleteConfigurationSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConfigurationSet",
 }));
 export type DeleteDefaultMessageTypeError =
@@ -5945,6 +5981,8 @@ export const deleteDefaultMessageType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDefaultMessageType",
 }));
 export type DeleteDefaultSenderIdError =
@@ -5974,6 +6012,8 @@ export const deleteDefaultSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDefaultSenderId",
 }));
 export type DeleteEventDestinationError =
@@ -6003,6 +6043,8 @@ export const deleteEventDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventDestination",
 }));
 export type DeleteKeywordError =
@@ -6036,6 +6078,8 @@ export const deleteKeyword: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKeyword",
 }));
 export type DeleteMediaMessageSpendLimitOverrideError =
@@ -6061,6 +6105,8 @@ export const deleteMediaMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMediaMessageSpendLimitOverride",
 }));
 export type DeleteNotifyConfigurationError =
@@ -6092,6 +6138,8 @@ export const deleteNotifyConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotifyConfiguration",
 }));
 export type DeleteNotifyMessageSpendLimitOverrideError =
@@ -6117,6 +6165,8 @@ export const deleteNotifyMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotifyMessageSpendLimitOverride",
 }));
 export type DeleteOptedOutNumberError =
@@ -6150,6 +6200,8 @@ export const deleteOptedOutNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOptedOutNumber",
 }));
 export type DeleteOptOutListError =
@@ -6181,6 +6233,8 @@ export const deleteOptOutList: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteOptOutList",
 }));
 export type DeletePoolError =
@@ -6214,6 +6268,8 @@ export const deletePool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePool",
 }));
 export type DeleteProtectConfigurationError =
@@ -6243,6 +6299,8 @@ export const deleteProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProtectConfiguration",
 }));
 export type DeleteProtectConfigurationRuleSetNumberOverrideError =
@@ -6270,6 +6328,8 @@ export const deleteProtectConfigurationRuleSetNumberOverride: API.OperationMetho
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProtectConfigurationRuleSetNumberOverride",
 }));
 export type DeleteRcsAgentError =
@@ -6299,6 +6359,8 @@ export const deleteRcsAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRcsAgent",
 }));
 export type DeleteRegistrationError =
@@ -6328,6 +6390,8 @@ export const deleteRegistration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegistration",
 }));
 export type DeleteRegistrationAttachmentError =
@@ -6357,6 +6421,8 @@ export const deleteRegistrationAttachment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegistrationAttachment",
 }));
 export type DeleteRegistrationFieldValueError =
@@ -6386,6 +6452,8 @@ export const deleteRegistrationFieldValue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegistrationFieldValue",
 }));
 export type DeleteResourcePolicyError =
@@ -6413,6 +6481,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteTextMessageSpendLimitOverrideError =
@@ -6438,6 +6508,8 @@ export const deleteTextMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTextMessageSpendLimitOverride",
 }));
 export type DeleteVerifiedDestinationNumberError =
@@ -6467,6 +6539,8 @@ export const deleteVerifiedDestinationNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVerifiedDestinationNumber",
 }));
 export type DeleteVoiceMessageSpendLimitOverrideError =
@@ -6492,6 +6566,8 @@ export const deleteVoiceMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVoiceMessageSpendLimitOverride",
 }));
 export type DescribeAccountAttributesError =
@@ -6534,6 +6610,8 @@ export const describeAccountAttributes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -6582,6 +6660,8 @@ export const describeAccountLimits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountLimits",
   pagination: {
     inputToken: "NextToken",
@@ -6634,6 +6714,8 @@ export const describeConfigurationSets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConfigurationSets",
   pagination: {
     inputToken: "NextToken",
@@ -6686,6 +6768,8 @@ export const describeKeywords: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKeywords",
   pagination: {
     inputToken: "NextToken",
@@ -6738,6 +6822,8 @@ export const describeNotifyConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotifyConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -6790,6 +6876,8 @@ export const describeNotifyTemplates: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotifyTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -6842,6 +6930,8 @@ export const describeOptedOutNumbers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOptedOutNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -6894,6 +6984,8 @@ export const describeOptOutLists: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOptOutLists",
   pagination: {
     inputToken: "NextToken",
@@ -6946,6 +7038,8 @@ export const describePhoneNumbers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePhoneNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -7000,6 +7094,8 @@ export const describePools: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePools",
   pagination: {
     inputToken: "NextToken",
@@ -7048,6 +7144,8 @@ export const describeProtectConfigurations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProtectConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -7096,6 +7194,8 @@ export const describeRcsAgentCountryLaunchStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRcsAgentCountryLaunchStatus",
   pagination: {
     inputToken: "NextToken",
@@ -7146,6 +7246,8 @@ export const describeRcsAgents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRcsAgents",
   pagination: {
     inputToken: "NextToken",
@@ -7194,6 +7296,8 @@ export const describeRegistrationAttachments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistrationAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -7240,6 +7344,8 @@ export const describeRegistrationFieldDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistrationFieldDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -7288,6 +7394,8 @@ export const describeRegistrationFieldValues: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistrationFieldValues",
   pagination: {
     inputToken: "NextToken",
@@ -7336,6 +7444,8 @@ export const describeRegistrations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistrations",
   pagination: {
     inputToken: "NextToken",
@@ -7382,6 +7492,8 @@ export const describeRegistrationSectionDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistrationSectionDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -7428,6 +7540,8 @@ export const describeRegistrationTypeDefinitions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistrationTypeDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -7476,6 +7590,8 @@ export const describeRegistrationVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistrationVersions",
   pagination: {
     inputToken: "NextToken",
@@ -7528,6 +7644,8 @@ export const describeSenderIds: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSenderIds",
   pagination: {
     inputToken: "NextToken",
@@ -7576,6 +7694,8 @@ export const describeSpendLimits: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpendLimits",
   pagination: {
     inputToken: "NextToken",
@@ -7624,6 +7744,8 @@ export const describeVerifiedDestinationNumbers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVerifiedDestinationNumbers",
   pagination: {
     inputToken: "NextToken",
@@ -7661,6 +7783,8 @@ export const disassociateOriginationIdentity: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateOriginationIdentity",
 }));
 export type DisassociateProtectConfigurationError =
@@ -7690,6 +7814,8 @@ export const disassociateProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateProtectConfiguration",
 }));
 export type DiscardRegistrationVersionError =
@@ -7719,6 +7845,8 @@ export const discardRegistrationVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DiscardRegistrationVersion",
 }));
 export type GetProtectConfigurationCountryRuleSetError =
@@ -7746,6 +7874,8 @@ export const getProtectConfigurationCountryRuleSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProtectConfigurationCountryRuleSet",
 }));
 export type GetResourcePolicyError =
@@ -7773,6 +7903,8 @@ export const getResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type ListNotifyCountriesError =
@@ -7813,6 +7945,8 @@ export const listNotifyCountries: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotifyCountries",
   pagination: {
     inputToken: "NextToken",
@@ -7863,6 +7997,8 @@ export const listPoolOriginationIdentities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPoolOriginationIdentities",
   pagination: {
     inputToken: "NextToken",
@@ -7911,6 +8047,8 @@ export const listProtectConfigurationRuleSetNumberOverrides: API.OperationMethod
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProtectConfigurationRuleSetNumberOverrides",
   pagination: {
     inputToken: "NextToken",
@@ -7959,6 +8097,8 @@ export const listRegistrationAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegistrationAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -7992,6 +8132,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutKeywordError =
@@ -8027,6 +8169,8 @@ export const putKeyword: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutKeyword",
 }));
 export type PutMessageFeedbackError =
@@ -8056,6 +8200,8 @@ export const putMessageFeedback: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMessageFeedback",
 }));
 export type PutOptedOutNumberError =
@@ -8085,6 +8231,8 @@ export const putOptedOutNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutOptedOutNumber",
 }));
 export type PutProtectConfigurationRuleSetNumberOverrideError =
@@ -8116,6 +8264,8 @@ export const putProtectConfigurationRuleSetNumberOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProtectConfigurationRuleSetNumberOverride",
 }));
 export type PutRegistrationFieldValueError =
@@ -8145,6 +8295,8 @@ export const putRegistrationFieldValue: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRegistrationFieldValue",
 }));
 export type PutResourcePolicyError =
@@ -8172,6 +8324,8 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type ReleasePhoneNumberError =
@@ -8203,6 +8357,8 @@ export const releasePhoneNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReleasePhoneNumber",
 }));
 export type ReleaseSenderIdError =
@@ -8232,6 +8388,8 @@ export const releaseSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReleaseSenderId",
 }));
 export type RequestPhoneNumberError =
@@ -8263,6 +8421,8 @@ export const requestPhoneNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestPhoneNumber",
 }));
 export type RequestSenderIdError =
@@ -8292,6 +8452,8 @@ export const requestSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestSenderId",
 }));
 export type SendDestinationNumberVerificationCodeError =
@@ -8323,6 +8485,8 @@ export const sendDestinationNumberVerificationCode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDestinationNumberVerificationCode",
 }));
 export type SendMediaMessageError =
@@ -8354,6 +8518,8 @@ export const sendMediaMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendMediaMessage",
 }));
 export type SendNotifyTextMessageError =
@@ -8385,6 +8551,8 @@ export const sendNotifyTextMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendNotifyTextMessage",
 }));
 export type SendNotifyVoiceMessageError =
@@ -8416,6 +8584,8 @@ export const sendNotifyVoiceMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendNotifyVoiceMessage",
 }));
 export type SendTextMessageError =
@@ -8449,6 +8619,8 @@ export const sendTextMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendTextMessage",
 }));
 export type SendVoiceMessageError =
@@ -8480,6 +8652,8 @@ export const sendVoiceMessage: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendVoiceMessage",
 }));
 export type SetAccountDefaultProtectConfigurationError =
@@ -8507,6 +8681,8 @@ export const setAccountDefaultProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetAccountDefaultProtectConfiguration",
 }));
 export type SetDefaultMessageFeedbackEnabledError =
@@ -8534,6 +8710,8 @@ export const setDefaultMessageFeedbackEnabled: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDefaultMessageFeedbackEnabled",
 }));
 export type SetDefaultMessageTypeError =
@@ -8563,6 +8741,8 @@ export const setDefaultMessageType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDefaultMessageType",
 }));
 export type SetDefaultSenderIdError =
@@ -8592,6 +8772,8 @@ export const setDefaultSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetDefaultSenderId",
 }));
 export type SetMediaMessageSpendLimitOverrideError =
@@ -8617,6 +8799,8 @@ export const setMediaMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetMediaMessageSpendLimitOverride",
 }));
 export type SetNotifyMessageSpendLimitOverrideError =
@@ -8642,6 +8826,8 @@ export const setNotifyMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetNotifyMessageSpendLimitOverride",
 }));
 export type SetTextMessageSpendLimitOverrideError =
@@ -8667,6 +8853,8 @@ export const setTextMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTextMessageSpendLimitOverride",
 }));
 export type SetVoiceMessageSpendLimitOverrideError =
@@ -8692,6 +8880,8 @@ export const setVoiceMessageSpendLimitOverride: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetVoiceMessageSpendLimitOverride",
 }));
 export type SubmitRegistrationVersionError =
@@ -8721,6 +8911,8 @@ export const submitRegistrationVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitRegistrationVersion",
 }));
 export type TagResourceError =
@@ -8750,6 +8942,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -8777,6 +8971,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateEventDestinationError =
@@ -8808,6 +9004,8 @@ export const updateEventDestination: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventDestination",
 }));
 export type UpdateNotifyConfigurationError =
@@ -8837,6 +9035,8 @@ export const updateNotifyConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNotifyConfiguration",
 }));
 export type UpdatePhoneNumberError =
@@ -8868,6 +9068,8 @@ export const updatePhoneNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePhoneNumber",
 }));
 export type UpdatePoolError =
@@ -8897,6 +9099,8 @@ export const updatePool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePool",
 }));
 export type UpdateProtectConfigurationError =
@@ -8924,6 +9128,8 @@ export const updateProtectConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProtectConfiguration",
 }));
 export type UpdateProtectConfigurationCountryRuleSetError =
@@ -8951,6 +9157,8 @@ export const updateProtectConfigurationCountryRuleSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProtectConfigurationCountryRuleSet",
 }));
 export type UpdateRcsAgentError =
@@ -8980,6 +9188,8 @@ export const updateRcsAgent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRcsAgent",
 }));
 export type UpdateSenderIdError =
@@ -9007,6 +9217,8 @@ export const updateSenderId: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSenderId",
 }));
 export type VerifyDestinationNumberError =
@@ -9036,5 +9248,7 @@ export const verifyDestinationNumber: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyDestinationNumber",
 }));

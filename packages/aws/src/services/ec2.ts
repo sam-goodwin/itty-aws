@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -74383,6 +74385,8 @@ export const acceptAddressTransfer: API.OperationMethod<
     InvalidAddressMalformed,
     InvalidAddressNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptAddressTransfer",
 }));
 export type AcceptCapacityReservationBillingOwnershipError =
@@ -74403,6 +74407,8 @@ export const acceptCapacityReservationBillingOwnership: API.OperationMethod<
   input: AcceptCapacityReservationBillingOwnershipRequest,
   output: AcceptCapacityReservationBillingOwnershipResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptCapacityReservationBillingOwnership",
 }));
 export type AcceptReservedInstancesExchangeQuoteError =
@@ -74421,6 +74427,8 @@ export const acceptReservedInstancesExchangeQuote: API.OperationMethod<
   input: AcceptReservedInstancesExchangeQuoteRequest,
   output: AcceptReservedInstancesExchangeQuoteResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptReservedInstancesExchangeQuote",
 }));
 export type AcceptTransitGatewayMulticastDomainAssociationsError =
@@ -74439,6 +74447,8 @@ export const acceptTransitGatewayMulticastDomainAssociations: API.OperationMetho
   input: AcceptTransitGatewayMulticastDomainAssociationsRequest,
   output: AcceptTransitGatewayMulticastDomainAssociationsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptTransitGatewayMulticastDomainAssociations",
 }));
 export type AcceptTransitGatewayPeeringAttachmentError =
@@ -74458,6 +74468,8 @@ export const acceptTransitGatewayPeeringAttachment: API.OperationMethod<
   input: AcceptTransitGatewayPeeringAttachmentRequest,
   output: AcceptTransitGatewayPeeringAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptTransitGatewayPeeringAttachment",
 }));
 export type AcceptTransitGatewayVpcAttachmentError =
@@ -74480,6 +74492,8 @@ export const acceptTransitGatewayVpcAttachment: API.OperationMethod<
   input: AcceptTransitGatewayVpcAttachmentRequest,
   output: AcceptTransitGatewayVpcAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptTransitGatewayVpcAttachment",
 }));
 export type AcceptVpcEndpointConnectionsError =
@@ -74503,6 +74517,8 @@ export const acceptVpcEndpointConnections: API.OperationMethod<
     InvalidParameter,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptVpcEndpointConnections",
 }));
 export type AcceptVpcPeeringConnectionError =
@@ -74532,6 +74548,8 @@ export const acceptVpcPeeringConnection: API.OperationMethod<
     InvalidVpcPeeringConnectionIDNotFound,
     InvalidVpcPeeringConnectionIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptVpcPeeringConnection",
 }));
 export type AdvertiseByoipCidrError = RequestLimitExceeded | CommonErrors;
@@ -74559,6 +74577,8 @@ export const advertiseByoipCidr: API.OperationMethod<
   input: AdvertiseByoipCidrRequest,
   output: AdvertiseByoipCidrResult,
   errors: [RequestLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdvertiseByoipCidr",
 }));
 export type AllocateAddressError =
@@ -74601,6 +74621,8 @@ export const allocateAddress: API.OperationMethod<
   input: AllocateAddressRequest,
   output: AllocateAddressResult,
   errors: [RequestLimitExceeded, AddressLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocateAddress",
 }));
 export type AllocateHostsError =
@@ -74622,6 +74644,8 @@ export const allocateHosts: API.OperationMethod<
   input: AllocateHostsRequest,
   output: AllocateHostsResult,
   errors: [RequestLimitExceeded, InvalidHostConfiguration, InvalidRequest],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocateHosts",
 }));
 export type AllocateIpamPoolCidrError =
@@ -74644,6 +74668,8 @@ export const allocateIpamPoolCidr: API.OperationMethod<
   input: AllocateIpamPoolCidrRequest,
   output: AllocateIpamPoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AllocateIpamPoolCidr",
 }));
 export type ApplySecurityGroupsToClientVpnTargetNetworkError =
@@ -74663,6 +74689,8 @@ export const applySecurityGroupsToClientVpnTargetNetwork: API.OperationMethod<
   input: ApplySecurityGroupsToClientVpnTargetNetworkRequest,
   output: ApplySecurityGroupsToClientVpnTargetNetworkResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplySecurityGroupsToClientVpnTargetNetwork",
 }));
 export type AssignIpv6AddressesError =
@@ -74697,6 +74725,8 @@ export const assignIpv6Addresses: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidParameterCombination,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssignIpv6Addresses",
 }));
 export type AssignPrivateIpAddressesError =
@@ -74745,6 +74775,8 @@ export const assignPrivateIpAddresses: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssignPrivateIpAddresses",
 }));
 export type AssignPrivateNatGatewayAddressError =
@@ -74764,6 +74796,8 @@ export const assignPrivateNatGatewayAddress: API.OperationMethod<
   input: AssignPrivateNatGatewayAddressRequest,
   output: AssignPrivateNatGatewayAddressResult,
   errors: [RequestLimitExceeded, NatGatewayNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssignPrivateNatGatewayAddress",
 }));
 export type AssociateAddressError =
@@ -74810,6 +74844,8 @@ export const associateAddress: API.OperationMethod<
     InvalidInstanceIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAddress",
 }));
 export type AssociateCapacityReservationBillingOwnerError =
@@ -74836,6 +74872,8 @@ export const associateCapacityReservationBillingOwner: API.OperationMethod<
     InvalidCapacityReservationIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateCapacityReservationBillingOwner",
 }));
 export type AssociateClientVpnTargetNetworkError =
@@ -74857,6 +74895,8 @@ export const associateClientVpnTargetNetwork: API.OperationMethod<
   input: AssociateClientVpnTargetNetworkRequest,
   output: AssociateClientVpnTargetNetworkResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDMalformed, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateClientVpnTargetNetwork",
 }));
 export type AssociateDhcpOptionsError =
@@ -74887,6 +74927,8 @@ export const associateDhcpOptions: API.OperationMethod<
     InvalidVpcIDNotFound,
     InvalidVpcIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDhcpOptions",
 }));
 export type AssociateEnclaveCertificateIamRoleError =
@@ -74924,6 +74966,8 @@ export const associateEnclaveCertificateIamRole: API.OperationMethod<
     InvalidCertificateArnMalformed,
     InvalidRoleArnMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateEnclaveCertificateIamRole",
 }));
 export type AssociateIamInstanceProfileError =
@@ -74943,6 +74987,8 @@ export const associateIamInstanceProfile: API.OperationMethod<
   input: AssociateIamInstanceProfileRequest,
   output: AssociateIamInstanceProfileResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateIamInstanceProfile",
 }));
 export type AssociateInstanceEventWindowError =
@@ -74965,6 +75011,8 @@ export const associateInstanceEventWindow: API.OperationMethod<
   input: AssociateInstanceEventWindowRequest,
   output: AssociateInstanceEventWindowResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateInstanceEventWindow",
 }));
 export type AssociateIpamByoasnError =
@@ -74987,6 +75035,8 @@ export const associateIpamByoasn: API.OperationMethod<
   input: AssociateIpamByoasnRequest,
   output: AssociateIpamByoasnResult,
   errors: [RequestLimitExceeded, InvalidCidrNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateIpamByoasn",
 }));
 export type AssociateIpamResourceDiscoveryError =
@@ -75010,6 +75060,8 @@ export const associateIpamResourceDiscovery: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateIpamResourceDiscovery",
 }));
 export type AssociateNatGatewayAddressError =
@@ -75045,6 +75097,8 @@ export const associateNatGatewayAddress: API.OperationMethod<
     NatGatewayMalformed,
     NatGatewayNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateNatGatewayAddress",
 }));
 export type AssociateRouteServerError =
@@ -75067,6 +75121,8 @@ export const associateRouteServer: API.OperationMethod<
   input: AssociateRouteServerRequest,
   output: AssociateRouteServerResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateRouteServer",
 }));
 export type AssociateRouteTableError =
@@ -75109,6 +75165,8 @@ export const associateRouteTable: API.OperationMethod<
     InvalidSubnetIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateRouteTable",
 }));
 export type AssociateSecurityGroupVpcError =
@@ -75138,6 +75196,8 @@ export const associateSecurityGroupVpc: API.OperationMethod<
   input: AssociateSecurityGroupVpcRequest,
   output: AssociateSecurityGroupVpcResult,
   errors: [RequestLimitExceeded, InvalidGroupIdMalformed, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSecurityGroupVpc",
 }));
 export type AssociateSubnetCidrBlockError =
@@ -75158,6 +75218,8 @@ export const associateSubnetCidrBlock: API.OperationMethod<
   input: AssociateSubnetCidrBlockRequest,
   output: AssociateSubnetCidrBlockResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSubnetCidrBlock",
 }));
 export type AssociateTransitGatewayMulticastDomainError =
@@ -75182,6 +75244,8 @@ export const associateTransitGatewayMulticastDomain: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayMulticastDomainIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTransitGatewayMulticastDomain",
 }));
 export type AssociateTransitGatewayPolicyTableError =
@@ -75205,6 +75269,8 @@ export const associateTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTransitGatewayPolicyTable",
 }));
 export type AssociateTransitGatewayRouteTableError =
@@ -75224,6 +75290,8 @@ export const associateTransitGatewayRouteTable: API.OperationMethod<
   input: AssociateTransitGatewayRouteTableRequest,
   output: AssociateTransitGatewayRouteTableResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTransitGatewayRouteTable",
 }));
 export type AssociateTrunkInterfaceError =
@@ -75247,6 +75315,8 @@ export const associateTrunkInterface: API.OperationMethod<
   input: AssociateTrunkInterfaceRequest,
   output: AssociateTrunkInterfaceResult,
   errors: [RequestLimitExceeded, OperationNotPermitted],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTrunkInterface",
 }));
 export type AssociateVpcCidrBlockError =
@@ -75285,6 +75355,8 @@ export const associateVpcCidrBlock: API.OperationMethod<
     InvalidVpcIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateVpcCidrBlock",
 }));
 export type AttachClassicLinkVpcError =
@@ -75314,6 +75386,8 @@ export const attachClassicLinkVpc: API.OperationMethod<
   input: AttachClassicLinkVpcRequest,
   output: AttachClassicLinkVpcResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachClassicLinkVpc",
 }));
 export type AttachInternetGatewayError =
@@ -75343,6 +75417,8 @@ export const attachInternetGateway: API.OperationMethod<
     InvalidInternetGatewayIdMalformed,
     InvalidVpcIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachInternetGateway",
 }));
 export type AttachNetworkInterfaceError =
@@ -75368,6 +75444,8 @@ export const attachNetworkInterface: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidNetworkInterfaceIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachNetworkInterface",
 }));
 export type AttachVerifiedAccessTrustProviderError =
@@ -75386,6 +75464,8 @@ export const attachVerifiedAccessTrustProvider: API.OperationMethod<
   input: AttachVerifiedAccessTrustProviderRequest,
   output: AttachVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachVerifiedAccessTrustProvider",
 }));
 export type AttachVolumeError =
@@ -75437,6 +75517,8 @@ export const attachVolume: API.OperationMethod<
     InvalidParameterValue,
     InvalidVolumeNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachVolume",
 }));
 export type AttachVpnGatewayError =
@@ -75464,6 +75546,8 @@ export const attachVpnGateway: API.OperationMethod<
     InvalidVpcIDNotFound,
     InvalidVpnGatewayIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachVpnGateway",
 }));
 export type AuthorizeClientVpnIngressError =
@@ -75484,6 +75568,8 @@ export const authorizeClientVpnIngress: API.OperationMethod<
   input: AuthorizeClientVpnIngressRequest,
   output: AuthorizeClientVpnIngressResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeClientVpnIngress",
 }));
 export type AuthorizeSecurityGroupEgressError =
@@ -75526,6 +75612,8 @@ export const authorizeSecurityGroupEgress: API.OperationMethod<
     InvalidGroupIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeSecurityGroupEgress",
 }));
 export type AuthorizeSecurityGroupIngressError =
@@ -75568,6 +75656,8 @@ export const authorizeSecurityGroupIngress: API.OperationMethod<
     InvalidGroupIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AuthorizeSecurityGroupIngress",
 }));
 export type BundleInstanceError =
@@ -75594,6 +75684,8 @@ export const bundleInstance: API.OperationMethod<
   input: BundleInstanceRequest,
   output: BundleInstanceResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BundleInstance",
 }));
 export type CancelBundleTaskError =
@@ -75617,6 +75709,8 @@ export const cancelBundleTask: API.OperationMethod<
     InvalidBundleIDNotFound,
     InvalidInstanceIDMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelBundleTask",
 }));
 export type CancelCapacityReservationError =
@@ -75661,6 +75755,8 @@ export const cancelCapacityReservation: API.OperationMethod<
     InvalidCapacityReservationIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelCapacityReservation",
 }));
 export type CancelCapacityReservationFleetsError =
@@ -75689,6 +75785,8 @@ export const cancelCapacityReservationFleets: API.OperationMethod<
   input: CancelCapacityReservationFleetsRequest,
   output: CancelCapacityReservationFleetsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelCapacityReservationFleets",
 }));
 export type CancelConversionTaskError =
@@ -75709,6 +75807,8 @@ export const cancelConversionTask: API.OperationMethod<
   input: CancelConversionRequest,
   output: CancelConversionTaskResponse,
   errors: [RequestLimitExceeded, InvalidAction],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelConversionTask",
 }));
 export type CancelDeclarativePoliciesReportError =
@@ -75734,6 +75834,8 @@ export const cancelDeclarativePoliciesReport: API.OperationMethod<
   input: CancelDeclarativePoliciesReportRequest,
   output: CancelDeclarativePoliciesReportResult,
   errors: [RequestLimitExceeded, InvalidDeclarativePoliciesReportIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDeclarativePoliciesReport",
 }));
 export type CancelExportTaskError =
@@ -75754,6 +75856,8 @@ export const cancelExportTask: API.OperationMethod<
   input: CancelExportTaskRequest,
   output: CancelExportTaskResponse,
   errors: [RequestLimitExceeded, InvalidID],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelExportTask",
 }));
 export type CancelImageLaunchPermissionError =
@@ -75774,6 +75878,8 @@ export const cancelImageLaunchPermission: API.OperationMethod<
   input: CancelImageLaunchPermissionRequest,
   output: CancelImageLaunchPermissionResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelImageLaunchPermission",
 }));
 export type CancelImportTaskError =
@@ -75792,6 +75898,8 @@ export const cancelImportTask: API.OperationMethod<
   input: CancelImportTaskRequest,
   output: CancelImportTaskResult,
   errors: [RequestLimitExceeded, InvalidConversionTaskIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelImportTask",
 }));
 export type CancelReservedInstancesListingError =
@@ -75814,6 +75922,8 @@ export const cancelReservedInstancesListing: API.OperationMethod<
   input: CancelReservedInstancesListingRequest,
   output: CancelReservedInstancesListingResult,
   errors: [RequestLimitExceeded, InvalidInput],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelReservedInstancesListing",
 }));
 export type CancelSpotFleetRequestsError =
@@ -75857,6 +75967,8 @@ export const cancelSpotFleetRequests: API.OperationMethod<
   input: CancelSpotFleetRequestsRequest,
   output: CancelSpotFleetRequestsResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSpotFleetRequests",
 }));
 export type CancelSpotInstanceRequestsError =
@@ -75883,6 +75995,8 @@ export const cancelSpotInstanceRequests: API.OperationMethod<
     InvalidParameterCombination,
     InvalidSpotInstanceRequestIDMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSpotInstanceRequests",
 }));
 export type ConfirmProductInstanceError =
@@ -75903,6 +76017,8 @@ export const confirmProductInstance: API.OperationMethod<
   input: ConfirmProductInstanceRequest,
   output: ConfirmProductInstanceResult,
   errors: [RequestLimitExceeded, AuthFailure],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmProductInstance",
 }));
 export type CopyFpgaImageError =
@@ -75921,6 +76037,8 @@ export const copyFpgaImage: API.OperationMethod<
   input: CopyFpgaImageRequest,
   output: CopyFpgaImageResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyFpgaImage",
 }));
 export type CopyImageError =
@@ -76009,6 +76127,8 @@ export const copyImage: API.OperationMethod<
     InvalidRegion,
     InvalidRequest,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyImage",
 }));
 export type CopySnapshotError =
@@ -76062,6 +76182,8 @@ export const copySnapshot: API.OperationMethod<
     InvalidRegion,
     InvalidSnapshotNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopySnapshot",
 }));
 export type CopyVolumesError =
@@ -76082,6 +76204,8 @@ export const copyVolumes: API.OperationMethod<
   input: CopyVolumesRequest,
   output: CopyVolumesResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyVolumes",
 }));
 export type CreateCapacityManagerDataExportError =
@@ -76101,6 +76225,8 @@ export const createCapacityManagerDataExport: API.OperationMethod<
   input: CreateCapacityManagerDataExportRequest,
   output: CreateCapacityManagerDataExportResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapacityManagerDataExport",
 }));
 export type CreateCapacityReservationError =
@@ -76142,6 +76268,8 @@ export const createCapacityReservation: API.OperationMethod<
   input: CreateCapacityReservationRequest,
   output: CreateCapacityReservationResult,
   errors: [RequestLimitExceeded, Unsupported],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapacityReservation",
 }));
 export type CreateCapacityReservationBySplittingError =
@@ -76168,6 +76296,8 @@ export const createCapacityReservationBySplitting: API.OperationMethod<
     InvalidCapacityReservationIdMalformed,
     InvalidCapacityReservationIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapacityReservationBySplitting",
 }));
 export type CreateCapacityReservationFleetError =
@@ -76188,6 +76318,8 @@ export const createCapacityReservationFleet: API.OperationMethod<
   input: CreateCapacityReservationFleetRequest,
   output: CreateCapacityReservationFleetResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapacityReservationFleet",
 }));
 export type CreateCarrierGatewayError =
@@ -76215,6 +76347,8 @@ export const createCarrierGateway: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCarrierGateway",
 }));
 export type CreateClientVpnEndpointError =
@@ -76235,6 +76369,8 @@ export const createClientVpnEndpoint: API.OperationMethod<
   input: CreateClientVpnEndpointRequest,
   output: CreateClientVpnEndpointResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClientVpnEndpoint",
 }));
 export type CreateClientVpnRouteError =
@@ -76254,6 +76390,8 @@ export const createClientVpnRoute: API.OperationMethod<
   input: CreateClientVpnRouteRequest,
   output: CreateClientVpnRouteResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClientVpnRoute",
 }));
 export type CreateCoipCidrError =
@@ -76279,6 +76417,8 @@ export const createCoipCidr: API.OperationMethod<
     InvalidPoolIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCoipCidr",
 }));
 export type CreateCoipPoolError =
@@ -76304,6 +76444,8 @@ export const createCoipPool: API.OperationMethod<
     InvalidLocalGatewayRouteTableIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCoipPool",
 }));
 export type CreateCustomerGatewayError =
@@ -76338,6 +76480,8 @@ export const createCustomerGateway: API.OperationMethod<
   input: CreateCustomerGatewayRequest,
   output: CreateCustomerGatewayResult,
   errors: [RequestLimitExceeded, MissingParameter, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomerGateway",
 }));
 export type CreateDefaultSubnetError =
@@ -76364,6 +76508,8 @@ export const createDefaultSubnet: API.OperationMethod<
     DefaultSubnetAlreadyExistsInAvailabilityZone,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDefaultSubnet",
 }));
 export type CreateDefaultVpcError =
@@ -76389,6 +76535,8 @@ export const createDefaultVpc: API.OperationMethod<
   input: CreateDefaultVpcRequest,
   output: CreateDefaultVpcResult,
   errors: [RequestLimitExceeded, DefaultVpcAlreadyExists],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDefaultVpc",
 }));
 export type CreateDelegateMacVolumeOwnershipTaskError =
@@ -76408,6 +76556,8 @@ export const createDelegateMacVolumeOwnershipTask: API.OperationMethod<
   input: CreateDelegateMacVolumeOwnershipTaskRequest,
   output: CreateDelegateMacVolumeOwnershipTaskResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDelegateMacVolumeOwnershipTask",
 }));
 export type CreateDhcpOptionsError =
@@ -76464,6 +76614,8 @@ export const createDhcpOptions: API.OperationMethod<
   input: CreateDhcpOptionsRequest,
   output: CreateDhcpOptionsResult,
   errors: [RequestLimitExceeded, MissingParameter, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDhcpOptions",
 }));
 export type CreateEgressOnlyInternetGatewayError =
@@ -76494,6 +76646,8 @@ export const createEgressOnlyInternetGateway: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEgressOnlyInternetGateway",
 }));
 export type CreateFleetError =
@@ -76518,6 +76672,8 @@ export const createFleet: API.OperationMethod<
   input: CreateFleetRequest,
   output: CreateFleetResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFleet",
 }));
 export type CreateFlowLogsError =
@@ -76557,6 +76713,8 @@ export const createFlowLogs: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFlowLogs",
 }));
 export type CreateFpgaImageError =
@@ -76582,6 +76740,8 @@ export const createFpgaImage: API.OperationMethod<
   input: CreateFpgaImageRequest,
   output: CreateFpgaImageResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFpgaImage",
 }));
 export type CreateImageError =
@@ -76623,6 +76783,8 @@ export const createImage: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImage",
 }));
 export type CreateImageUsageReportError =
@@ -76646,6 +76808,8 @@ export const createImageUsageReport: API.OperationMethod<
   input: CreateImageUsageReportRequest,
   output: CreateImageUsageReportResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateImageUsageReport",
 }));
 export type CreateInstanceConnectEndpointError =
@@ -76676,6 +76840,8 @@ export const createInstanceConnectEndpoint: API.OperationMethod<
     InvalidSubnetIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceConnectEndpoint",
 }));
 export type CreateInstanceEventWindowError =
@@ -76716,6 +76882,8 @@ export const createInstanceEventWindow: API.OperationMethod<
   input: CreateInstanceEventWindowRequest,
   output: CreateInstanceEventWindowResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceEventWindow",
 }));
 export type CreateInstanceExportTaskError =
@@ -76738,6 +76906,8 @@ export const createInstanceExportTask: API.OperationMethod<
   input: CreateInstanceExportTaskRequest,
   output: CreateInstanceExportTaskResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInstanceExportTask",
 }));
 export type CreateInternetGatewayError =
@@ -76761,6 +76931,8 @@ export const createInternetGateway: API.OperationMethod<
   input: CreateInternetGatewayRequest,
   output: CreateInternetGatewayResult,
   errors: [RequestLimitExceeded, InternetGatewayLimitExceeded, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInternetGateway",
 }));
 export type CreateInterruptibleCapacityReservationAllocationError =
@@ -76779,6 +76951,8 @@ export const createInterruptibleCapacityReservationAllocation: API.OperationMeth
   input: CreateInterruptibleCapacityReservationAllocationRequest,
   output: CreateInterruptibleCapacityReservationAllocationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateInterruptibleCapacityReservationAllocation",
 }));
 export type CreateIpamError =
@@ -76809,6 +76983,8 @@ export const createIpam: API.OperationMethod<
     ParseError,
     ResourceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpam",
 }));
 export type CreateIpamExternalResourceVerificationTokenError =
@@ -76830,6 +77006,8 @@ export const createIpamExternalResourceVerificationToken: API.OperationMethod<
   input: CreateIpamExternalResourceVerificationTokenRequest,
   output: CreateIpamExternalResourceVerificationTokenResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpamExternalResourceVerificationToken",
 }));
 export type CreateIpamPolicyError =
@@ -76853,6 +77031,8 @@ export const createIpamPolicy: API.OperationMethod<
   input: CreateIpamPolicyRequest,
   output: CreateIpamPolicyResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpamPolicy",
 }));
 export type CreateIpamPoolError =
@@ -76874,6 +77054,8 @@ export const createIpamPool: API.OperationMethod<
   input: CreateIpamPoolRequest,
   output: CreateIpamPoolResult,
   errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpamPool",
 }));
 export type CreateIpamPrefixListResolverError =
@@ -76896,6 +77078,8 @@ export const createIpamPrefixListResolver: API.OperationMethod<
   input: CreateIpamPrefixListResolverRequest,
   output: CreateIpamPrefixListResolverResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpamPrefixListResolver",
 }));
 export type CreateIpamPrefixListResolverTargetError =
@@ -76925,6 +77109,8 @@ export const createIpamPrefixListResolverTarget: API.OperationMethod<
     InvalidIpamPrefixListResolverIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpamPrefixListResolverTarget",
 }));
 export type CreateIpamResourceDiscoveryError =
@@ -76943,6 +77129,8 @@ export const createIpamResourceDiscovery: API.OperationMethod<
   input: CreateIpamResourceDiscoveryRequest,
   output: CreateIpamResourceDiscoveryResult,
   errors: [RequestLimitExceeded, ResourceLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpamResourceDiscovery",
 }));
 export type CreateIpamScopeError =
@@ -76964,6 +77152,8 @@ export const createIpamScope: API.OperationMethod<
   input: CreateIpamScopeRequest,
   output: CreateIpamScopeResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIpamScope",
 }));
 export type CreateKeyPairError =
@@ -76995,6 +77185,8 @@ export const createKeyPair: API.OperationMethod<
   input: CreateKeyPairRequest,
   output: KeyPair,
   errors: [RequestLimitExceeded, InvalidKeyPairDuplicate],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKeyPair",
 }));
 export type CreateLaunchTemplateError =
@@ -77024,6 +77216,8 @@ export const createLaunchTemplate: API.OperationMethod<
   input: CreateLaunchTemplateRequest,
   output: CreateLaunchTemplateResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLaunchTemplate",
 }));
 export type CreateLaunchTemplateVersionError = CommonErrors;
@@ -77052,6 +77246,8 @@ export const createLaunchTemplateVersion: API.OperationMethod<
   input: CreateLaunchTemplateVersionRequest,
   output: CreateLaunchTemplateVersionResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLaunchTemplateVersion",
 }));
 export type CreateLocalGatewayRouteError =
@@ -77076,6 +77272,8 @@ export const createLocalGatewayRoute: API.OperationMethod<
   input: CreateLocalGatewayRouteRequest,
   output: CreateLocalGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocalGatewayRoute",
 }));
 export type CreateLocalGatewayRouteTableError =
@@ -77101,6 +77299,8 @@ export const createLocalGatewayRouteTable: API.OperationMethod<
     InvalidLocalGatewayIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocalGatewayRouteTable",
 }));
 export type CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationError =
@@ -77126,6 +77326,8 @@ export const createLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
     InvalidLocalGatewayVirtualInterfaceGroupIDMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
 }));
 export type CreateLocalGatewayRouteTableVpcAssociationError =
@@ -77153,6 +77355,8 @@ export const createLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
     InvalidVpcIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocalGatewayRouteTableVpcAssociation",
 }));
 export type CreateLocalGatewayVirtualInterfaceError =
@@ -77178,6 +77382,8 @@ export const createLocalGatewayVirtualInterface: API.OperationMethod<
     InvalidLocalGatewayVirtualInterfaceGroupIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocalGatewayVirtualInterface",
 }));
 export type CreateLocalGatewayVirtualInterfaceGroupError =
@@ -77201,6 +77407,8 @@ export const createLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
     InvalidLocalGatewayIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLocalGatewayVirtualInterfaceGroup",
 }));
 export type CreateMacSystemIntegrityProtectionModificationTaskError =
@@ -77250,6 +77458,8 @@ export const createMacSystemIntegrityProtectionModificationTask: API.OperationMe
   input: CreateMacSystemIntegrityProtectionModificationTaskRequest,
   output: CreateMacSystemIntegrityProtectionModificationTaskResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMacSystemIntegrityProtectionModificationTask",
 }));
 export type CreateManagedPrefixListError =
@@ -77270,6 +77480,8 @@ export const createManagedPrefixList: API.OperationMethod<
   input: CreateManagedPrefixListRequest,
   output: CreateManagedPrefixListResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateManagedPrefixList",
 }));
 export type CreateNatGatewayError =
@@ -77319,6 +77531,8 @@ export const createNatGateway: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNatGateway",
 }));
 export type CreateNetworkAclError =
@@ -77347,6 +77561,8 @@ export const createNetworkAcl: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkAcl",
 }));
 export type CreateNetworkAclEntryError =
@@ -77377,6 +77593,8 @@ export const createNetworkAclEntry: API.OperationMethod<
   input: CreateNetworkAclEntryRequest,
   output: CreateNetworkAclEntryResponse,
   errors: [RequestLimitExceeded, InvalidNetworkAclIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkAclEntry",
 }));
 export type CreateNetworkInsightsAccessScopeError = CommonErrors;
@@ -77396,6 +77614,8 @@ export const createNetworkInsightsAccessScope: API.OperationMethod<
   input: CreateNetworkInsightsAccessScopeRequest,
   output: CreateNetworkInsightsAccessScopeResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkInsightsAccessScope",
 }));
 export type CreateNetworkInsightsPathError =
@@ -77419,6 +77639,8 @@ export const createNetworkInsightsPath: API.OperationMethod<
   input: CreateNetworkInsightsPathRequest,
   output: CreateNetworkInsightsPathResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkInsightsPath",
 }));
 export type CreateNetworkInterfaceError =
@@ -77450,6 +77672,8 @@ export const createNetworkInterface: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkInterface",
 }));
 export type CreateNetworkInterfacePermissionError =
@@ -77472,6 +77696,8 @@ export const createNetworkInterfacePermission: API.OperationMethod<
   input: CreateNetworkInterfacePermissionRequest,
   output: CreateNetworkInterfacePermissionResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNetworkInterfacePermission",
 }));
 export type CreatePlacementGroupError =
@@ -77502,6 +77728,8 @@ export const createPlacementGroup: API.OperationMethod<
   input: CreatePlacementGroupRequest,
   output: CreatePlacementGroupResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePlacementGroup",
 }));
 export type CreatePublicIpv4PoolError = CommonErrors;
@@ -77517,6 +77745,8 @@ export const createPublicIpv4Pool: API.OperationMethod<
   input: CreatePublicIpv4PoolRequest,
   output: CreatePublicIpv4PoolResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePublicIpv4Pool",
 }));
 export type CreateReplaceRootVolumeTaskError =
@@ -77540,6 +77770,8 @@ export const createReplaceRootVolumeTask: API.OperationMethod<
   input: CreateReplaceRootVolumeTaskRequest,
   output: CreateReplaceRootVolumeTaskResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplaceRootVolumeTask",
 }));
 export type CreateReservedInstancesListingError =
@@ -77578,6 +77810,8 @@ export const createReservedInstancesListing: API.OperationMethod<
   input: CreateReservedInstancesListingRequest,
   output: CreateReservedInstancesListingResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReservedInstancesListing",
 }));
 export type CreateRestoreImageTaskError =
@@ -77603,6 +77837,8 @@ export const createRestoreImageTask: API.OperationMethod<
   input: CreateRestoreImageTaskRequest,
   output: CreateRestoreImageTaskResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRestoreImageTask",
 }));
 export type CreateRouteError =
@@ -77658,6 +77894,8 @@ export const createRoute: API.OperationMethod<
     MissingParameter,
     RouteAlreadyExists,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoute",
 }));
 export type CreateRouteServerError =
@@ -77691,6 +77929,8 @@ export const createRouteServer: API.OperationMethod<
   input: CreateRouteServerRequest,
   output: CreateRouteServerResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRouteServer",
 }));
 export type CreateRouteServerEndpointError =
@@ -77722,6 +77962,8 @@ export const createRouteServerEndpoint: API.OperationMethod<
     InvalidSubnetIDMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRouteServerEndpoint",
 }));
 export type CreateRouteServerPeerError =
@@ -77750,6 +77992,8 @@ export const createRouteServerPeer: API.OperationMethod<
   input: CreateRouteServerPeerRequest,
   output: CreateRouteServerPeerResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRouteServerPeer",
 }));
 export type CreateRouteTableError =
@@ -77778,6 +78022,8 @@ export const createRouteTable: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRouteTable",
 }));
 export type CreateSecondaryNetworkError = CommonErrors;
@@ -77795,6 +78041,8 @@ export const createSecondaryNetwork: API.OperationMethod<
   input: CreateSecondaryNetworkRequest,
   output: CreateSecondaryNetworkResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecondaryNetwork",
 }));
 export type CreateSecondarySubnetError = CommonErrors;
@@ -77814,6 +78062,8 @@ export const createSecondarySubnet: API.OperationMethod<
   input: CreateSecondarySubnetRequest,
   output: CreateSecondarySubnetResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecondarySubnet",
 }));
 export type CreateSecurityGroupError =
@@ -77868,6 +78118,8 @@ export const createSecurityGroup: API.OperationMethod<
     MissingParameter,
     VPCIdNotSpecified,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityGroup",
 }));
 export type CreateSnapshotError =
@@ -77926,6 +78178,8 @@ export const createSnapshot: API.OperationMethod<
     InvalidVolumeNotFound,
     InvalidVolumeIDMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshot",
 }));
 export type CreateSnapshotsError =
@@ -77959,6 +78213,8 @@ export const createSnapshots: API.OperationMethod<
   input: CreateSnapshotsRequest,
   output: CreateSnapshotsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshots",
 }));
 export type CreateSpotDatafeedSubscriptionError =
@@ -77980,6 +78236,8 @@ export const createSpotDatafeedSubscription: API.OperationMethod<
   input: CreateSpotDatafeedSubscriptionRequest,
   output: CreateSpotDatafeedSubscriptionResult,
   errors: [RequestLimitExceeded, InaccessibleStorageLocation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSpotDatafeedSubscription",
 }));
 export type CreateStoreImageTaskError =
@@ -78004,6 +78262,8 @@ export const createStoreImageTask: API.OperationMethod<
   input: CreateStoreImageTaskRequest,
   output: CreateStoreImageTaskResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStoreImageTask",
 }));
 export type CreateSubnetError =
@@ -78055,6 +78315,8 @@ export const createSubnet: API.OperationMethod<
     ParseError,
     InvalidSubnetConflict,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubnet",
 }));
 export type CreateSubnetCidrReservationError =
@@ -78082,6 +78344,8 @@ export const createSubnetCidrReservation: API.OperationMethod<
     InvalidSubnetIDMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubnetCidrReservation",
 }));
 export type CreateTagsError =
@@ -78110,6 +78374,8 @@ export const createTags: API.OperationMethod<
   input: CreateTagsRequest,
   output: CreateTagsResponse,
   errors: [RequestLimitExceeded, InvalidID, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTags",
 }));
 export type CreateTrafficMirrorFilterError =
@@ -78134,6 +78400,8 @@ export const createTrafficMirrorFilter: API.OperationMethod<
   input: CreateTrafficMirrorFilterRequest,
   output: CreateTrafficMirrorFilterResult,
   errors: [RequestLimitExceeded, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrafficMirrorFilter",
 }));
 export type CreateTrafficMirrorFilterRuleError =
@@ -78156,6 +78424,8 @@ export const createTrafficMirrorFilterRule: API.OperationMethod<
   input: CreateTrafficMirrorFilterRuleRequest,
   output: CreateTrafficMirrorFilterRuleResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrafficMirrorFilterRule",
 }));
 export type CreateTrafficMirrorSessionError =
@@ -78190,6 +78460,8 @@ export const createTrafficMirrorSession: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrafficMirrorSession",
 }));
 export type CreateTrafficMirrorTargetError =
@@ -78216,6 +78488,8 @@ export const createTrafficMirrorTarget: API.OperationMethod<
   input: CreateTrafficMirrorTargetRequest,
   output: CreateTrafficMirrorTargetResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrafficMirrorTarget",
 }));
 export type CreateTransitGatewayError =
@@ -78251,6 +78525,8 @@ export const createTransitGateway: API.OperationMethod<
   input: CreateTransitGatewayRequest,
   output: CreateTransitGatewayResult,
   errors: [RequestLimitExceeded, ParseError, TransitGatewayLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGateway",
 }));
 export type CreateTransitGatewayConnectError =
@@ -78271,6 +78547,8 @@ export const createTransitGatewayConnect: API.OperationMethod<
   input: CreateTransitGatewayConnectRequest,
   output: CreateTransitGatewayConnectResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayConnect",
 }));
 export type CreateTransitGatewayConnectPeerError =
@@ -78295,6 +78573,8 @@ export const createTransitGatewayConnectPeer: API.OperationMethod<
   input: CreateTransitGatewayConnectPeerRequest,
   output: CreateTransitGatewayConnectPeerResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayConnectPeer",
 }));
 export type CreateTransitGatewayMeteringPolicyError =
@@ -78320,6 +78600,8 @@ export const createTransitGatewayMeteringPolicy: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayMeteringPolicy",
 }));
 export type CreateTransitGatewayMeteringPolicyEntryError =
@@ -78338,6 +78620,8 @@ export const createTransitGatewayMeteringPolicyEntry: API.OperationMethod<
   input: CreateTransitGatewayMeteringPolicyEntryRequest,
   output: CreateTransitGatewayMeteringPolicyEntryResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayMeteringPolicyEntry",
 }));
 export type CreateTransitGatewayMulticastDomainError =
@@ -78367,6 +78651,8 @@ export const createTransitGatewayMulticastDomain: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayMulticastDomain",
 }));
 export type CreateTransitGatewayPeeringAttachmentError =
@@ -78397,6 +78683,8 @@ export const createTransitGatewayPeeringAttachment: API.OperationMethod<
     InvalidTransitGatewayIDMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayPeeringAttachment",
 }));
 export type CreateTransitGatewayPolicyTableError =
@@ -78422,6 +78710,8 @@ export const createTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayPolicyTable",
 }));
 export type CreateTransitGatewayPrefixListReferenceError =
@@ -78440,6 +78730,8 @@ export const createTransitGatewayPrefixListReference: API.OperationMethod<
   input: CreateTransitGatewayPrefixListReferenceRequest,
   output: CreateTransitGatewayPrefixListReferenceResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayPrefixListReference",
 }));
 export type CreateTransitGatewayRouteError =
@@ -78459,6 +78751,8 @@ export const createTransitGatewayRoute: API.OperationMethod<
   input: CreateTransitGatewayRouteRequest,
   output: CreateTransitGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayRoute",
 }));
 export type CreateTransitGatewayRouteTableError =
@@ -78486,6 +78780,8 @@ export const createTransitGatewayRouteTable: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayRouteTable",
 }));
 export type CreateTransitGatewayRouteTableAnnouncementError =
@@ -78511,6 +78807,8 @@ export const createTransitGatewayRouteTableAnnouncement: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayRouteTableAnnouncement",
 }));
 export type CreateTransitGatewayVpcAttachmentError =
@@ -78541,6 +78839,8 @@ export const createTransitGatewayVpcAttachment: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTransitGatewayVpcAttachment",
 }));
 export type CreateVerifiedAccessEndpointError =
@@ -78559,6 +78859,8 @@ export const createVerifiedAccessEndpoint: API.OperationMethod<
   input: CreateVerifiedAccessEndpointRequest,
   output: CreateVerifiedAccessEndpointResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVerifiedAccessEndpoint",
 }));
 export type CreateVerifiedAccessGroupError =
@@ -78587,6 +78889,8 @@ export const createVerifiedAccessGroup: API.OperationMethod<
     InvalidVerifiedAccessInstanceIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVerifiedAccessGroup",
 }));
 export type CreateVerifiedAccessInstanceError =
@@ -78611,6 +78915,8 @@ export const createVerifiedAccessInstance: API.OperationMethod<
     ParseError,
     VerifiedAccessInstanceLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVerifiedAccessInstance",
 }));
 export type CreateVerifiedAccessTrustProviderError =
@@ -78632,6 +78938,8 @@ export const createVerifiedAccessTrustProvider: API.OperationMethod<
   input: CreateVerifiedAccessTrustProviderRequest,
   output: CreateVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVerifiedAccessTrustProvider",
 }));
 export type CreateVolumeError =
@@ -78665,6 +78973,8 @@ export const createVolume: API.OperationMethod<
   input: CreateVolumeRequest,
   output: Volume,
   errors: [RequestLimitExceeded, InvalidZoneNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVolume",
 }));
 export type CreateVpcError =
@@ -78707,6 +79017,8 @@ export const createVpc: API.OperationMethod<
     ParseError,
     VpcLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpc",
 }));
 export type CreateVpcBlockPublicAccessExclusionError =
@@ -78726,6 +79038,8 @@ export const createVpcBlockPublicAccessExclusion: API.OperationMethod<
   input: CreateVpcBlockPublicAccessExclusionRequest,
   output: CreateVpcBlockPublicAccessExclusionResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcBlockPublicAccessExclusion",
 }));
 export type CreateVpcEncryptionControlError =
@@ -78747,6 +79061,8 @@ export const createVpcEncryptionControl: API.OperationMethod<
   input: CreateVpcEncryptionControlRequest,
   output: CreateVpcEncryptionControlResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcEncryptionControl",
 }));
 export type CreateVpcEndpointError =
@@ -78779,6 +79095,8 @@ export const createVpcEndpoint: API.OperationMethod<
     InvalidVpcIdNotFound,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcEndpoint",
 }));
 export type CreateVpcEndpointConnectionNotificationError =
@@ -78802,6 +79120,8 @@ export const createVpcEndpointConnectionNotification: API.OperationMethod<
   input: CreateVpcEndpointConnectionNotificationRequest,
   output: CreateVpcEndpointConnectionNotificationResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcEndpointConnectionNotification",
 }));
 export type CreateVpcEndpointServiceConfigurationError =
@@ -78835,6 +79155,8 @@ export const createVpcEndpointServiceConfiguration: API.OperationMethod<
   input: CreateVpcEndpointServiceConfigurationRequest,
   output: CreateVpcEndpointServiceConfigurationResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcEndpointServiceConfiguration",
 }));
 export type CreateVpcPeeringConnectionError =
@@ -78875,6 +79197,8 @@ export const createVpcPeeringConnection: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpcPeeringConnection",
 }));
 export type CreateVpnConcentratorError =
@@ -78893,6 +79217,8 @@ export const createVpnConcentrator: API.OperationMethod<
   input: CreateVpnConcentratorRequest,
   output: CreateVpnConcentratorResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpnConcentrator",
 }));
 export type CreateVpnConnectionError =
@@ -78939,6 +79265,8 @@ export const createVpnConnection: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpnConnection",
 }));
 export type CreateVpnConnectionRouteError =
@@ -78963,6 +79291,8 @@ export const createVpnConnectionRoute: API.OperationMethod<
   input: CreateVpnConnectionRouteRequest,
   output: CreateVpnConnectionRouteResponse,
   errors: [RequestLimitExceeded, InvalidParameter, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpnConnectionRoute",
 }));
 export type CreateVpnGatewayError =
@@ -78987,6 +79317,8 @@ export const createVpnGateway: API.OperationMethod<
   input: CreateVpnGatewayRequest,
   output: CreateVpnGatewayResult,
   errors: [RequestLimitExceeded, MissingParameter, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateVpnGateway",
 }));
 export type DeleteCapacityManagerDataExportError =
@@ -79010,6 +79342,8 @@ export const deleteCapacityManagerDataExport: API.OperationMethod<
     InvalidCapacityManagerDataExportIdMalformed,
     InvalidCapacityManagerDataExportIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCapacityManagerDataExport",
 }));
 export type DeleteCarrierGatewayError =
@@ -79039,6 +79373,8 @@ export const deleteCarrierGateway: API.OperationMethod<
     InvalidCarrierGatewayIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCarrierGateway",
 }));
 export type DeleteClientVpnEndpointError =
@@ -79058,6 +79394,8 @@ export const deleteClientVpnEndpoint: API.OperationMethod<
   input: DeleteClientVpnEndpointRequest,
   output: DeleteClientVpnEndpointResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClientVpnEndpoint",
 }));
 export type DeleteClientVpnRouteError =
@@ -79079,6 +79417,8 @@ export const deleteClientVpnRoute: API.OperationMethod<
   input: DeleteClientVpnRouteRequest,
   output: DeleteClientVpnRouteResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClientVpnRoute",
 }));
 export type DeleteCoipCidrError =
@@ -79104,6 +79444,8 @@ export const deleteCoipCidr: API.OperationMethod<
     InvalidIpv4PoolCoipIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCoipCidr",
 }));
 export type DeleteCoipPoolError =
@@ -79129,6 +79471,8 @@ export const deleteCoipPool: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCoipPool",
 }));
 export type DeleteCustomerGatewayError =
@@ -79155,6 +79499,8 @@ export const deleteCustomerGateway: API.OperationMethod<
     InvalidCustomerGatewayIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomerGateway",
 }));
 export type DeleteDhcpOptionsError =
@@ -79182,6 +79528,8 @@ export const deleteDhcpOptions: API.OperationMethod<
     InvalidDhcpOptionsIDNotFound,
     InvalidDhcpOptionsIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDhcpOptions",
 }));
 export type DeleteEgressOnlyInternetGatewayError =
@@ -79213,6 +79561,8 @@ export const deleteEgressOnlyInternetGateway: API.OperationMethod<
     MissingParameter,
     RequestLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEgressOnlyInternetGateway",
 }));
 export type DeleteFleetsError =
@@ -79273,6 +79623,8 @@ export const deleteFleets: API.OperationMethod<
   input: DeleteFleetsRequest,
   output: DeleteFleetsResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFleets",
 }));
 export type DeleteFlowLogsError =
@@ -79291,6 +79643,8 @@ export const deleteFlowLogs: API.OperationMethod<
   input: DeleteFlowLogsRequest,
   output: DeleteFlowLogsResult,
   errors: [RequestLimitExceeded, InvalidFlowLogIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFlowLogs",
 }));
 export type DeleteFpgaImageError =
@@ -79309,6 +79663,8 @@ export const deleteFpgaImage: API.OperationMethod<
   input: DeleteFpgaImageRequest,
   output: DeleteFpgaImageResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFpgaImage",
 }));
 export type DeleteImageUsageReportError =
@@ -79335,6 +79691,8 @@ export const deleteImageUsageReport: API.OperationMethod<
     InvalidImageUsageReportIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteImageUsageReport",
 }));
 export type DeleteInstanceConnectEndpointError =
@@ -79362,6 +79720,8 @@ export const deleteInstanceConnectEndpoint: API.OperationMethod<
     InvalidState,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceConnectEndpoint",
 }));
 export type DeleteInstanceEventWindowError =
@@ -79388,6 +79748,8 @@ export const deleteInstanceEventWindow: API.OperationMethod<
     InvalidInstanceEventWindowIDNotFound,
     InvalidParameterValue,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInstanceEventWindow",
 }));
 export type DeleteInternetGatewayError =
@@ -79414,6 +79776,8 @@ export const deleteInternetGateway: API.OperationMethod<
     InvalidInternetGatewayIDNotFound,
     InvalidInternetGatewayIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteInternetGateway",
 }));
 export type DeleteIpamError =
@@ -79441,6 +79805,8 @@ export const deleteIpam: API.OperationMethod<
     InvalidIpamIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpam",
 }));
 export type DeleteIpamExternalResourceVerificationTokenError =
@@ -79468,6 +79834,8 @@ export const deleteIpamExternalResourceVerificationToken: API.OperationMethod<
     InvalidIpamExternalResourceVerificationTokenIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpamExternalResourceVerificationToken",
 }));
 export type DeleteIpamPolicyError =
@@ -79495,6 +79863,8 @@ export const deleteIpamPolicy: API.OperationMethod<
     InvalidIpamPolicyIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpamPolicy",
 }));
 export type DeleteIpamPoolError =
@@ -79526,6 +79896,8 @@ export const deleteIpamPool: API.OperationMethod<
     InvalidIpamPoolIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpamPool",
 }));
 export type DeleteIpamPrefixListResolverError =
@@ -79551,6 +79923,8 @@ export const deleteIpamPrefixListResolver: API.OperationMethod<
     InvalidIpamPrefixListResolverIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpamPrefixListResolver",
 }));
 export type DeleteIpamPrefixListResolverTargetError =
@@ -79576,6 +79950,8 @@ export const deleteIpamPrefixListResolverTarget: API.OperationMethod<
     InvalidIpamPrefixListResolverTargetIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpamPrefixListResolverTarget",
 }));
 export type DeleteIpamResourceDiscoveryError =
@@ -79599,6 +79975,8 @@ export const deleteIpamResourceDiscovery: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpamResourceDiscovery",
 }));
 export type DeleteIpamScopeError =
@@ -79628,6 +80006,8 @@ export const deleteIpamScope: API.OperationMethod<
     InvalidIpamScopeIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIpamScope",
 }));
 export type DeleteKeyPairError =
@@ -79646,6 +80026,8 @@ export const deleteKeyPair: API.OperationMethod<
   input: DeleteKeyPairRequest,
   output: DeleteKeyPairResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKeyPair",
 }));
 export type DeleteLaunchTemplateError =
@@ -79670,6 +80052,8 @@ export const deleteLaunchTemplate: API.OperationMethod<
     InvalidLaunchTemplateNameNotFoundException,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLaunchTemplate",
 }));
 export type DeleteLaunchTemplateVersionsError =
@@ -79699,6 +80083,8 @@ export const deleteLaunchTemplateVersions: API.OperationMethod<
   input: DeleteLaunchTemplateVersionsRequest,
   output: DeleteLaunchTemplateVersionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLaunchTemplateVersions",
 }));
 export type DeleteLocalGatewayRouteError =
@@ -79717,6 +80103,8 @@ export const deleteLocalGatewayRoute: API.OperationMethod<
   input: DeleteLocalGatewayRouteRequest,
   output: DeleteLocalGatewayRouteResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLocalGatewayRoute",
 }));
 export type DeleteLocalGatewayRouteTableError =
@@ -79740,6 +80128,8 @@ export const deleteLocalGatewayRouteTable: API.OperationMethod<
     InvalidLocalGatewayRouteTableIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLocalGatewayRouteTable",
 }));
 export type DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationError =
@@ -79765,6 +80155,8 @@ export const deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
     InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
 }));
 export type DeleteLocalGatewayRouteTableVpcAssociationError =
@@ -79790,6 +80182,8 @@ export const deleteLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
     InvalidLocalGatewayRouteTableVpcAssociationIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLocalGatewayRouteTableVpcAssociation",
 }));
 export type DeleteLocalGatewayVirtualInterfaceError =
@@ -79815,6 +80209,8 @@ export const deleteLocalGatewayVirtualInterface: API.OperationMethod<
     InvalidLocalGatewayVirtualInterfaceIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLocalGatewayVirtualInterface",
 }));
 export type DeleteLocalGatewayVirtualInterfaceGroupError =
@@ -79840,6 +80236,8 @@ export const deleteLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
     InvalidLocalGatewayVirtualInterfaceGroupIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLocalGatewayVirtualInterfaceGroup",
 }));
 export type DeleteManagedPrefixListError =
@@ -79865,6 +80263,8 @@ export const deleteManagedPrefixList: API.OperationMethod<
     InvalidPrefixListIdMalformed,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteManagedPrefixList",
 }));
 export type DeleteNatGatewayError =
@@ -79898,6 +80298,8 @@ export const deleteNatGateway: API.OperationMethod<
     NatGatewayMalformed,
     NatGatewayNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNatGateway",
 }));
 export type DeleteNetworkAclError =
@@ -79929,6 +80331,8 @@ export const deleteNetworkAcl: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkAcl",
 }));
 export type DeleteNetworkAclEntryError =
@@ -79956,6 +80360,8 @@ export const deleteNetworkAclEntry: API.OperationMethod<
     InvalidNetworkAclIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkAclEntry",
 }));
 export type DeleteNetworkInsightsAccessScopeError =
@@ -79979,6 +80385,8 @@ export const deleteNetworkInsightsAccessScope: API.OperationMethod<
     InvalidNetworkInsightsAccessScopeIdNotFound,
     InvalidParameterValue,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkInsightsAccessScope",
 }));
 export type DeleteNetworkInsightsAccessScopeAnalysisError =
@@ -79998,6 +80406,8 @@ export const deleteNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
   input: DeleteNetworkInsightsAccessScopeAnalysisRequest,
   output: DeleteNetworkInsightsAccessScopeAnalysisResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkInsightsAccessScopeAnalysis",
 }));
 export type DeleteNetworkInsightsAnalysisError =
@@ -80017,6 +80427,8 @@ export const deleteNetworkInsightsAnalysis: API.OperationMethod<
   input: DeleteNetworkInsightsAnalysisRequest,
   output: DeleteNetworkInsightsAnalysisResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkInsightsAnalysis",
 }));
 export type DeleteNetworkInsightsPathError =
@@ -80036,6 +80448,8 @@ export const deleteNetworkInsightsPath: API.OperationMethod<
   input: DeleteNetworkInsightsPathRequest,
   output: DeleteNetworkInsightsPathResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkInsightsPath",
 }));
 export type DeleteNetworkInterfaceError =
@@ -80066,6 +80480,8 @@ export const deleteNetworkInterface: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkInterface",
 }));
 export type DeleteNetworkInterfacePermissionError =
@@ -80094,6 +80510,8 @@ export const deleteNetworkInterfacePermission: API.OperationMethod<
     InvalidPermissionIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNetworkInterfacePermission",
 }));
 export type DeletePlacementGroupError =
@@ -80114,6 +80532,8 @@ export const deletePlacementGroup: API.OperationMethod<
   input: DeletePlacementGroupRequest,
   output: DeletePlacementGroupResponse,
   errors: [RequestLimitExceeded, InvalidPlacementGroupUnknown],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePlacementGroup",
 }));
 export type DeletePublicIpv4PoolError =
@@ -80137,6 +80557,8 @@ export const deletePublicIpv4Pool: API.OperationMethod<
     InvalidPublicIpv4PoolNotFound,
     InvalidPublicIpv4PoolIDMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePublicIpv4Pool",
 }));
 export type DeleteQueuedReservedInstancesError =
@@ -80155,6 +80577,8 @@ export const deleteQueuedReservedInstances: API.OperationMethod<
   input: DeleteQueuedReservedInstancesRequest,
   output: DeleteQueuedReservedInstancesResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueuedReservedInstances",
 }));
 export type DeleteRouteError =
@@ -80186,6 +80610,8 @@ export const deleteRoute: API.OperationMethod<
     InvalidRouteTableIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoute",
 }));
 export type DeleteRouteServerError =
@@ -80220,6 +80646,8 @@ export const deleteRouteServer: API.OperationMethod<
   input: DeleteRouteServerRequest,
   output: DeleteRouteServerResult,
   errors: [RequestLimitExceeded, IncorrectState, InvalidRouteServerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouteServer",
 }));
 export type DeleteRouteServerEndpointError =
@@ -80245,6 +80673,8 @@ export const deleteRouteServerEndpoint: API.OperationMethod<
     InvalidRouteServerEndpointIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouteServerEndpoint",
 }));
 export type DeleteRouteServerPeerError =
@@ -80278,6 +80708,8 @@ export const deleteRouteServerPeer: API.OperationMethod<
     InvalidRouteServerPeerIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouteServerPeer",
 }));
 export type DeleteRouteTableError =
@@ -80303,6 +80735,8 @@ export const deleteRouteTable: API.OperationMethod<
     InvalidRouteTableIDNotFound,
     InvalidRouteTableIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouteTable",
 }));
 export type DeleteSecondaryNetworkError = CommonErrors;
@@ -80318,6 +80752,8 @@ export const deleteSecondaryNetwork: API.OperationMethod<
   input: DeleteSecondaryNetworkRequest,
   output: DeleteSecondaryNetworkResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecondaryNetwork",
 }));
 export type DeleteSecondarySubnetError = CommonErrors;
@@ -80333,6 +80769,8 @@ export const deleteSecondarySubnet: API.OperationMethod<
   input: DeleteSecondarySubnetRequest,
   output: DeleteSecondarySubnetResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecondarySubnet",
 }));
 export type DeleteSecurityGroupError =
@@ -80368,6 +80806,8 @@ export const deleteSecurityGroup: API.OperationMethod<
     MissingParameter,
     VPCIdNotSpecified,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityGroup",
 }));
 export type DeleteSnapshotError =
@@ -80405,6 +80845,8 @@ export const deleteSnapshot: API.OperationMethod<
     InvalidSnapshotNotFound,
     InvalidSnapshotIDMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshot",
 }));
 export type DeleteSpotDatafeedSubscriptionError = CommonErrors;
@@ -80420,6 +80862,8 @@ export const deleteSpotDatafeedSubscription: API.OperationMethod<
   input: DeleteSpotDatafeedSubscriptionRequest,
   output: DeleteSpotDatafeedSubscriptionResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSpotDatafeedSubscription",
 }));
 export type DeleteSubnetError =
@@ -80447,6 +80891,8 @@ export const deleteSubnet: API.OperationMethod<
     InvalidSubnetIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubnet",
 }));
 export type DeleteSubnetCidrReservationError =
@@ -80472,6 +80918,8 @@ export const deleteSubnetCidrReservation: API.OperationMethod<
     InvalidSubnetCidrReservationIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubnetCidrReservation",
 }));
 export type DeleteTagsError =
@@ -80496,6 +80944,8 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
   errors: [RequestLimitExceeded, InvalidID, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
 export type DeleteTrafficMirrorFilterError =
@@ -80521,6 +80971,8 @@ export const deleteTrafficMirrorFilter: API.OperationMethod<
     InvalidParameterValue,
     InvalidTrafficMirrorFilterIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrafficMirrorFilter",
 }));
 export type DeleteTrafficMirrorFilterRuleError =
@@ -80546,6 +80998,8 @@ export const deleteTrafficMirrorFilterRule: API.OperationMethod<
     InvalidTrafficMirrorFilterRuleIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrafficMirrorFilterRule",
 }));
 export type DeleteTrafficMirrorSessionError =
@@ -80571,6 +81025,8 @@ export const deleteTrafficMirrorSession: API.OperationMethod<
     InvalidTrafficMirrorSessionIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrafficMirrorSession",
 }));
 export type DeleteTrafficMirrorTargetError =
@@ -80598,6 +81054,8 @@ export const deleteTrafficMirrorTarget: API.OperationMethod<
     InvalidTrafficMirrorTargetIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrafficMirrorTarget",
 }));
 export type DeleteTransitGatewayError =
@@ -80627,6 +81085,8 @@ export const deleteTransitGateway: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGateway",
 }));
 export type DeleteTransitGatewayConnectError =
@@ -80646,6 +81106,8 @@ export const deleteTransitGatewayConnect: API.OperationMethod<
   input: DeleteTransitGatewayConnectRequest,
   output: DeleteTransitGatewayConnectResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayConnect",
 }));
 export type DeleteTransitGatewayConnectPeerError =
@@ -80669,6 +81131,8 @@ export const deleteTransitGatewayConnectPeer: API.OperationMethod<
     InvalidTransitGatewayConnectPeerIDMalformed,
     InvalidTransitGatewayConnectPeerIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayConnectPeer",
 }));
 export type DeleteTransitGatewayMeteringPolicyError =
@@ -80694,6 +81158,8 @@ export const deleteTransitGatewayMeteringPolicy: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayMeteringPolicy",
 }));
 export type DeleteTransitGatewayMeteringPolicyEntryError =
@@ -80719,6 +81185,8 @@ export const deleteTransitGatewayMeteringPolicyEntry: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayMeteringPolicyEntry",
 }));
 export type DeleteTransitGatewayMulticastDomainError =
@@ -80742,6 +81210,8 @@ export const deleteTransitGatewayMulticastDomain: API.OperationMethod<
     InvalidTransitGatewayMulticastDomainIdMalformed,
     InvalidTransitGatewayMulticastDomainIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayMulticastDomain",
 }));
 export type DeleteTransitGatewayPeeringAttachmentError =
@@ -80760,6 +81230,8 @@ export const deleteTransitGatewayPeeringAttachment: API.OperationMethod<
   input: DeleteTransitGatewayPeeringAttachmentRequest,
   output: DeleteTransitGatewayPeeringAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayPeeringAttachment",
 }));
 export type DeleteTransitGatewayPolicyTableError =
@@ -80785,6 +81257,8 @@ export const deleteTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayPolicyTable",
 }));
 export type DeleteTransitGatewayPrefixListReferenceError =
@@ -80804,6 +81278,8 @@ export const deleteTransitGatewayPrefixListReference: API.OperationMethod<
   input: DeleteTransitGatewayPrefixListReferenceRequest,
   output: DeleteTransitGatewayPrefixListReferenceResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayPrefixListReference",
 }));
 export type DeleteTransitGatewayRouteError =
@@ -80823,6 +81299,8 @@ export const deleteTransitGatewayRoute: API.OperationMethod<
   input: DeleteTransitGatewayRouteRequest,
   output: DeleteTransitGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayRoute",
 }));
 export type DeleteTransitGatewayRouteTableError =
@@ -80853,6 +81331,8 @@ export const deleteTransitGatewayRouteTable: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayRouteTable",
 }));
 export type DeleteTransitGatewayRouteTableAnnouncementError =
@@ -80876,6 +81356,8 @@ export const deleteTransitGatewayRouteTableAnnouncement: API.OperationMethod<
     InvalidTransitGatewayRouteTableAnnouncementIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayRouteTableAnnouncement",
 }));
 export type DeleteTransitGatewayVpcAttachmentError =
@@ -80899,6 +81381,8 @@ export const deleteTransitGatewayVpcAttachment: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDMalformed,
     InvalidTransitGatewayAttachmentIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTransitGatewayVpcAttachment",
 }));
 export type DeleteVerifiedAccessEndpointError =
@@ -80924,6 +81408,8 @@ export const deleteVerifiedAccessEndpoint: API.OperationMethod<
     InvalidVerifiedAccessEndpointIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVerifiedAccessEndpoint",
 }));
 export type DeleteVerifiedAccessGroupError =
@@ -80947,6 +81433,8 @@ export const deleteVerifiedAccessGroup: API.OperationMethod<
     InvalidVerifiedAccessGroupIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVerifiedAccessGroup",
 }));
 export type DeleteVerifiedAccessInstanceError =
@@ -80965,6 +81453,8 @@ export const deleteVerifiedAccessInstance: API.OperationMethod<
   input: DeleteVerifiedAccessInstanceRequest,
   output: DeleteVerifiedAccessInstanceResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVerifiedAccessInstance",
 }));
 export type DeleteVerifiedAccessTrustProviderError =
@@ -80983,6 +81473,8 @@ export const deleteVerifiedAccessTrustProvider: API.OperationMethod<
   input: DeleteVerifiedAccessTrustProviderRequest,
   output: DeleteVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVerifiedAccessTrustProvider",
 }));
 export type DeleteVolumeError =
@@ -81008,6 +81500,8 @@ export const deleteVolume: API.OperationMethod<
   input: DeleteVolumeRequest,
   output: DeleteVolumeResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue, InvalidVolumeNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVolume",
 }));
 export type DeleteVpcError =
@@ -81044,6 +81538,8 @@ export const deleteVpc: API.OperationMethod<
     MissingParameter,
     RequestError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpc",
 }));
 export type DeleteVpcBlockPublicAccessExclusionError =
@@ -81067,6 +81563,8 @@ export const deleteVpcBlockPublicAccessExclusion: API.OperationMethod<
     MissingParameter,
     VpcBlockPublicAccessExclusionIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcBlockPublicAccessExclusion",
 }));
 export type DeleteVpcEncryptionControlError =
@@ -81094,6 +81592,8 @@ export const deleteVpcEncryptionControl: API.OperationMethod<
     InvalidVpcEncryptionControlIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcEncryptionControl",
 }));
 export type DeleteVpcEndpointConnectionNotificationsError = CommonErrors;
@@ -81109,6 +81609,8 @@ export const deleteVpcEndpointConnectionNotifications: API.OperationMethod<
   input: DeleteVpcEndpointConnectionNotificationsRequest,
   output: DeleteVpcEndpointConnectionNotificationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcEndpointConnectionNotifications",
 }));
 export type DeleteVpcEndpointsError =
@@ -81135,6 +81637,8 @@ export const deleteVpcEndpoints: API.OperationMethod<
   input: DeleteVpcEndpointsRequest,
   output: DeleteVpcEndpointsResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcEndpoints",
 }));
 export type DeleteVpcEndpointServiceConfigurationsError = CommonErrors;
@@ -81153,6 +81657,8 @@ export const deleteVpcEndpointServiceConfigurations: API.OperationMethod<
   input: DeleteVpcEndpointServiceConfigurationsRequest,
   output: DeleteVpcEndpointServiceConfigurationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcEndpointServiceConfigurations",
 }));
 export type DeleteVpcPeeringConnectionError =
@@ -81182,6 +81688,8 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
     InvalidVpcPeeringConnectionIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpcPeeringConnection",
 }));
 export type DeleteVpnConcentratorError =
@@ -81200,6 +81708,8 @@ export const deleteVpnConcentrator: API.OperationMethod<
   input: DeleteVpnConcentratorRequest,
   output: DeleteVpnConcentratorResult,
   errors: [RequestLimitExceeded, InvalidVpnConcentratorIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpnConcentrator",
 }));
 export type DeleteVpnConnectionError =
@@ -81235,6 +81745,8 @@ export const deleteVpnConnection: API.OperationMethod<
     InvalidVpnConnectionIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpnConnection",
 }));
 export type DeleteVpnConnectionRouteError =
@@ -81257,6 +81769,8 @@ export const deleteVpnConnectionRoute: API.OperationMethod<
   input: DeleteVpnConnectionRouteRequest,
   output: DeleteVpnConnectionRouteResponse,
   errors: [RequestLimitExceeded, InvalidRouteMalformed, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpnConnectionRoute",
 }));
 export type DeleteVpnGatewayError =
@@ -81279,6 +81793,8 @@ export const deleteVpnGateway: API.OperationMethod<
   input: DeleteVpnGatewayRequest,
   output: DeleteVpnGatewayResponse,
   errors: [RequestLimitExceeded, IncorrectState, InvalidVpnGatewayIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteVpnGateway",
 }));
 export type DeprovisionByoipCidrError = RequestLimitExceeded | CommonErrors;
@@ -81298,6 +81814,8 @@ export const deprovisionByoipCidr: API.OperationMethod<
   input: DeprovisionByoipCidrRequest,
   output: DeprovisionByoipCidrResult,
   errors: [RequestLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprovisionByoipCidr",
 }));
 export type DeprovisionIpamByoasnError =
@@ -81318,6 +81836,8 @@ export const deprovisionIpamByoasn: API.OperationMethod<
   input: DeprovisionIpamByoasnRequest,
   output: DeprovisionIpamByoasnResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprovisionIpamByoasn",
 }));
 export type DeprovisionIpamPoolCidrError =
@@ -81337,6 +81857,8 @@ export const deprovisionIpamPoolCidr: API.OperationMethod<
   input: DeprovisionIpamPoolCidrRequest,
   output: DeprovisionIpamPoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprovisionIpamPoolCidr",
 }));
 export type DeprovisionPublicIpv4PoolCidrError =
@@ -81362,6 +81884,8 @@ export const deprovisionPublicIpv4PoolCidr: API.OperationMethod<
     InvalidPublicIpv4PoolIDMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeprovisionPublicIpv4PoolCidr",
 }));
 export type DeregisterImageError =
@@ -81413,6 +81937,8 @@ export const deregisterImage: API.OperationMethod<
     InvalidAMIIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterImage",
 }));
 export type DeregisterInstanceEventNotificationAttributesError =
@@ -81432,6 +81958,8 @@ export const deregisterInstanceEventNotificationAttributes: API.OperationMethod<
   input: DeregisterInstanceEventNotificationAttributesRequest,
   output: DeregisterInstanceEventNotificationAttributesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterInstanceEventNotificationAttributes",
 }));
 export type DeregisterTransitGatewayMulticastGroupMembersError =
@@ -81450,6 +81978,8 @@ export const deregisterTransitGatewayMulticastGroupMembers: API.OperationMethod<
   input: DeregisterTransitGatewayMulticastGroupMembersRequest,
   output: DeregisterTransitGatewayMulticastGroupMembersResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterTransitGatewayMulticastGroupMembers",
 }));
 export type DeregisterTransitGatewayMulticastGroupSourcesError =
@@ -81468,6 +81998,8 @@ export const deregisterTransitGatewayMulticastGroupSources: API.OperationMethod<
   input: DeregisterTransitGatewayMulticastGroupSourcesRequest,
   output: DeregisterTransitGatewayMulticastGroupSourcesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterTransitGatewayMulticastGroupSources",
 }));
 export type DescribeAccountAttributesError = CommonErrors;
@@ -81503,6 +82035,8 @@ export const describeAccountAttributes: API.OperationMethod<
   input: DescribeAccountAttributesRequest,
   output: DescribeAccountAttributesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
 export type DescribeAddressesError =
@@ -81521,6 +82055,8 @@ export const describeAddresses: API.OperationMethod<
   input: DescribeAddressesRequest,
   output: DescribeAddressesResult,
   errors: [RequestLimitExceeded, InvalidAllocationIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAddresses",
 }));
 export type DescribeAddressesAttributeError =
@@ -81554,6 +82090,8 @@ export const describeAddressesAttribute: API.OperationMethod<
   input: DescribeAddressesAttributeRequest,
   output: DescribeAddressesAttributeResult,
   errors: [RequestLimitExceeded, InvalidAllocationIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAddressesAttribute",
   pagination: {
     inputToken: "NextToken",
@@ -81600,6 +82138,8 @@ export const describeAddressTransfers: API.OperationMethod<
   input: DescribeAddressTransfersRequest,
   output: DescribeAddressTransfersResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAddressTransfers",
   pagination: {
     inputToken: "NextToken",
@@ -81639,6 +82179,8 @@ export const describeAggregateIdFormat: API.OperationMethod<
   input: DescribeAggregateIdFormatRequest,
   output: DescribeAggregateIdFormatResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAggregateIdFormat",
 }));
 export type DescribeAvailabilityZonesError =
@@ -81667,6 +82209,8 @@ export const describeAvailabilityZones: API.OperationMethod<
   input: DescribeAvailabilityZonesRequest,
   output: DescribeAvailabilityZonesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAvailabilityZones",
 }));
 export type DescribeAwsNetworkPerformanceMetricSubscriptionsError =
@@ -81698,6 +82242,8 @@ export const describeAwsNetworkPerformanceMetricSubscriptions: API.OperationMeth
   input: DescribeAwsNetworkPerformanceMetricSubscriptionsRequest,
   output: DescribeAwsNetworkPerformanceMetricSubscriptionsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAwsNetworkPerformanceMetricSubscriptions",
   pagination: {
     inputToken: "NextToken",
@@ -81735,6 +82281,8 @@ export const describeBundleTasks: API.OperationMethod<
     InvalidBundleIDNotFound,
     InvalidInstanceIDMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBundleTasks",
 }));
 export type DescribeByoipCidrsError =
@@ -81769,6 +82317,8 @@ export const describeByoipCidrs: API.OperationMethod<
   input: DescribeByoipCidrsRequest,
   output: DescribeByoipCidrsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeByoipCidrs",
   pagination: {
     inputToken: "NextToken",
@@ -81809,6 +82359,8 @@ export const describeCapacityBlockExtensionHistory: API.OperationMethod<
   input: DescribeCapacityBlockExtensionHistoryRequest,
   output: DescribeCapacityBlockExtensionHistoryResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityBlockExtensionHistory",
   pagination: {
     inputToken: "NextToken",
@@ -81849,6 +82401,8 @@ export const describeCapacityBlockExtensionOfferings: API.OperationMethod<
   input: DescribeCapacityBlockExtensionOfferingsRequest,
   output: DescribeCapacityBlockExtensionOfferingsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityBlockExtensionOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -81892,6 +82446,8 @@ export const describeCapacityBlockOfferings: API.OperationMethod<
   input: DescribeCapacityBlockOfferingsRequest,
   output: DescribeCapacityBlockOfferingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityBlockOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -81931,6 +82487,8 @@ export const describeCapacityBlocks: API.OperationMethod<
   input: DescribeCapacityBlocksRequest,
   output: DescribeCapacityBlocksResult,
   errors: [RequestLimitExceeded, InvalidCapacityBlockIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityBlocks",
   pagination: {
     inputToken: "NextToken",
@@ -81970,6 +82528,8 @@ export const describeCapacityBlockStatus: API.OperationMethod<
   input: DescribeCapacityBlockStatusRequest,
   output: DescribeCapacityBlockStatusResult,
   errors: [RequestLimitExceeded, InvalidCapacityBlockIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityBlockStatus",
   pagination: {
     inputToken: "NextToken",
@@ -82009,6 +82569,8 @@ export const describeCapacityManagerDataExports: API.OperationMethod<
   input: DescribeCapacityManagerDataExportsRequest,
   output: DescribeCapacityManagerDataExportsResult,
   errors: [RequestLimitExceeded, InvalidCapacityManagerDataExportIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityManagerDataExports",
   pagination: {
     inputToken: "NextToken",
@@ -82050,6 +82612,8 @@ export const describeCapacityReservationBillingRequests: API.OperationMethod<
   input: DescribeCapacityReservationBillingRequestsRequest,
   output: DescribeCapacityReservationBillingRequestsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityReservationBillingRequests",
   pagination: {
     inputToken: "NextToken",
@@ -82089,6 +82653,8 @@ export const describeCapacityReservationFleets: API.OperationMethod<
   input: DescribeCapacityReservationFleetsRequest,
   output: DescribeCapacityReservationFleetsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityReservationFleets",
   pagination: {
     inputToken: "NextToken",
@@ -82130,6 +82696,8 @@ export const describeCapacityReservations: API.OperationMethod<
   input: DescribeCapacityReservationsRequest,
   output: DescribeCapacityReservationsResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityReservations",
   pagination: {
     inputToken: "NextToken",
@@ -82172,6 +82740,8 @@ export const describeCapacityReservationTopology: API.OperationMethod<
   input: DescribeCapacityReservationTopologyRequest,
   output: DescribeCapacityReservationTopologyResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapacityReservationTopology",
 }));
 export type DescribeCarrierGatewaysError =
@@ -82212,6 +82782,8 @@ export const describeCarrierGateways: API.OperationMethod<
     InvalidCarrierGatewayIDNotFound,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCarrierGateways",
   pagination: {
     inputToken: "NextToken",
@@ -82255,6 +82827,8 @@ export const describeClassicLinkInstances: API.OperationMethod<
   input: DescribeClassicLinkInstancesRequest,
   output: DescribeClassicLinkInstancesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClassicLinkInstances",
   pagination: {
     inputToken: "NextToken",
@@ -82294,6 +82868,8 @@ export const describeClientVpnAuthorizationRules: API.OperationMethod<
   input: DescribeClientVpnAuthorizationRulesRequest,
   output: DescribeClientVpnAuthorizationRulesResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClientVpnAuthorizationRules",
   pagination: {
     inputToken: "NextToken",
@@ -82339,6 +82915,8 @@ export const describeClientVpnConnections: API.OperationMethod<
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClientVpnConnections",
   pagination: {
     inputToken: "NextToken",
@@ -82378,6 +82956,8 @@ export const describeClientVpnEndpoints: API.OperationMethod<
   input: DescribeClientVpnEndpointsRequest,
   output: DescribeClientVpnEndpointsResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClientVpnEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -82422,6 +83002,8 @@ export const describeClientVpnRoutes: API.OperationMethod<
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClientVpnRoutes",
   pagination: {
     inputToken: "NextToken",
@@ -82466,6 +83048,8 @@ export const describeClientVpnTargetNetworks: API.OperationMethod<
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClientVpnTargetNetworks",
   pagination: {
     inputToken: "NextToken",
@@ -82505,6 +83089,8 @@ export const describeCoipPools: API.OperationMethod<
   input: DescribeCoipPoolsRequest,
   output: DescribeCoipPoolsResult,
   errors: [RequestLimitExceeded, InvalidPoolIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCoipPools",
   pagination: {
     inputToken: "NextToken",
@@ -82529,6 +83115,8 @@ export const describeConversionTasks: API.OperationMethod<
   input: DescribeConversionTasksRequest,
   output: DescribeConversionTasksResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConversionTasks",
 }));
 export type DescribeCustomerGatewaysError =
@@ -82551,6 +83139,8 @@ export const describeCustomerGateways: API.OperationMethod<
   input: DescribeCustomerGatewaysRequest,
   output: DescribeCustomerGatewaysResult,
   errors: [RequestLimitExceeded, InvalidCustomerGatewayIDNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCustomerGateways",
 }));
 export type DescribeDeclarativePoliciesReportsError =
@@ -82580,6 +83170,8 @@ export const describeDeclarativePoliciesReports: API.OperationMethod<
   input: DescribeDeclarativePoliciesReportsRequest,
   output: DescribeDeclarativePoliciesReportsResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDeclarativePoliciesReports",
 }));
 export type DescribeDhcpOptionsError =
@@ -82625,6 +83217,8 @@ export const describeDhcpOptions: API.OperationMethod<
     InvalidParameterValue,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDhcpOptions",
   pagination: {
     inputToken: "NextToken",
@@ -82673,6 +83267,8 @@ export const describeEgressOnlyInternetGateways: API.OperationMethod<
     InvalidEgressOnlyInternetGatewayIdNotFound,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEgressOnlyInternetGateways",
   pagination: {
     inputToken: "NextToken",
@@ -82699,6 +83295,8 @@ export const describeElasticGpus: API.OperationMethod<
   input: DescribeElasticGpusRequest,
   output: DescribeElasticGpusResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeElasticGpus",
 }));
 export type DescribeExportImageTasksError =
@@ -82732,6 +83330,8 @@ export const describeExportImageTasks: API.OperationMethod<
   input: DescribeExportImageTasksRequest,
   output: DescribeExportImageTasksResult,
   errors: [RequestLimitExceeded, InvalidExportTaskIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExportImageTasks",
   pagination: {
     inputToken: "NextToken",
@@ -82756,6 +83356,8 @@ export const describeExportTasks: API.OperationMethod<
   input: DescribeExportTasksRequest,
   output: DescribeExportTasksResult,
   errors: [RequestLimitExceeded, InvalidExportTaskIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExportTasks",
 }));
 export type DescribeFastLaunchImagesError =
@@ -82789,6 +83391,8 @@ export const describeFastLaunchImages: API.OperationMethod<
   input: DescribeFastLaunchImagesRequest,
   output: DescribeFastLaunchImagesResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFastLaunchImages",
   pagination: {
     inputToken: "NextToken",
@@ -82825,6 +83429,8 @@ export const describeFastSnapshotRestores: API.OperationMethod<
   input: DescribeFastSnapshotRestoresRequest,
   output: DescribeFastSnapshotRestoresResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFastSnapshotRestores",
   pagination: {
     inputToken: "NextToken",
@@ -82856,6 +83462,8 @@ export const describeFleetHistory: API.OperationMethod<
   input: DescribeFleetHistoryRequest,
   output: DescribeFleetHistoryResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetHistory",
 }));
 export type DescribeFleetInstancesError =
@@ -82881,6 +83489,8 @@ export const describeFleetInstances: API.OperationMethod<
   input: DescribeFleetInstancesRequest,
   output: DescribeFleetInstancesResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleetInstances",
 }));
 export type DescribeFleetsError =
@@ -82920,6 +83530,8 @@ export const describeFleets: API.OperationMethod<
   input: DescribeFleetsRequest,
   output: DescribeFleetsResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFleets",
   pagination: {
     inputToken: "NextToken",
@@ -82962,6 +83574,8 @@ export const describeFlowLogs: API.OperationMethod<
   input: DescribeFlowLogsRequest,
   output: DescribeFlowLogsResult,
   errors: [RequestLimitExceeded, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFlowLogs",
   pagination: {
     inputToken: "NextToken",
@@ -82991,6 +83605,8 @@ export const describeFpgaImageAttribute: API.OperationMethod<
     InvalidFpgaImageIDMalformed,
     InvalidFpgaImageIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFpgaImageAttribute",
 }));
 export type DescribeFpgaImagesError =
@@ -83026,6 +83642,8 @@ export const describeFpgaImages: API.OperationMethod<
   input: DescribeFpgaImagesRequest,
   output: DescribeFpgaImagesResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFpgaImages",
   pagination: {
     inputToken: "NextToken",
@@ -83072,6 +83690,8 @@ export const describeHostReservationOfferings: API.OperationMethod<
   input: DescribeHostReservationOfferingsRequest,
   output: DescribeHostReservationOfferingsResult,
   errors: [RequestLimitExceeded, InvalidHostReservationOfferingIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHostReservationOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -83109,6 +83729,8 @@ export const describeHostReservations: API.OperationMethod<
   input: DescribeHostReservationsRequest,
   output: DescribeHostReservationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHostReservations",
   pagination: {
     inputToken: "NextToken",
@@ -83152,6 +83774,8 @@ export const describeHosts: API.OperationMethod<
   input: DescribeHostsRequest,
   output: DescribeHostsResult,
   errors: [RequestLimitExceeded, InvalidHostIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeHosts",
   pagination: {
     inputToken: "NextToken",
@@ -83191,6 +83815,8 @@ export const describeIamInstanceProfileAssociations: API.OperationMethod<
   input: DescribeIamInstanceProfileAssociationsRequest,
   output: DescribeIamInstanceProfileAssociationsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIamInstanceProfileAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -83235,6 +83861,8 @@ export const describeIdentityIdFormat: API.OperationMethod<
   input: DescribeIdentityIdFormatRequest,
   output: DescribeIdentityIdFormatResult,
   errors: [RequestLimitExceeded, InvalidTargetArnUnknown],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIdentityIdFormat",
 }));
 export type DescribeIdFormatError = CommonErrors;
@@ -83271,6 +83899,8 @@ export const describeIdFormat: API.OperationMethod<
   input: DescribeIdFormatRequest,
   output: DescribeIdFormatResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIdFormat",
 }));
 export type DescribeImageAttributeError =
@@ -83294,6 +83924,8 @@ export const describeImageAttribute: API.OperationMethod<
   input: DescribeImageAttributeRequest,
   output: ImageAttribute,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageAttribute",
 }));
 export type DescribeImageReferencesError =
@@ -83330,6 +83962,8 @@ export const describeImageReferences: API.OperationMethod<
   input: DescribeImageReferencesRequest,
   output: DescribeImageReferencesResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageReferences",
   pagination: {
     inputToken: "NextToken",
@@ -83398,6 +84032,8 @@ export const describeImages: API.OperationMethod<
   input: DescribeImagesRequest,
   output: DescribeImagesResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed, InvalidAMIIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImages",
   pagination: {
     inputToken: "NextToken",
@@ -83441,6 +84077,8 @@ export const describeImageUsageReportEntries: API.OperationMethod<
   input: DescribeImageUsageReportEntriesRequest,
   output: DescribeImageUsageReportEntriesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageUsageReportEntries",
   pagination: {
     inputToken: "NextToken",
@@ -83484,6 +84122,8 @@ export const describeImageUsageReports: API.OperationMethod<
   input: DescribeImageUsageReportsRequest,
   output: DescribeImageUsageReportsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageUsageReports",
   pagination: {
     inputToken: "NextToken",
@@ -83523,6 +84163,8 @@ export const describeImportImageTasks: API.OperationMethod<
   input: DescribeImportImageTasksRequest,
   output: DescribeImportImageTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImportImageTasks",
   pagination: {
     inputToken: "NextToken",
@@ -83562,6 +84204,8 @@ export const describeImportSnapshotTasks: API.OperationMethod<
   input: DescribeImportSnapshotTasksRequest,
   output: DescribeImportSnapshotTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImportSnapshotTasks",
   pagination: {
     inputToken: "NextToken",
@@ -83593,6 +84237,8 @@ export const describeInstanceAttribute: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceAttribute",
 }));
 export type DescribeInstanceConnectEndpointsError =
@@ -83626,6 +84272,8 @@ export const describeInstanceConnectEndpoints: API.OperationMethod<
   input: DescribeInstanceConnectEndpointsRequest,
   output: DescribeInstanceConnectEndpointsResult,
   errors: [RequestLimitExceeded, InvalidInstanceConnectEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceConnectEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -83689,6 +84337,8 @@ export const describeInstanceCreditSpecifications: API.OperationMethod<
   input: DescribeInstanceCreditSpecificationsRequest,
   output: DescribeInstanceCreditSpecificationsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceCreditSpecifications",
   pagination: {
     inputToken: "NextToken",
@@ -83711,6 +84361,8 @@ export const describeInstanceEventNotificationAttributes: API.OperationMethod<
   input: DescribeInstanceEventNotificationAttributesRequest,
   output: DescribeInstanceEventNotificationAttributesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceEventNotificationAttributes",
 }));
 export type DescribeInstanceEventWindowsError =
@@ -83754,6 +84406,8 @@ export const describeInstanceEventWindows: API.OperationMethod<
   input: DescribeInstanceEventWindowsRequest,
   output: DescribeInstanceEventWindowsResult,
   errors: [RequestLimitExceeded, InvalidInstanceEventWindowIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceEventWindows",
   pagination: {
     inputToken: "NextToken",
@@ -83815,6 +84469,8 @@ export const describeInstanceImageMetadata: API.OperationMethod<
   input: DescribeInstanceImageMetadataRequest,
   output: DescribeInstanceImageMetadataResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceImageMetadata",
   pagination: {
     inputToken: "NextToken",
@@ -83897,6 +84553,8 @@ export const describeInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstances",
   pagination: {
     inputToken: "NextToken",
@@ -83922,6 +84580,8 @@ export const describeInstanceSqlHaHistoryStates: API.OperationMethod<
   input: DescribeInstanceSqlHaHistoryStatesRequest,
   output: DescribeInstanceSqlHaHistoryStatesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceSqlHaHistoryStates",
 }));
 export type DescribeInstanceSqlHaStatesError =
@@ -83941,6 +84601,8 @@ export const describeInstanceSqlHaStates: API.OperationMethod<
   input: DescribeInstanceSqlHaStatesRequest,
   output: DescribeInstanceSqlHaStatesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceSqlHaStates",
 }));
 export type DescribeInstanceStatusError =
@@ -84011,6 +84673,8 @@ export const describeInstanceStatus: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceStatus",
   pagination: {
     inputToken: "NextToken",
@@ -84067,6 +84731,8 @@ export const describeInstanceTopology: API.OperationMethod<
   input: DescribeInstanceTopologyRequest,
   output: DescribeInstanceTopologyResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceTopology",
   pagination: {
     inputToken: "NextToken",
@@ -84105,6 +84771,8 @@ export const describeInstanceTypeOfferings: API.OperationMethod<
   input: DescribeInstanceTypeOfferingsRequest,
   output: DescribeInstanceTypeOfferingsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceTypeOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -84142,6 +84810,8 @@ export const describeInstanceTypes: API.OperationMethod<
   input: DescribeInstanceTypesRequest,
   output: DescribeInstanceTypesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInstanceTypes",
   pagination: {
     inputToken: "NextToken",
@@ -84184,6 +84854,8 @@ export const describeInternetGateways: API.OperationMethod<
   input: DescribeInternetGatewaysRequest,
   output: DescribeInternetGatewaysResult,
   errors: [RequestLimitExceeded, InvalidInternetGatewayIDNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInternetGateways",
   pagination: {
     inputToken: "NextToken",
@@ -84205,6 +84877,8 @@ export const describeIpamByoasn: API.OperationMethod<
   input: DescribeIpamByoasnRequest,
   output: DescribeIpamByoasnResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpamByoasn",
 }));
 export type DescribeIpamExternalResourceVerificationTokensError =
@@ -84228,6 +84902,8 @@ export const describeIpamExternalResourceVerificationTokens: API.OperationMethod
     RequestLimitExceeded,
     InvalidIpamExternalResourceVerificationTokenIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpamExternalResourceVerificationTokens",
 }));
 export type DescribeIpamPoliciesError =
@@ -84248,6 +84924,8 @@ export const describeIpamPolicies: API.OperationMethod<
   input: DescribeIpamPoliciesRequest,
   output: DescribeIpamPoliciesResult,
   errors: [RequestLimitExceeded, InvalidIpamPolicyIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpamPolicies",
 }));
 export type DescribeIpamPoolsError =
@@ -84281,6 +84959,8 @@ export const describeIpamPools: API.OperationMethod<
   input: DescribeIpamPoolsRequest,
   output: DescribeIpamPoolsResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpamPools",
   pagination: {
     inputToken: "NextToken",
@@ -84320,6 +85000,8 @@ export const describeIpamPrefixListResolvers: API.OperationMethod<
   input: DescribeIpamPrefixListResolversRequest,
   output: DescribeIpamPrefixListResolversResult,
   errors: [RequestLimitExceeded, InvalidIpamPrefixListResolverIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpamPrefixListResolvers",
   pagination: {
     inputToken: "NextToken",
@@ -84362,6 +85044,8 @@ export const describeIpamPrefixListResolverTargets: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverTargetIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpamPrefixListResolverTargets",
   pagination: {
     inputToken: "NextToken",
@@ -84401,6 +85085,8 @@ export const describeIpamResourceDiscoveries: API.OperationMethod<
   input: DescribeIpamResourceDiscoveriesRequest,
   output: DescribeIpamResourceDiscoveriesResult,
   errors: [RequestLimitExceeded, InvalidIpamResourceDiscoveryIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpamResourceDiscoveries",
   pagination: {
     inputToken: "NextToken",
@@ -84443,6 +85129,8 @@ export const describeIpamResourceDiscoveryAssociations: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryAssociationIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpamResourceDiscoveryAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -84484,6 +85172,8 @@ export const describeIpams: API.OperationMethod<
   input: DescribeIpamsRequest,
   output: DescribeIpamsResult,
   errors: [RequestLimitExceeded, InvalidIpamIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpams",
   pagination: {
     inputToken: "NextToken",
@@ -84523,6 +85213,8 @@ export const describeIpamScopes: API.OperationMethod<
   input: DescribeIpamScopesRequest,
   output: DescribeIpamScopesResult,
   errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpamScopes",
   pagination: {
     inputToken: "NextToken",
@@ -84562,6 +85254,8 @@ export const describeIpv6Pools: API.OperationMethod<
   input: DescribeIpv6PoolsRequest,
   output: DescribeIpv6PoolsResult,
   errors: [RequestLimitExceeded, InvalidIpv6PoolIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIpv6Pools",
   pagination: {
     inputToken: "NextToken",
@@ -84590,6 +85284,8 @@ export const describeKeyPairs: API.OperationMethod<
   input: DescribeKeyPairsRequest,
   output: DescribeKeyPairsResult,
   errors: [RequestLimitExceeded, InvalidKeyPairNotFound, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKeyPairs",
 }));
 export type DescribeLaunchTemplatesError =
@@ -84632,6 +85328,8 @@ export const describeLaunchTemplates: API.OperationMethod<
     InvalidLaunchTemplateIdNotFound,
     InvalidLaunchTemplateNameNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLaunchTemplates",
   pagination: {
     inputToken: "NextToken",
@@ -84679,6 +85377,8 @@ export const describeLaunchTemplateVersions: API.OperationMethod<
     InvalidLaunchTemplateIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLaunchTemplateVersions",
   pagination: {
     inputToken: "NextToken",
@@ -84716,6 +85416,8 @@ export const describeLocalGatewayRouteTables: API.OperationMethod<
   input: DescribeLocalGatewayRouteTablesRequest,
   output: DescribeLocalGatewayRouteTablesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocalGatewayRouteTables",
   pagination: {
     inputToken: "NextToken",
@@ -84753,6 +85455,8 @@ export const describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: AP
   input: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsRequest,
   output: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName:
     "DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations",
   pagination: {
@@ -84790,6 +85494,8 @@ export const describeLocalGatewayRouteTableVpcAssociations: API.OperationMethod<
   input: DescribeLocalGatewayRouteTableVpcAssociationsRequest,
   output: DescribeLocalGatewayRouteTableVpcAssociationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocalGatewayRouteTableVpcAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -84827,6 +85533,8 @@ export const describeLocalGateways: API.OperationMethod<
   input: DescribeLocalGatewaysRequest,
   output: DescribeLocalGatewaysResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocalGateways",
   pagination: {
     inputToken: "NextToken",
@@ -84863,6 +85571,8 @@ export const describeLocalGatewayVirtualInterfaceGroups: API.OperationMethod<
   input: DescribeLocalGatewayVirtualInterfaceGroupsRequest,
   output: DescribeLocalGatewayVirtualInterfaceGroupsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocalGatewayVirtualInterfaceGroups",
   pagination: {
     inputToken: "NextToken",
@@ -84899,6 +85609,8 @@ export const describeLocalGatewayVirtualInterfaces: API.OperationMethod<
   input: DescribeLocalGatewayVirtualInterfacesRequest,
   output: DescribeLocalGatewayVirtualInterfacesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLocalGatewayVirtualInterfaces",
   pagination: {
     inputToken: "NextToken",
@@ -84923,6 +85635,8 @@ export const describeLockedSnapshots: API.OperationMethod<
   input: DescribeLockedSnapshotsRequest,
   output: DescribeLockedSnapshotsResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLockedSnapshots",
 }));
 export type DescribeMacHostsError =
@@ -84956,6 +85670,8 @@ export const describeMacHosts: API.OperationMethod<
   input: DescribeMacHostsRequest,
   output: DescribeMacHostsResult,
   errors: [RequestLimitExceeded, InvalidHostIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMacHosts",
   pagination: {
     inputToken: "NextToken",
@@ -84997,6 +85713,8 @@ export const describeMacModificationTasks: API.OperationMethod<
   input: DescribeMacModificationTasksRequest,
   output: DescribeMacModificationTasksResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMacModificationTasks",
   pagination: {
     inputToken: "NextToken",
@@ -85037,6 +85755,8 @@ export const describeManagedPrefixLists: API.OperationMethod<
   input: DescribeManagedPrefixListsRequest,
   output: DescribeManagedPrefixListsResult,
   errors: [RequestLimitExceeded, InvalidPrefixListIDNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeManagedPrefixLists",
   pagination: {
     inputToken: "NextToken",
@@ -85079,6 +85799,8 @@ export const describeMovingAddresses: API.OperationMethod<
   input: DescribeMovingAddressesRequest,
   output: DescribeMovingAddressesResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMovingAddresses",
   pagination: {
     inputToken: "NextToken",
@@ -85133,6 +85855,8 @@ export const describeNatGateways: API.OperationMethod<
     NatGatewayNotFound,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNatGateways",
   pagination: {
     inputToken: "NextToken",
@@ -85184,6 +85908,8 @@ export const describeNetworkAcls: API.OperationMethod<
     InvalidRouteTableIDNotFound,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNetworkAcls",
   pagination: {
     inputToken: "NextToken",
@@ -85223,6 +85949,8 @@ export const describeNetworkInsightsAccessScopeAnalyses: API.OperationMethod<
   input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
   output: DescribeNetworkInsightsAccessScopeAnalysesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNetworkInsightsAccessScopeAnalyses",
   pagination: {
     inputToken: "NextToken",
@@ -85262,6 +85990,8 @@ export const describeNetworkInsightsAccessScopes: API.OperationMethod<
   input: DescribeNetworkInsightsAccessScopesRequest,
   output: DescribeNetworkInsightsAccessScopesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNetworkInsightsAccessScopes",
   pagination: {
     inputToken: "NextToken",
@@ -85301,6 +86031,8 @@ export const describeNetworkInsightsAnalyses: API.OperationMethod<
   input: DescribeNetworkInsightsAnalysesRequest,
   output: DescribeNetworkInsightsAnalysesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNetworkInsightsAnalyses",
   pagination: {
     inputToken: "NextToken",
@@ -85340,6 +86072,8 @@ export const describeNetworkInsightsPaths: API.OperationMethod<
   input: DescribeNetworkInsightsPathsRequest,
   output: DescribeNetworkInsightsPathsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNetworkInsightsPaths",
   pagination: {
     inputToken: "NextToken",
@@ -85372,6 +86106,8 @@ export const describeNetworkInterfaceAttribute: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameterCombination,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNetworkInterfaceAttribute",
 }));
 export type DescribeNetworkInterfacePermissionsError =
@@ -85405,6 +86141,8 @@ export const describeNetworkInterfacePermissions: API.OperationMethod<
   input: DescribeNetworkInterfacePermissionsRequest,
   output: DescribeNetworkInterfacePermissionsResult,
   errors: [RequestLimitExceeded, InvalidPermissionIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNetworkInterfacePermissions",
   pagination: {
     inputToken: "NextToken",
@@ -85460,6 +86198,8 @@ export const describeNetworkInterfaces: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNetworkInterfaces",
   pagination: {
     inputToken: "NextToken",
@@ -85486,6 +86226,8 @@ export const describeOutpostLags: API.OperationMethod<
   input: DescribeOutpostLagsRequest,
   output: DescribeOutpostLagsResult,
   errors: [RequestLimitExceeded, InvalidOutpostLagIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeOutpostLags",
 }));
 export type DescribePlacementGroupsError =
@@ -85518,6 +86260,8 @@ export const describePlacementGroups: API.OperationMethod<
     InvalidParameterValue,
     InvalidPlacementGroupUnknown,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePlacementGroups",
 }));
 export type DescribePrefixListsError =
@@ -85552,6 +86296,8 @@ export const describePrefixLists: API.OperationMethod<
   input: DescribePrefixListsRequest,
   output: DescribePrefixListsResult,
   errors: [RequestLimitExceeded, InvalidPrefixListIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePrefixLists",
   pagination: {
     inputToken: "NextToken",
@@ -85607,6 +86353,8 @@ export const describePrincipalIdFormat: API.OperationMethod<
   input: DescribePrincipalIdFormatRequest,
   output: DescribePrincipalIdFormatResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePrincipalIdFormat",
   pagination: {
     inputToken: "NextToken",
@@ -85646,6 +86394,8 @@ export const describePublicIpv4Pools: API.OperationMethod<
   input: DescribePublicIpv4PoolsRequest,
   output: DescribePublicIpv4PoolsResult,
   errors: [RequestLimitExceeded, InvalidPublicIpv4PoolIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePublicIpv4Pools",
   pagination: {
     inputToken: "NextToken",
@@ -85678,6 +86428,8 @@ export const describeRegions: API.OperationMethod<
   input: DescribeRegionsRequest,
   output: DescribeRegionsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegions",
 }));
 export type DescribeReplaceRootVolumeTasksError =
@@ -85712,6 +86464,8 @@ export const describeReplaceRootVolumeTasks: API.OperationMethod<
   input: DescribeReplaceRootVolumeTasksRequest,
   output: DescribeReplaceRootVolumeTasksResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplaceRootVolumeTasks",
   pagination: {
     inputToken: "NextToken",
@@ -85742,6 +86496,8 @@ export const describeReservedInstances: API.OperationMethod<
   input: DescribeReservedInstancesRequest,
   output: DescribeReservedInstancesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedInstances",
 }));
 export type DescribeReservedInstancesListingsError = CommonErrors;
@@ -85779,6 +86535,8 @@ export const describeReservedInstancesListings: API.OperationMethod<
   input: DescribeReservedInstancesListingsRequest,
   output: DescribeReservedInstancesListingsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedInstancesListings",
 }));
 export type DescribeReservedInstancesModificationsError =
@@ -85821,6 +86579,8 @@ export const describeReservedInstancesModifications: API.OperationMethod<
   input: DescribeReservedInstancesModificationsRequest,
   output: DescribeReservedInstancesModificationsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedInstancesModifications",
   pagination: {
     inputToken: "NextToken",
@@ -85872,6 +86632,8 @@ export const describeReservedInstancesOfferings: API.OperationMethod<
   input: DescribeReservedInstancesOfferingsRequest,
   output: DescribeReservedInstancesOfferingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedInstancesOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -85915,6 +86677,8 @@ export const describeRouteServerEndpoints: API.OperationMethod<
   input: DescribeRouteServerEndpointsRequest,
   output: DescribeRouteServerEndpointsResult,
   errors: [RequestLimitExceeded, InvalidRouteServerEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRouteServerEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -85964,6 +86728,8 @@ export const describeRouteServerPeers: API.OperationMethod<
   input: DescribeRouteServerPeersRequest,
   output: DescribeRouteServerPeersResult,
   errors: [RequestLimitExceeded, InvalidRouteServerPeerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRouteServerPeers",
   pagination: {
     inputToken: "NextToken",
@@ -86018,6 +86784,8 @@ export const describeRouteServers: API.OperationMethod<
   input: DescribeRouteServersRequest,
   output: DescribeRouteServersResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRouteServers",
   pagination: {
     inputToken: "NextToken",
@@ -86065,6 +86833,8 @@ export const describeRouteTables: API.OperationMethod<
   input: DescribeRouteTablesRequest,
   output: DescribeRouteTablesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRouteTables",
   pagination: {
     inputToken: "NextToken",
@@ -86106,6 +86876,8 @@ export const describeScheduledInstanceAvailability: API.OperationMethod<
   input: DescribeScheduledInstanceAvailabilityRequest,
   output: DescribeScheduledInstanceAvailabilityResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScheduledInstanceAvailability",
   pagination: {
     inputToken: "NextToken",
@@ -86142,6 +86914,8 @@ export const describeScheduledInstances: API.OperationMethod<
   input: DescribeScheduledInstancesRequest,
   output: DescribeScheduledInstancesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScheduledInstances",
   pagination: {
     inputToken: "NextToken",
@@ -86178,6 +86952,8 @@ export const describeSecondaryInterfaces: API.OperationMethod<
   input: DescribeSecondaryInterfacesRequest,
   output: DescribeSecondaryInterfacesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecondaryInterfaces",
   pagination: {
     inputToken: "NextToken",
@@ -86214,6 +86990,8 @@ export const describeSecondaryNetworks: API.OperationMethod<
   input: DescribeSecondaryNetworksRequest,
   output: DescribeSecondaryNetworksResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecondaryNetworks",
   pagination: {
     inputToken: "NextToken",
@@ -86250,6 +87028,8 @@ export const describeSecondarySubnets: API.OperationMethod<
   input: DescribeSecondarySubnetsRequest,
   output: DescribeSecondarySubnetsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecondarySubnets",
   pagination: {
     inputToken: "NextToken",
@@ -86271,6 +87051,8 @@ export const describeSecurityGroupReferences: API.OperationMethod<
   input: DescribeSecurityGroupReferencesRequest,
   output: DescribeSecurityGroupReferencesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityGroupReferences",
 }));
 export type DescribeSecurityGroupRulesError =
@@ -86304,6 +87086,8 @@ export const describeSecurityGroupRules: API.OperationMethod<
   input: DescribeSecurityGroupRulesRequest,
   output: DescribeSecurityGroupRulesResult,
   errors: [RequestLimitExceeded, InvalidSecurityGroupRuleIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityGroupRules",
   pagination: {
     inputToken: "NextToken",
@@ -86352,6 +87136,8 @@ export const describeSecurityGroups: API.OperationMethod<
     ParseError,
     VPCIdNotSpecified,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityGroups",
   pagination: {
     inputToken: "NextToken",
@@ -86388,6 +87174,8 @@ export const describeSecurityGroupVpcAssociations: API.OperationMethod<
   input: DescribeSecurityGroupVpcAssociationsRequest,
   output: DescribeSecurityGroupVpcAssociationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSecurityGroupVpcAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -86412,6 +87200,8 @@ export const describeServiceLinkVirtualInterfaces: API.OperationMethod<
   input: DescribeServiceLinkVirtualInterfacesRequest,
   output: DescribeServiceLinkVirtualInterfacesResult,
   errors: [RequestLimitExceeded, InvalidServiceLinkVirtualInterfaceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceLinkVirtualInterfaces",
 }));
 export type DescribeSnapshotAttributeError =
@@ -86440,6 +87230,8 @@ export const describeSnapshotAttribute: API.OperationMethod<
     InvalidSnapshotNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshotAttribute",
 }));
 export type DescribeSnapshotsError =
@@ -86522,6 +87314,8 @@ export const describeSnapshots: API.OperationMethod<
     InvalidSnapshotNotFound,
     InvalidUserIDMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "NextToken",
@@ -86558,6 +87352,8 @@ export const describeSnapshotTierStatus: API.OperationMethod<
   input: DescribeSnapshotTierStatusRequest,
   output: DescribeSnapshotTierStatusResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshotTierStatus",
   pagination: {
     inputToken: "NextToken",
@@ -86583,6 +87379,8 @@ export const describeSpotDatafeedSubscription: API.OperationMethod<
   input: DescribeSpotDatafeedSubscriptionRequest,
   output: DescribeSpotDatafeedSubscriptionResult,
   errors: [RequestLimitExceeded, InvalidSpotDatafeedNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpotDatafeedSubscription",
 }));
 export type DescribeSpotFleetInstancesError =
@@ -86601,6 +87399,8 @@ export const describeSpotFleetInstances: API.OperationMethod<
   input: DescribeSpotFleetInstancesRequest,
   output: DescribeSpotFleetInstancesResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpotFleetInstances",
 }));
 export type DescribeSpotFleetRequestHistoryError =
@@ -86627,6 +87427,8 @@ export const describeSpotFleetRequestHistory: API.OperationMethod<
   input: DescribeSpotFleetRequestHistoryRequest,
   output: DescribeSpotFleetRequestHistoryResponse,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpotFleetRequestHistory",
 }));
 export type DescribeSpotFleetRequestsError =
@@ -86664,6 +87466,8 @@ export const describeSpotFleetRequests: API.OperationMethod<
   input: DescribeSpotFleetRequestsRequest,
   output: DescribeSpotFleetRequestsResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpotFleetRequests",
   pagination: {
     inputToken: "NextToken",
@@ -86726,6 +87530,8 @@ export const describeSpotInstanceRequests: API.OperationMethod<
     InvalidSpotInstanceRequestIDMalformed,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpotInstanceRequests",
   pagination: {
     inputToken: "NextToken",
@@ -86767,6 +87573,8 @@ export const describeSpotPriceHistory: API.OperationMethod<
   input: DescribeSpotPriceHistoryRequest,
   output: DescribeSpotPriceHistoryResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSpotPriceHistory",
   pagination: {
     inputToken: "NextToken",
@@ -86813,6 +87621,8 @@ export const describeStaleSecurityGroups: API.OperationMethod<
   input: DescribeStaleSecurityGroupsRequest,
   output: DescribeStaleSecurityGroupsResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStaleSecurityGroups",
   pagination: {
     inputToken: "NextToken",
@@ -86864,6 +87674,8 @@ export const describeStoreImageTasks: API.OperationMethod<
   input: DescribeStoreImageTasksRequest,
   output: DescribeStoreImageTasksResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStoreImageTasks",
   pagination: {
     inputToken: "NextToken",
@@ -86909,6 +87721,8 @@ export const describeSubnets: API.OperationMethod<
   input: DescribeSubnetsRequest,
   output: DescribeSubnetsResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSubnets",
   pagination: {
     inputToken: "NextToken",
@@ -86958,6 +87772,8 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsRequest,
   output: DescribeTagsResult,
   errors: [RequestLimitExceeded, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
   pagination: {
     inputToken: "NextToken",
@@ -86979,6 +87795,8 @@ export const describeTrafficMirrorFilterRules: API.OperationMethod<
   input: DescribeTrafficMirrorFilterRulesRequest,
   output: DescribeTrafficMirrorFilterRulesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrafficMirrorFilterRules",
 }));
 export type DescribeTrafficMirrorFiltersError =
@@ -87012,6 +87830,8 @@ export const describeTrafficMirrorFilters: API.OperationMethod<
   input: DescribeTrafficMirrorFiltersRequest,
   output: DescribeTrafficMirrorFiltersResult,
   errors: [RequestLimitExceeded, InvalidTrafficMirrorFilterIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrafficMirrorFilters",
   pagination: {
     inputToken: "NextToken",
@@ -87051,6 +87871,8 @@ export const describeTrafficMirrorSessions: API.OperationMethod<
   input: DescribeTrafficMirrorSessionsRequest,
   output: DescribeTrafficMirrorSessionsResult,
   errors: [RequestLimitExceeded, InvalidTrafficMirrorSessionIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrafficMirrorSessions",
   pagination: {
     inputToken: "NextToken",
@@ -87090,6 +87912,8 @@ export const describeTrafficMirrorTargets: API.OperationMethod<
   input: DescribeTrafficMirrorTargetsRequest,
   output: DescribeTrafficMirrorTargetsResult,
   errors: [RequestLimitExceeded, InvalidTrafficMirrorTargetIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrafficMirrorTargets",
   pagination: {
     inputToken: "NextToken",
@@ -87135,6 +87959,8 @@ export const describeTransitGatewayAttachments: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDNotFound,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -87174,6 +88000,8 @@ export const describeTransitGatewayConnectPeers: API.OperationMethod<
   input: DescribeTransitGatewayConnectPeersRequest,
   output: DescribeTransitGatewayConnectPeersResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayConnectPeerIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayConnectPeers",
   pagination: {
     inputToken: "NextToken",
@@ -87213,6 +88041,8 @@ export const describeTransitGatewayConnects: API.OperationMethod<
   input: DescribeTransitGatewayConnectsRequest,
   output: DescribeTransitGatewayConnectsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayConnects",
   pagination: {
     inputToken: "NextToken",
@@ -87237,6 +88067,8 @@ export const describeTransitGatewayMeteringPolicies: API.OperationMethod<
   input: DescribeTransitGatewayMeteringPoliciesRequest,
   output: DescribeTransitGatewayMeteringPoliciesResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayMeteringPolicyIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayMeteringPolicies",
 }));
 export type DescribeTransitGatewayMulticastDomainsError =
@@ -87273,6 +88105,8 @@ export const describeTransitGatewayMulticastDomains: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayMulticastDomainIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayMulticastDomains",
   pagination: {
     inputToken: "NextToken",
@@ -87312,6 +88146,8 @@ export const describeTransitGatewayPeeringAttachments: API.OperationMethod<
   input: DescribeTransitGatewayPeeringAttachmentsRequest,
   output: DescribeTransitGatewayPeeringAttachmentsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayPeeringAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -87351,6 +88187,8 @@ export const describeTransitGatewayPolicyTables: API.OperationMethod<
   input: DescribeTransitGatewayPolicyTablesRequest,
   output: DescribeTransitGatewayPolicyTablesResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayPolicyTableIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayPolicyTables",
   pagination: {
     inputToken: "NextToken",
@@ -87393,6 +88231,8 @@ export const describeTransitGatewayRouteTableAnnouncements: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayRouteTableAnnouncementIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayRouteTableAnnouncements",
   pagination: {
     inputToken: "NextToken",
@@ -87434,6 +88274,8 @@ export const describeTransitGatewayRouteTables: API.OperationMethod<
   input: DescribeTransitGatewayRouteTablesRequest,
   output: DescribeTransitGatewayRouteTablesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayRouteTables",
   pagination: {
     inputToken: "NextToken",
@@ -87475,6 +88317,8 @@ export const describeTransitGateways: API.OperationMethod<
   input: DescribeTransitGatewaysRequest,
   output: DescribeTransitGatewaysResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayIDNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGateways",
   pagination: {
     inputToken: "NextToken",
@@ -87515,6 +88359,8 @@ export const describeTransitGatewayVpcAttachments: API.OperationMethod<
   input: DescribeTransitGatewayVpcAttachmentsRequest,
   output: DescribeTransitGatewayVpcAttachmentsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransitGatewayVpcAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -87554,6 +88400,8 @@ export const describeTrunkInterfaceAssociations: API.OperationMethod<
   input: DescribeTrunkInterfaceAssociationsRequest,
   output: DescribeTrunkInterfaceAssociationsResult,
   errors: [RequestLimitExceeded, OperationNotPermitted],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTrunkInterfaceAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -87593,6 +88441,8 @@ export const describeVerifiedAccessEndpoints: API.OperationMethod<
   input: DescribeVerifiedAccessEndpointsRequest,
   output: DescribeVerifiedAccessEndpointsResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVerifiedAccessEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -87632,6 +88482,8 @@ export const describeVerifiedAccessGroups: API.OperationMethod<
   input: DescribeVerifiedAccessGroupsRequest,
   output: DescribeVerifiedAccessGroupsResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVerifiedAccessGroups",
   pagination: {
     inputToken: "NextToken",
@@ -87671,6 +88523,8 @@ export const describeVerifiedAccessInstanceLoggingConfigurations: API.OperationM
   input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
   output: DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVerifiedAccessInstanceLoggingConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -87710,6 +88564,8 @@ export const describeVerifiedAccessInstances: API.OperationMethod<
   input: DescribeVerifiedAccessInstancesRequest,
   output: DescribeVerifiedAccessInstancesResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVerifiedAccessInstances",
   pagination: {
     inputToken: "NextToken",
@@ -87749,6 +88605,8 @@ export const describeVerifiedAccessTrustProviders: API.OperationMethod<
   input: DescribeVerifiedAccessTrustProvidersRequest,
   output: DescribeVerifiedAccessTrustProvidersResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVerifiedAccessTrustProviders",
   pagination: {
     inputToken: "NextToken",
@@ -87783,6 +88641,8 @@ export const describeVolumeAttribute: API.OperationMethod<
     InvalidParameterValue,
     InvalidVolumeNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVolumeAttribute",
 }));
 export type DescribeVolumesError =
@@ -87835,6 +88695,8 @@ export const describeVolumes: API.OperationMethod<
     InvalidVolumeNotFound,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVolumes",
   pagination: {
     inputToken: "NextToken",
@@ -87877,6 +88739,8 @@ export const describeVolumesModifications: API.OperationMethod<
   input: DescribeVolumesModificationsRequest,
   output: DescribeVolumesModificationsResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVolumesModifications",
   pagination: {
     inputToken: "NextToken",
@@ -87955,6 +88819,8 @@ export const describeVolumeStatus: API.OperationMethod<
   input: DescribeVolumeStatusRequest,
   output: DescribeVolumeStatusResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVolumeStatus",
   pagination: {
     inputToken: "NextToken",
@@ -87984,6 +88850,8 @@ export const describeVpcAttribute: API.OperationMethod<
     InvalidParameterCombination,
     InvalidVpcIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcAttribute",
 }));
 export type DescribeVpcBlockPublicAccessExclusionsError =
@@ -88007,6 +88875,8 @@ export const describeVpcBlockPublicAccessExclusions: API.OperationMethod<
     MissingParameter,
     VpcBlockPublicAccessExclusionIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcBlockPublicAccessExclusions",
 }));
 export type DescribeVpcBlockPublicAccessOptionsError = CommonErrors;
@@ -88022,6 +88892,8 @@ export const describeVpcBlockPublicAccessOptions: API.OperationMethod<
   input: DescribeVpcBlockPublicAccessOptionsRequest,
   output: DescribeVpcBlockPublicAccessOptionsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcBlockPublicAccessOptions",
 }));
 export type DescribeVpcClassicLinkError =
@@ -88043,6 +88915,8 @@ export const describeVpcClassicLink: API.OperationMethod<
   input: DescribeVpcClassicLinkRequest,
   output: DescribeVpcClassicLinkResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcClassicLink",
 }));
 export type DescribeVpcClassicLinkDnsSupportError =
@@ -88082,6 +88956,8 @@ export const describeVpcClassicLinkDnsSupport: API.OperationMethod<
   input: DescribeVpcClassicLinkDnsSupportRequest,
   output: DescribeVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcClassicLinkDnsSupport",
   pagination: {
     inputToken: "NextToken",
@@ -88108,6 +88984,8 @@ export const describeVpcEncryptionControls: API.OperationMethod<
   input: DescribeVpcEncryptionControlsRequest,
   output: DescribeVpcEncryptionControlsResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEncryptionControls",
 }));
 export type DescribeVpcEndpointAssociationsError = CommonErrors;
@@ -88124,6 +89002,8 @@ export const describeVpcEndpointAssociations: API.OperationMethod<
   input: DescribeVpcEndpointAssociationsRequest,
   output: DescribeVpcEndpointAssociationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpointAssociations",
 }));
 export type DescribeVpcEndpointConnectionNotificationsError =
@@ -88158,6 +89038,8 @@ export const describeVpcEndpointConnectionNotifications: API.OperationMethod<
   input: DescribeVpcEndpointConnectionNotificationsRequest,
   output: DescribeVpcEndpointConnectionNotificationsResult,
   errors: [RequestLimitExceeded, InvalidConnectionNotification],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpointConnectionNotifications",
   pagination: {
     inputToken: "NextToken",
@@ -88195,6 +89077,8 @@ export const describeVpcEndpointConnections: API.OperationMethod<
   input: DescribeVpcEndpointConnectionsRequest,
   output: DescribeVpcEndpointConnectionsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpointConnections",
   pagination: {
     inputToken: "NextToken",
@@ -88237,6 +89121,8 @@ export const describeVpcEndpoints: API.OperationMethod<
   input: DescribeVpcEndpointsRequest,
   output: DescribeVpcEndpointsResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -88276,6 +89162,8 @@ export const describeVpcEndpointServiceConfigurations: API.OperationMethod<
   input: DescribeVpcEndpointServiceConfigurationsRequest,
   output: DescribeVpcEndpointServiceConfigurationsResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointServiceIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpointServiceConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -88321,6 +89209,8 @@ export const describeVpcEndpointServicePermissions: API.OperationMethod<
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpointServicePermissions",
   pagination: {
     inputToken: "NextToken",
@@ -88353,6 +89243,8 @@ export const describeVpcEndpointServices: API.OperationMethod<
   input: DescribeVpcEndpointServicesRequest,
   output: DescribeVpcEndpointServicesResult,
   errors: [RequestLimitExceeded, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcEndpointServices",
 }));
 export type DescribeVpcPeeringConnectionsError =
@@ -88393,6 +89285,8 @@ export const describeVpcPeeringConnections: API.OperationMethod<
     InvalidVpcPeeringConnectionIDNotFound,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcPeeringConnections",
   pagination: {
     inputToken: "NextToken",
@@ -88441,6 +89335,8 @@ export const describeVpcs: API.OperationMethod<
     ParseError,
     RequestError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpcs",
   pagination: {
     inputToken: "NextToken",
@@ -88480,6 +89376,8 @@ export const describeVpnConcentrators: API.OperationMethod<
   input: DescribeVpnConcentratorsRequest,
   output: DescribeVpnConcentratorsResult,
   errors: [RequestLimitExceeded, InvalidVpnConcentratorIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpnConcentrators",
   pagination: {
     inputToken: "NextToken",
@@ -88507,6 +89405,8 @@ export const describeVpnConnections: API.OperationMethod<
   input: DescribeVpnConnectionsRequest,
   output: DescribeVpnConnectionsResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpnConnections",
 }));
 export type DescribeVpnGatewaysError =
@@ -88529,6 +89429,8 @@ export const describeVpnGateways: API.OperationMethod<
   input: DescribeVpnGatewaysRequest,
   output: DescribeVpnGatewaysResult,
   errors: [RequestLimitExceeded, InvalidVpnGatewayIDNotFound, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeVpnGateways",
 }));
 export type DetachClassicLinkVpcError =
@@ -88560,6 +89462,8 @@ export const detachClassicLinkVpc: API.OperationMethod<
     InvalidVpcIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachClassicLinkVpc",
 }));
 export type DetachInternetGatewayError =
@@ -88591,6 +89495,8 @@ export const detachInternetGateway: API.OperationMethod<
     InvalidInternetGatewayIdMalformed,
     InvalidVpcIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachInternetGateway",
 }));
 export type DetachNetworkInterfaceError =
@@ -88616,6 +89522,8 @@ export const detachNetworkInterface: API.OperationMethod<
     InvalidAttachmentIDNotFound,
     InvalidNetworkInterfaceAttachmentIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachNetworkInterface",
 }));
 export type DetachVerifiedAccessTrustProviderError =
@@ -88639,6 +89547,8 @@ export const detachVerifiedAccessTrustProvider: API.OperationMethod<
     DependencyViolation,
     InvalidVerifiedAccessInstanceIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachVerifiedAccessTrustProvider",
 }));
 export type DetachVolumeError =
@@ -88682,6 +89592,8 @@ export const detachVolume: API.OperationMethod<
     InvalidParameterValue,
     InvalidVolumeNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachVolume",
 }));
 export type DetachVpnGatewayError =
@@ -88715,6 +89627,8 @@ export const detachVpnGateway: API.OperationMethod<
     InvalidVpnGatewayIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachVpnGateway",
 }));
 export type DisableAddressTransferError =
@@ -88733,6 +89647,8 @@ export const disableAddressTransfer: API.OperationMethod<
   input: DisableAddressTransferRequest,
   output: DisableAddressTransferResult,
   errors: [RequestLimitExceeded, InvalidElasticIpIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAddressTransfer",
 }));
 export type DisableAllowedImagesSettingsError = CommonErrors;
@@ -88759,6 +89675,8 @@ export const disableAllowedImagesSettings: API.OperationMethod<
   input: DisableAllowedImagesSettingsRequest,
   output: DisableAllowedImagesSettingsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAllowedImagesSettings",
 }));
 export type DisableAwsNetworkPerformanceMetricSubscriptionError =
@@ -88777,6 +89695,8 @@ export const disableAwsNetworkPerformanceMetricSubscription: API.OperationMethod
   input: DisableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: DisableAwsNetworkPerformanceMetricSubscriptionResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableAwsNetworkPerformanceMetricSubscription",
 }));
 export type DisableCapacityManagerError =
@@ -88796,6 +89716,8 @@ export const disableCapacityManager: API.OperationMethod<
   input: DisableCapacityManagerRequest,
   output: DisableCapacityManagerResult,
   errors: [RequestLimitExceeded, CapacityManagerDisabled],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableCapacityManager",
 }));
 export type DisableEbsEncryptionByDefaultError = CommonErrors;
@@ -88820,6 +89742,8 @@ export const disableEbsEncryptionByDefault: API.OperationMethod<
   input: DisableEbsEncryptionByDefaultRequest,
   output: DisableEbsEncryptionByDefaultResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableEbsEncryptionByDefault",
 }));
 export type DisableFastLaunchError =
@@ -88844,6 +89768,8 @@ export const disableFastLaunch: API.OperationMethod<
   input: DisableFastLaunchRequest,
   output: DisableFastLaunchResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableFastLaunch",
 }));
 export type DisableFastSnapshotRestoresError =
@@ -88862,6 +89788,8 @@ export const disableFastSnapshotRestores: API.OperationMethod<
   input: DisableFastSnapshotRestoresRequest,
   output: DisableFastSnapshotRestoresResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableFastSnapshotRestores",
 }));
 export type DisableImageError =
@@ -88895,6 +89823,8 @@ export const disableImage: API.OperationMethod<
   input: DisableImageRequest,
   output: DisableImageResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableImage",
 }));
 export type DisableImageBlockPublicAccessError = CommonErrors;
@@ -88916,6 +89846,8 @@ export const disableImageBlockPublicAccess: API.OperationMethod<
   input: DisableImageBlockPublicAccessRequest,
   output: DisableImageBlockPublicAccessResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableImageBlockPublicAccess",
 }));
 export type DisableImageDeprecationError =
@@ -88937,6 +89869,8 @@ export const disableImageDeprecation: API.OperationMethod<
   input: DisableImageDeprecationRequest,
   output: DisableImageDeprecationResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableImageDeprecation",
 }));
 export type DisableImageDeregistrationProtectionError =
@@ -88963,6 +89897,8 @@ export const disableImageDeregistrationProtection: API.OperationMethod<
   input: DisableImageDeregistrationProtectionRequest,
   output: DisableImageDeregistrationProtectionResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableImageDeregistrationProtection",
 }));
 export type DisableInstanceSqlHaStandbyDetectionsError =
@@ -88984,6 +89920,8 @@ export const disableInstanceSqlHaStandbyDetections: API.OperationMethod<
   input: DisableInstanceSqlHaStandbyDetectionsRequest,
   output: DisableInstanceSqlHaStandbyDetectionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableInstanceSqlHaStandbyDetections",
 }));
 export type DisableIpamOrganizationAdminAccountError =
@@ -89002,6 +89940,8 @@ export const disableIpamOrganizationAdminAccount: API.OperationMethod<
   input: DisableIpamOrganizationAdminAccountRequest,
   output: DisableIpamOrganizationAdminAccountResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableIpamOrganizationAdminAccount",
 }));
 export type DisableIpamPolicyError =
@@ -89027,6 +89967,8 @@ export const disableIpamPolicy: API.OperationMethod<
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableIpamPolicy",
 }));
 export type DisableRouteServerPropagationError =
@@ -89062,6 +90004,8 @@ export const disableRouteServerPropagation: API.OperationMethod<
   input: DisableRouteServerPropagationRequest,
   output: DisableRouteServerPropagationResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableRouteServerPropagation",
 }));
 export type DisableSerialConsoleAccessError = CommonErrors;
@@ -89080,6 +90024,8 @@ export const disableSerialConsoleAccess: API.OperationMethod<
   input: DisableSerialConsoleAccessRequest,
   output: DisableSerialConsoleAccessResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableSerialConsoleAccess",
 }));
 export type DisableSnapshotBlockPublicAccessError = CommonErrors;
@@ -89109,6 +90055,8 @@ export const disableSnapshotBlockPublicAccess: API.OperationMethod<
   input: DisableSnapshotBlockPublicAccessRequest,
   output: DisableSnapshotBlockPublicAccessResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableSnapshotBlockPublicAccess",
 }));
 export type DisableTransitGatewayRouteTablePropagationError =
@@ -89128,6 +90076,8 @@ export const disableTransitGatewayRouteTablePropagation: API.OperationMethod<
   input: DisableTransitGatewayRouteTablePropagationRequest,
   output: DisableTransitGatewayRouteTablePropagationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableTransitGatewayRouteTablePropagation",
 }));
 export type DisableVgwRoutePropagationError =
@@ -89147,6 +90097,8 @@ export const disableVgwRoutePropagation: API.OperationMethod<
   input: DisableVgwRoutePropagationRequest,
   output: DisableVgwRoutePropagationResponse,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableVgwRoutePropagation",
 }));
 export type DisableVpcClassicLinkError =
@@ -89169,6 +90121,8 @@ export const disableVpcClassicLink: API.OperationMethod<
   input: DisableVpcClassicLinkRequest,
   output: DisableVpcClassicLinkResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableVpcClassicLink",
 }));
 export type DisableVpcClassicLinkDnsSupportError =
@@ -89194,6 +90148,8 @@ export const disableVpcClassicLinkDnsSupport: API.OperationMethod<
   input: DisableVpcClassicLinkDnsSupportRequest,
   output: DisableVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableVpcClassicLinkDnsSupport",
 }));
 export type DisassociateAddressError =
@@ -89227,6 +90183,8 @@ export const disassociateAddress: API.OperationMethod<
     InvalidAssociationIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAddress",
 }));
 export type DisassociateCapacityReservationBillingOwnerError =
@@ -89253,6 +90211,8 @@ export const disassociateCapacityReservationBillingOwner: API.OperationMethod<
     InvalidCapacityReservationIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateCapacityReservationBillingOwner",
 }));
 export type DisassociateClientVpnTargetNetworkError =
@@ -89285,6 +90245,8 @@ export const disassociateClientVpnTargetNetwork: API.OperationMethod<
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateClientVpnTargetNetwork",
 }));
 export type DisassociateEnclaveCertificateIamRoleError =
@@ -89312,6 +90274,8 @@ export const disassociateEnclaveCertificateIamRole: API.OperationMethod<
     InvalidCertificateArnMalformed,
     InvalidRoleArnMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateEnclaveCertificateIamRole",
 }));
 export type DisassociateIamInstanceProfileError =
@@ -89333,6 +90297,8 @@ export const disassociateIamInstanceProfile: API.OperationMethod<
   input: DisassociateIamInstanceProfileRequest,
   output: DisassociateIamInstanceProfileResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateIamInstanceProfile",
 }));
 export type DisassociateInstanceEventWindowError =
@@ -89355,6 +90321,8 @@ export const disassociateInstanceEventWindow: API.OperationMethod<
   input: DisassociateInstanceEventWindowRequest,
   output: DisassociateInstanceEventWindowResult,
   errors: [RequestLimitExceeded, DependencyViolation, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateInstanceEventWindow",
 }));
 export type DisassociateIpamByoasnError =
@@ -89374,6 +90342,8 @@ export const disassociateIpamByoasn: API.OperationMethod<
   input: DisassociateIpamByoasnRequest,
   output: DisassociateIpamByoasnResult,
   errors: [RequestLimitExceeded, InvalidCidrNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateIpamByoasn",
 }));
 export type DisassociateIpamResourceDiscoveryError =
@@ -89397,6 +90367,8 @@ export const disassociateIpamResourceDiscovery: API.OperationMethod<
     InvalidIpamResourceDiscoveryAssociationIdMalformed,
     InvalidIpamResourceDiscoveryAssociationIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateIpamResourceDiscovery",
 }));
 export type DisassociateNatGatewayAddressError =
@@ -89431,6 +90403,8 @@ export const disassociateNatGatewayAddress: API.OperationMethod<
     NatGatewayMalformed,
     NatGatewayNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateNatGatewayAddress",
 }));
 export type DisassociateRouteServerError =
@@ -89460,6 +90434,8 @@ export const disassociateRouteServer: API.OperationMethod<
     InvalidVpcIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateRouteServer",
 }));
 export type DisassociateRouteTableError =
@@ -89490,6 +90466,8 @@ export const disassociateRouteTable: API.OperationMethod<
     InvalidRouteTableIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateRouteTable",
 }));
 export type DisassociateSecurityGroupVpcError =
@@ -89511,6 +90489,8 @@ export const disassociateSecurityGroupVpc: API.OperationMethod<
   input: DisassociateSecurityGroupVpcRequest,
   output: DisassociateSecurityGroupVpcResult,
   errors: [RequestLimitExceeded, InvalidGroupIdMalformed, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSecurityGroupVpc",
 }));
 export type DisassociateSubnetCidrBlockError =
@@ -89534,6 +90514,8 @@ export const disassociateSubnetCidrBlock: API.OperationMethod<
     InvalidSubnetCidrBlockAssociationIDNotFound,
     InvalidSubnetCidrBlockAssociationIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateSubnetCidrBlock",
 }));
 export type DisassociateTransitGatewayMulticastDomainError =
@@ -89557,6 +90539,8 @@ export const disassociateTransitGatewayMulticastDomain: API.OperationMethod<
     InvalidTransitGatewayMulticastDomainIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTransitGatewayMulticastDomain",
 }));
 export type DisassociateTransitGatewayPolicyTableError =
@@ -89582,6 +90566,8 @@ export const disassociateTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTransitGatewayPolicyTable",
 }));
 export type DisassociateTransitGatewayRouteTableError =
@@ -89601,6 +90587,8 @@ export const disassociateTransitGatewayRouteTable: API.OperationMethod<
   input: DisassociateTransitGatewayRouteTableRequest,
   output: DisassociateTransitGatewayRouteTableResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTransitGatewayRouteTable",
 }));
 export type DisassociateTrunkInterfaceError =
@@ -89619,6 +90607,8 @@ export const disassociateTrunkInterface: API.OperationMethod<
   input: DisassociateTrunkInterfaceRequest,
   output: DisassociateTrunkInterfaceResult,
   errors: [RequestLimitExceeded, OperationNotPermitted],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTrunkInterface",
 }));
 export type DisassociateVpcCidrBlockError =
@@ -89652,6 +90642,8 @@ export const disassociateVpcCidrBlock: API.OperationMethod<
     InvalidVpcCidrBlockAssociationIdErrorNotFound,
     OperationNotPermitted,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateVpcCidrBlock",
 }));
 export type EnableAddressTransferError =
@@ -89670,6 +90662,8 @@ export const enableAddressTransfer: API.OperationMethod<
   input: EnableAddressTransferRequest,
   output: EnableAddressTransferResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAddressTransfer",
 }));
 export type EnableAllowedImagesSettingsError = CommonErrors;
@@ -89708,6 +90702,8 @@ export const enableAllowedImagesSettings: API.OperationMethod<
   input: EnableAllowedImagesSettingsRequest,
   output: EnableAllowedImagesSettingsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAllowedImagesSettings",
 }));
 export type EnableAwsNetworkPerformanceMetricSubscriptionError =
@@ -89726,6 +90722,8 @@ export const enableAwsNetworkPerformanceMetricSubscription: API.OperationMethod<
   input: EnableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: EnableAwsNetworkPerformanceMetricSubscriptionResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableAwsNetworkPerformanceMetricSubscription",
 }));
 export type EnableCapacityManagerError = CommonErrors;
@@ -89742,6 +90740,8 @@ export const enableCapacityManager: API.OperationMethod<
   input: EnableCapacityManagerRequest,
   output: EnableCapacityManagerResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableCapacityManager",
 }));
 export type EnableEbsEncryptionByDefaultError = CommonErrors;
@@ -89769,6 +90769,8 @@ export const enableEbsEncryptionByDefault: API.OperationMethod<
   input: EnableEbsEncryptionByDefaultRequest,
   output: EnableEbsEncryptionByDefaultResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableEbsEncryptionByDefault",
 }));
 export type EnableFastLaunchError =
@@ -89795,6 +90797,8 @@ export const enableFastLaunch: API.OperationMethod<
   input: EnableFastLaunchRequest,
   output: EnableFastLaunchResult,
   errors: [RequestLimitExceeded, InvalidRequest],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableFastLaunch",
 }));
 export type EnableFastSnapshotRestoresError =
@@ -89818,6 +90822,8 @@ export const enableFastSnapshotRestores: API.OperationMethod<
   input: EnableFastSnapshotRestoresRequest,
   output: EnableFastSnapshotRestoresResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableFastSnapshotRestores",
 }));
 export type EnableImageError =
@@ -89845,6 +90851,8 @@ export const enableImage: API.OperationMethod<
   input: EnableImageRequest,
   output: EnableImageResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableImage",
 }));
 export type EnableImageBlockPublicAccessError =
@@ -89873,6 +90881,8 @@ export const enableImageBlockPublicAccess: API.OperationMethod<
   input: EnableImageBlockPublicAccessRequest,
   output: EnableImageBlockPublicAccessResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableImageBlockPublicAccess",
 }));
 export type EnableImageDeprecationError =
@@ -89894,6 +90904,8 @@ export const enableImageDeprecation: API.OperationMethod<
   input: EnableImageDeprecationRequest,
   output: EnableImageDeprecationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableImageDeprecation",
 }));
 export type EnableImageDeregistrationProtectionError =
@@ -89918,6 +90930,8 @@ export const enableImageDeregistrationProtection: API.OperationMethod<
   input: EnableImageDeregistrationProtectionRequest,
   output: EnableImageDeregistrationProtectionResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableImageDeregistrationProtection",
 }));
 export type EnableInstanceSqlHaStandbyDetectionsError =
@@ -89946,6 +90960,8 @@ export const enableInstanceSqlHaStandbyDetections: API.OperationMethod<
   input: EnableInstanceSqlHaStandbyDetectionsRequest,
   output: EnableInstanceSqlHaStandbyDetectionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableInstanceSqlHaStandbyDetections",
 }));
 export type EnableIpamOrganizationAdminAccountError =
@@ -89964,6 +90980,8 @@ export const enableIpamOrganizationAdminAccount: API.OperationMethod<
   input: EnableIpamOrganizationAdminAccountRequest,
   output: EnableIpamOrganizationAdminAccountResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableIpamOrganizationAdminAccount",
 }));
 export type EnableIpamPolicyError =
@@ -89991,6 +91009,8 @@ export const enableIpamPolicy: API.OperationMethod<
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableIpamPolicy",
 }));
 export type EnableReachabilityAnalyzerOrganizationSharingError = CommonErrors;
@@ -90011,6 +91031,8 @@ export const enableReachabilityAnalyzerOrganizationSharing: API.OperationMethod<
   input: EnableReachabilityAnalyzerOrganizationSharingRequest,
   output: EnableReachabilityAnalyzerOrganizationSharingResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableReachabilityAnalyzerOrganizationSharing",
 }));
 export type EnableRouteServerPropagationError =
@@ -90033,6 +91055,8 @@ export const enableRouteServerPropagation: API.OperationMethod<
   input: EnableRouteServerPropagationRequest,
   output: EnableRouteServerPropagationResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableRouteServerPropagation",
 }));
 export type EnableSerialConsoleAccessError = CommonErrors;
@@ -90050,6 +91074,8 @@ export const enableSerialConsoleAccess: API.OperationMethod<
   input: EnableSerialConsoleAccessRequest,
   output: EnableSerialConsoleAccessResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSerialConsoleAccess",
 }));
 export type EnableSnapshotBlockPublicAccessError =
@@ -90085,6 +91111,8 @@ export const enableSnapshotBlockPublicAccess: API.OperationMethod<
   input: EnableSnapshotBlockPublicAccessRequest,
   output: EnableSnapshotBlockPublicAccessResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableSnapshotBlockPublicAccess",
 }));
 export type EnableTransitGatewayRouteTablePropagationError =
@@ -90104,6 +91132,8 @@ export const enableTransitGatewayRouteTablePropagation: API.OperationMethod<
   input: EnableTransitGatewayRouteTablePropagationRequest,
   output: EnableTransitGatewayRouteTablePropagationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableTransitGatewayRouteTablePropagation",
 }));
 export type EnableVgwRoutePropagationError =
@@ -90123,6 +91153,8 @@ export const enableVgwRoutePropagation: API.OperationMethod<
   input: EnableVgwRoutePropagationRequest,
   output: EnableVgwRoutePropagationResponse,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableVgwRoutePropagation",
 }));
 export type EnableVolumeIOError = CommonErrors;
@@ -90139,6 +91171,8 @@ export const enableVolumeIO: API.OperationMethod<
   input: EnableVolumeIORequest,
   output: EnableVolumeIOResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableVolumeIO",
 }));
 export type EnableVpcClassicLinkError =
@@ -90165,6 +91199,8 @@ export const enableVpcClassicLink: API.OperationMethod<
   input: EnableVpcClassicLinkRequest,
   output: EnableVpcClassicLinkResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableVpcClassicLink",
 }));
 export type EnableVpcClassicLinkDnsSupportError =
@@ -90192,6 +91228,8 @@ export const enableVpcClassicLinkDnsSupport: API.OperationMethod<
   input: EnableVpcClassicLinkDnsSupportRequest,
   output: EnableVpcClassicLinkDnsSupportResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableVpcClassicLinkDnsSupport",
 }));
 export type ExportClientVpnClientCertificateRevocationListError =
@@ -90210,6 +91248,8 @@ export const exportClientVpnClientCertificateRevocationList: API.OperationMethod
   input: ExportClientVpnClientCertificateRevocationListRequest,
   output: ExportClientVpnClientCertificateRevocationListResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportClientVpnClientCertificateRevocationList",
 }));
 export type ExportClientVpnClientConfigurationError =
@@ -90230,6 +91270,8 @@ export const exportClientVpnClientConfiguration: API.OperationMethod<
   input: ExportClientVpnClientConfigurationRequest,
   output: ExportClientVpnClientConfigurationResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportClientVpnClientConfiguration",
 }));
 export type ExportImageError =
@@ -90250,6 +91292,8 @@ export const exportImage: API.OperationMethod<
   input: ExportImageRequest,
   output: ExportImageResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportImage",
 }));
 export type ExportTransitGatewayRoutesError =
@@ -90273,6 +91317,8 @@ export const exportTransitGatewayRoutes: API.OperationMethod<
   input: ExportTransitGatewayRoutesRequest,
   output: ExportTransitGatewayRoutesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportTransitGatewayRoutes",
 }));
 export type ExportVerifiedAccessInstanceClientConfigurationError =
@@ -90291,6 +91337,8 @@ export const exportVerifiedAccessInstanceClientConfiguration: API.OperationMetho
   input: ExportVerifiedAccessInstanceClientConfigurationRequest,
   output: ExportVerifiedAccessInstanceClientConfigurationResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportVerifiedAccessInstanceClientConfiguration",
 }));
 export type GetActiveVpnTunnelStatusError =
@@ -90309,6 +91357,8 @@ export const getActiveVpnTunnelStatus: API.OperationMethod<
   input: GetActiveVpnTunnelStatusRequest,
   output: GetActiveVpnTunnelStatusResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetActiveVpnTunnelStatus",
 }));
 export type GetAllowedImagesSettingsError = CommonErrors;
@@ -90333,6 +91383,8 @@ export const getAllowedImagesSettings: API.OperationMethod<
   input: GetAllowedImagesSettingsRequest,
   output: GetAllowedImagesSettingsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAllowedImagesSettings",
 }));
 export type GetAssociatedEnclaveCertificateIamRolesError =
@@ -90359,6 +91411,8 @@ export const getAssociatedEnclaveCertificateIamRoles: API.OperationMethod<
     InvalidCertificateArnMalformed,
     UnauthorizedOperation,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssociatedEnclaveCertificateIamRoles",
 }));
 export type GetAssociatedIpv6PoolCidrsError =
@@ -90392,6 +91446,8 @@ export const getAssociatedIpv6PoolCidrs: API.OperationMethod<
   input: GetAssociatedIpv6PoolCidrsRequest,
   output: GetAssociatedIpv6PoolCidrsResult,
   errors: [RequestLimitExceeded, InvalidIpv6PoolIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssociatedIpv6PoolCidrs",
   pagination: {
     inputToken: "NextToken",
@@ -90431,6 +91487,8 @@ export const getAwsNetworkPerformanceData: API.OperationMethod<
   input: GetAwsNetworkPerformanceDataRequest,
   output: GetAwsNetworkPerformanceDataResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAwsNetworkPerformanceData",
   pagination: {
     inputToken: "NextToken",
@@ -90452,6 +91510,8 @@ export const getCapacityManagerAttributes: API.OperationMethod<
   input: GetCapacityManagerAttributesRequest,
   output: GetCapacityManagerAttributesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapacityManagerAttributes",
 }));
 export type GetCapacityManagerMetricDataError =
@@ -90486,6 +91546,8 @@ export const getCapacityManagerMetricData: API.OperationMethod<
   input: GetCapacityManagerMetricDataRequest,
   output: GetCapacityManagerMetricDataResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapacityManagerMetricData",
   pagination: {
     inputToken: "NextToken",
@@ -90526,6 +91588,8 @@ export const getCapacityManagerMetricDimensions: API.OperationMethod<
   input: GetCapacityManagerMetricDimensionsRequest,
   output: GetCapacityManagerMetricDimensionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapacityManagerMetricDimensions",
   pagination: {
     inputToken: "NextToken",
@@ -90562,6 +91626,8 @@ export const getCapacityManagerMonitoredTagKeys: API.OperationMethod<
   input: GetCapacityManagerMonitoredTagKeysRequest,
   output: GetCapacityManagerMonitoredTagKeysResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapacityManagerMonitoredTagKeys",
   pagination: {
     inputToken: "NextToken",
@@ -90588,6 +91654,8 @@ export const getCapacityReservationUsage: API.OperationMethod<
   input: GetCapacityReservationUsageRequest,
   output: GetCapacityReservationUsageResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCapacityReservationUsage",
 }));
 export type GetCoipPoolUsageError =
@@ -90606,6 +91674,8 @@ export const getCoipPoolUsage: API.OperationMethod<
   input: GetCoipPoolUsageRequest,
   output: GetCoipPoolUsageResult,
   errors: [RequestLimitExceeded, InvalidPoolIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCoipPoolUsage",
 }));
 export type GetConsoleOutputError =
@@ -90635,6 +91705,8 @@ export const getConsoleOutput: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConsoleOutput",
 }));
 export type GetConsoleScreenshotError =
@@ -90663,6 +91735,8 @@ export const getConsoleScreenshot: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConsoleScreenshot",
 }));
 export type GetDeclarativePoliciesReportSummaryError =
@@ -90691,6 +91765,8 @@ export const getDeclarativePoliciesReportSummary: API.OperationMethod<
   input: GetDeclarativePoliciesReportSummaryRequest,
   output: GetDeclarativePoliciesReportSummaryResult,
   errors: [RequestLimitExceeded, InvalidDeclarativePoliciesReportIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeclarativePoliciesReportSummary",
 }));
 export type GetDefaultCreditSpecificationError =
@@ -90713,6 +91789,8 @@ export const getDefaultCreditSpecification: API.OperationMethod<
   input: GetDefaultCreditSpecificationRequest,
   output: GetDefaultCreditSpecificationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDefaultCreditSpecification",
 }));
 export type GetEbsDefaultKmsKeyIdError = CommonErrors;
@@ -90731,6 +91809,8 @@ export const getEbsDefaultKmsKeyId: API.OperationMethod<
   input: GetEbsDefaultKmsKeyIdRequest,
   output: GetEbsDefaultKmsKeyIdResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEbsDefaultKmsKeyId",
 }));
 export type GetEbsEncryptionByDefaultError = CommonErrors;
@@ -90750,6 +91830,8 @@ export const getEbsEncryptionByDefault: API.OperationMethod<
   input: GetEbsEncryptionByDefaultRequest,
   output: GetEbsEncryptionByDefaultResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEbsEncryptionByDefault",
 }));
 export type GetEnabledIpamPolicyError = CommonErrors;
@@ -90767,6 +91849,8 @@ export const getEnabledIpamPolicy: API.OperationMethod<
   input: GetEnabledIpamPolicyRequest,
   output: GetEnabledIpamPolicyResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnabledIpamPolicy",
 }));
 export type GetFlowLogsIntegrationTemplateError = CommonErrors;
@@ -90796,6 +91880,8 @@ export const getFlowLogsIntegrationTemplate: API.OperationMethod<
   input: GetFlowLogsIntegrationTemplateRequest,
   output: GetFlowLogsIntegrationTemplateResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFlowLogsIntegrationTemplate",
 }));
 export type GetGroupsForCapacityReservationError =
@@ -90829,6 +91915,8 @@ export const getGroupsForCapacityReservation: API.OperationMethod<
   input: GetGroupsForCapacityReservationRequest,
   output: GetGroupsForCapacityReservationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupsForCapacityReservation",
   pagination: {
     inputToken: "NextToken",
@@ -90855,6 +91943,8 @@ export const getHostReservationPurchasePreview: API.OperationMethod<
   input: GetHostReservationPurchasePreviewRequest,
   output: GetHostReservationPurchasePreviewResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHostReservationPurchasePreview",
 }));
 export type GetImageAncestryError =
@@ -90875,6 +91965,8 @@ export const getImageAncestry: API.OperationMethod<
   input: GetImageAncestryRequest,
   output: GetImageAncestryResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImageAncestry",
 }));
 export type GetImageBlockPublicAccessStateError = CommonErrors;
@@ -90894,6 +91986,8 @@ export const getImageBlockPublicAccessState: API.OperationMethod<
   input: GetImageBlockPublicAccessStateRequest,
   output: GetImageBlockPublicAccessStateResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetImageBlockPublicAccessState",
 }));
 export type GetInstanceMetadataDefaultsError = CommonErrors;
@@ -90914,6 +92008,8 @@ export const getInstanceMetadataDefaults: API.OperationMethod<
   input: GetInstanceMetadataDefaultsRequest,
   output: GetInstanceMetadataDefaultsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceMetadataDefaults",
 }));
 export type GetInstanceTpmEkPubError =
@@ -90933,6 +92029,8 @@ export const getInstanceTpmEkPub: API.OperationMethod<
   input: GetInstanceTpmEkPubRequest,
   output: GetInstanceTpmEkPubResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceTpmEkPub",
 }));
 export type GetInstanceTypesFromInstanceRequirementsError =
@@ -90977,6 +92075,8 @@ export const getInstanceTypesFromInstanceRequirements: API.OperationMethod<
   input: GetInstanceTypesFromInstanceRequirementsRequest,
   output: GetInstanceTypesFromInstanceRequirementsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceTypesFromInstanceRequirements",
   pagination: {
     inputToken: "NextToken",
@@ -91013,6 +92113,8 @@ export const getInstanceUefiData: API.OperationMethod<
   input: GetInstanceUefiDataRequest,
   output: GetInstanceUefiDataResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetInstanceUefiData",
 }));
 export type GetIpamAddressHistoryError =
@@ -91046,6 +92148,8 @@ export const getIpamAddressHistory: API.OperationMethod<
   input: GetIpamAddressHistoryRequest,
   output: GetIpamAddressHistoryResult,
   errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamAddressHistory",
   pagination: {
     inputToken: "NextToken",
@@ -91090,6 +92194,8 @@ export const getIpamDiscoveredAccounts: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamDiscoveredAccounts",
   pagination: {
     inputToken: "NextToken",
@@ -91119,6 +92225,8 @@ export const getIpamDiscoveredPublicAddresses: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamDiscoveredPublicAddresses",
 }));
 export type GetIpamDiscoveredResourceCidrsError =
@@ -91157,6 +92265,8 @@ export const getIpamDiscoveredResourceCidrs: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamDiscoveredResourceCidrs",
   pagination: {
     inputToken: "NextToken",
@@ -91190,6 +92300,8 @@ export const getIpamPolicyAllocationRules: API.OperationMethod<
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamPolicyAllocationRules",
 }));
 export type GetIpamPolicyOrganizationTargetsError =
@@ -91217,6 +92329,8 @@ export const getIpamPolicyOrganizationTargets: API.OperationMethod<
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamPolicyOrganizationTargets",
 }));
 export type GetIpamPoolAllocationsError =
@@ -91253,6 +92367,8 @@ export const getIpamPoolAllocations: API.OperationMethod<
   input: GetIpamPoolAllocationsRequest,
   output: GetIpamPoolAllocationsResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamPoolAllocations",
   pagination: {
     inputToken: "NextToken",
@@ -91293,6 +92409,8 @@ export const getIpamPoolCidrs: API.OperationMethod<
   input: GetIpamPoolCidrsRequest,
   output: GetIpamPoolCidrsResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamPoolCidrs",
   pagination: {
     inputToken: "NextToken",
@@ -91337,6 +92455,8 @@ export const getIpamPrefixListResolverRules: API.OperationMethod<
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamPrefixListResolverRules",
   pagination: {
     inputToken: "NextToken",
@@ -91376,6 +92496,8 @@ export const getIpamPrefixListResolverVersionEntries: API.OperationMethod<
   input: GetIpamPrefixListResolverVersionEntriesRequest,
   output: GetIpamPrefixListResolverVersionEntriesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamPrefixListResolverVersionEntries",
   pagination: {
     inputToken: "NextToken",
@@ -91447,6 +92569,8 @@ export const getIpamPrefixListResolverVersions: API.OperationMethod<
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamPrefixListResolverVersions",
   pagination: {
     inputToken: "NextToken",
@@ -91491,6 +92615,8 @@ export const getIpamResourceCidrs: API.OperationMethod<
     InvalidIpamPoolIdNotFound,
     InvalidIpamScopeIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIpamResourceCidrs",
   pagination: {
     inputToken: "NextToken",
@@ -91523,6 +92649,8 @@ export const getLaunchTemplateData: API.OperationMethod<
   input: GetLaunchTemplateDataRequest,
   output: GetLaunchTemplateDataResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLaunchTemplateData",
 }));
 export type GetManagedPrefixListAssociationsError =
@@ -91561,6 +92689,8 @@ export const getManagedPrefixListAssociations: API.OperationMethod<
     InvalidPrefixListIDNotFound,
     InvalidPrefixListIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedPrefixListAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -91607,6 +92737,8 @@ export const getManagedPrefixListEntries: API.OperationMethod<
     InvalidPrefixListIdMalformed,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedPrefixListEntries",
   pagination: {
     inputToken: "NextToken",
@@ -91646,6 +92778,8 @@ export const getNetworkInsightsAccessScopeAnalysisFindings: API.OperationMethod<
   input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
   output: GetNetworkInsightsAccessScopeAnalysisFindingsResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkInsightsAccessScopeAnalysisFindings",
   pagination: {
     inputToken: "NextToken",
@@ -91670,6 +92804,8 @@ export const getNetworkInsightsAccessScopeContent: API.OperationMethod<
   input: GetNetworkInsightsAccessScopeContentRequest,
   output: GetNetworkInsightsAccessScopeContentResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetNetworkInsightsAccessScopeContent",
 }));
 export type GetPasswordDataError =
@@ -91709,6 +92845,8 @@ export const getPasswordData: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPasswordData",
 }));
 export type GetReservedInstancesExchangeQuoteError =
@@ -91729,6 +92867,8 @@ export const getReservedInstancesExchangeQuote: API.OperationMethod<
   input: GetReservedInstancesExchangeQuoteRequest,
   output: GetReservedInstancesExchangeQuoteResult,
   errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetReservedInstancesExchangeQuote",
 }));
 export type GetRouteServerAssociationsError =
@@ -91751,6 +92891,8 @@ export const getRouteServerAssociations: API.OperationMethod<
   input: GetRouteServerAssociationsRequest,
   output: GetRouteServerAssociationsResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouteServerAssociations",
 }));
 export type GetRouteServerPropagationsError =
@@ -91784,6 +92926,8 @@ export const getRouteServerPropagations: API.OperationMethod<
   input: GetRouteServerPropagationsRequest,
   output: GetRouteServerPropagationsResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouteServerPropagations",
 }));
 export type GetRouteServerRoutingDatabaseError =
@@ -91815,6 +92959,8 @@ export const getRouteServerRoutingDatabase: API.OperationMethod<
   input: GetRouteServerRoutingDatabaseRequest,
   output: GetRouteServerRoutingDatabaseResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRouteServerRoutingDatabase",
 }));
 export type GetSecurityGroupsForVpcError =
@@ -91849,6 +92995,8 @@ export const getSecurityGroupsForVpc: API.OperationMethod<
   input: GetSecurityGroupsForVpcRequest,
   output: GetSecurityGroupsForVpcResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed, ParseError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSecurityGroupsForVpc",
   pagination: {
     inputToken: "NextToken",
@@ -91873,6 +93021,8 @@ export const getSerialConsoleAccessStatus: API.OperationMethod<
   input: GetSerialConsoleAccessStatusRequest,
   output: GetSerialConsoleAccessStatusResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSerialConsoleAccessStatus",
 }));
 export type GetSnapshotBlockPublicAccessStateError = CommonErrors;
@@ -91892,6 +93042,8 @@ export const getSnapshotBlockPublicAccessState: API.OperationMethod<
   input: GetSnapshotBlockPublicAccessStateRequest,
   output: GetSnapshotBlockPublicAccessStateResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSnapshotBlockPublicAccessState",
 }));
 export type GetSpotPlacementScoresError = CommonErrors;
@@ -91931,6 +93083,8 @@ export const getSpotPlacementScores: API.OperationMethod<
   input: GetSpotPlacementScoresRequest,
   output: GetSpotPlacementScoresResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSpotPlacementScores",
   pagination: {
     inputToken: "NextToken",
@@ -91956,6 +93110,8 @@ export const getSubnetCidrReservations: API.OperationMethod<
   input: GetSubnetCidrReservationsRequest,
   output: GetSubnetCidrReservationsResult,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubnetCidrReservations",
 }));
 export type GetTransitGatewayAttachmentPropagationsError =
@@ -91989,6 +93145,8 @@ export const getTransitGatewayAttachmentPropagations: API.OperationMethod<
   input: GetTransitGatewayAttachmentPropagationsRequest,
   output: GetTransitGatewayAttachmentPropagationsResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayAttachmentPropagations",
   pagination: {
     inputToken: "NextToken",
@@ -92018,6 +93176,8 @@ export const getTransitGatewayMeteringPolicyEntries: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdNotFound,
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayMeteringPolicyEntries",
 }));
 export type GetTransitGatewayMulticastDomainAssociationsError =
@@ -92058,6 +93218,8 @@ export const getTransitGatewayMulticastDomainAssociations: API.OperationMethod<
     InvalidTransitGatewayMulticastDomainIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayMulticastDomainAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -92102,6 +93264,8 @@ export const getTransitGatewayPolicyTableAssociations: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayPolicyTableAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -92131,6 +93295,8 @@ export const getTransitGatewayPolicyTableEntries: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayPolicyTableEntries",
 }));
 export type GetTransitGatewayPrefixListReferencesError =
@@ -92165,6 +93331,8 @@ export const getTransitGatewayPrefixListReferences: API.OperationMethod<
   input: GetTransitGatewayPrefixListReferencesRequest,
   output: GetTransitGatewayPrefixListReferencesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayPrefixListReferences",
   pagination: {
     inputToken: "NextToken",
@@ -92204,6 +93372,8 @@ export const getTransitGatewayRouteTableAssociations: API.OperationMethod<
   input: GetTransitGatewayRouteTableAssociationsRequest,
   output: GetTransitGatewayRouteTableAssociationsResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayRouteTableAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -92243,6 +93413,8 @@ export const getTransitGatewayRouteTablePropagations: API.OperationMethod<
   input: GetTransitGatewayRouteTablePropagationsRequest,
   output: GetTransitGatewayRouteTablePropagationsResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTransitGatewayRouteTablePropagations",
   pagination: {
     inputToken: "NextToken",
@@ -92272,6 +93444,8 @@ export const getVerifiedAccessEndpointPolicy: API.OperationMethod<
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVerifiedAccessEndpointPolicy",
 }));
 export type GetVerifiedAccessEndpointTargetsError =
@@ -92290,6 +93464,8 @@ export const getVerifiedAccessEndpointTargets: API.OperationMethod<
   input: GetVerifiedAccessEndpointTargetsRequest,
   output: GetVerifiedAccessEndpointTargetsResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVerifiedAccessEndpointTargets",
 }));
 export type GetVerifiedAccessGroupPolicyError =
@@ -92308,6 +93484,8 @@ export const getVerifiedAccessGroupPolicy: API.OperationMethod<
   input: GetVerifiedAccessGroupPolicyRequest,
   output: GetVerifiedAccessGroupPolicyResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVerifiedAccessGroupPolicy",
 }));
 export type GetVpcResourcesBlockingEncryptionEnforcementError =
@@ -92328,6 +93506,8 @@ export const getVpcResourcesBlockingEncryptionEnforcement: API.OperationMethod<
   input: GetVpcResourcesBlockingEncryptionEnforcementRequest,
   output: GetVpcResourcesBlockingEncryptionEnforcementResult,
   errors: [RequestLimitExceeded, InvalidVpcIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpcResourcesBlockingEncryptionEnforcement",
 }));
 export type GetVpnConnectionDeviceSampleConfigurationError =
@@ -92347,6 +93527,8 @@ export const getVpnConnectionDeviceSampleConfiguration: API.OperationMethod<
   input: GetVpnConnectionDeviceSampleConfigurationRequest,
   output: GetVpnConnectionDeviceSampleConfigurationResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionDeviceTypeIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpnConnectionDeviceSampleConfiguration",
 }));
 export type GetVpnConnectionDeviceTypesError = CommonErrors;
@@ -92380,6 +93562,8 @@ export const getVpnConnectionDeviceTypes: API.OperationMethod<
   input: GetVpnConnectionDeviceTypesRequest,
   output: GetVpnConnectionDeviceTypesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpnConnectionDeviceTypes",
   pagination: {
     inputToken: "NextToken",
@@ -92404,6 +93588,8 @@ export const getVpnTunnelReplacementStatus: API.OperationMethod<
   input: GetVpnTunnelReplacementStatusRequest,
   output: GetVpnTunnelReplacementStatusResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVpnTunnelReplacementStatus",
 }));
 export type ImportClientVpnClientCertificateRevocationListError =
@@ -92424,6 +93610,8 @@ export const importClientVpnClientCertificateRevocationList: API.OperationMethod
   input: ImportClientVpnClientCertificateRevocationListRequest,
   output: ImportClientVpnClientCertificateRevocationListResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportClientVpnClientCertificateRevocationList",
 }));
 export type ImportImageError =
@@ -92456,6 +93644,8 @@ export const importImage: API.OperationMethod<
   input: ImportImageRequest,
   output: ImportImageResult,
   errors: [RequestLimitExceeded, MissingRequiredParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportImage",
 }));
 export type ImportInstanceError =
@@ -92487,6 +93677,8 @@ export const importInstance: API.OperationMethod<
   input: ImportInstanceRequest,
   output: ImportInstanceResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportInstance",
 }));
 export type ImportKeyPairError =
@@ -92508,6 +93700,8 @@ export const importKeyPair: API.OperationMethod<
   input: ImportKeyPairRequest,
   output: ImportKeyPairResult,
   errors: [RequestLimitExceeded, InvalidKeyPairDuplicate],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportKeyPair",
 }));
 export type ImportSnapshotError =
@@ -92529,6 +93723,8 @@ export const importSnapshot: API.OperationMethod<
   input: ImportSnapshotRequest,
   output: ImportSnapshotResult,
   errors: [RequestLimitExceeded, InvalidParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportSnapshot",
 }));
 export type ImportVolumeError = CommonErrors;
@@ -92552,6 +93748,8 @@ export const importVolume: API.OperationMethod<
   input: ImportVolumeRequest,
   output: ImportVolumeResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportVolume",
 }));
 export type ListImagesInRecycleBinError =
@@ -92587,6 +93785,8 @@ export const listImagesInRecycleBin: API.OperationMethod<
   input: ListImagesInRecycleBinRequest,
   output: ListImagesInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidAMIIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImagesInRecycleBin",
   pagination: {
     inputToken: "NextToken",
@@ -92626,6 +93826,8 @@ export const listSnapshotsInRecycleBin: API.OperationMethod<
   input: ListSnapshotsInRecycleBinRequest,
   output: ListSnapshotsInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSnapshotsInRecycleBin",
   pagination: {
     inputToken: "NextToken",
@@ -92650,6 +93852,8 @@ export const listVolumesInRecycleBin: API.OperationMethod<
   input: ListVolumesInRecycleBinRequest,
   output: ListVolumesInRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListVolumesInRecycleBin",
 }));
 export type LockSnapshotError =
@@ -92682,6 +93886,8 @@ export const lockSnapshot: API.OperationMethod<
   input: LockSnapshotRequest,
   output: LockSnapshotResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LockSnapshot",
 }));
 export type ModifyAddressAttributeError =
@@ -92705,6 +93911,8 @@ export const modifyAddressAttribute: API.OperationMethod<
     InvalidAllocationIDNotFound,
     InvalidElasticIpIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyAddressAttribute",
 }));
 export type ModifyAvailabilityZoneGroupError =
@@ -92723,6 +93931,8 @@ export const modifyAvailabilityZoneGroup: API.OperationMethod<
   input: ModifyAvailabilityZoneGroupRequest,
   output: ModifyAvailabilityZoneGroupResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyAvailabilityZoneGroup",
 }));
 export type ModifyCapacityReservationError =
@@ -92766,6 +93976,8 @@ export const modifyCapacityReservation: API.OperationMethod<
   input: ModifyCapacityReservationRequest,
   output: ModifyCapacityReservationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCapacityReservation",
 }));
 export type ModifyCapacityReservationFleetError =
@@ -92790,6 +94002,8 @@ export const modifyCapacityReservationFleet: API.OperationMethod<
   input: ModifyCapacityReservationFleetRequest,
   output: ModifyCapacityReservationFleetResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyCapacityReservationFleet",
 }));
 export type ModifyClientVpnEndpointError =
@@ -92808,6 +94022,8 @@ export const modifyClientVpnEndpoint: API.OperationMethod<
   input: ModifyClientVpnEndpointRequest,
   output: ModifyClientVpnEndpointResult,
   errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyClientVpnEndpoint",
 }));
 export type ModifyDefaultCreditSpecificationError =
@@ -92840,6 +94056,8 @@ export const modifyDefaultCreditSpecification: API.OperationMethod<
   input: ModifyDefaultCreditSpecificationRequest,
   output: ModifyDefaultCreditSpecificationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyDefaultCreditSpecification",
 }));
 export type ModifyEbsDefaultKmsKeyIdError =
@@ -92868,6 +94086,8 @@ export const modifyEbsDefaultKmsKeyId: API.OperationMethod<
   input: ModifyEbsDefaultKmsKeyIdRequest,
   output: ModifyEbsDefaultKmsKeyIdResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyEbsDefaultKmsKeyId",
 }));
 export type ModifyFleetError =
@@ -92912,6 +94132,8 @@ export const modifyFleet: API.OperationMethod<
   input: ModifyFleetRequest,
   output: ModifyFleetResult,
   errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyFleet",
 }));
 export type ModifyFpgaImageAttributeError =
@@ -92935,6 +94157,8 @@ export const modifyFpgaImageAttribute: API.OperationMethod<
     InvalidFpgaImageIDMalformed,
     InvalidFpgaImageIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyFpgaImageAttribute",
 }));
 export type ModifyHostsError = CommonErrors;
@@ -92959,6 +94183,8 @@ export const modifyHosts: API.OperationMethod<
   input: ModifyHostsRequest,
   output: ModifyHostsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyHosts",
 }));
 export type ModifyIdentityIdFormatError = CommonErrors;
@@ -92999,6 +94225,8 @@ export const modifyIdentityIdFormat: API.OperationMethod<
   input: ModifyIdentityIdFormatRequest,
   output: ModifyIdentityIdFormatResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIdentityIdFormat",
 }));
 export type ModifyIdFormatError = CommonErrors;
@@ -93040,6 +94268,8 @@ export const modifyIdFormat: API.OperationMethod<
   input: ModifyIdFormatRequest,
   output: ModifyIdFormatResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIdFormat",
 }));
 export type ModifyImageAttributeError =
@@ -93075,6 +94305,8 @@ export const modifyImageAttribute: API.OperationMethod<
     InvalidAMIIDNotFound,
     InvalidParameterCombination,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyImageAttribute",
 }));
 export type ModifyInstanceAttributeError =
@@ -93109,6 +94341,8 @@ export const modifyInstanceAttribute: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceAttribute",
 }));
 export type ModifyInstanceCapacityReservationAttributesError =
@@ -93130,6 +94364,8 @@ export const modifyInstanceCapacityReservationAttributes: API.OperationMethod<
   input: ModifyInstanceCapacityReservationAttributesRequest,
   output: ModifyInstanceCapacityReservationAttributesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceCapacityReservationAttributes",
 }));
 export type ModifyInstanceConnectEndpointError =
@@ -93157,6 +94393,8 @@ export const modifyInstanceConnectEndpoint: API.OperationMethod<
     InvalidInstanceConnectEndpointIdMalformed,
     InvalidInstanceConnectEndpointIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceConnectEndpoint",
 }));
 export type ModifyInstanceCpuOptionsError =
@@ -93184,6 +94422,8 @@ export const modifyInstanceCpuOptions: API.OperationMethod<
   input: ModifyInstanceCpuOptionsRequest,
   output: ModifyInstanceCpuOptionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceCpuOptions",
 }));
 export type ModifyInstanceCreditSpecificationError = CommonErrors;
@@ -93204,6 +94444,8 @@ export const modifyInstanceCreditSpecification: API.OperationMethod<
   input: ModifyInstanceCreditSpecificationRequest,
   output: ModifyInstanceCreditSpecificationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceCreditSpecification",
 }));
 export type ModifyInstanceEventStartTimeError =
@@ -93222,6 +94464,8 @@ export const modifyInstanceEventStartTime: API.OperationMethod<
   input: ModifyInstanceEventStartTimeRequest,
   output: ModifyInstanceEventStartTimeResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceEventStartTime",
 }));
 export type ModifyInstanceEventWindowError =
@@ -93256,6 +94500,8 @@ export const modifyInstanceEventWindow: API.OperationMethod<
     InvalidInstanceEventWindowIDNotFound,
     InvalidInstanceEventWindowIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceEventWindow",
 }));
 export type ModifyInstanceMaintenanceOptionsError =
@@ -93280,6 +94526,8 @@ export const modifyInstanceMaintenanceOptions: API.OperationMethod<
   input: ModifyInstanceMaintenanceOptionsRequest,
   output: ModifyInstanceMaintenanceOptionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceMaintenanceOptions",
 }));
 export type ModifyInstanceMetadataDefaultsError =
@@ -93306,6 +94554,8 @@ export const modifyInstanceMetadataDefaults: API.OperationMethod<
   input: ModifyInstanceMetadataDefaultsRequest,
   output: ModifyInstanceMetadataDefaultsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceMetadataDefaults",
 }));
 export type ModifyInstanceMetadataOptionsError =
@@ -93330,6 +94580,8 @@ export const modifyInstanceMetadataOptions: API.OperationMethod<
   input: ModifyInstanceMetadataOptionsRequest,
   output: ModifyInstanceMetadataOptionsResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceMetadataOptions",
 }));
 export type ModifyInstanceNetworkPerformanceOptionsError =
@@ -93349,6 +94601,8 @@ export const modifyInstanceNetworkPerformanceOptions: API.OperationMethod<
   input: ModifyInstanceNetworkPerformanceRequest,
   output: ModifyInstanceNetworkPerformanceResult,
   errors: [RequestLimitExceeded, InvalidAction],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstanceNetworkPerformanceOptions",
 }));
 export type ModifyInstancePlacementError =
@@ -93388,6 +94642,8 @@ export const modifyInstancePlacement: API.OperationMethod<
   input: ModifyInstancePlacementRequest,
   output: ModifyInstancePlacementResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyInstancePlacement",
 }));
 export type ModifyIpamError =
@@ -93406,6 +94662,8 @@ export const modifyIpam: API.OperationMethod<
   input: ModifyIpamRequest,
   output: ModifyIpamResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIpam",
 }));
 export type ModifyIpamPolicyAllocationRulesError =
@@ -93428,6 +94686,8 @@ export const modifyIpamPolicyAllocationRules: API.OperationMethod<
   input: ModifyIpamPolicyAllocationRulesRequest,
   output: ModifyIpamPolicyAllocationRulesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIpamPolicyAllocationRules",
 }));
 export type ModifyIpamPoolError =
@@ -93448,6 +94708,8 @@ export const modifyIpamPool: API.OperationMethod<
   input: ModifyIpamPoolRequest,
   output: ModifyIpamPoolResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIpamPool",
 }));
 export type ModifyIpamPrefixListResolverError =
@@ -93471,6 +94733,8 @@ export const modifyIpamPrefixListResolver: API.OperationMethod<
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIpamPrefixListResolver",
 }));
 export type ModifyIpamPrefixListResolverTargetError =
@@ -93492,6 +94756,8 @@ export const modifyIpamPrefixListResolverTarget: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverTargetIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIpamPrefixListResolverTarget",
 }));
 export type ModifyIpamResourceCidrError =
@@ -93517,6 +94783,8 @@ export const modifyIpamResourceCidr: API.OperationMethod<
     InvalidIpamScopeIdMalformed,
     InvalidParameterValue,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIpamResourceCidr",
 }));
 export type ModifyIpamResourceDiscoveryError =
@@ -93540,6 +94808,8 @@ export const modifyIpamResourceDiscovery: API.OperationMethod<
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIpamResourceDiscovery",
 }));
 export type ModifyIpamScopeError =
@@ -93558,6 +94828,8 @@ export const modifyIpamScope: API.OperationMethod<
   input: ModifyIpamScopeRequest,
   output: ModifyIpamScopeResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIpamScope",
 }));
 export type ModifyLaunchTemplateError =
@@ -93578,6 +94850,8 @@ export const modifyLaunchTemplate: API.OperationMethod<
   input: ModifyLaunchTemplateRequest,
   output: ModifyLaunchTemplateResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyLaunchTemplate",
 }));
 export type ModifyLocalGatewayRouteError =
@@ -93596,6 +94870,8 @@ export const modifyLocalGatewayRoute: API.OperationMethod<
   input: ModifyLocalGatewayRouteRequest,
   output: ModifyLocalGatewayRouteResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyLocalGatewayRoute",
 }));
 export type ModifyManagedPrefixListError =
@@ -93627,6 +94903,8 @@ export const modifyManagedPrefixList: API.OperationMethod<
     InvalidPrefixListIDNotFound,
     InvalidPrefixListIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyManagedPrefixList",
 }));
 export type ModifyNetworkInterfaceAttributeError =
@@ -93654,6 +94932,8 @@ export const modifyNetworkInterfaceAttribute: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameterCombination,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyNetworkInterfaceAttribute",
 }));
 export type ModifyPrivateDnsNameOptionsError =
@@ -93672,6 +94952,8 @@ export const modifyPrivateDnsNameOptions: API.OperationMethod<
   input: ModifyPrivateDnsNameOptionsRequest,
   output: ModifyPrivateDnsNameOptionsResult,
   errors: [RequestLimitExceeded, UnknownResource],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyPrivateDnsNameOptions",
 }));
 export type ModifyPublicIpDnsNameOptionsError =
@@ -93690,6 +94972,8 @@ export const modifyPublicIpDnsNameOptions: API.OperationMethod<
   input: ModifyPublicIpDnsNameOptionsRequest,
   output: ModifyPublicIpDnsNameOptionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyPublicIpDnsNameOptions",
 }));
 export type ModifyReservedInstancesError =
@@ -93713,6 +94997,8 @@ export const modifyReservedInstances: API.OperationMethod<
   input: ModifyReservedInstancesRequest,
   output: ModifyReservedInstancesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyReservedInstances",
 }));
 export type ModifyRouteServerError =
@@ -93746,6 +95032,8 @@ export const modifyRouteServer: API.OperationMethod<
   input: ModifyRouteServerRequest,
   output: ModifyRouteServerResult,
   errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyRouteServer",
 }));
 export type ModifySecurityGroupRulesError =
@@ -93764,6 +95052,8 @@ export const modifySecurityGroupRules: API.OperationMethod<
   input: ModifySecurityGroupRulesRequest,
   output: ModifySecurityGroupRulesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySecurityGroupRules",
 }));
 export type ModifySnapshotAttributeError =
@@ -93796,6 +95086,8 @@ export const modifySnapshotAttribute: API.OperationMethod<
     InvalidParameterCombination,
     InvalidSnapshotNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySnapshotAttribute",
 }));
 export type ModifySnapshotTierError =
@@ -93818,6 +95110,8 @@ export const modifySnapshotTier: API.OperationMethod<
   input: ModifySnapshotTierRequest,
   output: ModifySnapshotTierResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySnapshotTier",
 }));
 export type ModifySpotFleetRequestError =
@@ -93865,6 +95159,8 @@ export const modifySpotFleetRequest: API.OperationMethod<
   input: ModifySpotFleetRequestRequest,
   output: ModifySpotFleetRequestResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySpotFleetRequest",
 }));
 export type ModifySubnetAttributeError =
@@ -93901,6 +95197,8 @@ export const modifySubnetAttribute: API.OperationMethod<
   input: ModifySubnetAttributeRequest,
   output: ModifySubnetAttributeResponse,
   errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifySubnetAttribute",
 }));
 export type ModifyTrafficMirrorFilterNetworkServicesError =
@@ -93922,6 +95220,8 @@ export const modifyTrafficMirrorFilterNetworkServices: API.OperationMethod<
   input: ModifyTrafficMirrorFilterNetworkServicesRequest,
   output: ModifyTrafficMirrorFilterNetworkServicesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTrafficMirrorFilterNetworkServices",
 }));
 export type ModifyTrafficMirrorFilterRuleError =
@@ -93948,6 +95248,8 @@ export const modifyTrafficMirrorFilterRule: API.OperationMethod<
     InvalidParameterValue,
     InvalidTrafficMirrorFilterRuleIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTrafficMirrorFilterRule",
 }));
 export type ModifyTrafficMirrorSessionError =
@@ -93966,6 +95268,8 @@ export const modifyTrafficMirrorSession: API.OperationMethod<
   input: ModifyTrafficMirrorSessionRequest,
   output: ModifyTrafficMirrorSessionResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTrafficMirrorSession",
 }));
 export type ModifyTransitGatewayError =
@@ -93984,6 +95288,8 @@ export const modifyTransitGateway: API.OperationMethod<
   input: ModifyTransitGatewayRequest,
   output: ModifyTransitGatewayResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTransitGateway",
 }));
 export type ModifyTransitGatewayMeteringPolicyError =
@@ -94007,6 +95313,8 @@ export const modifyTransitGatewayMeteringPolicy: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTransitGatewayMeteringPolicy",
 }));
 export type ModifyTransitGatewayPrefixListReferenceError =
@@ -94025,6 +95333,8 @@ export const modifyTransitGatewayPrefixListReference: API.OperationMethod<
   input: ModifyTransitGatewayPrefixListReferenceRequest,
   output: ModifyTransitGatewayPrefixListReferenceResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTransitGatewayPrefixListReference",
 }));
 export type ModifyTransitGatewayVpcAttachmentError =
@@ -94043,6 +95353,8 @@ export const modifyTransitGatewayVpcAttachment: API.OperationMethod<
   input: ModifyTransitGatewayVpcAttachmentRequest,
   output: ModifyTransitGatewayVpcAttachmentResult,
   errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyTransitGatewayVpcAttachment",
 }));
 export type ModifyVerifiedAccessEndpointError =
@@ -94066,6 +95378,8 @@ export const modifyVerifiedAccessEndpoint: API.OperationMethod<
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVerifiedAccessEndpoint",
 }));
 export type ModifyVerifiedAccessEndpointPolicyError =
@@ -94089,6 +95403,8 @@ export const modifyVerifiedAccessEndpointPolicy: API.OperationMethod<
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVerifiedAccessEndpointPolicy",
 }));
 export type ModifyVerifiedAccessGroupError =
@@ -94107,6 +95423,8 @@ export const modifyVerifiedAccessGroup: API.OperationMethod<
   input: ModifyVerifiedAccessGroupRequest,
   output: ModifyVerifiedAccessGroupResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVerifiedAccessGroup",
 }));
 export type ModifyVerifiedAccessGroupPolicyError =
@@ -94125,6 +95443,8 @@ export const modifyVerifiedAccessGroupPolicy: API.OperationMethod<
   input: ModifyVerifiedAccessGroupPolicyRequest,
   output: ModifyVerifiedAccessGroupPolicyResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVerifiedAccessGroupPolicy",
 }));
 export type ModifyVerifiedAccessInstanceError =
@@ -94143,6 +95463,8 @@ export const modifyVerifiedAccessInstance: API.OperationMethod<
   input: ModifyVerifiedAccessInstanceRequest,
   output: ModifyVerifiedAccessInstanceResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVerifiedAccessInstance",
 }));
 export type ModifyVerifiedAccessInstanceLoggingConfigurationError =
@@ -94161,6 +95483,8 @@ export const modifyVerifiedAccessInstanceLoggingConfiguration: API.OperationMeth
   input: ModifyVerifiedAccessInstanceLoggingConfigurationRequest,
   output: ModifyVerifiedAccessInstanceLoggingConfigurationResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVerifiedAccessInstanceLoggingConfiguration",
 }));
 export type ModifyVerifiedAccessTrustProviderError =
@@ -94179,6 +95503,8 @@ export const modifyVerifiedAccessTrustProvider: API.OperationMethod<
   input: ModifyVerifiedAccessTrustProviderRequest,
   output: ModifyVerifiedAccessTrustProviderResult,
   errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVerifiedAccessTrustProvider",
 }));
 export type ModifyVolumeError =
@@ -94223,6 +95549,8 @@ export const modifyVolume: API.OperationMethod<
     InvalidVolumeNotFound,
     InvalidVolumeIDMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVolume",
 }));
 export type ModifyVolumeAttributeError =
@@ -94254,6 +95582,8 @@ export const modifyVolumeAttribute: API.OperationMethod<
     InvalidVolumeNotFound,
     InvalidVolumeIDMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVolumeAttribute",
 }));
 export type ModifyVpcAttributeError =
@@ -94277,6 +95607,8 @@ export const modifyVpcAttribute: API.OperationMethod<
     InvalidParameterCombination,
     InvalidVpcIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcAttribute",
 }));
 export type ModifyVpcBlockPublicAccessExclusionError = CommonErrors;
@@ -94292,6 +95624,8 @@ export const modifyVpcBlockPublicAccessExclusion: API.OperationMethod<
   input: ModifyVpcBlockPublicAccessExclusionRequest,
   output: ModifyVpcBlockPublicAccessExclusionResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcBlockPublicAccessExclusion",
 }));
 export type ModifyVpcBlockPublicAccessOptionsError = CommonErrors;
@@ -94307,6 +95641,8 @@ export const modifyVpcBlockPublicAccessOptions: API.OperationMethod<
   input: ModifyVpcBlockPublicAccessOptionsRequest,
   output: ModifyVpcBlockPublicAccessOptionsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcBlockPublicAccessOptions",
 }));
 export type ModifyVpcEncryptionControlError =
@@ -94332,6 +95668,8 @@ export const modifyVpcEncryptionControl: API.OperationMethod<
     InvalidVpcEncryptionControlIdMalformed,
     InvalidVpcEncryptionControlIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcEncryptionControl",
 }));
 export type ModifyVpcEndpointError =
@@ -94353,6 +95691,8 @@ export const modifyVpcEndpoint: API.OperationMethod<
   input: ModifyVpcEndpointRequest,
   output: ModifyVpcEndpointResult,
   errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcEndpoint",
 }));
 export type ModifyVpcEndpointConnectionNotificationError =
@@ -94377,6 +95717,8 @@ export const modifyVpcEndpointConnectionNotification: API.OperationMethod<
     InvalidConnectionNotification,
     InvalidParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcEndpointConnectionNotification",
 }));
 export type ModifyVpcEndpointServiceConfigurationError =
@@ -94403,6 +95745,8 @@ export const modifyVpcEndpointServiceConfiguration: API.OperationMethod<
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcEndpointServiceConfiguration",
 }));
 export type ModifyVpcEndpointServicePayerResponsibilityError =
@@ -94421,6 +95765,8 @@ export const modifyVpcEndpointServicePayerResponsibility: API.OperationMethod<
   input: ModifyVpcEndpointServicePayerResponsibilityRequest,
   output: ModifyVpcEndpointServicePayerResponsibilityResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcEndpointServicePayerResponsibility",
 }));
 export type ModifyVpcEndpointServicePermissionsError =
@@ -94450,6 +95796,8 @@ export const modifyVpcEndpointServicePermissions: API.OperationMethod<
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcEndpointServicePermissions",
 }));
 export type ModifyVpcPeeringConnectionOptionsError =
@@ -94484,6 +95832,8 @@ export const modifyVpcPeeringConnectionOptions: API.OperationMethod<
     InvalidVpcPeeringConnectionIDNotFound,
     InvalidVpcPeeringConnectionIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcPeeringConnectionOptions",
 }));
 export type ModifyVpcTenancyError =
@@ -94512,6 +95862,8 @@ export const modifyVpcTenancy: API.OperationMethod<
   input: ModifyVpcTenancyRequest,
   output: ModifyVpcTenancyResult,
   errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpcTenancy",
 }));
 export type ModifyVpnConnectionError =
@@ -94567,6 +95919,8 @@ export const modifyVpnConnection: API.OperationMethod<
   input: ModifyVpnConnectionRequest,
   output: ModifyVpnConnectionResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpnConnection",
 }));
 export type ModifyVpnConnectionOptionsError =
@@ -94590,6 +95944,8 @@ export const modifyVpnConnectionOptions: API.OperationMethod<
   input: ModifyVpnConnectionOptionsRequest,
   output: ModifyVpnConnectionOptionsResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpnConnectionOptions",
 }));
 export type ModifyVpnTunnelCertificateError =
@@ -94608,6 +95964,8 @@ export const modifyVpnTunnelCertificate: API.OperationMethod<
   input: ModifyVpnTunnelCertificateRequest,
   output: ModifyVpnTunnelCertificateResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpnTunnelCertificate",
 }));
 export type ModifyVpnTunnelOptionsError =
@@ -94629,6 +95987,8 @@ export const modifyVpnTunnelOptions: API.OperationMethod<
   input: ModifyVpnTunnelOptionsRequest,
   output: ModifyVpnTunnelOptionsResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyVpnTunnelOptions",
 }));
 export type MonitorInstancesError =
@@ -94652,6 +96012,8 @@ export const monitorInstances: API.OperationMethod<
   input: MonitorInstancesRequest,
   output: MonitorInstancesResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MonitorInstances",
 }));
 export type MoveAddressToVpcError =
@@ -94676,6 +96038,8 @@ export const moveAddressToVpc: API.OperationMethod<
   input: MoveAddressToVpcRequest,
   output: MoveAddressToVpcResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MoveAddressToVpc",
 }));
 export type MoveByoipCidrToIpamError =
@@ -94696,6 +96060,8 @@ export const moveByoipCidrToIpam: API.OperationMethod<
   input: MoveByoipCidrToIpamRequest,
   output: MoveByoipCidrToIpamResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MoveByoipCidrToIpam",
 }));
 export type MoveCapacityReservationInstancesError =
@@ -94729,6 +96095,8 @@ export const moveCapacityReservationInstances: API.OperationMethod<
   input: MoveCapacityReservationInstancesRequest,
   output: MoveCapacityReservationInstancesResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "MoveCapacityReservationInstances",
 }));
 export type ProvisionByoipCidrError =
@@ -94758,6 +96126,8 @@ export const provisionByoipCidr: API.OperationMethod<
   input: ProvisionByoipCidrRequest,
   output: ProvisionByoipCidrResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvisionByoipCidr",
 }));
 export type ProvisionIpamByoasnError =
@@ -94776,6 +96146,8 @@ export const provisionIpamByoasn: API.OperationMethod<
   input: ProvisionIpamByoasnRequest,
   output: ProvisionIpamByoasnResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvisionIpamByoasn",
 }));
 export type ProvisionIpamPoolCidrError =
@@ -94797,6 +96169,8 @@ export const provisionIpamPoolCidr: API.OperationMethod<
   input: ProvisionIpamPoolCidrRequest,
   output: ProvisionIpamPoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvisionIpamPoolCidr",
 }));
 export type ProvisionPublicIpv4PoolCidrError =
@@ -94818,6 +96192,8 @@ export const provisionPublicIpv4PoolCidr: API.OperationMethod<
   input: ProvisionPublicIpv4PoolCidrRequest,
   output: ProvisionPublicIpv4PoolCidrResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ProvisionPublicIpv4PoolCidr",
 }));
 export type PurchaseCapacityBlockError =
@@ -94838,6 +96214,8 @@ export const purchaseCapacityBlock: API.OperationMethod<
   input: PurchaseCapacityBlockRequest,
   output: PurchaseCapacityBlockResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseCapacityBlock",
 }));
 export type PurchaseCapacityBlockExtensionError =
@@ -94857,6 +96235,8 @@ export const purchaseCapacityBlockExtension: API.OperationMethod<
   input: PurchaseCapacityBlockExtensionRequest,
   output: PurchaseCapacityBlockExtensionResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseCapacityBlockExtension",
 }));
 export type PurchaseHostReservationError = CommonErrors;
@@ -94875,6 +96255,8 @@ export const purchaseHostReservation: API.OperationMethod<
   input: PurchaseHostReservationRequest,
   output: PurchaseHostReservationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseHostReservation",
 }));
 export type PurchaseReservedInstancesOfferingError =
@@ -94905,6 +96287,8 @@ export const purchaseReservedInstancesOffering: API.OperationMethod<
   input: PurchaseReservedInstancesOfferingRequest,
   output: PurchaseReservedInstancesOfferingResult,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseReservedInstancesOffering",
 }));
 export type PurchaseScheduledInstancesError =
@@ -94932,6 +96316,8 @@ export const purchaseScheduledInstances: API.OperationMethod<
   input: PurchaseScheduledInstancesRequest,
   output: PurchaseScheduledInstancesResult,
   errors: [RequestLimitExceeded, InvalidPurchaseTokenMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseScheduledInstances",
 }));
 export type RebootInstancesError =
@@ -94966,6 +96352,8 @@ export const rebootInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootInstances",
 }));
 export type RegisterImageError =
@@ -95025,6 +96413,8 @@ export const registerImage: API.OperationMethod<
   input: RegisterImageRequest,
   output: RegisterImageResult,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterImage",
 }));
 export type RegisterInstanceEventNotificationAttributesError =
@@ -95046,6 +96436,8 @@ export const registerInstanceEventNotificationAttributes: API.OperationMethod<
   input: RegisterInstanceEventNotificationAttributesRequest,
   output: RegisterInstanceEventNotificationAttributesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterInstanceEventNotificationAttributes",
 }));
 export type RegisterTransitGatewayMulticastGroupMembersError =
@@ -95075,6 +96467,8 @@ export const registerTransitGatewayMulticastGroupMembers: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterTransitGatewayMulticastGroupMembers",
 }));
 export type RegisterTransitGatewayMulticastGroupSourcesError =
@@ -95105,6 +96499,8 @@ export const registerTransitGatewayMulticastGroupSources: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterTransitGatewayMulticastGroupSources",
 }));
 export type RejectCapacityReservationBillingOwnershipError =
@@ -95125,6 +96521,8 @@ export const rejectCapacityReservationBillingOwnership: API.OperationMethod<
   input: RejectCapacityReservationBillingOwnershipRequest,
   output: RejectCapacityReservationBillingOwnershipResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectCapacityReservationBillingOwnership",
 }));
 export type RejectTransitGatewayMulticastDomainAssociationsError =
@@ -95143,6 +96541,8 @@ export const rejectTransitGatewayMulticastDomainAssociations: API.OperationMetho
   input: RejectTransitGatewayMulticastDomainAssociationsRequest,
   output: RejectTransitGatewayMulticastDomainAssociationsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectTransitGatewayMulticastDomainAssociations",
 }));
 export type RejectTransitGatewayPeeringAttachmentError =
@@ -95166,6 +96566,8 @@ export const rejectTransitGatewayPeeringAttachment: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectTransitGatewayPeeringAttachment",
 }));
 export type RejectTransitGatewayVpcAttachmentError =
@@ -95193,6 +96595,8 @@ export const rejectTransitGatewayVpcAttachment: API.OperationMethod<
     InvalidTransitGatewayAttachmentIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectTransitGatewayVpcAttachment",
 }));
 export type RejectVpcEndpointConnectionsError =
@@ -95216,6 +96620,8 @@ export const rejectVpcEndpointConnections: API.OperationMethod<
     InvalidParameter,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectVpcEndpointConnections",
 }));
 export type RejectVpcPeeringConnectionError =
@@ -95244,6 +96650,8 @@ export const rejectVpcPeeringConnection: API.OperationMethod<
     InvalidVpcPeeringConnectionIdNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectVpcPeeringConnection",
 }));
 export type ReleaseAddressError =
@@ -95296,6 +96704,8 @@ export const releaseAddress: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReleaseAddress",
 }));
 export type ReleaseHostsError =
@@ -95324,6 +96734,8 @@ export const releaseHosts: API.OperationMethod<
   input: ReleaseHostsRequest,
   output: ReleaseHostsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReleaseHosts",
 }));
 export type ReleaseIpamPoolAllocationError =
@@ -95344,6 +96756,8 @@ export const releaseIpamPoolAllocation: API.OperationMethod<
   input: ReleaseIpamPoolAllocationRequest,
   output: ReleaseIpamPoolAllocationResult,
   errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReleaseIpamPoolAllocation",
 }));
 export type ReplaceIamInstanceProfileAssociationError = CommonErrors;
@@ -95364,6 +96778,8 @@ export const replaceIamInstanceProfileAssociation: API.OperationMethod<
   input: ReplaceIamInstanceProfileAssociationRequest,
   output: ReplaceIamInstanceProfileAssociationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplaceIamInstanceProfileAssociation",
 }));
 export type ReplaceImageCriteriaInAllowedImagesSettingsError = CommonErrors;
@@ -95387,6 +96803,8 @@ export const replaceImageCriteriaInAllowedImagesSettings: API.OperationMethod<
   input: ReplaceImageCriteriaInAllowedImagesSettingsRequest,
   output: ReplaceImageCriteriaInAllowedImagesSettingsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplaceImageCriteriaInAllowedImagesSettings",
 }));
 export type ReplaceNetworkAclAssociationError =
@@ -95416,6 +96834,8 @@ export const replaceNetworkAclAssociation: API.OperationMethod<
     InvalidAssociationIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplaceNetworkAclAssociation",
 }));
 export type ReplaceNetworkAclEntryError =
@@ -95440,6 +96860,8 @@ export const replaceNetworkAclEntry: API.OperationMethod<
     InvalidNetworkAclIDNotFound,
     InvalidNetworkAclIdMalformed,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplaceNetworkAclEntry",
 }));
 export type ReplaceRouteError =
@@ -95466,6 +96888,8 @@ export const replaceRoute: API.OperationMethod<
   input: ReplaceRouteRequest,
   output: ReplaceRouteResponse,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplaceRoute",
 }));
 export type ReplaceRouteTableAssociationError =
@@ -95494,6 +96918,8 @@ export const replaceRouteTableAssociation: API.OperationMethod<
     InvalidRouteTableAssociationIdMalformed,
     InvalidRouteTableIDNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplaceRouteTableAssociation",
 }));
 export type ReplaceTransitGatewayRouteError =
@@ -95512,6 +96938,8 @@ export const replaceTransitGatewayRoute: API.OperationMethod<
   input: ReplaceTransitGatewayRouteRequest,
   output: ReplaceTransitGatewayRouteResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplaceTransitGatewayRoute",
 }));
 export type ReplaceVpnTunnelError =
@@ -95530,6 +96958,8 @@ export const replaceVpnTunnel: API.OperationMethod<
   input: ReplaceVpnTunnelRequest,
   output: ReplaceVpnTunnelResult,
   errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReplaceVpnTunnel",
 }));
 export type ReportInstanceStatusError =
@@ -95553,6 +96983,8 @@ export const reportInstanceStatus: API.OperationMethod<
   input: ReportInstanceStatusRequest,
   output: ReportInstanceStatusResponse,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ReportInstanceStatus",
 }));
 export type RequestSpotFleetError =
@@ -95602,6 +97034,8 @@ export const requestSpotFleet: API.OperationMethod<
   input: RequestSpotFleetRequest,
   output: RequestSpotFleetResponse,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestSpotFleet",
 }));
 export type RequestSpotInstancesError =
@@ -95629,6 +97063,8 @@ export const requestSpotInstances: API.OperationMethod<
   input: RequestSpotInstancesRequest,
   output: RequestSpotInstancesResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RequestSpotInstances",
 }));
 export type ResetAddressAttributeError =
@@ -95647,6 +97083,8 @@ export const resetAddressAttribute: API.OperationMethod<
   input: ResetAddressAttributeRequest,
   output: ResetAddressAttributeResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetAddressAttribute",
 }));
 export type ResetEbsDefaultKmsKeyIdError = CommonErrors;
@@ -95668,6 +97106,8 @@ export const resetEbsDefaultKmsKeyId: API.OperationMethod<
   input: ResetEbsDefaultKmsKeyIdRequest,
   output: ResetEbsDefaultKmsKeyIdResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetEbsDefaultKmsKeyId",
 }));
 export type ResetFpgaImageAttributeError =
@@ -95687,6 +97127,8 @@ export const resetFpgaImageAttribute: API.OperationMethod<
   input: ResetFpgaImageAttributeRequest,
   output: ResetFpgaImageAttributeResult,
   errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetFpgaImageAttribute",
 }));
 export type ResetImageAttributeError =
@@ -95712,6 +97154,8 @@ export const resetImageAttribute: API.OperationMethod<
     InvalidAMIIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetImageAttribute",
 }));
 export type ResetInstanceAttributeError =
@@ -95739,6 +97183,8 @@ export const resetInstanceAttribute: API.OperationMethod<
   input: ResetInstanceAttributeRequest,
   output: ResetInstanceAttributeResponse,
   errors: [RequestLimitExceeded, InvalidParameterValue],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetInstanceAttribute",
 }));
 export type ResetNetworkInterfaceAttributeError =
@@ -95758,6 +97204,8 @@ export const resetNetworkInterfaceAttribute: API.OperationMethod<
   input: ResetNetworkInterfaceAttributeRequest,
   output: ResetNetworkInterfaceAttributeResponse,
   errors: [RequestLimitExceeded, InvalidParameterCombination],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetNetworkInterfaceAttribute",
 }));
 export type ResetSnapshotAttributeError =
@@ -95786,6 +97234,8 @@ export const resetSnapshotAttribute: API.OperationMethod<
     InvalidSnapshotIDMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetSnapshotAttribute",
 }));
 export type RestoreAddressToClassicError =
@@ -95806,6 +97256,8 @@ export const restoreAddressToClassic: API.OperationMethod<
   input: RestoreAddressToClassicRequest,
   output: RestoreAddressToClassicResult,
   errors: [RequestLimitExceeded, UnsupportedOperation],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreAddressToClassic",
 }));
 export type RestoreImageFromRecycleBinError =
@@ -95826,6 +97278,8 @@ export const restoreImageFromRecycleBin: API.OperationMethod<
   input: RestoreImageFromRecycleBinRequest,
   output: RestoreImageFromRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreImageFromRecycleBin",
 }));
 export type RestoreManagedPrefixListVersionError =
@@ -95844,6 +97298,8 @@ export const restoreManagedPrefixListVersion: API.OperationMethod<
   input: RestoreManagedPrefixListVersionRequest,
   output: RestoreManagedPrefixListVersionResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreManagedPrefixListVersion",
 }));
 export type RestoreSnapshotFromRecycleBinError =
@@ -95863,6 +97319,8 @@ export const restoreSnapshotFromRecycleBin: API.OperationMethod<
   input: RestoreSnapshotFromRecycleBinRequest,
   output: RestoreSnapshotFromRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreSnapshotFromRecycleBin",
 }));
 export type RestoreSnapshotTierError =
@@ -95886,6 +97344,8 @@ export const restoreSnapshotTier: API.OperationMethod<
   input: RestoreSnapshotTierRequest,
   output: RestoreSnapshotTierResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreSnapshotTier",
 }));
 export type RestoreVolumeFromRecycleBinError =
@@ -95905,6 +97365,8 @@ export const restoreVolumeFromRecycleBin: API.OperationMethod<
   input: RestoreVolumeFromRecycleBinRequest,
   output: RestoreVolumeFromRecycleBinResult,
   errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreVolumeFromRecycleBin",
 }));
 export type RevokeClientVpnIngressError =
@@ -95923,6 +97385,8 @@ export const revokeClientVpnIngress: API.OperationMethod<
   input: RevokeClientVpnIngressRequest,
   output: RevokeClientVpnIngressResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeClientVpnIngress",
 }));
 export type RevokeSecurityGroupEgressError =
@@ -95974,6 +97438,8 @@ export const revokeSecurityGroupEgress: API.OperationMethod<
     MissingParameter,
     UnknownParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeSecurityGroupEgress",
 }));
 export type RevokeSecurityGroupIngressError =
@@ -96024,6 +97490,8 @@ export const revokeSecurityGroupIngress: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeSecurityGroupIngress",
 }));
 export type RunInstancesError =
@@ -96102,6 +97570,8 @@ export const runInstances: API.OperationMethod<
     MissingParameter,
     ParseError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RunInstances",
 }));
 export type RunScheduledInstancesError =
@@ -96127,6 +97597,8 @@ export const runScheduledInstances: API.OperationMethod<
   input: RunScheduledInstancesRequest,
   output: RunScheduledInstancesResult,
   errors: [RequestLimitExceeded, InvalidScheduledInstance],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RunScheduledInstances",
 }));
 export type SearchLocalGatewayRoutesError =
@@ -96165,6 +97637,8 @@ export const searchLocalGatewayRoutes: API.OperationMethod<
     InvalidLocalGatewayRouteTableIDNotFound,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchLocalGatewayRoutes",
   pagination: {
     inputToken: "NextToken",
@@ -96209,6 +97683,8 @@ export const searchTransitGatewayMulticastGroups: API.OperationMethod<
     InvalidTransitGatewayMulticastDomainIdMalformed,
     InvalidTransitGatewayMulticastDomainIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchTransitGatewayMulticastGroups",
   pagination: {
     inputToken: "NextToken",
@@ -96249,6 +97725,8 @@ export const searchTransitGatewayRoutes: API.OperationMethod<
   input: SearchTransitGatewayRoutesRequest,
   output: SearchTransitGatewayRoutesResult,
   errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchTransitGatewayRoutes",
   pagination: {
     inputToken: "NextToken",
@@ -96289,6 +97767,8 @@ export const sendDiagnosticInterrupt: API.OperationMethod<
   input: SendDiagnosticInterruptRequest,
   output: SendDiagnosticInterruptResponse,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendDiagnosticInterrupt",
 }));
 export type StartDeclarativePoliciesReportError =
@@ -96345,6 +97825,8 @@ export const startDeclarativePoliciesReport: API.OperationMethod<
   input: StartDeclarativePoliciesReportRequest,
   output: StartDeclarativePoliciesReportResult,
   errors: [RequestLimitExceeded, DeclarativePoliciesAccessDenied],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDeclarativePoliciesReport",
 }));
 export type StartInstancesError =
@@ -96393,6 +97875,8 @@ export const startInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterCombination,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInstances",
 }));
 export type StartNetworkInsightsAccessScopeAnalysisError =
@@ -96416,6 +97900,8 @@ export const startNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
     IdempotentParameterMismatch,
     InvalidParameterValue,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNetworkInsightsAccessScopeAnalysis",
 }));
 export type StartNetworkInsightsAnalysisError =
@@ -96436,6 +97922,8 @@ export const startNetworkInsightsAnalysis: API.OperationMethod<
   input: StartNetworkInsightsAnalysisRequest,
   output: StartNetworkInsightsAnalysisResult,
   errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartNetworkInsightsAnalysis",
 }));
 export type StartVpcEndpointServicePrivateDnsVerificationError =
@@ -96464,6 +97952,8 @@ export const startVpcEndpointServicePrivateDnsVerification: API.OperationMethod<
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartVpcEndpointServicePrivateDnsVerification",
 }));
 export type StopInstancesError =
@@ -96525,6 +98015,8 @@ export const stopInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterCombination,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopInstances",
 }));
 export type TerminateClientVpnConnectionsError =
@@ -96543,6 +98035,8 @@ export const terminateClientVpnConnections: API.OperationMethod<
   input: TerminateClientVpnConnectionsRequest,
   output: TerminateClientVpnConnectionsResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateClientVpnConnections",
 }));
 export type TerminateInstancesError =
@@ -96640,6 +98134,8 @@ export const terminateInstances: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterCombination,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TerminateInstances",
 }));
 export type UnassignIpv6AddressesError =
@@ -96664,6 +98160,8 @@ export const unassignIpv6Addresses: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidParameterCombination,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnassignIpv6Addresses",
 }));
 export type UnassignPrivateIpAddressesError =
@@ -96690,6 +98188,8 @@ export const unassignPrivateIpAddresses: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     MissingParameter,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnassignPrivateIpAddresses",
 }));
 export type UnassignPrivateNatGatewayAddressError = CommonErrors;
@@ -96715,6 +98215,8 @@ export const unassignPrivateNatGatewayAddress: API.OperationMethod<
   input: UnassignPrivateNatGatewayAddressRequest,
   output: UnassignPrivateNatGatewayAddressResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnassignPrivateNatGatewayAddress",
 }));
 export type UnlockSnapshotError =
@@ -96735,6 +98237,8 @@ export const unlockSnapshot: API.OperationMethod<
   input: UnlockSnapshotRequest,
   output: UnlockSnapshotResult,
   errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnlockSnapshot",
 }));
 export type UnmonitorInstancesError =
@@ -96756,6 +98260,8 @@ export const unmonitorInstances: API.OperationMethod<
   input: UnmonitorInstancesRequest,
   output: UnmonitorInstancesResult,
   errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnmonitorInstances",
 }));
 export type UpdateCapacityManagerMonitoredTagKeysError = CommonErrors;
@@ -96771,6 +98277,8 @@ export const updateCapacityManagerMonitoredTagKeys: API.OperationMethod<
   input: UpdateCapacityManagerMonitoredTagKeysRequest,
   output: UpdateCapacityManagerMonitoredTagKeysResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCapacityManagerMonitoredTagKeys",
 }));
 export type UpdateCapacityManagerOrganizationsAccessError =
@@ -96790,6 +98298,8 @@ export const updateCapacityManagerOrganizationsAccess: API.OperationMethod<
   input: UpdateCapacityManagerOrganizationsAccessRequest,
   output: UpdateCapacityManagerOrganizationsAccessResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCapacityManagerOrganizationsAccess",
 }));
 export type UpdateInterruptibleCapacityReservationAllocationError =
@@ -96808,6 +98318,8 @@ export const updateInterruptibleCapacityReservationAllocation: API.OperationMeth
   input: UpdateInterruptibleCapacityReservationAllocationRequest,
   output: UpdateInterruptibleCapacityReservationAllocationResult,
   errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateInterruptibleCapacityReservationAllocation",
 }));
 export type UpdateSecurityGroupRuleDescriptionsEgressError =
@@ -96829,6 +98341,8 @@ export const updateSecurityGroupRuleDescriptionsEgress: API.OperationMethod<
   input: UpdateSecurityGroupRuleDescriptionsEgressRequest,
   output: UpdateSecurityGroupRuleDescriptionsEgressResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityGroupRuleDescriptionsEgress",
 }));
 export type UpdateSecurityGroupRuleDescriptionsIngressError =
@@ -96850,6 +98364,8 @@ export const updateSecurityGroupRuleDescriptionsIngress: API.OperationMethod<
   input: UpdateSecurityGroupRuleDescriptionsIngressRequest,
   output: UpdateSecurityGroupRuleDescriptionsIngressResult,
   errors: [RequestLimitExceeded, MissingParameter],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSecurityGroupRuleDescriptionsIngress",
 }));
 export type WithdrawByoipCidrError = RequestLimitExceeded | CommonErrors;
@@ -96871,5 +98387,7 @@ export const withdrawByoipCidr: API.OperationMethod<
   input: WithdrawByoipCidrRequest,
   output: WithdrawByoipCidrResult,
   errors: [RequestLimitExceeded],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "WithdrawByoipCidr",
 }));

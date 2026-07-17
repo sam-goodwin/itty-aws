@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1691,6 +1693,8 @@ export const deleteResourcePermission: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePermission",
 }));
 export type DeregisterApplicationError =
@@ -1710,6 +1714,8 @@ export const deregisterApplication: API.OperationMethod<
   input: DeregisterApplicationInput,
   output: DeregisterApplicationOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterApplication",
 }));
 export type GetApplicationError =
@@ -1728,6 +1734,8 @@ export const getApplication: API.OperationMethod<
   input: GetApplicationInput,
   output: GetApplicationOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetApplication",
 }));
 export type GetComponentError =
@@ -1747,6 +1755,8 @@ export const getComponent: API.OperationMethod<
   input: GetComponentInput,
   output: GetComponentOutput,
   errors: [InternalServerException, UnauthorizedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetComponent",
 }));
 export type GetConfigurationCheckOperationError =
@@ -1765,6 +1775,8 @@ export const getConfigurationCheckOperation: API.OperationMethod<
   input: GetConfigurationCheckOperationInput,
   output: GetConfigurationCheckOperationOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConfigurationCheckOperation",
 }));
 export type GetDatabaseError =
@@ -1783,6 +1795,8 @@ export const getDatabase: API.OperationMethod<
   input: GetDatabaseInput,
   output: GetDatabaseOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDatabase",
 }));
 export type GetOperationError =
@@ -1801,6 +1815,8 @@ export const getOperation: API.OperationMethod<
   input: GetOperationInput,
   output: GetOperationOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetOperation",
 }));
 export type GetResourcePermissionError =
@@ -1824,6 +1840,8 @@ export const getResourcePermission: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePermission",
 }));
 export type ListApplicationsError =
@@ -1862,6 +1880,8 @@ export const listApplications: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
   pagination: {
     inputToken: "NextToken",
@@ -1908,6 +1928,8 @@ export const listComponents: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListComponents",
   pagination: {
     inputToken: "NextToken",
@@ -1947,6 +1969,8 @@ export const listConfigurationCheckDefinitions: API.OperationMethod<
   input: ListConfigurationCheckDefinitionsInput,
   output: ListConfigurationCheckDefinitionsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationCheckDefinitions",
   pagination: {
     inputToken: "NextToken",
@@ -1991,6 +2015,8 @@ export const listConfigurationCheckOperations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConfigurationCheckOperations",
   pagination: {
     inputToken: "NextToken",
@@ -2035,6 +2061,8 @@ export const listDatabases: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -2076,6 +2104,8 @@ export const listOperationEvents: API.OperationMethod<
   input: ListOperationEventsInput,
   output: ListOperationEventsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOperationEvents",
   pagination: {
     inputToken: "NextToken",
@@ -2115,6 +2145,8 @@ export const listOperations: API.OperationMethod<
   input: ListOperationsInput,
   output: ListOperationsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOperations",
   pagination: {
     inputToken: "NextToken",
@@ -2154,6 +2186,8 @@ export const listSubCheckResults: API.OperationMethod<
   input: ListSubCheckResultsInput,
   output: ListSubCheckResultsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubCheckResults",
   pagination: {
     inputToken: "NextToken",
@@ -2193,6 +2227,8 @@ export const listSubCheckRuleResults: API.OperationMethod<
   input: ListSubCheckRuleResultsInput,
   output: ListSubCheckRuleResultsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubCheckRuleResults",
   pagination: {
     inputToken: "NextToken",
@@ -2218,6 +2254,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutResourcePermissionError =
@@ -2241,6 +2279,8 @@ export const putResourcePermission: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePermission",
 }));
 export type RegisterApplicationError =
@@ -2272,6 +2312,8 @@ export const registerApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterApplication",
 }));
 export type StartApplicationError =
@@ -2299,6 +2341,8 @@ export const startApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartApplication",
 }));
 export type StartApplicationRefreshError =
@@ -2326,6 +2370,8 @@ export const startApplicationRefresh: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartApplicationRefresh",
 }));
 export type StartConfigurationChecksError =
@@ -2351,6 +2397,8 @@ export const startConfigurationChecks: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartConfigurationChecks",
 }));
 export type StopApplicationError =
@@ -2378,6 +2426,8 @@ export const stopApplication: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopApplication",
 }));
 export type TagResourceError =
@@ -2397,6 +2447,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2416,6 +2468,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApplicationSettingsError =
@@ -2443,5 +2497,7 @@ export const updateApplicationSettings: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplicationSettings",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4148,6 +4150,8 @@ export const addFacetToObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddFacetToObject",
 }));
 export type ApplySchemaError =
@@ -4184,6 +4188,8 @@ export const applySchema: API.OperationMethod<
     SchemaAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ApplySchema",
 }));
 export type AttachObjectError =
@@ -4228,6 +4234,8 @@ export const attachObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachObject",
 }));
 export type AttachPolicyError =
@@ -4264,6 +4272,8 @@ export const attachPolicy: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachPolicy",
 }));
 export type AttachToIndexError =
@@ -4305,6 +4315,8 @@ export const attachToIndex: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachToIndex",
 }));
 export type AttachTypedLinkError =
@@ -4342,6 +4354,8 @@ export const attachTypedLink: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AttachTypedLink",
 }));
 export type BatchReadError =
@@ -4373,6 +4387,8 @@ export const batchRead: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchRead",
 }));
 export type BatchWriteError =
@@ -4407,6 +4423,8 @@ export const batchWrite: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchWrite",
 }));
 export type CreateDirectoryError =
@@ -4444,6 +4462,8 @@ export const createDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDirectory",
 }));
 export type CreateFacetError =
@@ -4482,6 +4502,8 @@ export const createFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFacet",
 }));
 export type CreateIndexError =
@@ -4521,6 +4543,8 @@ export const createIndex: API.OperationMethod<
     UnsupportedIndexTypeException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIndex",
 }));
 export type CreateObjectError =
@@ -4563,6 +4587,8 @@ export const createObject: API.OperationMethod<
     UnsupportedIndexTypeException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateObject",
 }));
 export type CreateSchemaError =
@@ -4606,6 +4632,8 @@ export const createSchema: API.OperationMethod<
     SchemaAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchema",
 }));
 export type CreateTypedLinkFacetError =
@@ -4643,6 +4671,8 @@ export const createTypedLinkFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTypedLinkFacet",
 }));
 export type DeleteDirectoryError =
@@ -4680,6 +4710,8 @@ export const deleteDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDirectory",
 }));
 export type DeleteFacetError =
@@ -4717,6 +4749,8 @@ export const deleteFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFacet",
 }));
 export type DeleteObjectError =
@@ -4753,6 +4787,8 @@ export const deleteObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteObject",
 }));
 export type DeleteSchemaError =
@@ -4786,6 +4822,8 @@ export const deleteSchema: API.OperationMethod<
     StillContainsLinksException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchema",
 }));
 export type DeleteTypedLinkFacetError =
@@ -4819,6 +4857,8 @@ export const deleteTypedLinkFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTypedLinkFacet",
 }));
 export type DetachFromIndexError =
@@ -4856,6 +4896,8 @@ export const detachFromIndex: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachFromIndex",
 }));
 export type DetachObjectError =
@@ -4892,6 +4934,8 @@ export const detachObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachObject",
 }));
 export type DetachPolicyError =
@@ -4927,6 +4971,8 @@ export const detachPolicy: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachPolicy",
 }));
 export type DetachTypedLinkError =
@@ -4962,6 +5008,8 @@ export const detachTypedLink: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetachTypedLink",
 }));
 export type DisableDirectoryError =
@@ -4996,6 +5044,8 @@ export const disableDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableDirectory",
 }));
 export type EnableDirectoryError =
@@ -5030,6 +5080,8 @@ export const enableDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableDirectory",
 }));
 export type GetAppliedSchemaVersionError =
@@ -5061,6 +5113,8 @@ export const getAppliedSchemaVersion: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAppliedSchemaVersion",
 }));
 export type GetDirectoryError =
@@ -5090,6 +5144,8 @@ export const getDirectory: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDirectory",
 }));
 export type GetFacetError =
@@ -5124,6 +5180,8 @@ export const getFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFacet",
 }));
 export type GetLinkAttributesError =
@@ -5159,6 +5217,8 @@ export const getLinkAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLinkAttributes",
 }));
 export type GetObjectAttributesError =
@@ -5194,6 +5254,8 @@ export const getObjectAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectAttributes",
 }));
 export type GetObjectInformationError =
@@ -5227,6 +5289,8 @@ export const getObjectInformation: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetObjectInformation",
 }));
 export type GetSchemaAsJsonError =
@@ -5258,6 +5322,8 @@ export const getSchemaAsJson: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchemaAsJson",
 }));
 export type GetTypedLinkFacetInformationError =
@@ -5293,6 +5359,8 @@ export const getTypedLinkFacetInformation: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTypedLinkFacetInformation",
 }));
 export type ListAppliedSchemaArnsError =
@@ -5341,6 +5409,8 @@ export const listAppliedSchemaArns: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAppliedSchemaArns",
   pagination: {
     inputToken: "NextToken",
@@ -5394,6 +5464,8 @@ export const listAttachedIndices: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAttachedIndices",
   pagination: {
     inputToken: "NextToken",
@@ -5448,6 +5520,8 @@ export const listDevelopmentSchemaArns: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevelopmentSchemaArns",
   pagination: {
     inputToken: "NextToken",
@@ -5499,6 +5573,8 @@ export const listDirectories: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDirectories",
   pagination: {
     inputToken: "NextToken",
@@ -5554,6 +5630,8 @@ export const listFacetAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFacetAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -5607,6 +5685,8 @@ export const listFacetNames: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFacetNames",
   pagination: {
     inputToken: "NextToken",
@@ -5651,6 +5731,8 @@ export const listIncomingTypedLinks: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIncomingTypedLinks",
 }));
 export type ListIndexError =
@@ -5705,6 +5787,8 @@ export const listIndex: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndex",
   pagination: {
     inputToken: "NextToken",
@@ -5754,6 +5838,8 @@ export const listManagedSchemaArns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedSchemaArns",
   pagination: {
     inputToken: "NextToken",
@@ -5811,6 +5897,8 @@ export const listObjectAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -5869,6 +5957,8 @@ export const listObjectChildren: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectChildren",
   pagination: {
     inputToken: "NextToken",
@@ -5932,6 +6022,8 @@ export const listObjectParentPaths: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectParentPaths",
   pagination: {
     inputToken: "NextToken",
@@ -5990,6 +6082,8 @@ export const listObjectParents: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectParents",
   pagination: {
     inputToken: "NextToken",
@@ -6045,6 +6139,8 @@ export const listObjectPolicies: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListObjectPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -6089,6 +6185,8 @@ export const listOutgoingTypedLinks: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListOutgoingTypedLinks",
 }));
 export type ListPolicyAttachmentsError =
@@ -6141,6 +6239,8 @@ export const listPolicyAttachments: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -6194,6 +6294,8 @@ export const listPublishedSchemaArns: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPublishedSchemaArns",
   pagination: {
     inputToken: "NextToken",
@@ -6249,6 +6351,8 @@ export const listTagsForResource: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -6304,6 +6408,8 @@ export const listTypedLinkFacetAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypedLinkFacetAttributes",
   pagination: {
     inputToken: "NextToken",
@@ -6358,6 +6464,8 @@ export const listTypedLinkFacetNames: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTypedLinkFacetNames",
   pagination: {
     inputToken: "NextToken",
@@ -6418,6 +6526,8 @@ export const lookupPolicy: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "LookupPolicy",
   pagination: {
     inputToken: "NextToken",
@@ -6456,6 +6566,8 @@ export const publishSchema: API.OperationMethod<
     SchemaAlreadyPublishedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PublishSchema",
 }));
 export type PutSchemaFromJsonError =
@@ -6489,6 +6601,8 @@ export const putSchemaFromJson: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSchemaFromJson",
 }));
 export type RemoveFacetFromObjectError =
@@ -6524,6 +6638,8 @@ export const removeFacetFromObject: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveFacetFromObject",
 }));
 export type TagResourceError =
@@ -6557,6 +6673,8 @@ export const tagResource: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6590,6 +6708,8 @@ export const untagResource: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateFacetError =
@@ -6635,6 +6755,8 @@ export const updateFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFacet",
 }));
 export type UpdateLinkAttributesError =
@@ -6670,6 +6792,8 @@ export const updateLinkAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLinkAttributes",
 }));
 export type UpdateObjectAttributesError =
@@ -6707,6 +6831,8 @@ export const updateObjectAttributes: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateObjectAttributes",
 }));
 export type UpdateSchemaError =
@@ -6739,6 +6865,8 @@ export const updateSchema: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchema",
 }));
 export type UpdateTypedLinkFacetError =
@@ -6778,6 +6906,8 @@ export const updateTypedLinkFacet: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTypedLinkFacet",
 }));
 export type UpgradeAppliedSchemaError =
@@ -6813,6 +6943,8 @@ export const upgradeAppliedSchema: API.OperationMethod<
     SchemaAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpgradeAppliedSchema",
 }));
 export type UpgradePublishedSchemaError =
@@ -6848,5 +6980,7 @@ export const upgradePublishedSchema: API.OperationMethod<
     RetryableConflictException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpgradePublishedSchema",
 }));

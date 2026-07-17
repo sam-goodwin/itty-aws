@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1539,6 +1541,8 @@ export const batchDeleteTaxRegistration: API.OperationMethod<
   input: BatchDeleteTaxRegistrationRequest,
   output: BatchDeleteTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteTaxRegistration",
 }));
 export type BatchGetTaxExemptionsError =
@@ -1562,6 +1566,8 @@ export const batchGetTaxExemptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetTaxExemptions",
 }));
 export type BatchPutTaxRegistrationError =
@@ -1715,6 +1721,8 @@ export const batchPutTaxRegistration: API.OperationMethod<
   input: BatchPutTaxRegistrationRequest,
   output: BatchPutTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutTaxRegistration",
 }));
 export type DeleteSupplementalTaxRegistrationError =
@@ -1740,6 +1748,8 @@ export const deleteSupplementalTaxRegistration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSupplementalTaxRegistration",
 }));
 export type DeleteTaxRegistrationError =
@@ -1767,6 +1777,8 @@ export const deleteTaxRegistration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTaxRegistration",
 }));
 export type GetTaxExemptionTypesError =
@@ -1790,6 +1802,8 @@ export const getTaxExemptionTypes: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTaxExemptionTypes",
 }));
 export type GetTaxInheritanceError =
@@ -1813,6 +1827,8 @@ export const getTaxInheritance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTaxInheritance",
 }));
 export type GetTaxRegistrationError =
@@ -1836,6 +1852,8 @@ export const getTaxRegistration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTaxRegistration",
 }));
 export type GetTaxRegistrationDocumentError =
@@ -1855,6 +1873,8 @@ export const getTaxRegistrationDocument: API.OperationMethod<
   input: GetTaxRegistrationDocumentRequest,
   output: GetTaxRegistrationDocumentResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTaxRegistrationDocument",
 }));
 export type ListSupplementalTaxRegistrationsError =
@@ -1893,6 +1913,8 @@ export const listSupplementalTaxRegistrations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSupplementalTaxRegistrations",
   pagination: {
     inputToken: "nextToken",
@@ -1937,6 +1959,8 @@ export const listTaxExemptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTaxExemptions",
   pagination: {
     inputToken: "nextToken",
@@ -1982,6 +2006,8 @@ export const listTaxRegistrations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTaxRegistrations",
   pagination: {
     inputToken: "nextToken",
@@ -2007,6 +2033,8 @@ export const putSupplementalTaxRegistration: API.OperationMethod<
   input: PutSupplementalTaxRegistrationRequest,
   output: PutSupplementalTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSupplementalTaxRegistration",
 }));
 export type PutTaxExemptionError =
@@ -2036,6 +2064,8 @@ export const putTaxExemption: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTaxExemption",
 }));
 export type PutTaxInheritanceError =
@@ -2061,6 +2091,8 @@ export const putTaxInheritance: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTaxInheritance",
 }));
 export type PutTaxRegistrationError =
@@ -2213,5 +2245,7 @@ export const putTaxRegistration: API.OperationMethod<
   input: PutTaxRegistrationRequest,
   output: PutTaxRegistrationResponse,
   errors: [ConflictException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTaxRegistration",
 }));

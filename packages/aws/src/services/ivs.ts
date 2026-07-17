@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1866,6 +1868,8 @@ export const batchGetChannel: API.OperationMethod<
   input: BatchGetChannelRequest,
   output: BatchGetChannelResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetChannel",
 }));
 export type BatchGetStreamKeyError = CommonErrors;
@@ -1881,6 +1885,8 @@ export const batchGetStreamKey: API.OperationMethod<
   input: BatchGetStreamKeyRequest,
   output: BatchGetStreamKeyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetStreamKey",
 }));
 export type BatchStartViewerSessionRevocationError =
@@ -1907,6 +1913,8 @@ export const batchStartViewerSessionRevocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchStartViewerSessionRevocation",
 }));
 export type CreateChannelError =
@@ -1934,6 +1942,8 @@ export const createChannel: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
 export type CreatePlaybackRestrictionPolicyError =
@@ -1962,6 +1972,8 @@ export const createPlaybackRestrictionPolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePlaybackRestrictionPolicy",
 }));
 export type CreateRecordingConfigurationError =
@@ -2002,6 +2014,8 @@ export const createRecordingConfiguration: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRecordingConfiguration",
 }));
 export type CreateStreamKeyError =
@@ -2033,6 +2047,8 @@ export const createStreamKey: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStreamKey",
 }));
 export type DeleteChannelError =
@@ -2065,6 +2081,8 @@ export const deleteChannel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannel",
 }));
 export type DeletePlaybackKeyPairError =
@@ -2092,6 +2110,8 @@ export const deletePlaybackKeyPair: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePlaybackKeyPair",
 }));
 export type DeletePlaybackRestrictionPolicyError =
@@ -2119,6 +2139,8 @@ export const deletePlaybackRestrictionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePlaybackRestrictionPolicy",
 }));
 export type DeleteRecordingConfigurationError =
@@ -2152,6 +2174,8 @@ export const deleteRecordingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRecordingConfiguration",
 }));
 export type DeleteStreamKeyError =
@@ -2178,6 +2202,8 @@ export const deleteStreamKey: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStreamKey",
 }));
 export type GetChannelError =
@@ -2201,6 +2227,8 @@ export const getChannel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannel",
 }));
 export type GetPlaybackKeyPairError =
@@ -2228,6 +2256,8 @@ export const getPlaybackKeyPair: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlaybackKeyPair",
 }));
 export type GetPlaybackRestrictionPolicyError =
@@ -2253,6 +2283,8 @@ export const getPlaybackRestrictionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlaybackRestrictionPolicy",
 }));
 export type GetRecordingConfigurationError =
@@ -2278,6 +2310,8 @@ export const getRecordingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecordingConfiguration",
 }));
 export type GetStreamError =
@@ -2303,6 +2337,8 @@ export const getStream: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStream",
 }));
 export type GetStreamKeyError =
@@ -2326,6 +2362,8 @@ export const getStreamKey: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStreamKey",
 }));
 export type GetStreamSessionError =
@@ -2349,6 +2387,8 @@ export const getStreamSession: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStreamSession",
 }));
 export type ImportPlaybackKeyPairError =
@@ -2380,6 +2420,8 @@ export const importPlaybackKeyPair: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportPlaybackKeyPair",
 }));
 export type ListChannelsError =
@@ -2417,6 +2459,8 @@ export const listChannels: API.OperationMethod<
   input: ListChannelsRequest,
   output: ListChannelsResponse,
   errors: [AccessDeniedException, ConflictException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "nextToken",
@@ -2456,6 +2500,8 @@ export const listPlaybackKeyPairs: API.OperationMethod<
   input: ListPlaybackKeyPairsRequest,
   output: ListPlaybackKeyPairsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlaybackKeyPairs",
   pagination: {
     inputToken: "nextToken",
@@ -2501,6 +2547,8 @@ export const listPlaybackRestrictionPolicies: API.OperationMethod<
     PendingVerification,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlaybackRestrictionPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -2541,6 +2589,8 @@ export const listRecordingConfigurations: API.OperationMethod<
   input: ListRecordingConfigurationsRequest,
   output: ListRecordingConfigurationsResponse,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRecordingConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -2584,6 +2634,8 @@ export const listStreamKeys: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamKeys",
   pagination: {
     inputToken: "nextToken",
@@ -2623,6 +2675,8 @@ export const listStreams: API.OperationMethod<
   input: ListStreamsRequest,
   output: ListStreamsResponse,
   errors: [AccessDeniedException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreams",
   pagination: {
     inputToken: "nextToken",
@@ -2667,6 +2721,8 @@ export const listStreamSessions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamSessions",
   pagination: {
     inputToken: "nextToken",
@@ -2695,6 +2751,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutMetadataError =
@@ -2726,6 +2784,8 @@ export const putMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMetadata",
 }));
 export type StartViewerSessionRevocationError =
@@ -2759,6 +2819,8 @@ export const startViewerSessionRevocation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartViewerSessionRevocation",
 }));
 export type StopStreamError =
@@ -2792,6 +2854,8 @@ export const stopStream: API.OperationMethod<
     StreamUnavailable,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopStream",
 }));
 export type TagResourceError =
@@ -2815,6 +2879,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2838,6 +2904,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateChannelError =
@@ -2867,6 +2935,8 @@ export const updateChannel: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
 export type UpdatePlaybackRestrictionPolicyError =
@@ -2894,5 +2964,7 @@ export const updatePlaybackRestrictionPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePlaybackRestrictionPolicy",
 }));

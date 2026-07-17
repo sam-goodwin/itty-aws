@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -5039,6 +5041,8 @@ export const associateFaces: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateFaces",
 }));
 export type CompareFacesError =
@@ -5127,6 +5131,8 @@ export const compareFaces: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompareFaces",
 }));
 export type CopyProjectVersionError =
@@ -5187,6 +5193,8 @@ export const copyProjectVersion: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopyProjectVersion",
 }));
 export type CreateCollectionError =
@@ -5234,6 +5242,8 @@ export const createCollection: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCollection",
 }));
 export type CreateDatasetError =
@@ -5292,6 +5302,8 @@ export const createDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
 export type CreateFaceLivenessSessionError =
@@ -5330,6 +5342,8 @@ export const createFaceLivenessSession: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFaceLivenessSession",
 }));
 export type CreateProjectError =
@@ -5366,6 +5380,8 @@ export const createProject: API.OperationMethod<
     ResourceInUseException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProject",
 }));
 export type CreateProjectVersionError =
@@ -5429,6 +5445,8 @@ export const createProjectVersion: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProjectVersion",
 }));
 export type CreateStreamProcessorError =
@@ -5490,6 +5508,8 @@ export const createStreamProcessor: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStreamProcessor",
 }));
 export type CreateUserError =
@@ -5533,6 +5553,8 @@ export const createUser: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DeleteCollectionError =
@@ -5567,6 +5589,8 @@ export const deleteCollection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCollection",
 }));
 export type DeleteDatasetError =
@@ -5611,6 +5635,8 @@ export const deleteDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataset",
 }));
 export type DeleteFacesError =
@@ -5644,6 +5670,8 @@ export const deleteFaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFaces",
 }));
 export type DeleteProjectError =
@@ -5684,6 +5712,8 @@ export const deleteProject: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProject",
 }));
 export type DeleteProjectPolicyError =
@@ -5721,6 +5751,8 @@ export const deleteProjectPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProjectPolicy",
 }));
 export type DeleteProjectVersionError =
@@ -5760,6 +5792,8 @@ export const deleteProjectVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProjectVersion",
 }));
 export type DeleteStreamProcessorError =
@@ -5792,6 +5826,8 @@ export const deleteStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStreamProcessor",
 }));
 export type DeleteUserError =
@@ -5829,6 +5865,8 @@ export const deleteUser: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DescribeCollectionError =
@@ -5863,6 +5901,8 @@ export const describeCollection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCollection",
 }));
 export type DescribeDatasetError =
@@ -5897,6 +5937,8 @@ export const describeDataset: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
 export type DescribeProjectsError =
@@ -5943,6 +5985,8 @@ export const describeProjects: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProjects",
   pagination: {
     inputToken: "NextToken",
@@ -6000,6 +6044,8 @@ export const describeProjectVersions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeProjectVersions",
   pagination: {
     inputToken: "NextToken",
@@ -6036,6 +6082,8 @@ export const describeStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeStreamProcessor",
 }));
 export type DetectCustomLabelsError =
@@ -6116,6 +6164,8 @@ export const detectCustomLabels: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectCustomLabels",
 }));
 export type DetectFacesError =
@@ -6169,6 +6219,8 @@ export const detectFaces: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectFaces",
 }));
 export type DetectLabelsError =
@@ -6305,6 +6357,8 @@ export const detectLabels: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectLabels",
 }));
 export type DetectModerationLabelsError =
@@ -6362,6 +6416,8 @@ export const detectModerationLabels: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectModerationLabels",
 }));
 export type DetectProtectiveEquipmentError =
@@ -6426,6 +6482,8 @@ export const detectProtectiveEquipment: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectProtectiveEquipment",
 }));
 export type DetectTextError =
@@ -6488,6 +6546,8 @@ export const detectText: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectText",
 }));
 export type DisassociateFacesError =
@@ -6528,6 +6588,8 @@ export const disassociateFaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateFaces",
 }));
 export type DistributeDatasetEntriesError =
@@ -6573,6 +6635,8 @@ export const distributeDatasetEntries: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DistributeDatasetEntries",
 }));
 export type GetCelebrityInfoError =
@@ -6610,6 +6674,8 @@ export const getCelebrityInfo: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCelebrityInfo",
 }));
 export type GetCelebrityRecognitionError =
@@ -6699,6 +6765,8 @@ export const getCelebrityRecognition: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCelebrityRecognition",
   pagination: {
     inputToken: "NextToken",
@@ -6780,6 +6848,8 @@ export const getContentModeration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetContentModeration",
   pagination: {
     inputToken: "NextToken",
@@ -6848,6 +6918,8 @@ export const getFaceDetection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFaceDetection",
   pagination: {
     inputToken: "NextToken",
@@ -6891,6 +6963,8 @@ export const getFaceLivenessSessionResults: API.OperationMethod<
     SessionNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFaceLivenessSessionResults",
 }));
 export type GetFaceSearchError =
@@ -6967,6 +7041,8 @@ export const getFaceSearch: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFaceSearch",
   pagination: {
     inputToken: "NextToken",
@@ -7083,6 +7159,8 @@ export const getLabelDetection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLabelDetection",
   pagination: {
     inputToken: "NextToken",
@@ -7118,6 +7196,8 @@ export const getMediaAnalysisJob: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMediaAnalysisJob",
 }));
 export type GetPersonTrackingError =
@@ -7196,6 +7276,8 @@ export const getPersonTracking: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPersonTracking",
   pagination: {
     inputToken: "NextToken",
@@ -7272,6 +7354,8 @@ export const getSegmentDetection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSegmentDetection",
   pagination: {
     inputToken: "NextToken",
@@ -7344,6 +7428,8 @@ export const getTextDetection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTextDetection",
   pagination: {
     inputToken: "NextToken",
@@ -7477,6 +7563,8 @@ export const indexFaces: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IndexFaces",
 }));
 export type ListCollectionsError =
@@ -7531,6 +7619,8 @@ export const listCollections: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCollections",
   pagination: {
     inputToken: "NextToken",
@@ -7602,6 +7692,8 @@ export const listDatasetEntries: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasetEntries",
   pagination: {
     inputToken: "NextToken",
@@ -7664,6 +7756,8 @@ export const listDatasetLabels: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasetLabels",
   pagination: {
     inputToken: "NextToken",
@@ -7722,6 +7816,8 @@ export const listFaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFaces",
   pagination: {
     inputToken: "NextToken",
@@ -7772,6 +7868,8 @@ export const listMediaAnalysisJobs: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMediaAnalysisJobs",
   pagination: {
     inputToken: "NextToken",
@@ -7829,6 +7927,8 @@ export const listProjectPolicies: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjectPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -7879,6 +7979,8 @@ export const listStreamProcessors: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamProcessors",
   pagination: {
     inputToken: "NextToken",
@@ -7917,6 +8019,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListUsersError =
@@ -7967,6 +8071,8 @@ export const listUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "NextToken",
@@ -8032,6 +8138,8 @@ export const putProjectPolicy: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProjectPolicy",
 }));
 export type RecognizeCelebritiesError =
@@ -8096,6 +8204,8 @@ export const recognizeCelebrities: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RecognizeCelebrities",
 }));
 export type SearchFacesError =
@@ -8142,6 +8252,8 @@ export const searchFaces: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchFaces",
 }));
 export type SearchFacesByImageError =
@@ -8218,6 +8330,8 @@ export const searchFacesByImage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchFacesByImage",
 }));
 export type SearchUsersError =
@@ -8252,6 +8366,8 @@ export const searchUsers: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchUsers",
 }));
 export type SearchUsersByImageError =
@@ -8297,6 +8413,8 @@ export const searchUsersByImage: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchUsersByImage",
 }));
 export type StartCelebrityRecognitionError =
@@ -8344,6 +8462,8 @@ export const startCelebrityRecognition: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCelebrityRecognition",
 }));
 export type StartContentModerationError =
@@ -8392,6 +8512,8 @@ export const startContentModeration: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartContentModeration",
 }));
 export type StartFaceDetectionError =
@@ -8440,6 +8562,8 @@ export const startFaceDetection: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFaceDetection",
 }));
 export type StartFaceSearchError =
@@ -8487,6 +8611,8 @@ export const startFaceSearch: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartFaceSearch",
 }));
 export type StartLabelDetectionError =
@@ -8549,6 +8675,8 @@ export const startLabelDetection: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartLabelDetection",
 }));
 export type StartMediaAnalysisJobError =
@@ -8589,6 +8717,8 @@ export const startMediaAnalysisJob: API.OperationMethod<
     ResourceNotReadyException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMediaAnalysisJob",
 }));
 export type StartPersonTrackingError =
@@ -8639,6 +8769,8 @@ export const startPersonTracking: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPersonTracking",
 }));
 export type StartProjectVersionError =
@@ -8684,6 +8816,8 @@ export const startProjectVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartProjectVersion",
 }));
 export type StartSegmentDetectionError =
@@ -8736,6 +8870,8 @@ export const startSegmentDetection: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartSegmentDetection",
 }));
 export type StartStreamProcessorError =
@@ -8771,6 +8907,8 @@ export const startStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartStreamProcessor",
 }));
 export type StartTextDetectionError =
@@ -8815,6 +8953,8 @@ export const startTextDetection: API.OperationMethod<
     ThrottlingException,
     VideoTooLargeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTextDetection",
 }));
 export type StopProjectVersionError =
@@ -8852,6 +8992,8 @@ export const stopProjectVersion: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopProjectVersion",
 }));
 export type StopStreamProcessorError =
@@ -8883,6 +9025,8 @@ export const stopStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopStreamProcessor",
 }));
 export type TagResourceError =
@@ -8919,6 +9063,8 @@ export const tagResource: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -8952,6 +9098,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDatasetEntriesError =
@@ -9011,6 +9159,8 @@ export const updateDatasetEntries: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDatasetEntries",
 }));
 export type UpdateStreamProcessorError =
@@ -9042,5 +9192,7 @@ export const updateStreamProcessor: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStreamProcessor",
 }));

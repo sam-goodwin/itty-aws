@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1798,6 +1800,8 @@ export const getVerification: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetVerification",
 }));
 export type ListTagsForResourceError =
@@ -1825,6 +1829,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type SendEmailVerificationCodeError =
@@ -1852,6 +1858,8 @@ export const sendEmailVerificationCode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendEmailVerificationCode",
 }));
 export type StartVerificationError =
@@ -1881,6 +1889,8 @@ export const startVerification: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartVerification",
 }));
 export type TagResourceError =
@@ -1910,6 +1920,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1939,6 +1951,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateConnectionInvitationError =
@@ -1970,6 +1984,8 @@ export const createConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnectionInvitation",
 }));
 export type GetConnectionInvitationError =
@@ -1997,6 +2013,8 @@ export const getConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectionInvitation",
 }));
 export type ListConnectionInvitationsError =
@@ -2037,6 +2055,8 @@ export const listConnectionInvitations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectionInvitations",
   pagination: {
     inputToken: "NextToken",
@@ -2074,6 +2094,8 @@ export const acceptConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptConnectionInvitation",
 }));
 export type CancelConnectionInvitationError =
@@ -2103,6 +2125,8 @@ export const cancelConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelConnectionInvitation",
 }));
 export type RejectConnectionInvitationError =
@@ -2132,6 +2156,8 @@ export const rejectConnectionInvitation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectConnectionInvitation",
 }));
 export type GetConnectionPreferencesError =
@@ -2157,6 +2183,8 @@ export const getConnectionPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnectionPreferences",
 }));
 export type UpdateConnectionPreferencesError =
@@ -2184,6 +2212,8 @@ export const updateConnectionPreferences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnectionPreferences",
 }));
 export type GetConnectionError =
@@ -2211,6 +2241,8 @@ export const getConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnection",
 }));
 export type ListConnectionsError =
@@ -2251,6 +2283,8 @@ export const listConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnections",
   pagination: {
     inputToken: "NextToken",
@@ -2286,6 +2320,8 @@ export const cancelConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelConnection",
 }));
 export type CreatePartnerError =
@@ -2313,6 +2349,8 @@ export const createPartner: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePartner",
 }));
 export type GetPartnerError =
@@ -2340,6 +2378,8 @@ export const getPartner: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPartner",
 }));
 export type ListPartnersError =
@@ -2380,6 +2420,8 @@ export const listPartners: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPartners",
   pagination: {
     inputToken: "NextToken",
@@ -2414,6 +2456,8 @@ export const associateAwsTrainingCertificationEmailDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAwsTrainingCertificationEmailDomain",
 }));
 export type CancelProfileUpdateTaskError =
@@ -2443,6 +2487,8 @@ export const cancelProfileUpdateTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelProfileUpdateTask",
 }));
 export type DisassociateAwsTrainingCertificationEmailDomainError =
@@ -2470,6 +2516,8 @@ export const disassociateAwsTrainingCertificationEmailDomain: API.OperationMetho
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAwsTrainingCertificationEmailDomain",
 }));
 export type GetAllianceLeadContactError =
@@ -2497,6 +2545,8 @@ export const getAllianceLeadContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAllianceLeadContact",
 }));
 export type GetProfileUpdateTaskError =
@@ -2524,6 +2574,8 @@ export const getProfileUpdateTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfileUpdateTask",
 }));
 export type GetProfileVisibilityError =
@@ -2551,6 +2603,8 @@ export const getProfileVisibility: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProfileVisibility",
 }));
 export type PutAllianceLeadContactError =
@@ -2578,6 +2632,8 @@ export const putAllianceLeadContact: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAllianceLeadContact",
 }));
 export type PutProfileVisibilityError =
@@ -2605,6 +2661,8 @@ export const putProfileVisibility: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutProfileVisibility",
 }));
 export type StartProfileUpdateTaskError =
@@ -2634,5 +2692,7 @@ export const startProfileUpdateTask: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartProfileUpdateTask",
 }));

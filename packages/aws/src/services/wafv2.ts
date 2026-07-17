@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4729,6 +4731,8 @@ export const associateWebACL: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnavailableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateWebACL",
 }));
 export type CheckCapacityError =
@@ -4775,6 +4779,8 @@ export const checkCapacity: API.OperationMethod<
     WAFSubscriptionNotFoundException,
     WAFUnavailableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckCapacity",
 }));
 export type CreateAPIKeyError =
@@ -4807,6 +4813,8 @@ export const createAPIKey: API.OperationMethod<
     WAFInvalidParameterException,
     WAFLimitsExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAPIKey",
 }));
 export type CreateIPSetError =
@@ -4843,6 +4851,8 @@ export const createIPSet: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIPSet",
 }));
 export type CreateRegexPatternSetError =
@@ -4877,6 +4887,8 @@ export const createRegexPatternSet: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegexPatternSet",
 }));
 export type CreateRuleGroupError =
@@ -4918,6 +4930,8 @@ export const createRuleGroup: API.OperationMethod<
     WAFTagOperationInternalErrorException,
     WAFUnavailableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRuleGroup",
 }));
 export type CreateWebACLError =
@@ -4965,6 +4979,8 @@ export const createWebACL: API.OperationMethod<
     WAFTagOperationInternalErrorException,
     WAFUnavailableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWebACL",
 }));
 export type DeleteAPIKeyError =
@@ -4994,6 +5010,8 @@ export const deleteAPIKey: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAPIKey",
 }));
 export type DeleteFirewallManagerRuleGroupsError =
@@ -5023,6 +5041,8 @@ export const deleteFirewallManagerRuleGroups: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFirewallManagerRuleGroups",
 }));
 export type DeleteIPSetError =
@@ -5056,6 +5076,8 @@ export const deleteIPSet: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIPSet",
 }));
 export type DeleteLoggingConfigurationError =
@@ -5083,6 +5105,8 @@ export const deleteLoggingConfiguration: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoggingConfiguration",
 }));
 export type DeletePermissionPolicyError =
@@ -5108,6 +5132,8 @@ export const deletePermissionPolicy: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePermissionPolicy",
 }));
 export type DeleteRegexPatternSetError =
@@ -5141,6 +5167,8 @@ export const deleteRegexPatternSet: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegexPatternSet",
 }));
 export type DeleteRuleGroupError =
@@ -5174,6 +5202,8 @@ export const deleteRuleGroup: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRuleGroup",
 }));
 export type DeleteWebACLError =
@@ -5228,6 +5258,8 @@ export const deleteWebACL: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWebACL",
 }));
 export type DescribeAllManagedProductsError =
@@ -5251,6 +5283,8 @@ export const describeAllManagedProducts: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAllManagedProducts",
 }));
 export type DescribeManagedProductsByVendorError =
@@ -5274,6 +5308,8 @@ export const describeManagedProductsByVendor: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeManagedProductsByVendor",
 }));
 export type DescribeManagedRuleGroupError =
@@ -5303,6 +5339,8 @@ export const describeManagedRuleGroup: API.OperationMethod<
     WAFInvalidResourceException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeManagedRuleGroup",
 }));
 export type DisassociateWebACLError =
@@ -5336,6 +5374,8 @@ export const disassociateWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateWebACL",
 }));
 export type GenerateMobileSdkReleaseUrlError =
@@ -5364,6 +5404,8 @@ export const generateMobileSdkReleaseUrl: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GenerateMobileSdkReleaseUrl",
 }));
 export type GetDecryptedAPIKeyError =
@@ -5395,6 +5437,8 @@ export const getDecryptedAPIKey: API.OperationMethod<
     WAFInvalidResourceException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDecryptedAPIKey",
 }));
 export type GetIPSetError =
@@ -5420,6 +5464,8 @@ export const getIPSet: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIPSet",
 }));
 export type GetLoggingConfigurationError =
@@ -5445,6 +5491,8 @@ export const getLoggingConfiguration: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLoggingConfiguration",
 }));
 export type GetManagedRuleSetError =
@@ -5474,6 +5522,8 @@ export const getManagedRuleSet: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedRuleSet",
 }));
 export type GetMobileSdkReleaseError =
@@ -5503,6 +5553,8 @@ export const getMobileSdkRelease: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMobileSdkRelease",
 }));
 export type GetPermissionPolicyError =
@@ -5528,6 +5580,8 @@ export const getPermissionPolicy: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPermissionPolicy",
 }));
 export type GetRateBasedStatementManagedKeysError =
@@ -5574,6 +5628,8 @@ export const getRateBasedStatementManagedKeys: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnsupportedAggregateKeyTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRateBasedStatementManagedKeys",
 }));
 export type GetRegexPatternSetError =
@@ -5599,6 +5655,8 @@ export const getRegexPatternSet: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegexPatternSet",
 }));
 export type GetRuleGroupError =
@@ -5624,6 +5682,8 @@ export const getRuleGroup: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRuleGroup",
 }));
 export type GetSampledRequestsError =
@@ -5656,6 +5716,8 @@ export const getSampledRequests: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSampledRequests",
 }));
 export type GetTopPathStatisticsByTrafficError =
@@ -5685,6 +5747,8 @@ export const getTopPathStatisticsByTraffic: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTopPathStatisticsByTraffic",
 }));
 export type GetWebACLError =
@@ -5710,6 +5774,8 @@ export const getWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWebACL",
 }));
 export type GetWebACLForResourceError =
@@ -5749,6 +5815,8 @@ export const getWebACLForResource: API.OperationMethod<
     WAFNonexistentItemException,
     WAFUnavailableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWebACLForResource",
 }));
 export type ListAPIKeysError =
@@ -5778,6 +5846,8 @@ export const listAPIKeys: API.OperationMethod<
     WAFInvalidParameterException,
     WAFInvalidResourceException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAPIKeys",
 }));
 export type ListAvailableManagedRuleGroupsError =
@@ -5803,6 +5873,8 @@ export const listAvailableManagedRuleGroups: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAvailableManagedRuleGroups",
 }));
 export type ListAvailableManagedRuleGroupVersionsError =
@@ -5828,6 +5900,8 @@ export const listAvailableManagedRuleGroupVersions: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAvailableManagedRuleGroupVersions",
 }));
 export type ListIPSetsError =
@@ -5852,6 +5926,8 @@ export const listIPSets: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIPSets",
 }));
 export type ListLoggingConfigurationsError =
@@ -5875,6 +5951,8 @@ export const listLoggingConfigurations: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLoggingConfigurations",
 }));
 export type ListManagedRuleSetsError =
@@ -5902,6 +5980,8 @@ export const listManagedRuleSets: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedRuleSets",
 }));
 export type ListMobileSdkReleasesError =
@@ -5929,6 +6009,8 @@ export const listMobileSdkReleases: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMobileSdkReleases",
 }));
 export type ListRegexPatternSetsError =
@@ -5953,6 +6035,8 @@ export const listRegexPatternSets: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegexPatternSets",
 }));
 export type ListResourcesForWebACLError =
@@ -5988,6 +6072,8 @@ export const listResourcesForWebACL: API.OperationMethod<
     WAFInvalidParameterException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourcesForWebACL",
 }));
 export type ListRuleGroupsError =
@@ -6012,6 +6098,8 @@ export const listRuleGroups: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleGroups",
 }));
 export type ListTagsForResourceError =
@@ -6049,6 +6137,8 @@ export const listTagsForResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWebACLsError =
@@ -6073,6 +6163,8 @@ export const listWebACLs: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWebACLs",
 }));
 export type PutLoggingConfigurationError =
@@ -6146,6 +6238,8 @@ export const putLoggingConfiguration: API.OperationMethod<
     WAFOptimisticLockException,
     WAFServiceLinkedRoleErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLoggingConfiguration",
 }));
 export type PutManagedRuleSetVersionsError =
@@ -6186,6 +6280,8 @@ export const putManagedRuleSetVersions: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutManagedRuleSetVersions",
 }));
 export type PutPermissionPolicyError =
@@ -6227,6 +6323,8 @@ export const putPermissionPolicy: API.OperationMethod<
     WAFInvalidPermissionPolicyException,
     WAFNonexistentItemException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPermissionPolicy",
 }));
 export type TagResourceError =
@@ -6266,6 +6364,8 @@ export const tagResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6298,6 +6398,8 @@ export const untagResource: API.OperationMethod<
     WAFTagOperationException,
     WAFTagOperationInternalErrorException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateIPSetError =
@@ -6353,6 +6455,8 @@ export const updateIPSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIPSet",
 }));
 export type UpdateManagedRuleSetVersionExpiryDateError =
@@ -6386,6 +6490,8 @@ export const updateManagedRuleSetVersionExpiryDate: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateManagedRuleSetVersionExpiryDate",
 }));
 export type UpdateRegexPatternSetError =
@@ -6441,6 +6547,8 @@ export const updateRegexPatternSet: API.OperationMethod<
     WAFNonexistentItemException,
     WAFOptimisticLockException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRegexPatternSet",
 }));
 export type UpdateRuleGroupError =
@@ -6504,6 +6612,8 @@ export const updateRuleGroup: API.OperationMethod<
     WAFSubscriptionNotFoundException,
     WAFUnavailableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRuleGroup",
 }));
 export type UpdateWebACLError =
@@ -6574,5 +6684,7 @@ export const updateWebACL: API.OperationMethod<
     WAFSubscriptionNotFoundException,
     WAFUnavailableEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWebACL",
 }));

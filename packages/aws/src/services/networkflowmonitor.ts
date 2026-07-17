@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1359,6 +1361,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1388,6 +1392,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1417,6 +1423,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateMonitorError =
@@ -1446,6 +1454,8 @@ export const createMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMonitor",
 }));
 export type GetMonitorError =
@@ -1473,6 +1483,8 @@ export const getMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMonitor",
 }));
 export type UpdateMonitorError =
@@ -1500,6 +1512,8 @@ export const updateMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMonitor",
 }));
 export type DeleteMonitorError =
@@ -1529,6 +1543,8 @@ export const deleteMonitor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMonitor",
 }));
 export type ListMonitorsError =
@@ -1569,6 +1585,8 @@ export const listMonitors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitors",
   pagination: {
     inputToken: "nextToken",
@@ -1623,6 +1641,8 @@ export const getQueryResultsMonitorTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryResultsMonitorTopContributors",
   pagination: {
     inputToken: "nextToken",
@@ -1660,6 +1680,8 @@ export const getQueryStatusMonitorTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryStatusMonitorTopContributors",
 }));
 export type StartQueryMonitorTopContributorsError =
@@ -1691,6 +1713,8 @@ export const startQueryMonitorTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQueryMonitorTopContributors",
 }));
 export type StopQueryMonitorTopContributorsError =
@@ -1720,6 +1744,8 @@ export const stopQueryMonitorTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopQueryMonitorTopContributors",
 }));
 export type CreateScopeError =
@@ -1759,6 +1785,8 @@ export const createScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScope",
 }));
 export type GetScopeError =
@@ -1788,6 +1816,8 @@ export const getScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetScope",
 }));
 export type UpdateScopeError =
@@ -1819,6 +1849,8 @@ export const updateScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScope",
 }));
 export type DeleteScopeError =
@@ -1850,6 +1882,8 @@ export const deleteScope: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScope",
 }));
 export type ListScopesError =
@@ -1892,6 +1926,8 @@ export const listScopes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScopes",
   pagination: {
     inputToken: "nextToken",
@@ -1948,6 +1984,8 @@ export const getQueryResultsWorkloadInsightsTopContributors: API.OperationMethod
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryResultsWorkloadInsightsTopContributors",
   pagination: {
     inputToken: "nextToken",
@@ -2006,6 +2044,8 @@ export const getQueryResultsWorkloadInsightsTopContributorsData: API.OperationMe
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryResultsWorkloadInsightsTopContributorsData",
   pagination: {
     inputToken: "nextToken",
@@ -2043,6 +2083,8 @@ export const getQueryStatusWorkloadInsightsTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryStatusWorkloadInsightsTopContributors",
 }));
 export type GetQueryStatusWorkloadInsightsTopContributorsDataError =
@@ -2076,6 +2118,8 @@ export const getQueryStatusWorkloadInsightsTopContributorsData: API.OperationMet
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryStatusWorkloadInsightsTopContributorsData",
 }));
 export type StartQueryWorkloadInsightsTopContributorsError =
@@ -2107,6 +2151,8 @@ export const startQueryWorkloadInsightsTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQueryWorkloadInsightsTopContributors",
 }));
 export type StartQueryWorkloadInsightsTopContributorsDataError =
@@ -2138,6 +2184,8 @@ export const startQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQueryWorkloadInsightsTopContributorsData",
 }));
 export type StopQueryWorkloadInsightsTopContributorsError =
@@ -2167,6 +2215,8 @@ export const stopQueryWorkloadInsightsTopContributors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopQueryWorkloadInsightsTopContributors",
 }));
 export type StopQueryWorkloadInsightsTopContributorsDataError =
@@ -2196,5 +2246,7 @@ export const stopQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopQueryWorkloadInsightsTopContributorsData",
 }));

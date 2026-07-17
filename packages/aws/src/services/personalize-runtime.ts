@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -358,6 +360,8 @@ export const getActionRecommendations: API.OperationMethod<
   input: GetActionRecommendationsRequest,
   output: GetActionRecommendationsResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetActionRecommendations",
 }));
 export type GetPersonalizedRankingError =
@@ -380,6 +384,8 @@ export const getPersonalizedRanking: API.OperationMethod<
   input: GetPersonalizedRankingRequest,
   output: GetPersonalizedRankingResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPersonalizedRanking",
 }));
 export type GetRecommendationsError =
@@ -409,5 +415,7 @@ export const getRecommendations: API.OperationMethod<
   input: GetRecommendationsRequest,
   output: GetRecommendationsResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRecommendations",
 }));

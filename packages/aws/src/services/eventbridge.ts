@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3774,6 +3776,8 @@ export const activateEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateEventSource",
 }));
 export type CancelReplayError =
@@ -3799,6 +3803,8 @@ export const cancelReplay: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelReplay",
 }));
 export type CreateApiDestinationError =
@@ -3831,6 +3837,8 @@ export const createApiDestination: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApiDestination",
 }));
 export type CreateArchiveError =
@@ -3869,6 +3877,8 @@ export const createArchive: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateArchive",
 }));
 export type CreateConnectionError =
@@ -3901,6 +3911,8 @@ export const createConnection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnection",
 }));
 export type CreateEndpointError =
@@ -3929,6 +3941,8 @@ export const createEndpoint: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEndpoint",
 }));
 export type CreateEventBusError =
@@ -3962,6 +3976,8 @@ export const createEventBus: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEventBus",
 }));
 export type CreatePartnerEventSourceError =
@@ -4023,6 +4039,8 @@ export const createPartnerEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePartnerEventSource",
 }));
 export type DeactivateEventSourceError =
@@ -4056,6 +4074,8 @@ export const deactivateEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateEventSource",
 }));
 export type DeauthorizeConnectionError =
@@ -4080,6 +4100,8 @@ export const deauthorizeConnection: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeauthorizeConnection",
 }));
 export type DeleteApiDestinationError =
@@ -4103,6 +4125,8 @@ export const deleteApiDestination: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApiDestination",
 }));
 export type DeleteArchiveError =
@@ -4126,6 +4150,8 @@ export const deleteArchive: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteArchive",
 }));
 export type DeleteConnectionError =
@@ -4149,6 +4175,8 @@ export const deleteConnection: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type DeleteEndpointError =
@@ -4176,6 +4204,8 @@ export const deleteEndpoint: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEndpoint",
 }));
 export type DeleteEventBusError =
@@ -4200,6 +4230,8 @@ export const deleteEventBus: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEventBus",
 }));
 export type DeletePartnerEventSourceError =
@@ -4227,6 +4259,8 @@ export const deletePartnerEventSource: API.OperationMethod<
     InternalException,
     OperationDisabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePartnerEventSource",
 }));
 export type DeleteRuleError =
@@ -4267,6 +4301,8 @@ export const deleteRule: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRule",
 }));
 export type DescribeApiDestinationError =
@@ -4285,6 +4321,8 @@ export const describeApiDestination: API.OperationMethod<
   input: DescribeApiDestinationRequest,
   output: DescribeApiDestinationResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApiDestination",
 }));
 export type DescribeArchiveError =
@@ -4308,6 +4346,8 @@ export const describeArchive: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeArchive",
 }));
 export type DescribeConnectionError =
@@ -4326,6 +4366,8 @@ export const describeConnection: API.OperationMethod<
   input: DescribeConnectionRequest,
   output: DescribeConnectionResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnection",
 }));
 export type DescribeEndpointError =
@@ -4349,6 +4391,8 @@ export const describeEndpoint: API.OperationMethod<
   input: DescribeEndpointRequest,
   output: DescribeEndpointResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEndpoint",
 }));
 export type DescribeEventBusError =
@@ -4374,6 +4418,8 @@ export const describeEventBus: API.OperationMethod<
   input: DescribeEventBusRequest,
   output: DescribeEventBusResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventBus",
 }));
 export type DescribeEventSourceError =
@@ -4398,6 +4444,8 @@ export const describeEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEventSource",
 }));
 export type DescribePartnerEventSourceError =
@@ -4423,6 +4471,8 @@ export const describePartnerEventSource: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePartnerEventSource",
 }));
 export type DescribeReplayError =
@@ -4449,6 +4499,8 @@ export const describeReplay: API.OperationMethod<
   input: DescribeReplayRequest,
   output: DescribeReplayResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplay",
 }));
 export type DescribeRuleError =
@@ -4470,6 +4522,8 @@ export const describeRule: API.OperationMethod<
   input: DescribeRuleRequest,
   output: DescribeRuleResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRule",
 }));
 export type DisableRuleError =
@@ -4499,6 +4553,8 @@ export const disableRule: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableRule",
 }));
 export type EnableRuleError =
@@ -4527,6 +4583,8 @@ export const enableRule: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableRule",
 }));
 export type ListApiDestinationsError = InternalException | CommonErrors;
@@ -4542,6 +4600,8 @@ export const listApiDestinations: API.OperationMethod<
   input: ListApiDestinationsRequest,
   output: ListApiDestinationsResponse,
   errors: [InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApiDestinations",
 }));
 export type ListArchivesError =
@@ -4561,6 +4621,8 @@ export const listArchives: API.OperationMethod<
   input: ListArchivesRequest,
   output: ListArchivesResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListArchives",
 }));
 export type ListConnectionsError = InternalException | CommonErrors;
@@ -4576,6 +4638,8 @@ export const listConnections: API.OperationMethod<
   input: ListConnectionsRequest,
   output: ListConnectionsResponse,
   errors: [InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnections",
 }));
 export type ListEndpointsError = InternalException | CommonErrors;
@@ -4596,6 +4660,8 @@ export const listEndpoints: API.OperationMethod<
   input: ListEndpointsRequest,
   output: ListEndpointsResponse,
   errors: [InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEndpoints",
 }));
 export type ListEventBusesError = InternalException | CommonErrors;
@@ -4612,6 +4678,8 @@ export const listEventBuses: API.OperationMethod<
   input: ListEventBusesRequest,
   output: ListEventBusesResponse,
   errors: [InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventBuses",
 }));
 export type ListEventSourcesError =
@@ -4631,6 +4699,8 @@ export const listEventSources: API.OperationMethod<
   input: ListEventSourcesRequest,
   output: ListEventSourcesResponse,
   errors: [InternalException, OperationDisabledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventSources",
 }));
 export type ListPartnerEventSourceAccountsError =
@@ -4655,6 +4725,8 @@ export const listPartnerEventSourceAccounts: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPartnerEventSourceAccounts",
 }));
 export type ListPartnerEventSourcesError =
@@ -4674,6 +4746,8 @@ export const listPartnerEventSources: API.OperationMethod<
   input: ListPartnerEventSourcesRequest,
   output: ListPartnerEventSourcesResponse,
   errors: [InternalException, OperationDisabledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPartnerEventSources",
 }));
 export type ListReplaysError = InternalException | CommonErrors;
@@ -4690,6 +4764,8 @@ export const listReplays: API.OperationMethod<
   input: ListReplaysRequest,
   output: ListReplaysResponse,
   errors: [InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReplays",
 }));
 export type ListRuleNamesByTargetError =
@@ -4711,6 +4787,8 @@ export const listRuleNamesByTarget: API.OperationMethod<
   input: ListRuleNamesByTargetRequest,
   output: ListRuleNamesByTargetResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleNamesByTarget",
 }));
 export type ListRulesError =
@@ -4735,6 +4813,8 @@ export const listRules: API.OperationMethod<
   input: ListRulesRequest,
   output: ListRulesResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRules",
 }));
 export type ListTagsForResourceError =
@@ -4755,6 +4835,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InternalException, ResourceNotFoundException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTargetsByRuleError =
@@ -4775,6 +4857,8 @@ export const listTargetsByRule: API.OperationMethod<
   input: ListTargetsByRuleRequest,
   output: ListTargetsByRuleResponse,
   errors: [InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTargetsByRule",
 }));
 export type PutEventsError = InternalException | CommonErrors;
@@ -4803,6 +4887,8 @@ export const putEvents: API.OperationMethod<
   input: PutEventsRequest,
   output: PutEventsResponse,
   errors: [InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEvents",
 }));
 export type PutPartnerEventsError =
@@ -4824,6 +4910,8 @@ export const putPartnerEvents: API.OperationMethod<
   input: PutPartnerEventsRequest,
   output: PutPartnerEventsResponse,
   errors: [InternalException, OperationDisabledException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPartnerEvents",
 }));
 export type PutPermissionError =
@@ -4870,6 +4958,8 @@ export const putPermission: API.OperationMethod<
     PolicyLengthExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPermission",
 }));
 export type PutRuleError =
@@ -4951,6 +5041,8 @@ export const putRule: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRule",
 }));
 export type PutTargetsError =
@@ -5075,6 +5167,8 @@ export const putTargets: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutTargets",
 }));
 export type RemovePermissionError =
@@ -5103,6 +5197,8 @@ export const removePermission: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemovePermission",
 }));
 export type RemoveTargetsError =
@@ -5141,6 +5237,8 @@ export const removeTargets: API.OperationMethod<
     ManagedRuleException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveTargets",
 }));
 export type StartReplayError =
@@ -5176,6 +5274,8 @@ export const startReplay: API.OperationMethod<
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartReplay",
 }));
 export type TagResourceError =
@@ -5216,6 +5316,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestEventPatternError =
@@ -5239,6 +5341,8 @@ export const testEventPattern: API.OperationMethod<
   input: TestEventPatternRequest,
   output: TestEventPatternResponse,
   errors: [InternalException, InvalidEventPatternException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestEventPattern",
 }));
 export type UntagResourceError =
@@ -5266,6 +5370,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApiDestinationError =
@@ -5291,6 +5397,8 @@ export const updateApiDestination: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApiDestination",
 }));
 export type UpdateArchiveError =
@@ -5318,6 +5426,8 @@ export const updateArchive: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateArchive",
 }));
 export type UpdateConnectionError =
@@ -5347,6 +5457,8 @@ export const updateConnection: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnection",
 }));
 export type UpdateEndpointError =
@@ -5374,6 +5486,8 @@ export const updateEndpoint: API.OperationMethod<
     InternalException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEndpoint",
 }));
 export type UpdateEventBusError =
@@ -5399,5 +5513,7 @@ export const updateEventBus: API.OperationMethod<
     OperationDisabledException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEventBus",
 }));

@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1207,6 +1209,8 @@ export const createConnection: API.OperationMethod<
     ResourceNotFoundException,
     ResourceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnection",
 }));
 export type CreateHostError = LimitExceededException | CommonErrors;
@@ -1228,6 +1232,8 @@ export const createHost: API.OperationMethod<
   input: CreateHostInput,
   output: CreateHostOutput,
   errors: [LimitExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateHost",
 }));
 export type CreateRepositoryLinkError =
@@ -1259,6 +1265,8 @@ export const createRepositoryLink: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRepositoryLink",
 }));
 export type CreateSyncConfigurationError =
@@ -1292,6 +1300,8 @@ export const createSyncConfiguration: API.OperationMethod<
     ResourceAlreadyExistsException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSyncConfiguration",
 }));
 export type DeleteConnectionError = ResourceNotFoundException | CommonErrors;
@@ -1307,6 +1317,8 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionInput,
   output: DeleteConnectionOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type DeleteHostError =
@@ -1327,6 +1339,8 @@ export const deleteHost: API.OperationMethod<
   input: DeleteHostInput,
   output: DeleteHostOutput,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteHost",
 }));
 export type DeleteRepositoryLinkError =
@@ -1360,6 +1374,8 @@ export const deleteRepositoryLink: API.OperationMethod<
     ThrottlingException,
     UnsupportedProviderTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRepositoryLink",
 }));
 export type DeleteSyncConfigurationError =
@@ -1389,6 +1405,8 @@ export const deleteSyncConfiguration: API.OperationMethod<
     LimitExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSyncConfiguration",
 }));
 export type GetConnectionError =
@@ -1407,6 +1425,8 @@ export const getConnection: API.OperationMethod<
   input: GetConnectionInput,
   output: GetConnectionOutput,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnection",
 }));
 export type GetHostError =
@@ -1426,6 +1446,8 @@ export const getHost: API.OperationMethod<
   input: GetHostInput,
   output: GetHostOutput,
   errors: [ResourceNotFoundException, ResourceUnavailableException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetHost",
 }));
 export type GetRepositoryLinkError =
@@ -1456,6 +1478,8 @@ export const getRepositoryLink: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRepositoryLink",
 }));
 export type GetRepositorySyncStatusError =
@@ -1484,6 +1508,8 @@ export const getRepositorySyncStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRepositorySyncStatus",
 }));
 export type GetResourceSyncStatusError =
@@ -1512,6 +1538,8 @@ export const getResourceSyncStatus: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceSyncStatus",
 }));
 export type GetSyncBlockerSummaryError =
@@ -1539,6 +1567,8 @@ export const getSyncBlockerSummary: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSyncBlockerSummary",
 }));
 export type GetSyncConfigurationError =
@@ -1566,6 +1596,8 @@ export const getSyncConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSyncConfiguration",
 }));
 export type ListConnectionsError = ResourceNotFoundException | CommonErrors;
@@ -1596,6 +1628,8 @@ export const listConnections: API.OperationMethod<
   input: ListConnectionsInput,
   output: ListConnectionsOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnections",
   pagination: {
     inputToken: "NextToken",
@@ -1631,6 +1665,8 @@ export const listHosts: API.OperationMethod<
   input: ListHostsInput,
   output: ListHostsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListHosts",
   pagination: {
     inputToken: "NextToken",
@@ -1680,6 +1716,8 @@ export const listRepositoryLinks: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRepositoryLinks",
   pagination: {
     inputToken: "NextToken",
@@ -1712,6 +1750,8 @@ export const listRepositorySyncDefinitions: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRepositorySyncDefinitions",
 }));
 export type ListSyncConfigurationsError =
@@ -1754,6 +1794,8 @@ export const listSyncConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSyncConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -1774,6 +1816,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1793,6 +1837,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [LimitExceededException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
@@ -1808,6 +1854,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateHostError =
@@ -1833,6 +1881,8 @@ export const updateHost: API.OperationMethod<
     ResourceUnavailableException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateHost",
 }));
 export type UpdateRepositoryLinkError =
@@ -1866,6 +1916,8 @@ export const updateRepositoryLink: API.OperationMethod<
     ThrottlingException,
     UpdateOutOfSyncException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRepositoryLink",
 }));
 export type UpdateSyncBlockerError =
@@ -1897,6 +1949,8 @@ export const updateSyncBlocker: API.OperationMethod<
     SyncBlockerDoesNotExistException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSyncBlocker",
 }));
 export type UpdateSyncConfigurationError =
@@ -1928,5 +1982,7 @@ export const updateSyncConfiguration: API.OperationMethod<
     ThrottlingException,
     UpdateOutOfSyncException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSyncConfiguration",
 }));

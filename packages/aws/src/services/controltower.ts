@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1642,6 +1644,8 @@ export const disableControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableControl",
 }));
 export type GetBaselineOperationError =
@@ -1669,6 +1673,8 @@ export const getBaselineOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBaselineOperation",
 }));
 export type GetBaselineError =
@@ -1696,6 +1702,8 @@ export const getBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBaseline",
 }));
 export type ListBaselinesError =
@@ -1736,6 +1744,8 @@ export const listBaselines: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBaselines",
   pagination: {
     inputToken: "nextToken",
@@ -1769,6 +1779,8 @@ export const getControlOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetControlOperation",
 }));
 export type ListControlOperationsError =
@@ -1809,6 +1821,8 @@ export const listControlOperations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListControlOperations",
   pagination: {
     inputToken: "nextToken",
@@ -1846,6 +1860,8 @@ export const enableBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableBaseline",
 }));
 export type GetEnabledBaselineError =
@@ -1873,6 +1889,8 @@ export const getEnabledBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnabledBaseline",
 }));
 export type UpdateEnabledBaselineError =
@@ -1904,6 +1922,8 @@ export const updateEnabledBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnabledBaseline",
 }));
 export type DisableBaselineError =
@@ -1935,6 +1955,8 @@ export const disableBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisableBaseline",
 }));
 export type ListEnabledBaselinesError =
@@ -1975,6 +1997,8 @@ export const listEnabledBaselines: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnabledBaselines",
   pagination: {
     inputToken: "nextToken",
@@ -2012,6 +2036,8 @@ export const resetEnabledBaseline: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetEnabledBaseline",
 }));
 export type EnableControlError =
@@ -2043,6 +2069,8 @@ export const enableControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "EnableControl",
 }));
 export type GetEnabledControlError =
@@ -2070,6 +2098,8 @@ export const getEnabledControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnabledControl",
 }));
 export type UpdateEnabledControlError =
@@ -2107,6 +2137,8 @@ export const updateEnabledControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnabledControl",
 }));
 export type ListEnabledControlsError =
@@ -2149,6 +2181,8 @@ export const listEnabledControls: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnabledControls",
   pagination: {
     inputToken: "nextToken",
@@ -2186,6 +2220,8 @@ export const resetEnabledControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetEnabledControl",
 }));
 export type GetLandingZoneOperationError =
@@ -2213,6 +2249,8 @@ export const getLandingZoneOperation: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLandingZoneOperation",
 }));
 export type ListLandingZoneOperationsError =
@@ -2253,6 +2291,8 @@ export const listLandingZoneOperations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLandingZoneOperations",
   pagination: {
     inputToken: "nextToken",
@@ -2286,6 +2326,8 @@ export const createLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLandingZone",
 }));
 export type GetLandingZoneError =
@@ -2313,6 +2355,8 @@ export const getLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLandingZone",
 }));
 export type UpdateLandingZoneError =
@@ -2342,6 +2386,8 @@ export const updateLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLandingZone",
 }));
 export type DeleteLandingZoneError =
@@ -2373,6 +2419,8 @@ export const deleteLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLandingZone",
 }));
 export type ListLandingZonesError =
@@ -2415,6 +2463,8 @@ export const listLandingZones: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLandingZones",
   pagination: {
     inputToken: "nextToken",
@@ -2450,6 +2500,8 @@ export const resetLandingZone: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetLandingZone",
 }));
 export type ListTagsForResourceError =
@@ -2473,6 +2525,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2496,6 +2550,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2519,5 +2575,7 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

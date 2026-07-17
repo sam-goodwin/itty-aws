@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3249,6 +3251,8 @@ export const createAutoPredictor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAutoPredictor",
 }));
 export type CreateDatasetError =
@@ -3307,6 +3311,8 @@ export const createDataset: API.OperationMethod<
     LimitExceededException,
     ResourceAlreadyExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataset",
 }));
 export type CreateDatasetGroupError =
@@ -3344,6 +3350,8 @@ export const createDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatasetGroup",
 }));
 export type CreateDatasetImportJobError =
@@ -3392,6 +3400,8 @@ export const createDatasetImportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatasetImportJob",
 }));
 export type CreateExplainabilityError =
@@ -3498,6 +3508,8 @@ export const createExplainability: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExplainability",
 }));
 export type CreateExplainabilityExportError =
@@ -3533,6 +3545,8 @@ export const createExplainabilityExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExplainabilityExport",
 }));
 export type CreateForecastError =
@@ -3582,6 +3596,8 @@ export const createForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateForecast",
 }));
 export type CreateForecastExportJobError =
@@ -3626,6 +3642,8 @@ export const createForecastExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateForecastExportJob",
 }));
 export type CreateMonitorError =
@@ -3654,6 +3672,8 @@ export const createMonitor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMonitor",
 }));
 export type CreatePredictorError =
@@ -3732,6 +3752,8 @@ export const createPredictor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePredictor",
 }));
 export type CreatePredictorBacktestExportJobError =
@@ -3774,6 +3796,8 @@ export const createPredictorBacktestExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePredictorBacktestExportJob",
 }));
 export type CreateWhatIfAnalysisError =
@@ -3817,6 +3841,8 @@ export const createWhatIfAnalysis: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWhatIfAnalysis",
 }));
 export type CreateWhatIfForecastError =
@@ -3845,6 +3871,8 @@ export const createWhatIfForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWhatIfForecast",
 }));
 export type CreateWhatIfForecastExportError =
@@ -3890,6 +3918,8 @@ export const createWhatIfForecastExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWhatIfForecastExport",
 }));
 export type DeleteDatasetError =
@@ -3919,6 +3949,8 @@ export const deleteDataset: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataset",
 }));
 export type DeleteDatasetGroupError =
@@ -3946,6 +3978,8 @@ export const deleteDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDatasetGroup",
 }));
 export type DeleteDatasetImportJobError =
@@ -3972,6 +4006,8 @@ export const deleteDatasetImportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDatasetImportJob",
 }));
 export type DeleteExplainabilityError =
@@ -3998,6 +4034,8 @@ export const deleteExplainability: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExplainability",
 }));
 export type DeleteExplainabilityExportError =
@@ -4021,6 +4059,8 @@ export const deleteExplainabilityExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExplainabilityExport",
 }));
 export type DeleteForecastError =
@@ -4049,6 +4089,8 @@ export const deleteForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteForecast",
 }));
 export type DeleteForecastExportJobError =
@@ -4074,6 +4116,8 @@ export const deleteForecastExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteForecastExportJob",
 }));
 export type DeleteMonitorError =
@@ -4097,6 +4141,8 @@ export const deleteMonitor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMonitor",
 }));
 export type DeletePredictorError =
@@ -4121,6 +4167,8 @@ export const deletePredictor: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePredictor",
 }));
 export type DeletePredictorBacktestExportJobError =
@@ -4144,6 +4192,8 @@ export const deletePredictorBacktestExportJob: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePredictorBacktestExportJob",
 }));
 export type DeleteResourceTreeError =
@@ -4187,6 +4237,8 @@ export const deleteResourceTree: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceTree",
 }));
 export type DeleteWhatIfAnalysisError =
@@ -4213,6 +4265,8 @@ export const deleteWhatIfAnalysis: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWhatIfAnalysis",
 }));
 export type DeleteWhatIfForecastError =
@@ -4239,6 +4293,8 @@ export const deleteWhatIfForecast: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWhatIfForecast",
 }));
 export type DeleteWhatIfForecastExportError =
@@ -4263,6 +4319,8 @@ export const deleteWhatIfForecastExport: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWhatIfForecastExport",
 }));
 export type DescribeAutoPredictorError =
@@ -4281,6 +4339,8 @@ export const describeAutoPredictor: API.OperationMethod<
   input: DescribeAutoPredictorRequest,
   output: DescribeAutoPredictorResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAutoPredictor",
 }));
 export type DescribeDatasetError =
@@ -4308,6 +4368,8 @@ export const describeDataset: API.OperationMethod<
   input: DescribeDatasetRequest,
   output: DescribeDatasetResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDataset",
 }));
 export type DescribeDatasetGroupError =
@@ -4338,6 +4400,8 @@ export const describeDatasetGroup: API.OperationMethod<
   input: DescribeDatasetGroupRequest,
   output: DescribeDatasetGroupResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDatasetGroup",
 }));
 export type DescribeDatasetImportJobError =
@@ -4372,6 +4436,8 @@ export const describeDatasetImportJob: API.OperationMethod<
   input: DescribeDatasetImportJobRequest,
   output: DescribeDatasetImportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDatasetImportJob",
 }));
 export type DescribeExplainabilityError =
@@ -4390,6 +4456,8 @@ export const describeExplainability: API.OperationMethod<
   input: DescribeExplainabilityRequest,
   output: DescribeExplainabilityResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExplainability",
 }));
 export type DescribeExplainabilityExportError =
@@ -4408,6 +4476,8 @@ export const describeExplainabilityExport: API.OperationMethod<
   input: DescribeExplainabilityExportRequest,
   output: DescribeExplainabilityExportResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExplainabilityExport",
 }));
 export type DescribeForecastError =
@@ -4440,6 +4510,8 @@ export const describeForecast: API.OperationMethod<
   input: DescribeForecastRequest,
   output: DescribeForecastResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeForecast",
 }));
 export type DescribeForecastExportJobError =
@@ -4470,6 +4542,8 @@ export const describeForecastExportJob: API.OperationMethod<
   input: DescribeForecastExportJobRequest,
   output: DescribeForecastExportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeForecastExportJob",
 }));
 export type DescribeMonitorError =
@@ -4502,6 +4576,8 @@ export const describeMonitor: API.OperationMethod<
   input: DescribeMonitorRequest,
   output: DescribeMonitorResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMonitor",
 }));
 export type DescribePredictorError =
@@ -4541,6 +4617,8 @@ export const describePredictor: API.OperationMethod<
   input: DescribePredictorRequest,
   output: DescribePredictorResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePredictor",
 }));
 export type DescribePredictorBacktestExportJobError =
@@ -4571,6 +4649,8 @@ export const describePredictorBacktestExportJob: API.OperationMethod<
   input: DescribePredictorBacktestExportJobRequest,
   output: DescribePredictorBacktestExportJobResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePredictorBacktestExportJob",
 }));
 export type DescribeWhatIfAnalysisError =
@@ -4599,6 +4679,8 @@ export const describeWhatIfAnalysis: API.OperationMethod<
   input: DescribeWhatIfAnalysisRequest,
   output: DescribeWhatIfAnalysisResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWhatIfAnalysis",
 }));
 export type DescribeWhatIfForecastError =
@@ -4627,6 +4709,8 @@ export const describeWhatIfForecast: API.OperationMethod<
   input: DescribeWhatIfForecastRequest,
   output: DescribeWhatIfForecastResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWhatIfForecast",
 }));
 export type DescribeWhatIfForecastExportError =
@@ -4655,6 +4739,8 @@ export const describeWhatIfForecastExport: API.OperationMethod<
   input: DescribeWhatIfForecastExportRequest,
   output: DescribeWhatIfForecastExportResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWhatIfForecastExport",
 }));
 export type GetAccuracyMetricsError =
@@ -4695,6 +4781,8 @@ export const getAccuracyMetrics: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccuracyMetrics",
 }));
 export type ListDatasetGroupsError = InvalidNextTokenException | CommonErrors;
@@ -4729,6 +4817,8 @@ export const listDatasetGroups: API.OperationMethod<
   input: ListDatasetGroupsRequest,
   output: ListDatasetGroupsResponse,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasetGroups",
   pagination: {
     inputToken: "NextToken",
@@ -4772,6 +4862,8 @@ export const listDatasetImportJobs: API.OperationMethod<
   input: ListDatasetImportJobsRequest,
   output: ListDatasetImportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasetImportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -4810,6 +4902,8 @@ export const listDatasets: API.OperationMethod<
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
   errors: [InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDatasets",
   pagination: {
     inputToken: "NextToken",
@@ -4854,6 +4948,8 @@ export const listExplainabilities: API.OperationMethod<
   input: ListExplainabilitiesRequest,
   output: ListExplainabilitiesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExplainabilities",
   pagination: {
     inputToken: "NextToken",
@@ -4897,6 +4993,8 @@ export const listExplainabilityExports: API.OperationMethod<
   input: ListExplainabilityExportsRequest,
   output: ListExplainabilityExportsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExplainabilityExports",
   pagination: {
     inputToken: "NextToken",
@@ -4939,6 +5037,8 @@ export const listForecastExportJobs: API.OperationMethod<
   input: ListForecastExportJobsRequest,
   output: ListForecastExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListForecastExportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -4982,6 +5082,8 @@ export const listForecasts: API.OperationMethod<
   input: ListForecastsRequest,
   output: ListForecastsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListForecasts",
   pagination: {
     inputToken: "NextToken",
@@ -5030,6 +5132,8 @@ export const listMonitorEvaluations: API.OperationMethod<
     InvalidNextTokenException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitorEvaluations",
   pagination: {
     inputToken: "NextToken",
@@ -5070,6 +5174,8 @@ export const listMonitors: API.OperationMethod<
   input: ListMonitorsRequest,
   output: ListMonitorsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMonitors",
   pagination: {
     inputToken: "NextToken",
@@ -5113,6 +5219,8 @@ export const listPredictorBacktestExportJobs: API.OperationMethod<
   input: ListPredictorBacktestExportJobsRequest,
   output: ListPredictorBacktestExportJobsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPredictorBacktestExportJobs",
   pagination: {
     inputToken: "NextToken",
@@ -5157,6 +5265,8 @@ export const listPredictors: API.OperationMethod<
   input: ListPredictorsRequest,
   output: ListPredictorsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPredictors",
   pagination: {
     inputToken: "NextToken",
@@ -5181,6 +5291,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListWhatIfAnalysesError =
@@ -5214,6 +5326,8 @@ export const listWhatIfAnalyses: API.OperationMethod<
   input: ListWhatIfAnalysesRequest,
   output: ListWhatIfAnalysesResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWhatIfAnalyses",
   pagination: {
     inputToken: "NextToken",
@@ -5253,6 +5367,8 @@ export const listWhatIfForecastExports: API.OperationMethod<
   input: ListWhatIfForecastExportsRequest,
   output: ListWhatIfForecastExportsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWhatIfForecastExports",
   pagination: {
     inputToken: "NextToken",
@@ -5292,6 +5408,8 @@ export const listWhatIfForecasts: API.OperationMethod<
   input: ListWhatIfForecastsRequest,
   output: ListWhatIfForecastsResponse,
   errors: [InvalidInputException, InvalidNextTokenException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWhatIfForecasts",
   pagination: {
     inputToken: "NextToken",
@@ -5323,6 +5441,8 @@ export const resumeResource: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeResource",
 }));
 export type StopResourceError =
@@ -5367,6 +5487,8 @@ export const stopResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopResource",
 }));
 export type TagResourceError =
@@ -5393,6 +5515,8 @@ export const tagResource: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5411,6 +5535,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InvalidInputException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDatasetGroupError =
@@ -5438,5 +5564,7 @@ export const updateDatasetGroup: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDatasetGroup",
 }));

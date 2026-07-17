@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1381,6 +1383,8 @@ export const activateSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateSubscription",
 }));
 export type CreateDomainError = ServiceQuotaExceededException | CommonErrors;
@@ -1396,6 +1400,8 @@ export const createDomain: API.OperationMethod<
   input: CreateDomainInput,
   output: CreateDomainOutput,
   errors: [ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
 export type CreateSubscriptionError =
@@ -1423,6 +1429,8 @@ export const createSubscription: API.OperationMethod<
     ServiceQuotaExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscription",
 }));
 export type DeactivateSubscriptionError =
@@ -1448,6 +1456,8 @@ export const deactivateSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateSubscription",
 }));
 export type DeleteDomainError = ResourceNotFoundException | CommonErrors;
@@ -1463,6 +1473,8 @@ export const deleteDomain: API.OperationMethod<
   input: DeleteDomainInput,
   output: DeleteDomainOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
 export type GetDomainError = ResourceNotFoundException | CommonErrors;
@@ -1478,6 +1490,8 @@ export const getDomain: API.OperationMethod<
   input: GetDomainInput,
   output: GetDomainOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomain",
 }));
 export type GetMedicalScribeListeningSessionError =
@@ -1505,6 +1519,8 @@ export const getMedicalScribeListeningSession: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMedicalScribeListeningSession",
 }));
 export type GetPatientInsightsJobError =
@@ -1532,6 +1548,8 @@ export const getPatientInsightsJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPatientInsightsJob",
 }));
 export type GetSubscriptionError =
@@ -1557,6 +1575,8 @@ export const getSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscription",
 }));
 export type ListDomainsError = CommonErrors;
@@ -1587,6 +1607,8 @@ export const listDomains: API.OperationMethod<
   input: ListDomainsInput,
   output: ListDomainsOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomains",
   pagination: {
     inputToken: "nextToken",
@@ -1633,6 +1655,8 @@ export const listSubscriptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptions",
   pagination: {
     inputToken: "nextToken",
@@ -1654,6 +1678,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartMedicalScribeListeningSessionError =
@@ -1683,6 +1709,8 @@ export const startMedicalScribeListeningSession: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMedicalScribeListeningSession",
 }));
 export type StartPatientInsightsJobError =
@@ -1712,6 +1740,8 @@ export const startPatientInsightsJob: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartPatientInsightsJob",
 }));
 export type TagResourceError = CommonErrors;
@@ -1727,6 +1757,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceInput,
   output: TagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
@@ -1742,5 +1774,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceInput,
   output: UntagResourceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

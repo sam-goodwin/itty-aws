@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1952,6 +1954,8 @@ export const addAttributesToFindings: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddAttributesToFindings",
 }));
 export type CreateAssessmentTargetError =
@@ -1990,6 +1994,8 @@ export const createAssessmentTarget: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssessmentTarget",
 }));
 export type CreateAssessmentTemplateError =
@@ -2022,6 +2028,8 @@ export const createAssessmentTemplate: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssessmentTemplate",
 }));
 export type CreateExclusionsPreviewError =
@@ -2053,6 +2061,8 @@ export const createExclusionsPreview: API.OperationMethod<
     PreviewGenerationInProgressException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateExclusionsPreview",
 }));
 export type CreateResourceGroupError =
@@ -2083,6 +2093,8 @@ export const createResourceGroup: API.OperationMethod<
     LimitExceededException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceGroup",
 }));
 export type DeleteAssessmentRunError =
@@ -2113,6 +2125,8 @@ export const deleteAssessmentRun: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessmentRun",
 }));
 export type DeleteAssessmentTargetError =
@@ -2143,6 +2157,8 @@ export const deleteAssessmentTarget: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessmentTarget",
 }));
 export type DeleteAssessmentTemplateError =
@@ -2173,6 +2189,8 @@ export const deleteAssessmentTemplate: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssessmentTemplate",
 }));
 export type DescribeAssessmentRunsError =
@@ -2192,6 +2210,8 @@ export const describeAssessmentRuns: API.OperationMethod<
   input: DescribeAssessmentRunsRequest,
   output: DescribeAssessmentRunsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssessmentRuns",
 }));
 export type DescribeAssessmentTargetsError =
@@ -2211,6 +2231,8 @@ export const describeAssessmentTargets: API.OperationMethod<
   input: DescribeAssessmentTargetsRequest,
   output: DescribeAssessmentTargetsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssessmentTargets",
 }));
 export type DescribeAssessmentTemplatesError =
@@ -2230,6 +2252,8 @@ export const describeAssessmentTemplates: API.OperationMethod<
   input: DescribeAssessmentTemplatesRequest,
   output: DescribeAssessmentTemplatesResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAssessmentTemplates",
 }));
 export type DescribeCrossAccountAccessRoleError =
@@ -2248,6 +2272,8 @@ export const describeCrossAccountAccessRole: API.OperationMethod<
   input: DescribeCrossAccountAccessRoleRequest,
   output: DescribeCrossAccountAccessRoleResponse,
   errors: [InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCrossAccountAccessRole",
 }));
 export type DescribeExclusionsError =
@@ -2266,6 +2292,8 @@ export const describeExclusions: API.OperationMethod<
   input: DescribeExclusionsRequest,
   output: DescribeExclusionsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExclusions",
 }));
 export type DescribeFindingsError =
@@ -2284,6 +2312,8 @@ export const describeFindings: API.OperationMethod<
   input: DescribeFindingsRequest,
   output: DescribeFindingsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFindings",
 }));
 export type DescribeResourceGroupsError =
@@ -2303,6 +2333,8 @@ export const describeResourceGroups: API.OperationMethod<
   input: DescribeResourceGroupsRequest,
   output: DescribeResourceGroupsResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourceGroups",
 }));
 export type DescribeRulesPackagesError =
@@ -2322,6 +2354,8 @@ export const describeRulesPackages: API.OperationMethod<
   input: DescribeRulesPackagesRequest,
   output: DescribeRulesPackagesResponse,
   errors: [InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRulesPackages",
 }));
 export type GetAssessmentReportError =
@@ -2354,6 +2388,8 @@ export const getAssessmentReport: API.OperationMethod<
     ServiceTemporarilyUnavailableException,
     UnsupportedFeatureException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssessmentReport",
 }));
 export type GetExclusionsPreviewError =
@@ -2396,6 +2432,8 @@ export const getExclusionsPreview: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExclusionsPreview",
   pagination: {
     inputToken: "nextToken",
@@ -2427,6 +2465,8 @@ export const getTelemetryMetadata: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTelemetryMetadata",
 }));
 export type ListAssessmentRunAgentsError =
@@ -2468,6 +2508,8 @@ export const listAssessmentRunAgents: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentRunAgents",
   pagination: {
     inputToken: "nextToken",
@@ -2514,6 +2556,8 @@ export const listAssessmentRuns: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentRuns",
   pagination: {
     inputToken: "nextToken",
@@ -2555,6 +2599,8 @@ export const listAssessmentTargets: API.OperationMethod<
   input: ListAssessmentTargetsRequest,
   output: ListAssessmentTargetsResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentTargets",
   pagination: {
     inputToken: "nextToken",
@@ -2601,6 +2647,8 @@ export const listAssessmentTemplates: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssessmentTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -2647,6 +2695,8 @@ export const listEventSubscriptions: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEventSubscriptions",
   pagination: {
     inputToken: "nextToken",
@@ -2692,6 +2742,8 @@ export const listExclusions: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExclusions",
   pagination: {
     inputToken: "nextToken",
@@ -2738,6 +2790,8 @@ export const listFindings: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFindings",
   pagination: {
     inputToken: "nextToken",
@@ -2777,6 +2831,8 @@ export const listRulesPackages: API.OperationMethod<
   input: ListRulesPackagesRequest,
   output: ListRulesPackagesResponse,
   errors: [AccessDeniedException, InternalException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRulesPackages",
   pagination: {
     inputToken: "nextToken",
@@ -2807,6 +2863,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PreviewAgentsError =
@@ -2850,6 +2908,8 @@ export const previewAgents: API.OperationMethod<
     InvalidInputException,
     NoSuchEntityException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PreviewAgents",
   pagination: {
     inputToken: "nextToken",
@@ -2883,6 +2943,8 @@ export const registerCrossAccountAccessRole: API.OperationMethod<
     InvalidInputException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCrossAccountAccessRole",
 }));
 export type RemoveAttributesFromFindingsError =
@@ -2911,6 +2973,8 @@ export const removeAttributesFromFindings: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAttributesFromFindings",
 }));
 export type SetTagsForResourceError =
@@ -2939,6 +3003,8 @@ export const setTagsForResource: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetTagsForResource",
 }));
 export type StartAssessmentRunError =
@@ -2974,6 +3040,8 @@ export const startAssessmentRun: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartAssessmentRun",
 }));
 export type StopAssessmentRunError =
@@ -3002,6 +3070,8 @@ export const stopAssessmentRun: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopAssessmentRun",
 }));
 export type SubscribeToEventError =
@@ -3032,6 +3102,8 @@ export const subscribeToEvent: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubscribeToEvent",
 }));
 export type UnsubscribeFromEventError =
@@ -3060,6 +3132,8 @@ export const unsubscribeFromEvent: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UnsubscribeFromEvent",
 }));
 export type UpdateAssessmentTargetError =
@@ -3091,5 +3165,7 @@ export const updateAssessmentTarget: API.OperationMethod<
     NoSuchEntityException,
     ServiceTemporarilyUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssessmentTarget",
 }));

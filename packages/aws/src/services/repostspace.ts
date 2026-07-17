@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1039,6 +1041,8 @@ export const batchAddChannelRoleToAccessors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAddChannelRoleToAccessors",
 }));
 export type BatchAddRoleError =
@@ -1066,6 +1070,8 @@ export const batchAddRole: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAddRole",
 }));
 export type BatchRemoveChannelRoleFromAccessorsError =
@@ -1093,6 +1099,8 @@ export const batchRemoveChannelRoleFromAccessors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchRemoveChannelRoleFromAccessors",
 }));
 export type BatchRemoveRoleError =
@@ -1120,6 +1128,8 @@ export const batchRemoveRole: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchRemoveRole",
 }));
 export type CreateChannelError =
@@ -1151,6 +1161,8 @@ export const createChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
 export type CreateSpaceError =
@@ -1182,6 +1194,8 @@ export const createSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSpace",
 }));
 export type DeleteSpaceError =
@@ -1209,6 +1223,8 @@ export const deleteSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSpace",
 }));
 export type DeregisterAdminError =
@@ -1236,6 +1252,8 @@ export const deregisterAdmin: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterAdmin",
 }));
 export type GetChannelError =
@@ -1263,6 +1281,8 @@ export const getChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannel",
 }));
 export type GetSpaceError =
@@ -1290,6 +1310,8 @@ export const getSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSpace",
 }));
 export type ListChannelsError =
@@ -1330,6 +1352,8 @@ export const listChannels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "nextToken",
@@ -1376,6 +1400,8 @@ export const listSpaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSpaces",
   pagination: {
     inputToken: "nextToken",
@@ -1409,6 +1435,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RegisterAdminError =
@@ -1436,6 +1464,8 @@ export const registerAdmin: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterAdmin",
 }));
 export type SendInvitesError =
@@ -1463,6 +1493,8 @@ export const sendInvites: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendInvites",
 }));
 export type TagResourceError =
@@ -1490,6 +1522,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1517,6 +1551,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateChannelError =
@@ -1546,6 +1582,8 @@ export const updateChannel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
 export type UpdateSpaceError =
@@ -1575,5 +1613,7 @@ export const updateSpace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSpace",
 }));

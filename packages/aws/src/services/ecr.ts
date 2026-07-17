@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4099,6 +4101,8 @@ export const batchCheckLayerAvailability: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCheckLayerAvailability",
 }));
 export type BatchDeleteImageError =
@@ -4129,6 +4133,8 @@ export const batchDeleteImage: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteImage",
 }));
 export type BatchGetImageError =
@@ -4160,6 +4166,8 @@ export const batchGetImage: API.OperationMethod<
     ServerException,
     UnableToGetUpstreamImageException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetImage",
 }));
 export type BatchGetRepositoryScanningConfigurationError =
@@ -4185,6 +4193,8 @@ export const batchGetRepositoryScanningConfiguration: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetRepositoryScanningConfiguration",
 }));
 export type CompleteLayerUploadError =
@@ -4228,6 +4238,8 @@ export const completeLayerUpload: API.OperationMethod<
     ServerException,
     UploadNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteLayerUpload",
 }));
 export type CreatePullThroughCacheRuleError =
@@ -4266,6 +4278,8 @@ export const createPullThroughCacheRule: API.OperationMethod<
     UnsupportedUpstreamRegistryException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePullThroughCacheRule",
 }));
 export type CreateRepositoryError =
@@ -4298,6 +4312,8 @@ export const createRepository: API.OperationMethod<
     ServerException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRepository",
 }));
 export type CreateRepositoryCreationTemplateError =
@@ -4329,6 +4345,8 @@ export const createRepositoryCreationTemplate: API.OperationMethod<
     TemplateAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRepositoryCreationTemplate",
 }));
 export type DeleteLifecyclePolicyError =
@@ -4356,6 +4374,8 @@ export const deleteLifecyclePolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLifecyclePolicy",
 }));
 export type DeletePullThroughCacheRuleError =
@@ -4381,6 +4401,8 @@ export const deletePullThroughCacheRule: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePullThroughCacheRule",
 }));
 export type DeleteRegistryPolicyError =
@@ -4406,6 +4428,8 @@ export const deleteRegistryPolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegistryPolicy",
 }));
 export type DeleteRepositoryError =
@@ -4435,6 +4459,8 @@ export const deleteRepository: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRepository",
 }));
 export type DeleteRepositoryCreationTemplateError =
@@ -4460,6 +4486,8 @@ export const deleteRepositoryCreationTemplate: API.OperationMethod<
     TemplateNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRepositoryCreationTemplate",
 }));
 export type DeleteRepositoryPolicyError =
@@ -4485,6 +4513,8 @@ export const deleteRepositoryPolicy: API.OperationMethod<
     RepositoryPolicyNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRepositoryPolicy",
 }));
 export type DeleteSigningConfigurationError =
@@ -4514,6 +4544,8 @@ export const deleteSigningConfiguration: API.OperationMethod<
     SigningConfigurationNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSigningConfiguration",
 }));
 export type DeregisterPullTimeUpdateExclusionError =
@@ -4541,6 +4573,8 @@ export const deregisterPullTimeUpdateExclusion: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterPullTimeUpdateExclusion",
 }));
 export type DescribeImageReplicationStatusError =
@@ -4568,6 +4602,8 @@ export const describeImageReplicationStatus: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageReplicationStatus",
 }));
 export type DescribeImagesError =
@@ -4619,6 +4655,8 @@ export const describeImages: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImages",
   pagination: {
     inputToken: "nextToken",
@@ -4669,6 +4707,8 @@ export const describeImageScanFindings: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageScanFindings",
   pagination: {
     inputToken: "nextToken",
@@ -4706,6 +4746,8 @@ export const describeImageSigningStatus: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeImageSigningStatus",
 }));
 export type DescribePullThroughCacheRulesError =
@@ -4746,6 +4788,8 @@ export const describePullThroughCacheRules: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePullThroughCacheRules",
   pagination: {
     inputToken: "nextToken",
@@ -4773,6 +4817,8 @@ export const describeRegistry: API.OperationMethod<
   input: DescribeRegistryRequest,
   output: DescribeRegistryResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistry",
 }));
 export type DescribeRepositoriesError =
@@ -4811,6 +4857,8 @@ export const describeRepositories: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRepositories",
   pagination: {
     inputToken: "nextToken",
@@ -4853,6 +4901,8 @@ export const describeRepositoryCreationTemplates: API.OperationMethod<
   input: DescribeRepositoryCreationTemplatesRequest,
   output: DescribeRepositoryCreationTemplatesResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRepositoryCreationTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -4878,6 +4928,8 @@ export const getAccountSetting: API.OperationMethod<
   input: GetAccountSettingRequest,
   output: GetAccountSettingResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountSetting",
 }));
 export type GetAuthorizationTokenError =
@@ -4904,6 +4956,8 @@ export const getAuthorizationToken: API.OperationMethod<
   input: GetAuthorizationTokenRequest,
   output: GetAuthorizationTokenResponse,
   errors: [InvalidParameterException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAuthorizationToken",
 }));
 export type GetDownloadUrlForLayerError =
@@ -4940,6 +4994,8 @@ export const getDownloadUrlForLayer: API.OperationMethod<
     ServerException,
     UnableToGetUpstreamLayerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDownloadUrlForLayer",
 }));
 export type GetLifecyclePolicyError =
@@ -4967,6 +5023,8 @@ export const getLifecyclePolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecyclePolicy",
 }));
 export type GetLifecyclePolicyPreviewError =
@@ -5010,6 +5068,8 @@ export const getLifecyclePolicyPreview: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLifecyclePolicyPreview",
   pagination: {
     inputToken: "nextToken",
@@ -5041,6 +5101,8 @@ export const getRegistryPolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegistryPolicy",
 }));
 export type GetRegistryScanningConfigurationError =
@@ -5060,6 +5122,8 @@ export const getRegistryScanningConfiguration: API.OperationMethod<
   input: GetRegistryScanningConfigurationRequest,
   output: GetRegistryScanningConfigurationResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegistryScanningConfiguration",
 }));
 export type GetRepositoryPolicyError =
@@ -5085,6 +5149,8 @@ export const getRepositoryPolicy: API.OperationMethod<
     RepositoryPolicyNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRepositoryPolicy",
 }));
 export type GetSigningConfigurationError =
@@ -5114,6 +5180,8 @@ export const getSigningConfiguration: API.OperationMethod<
     SigningConfigurationNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSigningConfiguration",
 }));
 export type InitiateLayerUploadError =
@@ -5146,6 +5214,8 @@ export const initiateLayerUpload: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateLayerUpload",
 }));
 export type ListImageReferrersError =
@@ -5175,6 +5245,8 @@ export const listImageReferrers: API.OperationMethod<
     UnableToListUpstreamImageReferrersException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImageReferrers",
 }));
 export type ListImagesError =
@@ -5220,6 +5292,8 @@ export const listImages: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListImages",
   pagination: {
     inputToken: "nextToken",
@@ -5251,6 +5325,8 @@ export const listPullTimeUpdateExclusions: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPullTimeUpdateExclusions",
 }));
 export type ListTagsForResourceError =
@@ -5274,6 +5350,8 @@ export const listTagsForResource: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutAccountSettingError =
@@ -5299,6 +5377,8 @@ export const putAccountSetting: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountSetting",
 }));
 export type PutImageError =
@@ -5343,6 +5423,8 @@ export const putImage: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutImage",
 }));
 export type PutImageScanningConfigurationError =
@@ -5372,6 +5454,8 @@ export const putImageScanningConfiguration: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutImageScanningConfiguration",
 }));
 export type PutImageTagMutabilityError =
@@ -5397,6 +5481,8 @@ export const putImageTagMutability: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutImageTagMutability",
 }));
 export type PutLifecyclePolicyError =
@@ -5424,6 +5510,8 @@ export const putLifecyclePolicy: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLifecyclePolicy",
 }));
 export type PutRegistryPolicyError =
@@ -5446,6 +5534,8 @@ export const putRegistryPolicy: API.OperationMethod<
   input: PutRegistryPolicyRequest,
   output: PutRegistryPolicyResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRegistryPolicy",
 }));
 export type PutRegistryScanningConfigurationError =
@@ -5471,6 +5561,8 @@ export const putRegistryScanningConfiguration: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRegistryScanningConfiguration",
 }));
 export type PutReplicationConfigurationError =
@@ -5499,6 +5591,8 @@ export const putReplicationConfiguration: API.OperationMethod<
   input: PutReplicationConfigurationRequest,
   output: PutReplicationConfigurationResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutReplicationConfiguration",
 }));
 export type PutSigningConfigurationError =
@@ -5526,6 +5620,8 @@ export const putSigningConfiguration: API.OperationMethod<
   input: PutSigningConfigurationRequest,
   output: PutSigningConfigurationResponse,
   errors: [InvalidParameterException, ServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSigningConfiguration",
 }));
 export type RegisterPullTimeUpdateExclusionError =
@@ -5553,6 +5649,8 @@ export const registerPullTimeUpdateExclusion: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterPullTimeUpdateExclusion",
 }));
 export type SetRepositoryPolicyError =
@@ -5578,6 +5676,8 @@ export const setRepositoryPolicy: API.OperationMethod<
     RepositoryNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetRepositoryPolicy",
 }));
 export type StartImageScanError =
@@ -5616,6 +5716,8 @@ export const startImageScan: API.OperationMethod<
     UnsupportedImageTypeException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImageScan",
 }));
 export type StartLifecyclePolicyPreviewError =
@@ -5646,6 +5748,8 @@ export const startLifecyclePolicyPreview: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartLifecyclePolicyPreview",
 }));
 export type TagResourceError =
@@ -5674,6 +5778,8 @@ export const tagResource: API.OperationMethod<
     ServerException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5701,6 +5807,8 @@ export const untagResource: API.OperationMethod<
     ServerException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateImageStorageClassError =
@@ -5730,6 +5838,8 @@ export const updateImageStorageClass: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateImageStorageClass",
 }));
 export type UpdatePullThroughCacheRuleError =
@@ -5761,6 +5871,8 @@ export const updatePullThroughCacheRule: API.OperationMethod<
     UnableToDecryptSecretValueException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePullThroughCacheRule",
 }));
 export type UpdateRepositoryCreationTemplateError =
@@ -5786,6 +5898,8 @@ export const updateRepositoryCreationTemplate: API.OperationMethod<
     TemplateNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRepositoryCreationTemplate",
 }));
 export type UploadLayerPartError =
@@ -5824,6 +5938,8 @@ export const uploadLayerPart: API.OperationMethod<
     ServerException,
     UploadNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UploadLayerPart",
 }));
 export type ValidatePullThroughCacheRuleError =
@@ -5852,5 +5968,7 @@ export const validatePullThroughCacheRule: API.OperationMethod<
     ServerException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ValidatePullThroughCacheRule",
 }));

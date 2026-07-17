@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1809,6 +1811,8 @@ export const analyzeDocument: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AnalyzeDocument",
 }));
 export type AnalyzeExpenseError =
@@ -1855,6 +1859,8 @@ export const analyzeExpense: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AnalyzeExpense",
 }));
 export type AnalyzeIDError =
@@ -1893,6 +1899,8 @@ export const analyzeID: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AnalyzeID",
 }));
 export type CreateAdapterError =
@@ -1934,6 +1942,8 @@ export const createAdapter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAdapter",
 }));
 export type CreateAdapterVersionError =
@@ -1980,6 +1990,8 @@ export const createAdapterVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAdapterVersion",
 }));
 export type DeleteAdapterError =
@@ -2013,6 +2025,8 @@ export const deleteAdapter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAdapter",
 }));
 export type DeleteAdapterVersionError =
@@ -2047,6 +2061,8 @@ export const deleteAdapterVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAdapterVersion",
 }));
 export type DetectDocumentTextError =
@@ -2094,6 +2110,8 @@ export const detectDocumentText: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DetectDocumentText",
 }));
 export type GetAdapterError =
@@ -2126,6 +2144,8 @@ export const getAdapter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAdapter",
 }));
 export type GetAdapterVersionError =
@@ -2159,6 +2179,8 @@ export const getAdapterVersion: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAdapterVersion",
 }));
 export type GetDocumentAnalysisError =
@@ -2248,6 +2270,8 @@ export const getDocumentAnalysis: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocumentAnalysis",
 }));
 export type GetDocumentTextDetectionError =
@@ -2308,6 +2332,8 @@ export const getDocumentTextDetection: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocumentTextDetection",
 }));
 export type GetExpenseAnalysisError =
@@ -2360,6 +2386,8 @@ export const getExpenseAnalysis: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExpenseAnalysis",
 }));
 export type GetLendingAnalysisError =
@@ -2405,6 +2433,8 @@ export const getLendingAnalysis: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLendingAnalysis",
 }));
 export type GetLendingAnalysisSummaryError =
@@ -2451,6 +2481,8 @@ export const getLendingAnalysisSummary: API.OperationMethod<
     ProvisionedThroughputExceededException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLendingAnalysisSummary",
 }));
 export type ListAdaptersError =
@@ -2495,6 +2527,8 @@ export const listAdapters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAdapters",
   pagination: {
     inputToken: "NextToken",
@@ -2547,6 +2581,8 @@ export const listAdapterVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAdapterVersions",
   pagination: {
     inputToken: "NextToken",
@@ -2584,6 +2620,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartDocumentAnalysisError =
@@ -2641,6 +2679,8 @@ export const startDocumentAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDocumentAnalysis",
 }));
 export type StartDocumentTextDetectionError =
@@ -2698,6 +2738,8 @@ export const startDocumentTextDetection: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDocumentTextDetection",
 }));
 export type StartExpenseAnalysisError =
@@ -2754,6 +2796,8 @@ export const startExpenseAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExpenseAnalysis",
 }));
 export type StartLendingAnalysisError =
@@ -2821,6 +2865,8 @@ export const startLendingAnalysis: API.OperationMethod<
     ThrottlingException,
     UnsupportedDocumentException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartLendingAnalysis",
 }));
 export type TagResourceError =
@@ -2854,6 +2900,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2885,6 +2933,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAdapterError =
@@ -2919,5 +2969,7 @@ export const updateAdapter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAdapter",
 }));

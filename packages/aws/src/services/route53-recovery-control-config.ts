@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1315,6 +1317,8 @@ export const createCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateControlPanelError =
@@ -1346,6 +1350,8 @@ export const createControlPanel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateControlPanel",
 }));
 export type CreateRoutingControlError =
@@ -1381,6 +1387,8 @@ export const createRoutingControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRoutingControl",
 }));
 export type CreateSafetyRuleError =
@@ -1407,6 +1415,8 @@ export const createSafetyRule: API.OperationMethod<
   input: CreateSafetyRuleRequest,
   output: CreateSafetyRuleResponse,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSafetyRule",
 }));
 export type DeleteClusterError =
@@ -1436,6 +1446,8 @@ export const deleteCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type DeleteControlPanelError =
@@ -1465,6 +1477,8 @@ export const deleteControlPanel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteControlPanel",
 }));
 export type DeleteRoutingControlError =
@@ -1494,6 +1508,8 @@ export const deleteRoutingControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRoutingControl",
 }));
 export type DeleteSafetyRuleError =
@@ -1518,6 +1534,8 @@ export const deleteSafetyRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSafetyRule",
 }));
 export type DescribeClusterError =
@@ -1547,6 +1565,8 @@ export const describeCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCluster",
 }));
 export type DescribeControlPanelError =
@@ -1576,6 +1596,8 @@ export const describeControlPanel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeControlPanel",
 }));
 export type DescribeRoutingControlError =
@@ -1607,6 +1629,8 @@ export const describeRoutingControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRoutingControl",
 }));
 export type DescribeSafetyRuleError =
@@ -1625,6 +1649,8 @@ export const describeSafetyRule: API.OperationMethod<
   input: DescribeSafetyRuleRequest,
   output: DescribeSafetyRuleResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSafetyRule",
 }));
 export type GetResourcePolicyError =
@@ -1643,6 +1669,8 @@ export const getResourcePolicy: API.OperationMethod<
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type ListAssociatedRoute53HealthChecksError =
@@ -1681,6 +1709,8 @@ export const listAssociatedRoute53HealthChecks: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedRoute53HealthChecks",
   pagination: {
     inputToken: "NextToken",
@@ -1729,6 +1759,8 @@ export const listClusters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "NextToken",
@@ -1777,6 +1809,8 @@ export const listControlPanels: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListControlPanels",
   pagination: {
     inputToken: "NextToken",
@@ -1825,6 +1859,8 @@ export const listRoutingControls: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRoutingControls",
   pagination: {
     inputToken: "NextToken",
@@ -1873,6 +1909,8 @@ export const listSafetyRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSafetyRules",
   pagination: {
     inputToken: "NextToken",
@@ -1902,6 +1940,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -1925,6 +1965,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1948,6 +1990,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateClusterError =
@@ -1977,6 +2021,8 @@ export const updateCluster: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
 export type UpdateControlPanelError =
@@ -2006,6 +2052,8 @@ export const updateControlPanel: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateControlPanel",
 }));
 export type UpdateRoutingControlError =
@@ -2035,6 +2083,8 @@ export const updateRoutingControl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRoutingControl",
 }));
 export type UpdateSafetyRuleError =
@@ -2058,5 +2108,7 @@ export const updateSafetyRule: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSafetyRule",
 }));

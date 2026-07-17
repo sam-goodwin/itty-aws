@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2821,6 +2823,8 @@ export const abortDocumentVersionUpload: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AbortDocumentVersionUpload",
 }));
 export type ActivateUserError =
@@ -2849,6 +2853,8 @@ export const activateUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ActivateUser",
 }));
 export type AddResourcePermissionsError =
@@ -2878,6 +2884,8 @@ export const addResourcePermissions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddResourcePermissions",
 }));
 export type CreateCommentError =
@@ -2911,6 +2919,8 @@ export const createComment: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateComment",
 }));
 export type CreateCustomMetadataError =
@@ -2943,6 +2953,8 @@ export const createCustomMetadata: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomMetadata",
 }));
 export type CreateFolderError =
@@ -2980,6 +2992,8 @@ export const createFolder: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFolder",
 }));
 export type CreateLabelsError =
@@ -3010,6 +3024,8 @@ export const createLabels: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLabels",
 }));
 export type CreateNotificationSubscriptionError =
@@ -3039,6 +3055,8 @@ export const createNotificationSubscription: API.OperationMethod<
     TooManySubscriptionsException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNotificationSubscription",
 }));
 export type CreateUserError =
@@ -3067,6 +3085,8 @@ export const createUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DeactivateUserError =
@@ -3095,6 +3115,8 @@ export const deactivateUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeactivateUser",
 }));
 export type DeleteCommentError =
@@ -3126,6 +3148,8 @@ export const deleteComment: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteComment",
 }));
 export type DeleteCustomMetadataError =
@@ -3155,6 +3179,8 @@ export const deleteCustomMetadata: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomMetadata",
 }));
 export type DeleteDocumentError =
@@ -3190,6 +3216,8 @@ export const deleteDocument: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDocument",
 }));
 export type DeleteDocumentVersionError =
@@ -3223,6 +3251,8 @@ export const deleteDocumentVersion: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDocumentVersion",
 }));
 export type DeleteFolderError =
@@ -3258,6 +3288,8 @@ export const deleteFolder: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFolder",
 }));
 export type DeleteFolderContentsError =
@@ -3289,6 +3321,8 @@ export const deleteFolderContents: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFolderContents",
 }));
 export type DeleteLabelsError =
@@ -3318,6 +3352,8 @@ export const deleteLabels: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLabels",
 }));
 export type DeleteNotificationSubscriptionError =
@@ -3343,6 +3379,8 @@ export const deleteNotificationSubscription: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNotificationSubscription",
 }));
 export type DeleteUserError =
@@ -3372,6 +3410,8 @@ export const deleteUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DescribeActivitiesError =
@@ -3414,6 +3454,8 @@ export const describeActivities: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeActivities",
   pagination: {
     inputToken: "Marker",
@@ -3464,6 +3506,8 @@ export const describeComments: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeComments",
   pagination: {
     inputToken: "Marker",
@@ -3520,6 +3564,8 @@ export const describeDocumentVersions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDocumentVersions",
   pagination: {
     inputToken: "Marker",
@@ -3576,6 +3622,8 @@ export const describeFolderContents: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFolderContents",
   pagination: {
     inputToken: "Marker",
@@ -3622,6 +3670,8 @@ export const describeGroups: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGroups",
   pagination: {
     inputToken: "Marker",
@@ -3666,6 +3716,8 @@ export const describeNotificationSubscriptions: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNotificationSubscriptions",
   pagination: {
     inputToken: "Marker",
@@ -3714,6 +3766,8 @@ export const describeResourcePermissions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourcePermissions",
   pagination: {
     inputToken: "Marker",
@@ -3771,6 +3825,8 @@ export const describeRootFolders: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRootFolders",
   pagination: {
     inputToken: "Marker",
@@ -3828,6 +3884,8 @@ export const describeUsers: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUsers",
   pagination: {
     inputToken: "Marker",
@@ -3868,6 +3926,8 @@ export const getCurrentUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCurrentUser",
 }));
 export type GetDocumentError =
@@ -3899,6 +3959,8 @@ export const getDocument: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocument",
 }));
 export type GetDocumentPathError =
@@ -3932,6 +3994,8 @@ export const getDocumentPath: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocumentPath",
 }));
 export type GetDocumentVersionError =
@@ -3963,6 +4027,8 @@ export const getDocumentVersion: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDocumentVersion",
 }));
 export type GetFolderError =
@@ -3994,6 +4060,8 @@ export const getFolder: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFolder",
 }));
 export type GetFolderPathError =
@@ -4027,6 +4095,8 @@ export const getFolderPath: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFolderPath",
 }));
 export type GetResourcesError =
@@ -4055,6 +4125,8 @@ export const getResources: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResources",
 }));
 export type InitiateDocumentVersionUploadError =
@@ -4107,6 +4179,8 @@ export const initiateDocumentVersionUpload: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateDocumentVersionUpload",
 }));
 export type RemoveAllResourcePermissionsError =
@@ -4132,6 +4206,8 @@ export const removeAllResourcePermissions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveAllResourcePermissions",
 }));
 export type RemoveResourcePermissionError =
@@ -4158,6 +4234,8 @@ export const removeResourcePermission: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveResourcePermission",
 }));
 export type RestoreDocumentVersionsError =
@@ -4191,6 +4269,8 @@ export const restoreDocumentVersions: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RestoreDocumentVersions",
 }));
 export type SearchResourcesError =
@@ -4231,6 +4311,8 @@ export const searchResources: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchResources",
   pagination: {
     inputToken: "Marker",
@@ -4275,6 +4357,8 @@ export const updateDocument: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocument",
 }));
 export type UpdateDocumentVersionError =
@@ -4312,6 +4396,8 @@ export const updateDocumentVersion: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDocumentVersion",
 }));
 export type UpdateFolderError =
@@ -4350,6 +4436,8 @@ export const updateFolder: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFolder",
 }));
 export type UpdateUserError =
@@ -4386,5 +4474,7 @@ export const updateUser: API.OperationMethod<
     UnauthorizedOperationException,
     UnauthorizedResourceAccessException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));

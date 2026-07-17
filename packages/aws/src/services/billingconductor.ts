@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2418,6 +2420,8 @@ export const getBillingGroupCostReport: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBillingGroupCostReport",
   pagination: {
     inputToken: "NextToken",
@@ -2466,6 +2470,8 @@ export const listAccountAssociations: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -2513,6 +2519,8 @@ export const listBillingGroupCostReports: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillingGroupCostReports",
   pagination: {
     inputToken: "NextToken",
@@ -2546,6 +2554,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2573,6 +2583,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2600,6 +2612,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateBillingGroupError =
@@ -2629,6 +2643,8 @@ export const createBillingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBillingGroup",
 }));
 export type UpdateBillingGroupError =
@@ -2658,6 +2674,8 @@ export const updateBillingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBillingGroup",
 }));
 export type DeleteBillingGroupError =
@@ -2683,6 +2701,8 @@ export const deleteBillingGroup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBillingGroup",
 }));
 export type ListBillingGroupsError =
@@ -2725,6 +2745,8 @@ export const listBillingGroups: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBillingGroups",
   pagination: {
     inputToken: "NextToken",
@@ -2762,6 +2784,8 @@ export const associateAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAccounts",
 }));
 export type DisassociateAccountsError =
@@ -2791,6 +2815,8 @@ export const disassociateAccounts: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAccounts",
 }));
 export type CreateCustomLineItemError =
@@ -2820,6 +2846,8 @@ export const createCustomLineItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomLineItem",
 }));
 export type UpdateCustomLineItemError =
@@ -2847,6 +2875,8 @@ export const updateCustomLineItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCustomLineItem",
 }));
 export type DeleteCustomLineItemError =
@@ -2874,6 +2904,8 @@ export const deleteCustomLineItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomLineItem",
 }));
 export type ListCustomLineItemsError =
@@ -2916,6 +2948,8 @@ export const listCustomLineItems: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomLineItems",
   pagination: {
     inputToken: "NextToken",
@@ -2953,6 +2987,8 @@ export const batchAssociateResourcesToCustomLineItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchAssociateResourcesToCustomLineItem",
 }));
 export type BatchDisassociateResourcesFromCustomLineItemError =
@@ -2982,6 +3018,8 @@ export const batchDisassociateResourcesFromCustomLineItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDisassociateResourcesFromCustomLineItem",
 }));
 export type ListCustomLineItemVersionsError =
@@ -3022,6 +3060,8 @@ export const listCustomLineItemVersions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomLineItemVersions",
   pagination: {
     inputToken: "NextToken",
@@ -3070,6 +3110,8 @@ export const listResourcesAssociatedToCustomLineItem: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourcesAssociatedToCustomLineItem",
   pagination: {
     inputToken: "NextToken",
@@ -3107,6 +3149,8 @@ export const createPricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePricingPlan",
 }));
 export type UpdatePricingPlanError =
@@ -3136,6 +3180,8 @@ export const updatePricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePricingPlan",
 }));
 export type DeletePricingPlanError =
@@ -3163,6 +3209,8 @@ export const deletePricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePricingPlan",
 }));
 export type ListPricingPlansError =
@@ -3203,6 +3251,8 @@ export const listPricingPlans: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPricingPlans",
   pagination: {
     inputToken: "NextToken",
@@ -3240,6 +3290,8 @@ export const associatePricingRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociatePricingRules",
 }));
 export type DisassociatePricingRulesError =
@@ -3269,6 +3321,8 @@ export const disassociatePricingRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociatePricingRules",
 }));
 export type ListPricingPlansAssociatedWithPricingRuleError =
@@ -3311,6 +3365,8 @@ export const listPricingPlansAssociatedWithPricingRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPricingPlansAssociatedWithPricingRule",
   pagination: {
     inputToken: "NextToken",
@@ -3346,6 +3402,8 @@ export const createPricingRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePricingRule",
 }));
 export type UpdatePricingRuleError =
@@ -3375,6 +3433,8 @@ export const updatePricingRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePricingRule",
 }));
 export type DeletePricingRuleError =
@@ -3402,6 +3462,8 @@ export const deletePricingRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePricingRule",
 }));
 export type ListPricingRulesError =
@@ -3442,6 +3504,8 @@ export const listPricingRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPricingRules",
   pagination: {
     inputToken: "NextToken",
@@ -3490,6 +3554,8 @@ export const listPricingRulesAssociatedToPricingPlan: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPricingRulesAssociatedToPricingPlan",
   pagination: {
     inputToken: "NextToken",

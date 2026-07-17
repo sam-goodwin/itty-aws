@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -971,6 +973,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -994,6 +998,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1017,6 +1023,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateDeploymentError =
@@ -1042,6 +1050,8 @@ export const createDeployment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDeployment",
 }));
 export type GetDeploymentError =
@@ -1065,6 +1075,8 @@ export const getDeployment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployment",
 }));
 export type UpdateDeploymentError =
@@ -1090,6 +1102,8 @@ export const updateDeployment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeployment",
 }));
 export type DeleteDeploymentError =
@@ -1115,6 +1129,8 @@ export const deleteDeployment: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDeployment",
 }));
 export type ListDeploymentsError =
@@ -1148,6 +1164,8 @@ export const listDeployments: API.OperationMethod<
   input: ListDeploymentsInput,
   output: ListDeploymentsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeployments",
   pagination: {
     inputToken: "nextToken",
@@ -1192,6 +1210,8 @@ export const listDeploymentEvents: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeploymentEvents",
   pagination: {
     inputToken: "nextToken",
@@ -1221,6 +1241,8 @@ export const getWorkload: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkload",
 }));
 export type ListWorkloadsError =
@@ -1254,6 +1276,8 @@ export const listWorkloads: API.OperationMethod<
   input: ListWorkloadsInput,
   output: ListWorkloadsOutput,
   errors: [InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkloads",
   pagination: {
     inputToken: "nextToken",
@@ -1283,6 +1307,8 @@ export const getWorkloadDeploymentPattern: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkloadDeploymentPattern",
 }));
 export type ListWorkloadDeploymentPatternsError =
@@ -1321,6 +1347,8 @@ export const listWorkloadDeploymentPatterns: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkloadDeploymentPatterns",
   pagination: {
     inputToken: "nextToken",
@@ -1345,6 +1373,8 @@ export const getDeploymentPatternVersion: API.OperationMethod<
   input: GetDeploymentPatternVersionInput,
   output: GetDeploymentPatternVersionOutput,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeploymentPatternVersion",
 }));
 export type ListDeploymentPatternVersionsError =
@@ -1383,6 +1413,8 @@ export const listDeploymentPatternVersions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDeploymentPatternVersions",
   pagination: {
     inputToken: "nextToken",

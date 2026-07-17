@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1603,6 +1605,8 @@ export const addApplicationCloudWatchLoggingOption: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationCloudWatchLoggingOption",
 }));
 export type AddApplicationInputError =
@@ -1647,6 +1651,8 @@ export const addApplicationInput: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationInput",
 }));
 export type AddApplicationInputProcessingConfigurationError =
@@ -1678,6 +1684,8 @@ export const addApplicationInputProcessingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationInputProcessingConfiguration",
 }));
 export type AddApplicationOutputError =
@@ -1728,6 +1736,8 @@ export const addApplicationOutput: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationOutput",
 }));
 export type AddApplicationReferenceDataSourceError =
@@ -1766,6 +1776,8 @@ export const addApplicationReferenceDataSource: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddApplicationReferenceDataSource",
 }));
 export type CreateApplicationError =
@@ -1817,6 +1829,8 @@ export const createApplication: API.OperationMethod<
     ResourceInUseException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateApplication",
 }));
 export type DeleteApplicationError =
@@ -1846,6 +1860,8 @@ export const deleteApplication: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplication",
 }));
 export type DeleteApplicationCloudWatchLoggingOptionError =
@@ -1877,6 +1893,8 @@ export const deleteApplicationCloudWatchLoggingOption: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationCloudWatchLoggingOption",
 }));
 export type DeleteApplicationInputProcessingConfigurationError =
@@ -1906,6 +1924,8 @@ export const deleteApplicationInputProcessingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationInputProcessingConfiguration",
 }));
 export type DeleteApplicationOutputError =
@@ -1938,6 +1958,8 @@ export const deleteApplicationOutput: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationOutput",
 }));
 export type DeleteApplicationReferenceDataSourceError =
@@ -1973,6 +1995,8 @@ export const deleteApplicationReferenceDataSource: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteApplicationReferenceDataSource",
 }));
 export type DescribeApplicationError =
@@ -2000,6 +2024,8 @@ export const describeApplication: API.OperationMethod<
   input: DescribeApplicationRequest,
   output: DescribeApplicationResponse,
   errors: [ResourceNotFoundException, UnsupportedOperationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeApplication",
 }));
 export type DiscoverInputSchemaError =
@@ -2036,6 +2062,8 @@ export const discoverInputSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnableToDetectSchemaException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DiscoverInputSchema",
 }));
 export type ListApplicationsError = CommonErrors;
@@ -2067,6 +2095,8 @@ export const listApplications: API.OperationMethod<
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListApplications",
 }));
 export type ListTagsForResourceError =
@@ -2090,6 +2120,8 @@ export const listTagsForResource: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type StartApplicationError =
@@ -2130,6 +2162,8 @@ export const startApplication: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartApplication",
 }));
 export type StopApplicationError =
@@ -2163,6 +2197,8 @@ export const stopApplication: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopApplication",
 }));
 export type TagResourceError =
@@ -2191,6 +2227,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2218,6 +2256,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateApplicationError =
@@ -2257,5 +2297,7 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     UnsupportedOperationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateApplication",
 }));

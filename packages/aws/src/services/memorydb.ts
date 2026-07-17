@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2980,6 +2982,8 @@ export const batchUpdateCluster: API.OperationMethod<
   input: BatchUpdateClusterRequest,
   output: BatchUpdateClusterResponse,
   errors: [InvalidParameterValueException, ServiceUpdateNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateCluster",
 }));
 export type CopySnapshotError =
@@ -3013,6 +3017,8 @@ export const copySnapshot: API.OperationMethod<
     SnapshotQuotaExceededFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CopySnapshot",
 }));
 export type CreateACLError =
@@ -3044,6 +3050,8 @@ export const createACL: API.OperationMethod<
     TagQuotaPerResourceExceeded,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateACL",
 }));
 export type CreateClusterError =
@@ -3097,6 +3105,8 @@ export const createCluster: API.OperationMethod<
     SubnetGroupNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateMultiRegionClusterError =
@@ -3126,6 +3136,8 @@ export const createMultiRegionCluster: API.OperationMethod<
     MultiRegionParameterGroupNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMultiRegionCluster",
 }));
 export type CreateParameterGroupError =
@@ -3158,6 +3170,8 @@ export const createParameterGroup: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateParameterGroup",
 }));
 export type CreateSnapshotError =
@@ -3191,6 +3205,8 @@ export const createSnapshot: API.OperationMethod<
     SnapshotQuotaExceededFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSnapshot",
 }));
 export type CreateSubnetGroupError =
@@ -3225,6 +3241,8 @@ export const createSubnetGroup: API.OperationMethod<
     SubnetQuotaExceededFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubnetGroup",
 }));
 export type CreateUserError =
@@ -3254,6 +3272,8 @@ export const createUser: API.OperationMethod<
     UserAlreadyExistsFault,
     UserQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUser",
 }));
 export type DeleteACLError =
@@ -3277,6 +3297,8 @@ export const deleteACL: API.OperationMethod<
     InvalidACLStateFault,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteACL",
 }));
 export type DeleteClusterError =
@@ -3309,6 +3331,8 @@ export const deleteCluster: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     SnapshotAlreadyExistsFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type DeleteMultiRegionClusterError =
@@ -3332,6 +3356,8 @@ export const deleteMultiRegionCluster: API.OperationMethod<
     InvalidParameterValueException,
     MultiRegionClusterNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMultiRegionCluster",
 }));
 export type DeleteParameterGroupError =
@@ -3360,6 +3386,8 @@ export const deleteParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteParameterGroup",
 }));
 export type DeleteSnapshotError =
@@ -3387,6 +3415,8 @@ export const deleteSnapshot: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     SnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSnapshot",
 }));
 export type DeleteSubnetGroupError =
@@ -3410,6 +3440,8 @@ export const deleteSubnetGroup: API.OperationMethod<
     SubnetGroupInUseFault,
     SubnetGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubnetGroup",
 }));
 export type DeleteUserError =
@@ -3433,6 +3465,8 @@ export const deleteUser: API.OperationMethod<
     InvalidUserStateFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DescribeACLsError =
@@ -3466,6 +3500,8 @@ export const describeACLs: API.OperationMethod<
   input: DescribeACLsRequest,
   output: DescribeACLsResponse,
   errors: [ACLNotFoundFault, InvalidParameterCombinationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeACLs",
   pagination: {
     inputToken: "NextToken",
@@ -3512,6 +3548,8 @@ export const describeClusters: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusters",
   pagination: {
     inputToken: "NextToken",
@@ -3556,6 +3594,8 @@ export const describeEngineVersions: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEngineVersions",
   pagination: {
     inputToken: "NextToken",
@@ -3602,6 +3642,8 @@ export const describeEvents: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
   pagination: {
     inputToken: "NextToken",
@@ -3648,6 +3690,8 @@ export const describeMultiRegionClusters: API.OperationMethod<
     InvalidParameterValueException,
     MultiRegionClusterNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMultiRegionClusters",
   pagination: {
     inputToken: "NextToken",
@@ -3679,6 +3723,8 @@ export const describeMultiRegionParameterGroups: API.OperationMethod<
     MultiRegionParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMultiRegionParameterGroups",
 }));
 export type DescribeMultiRegionParametersError =
@@ -3704,6 +3750,8 @@ export const describeMultiRegionParameters: API.OperationMethod<
     MultiRegionParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMultiRegionParameters",
 }));
 export type DescribeParameterGroupsError =
@@ -3744,6 +3792,8 @@ export const describeParameterGroups: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeParameterGroups",
   pagination: {
     inputToken: "NextToken",
@@ -3790,6 +3840,8 @@ export const describeParameters: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeParameters",
   pagination: {
     inputToken: "NextToken",
@@ -3836,6 +3888,8 @@ export const describeReservedNodes: API.OperationMethod<
     ReservedNodeNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedNodes",
   pagination: {
     inputToken: "NextToken",
@@ -3882,6 +3936,8 @@ export const describeReservedNodesOfferings: API.OperationMethod<
     ReservedNodesOfferingNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReservedNodesOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -3924,6 +3980,8 @@ export const describeServiceUpdates: API.OperationMethod<
     InvalidParameterCombinationException,
     InvalidParameterValueException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceUpdates",
   pagination: {
     inputToken: "NextToken",
@@ -3971,6 +4029,8 @@ export const describeSnapshots: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     SnapshotNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSnapshots",
   pagination: {
     inputToken: "NextToken",
@@ -4010,6 +4070,8 @@ export const describeSubnetGroups: API.OperationMethod<
   input: DescribeSubnetGroupsRequest,
   output: DescribeSubnetGroupsResponse,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSubnetGroups",
   pagination: {
     inputToken: "NextToken",
@@ -4049,6 +4111,8 @@ export const describeUsers: API.OperationMethod<
   input: DescribeUsersRequest,
   output: DescribeUsersResponse,
   errors: [InvalidParameterCombinationException, UserNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUsers",
   pagination: {
     inputToken: "NextToken",
@@ -4089,6 +4153,8 @@ export const failoverShard: API.OperationMethod<
     ShardNotFoundFault,
     TestFailoverNotAvailableFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "FailoverShard",
 }));
 export type ListAllowedMultiRegionClusterUpdatesError =
@@ -4112,6 +4178,8 @@ export const listAllowedMultiRegionClusterUpdates: API.OperationMethod<
     InvalidParameterValueException,
     MultiRegionClusterNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAllowedMultiRegionClusterUpdates",
 }));
 export type ListAllowedNodeTypeUpdatesError =
@@ -4139,6 +4207,8 @@ export const listAllowedNodeTypeUpdates: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAllowedNodeTypeUpdates",
 }));
 export type ListTagsError =
@@ -4180,6 +4250,8 @@ export const listTags: API.OperationMethod<
     SubnetGroupNotFoundFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
 }));
 export type PurchaseReservedNodesOfferingError =
@@ -4211,6 +4283,8 @@ export const purchaseReservedNodesOffering: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PurchaseReservedNodesOffering",
 }));
 export type ResetParameterGroupError =
@@ -4238,6 +4312,8 @@ export const resetParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetParameterGroup",
 }));
 export type TagResourceError =
@@ -4289,6 +4365,8 @@ export const tagResource: API.OperationMethod<
     TagQuotaPerResourceExceeded,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4340,6 +4418,8 @@ export const untagResource: API.OperationMethod<
     TagNotFoundFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateACLError =
@@ -4371,6 +4451,8 @@ export const updateACL: API.OperationMethod<
     InvalidParameterValueException,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateACL",
 }));
 export type UpdateClusterError =
@@ -4420,6 +4502,8 @@ export const updateCluster: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     ShardsPerClusterQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
 export type UpdateMultiRegionClusterError =
@@ -4447,6 +4531,8 @@ export const updateMultiRegionCluster: API.OperationMethod<
     MultiRegionClusterNotFoundFault,
     MultiRegionParameterGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMultiRegionCluster",
 }));
 export type UpdateParameterGroupError =
@@ -4474,6 +4560,8 @@ export const updateParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateParameterGroup",
 }));
 export type UpdateSubnetGroupError =
@@ -4503,6 +4591,8 @@ export const updateSubnetGroup: API.OperationMethod<
     SubnetNotAllowedFault,
     SubnetQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubnetGroup",
 }));
 export type UpdateUserError =
@@ -4528,5 +4618,7 @@ export const updateUser: API.OperationMethod<
     InvalidUserStateFault,
     UserNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUser",
 }));

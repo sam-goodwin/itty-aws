@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1321,6 +1323,8 @@ export const deleteScalingPolicy: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScalingPolicy",
 }));
 export type DeleteScheduledActionError =
@@ -1348,6 +1352,8 @@ export const deleteScheduledAction: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScheduledAction",
 }));
 export type DeregisterScalableTargetError =
@@ -1377,6 +1383,8 @@ export const deregisterScalableTarget: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterScalableTarget",
 }));
 export type DescribeScalableTargetsError =
@@ -1420,6 +1428,8 @@ export const describeScalableTargets: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScalableTargets",
   pagination: {
     inputToken: "NextToken",
@@ -1472,6 +1482,8 @@ export const describeScalingActivities: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScalingActivities",
   pagination: {
     inputToken: "NextToken",
@@ -1525,6 +1537,8 @@ export const describeScalingPolicies: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScalingPolicies",
   pagination: {
     inputToken: "NextToken",
@@ -1576,6 +1590,8 @@ export const describeScheduledActions: API.OperationMethod<
     InvalidNextTokenException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScheduledActions",
   pagination: {
     inputToken: "NextToken",
@@ -1608,6 +1624,8 @@ export const getPredictiveScalingForecast: API.OperationMethod<
   input: GetPredictiveScalingForecastRequest,
   output: GetPredictiveScalingForecastResponse,
   errors: [InternalServiceException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPredictiveScalingForecast",
 }));
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
@@ -1626,6 +1644,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutScalingPolicyError =
@@ -1683,6 +1703,8 @@ export const putScalingPolicy: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutScalingPolicy",
 }));
 export type PutScheduledActionError =
@@ -1727,6 +1749,8 @@ export const putScheduledAction: API.OperationMethod<
     ObjectNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutScheduledAction",
 }));
 export type RegisterScalableTargetError =
@@ -1788,6 +1812,8 @@ export const registerScalableTarget: API.OperationMethod<
     LimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterScalableTarget",
 }));
 export type TagResourceError =
@@ -1827,6 +1853,8 @@ export const tagResource: API.OperationMethod<
     TooManyTagsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1846,5 +1874,7 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));

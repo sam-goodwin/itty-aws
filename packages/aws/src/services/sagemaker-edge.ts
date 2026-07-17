@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -359,6 +361,8 @@ export const getDeployments: API.OperationMethod<
   input: GetDeploymentsRequest,
   output: GetDeploymentsResult,
   errors: [InternalServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeployments",
 }));
 export type GetDeviceRegistrationError =
@@ -376,6 +380,8 @@ export const getDeviceRegistration: API.OperationMethod<
   input: GetDeviceRegistrationRequest,
   output: GetDeviceRegistrationResult,
   errors: [InternalServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDeviceRegistration",
 }));
 export type SendHeartbeatError = InternalServiceException | CommonErrors;
@@ -391,5 +397,7 @@ export const sendHeartbeat: API.OperationMethod<
   input: SendHeartbeatRequest,
   output: SendHeartbeatResponse,
   errors: [InternalServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendHeartbeat",
 }));

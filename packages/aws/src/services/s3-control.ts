@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials as Creds } from "../credentials.ts";
@@ -7735,6 +7737,8 @@ export const associateAccessGrantsIdentityCenter: API.OperationMethod<
   input: AssociateAccessGrantsIdentityCenterRequest,
   output: AssociateAccessGrantsIdentityCenterResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAccessGrantsIdentityCenter",
 }));
 export type CreateAccessGrantError = CommonErrors;
@@ -7762,6 +7766,8 @@ export const createAccessGrant: API.OperationMethod<
   input: CreateAccessGrantRequest,
   output: CreateAccessGrantResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessGrant",
 }));
 export type CreateAccessGrantsInstanceError = CommonErrors;
@@ -7785,6 +7791,8 @@ export const createAccessGrantsInstance: API.OperationMethod<
   input: CreateAccessGrantsInstanceRequest,
   output: CreateAccessGrantsInstanceResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessGrantsInstance",
 }));
 export type CreateAccessGrantsLocationError = CommonErrors;
@@ -7816,6 +7824,8 @@ export const createAccessGrantsLocation: API.OperationMethod<
   input: CreateAccessGrantsLocationRequest,
   output: CreateAccessGrantsLocationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessGrantsLocation",
 }));
 export type CreateAccessPointError = CommonErrors;
@@ -7856,6 +7866,8 @@ export const createAccessPoint: API.OperationMethod<
   input: CreateAccessPointRequest,
   output: CreateAccessPointResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessPoint",
 }));
 export type CreateAccessPointForObjectLambdaError = CommonErrors;
@@ -7883,6 +7895,8 @@ export const createAccessPointForObjectLambda: API.OperationMethod<
   input: CreateAccessPointForObjectLambdaRequest,
   output: CreateAccessPointForObjectLambdaResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessPointForObjectLambda",
 }));
 export type CreateBucketError =
@@ -7937,6 +7951,8 @@ export const createBucket: API.OperationMethod<
   input: CreateBucketRequest,
   output: CreateBucketResult,
   errors: [BucketAlreadyExists, BucketAlreadyOwnedByYou],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBucket",
 }));
 export type CreateJobError =
@@ -7983,6 +7999,8 @@ export const createJob: API.OperationMethod<
     InternalServiceException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJob",
 }));
 export type CreateMultiRegionAccessPointError = CommonErrors;
@@ -8020,6 +8038,8 @@ export const createMultiRegionAccessPoint: API.OperationMethod<
   input: CreateMultiRegionAccessPointRequest,
   output: CreateMultiRegionAccessPointResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMultiRegionAccessPoint",
 }));
 export type CreateStorageLensGroupError = CommonErrors;
@@ -8049,6 +8069,8 @@ export const createStorageLensGroup: API.OperationMethod<
   input: CreateStorageLensGroupRequest,
   output: CreateStorageLensGroupResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateStorageLensGroup",
 }));
 export type DeleteAccessGrantError = CommonErrors;
@@ -8068,6 +8090,8 @@ export const deleteAccessGrant: API.OperationMethod<
   input: DeleteAccessGrantRequest,
   output: DeleteAccessGrantResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessGrant",
 }));
 export type DeleteAccessGrantsInstanceError = CommonErrors;
@@ -8087,6 +8111,8 @@ export const deleteAccessGrantsInstance: API.OperationMethod<
   input: DeleteAccessGrantsInstanceRequest,
   output: DeleteAccessGrantsInstanceResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessGrantsInstance",
 }));
 export type DeleteAccessGrantsInstanceResourcePolicyError = CommonErrors;
@@ -8106,6 +8132,8 @@ export const deleteAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   input: DeleteAccessGrantsInstanceResourcePolicyRequest,
   output: DeleteAccessGrantsInstanceResourcePolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessGrantsInstanceResourcePolicy",
 }));
 export type DeleteAccessGrantsLocationError = CommonErrors;
@@ -8125,6 +8153,8 @@ export const deleteAccessGrantsLocation: API.OperationMethod<
   input: DeleteAccessGrantsLocationRequest,
   output: DeleteAccessGrantsLocationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessGrantsLocation",
 }));
 export type DeleteAccessPointError = CommonErrors;
@@ -8150,6 +8180,8 @@ export const deleteAccessPoint: API.OperationMethod<
   input: DeleteAccessPointRequest,
   output: DeleteAccessPointResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessPoint",
 }));
 export type DeleteAccessPointForObjectLambdaError = CommonErrors;
@@ -8176,6 +8208,8 @@ export const deleteAccessPointForObjectLambda: API.OperationMethod<
   input: DeleteAccessPointForObjectLambdaRequest,
   output: DeleteAccessPointForObjectLambdaResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessPointForObjectLambda",
 }));
 export type DeleteAccessPointPolicyError = CommonErrors;
@@ -8199,6 +8233,8 @@ export const deleteAccessPointPolicy: API.OperationMethod<
   input: DeleteAccessPointPolicyRequest,
   output: DeleteAccessPointPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessPointPolicy",
 }));
 export type DeleteAccessPointPolicyForObjectLambdaError = CommonErrors;
@@ -8223,6 +8259,8 @@ export const deleteAccessPointPolicyForObjectLambda: API.OperationMethod<
   input: DeleteAccessPointPolicyForObjectLambdaRequest,
   output: DeleteAccessPointPolicyForObjectLambdaResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessPointPolicyForObjectLambda",
 }));
 export type DeleteAccessPointScopeError = CommonErrors;
@@ -8245,6 +8283,8 @@ export const deleteAccessPointScope: API.OperationMethod<
   input: DeleteAccessPointScopeRequest,
   output: DeleteAccessPointScopeResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessPointScope",
 }));
 export type DeleteBucketError = CommonErrors;
@@ -8275,6 +8315,8 @@ export const deleteBucket: API.OperationMethod<
   input: DeleteBucketRequest,
   output: DeleteBucketResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucket",
 }));
 export type DeleteBucketLifecycleConfigurationError = CommonErrors;
@@ -8313,6 +8355,8 @@ export const deleteBucketLifecycleConfiguration: API.OperationMethod<
   input: DeleteBucketLifecycleConfigurationRequest,
   output: DeleteBucketLifecycleConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketLifecycleConfiguration",
 }));
 export type DeleteBucketPolicyError = CommonErrors;
@@ -8357,6 +8401,8 @@ export const deleteBucketPolicy: API.OperationMethod<
   input: DeleteBucketPolicyRequest,
   output: DeleteBucketPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketPolicy",
 }));
 export type DeleteBucketReplicationError = CommonErrors;
@@ -8400,6 +8446,8 @@ export const deleteBucketReplication: API.OperationMethod<
   input: DeleteBucketReplicationRequest,
   output: DeleteBucketReplicationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketReplication",
 }));
 export type DeleteBucketTaggingError = CommonErrors;
@@ -8431,6 +8479,8 @@ export const deleteBucketTagging: API.OperationMethod<
   input: DeleteBucketTaggingRequest,
   output: DeleteBucketTaggingResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBucketTagging",
 }));
 export type DeleteJobTaggingError =
@@ -8470,6 +8520,8 @@ export const deleteJobTagging: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJobTagging",
 }));
 export type DeleteMultiRegionAccessPointError = CommonErrors;
@@ -8507,6 +8559,8 @@ export const deleteMultiRegionAccessPoint: API.OperationMethod<
   input: DeleteMultiRegionAccessPointRequest,
   output: DeleteMultiRegionAccessPointResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMultiRegionAccessPoint",
 }));
 export type DeletePublicAccessBlockError = CommonErrors;
@@ -8536,6 +8590,8 @@ export const deletePublicAccessBlock: API.OperationMethod<
   input: DeletePublicAccessBlockRequest,
   output: DeletePublicAccessBlockResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePublicAccessBlock",
 }));
 export type DeleteStorageLensConfigurationError = CommonErrors;
@@ -8560,6 +8616,8 @@ export const deleteStorageLensConfiguration: API.OperationMethod<
   input: DeleteStorageLensConfigurationRequest,
   output: DeleteStorageLensConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStorageLensConfiguration",
 }));
 export type DeleteStorageLensConfigurationTaggingError = CommonErrors;
@@ -8585,6 +8643,8 @@ export const deleteStorageLensConfigurationTagging: API.OperationMethod<
   input: DeleteStorageLensConfigurationTaggingRequest,
   output: DeleteStorageLensConfigurationTaggingResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStorageLensConfigurationTagging",
 }));
 export type DeleteStorageLensGroupError = CommonErrors;
@@ -8607,6 +8667,8 @@ export const deleteStorageLensGroup: API.OperationMethod<
   input: DeleteStorageLensGroupRequest,
   output: DeleteStorageLensGroupResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteStorageLensGroup",
 }));
 export type DescribeJobError =
@@ -8647,6 +8709,8 @@ export const describeJob: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeJob",
 }));
 export type DescribeMultiRegionAccessPointOperationError = CommonErrors;
@@ -8675,6 +8739,8 @@ export const describeMultiRegionAccessPointOperation: API.OperationMethod<
   input: DescribeMultiRegionAccessPointOperationRequest,
   output: DescribeMultiRegionAccessPointOperationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMultiRegionAccessPointOperation",
 }));
 export type DissociateAccessGrantsIdentityCenterError = CommonErrors;
@@ -8698,6 +8764,8 @@ export const dissociateAccessGrantsIdentityCenter: API.OperationMethod<
   input: DissociateAccessGrantsIdentityCenterRequest,
   output: DissociateAccessGrantsIdentityCenterResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DissociateAccessGrantsIdentityCenter",
 }));
 export type GetAccessGrantError = CommonErrors;
@@ -8717,6 +8785,8 @@ export const getAccessGrant: API.OperationMethod<
   input: GetAccessGrantRequest,
   output: GetAccessGrantResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessGrant",
 }));
 export type GetAccessGrantsInstanceError = CommonErrors;
@@ -8738,6 +8808,8 @@ export const getAccessGrantsInstance: API.OperationMethod<
   input: GetAccessGrantsInstanceRequest,
   output: GetAccessGrantsInstanceResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessGrantsInstance",
 }));
 export type GetAccessGrantsInstanceForPrefixError = CommonErrors;
@@ -8761,6 +8833,8 @@ export const getAccessGrantsInstanceForPrefix: API.OperationMethod<
   input: GetAccessGrantsInstanceForPrefixRequest,
   output: GetAccessGrantsInstanceForPrefixResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessGrantsInstanceForPrefix",
 }));
 export type GetAccessGrantsInstanceResourcePolicyError = CommonErrors;
@@ -8780,6 +8854,8 @@ export const getAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   input: GetAccessGrantsInstanceResourcePolicyRequest,
   output: GetAccessGrantsInstanceResourcePolicyResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessGrantsInstanceResourcePolicy",
 }));
 export type GetAccessGrantsLocationError = CommonErrors;
@@ -8799,6 +8875,8 @@ export const getAccessGrantsLocation: API.OperationMethod<
   input: GetAccessGrantsLocationRequest,
   output: GetAccessGrantsLocationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessGrantsLocation",
 }));
 export type GetAccessPointError = CommonErrors;
@@ -8824,6 +8902,8 @@ export const getAccessPoint: API.OperationMethod<
   input: GetAccessPointRequest,
   output: GetAccessPointResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPoint",
 }));
 export type GetAccessPointConfigurationForObjectLambdaError = CommonErrors;
@@ -8846,6 +8926,8 @@ export const getAccessPointConfigurationForObjectLambda: API.OperationMethod<
   input: GetAccessPointConfigurationForObjectLambdaRequest,
   output: GetAccessPointConfigurationForObjectLambdaResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPointConfigurationForObjectLambda",
 }));
 export type GetAccessPointForObjectLambdaError = CommonErrors;
@@ -8871,6 +8953,8 @@ export const getAccessPointForObjectLambda: API.OperationMethod<
   input: GetAccessPointForObjectLambdaRequest,
   output: GetAccessPointForObjectLambdaResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPointForObjectLambda",
 }));
 export type GetAccessPointPolicyError = CommonErrors;
@@ -8892,6 +8976,8 @@ export const getAccessPointPolicy: API.OperationMethod<
   input: GetAccessPointPolicyRequest,
   output: GetAccessPointPolicyResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPointPolicy",
 }));
 export type GetAccessPointPolicyForObjectLambdaError = CommonErrors;
@@ -8916,6 +9002,8 @@ export const getAccessPointPolicyForObjectLambda: API.OperationMethod<
   input: GetAccessPointPolicyForObjectLambdaRequest,
   output: GetAccessPointPolicyForObjectLambdaResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPointPolicyForObjectLambda",
 }));
 export type GetAccessPointPolicyStatusError = CommonErrors;
@@ -8935,6 +9023,8 @@ export const getAccessPointPolicyStatus: API.OperationMethod<
   input: GetAccessPointPolicyStatusRequest,
   output: GetAccessPointPolicyStatusResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPointPolicyStatus",
 }));
 export type GetAccessPointPolicyStatusForObjectLambdaError = CommonErrors;
@@ -8952,6 +9042,8 @@ export const getAccessPointPolicyStatusForObjectLambda: API.OperationMethod<
   input: GetAccessPointPolicyStatusForObjectLambdaRequest,
   output: GetAccessPointPolicyStatusForObjectLambdaResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPointPolicyStatusForObjectLambda",
 }));
 export type GetAccessPointScopeError = CommonErrors;
@@ -8972,6 +9064,8 @@ export const getAccessPointScope: API.OperationMethod<
   input: GetAccessPointScopeRequest,
   output: GetAccessPointScopeResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessPointScope",
 }));
 export type GetBucketError = CommonErrors;
@@ -9008,6 +9102,8 @@ export const getBucket: API.OperationMethod<
   input: GetBucketRequest,
   output: GetBucketResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucket",
 }));
 export type GetBucketLifecycleConfigurationError = CommonErrors;
@@ -9054,6 +9150,8 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   input: GetBucketLifecycleConfigurationRequest,
   output: GetBucketLifecycleConfigurationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketLifecycleConfiguration",
 }));
 export type GetBucketPolicyError = CommonErrors;
@@ -9101,6 +9199,8 @@ export const getBucketPolicy: API.OperationMethod<
   input: GetBucketPolicyRequest,
   output: GetBucketPolicyResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketPolicy",
 }));
 export type GetBucketReplicationError = CommonErrors;
@@ -9152,6 +9252,8 @@ export const getBucketReplication: API.OperationMethod<
   input: GetBucketReplicationRequest,
   output: GetBucketReplicationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketReplication",
 }));
 export type GetBucketTaggingError = CommonErrors;
@@ -9190,6 +9292,8 @@ export const getBucketTagging: API.OperationMethod<
   input: GetBucketTaggingRequest,
   output: GetBucketTaggingResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketTagging",
 }));
 export type GetBucketVersioningError = CommonErrors;
@@ -9234,6 +9338,8 @@ export const getBucketVersioning: API.OperationMethod<
   input: GetBucketVersioningRequest,
   output: GetBucketVersioningResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBucketVersioning",
 }));
 export type GetDataAccessError = CommonErrors;
@@ -9257,6 +9363,8 @@ export const getDataAccess: API.OperationMethod<
   input: GetDataAccessRequest,
   output: GetDataAccessResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataAccess",
 }));
 export type GetJobTaggingError =
@@ -9296,6 +9404,8 @@ export const getJobTagging: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobTagging",
 }));
 export type GetMultiRegionAccessPointError = CommonErrors;
@@ -9327,6 +9437,8 @@ export const getMultiRegionAccessPoint: API.OperationMethod<
   input: GetMultiRegionAccessPointRequest,
   output: GetMultiRegionAccessPointResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMultiRegionAccessPoint",
 }));
 export type GetMultiRegionAccessPointPolicyError = CommonErrors;
@@ -9355,6 +9467,8 @@ export const getMultiRegionAccessPointPolicy: API.OperationMethod<
   input: GetMultiRegionAccessPointPolicyRequest,
   output: GetMultiRegionAccessPointPolicyResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMultiRegionAccessPointPolicy",
 }));
 export type GetMultiRegionAccessPointPolicyStatusError = CommonErrors;
@@ -9384,6 +9498,8 @@ export const getMultiRegionAccessPointPolicyStatus: API.OperationMethod<
   input: GetMultiRegionAccessPointPolicyStatusRequest,
   output: GetMultiRegionAccessPointPolicyStatusResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMultiRegionAccessPointPolicyStatus",
 }));
 export type GetMultiRegionAccessPointRoutesError = CommonErrors;
@@ -9415,6 +9531,8 @@ export const getMultiRegionAccessPointRoutes: API.OperationMethod<
   input: GetMultiRegionAccessPointRoutesRequest,
   output: GetMultiRegionAccessPointRoutesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMultiRegionAccessPointRoutes",
 }));
 export type GetPublicAccessBlockError =
@@ -9443,6 +9561,8 @@ export const getPublicAccessBlock: API.OperationMethod<
   input: GetPublicAccessBlockRequest,
   output: GetPublicAccessBlockOutput,
   errors: [NoSuchPublicAccessBlockConfiguration],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPublicAccessBlock",
 }));
 export type GetStorageLensConfigurationError = CommonErrors;
@@ -9466,6 +9586,8 @@ export const getStorageLensConfiguration: API.OperationMethod<
   input: GetStorageLensConfigurationRequest,
   output: GetStorageLensConfigurationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStorageLensConfiguration",
 }));
 export type GetStorageLensConfigurationTaggingError = CommonErrors;
@@ -9491,6 +9613,8 @@ export const getStorageLensConfigurationTagging: API.OperationMethod<
   input: GetStorageLensConfigurationTaggingRequest,
   output: GetStorageLensConfigurationTaggingResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStorageLensConfigurationTagging",
 }));
 export type GetStorageLensGroupError = CommonErrors;
@@ -9513,6 +9637,8 @@ export const getStorageLensGroup: API.OperationMethod<
   input: GetStorageLensGroupRequest,
   output: GetStorageLensGroupResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStorageLensGroup",
 }));
 export type ListAccessGrantsError = CommonErrors;
@@ -9547,6 +9673,8 @@ export const listAccessGrants: API.OperationMethod<
   input: ListAccessGrantsRequest,
   output: ListAccessGrantsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessGrants",
   pagination: {
     inputToken: "NextToken",
@@ -9586,6 +9714,8 @@ export const listAccessGrantsInstances: API.OperationMethod<
   input: ListAccessGrantsInstancesRequest,
   output: ListAccessGrantsInstancesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessGrantsInstances",
   pagination: {
     inputToken: "NextToken",
@@ -9625,6 +9755,8 @@ export const listAccessGrantsLocations: API.OperationMethod<
   input: ListAccessGrantsLocationsRequest,
   output: ListAccessGrantsLocationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessGrantsLocations",
   pagination: {
     inputToken: "NextToken",
@@ -9678,6 +9810,8 @@ export const listAccessPoints: API.OperationMethod<
   input: ListAccessPointsRequest,
   output: ListAccessPointsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessPoints",
   pagination: {
     inputToken: "NextToken",
@@ -9720,6 +9854,8 @@ export const listAccessPointsForDirectoryBuckets: API.OperationMethod<
   input: ListAccessPointsForDirectoryBucketsRequest,
   output: ListAccessPointsForDirectoryBucketsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessPointsForDirectoryBuckets",
   pagination: {
     inputToken: "NextToken",
@@ -9769,6 +9905,8 @@ export const listAccessPointsForObjectLambda: API.OperationMethod<
   input: ListAccessPointsForObjectLambdaRequest,
   output: ListAccessPointsForObjectLambdaResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessPointsForObjectLambda",
   pagination: {
     inputToken: "NextToken",
@@ -9809,6 +9947,8 @@ export const listCallerAccessGrants: API.OperationMethod<
   input: ListCallerAccessGrantsRequest,
   output: ListCallerAccessGrantsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCallerAccessGrants",
   pagination: {
     inputToken: "NextToken",
@@ -9870,6 +10010,8 @@ export const listJobs: API.OperationMethod<
     InvalidNextTokenException,
     InvalidRequestException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
@@ -9923,6 +10065,8 @@ export const listMultiRegionAccessPoints: API.OperationMethod<
   input: ListMultiRegionAccessPointsRequest,
   output: ListMultiRegionAccessPointsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMultiRegionAccessPoints",
   pagination: {
     inputToken: "NextToken",
@@ -9965,6 +10109,8 @@ export const listRegionalBuckets: API.OperationMethod<
   input: ListRegionalBucketsRequest,
   output: ListRegionalBucketsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegionalBuckets",
   pagination: {
     inputToken: "NextToken",
@@ -10010,6 +10156,8 @@ export const listStorageLensConfigurations: API.OperationMethod<
   input: ListStorageLensConfigurationsRequest,
   output: ListStorageLensConfigurationsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStorageLensConfigurations",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -10048,6 +10196,8 @@ export const listStorageLensGroups: API.OperationMethod<
   input: ListStorageLensGroupsRequest,
   output: ListStorageLensGroupsResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStorageLensGroups",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
@@ -10092,6 +10242,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutAccessGrantsInstanceResourcePolicyError = CommonErrors;
@@ -10111,6 +10263,8 @@ export const putAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   input: PutAccessGrantsInstanceResourcePolicyRequest,
   output: PutAccessGrantsInstanceResourcePolicyResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccessGrantsInstanceResourcePolicy",
 }));
 export type PutAccessPointConfigurationForObjectLambdaError = CommonErrors;
@@ -10133,6 +10287,8 @@ export const putAccessPointConfigurationForObjectLambda: API.OperationMethod<
   input: PutAccessPointConfigurationForObjectLambdaRequest,
   output: PutAccessPointConfigurationForObjectLambdaResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccessPointConfigurationForObjectLambda",
 }));
 export type PutAccessPointPolicyError = CommonErrors;
@@ -10158,6 +10314,8 @@ export const putAccessPointPolicy: API.OperationMethod<
   input: PutAccessPointPolicyRequest,
   output: PutAccessPointPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccessPointPolicy",
 }));
 export type PutAccessPointPolicyForObjectLambdaError = CommonErrors;
@@ -10182,6 +10340,8 @@ export const putAccessPointPolicyForObjectLambda: API.OperationMethod<
   input: PutAccessPointPolicyForObjectLambdaRequest,
   output: PutAccessPointPolicyForObjectLambdaResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccessPointPolicyForObjectLambda",
 }));
 export type PutAccessPointScopeError = CommonErrors;
@@ -10204,6 +10364,8 @@ export const putAccessPointScope: API.OperationMethod<
   input: PutAccessPointScopeRequest,
   output: PutAccessPointScopeResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccessPointScope",
 }));
 export type PutBucketLifecycleConfigurationError = CommonErrors;
@@ -10234,6 +10396,8 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   input: PutBucketLifecycleConfigurationRequest,
   output: PutBucketLifecycleConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketLifecycleConfiguration",
 }));
 export type PutBucketPolicyError = CommonErrors;
@@ -10279,6 +10443,8 @@ export const putBucketPolicy: API.OperationMethod<
   input: PutBucketPolicyRequest,
   output: PutBucketPolicyResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketPolicy",
 }));
 export type PutBucketReplicationError = CommonErrors;
@@ -10366,6 +10532,8 @@ export const putBucketReplication: API.OperationMethod<
   input: PutBucketReplicationRequest,
   output: PutBucketReplicationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketReplication",
 }));
 export type PutBucketTaggingError = CommonErrors;
@@ -10435,6 +10603,8 @@ export const putBucketTagging: API.OperationMethod<
   input: PutBucketTaggingRequest,
   output: PutBucketTaggingResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketTagging",
 }));
 export type PutBucketVersioningError = CommonErrors;
@@ -10499,6 +10669,8 @@ export const putBucketVersioning: API.OperationMethod<
   input: PutBucketVersioningRequest,
   output: PutBucketVersioningResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBucketVersioning",
 }));
 export type PutJobTaggingError =
@@ -10567,6 +10739,8 @@ export const putJobTagging: API.OperationMethod<
     TooManyRequestsException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutJobTagging",
 }));
 export type PutMultiRegionAccessPointPolicyError = CommonErrors;
@@ -10597,6 +10771,8 @@ export const putMultiRegionAccessPointPolicy: API.OperationMethod<
   input: PutMultiRegionAccessPointPolicyRequest,
   output: PutMultiRegionAccessPointPolicyResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMultiRegionAccessPointPolicy",
 }));
 export type PutPublicAccessBlockError = CommonErrors;
@@ -10627,6 +10803,8 @@ export const putPublicAccessBlock: API.OperationMethod<
   input: PutPublicAccessBlockRequest,
   output: PutPublicAccessBlockResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutPublicAccessBlock",
 }));
 export type PutStorageLensConfigurationError = CommonErrors;
@@ -10649,6 +10827,8 @@ export const putStorageLensConfiguration: API.OperationMethod<
   input: PutStorageLensConfigurationRequest,
   output: PutStorageLensConfigurationResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutStorageLensConfiguration",
 }));
 export type PutStorageLensConfigurationTaggingError = CommonErrors;
@@ -10673,6 +10853,8 @@ export const putStorageLensConfigurationTagging: API.OperationMethod<
   input: PutStorageLensConfigurationTaggingRequest,
   output: PutStorageLensConfigurationTaggingResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutStorageLensConfigurationTagging",
 }));
 export type SubmitMultiRegionAccessPointRoutesError = CommonErrors;
@@ -10716,6 +10898,8 @@ export const submitMultiRegionAccessPointRoutes: API.OperationMethod<
   input: SubmitMultiRegionAccessPointRoutesRequest,
   output: SubmitMultiRegionAccessPointRoutesResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SubmitMultiRegionAccessPointRoutes",
 }));
 export type TagResourceError = CommonErrors;
@@ -10759,6 +10943,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError = CommonErrors;
@@ -10803,6 +10989,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccessGrantsLocationError = CommonErrors;
@@ -10826,6 +11014,8 @@ export const updateAccessGrantsLocation: API.OperationMethod<
   input: UpdateAccessGrantsLocationRequest,
   output: UpdateAccessGrantsLocationResult,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccessGrantsLocation",
 }));
 export type UpdateJobPriorityError =
@@ -10867,6 +11057,8 @@ export const updateJobPriority: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJobPriority",
 }));
 export type UpdateJobStatusError =
@@ -10911,6 +11103,8 @@ export const updateJobStatus: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJobStatus",
 }));
 export type UpdateStorageLensGroupError = CommonErrors;
@@ -10933,5 +11127,7 @@ export const updateStorageLensGroup: API.OperationMethod<
   input: UpdateStorageLensGroupRequest,
   output: UpdateStorageLensGroupResponse,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateStorageLensGroup",
 }));

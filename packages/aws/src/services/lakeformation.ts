@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3240,6 +3242,8 @@ export const addLFTagsToResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddLFTagsToResource",
 }));
 export type AssumeDecoratedRoleWithSAMLError =
@@ -3282,6 +3286,8 @@ export const assumeDecoratedRoleWithSAML: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssumeDecoratedRoleWithSAML",
 }));
 export type BatchGrantPermissionsError =
@@ -3300,6 +3306,8 @@ export const batchGrantPermissions: API.OperationMethod<
   input: BatchGrantPermissionsRequest,
   output: BatchGrantPermissionsResponse,
   errors: [InvalidInputException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGrantPermissions",
 }));
 export type BatchRevokePermissionsError =
@@ -3318,6 +3326,8 @@ export const batchRevokePermissions: API.OperationMethod<
   input: BatchRevokePermissionsRequest,
   output: BatchRevokePermissionsResponse,
   errors: [InvalidInputException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchRevokePermissions",
 }));
 export type CancelTransactionError =
@@ -3349,6 +3359,8 @@ export const cancelTransaction: API.OperationMethod<
     TransactionCommitInProgressException,
     TransactionCommittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelTransaction",
 }));
 export type CommitTransactionError =
@@ -3378,6 +3390,8 @@ export const commitTransaction: API.OperationMethod<
     OperationTimeoutException,
     TransactionCanceledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CommitTransaction",
 }));
 export type CreateDataCellsFilterError =
@@ -3409,6 +3423,8 @@ export const createDataCellsFilter: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataCellsFilter",
 }));
 export type CreateLakeFormationIdentityCenterConfigurationError =
@@ -3438,6 +3454,8 @@ export const createLakeFormationIdentityCenterConfiguration: API.OperationMethod
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLakeFormationIdentityCenterConfiguration",
 }));
 export type CreateLakeFormationOptInError =
@@ -3469,6 +3487,8 @@ export const createLakeFormationOptIn: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLakeFormationOptIn",
 }));
 export type CreateLFTagError =
@@ -3498,6 +3518,8 @@ export const createLFTag: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLFTag",
 }));
 export type CreateLFTagExpressionError =
@@ -3535,6 +3557,8 @@ export const createLFTagExpression: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLFTagExpression",
 }));
 export type DeleteDataCellsFilterError =
@@ -3562,6 +3586,8 @@ export const deleteDataCellsFilter: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataCellsFilter",
 }));
 export type DeleteLakeFormationIdentityCenterConfigurationError =
@@ -3591,6 +3617,8 @@ export const deleteLakeFormationIdentityCenterConfiguration: API.OperationMethod
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLakeFormationIdentityCenterConfiguration",
 }));
 export type DeleteLakeFormationOptInError =
@@ -3620,6 +3648,8 @@ export const deleteLakeFormationOptIn: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLakeFormationOptIn",
 }));
 export type DeleteLFTagError =
@@ -3653,6 +3683,8 @@ export const deleteLFTag: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLFTag",
 }));
 export type DeleteLFTagExpressionError =
@@ -3681,6 +3713,8 @@ export const deleteLFTagExpression: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLFTagExpression",
 }));
 export type DeleteObjectsOnCancelError =
@@ -3719,6 +3753,8 @@ export const deleteObjectsOnCancel: API.OperationMethod<
     TransactionCanceledException,
     TransactionCommittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteObjectsOnCancel",
 }));
 export type DeregisterResourceError =
@@ -3746,6 +3782,8 @@ export const deregisterResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterResource",
 }));
 export type DescribeLakeFormationIdentityCenterConfigurationError =
@@ -3773,6 +3811,8 @@ export const describeLakeFormationIdentityCenterConfiguration: API.OperationMeth
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLakeFormationIdentityCenterConfiguration",
 }));
 export type DescribeResourceError =
@@ -3798,6 +3838,8 @@ export const describeResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResource",
 }));
 export type DescribeTransactionError =
@@ -3823,6 +3865,8 @@ export const describeTransaction: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTransaction",
 }));
 export type ExtendTransactionError =
@@ -3856,6 +3900,8 @@ export const extendTransaction: API.OperationMethod<
     TransactionCommitInProgressException,
     TransactionCommittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExtendTransaction",
 }));
 export type GetDataCellsFilterError =
@@ -3883,6 +3929,8 @@ export const getDataCellsFilter: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataCellsFilter",
 }));
 export type GetDataLakePrincipalError =
@@ -3906,6 +3954,8 @@ export const getDataLakePrincipal: API.OperationMethod<
     InternalServiceException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataLakePrincipal",
 }));
 export type GetDataLakeSettingsError =
@@ -3929,6 +3979,8 @@ export const getDataLakeSettings: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataLakeSettings",
 }));
 export type GetEffectivePermissionsForPathError =
@@ -3970,6 +4022,8 @@ export const getEffectivePermissionsForPath: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEffectivePermissionsForPath",
   pagination: {
     inputToken: "NextToken",
@@ -4002,6 +4056,8 @@ export const getLFTag: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLFTag",
 }));
 export type GetLFTagExpressionError =
@@ -4029,6 +4085,8 @@ export const getLFTagExpression: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLFTagExpression",
 }));
 export type GetQueryStateError =
@@ -4052,6 +4110,8 @@ export const getQueryState: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryState",
 }));
 export type GetQueryStatisticsError =
@@ -4081,6 +4141,8 @@ export const getQueryStatistics: API.OperationMethod<
     StatisticsNotReadyYetException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetQueryStatistics",
 }));
 export type GetResourceLFTagsError =
@@ -4110,6 +4172,8 @@ export const getResourceLFTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceLFTags",
 }));
 export type GetTableObjectsError =
@@ -4156,6 +4220,8 @@ export const getTableObjects: API.OperationMethod<
     TransactionCanceledException,
     TransactionCommittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableObjects",
   pagination: {
     inputToken: "NextToken",
@@ -4211,6 +4277,8 @@ export const getTemporaryDataLocationCredentials: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemporaryDataLocationCredentials",
 }));
 export type GetTemporaryGluePartitionCredentialsError =
@@ -4240,6 +4308,8 @@ export const getTemporaryGluePartitionCredentials: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemporaryGluePartitionCredentials",
 }));
 export type GetTemporaryGlueTableCredentialsError =
@@ -4271,6 +4341,8 @@ export const getTemporaryGlueTableCredentials: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTemporaryGlueTableCredentials",
 }));
 export type GetWorkUnitResultsError =
@@ -4298,6 +4370,8 @@ export const getWorkUnitResults: API.OperationMethod<
     InvalidInputException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkUnitResults",
 }));
 export type GetWorkUnitsError =
@@ -4340,6 +4414,8 @@ export const getWorkUnits: API.OperationMethod<
     InvalidInputException,
     WorkUnitsNotReadyYetException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkUnits",
   pagination: {
     inputToken: "NextToken",
@@ -4371,6 +4447,8 @@ export const grantPermissions: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GrantPermissions",
 }));
 export type ListDataCellsFilterError =
@@ -4411,6 +4489,8 @@ export const listDataCellsFilter: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataCellsFilter",
   pagination: {
     inputToken: "NextToken",
@@ -4457,6 +4537,8 @@ export const listLakeFormationOptIns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLakeFormationOptIns",
   pagination: {
     inputToken: "NextToken",
@@ -4504,6 +4586,8 @@ export const listLFTagExpressions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLFTagExpressions",
   pagination: {
     inputToken: "NextToken",
@@ -4552,6 +4636,8 @@ export const listLFTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLFTags",
   pagination: {
     inputToken: "NextToken",
@@ -4602,6 +4688,8 @@ export const listPermissions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPermissions",
   pagination: {
     inputToken: "NextToken",
@@ -4645,6 +4733,8 @@ export const listResources: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResources",
   pagination: {
     inputToken: "NextToken",
@@ -4690,6 +4780,8 @@ export const listTableStorageOptimizers: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTableStorageOptimizers",
   pagination: {
     inputToken: "NextToken",
@@ -4735,6 +4827,8 @@ export const listTransactions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTransactions",
   pagination: {
     inputToken: "NextToken",
@@ -4760,6 +4854,8 @@ export const putDataLakeSettings: API.OperationMethod<
   input: PutDataLakeSettingsRequest,
   output: PutDataLakeSettingsResponse,
   errors: [InternalServiceException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDataLakeSettings",
 }));
 export type RegisterResourceError =
@@ -4802,6 +4898,8 @@ export const registerResource: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterResource",
 }));
 export type RemoveLFTagsFromResourceError =
@@ -4833,6 +4931,8 @@ export const removeLFTagsFromResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveLFTagsFromResource",
 }));
 export type RevokePermissionsError =
@@ -4856,6 +4956,8 @@ export const revokePermissions: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokePermissions",
 }));
 export type SearchDatabasesByLFTagsError =
@@ -4900,6 +5002,8 @@ export const searchDatabasesByLFTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchDatabasesByLFTags",
   pagination: {
     inputToken: "NextToken",
@@ -4950,6 +5054,8 @@ export const searchTablesByLFTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchTablesByLFTags",
   pagination: {
     inputToken: "NextToken",
@@ -4983,6 +5089,8 @@ export const startQueryPlanning: API.OperationMethod<
     InvalidInputException,
     ThrottledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartQueryPlanning",
 }));
 export type StartTransactionError =
@@ -5001,6 +5109,8 @@ export const startTransaction: API.OperationMethod<
   input: StartTransactionRequest,
   output: StartTransactionResponse,
   errors: [InternalServiceException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTransaction",
 }));
 export type UpdateDataCellsFilterError =
@@ -5030,6 +5140,8 @@ export const updateDataCellsFilter: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataCellsFilter",
 }));
 export type UpdateLakeFormationIdentityCenterConfigurationError =
@@ -5059,6 +5171,8 @@ export const updateLakeFormationIdentityCenterConfiguration: API.OperationMethod
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLakeFormationIdentityCenterConfiguration",
 }));
 export type UpdateLFTagError =
@@ -5088,6 +5202,8 @@ export const updateLFTag: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLFTag",
 }));
 export type UpdateLFTagExpressionError =
@@ -5118,6 +5234,8 @@ export const updateLFTagExpression: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLFTagExpression",
 }));
 export type UpdateResourceError =
@@ -5143,6 +5261,8 @@ export const updateResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResource",
 }));
 export type UpdateTableObjectsError =
@@ -5178,6 +5298,8 @@ export const updateTableObjects: API.OperationMethod<
     TransactionCommitInProgressException,
     TransactionCommittedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTableObjects",
 }));
 export type UpdateTableStorageOptimizerError =
@@ -5203,5 +5325,7 @@ export const updateTableStorageOptimizer: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTableStorageOptimizer",
 }));

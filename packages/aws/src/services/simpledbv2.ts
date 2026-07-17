@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -321,6 +323,8 @@ export const getExport: API.OperationMethod<
   input: GetExportRequest,
   output: GetExportResponse,
   errors: [InvalidParameterValueException, NoSuchExportException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetExport",
 }));
 export type ListExportsError =
@@ -359,6 +363,8 @@ export const listExports: API.OperationMethod<
     InvalidParameterValueException,
     NoSuchDomainException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListExports",
   pagination: {
     inputToken: "nextToken",
@@ -392,5 +398,7 @@ export const startDomainExport: API.OperationMethod<
     NoSuchDomainException,
     NumberExportsLimitExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDomainExport",
 }));

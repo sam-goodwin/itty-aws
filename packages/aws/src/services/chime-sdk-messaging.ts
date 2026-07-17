@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2793,6 +2795,8 @@ export const associateChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateChannelFlow",
 }));
 export type BatchCreateChannelMembershipError =
@@ -2826,6 +2830,8 @@ export const batchCreateChannelMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreateChannelMembership",
 }));
 export type ChannelFlowCallbackError =
@@ -2865,6 +2871,8 @@ export const channelFlowCallback: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ChannelFlowCallback",
 }));
 export type CreateChannelError =
@@ -2905,6 +2913,8 @@ export const createChannel: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannel",
 }));
 export type CreateChannelBanError =
@@ -2948,6 +2958,8 @@ export const createChannelBan: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannelBan",
 }));
 export type CreateChannelFlowError =
@@ -2995,6 +3007,8 @@ export const createChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannelFlow",
 }));
 export type CreateChannelMembershipError =
@@ -3052,6 +3066,8 @@ export const createChannelMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannelMembership",
 }));
 export type CreateChannelModeratorError =
@@ -3099,6 +3115,8 @@ export const createChannelModerator: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateChannelModerator",
 }));
 export type DeleteChannelError =
@@ -3135,6 +3153,8 @@ export const deleteChannel: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannel",
 }));
 export type DeleteChannelBanError =
@@ -3168,6 +3188,8 @@ export const deleteChannelBan: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelBan",
 }));
 export type DeleteChannelFlowError =
@@ -3202,6 +3224,8 @@ export const deleteChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelFlow",
 }));
 export type DeleteChannelMembershipError =
@@ -3237,6 +3261,8 @@ export const deleteChannelMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelMembership",
 }));
 export type DeleteChannelMessageError =
@@ -3272,6 +3298,8 @@ export const deleteChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelMessage",
 }));
 export type DeleteChannelModeratorError =
@@ -3305,6 +3333,8 @@ export const deleteChannelModerator: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteChannelModerator",
 }));
 export type DeleteMessagingStreamingConfigurationsError =
@@ -3335,6 +3365,8 @@ export const deleteMessagingStreamingConfigurations: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMessagingStreamingConfigurations",
 }));
 export type DescribeChannelError =
@@ -3369,6 +3401,8 @@ export const describeChannel: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannel",
 }));
 export type DescribeChannelBanError =
@@ -3404,6 +3438,8 @@ export const describeChannelBan: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannelBan",
 }));
 export type DescribeChannelFlowError =
@@ -3433,6 +3469,8 @@ export const describeChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannelFlow",
 }));
 export type DescribeChannelMembershipError =
@@ -3468,6 +3506,8 @@ export const describeChannelMembership: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannelMembership",
 }));
 export type DescribeChannelMembershipForAppInstanceUserError =
@@ -3502,6 +3542,8 @@ export const describeChannelMembershipForAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannelMembershipForAppInstanceUser",
 }));
 export type DescribeChannelModeratedByAppInstanceUserError =
@@ -3536,6 +3578,8 @@ export const describeChannelModeratedByAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannelModeratedByAppInstanceUser",
 }));
 export type DescribeChannelModeratorError =
@@ -3571,6 +3615,8 @@ export const describeChannelModerator: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeChannelModerator",
 }));
 export type DisassociateChannelFlowError =
@@ -3611,6 +3657,8 @@ export const disassociateChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateChannelFlow",
 }));
 export type GetChannelMembershipPreferencesError =
@@ -3648,6 +3696,8 @@ export const getChannelMembershipPreferences: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannelMembershipPreferences",
 }));
 export type GetChannelMessageError =
@@ -3683,6 +3733,8 @@ export const getChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannelMessage",
 }));
 export type GetChannelMessageStatusError =
@@ -3739,6 +3791,8 @@ export const getChannelMessageStatus: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetChannelMessageStatus",
 }));
 export type GetMessagingSessionEndpointError =
@@ -3766,6 +3820,8 @@ export const getMessagingSessionEndpoint: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMessagingSessionEndpoint",
 }));
 export type GetMessagingStreamingConfigurationsError =
@@ -3798,6 +3854,8 @@ export const getMessagingStreamingConfigurations: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMessagingStreamingConfigurations",
 }));
 export type ListChannelBansError =
@@ -3846,6 +3904,8 @@ export const listChannelBans: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelBans",
   pagination: {
     inputToken: "NextToken",
@@ -3895,6 +3955,8 @@ export const listChannelFlows: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelFlows",
   pagination: {
     inputToken: "NextToken",
@@ -3951,6 +4013,8 @@ export const listChannelMemberships: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelMemberships",
   pagination: {
     inputToken: "NextToken",
@@ -4005,6 +4069,8 @@ export const listChannelMembershipsForAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelMembershipsForAppInstanceUser",
   pagination: {
     inputToken: "NextToken",
@@ -4064,6 +4130,8 @@ export const listChannelMessages: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelMessages",
   pagination: {
     inputToken: "NextToken",
@@ -4117,6 +4185,8 @@ export const listChannelModerators: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelModerators",
   pagination: {
     inputToken: "NextToken",
@@ -4179,6 +4249,8 @@ export const listChannels: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannels",
   pagination: {
     inputToken: "NextToken",
@@ -4228,6 +4300,8 @@ export const listChannelsAssociatedWithChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelsAssociatedWithChannelFlow",
   pagination: {
     inputToken: "NextToken",
@@ -4281,6 +4355,8 @@ export const listChannelsModeratedByAppInstanceUser: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListChannelsModeratedByAppInstanceUser",
   pagination: {
     inputToken: "NextToken",
@@ -4330,6 +4406,8 @@ export const listSubChannels: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubChannels",
   pagination: {
     inputToken: "NextToken",
@@ -4364,6 +4442,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutChannelExpirationSettingsError =
@@ -4405,6 +4485,8 @@ export const putChannelExpirationSettings: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutChannelExpirationSettings",
 }));
 export type PutChannelMembershipPreferencesError =
@@ -4444,6 +4526,8 @@ export const putChannelMembershipPreferences: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutChannelMembershipPreferences",
 }));
 export type PutMessagingStreamingConfigurationsError =
@@ -4478,6 +4562,8 @@ export const putMessagingStreamingConfigurations: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutMessagingStreamingConfigurations",
 }));
 export type RedactChannelMessageError =
@@ -4514,6 +4600,8 @@ export const redactChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RedactChannelMessage",
 }));
 export type SearchChannelsError =
@@ -4566,6 +4654,8 @@ export const searchChannels: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchChannels",
   pagination: {
     inputToken: "NextToken",
@@ -4611,6 +4701,8 @@ export const sendChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SendChannelMessage",
 }));
 export type TagResourceError =
@@ -4642,6 +4734,8 @@ export const tagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -4671,6 +4765,8 @@ export const untagResource: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateChannelError =
@@ -4708,6 +4804,8 @@ export const updateChannel: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannel",
 }));
 export type UpdateChannelFlowError =
@@ -4739,6 +4837,8 @@ export const updateChannelFlow: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannelFlow",
 }));
 export type UpdateChannelMessageError =
@@ -4774,6 +4874,8 @@ export const updateChannelMessage: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannelMessage",
 }));
 export type UpdateChannelReadMarkerError =
@@ -4809,5 +4911,7 @@ export const updateChannelReadMarker: API.OperationMethod<
     ThrottledClientException,
     UnauthorizedClientException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateChannelReadMarker",
 }));

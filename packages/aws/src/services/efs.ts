@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1716,6 +1718,8 @@ export const createAccessPoint: API.OperationMethod<
     InternalServerError,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessPoint",
 }));
 export type CreateFileSystemError =
@@ -1807,6 +1811,8 @@ export const createFileSystem: API.OperationMethod<
     ThroughputLimitExceeded,
     UnsupportedAvailabilityZone,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFileSystem",
 }));
 export type CreateMountTargetError =
@@ -1961,6 +1967,8 @@ export const createMountTarget: API.OperationMethod<
     SubnetNotFound,
     UnsupportedAvailabilityZone,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMountTarget",
 }));
 export type CreateReplicationConfigurationError =
@@ -2021,6 +2029,8 @@ export const createReplicationConfiguration: API.OperationMethod<
     UnsupportedAvailabilityZone,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateReplicationConfiguration",
 }));
 export type CreateTagsError =
@@ -2049,6 +2059,8 @@ export const createTags: API.OperationMethod<
   input: CreateTagsRequest,
   output: CreateTagsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTags",
 }));
 export type DeleteAccessPointError =
@@ -2072,6 +2084,8 @@ export const deleteAccessPoint: API.OperationMethod<
   input: DeleteAccessPointRequest,
   output: DeleteAccessPointResponse,
   errors: [AccessPointNotFound, BadRequest, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessPoint",
 }));
 export type DeleteFileSystemError =
@@ -2117,6 +2131,8 @@ export const deleteFileSystem: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFileSystem",
 }));
 export type DeleteFileSystemPolicyError =
@@ -2146,6 +2162,8 @@ export const deleteFileSystemPolicy: API.OperationMethod<
     IncorrectFileSystemLifeCycleState,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFileSystemPolicy",
 }));
 export type DeleteMountTargetError =
@@ -2193,6 +2211,8 @@ export const deleteMountTarget: API.OperationMethod<
     InternalServerError,
     MountTargetNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMountTarget",
 }));
 export type DeleteReplicationConfigurationError =
@@ -2224,6 +2244,8 @@ export const deleteReplicationConfiguration: API.OperationMethod<
     InternalServerError,
     ReplicationNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteReplicationConfiguration",
 }));
 export type DeleteTagsError =
@@ -2252,6 +2274,8 @@ export const deleteTags: API.OperationMethod<
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTags",
 }));
 export type DescribeAccessPointsError =
@@ -2298,6 +2322,8 @@ export const describeAccessPoints: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccessPoints",
   pagination: {
     inputToken: "NextToken",
@@ -2321,6 +2347,8 @@ export const describeAccountPreferences: API.OperationMethod<
   input: DescribeAccountPreferencesRequest,
   output: DescribeAccountPreferencesResponse,
   errors: [InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccountPreferences",
 }));
 export type DescribeBackupPolicyError =
@@ -2348,6 +2376,8 @@ export const describeBackupPolicy: API.OperationMethod<
     PolicyNotFound,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeBackupPolicy",
 }));
 export type DescribeFileSystemPolicyError =
@@ -2371,6 +2401,8 @@ export const describeFileSystemPolicy: API.OperationMethod<
   input: DescribeFileSystemPolicyRequest,
   output: FileSystemPolicyDescription,
   errors: [BadRequest, FileSystemNotFound, InternalServerError, PolicyNotFound],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFileSystemPolicy",
 }));
 export type DescribeFileSystemsError =
@@ -2428,6 +2460,8 @@ export const describeFileSystems: API.OperationMethod<
   input: DescribeFileSystemsRequest,
   output: DescribeFileSystemsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFileSystems",
   pagination: {
     inputToken: "Marker",
@@ -2460,6 +2494,8 @@ export const describeLifecycleConfiguration: API.OperationMethod<
   input: DescribeLifecycleConfigurationRequest,
   output: LifecycleConfigurationDescription,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLifecycleConfiguration",
 }));
 export type DescribeMountTargetsError =
@@ -2509,6 +2545,8 @@ export const describeMountTargets: API.OperationMethod<
     InternalServerError,
     MountTargetNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMountTargets",
   pagination: {
     inputToken: "Marker",
@@ -2550,6 +2588,8 @@ export const describeMountTargetSecurityGroups: API.OperationMethod<
     InternalServerError,
     MountTargetNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMountTargetSecurityGroups",
 }));
 export type DescribeReplicationConfigurationsError =
@@ -2594,6 +2634,8 @@ export const describeReplicationConfigurations: API.OperationMethod<
     ReplicationNotFound,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeReplicationConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -2643,6 +2685,8 @@ export const describeTags: API.OperationMethod<
   input: DescribeTagsRequest,
   output: DescribeTagsResponse,
   errors: [BadRequest, FileSystemNotFound, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTags",
   pagination: {
     inputToken: "Marker",
@@ -2692,6 +2736,8 @@ export const listTagsForResource: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
   pagination: {
     inputToken: "NextToken",
@@ -2741,6 +2787,8 @@ export const modifyMountTargetSecurityGroups: API.OperationMethod<
     SecurityGroupLimitExceeded,
     SecurityGroupNotFound,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyMountTargetSecurityGroups",
 }));
 export type PutAccountPreferencesError =
@@ -2767,6 +2815,8 @@ export const putAccountPreferences: API.OperationMethod<
   input: PutAccountPreferencesRequest,
   output: PutAccountPreferencesResponse,
   errors: [BadRequest, InternalServerError],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAccountPreferences",
 }));
 export type PutBackupPolicyError =
@@ -2794,6 +2844,8 @@ export const putBackupPolicy: API.OperationMethod<
     InternalServerError,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutBackupPolicy",
 }));
 export type PutFileSystemPolicyError =
@@ -2832,6 +2884,8 @@ export const putFileSystemPolicy: API.OperationMethod<
     InternalServerError,
     InvalidPolicyException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutFileSystemPolicy",
 }));
 export type PutLifecycleConfigurationError =
@@ -2909,6 +2963,8 @@ export const putLifecycleConfiguration: API.OperationMethod<
     IncorrectFileSystemLifeCycleState,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutLifecycleConfiguration",
 }));
 export type TagResourceError =
@@ -2937,6 +2993,8 @@ export const tagResource: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2965,6 +3023,8 @@ export const untagResource: API.OperationMethod<
     FileSystemNotFound,
     InternalServerError,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateFileSystemError =
@@ -2997,6 +3057,8 @@ export const updateFileSystem: API.OperationMethod<
     ThroughputLimitExceeded,
     TooManyRequests,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFileSystem",
 }));
 export type UpdateFileSystemProtectionError =
@@ -3033,5 +3095,7 @@ export const updateFileSystemProtection: API.OperationMethod<
     ThroughputLimitExceeded,
     TooManyRequests,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateFileSystemProtection",
 }));

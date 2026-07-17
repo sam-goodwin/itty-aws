@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1419,6 +1421,8 @@ export const batchGetView: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetView",
 }));
 export type CreateResourceExplorerSetupError =
@@ -1446,6 +1450,8 @@ export const createResourceExplorerSetup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceExplorerSetup",
 }));
 export type DeleteResourceExplorerSetupError =
@@ -1473,6 +1479,8 @@ export const deleteResourceExplorerSetup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceExplorerSetup",
 }));
 export type DisassociateDefaultViewError =
@@ -1502,6 +1510,8 @@ export const disassociateDefaultView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateDefaultView",
 }));
 export type GetAccountLevelServiceConfigurationError =
@@ -1527,6 +1537,8 @@ export const getAccountLevelServiceConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountLevelServiceConfiguration",
 }));
 export type GetDefaultViewError =
@@ -1554,6 +1566,8 @@ export const getDefaultView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDefaultView",
 }));
 export type GetIndexError =
@@ -1581,6 +1595,8 @@ export const getIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIndex",
 }));
 export type GetManagedViewError =
@@ -1610,6 +1626,8 @@ export const getManagedView: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetManagedView",
 }));
 export type GetResourceExplorerSetupError =
@@ -1652,6 +1670,8 @@ export const getResourceExplorerSetup: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourceExplorerSetup",
   pagination: {
     inputToken: "NextToken",
@@ -1685,6 +1705,8 @@ export const getServiceIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceIndex",
 }));
 export type GetServiceViewError =
@@ -1712,6 +1734,8 @@ export const getServiceView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceView",
 }));
 export type ListIndexesForMembersError =
@@ -1752,6 +1776,8 @@ export const listIndexesForMembers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndexesForMembers",
   pagination: {
     inputToken: "NextToken",
@@ -1800,6 +1826,8 @@ export const listManagedViews: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListManagedViews",
   pagination: {
     inputToken: "NextToken",
@@ -1850,6 +1878,8 @@ export const listResources: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResources",
   pagination: {
     inputToken: "NextToken",
@@ -1896,6 +1926,8 @@ export const listServiceIndexes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceIndexes",
   pagination: {
     inputToken: "NextToken",
@@ -1942,6 +1974,8 @@ export const listServiceViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListServiceViews",
   pagination: {
     inputToken: "NextToken",
@@ -1982,6 +2016,8 @@ export const listStreamingAccessForServices: API.OperationMethod<
   input: ListStreamingAccessForServicesInput,
   output: ListStreamingAccessForServicesOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStreamingAccessForServices",
   pagination: {
     inputToken: "NextToken",
@@ -2028,6 +2064,8 @@ export const listSupportedResourceTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSupportedResourceTypes",
   pagination: {
     inputToken: "NextToken",
@@ -2063,6 +2101,8 @@ export const listTagsForResource: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type SearchError =
@@ -2113,6 +2153,8 @@ export const search: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Search",
   pagination: {
     inputToken: "NextToken",
@@ -2148,6 +2190,8 @@ export const tagResource: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2177,6 +2221,8 @@ export const untagResource: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateIndexError =
@@ -2224,6 +2270,8 @@ export const createIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIndex",
 }));
 export type UpdateIndexTypeError =
@@ -2271,6 +2319,8 @@ export const updateIndexType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIndexType",
 }));
 export type DeleteIndexError =
@@ -2300,6 +2350,8 @@ export const deleteIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIndex",
 }));
 export type ListIndexesError =
@@ -2340,6 +2392,8 @@ export const listIndexes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIndexes",
   pagination: {
     inputToken: "NextToken",
@@ -2379,6 +2433,8 @@ export const createView: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateView",
 }));
 export type GetViewError =
@@ -2408,6 +2464,8 @@ export const getView: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetView",
 }));
 export type UpdateViewError =
@@ -2437,6 +2495,8 @@ export const updateView: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateView",
 }));
 export type DeleteViewError =
@@ -2468,6 +2528,8 @@ export const deleteView: API.OperationMethod<
     UnauthorizedException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteView",
 }));
 export type ListViewsError =
@@ -2510,6 +2572,8 @@ export const listViews: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListViews",
   pagination: {
     inputToken: "NextToken",
@@ -2545,5 +2609,7 @@ export const associateDefaultView: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateDefaultView",
 }));

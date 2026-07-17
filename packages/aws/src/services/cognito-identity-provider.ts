@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -6608,6 +6610,8 @@ export const addCustomAttributes: API.OperationMethod<
     TooManyRequestsException,
     UserImportInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddCustomAttributes",
 }));
 export type AddUserPoolClientSecretError =
@@ -6637,6 +6641,8 @@ export const addUserPoolClientSecret: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddUserPoolClientSecret",
 }));
 export type AdminAddUserToGroupError =
@@ -6678,6 +6684,8 @@ export const adminAddUserToGroup: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminAddUserToGroup",
 }));
 export type AdminConfirmSignUpError =
@@ -6735,6 +6743,8 @@ export const adminConfirmSignUp: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminConfirmSignUp",
 }));
 export type AdminCreateUserError =
@@ -6829,6 +6839,8 @@ export const adminCreateUser: API.OperationMethod<
     UsernameExistsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminCreateUser",
 }));
 export type AdminDeleteUserError =
@@ -6868,6 +6880,8 @@ export const adminDeleteUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminDeleteUser",
 }));
 export type AdminDeleteUserAttributesError =
@@ -6909,6 +6923,8 @@ export const adminDeleteUserAttributes: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminDeleteUserAttributes",
 }));
 export type AdminDisableProviderForUserError =
@@ -6976,6 +6992,8 @@ export const adminDisableProviderForUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminDisableProviderForUser",
 }));
 export type AdminDisableUserError =
@@ -7017,6 +7035,8 @@ export const adminDisableUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminDisableUser",
 }));
 export type AdminEnableUserError =
@@ -7057,6 +7077,8 @@ export const adminEnableUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminEnableUser",
 }));
 export type AdminForgetDeviceError =
@@ -7100,6 +7122,8 @@ export const adminForgetDevice: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminForgetDevice",
 }));
 export type AdminGetDeviceError =
@@ -7140,6 +7164,8 @@ export const adminGetDevice: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminGetDevice",
 }));
 export type AdminGetUserError =
@@ -7183,6 +7209,8 @@ export const adminGetUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminGetUser",
 }));
 export type AdminInitiateAuthError =
@@ -7265,6 +7293,8 @@ export const adminInitiateAuth: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminInitiateAuth",
 }));
 export type AdminLinkProviderForUserError =
@@ -7322,6 +7352,8 @@ export const adminLinkProviderForUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminLinkProviderForUser",
 }));
 export type AdminListDevicesError =
@@ -7364,6 +7396,8 @@ export const adminListDevices: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminListDevices",
 }));
 export type AdminListGroupsForUserError =
@@ -7420,6 +7454,8 @@ export const adminListGroupsForUser: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminListGroupsForUser",
   pagination: {
     inputToken: "NextToken",
@@ -7483,6 +7519,8 @@ export const adminListUserAuthEvents: API.OperationMethod<
     UserNotFoundException,
     UserPoolAddOnNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminListUserAuthEvents",
   pagination: {
     inputToken: "NextToken",
@@ -7530,6 +7568,8 @@ export const adminRemoveUserFromGroup: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminRemoveUserFromGroup",
 }));
 export type AdminResetUserPasswordError =
@@ -7608,6 +7648,8 @@ export const adminResetUserPassword: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminResetUserPassword",
 }));
 export type AdminRespondToAuthChallengeError =
@@ -7703,6 +7745,8 @@ export const adminRespondToAuthChallenge: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminRespondToAuthChallenge",
 }));
 export type AdminSetUserMFAPreferenceError =
@@ -7748,6 +7792,8 @@ export const adminSetUserMFAPreference: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminSetUserMFAPreference",
 }));
 export type AdminSetUserPasswordError =
@@ -7819,6 +7865,8 @@ export const adminSetUserPassword: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminSetUserPassword",
 }));
 export type AdminSetUserSettingsError =
@@ -7858,6 +7906,8 @@ export const adminSetUserSettings: API.OperationMethod<
     ResourceNotFoundException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminSetUserSettings",
 }));
 export type AdminUpdateAuthEventFeedbackError =
@@ -7909,6 +7959,8 @@ export const adminUpdateAuthEventFeedback: API.OperationMethod<
     UserNotFoundException,
     UserPoolAddOnNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminUpdateAuthEventFeedback",
 }));
 export type AdminUpdateDeviceStatusError =
@@ -7955,6 +8007,8 @@ export const adminUpdateDeviceStatus: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminUpdateDeviceStatus",
 }));
 export type AdminUpdateUserAttributesError =
@@ -8034,6 +8088,8 @@ export const adminUpdateUserAttributes: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminUpdateUserAttributes",
 }));
 export type AdminUserGlobalSignOutError =
@@ -8096,6 +8152,8 @@ export const adminUserGlobalSignOut: API.OperationMethod<
     TooManyRequestsException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AdminUserGlobalSignOut",
 }));
 export type AssociateSoftwareTokenError =
@@ -8138,6 +8196,8 @@ export const associateSoftwareToken: API.OperationMethod<
     ResourceNotFoundException,
     SoftwareTokenMFANotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateSoftwareToken",
 }));
 export type ChangePasswordError =
@@ -8186,6 +8246,8 @@ export const changePassword: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ChangePassword",
 }));
 export type CompleteWebAuthnRegistrationError =
@@ -8232,6 +8294,8 @@ export const completeWebAuthnRegistration: API.OperationMethod<
     WebAuthnOriginNotAllowedException,
     WebAuthnRelyingPartyMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CompleteWebAuthnRegistration",
 }));
 export type ConfirmDeviceError =
@@ -8287,6 +8351,8 @@ export const confirmDevice: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmDevice",
 }));
 export type ConfirmForgotPasswordError =
@@ -8344,6 +8410,8 @@ export const confirmForgotPassword: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmForgotPassword",
 }));
 export type ConfirmSignUpError =
@@ -8405,6 +8473,8 @@ export const confirmSignUp: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ConfirmSignUp",
 }));
 export type CreateGroupError =
@@ -8447,6 +8517,8 @@ export const createGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroup",
 }));
 export type CreateIdentityProviderError =
@@ -8490,6 +8562,8 @@ export const createIdentityProvider: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdentityProvider",
 }));
 export type CreateManagedLoginBrandingError =
@@ -8548,6 +8622,8 @@ export const createManagedLoginBranding: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateManagedLoginBranding",
 }));
 export type CreateResourceServerError =
@@ -8589,6 +8665,8 @@ export const createResourceServer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateResourceServer",
 }));
 export type CreateTermsError =
@@ -8645,6 +8723,8 @@ export const createTerms: API.OperationMethod<
     TermsExistsException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTerms",
 }));
 export type CreateUserImportJobError =
@@ -8687,6 +8767,8 @@ export const createUserImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserImportJob",
 }));
 export type CreateUserPoolError =
@@ -8756,6 +8838,8 @@ export const createUserPool: API.OperationMethod<
     TooManyRequestsException,
     UserPoolTaggingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserPool",
 }));
 export type CreateUserPoolClientError =
@@ -8808,6 +8892,8 @@ export const createUserPoolClient: API.OperationMethod<
     ScopeDoesNotExistException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserPoolClient",
 }));
 export type CreateUserPoolDomainError =
@@ -8860,6 +8946,8 @@ export const createUserPoolDomain: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserPoolDomain",
 }));
 export type DeleteGroupError =
@@ -8901,6 +8989,8 @@ export const deleteGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGroup",
 }));
 export type DeleteIdentityProviderError =
@@ -8944,6 +9034,8 @@ export const deleteIdentityProvider: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedIdentityProviderException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentityProvider",
 }));
 export type DeleteManagedLoginBrandingError =
@@ -8986,6 +9078,8 @@ export const deleteManagedLoginBranding: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteManagedLoginBranding",
 }));
 export type DeleteResourceServerError =
@@ -9027,6 +9121,8 @@ export const deleteResourceServer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourceServer",
 }));
 export type DeleteTermsError =
@@ -9066,6 +9162,8 @@ export const deleteTerms: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTerms",
 }));
 export type DeleteUserError =
@@ -9109,6 +9207,8 @@ export const deleteUser: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUser",
 }));
 export type DeleteUserAttributesError =
@@ -9153,6 +9253,8 @@ export const deleteUserAttributes: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserAttributes",
 }));
 export type DeleteUserPoolError =
@@ -9192,6 +9294,8 @@ export const deleteUserPool: API.OperationMethod<
     TooManyRequestsException,
     UserImportInProgressException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserPool",
 }));
 export type DeleteUserPoolClientError =
@@ -9222,6 +9326,8 @@ export const deleteUserPoolClient: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserPoolClient",
 }));
 export type DeleteUserPoolClientSecretError =
@@ -9249,6 +9355,8 @@ export const deleteUserPoolClientSecret: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserPoolClientSecret",
 }));
 export type DeleteUserPoolDomainError =
@@ -9278,6 +9386,8 @@ export const deleteUserPoolDomain: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserPoolDomain",
 }));
 export type DeleteWebAuthnCredentialError =
@@ -9319,6 +9429,8 @@ export const deleteWebAuthnCredential: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWebAuthnCredential",
 }));
 export type DescribeIdentityProviderError =
@@ -9347,6 +9459,8 @@ export const describeIdentityProvider: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIdentityProvider",
 }));
 export type DescribeManagedLoginBrandingError =
@@ -9375,6 +9489,8 @@ export const describeManagedLoginBranding: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeManagedLoginBranding",
 }));
 export type DescribeManagedLoginBrandingByClientError =
@@ -9403,6 +9519,8 @@ export const describeManagedLoginBrandingByClient: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeManagedLoginBrandingByClient",
 }));
 export type DescribeResourceServerError =
@@ -9430,6 +9548,8 @@ export const describeResourceServer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourceServer",
 }));
 export type DescribeRiskConfigurationError =
@@ -9462,6 +9582,8 @@ export const describeRiskConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UserPoolAddOnNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRiskConfiguration",
 }));
 export type DescribeTermsError =
@@ -9499,6 +9621,8 @@ export const describeTerms: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTerms",
 }));
 export type DescribeUserImportJobError =
@@ -9526,6 +9650,8 @@ export const describeUserImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUserImportJob",
 }));
 export type DescribeUserPoolError =
@@ -9567,6 +9693,8 @@ export const describeUserPool: API.OperationMethod<
     TooManyRequestsException,
     UserPoolTaggingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUserPool",
 }));
 export type DescribeUserPoolClientError =
@@ -9606,6 +9734,8 @@ export const describeUserPoolClient: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUserPoolClient",
 }));
 export type DescribeUserPoolDomainError =
@@ -9642,6 +9772,8 @@ export const describeUserPoolDomain: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUserPoolDomain",
 }));
 export type ForgetDeviceError =
@@ -9687,6 +9819,8 @@ export const forgetDevice: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ForgetDevice",
 }));
 export type ForgotPasswordError =
@@ -9767,6 +9901,8 @@ export const forgotPassword: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ForgotPassword",
 }));
 export type GetCSVHeaderError =
@@ -9809,6 +9945,8 @@ export const getCSVHeader: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCSVHeader",
 }));
 export type GetDeviceError =
@@ -9854,6 +9992,8 @@ export const getDevice: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevice",
 }));
 export type GetGroupError =
@@ -9894,6 +10034,8 @@ export const getGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroup",
 }));
 export type GetIdentityProviderByIdentifierError =
@@ -9923,6 +10065,8 @@ export const getIdentityProviderByIdentifier: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentityProviderByIdentifier",
 }));
 export type GetLogDeliveryConfigurationError =
@@ -9961,6 +10105,8 @@ export const getLogDeliveryConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLogDeliveryConfiguration",
 }));
 export type GetSigningCertificateError =
@@ -10001,6 +10147,8 @@ export const getSigningCertificate: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSigningCertificate",
 }));
 export type GetTokensFromRefreshTokenError =
@@ -10044,6 +10192,8 @@ export const getTokensFromRefreshToken: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTokensFromRefreshToken",
 }));
 export type GetUICustomizationError =
@@ -10075,6 +10225,8 @@ export const getUICustomization: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUICustomization",
 }));
 export type GetUserError =
@@ -10117,6 +10269,8 @@ export const getUser: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUser",
 }));
 export type GetUserAttributeVerificationCodeError =
@@ -10193,6 +10347,8 @@ export const getUserAttributeVerificationCode: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserAttributeVerificationCode",
 }));
 export type GetUserAuthFactorsError =
@@ -10241,6 +10397,8 @@ export const getUserAuthFactors: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserAuthFactors",
 }));
 export type GetUserPoolMfaConfigError =
@@ -10290,6 +10448,8 @@ export const getUserPoolMfaConfig: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserPoolMfaConfig",
 }));
 export type GlobalSignOutError =
@@ -10353,6 +10513,8 @@ export const globalSignOut: API.OperationMethod<
     TooManyRequestsException,
     UserNotConfirmedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GlobalSignOut",
 }));
 export type InitiateAuthError =
@@ -10430,6 +10592,8 @@ export const initiateAuth: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "InitiateAuth",
 }));
 export type ListDevicesError =
@@ -10475,6 +10639,8 @@ export const listDevices: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevices",
 }));
 export type ListGroupsError =
@@ -10527,6 +10693,8 @@ export const listGroups: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGroups",
   pagination: {
     inputToken: "NextToken",
@@ -10586,6 +10754,8 @@ export const listIdentityProviders: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentityProviders",
   pagination: {
     inputToken: "NextToken",
@@ -10645,6 +10815,8 @@ export const listResourceServers: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceServers",
   pagination: {
     inputToken: "NextToken",
@@ -10680,6 +10852,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTermsError =
@@ -10717,6 +10891,8 @@ export const listTerms: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTerms",
 }));
 export type ListUserImportJobsError =
@@ -10756,6 +10932,8 @@ export const listUserImportJobs: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserImportJobs",
 }));
 export type ListUserPoolClientsError =
@@ -10809,6 +10987,8 @@ export const listUserPoolClients: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserPoolClients",
   pagination: {
     inputToken: "NextToken",
@@ -10842,6 +11022,8 @@ export const listUserPoolClientSecrets: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserPoolClientSecrets",
 }));
 export type ListUserPoolsError =
@@ -10892,6 +11074,8 @@ export const listUserPools: API.OperationMethod<
     NotAuthorizedException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUserPools",
   pagination: {
     inputToken: "NextToken",
@@ -10955,6 +11139,8 @@ export const listUsers: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsers",
   pagination: {
     inputToken: "PaginationToken",
@@ -11014,6 +11200,8 @@ export const listUsersInGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsersInGroup",
   pagination: {
     inputToken: "NextToken",
@@ -11059,6 +11247,8 @@ export const listWebAuthnCredentials: API.OperationMethod<
     PasswordResetRequiredException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWebAuthnCredentials",
 }));
 export type ResendConfirmationCodeError =
@@ -11132,6 +11322,8 @@ export const resendConfirmationCode: API.OperationMethod<
     UserLambdaValidationException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResendConfirmationCode",
 }));
 export type RespondToAuthChallengeError =
@@ -11224,6 +11416,8 @@ export const respondToAuthChallenge: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RespondToAuthChallenge",
 }));
 export type RevokeTokenError =
@@ -11262,6 +11456,8 @@ export const revokeToken: API.OperationMethod<
     UnsupportedOperationException,
     UnsupportedTokenTypeException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeToken",
 }));
 export type SetLogDeliveryConfigurationError =
@@ -11294,6 +11490,8 @@ export const setLogDeliveryConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetLogDeliveryConfiguration",
 }));
 export type SetRiskConfigurationError =
@@ -11345,6 +11543,8 @@ export const setRiskConfiguration: API.OperationMethod<
     TooManyRequestsException,
     UserPoolAddOnNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetRiskConfiguration",
 }));
 export type SetUICustomizationError =
@@ -11388,6 +11588,8 @@ export const setUICustomization: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetUICustomization",
 }));
 export type SetUserMFAPreferenceError =
@@ -11436,6 +11638,8 @@ export const setUserMFAPreference: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetUserMFAPreference",
 }));
 export type SetUserPoolMfaConfigError =
@@ -11489,6 +11693,8 @@ export const setUserPoolMfaConfig: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetUserPoolMfaConfig",
 }));
 export type SetUserSettingsError =
@@ -11531,6 +11737,8 @@ export const setUserSettings: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SetUserSettings",
 }));
 export type SignUpError =
@@ -11609,6 +11817,8 @@ export const signUp: API.OperationMethod<
     UserLambdaValidationException,
     UsernameExistsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SignUp",
 }));
 export type StartUserImportJobError =
@@ -11640,6 +11850,8 @@ export const startUserImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartUserImportJob",
 }));
 export type StartWebAuthnRegistrationError =
@@ -11680,6 +11892,8 @@ export const startWebAuthnRegistration: API.OperationMethod<
     WebAuthnConfigurationMissingException,
     WebAuthnNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWebAuthnRegistration",
 }));
 export type StopUserImportJobError =
@@ -11711,6 +11925,8 @@ export const stopUserImportJob: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopUserImportJob",
 }));
 export type TagResourceError =
@@ -11754,6 +11970,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -11781,6 +11999,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAuthEventFeedbackError =
@@ -11830,6 +12050,8 @@ export const updateAuthEventFeedback: API.OperationMethod<
     UserNotFoundException,
     UserPoolAddOnNotEnabledException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAuthEventFeedback",
 }));
 export type UpdateDeviceStatusError =
@@ -11879,6 +12101,8 @@ export const updateDeviceStatus: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDeviceStatus",
 }));
 export type UpdateGroupError =
@@ -11917,6 +12141,8 @@ export const updateGroup: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroup",
 }));
 export type UpdateIdentityProviderError =
@@ -11961,6 +12187,8 @@ export const updateIdentityProvider: API.OperationMethod<
     TooManyRequestsException,
     UnsupportedIdentityProviderException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdentityProvider",
 }));
 export type UpdateManagedLoginBrandingError =
@@ -12010,6 +12238,8 @@ export const updateManagedLoginBranding: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateManagedLoginBranding",
 }));
 export type UpdateResourceServerError =
@@ -12051,6 +12281,8 @@ export const updateResourceServer: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateResourceServer",
 }));
 export type UpdateTermsError =
@@ -12105,6 +12337,8 @@ export const updateTerms: API.OperationMethod<
     TermsExistsException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTerms",
 }));
 export type UpdateUserAttributesError =
@@ -12188,6 +12422,8 @@ export const updateUserAttributes: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserAttributes",
 }));
 export type UpdateUserPoolError =
@@ -12262,6 +12498,8 @@ export const updateUserPool: API.OperationMethod<
     UserImportInProgressException,
     UserPoolTaggingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserPool",
 }));
 export type UpdateUserPoolClientError =
@@ -12316,6 +12554,8 @@ export const updateUserPoolClient: API.OperationMethod<
     ScopeDoesNotExistException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserPoolClient",
 }));
 export type UpdateUserPoolDomainError =
@@ -12378,6 +12618,8 @@ export const updateUserPoolDomain: API.OperationMethod<
     ResourceNotFoundException,
     TooManyRequestsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserPoolDomain",
 }));
 export type VerifySoftwareTokenError =
@@ -12429,6 +12671,8 @@ export const verifySoftwareToken: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifySoftwareToken",
 }));
 export type VerifyUserAttributeError =
@@ -12485,5 +12729,7 @@ export const verifyUserAttribute: API.OperationMethod<
     UserNotConfirmedException,
     UserNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyUserAttribute",
 }));

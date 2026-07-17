@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1517,6 +1519,8 @@ export const buildSuggesters: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BuildSuggesters",
 }));
 export type CreateDomainError =
@@ -1545,6 +1549,8 @@ export const createDomain: API.OperationMethod<
     ResourceAlreadyExistsException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
 export type DefineAnalysisSchemeError =
@@ -1574,6 +1580,8 @@ export const defineAnalysisScheme: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DefineAnalysisScheme",
 }));
 export type DefineExpressionError =
@@ -1603,6 +1611,8 @@ export const defineExpression: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DefineExpression",
 }));
 export type DefineIndexFieldError =
@@ -1632,6 +1642,8 @@ export const defineIndexField: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DefineIndexField",
 }));
 export type DefineSuggesterError =
@@ -1661,6 +1673,8 @@ export const defineSuggester: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DefineSuggester",
 }));
 export type DeleteAnalysisSchemeError =
@@ -1688,6 +1702,8 @@ export const deleteAnalysisScheme: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAnalysisScheme",
 }));
 export type DeleteDomainError =
@@ -1707,6 +1723,8 @@ export const deleteDomain: API.OperationMethod<
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [BaseException, InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
 export type DeleteExpressionError =
@@ -1734,6 +1752,8 @@ export const deleteExpression: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteExpression",
 }));
 export type DeleteIndexFieldError =
@@ -1761,6 +1781,8 @@ export const deleteIndexField: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIndexField",
 }));
 export type DeleteSuggesterError =
@@ -1788,6 +1810,8 @@ export const deleteSuggester: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSuggester",
 }));
 export type DescribeAnalysisSchemesError =
@@ -1807,6 +1831,8 @@ export const describeAnalysisSchemes: API.OperationMethod<
   input: DescribeAnalysisSchemesRequest,
   output: DescribeAnalysisSchemesResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAnalysisSchemes",
 }));
 export type DescribeAvailabilityOptionsError =
@@ -1836,6 +1862,8 @@ export const describeAvailabilityOptions: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAvailabilityOptions",
 }));
 export type DescribeDomainEndpointOptionsError =
@@ -1863,6 +1891,8 @@ export const describeDomainEndpointOptions: API.OperationMethod<
     LimitExceededException,
     ResourceNotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomainEndpointOptions",
 }));
 export type DescribeDomainsError =
@@ -1883,6 +1913,8 @@ export const describeDomains: API.OperationMethod<
   input: DescribeDomainsRequest,
   output: DescribeDomainsResponse,
   errors: [BaseException, InternalException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDomains",
 }));
 export type DescribeExpressionsError =
@@ -1902,6 +1934,8 @@ export const describeExpressions: API.OperationMethod<
   input: DescribeExpressionsRequest,
   output: DescribeExpressionsResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeExpressions",
 }));
 export type DescribeIndexFieldsError =
@@ -1923,6 +1957,8 @@ export const describeIndexFields: API.OperationMethod<
   input: DescribeIndexFieldsRequest,
   output: DescribeIndexFieldsResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIndexFields",
 }));
 export type DescribeScalingParametersError =
@@ -1942,6 +1978,8 @@ export const describeScalingParameters: API.OperationMethod<
   input: DescribeScalingParametersRequest,
   output: DescribeScalingParametersResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScalingParameters",
 }));
 export type DescribeServiceAccessPoliciesError =
@@ -1962,6 +2000,8 @@ export const describeServiceAccessPolicies: API.OperationMethod<
   input: DescribeServiceAccessPoliciesRequest,
   output: DescribeServiceAccessPoliciesResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeServiceAccessPolicies",
 }));
 export type DescribeSuggestersError =
@@ -1981,6 +2021,8 @@ export const describeSuggesters: API.OperationMethod<
   input: DescribeSuggestersRequest,
   output: DescribeSuggestersResponse,
   errors: [BaseException, InternalException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSuggesters",
 }));
 export type IndexDocumentsError =
@@ -2006,6 +2048,8 @@ export const indexDocuments: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IndexDocuments",
 }));
 export type ListDomainNamesError = BaseException | CommonErrors;
@@ -2021,6 +2065,8 @@ export const listDomainNames: API.OperationMethod<
   input: ListDomainNamesRequest,
   output: ListDomainNamesResponse,
   errors: [BaseException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainNames",
 }));
 export type UpdateAvailabilityOptionsError =
@@ -2052,6 +2098,8 @@ export const updateAvailabilityOptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAvailabilityOptions",
 }));
 export type UpdateDomainEndpointOptionsError =
@@ -2083,6 +2131,8 @@ export const updateDomainEndpointOptions: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainEndpointOptions",
 }));
 export type UpdateScalingParametersError =
@@ -2112,6 +2162,8 @@ export const updateScalingParameters: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScalingParameters",
 }));
 export type UpdateServiceAccessPoliciesError =
@@ -2143,5 +2195,7 @@ export const updateServiceAccessPolicies: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceAccessPolicies",
 }));

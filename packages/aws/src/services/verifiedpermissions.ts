@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2615,6 +2617,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2648,6 +2652,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     TooManyTagsException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2673,6 +2679,8 @@ export const untagResource: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreatePolicyStoreError =
@@ -2695,6 +2703,8 @@ export const createPolicyStore: API.OperationMethod<
   input: CreatePolicyStoreInput,
   output: CreatePolicyStoreOutput,
   errors: [ConflictException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicyStore",
 }));
 export type GetPolicyStoreError = ResourceNotFoundException | CommonErrors;
@@ -2710,6 +2720,8 @@ export const getPolicyStore: API.OperationMethod<
   input: GetPolicyStoreInput,
   output: GetPolicyStoreOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicyStore",
 }));
 export type UpdatePolicyStoreError =
@@ -2730,6 +2742,8 @@ export const updatePolicyStore: API.OperationMethod<
   input: UpdatePolicyStoreInput,
   output: UpdatePolicyStoreOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePolicyStore",
 }));
 export type DeletePolicyStoreError = InvalidStateException | CommonErrors;
@@ -2747,6 +2761,8 @@ export const deletePolicyStore: API.OperationMethod<
   input: DeletePolicyStoreInput,
   output: DeletePolicyStoreOutput,
   errors: [InvalidStateException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicyStore",
 }));
 export type ListPolicyStoresError = CommonErrors;
@@ -2777,6 +2793,8 @@ export const listPolicyStores: API.OperationMethod<
   input: ListPolicyStoresInput,
   output: ListPolicyStoresOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyStores",
   pagination: {
     inputToken: "nextToken",
@@ -2804,6 +2822,8 @@ export const batchIsAuthorized: API.OperationMethod<
   input: BatchIsAuthorizedInput,
   output: BatchIsAuthorizedOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchIsAuthorized",
 }));
 export type BatchIsAuthorizedWithTokenError =
@@ -2827,6 +2847,8 @@ export const batchIsAuthorizedWithToken: API.OperationMethod<
   input: BatchIsAuthorizedWithTokenInput,
   output: BatchIsAuthorizedWithTokenOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchIsAuthorizedWithToken",
 }));
 export type GetSchemaError = ResourceNotFoundException | CommonErrors;
@@ -2842,6 +2864,8 @@ export const getSchema: API.OperationMethod<
   input: GetSchemaInput,
   output: GetSchemaOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchema",
 }));
 export type IsAuthorizedError = ResourceNotFoundException | CommonErrors;
@@ -2857,6 +2881,8 @@ export const isAuthorized: API.OperationMethod<
   input: IsAuthorizedInput,
   output: IsAuthorizedOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IsAuthorized",
 }));
 export type IsAuthorizedWithTokenError =
@@ -2878,6 +2904,8 @@ export const isAuthorizedWithToken: API.OperationMethod<
   input: IsAuthorizedWithTokenInput,
   output: IsAuthorizedWithTokenOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IsAuthorizedWithToken",
 }));
 export type PutSchemaError =
@@ -2903,6 +2931,8 @@ export const putSchema: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSchema",
 }));
 export type BatchGetPolicyError = CommonErrors;
@@ -2920,6 +2950,8 @@ export const batchGetPolicy: API.OperationMethod<
   input: BatchGetPolicyInput,
   output: BatchGetPolicyOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetPolicy",
 }));
 export type CreateIdentitySourceError =
@@ -2955,6 +2987,8 @@ export const createIdentitySource: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIdentitySource",
 }));
 export type GetIdentitySourceError = ResourceNotFoundException | CommonErrors;
@@ -2970,6 +3004,8 @@ export const getIdentitySource: API.OperationMethod<
   input: GetIdentitySourceInput,
   output: GetIdentitySourceOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIdentitySource",
 }));
 export type UpdateIdentitySourceError =
@@ -2990,6 +3026,8 @@ export const updateIdentitySource: API.OperationMethod<
   input: UpdateIdentitySourceInput,
   output: UpdateIdentitySourceOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIdentitySource",
 }));
 export type DeleteIdentitySourceError =
@@ -3008,6 +3046,8 @@ export const deleteIdentitySource: API.OperationMethod<
   input: DeleteIdentitySourceInput,
   output: DeleteIdentitySourceOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIdentitySource",
 }));
 export type ListIdentitySourcesError = ResourceNotFoundException | CommonErrors;
@@ -3038,6 +3078,8 @@ export const listIdentitySources: API.OperationMethod<
   input: ListIdentitySourcesInput,
   output: ListIdentitySourcesOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentitySources",
   pagination: {
     inputToken: "nextToken",
@@ -3075,6 +3117,8 @@ export const createPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicy",
 }));
 export type GetPolicyError = ResourceNotFoundException | CommonErrors;
@@ -3090,6 +3134,8 @@ export const getPolicy: API.OperationMethod<
   input: GetPolicyInput,
   output: GetPolicyOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicy",
 }));
 export type UpdatePolicyError =
@@ -3135,6 +3181,8 @@ export const updatePolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePolicy",
 }));
 export type DeletePolicyError =
@@ -3155,6 +3203,8 @@ export const deletePolicy: API.OperationMethod<
   input: DeletePolicyInput,
   output: DeletePolicyOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicy",
 }));
 export type ListPoliciesError = ResourceNotFoundException | CommonErrors;
@@ -3185,6 +3235,8 @@ export const listPolicies: API.OperationMethod<
   input: ListPoliciesInput,
   output: ListPoliciesOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -3216,6 +3268,8 @@ export const createPolicyTemplate: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicyTemplate",
 }));
 export type GetPolicyTemplateError = ResourceNotFoundException | CommonErrors;
@@ -3231,6 +3285,8 @@ export const getPolicyTemplate: API.OperationMethod<
   input: GetPolicyTemplateInput,
   output: GetPolicyTemplateOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicyTemplate",
 }));
 export type UpdatePolicyTemplateError =
@@ -3253,6 +3309,8 @@ export const updatePolicyTemplate: API.OperationMethod<
   input: UpdatePolicyTemplateInput,
   output: UpdatePolicyTemplateOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePolicyTemplate",
 }));
 export type DeletePolicyTemplateError =
@@ -3273,6 +3331,8 @@ export const deletePolicyTemplate: API.OperationMethod<
   input: DeletePolicyTemplateInput,
   output: DeletePolicyTemplateOutput,
   errors: [ConflictException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicyTemplate",
 }));
 export type ListPolicyTemplatesError = ResourceNotFoundException | CommonErrors;
@@ -3303,6 +3363,8 @@ export const listPolicyTemplates: API.OperationMethod<
   input: ListPolicyTemplatesInput,
   output: ListPolicyTemplatesOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyTemplates",
   pagination: {
     inputToken: "nextToken",
@@ -3336,6 +3398,8 @@ export const createPolicyStoreAlias: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePolicyStoreAlias",
 }));
 export type GetPolicyStoreAliasError = ResourceNotFoundException | CommonErrors;
@@ -3351,6 +3415,8 @@ export const getPolicyStoreAlias: API.OperationMethod<
   input: GetPolicyStoreAliasInput,
   output: GetPolicyStoreAliasOutput,
   errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPolicyStoreAlias",
 }));
 export type DeletePolicyStoreAliasError = InvalidStateException | CommonErrors;
@@ -3370,6 +3436,8 @@ export const deletePolicyStoreAlias: API.OperationMethod<
   input: DeletePolicyStoreAliasInput,
   output: DeletePolicyStoreAliasOutput,
   errors: [InvalidStateException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePolicyStoreAlias",
 }));
 export type ListPolicyStoreAliasesError = CommonErrors;
@@ -3400,6 +3468,8 @@ export const listPolicyStoreAliases: API.OperationMethod<
   input: ListPolicyStoreAliasesInput,
   output: ListPolicyStoreAliasesOutput,
   errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyStoreAliases",
   pagination: {
     inputToken: "nextToken",

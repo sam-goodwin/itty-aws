@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -17408,6 +17410,8 @@ export const batchCreatePartition: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchCreatePartition",
 }));
 export type BatchDeleteConnectionError =
@@ -17426,6 +17430,8 @@ export const batchDeleteConnection: API.OperationMethod<
   input: BatchDeleteConnectionRequest,
   output: BatchDeleteConnectionResponse,
   errors: [InternalServiceException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteConnection",
 }));
 export type BatchDeletePartitionError =
@@ -17451,6 +17457,8 @@ export const batchDeletePartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeletePartition",
 }));
 export type BatchDeleteTableError =
@@ -17490,6 +17498,8 @@ export const batchDeleteTable: API.OperationMethod<
     OperationTimeoutException,
     ResourceNotReadyException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteTable",
 }));
 export type BatchDeleteTableVersionError =
@@ -17515,6 +17525,8 @@ export const batchDeleteTableVersion: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteTableVersion",
 }));
 export type BatchGetBlueprintsError =
@@ -17538,6 +17550,8 @@ export const batchGetBlueprints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetBlueprints",
 }));
 export type BatchGetCrawlersError =
@@ -17556,6 +17570,8 @@ export const batchGetCrawlers: API.OperationMethod<
   input: BatchGetCrawlersRequest,
   output: BatchGetCrawlersResponse,
   errors: [InvalidInputException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetCrawlers",
 }));
 export type BatchGetCustomEntityTypesError =
@@ -17579,6 +17595,8 @@ export const batchGetCustomEntityTypes: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetCustomEntityTypes",
 }));
 export type BatchGetDataQualityResultError =
@@ -17602,6 +17620,8 @@ export const batchGetDataQualityResult: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetDataQualityResult",
 }));
 export type BatchGetDevEndpointsError =
@@ -17630,6 +17650,8 @@ export const batchGetDevEndpoints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetDevEndpoints",
 }));
 export type BatchGetJobsError =
@@ -17653,6 +17675,8 @@ export const batchGetJobs: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetJobs",
 }));
 export type BatchGetPartitionError =
@@ -17686,6 +17710,8 @@ export const batchGetPartition: API.OperationMethod<
     InvalidStateException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetPartition",
 }));
 export type BatchGetTableOptimizerError =
@@ -17713,6 +17739,8 @@ export const batchGetTableOptimizer: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetTableOptimizer",
 }));
 export type BatchGetTriggersError =
@@ -17736,6 +17764,8 @@ export const batchGetTriggers: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetTriggers",
 }));
 export type BatchGetWorkflowsError =
@@ -17759,6 +17789,8 @@ export const batchGetWorkflows: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetWorkflows",
 }));
 export type BatchPutDataQualityStatisticAnnotationError =
@@ -17786,6 +17818,8 @@ export const batchPutDataQualityStatisticAnnotation: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutDataQualityStatisticAnnotation",
 }));
 export type BatchStopJobRunError =
@@ -17809,6 +17843,8 @@ export const batchStopJobRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchStopJobRun",
 }));
 export type BatchUpdatePartitionError =
@@ -17836,6 +17872,8 @@ export const batchUpdatePartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdatePartition",
 }));
 export type CancelDataQualityRuleRecommendationRunError =
@@ -17861,6 +17899,8 @@ export const cancelDataQualityRuleRecommendationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDataQualityRuleRecommendationRun",
 }));
 export type CancelDataQualityRulesetEvaluationRunError =
@@ -17886,6 +17926,8 @@ export const cancelDataQualityRulesetEvaluationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelDataQualityRulesetEvaluationRun",
 }));
 export type CancelMLTaskRunError =
@@ -17913,6 +17955,8 @@ export const cancelMLTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMLTaskRun",
 }));
 export type CancelStatementError =
@@ -17942,6 +17986,8 @@ export const cancelStatement: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelStatement",
 }));
 export type CheckSchemaVersionValidityError =
@@ -17965,6 +18011,8 @@ export const checkSchemaVersionValidity: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckSchemaVersionValidity",
 }));
 export type CreateBlueprintError =
@@ -17992,6 +18040,8 @@ export const createBlueprint: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateBlueprint",
 }));
 export type CreateCatalogError =
@@ -18031,6 +18081,8 @@ export const createCatalog: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCatalog",
 }));
 export type CreateClassifierError =
@@ -18056,6 +18108,8 @@ export const createClassifier: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateClassifier",
 }));
 export type CreateColumnStatisticsTaskSettingsError =
@@ -18087,6 +18141,8 @@ export const createColumnStatisticsTaskSettings: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateColumnStatisticsTaskSettings",
 }));
 export type CreateConnectionError =
@@ -18116,6 +18172,8 @@ export const createConnection: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnection",
 }));
 export type CreateCrawlerError =
@@ -18143,6 +18201,8 @@ export const createCrawler: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCrawler",
 }));
 export type CreateCustomEntityTypeError =
@@ -18176,6 +18236,8 @@ export const createCustomEntityType: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCustomEntityType",
 }));
 export type CreateDatabaseError =
@@ -18213,6 +18275,8 @@ export const createDatabase: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDatabase",
 }));
 export type CreateDataQualityRulesetError =
@@ -18242,6 +18306,8 @@ export const createDataQualityRuleset: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataQualityRuleset",
 }));
 export type CreateDevEndpointError =
@@ -18275,6 +18341,8 @@ export const createDevEndpoint: API.OperationMethod<
     ResourceNumberLimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDevEndpoint",
 }));
 export type CreateGlueIdentityCenterConfigurationError =
@@ -18305,6 +18373,8 @@ export const createGlueIdentityCenterConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlueIdentityCenterConfiguration",
 }));
 export type CreateIntegrationError =
@@ -18346,6 +18416,8 @@ export const createIntegration: API.OperationMethod<
     ResourceNumberLimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegration",
 }));
 export type CreateIntegrationResourcePropertyError =
@@ -18379,6 +18451,8 @@ export const createIntegrationResourceProperty: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegrationResourceProperty",
 }));
 export type CreateIntegrationTablePropertiesError =
@@ -18410,6 +18484,8 @@ export const createIntegrationTableProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateIntegrationTableProperties",
 }));
 export type CreateJobError =
@@ -18441,6 +18517,8 @@ export const createJob: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateJob",
 }));
 export type CreateMLTransformError =
@@ -18484,6 +18562,8 @@ export const createMLTransform: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMLTransform",
 }));
 export type CreatePartitionError =
@@ -18515,6 +18595,8 @@ export const createPartition: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePartition",
 }));
 export type CreatePartitionIndexError =
@@ -18546,6 +18628,8 @@ export const createPartitionIndex: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePartitionIndex",
 }));
 export type CreateRegistryError =
@@ -18575,6 +18659,8 @@ export const createRegistry: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegistry",
 }));
 export type CreateSchemaError =
@@ -18610,6 +18696,8 @@ export const createSchema: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchema",
 }));
 export type CreateScriptError =
@@ -18633,6 +18721,8 @@ export const createScript: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScript",
 }));
 export type CreateSecurityConfigurationError =
@@ -18660,6 +18750,8 @@ export const createSecurityConfiguration: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSecurityConfiguration",
 }));
 export type CreateSessionError =
@@ -18693,6 +18785,8 @@ export const createSession: API.OperationMethod<
     ResourceNumberLimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSession",
 }));
 export type CreateTableError =
@@ -18732,6 +18826,8 @@ export const createTable: API.OperationMethod<
     ResourceNotReadyException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTable",
 }));
 export type CreateTableOptimizerError =
@@ -18763,6 +18859,8 @@ export const createTableOptimizer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTableOptimizer",
 }));
 export type CreateTriggerError =
@@ -18798,6 +18896,8 @@ export const createTrigger: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTrigger",
 }));
 export type CreateUsageProfileError =
@@ -18827,6 +18927,8 @@ export const createUsageProfile: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUsageProfile",
 }));
 export type CreateUserDefinedFunctionError =
@@ -18858,6 +18960,8 @@ export const createUserDefinedFunction: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserDefinedFunction",
 }));
 export type CreateWorkflowError =
@@ -18887,6 +18991,8 @@ export const createWorkflow: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkflow",
 }));
 export type DeleteBlueprintError =
@@ -18910,6 +19016,8 @@ export const deleteBlueprint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteBlueprint",
 }));
 export type DeleteCatalogError =
@@ -18947,6 +19055,8 @@ export const deleteCatalog: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCatalog",
 }));
 export type DeleteClassifierError =
@@ -18965,6 +19075,8 @@ export const deleteClassifier: API.OperationMethod<
   input: DeleteClassifierRequest,
   output: DeleteClassifierResponse,
   errors: [EntityNotFoundException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteClassifier",
 }));
 export type DeleteColumnStatisticsForPartitionError =
@@ -18994,6 +19106,8 @@ export const deleteColumnStatisticsForPartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteColumnStatisticsForPartition",
 }));
 export type DeleteColumnStatisticsForTableError =
@@ -19023,6 +19137,8 @@ export const deleteColumnStatisticsForTable: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteColumnStatisticsForTable",
 }));
 export type DeleteColumnStatisticsTaskSettingsError =
@@ -19046,6 +19162,8 @@ export const deleteColumnStatisticsTaskSettings: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteColumnStatisticsTaskSettings",
 }));
 export type DeleteConnectionError =
@@ -19064,6 +19182,8 @@ export const deleteConnection: API.OperationMethod<
   input: DeleteConnectionRequest,
   output: DeleteConnectionResponse,
   errors: [EntityNotFoundException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type DeleteConnectionTypeError =
@@ -19095,6 +19215,8 @@ export const deleteConnectionType: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnectionType",
 }));
 export type DeleteCrawlerError =
@@ -19121,6 +19243,8 @@ export const deleteCrawler: API.OperationMethod<
     OperationTimeoutException,
     SchedulerTransitioningException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCrawler",
 }));
 export type DeleteCustomEntityTypeError =
@@ -19148,6 +19272,8 @@ export const deleteCustomEntityType: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCustomEntityType",
 }));
 export type DeleteDatabaseError =
@@ -19191,6 +19317,8 @@ export const deleteDatabase: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDatabase",
 }));
 export type DeleteDataQualityRulesetError =
@@ -19216,6 +19344,8 @@ export const deleteDataQualityRuleset: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataQualityRuleset",
 }));
 export type DeleteDevEndpointError =
@@ -19241,6 +19371,8 @@ export const deleteDevEndpoint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDevEndpoint",
 }));
 export type DeleteGlueIdentityCenterConfigurationError =
@@ -19271,6 +19403,8 @@ export const deleteGlueIdentityCenterConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGlueIdentityCenterConfiguration",
 }));
 export type DeleteIntegrationError =
@@ -19310,6 +19444,8 @@ export const deleteIntegration: API.OperationMethod<
     InvalidStateException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegration",
 }));
 export type DeleteIntegrationResourcePropertyError =
@@ -19341,6 +19477,8 @@ export const deleteIntegrationResourceProperty: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegrationResourceProperty",
 }));
 export type DeleteIntegrationTablePropertiesError =
@@ -19372,6 +19510,8 @@ export const deleteIntegrationTableProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteIntegrationTableProperties",
 }));
 export type DeleteJobError =
@@ -19396,6 +19536,8 @@ export const deleteJob: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteJob",
 }));
 export type DeleteMLTransformError =
@@ -19426,6 +19568,8 @@ export const deleteMLTransform: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMLTransform",
 }));
 export type DeletePartitionError =
@@ -19451,6 +19595,8 @@ export const deletePartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePartition",
 }));
 export type DeletePartitionIndexError =
@@ -19480,6 +19626,8 @@ export const deletePartitionIndex: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePartitionIndex",
 }));
 export type DeleteRegistryError =
@@ -19505,6 +19653,8 @@ export const deleteRegistry: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegistry",
 }));
 export type DeleteResourcePolicyError =
@@ -19532,6 +19682,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSchemaError =
@@ -19557,6 +19709,8 @@ export const deleteSchema: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchema",
 }));
 export type DeleteSchemaVersionsError =
@@ -19588,6 +19742,8 @@ export const deleteSchemaVersions: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchemaVersions",
 }));
 export type DeleteSecurityConfigurationError =
@@ -19613,6 +19769,8 @@ export const deleteSecurityConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSecurityConfiguration",
 }));
 export type DeleteSessionError =
@@ -19642,6 +19800,8 @@ export const deleteSession: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSession",
 }));
 export type DeleteTableError =
@@ -19685,6 +19845,8 @@ export const deleteTable: API.OperationMethod<
     OperationTimeoutException,
     ResourceNotReadyException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTable",
 }));
 export type DeleteTableOptimizerError =
@@ -19712,6 +19874,8 @@ export const deleteTableOptimizer: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTableOptimizer",
 }));
 export type DeleteTableVersionError =
@@ -19737,6 +19901,8 @@ export const deleteTableVersion: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTableVersion",
 }));
 export type DeleteTriggerError =
@@ -19763,6 +19929,8 @@ export const deleteTrigger: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTrigger",
 }));
 export type DeleteUsageProfileError =
@@ -19788,6 +19956,8 @@ export const deleteUsageProfile: API.OperationMethod<
     OperationNotSupportedException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUsageProfile",
 }));
 export type DeleteUserDefinedFunctionError =
@@ -19813,6 +19983,8 @@ export const deleteUserDefinedFunction: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteUserDefinedFunction",
 }));
 export type DeleteWorkflowError =
@@ -19838,6 +20010,8 @@ export const deleteWorkflow: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkflow",
 }));
 export type DescribeConnectionTypeError =
@@ -19865,6 +20039,8 @@ export const describeConnectionType: API.OperationMethod<
     InvalidInputException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeConnectionType",
 }));
 export type DescribeEntityError =
@@ -19913,6 +20089,8 @@ export const describeEntity: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEntity",
   pagination: {
     inputToken: "NextToken",
@@ -19953,6 +20131,8 @@ export const describeInboundIntegrations: API.OperationMethod<
     TargetResourceNotFound,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInboundIntegrations",
 }));
 export type DescribeIntegrationsError =
@@ -19984,6 +20164,8 @@ export const describeIntegrations: API.OperationMethod<
     InvalidInputException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIntegrations",
 }));
 export type GetBlueprintError =
@@ -20009,6 +20191,8 @@ export const getBlueprint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlueprint",
 }));
 export type GetBlueprintRunError =
@@ -20032,6 +20216,8 @@ export const getBlueprintRun: API.OperationMethod<
     InternalServiceException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlueprintRun",
 }));
 export type GetBlueprintRunsError =
@@ -20072,6 +20258,8 @@ export const getBlueprintRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetBlueprintRuns",
   pagination: {
     inputToken: "NextToken",
@@ -20110,6 +20298,8 @@ export const getCatalog: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCatalog",
 }));
 export type GetCatalogImportStatusError =
@@ -20128,6 +20318,8 @@ export const getCatalogImportStatus: API.OperationMethod<
   input: GetCatalogImportStatusRequest,
   output: GetCatalogImportStatusResponse,
   errors: [InternalServiceException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCatalogImportStatus",
 }));
 export type GetCatalogsError =
@@ -20161,6 +20353,8 @@ export const getCatalogs: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCatalogs",
 }));
 export type GetClassifierError =
@@ -20179,6 +20373,8 @@ export const getClassifier: API.OperationMethod<
   input: GetClassifierRequest,
   output: GetClassifierResponse,
   errors: [EntityNotFoundException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClassifier",
 }));
 export type GetClassifiersError = OperationTimeoutException | CommonErrors;
@@ -20209,6 +20405,8 @@ export const getClassifiers: API.OperationMethod<
   input: GetClassifiersRequest,
   output: GetClassifiersResponse,
   errors: [OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetClassifiers",
   pagination: {
     inputToken: "NextToken",
@@ -20243,6 +20441,8 @@ export const getColumnStatisticsForPartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetColumnStatisticsForPartition",
 }));
 export type GetColumnStatisticsForTableError =
@@ -20272,6 +20472,8 @@ export const getColumnStatisticsForTable: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetColumnStatisticsForTable",
 }));
 export type GetColumnStatisticsTaskRunError =
@@ -20295,6 +20497,8 @@ export const getColumnStatisticsTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetColumnStatisticsTaskRun",
 }));
 export type GetColumnStatisticsTaskRunsError =
@@ -20327,6 +20531,8 @@ export const getColumnStatisticsTaskRuns: API.OperationMethod<
   input: GetColumnStatisticsTaskRunsRequest,
   output: GetColumnStatisticsTaskRunsResponse,
   errors: [OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetColumnStatisticsTaskRuns",
   pagination: {
     inputToken: "NextToken",
@@ -20355,6 +20561,8 @@ export const getColumnStatisticsTaskSettings: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetColumnStatisticsTaskSettings",
 }));
 export type GetConnectionError =
@@ -20380,6 +20588,8 @@ export const getConnection: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnection",
 }));
 export type GetConnectionsError =
@@ -20420,6 +20630,8 @@ export const getConnections: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnections",
   pagination: {
     inputToken: "NextToken",
@@ -20443,6 +20655,8 @@ export const getCrawler: API.OperationMethod<
   input: GetCrawlerRequest,
   output: GetCrawlerResponse,
   errors: [EntityNotFoundException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCrawler",
 }));
 export type GetCrawlerMetricsError = OperationTimeoutException | CommonErrors;
@@ -20473,6 +20687,8 @@ export const getCrawlerMetrics: API.OperationMethod<
   input: GetCrawlerMetricsRequest,
   output: GetCrawlerMetricsResponse,
   errors: [OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCrawlerMetrics",
   pagination: {
     inputToken: "NextToken",
@@ -20509,6 +20725,8 @@ export const getCrawlers: API.OperationMethod<
   input: GetCrawlersRequest,
   output: GetCrawlersResponse,
   errors: [OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCrawlers",
   pagination: {
     inputToken: "NextToken",
@@ -20541,6 +20759,8 @@ export const getCustomEntityType: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCustomEntityType",
 }));
 export type GetDatabaseError =
@@ -20572,6 +20792,8 @@ export const getDatabase: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDatabase",
 }));
 export type GetDatabasesError =
@@ -20618,6 +20840,8 @@ export const getDatabases: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDatabases",
   pagination: {
     inputToken: "NextToken",
@@ -20646,6 +20870,8 @@ export const getDataCatalogEncryptionSettings: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataCatalogEncryptionSettings",
 }));
 export type GetDataflowGraphError =
@@ -20669,6 +20895,8 @@ export const getDataflowGraph: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataflowGraph",
 }));
 export type GetDataQualityModelError =
@@ -20694,6 +20922,8 @@ export const getDataQualityModel: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataQualityModel",
 }));
 export type GetDataQualityModelResultError =
@@ -20719,6 +20949,8 @@ export const getDataQualityModelResult: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataQualityModelResult",
 }));
 export type GetDataQualityResultError =
@@ -20744,6 +20976,8 @@ export const getDataQualityResult: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataQualityResult",
 }));
 export type GetDataQualityRuleRecommendationRunError =
@@ -20769,6 +21003,8 @@ export const getDataQualityRuleRecommendationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataQualityRuleRecommendationRun",
 }));
 export type GetDataQualityRulesetError =
@@ -20794,6 +21030,8 @@ export const getDataQualityRuleset: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataQualityRuleset",
 }));
 export type GetDataQualityRulesetEvaluationRunError =
@@ -20819,6 +21057,8 @@ export const getDataQualityRulesetEvaluationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataQualityRulesetEvaluationRun",
 }));
 export type GetDevEndpointError =
@@ -20848,6 +21088,8 @@ export const getDevEndpoint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevEndpoint",
 }));
 export type GetDevEndpointsError =
@@ -20892,6 +21134,8 @@ export const getDevEndpoints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -20932,6 +21176,8 @@ export const getEntityRecords: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEntityRecords",
 }));
 export type GetGlueIdentityCenterConfigurationError =
@@ -20962,6 +21208,8 @@ export const getGlueIdentityCenterConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGlueIdentityCenterConfiguration",
 }));
 export type GetIntegrationResourcePropertyError =
@@ -20993,6 +21241,8 @@ export const getIntegrationResourceProperty: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegrationResourceProperty",
 }));
 export type GetIntegrationTablePropertiesError =
@@ -21024,6 +21274,8 @@ export const getIntegrationTableProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIntegrationTableProperties",
 }));
 export type GetJobError =
@@ -21049,6 +21301,8 @@ export const getJob: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJob",
 }));
 export type GetJobBookmarkError =
@@ -21084,6 +21338,8 @@ export const getJobBookmark: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobBookmark",
 }));
 export type GetJobRunError =
@@ -21109,6 +21365,8 @@ export const getJobRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobRun",
 }));
 export type GetJobRunsError =
@@ -21151,6 +21409,8 @@ export const getJobRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobRuns",
   pagination: {
     inputToken: "NextToken",
@@ -21197,6 +21457,8 @@ export const getJobs: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobs",
   pagination: {
     inputToken: "NextToken",
@@ -21228,6 +21490,8 @@ export const getMapping: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMapping",
 }));
 export type GetMaterializedViewRefreshTaskRunError =
@@ -21253,6 +21517,8 @@ export const getMaterializedViewRefreshTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMaterializedViewRefreshTaskRun",
 }));
 export type GetMLTaskRunError =
@@ -21282,6 +21548,8 @@ export const getMLTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLTaskRun",
 }));
 export type GetMLTaskRunsError =
@@ -21328,6 +21596,8 @@ export const getMLTaskRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLTaskRuns",
   pagination: {
     inputToken: "NextToken",
@@ -21362,6 +21632,8 @@ export const getMLTransform: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLTransform",
 }));
 export type GetMLTransformsError =
@@ -21406,6 +21678,8 @@ export const getMLTransforms: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMLTransforms",
   pagination: {
     inputToken: "NextToken",
@@ -21442,6 +21716,8 @@ export const getPartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPartition",
 }));
 export type GetPartitionIndexesError =
@@ -21484,6 +21760,8 @@ export const getPartitionIndexes: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPartitionIndexes",
   pagination: {
     inputToken: "NextToken",
@@ -21539,6 +21817,8 @@ export const getPartitions: API.OperationMethod<
     OperationTimeoutException,
     ResourceNotReadyException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPartitions",
   pagination: {
     inputToken: "NextToken",
@@ -21567,6 +21847,8 @@ export const getPlan: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlan",
 }));
 export type GetRegistryError =
@@ -21592,6 +21874,8 @@ export const getRegistry: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegistry",
 }));
 export type GetResourcePoliciesError =
@@ -21638,6 +21922,8 @@ export const getResourcePolicies: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicies",
   pagination: {
     inputToken: "NextToken",
@@ -21669,6 +21955,8 @@ export const getResourcePolicy: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type GetSchemaError =
@@ -21694,6 +21982,8 @@ export const getSchema: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchema",
 }));
 export type GetSchemaByDefinitionError =
@@ -21719,6 +22009,8 @@ export const getSchemaByDefinition: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchemaByDefinition",
 }));
 export type GetSchemaVersionError =
@@ -21744,6 +22036,8 @@ export const getSchemaVersion: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchemaVersion",
 }));
 export type GetSchemaVersionsDiffError =
@@ -21771,6 +22065,8 @@ export const getSchemaVersionsDiff: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSchemaVersionsDiff",
 }));
 export type GetSecurityConfigurationError =
@@ -21796,6 +22092,8 @@ export const getSecurityConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSecurityConfiguration",
 }));
 export type GetSecurityConfigurationsError =
@@ -21836,6 +22134,8 @@ export const getSecurityConfigurations: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSecurityConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -21869,6 +22169,8 @@ export const getSession: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSession",
 }));
 export type GetStatementError =
@@ -21898,6 +22200,8 @@ export const getStatement: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetStatement",
 }));
 export type GetTableError =
@@ -21932,6 +22236,8 @@ export const getTable: API.OperationMethod<
     OperationTimeoutException,
     ResourceNotReadyException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTable",
 }));
 export type GetTableOptimizerError =
@@ -21959,6 +22265,8 @@ export const getTableOptimizer: API.OperationMethod<
     InvalidInputException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableOptimizer",
 }));
 export type GetTablesError =
@@ -22006,6 +22314,8 @@ export const getTables: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTables",
   pagination: {
     inputToken: "NextToken",
@@ -22038,6 +22348,8 @@ export const getTableVersion: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableVersion",
 }));
 export type GetTableVersionsError =
@@ -22081,6 +22393,8 @@ export const getTableVersions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTableVersions",
   pagination: {
     inputToken: "NextToken",
@@ -22111,6 +22425,8 @@ export const getTags: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTags",
 }));
 export type GetTriggerError =
@@ -22136,6 +22452,8 @@ export const getTrigger: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTrigger",
 }));
 export type GetTriggersError =
@@ -22176,6 +22494,8 @@ export const getTriggers: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTriggers",
   pagination: {
     inputToken: "NextToken",
@@ -22218,6 +22538,8 @@ export const getUnfilteredPartitionMetadata: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUnfilteredPartitionMetadata",
 }));
 export type GetUnfilteredPartitionsMetadataError =
@@ -22269,6 +22591,8 @@ export const getUnfilteredPartitionsMetadata: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUnfilteredPartitionsMetadata",
   pagination: {
     inputToken: "NextToken",
@@ -22309,6 +22633,8 @@ export const getUnfilteredTableMetadata: API.OperationMethod<
     OperationTimeoutException,
     PermissionTypeMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUnfilteredTableMetadata",
 }));
 export type GetUsageProfileError =
@@ -22336,6 +22662,8 @@ export const getUsageProfile: API.OperationMethod<
     OperationNotSupportedException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUsageProfile",
 }));
 export type GetUserDefinedFunctionError =
@@ -22363,6 +22691,8 @@ export const getUserDefinedFunction: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserDefinedFunction",
 }));
 export type GetUserDefinedFunctionsError =
@@ -22405,6 +22735,8 @@ export const getUserDefinedFunctions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserDefinedFunctions",
   pagination: {
     inputToken: "NextToken",
@@ -22435,6 +22767,8 @@ export const getWorkflow: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflow",
 }));
 export type GetWorkflowRunError =
@@ -22460,6 +22794,8 @@ export const getWorkflowRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowRun",
 }));
 export type GetWorkflowRunPropertiesError =
@@ -22485,6 +22821,8 @@ export const getWorkflowRunProperties: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowRunProperties",
 }));
 export type GetWorkflowRunsError =
@@ -22525,6 +22863,8 @@ export const getWorkflowRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetWorkflowRuns",
   pagination: {
     inputToken: "NextToken",
@@ -22549,6 +22889,8 @@ export const importCatalogToGlue: API.OperationMethod<
   input: ImportCatalogToGlueRequest,
   output: ImportCatalogToGlueResponse,
   errors: [InternalServiceException, OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ImportCatalogToGlue",
 }));
 export type ListBlueprintsError =
@@ -22587,6 +22929,8 @@ export const listBlueprints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListBlueprints",
   pagination: {
     inputToken: "NextToken",
@@ -22625,6 +22969,8 @@ export const listColumnStatisticsTaskRuns: API.OperationMethod<
   input: ListColumnStatisticsTaskRunsRequest,
   output: ListColumnStatisticsTaskRunsResponse,
   errors: [OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListColumnStatisticsTaskRuns",
   pagination: {
     inputToken: "NextToken",
@@ -22665,6 +23011,8 @@ export const listConnectionTypes: API.OperationMethod<
   input: ListConnectionTypesRequest,
   output: ListConnectionTypesResponse,
   errors: [AccessDeniedException, InternalServiceException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnectionTypes",
   pagination: {
     inputToken: "NextToken",
@@ -22707,6 +23055,8 @@ export const listCrawlers: API.OperationMethod<
   input: ListCrawlersRequest,
   output: ListCrawlersResponse,
   errors: [OperationTimeoutException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCrawlers",
   pagination: {
     inputToken: "NextToken",
@@ -22745,6 +23095,8 @@ export const listCrawls: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCrawls",
 }));
 export type ListCustomEntityTypesError =
@@ -22783,6 +23135,8 @@ export const listCustomEntityTypes: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCustomEntityTypes",
   pagination: {
     inputToken: "NextToken",
@@ -22826,6 +23180,8 @@ export const listDataQualityResults: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataQualityResults",
   pagination: {
     inputToken: "NextToken",
@@ -22869,6 +23225,8 @@ export const listDataQualityRuleRecommendationRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataQualityRuleRecommendationRuns",
   pagination: {
     inputToken: "NextToken",
@@ -22912,6 +23270,8 @@ export const listDataQualityRulesetEvaluationRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataQualityRulesetEvaluationRuns",
   pagination: {
     inputToken: "NextToken",
@@ -22957,6 +23317,8 @@ export const listDataQualityRulesets: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataQualityRulesets",
   pagination: {
     inputToken: "NextToken",
@@ -22980,6 +23342,8 @@ export const listDataQualityStatisticAnnotations: API.OperationMethod<
   input: ListDataQualityStatisticAnnotationsRequest,
   output: ListDataQualityStatisticAnnotationsResponse,
   errors: [InternalServiceException, InvalidInputException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataQualityStatisticAnnotations",
 }));
 export type ListDataQualityStatisticsError =
@@ -23003,6 +23367,8 @@ export const listDataQualityStatistics: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataQualityStatistics",
 }));
 export type ListDevEndpointsError =
@@ -23049,6 +23415,8 @@ export const listDevEndpoints: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -23100,6 +23468,8 @@ export const listEntities: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntities",
   pagination: {
     inputToken: "NextToken",
@@ -23136,6 +23506,8 @@ export const listIntegrationResourceProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIntegrationResourceProperties",
 }));
 export type ListJobsError =
@@ -23180,6 +23552,8 @@ export const listJobs: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobs",
   pagination: {
     inputToken: "NextToken",
@@ -23224,6 +23598,8 @@ export const listMaterializedViewRefreshTaskRuns: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMaterializedViewRefreshTaskRuns",
   pagination: {
     inputToken: "NextToken",
@@ -23273,6 +23649,8 @@ export const listMLTransforms: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMLTransforms",
   pagination: {
     inputToken: "NextToken",
@@ -23316,6 +23694,8 @@ export const listRegistries: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegistries",
   pagination: {
     inputToken: "NextToken",
@@ -23364,6 +23744,8 @@ export const listSchemas: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemas",
   pagination: {
     inputToken: "NextToken",
@@ -23410,6 +23792,8 @@ export const listSchemaVersions: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemaVersions",
   pagination: {
     inputToken: "NextToken",
@@ -23456,6 +23840,8 @@ export const listSessions: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSessions",
   pagination: {
     inputToken: "NextToken",
@@ -23490,6 +23876,8 @@ export const listStatements: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListStatements",
 }));
 export type ListTableOptimizerRunsError =
@@ -23534,6 +23922,8 @@ export const listTableOptimizerRuns: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTableOptimizerRuns",
   pagination: {
     inputToken: "NextToken",
@@ -23584,6 +23974,8 @@ export const listTriggers: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTriggers",
   pagination: {
     inputToken: "NextToken",
@@ -23630,6 +24022,8 @@ export const listUsageProfiles: API.OperationMethod<
     OperationNotSupportedException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsageProfiles",
   pagination: {
     inputToken: "NextToken",
@@ -23674,6 +24068,8 @@ export const listWorkflows: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkflows",
   pagination: {
     inputToken: "NextToken",
@@ -23719,6 +24115,8 @@ export const modifyIntegration: API.OperationMethod<
     InvalidStateException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ModifyIntegration",
 }));
 export type PutDataCatalogEncryptionSettingsError =
@@ -23743,6 +24141,8 @@ export const putDataCatalogEncryptionSettings: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDataCatalogEncryptionSettings",
 }));
 export type PutDataQualityProfileAnnotationError =
@@ -23766,6 +24166,8 @@ export const putDataQualityProfileAnnotation: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDataQualityProfileAnnotation",
 }));
 export type PutResourcePolicyError =
@@ -23793,6 +24195,8 @@ export const putResourcePolicy: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type PutSchemaVersionMetadataError =
@@ -23820,6 +24224,8 @@ export const putSchemaVersionMetadata: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutSchemaVersionMetadata",
 }));
 export type PutWorkflowRunPropertiesError =
@@ -23851,6 +24257,8 @@ export const putWorkflowRunProperties: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutWorkflowRunProperties",
 }));
 export type QuerySchemaVersionMetadataError =
@@ -23874,6 +24282,8 @@ export const querySchemaVersionMetadata: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "QuerySchemaVersionMetadata",
 }));
 export type RegisterConnectionTypeError =
@@ -23907,6 +24317,8 @@ export const registerConnectionType: API.OperationMethod<
     ResourceNumberLimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterConnectionType",
 }));
 export type RegisterSchemaVersionError =
@@ -23940,6 +24352,8 @@ export const registerSchemaVersion: API.OperationMethod<
     InvalidInputException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterSchemaVersion",
 }));
 export type RemoveSchemaVersionMetadataError =
@@ -23963,6 +24377,8 @@ export const removeSchemaVersionMetadata: API.OperationMethod<
     EntityNotFoundException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveSchemaVersionMetadata",
 }));
 export type ResetJobBookmarkError =
@@ -23996,6 +24412,8 @@ export const resetJobBookmark: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResetJobBookmark",
 }));
 export type ResumeWorkflowRunError =
@@ -24025,6 +24443,8 @@ export const resumeWorkflowRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ResumeWorkflowRun",
 }));
 export type RunStatementError =
@@ -24058,6 +24478,8 @@ export const runStatement: API.OperationMethod<
     ResourceNumberLimitExceededException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RunStatement",
 }));
 export type SearchTablesError =
@@ -24098,6 +24520,8 @@ export const searchTables: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchTables",
   pagination: {
     inputToken: "NextToken",
@@ -24132,6 +24556,8 @@ export const startBlueprintRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartBlueprintRun",
 }));
 export type StartColumnStatisticsTaskRunError =
@@ -24161,6 +24587,8 @@ export const startColumnStatisticsTaskRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartColumnStatisticsTaskRun",
 }));
 export type StartColumnStatisticsTaskRunScheduleError =
@@ -24186,6 +24614,8 @@ export const startColumnStatisticsTaskRunSchedule: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartColumnStatisticsTaskRunSchedule",
 }));
 export type StartCrawlerError =
@@ -24211,6 +24641,8 @@ export const startCrawler: API.OperationMethod<
     EntityNotFoundException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCrawler",
 }));
 export type StartCrawlerScheduleError =
@@ -24240,6 +24672,8 @@ export const startCrawlerSchedule: API.OperationMethod<
     SchedulerRunningException,
     SchedulerTransitioningException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartCrawlerSchedule",
 }));
 export type StartDataQualityRuleRecommendationRunError =
@@ -24267,6 +24701,8 @@ export const startDataQualityRuleRecommendationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDataQualityRuleRecommendationRun",
 }));
 export type StartDataQualityRulesetEvaluationRunError =
@@ -24294,6 +24730,8 @@ export const startDataQualityRulesetEvaluationRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDataQualityRulesetEvaluationRun",
 }));
 export type StartExportLabelsTaskRunError =
@@ -24327,6 +24765,8 @@ export const startExportLabelsTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartExportLabelsTaskRun",
 }));
 export type StartImportLabelsTaskRunError =
@@ -24378,6 +24818,8 @@ export const startImportLabelsTaskRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartImportLabelsTaskRun",
 }));
 export type StartJobRunError =
@@ -24407,6 +24849,8 @@ export const startJobRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartJobRun",
 }));
 export type StartMaterializedViewRefreshTaskRunError =
@@ -24436,6 +24880,8 @@ export const startMaterializedViewRefreshTaskRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMaterializedViewRefreshTaskRun",
 }));
 export type StartMLEvaluationTaskRunError =
@@ -24472,6 +24918,8 @@ export const startMLEvaluationTaskRun: API.OperationMethod<
     MLTransformNotReadyException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMLEvaluationTaskRun",
 }));
 export type StartMLLabelingSetGenerationTaskRunError =
@@ -24515,6 +24963,8 @@ export const startMLLabelingSetGenerationTaskRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMLLabelingSetGenerationTaskRun",
 }));
 export type StartTriggerError =
@@ -24546,6 +24996,8 @@ export const startTrigger: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartTrigger",
 }));
 export type StartWorkflowRunError =
@@ -24575,6 +25027,8 @@ export const startWorkflowRun: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartWorkflowRun",
 }));
 export type StopColumnStatisticsTaskRunError =
@@ -24600,6 +25054,8 @@ export const stopColumnStatisticsTaskRun: API.OperationMethod<
     EntityNotFoundException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopColumnStatisticsTaskRun",
 }));
 export type StopColumnStatisticsTaskRunScheduleError =
@@ -24623,6 +25079,8 @@ export const stopColumnStatisticsTaskRunSchedule: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopColumnStatisticsTaskRunSchedule",
 }));
 export type StopCrawlerError =
@@ -24648,6 +25106,8 @@ export const stopCrawler: API.OperationMethod<
     EntityNotFoundException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCrawler",
 }));
 export type StopCrawlerScheduleError =
@@ -24675,6 +25135,8 @@ export const stopCrawlerSchedule: API.OperationMethod<
     SchedulerNotRunningException,
     SchedulerTransitioningException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopCrawlerSchedule",
 }));
 export type StopMaterializedViewRefreshTaskRunError =
@@ -24702,6 +25164,8 @@ export const stopMaterializedViewRefreshTaskRun: API.OperationMethod<
     MaterializedViewRefreshTaskStoppingException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopMaterializedViewRefreshTaskRun",
 }));
 export type StopSessionError =
@@ -24731,6 +25195,8 @@ export const stopSession: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopSession",
 }));
 export type StopTriggerError =
@@ -24758,6 +25224,8 @@ export const stopTrigger: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopTrigger",
 }));
 export type StopWorkflowRunError =
@@ -24785,6 +25253,8 @@ export const stopWorkflowRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopWorkflowRun",
 }));
 export type TagResourceError =
@@ -24812,6 +25282,8 @@ export const tagResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type TestConnectionError =
@@ -24851,6 +25323,8 @@ export const testConnection: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TestConnection",
 }));
 export type UntagResourceError =
@@ -24876,6 +25350,8 @@ export const untagResource: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateBlueprintError =
@@ -24905,6 +25381,8 @@ export const updateBlueprint: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateBlueprint",
 }));
 export type UpdateCatalogError =
@@ -24938,6 +25416,8 @@ export const updateCatalog: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCatalog",
 }));
 export type UpdateClassifierError =
@@ -24965,6 +25445,8 @@ export const updateClassifier: API.OperationMethod<
     OperationTimeoutException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClassifier",
 }));
 export type UpdateColumnStatisticsForPartitionError =
@@ -24994,6 +25476,8 @@ export const updateColumnStatisticsForPartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateColumnStatisticsForPartition",
 }));
 export type UpdateColumnStatisticsForTableError =
@@ -25023,6 +25507,8 @@ export const updateColumnStatisticsForTable: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateColumnStatisticsForTable",
 }));
 export type UpdateColumnStatisticsTaskSettingsError =
@@ -25050,6 +25536,8 @@ export const updateColumnStatisticsTaskSettings: API.OperationMethod<
     OperationTimeoutException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateColumnStatisticsTaskSettings",
 }));
 export type UpdateConnectionError =
@@ -25075,6 +25563,8 @@ export const updateConnection: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnection",
 }));
 export type UpdateCrawlerError =
@@ -25104,6 +25594,8 @@ export const updateCrawler: API.OperationMethod<
     OperationTimeoutException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCrawler",
 }));
 export type UpdateCrawlerScheduleError =
@@ -25131,6 +25623,8 @@ export const updateCrawlerSchedule: API.OperationMethod<
     SchedulerTransitioningException,
     VersionMismatchException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCrawlerSchedule",
 }));
 export type UpdateDatabaseError =
@@ -25166,6 +25660,8 @@ export const updateDatabase: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDatabase",
 }));
 export type UpdateDataQualityRulesetError =
@@ -25197,6 +25693,8 @@ export const updateDataQualityRuleset: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataQualityRuleset",
 }));
 export type UpdateDevEndpointError =
@@ -25224,6 +25722,8 @@ export const updateDevEndpoint: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDevEndpoint",
 }));
 export type UpdateGlueIdentityCenterConfigurationError =
@@ -25253,6 +25753,8 @@ export const updateGlueIdentityCenterConfiguration: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlueIdentityCenterConfiguration",
 }));
 export type UpdateIntegrationResourcePropertyError =
@@ -25284,6 +25786,8 @@ export const updateIntegrationResourceProperty: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIntegrationResourceProperty",
 }));
 export type UpdateIntegrationTablePropertiesError =
@@ -25317,6 +25821,8 @@ export const updateIntegrationTableProperties: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateIntegrationTableProperties",
 }));
 export type UpdateJobError =
@@ -25344,6 +25850,8 @@ export const updateJob: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJob",
 }));
 export type UpdateJobFromSourceControlError =
@@ -25377,6 +25885,8 @@ export const updateJobFromSourceControl: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateJobFromSourceControl",
 }));
 export type UpdateMLTransformError =
@@ -25408,6 +25918,8 @@ export const updateMLTransform: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMLTransform",
 }));
 export type UpdatePartitionError =
@@ -25435,6 +25947,8 @@ export const updatePartition: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePartition",
 }));
 export type UpdateRegistryError =
@@ -25462,6 +25976,8 @@ export const updateRegistry: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRegistry",
 }));
 export type UpdateSchemaError =
@@ -25495,6 +26011,8 @@ export const updateSchema: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchema",
 }));
 export type UpdateSourceControlFromJobError =
@@ -25528,6 +26046,8 @@ export const updateSourceControlFromJob: API.OperationMethod<
     OperationTimeoutException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSourceControlFromJob",
 }));
 export type UpdateTableError =
@@ -25567,6 +26087,8 @@ export const updateTable: API.OperationMethod<
     ResourceNotReadyException,
     ResourceNumberLimitExceededException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTable",
 }));
 export type UpdateTableOptimizerError =
@@ -25598,6 +26120,8 @@ export const updateTableOptimizer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTableOptimizer",
 }));
 export type UpdateTriggerError =
@@ -25627,6 +26151,8 @@ export const updateTrigger: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTrigger",
 }));
 export type UpdateUsageProfileError =
@@ -25656,6 +26182,8 @@ export const updateUsageProfile: API.OperationMethod<
     OperationNotSupportedException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUsageProfile",
 }));
 export type UpdateUserDefinedFunctionError =
@@ -25683,6 +26211,8 @@ export const updateUserDefinedFunction: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserDefinedFunction",
 }));
 export type UpdateWorkflowError =
@@ -25710,5 +26240,7 @@ export const updateWorkflow: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkflow",
 }));

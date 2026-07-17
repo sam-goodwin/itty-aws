@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -2351,6 +2353,8 @@ export const getDefaultScraperConfiguration: API.OperationMethod<
   input: GetDefaultScraperConfigurationRequest,
   output: GetDefaultScraperConfigurationResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDefaultScraperConfiguration",
 }));
 export type ListTagsForResourceError =
@@ -2378,6 +2382,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -2407,6 +2413,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2434,6 +2442,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateScraperError =
@@ -2473,6 +2483,8 @@ export const createScraper: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateScraper",
 }));
 export type DescribeScraperError =
@@ -2500,6 +2512,8 @@ export const describeScraper: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScraper",
 }));
 export type UpdateScraperError =
@@ -2533,6 +2547,8 @@ export const updateScraper: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScraper",
 }));
 export type DeleteScraperError =
@@ -2562,6 +2578,8 @@ export const deleteScraper: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScraper",
 }));
 export type ListScrapersError =
@@ -2602,6 +2620,8 @@ export const listScrapers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListScrapers",
   pagination: {
     inputToken: "nextToken",
@@ -2635,6 +2655,8 @@ export const updateScraperLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateScraperLoggingConfiguration",
 }));
 export type DescribeScraperLoggingConfigurationError =
@@ -2660,6 +2682,8 @@ export const describeScraperLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeScraperLoggingConfiguration",
 }));
 export type DeleteScraperLoggingConfigurationError =
@@ -2687,6 +2711,8 @@ export const deleteScraperLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteScraperLoggingConfiguration",
 }));
 export type CreateWorkspaceError =
@@ -2716,6 +2742,8 @@ export const createWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateWorkspace",
 }));
 export type DescribeWorkspaceError =
@@ -2743,6 +2771,8 @@ export const describeWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspace",
 }));
 export type UpdateWorkspaceAliasError =
@@ -2774,6 +2804,8 @@ export const updateWorkspaceAlias: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspaceAlias",
 }));
 export type DeleteWorkspaceError =
@@ -2805,6 +2837,8 @@ export const deleteWorkspace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteWorkspace",
 }));
 export type ListWorkspacesError =
@@ -2845,6 +2879,8 @@ export const listWorkspaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListWorkspaces",
   pagination: {
     inputToken: "nextToken",
@@ -2882,6 +2918,8 @@ export const createAlertManagerDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAlertManagerDefinition",
 }));
 export type DescribeAlertManagerDefinitionError =
@@ -2909,6 +2947,8 @@ export const describeAlertManagerDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAlertManagerDefinition",
 }));
 export type PutAlertManagerDefinitionError =
@@ -2940,6 +2980,8 @@ export const putAlertManagerDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAlertManagerDefinition",
 }));
 export type DeleteAlertManagerDefinitionError =
@@ -2969,6 +3011,8 @@ export const deleteAlertManagerDefinition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAlertManagerDefinition",
 }));
 export type CreateAnomalyDetectorError =
@@ -2998,6 +3042,8 @@ export const createAnomalyDetector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAnomalyDetector",
 }));
 export type PutAnomalyDetectorError =
@@ -3027,6 +3073,8 @@ export const putAnomalyDetector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutAnomalyDetector",
 }));
 export type DescribeAnomalyDetectorError =
@@ -3054,6 +3102,8 @@ export const describeAnomalyDetector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAnomalyDetector",
 }));
 export type DeleteAnomalyDetectorError =
@@ -3083,6 +3133,8 @@ export const deleteAnomalyDetector: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAnomalyDetector",
 }));
 export type ListAnomalyDetectorsError =
@@ -3125,6 +3177,8 @@ export const listAnomalyDetectors: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAnomalyDetectors",
   pagination: {
     inputToken: "nextToken",
@@ -3158,6 +3212,8 @@ export const createLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLoggingConfiguration",
 }));
 export type DescribeLoggingConfigurationError =
@@ -3185,6 +3241,8 @@ export const describeLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeLoggingConfiguration",
 }));
 export type UpdateLoggingConfigurationError =
@@ -3214,6 +3272,8 @@ export const updateLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLoggingConfiguration",
 }));
 export type DeleteLoggingConfigurationError =
@@ -3243,6 +3303,8 @@ export const deleteLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLoggingConfiguration",
 }));
 export type CreateQueryLoggingConfigurationError =
@@ -3268,6 +3330,8 @@ export const createQueryLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateQueryLoggingConfiguration",
 }));
 export type DescribeQueryLoggingConfigurationError =
@@ -3293,6 +3357,8 @@ export const describeQueryLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeQueryLoggingConfiguration",
 }));
 export type UpdateQueryLoggingConfigurationError =
@@ -3320,6 +3386,8 @@ export const updateQueryLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateQueryLoggingConfiguration",
 }));
 export type DeleteQueryLoggingConfigurationError =
@@ -3347,6 +3415,8 @@ export const deleteQueryLoggingConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteQueryLoggingConfiguration",
 }));
 export type CreateRuleGroupsNamespaceError =
@@ -3382,6 +3452,8 @@ export const createRuleGroupsNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRuleGroupsNamespace",
 }));
 export type DescribeRuleGroupsNamespaceError =
@@ -3409,6 +3481,8 @@ export const describeRuleGroupsNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRuleGroupsNamespace",
 }));
 export type PutRuleGroupsNamespaceError =
@@ -3446,6 +3520,8 @@ export const putRuleGroupsNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutRuleGroupsNamespace",
 }));
 export type DeleteRuleGroupsNamespaceError =
@@ -3475,6 +3551,8 @@ export const deleteRuleGroupsNamespace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRuleGroupsNamespace",
 }));
 export type ListRuleGroupsNamespacesError =
@@ -3517,6 +3595,8 @@ export const listRuleGroupsNamespaces: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRuleGroupsNamespaces",
   pagination: {
     inputToken: "nextToken",
@@ -3550,6 +3630,8 @@ export const describeWorkspaceConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeWorkspaceConfiguration",
 }));
 export type UpdateWorkspaceConfigurationError =
@@ -3583,6 +3665,8 @@ export const updateWorkspaceConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateWorkspaceConfiguration",
 }));
 export type PutResourcePolicyError =
@@ -3618,6 +3702,8 @@ export const putResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type DescribeResourcePolicyError =
@@ -3645,6 +3731,8 @@ export const describeResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
 export type DeleteResourcePolicyError =
@@ -3674,5 +3762,7 @@ export const deleteResourcePolicy: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));

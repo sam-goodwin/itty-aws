@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3723,6 +3725,8 @@ export const acceptGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptGrant",
 }));
 export type CheckInLicenseError =
@@ -3756,6 +3760,8 @@ export const checkInLicense: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckInLicense",
 }));
 export type CheckoutBorrowLicenseError =
@@ -3795,6 +3801,8 @@ export const checkoutBorrowLicense: API.OperationMethod<
     UnsupportedDigitalSignatureMethodException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckoutBorrowLicense",
 }));
 export type CheckoutLicenseError =
@@ -3835,6 +3843,8 @@ export const checkoutLicense: API.OperationMethod<
     UnsupportedDigitalSignatureMethodException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CheckoutLicense",
 }));
 export type CreateGrantError =
@@ -3868,6 +3878,8 @@ export const createGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGrant",
 }));
 export type CreateGrantVersionError =
@@ -3900,6 +3912,8 @@ export const createGrantVersion: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGrantVersion",
 }));
 export type CreateLicenseError =
@@ -3931,6 +3945,8 @@ export const createLicense: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLicense",
 }));
 export type CreateLicenseAssetGroupError =
@@ -3960,6 +3976,8 @@ export const createLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLicenseAssetGroup",
 }));
 export type CreateLicenseAssetRulesetError =
@@ -3989,6 +4007,8 @@ export const createLicenseAssetRuleset: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLicenseAssetRuleset",
 }));
 export type CreateLicenseConfigurationError =
@@ -4024,6 +4044,8 @@ export const createLicenseConfiguration: API.OperationMethod<
     ResourceLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLicenseConfiguration",
 }));
 export type CreateLicenseConversionTaskForResourceError =
@@ -4053,6 +4075,8 @@ export const createLicenseConversionTaskForResource: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLicenseConversionTaskForResource",
 }));
 export type CreateLicenseManagerReportGeneratorError =
@@ -4086,6 +4110,8 @@ export const createLicenseManagerReportGenerator: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLicenseManagerReportGenerator",
 }));
 export type CreateLicenseVersionError =
@@ -4119,6 +4145,8 @@ export const createLicenseVersion: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateLicenseVersion",
 }));
 export type CreateTokenError =
@@ -4156,6 +4184,8 @@ export const createToken: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateToken",
 }));
 export type DeleteGrantError =
@@ -4187,6 +4217,8 @@ export const deleteGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGrant",
 }));
 export type DeleteLicenseError =
@@ -4220,6 +4252,8 @@ export const deleteLicense: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLicense",
 }));
 export type DeleteLicenseAssetGroupError =
@@ -4249,6 +4283,8 @@ export const deleteLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLicenseAssetGroup",
 }));
 export type DeleteLicenseAssetRulesetError =
@@ -4278,6 +4314,8 @@ export const deleteLicenseAssetRuleset: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLicenseAssetRuleset",
 }));
 export type DeleteLicenseConfigurationError =
@@ -4307,6 +4345,8 @@ export const deleteLicenseConfiguration: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLicenseConfiguration",
 }));
 export type DeleteLicenseManagerReportGeneratorError =
@@ -4343,6 +4383,8 @@ export const deleteLicenseManagerReportGenerator: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteLicenseManagerReportGenerator",
 }));
 export type DeleteTokenError =
@@ -4374,6 +4416,8 @@ export const deleteToken: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteToken",
 }));
 export type ExtendLicenseConsumptionError =
@@ -4405,6 +4449,8 @@ export const extendLicenseConsumption: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExtendLicenseConsumption",
 }));
 export type GetAccessTokenError =
@@ -4433,6 +4479,8 @@ export const getAccessToken: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccessToken",
 }));
 export type GetGrantError =
@@ -4464,6 +4512,8 @@ export const getGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGrant",
 }));
 export type GetLicenseError =
@@ -4493,6 +4543,8 @@ export const getLicense: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLicense",
 }));
 export type GetLicenseAssetGroupError =
@@ -4522,6 +4574,8 @@ export const getLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLicenseAssetGroup",
 }));
 export type GetLicenseAssetRulesetError =
@@ -4551,6 +4605,8 @@ export const getLicenseAssetRuleset: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLicenseAssetRuleset",
 }));
 export type GetLicenseConfigurationError =
@@ -4578,6 +4634,8 @@ export const getLicenseConfiguration: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLicenseConfiguration",
 }));
 export type GetLicenseConversionTaskError =
@@ -4605,6 +4663,8 @@ export const getLicenseConversionTask: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLicenseConversionTask",
 }));
 export type GetLicenseManagerReportGeneratorError =
@@ -4638,6 +4698,8 @@ export const getLicenseManagerReportGenerator: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLicenseManagerReportGenerator",
 }));
 export type GetLicenseUsageError =
@@ -4667,6 +4729,8 @@ export const getLicenseUsage: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLicenseUsage",
 }));
 export type GetServiceSettingsError =
@@ -4692,6 +4756,8 @@ export const getServiceSettings: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceSettings",
 }));
 export type ListAssetsForLicenseAssetGroupError =
@@ -4721,6 +4787,8 @@ export const listAssetsForLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetsForLicenseAssetGroup",
 }));
 export type ListAssociationsForLicenseConfigurationError =
@@ -4754,6 +4822,8 @@ export const listAssociationsForLicenseConfiguration: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociationsForLicenseConfiguration",
 }));
 export type ListDistributedGrantsError =
@@ -4785,6 +4855,8 @@ export const listDistributedGrants: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDistributedGrants",
 }));
 export type ListFailuresForLicenseConfigurationOperationsError =
@@ -4812,6 +4884,8 @@ export const listFailuresForLicenseConfigurationOperations: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFailuresForLicenseConfigurationOperations",
 }));
 export type ListLicenseAssetGroupsError =
@@ -4841,6 +4915,8 @@ export const listLicenseAssetGroups: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenseAssetGroups",
 }));
 export type ListLicenseAssetRulesetsError =
@@ -4870,6 +4946,8 @@ export const listLicenseAssetRulesets: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenseAssetRulesets",
 }));
 export type ListLicenseConfigurationsError =
@@ -4899,6 +4977,8 @@ export const listLicenseConfigurations: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenseConfigurations",
 }));
 export type ListLicenseConfigurationsForOrganizationError =
@@ -4928,6 +5008,8 @@ export const listLicenseConfigurationsForOrganization: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenseConfigurationsForOrganization",
 }));
 export type ListLicenseConversionTasksError =
@@ -4955,6 +5037,8 @@ export const listLicenseConversionTasks: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenseConversionTasks",
 }));
 export type ListLicenseManagerReportGeneratorsError =
@@ -4988,6 +5072,8 @@ export const listLicenseManagerReportGenerators: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenseManagerReportGenerators",
 }));
 export type ListLicensesError =
@@ -5017,6 +5103,8 @@ export const listLicenses: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenses",
 }));
 export type ListLicenseSpecificationsForResourceError =
@@ -5044,6 +5132,8 @@ export const listLicenseSpecificationsForResource: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenseSpecificationsForResource",
 }));
 export type ListLicenseVersionsError =
@@ -5071,6 +5161,8 @@ export const listLicenseVersions: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLicenseVersions",
 }));
 export type ListReceivedGrantsError =
@@ -5104,6 +5196,8 @@ export const listReceivedGrants: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReceivedGrants",
 }));
 export type ListReceivedGrantsForOrganizationError =
@@ -5135,6 +5229,8 @@ export const listReceivedGrantsForOrganization: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReceivedGrantsForOrganization",
 }));
 export type ListReceivedLicensesError =
@@ -5166,6 +5262,8 @@ export const listReceivedLicenses: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReceivedLicenses",
 }));
 export type ListReceivedLicensesForOrganizationError =
@@ -5197,6 +5295,8 @@ export const listReceivedLicensesForOrganization: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListReceivedLicensesForOrganization",
 }));
 export type ListResourceInventoryError =
@@ -5228,6 +5328,8 @@ export const listResourceInventory: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListResourceInventory",
 }));
 export type ListTagsForResourceError =
@@ -5258,6 +5360,8 @@ export const listTagsForResource: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTokensError =
@@ -5285,6 +5389,8 @@ export const listTokens: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTokens",
 }));
 export type ListUsageForLicenseConfigurationError =
@@ -5316,6 +5422,8 @@ export const listUsageForLicenseConfiguration: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUsageForLicenseConfiguration",
 }));
 export type RejectGrantError =
@@ -5347,6 +5455,8 @@ export const rejectGrant: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectGrant",
 }));
 export type TagResourceError =
@@ -5385,6 +5495,8 @@ export const tagResource: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -5414,6 +5526,8 @@ export const untagResource: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateLicenseAssetGroupError =
@@ -5443,6 +5557,8 @@ export const updateLicenseAssetGroup: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLicenseAssetGroup",
 }));
 export type UpdateLicenseAssetRulesetError =
@@ -5472,6 +5588,8 @@ export const updateLicenseAssetRuleset: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLicenseAssetRuleset",
 }));
 export type UpdateLicenseConfigurationError =
@@ -5503,6 +5621,8 @@ export const updateLicenseConfiguration: API.OperationMethod<
     ResourceLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLicenseConfiguration",
 }));
 export type UpdateLicenseManagerReportGeneratorError =
@@ -5538,6 +5658,8 @@ export const updateLicenseManagerReportGenerator: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLicenseManagerReportGenerator",
 }));
 export type UpdateLicenseSpecificationsForResourceError =
@@ -5575,6 +5697,8 @@ export const updateLicenseSpecificationsForResource: API.OperationMethod<
     RateLimitExceededException,
     ServerInternalException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateLicenseSpecificationsForResource",
 }));
 export type UpdateServiceSettingsError =
@@ -5606,5 +5730,7 @@ export const updateServiceSettings: API.OperationMethod<
     ServerInternalException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceSettings",
 }));

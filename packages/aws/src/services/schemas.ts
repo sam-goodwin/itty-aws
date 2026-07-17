@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1505,6 +1507,8 @@ export const createDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDiscoverer",
 }));
 export type CreateRegistryError =
@@ -1534,6 +1538,8 @@ export const createRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRegistry",
 }));
 export type CreateSchemaError =
@@ -1561,6 +1567,8 @@ export const createSchema: API.OperationMethod<
     InternalServerErrorException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSchema",
 }));
 export type DeleteDiscovererError =
@@ -1590,6 +1598,8 @@ export const deleteDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDiscoverer",
 }));
 export type DeleteRegistryError =
@@ -1619,6 +1629,8 @@ export const deleteRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRegistry",
 }));
 export type DeleteResourcePolicyError =
@@ -1648,6 +1660,8 @@ export const deleteResourcePolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
 export type DeleteSchemaError =
@@ -1677,6 +1691,8 @@ export const deleteSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchema",
 }));
 export type DeleteSchemaVersionError =
@@ -1706,6 +1722,8 @@ export const deleteSchemaVersion: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSchemaVersion",
 }));
 export type DescribeCodeBindingError =
@@ -1735,6 +1753,8 @@ export const describeCodeBinding: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCodeBinding",
 }));
 export type DescribeDiscovererError =
@@ -1764,6 +1784,8 @@ export const describeDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDiscoverer",
 }));
 export type DescribeRegistryError =
@@ -1793,6 +1815,8 @@ export const describeRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRegistry",
 }));
 export type DescribeSchemaError =
@@ -1822,6 +1846,8 @@ export const describeSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSchema",
 }));
 export type ExportSchemaError =
@@ -1853,6 +1879,8 @@ export const exportSchema: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ExportSchema",
 }));
 export type GetCodeBindingSourceError =
@@ -1882,6 +1910,8 @@ export const getCodeBindingSource: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetCodeBindingSource",
 }));
 export type GetDiscoveredSchemaError =
@@ -1909,6 +1939,8 @@ export const getDiscoveredSchema: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDiscoveredSchema",
 }));
 export type GetResourcePolicyError =
@@ -1938,6 +1970,8 @@ export const getResourcePolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetResourcePolicy",
 }));
 export type ListDiscoverersError =
@@ -1980,6 +2014,8 @@ export const listDiscoverers: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDiscoverers",
   pagination: {
     inputToken: "NextToken",
@@ -2028,6 +2064,8 @@ export const listRegistries: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegistries",
   pagination: {
     inputToken: "NextToken",
@@ -2076,6 +2114,8 @@ export const listSchemas: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemas",
   pagination: {
     inputToken: "NextToken",
@@ -2126,6 +2166,8 @@ export const listSchemaVersions: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSchemaVersions",
   pagination: {
     inputToken: "NextToken",
@@ -2157,6 +2199,8 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type PutCodeBindingError =
@@ -2188,6 +2232,8 @@ export const putCodeBinding: API.OperationMethod<
     TooManyRequestsException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutCodeBinding",
 }));
 export type PutResourcePolicyError =
@@ -2219,6 +2265,8 @@ export const putResourcePolicy: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutResourcePolicy",
 }));
 export type SearchSchemasError =
@@ -2261,6 +2309,8 @@ export const searchSchemas: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchSchemas",
   pagination: {
     inputToken: "NextToken",
@@ -2296,6 +2346,8 @@ export const startDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDiscoverer",
 }));
 export type StopDiscovererError =
@@ -2325,6 +2377,8 @@ export const stopDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StopDiscoverer",
 }));
 export type TagResourceError =
@@ -2350,6 +2404,8 @@ export const tagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -2375,6 +2431,8 @@ export const untagResource: API.OperationMethod<
     InternalServerErrorException,
     NotFoundException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateDiscovererError =
@@ -2404,6 +2462,8 @@ export const updateDiscoverer: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDiscoverer",
 }));
 export type UpdateRegistryError =
@@ -2433,6 +2493,8 @@ export const updateRegistry: API.OperationMethod<
     ServiceUnavailableException,
     UnauthorizedException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRegistry",
 }));
 export type UpdateSchemaError =
@@ -2462,5 +2524,7 @@ export const updateSchema: API.OperationMethod<
     NotFoundException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSchema",
 }));

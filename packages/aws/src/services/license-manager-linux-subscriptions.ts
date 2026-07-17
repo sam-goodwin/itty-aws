@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
@@ -652,6 +654,8 @@ export const deregisterSubscriptionProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterSubscriptionProvider",
 }));
 export type GetRegisteredSubscriptionProviderError =
@@ -677,6 +681,8 @@ export const getRegisteredSubscriptionProvider: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRegisteredSubscriptionProvider",
 }));
 export type GetServiceSettingsError =
@@ -696,6 +702,8 @@ export const getServiceSettings: API.OperationMethod<
   input: GetServiceSettingsRequest,
   output: GetServiceSettingsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetServiceSettings",
 }));
 export type ListLinuxSubscriptionInstancesError =
@@ -731,6 +739,8 @@ export const listLinuxSubscriptionInstances: API.OperationMethod<
   input: ListLinuxSubscriptionInstancesRequest,
   output: ListLinuxSubscriptionInstancesResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLinuxSubscriptionInstances",
   pagination: {
     inputToken: "NextToken",
@@ -773,6 +783,8 @@ export const listLinuxSubscriptions: API.OperationMethod<
   input: ListLinuxSubscriptionsRequest,
   output: ListLinuxSubscriptionsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLinuxSubscriptions",
   pagination: {
     inputToken: "NextToken",
@@ -813,6 +825,8 @@ export const listRegisteredSubscriptionProviders: API.OperationMethod<
   input: ListRegisteredSubscriptionProvidersRequest,
   output: ListRegisteredSubscriptionProvidersResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRegisteredSubscriptionProviders",
   pagination: {
     inputToken: "NextToken",
@@ -843,6 +857,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type RegisterSubscriptionProviderError =
@@ -862,6 +878,8 @@ export const registerSubscriptionProvider: API.OperationMethod<
   input: RegisterSubscriptionProviderRequest,
   output: RegisterSubscriptionProviderResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterSubscriptionProvider",
 }));
 export type TagResourceError =
@@ -885,6 +903,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -903,6 +923,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateServiceSettingsError =
@@ -922,5 +944,7 @@ export const updateServiceSettings: API.OperationMethod<
   input: UpdateServiceSettingsRequest,
   output: UpdateServiceSettingsResponse,
   errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateServiceSettings",
 }));

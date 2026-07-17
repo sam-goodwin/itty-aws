@@ -1,6 +1,8 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -1345,6 +1347,8 @@ export const createCluster: API.OperationMethod<
     SubnetGroupNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateParameterGroupError =
@@ -1375,6 +1379,8 @@ export const createParameterGroup: API.OperationMethod<
     ParameterGroupQuotaExceededFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateParameterGroup",
 }));
 export type CreateSubnetGroupError =
@@ -1404,6 +1410,8 @@ export const createSubnetGroup: API.OperationMethod<
     SubnetNotAllowedFault,
     SubnetQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubnetGroup",
 }));
 export type DecreaseReplicationFactorError =
@@ -1437,6 +1445,8 @@ export const decreaseReplicationFactor: API.OperationMethod<
     NodeNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DecreaseReplicationFactor",
 }));
 export type DeleteClusterError =
@@ -1468,6 +1478,8 @@ export const deleteCluster: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type DeleteParameterGroupError =
@@ -1496,6 +1508,8 @@ export const deleteParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteParameterGroup",
 }));
 export type DeleteSubnetGroupError =
@@ -1522,6 +1536,8 @@ export const deleteSubnetGroup: API.OperationMethod<
     SubnetGroupInUseFault,
     SubnetGroupNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubnetGroup",
 }));
 export type DescribeClustersError =
@@ -1563,6 +1579,8 @@ export const describeClusters: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusters",
 }));
 export type DescribeDefaultParametersError =
@@ -1587,6 +1605,8 @@ export const describeDefaultParameters: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeDefaultParameters",
 }));
 export type DescribeEventsError =
@@ -1615,6 +1635,8 @@ export const describeEvents: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEvents",
 }));
 export type DescribeParameterGroupsError =
@@ -1641,6 +1663,8 @@ export const describeParameterGroups: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeParameterGroups",
 }));
 export type DescribeParametersError =
@@ -1666,6 +1690,8 @@ export const describeParameters: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeParameters",
 }));
 export type DescribeSubnetGroupsError =
@@ -1685,6 +1711,8 @@ export const describeSubnetGroups: API.OperationMethod<
   input: DescribeSubnetGroupsRequest,
   output: DescribeSubnetGroupsResponse,
   errors: [ServiceLinkedRoleNotFoundFault, SubnetGroupNotFoundFault],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeSubnetGroups",
 }));
 export type IncreaseReplicationFactorError =
@@ -1720,6 +1748,8 @@ export const increaseReplicationFactor: API.OperationMethod<
     NodeQuotaForCustomerExceededFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "IncreaseReplicationFactor",
 }));
 export type ListTagsError =
@@ -1750,6 +1780,8 @@ export const listTags: API.OperationMethod<
     InvalidParameterValueException,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTags",
 }));
 export type RebootNodeError =
@@ -1784,6 +1816,8 @@ export const rebootNode: API.OperationMethod<
     NodeNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RebootNode",
 }));
 export type TagResourceError =
@@ -1817,6 +1851,8 @@ export const tagResource: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagQuotaPerResourceExceeded,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -1849,6 +1885,8 @@ export const untagResource: API.OperationMethod<
     ServiceLinkedRoleNotFoundFault,
     TagNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateClusterError =
@@ -1882,6 +1920,8 @@ export const updateCluster: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCluster",
 }));
 export type UpdateParameterGroupError =
@@ -1910,6 +1950,8 @@ export const updateParameterGroup: API.OperationMethod<
     ParameterGroupNotFoundFault,
     ServiceLinkedRoleNotFoundFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateParameterGroup",
 }));
 export type UpdateSubnetGroupError =
@@ -1939,5 +1981,7 @@ export const updateSubnetGroup: API.OperationMethod<
     SubnetNotAllowedFault,
     SubnetQuotaExceededFault,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubnetGroup",
 }));

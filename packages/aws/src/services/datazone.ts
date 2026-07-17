@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -15873,6 +15875,8 @@ export const acceptPredictions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptPredictions",
 }));
 export type AcceptSubscriptionRequestError =
@@ -15904,6 +15908,8 @@ export const acceptSubscriptionRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AcceptSubscriptionRequest",
 }));
 export type AddEntityOwnerError =
@@ -15935,6 +15941,8 @@ export const addEntityOwner: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddEntityOwner",
 }));
 export type AddPolicyGrantError =
@@ -15964,6 +15972,8 @@ export const addPolicyGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AddPolicyGrant",
 }));
 export type AssociateEnvironmentRoleError =
@@ -15993,6 +16003,8 @@ export const associateEnvironmentRole: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateEnvironmentRole",
 }));
 export type AssociateGovernedTermsError =
@@ -16022,6 +16034,8 @@ export const associateGovernedTerms: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateGovernedTerms",
 }));
 export type BatchGetAttributesMetadataError =
@@ -16049,6 +16063,8 @@ export const batchGetAttributesMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetAttributesMetadata",
 }));
 export type BatchPutAttributesMetadataError =
@@ -16078,6 +16094,8 @@ export const batchPutAttributesMetadata: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutAttributesMetadata",
 }));
 export type CancelSubscriptionError =
@@ -16107,6 +16125,8 @@ export const cancelSubscription: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelSubscription",
 }));
 export type CreateAccountPoolError =
@@ -16138,6 +16158,8 @@ export const createAccountPool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccountPool",
 }));
 export type CreateAssetFilterError =
@@ -16181,6 +16203,8 @@ export const createAssetFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssetFilter",
 }));
 export type CreateConnectionError =
@@ -16212,6 +16236,8 @@ export const createConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateConnection",
 }));
 export type CreateEnvironmentError =
@@ -16241,6 +16267,8 @@ export const createEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironment",
 }));
 export type CreateEnvironmentActionError =
@@ -16270,6 +16298,8 @@ export const createEnvironmentAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironmentAction",
 }));
 export type CreateEnvironmentBlueprintError =
@@ -16301,6 +16331,8 @@ export const createEnvironmentBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironmentBlueprint",
 }));
 export type CreateEnvironmentProfileError =
@@ -16332,6 +16364,8 @@ export const createEnvironmentProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEnvironmentProfile",
 }));
 export type CreateGroupProfileError =
@@ -16357,6 +16391,8 @@ export const createGroupProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGroupProfile",
 }));
 export type CreateListingChangeSetError =
@@ -16388,6 +16424,8 @@ export const createListingChangeSet: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateListingChangeSet",
 }));
 export type CreateProjectError =
@@ -16419,6 +16457,8 @@ export const createProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProject",
 }));
 export type CreateProjectMembershipError =
@@ -16444,6 +16484,8 @@ export const createProjectMembership: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProjectMembership",
 }));
 export type CreateProjectProfileError =
@@ -16475,6 +16517,8 @@ export const createProjectProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateProjectProfile",
 }));
 export type CreateSubscriptionGrantError =
@@ -16504,6 +16548,8 @@ export const createSubscriptionGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscriptionGrant",
 }));
 export type CreateSubscriptionRequestError =
@@ -16535,6 +16581,8 @@ export const createSubscriptionRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscriptionRequest",
 }));
 export type CreateSubscriptionTargetError =
@@ -16564,6 +16612,8 @@ export const createSubscriptionTarget: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateSubscriptionTarget",
 }));
 export type CreateUserProfileError =
@@ -16589,6 +16639,8 @@ export const createUserProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateUserProfile",
 }));
 export type DeleteAccountPoolError =
@@ -16616,6 +16668,8 @@ export const deleteAccountPool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccountPool",
 }));
 export type DeleteAssetFilterError =
@@ -16653,6 +16707,8 @@ export const deleteAssetFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssetFilter",
 }));
 export type DeleteConnectionError =
@@ -16680,6 +16736,8 @@ export const deleteConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteConnection",
 }));
 export type DeleteDataExportConfigurationError =
@@ -16713,6 +16771,8 @@ export const deleteDataExportConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataExportConfiguration",
 }));
 export type DeleteEnvironmentError =
@@ -16740,6 +16800,8 @@ export const deleteEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironment",
 }));
 export type DeleteEnvironmentActionError =
@@ -16769,6 +16831,8 @@ export const deleteEnvironmentAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironmentAction",
 }));
 export type DeleteEnvironmentBlueprintError =
@@ -16798,6 +16862,8 @@ export const deleteEnvironmentBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironmentBlueprint",
 }));
 export type DeleteEnvironmentProfileError =
@@ -16825,6 +16891,8 @@ export const deleteEnvironmentProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironmentProfile",
 }));
 export type DeleteProjectError =
@@ -16852,6 +16920,8 @@ export const deleteProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProject",
 }));
 export type DeleteProjectMembershipError =
@@ -16881,6 +16951,8 @@ export const deleteProjectMembership: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProjectMembership",
 }));
 export type DeleteProjectProfileError =
@@ -16908,6 +16980,8 @@ export const deleteProjectProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteProjectProfile",
 }));
 export type DeleteSubscriptionGrantError =
@@ -16937,6 +17011,8 @@ export const deleteSubscriptionGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubscriptionGrant",
 }));
 export type DeleteSubscriptionRequestError =
@@ -16966,6 +17042,8 @@ export const deleteSubscriptionRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubscriptionRequest",
 }));
 export type DeleteSubscriptionTargetError =
@@ -16995,6 +17073,8 @@ export const deleteSubscriptionTarget: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteSubscriptionTarget",
 }));
 export type DeleteTimeSeriesDataPointsError =
@@ -17022,6 +17102,8 @@ export const deleteTimeSeriesDataPoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTimeSeriesDataPoints",
 }));
 export type DisassociateEnvironmentRoleError =
@@ -17051,6 +17133,8 @@ export const disassociateEnvironmentRole: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateEnvironmentRole",
 }));
 export type DisassociateGovernedTermsError =
@@ -17080,6 +17164,8 @@ export const disassociateGovernedTerms: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateGovernedTerms",
 }));
 export type GetAccountPoolError =
@@ -17107,6 +17193,8 @@ export const getAccountPool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAccountPool",
 }));
 export type GetAssetFilterError =
@@ -17142,6 +17230,8 @@ export const getAssetFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssetFilter",
 }));
 export type GetConnectionError =
@@ -17169,6 +17259,8 @@ export const getConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetConnection",
 }));
 export type GetDataExportConfigurationError =
@@ -17196,6 +17288,8 @@ export const getDataExportConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataExportConfiguration",
 }));
 export type GetEnvironmentError =
@@ -17223,6 +17317,8 @@ export const getEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironment",
 }));
 export type GetEnvironmentActionError =
@@ -17250,6 +17346,8 @@ export const getEnvironmentAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironmentAction",
 }));
 export type GetEnvironmentBlueprintError =
@@ -17277,6 +17375,8 @@ export const getEnvironmentBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironmentBlueprint",
 }));
 export type GetEnvironmentCredentialsError =
@@ -17304,6 +17404,8 @@ export const getEnvironmentCredentials: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironmentCredentials",
 }));
 export type GetEnvironmentProfileError =
@@ -17331,6 +17433,8 @@ export const getEnvironmentProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironmentProfile",
 }));
 export type GetGroupProfileError =
@@ -17356,6 +17460,8 @@ export const getGroupProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGroupProfile",
 }));
 export type GetIamPortalLoginUrlError =
@@ -17385,6 +17491,8 @@ export const getIamPortalLoginUrl: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetIamPortalLoginUrl",
 }));
 export type GetJobRunError =
@@ -17412,6 +17520,8 @@ export const getJobRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetJobRun",
 }));
 export type GetLineageEventError =
@@ -17439,6 +17549,8 @@ export const getLineageEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLineageEvent",
 }));
 export type GetLineageNodeError =
@@ -17466,6 +17578,8 @@ export const getLineageNode: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetLineageNode",
 }));
 export type GetProjectError =
@@ -17493,6 +17607,8 @@ export const getProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProject",
 }));
 export type GetProjectProfileError =
@@ -17520,6 +17636,8 @@ export const getProjectProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetProjectProfile",
 }));
 export type GetSubscriptionError =
@@ -17547,6 +17665,8 @@ export const getSubscription: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscription",
 }));
 export type GetSubscriptionGrantError =
@@ -17574,6 +17694,8 @@ export const getSubscriptionGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscriptionGrant",
 }));
 export type GetSubscriptionRequestDetailsError =
@@ -17601,6 +17723,8 @@ export const getSubscriptionRequestDetails: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscriptionRequestDetails",
 }));
 export type GetSubscriptionTargetError =
@@ -17628,6 +17752,8 @@ export const getSubscriptionTarget: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetSubscriptionTarget",
 }));
 export type GetTimeSeriesDataPointError =
@@ -17655,6 +17781,8 @@ export const getTimeSeriesDataPoint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetTimeSeriesDataPoint",
 }));
 export type GetUserProfileError =
@@ -17680,6 +17808,8 @@ export const getUserProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetUserProfile",
 }));
 export type ListAccountPoolsError =
@@ -17720,6 +17850,8 @@ export const listAccountPools: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountPools",
   pagination: {
     inputToken: "nextToken",
@@ -17768,6 +17900,8 @@ export const listAccountsInAccountPool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccountsInAccountPool",
   pagination: {
     inputToken: "nextToken",
@@ -17822,6 +17956,8 @@ export const listAssetFilters: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetFilters",
   pagination: {
     inputToken: "nextToken",
@@ -17880,6 +18016,8 @@ export const listAssetRevisions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssetRevisions",
   pagination: {
     inputToken: "nextToken",
@@ -17925,6 +18063,8 @@ export const listConnections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListConnections",
   pagination: {
     inputToken: "nextToken",
@@ -17981,6 +18121,8 @@ export const listDataProductRevisions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataProductRevisions",
   pagination: {
     inputToken: "nextToken",
@@ -18033,6 +18175,8 @@ export const listDataSourceRunActivities: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSourceRunActivities",
   pagination: {
     inputToken: "nextToken",
@@ -18079,6 +18223,8 @@ export const listEntityOwners: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEntityOwners",
   pagination: {
     inputToken: "nextToken",
@@ -18125,6 +18271,8 @@ export const listEnvironmentActions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironmentActions",
   pagination: {
     inputToken: "nextToken",
@@ -18173,6 +18321,8 @@ export const listEnvironmentBlueprints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironmentBlueprints",
   pagination: {
     inputToken: "nextToken",
@@ -18219,6 +18369,8 @@ export const listEnvironmentProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironmentProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -18265,6 +18417,8 @@ export const listEnvironments: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironments",
   pagination: {
     inputToken: "nextToken",
@@ -18313,6 +18467,8 @@ export const listJobRuns: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListJobRuns",
   pagination: {
     inputToken: "nextToken",
@@ -18359,6 +18515,8 @@ export const listLineageEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLineageEvents",
   pagination: {
     inputToken: "nextToken",
@@ -18407,6 +18565,8 @@ export const listLineageNodeHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListLineageNodeHistory",
   pagination: {
     inputToken: "nextToken",
@@ -18453,6 +18613,8 @@ export const listNotifications: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNotifications",
   pagination: {
     inputToken: "nextToken",
@@ -18499,6 +18661,8 @@ export const listPolicyGrants: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPolicyGrants",
   pagination: {
     inputToken: "nextToken",
@@ -18547,6 +18711,8 @@ export const listProjectMemberships: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjectMemberships",
   pagination: {
     inputToken: "nextToken",
@@ -18593,6 +18759,8 @@ export const listProjectProfiles: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjectProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -18639,6 +18807,8 @@ export const listProjects: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListProjects",
   pagination: {
     inputToken: "nextToken",
@@ -18687,6 +18857,8 @@ export const listSubscriptionGrants: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptionGrants",
   pagination: {
     inputToken: "nextToken",
@@ -18735,6 +18907,8 @@ export const listSubscriptionRequests: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptionRequests",
   pagination: {
     inputToken: "nextToken",
@@ -18783,6 +18957,8 @@ export const listSubscriptions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptions",
   pagination: {
     inputToken: "nextToken",
@@ -18831,6 +19007,8 @@ export const listSubscriptionTargets: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListSubscriptionTargets",
   pagination: {
     inputToken: "nextToken",
@@ -18860,6 +19038,8 @@ export const listTagsForResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListTimeSeriesDataPointsError =
@@ -18902,6 +19082,8 @@ export const listTimeSeriesDataPoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTimeSeriesDataPoints",
   pagination: {
     inputToken: "nextToken",
@@ -18939,6 +19121,8 @@ export const postLineageEvent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostLineageEvent",
 }));
 export type PostTimeSeriesDataPointsError =
@@ -18970,6 +19154,8 @@ export const postTimeSeriesDataPoints: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PostTimeSeriesDataPoints",
 }));
 export type PutDataExportConfigurationError =
@@ -19011,6 +19197,8 @@ export const putDataExportConfiguration: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutDataExportConfiguration",
 }));
 export type QueryGraphError =
@@ -19051,6 +19239,8 @@ export const queryGraph: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "QueryGraph",
   pagination: {
     inputToken: "nextToken",
@@ -19086,6 +19276,8 @@ export const rejectPredictions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectPredictions",
 }));
 export type RejectSubscriptionRequestError =
@@ -19115,6 +19307,8 @@ export const rejectSubscriptionRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RejectSubscriptionRequest",
 }));
 export type RemoveEntityOwnerError =
@@ -19142,6 +19336,8 @@ export const removeEntityOwner: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemoveEntityOwner",
 }));
 export type RemovePolicyGrantError =
@@ -19167,6 +19363,8 @@ export const removePolicyGrant: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RemovePolicyGrant",
 }));
 export type RevokeSubscriptionError =
@@ -19196,6 +19394,8 @@ export const revokeSubscription: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RevokeSubscription",
 }));
 export type SearchError =
@@ -19258,6 +19458,8 @@ export const search: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "Search",
   pagination: {
     inputToken: "nextToken",
@@ -19304,6 +19506,8 @@ export const searchGroupProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchGroupProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -19362,6 +19566,8 @@ export const searchListings: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchListings",
   pagination: {
     inputToken: "nextToken",
@@ -19422,6 +19628,8 @@ export const searchTypes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchTypes",
   pagination: {
     inputToken: "nextToken",
@@ -19468,6 +19676,8 @@ export const searchUserProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchUserProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -19497,6 +19707,8 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -19515,6 +19727,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [InternalServerException, ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccountPoolError =
@@ -19546,6 +19760,8 @@ export const updateAccountPool: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccountPool",
 }));
 export type UpdateAssetFilterError =
@@ -19583,6 +19799,8 @@ export const updateAssetFilter: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAssetFilter",
 }));
 export type UpdateConnectionError =
@@ -19614,6 +19832,8 @@ export const updateConnection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateConnection",
 }));
 export type UpdateEnvironmentError =
@@ -19643,6 +19863,8 @@ export const updateEnvironment: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironment",
 }));
 export type UpdateEnvironmentActionError =
@@ -19672,6 +19894,8 @@ export const updateEnvironmentAction: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironmentAction",
 }));
 export type UpdateEnvironmentBlueprintError =
@@ -19703,6 +19927,8 @@ export const updateEnvironmentBlueprint: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironmentBlueprint",
 }));
 export type UpdateEnvironmentProfileError =
@@ -19734,6 +19960,8 @@ export const updateEnvironmentProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEnvironmentProfile",
 }));
 export type UpdateGroupProfileError =
@@ -19759,6 +19987,8 @@ export const updateGroupProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGroupProfile",
 }));
 export type UpdateProjectError =
@@ -19790,6 +20020,8 @@ export const updateProject: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProject",
 }));
 export type UpdateProjectProfileError =
@@ -19821,6 +20053,8 @@ export const updateProjectProfile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateProjectProfile",
 }));
 export type UpdateRootDomainUnitOwnerError =
@@ -19850,6 +20084,8 @@ export const updateRootDomainUnitOwner: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRootDomainUnitOwner",
 }));
 export type UpdateSubscriptionGrantStatusError =
@@ -19879,6 +20115,8 @@ export const updateSubscriptionGrantStatus: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscriptionGrantStatus",
 }));
 export type UpdateSubscriptionRequestError =
@@ -19908,6 +20146,8 @@ export const updateSubscriptionRequest: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscriptionRequest",
 }));
 export type UpdateSubscriptionTargetError =
@@ -19937,6 +20177,8 @@ export const updateSubscriptionTarget: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateSubscriptionTarget",
 }));
 export type UpdateUserProfileError =
@@ -19962,6 +20204,8 @@ export const updateUserProfile: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateUserProfile",
 }));
 export type CreateAssetError =
@@ -20013,6 +20257,8 @@ export const createAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAsset",
 }));
 export type GetAssetError =
@@ -20050,6 +20296,8 @@ export const getAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAsset",
 }));
 export type DeleteAssetError =
@@ -20089,6 +20337,8 @@ export const deleteAsset: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAsset",
 }));
 export type CreateAssetRevisionError =
@@ -20132,6 +20382,8 @@ export const createAssetRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssetRevision",
 }));
 export type CreateAssetTypeError =
@@ -20173,6 +20425,8 @@ export const createAssetType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAssetType",
 }));
 export type DeleteAssetTypeError =
@@ -20212,6 +20466,8 @@ export const deleteAssetType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAssetType",
 }));
 export type GetAssetTypeError =
@@ -20249,6 +20505,8 @@ export const getAssetType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetAssetType",
 }));
 export type CreateDataProductError =
@@ -20292,6 +20550,8 @@ export const createDataProduct: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataProduct",
 }));
 export type GetDataProductError =
@@ -20327,6 +20587,8 @@ export const getDataProduct: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataProduct",
 }));
 export type DeleteDataProductError =
@@ -20364,6 +20626,8 @@ export const deleteDataProduct: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataProduct",
 }));
 export type CreateDataProductRevisionError =
@@ -20403,6 +20667,8 @@ export const createDataProductRevision: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataProductRevision",
 }));
 export type CreateDataSourceError =
@@ -20434,6 +20700,8 @@ export const createDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDataSource",
 }));
 export type GetDataSourceError =
@@ -20465,6 +20733,8 @@ export const getDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSource",
 }));
 export type UpdateDataSourceError =
@@ -20496,6 +20766,8 @@ export const updateDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDataSource",
 }));
 export type DeleteDataSourceError =
@@ -20527,6 +20799,8 @@ export const deleteDataSource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDataSource",
 }));
 export type ListDataSourcesError =
@@ -20573,6 +20847,8 @@ export const listDataSources: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSources",
   pagination: {
     inputToken: "nextToken",
@@ -20610,6 +20886,8 @@ export const startDataSourceRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartDataSourceRun",
 }));
 export type GetDataSourceRunError =
@@ -20641,6 +20919,8 @@ export const getDataSourceRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDataSourceRun",
 }));
 export type ListDataSourceRunsError =
@@ -20687,6 +20967,8 @@ export const listDataSourceRuns: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDataSourceRuns",
   pagination: {
     inputToken: "nextToken",
@@ -20724,6 +21006,8 @@ export const createDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomain",
 }));
 export type GetDomainError =
@@ -20753,6 +21037,8 @@ export const getDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomain",
 }));
 export type UpdateDomainError =
@@ -20784,6 +21070,8 @@ export const updateDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomain",
 }));
 export type DeleteDomainError =
@@ -20813,6 +21101,8 @@ export const deleteDomain: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomain",
 }));
 export type ListDomainsError =
@@ -20859,6 +21149,8 @@ export const listDomains: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomains",
   pagination: {
     inputToken: "nextToken",
@@ -20894,6 +21186,8 @@ export const createDomainUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateDomainUnit",
 }));
 export type GetDomainUnitError =
@@ -20921,6 +21215,8 @@ export const getDomainUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDomainUnit",
 }));
 export type UpdateDomainUnitError =
@@ -20950,6 +21246,8 @@ export const updateDomainUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateDomainUnit",
 }));
 export type DeleteDomainUnitError =
@@ -20979,6 +21277,8 @@ export const deleteDomainUnit: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteDomainUnit",
 }));
 export type ListDomainUnitsForParentError =
@@ -21019,6 +21319,8 @@ export const listDomainUnitsForParent: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDomainUnitsForParent",
   pagination: {
     inputToken: "nextToken",
@@ -21052,6 +21354,8 @@ export const putEnvironmentBlueprintConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutEnvironmentBlueprintConfiguration",
 }));
 export type GetEnvironmentBlueprintConfigurationError =
@@ -21077,6 +21381,8 @@ export const getEnvironmentBlueprintConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetEnvironmentBlueprintConfiguration",
 }));
 export type DeleteEnvironmentBlueprintConfigurationError =
@@ -21096,6 +21402,8 @@ export const deleteEnvironmentBlueprintConfiguration: API.OperationMethod<
   input: DeleteEnvironmentBlueprintConfigurationInput,
   output: DeleteEnvironmentBlueprintConfigurationOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEnvironmentBlueprintConfiguration",
 }));
 export type ListEnvironmentBlueprintConfigurationsError =
@@ -21136,6 +21444,8 @@ export const listEnvironmentBlueprintConfigurations: API.OperationMethod<
     ResourceNotFoundException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEnvironmentBlueprintConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -21183,6 +21493,8 @@ export const createFormType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFormType",
 }));
 export type DeleteFormTypeError =
@@ -21224,6 +21536,8 @@ export const deleteFormType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFormType",
 }));
 export type GetFormTypeError =
@@ -21267,6 +21581,8 @@ export const getFormType: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetFormType",
 }));
 export type CreateGlossaryError =
@@ -21308,6 +21624,8 @@ export const createGlossary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlossary",
 }));
 export type GetGlossaryError =
@@ -21341,6 +21659,8 @@ export const getGlossary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGlossary",
 }));
 export type UpdateGlossaryError =
@@ -21380,6 +21700,8 @@ export const updateGlossary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlossary",
 }));
 export type DeleteGlossaryError =
@@ -21421,6 +21743,8 @@ export const deleteGlossary: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGlossary",
 }));
 export type CreateGlossaryTermError =
@@ -21464,6 +21788,8 @@ export const createGlossaryTerm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGlossaryTerm",
 }));
 export type GetGlossaryTermError =
@@ -21499,6 +21825,8 @@ export const getGlossaryTerm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGlossaryTerm",
 }));
 export type UpdateGlossaryTermError =
@@ -21538,6 +21866,8 @@ export const updateGlossaryTerm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGlossaryTerm",
 }));
 export type DeleteGlossaryTermError =
@@ -21577,6 +21907,8 @@ export const deleteGlossaryTerm: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGlossaryTerm",
 }));
 export type GetListingError =
@@ -21604,6 +21936,8 @@ export const getListing: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetListing",
 }));
 export type DeleteListingError =
@@ -21633,6 +21967,8 @@ export const deleteListing: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteListing",
 }));
 export type StartMetadataGenerationRunError =
@@ -21676,6 +22012,8 @@ export const startMetadataGenerationRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartMetadataGenerationRun",
 }));
 export type GetMetadataGenerationRunError =
@@ -21711,6 +22049,8 @@ export const getMetadataGenerationRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMetadataGenerationRun",
 }));
 export type CancelMetadataGenerationRunError =
@@ -21748,6 +22088,8 @@ export const cancelMetadataGenerationRun: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CancelMetadataGenerationRun",
 }));
 export type ListMetadataGenerationRunsError =
@@ -21798,6 +22140,8 @@ export const listMetadataGenerationRuns: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMetadataGenerationRuns",
   pagination: {
     inputToken: "nextToken",
@@ -21835,6 +22179,8 @@ export const createRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRule",
 }));
 export type GetRuleError =
@@ -21862,6 +22208,8 @@ export const getRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetRule",
 }));
 export type UpdateRuleError =
@@ -21893,6 +22241,8 @@ export const updateRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRule",
 }));
 export type DeleteRuleError =
@@ -21922,6 +22272,8 @@ export const deleteRule: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRule",
 }));
 export type ListRulesError =
@@ -21964,6 +22316,8 @@ export const listRules: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRules",
   pagination: {
     inputToken: "nextToken",

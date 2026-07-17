@@ -2,7 +2,9 @@ import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -3647,6 +3649,8 @@ export const createKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateKey",
 }));
 export type DescribeKeyError =
@@ -3676,6 +3680,8 @@ export const describeKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeKey",
 }));
 export type UpdateKeyError =
@@ -3703,6 +3709,8 @@ export const updateKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateKey",
 }));
 export type DeleteKeyError =
@@ -3732,6 +3740,8 @@ export const deleteKey: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteKey",
 }));
 export type ListKeysError =
@@ -3774,6 +3784,8 @@ export const listKeys: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListKeys",
   pagination: {
     inputToken: "NextToken",
@@ -3807,6 +3819,8 @@ export const listTagsForResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type TagResourceError =
@@ -3840,6 +3854,8 @@ export const tagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -3867,6 +3883,8 @@ export const untagResource: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type CreateGeofenceCollectionError =
@@ -3896,6 +3914,8 @@ export const createGeofenceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateGeofenceCollection",
 }));
 export type DescribeGeofenceCollectionError =
@@ -3923,6 +3943,8 @@ export const describeGeofenceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeGeofenceCollection",
 }));
 export type UpdateGeofenceCollectionError =
@@ -3950,6 +3972,8 @@ export const updateGeofenceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateGeofenceCollection",
 }));
 export type DeleteGeofenceCollectionError =
@@ -3979,6 +4003,8 @@ export const deleteGeofenceCollection: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteGeofenceCollection",
 }));
 export type ListGeofenceCollectionsError =
@@ -4019,6 +4045,8 @@ export const listGeofenceCollections: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGeofenceCollections",
   pagination: {
     inputToken: "NextToken",
@@ -4054,6 +4082,8 @@ export const batchDeleteGeofence: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteGeofence",
 }));
 export type BatchEvaluateGeofencesError =
@@ -4093,6 +4123,8 @@ export const batchEvaluateGeofences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchEvaluateGeofences",
 }));
 export type BatchPutGeofenceError =
@@ -4120,6 +4152,8 @@ export const batchPutGeofence: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchPutGeofence",
 }));
 export type ForecastGeofenceEventsError =
@@ -4170,6 +4204,8 @@ export const forecastGeofenceEvents: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ForecastGeofenceEvents",
   pagination: {
     inputToken: "NextToken",
@@ -4205,6 +4241,8 @@ export const getGeofence: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetGeofence",
 }));
 export type ListGeofencesError =
@@ -4247,6 +4285,8 @@ export const listGeofences: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListGeofences",
   pagination: {
     inputToken: "NextToken",
@@ -4282,6 +4322,8 @@ export const putGeofence: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "PutGeofence",
 }));
 export type CreateMapError =
@@ -4325,6 +4367,8 @@ export const createMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateMap",
 }));
 export type DescribeMapError =
@@ -4364,6 +4408,8 @@ export const describeMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeMap",
 }));
 export type UpdateMapError =
@@ -4403,6 +4449,8 @@ export const updateMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateMap",
 }));
 export type DeleteMapError =
@@ -4444,6 +4492,8 @@ export const deleteMap: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteMap",
 }));
 export type ListMapsError =
@@ -4496,6 +4546,8 @@ export const listMaps: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListMaps",
   pagination: {
     inputToken: "NextToken",
@@ -4541,6 +4593,8 @@ export const getMapGlyphs: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMapGlyphs",
 }));
 export type GetMapSpritesError =
@@ -4580,6 +4634,8 @@ export const getMapSprites: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMapSprites",
 }));
 export type GetMapStyleDescriptorError =
@@ -4621,6 +4677,8 @@ export const getMapStyleDescriptor: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMapStyleDescriptor",
 }));
 export type GetMapTileError =
@@ -4662,6 +4720,8 @@ export const getMapTile: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetMapTile",
 }));
 export type CreatePlaceIndexError =
@@ -4705,6 +4765,8 @@ export const createPlaceIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePlaceIndex",
 }));
 export type DescribePlaceIndexError =
@@ -4744,6 +4806,8 @@ export const describePlaceIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePlaceIndex",
 }));
 export type UpdatePlaceIndexError =
@@ -4783,6 +4847,8 @@ export const updatePlaceIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePlaceIndex",
 }));
 export type DeletePlaceIndexError =
@@ -4824,6 +4890,8 @@ export const deletePlaceIndex: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePlaceIndex",
 }));
 export type ListPlaceIndexesError =
@@ -4876,6 +4944,8 @@ export const listPlaceIndexes: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPlaceIndexes",
   pagination: {
     inputToken: "NextToken",
@@ -4931,6 +5001,8 @@ export const getPlace: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetPlace",
 }));
 export type SearchPlaceIndexForPositionError =
@@ -4968,6 +5040,8 @@ export const searchPlaceIndexForPosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchPlaceIndexForPosition",
 }));
 export type SearchPlaceIndexForSuggestionsError =
@@ -5009,6 +5083,8 @@ export const searchPlaceIndexForSuggestions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchPlaceIndexForSuggestions",
 }));
 export type SearchPlaceIndexForTextError =
@@ -5052,6 +5128,8 @@ export const searchPlaceIndexForText: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "SearchPlaceIndexForText",
 }));
 export type CreateRouteCalculatorError =
@@ -5097,6 +5175,8 @@ export const createRouteCalculator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateRouteCalculator",
 }));
 export type DescribeRouteCalculatorError =
@@ -5136,6 +5216,8 @@ export const describeRouteCalculator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeRouteCalculator",
 }));
 export type UpdateRouteCalculatorError =
@@ -5175,6 +5257,8 @@ export const updateRouteCalculator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateRouteCalculator",
 }));
 export type DeleteRouteCalculatorError =
@@ -5216,6 +5300,8 @@ export const deleteRouteCalculator: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteRouteCalculator",
 }));
 export type ListRouteCalculatorsError =
@@ -5268,6 +5354,8 @@ export const listRouteCalculators: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListRouteCalculators",
   pagination: {
     inputToken: "NextToken",
@@ -5323,6 +5411,8 @@ export const calculateRoute: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CalculateRoute",
 }));
 export type CalculateRouteMatrixError =
@@ -5376,6 +5466,8 @@ export const calculateRouteMatrix: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CalculateRouteMatrix",
 }));
 export type CreateTrackerError =
@@ -5405,6 +5497,8 @@ export const createTracker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateTracker",
 }));
 export type DescribeTrackerError =
@@ -5432,6 +5526,8 @@ export const describeTracker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeTracker",
 }));
 export type UpdateTrackerError =
@@ -5459,6 +5555,8 @@ export const updateTracker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateTracker",
 }));
 export type DeleteTrackerError =
@@ -5488,6 +5586,8 @@ export const deleteTracker: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteTracker",
 }));
 export type ListTrackersError =
@@ -5528,6 +5628,8 @@ export const listTrackers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrackers",
   pagination: {
     inputToken: "NextToken",
@@ -5569,6 +5671,8 @@ export const associateTrackerConsumer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateTrackerConsumer",
 }));
 export type BatchDeleteDevicePositionHistoryError =
@@ -5596,6 +5700,8 @@ export const batchDeleteDevicePositionHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchDeleteDevicePositionHistory",
 }));
 export type BatchGetDevicePositionError =
@@ -5623,6 +5729,8 @@ export const batchGetDevicePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchGetDevicePosition",
 }));
 export type BatchUpdateDevicePositionError =
@@ -5656,6 +5764,8 @@ export const batchUpdateDevicePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "BatchUpdateDevicePosition",
 }));
 export type DisassociateTrackerConsumerError =
@@ -5685,6 +5795,8 @@ export const disassociateTrackerConsumer: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateTrackerConsumer",
 }));
 export type GetDevicePositionError =
@@ -5714,6 +5826,8 @@ export const getDevicePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevicePosition",
 }));
 export type GetDevicePositionHistoryError =
@@ -5758,6 +5872,8 @@ export const getDevicePositionHistory: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "GetDevicePositionHistory",
   pagination: {
     inputToken: "NextToken",
@@ -5804,6 +5920,8 @@ export const listDevicePositions: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListDevicePositions",
   pagination: {
     inputToken: "NextToken",
@@ -5852,6 +5970,8 @@ export const listTrackerConsumers: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTrackerConsumers",
   pagination: {
     inputToken: "NextToken",
@@ -5887,5 +6007,7 @@ export const verifyDevicePosition: API.OperationMethod<
     ThrottlingException,
     ValidationException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "VerifyDevicePosition",
 }));

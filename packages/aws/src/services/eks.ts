@@ -1,7 +1,9 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
-import * as API from "../client/api.ts";
+import * as API from "@distilled.cloud/core/api";
+import { AwsProtocol } from "../protocol.ts";
+import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
 import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
@@ -4810,6 +4812,8 @@ export const associateAccessPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateAccessPolicy",
 }));
 export type AssociateEncryptionConfigError =
@@ -4845,6 +4849,8 @@ export const associateEncryptionConfig: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateEncryptionConfig",
 }));
 export type AssociateIdentityProviderConfigError =
@@ -4884,6 +4890,8 @@ export const associateIdentityProviderConfig: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "AssociateIdentityProviderConfig",
 }));
 export type CreateAccessEntryError =
@@ -4927,6 +4935,8 @@ export const createAccessEntry: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAccessEntry",
 }));
 export type CreateAddonError =
@@ -4960,6 +4970,8 @@ export const createAddon: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateAddon",
 }));
 export type CreateCapabilityError =
@@ -4997,6 +5009,8 @@ export const createCapability: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCapability",
 }));
 export type CreateClusterError =
@@ -5071,6 +5085,8 @@ export const createCluster: API.OperationMethod<
     ServiceUnavailableException,
     UnsupportedAvailabilityZoneException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateCluster",
 }));
 export type CreateEksAnywhereSubscriptionError =
@@ -5101,6 +5117,8 @@ export const createEksAnywhereSubscription: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateEksAnywhereSubscription",
 }));
 export type CreateFargateProfileError =
@@ -5159,6 +5177,8 @@ export const createFargateProfile: API.OperationMethod<
     ServerException,
     UnsupportedAvailabilityZoneException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateFargateProfile",
 }));
 export type CreateNodegroupError =
@@ -5209,6 +5229,8 @@ export const createNodegroup: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreateNodegroup",
 }));
 export type CreatePodIdentityAssociationError =
@@ -5265,6 +5287,8 @@ export const createPodIdentityAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "CreatePodIdentityAssociation",
 }));
 export type DeleteAccessEntryError =
@@ -5288,6 +5312,8 @@ export const deleteAccessEntry: API.OperationMethod<
   input: DeleteAccessEntryRequest,
   output: DeleteAccessEntryResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAccessEntry",
 }));
 export type DeleteAddonError =
@@ -5318,6 +5344,8 @@ export const deleteAddon: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteAddon",
 }));
 export type DeleteCapabilityError =
@@ -5347,6 +5375,8 @@ export const deleteCapability: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCapability",
 }));
 export type DeleteClusterError =
@@ -5386,6 +5416,8 @@ export const deleteCluster: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteCluster",
 }));
 export type DeleteEksAnywhereSubscriptionError =
@@ -5414,6 +5446,8 @@ export const deleteEksAnywhereSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteEksAnywhereSubscription",
 }));
 export type DeleteFargateProfileError =
@@ -5449,6 +5483,8 @@ export const deleteFargateProfile: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteFargateProfile",
 }));
 export type DeleteNodegroupError =
@@ -5478,6 +5514,8 @@ export const deleteNodegroup: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeleteNodegroup",
 }));
 export type DeletePodIdentityAssociationError =
@@ -5505,6 +5543,8 @@ export const deletePodIdentityAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeletePodIdentityAssociation",
 }));
 export type DeregisterClusterError =
@@ -5537,6 +5577,8 @@ export const deregisterCluster: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DeregisterCluster",
 }));
 export type DescribeAccessEntryError =
@@ -5556,6 +5598,8 @@ export const describeAccessEntry: API.OperationMethod<
   input: DescribeAccessEntryRequest,
   output: DescribeAccessEntryResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAccessEntry",
 }));
 export type DescribeAddonError =
@@ -5583,6 +5627,8 @@ export const describeAddon: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAddon",
 }));
 export type DescribeAddonConfigurationError =
@@ -5606,6 +5652,8 @@ export const describeAddonConfiguration: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAddonConfiguration",
 }));
 export type DescribeAddonVersionsError =
@@ -5648,6 +5696,8 @@ export const describeAddonVersions: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeAddonVersions",
   pagination: {
     inputToken: "nextToken",
@@ -5679,6 +5729,8 @@ export const describeCapability: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCapability",
 }));
 export type DescribeClusterError =
@@ -5712,6 +5764,8 @@ export const describeCluster: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeCluster",
 }));
 export type DescribeClusterVersionsError =
@@ -5746,6 +5800,8 @@ export const describeClusterVersions: API.OperationMethod<
   input: DescribeClusterVersionsRequest,
   output: DescribeClusterVersionsResponse,
   errors: [InvalidParameterException, InvalidRequestException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeClusterVersions",
   pagination: {
     inputToken: "nextToken",
@@ -5777,6 +5833,8 @@ export const describeEksAnywhereSubscription: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeEksAnywhereSubscription",
 }));
 export type DescribeFargateProfileError =
@@ -5802,6 +5860,8 @@ export const describeFargateProfile: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeFargateProfile",
 }));
 export type DescribeIdentityProviderConfigError =
@@ -5829,6 +5889,8 @@ export const describeIdentityProviderConfig: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeIdentityProviderConfig",
 }));
 export type DescribeInsightError =
@@ -5854,6 +5916,8 @@ export const describeInsight: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInsight",
 }));
 export type DescribeInsightsRefreshError =
@@ -5879,6 +5943,8 @@ export const describeInsightsRefresh: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeInsightsRefresh",
 }));
 export type DescribeNodegroupError =
@@ -5906,6 +5972,8 @@ export const describeNodegroup: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeNodegroup",
 }));
 export type DescribePodIdentityAssociationError =
@@ -5936,6 +6004,8 @@ export const describePodIdentityAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribePodIdentityAssociation",
 }));
 export type DescribeUpdateError =
@@ -5965,6 +6035,8 @@ export const describeUpdate: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DescribeUpdate",
 }));
 export type DisassociateAccessPolicyError =
@@ -5984,6 +6056,8 @@ export const disassociateAccessPolicy: API.OperationMethod<
   input: DisassociateAccessPolicyRequest,
   output: DisassociateAccessPolicyResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateAccessPolicy",
 }));
 export type DisassociateIdentityProviderConfigError =
@@ -6019,6 +6093,8 @@ export const disassociateIdentityProviderConfig: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "DisassociateIdentityProviderConfig",
 }));
 export type ListAccessEntriesError =
@@ -6059,6 +6135,8 @@ export const listAccessEntries: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessEntries",
   pagination: {
     inputToken: "nextToken",
@@ -6095,6 +6173,8 @@ export const listAccessPolicies: API.OperationMethod<
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse,
   errors: [ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAccessPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -6143,6 +6223,8 @@ export const listAddons: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAddons",
   pagination: {
     inputToken: "nextToken",
@@ -6183,6 +6265,8 @@ export const listAssociatedAccessPolicies: API.OperationMethod<
   input: ListAssociatedAccessPoliciesRequest,
   output: ListAssociatedAccessPoliciesResponse,
   errors: [InvalidRequestException, ResourceNotFoundException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListAssociatedAccessPolicies",
   pagination: {
     inputToken: "nextToken",
@@ -6222,6 +6306,8 @@ export const listCapabilities: API.OperationMethod<
   input: ListCapabilitiesRequest,
   output: ListCapabilitiesResponse,
   errors: [InvalidParameterException, ServerException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListCapabilities",
   pagination: {
     inputToken: "nextToken",
@@ -6268,6 +6354,8 @@ export const listClusters: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListClusters",
   pagination: {
     inputToken: "nextToken",
@@ -6314,6 +6402,8 @@ export const listEksAnywhereSubscriptions: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListEksAnywhereSubscriptions",
   pagination: {
     inputToken: "nextToken",
@@ -6361,6 +6451,8 @@ export const listFargateProfiles: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListFargateProfiles",
   pagination: {
     inputToken: "nextToken",
@@ -6409,6 +6501,8 @@ export const listIdentityProviderConfigs: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListIdentityProviderConfigs",
   pagination: {
     inputToken: "nextToken",
@@ -6466,6 +6560,8 @@ export const listInsights: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListInsights",
   pagination: {
     inputToken: "nextToken",
@@ -6515,6 +6611,8 @@ export const listNodegroups: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListNodegroups",
   pagination: {
     inputToken: "nextToken",
@@ -6562,6 +6660,8 @@ export const listPodIdentityAssociations: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListPodIdentityAssociations",
   pagination: {
     inputToken: "nextToken",
@@ -6586,6 +6686,8 @@ export const listTagsForResource: API.OperationMethod<
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [BadRequestException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListTagsForResource",
 }));
 export type ListUpdatesError =
@@ -6627,6 +6729,8 @@ export const listUpdates: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "ListUpdates",
   pagination: {
     inputToken: "nextToken",
@@ -6683,6 +6787,8 @@ export const registerCluster: API.OperationMethod<
     ServerException,
     ServiceUnavailableException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "RegisterCluster",
 }));
 export type StartInsightsRefreshError =
@@ -6708,6 +6814,8 @@ export const startInsightsRefresh: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "StartInsightsRefresh",
 }));
 export type TagResourceError =
@@ -6732,6 +6840,8 @@ export const tagResource: API.OperationMethod<
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [BadRequestException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "TagResource",
 }));
 export type UntagResourceError =
@@ -6750,6 +6860,8 @@ export const untagResource: API.OperationMethod<
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [BadRequestException, NotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UntagResource",
 }));
 export type UpdateAccessEntryError =
@@ -6775,6 +6887,8 @@ export const updateAccessEntry: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAccessEntry",
 }));
 export type UpdateAddonError =
@@ -6804,6 +6918,8 @@ export const updateAddon: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateAddon",
 }));
 export type UpdateCapabilityError =
@@ -6833,6 +6949,8 @@ export const updateCapability: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateCapability",
 }));
 export type UpdateClusterConfigError =
@@ -6910,6 +7028,8 @@ export const updateClusterConfig: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClusterConfig",
 }));
 export type UpdateClusterVersionError =
@@ -6956,6 +7076,8 @@ export const updateClusterVersion: API.OperationMethod<
     ServerException,
     ThrottlingException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateClusterVersion",
 }));
 export type UpdateEksAnywhereSubscriptionError =
@@ -6984,6 +7106,8 @@ export const updateEksAnywhereSubscription: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateEksAnywhereSubscription",
 }));
 export type UpdateNodegroupConfigError =
@@ -7018,6 +7142,8 @@ export const updateNodegroupConfig: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNodegroupConfig",
 }));
 export type UpdateNodegroupVersionError =
@@ -7073,6 +7199,8 @@ export const updateNodegroupVersion: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdateNodegroupVersion",
 }));
 export type UpdatePodIdentityAssociationError =
@@ -7116,5 +7244,7 @@ export const updatePodIdentityAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServerException,
   ],
+  protocol: AwsProtocol,
+  retry: Retry,
   operationName: "UpdatePodIdentityAssociation",
 }));
