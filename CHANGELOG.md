@@ -1,3 +1,23 @@
+## v0.29.1
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **planetscale**:
+  - Add keyspace resize request operations &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/376 [<samp>(bf5f2)</samp>](https://github.com/alchemy-run/distilled/commit/bf5f2b4ea)
+  - Insights operations + role with_replication (spec 2026-07-09) &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/378 [<samp>(ca25e)</samp>](https://github.com/alchemy-run/distilled/commit/ca25e25b2)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- Emit single /*@__PURE__*/ annotation for Rolldown 1.1+ compatibility &nbsp;-&nbsp; by **John Royal** and **Cursor** in https://github.com/alchemy-run/distilled/issues/374 [<samp>(cb991)</samp>](https://github.com/alchemy-run/distilled/commit/cb99156c9)
+- **cloudflare**:
+  - D1 value-union params + Vectorize raw x-ndjson body &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/379 [<samp>(20887)</samp>](https://github.com/alchemy-run/distilled/commit/208876c14)
+  - **ai-gateway**: Type leaked UNIQUE constraint 500 as RouteAlreadyExists &nbsp;-&nbsp; by **sam** and **Cursor** in https://github.com/alchemy-run/distilled/issues/375 [<samp>(69275)</samp>](https://github.com/alchemy-run/distilled/commit/6927568ec)
+  - **rulesets**: PutPhas redirect status_code is a number &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/380 [<samp>(14469)</samp>](https://github.com/alchemy-run/distilled/commit/144697985)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.29.0...HEAD)
+
+---
+
 ## v0.29.0
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
