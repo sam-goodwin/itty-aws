@@ -19,6 +19,12 @@
  *     CloudflareOpError, CloudflareOpContext
  *   > = API.make(() => ({ input, output, errors, protocol }));
  *
+ * The generic smithy→code machinery (naming, shape graph, emission idioms,
+ * pagination validation) lives in `@distilled.cloud/core/codegen`; this
+ * script supplies what is Cloudflare's own: the docs-pipeline scalar
+ * prelude, envelope/key-dictionary/union-case traits, the RFC-6902 patch
+ * pipeline, and route aliases.
+ *
  * Compile-time performance (ported from distilled PR #360): the emitted
  * interfaces / type aliases and `as any as S.Schema<T>` casts carry the real
  * types, `S` is the `any`-collapsing `@distilled.cloud/core/schema` wrapper so
@@ -45,8 +51,36 @@ import {
   isStaleTargetError,
   type PatchFile,
 } from "@distilled.cloud/core/json-patch";
+import {
+  camel,
+  isPrelude,
+  local,
+  lowerFirst,
+  oneLine,
+  q,
+  tsKey,
+  upperFirst,
+} from "@distilled.cloud/core/codegen/naming";
+import {
+  isForwardRef,
+  orderIndex,
+  reachableFrom,
+  shapeDeps,
+  topoOrder,
+} from "@distilled.cloud/core/codegen/graph";
+import {
+  barrel,
+  enumDecl,
+  errorClass,
+  interfaceDecl,
+  operationConst,
+  suspendConst,
+} from "@distilled.cloud/core/codegen/emit";
+import { validatePaginated } from "@distilled.cloud/core/codegen/pagination";
 
 const ENVELOPE_PAYLOAD_TRAIT = "com.cloudflare.protocols#envelopePayload";
+
+const PURE = "/*@__PURE__*/ ";
 
 const PRELUDE: Record<string, string> = {
   String: "S.String",
@@ -79,74 +113,11 @@ const TS_PRELUDE: Record<string, string> = {
   Unit: "{}",
 };
 
-const q = (s: string): string => JSON.stringify(s);
-const local = (id: string): string => id.split("#")[1] ?? id;
-const isPrelude = (id: string): boolean => id.startsWith("smithy.api#");
-
-const IDENT = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
-const tsKey = (s: string): string => (IDENT.test(s) ? s : q(s));
-
-/** snake_case / kebab-case wire name → camelCase TS-facing name. */
-const camel = (s: string): string =>
-  s.replace(/[_-]+([A-Za-z0-9])/g, (_, c: string) => c.toUpperCase());
-
-/** Reserved words that can't be `const` names — keep PascalCase for those. */
-const RESERVED = new Set([
-  "break",
-  "case",
-  "catch",
-  "class",
-  "const",
-  "continue",
-  "debugger",
-  "default",
-  "delete",
-  "do",
-  "else",
-  "enum",
-  "export",
-  "extends",
-  "false",
-  "finally",
-  "for",
-  "function",
-  "if",
-  "import",
-  "in",
-  "instanceof",
-  "let",
-  "new",
-  "null",
-  "package",
-  "return",
-  "static",
-  "super",
-  "switch",
-  "this",
-  "throw",
-  "true",
-  "try",
-  "typeof",
-  "var",
-  "void",
-  "while",
-  "with",
-  "yield",
-]);
-
-const lowerFirst = (s: string): string => {
-  const lowered = s.charAt(0).toLowerCase() + s.slice(1);
-  return RESERVED.has(lowered) ? s : lowered;
-};
-
 const NULLABLE_TRAIT = "com.cloudflare.protocols#nullable";
 const ERROR_MATCHERS_TRAIT = "com.cloudflare.protocols#errorMatchers";
 const FORM_DATA_FILE_TRAIT = "com.cloudflare.protocols#formDataFile";
 const KEY_DICTIONARY_TRAIT = "com.cloudflare.protocols#keyDictionary";
 const PAGINATED_TRAIT = "smithy.api#paginated";
-
-const oneLine = (s: string | undefined): string | undefined =>
-  s ? s.replace(/\s+/g, " ").replace(/\*\//g, "*\\/").trim() : undefined;
 
 // ============================================================================
 // Per-model code generation
@@ -206,49 +177,20 @@ const generateModel = (
 
   if (selected.length === 0) return { code: "", operations: 0 };
 
-  // 2. Collect every shape reachable from the selected operations' I/O.
-  const reachable = new Set<string>();
-  const deps = (id: string): string[] => {
-    const d = shapes[id];
-    if (!d) return [];
-    if (d.type === "structure" || d.type === "union")
-      return Object.values(d.members ?? {}).map((m: any) => m.target);
-    if (d.type === "list") return [d.member.target];
-    if (d.type === "map") return [d.value.target];
-    return [];
-  };
-  const visit = (id: string) => {
-    if (isPrelude(id) || reachable.has(id) || !shapes[id]) return;
-    reachable.add(id);
-    for (const dep of deps(id)) visit(dep);
-  };
-  for (const op of selected) {
-    visit(op.def.__input);
-    visit(op.def.__output);
-  }
+  // 2. Collect every shape reachable from the selected operations' I/O, then
+  //    order dependencies-first (cycles handled with S.suspend at refs).
+  const roots = selected.flatMap((op) => [op.def.__input, op.def.__output]);
+  const reachable = reachableFrom(shapes, roots, shapeDeps);
+  const order = topoOrder(shapes, reachable, shapeDeps);
+  const indexOf = orderIndex(order);
 
-  // 3. Topological order (deps first); cycles handled with S.suspend at refs.
-  const order: string[] = [];
-  const done = new Set<string>();
-  const stack = new Set<string>();
-  const walk = (id: string) => {
-    if (done.has(id) || stack.has(id) || isPrelude(id) || !shapes[id]) return;
-    stack.add(id);
-    for (const dep of deps(id)) walk(dep);
-    stack.delete(id);
-    done.add(id);
-    order.push(id);
-  };
-  for (const id of reachable) walk(id);
-  const indexOf = new Map<string, number>();
-  order.forEach((id, i) => indexOf.set(id, i));
-
-  // 4. Reference expression for a target from a shape at position `selfIdx`.
+  // 3. Reference expression for a target from a shape at position `selfIdx`.
   const ref = (target: string, selfIdx: number): string => {
     if (isPrelude(target)) return PRELUDE[local(target)] ?? "S.Unknown";
     const name = local(target);
-    const ti = indexOf.get(target);
-    if (ti !== undefined && ti > selfIdx) return `S.suspend(() => ${name})`;
+    if (isForwardRef(indexOf, target, selfIdx)) {
+      return `S.suspend(() => ${name})`;
+    }
     return name;
   };
 
@@ -387,12 +329,13 @@ const generateModel = (
     opIoShapes.add(op.def.__output);
   }
 
-  // 5. Validate pagination traits (added via patches). A paginated op must
+  // 4. Validate pagination traits (added via patches). A paginated op must
   //    actually carry its page/cursor token on the input and its items member
   //    on the output — otherwise `.pages()` would loop or yield nothing, so
   //    the op degrades to a plain operation.
   const paginatedOutputs = new Set<string>();
   const paginatedItemsRoot = new Map<string, string>();
+  const syntheticOutputs = new Set(["resultInfo"]);
   for (const op of selected) {
     const pg = op.def.traits?.[PAGINATED_TRAIT];
     if (!pg) continue;
@@ -402,12 +345,14 @@ const generateModel = (
     const outNames = new Set(
       memberInfos(shapes[op.def.__output] ?? {}).map((m) => m.tsName),
     );
-    const itemsRoot = String(pg.items ?? "result").split(".")[0];
-    const tokenOk =
-      pg.mode === "single" ||
-      (typeof pg.inputToken === "string" && inNames.has(pg.inputToken));
-    const itemsOk = outNames.has(itemsRoot) || itemsRoot === "resultInfo";
-    if (tokenOk && itemsOk) {
+    const { ok, itemsRoot } = validatePaginated({
+      trait: pg,
+      inputNames: inNames,
+      outputNames: outNames,
+      itemsFallback: "result",
+      syntheticOutputs,
+    });
+    if (ok) {
       op.def.__pagination = pg;
       paginatedOutputs.add(op.def.__output);
       paginatedItemsRoot.set(op.def.__output, itemsRoot);
@@ -442,18 +387,20 @@ const generateModel = (
             code: { target: "smithy.api#Integer" },
             message: { target: "smithy.api#String" },
           });
-    const fields = memberEntries
-      .map(
-        ([mn, m]: [string, any]) =>
-          `  ${tsKey(mn)}: ${PRELUDE[local(m.target)] ?? "S.Unknown"},`,
-      )
-      .join("\n");
-    const cls = `S.TaggedErrorClass<${name}>()(${q(name)}, {\n${fields}\n})`;
+    const fields = memberEntries.map(
+      ([mn, m]: [string, any]) =>
+        `  ${tsKey(mn)}: ${PRELUDE[local(m.target)] ?? "S.Unknown"},`,
+    );
     const matchers = d.traits?.[ERROR_MATCHERS_TRAIT];
     out.push(
-      matchers
-        ? `export class ${name} extends T.applyErrorMatchers(\n${cls},\n${JSON.stringify(matchers)},\n) {}\n`
-        : `export class ${name} extends ${cls} {}\n`,
+      errorClass({
+        name,
+        fields,
+        wrap: matchers
+          ? (cls) =>
+              `T.applyErrorMatchers(\n${cls},\n${JSON.stringify(matchers)},\n)`
+          : undefined,
+      }),
     );
   }
 
@@ -483,9 +430,13 @@ const generateModel = (
         const [, m] = memberEntriesAll[0]! as [string, any];
         out.push(`export type ${name} = ${tsRef(m.target)};`);
         out.push(
-          `export const ${name} = /*@__PURE__*/ S.suspend(() =>\n` +
-            `${ref(m.target, i)}.pipe(T.EnvelopePayloadRoot()),\n` +
-            `).annotate({ identifier: ${q(name)} }) as any as S.Schema<${name}>;\n`,
+          suspendConst({
+            name,
+            pure: PURE,
+            multiline: true,
+            annotateIdentifier: true,
+            expr: `${ref(m.target, i)}.pipe(T.EnvelopePayloadRoot())`,
+          }),
         );
         return;
       }
@@ -523,11 +474,7 @@ const generateModel = (
           `  "resultInfo": S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),`,
         );
       }
-      out.push(
-        fields.length
-          ? `export interface ${name} {\n${fields.join("\n")}\n}`
-          : `export interface ${name} {}`,
-      );
+      out.push(interfaceDecl(name, fields));
       const struct = members.length
         ? `S.Struct({\n${members.join("\n")}\n})`
         : `S.Struct({})`;
@@ -541,21 +488,25 @@ const generateModel = (
           ? `.pipe(T.KeyDictionary(KEY_DICTIONARY))`
           : "";
       out.push(
-        `export const ${name} = /*@__PURE__*/ S.suspend(() =>\n` +
-          `${struct}${tail}${dictPipe},\n` +
-          `).annotate({ identifier: ${q(name)} }) as any as S.Schema<${name}>;\n`,
+        suspendConst({
+          name,
+          pure: PURE,
+          multiline: true,
+          annotateIdentifier: true,
+          expr: `${struct}${tail}${dictPipe}`,
+        }),
       );
     } else if (d.type === "list") {
       out.push(`export type ${name} = ${tsRef(d.member.target)}[];`);
       out.push(
-        `export const ${name} = /*@__PURE__*/ S.Array(${ref(d.member.target, i)}) as any as S.Schema<${name}>;\n`,
+        `export const ${name} = ${PURE}S.Array(${ref(d.member.target, i)}) as any as S.Schema<${name}>;\n`,
       );
     } else if (d.type === "map") {
       out.push(
         `export type ${name} = { [key: string]: ${tsRef(d.value.target)} | undefined };`,
       );
       out.push(
-        `export const ${name} = /*@__PURE__*/ S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
+        `export const ${name} = ${PURE}S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
       );
     } else if (d.type === "union") {
       // Discriminated union of object cases. The TS type is the case union;
@@ -576,7 +527,7 @@ const generateModel = (
         `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
       );
       out.push(
-        `export const ${name} = /*@__PURE__*/ S.Unknown.pipe(T.UnionCases(${JSON.stringify(caseKeys)}));\n`,
+        `export const ${name} = ${PURE}S.Unknown.pipe(T.UnionCases(${JSON.stringify(caseKeys)}));\n`,
       );
     } else if (d.type === "enum") {
       // Open string union: literal members for autocomplete, `(string & {})`
@@ -585,15 +536,11 @@ const generateModel = (
       const values = Object.values(d.members ?? {})
         .map((m: any) => m.traits?.["smithy.api#enumValue"])
         .filter((v: unknown): v is string => typeof v === "string");
-      const union = values.length
-        ? `${values.map(q).join(" | ")} | (string & {})`
-        : "string";
-      out.push(`export type ${name} = ${union};`);
-      out.push(`export const ${name} = /*@__PURE__*/ S.String;\n`);
+      out.push(...enumDecl({ name, values, pure: PURE }));
     }
   });
 
-  // 6. Emit operations with explicit OperationMethod annotations so the
+  // 5. Emit operations with explicit OperationMethod annotations so the
   //    call signature comes from the emitted interfaces, not inference. The
   //    export is lowerFirst (`getNamespace`) while the shapes stay PascalCase.
   //    Paginated ops get the pagination-specific protocol + `.pages/.items`.
@@ -609,45 +556,57 @@ const generateModel = (
     if (doc) out.push(`/** ${doc} */`);
     const pg = op.def.__pagination;
     const errList = [...errNames, "CloudflareRateLimited", "CloudflareError"];
+    const typeAnnotation = (method: string) =>
+      `API.${method}<\n` +
+      `  ${local(op.def.__input)},\n` +
+      `  ${local(op.def.__output)},\n` +
+      `  ${opName}Error,\n` +
+      `  CloudflareOpContext\n` +
+      `>`;
     out.push(
       pg
-        ? `export const ${lowerFirst(opName)}: API.PaginatedOperationMethod<\n` +
-            `  ${local(op.def.__input)},\n` +
-            `  ${local(op.def.__output)},\n` +
-            `  ${opName}Error,\n` +
-            `  CloudflareOpContext\n` +
-            `> = /*@__PURE__*/ API.makePaginated(() => ({\n` +
-            `  input: ${local(op.def.__input)},\n` +
-            `  output: ${local(op.def.__output)},\n` +
-            `  errors: [${errList.join(", ")}],\n` +
-            `  protocol: CloudflarePaginatedProtocol,\n` +
-            `  retry: Retry.Retry,\n` +
-            `  pagination: ${JSON.stringify(pg)} as const,\n` +
-            `}), cloudflarePaginate);\n`
-        : `export const ${lowerFirst(opName)}: API.OperationMethod<\n` +
-            `  ${local(op.def.__input)},\n` +
-            `  ${local(op.def.__output)},\n` +
-            `  ${opName}Error,\n` +
-            `  CloudflareOpContext\n` +
-            `> = /*@__PURE__*/ API.make(() => ({\n` +
-            `  input: ${local(op.def.__input)},\n` +
-            `  output: ${local(op.def.__output)},\n` +
-            `  errors: [${errList.join(", ")}],\n` +
-            `  protocol: CloudflareProtocol,\n` +
-            `  retry: Retry.Retry,\n` +
-            `}));\n`,
+        ? operationConst({
+            exportName: lowerFirst(opName),
+            typeAnnotation: typeAnnotation("PaginatedOperationMethod"),
+            factory: "API.makePaginated",
+            pure: PURE,
+            extraArg: "cloudflarePaginate",
+            config:
+              `{\n` +
+              `  input: ${local(op.def.__input)},\n` +
+              `  output: ${local(op.def.__output)},\n` +
+              `  errors: [${errList.join(", ")}],\n` +
+              `  protocol: CloudflarePaginatedProtocol,\n` +
+              `  retry: Retry.Retry,\n` +
+              `  pagination: ${JSON.stringify(pg)} as const,\n` +
+              `}`,
+          })
+        : operationConst({
+            exportName: lowerFirst(opName),
+            typeAnnotation: typeAnnotation("OperationMethod"),
+            factory: "API.make",
+            pure: PURE,
+            config:
+              `{\n` +
+              `  input: ${local(op.def.__input)},\n` +
+              `  output: ${local(op.def.__output)},\n` +
+              `  errors: [${errList.join(", ")}],\n` +
+              `  protocol: CloudflareProtocol,\n` +
+              `  retry: Retry.Retry,\n` +
+              `}`,
+          }),
     );
   }
 
-  // 7. Route-alias exports: some routes exist under several distilled export
+  // 6. Route-alias exports: some routes exist under several distilled export
   //    names; re-export the canonical op (and its Request/Response/Error
   //    types) under each alias.
   const emittedOps = new Set(selected.map((op) => lowerFirst(local(op.id))));
   for (const { alias, target } of opAliases ?? []) {
     if (!emittedOps.has(target) || emittedOps.has(alias)) continue;
     emittedOps.add(alias);
-    const A = alias.charAt(0).toUpperCase() + alias.slice(1);
-    const T2 = target.charAt(0).toUpperCase() + target.slice(1);
+    const A = upperFirst(alias);
+    const T2 = upperFirst(target);
     out.push(
       `// Alias of ${target} (same route, alternate export name upstream).\n` +
         `export const ${alias} = ${target};\n` +
@@ -851,11 +810,13 @@ const command = Command.make(
       }
 
       // Barrel — namespace per resource to avoid op-name collisions.
-      const barrel =
-        `// AUTO-GENERATED by scripts/generate.ts. Do not edit.\n` +
-        written.map((r) => `export * as ${r} from "./${r}.ts";`).join("\n") +
-        "\n";
-      yield* fs.writeFileString(path.join(outDir, "index.ts"), barrel);
+      yield* fs.writeFileString(
+        path.join(outDir, "index.ts"),
+        barrel(
+          `// AUTO-GENERATED by scripts/generate.ts. Do not edit.\n`,
+          written.map((r) => ({ name: r, path: `./${r}.ts` })),
+        ),
+      );
 
       yield* Console.log(
         `\n✅ Generated ${totalOps} operations across ${written.length} resource modules` +
