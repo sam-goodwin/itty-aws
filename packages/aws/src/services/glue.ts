@@ -18445,6 +18445,17 @@ export class GlueRoleNotAssumable extends S.TaggedErrorClass<GlueRoleNotAssumabl
     message: { includes: "unable to assume" },
   }),
 ).pipe(C.withRetryableError) {}
+export class GlueS3TargetNotReady extends S.TaggedErrorClass<GlueS3TargetNotReady>()(
+  "GlueS3TargetNotReady",
+  {
+    Message: S.optional(S.String),
+    FromFederationSource: S.optional(S.Boolean),
+  },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "InvalidAccessKeyId" },
+  }),
+).pipe(C.withRetryableError) {}
 export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
   "IdempotentParameterMismatchException",
   { Message: S.optional(S.String) },
@@ -19384,6 +19395,7 @@ export type CreateCrawlerError =
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
   | GlueRoleNotAssumable
+  | GlueS3TargetNotReady
   | CommonErrors;
 /**
  * Creates a new crawler with specified targets, role, configuration, and optional schedule.
@@ -19404,6 +19416,7 @@ export const createCrawler: API.OperationMethod<
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
     GlueRoleNotAssumable,
+    GlueS3TargetNotReady,
   ],
   operationName: "CreateCrawler",
 }));
@@ -27221,6 +27234,7 @@ export type UpdateCrawlerError =
   | OperationTimeoutException
   | VersionMismatchException
   | GlueRoleNotAssumable
+  | GlueS3TargetNotReady
   | CommonErrors;
 /**
  * Updates a crawler. If a crawler is
@@ -27242,6 +27256,7 @@ export const updateCrawler: API.OperationMethod<
     OperationTimeoutException,
     VersionMismatchException,
     GlueRoleNotAssumable,
+    GlueS3TargetNotReady,
   ],
   operationName: "UpdateCrawler",
 }));

@@ -6,6 +6,11 @@
           "name": "GlueRoleNotAssumable",
           "from": "InvalidInputException",
           "message": { "includes": "unable to assume" }
+        },
+        {
+          "name": "GlueS3TargetNotReady",
+          "from": "InvalidInputException",
+          "message": { "includes": "InvalidAccessKeyId" }
         }
       ]
     },
@@ -15,6 +20,11 @@
           "name": "GlueRoleNotAssumable",
           "from": "InvalidInputException",
           "message": { "includes": "unable to assume" }
+        },
+        {
+          "name": "GlueS3TargetNotReady",
+          "from": "InvalidInputException",
+          "message": { "includes": "InvalidAccessKeyId" }
         }
       ]
     },
@@ -47,6 +57,7 @@
     }
   },
   "errorCategories": {
-    "GlueRoleNotAssumable": ["RetryableError"]
+    "GlueRoleNotAssumable": ["RetryableError"],
+    "GlueS3TargetNotReady": ["RetryableError"]
   }
 }
