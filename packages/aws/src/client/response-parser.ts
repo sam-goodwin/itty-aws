@@ -255,12 +255,13 @@ export const makeResponseParser = <A>(
             // the Retry-After header. Without coercion the decode fails and
             // the error degrades to a plain object, losing its error class
             // and retry/throttling categorization.
-            (data as Record<string, unknown>)[String(prop.name)] =
-              isNumberAST(prop.type)
-                ? Number(headerValue)
-                : isBooleanAST(prop.type)
-                  ? headerValue === "true"
-                  : headerValue;
+            (data as Record<string, unknown>)[String(prop.name)] = isNumberAST(
+              prop.type,
+            )
+              ? Number(headerValue)
+              : isBooleanAST(prop.type)
+                ? headerValue === "true"
+                : headerValue;
           }
         }
       }

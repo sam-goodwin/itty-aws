@@ -2581,11 +2581,7 @@ export const SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
   /*@__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
@@ -2627,11 +2623,7 @@ export const TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCer
   /*@__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
@@ -2678,9 +2670,7 @@ export const ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoca
   /*@__PURE__*/ ListCertificateRevocationListsResponse;
 
 export type ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists CertificateRevocationLists. */
 export const listProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.PaginatedOperationMethod<
@@ -2719,9 +2709,7 @@ export const GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocat
   /*@__PURE__*/ CertificateRevocationList;
 
 export type GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns a CertificateRevocationList. */
 export const getProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
@@ -2765,11 +2753,7 @@ export const PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoc
   /*@__PURE__*/ Operation;
 
 export type PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Update a CertificateRevocationList. */
 export const patchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
@@ -2809,9 +2793,7 @@ export const GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
   /*@__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<

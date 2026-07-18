@@ -4279,9 +4279,7 @@ export const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRespon
   /*@__PURE__*/ QueryDirectoryContentsResponse;
 
 export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns the contents of a given Workspace directory. */
 export const queryDirectoryContentsProjectsLocationsRepositoriesWorkspaces: API.PaginatedOperationMethod<

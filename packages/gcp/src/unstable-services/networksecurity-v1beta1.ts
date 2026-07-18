@@ -7027,9 +7027,7 @@ export const GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsR
   /*@__PURE__*/ WildfireVerdictChangeRequest;
 
 export type GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Get WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location. */
 export const getProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequests: API.OperationMethod<
@@ -7076,9 +7074,7 @@ export const ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequests
   /*@__PURE__*/ ListWildfireVerdictChangeRequestsResponse;
 
 export type ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in a project and location. */
 export const listProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequests: API.PaginatedOperationMethod<
@@ -7124,11 +7120,7 @@ export const CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeReques
   /*@__PURE__*/ WildfireVerdictChangeRequest;
 
 export type CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Create WildfireVerdictChangeRequest in a given Firewall Endpoint in a project and location. */
 export const createProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequests: API.OperationMethod<
@@ -9934,9 +9926,7 @@ export const ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeReq
   /*@__PURE__*/ ListWildfireVerdictChangeRequestsResponse;
 
 export type ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Lists WildfireVerdictChangeRequests in a given Firewall Endpoint in an organization and location. */
 export const listOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequests: API.PaginatedOperationMethod<
@@ -9982,11 +9972,7 @@ export const CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeR
   /*@__PURE__*/ WildfireVerdictChangeRequest;
 
 export type CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Create WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and location. */
 export const createOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequests: API.OperationMethod<
@@ -10021,9 +10007,7 @@ export const GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequ
   /*@__PURE__*/ WildfireVerdictChangeRequest;
 
 export type GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Get WildfireVerdictChangeRequest in a given Firewall Endpoint in an organization and location. */
 export const getOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequests: API.OperationMethod<

@@ -14269,11 +14269,7 @@ export const ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessi
   /*@__PURE__*/ GoogleCloudDialogflowCxV3DetectIntentResponse;
 
 export type ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 export const serverStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessions: API.OperationMethod<
   ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,

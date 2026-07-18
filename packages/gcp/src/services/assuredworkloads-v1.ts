@@ -1833,11 +1833,7 @@ export const BatchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolations
   /*@__PURE__*/ GoogleCloudAssuredworkloadsV1BatchAcknowledgeViolationsResponse;
 
 export type BatchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolationsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Acknowledges multiple existing violations. By acknowledging violations, users acknowledge the existence of compliance violations in their workload and decide to ignore them due to a valid business justification. Acknowledgement is a permanent operation and it cannot be reverted. This is a batch version of AcknowledgeViolation. */
 export const batchAcknowledgeViolationsOrganizationsLocationsWorkloadsViolations: API.OperationMethod<

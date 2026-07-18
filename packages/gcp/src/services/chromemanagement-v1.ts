@@ -5388,9 +5388,7 @@ export const QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsR
   /*@__PURE__*/ GoogleChromeManagementVersionsV1QueryContentTransfersBreakdownsResponse;
 
 export type QueryContentTransfersBreakdownsCustomersEnterpriseSecurityInsightsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Returns summaries of content transfers for a given metric and breakdown dimension. */
 export const queryContentTransfersBreakdownsCustomersEnterpriseSecurityInsights: API.PaginatedOperationMethod<

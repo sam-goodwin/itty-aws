@@ -402,9 +402,7 @@ export const GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_k
   /*@__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
 
 export type GetOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_knownError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. */
 export const getOpenid_configurationProjectsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<
@@ -477,9 +475,7 @@ export const GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsW
   /*@__PURE__*/ GoogleIdentityStsV1OpenIdProviderConfig;
 
 export type GetOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_knownError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. */
 export const getOpenid_configurationOrganizationsLocationsWorkloadIdentityPoolsWell_known: API.OperationMethod<

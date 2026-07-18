@@ -5100,9 +5100,7 @@ export const ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsR
   /*@__PURE__*/ ListCustomConnectorVersionsResponse;
 
 export type ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** List CustomConnectorVersions in a given project */
 export const listProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions: API.PaginatedOperationMethod<
@@ -5153,11 +5151,7 @@ export const CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersion
   /*@__PURE__*/ Operation;
 
 export type CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Creates a new CustomConnectorVersion in a given project and location. */
 export const createProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions: API.OperationMethod<
@@ -5192,9 +5186,7 @@ export const GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRe
   /*@__PURE__*/ CustomConnectorVersion;
 
 export type GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets details of a single CustomConnectorVersion. */
 export const getProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions: API.OperationMethod<
@@ -6020,9 +6012,7 @@ export const GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRe
   /*@__PURE__*/ Operation;
 
 export type GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Get entity type. */
 export const getEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadata: API.OperationMethod<
@@ -6069,9 +6059,7 @@ export const ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataResp
   /*@__PURE__*/ ListActionsResponse;
 
 export type ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** List actions. */
 export const listActionsProjectsLocationsConnectionsConnectionSchemaMetadata: API.PaginatedOperationMethod<
@@ -6112,9 +6100,7 @@ export const GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRespon
   /*@__PURE__*/ Operation;
 
 export type GetActionProjectsLocationsConnectionsConnectionSchemaMetadataError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Get action. */
 export const getActionProjectsLocationsConnectionsConnectionSchemaMetadata: API.OperationMethod<
@@ -6159,9 +6145,7 @@ export const ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadata
   /*@__PURE__*/ ListEntityTypesResponse;
 
 export type ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** List entity types. */
 export const listEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadata: API.PaginatedOperationMethod<
@@ -7661,11 +7645,7 @@ export const PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsResp
   /*@__PURE__*/ Operation;
 
 export type PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Publish request for the CustomConnectorVersion. Once approved, the CustomConnectorVersion will be published as PartnerConnector. */
 export const publishProjectsLocationsCustomConnectorsCustomConnectorVersions: API.OperationMethod<
@@ -7699,11 +7679,7 @@ export const DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRespo
   /*@__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deletes a single CustomConnectorVersion. */
 export const deleteProjectsLocationsCustomConnectorsCustomConnectorVersions: API.OperationMethod<
@@ -7742,11 +7718,7 @@ export const DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRe
   /*@__PURE__*/ Operation;
 
 export type DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Deprecates a single CustomConnectorVersion. */
 export const deprecateProjectsLocationsCustomConnectorsCustomConnectorVersions: API.OperationMethod<
@@ -7786,11 +7758,7 @@ export const WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRes
   /*@__PURE__*/ Operation;
 
 export type WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 /** Withdraw the publish request for the CustomConnectorVersion. This can only be used before the CustomConnectorVersion is published. */
 export const withdrawProjectsLocationsCustomConnectorsCustomConnectorVersions: API.OperationMethod<

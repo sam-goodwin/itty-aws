@@ -134,9 +134,7 @@ export const restJson1Protocol: Protocol = (
       prefixHeaderProps.push({ name, prefix: prefix.toLowerCase() });
     } else if (hasHttpPayload(prop)) {
       const isEventStream = isOutputEventStream(prop.type);
-      const eventSchema = isEventStream
-        ? getEventSchema(prop.type)
-        : undefined;
+      const eventSchema = isEventStream ? getEventSchema(prop.type) : undefined;
       outputPayloadProp = {
         name,
         isStreaming: isStreamingType(prop.type),
@@ -151,9 +149,7 @@ export const restJson1Protocol: Protocol = (
     } else if (isStreamingType(prop.type)) {
       // Streaming members (including event streams) implicitly become the payload
       const isEventStream = isOutputEventStream(prop.type);
-      const eventSchema = isEventStream
-        ? getEventSchema(prop.type)
-        : undefined;
+      const eventSchema = isEventStream ? getEventSchema(prop.type) : undefined;
       outputPayloadProp = {
         name,
         isStreaming: true,

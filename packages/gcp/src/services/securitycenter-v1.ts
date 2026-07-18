@@ -7557,9 +7557,7 @@ export const ListDescendantFoldersEventThreatDetectionSettingsCustomModulesRespo
   /*@__PURE__*/ ListDescendantEventThreatDetectionCustomModulesResponse;
 
 export type ListDescendantFoldersEventThreatDetectionSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listDescendantFoldersEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
   ListDescendantFoldersEventThreatDetectionSettingsCustomModulesRequest,
@@ -7700,9 +7698,7 @@ export const ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesRespon
   /*@__PURE__*/ ListEffectiveEventThreatDetectionCustomModulesResponse;
 
 export type ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listFoldersEventThreatDetectionSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
   ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesRequest,
@@ -8685,9 +8681,7 @@ export const ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRe
   /*@__PURE__*/ ListDescendantSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listDescendantFoldersSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
   ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -8836,9 +8830,7 @@ export const GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResp
   /*@__PURE__*/ GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule;
 
 export type GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const getFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.OperationMethod<
   GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
@@ -8874,9 +8866,7 @@ export const ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRes
   /*@__PURE__*/ ListEffectiveSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
   ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
@@ -9220,11 +9210,7 @@ export const ValidateCustomModuleOrganizationsEventThreatDetectionSettingsRespon
   /*@__PURE__*/ ValidateEventThreatDetectionCustomModuleResponse;
 
 export type ValidateCustomModuleOrganizationsEventThreatDetectionSettingsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 export const validateCustomModuleOrganizationsEventThreatDetectionSettings: API.OperationMethod<
   ValidateCustomModuleOrganizationsEventThreatDetectionSettingsRequest,
@@ -9255,9 +9241,7 @@ export const GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesR
   /*@__PURE__*/ EffectiveEventThreatDetectionCustomModule;
 
 export type GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const getOrganizationsEventThreatDetectionSettingsEffectiveCustomModules: API.OperationMethod<
   GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
@@ -9294,9 +9278,7 @@ export const ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModules
   /*@__PURE__*/ ListEffectiveEventThreatDetectionCustomModulesResponse;
 
 export type ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listOrganizationsEventThreatDetectionSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
   ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
@@ -9340,9 +9322,7 @@ export const ListDescendantOrganizationsEventThreatDetectionSettingsCustomModule
   /*@__PURE__*/ ListDescendantEventThreatDetectionCustomModulesResponse;
 
 export type ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listDescendantOrganizationsEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
   ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
@@ -11098,9 +11078,7 @@ export const ListOrganizationsSimulationsAttackExposureResultsValuedResourcesRes
   /*@__PURE__*/ ListValuedResourcesResponse;
 
 export type ListOrganizationsSimulationsAttackExposureResultsValuedResourcesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listOrganizationsSimulationsAttackExposureResultsValuedResources: API.PaginatedOperationMethod<
   ListOrganizationsSimulationsAttackExposureResultsValuedResourcesRequest,
@@ -11574,9 +11552,7 @@ export const GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModul
   /*@__PURE__*/ GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule;
 
 export type GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const getOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.OperationMethod<
   GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
@@ -11613,9 +11589,7 @@ export const ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModu
   /*@__PURE__*/ ListEffectiveSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
   ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
@@ -11656,9 +11630,7 @@ export const ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRespon
   /*@__PURE__*/ ListSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
   ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -11702,11 +11674,7 @@ export const CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResp
   /*@__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 export const createOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
   CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -11745,11 +11713,7 @@ export const PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRespo
   /*@__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 export const patchOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
   PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -11790,11 +11754,7 @@ export const SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRe
   /*@__PURE__*/ SimulateSecurityHealthAnalyticsCustomModuleResponse;
 
 export type SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 export const simulateOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
   SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -11834,9 +11794,7 @@ export const ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomMod
   /*@__PURE__*/ ListDescendantSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
   ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -11873,11 +11831,7 @@ export const DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResp
   /*@__PURE__*/ Empty;
 
 export type DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict;
+  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
 
 export const deleteOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
   DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -12978,9 +12932,7 @@ export const GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRes
   /*@__PURE__*/ GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule;
 
 export type GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const getProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.OperationMethod<
   GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
@@ -13017,9 +12969,7 @@ export const ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRe
   /*@__PURE__*/ ListEffectiveSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
   ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
@@ -13302,9 +13252,7 @@ export const ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesR
   /*@__PURE__*/ ListDescendantSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listDescendantProjectsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
   ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
@@ -13385,9 +13333,7 @@ export const GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesRespon
   /*@__PURE__*/ EffectiveEventThreatDetectionCustomModule;
 
 export type GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const getProjectsEventThreatDetectionSettingsEffectiveCustomModules: API.OperationMethod<
   GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
@@ -13422,9 +13368,7 @@ export const ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesRespo
   /*@__PURE__*/ ListEffectiveEventThreatDetectionCustomModulesResponse;
 
 export type ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listProjectsEventThreatDetectionSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
   ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
@@ -13467,9 +13411,7 @@ export const ListDescendantProjectsEventThreatDetectionSettingsCustomModulesResp
   /*@__PURE__*/ ListDescendantEventThreatDetectionCustomModulesResponse;
 
 export type ListDescendantProjectsEventThreatDetectionSettingsCustomModulesError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 export const listDescendantProjectsEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
   ListDescendantProjectsEventThreatDetectionSettingsCustomModulesRequest,

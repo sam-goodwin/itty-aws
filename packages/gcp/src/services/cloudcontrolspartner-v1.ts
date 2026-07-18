@@ -939,9 +939,7 @@ export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRespon
   /*@__PURE__*/ PartnerPermissions;
 
 export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Gets the partner permissions granted for a workload */
 export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
@@ -1021,9 +1019,7 @@ export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsR
   /*@__PURE__*/ ListAccessApprovalRequestsResponse;
 
 export type ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsError =
-  | DefaultErrors
-  | NotFound
-  | Forbidden;
+  DefaultErrors | NotFound | Forbidden;
 
 /** Deprecated: Only returns access approval requests directly associated with an assured workload folder. */
 export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests: API.PaginatedOperationMethod<
