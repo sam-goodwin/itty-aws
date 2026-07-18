@@ -4,6 +4,7 @@ import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
+import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
@@ -2618,6 +2619,54 @@ export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestEx
     datasyncErrorCode: S.optional(S.String),
   },
 ) {}
+export class LocationRoleNotAssumable extends S.TaggedErrorClass<LocationRoleNotAssumable>()(
+  "LocationRoleNotAssumable",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "Invalid IAM role" },
+  }),
+).pipe(C.withRetryableError) {}
+export class LocationAccessTestFailed extends S.TaggedErrorClass<LocationAccessTestFailed>()(
+  "LocationAccessTestFailed",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "location access test failed" },
+  }),
+).pipe(C.withRetryableError) {}
+export class LocationNotFound extends S.TaggedErrorClass<LocationNotFound>()(
+  "LocationNotFound",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^Location .* is not found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class TaskNotFound extends S.TaggedErrorClass<TaskNotFound>()(
+  "TaskNotFound",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^Task .* is not found" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type CancelTaskExecutionError =
@@ -2693,6 +2742,8 @@ export const createLocationAzureBlob: API.OperationMethod<
 export type CreateLocationEfsError =
   | InternalException
   | InvalidRequestException
+  | LocationRoleNotAssumable
+  | LocationAccessTestFailed
   | CommonErrors;
 /**
  * Creates a transfer *location* for an Amazon EFS file system.
@@ -2711,7 +2762,12 @@ export const createLocationEfs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationEfsRequest,
   output: CreateLocationEfsResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [
+    InternalException,
+    InvalidRequestException,
+    LocationRoleNotAssumable,
+    LocationAccessTestFailed,
+  ],
   operationName: "CreateLocationEfs",
 }));
 export type CreateLocationFsxLustreError =
@@ -2884,6 +2940,8 @@ export const createLocationObjectStorage: API.OperationMethod<
 export type CreateLocationS3Error =
   | InternalException
   | InvalidRequestException
+  | LocationRoleNotAssumable
+  | LocationAccessTestFailed
   | CommonErrors;
 /**
  * Creates a transfer *location* for an Amazon S3 bucket.
@@ -2908,7 +2966,12 @@ export const createLocationS3: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLocationS3Request,
   output: CreateLocationS3Response,
-  errors: [InternalException, InvalidRequestException],
+  errors: [
+    InternalException,
+    InvalidRequestException,
+    LocationRoleNotAssumable,
+    LocationAccessTestFailed,
+  ],
   operationName: "CreateLocationS3",
 }));
 export type CreateLocationSmbError =
@@ -2987,6 +3050,7 @@ export const deleteAgent: API.OperationMethod<
 export type DeleteLocationError =
   | InternalException
   | InvalidRequestException
+  | LocationNotFound
   | CommonErrors;
 /**
  * Deletes a transfer location resource from DataSync.
@@ -2999,12 +3063,13 @@ export const deleteLocation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocationRequest,
   output: DeleteLocationResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [InternalException, InvalidRequestException, LocationNotFound],
   operationName: "DeleteLocation",
 }));
 export type DeleteTaskError =
   | InternalException
   | InvalidRequestException
+  | TaskNotFound
   | CommonErrors;
 /**
  * Deletes a transfer task resource from DataSync.
@@ -3017,7 +3082,7 @@ export const deleteTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTaskRequest,
   output: DeleteTaskResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [InternalException, InvalidRequestException, TaskNotFound],
   operationName: "DeleteTask",
 }));
 export type DescribeAgentError =
@@ -3061,6 +3126,7 @@ export const describeLocationAzureBlob: API.OperationMethod<
 export type DescribeLocationEfsError =
   | InternalException
   | InvalidRequestException
+  | LocationNotFound
   | CommonErrors;
 /**
  * Provides details about how an DataSync transfer location for an Amazon EFS file system is configured.
@@ -3073,7 +3139,7 @@ export const describeLocationEfs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationEfsRequest,
   output: DescribeLocationEfsResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [InternalException, InvalidRequestException, LocationNotFound],
   operationName: "DescribeLocationEfs",
 }));
 export type DescribeLocationFsxLustreError =
@@ -3214,6 +3280,7 @@ export const describeLocationObjectStorage: API.OperationMethod<
 export type DescribeLocationS3Error =
   | InternalException
   | InvalidRequestException
+  | LocationNotFound
   | CommonErrors;
 /**
  * Provides details about how an DataSync transfer location for an S3 bucket
@@ -3227,7 +3294,7 @@ export const describeLocationS3: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLocationS3Request,
   output: DescribeLocationS3Response,
-  errors: [InternalException, InvalidRequestException],
+  errors: [InternalException, InvalidRequestException, LocationNotFound],
   operationName: "DescribeLocationS3",
 }));
 export type DescribeLocationSmbError =
@@ -3252,6 +3319,7 @@ export const describeLocationSmb: API.OperationMethod<
 export type DescribeTaskError =
   | InternalException
   | InvalidRequestException
+  | TaskNotFound
   | CommonErrors;
 /**
  * Provides information about a *task*, which defines where and how
@@ -3265,7 +3333,7 @@ export const describeTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTaskRequest,
   output: DescribeTaskResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [InternalException, InvalidRequestException, TaskNotFound],
   operationName: "DescribeTask",
 }));
 export type DescribeTaskExecutionError =
@@ -3505,6 +3573,7 @@ export const listTasks: API.OperationMethod<
 export type StartTaskExecutionError =
   | InternalException
   | InvalidRequestException
+  | LocationAccessTestFailed
   | CommonErrors;
 /**
  * Starts an DataSync transfer task. For each task, you can only run one task
@@ -3525,7 +3594,11 @@ export const startTaskExecution: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StartTaskExecutionRequest,
   output: StartTaskExecutionResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [
+    InternalException,
+    InvalidRequestException,
+    LocationAccessTestFailed,
+  ],
   operationName: "StartTaskExecution",
 }));
 export type TagResourceError =
@@ -3837,6 +3910,7 @@ export const updateLocationSmb: API.OperationMethod<
 export type UpdateTaskError =
   | InternalException
   | InvalidRequestException
+  | TaskNotFound
   | CommonErrors;
 /**
  * Updates the configuration of a *task*, which defines where and how
@@ -3850,7 +3924,7 @@ export const updateTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateTaskRequest,
   output: UpdateTaskResponse,
-  errors: [InternalException, InvalidRequestException],
+  errors: [InternalException, InvalidRequestException, TaskNotFound],
   operationName: "UpdateTask",
 }));
 export type UpdateTaskExecutionError =

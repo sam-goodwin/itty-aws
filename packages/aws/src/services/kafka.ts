@@ -5239,70 +5239,87 @@ export const UpdateTopicResponse = /*@__PURE__*/ S.suspend(() =>
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ClusterConnectivityException extends S.TaggedErrorClass<ClusterConnectivityException>()(
   "ClusterConnectivityException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ControllerMovedException extends S.TaggedErrorClass<ControllerMovedException>()(
   "ControllerMovedException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class GroupSubscribedToTopicException extends S.TaggedErrorClass<GroupSubscribedToTopicException>()(
   "GroupSubscribedToTopicException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class KafkaRequestException extends S.TaggedErrorClass<KafkaRequestException>()(
   "KafkaRequestException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class KafkaTimeoutException extends S.TaggedErrorClass<KafkaTimeoutException>()(
   "KafkaTimeoutException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class NotControllerException extends S.TaggedErrorClass<NotControllerException>()(
   "NotControllerException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ReassignmentInProgressException extends S.TaggedErrorClass<ReassignmentInProgressException>()(
   "ReassignmentInProgressException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class TopicExistsException extends S.TaggedErrorClass<TopicExistsException>()(
   "TopicExistsException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class UnknownTopicOrPartitionException extends S.TaggedErrorClass<UnknownTopicOrPartitionException>()(
   "UnknownTopicOrPartitionException",
   { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -6055,6 +6072,7 @@ export type GetBootstrapBrokersError =
   | ForbiddenException
   | InternalServerErrorException
   | UnauthorizedException
+  | NotFoundException
   | CommonErrors;
 /**
  * A list of brokers that a client application can use to bootstrap. This list doesn't necessarily include all of the brokers in the cluster. The following Python 3.6 example shows how you can use the Amazon Resource Name (ARN) of a cluster to get its bootstrap brokers. If you don't know the ARN of your cluster, you can use the `ListClusters` operation to get the ARNs of all the clusters in this account and Region.
@@ -6073,6 +6091,7 @@ export const getBootstrapBrokers: API.OperationMethod<
     ForbiddenException,
     InternalServerErrorException,
     UnauthorizedException,
+    NotFoundException,
   ],
   operationName: "GetBootstrapBrokers",
 }));
@@ -6693,6 +6712,7 @@ export type ListTopicsError =
   | InternalServerErrorException
   | ServiceUnavailableException
   | UnauthorizedException
+  | NotFoundException
   | CommonErrors;
 /**
  * List topics in a MSK cluster.
@@ -6726,6 +6746,7 @@ export const listTopics: API.OperationMethod<
     InternalServerErrorException,
     ServiceUnavailableException,
     UnauthorizedException,
+    NotFoundException,
   ],
   operationName: "ListTopics",
   pagination: {

@@ -1,0 +1,26 @@
+{
+  "operations": {
+    "tagResource": {
+      "syntheticErrors": [
+        {
+          "name": "InvalidResourceArn",
+          "from": "BadRequestException",
+          "message": {
+            "includes": "Invalid input resource arn"
+          }
+        }
+      ]
+    },
+    "untagResource": {
+      "syntheticErrors": [
+        {
+          "name": "InvalidResourceArn",
+          "from": "BadRequestException",
+          "message": {
+            "includes": "Invalid input resource arn"
+          }
+        }
+      ]
+    }
+  }
+}

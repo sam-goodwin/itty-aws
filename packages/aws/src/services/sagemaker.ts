@@ -38234,6 +38234,56 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.optional(S.String) },
 ) {}
+export class EndpointConfigNotFound extends S.TaggedErrorClass<EndpointConfigNotFound>()(
+  "EndpointConfigNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Could not find endpoint configuration" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class EndpointAlreadyExists extends S.TaggedErrorClass<EndpointAlreadyExists>()(
+  "EndpointAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Cannot create already existing endpoint" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class EndpointConfigAlreadyExists extends S.TaggedErrorClass<EndpointConfigAlreadyExists>()(
+  "EndpointConfigAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: {
+      includes: "Cannot create already existing endpoint configuration",
+    },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class ModelAlreadyExists extends S.TaggedErrorClass<ModelAlreadyExists>()(
+  "ModelAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Cannot create already existing model" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class EndpointNotFound extends S.TaggedErrorClass<EndpointNotFound>()(
+  "EndpointNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: 'Could not find endpoint "' },
+  }),
+).pipe(C.withNotFoundError) {}
+export class ModelNotFound extends S.TaggedErrorClass<ModelNotFound>()(
+  "ModelNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Could not find model" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type AddAssociationError =
@@ -38853,7 +38903,11 @@ export const createEdgePackagingJob: API.OperationMethod<
   errors: [ResourceLimitExceeded],
   operationName: "CreateEdgePackagingJob",
 }));
-export type CreateEndpointError = ResourceLimitExceeded | CommonErrors;
+export type CreateEndpointError =
+  | ResourceLimitExceeded
+  | EndpointConfigNotFound
+  | EndpointAlreadyExists
+  | CommonErrors;
 /**
  * Creates an endpoint using the endpoint configuration specified in the request. SageMaker uses the endpoint to provision resources and deploy models. You create the endpoint configuration with the CreateEndpointConfig API.
  *
@@ -38897,10 +38951,17 @@ export const createEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointInput,
   output: CreateEndpointOutput,
-  errors: [ResourceLimitExceeded],
+  errors: [
+    ResourceLimitExceeded,
+    EndpointConfigNotFound,
+    EndpointAlreadyExists,
+  ],
   operationName: "CreateEndpoint",
 }));
-export type CreateEndpointConfigError = ResourceLimitExceeded | CommonErrors;
+export type CreateEndpointConfigError =
+  | ResourceLimitExceeded
+  | EndpointConfigAlreadyExists
+  | CommonErrors;
 /**
  * Creates an endpoint configuration that SageMaker hosting services uses to deploy models. In the configuration, you identify one or more models, created using the `CreateModel` API, to deploy and the resources that you want SageMaker to provision. Then you call the CreateEndpoint API.
  *
@@ -38920,7 +38981,7 @@ export const createEndpointConfig: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateEndpointConfigInput,
   output: CreateEndpointConfigOutput,
-  errors: [ResourceLimitExceeded],
+  errors: [ResourceLimitExceeded, EndpointConfigAlreadyExists],
   operationName: "CreateEndpointConfig",
 }));
 export type CreateExperimentError = ResourceLimitExceeded | CommonErrors;
@@ -39304,7 +39365,10 @@ export const createMlflowTrackingServer: API.OperationMethod<
   errors: [ResourceLimitExceeded],
   operationName: "CreateMlflowTrackingServer",
 }));
-export type CreateModelError = ResourceLimitExceeded | CommonErrors;
+export type CreateModelError =
+  | ResourceLimitExceeded
+  | ModelAlreadyExists
+  | CommonErrors;
 /**
  * Creates a model in SageMaker. In the request, you name the model and describe a primary container. For the primary container, you specify the Docker image that contains inference code, artifacts (from prior training), and a custom environment map that the inference code uses when you deploy the model for predictions.
  *
@@ -39324,7 +39388,7 @@ export const createModel: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateModelInput,
   output: CreateModelOutput,
-  errors: [ResourceLimitExceeded],
+  errors: [ResourceLimitExceeded, ModelAlreadyExists],
   operationName: "CreateModel",
 }));
 export type CreateModelBiasJobDefinitionError =
@@ -40303,7 +40367,7 @@ export const deleteEdgeDeploymentStage: API.OperationMethod<
   errors: [ResourceInUse],
   operationName: "DeleteEdgeDeploymentStage",
 }));
-export type DeleteEndpointError = CommonErrors;
+export type DeleteEndpointError = EndpointNotFound | CommonErrors;
 /**
  * Deletes an endpoint. SageMaker frees up all of the resources that were deployed when the endpoint was created.
  *
@@ -40319,10 +40383,10 @@ export const deleteEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointInput,
   output: DeleteEndpointResponse,
-  errors: [],
+  errors: [EndpointNotFound],
   operationName: "DeleteEndpoint",
 }));
-export type DeleteEndpointConfigError = CommonErrors;
+export type DeleteEndpointConfigError = EndpointConfigNotFound | CommonErrors;
 /**
  * Deletes an endpoint configuration. The `DeleteEndpointConfig` API deletes only the specified configuration. It does not delete endpoints created using the configuration.
  *
@@ -40336,7 +40400,7 @@ export const deleteEndpointConfig: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEndpointConfigInput,
   output: DeleteEndpointConfigResponse,
-  errors: [],
+  errors: [EndpointConfigNotFound],
   operationName: "DeleteEndpointConfig",
 }));
 export type DeleteExperimentError = ResourceNotFound | CommonErrors;
@@ -40592,7 +40656,7 @@ export const deleteMlflowTrackingServer: API.OperationMethod<
   errors: [ResourceNotFound],
   operationName: "DeleteMlflowTrackingServer",
 }));
-export type DeleteModelError = CommonErrors;
+export type DeleteModelError = ModelNotFound | CommonErrors;
 /**
  * Deletes a model. The `DeleteModel` API deletes only the model entry that was created in SageMaker when you called the `CreateModel` API. It does not delete model artifacts, inference code, or the IAM role that you specified when creating the model.
  */
@@ -40604,7 +40668,7 @@ export const deleteModel: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteModelInput,
   output: DeleteModelResponse,
-  errors: [],
+  errors: [ModelNotFound],
   operationName: "DeleteModel",
 }));
 export type DeleteModelBiasJobDefinitionError = ResourceNotFound | CommonErrors;
@@ -41389,7 +41453,7 @@ export const describeEdgePackagingJob: API.OperationMethod<
   errors: [ResourceNotFound],
   operationName: "DescribeEdgePackagingJob",
 }));
-export type DescribeEndpointError = CommonErrors;
+export type DescribeEndpointError = EndpointNotFound | CommonErrors;
 /**
  * Returns the description of an endpoint.
  */
@@ -41401,10 +41465,10 @@ export const describeEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointInput,
   output: DescribeEndpointOutput,
-  errors: [],
+  errors: [EndpointNotFound],
   operationName: "DescribeEndpoint",
 }));
-export type DescribeEndpointConfigError = CommonErrors;
+export type DescribeEndpointConfigError = EndpointConfigNotFound | CommonErrors;
 /**
  * Returns the description of an endpoint configuration created using the `CreateEndpointConfig` API.
  */
@@ -41416,7 +41480,7 @@ export const describeEndpointConfig: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeEndpointConfigInput,
   output: DescribeEndpointConfigOutput,
-  errors: [],
+  errors: [EndpointConfigNotFound],
   operationName: "DescribeEndpointConfig",
 }));
 export type DescribeExperimentError = ResourceNotFound | CommonErrors;
@@ -41724,7 +41788,7 @@ export const describeMlflowTrackingServer: API.OperationMethod<
   errors: [ResourceNotFound],
   operationName: "DescribeMlflowTrackingServer",
 }));
-export type DescribeModelError = CommonErrors;
+export type DescribeModelError = ModelNotFound | CommonErrors;
 /**
  * Describes a model that you created using the `CreateModel` API.
  */
@@ -41736,7 +41800,7 @@ export const describeModel: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeModelInput,
   output: DescribeModelOutput,
-  errors: [],
+  errors: [ModelNotFound],
   operationName: "DescribeModel",
 }));
 export type DescribeModelBiasJobDefinitionError =
@@ -46522,7 +46586,11 @@ export const updateDomain: API.OperationMethod<
   errors: [ResourceInUse, ResourceLimitExceeded, ResourceNotFound],
   operationName: "UpdateDomain",
 }));
-export type UpdateEndpointError = ResourceLimitExceeded | CommonErrors;
+export type UpdateEndpointError =
+  | ResourceLimitExceeded
+  | EndpointConfigNotFound
+  | EndpointNotFound
+  | CommonErrors;
 /**
  * Deploys the `EndpointConfig` specified in the request to a new fleet of instances. SageMaker shifts endpoint traffic to the new instances with the updated endpoint configuration and then deletes the old instances using the previous `EndpointConfig` (there is no availability loss). For more information about how to control the update and traffic shifting process, see Update models in production.
  *
@@ -46540,7 +46608,7 @@ export const updateEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateEndpointInput,
   output: UpdateEndpointOutput,
-  errors: [ResourceLimitExceeded],
+  errors: [ResourceLimitExceeded, EndpointConfigNotFound, EndpointNotFound],
   operationName: "UpdateEndpoint",
 }));
 export type UpdateEndpointWeightsAndCapacitiesError =

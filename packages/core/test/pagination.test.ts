@@ -1,7 +1,13 @@
 import * as Effect from "effect/Effect";
 import * as Stream from "effect/Stream";
 import { describe, expect, test } from "vitest";
-import { paginatePageNumber, paginateWithDefaults } from "../src/pagination.ts";
+import {
+  isTerminalToken,
+  paginateCursor,
+  paginatePageNumber,
+  paginateToken,
+  paginateWithDefaults,
+} from "../src/pagination.ts";
 
 const trait = {
   mode: "page",
@@ -119,5 +125,121 @@ describe("paginatePageNumber", () => {
     );
 
     expect(seenOptions).toEqual([options, options]);
+  });
+});
+
+describe("isTerminalToken", () => {
+  test("treats undefined, null, and empty string as terminal", () => {
+    expect(isTerminalToken(undefined)).toBe(true);
+    expect(isTerminalToken(null)).toBe(true);
+    expect(isTerminalToken("")).toBe(true);
+  });
+
+  test("treats real tokens as live", () => {
+    expect(isTerminalToken("abc123")).toBe(false);
+    // object tokens (e.g. DynamoDB LastEvaluatedKey)
+    expect(isTerminalToken({ pk: "a" })).toBe(false);
+    expect(isTerminalToken(0)).toBe(false);
+  });
+});
+
+describe("paginateToken", () => {
+  const tokenTrait = {
+    mode: "token",
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+  } as const;
+
+  test("stops on an empty-string terminal token instead of looping", async () => {
+    // Several APIs (e.g. AWS SSM, CloudWatch Logs) mark the final page
+    // with `NextToken: ""` rather than omitting it. Treating "" as a live
+    // token re-requests the first page forever.
+    let calls = 0;
+    const op = (input: { NextToken?: string }) =>
+      Effect.sync(() => {
+        calls++;
+        if (calls > 10) throw new Error("infinite pagination loop");
+        return input.NextToken === "page2"
+          ? { Items: [{ id: "c" }], NextToken: "" }
+          : { Items: [{ id: "a" }, { id: "b" }], NextToken: "page2" };
+      });
+
+    const items = await Effect.runPromise(
+      Stream.runCollect(
+        paginateToken(op as never, {}, tokenTrait).pipe(
+          Stream.flatMap((p) =>
+            Stream.fromIterable((p as { Items: { id: string }[] }).Items),
+          ),
+        ),
+      ),
+    );
+
+    expect(Array.from(items).map((i) => i.id)).toEqual(["a", "b", "c"]);
+    expect(calls).toBe(2);
+  });
+
+  test("stops when the token is absent on the final page", async () => {
+    let calls = 0;
+    const op = (input: { NextToken?: string }) =>
+      Effect.sync(() => {
+        calls++;
+        if (calls > 10) throw new Error("infinite pagination loop");
+        return input.NextToken === "page2"
+          ? { Items: [{ id: "c" }] }
+          : { Items: [{ id: "a" }, { id: "b" }], NextToken: "page2" };
+      });
+
+    const items = await Effect.runPromise(
+      Stream.runCollect(
+        paginateToken(op as never, {}, tokenTrait).pipe(
+          Stream.flatMap((p) =>
+            Stream.fromIterable((p as { Items: { id: string }[] }).Items),
+          ),
+        ),
+      ),
+    );
+
+    expect(Array.from(items).map((i) => i.id)).toEqual(["a", "b", "c"]);
+    expect(calls).toBe(2);
+  });
+});
+
+describe("paginateCursor", () => {
+  const cursorTrait = {
+    mode: "cursor",
+    inputToken: "cursor",
+    outputToken: "pagination.cursor",
+    items: "data",
+  } as const;
+
+  test("stops on an empty-string cursor instead of looping", async () => {
+    // The request builder skips falsy cursors, so a live "" cursor would
+    // re-fetch the first page in an infinite loop.
+    let calls = 0;
+    const op = (input: { cursor?: string }) =>
+      Effect.sync(() => {
+        calls++;
+        if (calls > 10) throw new Error("infinite pagination loop");
+        return input.cursor === "cur2"
+          ? { data: [{ id: "c" }], pagination: { cursor: "" } }
+          : {
+              data: [{ id: "a" }, { id: "b" }],
+              pagination: { cursor: "cur2" },
+            };
+      });
+
+    const items = await Effect.runPromise(
+      Stream.runCollect(
+        paginateCursor(op as never, {}, cursorTrait).pipe(
+          Stream.flatMap((p) =>
+            Stream.fromIterable((p as { data: { id: string }[] }).data),
+          ),
+        ),
+      ),
+    );
+
+    expect(Array.from(items).map((i) => i.id)).toEqual(["a", "b", "c"]);
+    expect(calls).toBe(2);
   });
 });

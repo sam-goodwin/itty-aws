@@ -5728,6 +5728,7 @@ export type DisassociateWebACLError =
   | WAFInvalidOperationException
   | WAFInvalidParameterException
   | WAFNonexistentItemException
+  | WAFUnavailableEntityException
   | CommonErrors;
 /**
  * Disassociates the specified resource from its web ACL
@@ -5753,6 +5754,7 @@ export const disassociateWebACL: API.OperationMethod<
     WAFInvalidOperationException,
     WAFInvalidParameterException,
     WAFNonexistentItemException,
+    WAFUnavailableEntityException,
   ],
   operationName: "DisassociateWebACL",
 }));

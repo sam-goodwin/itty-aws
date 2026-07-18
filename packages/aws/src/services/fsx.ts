@@ -5657,21 +5657,33 @@ export class SourceBackupUnavailable extends S.TaggedErrorClass<SourceBackupUnav
   "SourceBackupUnavailable",
   { Message: S.optional(S.String), BackupId: S.optional(S.String) },
 ) {}
+export class SourceSnapshotNotFound extends S.TaggedErrorClass<SourceSnapshotNotFound>()(
+  "SourceSnapshotNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "SourceSnapshotARN provided is not a valid ARN" },
+  }),
+).pipe(C.withNotFoundError) {}
 export class AccessPointAlreadyOwnedByYou extends S.TaggedErrorClass<AccessPointAlreadyOwnedByYou>()(
   "AccessPointAlreadyOwnedByYou",
   { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InvalidAccessPoint extends S.TaggedErrorClass<InvalidAccessPoint>()(
   "InvalidAccessPoint",
   { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
   "InvalidRequest",
   { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TooManyAccessPoints extends S.TaggedErrorClass<TooManyAccessPoints>()(
   "TooManyAccessPoints",
   { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class VolumeNotFound extends S.TaggedErrorClass<VolumeNotFound>()(
   "VolumeNotFound",
@@ -5722,6 +5734,14 @@ export class MissingFileSystemConfiguration extends S.TaggedErrorClass<MissingFi
   "MissingFileSystemConfiguration",
   { Message: S.optional(S.String) },
 ) {}
+export class SnapshotVolumeNotFound extends S.TaggedErrorClass<SnapshotVolumeNotFound>()(
+  "SnapshotVolumeNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "volume was not found" },
+  }),
+).pipe(C.withNotFoundError) {}
 export class MissingVolumeConfiguration extends S.TaggedErrorClass<MissingVolumeConfiguration>()(
   "MissingVolumeConfiguration",
   { Message: S.optional(S.String) },
@@ -5770,6 +5790,22 @@ export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
   "ResourceNotFound",
   { ResourceARN: S.optional(S.String), Message: S.optional(S.String) },
 ) {}
+export class RestoreSnapshotNotFound extends S.TaggedErrorClass<RestoreSnapshotNotFound>()(
+  "RestoreSnapshotNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "snapshot cannot be found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class UpdateSnapshotNotFound extends S.TaggedErrorClass<UpdateSnapshotNotFound>()(
+  "UpdateSnapshotNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "the snapshot is not found" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type AssociateFileSystemAliasesError =
@@ -5908,6 +5944,7 @@ export type CopySnapshotAndUpdateVolumeError =
   | IncompatibleParameterError
   | InternalServerError
   | ServiceLimitExceeded
+  | SourceSnapshotNotFound
   | CommonErrors;
 /**
  * Updates an existing volume by using a snapshot from another Amazon FSx for OpenZFS file system. For more information, see on-demand data replication in the Amazon FSx for OpenZFS User
@@ -5926,6 +5963,7 @@ export const copySnapshotAndUpdateVolume: API.OperationMethod<
     IncompatibleParameterError,
     InternalServerError,
     ServiceLimitExceeded,
+    SourceSnapshotNotFound,
   ],
   operationName: "CopySnapshotAndUpdateVolume",
 }));
@@ -6350,6 +6388,7 @@ export type CreateSnapshotError =
   | InternalServerError
   | ServiceLimitExceeded
   | VolumeNotFound
+  | SnapshotVolumeNotFound
   | CommonErrors;
 /**
  * Creates a snapshot of an existing Amazon FSx for OpenZFS volume. With
@@ -6393,6 +6432,7 @@ export const createSnapshot: API.OperationMethod<
     InternalServerError,
     ServiceLimitExceeded,
     VolumeNotFound,
+    SnapshotVolumeNotFound,
   ],
   operationName: "CreateSnapshot",
 }));
@@ -7494,6 +7534,7 @@ export type RestoreVolumeFromSnapshotError =
   | BadRequest
   | InternalServerError
   | VolumeNotFound
+  | RestoreSnapshotNotFound
   | CommonErrors;
 /**
  * Returns an Amazon FSx for OpenZFS volume to the state saved by the specified
@@ -7507,7 +7548,12 @@ export const restoreVolumeFromSnapshot: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreVolumeFromSnapshotRequest,
   output: RestoreVolumeFromSnapshotResponse,
-  errors: [BadRequest, InternalServerError, VolumeNotFound],
+  errors: [
+    BadRequest,
+    InternalServerError,
+    VolumeNotFound,
+    RestoreSnapshotNotFound,
+  ],
   operationName: "RestoreVolumeFromSnapshot",
 }));
 export type StartMisconfiguredStateRecoveryError =
@@ -7815,6 +7861,7 @@ export type UpdateSnapshotError =
   | BadRequest
   | InternalServerError
   | SnapshotNotFound
+  | UpdateSnapshotNotFound
   | CommonErrors;
 /**
  * Updates the name of an Amazon FSx for OpenZFS snapshot.
@@ -7827,7 +7874,12 @@ export const updateSnapshot: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSnapshotRequest,
   output: UpdateSnapshotResponse,
-  errors: [BadRequest, InternalServerError, SnapshotNotFound],
+  errors: [
+    BadRequest,
+    InternalServerError,
+    SnapshotNotFound,
+    UpdateSnapshotNotFound,
+  ],
   operationName: "UpdateSnapshot",
 }));
 export type UpdateStorageVirtualMachineError =

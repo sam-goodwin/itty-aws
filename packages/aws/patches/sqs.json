@@ -54,9 +54,37 @@
       ]
     }
   },
+  "errors": {
+    "InvalidParameterValueException": {
+      "message": { "type": "string" }
+    }
+  },
   "structures": {
     "SendMessageBatchResult": {
       "members": {
+        "Successful": {
+          "optional": true
+        },
+        "Failed": {
+          "optional": true
+        }
+      }
+    },
+    "DeleteMessageBatchResult": {
+      "members": {
+        "Successful": {
+          "optional": true
+        },
+        "Failed": {
+          "optional": true
+        }
+      }
+    },
+    "ChangeMessageVisibilityBatchResult": {
+      "members": {
+        "Successful": {
+          "optional": true
+        },
         "Failed": {
           "optional": true
         }

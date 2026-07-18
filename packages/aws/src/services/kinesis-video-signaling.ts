@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as API from "../client/api.ts";
 import * as T from "../traits.ts";
@@ -6,6 +7,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "Kinesis Video Signaling",
   serviceShapeName: "AWSAcuitySignalingService",
@@ -126,14 +128,14 @@ export const Uris = /*@__PURE__*/ S.Array(S.String);
 export interface IceServer {
   Uris?: string[];
   Username?: string;
-  Password?: string;
+  Password?: string | redacted.Redacted<string>;
   Ttl?: number;
 }
 export const IceServer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Uris: S.optional(Uris),
     Username: S.optional(S.String),
-    Password: S.optional(S.String),
+    Password: S.optional(SensitiveString),
     Ttl: S.optional(S.Number),
   }),
 ).annotate({ identifier: "IceServer" }) as any as S.Schema<IceServer>;
@@ -185,26 +187,32 @@ export const SendAlexaOfferToMasterResponse =
 export class ClientLimitExceededException extends S.TaggedErrorClass<ClientLimitExceededException>()(
   "ClientLimitExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
   "InvalidArgumentException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidClientException extends S.TaggedErrorClass<InvalidClientException>()(
   "InvalidClientException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
   "NotAuthorizedException",
   { Message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class SessionExpiredException extends S.TaggedErrorClass<SessionExpiredException>()(
   "SessionExpiredException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

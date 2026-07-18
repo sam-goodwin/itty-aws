@@ -285,13 +285,13 @@ export const GetIdentityCenterAuthTokenRequest =
     identifier: "GetIdentityCenterAuthTokenRequest",
   }) as any as S.Schema<GetIdentityCenterAuthTokenRequest>;
 export interface GetIdentityCenterAuthTokenResponse {
-  token?: string;
+  token?: string | redacted.Redacted<string>;
   expirationTime?: Date;
 }
 export const GetIdentityCenterAuthTokenResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      token: S.optional(S.String),
+      token: S.optional(SensitiveString),
       expirationTime: S.optional(
         T.DateFromString.pipe(T.TimestampFormat("date-time")),
       ),
@@ -2499,53 +2499,62 @@ export const ListWorkgroupsResponse = /*@__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { code: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceName: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { code: S.optional(S.String), message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class DryRunException extends S.TaggedErrorClass<DryRunException>()(
   "DryRunException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidPaginationException extends S.TaggedErrorClass<InvalidPaginationException>()(
   "InvalidPaginationException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
   "InsufficientCapacityException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(400), T.Retryable()),
 ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class Ipv6CidrBlockNotFoundException extends S.TaggedErrorClass<Ipv6CidrBlockNotFoundException>()(
   "Ipv6CidrBlockNotFoundException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations

@@ -25,8 +25,12 @@
  * @returns The sanitized error code
  */
 export function sanitizeErrorCode(value: string): string {
+  // 0. Repeated `x-amzn-errortype` headers are joined with ", " by the
+  //    fetch Headers API — e.g. resource-explorer-2 throttling responds
+  //    with "ThrottlingException, TooManyRequestsException". Take the
+  //    first entry.
   // 1. Take before first ':'
-  let code = value.split(":")[0];
+  let code = value.split(",")[0].trim().split(":")[0];
   // 2. Take after first '#'
   const hashIndex = code.indexOf("#");
   if (hashIndex >= 0) {

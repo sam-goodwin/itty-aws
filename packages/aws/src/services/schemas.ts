@@ -1402,42 +1402,52 @@ export const UpdateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class GoneException extends S.TaggedErrorClass<GoneException>()(
   "GoneException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(410),
 ).pipe(C.withBadRequestError) {}
 export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
   "PreconditionFailedException",
   { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(412),
 ) {}
 
 //# Operations
@@ -2130,6 +2140,7 @@ export type PutCodeBindingError =
   | NotFoundException
   | TooManyRequestsException
   | UnauthorizedException
+  | ConflictException
   | CommonErrors;
 /**
  * Put code binding URI
@@ -2150,6 +2161,7 @@ export const putCodeBinding: API.OperationMethod<
     NotFoundException,
     TooManyRequestsException,
     UnauthorizedException,
+    ConflictException,
   ],
   operationName: "PutCodeBinding",
 }));

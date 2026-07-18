@@ -1713,6 +1713,14 @@ export class NoDataRetentionException extends S.TaggedErrorClass<NoDataRetention
   "NoDataRetentionException",
   { Message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class StreamNotActive extends S.TaggedErrorClass<StreamNotActive>()(
+  "StreamNotActive",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ResourceNotFoundException",
+    message: { includes: "not active" },
+  }),
+).pipe(C.withConflictError, C.withRetryableError) {}
 
 //# Operations
 export type CreateSignalingChannelError =
@@ -2438,6 +2446,7 @@ export type TagResourceError =
   | InvalidArgumentException
   | ResourceNotFoundException
   | TagsPerResourceExceededLimitException
+  | StreamNotActive
   | CommonErrors;
 /**
  * Adds one or more tags to a signaling channel. A *tag* is a
@@ -2461,6 +2470,7 @@ export const tagResource: API.OperationMethod<
     InvalidArgumentException,
     ResourceNotFoundException,
     TagsPerResourceExceededLimitException,
+    StreamNotActive,
   ],
   operationName: "TagResource",
 }));
@@ -2471,6 +2481,7 @@ export type TagStreamError =
   | NotAuthorizedException
   | ResourceNotFoundException
   | TagsPerResourceExceededLimitException
+  | StreamNotActive
   | CommonErrors;
 /**
  * Adds one or more tags to a stream. A *tag* is a key-value pair
@@ -2502,6 +2513,7 @@ export const tagStream: API.OperationMethod<
     NotAuthorizedException,
     ResourceNotFoundException,
     TagsPerResourceExceededLimitException,
+    StreamNotActive,
   ],
   operationName: "TagStream",
 }));
@@ -2510,6 +2522,7 @@ export type UntagResourceError =
   | ClientLimitExceededException
   | InvalidArgumentException
   | ResourceNotFoundException
+  | StreamNotActive
   | CommonErrors;
 /**
  * Removes one or more tags from a signaling channel. In the request, specify only a tag
@@ -2529,6 +2542,7 @@ export const untagResource: API.OperationMethod<
     ClientLimitExceededException,
     InvalidArgumentException,
     ResourceNotFoundException,
+    StreamNotActive,
   ],
   operationName: "UntagResource",
 }));
@@ -2538,6 +2552,7 @@ export type UntagStreamError =
   | InvalidResourceFormatException
   | NotAuthorizedException
   | ResourceNotFoundException
+  | StreamNotActive
   | CommonErrors;
 /**
  * Removes one or more tags from a stream. In the request, specify only a tag key or
@@ -2561,6 +2576,7 @@ export const untagStream: API.OperationMethod<
     InvalidResourceFormatException,
     NotAuthorizedException,
     ResourceNotFoundException,
+    StreamNotActive,
   ],
   operationName: "UntagStream",
 }));
@@ -2571,6 +2587,7 @@ export type UpdateDataRetentionError =
   | ResourceInUseException
   | ResourceNotFoundException
   | VersionMismatchException
+  | StreamNotActive
   | CommonErrors;
 /**
  * Increases or decreases the stream's data retention period by the value that you
@@ -2609,6 +2626,7 @@ export const updateDataRetention: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
     VersionMismatchException,
+    StreamNotActive,
   ],
   operationName: "UpdateDataRetention",
 }));
@@ -2719,6 +2737,7 @@ export type UpdateSignalingChannelError =
   | ResourceInUseException
   | ResourceNotFoundException
   | VersionMismatchException
+  | StreamNotActive
   | CommonErrors;
 /**
  * Updates the existing signaling channel. This is an asynchronous operation and takes
@@ -2744,6 +2763,7 @@ export const updateSignalingChannel: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
     VersionMismatchException,
+    StreamNotActive,
   ],
   operationName: "UpdateSignalingChannel",
 }));
@@ -2754,6 +2774,7 @@ export type UpdateStreamError =
   | ResourceInUseException
   | ResourceNotFoundException
   | VersionMismatchException
+  | StreamNotActive
   | CommonErrors;
 /**
  * Updates stream metadata, such as the device name and media type.
@@ -2784,6 +2805,7 @@ export const updateStream: API.OperationMethod<
     ResourceInUseException,
     ResourceNotFoundException,
     VersionMismatchException,
+    StreamNotActive,
   ],
   operationName: "UpdateStream",
 }));

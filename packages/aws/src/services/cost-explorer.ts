@@ -3955,21 +3955,41 @@ export class LimitExceededException extends S.TaggedErrorClass<LimitExceededExce
   "LimitExceededException",
   { Message: S.optional(S.String) },
 ) {}
+export class AnomalyMonitorAlreadyExists extends S.TaggedErrorClass<AnomalyMonitorAlreadyExists>()(
+  "AnomalyMonitorAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "same monitor name as an existing monitor" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class UnknownMonitorException extends S.TaggedErrorClass<UnknownMonitorException>()(
   "UnknownMonitorException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
+export class AnomalySubscriptionAlreadyExists extends S.TaggedErrorClass<AnomalySubscriptionAlreadyExists>()(
+  "AnomalySubscriptionAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "same subscription name as an existing subscription" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class UnknownSubscriptionException extends S.TaggedErrorClass<UnknownSubscriptionException>()(
   "UnknownSubscriptionException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
   "InvalidNextTokenException",
@@ -3982,6 +4002,7 @@ export class DataUnavailableException extends S.TaggedErrorClass<DataUnavailable
 export class AnalysisNotFoundException extends S.TaggedErrorClass<AnalysisNotFoundException>()(
   "AnalysisNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class BillExpirationException extends S.TaggedErrorClass<BillExpirationException>()(
   "BillExpirationException",
@@ -3995,6 +4016,14 @@ export class RequestChangedException extends S.TaggedErrorClass<RequestChangedEx
   "RequestChangedException",
   { Message: S.optional(S.String) },
 ) {}
+export class RightsizingRecommendationNotEnabled extends S.TaggedErrorClass<RightsizingRecommendationNotEnabled>()(
+  "RightsizingRecommendationNotEnabled",
+  {},
+  T.SyntheticError({
+    from: "AccessDeniedException",
+    message: { includes: "opt-in only feature" },
+  }),
+) {}
 export class UnresolvableUsageUnitException extends S.TaggedErrorClass<UnresolvableUsageUnitException>()(
   "UnresolvableUsageUnitException",
   { Message: S.optional(S.String) },
@@ -4002,18 +4031,24 @@ export class UnresolvableUsageUnitException extends S.TaggedErrorClass<Unresolva
 export class GenerationExistsException extends S.TaggedErrorClass<GenerationExistsException>()(
   "GenerationExistsException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class BackfillLimitExceededException extends S.TaggedErrorClass<BackfillLimitExceededException>()(
   "BackfillLimitExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
-export type CreateAnomalyMonitorError = LimitExceededException | CommonErrors;
+export type CreateAnomalyMonitorError =
+  | LimitExceededException
+  | AnomalyMonitorAlreadyExists
+  | CommonErrors;
 /**
  * Creates a new cost anomaly detection monitor with the requested type and monitor
  * specification.
@@ -4026,12 +4061,13 @@ export const createAnomalyMonitor: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAnomalyMonitorRequest,
   output: CreateAnomalyMonitorResponse,
-  errors: [LimitExceededException],
+  errors: [LimitExceededException, AnomalyMonitorAlreadyExists],
   operationName: "CreateAnomalyMonitor",
 }));
 export type CreateAnomalySubscriptionError =
   | LimitExceededException
   | UnknownMonitorException
+  | AnomalySubscriptionAlreadyExists
   | CommonErrors;
 /**
  * Adds an alert subscription to a cost anomaly detection monitor. You can use each
@@ -4046,7 +4082,11 @@ export const createAnomalySubscription: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAnomalySubscriptionRequest,
   output: CreateAnomalySubscriptionResponse,
-  errors: [LimitExceededException, UnknownMonitorException],
+  errors: [
+    LimitExceededException,
+    UnknownMonitorException,
+    AnomalySubscriptionAlreadyExists,
+  ],
   operationName: "CreateAnomalySubscription",
 }));
 export type CreateCostCategoryDefinitionError =
@@ -4739,6 +4779,7 @@ export const getReservationUtilization: API.OperationMethod<
 export type GetRightsizingRecommendationError =
   | InvalidNextTokenException
   | LimitExceededException
+  | RightsizingRecommendationNotEnabled
   | CommonErrors;
 /**
  * Creates recommendations that help you save cost by identifying idle and underutilized
@@ -4771,7 +4812,11 @@ export const getRightsizingRecommendation: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetRightsizingRecommendationRequest,
   output: GetRightsizingRecommendationResponse,
-  errors: [InvalidNextTokenException, LimitExceededException],
+  errors: [
+    InvalidNextTokenException,
+    LimitExceededException,
+    RightsizingRecommendationNotEnabled,
+  ],
   operationName: "GetRightsizingRecommendation",
   pagination: {
     inputToken: "NextPageToken",

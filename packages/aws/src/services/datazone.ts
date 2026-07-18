@@ -333,30 +333,29 @@ export interface AcceptSubscriptionRequestInput {
   assetScopes?: AcceptedAssetScope[];
   assetPermissions?: AssetPermission[];
 }
-export const AcceptSubscriptionRequestInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      decisionComment: S.optional(SensitiveString),
-      assetScopes: S.optional(AcceptedAssetScopes),
-      assetPermissions: S.optional(AssetPermissions),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/accept",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AcceptSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    decisionComment: S.optional(SensitiveString),
+    assetScopes: S.optional(AcceptedAssetScopes),
+    assetPermissions: S.optional(AssetPermissions),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/accept",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AcceptSubscriptionRequestInput",
-  }) as any as S.Schema<AcceptSubscriptionRequestInput>;
+  ),
+).annotate({
+  identifier: "AcceptSubscriptionRequestInput",
+}) as any as S.Schema<AcceptSubscriptionRequestInput>;
 export type SubscriptionRequestStatus =
   | "PENDING"
   | "ACCEPTED"
@@ -510,19 +509,19 @@ export interface AssetInDataProductListingItem {
   entityRevision?: string;
   entityType?: string;
 }
-export const AssetInDataProductListingItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entityId: S.optional(S.String),
-      entityRevision: S.optional(S.String),
-      entityType: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AssetInDataProductListingItem",
-  }) as any as S.Schema<AssetInDataProductListingItem>;
+export const AssetInDataProductListingItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entityId: S.optional(S.String),
+    entityRevision: S.optional(S.String),
+    entityType: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssetInDataProductListingItem",
+}) as any as S.Schema<AssetInDataProductListingItem>;
 export type AssetInDataProductListingItems = AssetInDataProductListingItem[];
-export const AssetInDataProductListingItems =
-  /*@__PURE__*/ S.Array(AssetInDataProductListingItem);
+export const AssetInDataProductListingItems = /*@__PURE__*/ S.Array(
+  AssetInDataProductListingItem,
+);
 export interface SubscribedProductListing {
   entityId?: string;
   entityRevision?: string;
@@ -606,27 +605,26 @@ export interface AcceptSubscriptionRequestOutput {
   existingSubscriptionId?: string;
   metadataForms?: FormOutput[];
 }
-export const AcceptSubscriptionRequestOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      domainId: S.String,
-      status: SubscriptionRequestStatus,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      requestReason: SensitiveString,
-      subscribedPrincipals: SubscribedPrincipals,
-      subscribedListings: SubscribedListings,
-      reviewerId: S.optional(S.String),
-      decisionComment: S.optional(SensitiveString),
-      existingSubscriptionId: S.optional(S.String),
-      metadataForms: S.optional(MetadataForms),
-    }),
-  ).annotate({
-    identifier: "AcceptSubscriptionRequestOutput",
-  }) as any as S.Schema<AcceptSubscriptionRequestOutput>;
+export const AcceptSubscriptionRequestOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    domainId: S.String,
+    status: SubscriptionRequestStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    requestReason: SensitiveString,
+    subscribedPrincipals: SubscribedPrincipals,
+    subscribedListings: SubscribedListings,
+    reviewerId: S.optional(S.String),
+    decisionComment: S.optional(SensitiveString),
+    existingSubscriptionId: S.optional(S.String),
+    metadataForms: S.optional(MetadataForms),
+  }),
+).annotate({
+  identifier: "AcceptSubscriptionRequestOutput",
+}) as any as S.Schema<AcceptSubscriptionRequestOutput>;
 export type DataZoneEntityType = "DOMAIN_UNIT" | (string & {});
 export const DataZoneEntityType = /*@__PURE__*/ S.String;
 export interface OwnerUserProperties {
@@ -758,16 +756,15 @@ export interface ProjectPolicyGrantPrincipal {
   projectIdentifier?: string;
   projectGrantFilter?: ProjectGrantFilter;
 }
-export const ProjectPolicyGrantPrincipal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      projectDesignation: ProjectDesignation,
-      projectIdentifier: S.optional(S.String),
-      projectGrantFilter: S.optional(ProjectGrantFilter),
-    }),
-  ).annotate({
-    identifier: "ProjectPolicyGrantPrincipal",
-  }) as any as S.Schema<ProjectPolicyGrantPrincipal>;
+export const ProjectPolicyGrantPrincipal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    projectDesignation: ProjectDesignation,
+    projectIdentifier: S.optional(S.String),
+    projectGrantFilter: S.optional(ProjectGrantFilter),
+  }),
+).annotate({
+  identifier: "ProjectPolicyGrantPrincipal",
+}) as any as S.Schema<ProjectPolicyGrantPrincipal>;
 export type DomainUnitDesignation = "OWNER" | (string & {});
 export const DomainUnitDesignation = /*@__PURE__*/ S.String;
 export interface AllDomainUnitsGrantFilter {}
@@ -787,16 +784,15 @@ export interface DomainUnitPolicyGrantPrincipal {
   domainUnitIdentifier?: string;
   domainUnitGrantFilter?: DomainUnitGrantFilter;
 }
-export const DomainUnitPolicyGrantPrincipal =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainUnitDesignation: DomainUnitDesignation,
-      domainUnitIdentifier: S.optional(S.String),
-      domainUnitGrantFilter: S.optional(DomainUnitGrantFilter),
-    }),
-  ).annotate({
-    identifier: "DomainUnitPolicyGrantPrincipal",
-  }) as any as S.Schema<DomainUnitPolicyGrantPrincipal>;
+export const DomainUnitPolicyGrantPrincipal = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainUnitDesignation: DomainUnitDesignation,
+    domainUnitIdentifier: S.optional(S.String),
+    domainUnitGrantFilter: S.optional(DomainUnitGrantFilter),
+  }),
+).annotate({
+  identifier: "DomainUnitPolicyGrantPrincipal",
+}) as any as S.Schema<DomainUnitPolicyGrantPrincipal>;
 export type PolicyGrantPrincipal =
   | {
       user: UserPolicyGrantPrincipal;
@@ -831,12 +827,11 @@ export const PolicyGrantPrincipal = /*@__PURE__*/ S.Union([
 export interface CreateDomainUnitPolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
-export const CreateDomainUnitPolicyGrantDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "CreateDomainUnitPolicyGrantDetail",
-  }) as any as S.Schema<CreateDomainUnitPolicyGrantDetail>;
+export const CreateDomainUnitPolicyGrantDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "CreateDomainUnitPolicyGrantDetail",
+}) as any as S.Schema<CreateDomainUnitPolicyGrantDetail>;
 export interface OverrideDomainUnitOwnersPolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
@@ -849,57 +844,51 @@ export const OverrideDomainUnitOwnersPolicyGrantDetail =
 export interface AddToProjectMemberPoolPolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
-export const AddToProjectMemberPoolPolicyGrantDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "AddToProjectMemberPoolPolicyGrantDetail",
-  }) as any as S.Schema<AddToProjectMemberPoolPolicyGrantDetail>;
+export const AddToProjectMemberPoolPolicyGrantDetail = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "AddToProjectMemberPoolPolicyGrantDetail",
+}) as any as S.Schema<AddToProjectMemberPoolPolicyGrantDetail>;
 export interface OverrideProjectOwnersPolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
-export const OverrideProjectOwnersPolicyGrantDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "OverrideProjectOwnersPolicyGrantDetail",
-  }) as any as S.Schema<OverrideProjectOwnersPolicyGrantDetail>;
+export const OverrideProjectOwnersPolicyGrantDetail = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "OverrideProjectOwnersPolicyGrantDetail",
+}) as any as S.Schema<OverrideProjectOwnersPolicyGrantDetail>;
 export interface CreateGlossaryPolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
-export const CreateGlossaryPolicyGrantDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "CreateGlossaryPolicyGrantDetail",
-  }) as any as S.Schema<CreateGlossaryPolicyGrantDetail>;
+export const CreateGlossaryPolicyGrantDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "CreateGlossaryPolicyGrantDetail",
+}) as any as S.Schema<CreateGlossaryPolicyGrantDetail>;
 export interface CreateFormTypePolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
-export const CreateFormTypePolicyGrantDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "CreateFormTypePolicyGrantDetail",
-  }) as any as S.Schema<CreateFormTypePolicyGrantDetail>;
+export const CreateFormTypePolicyGrantDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "CreateFormTypePolicyGrantDetail",
+}) as any as S.Schema<CreateFormTypePolicyGrantDetail>;
 export interface CreateAssetTypePolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
-export const CreateAssetTypePolicyGrantDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "CreateAssetTypePolicyGrantDetail",
-  }) as any as S.Schema<CreateAssetTypePolicyGrantDetail>;
+export const CreateAssetTypePolicyGrantDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "CreateAssetTypePolicyGrantDetail",
+}) as any as S.Schema<CreateAssetTypePolicyGrantDetail>;
 export interface CreateProjectPolicyGrantDetail {
   includeChildDomainUnits?: boolean;
 }
-export const CreateProjectPolicyGrantDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "CreateProjectPolicyGrantDetail",
-  }) as any as S.Schema<CreateProjectPolicyGrantDetail>;
+export const CreateProjectPolicyGrantDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ includeChildDomainUnits: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "CreateProjectPolicyGrantDetail",
+}) as any as S.Schema<CreateProjectPolicyGrantDetail>;
 export interface CreateEnvironmentProfilePolicyGrantDetail {
   domainUnitId?: string;
 }
@@ -931,12 +920,11 @@ export const CreateProjectFromProjectProfilePolicyGrantDetail =
 export interface UseAssetTypePolicyGrantDetail {
   domainUnitId?: string;
 }
-export const UseAssetTypePolicyGrantDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ domainUnitId: S.optional(S.String) }),
-  ).annotate({
-    identifier: "UseAssetTypePolicyGrantDetail",
-  }) as any as S.Schema<UseAssetTypePolicyGrantDetail>;
+export const UseAssetTypePolicyGrantDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ domainUnitId: S.optional(S.String) }),
+).annotate({
+  identifier: "UseAssetTypePolicyGrantDetail",
+}) as any as S.Schema<UseAssetTypePolicyGrantDetail>;
 export type PolicyGrantDetail =
   | {
       createDomainUnit: CreateDomainUnitPolicyGrantDetail;
@@ -1232,35 +1220,33 @@ export interface AssociateEnvironmentRoleInput {
   environmentIdentifier: string;
   environmentRoleArn: string;
 }
-export const AssociateEnvironmentRoleInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      environmentRoleArn: S.String.pipe(T.HttpLabel("environmentRoleArn")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateEnvironmentRoleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    environmentRoleArn: S.String.pipe(T.HttpLabel("environmentRoleArn")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssociateEnvironmentRoleInput",
-  }) as any as S.Schema<AssociateEnvironmentRoleInput>;
+  ),
+).annotate({
+  identifier: "AssociateEnvironmentRoleInput",
+}) as any as S.Schema<AssociateEnvironmentRoleInput>;
 export interface AssociateEnvironmentRoleOutput {}
-export const AssociateEnvironmentRoleOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssociateEnvironmentRoleOutput",
-  }) as any as S.Schema<AssociateEnvironmentRoleOutput>;
+export const AssociateEnvironmentRoleOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AssociateEnvironmentRoleOutput",
+}) as any as S.Schema<AssociateEnvironmentRoleOutput>;
 export type GovernedEntityType = "ASSET" | (string & {});
 export const GovernedEntityType = /*@__PURE__*/ S.String;
 export type GovernedGlossaryTerms = string[];
@@ -1271,34 +1257,34 @@ export interface AssociateGovernedTermsInput {
   entityType: GovernedEntityType;
   governedGlossaryTerms: string[];
 }
-export const AssociateGovernedTermsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-      entityType: GovernedEntityType.pipe(T.HttpLabel("entityType")),
-      governedGlossaryTerms: GovernedGlossaryTerms,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/associate-governed-terms",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateGovernedTermsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+    entityType: GovernedEntityType.pipe(T.HttpLabel("entityType")),
+    governedGlossaryTerms: GovernedGlossaryTerms,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/associate-governed-terms",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssociateGovernedTermsInput",
-  }) as any as S.Schema<AssociateGovernedTermsInput>;
+  ),
+).annotate({
+  identifier: "AssociateGovernedTermsInput",
+}) as any as S.Schema<AssociateGovernedTermsInput>;
 export interface AssociateGovernedTermsOutput {}
-export const AssociateGovernedTermsOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssociateGovernedTermsOutput",
-  }) as any as S.Schema<AssociateGovernedTermsOutput>;
+export const AssociateGovernedTermsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "AssociateGovernedTermsOutput",
+}) as any as S.Schema<AssociateGovernedTermsOutput>;
 export type AttributeEntityType = "ASSET" | "LISTING" | (string & {});
 export const AttributeEntityType = /*@__PURE__*/ S.String;
 export type AttributesList = string[];
@@ -1310,32 +1296,31 @@ export interface BatchGetAttributesMetadataInput {
   entityRevision?: string;
   attributeIdentifiers: string[];
 }
-export const BatchGetAttributesMetadataInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      entityType: AttributeEntityType.pipe(T.HttpLabel("entityType")),
-      entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-      entityRevision: S.optional(S.String).pipe(T.HttpQuery("entityRevision")),
-      attributeIdentifiers: AttributesList.pipe(
-        T.HttpQuery("attributeIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/attributes-metadata",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetAttributesMetadataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    entityType: AttributeEntityType.pipe(T.HttpLabel("entityType")),
+    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+    entityRevision: S.optional(S.String).pipe(T.HttpQuery("entityRevision")),
+    attributeIdentifiers: AttributesList.pipe(
+      T.HttpQuery("attributeIdentifier"),
     ),
-  ).annotate({
-    identifier: "BatchGetAttributesMetadataInput",
-  }) as any as S.Schema<BatchGetAttributesMetadataInput>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/attributes-metadata",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "BatchGetAttributesMetadataInput",
+}) as any as S.Schema<BatchGetAttributesMetadataInput>;
 export type FormOutputList = FormOutput[];
 export const FormOutputList = /*@__PURE__*/ S.Array(FormOutput);
 export interface BatchGetAttributeOutput {
@@ -1372,15 +1357,14 @@ export interface BatchGetAttributesMetadataOutput {
   attributes?: BatchGetAttributeOutput[];
   errors: AttributeError[];
 }
-export const BatchGetAttributesMetadataOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attributes: S.optional(BatchGetAttributeItems),
-      errors: AttributesErrors,
-    }),
-  ).annotate({
-    identifier: "BatchGetAttributesMetadataOutput",
-  }) as any as S.Schema<BatchGetAttributesMetadataOutput>;
+export const BatchGetAttributesMetadataOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attributes: S.optional(BatchGetAttributeItems),
+    errors: AttributesErrors,
+  }),
+).annotate({
+  identifier: "BatchGetAttributesMetadataOutput",
+}) as any as S.Schema<BatchGetAttributesMetadataOutput>;
 export interface FormInput {
   formName: string;
   typeIdentifier?: string;
@@ -1413,30 +1397,29 @@ export interface BatchPutAttributesMetadataInput {
   clientToken?: string;
   attributes: AttributeInput[];
 }
-export const BatchPutAttributesMetadataInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      entityType: AttributeEntityType.pipe(T.HttpLabel("entityType")),
-      entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      attributes: Attributes,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/attributes-metadata",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchPutAttributesMetadataInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    entityType: AttributeEntityType.pipe(T.HttpLabel("entityType")),
+    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    attributes: Attributes,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/attributes-metadata",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchPutAttributesMetadataInput",
-  }) as any as S.Schema<BatchPutAttributesMetadataInput>;
+  ),
+).annotate({
+  identifier: "BatchPutAttributesMetadataInput",
+}) as any as S.Schema<BatchPutAttributesMetadataInput>;
 export interface BatchPutAttributeOutput {
   attributeIdentifier: string;
 }
@@ -1453,15 +1436,14 @@ export interface BatchPutAttributesMetadataOutput {
   errors?: AttributeError[];
   attributes?: BatchPutAttributeOutput[];
 }
-export const BatchPutAttributesMetadataOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      errors: S.optional(AttributesErrors),
-      attributes: S.optional(BatchPutAttributeItems),
-    }),
-  ).annotate({
-    identifier: "BatchPutAttributesMetadataOutput",
-  }) as any as S.Schema<BatchPutAttributesMetadataOutput>;
+export const BatchPutAttributesMetadataOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    errors: S.optional(AttributesErrors),
+    attributes: S.optional(BatchPutAttributeItems),
+  }),
+).annotate({
+  identifier: "BatchPutAttributesMetadataOutput",
+}) as any as S.Schema<BatchPutAttributesMetadataOutput>;
 export interface CancelSubscriptionInput {
   domainIdentifier: string;
   identifier: string;
@@ -1673,22 +1655,20 @@ export interface GreaterThanOrEqualToExpression {
   columnName: string;
   value: string;
 }
-export const GreaterThanOrEqualToExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ columnName: S.String, value: S.String }),
-  ).annotate({
-    identifier: "GreaterThanOrEqualToExpression",
-  }) as any as S.Schema<GreaterThanOrEqualToExpression>;
+export const GreaterThanOrEqualToExpression = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ columnName: S.String, value: S.String }),
+).annotate({
+  identifier: "GreaterThanOrEqualToExpression",
+}) as any as S.Schema<GreaterThanOrEqualToExpression>;
 export interface LessThanOrEqualToExpression {
   columnName: string;
   value: string;
 }
-export const LessThanOrEqualToExpression =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ columnName: S.String, value: S.String }),
-  ).annotate({
-    identifier: "LessThanOrEqualToExpression",
-  }) as any as S.Schema<LessThanOrEqualToExpression>;
+export const LessThanOrEqualToExpression = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ columnName: S.String, value: S.String }),
+).annotate({
+  identifier: "LessThanOrEqualToExpression",
+}) as any as S.Schema<LessThanOrEqualToExpression>;
 export interface IsNullExpression {
   columnName: string;
 }
@@ -2077,17 +2057,16 @@ export interface PhysicalConnectionRequirements {
   securityGroupIdList?: string[];
   availabilityZone?: string;
 }
-export const PhysicalConnectionRequirements =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subnetId: S.optional(S.String),
-      subnetIdList: S.optional(SubnetIdList),
-      securityGroupIdList: S.optional(SecurityGroupIdList),
-      availabilityZone: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PhysicalConnectionRequirements",
-  }) as any as S.Schema<PhysicalConnectionRequirements>;
+export const PhysicalConnectionRequirements = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subnetId: S.optional(S.String),
+    subnetIdList: S.optional(SubnetIdList),
+    securityGroupIdList: S.optional(SecurityGroupIdList),
+    availabilityZone: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PhysicalConnectionRequirements",
+}) as any as S.Schema<PhysicalConnectionRequirements>;
 export type GlueConnectionType =
   | "SNOWFLAKE"
   | "BIGQUERY"
@@ -2138,15 +2117,14 @@ export interface AuthorizationCodeProperties {
   authorizationCode?: string;
   redirectUri?: string;
 }
-export const AuthorizationCodeProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authorizationCode: S.optional(S.String),
-      redirectUri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizationCodeProperties",
-  }) as any as S.Schema<AuthorizationCodeProperties>;
+export const AuthorizationCodeProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authorizationCode: S.optional(S.String),
+    redirectUri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthorizationCodeProperties",
+}) as any as S.Schema<AuthorizationCodeProperties>;
 export interface GlueOAuth2Credentials {
   userManagedClientApplicationClientSecret?: string;
   accessToken?: string;
@@ -2187,15 +2165,11 @@ export interface BasicAuthenticationCredentials {
   userName?: string;
   password?: string;
 }
-export const BasicAuthenticationCredentials =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      userName: S.optional(S.String),
-      password: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BasicAuthenticationCredentials",
-  }) as any as S.Schema<BasicAuthenticationCredentials>;
+export const BasicAuthenticationCredentials = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ userName: S.optional(S.String), password: S.optional(S.String) }),
+).annotate({
+  identifier: "BasicAuthenticationCredentials",
+}) as any as S.Schema<BasicAuthenticationCredentials>;
 export type CredentialMap = { [key: string]: string | undefined };
 export const CredentialMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2209,21 +2183,18 @@ export interface AuthenticationConfigurationInput {
   basicAuthenticationCredentials?: BasicAuthenticationCredentials;
   customAuthenticationCredentials?: { [key: string]: string | undefined };
 }
-export const AuthenticationConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authenticationType: S.optional(AuthenticationType),
-      oAuth2Properties: S.optional(OAuth2Properties),
-      secretArn: S.optional(S.String),
-      kmsKeyArn: S.optional(S.String),
-      basicAuthenticationCredentials: S.optional(
-        BasicAuthenticationCredentials,
-      ),
-      customAuthenticationCredentials: S.optional(CredentialMap),
-    }),
-  ).annotate({
-    identifier: "AuthenticationConfigurationInput",
-  }) as any as S.Schema<AuthenticationConfigurationInput>;
+export const AuthenticationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authenticationType: S.optional(AuthenticationType),
+    oAuth2Properties: S.optional(OAuth2Properties),
+    secretArn: S.optional(S.String),
+    kmsKeyArn: S.optional(S.String),
+    basicAuthenticationCredentials: S.optional(BasicAuthenticationCredentials),
+    customAuthenticationCredentials: S.optional(CredentialMap),
+  }),
+).annotate({
+  identifier: "AuthenticationConfigurationInput",
+}) as any as S.Schema<AuthenticationConfigurationInput>;
 export interface GlueConnectionInput {
   connectionProperties?: { [key: string]: string | undefined };
   physicalConnectionRequirements?: PhysicalConnectionRequirements;
@@ -2315,15 +2286,15 @@ export interface RedshiftLineageSyncConfigurationInput {
   enabled?: boolean;
   schedule?: LineageSyncSchedule;
 }
-export const RedshiftLineageSyncConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const RedshiftLineageSyncConfigurationInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       enabled: S.optional(S.Boolean),
       schedule: S.optional(LineageSyncSchedule),
     }),
-  ).annotate({
-    identifier: "RedshiftLineageSyncConfigurationInput",
-  }) as any as S.Schema<RedshiftLineageSyncConfigurationInput>;
+).annotate({
+  identifier: "RedshiftLineageSyncConfigurationInput",
+}) as any as S.Schema<RedshiftLineageSyncConfigurationInput>;
 export interface RedshiftPropertiesInput {
   storage?: RedshiftStorageProperties;
   databaseName?: string;
@@ -2441,17 +2412,17 @@ export const MlflowPropertiesInput = /*@__PURE__*/ S.suspend(() =>
 export interface WorkflowsMwaaPropertiesInput {
   mwaaEnvironmentName?: string;
 }
-export const WorkflowsMwaaPropertiesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ mwaaEnvironmentName: S.optional(S.String) }),
-  ).annotate({
-    identifier: "WorkflowsMwaaPropertiesInput",
-  }) as any as S.Schema<WorkflowsMwaaPropertiesInput>;
+export const WorkflowsMwaaPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ mwaaEnvironmentName: S.optional(S.String) }),
+).annotate({
+  identifier: "WorkflowsMwaaPropertiesInput",
+}) as any as S.Schema<WorkflowsMwaaPropertiesInput>;
 export interface WorkflowsServerlessPropertiesInput {}
-export const WorkflowsServerlessPropertiesInput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "WorkflowsServerlessPropertiesInput",
-  }) as any as S.Schema<WorkflowsServerlessPropertiesInput>;
+export const WorkflowsServerlessPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "WorkflowsServerlessPropertiesInput",
+}) as any as S.Schema<WorkflowsServerlessPropertiesInput>;
 export interface LakehousePropertiesInput {
   glueLineageSyncEnabled?: boolean;
 }
@@ -2805,16 +2776,15 @@ export interface AuthenticationConfiguration {
   secretArn?: string;
   oAuth2Properties?: OAuth2Properties;
 }
-export const AuthenticationConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      authenticationType: S.optional(AuthenticationType),
-      secretArn: S.optional(S.String),
-      oAuth2Properties: S.optional(OAuth2Properties),
-    }),
-  ).annotate({
-    identifier: "AuthenticationConfiguration",
-  }) as any as S.Schema<AuthenticationConfiguration>;
+export const AuthenticationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authenticationType: S.optional(AuthenticationType),
+    secretArn: S.optional(S.String),
+    oAuth2Properties: S.optional(OAuth2Properties),
+  }),
+).annotate({
+  identifier: "AuthenticationConfiguration",
+}) as any as S.Schema<AuthenticationConfiguration>;
 export interface GlueConnection {
   name?: string;
   description?: string;
@@ -2952,16 +2922,16 @@ export interface RedshiftLineageSyncConfigurationOutput {
   enabled?: boolean;
   schedule?: LineageSyncSchedule;
 }
-export const RedshiftLineageSyncConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const RedshiftLineageSyncConfigurationOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       lineageJobId: S.optional(S.String),
       enabled: S.optional(S.Boolean),
       schedule: S.optional(LineageSyncSchedule),
     }),
-  ).annotate({
-    identifier: "RedshiftLineageSyncConfigurationOutput",
-  }) as any as S.Schema<RedshiftLineageSyncConfigurationOutput>;
+).annotate({
+  identifier: "RedshiftLineageSyncConfigurationOutput",
+}) as any as S.Schema<RedshiftLineageSyncConfigurationOutput>;
 export interface RedshiftPropertiesOutput {
   storage?: RedshiftStorageProperties;
   credentials?: RedshiftCredentials;
@@ -3106,17 +3076,17 @@ export const MlflowPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
 export interface WorkflowsMwaaPropertiesOutput {
   mwaaEnvironmentName?: string;
 }
-export const WorkflowsMwaaPropertiesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ mwaaEnvironmentName: S.optional(S.String) }),
-  ).annotate({
-    identifier: "WorkflowsMwaaPropertiesOutput",
-  }) as any as S.Schema<WorkflowsMwaaPropertiesOutput>;
+export const WorkflowsMwaaPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ mwaaEnvironmentName: S.optional(S.String) }),
+).annotate({
+  identifier: "WorkflowsMwaaPropertiesOutput",
+}) as any as S.Schema<WorkflowsMwaaPropertiesOutput>;
 export interface WorkflowsServerlessPropertiesOutput {}
-export const WorkflowsServerlessPropertiesOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "WorkflowsServerlessPropertiesOutput",
-  }) as any as S.Schema<WorkflowsServerlessPropertiesOutput>;
+export const WorkflowsServerlessPropertiesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "WorkflowsServerlessPropertiesOutput",
+}) as any as S.Schema<WorkflowsServerlessPropertiesOutput>;
 export interface LakehousePropertiesOutput {
   glueLineageSyncEnabled?: boolean;
 }
@@ -3519,30 +3489,29 @@ export interface ConfigurableActionParameter {
   key?: string;
   value?: string;
 }
-export const ConfigurableActionParameter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ConfigurableActionParameter",
-  }) as any as S.Schema<ConfigurableActionParameter>;
+export const ConfigurableActionParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
+).annotate({
+  identifier: "ConfigurableActionParameter",
+}) as any as S.Schema<ConfigurableActionParameter>;
 export type ConfigurableActionParameterList = ConfigurableActionParameter[];
-export const ConfigurableActionParameterList =
-  /*@__PURE__*/ S.Array(ConfigurableActionParameter);
+export const ConfigurableActionParameterList = /*@__PURE__*/ S.Array(
+  ConfigurableActionParameter,
+);
 export interface ConfigurableEnvironmentAction {
   type: string;
   auth?: ConfigurableActionTypeAuthorization;
   parameters: ConfigurableActionParameter[];
 }
-export const ConfigurableEnvironmentAction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      auth: S.optional(ConfigurableActionTypeAuthorization),
-      parameters: ConfigurableActionParameterList,
-    }),
-  ).annotate({
-    identifier: "ConfigurableEnvironmentAction",
-  }) as any as S.Schema<ConfigurableEnvironmentAction>;
+export const ConfigurableEnvironmentAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    auth: S.optional(ConfigurableActionTypeAuthorization),
+    parameters: ConfigurableActionParameterList,
+  }),
+).annotate({
+  identifier: "ConfigurableEnvironmentAction",
+}) as any as S.Schema<ConfigurableEnvironmentAction>;
 export type EnvironmentActionList = ConfigurableEnvironmentAction[];
 export const EnvironmentActionList = /*@__PURE__*/ S.Array(
   ConfigurableEnvironmentAction,
@@ -3617,11 +3586,12 @@ export const CloudFormationProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CloudFormationProperties",
 }) as any as S.Schema<CloudFormationProperties>;
-export type ProvisioningProperties = {
-  cloudFormation: CloudFormationProperties;
-};
+export type ProvisioningProperties =
+  | { cloudFormation: CloudFormationProperties; manual?: never }
+  | { cloudFormation?: never; manual: Record<string, never> };
 export const ProvisioningProperties = /*@__PURE__*/ S.Union([
   S.Struct({ cloudFormation: CloudFormationProperties }),
+  S.Struct({ manual: S.Struct({}) }),
 ]);
 export interface DeploymentProperties {
   startTimeoutMinutes?: number;
@@ -3712,32 +3682,29 @@ export interface CreateEnvironmentActionInput {
   parameters: ActionParameters;
   description?: string;
 }
-export const CreateEnvironmentActionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      name: S.String,
-      parameters: ActionParameters,
-      description: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEnvironmentActionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    name: S.String,
+    parameters: ActionParameters,
+    description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateEnvironmentActionInput",
-  }) as any as S.Schema<CreateEnvironmentActionInput>;
+  ),
+).annotate({
+  identifier: "CreateEnvironmentActionInput",
+}) as any as S.Schema<CreateEnvironmentActionInput>;
 export interface CreateEnvironmentActionOutput {
   domainId: string;
   environmentId: string;
@@ -3746,19 +3713,18 @@ export interface CreateEnvironmentActionOutput {
   parameters: ActionParameters;
   description?: string;
 }
-export const CreateEnvironmentActionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainId: S.String,
-      environmentId: S.String,
-      id: S.String,
-      name: S.String,
-      parameters: ActionParameters,
-      description: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateEnvironmentActionOutput",
-  }) as any as S.Schema<CreateEnvironmentActionOutput>;
+export const CreateEnvironmentActionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainId: S.String,
+    environmentId: S.String,
+    id: S.String,
+    name: S.String,
+    parameters: ActionParameters,
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateEnvironmentActionOutput",
+}) as any as S.Schema<CreateEnvironmentActionOutput>;
 export interface CreateEnvironmentBlueprintInput {
   domainIdentifier: string;
   name: string;
@@ -3766,30 +3732,29 @@ export interface CreateEnvironmentBlueprintInput {
   provisioningProperties: ProvisioningProperties;
   userParameters?: CustomParameter[];
 }
-export const CreateEnvironmentBlueprintInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      name: S.String,
-      description: S.optional(SensitiveString),
-      provisioningProperties: ProvisioningProperties,
-      userParameters: S.optional(CustomParameterList),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/environment-blueprints",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEnvironmentBlueprintInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    name: S.String,
+    description: S.optional(SensitiveString),
+    provisioningProperties: ProvisioningProperties,
+    userParameters: S.optional(CustomParameterList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/environment-blueprints",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateEnvironmentBlueprintInput",
-  }) as any as S.Schema<CreateEnvironmentBlueprintInput>;
+  ),
+).annotate({
+  identifier: "CreateEnvironmentBlueprintInput",
+}) as any as S.Schema<CreateEnvironmentBlueprintInput>;
 export interface CreateEnvironmentBlueprintOutput {
   id: string;
   name: string;
@@ -3802,27 +3767,26 @@ export interface CreateEnvironmentBlueprintOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const CreateEnvironmentBlueprintOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      description: S.optional(SensitiveString),
-      provider: S.String,
-      provisioningProperties: ProvisioningProperties,
-      deploymentProperties: S.optional(DeploymentProperties),
-      userParameters: S.optional(CustomParameterList),
-      glossaryTerms: S.optional(GlossaryTerms),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateEnvironmentBlueprintOutput",
-  }) as any as S.Schema<CreateEnvironmentBlueprintOutput>;
+export const CreateEnvironmentBlueprintOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    provider: S.String,
+    provisioningProperties: ProvisioningProperties,
+    deploymentProperties: S.optional(DeploymentProperties),
+    userParameters: S.optional(CustomParameterList),
+    glossaryTerms: S.optional(GlossaryTerms),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateEnvironmentBlueprintOutput",
+}) as any as S.Schema<CreateEnvironmentBlueprintOutput>;
 export interface CreateEnvironmentProfileInput {
   domainIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -3833,33 +3797,32 @@ export interface CreateEnvironmentProfileInput {
   awsAccountId?: string;
   awsAccountRegion?: string;
 }
-export const CreateEnvironmentProfileInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      name: SensitiveString,
-      description: S.optional(SensitiveString),
-      environmentBlueprintIdentifier: S.String,
-      projectIdentifier: S.String,
-      userParameters: S.optional(EnvironmentParametersList),
-      awsAccountId: S.optional(S.String),
-      awsAccountRegion: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/environment-profiles",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    name: SensitiveString,
+    description: S.optional(SensitiveString),
+    environmentBlueprintIdentifier: S.String,
+    projectIdentifier: S.String,
+    userParameters: S.optional(EnvironmentParametersList),
+    awsAccountId: S.optional(S.String),
+    awsAccountRegion: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/environment-profiles",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateEnvironmentProfileInput",
-  }) as any as S.Schema<CreateEnvironmentProfileInput>;
+  ),
+).annotate({
+  identifier: "CreateEnvironmentProfileInput",
+}) as any as S.Schema<CreateEnvironmentProfileInput>;
 export interface CreateEnvironmentProfileOutput {
   id: string;
   domainId: string;
@@ -3874,29 +3837,28 @@ export interface CreateEnvironmentProfileOutput {
   projectId?: string;
   userParameters?: CustomParameter[];
 }
-export const CreateEnvironmentProfileOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      domainId: S.String,
-      awsAccountId: S.optional(S.String),
-      awsAccountRegion: S.optional(S.String),
-      createdBy: S.String,
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      name: SensitiveString,
-      description: S.optional(SensitiveString),
-      environmentBlueprintId: S.String,
-      projectId: S.optional(S.String),
-      userParameters: S.optional(CustomParameterList),
-    }),
-  ).annotate({
-    identifier: "CreateEnvironmentProfileOutput",
-  }) as any as S.Schema<CreateEnvironmentProfileOutput>;
+export const CreateEnvironmentProfileOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    domainId: S.String,
+    awsAccountId: S.optional(S.String),
+    awsAccountRegion: S.optional(S.String),
+    createdBy: S.String,
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    name: SensitiveString,
+    description: S.optional(SensitiveString),
+    environmentBlueprintId: S.String,
+    projectId: S.optional(S.String),
+    userParameters: S.optional(CustomParameterList),
+  }),
+).annotate({
+  identifier: "CreateEnvironmentProfileOutput",
+}) as any as S.Schema<CreateEnvironmentProfileOutput>;
 export interface CreateGroupProfileInput {
   domainIdentifier: string;
   groupIdentifier?: string;
@@ -3959,31 +3921,30 @@ export interface CreateListingChangeSetInput {
   action: ChangeAction;
   clientToken?: string;
 }
-export const CreateListingChangeSetInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      entityIdentifier: S.String,
-      entityType: EntityType,
-      entityRevision: S.optional(S.String),
-      action: ChangeAction,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/listings/change-set",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateListingChangeSetInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    entityIdentifier: S.String,
+    entityType: EntityType,
+    entityRevision: S.optional(S.String),
+    action: ChangeAction,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/listings/change-set",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateListingChangeSetInput",
-  }) as any as S.Schema<CreateListingChangeSetInput>;
+  ),
+).annotate({
+  identifier: "CreateListingChangeSetInput",
+}) as any as S.Schema<CreateListingChangeSetInput>;
 export type ListingStatus = "CREATING" | "ACTIVE" | "INACTIVE" | (string & {});
 export const ListingStatus = /*@__PURE__*/ S.String;
 export interface CreateListingChangeSetOutput {
@@ -3991,16 +3952,15 @@ export interface CreateListingChangeSetOutput {
   listingRevision: string;
   status: ListingStatus;
 }
-export const CreateListingChangeSetOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      listingId: S.String,
-      listingRevision: S.String,
-      status: ListingStatus,
-    }),
-  ).annotate({
-    identifier: "CreateListingChangeSetOutput",
-  }) as any as S.Schema<CreateListingChangeSetOutput>;
+export const CreateListingChangeSetOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    listingId: S.String,
+    listingRevision: S.String,
+    status: ListingStatus,
+  }),
+).annotate({
+  identifier: "CreateListingChangeSetOutput",
+}) as any as S.Schema<CreateListingChangeSetOutput>;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface EnvironmentResolvedAccount {
@@ -4023,21 +3983,22 @@ export interface EnvironmentConfigurationUserParameter {
   environmentConfigurationName?: string | redacted.Redacted<string>;
   environmentParameters?: EnvironmentParameter[];
 }
-export const EnvironmentConfigurationUserParameter =
-  /*@__PURE__*/ S.suspend(() =>
+export const EnvironmentConfigurationUserParameter = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       environmentId: S.optional(S.String),
       environmentResolvedAccount: S.optional(EnvironmentResolvedAccount),
       environmentConfigurationName: S.optional(SensitiveString),
       environmentParameters: S.optional(EnvironmentParametersList),
     }),
-  ).annotate({
-    identifier: "EnvironmentConfigurationUserParameter",
-  }) as any as S.Schema<EnvironmentConfigurationUserParameter>;
+).annotate({
+  identifier: "EnvironmentConfigurationUserParameter",
+}) as any as S.Schema<EnvironmentConfigurationUserParameter>;
 export type EnvironmentConfigurationUserParametersList =
   EnvironmentConfigurationUserParameter[];
-export const EnvironmentConfigurationUserParametersList =
-  /*@__PURE__*/ S.Array(EnvironmentConfigurationUserParameter);
+export const EnvironmentConfigurationUserParametersList = /*@__PURE__*/ S.Array(
+  EnvironmentConfigurationUserParameter,
+);
 export type Member =
   | { userIdentifier: string; groupIdentifier?: never }
   | { userIdentifier?: never; groupIdentifier: string };
@@ -4057,12 +4018,11 @@ export interface ProjectMembershipAssignment {
   member: Member;
   designation: UserDesignation;
 }
-export const ProjectMembershipAssignment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ member: Member, designation: UserDesignation }),
-  ).annotate({
-    identifier: "ProjectMembershipAssignment",
-  }) as any as S.Schema<ProjectMembershipAssignment>;
+export const ProjectMembershipAssignment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ member: Member, designation: UserDesignation }),
+).annotate({
+  identifier: "ProjectMembershipAssignment",
+}) as any as S.Schema<ProjectMembershipAssignment>;
 export type ProjectMembershipAssignments = ProjectMembershipAssignment[];
 export const ProjectMembershipAssignments = /*@__PURE__*/ S.Array(
   ProjectMembershipAssignment,
@@ -4163,15 +4123,14 @@ export interface EnvironmentDeploymentDetails {
   overallDeploymentStatus?: OverallDeploymentStatus;
   environmentFailureReasons?: { [key: string]: EnvironmentError[] | undefined };
 }
-export const EnvironmentDeploymentDetails =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      overallDeploymentStatus: S.optional(OverallDeploymentStatus),
-      environmentFailureReasons: S.optional(EnvironmentFailureReasons),
-    }),
-  ).annotate({
-    identifier: "EnvironmentDeploymentDetails",
-  }) as any as S.Schema<EnvironmentDeploymentDetails>;
+export const EnvironmentDeploymentDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    overallDeploymentStatus: S.optional(OverallDeploymentStatus),
+    environmentFailureReasons: S.optional(EnvironmentFailureReasons),
+  }),
+).annotate({
+  identifier: "EnvironmentDeploymentDetails",
+}) as any as S.Schema<EnvironmentDeploymentDetails>;
 export interface CreateProjectOutput {
   domainId: string;
   id: string;
@@ -4222,34 +4181,34 @@ export interface CreateProjectMembershipInput {
   member: Member;
   designation: UserDesignation;
 }
-export const CreateProjectMembershipInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
-      member: Member,
-      designation: UserDesignation,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/createMembership",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateProjectMembershipInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
+    member: Member,
+    designation: UserDesignation,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/createMembership",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateProjectMembershipInput",
-  }) as any as S.Schema<CreateProjectMembershipInput>;
+  ),
+).annotate({
+  identifier: "CreateProjectMembershipInput",
+}) as any as S.Schema<CreateProjectMembershipInput>;
 export interface CreateProjectMembershipOutput {}
-export const CreateProjectMembershipOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CreateProjectMembershipOutput",
-  }) as any as S.Schema<CreateProjectMembershipOutput>;
+export const CreateProjectMembershipOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateProjectMembershipOutput",
+}) as any as S.Schema<CreateProjectMembershipOutput>;
 export type Status = "ENABLED" | "DISABLED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
 export interface ResourceTagParameter {
@@ -4272,20 +4231,20 @@ export interface EnvironmentConfigurationParameter {
   value?: string;
   isEditable?: boolean;
 }
-export const EnvironmentConfigurationParameter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      value: S.optional(S.String),
-      isEditable: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnvironmentConfigurationParameter",
-  }) as any as S.Schema<EnvironmentConfigurationParameter>;
+export const EnvironmentConfigurationParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+    isEditable: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "EnvironmentConfigurationParameter",
+}) as any as S.Schema<EnvironmentConfigurationParameter>;
 export type EnvironmentConfigurationParametersList =
   EnvironmentConfigurationParameter[];
-export const EnvironmentConfigurationParametersList =
-  /*@__PURE__*/ S.Array(EnvironmentConfigurationParameter);
+export const EnvironmentConfigurationParametersList = /*@__PURE__*/ S.Array(
+  EnvironmentConfigurationParameter,
+);
 export interface EnvironmentConfigurationParametersDetails {
   ssmPath?: string;
   parameterOverrides?: EnvironmentConfigurationParameter[];
@@ -4348,8 +4307,9 @@ export const EnvironmentConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentConfiguration",
 }) as any as S.Schema<EnvironmentConfiguration>;
 export type EnvironmentConfigurationsList = EnvironmentConfiguration[];
-export const EnvironmentConfigurationsList =
-  /*@__PURE__*/ S.Array(EnvironmentConfiguration);
+export const EnvironmentConfigurationsList = /*@__PURE__*/ S.Array(
+  EnvironmentConfiguration,
+);
 export interface CreateProjectProfileInput {
   domainIdentifier: string;
   name: string | redacted.Redacted<string>;
@@ -4458,31 +4418,30 @@ export interface CreateSubscriptionGrantInput {
   assetTargetNames?: AssetTargetNameMap[];
   clientToken?: string;
 }
-export const CreateSubscriptionGrantInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String,
-      subscriptionTargetIdentifier: S.optional(S.String),
-      grantedEntity: GrantedEntityInput,
-      assetTargetNames: S.optional(AssetTargetNames),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/subscription-grants",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateSubscriptionGrantInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String,
+    subscriptionTargetIdentifier: S.optional(S.String),
+    grantedEntity: GrantedEntityInput,
+    assetTargetNames: S.optional(AssetTargetNames),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/subscription-grants",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateSubscriptionGrantInput",
-  }) as any as S.Schema<CreateSubscriptionGrantInput>;
+  ),
+).annotate({
+  identifier: "CreateSubscriptionGrantInput",
+}) as any as S.Schema<CreateSubscriptionGrantInput>;
 export interface ListingRevision {
   id: string;
   revision: string;
@@ -4569,25 +4528,24 @@ export interface CreateSubscriptionGrantOutput {
   assets?: SubscribedAsset[];
   subscriptionId?: string;
 }
-export const CreateSubscriptionGrantOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      domainId: S.String,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      environmentId: S.optional(S.String),
-      subscriptionTargetId: S.String,
-      grantedEntity: GrantedEntity,
-      status: SubscriptionGrantOverallStatus,
-      assets: S.optional(SubscribedAssets),
-      subscriptionId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateSubscriptionGrantOutput",
-  }) as any as S.Schema<CreateSubscriptionGrantOutput>;
+export const CreateSubscriptionGrantOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    domainId: S.String,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    environmentId: S.optional(S.String),
+    subscriptionTargetId: S.String,
+    grantedEntity: GrantedEntity,
+    status: SubscriptionGrantOverallStatus,
+    assets: S.optional(SubscribedAssets),
+    subscriptionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateSubscriptionGrantOutput",
+}) as any as S.Schema<CreateSubscriptionGrantOutput>;
 export interface SubscribedProjectInput {
   identifier?: string;
 }
@@ -4615,12 +4573,11 @@ export const SubscribedGroupInput = /*@__PURE__*/ S.suspend(() =>
 export interface SubscribedIamPrincipalInput {
   identifier?: string;
 }
-export const SubscribedIamPrincipalInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ identifier: S.optional(S.String) }),
-  ).annotate({
-    identifier: "SubscribedIamPrincipalInput",
-  }) as any as S.Schema<SubscribedIamPrincipalInput>;
+export const SubscribedIamPrincipalInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ identifier: S.optional(S.String) }),
+).annotate({
+  identifier: "SubscribedIamPrincipalInput",
+}) as any as S.Schema<SubscribedIamPrincipalInput>;
 export type SubscribedPrincipalInput =
   | {
       project: SubscribedProjectInput;
@@ -4670,33 +4627,32 @@ export interface CreateSubscriptionRequestInput {
   assetPermissions?: AssetPermission[];
   assetScopes?: AcceptedAssetScope[];
 }
-export const CreateSubscriptionRequestInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      subscribedPrincipals: SubscribedPrincipalInputs,
-      subscribedListings: SubscribedListingInputs,
-      requestReason: SensitiveString,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      metadataForms: S.optional(MetadataFormInputs),
-      assetPermissions: S.optional(AssetPermissions),
-      assetScopes: S.optional(AcceptedAssetScopes),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/subscription-requests",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    subscribedPrincipals: SubscribedPrincipalInputs,
+    subscribedListings: SubscribedListingInputs,
+    requestReason: SensitiveString,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    metadataForms: S.optional(MetadataFormInputs),
+    assetPermissions: S.optional(AssetPermissions),
+    assetScopes: S.optional(AcceptedAssetScopes),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/subscription-requests",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateSubscriptionRequestInput",
-  }) as any as S.Schema<CreateSubscriptionRequestInput>;
+  ),
+).annotate({
+  identifier: "CreateSubscriptionRequestInput",
+}) as any as S.Schema<CreateSubscriptionRequestInput>;
 export interface CreateSubscriptionRequestOutput {
   id: string;
   createdBy: string;
@@ -4713,27 +4669,26 @@ export interface CreateSubscriptionRequestOutput {
   existingSubscriptionId?: string;
   metadataForms?: FormOutput[];
 }
-export const CreateSubscriptionRequestOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      domainId: S.String,
-      status: SubscriptionRequestStatus,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      requestReason: SensitiveString,
-      subscribedPrincipals: SubscribedPrincipals,
-      subscribedListings: SubscribedListings,
-      reviewerId: S.optional(S.String),
-      decisionComment: S.optional(SensitiveString),
-      existingSubscriptionId: S.optional(S.String),
-      metadataForms: S.optional(MetadataForms),
-    }),
-  ).annotate({
-    identifier: "CreateSubscriptionRequestOutput",
-  }) as any as S.Schema<CreateSubscriptionRequestOutput>;
+export const CreateSubscriptionRequestOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    domainId: S.String,
+    status: SubscriptionRequestStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    requestReason: SensitiveString,
+    subscribedPrincipals: SubscribedPrincipals,
+    subscribedListings: SubscribedListings,
+    reviewerId: S.optional(S.String),
+    decisionComment: S.optional(SensitiveString),
+    existingSubscriptionId: S.optional(S.String),
+    metadataForms: S.optional(MetadataForms),
+  }),
+).annotate({
+  identifier: "CreateSubscriptionRequestOutput",
+}) as any as S.Schema<CreateSubscriptionRequestOutput>;
 export interface SubscriptionTargetForm {
   formName: string;
   content: string;
@@ -4769,38 +4724,35 @@ export interface CreateSubscriptionTargetInput {
   clientToken?: string;
   subscriptionGrantCreationMode?: SubscriptionGrantCreationMode;
 }
-export const CreateSubscriptionTargetInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      name: SensitiveString,
-      type: S.String,
-      subscriptionTargetConfig: SubscriptionTargetForms,
-      authorizedPrincipals: AuthorizedPrincipalIdentifiers,
-      manageAccessRole: S.String,
-      applicableAssetTypes: ApplicableAssetTypes,
-      provider: S.optional(S.String),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateSubscriptionTargetInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    name: SensitiveString,
+    type: S.String,
+    subscriptionTargetConfig: SubscriptionTargetForms,
+    authorizedPrincipals: AuthorizedPrincipalIdentifiers,
+    manageAccessRole: S.String,
+    applicableAssetTypes: ApplicableAssetTypes,
+    provider: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateSubscriptionTargetInput",
-  }) as any as S.Schema<CreateSubscriptionTargetInput>;
+  ),
+).annotate({
+  identifier: "CreateSubscriptionTargetInput",
+}) as any as S.Schema<CreateSubscriptionTargetInput>;
 export interface CreateSubscriptionTargetOutput {
   id: string;
   authorizedPrincipals: string[];
@@ -4819,29 +4771,28 @@ export interface CreateSubscriptionTargetOutput {
   provider: string;
   subscriptionGrantCreationMode?: SubscriptionGrantCreationMode;
 }
-export const CreateSubscriptionTargetOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      authorizedPrincipals: AuthorizedPrincipalIdentifiers,
-      domainId: S.String,
-      projectId: S.String,
-      environmentId: S.String,
-      name: SensitiveString,
-      type: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      manageAccessRole: S.optional(S.String),
-      applicableAssetTypes: ApplicableAssetTypes,
-      subscriptionTargetConfig: SubscriptionTargetForms,
-      provider: S.String,
-      subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
-    }),
-  ).annotate({
-    identifier: "CreateSubscriptionTargetOutput",
-  }) as any as S.Schema<CreateSubscriptionTargetOutput>;
+export const CreateSubscriptionTargetOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    authorizedPrincipals: AuthorizedPrincipalIdentifiers,
+    domainId: S.String,
+    projectId: S.String,
+    environmentId: S.String,
+    name: SensitiveString,
+    type: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    manageAccessRole: S.optional(S.String),
+    applicableAssetTypes: ApplicableAssetTypes,
+    subscriptionTargetConfig: SubscriptionTargetForms,
+    provider: S.String,
+    subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
+  }),
+).annotate({
+  identifier: "CreateSubscriptionTargetOutput",
+}) as any as S.Schema<CreateSubscriptionTargetOutput>;
 export type UserType =
   | "IAM_USER"
   | "IAM_ROLE"
@@ -5003,31 +4954,31 @@ export const DeleteConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteDataExportConfigurationInput {
   domainIdentifier: string;
 }
-export const DeleteDataExportConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v2/domains/{domainIdentifier}/data-export-configuration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteDataExportConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/domains/{domainIdentifier}/data-export-configuration",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteDataExportConfigurationInput",
-  }) as any as S.Schema<DeleteDataExportConfigurationInput>;
+  ),
+).annotate({
+  identifier: "DeleteDataExportConfigurationInput",
+}) as any as S.Schema<DeleteDataExportConfigurationInput>;
 export interface DeleteDataExportConfigurationOutput {}
-export const DeleteDataExportConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDataExportConfigurationOutput",
-  }) as any as S.Schema<DeleteDataExportConfigurationOutput>;
+export const DeleteDataExportConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDataExportConfigurationOutput",
+}) as any as S.Schema<DeleteDataExportConfigurationOutput>;
 export interface DeleteEnvironmentInput {
   domainIdentifier: string;
   identifier: string;
@@ -5063,95 +5014,93 @@ export interface DeleteEnvironmentActionInput {
   environmentIdentifier: string;
   identifier: string;
 }
-export const DeleteEnvironmentActionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEnvironmentActionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEnvironmentActionInput",
-  }) as any as S.Schema<DeleteEnvironmentActionInput>;
+  ),
+).annotate({
+  identifier: "DeleteEnvironmentActionInput",
+}) as any as S.Schema<DeleteEnvironmentActionInput>;
 export interface DeleteEnvironmentActionResponse {}
-export const DeleteEnvironmentActionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteEnvironmentActionResponse",
-  }) as any as S.Schema<DeleteEnvironmentActionResponse>;
+export const DeleteEnvironmentActionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteEnvironmentActionResponse",
+}) as any as S.Schema<DeleteEnvironmentActionResponse>;
 export interface DeleteEnvironmentBlueprintInput {
   domainIdentifier: string;
   identifier: string;
 }
-export const DeleteEnvironmentBlueprintInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEnvironmentBlueprintInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEnvironmentBlueprintInput",
-  }) as any as S.Schema<DeleteEnvironmentBlueprintInput>;
+  ),
+).annotate({
+  identifier: "DeleteEnvironmentBlueprintInput",
+}) as any as S.Schema<DeleteEnvironmentBlueprintInput>;
 export interface DeleteEnvironmentBlueprintResponse {}
-export const DeleteEnvironmentBlueprintResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteEnvironmentBlueprintResponse",
-  }) as any as S.Schema<DeleteEnvironmentBlueprintResponse>;
+export const DeleteEnvironmentBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteEnvironmentBlueprintResponse",
+}) as any as S.Schema<DeleteEnvironmentBlueprintResponse>;
 export interface DeleteEnvironmentProfileInput {
   domainIdentifier: string;
   identifier: string;
 }
-export const DeleteEnvironmentProfileInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEnvironmentProfileInput",
-  }) as any as S.Schema<DeleteEnvironmentProfileInput>;
+  ),
+).annotate({
+  identifier: "DeleteEnvironmentProfileInput",
+}) as any as S.Schema<DeleteEnvironmentProfileInput>;
 export interface DeleteEnvironmentProfileResponse {}
-export const DeleteEnvironmentProfileResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteEnvironmentProfileResponse",
-  }) as any as S.Schema<DeleteEnvironmentProfileResponse>;
+export const DeleteEnvironmentProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteEnvironmentProfileResponse",
+}) as any as S.Schema<DeleteEnvironmentProfileResponse>;
 export interface DeleteLineageEventInput {
   domainIdentifier: string;
   identifier: string;
@@ -5236,33 +5185,33 @@ export interface DeleteProjectMembershipInput {
   projectIdentifier: string;
   member: Member;
 }
-export const DeleteProjectMembershipInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
-      member: Member,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/deleteMembership",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteProjectMembershipInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
+    member: Member,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/deleteMembership",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteProjectMembershipInput",
-  }) as any as S.Schema<DeleteProjectMembershipInput>;
+  ),
+).annotate({
+  identifier: "DeleteProjectMembershipInput",
+}) as any as S.Schema<DeleteProjectMembershipInput>;
 export interface DeleteProjectMembershipOutput {}
-export const DeleteProjectMembershipOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteProjectMembershipOutput",
-  }) as any as S.Schema<DeleteProjectMembershipOutput>;
+export const DeleteProjectMembershipOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteProjectMembershipOutput",
+}) as any as S.Schema<DeleteProjectMembershipOutput>;
 export interface DeleteProjectProfileInput {
   domainIdentifier: string;
   identifier: string;
@@ -5297,27 +5246,26 @@ export interface DeleteSubscriptionGrantInput {
   domainIdentifier: string;
   identifier: string;
 }
-export const DeleteSubscriptionGrantInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteSubscriptionGrantInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteSubscriptionGrantInput",
-  }) as any as S.Schema<DeleteSubscriptionGrantInput>;
+  ),
+).annotate({
+  identifier: "DeleteSubscriptionGrantInput",
+}) as any as S.Schema<DeleteSubscriptionGrantInput>;
 export interface DeleteSubscriptionGrantOutput {
   id: string;
   createdBy: string;
@@ -5332,89 +5280,86 @@ export interface DeleteSubscriptionGrantOutput {
   assets?: SubscribedAsset[];
   subscriptionId?: string;
 }
-export const DeleteSubscriptionGrantOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      domainId: S.String,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      environmentId: S.optional(S.String),
-      subscriptionTargetId: S.String,
-      grantedEntity: GrantedEntity,
-      status: SubscriptionGrantOverallStatus,
-      assets: S.optional(SubscribedAssets),
-      subscriptionId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DeleteSubscriptionGrantOutput",
-  }) as any as S.Schema<DeleteSubscriptionGrantOutput>;
+export const DeleteSubscriptionGrantOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    domainId: S.String,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    environmentId: S.optional(S.String),
+    subscriptionTargetId: S.String,
+    grantedEntity: GrantedEntity,
+    status: SubscriptionGrantOverallStatus,
+    assets: S.optional(SubscribedAssets),
+    subscriptionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteSubscriptionGrantOutput",
+}) as any as S.Schema<DeleteSubscriptionGrantOutput>;
 export interface DeleteSubscriptionRequestInput {
   domainIdentifier: string;
   identifier: string;
 }
-export const DeleteSubscriptionRequestInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteSubscriptionRequestInput",
-  }) as any as S.Schema<DeleteSubscriptionRequestInput>;
+  ),
+).annotate({
+  identifier: "DeleteSubscriptionRequestInput",
+}) as any as S.Schema<DeleteSubscriptionRequestInput>;
 export interface DeleteSubscriptionRequestResponse {}
-export const DeleteSubscriptionRequestResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteSubscriptionRequestResponse",
-  }) as any as S.Schema<DeleteSubscriptionRequestResponse>;
+export const DeleteSubscriptionRequestResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSubscriptionRequestResponse",
+}) as any as S.Schema<DeleteSubscriptionRequestResponse>;
 export interface DeleteSubscriptionTargetInput {
   domainIdentifier: string;
   environmentIdentifier: string;
   identifier: string;
 }
-export const DeleteSubscriptionTargetInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteSubscriptionTargetInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteSubscriptionTargetInput",
-  }) as any as S.Schema<DeleteSubscriptionTargetInput>;
+  ),
+).annotate({
+  identifier: "DeleteSubscriptionTargetInput",
+}) as any as S.Schema<DeleteSubscriptionTargetInput>;
 export interface DeleteSubscriptionTargetResponse {}
-export const DeleteSubscriptionTargetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteSubscriptionTargetResponse",
-  }) as any as S.Schema<DeleteSubscriptionTargetResponse>;
+export const DeleteSubscriptionTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSubscriptionTargetResponse",
+}) as any as S.Schema<DeleteSubscriptionTargetResponse>;
 export type TimeSeriesEntityType = "ASSET" | "LISTING" | (string & {});
 export const TimeSeriesEntityType = /*@__PURE__*/ S.String;
 export interface DeleteTimeSeriesDataPointsInput {
@@ -5424,106 +5369,104 @@ export interface DeleteTimeSeriesDataPointsInput {
   formName: string;
   clientToken?: string;
 }
-export const DeleteTimeSeriesDataPointsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-      entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
-      formName: S.String.pipe(T.HttpQuery("formName")),
-      clientToken: S.optional(S.String).pipe(
-        T.HttpQuery("clientToken"),
-        T.IdempotencyToken(),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTimeSeriesDataPointsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+    entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
+    formName: S.String.pipe(T.HttpQuery("formName")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
     ),
-  ).annotate({
-    identifier: "DeleteTimeSeriesDataPointsInput",
-  }) as any as S.Schema<DeleteTimeSeriesDataPointsInput>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteTimeSeriesDataPointsInput",
+}) as any as S.Schema<DeleteTimeSeriesDataPointsInput>;
 export interface DeleteTimeSeriesDataPointsOutput {}
-export const DeleteTimeSeriesDataPointsOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTimeSeriesDataPointsOutput",
-  }) as any as S.Schema<DeleteTimeSeriesDataPointsOutput>;
+export const DeleteTimeSeriesDataPointsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTimeSeriesDataPointsOutput",
+}) as any as S.Schema<DeleteTimeSeriesDataPointsOutput>;
 export interface DisassociateEnvironmentRoleInput {
   domainIdentifier: string;
   environmentIdentifier: string;
   environmentRoleArn: string;
 }
-export const DisassociateEnvironmentRoleInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      environmentRoleArn: S.String.pipe(T.HttpLabel("environmentRoleArn")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisassociateEnvironmentRoleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    environmentRoleArn: S.String.pipe(T.HttpLabel("environmentRoleArn")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisassociateEnvironmentRoleInput",
-  }) as any as S.Schema<DisassociateEnvironmentRoleInput>;
+  ),
+).annotate({
+  identifier: "DisassociateEnvironmentRoleInput",
+}) as any as S.Schema<DisassociateEnvironmentRoleInput>;
 export interface DisassociateEnvironmentRoleOutput {}
-export const DisassociateEnvironmentRoleOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociateEnvironmentRoleOutput",
-  }) as any as S.Schema<DisassociateEnvironmentRoleOutput>;
+export const DisassociateEnvironmentRoleOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DisassociateEnvironmentRoleOutput",
+}) as any as S.Schema<DisassociateEnvironmentRoleOutput>;
 export interface DisassociateGovernedTermsInput {
   domainIdentifier: string;
   entityIdentifier: string;
   entityType: GovernedEntityType;
   governedGlossaryTerms: string[];
 }
-export const DisassociateGovernedTermsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-      entityType: GovernedEntityType.pipe(T.HttpLabel("entityType")),
-      governedGlossaryTerms: GovernedGlossaryTerms,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/disassociate-governed-terms",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisassociateGovernedTermsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+    entityType: GovernedEntityType.pipe(T.HttpLabel("entityType")),
+    governedGlossaryTerms: GovernedGlossaryTerms,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/disassociate-governed-terms",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisassociateGovernedTermsInput",
-  }) as any as S.Schema<DisassociateGovernedTermsInput>;
+  ),
+).annotate({
+  identifier: "DisassociateGovernedTermsInput",
+}) as any as S.Schema<DisassociateGovernedTermsInput>;
 export interface DisassociateGovernedTermsOutput {}
-export const DisassociateGovernedTermsOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociateGovernedTermsOutput",
-  }) as any as S.Schema<DisassociateGovernedTermsOutput>;
+export const DisassociateGovernedTermsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DisassociateGovernedTermsOutput",
+}) as any as S.Schema<DisassociateGovernedTermsOutput>;
 export interface GetAccountPoolInput {
   domainIdentifier: string;
   identifier: string;
@@ -5666,15 +5609,15 @@ export const GetConnectionInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConnectionInput>;
 export interface ConnectionCredentials {
   accessKeyId?: string;
-  secretAccessKey?: string;
-  sessionToken?: string;
+  secretAccessKey?: string | redacted.Redacted<string>;
+  sessionToken?: string | redacted.Redacted<string>;
   expiration?: Date;
 }
 export const ConnectionCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKeyId: S.optional(S.String),
-    secretAccessKey: S.optional(S.String),
-    sessionToken: S.optional(S.String),
+    secretAccessKey: S.optional(SensitiveString),
+    sessionToken: S.optional(SensitiveString),
     expiration: S.optional(
       T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
@@ -5721,26 +5664,25 @@ export const GetConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetDataExportConfigurationInput {
   domainIdentifier: string;
 }
-export const GetDataExportConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/data-export-configuration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDataExportConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/data-export-configuration",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDataExportConfigurationInput",
-  }) as any as S.Schema<GetDataExportConfigurationInput>;
+  ),
+).annotate({
+  identifier: "GetDataExportConfigurationInput",
+}) as any as S.Schema<GetDataExportConfigurationInput>;
 export type ConfigurationStatus = "COMPLETED" | "FAILED" | (string & {});
 export const ConfigurationStatus = /*@__PURE__*/ S.String;
 export interface EncryptionConfiguration {
@@ -5763,19 +5705,18 @@ export interface GetDataExportConfigurationOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const GetDataExportConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      isExportEnabled: S.optional(S.Boolean),
-      status: S.optional(ConfigurationStatus),
-      encryptionConfiguration: S.optional(EncryptionConfiguration),
-      s3TableBucketArn: S.optional(S.String),
-      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }),
-  ).annotate({
-    identifier: "GetDataExportConfigurationOutput",
-  }) as any as S.Schema<GetDataExportConfigurationOutput>;
+export const GetDataExportConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isExportEnabled: S.optional(S.Boolean),
+    status: S.optional(ConfigurationStatus),
+    encryptionConfiguration: S.optional(EncryptionConfiguration),
+    s3TableBucketArn: S.optional(S.String),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "GetDataExportConfigurationOutput",
+}) as any as S.Schema<GetDataExportConfigurationOutput>;
 export interface GetEnvironmentInput {
   domainIdentifier: string;
   identifier: string;
@@ -5908,27 +5849,26 @@ export interface GetEnvironmentBlueprintInput {
   domainIdentifier: string;
   identifier: string;
 }
-export const GetEnvironmentBlueprintInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetEnvironmentBlueprintInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetEnvironmentBlueprintInput",
-  }) as any as S.Schema<GetEnvironmentBlueprintInput>;
+  ),
+).annotate({
+  identifier: "GetEnvironmentBlueprintInput",
+}) as any as S.Schema<GetEnvironmentBlueprintInput>;
 export interface GetEnvironmentBlueprintOutput {
   id: string;
   name: string;
@@ -5941,73 +5881,68 @@ export interface GetEnvironmentBlueprintOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const GetEnvironmentBlueprintOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      description: S.optional(SensitiveString),
-      provider: S.String,
-      provisioningProperties: ProvisioningProperties,
-      deploymentProperties: S.optional(DeploymentProperties),
-      userParameters: S.optional(CustomParameterList),
-      glossaryTerms: S.optional(GlossaryTerms),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetEnvironmentBlueprintOutput",
-  }) as any as S.Schema<GetEnvironmentBlueprintOutput>;
+export const GetEnvironmentBlueprintOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    provider: S.String,
+    provisioningProperties: ProvisioningProperties,
+    deploymentProperties: S.optional(DeploymentProperties),
+    userParameters: S.optional(CustomParameterList),
+    glossaryTerms: S.optional(GlossaryTerms),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GetEnvironmentBlueprintOutput",
+}) as any as S.Schema<GetEnvironmentBlueprintOutput>;
 export interface GetEnvironmentCredentialsInput {
   domainIdentifier: string;
   environmentIdentifier: string;
 }
-export const GetEnvironmentCredentialsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/credentials",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetEnvironmentCredentialsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/credentials",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetEnvironmentCredentialsInput",
-  }) as any as S.Schema<GetEnvironmentCredentialsInput>;
+  ),
+).annotate({
+  identifier: "GetEnvironmentCredentialsInput",
+}) as any as S.Schema<GetEnvironmentCredentialsInput>;
 export interface GetEnvironmentCredentialsOutput {
   accessKeyId?: string;
-  secretAccessKey?: string;
-  sessionToken?: string;
+  secretAccessKey?: string | redacted.Redacted<string>;
+  sessionToken?: string | redacted.Redacted<string>;
   expiration?: Date;
 }
-export const GetEnvironmentCredentialsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessKeyId: S.optional(S.String),
-      secretAccessKey: S.optional(S.String),
-      sessionToken: S.optional(S.String),
-      expiration: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetEnvironmentCredentialsOutput",
-  }) as any as S.Schema<GetEnvironmentCredentialsOutput>;
+export const GetEnvironmentCredentialsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessKeyId: S.optional(S.String),
+    secretAccessKey: S.optional(SensitiveString),
+    sessionToken: S.optional(SensitiveString),
+    expiration: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GetEnvironmentCredentialsOutput",
+}) as any as S.Schema<GetEnvironmentCredentialsOutput>;
 export interface GetEnvironmentProfileInput {
   domainIdentifier: string;
   identifier: string;
@@ -6046,29 +5981,28 @@ export interface GetEnvironmentProfileOutput {
   projectId?: string;
   userParameters?: CustomParameter[];
 }
-export const GetEnvironmentProfileOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      domainId: S.String,
-      awsAccountId: S.optional(S.String),
-      awsAccountRegion: S.optional(S.String),
-      createdBy: S.String,
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      name: SensitiveString,
-      description: S.optional(SensitiveString),
-      environmentBlueprintId: S.String,
-      projectId: S.optional(S.String),
-      userParameters: S.optional(CustomParameterList),
-    }),
-  ).annotate({
-    identifier: "GetEnvironmentProfileOutput",
-  }) as any as S.Schema<GetEnvironmentProfileOutput>;
+export const GetEnvironmentProfileOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    domainId: S.String,
+    awsAccountId: S.optional(S.String),
+    awsAccountRegion: S.optional(S.String),
+    createdBy: S.String,
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    name: SensitiveString,
+    description: S.optional(SensitiveString),
+    environmentBlueprintId: S.String,
+    projectId: S.optional(S.String),
+    userParameters: S.optional(CustomParameterList),
+  }),
+).annotate({
+  identifier: "GetEnvironmentProfileOutput",
+}) as any as S.Schema<GetEnvironmentProfileOutput>;
 export interface GetGroupProfileInput {
   domainIdentifier: string;
   groupIdentifier: string;
@@ -6171,8 +6105,9 @@ export const JobType = /*@__PURE__*/ S.String;
 export type JobRunMode = "SCHEDULED" | "ON_DEMAND" | (string & {});
 export const JobRunMode = /*@__PURE__*/ S.String;
 export type FailedQueryProcessingErrorMessages = string[];
-export const FailedQueryProcessingErrorMessages =
-  /*@__PURE__*/ S.Array(S.String);
+export const FailedQueryProcessingErrorMessages = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface LineageSqlQueryRunDetails {
   queryStartTime?: Date;
   queryEndTime?: Date;
@@ -6629,27 +6564,26 @@ export interface GetSubscriptionRequestDetailsInput {
   domainIdentifier: string;
   identifier: string;
 }
-export const GetSubscriptionRequestDetailsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetSubscriptionRequestDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetSubscriptionRequestDetailsInput",
-  }) as any as S.Schema<GetSubscriptionRequestDetailsInput>;
+  ),
+).annotate({
+  identifier: "GetSubscriptionRequestDetailsInput",
+}) as any as S.Schema<GetSubscriptionRequestDetailsInput>;
 export interface GetSubscriptionRequestDetailsOutput {
   id: string;
   createdBy: string;
@@ -6666,27 +6600,26 @@ export interface GetSubscriptionRequestDetailsOutput {
   existingSubscriptionId?: string;
   metadataForms?: FormOutput[];
 }
-export const GetSubscriptionRequestDetailsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      domainId: S.String,
-      status: SubscriptionRequestStatus,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      requestReason: SensitiveString,
-      subscribedPrincipals: SubscribedPrincipals,
-      subscribedListings: SubscribedListings,
-      reviewerId: S.optional(S.String),
-      decisionComment: S.optional(SensitiveString),
-      existingSubscriptionId: S.optional(S.String),
-      metadataForms: S.optional(MetadataForms),
-    }),
-  ).annotate({
-    identifier: "GetSubscriptionRequestDetailsOutput",
-  }) as any as S.Schema<GetSubscriptionRequestDetailsOutput>;
+export const GetSubscriptionRequestDetailsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    domainId: S.String,
+    status: SubscriptionRequestStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    requestReason: SensitiveString,
+    subscribedPrincipals: SubscribedPrincipals,
+    subscribedListings: SubscribedListings,
+    reviewerId: S.optional(S.String),
+    decisionComment: S.optional(SensitiveString),
+    existingSubscriptionId: S.optional(S.String),
+    metadataForms: S.optional(MetadataForms),
+  }),
+).annotate({
+  identifier: "GetSubscriptionRequestDetailsOutput",
+}) as any as S.Schema<GetSubscriptionRequestDetailsOutput>;
 export interface GetSubscriptionTargetInput {
   domainIdentifier: string;
   environmentIdentifier: string;
@@ -6731,29 +6664,28 @@ export interface GetSubscriptionTargetOutput {
   provider: string;
   subscriptionGrantCreationMode?: SubscriptionGrantCreationMode;
 }
-export const GetSubscriptionTargetOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      authorizedPrincipals: AuthorizedPrincipalIdentifiers,
-      domainId: S.String,
-      projectId: S.String,
-      environmentId: S.String,
-      name: SensitiveString,
-      type: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      manageAccessRole: S.optional(S.String),
-      applicableAssetTypes: ApplicableAssetTypes,
-      subscriptionTargetConfig: SubscriptionTargetForms,
-      provider: S.String,
-      subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
-    }),
-  ).annotate({
-    identifier: "GetSubscriptionTargetOutput",
-  }) as any as S.Schema<GetSubscriptionTargetOutput>;
+export const GetSubscriptionTargetOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    authorizedPrincipals: AuthorizedPrincipalIdentifiers,
+    domainId: S.String,
+    projectId: S.String,
+    environmentId: S.String,
+    name: SensitiveString,
+    type: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    manageAccessRole: S.optional(S.String),
+    applicableAssetTypes: ApplicableAssetTypes,
+    subscriptionTargetConfig: SubscriptionTargetForms,
+    provider: S.String,
+    subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
+  }),
+).annotate({
+  identifier: "GetSubscriptionTargetOutput",
+}) as any as S.Schema<GetSubscriptionTargetOutput>;
 export interface GetTimeSeriesDataPointInput {
   domainIdentifier: string;
   entityIdentifier: string;
@@ -6761,30 +6693,29 @@ export interface GetTimeSeriesDataPointInput {
   identifier: string;
   formName: string;
 }
-export const GetTimeSeriesDataPointInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-      entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      formName: S.String.pipe(T.HttpQuery("formName")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTimeSeriesDataPointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+    entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    formName: S.String.pipe(T.HttpQuery("formName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTimeSeriesDataPointInput",
-  }) as any as S.Schema<GetTimeSeriesDataPointInput>;
+  ),
+).annotate({
+  identifier: "GetTimeSeriesDataPointInput",
+}) as any as S.Schema<GetTimeSeriesDataPointInput>;
 export interface TimeSeriesDataPointFormOutput {
   formName: string;
   typeIdentifier: string;
@@ -6793,19 +6724,18 @@ export interface TimeSeriesDataPointFormOutput {
   content?: string;
   id?: string;
 }
-export const TimeSeriesDataPointFormOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      formName: S.String,
-      typeIdentifier: S.String,
-      typeRevision: S.optional(S.String),
-      timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      content: S.optional(S.String),
-      id: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesDataPointFormOutput",
-  }) as any as S.Schema<TimeSeriesDataPointFormOutput>;
+export const TimeSeriesDataPointFormOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    formName: S.String,
+    typeIdentifier: S.String,
+    typeRevision: S.optional(S.String),
+    timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    content: S.optional(S.String),
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TimeSeriesDataPointFormOutput",
+}) as any as S.Schema<TimeSeriesDataPointFormOutput>;
 export interface GetTimeSeriesDataPointOutput {
   domainId?: string;
   entityId?: string;
@@ -6813,18 +6743,17 @@ export interface GetTimeSeriesDataPointOutput {
   formName?: string;
   form?: TimeSeriesDataPointFormOutput;
 }
-export const GetTimeSeriesDataPointOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainId: S.optional(S.String),
-      entityId: S.optional(S.String),
-      entityType: S.optional(TimeSeriesEntityType),
-      formName: S.optional(S.String),
-      form: S.optional(TimeSeriesDataPointFormOutput),
-    }),
-  ).annotate({
-    identifier: "GetTimeSeriesDataPointOutput",
-  }) as any as S.Schema<GetTimeSeriesDataPointOutput>;
+export const GetTimeSeriesDataPointOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainId: S.optional(S.String),
+    entityId: S.optional(S.String),
+    entityType: S.optional(TimeSeriesEntityType),
+    formName: S.optional(S.String),
+    form: S.optional(TimeSeriesDataPointFormOutput),
+  }),
+).annotate({
+  identifier: "GetTimeSeriesDataPointOutput",
+}) as any as S.Schema<GetTimeSeriesDataPointOutput>;
 export interface GetUserProfileInput {
   domainIdentifier: string;
   userIdentifier: string;
@@ -6949,42 +6878,40 @@ export interface ListAccountsInAccountPoolInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListAccountsInAccountPoolInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}/accounts",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListAccountsInAccountPoolInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/account-pools/{identifier}/accounts",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListAccountsInAccountPoolInput",
-  }) as any as S.Schema<ListAccountsInAccountPoolInput>;
+  ),
+).annotate({
+  identifier: "ListAccountsInAccountPoolInput",
+}) as any as S.Schema<ListAccountsInAccountPoolInput>;
 export interface ListAccountsInAccountPoolOutput {
   items?: AccountInfo[];
   nextToken?: string;
 }
-export const ListAccountsInAccountPoolOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: S.optional(AccountInfoList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListAccountsInAccountPoolOutput",
-  }) as any as S.Schema<ListAccountsInAccountPoolOutput>;
+export const ListAccountsInAccountPoolOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(AccountInfoList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAccountsInAccountPoolOutput",
+}) as any as S.Schema<ListAccountsInAccountPoolOutput>;
 export interface ListAssetFiltersInput {
   domainIdentifier: string;
   assetIdentifier: string;
@@ -7205,29 +7132,28 @@ export interface ListDataProductRevisionsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDataProductRevisionsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDataProductRevisionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDataProductRevisionsInput",
-  }) as any as S.Schema<ListDataProductRevisionsInput>;
+  ),
+).annotate({
+  identifier: "ListDataProductRevisionsInput",
+}) as any as S.Schema<ListDataProductRevisionsInput>;
 export interface DataProductRevision {
   domainId?: string;
   id?: string;
@@ -7252,12 +7178,11 @@ export interface ListDataProductRevisionsOutput {
   items: DataProductRevision[];
   nextToken?: string;
 }
-export const ListDataProductRevisionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ items: DataProductRevisions, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListDataProductRevisionsOutput",
-  }) as any as S.Schema<ListDataProductRevisionsOutput>;
+export const ListDataProductRevisionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: DataProductRevisions, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListDataProductRevisionsOutput",
+}) as any as S.Schema<ListDataProductRevisionsOutput>;
 export type DataAssetActivityStatus =
   | "FAILED"
   | "PUBLISHING_FAILED"
@@ -7276,30 +7201,29 @@ export interface ListDataSourceRunActivitiesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDataSourceRunActivitiesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      status: S.optional(DataAssetActivityStatus).pipe(T.HttpQuery("status")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/data-source-runs/{identifier}/activities",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDataSourceRunActivitiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    status: S.optional(DataAssetActivityStatus).pipe(T.HttpQuery("status")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/data-source-runs/{identifier}/activities",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDataSourceRunActivitiesInput",
-  }) as any as S.Schema<ListDataSourceRunActivitiesInput>;
+  ),
+).annotate({
+  identifier: "ListDataSourceRunActivitiesInput",
+}) as any as S.Schema<ListDataSourceRunActivitiesInput>;
 export type DataSourceErrorType =
   | "ACCESS_DENIED_EXCEPTION"
   | "CONFLICT_EXCEPTION"
@@ -7372,15 +7296,11 @@ export interface ListDataSourceRunActivitiesOutput {
   items: DataSourceRunActivity[];
   nextToken?: string;
 }
-export const ListDataSourceRunActivitiesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: DataSourceRunActivities,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDataSourceRunActivitiesOutput",
-  }) as any as S.Schema<ListDataSourceRunActivitiesOutput>;
+export const ListDataSourceRunActivitiesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: DataSourceRunActivities, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListDataSourceRunActivitiesOutput",
+}) as any as S.Schema<ListDataSourceRunActivitiesOutput>;
 export interface ListEntityOwnersInput {
   domainIdentifier: string;
   entityType: DataZoneEntityType;
@@ -7451,31 +7371,28 @@ export interface ListEnvironmentActionsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListEnvironmentActionsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEnvironmentActionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListEnvironmentActionsInput",
-  }) as any as S.Schema<ListEnvironmentActionsInput>;
+  ),
+).annotate({
+  identifier: "ListEnvironmentActionsInput",
+}) as any as S.Schema<ListEnvironmentActionsInput>;
 export interface EnvironmentActionSummary {
   domainId: string;
   environmentId: string;
@@ -7497,21 +7414,21 @@ export const EnvironmentActionSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentActionSummary",
 }) as any as S.Schema<EnvironmentActionSummary>;
 export type ListEnvironmentActionSummaries = EnvironmentActionSummary[];
-export const ListEnvironmentActionSummaries =
-  /*@__PURE__*/ S.Array(EnvironmentActionSummary);
+export const ListEnvironmentActionSummaries = /*@__PURE__*/ S.Array(
+  EnvironmentActionSummary,
+);
 export interface ListEnvironmentActionsOutput {
   items?: EnvironmentActionSummary[];
   nextToken?: string;
 }
-export const ListEnvironmentActionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: S.optional(ListEnvironmentActionSummaries),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListEnvironmentActionsOutput",
-  }) as any as S.Schema<ListEnvironmentActionsOutput>;
+export const ListEnvironmentActionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(ListEnvironmentActionSummaries),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEnvironmentActionsOutput",
+}) as any as S.Schema<ListEnvironmentActionsOutput>;
 export interface ListEnvironmentBlueprintsInput {
   domainIdentifier: string;
   maxResults?: number;
@@ -7519,30 +7436,29 @@ export interface ListEnvironmentBlueprintsInput {
   name?: string;
   managed?: boolean;
 }
-export const ListEnvironmentBlueprintsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      name: S.optional(S.String).pipe(T.HttpQuery("name")),
-      managed: S.optional(S.Boolean).pipe(T.HttpQuery("managed")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/environment-blueprints",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEnvironmentBlueprintsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    name: S.optional(S.String).pipe(T.HttpQuery("name")),
+    managed: S.optional(S.Boolean).pipe(T.HttpQuery("managed")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/environment-blueprints",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListEnvironmentBlueprintsInput",
-  }) as any as S.Schema<ListEnvironmentBlueprintsInput>;
+  ),
+).annotate({
+  identifier: "ListEnvironmentBlueprintsInput",
+}) as any as S.Schema<ListEnvironmentBlueprintsInput>;
 export interface EnvironmentBlueprintSummary {
   id: string;
   name: string;
@@ -7552,40 +7468,39 @@ export interface EnvironmentBlueprintSummary {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const EnvironmentBlueprintSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      description: S.optional(SensitiveString),
-      provider: S.String,
-      provisioningProperties: ProvisioningProperties,
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "EnvironmentBlueprintSummary",
-  }) as any as S.Schema<EnvironmentBlueprintSummary>;
+export const EnvironmentBlueprintSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    provider: S.String,
+    provisioningProperties: ProvisioningProperties,
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "EnvironmentBlueprintSummary",
+}) as any as S.Schema<EnvironmentBlueprintSummary>;
 export type EnvironmentBlueprintSummaries = EnvironmentBlueprintSummary[];
-export const EnvironmentBlueprintSummaries =
-  /*@__PURE__*/ S.Array(EnvironmentBlueprintSummary);
+export const EnvironmentBlueprintSummaries = /*@__PURE__*/ S.Array(
+  EnvironmentBlueprintSummary,
+);
 export interface ListEnvironmentBlueprintsOutput {
   items: EnvironmentBlueprintSummary[];
   nextToken?: string;
 }
-export const ListEnvironmentBlueprintsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: EnvironmentBlueprintSummaries,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListEnvironmentBlueprintsOutput",
-  }) as any as S.Schema<ListEnvironmentBlueprintsOutput>;
+export const ListEnvironmentBlueprintsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: EnvironmentBlueprintSummaries,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEnvironmentBlueprintsOutput",
+}) as any as S.Schema<ListEnvironmentBlueprintsOutput>;
 export interface ListEnvironmentProfilesInput {
   domainIdentifier: string;
   awsAccountId?: string;
@@ -7596,39 +7511,38 @@ export interface ListEnvironmentProfilesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListEnvironmentProfilesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      awsAccountId: S.optional(S.String).pipe(T.HttpQuery("awsAccountId")),
-      awsAccountRegion: S.optional(S.String).pipe(
-        T.HttpQuery("awsAccountRegion"),
-      ),
-      environmentBlueprintIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("environmentBlueprintIdentifier"),
-      ),
-      projectIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("projectIdentifier"),
-      ),
-      name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/environment-profiles",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEnvironmentProfilesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    awsAccountId: S.optional(S.String).pipe(T.HttpQuery("awsAccountId")),
+    awsAccountRegion: S.optional(S.String).pipe(
+      T.HttpQuery("awsAccountRegion"),
     ),
-  ).annotate({
-    identifier: "ListEnvironmentProfilesInput",
-  }) as any as S.Schema<ListEnvironmentProfilesInput>;
+    environmentBlueprintIdentifier: S.optional(S.String).pipe(
+      T.HttpQuery("environmentBlueprintIdentifier"),
+    ),
+    projectIdentifier: S.optional(S.String).pipe(
+      T.HttpQuery("projectIdentifier"),
+    ),
+    name: S.optional(SensitiveString).pipe(T.HttpQuery("name")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/environment-profiles",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListEnvironmentProfilesInput",
+}) as any as S.Schema<ListEnvironmentProfilesInput>;
 export interface EnvironmentProfileSummary {
   id: string;
   domainId: string;
@@ -7671,15 +7585,14 @@ export interface ListEnvironmentProfilesOutput {
   items: EnvironmentProfileSummary[];
   nextToken?: string;
 }
-export const ListEnvironmentProfilesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: EnvironmentProfileSummaries,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListEnvironmentProfilesOutput",
-  }) as any as S.Schema<ListEnvironmentProfilesOutput>;
+export const ListEnvironmentProfilesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: EnvironmentProfileSummaries,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEnvironmentProfilesOutput",
+}) as any as S.Schema<ListEnvironmentProfilesOutput>;
 export interface ListEnvironmentsInput {
   domainIdentifier: string;
   awsAccountId?: string;
@@ -7985,37 +7898,36 @@ export interface ListLineageNodeHistoryInput {
   eventTimestampLTE?: Date;
   sortOrder?: SortOrder;
 }
-export const ListLineageNodeHistoryInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      direction: S.optional(EdgeDirection).pipe(T.HttpQuery("direction")),
-      eventTimestampGTE: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ).pipe(T.HttpQuery("timestampGTE")),
-      eventTimestampLTE: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ).pipe(T.HttpQuery("timestampLTE")),
-      sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/lineage/nodes/{identifier}/history",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListLineageNodeHistoryInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    direction: S.optional(EdgeDirection).pipe(T.HttpQuery("direction")),
+    eventTimestampGTE: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ).pipe(T.HttpQuery("timestampGTE")),
+    eventTimestampLTE: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ).pipe(T.HttpQuery("timestampLTE")),
+    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/lineage/nodes/{identifier}/history",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListLineageNodeHistoryInput",
-  }) as any as S.Schema<ListLineageNodeHistoryInput>;
+  ),
+).annotate({
+  identifier: "ListLineageNodeHistoryInput",
+}) as any as S.Schema<ListLineageNodeHistoryInput>;
 export interface LineageNodeSummary {
   domainId: string;
   name?: string;
@@ -8054,15 +7966,14 @@ export interface ListLineageNodeHistoryOutput {
   nodes?: LineageNodeSummary[];
   nextToken?: string;
 }
-export const ListLineageNodeHistoryOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nodes: S.optional(LineageNodeSummaries),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListLineageNodeHistoryOutput",
-  }) as any as S.Schema<ListLineageNodeHistoryOutput>;
+export const ListLineageNodeHistoryOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodes: S.optional(LineageNodeSummaries),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListLineageNodeHistoryOutput",
+}) as any as S.Schema<ListLineageNodeHistoryOutput>;
 export type NotificationType = "TASK" | "EVENT" | (string & {});
 export const NotificationType = /*@__PURE__*/ S.String;
 export type NotificationSubjects = string[];
@@ -8265,31 +8176,30 @@ export interface ListProjectMembershipsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListProjectMembershipsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
-      sortBy: S.optional(SortFieldProject).pipe(T.HttpQuery("sortBy")),
-      sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/memberships",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListProjectMembershipsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    projectIdentifier: S.String.pipe(T.HttpLabel("projectIdentifier")),
+    sortBy: S.optional(SortFieldProject).pipe(T.HttpQuery("sortBy")),
+    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/memberships",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListProjectMembershipsInput",
-  }) as any as S.Schema<ListProjectMembershipsInput>;
+  ),
+).annotate({
+  identifier: "ListProjectMembershipsInput",
+}) as any as S.Schema<ListProjectMembershipsInput>;
 export interface UserDetails {
   userId: string;
 }
@@ -8322,12 +8232,11 @@ export interface ListProjectMembershipsOutput {
   members: ProjectMember[];
   nextToken?: string;
 }
-export const ListProjectMembershipsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ members: ProjectMembers, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListProjectMembershipsOutput",
-  }) as any as S.Schema<ListProjectMembershipsOutput>;
+export const ListProjectMembershipsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ members: ProjectMembers, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListProjectMembershipsOutput",
+}) as any as S.Schema<ListProjectMembershipsOutput>;
 export interface ListProjectProfilesInput {
   domainIdentifier: string;
   name?: string | redacted.Redacted<string>;
@@ -8500,46 +8409,43 @@ export interface ListSubscriptionGrantsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSubscriptionGrantsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentId: S.optional(S.String).pipe(T.HttpQuery("environmentId")),
-      subscriptionTargetId: S.optional(S.String).pipe(
-        T.HttpQuery("subscriptionTargetId"),
-      ),
-      subscribedListingId: S.optional(S.String).pipe(
-        T.HttpQuery("subscribedListingId"),
-      ),
-      subscriptionId: S.optional(S.String).pipe(T.HttpQuery("subscriptionId")),
-      owningProjectId: S.optional(S.String).pipe(
-        T.HttpQuery("owningProjectId"),
-      ),
-      owningIamPrincipalArn: S.optional(S.String).pipe(
-        T.HttpQuery("owningIamPrincipalArn"),
-      ),
-      owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
-      owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
-      sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
-      sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/subscription-grants",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSubscriptionGrantsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentId: S.optional(S.String).pipe(T.HttpQuery("environmentId")),
+    subscriptionTargetId: S.optional(S.String).pipe(
+      T.HttpQuery("subscriptionTargetId"),
     ),
-  ).annotate({
-    identifier: "ListSubscriptionGrantsInput",
-  }) as any as S.Schema<ListSubscriptionGrantsInput>;
+    subscribedListingId: S.optional(S.String).pipe(
+      T.HttpQuery("subscribedListingId"),
+    ),
+    subscriptionId: S.optional(S.String).pipe(T.HttpQuery("subscriptionId")),
+    owningProjectId: S.optional(S.String).pipe(T.HttpQuery("owningProjectId")),
+    owningIamPrincipalArn: S.optional(S.String).pipe(
+      T.HttpQuery("owningIamPrincipalArn"),
+    ),
+    owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
+    owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
+    sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
+    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/subscription-grants",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListSubscriptionGrantsInput",
+}) as any as S.Schema<ListSubscriptionGrantsInput>;
 export interface SubscriptionGrantSummary {
   id: string;
   createdBy: string;
@@ -8580,12 +8486,11 @@ export interface ListSubscriptionGrantsOutput {
   items: SubscriptionGrantSummary[];
   nextToken?: string;
 }
-export const ListSubscriptionGrantsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ items: SubscriptionGrants, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListSubscriptionGrantsOutput",
-  }) as any as S.Schema<ListSubscriptionGrantsOutput>;
+export const ListSubscriptionGrantsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: SubscriptionGrants, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListSubscriptionGrantsOutput",
+}) as any as S.Schema<ListSubscriptionGrantsOutput>;
 export interface ListSubscriptionRequestsInput {
   domainIdentifier: string;
   status?: SubscriptionRequestStatus;
@@ -8600,45 +8505,42 @@ export interface ListSubscriptionRequestsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSubscriptionRequestsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      status: S.optional(SubscriptionRequestStatus).pipe(T.HttpQuery("status")),
-      subscribedListingId: S.optional(S.String).pipe(
-        T.HttpQuery("subscribedListingId"),
-      ),
-      owningProjectId: S.optional(S.String).pipe(
-        T.HttpQuery("owningProjectId"),
-      ),
-      owningIamPrincipalArn: S.optional(S.String).pipe(
-        T.HttpQuery("owningIamPrincipalArn"),
-      ),
-      approverProjectId: S.optional(S.String).pipe(
-        T.HttpQuery("approverProjectId"),
-      ),
-      owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
-      owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
-      sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
-      sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/subscription-requests",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSubscriptionRequestsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    status: S.optional(SubscriptionRequestStatus).pipe(T.HttpQuery("status")),
+    subscribedListingId: S.optional(S.String).pipe(
+      T.HttpQuery("subscribedListingId"),
     ),
-  ).annotate({
-    identifier: "ListSubscriptionRequestsInput",
-  }) as any as S.Schema<ListSubscriptionRequestsInput>;
+    owningProjectId: S.optional(S.String).pipe(T.HttpQuery("owningProjectId")),
+    owningIamPrincipalArn: S.optional(S.String).pipe(
+      T.HttpQuery("owningIamPrincipalArn"),
+    ),
+    approverProjectId: S.optional(S.String).pipe(
+      T.HttpQuery("approverProjectId"),
+    ),
+    owningUserId: S.optional(S.String).pipe(T.HttpQuery("owningUserId")),
+    owningGroupId: S.optional(S.String).pipe(T.HttpQuery("owningGroupId")),
+    sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
+    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/subscription-requests",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListSubscriptionRequestsInput",
+}) as any as S.Schema<ListSubscriptionRequestsInput>;
 export interface MetadataFormSummary {
   formName?: string;
   typeName: string | redacted.Redacted<string>;
@@ -8699,12 +8601,11 @@ export interface ListSubscriptionRequestsOutput {
   items: SubscriptionRequestSummary[];
   nextToken?: string;
 }
-export const ListSubscriptionRequestsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ items: SubscriptionRequests, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListSubscriptionRequestsOutput",
-  }) as any as S.Schema<ListSubscriptionRequestsOutput>;
+export const ListSubscriptionRequestsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: SubscriptionRequests, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListSubscriptionRequestsOutput",
+}) as any as S.Schema<ListSubscriptionRequestsOutput>;
 export interface ListSubscriptionsInput {
   domainIdentifier: string;
   subscriptionRequestIdentifier?: string;
@@ -8808,33 +8709,30 @@ export interface ListSubscriptionTargetsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListSubscriptionTargetsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
-      sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSubscriptionTargetsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    sortBy: S.optional(SortKey).pipe(T.HttpQuery("sortBy")),
+    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListSubscriptionTargetsInput",
-  }) as any as S.Schema<ListSubscriptionTargetsInput>;
+  ),
+).annotate({
+  identifier: "ListSubscriptionTargetsInput",
+}) as any as S.Schema<ListSubscriptionTargetsInput>;
 export interface SubscriptionTargetSummary {
   id: string;
   authorizedPrincipals: string[];
@@ -8883,12 +8781,11 @@ export interface ListSubscriptionTargetsOutput {
   items: SubscriptionTargetSummary[];
   nextToken?: string;
 }
-export const ListSubscriptionTargetsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ items: SubscriptionTargets, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListSubscriptionTargetsOutput",
-  }) as any as S.Schema<ListSubscriptionTargetsOutput>;
+export const ListSubscriptionTargetsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: SubscriptionTargets, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListSubscriptionTargetsOutput",
+}) as any as S.Schema<ListSubscriptionTargetsOutput>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -8909,10 +8806,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListTimeSeriesDataPointsInput {
   domainIdentifier: string;
   entityIdentifier: string;
@@ -8923,37 +8821,36 @@ export interface ListTimeSeriesDataPointsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListTimeSeriesDataPointsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-      entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
-      formName: S.String.pipe(T.HttpQuery("formName")),
-      startedAt: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ).pipe(T.HttpQuery("startedAt")),
-      endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
-        T.HttpQuery("endedAt"),
-      ),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTimeSeriesDataPointsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+    entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
+    formName: S.String.pipe(T.HttpQuery("formName")),
+    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+      T.HttpQuery("startedAt"),
     ),
-  ).annotate({
-    identifier: "ListTimeSeriesDataPointsInput",
-  }) as any as S.Schema<ListTimeSeriesDataPointsInput>;
+    endedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))).pipe(
+      T.HttpQuery("endedAt"),
+    ),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTimeSeriesDataPointsInput",
+}) as any as S.Schema<ListTimeSeriesDataPointsInput>;
 export interface TimeSeriesDataPointSummaryFormOutput {
   formName: string;
   typeIdentifier: string;
@@ -8962,8 +8859,8 @@ export interface TimeSeriesDataPointSummaryFormOutput {
   contentSummary?: string;
   id?: string;
 }
-export const TimeSeriesDataPointSummaryFormOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const TimeSeriesDataPointSummaryFormOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       formName: S.String,
       typeIdentifier: S.String,
@@ -8972,26 +8869,26 @@ export const TimeSeriesDataPointSummaryFormOutput =
       contentSummary: S.optional(S.String),
       id: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "TimeSeriesDataPointSummaryFormOutput",
-  }) as any as S.Schema<TimeSeriesDataPointSummaryFormOutput>;
+).annotate({
+  identifier: "TimeSeriesDataPointSummaryFormOutput",
+}) as any as S.Schema<TimeSeriesDataPointSummaryFormOutput>;
 export type TimeSeriesDataPointSummaryFormOutputList =
   TimeSeriesDataPointSummaryFormOutput[];
-export const TimeSeriesDataPointSummaryFormOutputList =
-  /*@__PURE__*/ S.Array(TimeSeriesDataPointSummaryFormOutput);
+export const TimeSeriesDataPointSummaryFormOutputList = /*@__PURE__*/ S.Array(
+  TimeSeriesDataPointSummaryFormOutput,
+);
 export interface ListTimeSeriesDataPointsOutput {
   items?: TimeSeriesDataPointSummaryFormOutput[];
   nextToken?: string;
 }
-export const ListTimeSeriesDataPointsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: S.optional(TimeSeriesDataPointSummaryFormOutputList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListTimeSeriesDataPointsOutput",
-  }) as any as S.Schema<ListTimeSeriesDataPointsOutput>;
+export const ListTimeSeriesDataPointsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(TimeSeriesDataPointSummaryFormOutputList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTimeSeriesDataPointsOutput",
+}) as any as S.Schema<ListTimeSeriesDataPointsOutput>;
 export interface PostLineageEventInput {
   domainIdentifier: string;
   event: T.StreamingInputBody;
@@ -9037,21 +8934,21 @@ export interface TimeSeriesDataPointFormInput {
   timestamp: Date;
   content?: string;
 }
-export const TimeSeriesDataPointFormInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      formName: S.String,
-      typeIdentifier: S.String,
-      typeRevision: S.optional(S.String),
-      timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      content: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesDataPointFormInput",
-  }) as any as S.Schema<TimeSeriesDataPointFormInput>;
+export const TimeSeriesDataPointFormInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    formName: S.String,
+    typeIdentifier: S.String,
+    typeRevision: S.optional(S.String),
+    timestamp: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    content: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TimeSeriesDataPointFormInput",
+}) as any as S.Schema<TimeSeriesDataPointFormInput>;
 export type TimeSeriesDataPointFormInputList = TimeSeriesDataPointFormInput[];
-export const TimeSeriesDataPointFormInputList =
-  /*@__PURE__*/ S.Array(TimeSeriesDataPointFormInput);
+export const TimeSeriesDataPointFormInputList = /*@__PURE__*/ S.Array(
+  TimeSeriesDataPointFormInput,
+);
 export interface PostTimeSeriesDataPointsInput {
   domainIdentifier: string;
   entityIdentifier: string;
@@ -9059,84 +8956,83 @@ export interface PostTimeSeriesDataPointsInput {
   forms: TimeSeriesDataPointFormInput[];
   clientToken?: string;
 }
-export const PostTimeSeriesDataPointsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
-      entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
-      forms: TimeSeriesDataPointFormInputList,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PostTimeSeriesDataPointsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    entityIdentifier: S.String.pipe(T.HttpLabel("entityIdentifier")),
+    entityType: TimeSeriesEntityType.pipe(T.HttpLabel("entityType")),
+    forms: TimeSeriesDataPointFormInputList,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PostTimeSeriesDataPointsInput",
-  }) as any as S.Schema<PostTimeSeriesDataPointsInput>;
+  ),
+).annotate({
+  identifier: "PostTimeSeriesDataPointsInput",
+}) as any as S.Schema<PostTimeSeriesDataPointsInput>;
 export type TimeSeriesDataPointFormOutputList = TimeSeriesDataPointFormOutput[];
-export const TimeSeriesDataPointFormOutputList =
-  /*@__PURE__*/ S.Array(TimeSeriesDataPointFormOutput);
+export const TimeSeriesDataPointFormOutputList = /*@__PURE__*/ S.Array(
+  TimeSeriesDataPointFormOutput,
+);
 export interface PostTimeSeriesDataPointsOutput {
   domainId?: string;
   entityId?: string;
   entityType?: TimeSeriesEntityType;
   forms?: TimeSeriesDataPointFormOutput[];
 }
-export const PostTimeSeriesDataPointsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainId: S.optional(S.String),
-      entityId: S.optional(S.String),
-      entityType: S.optional(TimeSeriesEntityType),
-      forms: S.optional(TimeSeriesDataPointFormOutputList),
-    }),
-  ).annotate({
-    identifier: "PostTimeSeriesDataPointsOutput",
-  }) as any as S.Schema<PostTimeSeriesDataPointsOutput>;
+export const PostTimeSeriesDataPointsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainId: S.optional(S.String),
+    entityId: S.optional(S.String),
+    entityType: S.optional(TimeSeriesEntityType),
+    forms: S.optional(TimeSeriesDataPointFormOutputList),
+  }),
+).annotate({
+  identifier: "PostTimeSeriesDataPointsOutput",
+}) as any as S.Schema<PostTimeSeriesDataPointsOutput>;
 export interface PutDataExportConfigurationInput {
   domainIdentifier: string;
   enableExport: boolean;
   encryptionConfiguration?: EncryptionConfiguration;
   clientToken?: string;
 }
-export const PutDataExportConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      enableExport: S.Boolean,
-      encryptionConfiguration: S.optional(EncryptionConfiguration),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/v2/domains/{domainIdentifier}/data-export-configuration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutDataExportConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    enableExport: S.Boolean,
+    encryptionConfiguration: S.optional(EncryptionConfiguration),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v2/domains/{domainIdentifier}/data-export-configuration",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutDataExportConfigurationInput",
-  }) as any as S.Schema<PutDataExportConfigurationInput>;
+  ),
+).annotate({
+  identifier: "PutDataExportConfigurationInput",
+}) as any as S.Schema<PutDataExportConfigurationInput>;
 export interface PutDataExportConfigurationOutput {}
-export const PutDataExportConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutDataExportConfigurationOutput",
-  }) as any as S.Schema<PutDataExportConfigurationOutput>;
+export const PutDataExportConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutDataExportConfigurationOutput",
+}) as any as S.Schema<PutDataExportConfigurationOutput>;
 export type RelationType = "LINEAGE" | (string & {});
 export const RelationType = /*@__PURE__*/ S.String;
 export type RelationDirection = "IN" | "OUT" | (string & {});
@@ -9380,11 +9276,7 @@ export interface RejectPredictionsOutput {
   assetRevision: string;
 }
 export const RejectPredictionsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainId: S.String,
-    assetId: S.String,
-    assetRevision: S.String,
-  }),
+  S.Struct({ domainId: S.String, assetId: S.String, assetRevision: S.String }),
 ).annotate({
   identifier: "RejectPredictionsOutput",
 }) as any as S.Schema<RejectPredictionsOutput>;
@@ -9393,28 +9285,27 @@ export interface RejectSubscriptionRequestInput {
   identifier: string;
   decisionComment?: string | redacted.Redacted<string>;
 }
-export const RejectSubscriptionRequestInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      decisionComment: S.optional(SensitiveString),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/reject",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RejectSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    decisionComment: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/reject",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RejectSubscriptionRequestInput",
-  }) as any as S.Schema<RejectSubscriptionRequestInput>;
+  ),
+).annotate({
+  identifier: "RejectSubscriptionRequestInput",
+}) as any as S.Schema<RejectSubscriptionRequestInput>;
 export interface RejectSubscriptionRequestOutput {
   id: string;
   createdBy: string;
@@ -9431,27 +9322,26 @@ export interface RejectSubscriptionRequestOutput {
   existingSubscriptionId?: string;
   metadataForms?: FormOutput[];
 }
-export const RejectSubscriptionRequestOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      domainId: S.String,
-      status: SubscriptionRequestStatus,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      requestReason: SensitiveString,
-      subscribedPrincipals: SubscribedPrincipals,
-      subscribedListings: SubscribedListings,
-      reviewerId: S.optional(S.String),
-      decisionComment: S.optional(SensitiveString),
-      existingSubscriptionId: S.optional(S.String),
-      metadataForms: S.optional(MetadataForms),
-    }),
-  ).annotate({
-    identifier: "RejectSubscriptionRequestOutput",
-  }) as any as S.Schema<RejectSubscriptionRequestOutput>;
+export const RejectSubscriptionRequestOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    domainId: S.String,
+    status: SubscriptionRequestStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    requestReason: SensitiveString,
+    subscribedPrincipals: SubscribedPrincipals,
+    subscribedListings: SubscribedListings,
+    reviewerId: S.optional(S.String),
+    decisionComment: S.optional(SensitiveString),
+    existingSubscriptionId: S.optional(S.String),
+    metadataForms: S.optional(MetadataForms),
+  }),
+).annotate({
+  identifier: "RejectSubscriptionRequestOutput",
+}) as any as S.Schema<RejectSubscriptionRequestOutput>;
 export interface RemoveEntityOwnerInput {
   domainIdentifier: string;
   entityType: DataZoneEntityType;
@@ -9614,8 +9504,9 @@ export type SearchOutputAdditionalAttribute =
 export const SearchOutputAdditionalAttribute = /*@__PURE__*/ S.String;
 export type SearchOutputAdditionalAttributes =
   SearchOutputAdditionalAttribute[];
-export const SearchOutputAdditionalAttributes =
-  /*@__PURE__*/ S.Array(SearchOutputAdditionalAttribute);
+export const SearchOutputAdditionalAttributes = /*@__PURE__*/ S.Array(
+  SearchOutputAdditionalAttribute,
+);
 export interface SearchInput {
   domainIdentifier: string;
   owningProjectIdentifier?: string;
@@ -9694,12 +9585,11 @@ export const MatchRationale = /*@__PURE__*/ S.Array(MatchRationaleItem);
 export interface GlossaryItemAdditionalAttributes {
   matchRationale?: MatchRationaleItem[];
 }
-export const GlossaryItemAdditionalAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ matchRationale: S.optional(MatchRationale) }),
-  ).annotate({
-    identifier: "GlossaryItemAdditionalAttributes",
-  }) as any as S.Schema<GlossaryItemAdditionalAttributes>;
+export const GlossaryItemAdditionalAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ matchRationale: S.optional(MatchRationale) }),
+).annotate({
+  identifier: "GlossaryItemAdditionalAttributes",
+}) as any as S.Schema<GlossaryItemAdditionalAttributes>;
 export interface GlossaryItem {
   domainId: string;
   id: string;
@@ -9745,12 +9635,11 @@ export const GlossaryTermStatus = /*@__PURE__*/ S.String;
 export interface GlossaryTermItemAdditionalAttributes {
   matchRationale?: MatchRationaleItem[];
 }
-export const GlossaryTermItemAdditionalAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ matchRationale: S.optional(MatchRationale) }),
-  ).annotate({
-    identifier: "GlossaryTermItemAdditionalAttributes",
-  }) as any as S.Schema<GlossaryTermItemAdditionalAttributes>;
+export const GlossaryTermItemAdditionalAttributes = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ matchRationale: S.optional(MatchRationale) }),
+).annotate({
+  identifier: "GlossaryTermItemAdditionalAttributes",
+}) as any as S.Schema<GlossaryTermItemAdditionalAttributes>;
 export interface GlossaryTermItem {
   domainId: string;
   glossaryId: string;
@@ -9793,19 +9682,18 @@ export interface AssetItemAdditionalAttributes {
   latestTimeSeriesDataPointFormsOutput?: TimeSeriesDataPointSummaryFormOutput[];
   matchRationale?: MatchRationaleItem[];
 }
-export const AssetItemAdditionalAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      formsOutput: S.optional(FormOutputList),
-      readOnlyFormsOutput: S.optional(FormOutputList),
-      latestTimeSeriesDataPointFormsOutput: S.optional(
-        TimeSeriesDataPointSummaryFormOutputList,
-      ),
-      matchRationale: S.optional(MatchRationale),
-    }),
-  ).annotate({
-    identifier: "AssetItemAdditionalAttributes",
-  }) as any as S.Schema<AssetItemAdditionalAttributes>;
+export const AssetItemAdditionalAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    formsOutput: S.optional(FormOutputList),
+    readOnlyFormsOutput: S.optional(FormOutputList),
+    latestTimeSeriesDataPointFormsOutput: S.optional(
+      TimeSeriesDataPointSummaryFormOutputList,
+    ),
+    matchRationale: S.optional(MatchRationale),
+  }),
+).annotate({
+  identifier: "AssetItemAdditionalAttributes",
+}) as any as S.Schema<AssetItemAdditionalAttributes>;
 export interface AssetItem {
   domainId: string;
   identifier: string;
@@ -9847,12 +9735,11 @@ export const AssetItem = /*@__PURE__*/ S.suspend(() =>
 export interface DataProductItemAdditionalAttributes {
   matchRationale?: MatchRationaleItem[];
 }
-export const DataProductItemAdditionalAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ matchRationale: S.optional(MatchRationale) }),
-  ).annotate({
-    identifier: "DataProductItemAdditionalAttributes",
-  }) as any as S.Schema<DataProductItemAdditionalAttributes>;
+export const DataProductItemAdditionalAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ matchRationale: S.optional(MatchRationale) }),
+).annotate({
+  identifier: "DataProductItemAdditionalAttributes",
+}) as any as S.Schema<DataProductItemAdditionalAttributes>;
 export interface DataProductResultItem {
   domainId: string;
   id: string;
@@ -10056,8 +9943,8 @@ export interface AssetListingItemAdditionalAttributes {
   matchRationale?: MatchRationaleItem[];
   latestTimeSeriesDataPointForms?: TimeSeriesDataPointSummaryFormOutput[];
 }
-export const AssetListingItemAdditionalAttributes =
-  /*@__PURE__*/ S.suspend(() =>
+export const AssetListingItemAdditionalAttributes = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       forms: S.optional(S.String),
       matchRationale: S.optional(MatchRationale),
@@ -10065,9 +9952,9 @@ export const AssetListingItemAdditionalAttributes =
         TimeSeriesDataPointSummaryFormOutputList,
       ),
     }),
-  ).annotate({
-    identifier: "AssetListingItemAdditionalAttributes",
-  }) as any as S.Schema<AssetListingItemAdditionalAttributes>;
+).annotate({
+  identifier: "AssetListingItemAdditionalAttributes",
+}) as any as S.Schema<AssetListingItemAdditionalAttributes>;
 export interface AssetListingItem {
   listingId?: string;
   listingRevision?: string;
@@ -10758,17 +10645,14 @@ export interface AuthenticationConfigurationPatch {
   secretArn?: string;
   basicAuthenticationCredentials?: BasicAuthenticationCredentials;
 }
-export const AuthenticationConfigurationPatch =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      secretArn: S.optional(S.String),
-      basicAuthenticationCredentials: S.optional(
-        BasicAuthenticationCredentials,
-      ),
-    }),
-  ).annotate({
-    identifier: "AuthenticationConfigurationPatch",
-  }) as any as S.Schema<AuthenticationConfigurationPatch>;
+export const AuthenticationConfigurationPatch = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    secretArn: S.optional(S.String),
+    basicAuthenticationCredentials: S.optional(BasicAuthenticationCredentials),
+  }),
+).annotate({
+  identifier: "AuthenticationConfigurationPatch",
+}) as any as S.Schema<AuthenticationConfigurationPatch>;
 export interface GlueConnectionPatch {
   description?: string;
   connectionProperties?: { [key: string]: string | undefined };
@@ -11200,33 +11084,30 @@ export interface UpdateEnvironmentActionInput {
   name?: string;
   description?: string;
 }
-export const UpdateEnvironmentActionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      parameters: S.optional(ActionParameters),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEnvironmentActionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    parameters: S.optional(ActionParameters),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateEnvironmentActionInput",
-  }) as any as S.Schema<UpdateEnvironmentActionInput>;
+  ),
+).annotate({
+  identifier: "UpdateEnvironmentActionInput",
+}) as any as S.Schema<UpdateEnvironmentActionInput>;
 export interface UpdateEnvironmentActionOutput {
   domainId: string;
   environmentId: string;
@@ -11235,19 +11116,18 @@ export interface UpdateEnvironmentActionOutput {
   parameters: ActionParameters;
   description?: string;
 }
-export const UpdateEnvironmentActionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainId: S.String,
-      environmentId: S.String,
-      id: S.String,
-      name: S.String,
-      parameters: ActionParameters,
-      description: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateEnvironmentActionOutput",
-  }) as any as S.Schema<UpdateEnvironmentActionOutput>;
+export const UpdateEnvironmentActionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainId: S.String,
+    environmentId: S.String,
+    id: S.String,
+    name: S.String,
+    parameters: ActionParameters,
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateEnvironmentActionOutput",
+}) as any as S.Schema<UpdateEnvironmentActionOutput>;
 export interface UpdateEnvironmentBlueprintInput {
   domainIdentifier: string;
   identifier: string;
@@ -11255,30 +11135,29 @@ export interface UpdateEnvironmentBlueprintInput {
   provisioningProperties?: ProvisioningProperties;
   userParameters?: CustomParameter[];
 }
-export const UpdateEnvironmentBlueprintInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      description: S.optional(S.String),
-      provisioningProperties: S.optional(ProvisioningProperties),
-      userParameters: S.optional(CustomParameterList),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEnvironmentBlueprintInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    description: S.optional(S.String),
+    provisioningProperties: S.optional(ProvisioningProperties),
+    userParameters: S.optional(CustomParameterList),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateEnvironmentBlueprintInput",
-  }) as any as S.Schema<UpdateEnvironmentBlueprintInput>;
+  ),
+).annotate({
+  identifier: "UpdateEnvironmentBlueprintInput",
+}) as any as S.Schema<UpdateEnvironmentBlueprintInput>;
 export interface UpdateEnvironmentBlueprintOutput {
   id: string;
   name: string;
@@ -11291,27 +11170,26 @@ export interface UpdateEnvironmentBlueprintOutput {
   createdAt?: Date;
   updatedAt?: Date;
 }
-export const UpdateEnvironmentBlueprintOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      description: S.optional(SensitiveString),
-      provider: S.String,
-      provisioningProperties: ProvisioningProperties,
-      deploymentProperties: S.optional(DeploymentProperties),
-      userParameters: S.optional(CustomParameterList),
-      glossaryTerms: S.optional(GlossaryTerms),
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "UpdateEnvironmentBlueprintOutput",
-  }) as any as S.Schema<UpdateEnvironmentBlueprintOutput>;
+export const UpdateEnvironmentBlueprintOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    provider: S.String,
+    provisioningProperties: ProvisioningProperties,
+    deploymentProperties: S.optional(DeploymentProperties),
+    userParameters: S.optional(CustomParameterList),
+    glossaryTerms: S.optional(GlossaryTerms),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateEnvironmentBlueprintOutput",
+}) as any as S.Schema<UpdateEnvironmentBlueprintOutput>;
 export interface UpdateEnvironmentProfileInput {
   domainIdentifier: string;
   identifier: string;
@@ -11321,32 +11199,31 @@ export interface UpdateEnvironmentProfileInput {
   awsAccountId?: string;
   awsAccountRegion?: string;
 }
-export const UpdateEnvironmentProfileInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      name: S.optional(SensitiveString),
-      description: S.optional(S.String),
-      userParameters: S.optional(EnvironmentParametersList),
-      awsAccountId: S.optional(S.String),
-      awsAccountRegion: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEnvironmentProfileInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    name: S.optional(SensitiveString),
+    description: S.optional(S.String),
+    userParameters: S.optional(EnvironmentParametersList),
+    awsAccountId: S.optional(S.String),
+    awsAccountRegion: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateEnvironmentProfileInput",
-  }) as any as S.Schema<UpdateEnvironmentProfileInput>;
+  ),
+).annotate({
+  identifier: "UpdateEnvironmentProfileInput",
+}) as any as S.Schema<UpdateEnvironmentProfileInput>;
 export interface UpdateEnvironmentProfileOutput {
   id: string;
   domainId: string;
@@ -11361,29 +11238,28 @@ export interface UpdateEnvironmentProfileOutput {
   projectId?: string;
   userParameters?: CustomParameter[];
 }
-export const UpdateEnvironmentProfileOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      domainId: S.String,
-      awsAccountId: S.optional(S.String),
-      awsAccountRegion: S.optional(S.String),
-      createdBy: S.String,
-      createdAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      updatedAt: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      name: SensitiveString,
-      description: S.optional(SensitiveString),
-      environmentBlueprintId: S.String,
-      projectId: S.optional(S.String),
-      userParameters: S.optional(CustomParameterList),
-    }),
-  ).annotate({
-    identifier: "UpdateEnvironmentProfileOutput",
-  }) as any as S.Schema<UpdateEnvironmentProfileOutput>;
+export const UpdateEnvironmentProfileOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    domainId: S.String,
+    awsAccountId: S.optional(S.String),
+    awsAccountRegion: S.optional(S.String),
+    createdBy: S.String,
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    name: SensitiveString,
+    description: S.optional(SensitiveString),
+    environmentBlueprintId: S.String,
+    projectId: S.optional(S.String),
+    userParameters: S.optional(CustomParameterList),
+  }),
+).annotate({
+  identifier: "UpdateEnvironmentProfileOutput",
+}) as any as S.Schema<UpdateEnvironmentProfileOutput>;
 export interface UpdateGroupProfileInput {
   domainIdentifier: string;
   groupIdentifier: string;
@@ -11598,34 +11474,34 @@ export interface UpdateRootDomainUnitOwnerInput {
   newOwner: string;
   clientToken?: string;
 }
-export const UpdateRootDomainUnitOwnerInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      currentOwner: S.String,
-      newOwner: S.String,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/v2/domains/{domainIdentifier}/root-domain-unit-owner",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateRootDomainUnitOwnerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    currentOwner: S.String,
+    newOwner: S.String,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/v2/domains/{domainIdentifier}/root-domain-unit-owner",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateRootDomainUnitOwnerInput",
-  }) as any as S.Schema<UpdateRootDomainUnitOwnerInput>;
+  ),
+).annotate({
+  identifier: "UpdateRootDomainUnitOwnerInput",
+}) as any as S.Schema<UpdateRootDomainUnitOwnerInput>;
 export interface UpdateRootDomainUnitOwnerOutput {}
-export const UpdateRootDomainUnitOwnerOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateRootDomainUnitOwnerOutput",
-  }) as any as S.Schema<UpdateRootDomainUnitOwnerOutput>;
+export const UpdateRootDomainUnitOwnerOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateRootDomainUnitOwnerOutput",
+}) as any as S.Schema<UpdateRootDomainUnitOwnerOutput>;
 export interface UpdateSubscriptionGrantStatusInput {
   domainIdentifier: string;
   identifier: string;
@@ -11634,31 +11510,30 @@ export interface UpdateSubscriptionGrantStatusInput {
   failureCause?: FailureCause;
   targetName?: string;
 }
-export const UpdateSubscriptionGrantStatusInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
-      status: SubscriptionGrantStatus,
-      failureCause: S.optional(FailureCause),
-      targetName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}/status/{assetIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateSubscriptionGrantStatusInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    assetIdentifier: S.String.pipe(T.HttpLabel("assetIdentifier")),
+    status: SubscriptionGrantStatus,
+    failureCause: S.optional(FailureCause),
+    targetName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}/status/{assetIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateSubscriptionGrantStatusInput",
-  }) as any as S.Schema<UpdateSubscriptionGrantStatusInput>;
+  ),
+).annotate({
+  identifier: "UpdateSubscriptionGrantStatusInput",
+}) as any as S.Schema<UpdateSubscriptionGrantStatusInput>;
 export interface UpdateSubscriptionGrantStatusOutput {
   id: string;
   createdBy: string;
@@ -11673,52 +11548,50 @@ export interface UpdateSubscriptionGrantStatusOutput {
   assets?: SubscribedAsset[];
   subscriptionId?: string;
 }
-export const UpdateSubscriptionGrantStatusOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      domainId: S.String,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      environmentId: S.optional(S.String),
-      subscriptionTargetId: S.String,
-      grantedEntity: GrantedEntity,
-      status: SubscriptionGrantOverallStatus,
-      assets: S.optional(SubscribedAssets),
-      subscriptionId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "UpdateSubscriptionGrantStatusOutput",
-  }) as any as S.Schema<UpdateSubscriptionGrantStatusOutput>;
+export const UpdateSubscriptionGrantStatusOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    domainId: S.String,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    environmentId: S.optional(S.String),
+    subscriptionTargetId: S.String,
+    grantedEntity: GrantedEntity,
+    status: SubscriptionGrantOverallStatus,
+    assets: S.optional(SubscribedAssets),
+    subscriptionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateSubscriptionGrantStatusOutput",
+}) as any as S.Schema<UpdateSubscriptionGrantStatusOutput>;
 export interface UpdateSubscriptionRequestInput {
   domainIdentifier: string;
   identifier: string;
   requestReason: string | redacted.Redacted<string>;
 }
-export const UpdateSubscriptionRequestInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      requestReason: SensitiveString,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateSubscriptionRequestInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    requestReason: SensitiveString,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateSubscriptionRequestInput",
-  }) as any as S.Schema<UpdateSubscriptionRequestInput>;
+  ),
+).annotate({
+  identifier: "UpdateSubscriptionRequestInput",
+}) as any as S.Schema<UpdateSubscriptionRequestInput>;
 export interface UpdateSubscriptionRequestOutput {
   id: string;
   createdBy: string;
@@ -11735,27 +11608,26 @@ export interface UpdateSubscriptionRequestOutput {
   existingSubscriptionId?: string;
   metadataForms?: FormOutput[];
 }
-export const UpdateSubscriptionRequestOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      domainId: S.String,
-      status: SubscriptionRequestStatus,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      requestReason: SensitiveString,
-      subscribedPrincipals: SubscribedPrincipals,
-      subscribedListings: SubscribedListings,
-      reviewerId: S.optional(S.String),
-      decisionComment: S.optional(SensitiveString),
-      existingSubscriptionId: S.optional(S.String),
-      metadataForms: S.optional(MetadataForms),
-    }),
-  ).annotate({
-    identifier: "UpdateSubscriptionRequestOutput",
-  }) as any as S.Schema<UpdateSubscriptionRequestOutput>;
+export const UpdateSubscriptionRequestOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    domainId: S.String,
+    status: SubscriptionRequestStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    requestReason: SensitiveString,
+    subscribedPrincipals: SubscribedPrincipals,
+    subscribedListings: SubscribedListings,
+    reviewerId: S.optional(S.String),
+    decisionComment: S.optional(SensitiveString),
+    existingSubscriptionId: S.optional(S.String),
+    metadataForms: S.optional(MetadataForms),
+  }),
+).annotate({
+  identifier: "UpdateSubscriptionRequestOutput",
+}) as any as S.Schema<UpdateSubscriptionRequestOutput>;
 export interface UpdateSubscriptionTargetInput {
   domainIdentifier: string;
   environmentIdentifier: string;
@@ -11768,37 +11640,34 @@ export interface UpdateSubscriptionTargetInput {
   provider?: string;
   subscriptionGrantCreationMode?: SubscriptionGrantCreationMode;
 }
-export const UpdateSubscriptionTargetInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      environmentIdentifier: S.String.pipe(
-        T.HttpLabel("environmentIdentifier"),
-      ),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      name: S.optional(SensitiveString),
-      authorizedPrincipals: S.optional(AuthorizedPrincipalIdentifiers),
-      applicableAssetTypes: S.optional(ApplicableAssetTypes),
-      subscriptionTargetConfig: S.optional(SubscriptionTargetForms),
-      manageAccessRole: S.optional(S.String),
-      provider: S.optional(S.String),
-      subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateSubscriptionTargetInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    environmentIdentifier: S.String.pipe(T.HttpLabel("environmentIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    name: S.optional(SensitiveString),
+    authorizedPrincipals: S.optional(AuthorizedPrincipalIdentifiers),
+    applicableAssetTypes: S.optional(ApplicableAssetTypes),
+    subscriptionTargetConfig: S.optional(SubscriptionTargetForms),
+    manageAccessRole: S.optional(S.String),
+    provider: S.optional(S.String),
+    subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateSubscriptionTargetInput",
-  }) as any as S.Schema<UpdateSubscriptionTargetInput>;
+  ),
+).annotate({
+  identifier: "UpdateSubscriptionTargetInput",
+}) as any as S.Schema<UpdateSubscriptionTargetInput>;
 export interface UpdateSubscriptionTargetOutput {
   id: string;
   authorizedPrincipals: string[];
@@ -11817,29 +11686,28 @@ export interface UpdateSubscriptionTargetOutput {
   provider: string;
   subscriptionGrantCreationMode?: SubscriptionGrantCreationMode;
 }
-export const UpdateSubscriptionTargetOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      authorizedPrincipals: AuthorizedPrincipalIdentifiers,
-      domainId: S.String,
-      projectId: S.String,
-      environmentId: S.String,
-      name: SensitiveString,
-      type: S.String,
-      createdBy: S.String,
-      updatedBy: S.optional(S.String),
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      manageAccessRole: S.optional(S.String),
-      applicableAssetTypes: ApplicableAssetTypes,
-      subscriptionTargetConfig: SubscriptionTargetForms,
-      provider: S.String,
-      subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
-    }),
-  ).annotate({
-    identifier: "UpdateSubscriptionTargetOutput",
-  }) as any as S.Schema<UpdateSubscriptionTargetOutput>;
+export const UpdateSubscriptionTargetOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    authorizedPrincipals: AuthorizedPrincipalIdentifiers,
+    domainId: S.String,
+    projectId: S.String,
+    environmentId: S.String,
+    name: SensitiveString,
+    type: S.String,
+    createdBy: S.String,
+    updatedBy: S.optional(S.String),
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    manageAccessRole: S.optional(S.String),
+    applicableAssetTypes: ApplicableAssetTypes,
+    subscriptionTargetConfig: SubscriptionTargetForms,
+    provider: S.String,
+    subscriptionGrantCreationMode: S.optional(SubscriptionGrantCreationMode),
+  }),
+).annotate({
+  identifier: "UpdateSubscriptionTargetOutput",
+}) as any as S.Schema<UpdateSubscriptionTargetOutput>;
 export interface UpdateUserProfileInput {
   domainIdentifier: string;
   userIdentifier: string;
@@ -11891,12 +11759,11 @@ export const UpdateUserProfileOutput = /*@__PURE__*/ S.suspend(() =>
 export interface BusinessNameGenerationConfiguration {
   enabled?: boolean;
 }
-export const BusinessNameGenerationConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ enabled: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "BusinessNameGenerationConfiguration",
-  }) as any as S.Schema<BusinessNameGenerationConfiguration>;
+export const BusinessNameGenerationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ enabled: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "BusinessNameGenerationConfiguration",
+}) as any as S.Schema<BusinessNameGenerationConfiguration>;
 export interface PredictionConfiguration {
   businessNameGeneration?: BusinessNameGenerationConfiguration;
 }
@@ -12572,33 +12439,32 @@ export interface CreateDataProductRevisionInput {
   formsInput?: FormInput[];
   clientToken?: string;
 }
-export const CreateDataProductRevisionInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      name: SensitiveString,
-      description: S.optional(SensitiveString),
-      glossaryTerms: S.optional(GlossaryTerms),
-      items: S.optional(DataProductItems),
-      formsInput: S.optional(FormInputList),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDataProductRevisionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    name: SensitiveString,
+    description: S.optional(SensitiveString),
+    glossaryTerms: S.optional(GlossaryTerms),
+    items: S.optional(DataProductItems),
+    formsInput: S.optional(FormInputList),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDataProductRevisionInput",
-  }) as any as S.Schema<CreateDataProductRevisionInput>;
+  ),
+).annotate({
+  identifier: "CreateDataProductRevisionInput",
+}) as any as S.Schema<CreateDataProductRevisionInput>;
 export interface CreateDataProductRevisionOutput {
   domainId: string;
   id: string;
@@ -12615,29 +12481,28 @@ export interface CreateDataProductRevisionOutput {
   firstRevisionCreatedAt?: Date;
   firstRevisionCreatedBy?: string;
 }
-export const CreateDataProductRevisionOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainId: S.String,
-      id: S.String,
-      revision: S.String,
-      owningProjectId: S.String,
-      name: SensitiveString,
-      status: DataProductStatus,
-      description: S.optional(SensitiveString),
-      glossaryTerms: S.optional(GlossaryTerms),
-      items: S.optional(DataProductItems),
-      formsOutput: S.optional(FormOutputList),
-      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      createdBy: S.optional(S.String),
-      firstRevisionCreatedAt: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      firstRevisionCreatedBy: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CreateDataProductRevisionOutput",
-  }) as any as S.Schema<CreateDataProductRevisionOutput>;
+export const CreateDataProductRevisionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainId: S.String,
+    id: S.String,
+    revision: S.String,
+    owningProjectId: S.String,
+    name: SensitiveString,
+    status: DataProductStatus,
+    description: S.optional(SensitiveString),
+    glossaryTerms: S.optional(GlossaryTerms),
+    items: S.optional(DataProductItems),
+    formsOutput: S.optional(FormOutputList),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    createdBy: S.optional(S.String),
+    firstRevisionCreatedAt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    firstRevisionCreatedBy: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateDataProductRevisionOutput",
+}) as any as S.Schema<CreateDataProductRevisionOutput>;
 export type FilterExpressionType = "INCLUDE" | "EXCLUDE" | (string & {});
 export const FilterExpressionType = /*@__PURE__*/ S.String;
 export interface FilterExpression {
@@ -12656,19 +12521,19 @@ export interface RelationalFilterConfiguration {
   schemaName?: string;
   filterExpressions?: FilterExpression[];
 }
-export const RelationalFilterConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      databaseName: S.String,
-      schemaName: S.optional(S.String),
-      filterExpressions: S.optional(FilterExpressions),
-    }),
-  ).annotate({
-    identifier: "RelationalFilterConfiguration",
-  }) as any as S.Schema<RelationalFilterConfiguration>;
+export const RelationalFilterConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    databaseName: S.String,
+    schemaName: S.optional(S.String),
+    filterExpressions: S.optional(FilterExpressions),
+  }),
+).annotate({
+  identifier: "RelationalFilterConfiguration",
+}) as any as S.Schema<RelationalFilterConfiguration>;
 export type RelationalFilterConfigurations = RelationalFilterConfiguration[];
-export const RelationalFilterConfigurations =
-  /*@__PURE__*/ S.Array(RelationalFilterConfiguration);
+export const RelationalFilterConfigurations = /*@__PURE__*/ S.Array(
+  RelationalFilterConfiguration,
+);
 export interface GlueRunConfigurationInput {
   dataAccessRole?: string;
   relationalFilterConfigurations: RelationalFilterConfiguration[];
@@ -12688,12 +12553,11 @@ export const GlueRunConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 export interface RedshiftCredentialConfiguration {
   secretManagerArn: string;
 }
-export const RedshiftCredentialConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ secretManagerArn: S.String }),
-  ).annotate({
-    identifier: "RedshiftCredentialConfiguration",
-  }) as any as S.Schema<RedshiftCredentialConfiguration>;
+export const RedshiftCredentialConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ secretManagerArn: S.String }),
+).annotate({
+  identifier: "RedshiftCredentialConfiguration",
+}) as any as S.Schema<RedshiftCredentialConfiguration>;
 export interface RedshiftClusterStorage {
   clusterName: string;
 }
@@ -12729,19 +12593,18 @@ export interface RedshiftRunConfigurationInput {
   redshiftCredentialConfiguration?: RedshiftCredentialConfiguration;
   redshiftStorage?: RedshiftStorage;
 }
-export const RedshiftRunConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataAccessRole: S.optional(S.String),
-      relationalFilterConfigurations: RelationalFilterConfigurations,
-      redshiftCredentialConfiguration: S.optional(
-        RedshiftCredentialConfiguration,
-      ),
-      redshiftStorage: S.optional(RedshiftStorage),
-    }),
-  ).annotate({
-    identifier: "RedshiftRunConfigurationInput",
-  }) as any as S.Schema<RedshiftRunConfigurationInput>;
+export const RedshiftRunConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataAccessRole: S.optional(S.String),
+    relationalFilterConfigurations: RelationalFilterConfigurations,
+    redshiftCredentialConfiguration: S.optional(
+      RedshiftCredentialConfiguration,
+    ),
+    redshiftStorage: S.optional(RedshiftStorage),
+  }),
+).annotate({
+  identifier: "RedshiftRunConfigurationInput",
+}) as any as S.Schema<RedshiftRunConfigurationInput>;
 export type TrackingAssetArns = string[];
 export const TrackingAssetArns = /*@__PURE__*/ S.Array(S.String);
 export type TrackingAssets = { [key: string]: string[] | undefined };
@@ -12752,12 +12615,11 @@ export const TrackingAssets = /*@__PURE__*/ S.Record(
 export interface SageMakerRunConfigurationInput {
   trackingAssets: { [key: string]: string[] | undefined };
 }
-export const SageMakerRunConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ trackingAssets: TrackingAssets }),
-  ).annotate({
-    identifier: "SageMakerRunConfigurationInput",
-  }) as any as S.Schema<SageMakerRunConfigurationInput>;
+export const SageMakerRunConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ trackingAssets: TrackingAssets }),
+).annotate({
+  identifier: "SageMakerRunConfigurationInput",
+}) as any as S.Schema<SageMakerRunConfigurationInput>;
 export type DataSourceConfigurationInput =
   | {
       glueRunConfiguration: GlueRunConfigurationInput;
@@ -12782,12 +12644,11 @@ export const DataSourceConfigurationInput = /*@__PURE__*/ S.Union([
 export interface RecommendationConfiguration {
   enableBusinessNameGeneration?: boolean;
 }
-export const RecommendationConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ enableBusinessNameGeneration: S.optional(S.Boolean) }),
-  ).annotate({
-    identifier: "RecommendationConfiguration",
-  }) as any as S.Schema<RecommendationConfiguration>;
+export const RecommendationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ enableBusinessNameGeneration: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "RecommendationConfiguration",
+}) as any as S.Schema<RecommendationConfiguration>;
 export type EnableSetting = "ENABLED" | "DISABLED" | (string & {});
 export const EnableSetting = /*@__PURE__*/ S.String;
 export type Timezone =
@@ -12953,36 +12814,34 @@ export interface RedshiftRunConfigurationOutput {
   redshiftCredentialConfiguration?: RedshiftCredentialConfiguration;
   redshiftStorage: RedshiftStorage;
 }
-export const RedshiftRunConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.optional(S.String),
-      region: S.optional(S.String),
-      dataAccessRole: S.optional(S.String),
-      relationalFilterConfigurations: RelationalFilterConfigurations,
-      redshiftCredentialConfiguration: S.optional(
-        RedshiftCredentialConfiguration,
-      ),
-      redshiftStorage: RedshiftStorage,
-    }),
-  ).annotate({
-    identifier: "RedshiftRunConfigurationOutput",
-  }) as any as S.Schema<RedshiftRunConfigurationOutput>;
+export const RedshiftRunConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.optional(S.String),
+    region: S.optional(S.String),
+    dataAccessRole: S.optional(S.String),
+    relationalFilterConfigurations: RelationalFilterConfigurations,
+    redshiftCredentialConfiguration: S.optional(
+      RedshiftCredentialConfiguration,
+    ),
+    redshiftStorage: RedshiftStorage,
+  }),
+).annotate({
+  identifier: "RedshiftRunConfigurationOutput",
+}) as any as S.Schema<RedshiftRunConfigurationOutput>;
 export interface SageMakerRunConfigurationOutput {
   accountId?: string;
   region?: string;
   trackingAssets: { [key: string]: string[] | undefined };
 }
-export const SageMakerRunConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.optional(S.String),
-      region: S.optional(S.String),
-      trackingAssets: TrackingAssets,
-    }),
-  ).annotate({
-    identifier: "SageMakerRunConfigurationOutput",
-  }) as any as S.Schema<SageMakerRunConfigurationOutput>;
+export const SageMakerRunConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.optional(S.String),
+    region: S.optional(S.String),
+    trackingAssets: TrackingAssets,
+  }),
+).annotate({
+  identifier: "SageMakerRunConfigurationOutput",
+}) as any as S.Schema<SageMakerRunConfigurationOutput>;
 export type DataSourceConfigurationOutput =
   | {
       glueRunConfiguration: GlueRunConfigurationOutput;
@@ -12999,12 +12858,11 @@ export type DataSourceConfigurationOutput =
       redshiftRunConfiguration?: never;
       sageMakerRunConfiguration: SageMakerRunConfigurationOutput;
     };
-export const DataSourceConfigurationOutput =
-  /*@__PURE__*/ S.Union([
-    S.Struct({ glueRunConfiguration: GlueRunConfigurationOutput }),
-    S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationOutput }),
-    S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationOutput }),
-  ]);
+export const DataSourceConfigurationOutput = /*@__PURE__*/ S.Union([
+  S.Struct({ glueRunConfiguration: GlueRunConfigurationOutput }),
+  S.Struct({ redshiftRunConfiguration: RedshiftRunConfigurationOutput }),
+  S.Struct({ sageMakerRunConfiguration: SageMakerRunConfigurationOutput }),
+]);
 export type DataSourceRunStatus =
   | "REQUESTED"
   | "RUNNING"
@@ -13134,12 +12992,11 @@ export const GlueSelfGrantStatusOutput = /*@__PURE__*/ S.suspend(() =>
 export interface RedshiftSelfGrantStatusOutput {
   selfGrantStatusDetails: SelfGrantStatusDetail[];
 }
-export const RedshiftSelfGrantStatusOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ selfGrantStatusDetails: SelfGrantStatusDetails }),
-  ).annotate({
-    identifier: "RedshiftSelfGrantStatusOutput",
-  }) as any as S.Schema<RedshiftSelfGrantStatusOutput>;
+export const RedshiftSelfGrantStatusOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ selfGrantStatusDetails: SelfGrantStatusDetails }),
+).annotate({
+  identifier: "RedshiftSelfGrantStatusOutput",
+}) as any as S.Schema<RedshiftSelfGrantStatusOutput>;
 export type SelfGrantStatusOutput =
   | {
       glueSelfGrantStatus: GlueSelfGrantStatusOutput;
@@ -13623,12 +13480,11 @@ export const LineageImportStatus = /*@__PURE__*/ S.String;
 export interface DataSourceRunLineageSummary {
   importStatus?: LineageImportStatus;
 }
-export const DataSourceRunLineageSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ importStatus: S.optional(LineageImportStatus) }),
-  ).annotate({
-    identifier: "DataSourceRunLineageSummary",
-  }) as any as S.Schema<DataSourceRunLineageSummary>;
+export const DataSourceRunLineageSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ importStatus: S.optional(LineageImportStatus) }),
+).annotate({
+  identifier: "DataSourceRunLineageSummary",
+}) as any as S.Schema<DataSourceRunLineageSummary>;
 export interface GetDataSourceRunOutput {
   domainId: string;
   dataSourceId: string;
@@ -13743,10 +13599,7 @@ export interface ListDataSourceRunsOutput {
   nextToken?: string;
 }
 export const ListDataSourceRunsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: DataSourceRunSummaries,
-    nextToken: S.optional(S.String),
-  }),
+  S.Struct({ items: DataSourceRunSummaries, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDataSourceRunsOutput",
 }) as any as S.Schema<ListDataSourceRunsOutput>;
@@ -14282,31 +14135,30 @@ export interface ListDomainUnitsForParentInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDomainUnitsForParentInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      parentDomainUnitIdentifier: S.String.pipe(
-        T.HttpQuery("parentDomainUnitIdentifier"),
-      ),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/domain-units",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDomainUnitsForParentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    parentDomainUnitIdentifier: S.String.pipe(
+      T.HttpQuery("parentDomainUnitIdentifier"),
     ),
-  ).annotate({
-    identifier: "ListDomainUnitsForParentInput",
-  }) as any as S.Schema<ListDomainUnitsForParentInput>;
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/domain-units",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListDomainUnitsForParentInput",
+}) as any as S.Schema<ListDomainUnitsForParentInput>;
 export interface DomainUnitSummary {
   name: string;
   id: string;
@@ -14322,12 +14174,11 @@ export interface ListDomainUnitsForParentOutput {
   items: DomainUnitSummary[];
   nextToken?: string;
 }
-export const ListDomainUnitsForParentOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ items: DomainUnitSummaries, nextToken: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ListDomainUnitsForParentOutput",
-  }) as any as S.Schema<ListDomainUnitsForParentOutput>;
+export const ListDomainUnitsForParentOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: DomainUnitSummaries, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListDomainUnitsForParentOutput",
+}) as any as S.Schema<ListDomainUnitsForParentOutput>;
 export type EnabledRegionList = string[];
 export const EnabledRegionList = /*@__PURE__*/ S.Array(S.String);
 export type RegionalParameter = { [key: string]: string | undefined };
@@ -14345,8 +14196,10 @@ export const RegionalParameterMap = /*@__PURE__*/ S.Record(
 export type ResourceConfigurationParameterMap = {
   [key: string]: string | undefined;
 };
-export const ResourceConfigurationParameterMap =
-  /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ResourceConfigurationParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface PutResourceConfiguration {
   name: string;
   description?: string;
@@ -14393,8 +14246,9 @@ export const ProvisioningConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ lakeFormationConfiguration: LakeFormationConfiguration }),
 ]);
 export type ProvisioningConfigurationList = ProvisioningConfiguration[];
-export const ProvisioningConfigurationList =
-  /*@__PURE__*/ S.Array(ProvisioningConfiguration);
+export const ProvisioningConfigurationList = /*@__PURE__*/ S.Array(
+  ProvisioningConfiguration,
+);
 export interface PutEnvironmentBlueprintConfigurationInput {
   domainIdentifier: string;
   environmentBlueprintIdentifier: string;
@@ -14644,8 +14498,8 @@ export interface EnvironmentBlueprintConfigurationItem {
   resourceConfigurations?: ResourceConfiguration[];
   provisioningConfigurations?: ProvisioningConfiguration[];
 }
-export const EnvironmentBlueprintConfigurationItem =
-  /*@__PURE__*/ S.suspend(() =>
+export const EnvironmentBlueprintConfigurationItem = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       domainId: S.String,
       environmentBlueprintId: S.String,
@@ -14664,13 +14518,14 @@ export const EnvironmentBlueprintConfigurationItem =
       resourceConfigurations: S.optional(ResourceConfigurations),
       provisioningConfigurations: S.optional(ProvisioningConfigurationList),
     }),
-  ).annotate({
-    identifier: "EnvironmentBlueprintConfigurationItem",
-  }) as any as S.Schema<EnvironmentBlueprintConfigurationItem>;
+).annotate({
+  identifier: "EnvironmentBlueprintConfigurationItem",
+}) as any as S.Schema<EnvironmentBlueprintConfigurationItem>;
 export type EnvironmentBlueprintConfigurations =
   EnvironmentBlueprintConfigurationItem[];
-export const EnvironmentBlueprintConfigurations =
-  /*@__PURE__*/ S.Array(EnvironmentBlueprintConfigurationItem);
+export const EnvironmentBlueprintConfigurations = /*@__PURE__*/ S.Array(
+  EnvironmentBlueprintConfigurationItem,
+);
 export interface ListEnvironmentBlueprintConfigurationsOutput {
   items?: EnvironmentBlueprintConfigurationItem[];
   nextToken?: string;
@@ -15404,16 +15259,15 @@ export interface MetadataGenerationRunTarget {
   identifier: string;
   revision?: string;
 }
-export const MetadataGenerationRunTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: MetadataGenerationTargetType,
-      identifier: S.String,
-      revision: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MetadataGenerationRunTarget",
-  }) as any as S.Schema<MetadataGenerationRunTarget>;
+export const MetadataGenerationRunTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: MetadataGenerationTargetType,
+    identifier: S.String,
+    revision: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MetadataGenerationRunTarget",
+}) as any as S.Schema<MetadataGenerationRunTarget>;
 export interface StartMetadataGenerationRunInput {
   domainIdentifier: string;
   type?: MetadataGenerationRunType;
@@ -15422,31 +15276,30 @@ export interface StartMetadataGenerationRunInput {
   clientToken?: string;
   owningProjectIdentifier: string;
 }
-export const StartMetadataGenerationRunInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      type: S.optional(MetadataGenerationRunType),
-      types: S.optional(MetadataGenerationRunTypes),
-      target: MetadataGenerationRunTarget,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      owningProjectIdentifier: S.String,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartMetadataGenerationRunInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    type: S.optional(MetadataGenerationRunType),
+    types: S.optional(MetadataGenerationRunTypes),
+    target: MetadataGenerationRunTarget,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    owningProjectIdentifier: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartMetadataGenerationRunInput",
-  }) as any as S.Schema<StartMetadataGenerationRunInput>;
+  ),
+).annotate({
+  identifier: "StartMetadataGenerationRunInput",
+}) as any as S.Schema<StartMetadataGenerationRunInput>;
 export type MetadataGenerationRunStatus =
   | "SUBMITTED"
   | "IN_PROGRESS"
@@ -15466,66 +15319,64 @@ export interface StartMetadataGenerationRunOutput {
   createdBy?: string;
   owningProjectId?: string;
 }
-export const StartMetadataGenerationRunOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainId: S.String,
-      id: S.String,
-      status: S.optional(MetadataGenerationRunStatus),
-      type: S.optional(MetadataGenerationRunType),
-      types: S.optional(MetadataGenerationRunTypes),
-      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      createdBy: S.optional(S.String),
-      owningProjectId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "StartMetadataGenerationRunOutput",
-  }) as any as S.Schema<StartMetadataGenerationRunOutput>;
+export const StartMetadataGenerationRunOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainId: S.String,
+    id: S.String,
+    status: S.optional(MetadataGenerationRunStatus),
+    type: S.optional(MetadataGenerationRunType),
+    types: S.optional(MetadataGenerationRunTypes),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    createdBy: S.optional(S.String),
+    owningProjectId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "StartMetadataGenerationRunOutput",
+}) as any as S.Schema<StartMetadataGenerationRunOutput>;
 export interface GetMetadataGenerationRunInput {
   domainIdentifier: string;
   identifier: string;
   type?: MetadataGenerationRunType;
 }
-export const GetMetadataGenerationRunInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-      type: S.optional(MetadataGenerationRunType).pipe(T.HttpQuery("type")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMetadataGenerationRunInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+    type: S.optional(MetadataGenerationRunType).pipe(T.HttpQuery("type")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetMetadataGenerationRunInput",
-  }) as any as S.Schema<GetMetadataGenerationRunInput>;
+  ),
+).annotate({
+  identifier: "GetMetadataGenerationRunInput",
+}) as any as S.Schema<GetMetadataGenerationRunInput>;
 export interface MetadataGenerationRunTypeStat {
   type: MetadataGenerationRunType;
   status: MetadataGenerationRunStatus;
   errorMessage?: string;
 }
-export const MetadataGenerationRunTypeStat =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: MetadataGenerationRunType,
-      status: MetadataGenerationRunStatus,
-      errorMessage: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MetadataGenerationRunTypeStat",
-  }) as any as S.Schema<MetadataGenerationRunTypeStat>;
+export const MetadataGenerationRunTypeStat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: MetadataGenerationRunType,
+    status: MetadataGenerationRunStatus,
+    errorMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MetadataGenerationRunTypeStat",
+}) as any as S.Schema<MetadataGenerationRunTypeStat>;
 export type MetadataGenerationRunTypeStats = MetadataGenerationRunTypeStat[];
-export const MetadataGenerationRunTypeStats =
-  /*@__PURE__*/ S.Array(MetadataGenerationRunTypeStat);
+export const MetadataGenerationRunTypeStats = /*@__PURE__*/ S.Array(
+  MetadataGenerationRunTypeStat,
+);
 export interface GetMetadataGenerationRunOutput {
   domainId: string;
   id: string;
@@ -15538,53 +15389,52 @@ export interface GetMetadataGenerationRunOutput {
   owningProjectId: string;
   typeStats?: MetadataGenerationRunTypeStat[];
 }
-export const GetMetadataGenerationRunOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainId: S.String,
-      id: S.String,
-      target: S.optional(MetadataGenerationRunTarget),
-      status: S.optional(MetadataGenerationRunStatus),
-      type: S.optional(MetadataGenerationRunType),
-      types: S.optional(MetadataGenerationRunTypes),
-      createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      createdBy: S.optional(S.String),
-      owningProjectId: S.String,
-      typeStats: S.optional(MetadataGenerationRunTypeStats),
-    }),
-  ).annotate({
-    identifier: "GetMetadataGenerationRunOutput",
-  }) as any as S.Schema<GetMetadataGenerationRunOutput>;
+export const GetMetadataGenerationRunOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainId: S.String,
+    id: S.String,
+    target: S.optional(MetadataGenerationRunTarget),
+    status: S.optional(MetadataGenerationRunStatus),
+    type: S.optional(MetadataGenerationRunType),
+    types: S.optional(MetadataGenerationRunTypes),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    createdBy: S.optional(S.String),
+    owningProjectId: S.String,
+    typeStats: S.optional(MetadataGenerationRunTypeStats),
+  }),
+).annotate({
+  identifier: "GetMetadataGenerationRunOutput",
+}) as any as S.Schema<GetMetadataGenerationRunOutput>;
 export interface CancelMetadataGenerationRunInput {
   domainIdentifier: string;
   identifier: string;
 }
-export const CancelMetadataGenerationRunInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      identifier: S.String.pipe(T.HttpLabel("identifier")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}/cancel",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelMetadataGenerationRunInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    identifier: S.String.pipe(T.HttpLabel("identifier")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}/cancel",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CancelMetadataGenerationRunInput",
-  }) as any as S.Schema<CancelMetadataGenerationRunInput>;
+  ),
+).annotate({
+  identifier: "CancelMetadataGenerationRunInput",
+}) as any as S.Schema<CancelMetadataGenerationRunInput>;
 export interface CancelMetadataGenerationRunOutput {}
-export const CancelMetadataGenerationRunOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CancelMetadataGenerationRunOutput",
-  }) as any as S.Schema<CancelMetadataGenerationRunOutput>;
+export const CancelMetadataGenerationRunOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CancelMetadataGenerationRunOutput",
+}) as any as S.Schema<CancelMetadataGenerationRunOutput>;
 export interface ListMetadataGenerationRunsInput {
   domainIdentifier: string;
   status?: MetadataGenerationRunStatus;
@@ -15593,35 +15443,32 @@ export interface ListMetadataGenerationRunsInput {
   maxResults?: number;
   targetIdentifier?: string;
 }
-export const ListMetadataGenerationRunsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
-      status: S.optional(MetadataGenerationRunStatus).pipe(
-        T.HttpQuery("status"),
-      ),
-      type: S.optional(MetadataGenerationRunType).pipe(T.HttpQuery("type")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      targetIdentifier: S.optional(S.String).pipe(
-        T.HttpQuery("targetIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListMetadataGenerationRunsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainIdentifier: S.String.pipe(T.HttpLabel("domainIdentifier")),
+    status: S.optional(MetadataGenerationRunStatus).pipe(T.HttpQuery("status")),
+    type: S.optional(MetadataGenerationRunType).pipe(T.HttpQuery("type")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    targetIdentifier: S.optional(S.String).pipe(
+      T.HttpQuery("targetIdentifier"),
     ),
-  ).annotate({
-    identifier: "ListMetadataGenerationRunsInput",
-  }) as any as S.Schema<ListMetadataGenerationRunsInput>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/v2/domains/{domainIdentifier}/metadata-generation-runs",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListMetadataGenerationRunsInput",
+}) as any as S.Schema<ListMetadataGenerationRunsInput>;
 export interface MetadataGenerationRunItem {
   domainId: string;
   id: string;
@@ -15656,15 +15503,14 @@ export interface ListMetadataGenerationRunsOutput {
   items?: MetadataGenerationRunItem[];
   nextToken?: string;
 }
-export const ListMetadataGenerationRunsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: S.optional(MetadataGenerationRuns),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListMetadataGenerationRunsOutput",
-  }) as any as S.Schema<ListMetadataGenerationRunsOutput>;
+export const ListMetadataGenerationRunsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: S.optional(MetadataGenerationRuns),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListMetadataGenerationRunsOutput",
+}) as any as S.Schema<ListMetadataGenerationRunsOutput>;
 export type Metadata = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -16654,23 +16500,21 @@ export const RequiredMetadataFormList = /*@__PURE__*/ S.Array(
 export interface MetadataFormEnforcementDetail {
   requiredMetadataForms?: MetadataFormReference[];
 }
-export const MetadataFormEnforcementDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ requiredMetadataForms: S.optional(RequiredMetadataFormList) }),
-  ).annotate({
-    identifier: "MetadataFormEnforcementDetail",
-  }) as any as S.Schema<MetadataFormEnforcementDetail>;
+export const MetadataFormEnforcementDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ requiredMetadataForms: S.optional(RequiredMetadataFormList) }),
+).annotate({
+  identifier: "MetadataFormEnforcementDetail",
+}) as any as S.Schema<MetadataFormEnforcementDetail>;
 export type GlossaryTermIdentifiers = string[];
 export const GlossaryTermIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export interface GlossaryTermEnforcementDetail {
   requiredGlossaryTermIds?: string[];
 }
-export const GlossaryTermEnforcementDetail =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ requiredGlossaryTermIds: S.optional(GlossaryTermIdentifiers) }),
-  ).annotate({
-    identifier: "GlossaryTermEnforcementDetail",
-  }) as any as S.Schema<GlossaryTermEnforcementDetail>;
+export const GlossaryTermEnforcementDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ requiredGlossaryTermIds: S.optional(GlossaryTermIdentifiers) }),
+).annotate({
+  identifier: "GlossaryTermEnforcementDetail",
+}) as any as S.Schema<GlossaryTermEnforcementDetail>;
 export type RuleDetail =
   | {
       metadataFormEnforcementDetail: MetadataFormEnforcementDetail;
@@ -16998,32 +16842,37 @@ export const ListRulesOutput = /*@__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -19440,6 +19289,7 @@ export type ListEnvironmentsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Lists Amazon DataZone environments.
@@ -19472,6 +19322,7 @@ export const listEnvironments: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListEnvironments",
   pagination: {
@@ -19814,6 +19665,7 @@ export type ListProjectsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Lists Amazon DataZone projects.
@@ -19846,6 +19698,7 @@ export const listProjects: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListProjects",
   pagination: {
@@ -22322,6 +22175,7 @@ export type DeleteEnvironmentBlueprintConfigurationError =
   | AccessDeniedException
   | InternalServerException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Deletes the blueprint configuration in Amazon DataZone.
@@ -22334,7 +22188,12 @@ export const deleteEnvironmentBlueprintConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentBlueprintConfigurationInput,
   output: DeleteEnvironmentBlueprintConfigurationOutput,
-  errors: [AccessDeniedException, InternalServerException, ValidationException],
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ValidationException,
+    ResourceNotFoundException,
+  ],
   operationName: "DeleteEnvironmentBlueprintConfiguration",
 }));
 export type ListEnvironmentBlueprintConfigurationsError =

@@ -3526,6 +3526,14 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
   { Message: S.optional(S.String) },
   T.AwsQueryError({ code: "ThrottlingException", httpResponseCode: 429 }),
 ).pipe(C.withThrottlingError) {}
+export class CloudTrailLakeOnboardingClosed extends S.TaggedErrorClass<CloudTrailLakeOnboardingClosed>()(
+  "CloudTrailLakeOnboardingClosed",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidParameterException",
+    message: { includes: "no longer accepting new customers" },
+  }),
+).pipe(C.withBadRequestError) {}
 export class CloudTrailInvalidClientTokenIdException extends S.TaggedErrorClass<CloudTrailInvalidClientTokenIdException>()(
   "CloudTrailInvalidClientTokenIdException",
   { Message: S.optional(S.String) },
@@ -4030,6 +4038,7 @@ export type CreateEventDataStoreError =
   | OrganizationsNotInUseException
   | ThrottlingException
   | UnsupportedOperationException
+  | CloudTrailLakeOnboardingClosed
   | CommonErrors;
 /**
  * Creates a new event data store.
@@ -4062,6 +4071,7 @@ export const createEventDataStore: API.OperationMethod<
     OrganizationsNotInUseException,
     ThrottlingException,
     UnsupportedOperationException,
+    CloudTrailLakeOnboardingClosed,
   ],
   operationName: "CreateEventDataStore",
 }));

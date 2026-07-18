@@ -2556,14 +2556,46 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
   "ResourceNotFoundException",
   { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class GroupAlreadyExists extends S.TaggedErrorClass<GroupAlreadyExists>()(
+  "GroupAlreadyExists",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: " already exists$" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
 export class RuleLimitExceededException extends S.TaggedErrorClass<RuleLimitExceededException>()(
   "RuleLimitExceededException",
   { Message: S.optional(S.String) },
 ) {}
+export class SamplingRuleAlreadyExists extends S.TaggedErrorClass<SamplingRuleAlreadyExists>()(
+  "SamplingRuleAlreadyExists",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: "Sampling rule already exists",
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class GroupNotFound extends S.TaggedErrorClass<GroupNotFound>()(
+  "GroupNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: "Group not found",
+  }),
+).pipe(C.withNotFoundError) {}
 export class InvalidPolicyRevisionIdException extends S.TaggedErrorClass<InvalidPolicyRevisionIdException>()(
   "InvalidPolicyRevisionIdException",
   { Message: S.optional(S.String) },
 ).pipe(C.withBadRequestError) {}
+export class SamplingRuleNotFound extends S.TaggedErrorClass<SamplingRuleNotFound>()(
+  "SamplingRuleNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: "Sampling rule does not exist",
+  }),
+).pipe(C.withNotFoundError) {}
 export class LockoutPreventionException extends S.TaggedErrorClass<LockoutPreventionException>()(
   "LockoutPreventionException",
   { Message: S.optional(S.String) },
@@ -2654,6 +2686,7 @@ export const cancelTraceRetrieval: API.OperationMethod<
 export type CreateGroupError =
   | InvalidRequestException
   | ThrottledException
+  | GroupAlreadyExists
   | CommonErrors;
 /**
  * Creates a group resource with a name and a filter expression.
@@ -2666,13 +2699,14 @@ export const createGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResult,
-  errors: [InvalidRequestException, ThrottledException],
+  errors: [InvalidRequestException, ThrottledException, GroupAlreadyExists],
   operationName: "CreateGroup",
 }));
 export type CreateSamplingRuleError =
   | InvalidRequestException
   | RuleLimitExceededException
   | ThrottledException
+  | SamplingRuleAlreadyExists
   | CommonErrors;
 /**
  * Creates a rule to control sampling behavior for instrumented applications. Services
@@ -2695,12 +2729,14 @@ export const createSamplingRule: API.OperationMethod<
     InvalidRequestException,
     RuleLimitExceededException,
     ThrottledException,
+    SamplingRuleAlreadyExists,
   ],
   operationName: "CreateSamplingRule",
 }));
 export type DeleteGroupError =
   | InvalidRequestException
   | ThrottledException
+  | GroupNotFound
   | CommonErrors;
 /**
  * Deletes a group resource.
@@ -2713,7 +2749,7 @@ export const deleteGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResult,
-  errors: [InvalidRequestException, ThrottledException],
+  errors: [InvalidRequestException, ThrottledException, GroupNotFound],
   operationName: "DeleteGroup",
 }));
 export type DeleteResourcePolicyError =
@@ -2742,6 +2778,7 @@ export const deleteResourcePolicy: API.OperationMethod<
 export type DeleteSamplingRuleError =
   | InvalidRequestException
   | ThrottledException
+  | SamplingRuleNotFound
   | CommonErrors;
 /**
  * Deletes a sampling rule.
@@ -2754,7 +2791,7 @@ export const deleteSamplingRule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteSamplingRuleRequest,
   output: DeleteSamplingRuleResult,
-  errors: [InvalidRequestException, ThrottledException],
+  errors: [InvalidRequestException, ThrottledException, SamplingRuleNotFound],
   operationName: "DeleteSamplingRule",
 }));
 export type GetEncryptionConfigError =
@@ -2778,6 +2815,7 @@ export const getEncryptionConfig: API.OperationMethod<
 export type GetGroupError =
   | InvalidRequestException
   | ThrottledException
+  | GroupNotFound
   | CommonErrors;
 /**
  * Retrieves group resource details.
@@ -2790,7 +2828,7 @@ export const getGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetGroupRequest,
   output: GetGroupResult,
-  errors: [InvalidRequestException, ThrottledException],
+  errors: [InvalidRequestException, ThrottledException, GroupNotFound],
   operationName: "GetGroup",
 }));
 export type GetGroupsError =
@@ -3615,6 +3653,7 @@ export const untagResource: API.OperationMethod<
 export type UpdateGroupError =
   | InvalidRequestException
   | ThrottledException
+  | GroupNotFound
   | CommonErrors;
 /**
  * Updates a group resource.
@@ -3627,7 +3666,7 @@ export const updateGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResult,
-  errors: [InvalidRequestException, ThrottledException],
+  errors: [InvalidRequestException, ThrottledException, GroupNotFound],
   operationName: "UpdateGroup",
 }));
 export type UpdateIndexingRuleError =
@@ -3658,6 +3697,7 @@ export const updateIndexingRule: API.OperationMethod<
 export type UpdateSamplingRuleError =
   | InvalidRequestException
   | ThrottledException
+  | SamplingRuleNotFound
   | CommonErrors;
 /**
  * Modifies a sampling rule's configuration.
@@ -3670,7 +3710,7 @@ export const updateSamplingRule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSamplingRuleRequest,
   output: UpdateSamplingRuleResult,
-  errors: [InvalidRequestException, ThrottledException],
+  errors: [InvalidRequestException, ThrottledException, SamplingRuleNotFound],
   operationName: "UpdateSamplingRule",
 }));
 export type UpdateTraceSegmentDestinationError =

@@ -2311,6 +2311,7 @@ export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedExcept
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -2335,6 +2336,7 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -2359,6 +2361,7 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class PendingVerification extends S.TaggedErrorClass<PendingVerification>()(
   "PendingVerification",
@@ -2383,6 +2386,7 @@ export class PendingVerification extends S.TaggedErrorClass<PendingVerification>
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -2407,6 +2411,7 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -2431,6 +2436,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -2455,7 +2461,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {},
+) {}
 
 //# Operations
 export type CreateEncoderConfigurationError =
@@ -2551,6 +2562,7 @@ export type CreateStageError =
   | PendingVerification
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Creates a new stage (and optionally participant tokens).
@@ -2568,6 +2580,7 @@ export const createStage: API.OperationMethod<
     PendingVerification,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "CreateStage",
 }));
@@ -2695,6 +2708,7 @@ export type DeleteStageError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Shuts down and deletes the specified stage (disconnecting all participants). This operation also
@@ -2715,6 +2729,7 @@ export const deleteStage: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeleteStage",
 }));
@@ -2909,6 +2924,7 @@ export type GetStageError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets information for the specified stage.
@@ -2925,6 +2941,7 @@ export const getStage: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetStage",
 }));
@@ -3301,6 +3318,7 @@ export type ListStagesError =
   | AccessDeniedException
   | ConflictException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about all stages in your account, in the AWS region where the
@@ -3329,7 +3347,12 @@ export const listStages: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStagesRequest,
   output: ListStagesResponse,
-  errors: [AccessDeniedException, ConflictException, ValidationException],
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ValidationException,
+    ThrottlingException,
+  ],
   operationName: "ListStages",
   pagination: {
     inputToken: "nextToken",
@@ -3427,6 +3450,7 @@ export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets information about AWS tags for the specified ARN.
@@ -3443,6 +3467,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -3584,6 +3609,7 @@ export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Adds or updates tags for the AWS resource with the specified ARN.
@@ -3600,6 +3626,7 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "TagResource",
 }));
@@ -3607,6 +3634,7 @@ export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Removes tags from the resource with the specified ARN.
@@ -3623,6 +3651,7 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "UntagResource",
 }));
@@ -3660,6 +3689,7 @@ export type UpdateStageError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Updates a stage’s configuration.
@@ -3679,6 +3709,7 @@ export const updateStage: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "UpdateStage",
 }));

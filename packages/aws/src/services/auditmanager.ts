@@ -3545,6 +3545,18 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
   "ServiceQuotaExceededException",
   { message: S.String },
 ).pipe(C.withQuotaError) {}
+export class AuditManagerMaintenanceMode extends S.TaggedErrorClass<AuditManagerMaintenanceMode>()(
+  "AuditManagerMaintenanceMode",
+  {
+    message: S.String,
+    reason: S.optional(ValidationExceptionReason),
+    fields: S.optional(ValidationExceptionFieldList),
+  },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "maintenance mode" },
+  }),
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type AssociateAssessmentReportEvidenceFolderError =
@@ -5174,6 +5186,7 @@ export type RegisterAccountError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | AuditManagerMaintenanceMode
   | CommonErrors;
 /**
  * Enables Audit Manager for the specified Amazon Web Services account.
@@ -5192,6 +5205,7 @@ export const registerAccount: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    AuditManagerMaintenanceMode,
   ],
   operationName: "RegisterAccount",
 }));

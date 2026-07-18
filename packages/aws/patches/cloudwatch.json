@@ -1,0 +1,10 @@
+{
+  "errorCategories": {
+    "ValidationException": ["BadRequestError"]
+  },
+  "operations": {
+    "describeAlarmContributors": {
+      "errors": ["ValidationException"]
+    }
+  }
+}

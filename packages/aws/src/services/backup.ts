@@ -3339,7 +3339,14 @@ export interface GetSupportedResourceTypesRequest {}
 export const GetSupportedResourceTypesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+      T.all(
+        T.Http({ method: "GET", uri: "/supported-resource-types" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
     ),
   ).annotate({
     identifier: "GetSupportedResourceTypesRequest",
@@ -6515,7 +6522,10 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     Type: S.optional(S.String),
     Context: S.optional(S.String),
   },
-  T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+  T.all(
+    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
 ).pipe(C.withConflictError) {}
 export class DependencyFailureException extends S.TaggedErrorClass<DependencyFailureException>()(
   "DependencyFailureException",

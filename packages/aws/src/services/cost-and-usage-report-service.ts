@@ -369,6 +369,14 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
 ) {}
+export class ReportBucketNotVerified extends S.TaggedErrorClass<ReportBucketNotVerified>()(
+  "ReportBucketNotVerified",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { matches: "[Bb]ucket" },
+  }),
+).pipe(C.withRetryableError) {}
 export class DuplicateReportNameException extends S.TaggedErrorClass<DuplicateReportNameException>()(
   "DuplicateReportNameException",
   { Message: S.optional(S.String) },
@@ -461,6 +469,7 @@ export const listTagsForResource: API.OperationMethod<
 export type ModifyReportDefinitionError =
   | InternalErrorException
   | ValidationException
+  | ReportBucketNotVerified
   | CommonErrors;
 /**
  * Allows you to programmatically update your report preferences.
@@ -473,7 +482,11 @@ export const modifyReportDefinition: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyReportDefinitionRequest,
   output: ModifyReportDefinitionResponse,
-  errors: [InternalErrorException, ValidationException],
+  errors: [
+    InternalErrorException,
+    ValidationException,
+    ReportBucketNotVerified,
+  ],
   operationName: "ModifyReportDefinition",
 }));
 export type PutReportDefinitionError =
@@ -482,6 +495,7 @@ export type PutReportDefinitionError =
   | ReportLimitReachedException
   | ResourceNotFoundException
   | ValidationException
+  | ReportBucketNotVerified
   | CommonErrors;
 /**
  * Creates a new report using the description that you provide.
@@ -500,6 +514,7 @@ export const putReportDefinition: API.OperationMethod<
     ReportLimitReachedException,
     ResourceNotFoundException,
     ValidationException,
+    ReportBucketNotVerified,
   ],
   operationName: "PutReportDefinition",
 }));

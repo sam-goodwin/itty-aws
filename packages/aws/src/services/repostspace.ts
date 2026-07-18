@@ -131,29 +131,28 @@ export interface BatchAddChannelRoleToAccessorsInput {
   accessorIds: string[];
   channelRole: ChannelRole;
 }
-export const BatchAddChannelRoleToAccessorsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-      channelId: S.String.pipe(T.HttpLabel("channelId")),
-      accessorIds: AccessorIdList,
-      channelRole: ChannelRole,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/spaces/{spaceId}/channels/{channelId}/roles",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchAddChannelRoleToAccessorsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+    channelId: S.String.pipe(T.HttpLabel("channelId")),
+    accessorIds: AccessorIdList,
+    channelRole: ChannelRole,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/spaces/{spaceId}/channels/{channelId}/roles",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchAddChannelRoleToAccessorsInput",
-  }) as any as S.Schema<BatchAddChannelRoleToAccessorsInput>;
+  ),
+).annotate({
+  identifier: "BatchAddChannelRoleToAccessorsInput",
+}) as any as S.Schema<BatchAddChannelRoleToAccessorsInput>;
 export interface BatchError {
   accessorId: string;
   error: number;
@@ -168,12 +167,11 @@ export interface BatchAddChannelRoleToAccessorsOutput {
   addedAccessorIds: string[];
   errors: BatchError[];
 }
-export const BatchAddChannelRoleToAccessorsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ addedAccessorIds: AccessorIdList, errors: BatchErrorList }),
-  ).annotate({
-    identifier: "BatchAddChannelRoleToAccessorsOutput",
-  }) as any as S.Schema<BatchAddChannelRoleToAccessorsOutput>;
+export const BatchAddChannelRoleToAccessorsOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ addedAccessorIds: AccessorIdList, errors: BatchErrorList }),
+).annotate({
+  identifier: "BatchAddChannelRoleToAccessorsOutput",
+}) as any as S.Schema<BatchAddChannelRoleToAccessorsOutput>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
@@ -239,8 +237,8 @@ export interface BatchRemoveChannelRoleFromAccessorsInput {
   accessorIds: string[];
   channelRole: ChannelRole;
 }
-export const BatchRemoveChannelRoleFromAccessorsInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const BatchRemoveChannelRoleFromAccessorsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       spaceId: S.String.pipe(T.HttpLabel("spaceId")),
       channelId: S.String.pipe(T.HttpLabel("channelId")),
@@ -259,9 +257,9 @@ export const BatchRemoveChannelRoleFromAccessorsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "BatchRemoveChannelRoleFromAccessorsInput",
-  }) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsInput>;
+).annotate({
+  identifier: "BatchRemoveChannelRoleFromAccessorsInput",
+}) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsInput>;
 export interface BatchRemoveChannelRoleFromAccessorsOutput {
   removedAccessorIds: string[];
   errors: BatchError[];
@@ -341,21 +339,20 @@ export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type FeatureEnableParameter = "ENABLED" | "DISABLED" | (string & {});
 export const FeatureEnableParameter = /*@__PURE__*/ S.String;
-export type AllowedDomainsList = string | redacted.Redacted<string>[];
+export type AllowedDomainsList = (string | redacted.Redacted<string>)[];
 export const AllowedDomainsList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface SupportedEmailDomainsParameters {
   enabled?: FeatureEnableParameter;
-  allowedDomains?: string | redacted.Redacted<string>[];
+  allowedDomains?: (string | redacted.Redacted<string>)[];
 }
-export const SupportedEmailDomainsParameters =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(FeatureEnableParameter),
-      allowedDomains: S.optional(AllowedDomainsList),
-    }),
-  ).annotate({
-    identifier: "SupportedEmailDomainsParameters",
-  }) as any as S.Schema<SupportedEmailDomainsParameters>;
+export const SupportedEmailDomainsParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(FeatureEnableParameter),
+    allowedDomains: S.optional(AllowedDomainsList),
+  }),
+).annotate({
+  identifier: "SupportedEmailDomainsParameters",
+}) as any as S.Schema<SupportedEmailDomainsParameters>;
 export interface CreateSpaceInput {
   name: string | redacted.Redacted<string>;
   subdomain: string;
@@ -552,17 +549,16 @@ export type FeatureEnableStatus =
 export const FeatureEnableStatus = /*@__PURE__*/ S.String;
 export interface SupportedEmailDomainsStatus {
   enabled?: FeatureEnableStatus;
-  allowedDomains?: string | redacted.Redacted<string>[];
+  allowedDomains?: (string | redacted.Redacted<string>)[];
 }
-export const SupportedEmailDomainsStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(FeatureEnableStatus),
-      allowedDomains: S.optional(AllowedDomainsList),
-    }),
-  ).annotate({
-    identifier: "SupportedEmailDomainsStatus",
-  }) as any as S.Schema<SupportedEmailDomainsStatus>;
+export const SupportedEmailDomainsStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(FeatureEnableStatus),
+    allowedDomains: S.optional(AllowedDomainsList),
+  }),
+).annotate({
+  identifier: "SupportedEmailDomainsStatus",
+}) as any as S.Schema<SupportedEmailDomainsStatus>;
 export interface GetSpaceOutput {
   spaceId: string;
   arn: string;
@@ -773,10 +769,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RegisterAdminInput {
   spaceId: string;
   adminId: string;
@@ -960,6 +957,7 @@ export const UpdateSpaceResponse = /*@__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -967,11 +965,12 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -981,7 +980,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     quotaCode: S.optional(S.String),
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -990,10 +989,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: ValidationExceptionReason,
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -1004,6 +1005,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     serviceCode: S.String,
     quotaCode: S.String,
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -1290,6 +1292,7 @@ export type ListChannelsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Returns the list of channel within a private re:Post with some information about each channel.
@@ -1322,6 +1325,7 @@ export const listChannels: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   operationName: "ListChannels",
   pagination: {

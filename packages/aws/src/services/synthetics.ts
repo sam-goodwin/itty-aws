@@ -1887,6 +1887,7 @@ export const disassociateResource: API.OperationMethod<
 export type GetCanaryError =
   | InternalServerException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Retrieves complete information about one canary. You must specify
@@ -1901,7 +1902,11 @@ export const getCanary: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCanaryRequest,
   output: GetCanaryResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    ResourceNotFoundException,
+  ],
   operationName: "GetCanary",
 }));
 export type GetCanaryRunsError =

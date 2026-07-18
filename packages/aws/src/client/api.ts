@@ -13,7 +13,12 @@ import { SingleShotGen } from "effect/Utils";
 
 import { makeDefault, Retry } from "../retry.ts";
 import { makeEndpointResolver } from "../rules-engine/endpoint-resolver.ts";
-import { getAwsApiService, getAwsAuthSigv4, getPath } from "../traits.ts";
+import {
+  getAwsApiService,
+  getAwsAuthSigv2,
+  getAwsAuthSigv4,
+  getPath,
+} from "../traits.ts";
 import { getIdentifier } from "../util/ast.ts";
 import type { Operation } from "./operation.ts";
 import { makeRequestBuilder } from "./request-builder.ts";
@@ -66,6 +71,10 @@ export const make = <Op extends Operation<any, any, any>>(
     // Get SigV4 service name from annotations
     const sigv4 = getAwsAuthSigv4(inputAst);
 
+    // Legacy SigV2 (SimpleDB only) — when present it takes precedence and
+    // the request is signed via body parameters instead of headers.
+    const sigv2 = getAwsAuthSigv2(inputAst);
+
     // Create rules resolver (if rule set available)
     const resolveEndpoint = makeEndpointResolver(op);
 
@@ -73,6 +82,7 @@ export const make = <Op extends Operation<any, any, any>>(
       buildRequest,
       parseResponse,
       sigv4,
+      sigv2,
       resolveEndpoint,
       serviceSdkId,
       operationName,
@@ -84,6 +94,7 @@ export const make = <Op extends Operation<any, any, any>>(
       buildRequest,
       parseResponse,
       sigv4,
+      sigv2,
       resolveEndpoint: rulesResolver,
       serviceSdkId: _serviceSdkId,
       operationName: _operationName,
@@ -143,6 +154,28 @@ export const make = <Op extends Operation<any, any, any>>(
       endpoint = `https://${serviceName}.${region}.amazonaws.com`;
     }
 
+    // Apply the Smithy `smithy.api#endpoint` hostPrefix (e.g. "sync-" for
+    // Step Functions StartSyncExecution -> sync-states.{region}). Skipped for
+    // custom endpoints, matching official AWS SDK behavior. Labels of the
+    // form {memberName} are substituted from the operation input.
+    if (op.endpointHostPrefix !== undefined && !customEndpoint) {
+      const resolvedPrefix = op.endpointHostPrefix.replace(
+        /\{(\w+)\}/g,
+        (_, member: string) =>
+          String((payload as Record<string, unknown>)?.[member] ?? ""),
+      );
+      // The endpoint rules engine may already have baked the same label into
+      // the host (e.g. S3 Control resolves `{AccountId}.s3-control.{region}`
+      // from the AccountId context param, and the operations ALSO carry the
+      // `{AccountId}.` hostPrefix trait). Only prepend when the resolved
+      // endpoint does not already start with the prefix, else the label is
+      // applied twice and TLS fails on the doubled host.
+      const hostStart = endpoint.indexOf("://") + 3;
+      if (!endpoint.startsWith(resolvedPrefix, hostStart)) {
+        endpoint = endpoint.replace("://", `://${resolvedPrefix}`);
+      }
+    }
+
     // Build full URL with query string
     const queryString = Object.entries(resolvedRequest.query)
       .filter(([_, v]) => v !== undefined)
@@ -165,6 +198,98 @@ export const make = <Op extends Operation<any, any, any>>(
       ? `${resolvedRequest.path}?${queryString}`
       : resolvedRequest.path;
 
+    // Legacy Signature Version 2 (SimpleDB is the sole remaining SigV2-only
+    // service). The signature is an HMAC-SHA256 over the sorted,
+    // RFC3986-encoded form parameters and travels IN the form-encoded body —
+    // there is no Authorization header. The classic endpoint rejects SigV4
+    // with `AuthFailure: access credentials are missing`.
+    if (sigv2) {
+      const rfc3986 = (s: string) =>
+        encodeURIComponent(s).replace(
+          /[!'()*]/g,
+          (c) => "%" + c.charCodeAt(0).toString(16).toUpperCase(),
+        );
+      const pairs: Array<[string, string]> = [];
+      const bodyStr =
+        typeof resolvedRequest.body === "string" ? resolvedRequest.body : "";
+      for (const part of bodyStr.split("&")) {
+        if (!part) continue;
+        const eq = part.indexOf("=");
+        pairs.push([
+          decodeURIComponent(eq === -1 ? part : part.slice(0, eq)),
+          eq === -1 ? "" : decodeURIComponent(part.slice(eq + 1)),
+        ]);
+      }
+      pairs.push(
+        ["AWSAccessKeyId", Redacted.value(credentials.accessKeyId)],
+        ["SignatureVersion", "2"],
+        ["SignatureMethod", "HmacSHA256"],
+        ["Timestamp", new Date().toISOString().replace(/\.\d{3}/, "")],
+      );
+      if (credentials.sessionToken) {
+        pairs.push(["SecurityToken", Redacted.value(credentials.sessionToken)]);
+      }
+      const canonical = pairs
+        .map(([k, v]) => [rfc3986(k), rfc3986(v)] as const)
+        .sort(([a, av], [b, bv]) =>
+          a < b ? -1 : a > b ? 1 : av < bv ? -1 : av > bv ? 1 : 0,
+        )
+        .map(([k, v]) => `${k}=${v}`)
+        .join("&");
+      const requestUrl = new URL(`${endpoint}${fullPath}`);
+      const stringToSign = [
+        resolvedRequest.method,
+        requestUrl.host,
+        requestUrl.pathname || "/",
+        canonical,
+      ].join("\n");
+      const signatureBytes = yield* Effect.promise(async () => {
+        const key = await crypto.subtle.importKey(
+          "raw",
+          new TextEncoder().encode(Redacted.value(credentials.secretAccessKey)),
+          { name: "HMAC", hash: "SHA-256" },
+          false,
+          ["sign"],
+        );
+        return crypto.subtle.sign(
+          "HMAC",
+          key,
+          new TextEncoder().encode(stringToSign),
+        );
+      });
+      const signature = Buffer.from(signatureBytes).toString("base64");
+      const signedBody = `${canonical}&Signature=${rfc3986(signature)}`;
+      const contentTypeV2 =
+        resolvedRequest.headers["Content-Type"] ??
+        resolvedRequest.headers["content-type"] ??
+        "application/x-www-form-urlencoded";
+
+      const httpRequestV2 = pipe(
+        HttpClientRequest.make(
+          resolvedRequest.method as "GET" | "POST" | "PUT" | "DELETE",
+        )(requestUrl.toString()),
+        HttpClientRequest.setHeaders(resolvedRequest.headers),
+        HttpClientRequest.setBody(HttpBody.text(signedBody, contentTypeV2)),
+      );
+
+      const clientV2 = yield* HttpClient.HttpClient;
+      const rawResponseV2 = yield* clientV2.execute(httpRequestV2);
+      const responseHeadersV2 = rawResponseV2.headers as Record<string, string>;
+      const isEmptyBodyV2 =
+        responseHeadersV2["content-length"] === "0" ||
+        rawResponseV2.status === 204;
+      const responseBodyV2 = isEmptyBodyV2
+        ? new ReadableStream<Uint8Array>({ start: (c) => c.close() })
+        : yield* Stream.toReadableStreamEffect(rawResponseV2.stream);
+
+      return yield* parseResponse({
+        status: rawResponseV2.status,
+        statusText: "OK",
+        headers: responseHeadersV2,
+        body: responseBodyV2,
+      });
+    }
+
     // For streaming bodies (ReadableStream), we can't compute a hash
     // so we use UNSIGNED-PAYLOAD and don't pass the body to the signer
     const isStreamingBody = resolvedRequest.body instanceof ReadableStream;
@@ -179,15 +304,91 @@ export const make = <Op extends Operation<any, any, any>>(
     );
     // Check if there's a body to sign
     const hasBody = resolvedRequest.body !== undefined;
-    // Use unsigned payload for streaming bodies OR when service provides checksum with body
+    // Operations with a streaming input payload (smithy `@streaming` blob)
+    // are signed UNSIGNED-PAYLOAD even when the caller passed a buffered
+    // body — matching botocore's `has_streaming_input` behavior. Services
+    // like Lex Runtime V2 (RecognizeUtterance) reject payload-hash
+    // signatures on these routes. Glacier is the exception: it REQUIRES a
+    // real x-amz-content-sha256 (computed below), so it keeps the hashed
+    // path for buffered bodies. SageMaker Runtime is another exception:
+    // its event-stream route (InvokeEndpointWithResponseStream) rejects
+    // UNSIGNED-PAYLOAD with InvalidSignatureException — the service always
+    // reconstructs the canonical request from the actual body hash — so
+    // buffered bodies stay on the hashed path (plain InvokeEndpoint accepts
+    // payload-hash signatures too). AppConfig behaves the same way: its
+    // CreateHostedConfigurationVersion route rejects UNSIGNED-PAYLOAD with
+    // SignatureDoesNotMatch (the service's expected canonical request hashes
+    // the actual body), so it also stays on the hashed path. API Gateway's
+    // management API likewise models PostToConnection.Data as streaming, but
+    // rejects UNSIGNED-PAYLOAD and reconstructs the signature with the frame's
+    // actual SHA-256. Bedrock Runtime's InvokeModel operations do the same for
+    // their model-native request bodies. IoT Data Plane's shadow and publish
+    // operations also reject UNSIGNED-PAYLOAD for buffered payloads (as a
+    // generic Forbidden response), so those bodies must be hashed as well.
+    // IoT Wireless likewise hashes buffered GeoJSON position payloads.
+    // Lambda Invoke models Payload as streaming, but buffered invocations
+    // must hash the actual body or Lambda rejects the signature.
+    const hasStreamingInput =
+      resolvedRequest.hasStreamingInput === true &&
+      _serviceSdkId !== "Glacier" &&
+      _serviceSdkId !== "SageMaker Runtime" &&
+      _serviceSdkId !== "AppConfig" &&
+      _serviceSdkId !== "ApiGatewayManagementApi" &&
+      _serviceSdkId !== "Bedrock Runtime" &&
+      _serviceSdkId !== "IoT Data Plane" &&
+      _serviceSdkId !== "IoT Wireless" &&
+      _serviceSdkId !== "Lambda";
+    // Use unsigned payload for streaming bodies OR streaming-input
+    // operations OR when service provides checksum with body
     const useUnsignedPayload =
-      (isStreamingBody || (hasServiceChecksum && hasBody)) && !hasContentSha256;
-    const signingHeaders = useUnsignedPayload
+      (isStreamingBody ||
+        hasStreamingInput ||
+        (hasServiceChecksum && hasBody)) &&
+      !hasContentSha256;
+    let signingHeaders = useUnsignedPayload
       ? {
           ...resolvedRequest.headers,
           "X-Amz-Content-Sha256": "UNSIGNED-PAYLOAD",
         }
       : resolvedRequest.headers;
+
+    // S3 Control rejects UNSIGNED-PAYLOAD on several routes (access point
+    // operations fail with `InvalidRequest: "Request body cannot be
+    // unsigned"`). aws4fetch injects UNSIGNED-PAYLOAD for any service signing
+    // as "s3" when the header is absent, so pre-compute the real payload
+    // SHA-256 here (matching the official SDK's applyChecksum behavior).
+    // Glacier likewise REQUIRES the x-amz-content-sha256 header on
+    // payload-bearing requests (UploadArchive / UploadMultipartPart) — the
+    // service reconstructs the canonical request from that header, so
+    // omitting it fails with InvalidSignatureException (the official SDK's
+    // addChecksumHeaders middleware always sets it).
+    if (
+      (_serviceSdkId === "S3 Control" || _serviceSdkId === "Glacier") &&
+      !useUnsignedPayload &&
+      !hasContentSha256 &&
+      !isStreamingBody
+    ) {
+      const bodyBytes =
+        resolvedRequest.body === undefined
+          ? new Uint8Array(0)
+          : resolvedRequest.body instanceof Uint8Array
+            ? resolvedRequest.body
+            : new TextEncoder().encode(String(resolvedRequest.body));
+      const digest = yield* Effect.promise(() =>
+        crypto.subtle.digest(
+          "SHA-256",
+          // copy into a fresh ArrayBuffer-backed view for the DOM typings
+          bodyBytes.slice(),
+        ),
+      );
+      const payloadHash = Array.from(new Uint8Array(digest))
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("");
+      signingHeaders = {
+        ...signingHeaders,
+        "X-Amz-Content-Sha256": payloadHash,
+      };
+    }
 
     const signer = new AwsV4Signer({
       method: resolvedRequest.method,
@@ -338,6 +539,21 @@ export const make = <Op extends Operation<any, any, any>>(
   return Object.assign(outerFn, Proto);
 };
 
+/**
+ * Whether a continuation token returned by a paginated operation means
+ * "no more pages".
+ *
+ * AWS marks the terminal page by omitting the output token, returning it
+ * as `null`, or — for several services (e.g. SSM, CloudWatch Logs) — as an
+ * empty string. Treating `""` as a live token re-requests the first page
+ * with `NextToken: ""` forever (or fails with a ValidationException).
+ * This matches the official aws-sdk-js-v3 paginators, which stop on any
+ * falsy token (`hasNext = !!token`); object tokens like DynamoDB's
+ * `LastEvaluatedKey` are always truthy and unaffected.
+ */
+export const isTerminalPageToken = (token: unknown): boolean =>
+  token === undefined || token === null || token === "";
+
 export const makePaginated = <Op extends Operation<any, any, any>>(
   initOperation: () => Op,
 ): any => {
@@ -371,7 +587,7 @@ export const makePaginated = <Op extends Operation<any, any, any>>(
         // Return the full page and next state
         const nextState: State = {
           token: nextToken,
-          done: nextToken === undefined || nextToken === null,
+          done: isTerminalPageToken(nextToken),
         };
         return [response, nextState] as const;
       });

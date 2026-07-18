@@ -376,18 +376,18 @@ export interface App {
   appArn: string;
   name: string;
   tags?: { [key: string]: string | undefined };
-  description: string;
-  repository: string;
-  platform: Platform;
+  description?: string;
+  repository?: string;
+  platform?: Platform;
   createTime: Date;
   updateTime: Date;
   computeRoleArn?: string;
   iamServiceRoleArn?: string;
-  environmentVariables: { [key: string]: string | undefined };
-  defaultDomain: string;
-  enableBranchAutoBuild: boolean;
+  environmentVariables?: { [key: string]: string | undefined };
+  defaultDomain?: string;
+  enableBranchAutoBuild?: boolean;
   enableBranchAutoDeletion?: boolean;
-  enableBasicAuth: boolean;
+  enableBasicAuth?: boolean;
   basicAuthCredentials?: string | redacted.Redacted<string>;
   customRules?: CustomRule[];
   productionBranch?: ProductionBranch;
@@ -408,18 +408,18 @@ export const App = /*@__PURE__*/ S.suspend(() =>
     appArn: S.String,
     name: S.String,
     tags: S.optional(TagMap),
-    description: S.String,
-    repository: S.String,
-    platform: Platform,
+    description: S.optional(S.String),
+    repository: S.optional(S.String),
+    platform: S.optional(Platform),
     createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     computeRoleArn: S.optional(S.String),
     iamServiceRoleArn: S.optional(S.String),
-    environmentVariables: EnvironmentVariables,
-    defaultDomain: S.String,
-    enableBranchAutoBuild: S.Boolean,
+    environmentVariables: S.optional(EnvironmentVariables),
+    defaultDomain: S.optional(S.String),
+    enableBranchAutoBuild: S.optional(S.Boolean),
     enableBranchAutoDeletion: S.optional(S.Boolean),
-    enableBasicAuth: S.Boolean,
+    enableBasicAuth: S.optional(S.Boolean),
     basicAuthCredentials: S.optional(SensitiveString),
     customRules: S.optional(CustomRules),
     productionBranch: S.optional(ProductionBranch),
@@ -451,27 +451,26 @@ export interface CreateBackendEnvironmentRequest {
   stackName?: string;
   deploymentArtifacts?: string;
 }
-export const CreateBackendEnvironmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String,
-      stackName: S.optional(S.String),
-      deploymentArtifacts: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/apps/{appId}/backendenvironments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String,
+    stackName: S.optional(S.String),
+    deploymentArtifacts: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/apps/{appId}/backendenvironments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateBackendEnvironmentRequest",
-  }) as any as S.Schema<CreateBackendEnvironmentRequest>;
+  ),
+).annotate({
+  identifier: "CreateBackendEnvironmentRequest",
+}) as any as S.Schema<CreateBackendEnvironmentRequest>;
 export interface BackendEnvironment {
   backendEnvironmentArn: string;
   environmentName: string;
@@ -495,12 +494,11 @@ export const BackendEnvironment = /*@__PURE__*/ S.suspend(() =>
 export interface CreateBackendEnvironmentResult {
   backendEnvironment: BackendEnvironment;
 }
-export const CreateBackendEnvironmentResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ backendEnvironment: BackendEnvironment }).pipe(ns),
-  ).annotate({
-    identifier: "CreateBackendEnvironmentResult",
-  }) as any as S.Schema<CreateBackendEnvironmentResult>;
+export const CreateBackendEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ backendEnvironment: BackendEnvironment }).pipe(ns),
+).annotate({
+  identifier: "CreateBackendEnvironmentResult",
+}) as any as S.Schema<CreateBackendEnvironmentResult>;
 export interface Backend {
   stackArn?: string;
 }
@@ -574,28 +572,28 @@ export const AssociatedResources = /*@__PURE__*/ S.Array(S.String);
 export interface Branch {
   branchArn: string;
   branchName: string;
-  description: string;
+  description?: string;
   tags?: { [key: string]: string | undefined };
-  stage: Stage;
-  displayName: string;
-  enableNotification: boolean;
+  stage?: Stage;
+  displayName?: string;
+  enableNotification?: boolean;
   createTime: Date;
   updateTime: Date;
-  environmentVariables: { [key: string]: string | undefined };
-  enableAutoBuild: boolean;
+  environmentVariables?: { [key: string]: string | undefined };
+  enableAutoBuild?: boolean;
   enableSkewProtection?: boolean;
-  customDomains: string[];
-  framework: string;
-  activeJobId: string;
-  totalNumberOfJobs: string;
-  enableBasicAuth: boolean;
+  customDomains?: string[];
+  framework?: string;
+  activeJobId?: string;
+  totalNumberOfJobs?: string;
+  enableBasicAuth?: boolean;
   enablePerformanceMode?: boolean;
   thumbnailUrl?: string;
   basicAuthCredentials?: string | redacted.Redacted<string>;
   buildSpec?: string | redacted.Redacted<string>;
-  ttl: string;
+  ttl?: string;
   associatedResources?: string[];
-  enablePullRequestPreview: boolean;
+  enablePullRequestPreview?: boolean;
   pullRequestEnvironmentName?: string;
   destinationBranch?: string;
   sourceBranch?: string;
@@ -607,28 +605,28 @@ export const Branch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branchArn: S.String,
     branchName: S.String,
-    description: S.String,
+    description: S.optional(S.String),
     tags: S.optional(TagMap),
-    stage: Stage,
-    displayName: S.String,
-    enableNotification: S.Boolean,
+    stage: S.optional(Stage),
+    displayName: S.optional(S.String),
+    enableNotification: S.optional(S.Boolean),
     createTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     updateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    environmentVariables: EnvironmentVariables,
-    enableAutoBuild: S.Boolean,
+    environmentVariables: S.optional(EnvironmentVariables),
+    enableAutoBuild: S.optional(S.Boolean),
     enableSkewProtection: S.optional(S.Boolean),
-    customDomains: CustomDomains,
-    framework: S.String,
-    activeJobId: S.String,
-    totalNumberOfJobs: S.String,
-    enableBasicAuth: S.Boolean,
+    customDomains: S.optional(CustomDomains),
+    framework: S.optional(S.String),
+    activeJobId: S.optional(S.String),
+    totalNumberOfJobs: S.optional(S.String),
+    enableBasicAuth: S.optional(S.Boolean),
     enablePerformanceMode: S.optional(S.Boolean),
     thumbnailUrl: S.optional(S.String),
     basicAuthCredentials: S.optional(SensitiveString),
     buildSpec: S.optional(SensitiveString),
-    ttl: S.String,
+    ttl: S.optional(S.String),
     associatedResources: S.optional(AssociatedResources),
-    enablePullRequestPreview: S.Boolean,
+    enablePullRequestPreview: S.optional(S.Boolean),
     pullRequestEnvironmentName: S.optional(S.String),
     destinationBranch: S.optional(S.String),
     sourceBranch: S.optional(S.String),
@@ -684,13 +682,13 @@ export const FileUploadUrls = /*@__PURE__*/ S.Record(
 );
 export interface CreateDeploymentResult {
   jobId?: string;
-  fileUploadUrls: { [key: string]: string | undefined };
+  fileUploadUrls?: { [key: string]: string | undefined };
   zipUploadUrl: string;
 }
 export const CreateDeploymentResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.optional(S.String),
-    fileUploadUrls: FileUploadUrls,
+    fileUploadUrls: S.optional(FileUploadUrls),
     zipUploadUrl: S.String,
   }).pipe(ns),
 ).annotate({
@@ -732,30 +730,29 @@ export interface CreateDomainAssociationRequest {
   autoSubDomainIAMRole?: string;
   certificateSettings?: CertificateSettings;
 }
-export const CreateDomainAssociationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      domainName: S.String,
-      enableAutoSubDomain: S.optional(S.Boolean),
-      subDomainSettings: SubDomainSettings,
-      autoSubDomainCreationPatterns: S.optional(AutoSubDomainCreationPatterns),
-      autoSubDomainIAMRole: S.optional(S.String),
-      certificateSettings: S.optional(CertificateSettings),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/apps/{appId}/domains" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    domainName: S.String,
+    enableAutoSubDomain: S.optional(S.Boolean),
+    subDomainSettings: SubDomainSettings,
+    autoSubDomainCreationPatterns: S.optional(AutoSubDomainCreationPatterns),
+    autoSubDomainIAMRole: S.optional(S.String),
+    certificateSettings: S.optional(CertificateSettings),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/apps/{appId}/domains" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDomainAssociationRequest",
-  }) as any as S.Schema<CreateDomainAssociationRequest>;
+  ),
+).annotate({
+  identifier: "CreateDomainAssociationRequest",
+}) as any as S.Schema<CreateDomainAssociationRequest>;
 export type DomainStatus =
   | "PENDING_VERIFICATION"
   | "IN_PROGRESS"
@@ -838,12 +835,11 @@ export const DomainAssociation = /*@__PURE__*/ S.suspend(() =>
 export interface CreateDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const CreateDomainAssociationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
-  ).annotate({
-    identifier: "CreateDomainAssociationResult",
-  }) as any as S.Schema<CreateDomainAssociationResult>;
+export const CreateDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
+).annotate({
+  identifier: "CreateDomainAssociationResult",
+}) as any as S.Schema<CreateDomainAssociationResult>;
 export interface CreateWebhookRequest {
   appId: string;
   branchName: string;
@@ -928,37 +924,35 @@ export interface DeleteBackendEnvironmentRequest {
   appId: string;
   environmentName: string;
 }
-export const DeleteBackendEnvironmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "DELETE",
-          uri: "/apps/{appId}/backendenvironments/{environmentName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "DELETE",
+        uri: "/apps/{appId}/backendenvironments/{environmentName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteBackendEnvironmentRequest",
-  }) as any as S.Schema<DeleteBackendEnvironmentRequest>;
+  ),
+).annotate({
+  identifier: "DeleteBackendEnvironmentRequest",
+}) as any as S.Schema<DeleteBackendEnvironmentRequest>;
 export interface DeleteBackendEnvironmentResult {
   backendEnvironment: BackendEnvironment;
 }
-export const DeleteBackendEnvironmentResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ backendEnvironment: BackendEnvironment }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteBackendEnvironmentResult",
-  }) as any as S.Schema<DeleteBackendEnvironmentResult>;
+export const DeleteBackendEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ backendEnvironment: BackendEnvironment }).pipe(ns),
+).annotate({
+  identifier: "DeleteBackendEnvironmentResult",
+}) as any as S.Schema<DeleteBackendEnvironmentResult>;
 export interface DeleteBranchRequest {
   appId: string;
   branchName: string;
@@ -993,34 +987,32 @@ export interface DeleteDomainAssociationRequest {
   appId: string;
   domainName: string;
 }
-export const DeleteDomainAssociationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      domainName: S.String.pipe(T.HttpLabel("domainName")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "DELETE", uri: "/apps/{appId}/domains/{domainName}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    domainName: S.String.pipe(T.HttpLabel("domainName")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "DELETE", uri: "/apps/{appId}/domains/{domainName}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteDomainAssociationRequest",
-  }) as any as S.Schema<DeleteDomainAssociationRequest>;
+  ),
+).annotate({
+  identifier: "DeleteDomainAssociationRequest",
+}) as any as S.Schema<DeleteDomainAssociationRequest>;
 export interface DeleteDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const DeleteDomainAssociationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteDomainAssociationResult",
-  }) as any as S.Schema<DeleteDomainAssociationResult>;
+export const DeleteDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
+).annotate({
+  identifier: "DeleteDomainAssociationResult",
+}) as any as S.Schema<DeleteDomainAssociationResult>;
 export interface DeleteJobRequest {
   appId: string;
   branchName: string;
@@ -1071,13 +1063,13 @@ export const SourceUrlType = /*@__PURE__*/ S.String;
 export interface JobSummary {
   jobArn: string;
   jobId: string;
-  commitId: string;
-  commitMessage: string;
-  commitTime: Date;
+  commitId?: string;
+  commitMessage?: string;
+  commitTime?: Date;
   startTime: Date;
   status: JobStatus;
   endTime?: Date;
-  jobType: JobType;
+  jobType?: JobType;
   sourceUrl?: string;
   sourceUrlType?: SourceUrlType;
 }
@@ -1085,13 +1077,13 @@ export const JobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobArn: S.String,
     jobId: S.String,
-    commitId: S.String,
-    commitMessage: S.String,
-    commitTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    commitId: S.optional(S.String),
+    commitMessage: S.optional(S.String),
+    commitTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     status: JobStatus,
     endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    jobType: JobType,
+    jobType: S.optional(JobType),
     sourceUrl: S.optional(S.String),
     sourceUrlType: S.optional(SourceUrlType),
   }),
@@ -1217,37 +1209,35 @@ export interface GetBackendEnvironmentRequest {
   appId: string;
   environmentName: string;
 }
-export const GetBackendEnvironmentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "GET",
-          uri: "/apps/{appId}/backendenvironments/{environmentName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({
+        method: "GET",
+        uri: "/apps/{appId}/backendenvironments/{environmentName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetBackendEnvironmentRequest",
-  }) as any as S.Schema<GetBackendEnvironmentRequest>;
+  ),
+).annotate({
+  identifier: "GetBackendEnvironmentRequest",
+}) as any as S.Schema<GetBackendEnvironmentRequest>;
 export interface GetBackendEnvironmentResult {
   backendEnvironment: BackendEnvironment;
 }
-export const GetBackendEnvironmentResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ backendEnvironment: BackendEnvironment }).pipe(ns),
-  ).annotate({
-    identifier: "GetBackendEnvironmentResult",
-  }) as any as S.Schema<GetBackendEnvironmentResult>;
+export const GetBackendEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ backendEnvironment: BackendEnvironment }).pipe(ns),
+).annotate({
+  identifier: "GetBackendEnvironmentResult",
+}) as any as S.Schema<GetBackendEnvironmentResult>;
 export interface GetBranchRequest {
   appId: string;
   branchName: string;
@@ -1282,25 +1272,24 @@ export interface GetDomainAssociationRequest {
   appId: string;
   domainName: string;
 }
-export const GetDomainAssociationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      domainName: S.String.pipe(T.HttpLabel("domainName")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/apps/{appId}/domains/{domainName}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    domainName: S.String.pipe(T.HttpLabel("domainName")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/apps/{appId}/domains/{domainName}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDomainAssociationRequest",
-  }) as any as S.Schema<GetDomainAssociationRequest>;
+  ),
+).annotate({
+  identifier: "GetDomainAssociationRequest",
+}) as any as S.Schema<GetDomainAssociationRequest>;
 export interface GetDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
@@ -1494,44 +1483,40 @@ export interface ListBackendEnvironmentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListBackendEnvironmentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.optional(S.String).pipe(
-        T.HttpQuery("environmentName"),
-      ),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/apps/{appId}/backendenvironments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListBackendEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.optional(S.String).pipe(T.HttpQuery("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/apps/{appId}/backendenvironments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListBackendEnvironmentsRequest",
-  }) as any as S.Schema<ListBackendEnvironmentsRequest>;
+  ),
+).annotate({
+  identifier: "ListBackendEnvironmentsRequest",
+}) as any as S.Schema<ListBackendEnvironmentsRequest>;
 export type BackendEnvironments = BackendEnvironment[];
 export const BackendEnvironments = /*@__PURE__*/ S.Array(BackendEnvironment);
 export interface ListBackendEnvironmentsResult {
   backendEnvironments: BackendEnvironment[];
   nextToken?: string;
 }
-export const ListBackendEnvironmentsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      backendEnvironments: BackendEnvironments,
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListBackendEnvironmentsResult",
-  }) as any as S.Schema<ListBackendEnvironmentsResult>;
+export const ListBackendEnvironmentsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    backendEnvironments: BackendEnvironments,
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListBackendEnvironmentsResult",
+}) as any as S.Schema<ListBackendEnvironmentsResult>;
 export interface ListBranchesRequest {
   appId: string;
   nextToken?: string;
@@ -1572,41 +1557,39 @@ export interface ListDomainAssociationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDomainAssociationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "GET", uri: "/apps/{appId}/domains" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDomainAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "GET", uri: "/apps/{appId}/domains" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDomainAssociationsRequest",
-  }) as any as S.Schema<ListDomainAssociationsRequest>;
+  ),
+).annotate({
+  identifier: "ListDomainAssociationsRequest",
+}) as any as S.Schema<ListDomainAssociationsRequest>;
 export type DomainAssociations = DomainAssociation[];
 export const DomainAssociations = /*@__PURE__*/ S.Array(DomainAssociation);
 export interface ListDomainAssociationsResult {
   domainAssociations: DomainAssociation[];
   nextToken?: string;
 }
-export const ListDomainAssociationsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      domainAssociations: DomainAssociations,
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListDomainAssociationsResult",
-  }) as any as S.Schema<ListDomainAssociationsResult>;
+export const ListDomainAssociationsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainAssociations: DomainAssociations,
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListDomainAssociationsResult",
+}) as any as S.Schema<ListDomainAssociationsResult>;
 export interface ListJobsRequest {
   appId: string;
   branchName: string;
@@ -1669,12 +1652,11 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }).pipe(ns),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }).pipe(ns),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListWebhooksRequest {
   appId: string;
   nextToken?: string;
@@ -2026,39 +2008,37 @@ export interface UpdateDomainAssociationRequest {
   autoSubDomainIAMRole?: string;
   certificateSettings?: CertificateSettings;
 }
-export const UpdateDomainAssociationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      domainName: S.String.pipe(T.HttpLabel("domainName")),
-      enableAutoSubDomain: S.optional(S.Boolean),
-      subDomainSettings: S.optional(SubDomainSettings),
-      autoSubDomainCreationPatterns: S.optional(AutoSubDomainCreationPatterns),
-      autoSubDomainIAMRole: S.optional(S.String),
-      certificateSettings: S.optional(CertificateSettings),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/apps/{appId}/domains/{domainName}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    domainName: S.String.pipe(T.HttpLabel("domainName")),
+    enableAutoSubDomain: S.optional(S.Boolean),
+    subDomainSettings: S.optional(SubDomainSettings),
+    autoSubDomainCreationPatterns: S.optional(AutoSubDomainCreationPatterns),
+    autoSubDomainIAMRole: S.optional(S.String),
+    certificateSettings: S.optional(CertificateSettings),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/apps/{appId}/domains/{domainName}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDomainAssociationRequest",
-  }) as any as S.Schema<UpdateDomainAssociationRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDomainAssociationRequest",
+}) as any as S.Schema<UpdateDomainAssociationRequest>;
 export interface UpdateDomainAssociationResult {
   domainAssociation: DomainAssociation;
 }
-export const UpdateDomainAssociationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateDomainAssociationResult",
-  }) as any as S.Schema<UpdateDomainAssociationResult>;
+export const UpdateDomainAssociationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ domainAssociation: DomainAssociation }).pipe(ns),
+).annotate({
+  identifier: "UpdateDomainAssociationResult",
+}) as any as S.Schema<UpdateDomainAssociationResult>;
 export interface UpdateWebhookRequest {
   webhookId: string;
   branchName?: string;
@@ -2096,30 +2076,41 @@ export const UpdateWebhookResult = /*@__PURE__*/ S.suspend(() =>
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class DependentServiceFailureException extends S.TaggedErrorClass<DependentServiceFailureException>()(
   "DependentServiceFailureException",
   { message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
   "InternalFailureException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
+export class TimeoutException extends S.TaggedErrorClass<TimeoutException>()(
+  "TimeoutException",
+  { message: S.optional(S.String) },
+) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { code: S.String, message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -2129,6 +2120,7 @@ export type CreateAppError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new Amplify app.
@@ -2147,6 +2139,7 @@ export const createApp: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateApp",
 }));
@@ -2156,6 +2149,7 @@ export type CreateBackendEnvironmentError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new backend environment for an Amplify app.
@@ -2180,6 +2174,7 @@ export const createBackendEnvironment: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateBackendEnvironment",
 }));
@@ -2190,6 +2185,7 @@ export type CreateBranchError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new branch for an Amplify app.
@@ -2209,6 +2205,7 @@ export const createBranch: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateBranch",
 }));
@@ -2217,6 +2214,7 @@ export type CreateDeploymentError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a deployment for a manually deployed Amplify app. Manually deployed apps are
@@ -2240,6 +2238,7 @@ export const createDeployment: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateDeployment",
 }));
@@ -2250,6 +2249,7 @@ export type CreateDomainAssociationError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new domain association for an Amplify app. This action associates a custom
@@ -2270,6 +2270,7 @@ export const createDomainAssociation: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateDomainAssociation",
 }));
@@ -2280,6 +2281,7 @@ export type CreateWebhookError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new webhook on an Amplify app.
@@ -2299,6 +2301,7 @@ export const createWebhook: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "CreateWebhook",
 }));
@@ -2308,6 +2311,7 @@ export type DeleteAppError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes an existing Amplify app specified by an app ID.
@@ -2326,6 +2330,7 @@ export const deleteApp: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteApp",
 }));
@@ -2335,6 +2340,7 @@ export type DeleteBackendEnvironmentError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a backend environment for an Amplify app.
@@ -2359,6 +2365,7 @@ export const deleteBackendEnvironment: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteBackendEnvironment",
 }));
@@ -2368,6 +2375,7 @@ export type DeleteBranchError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a branch for an Amplify app.
@@ -2386,6 +2394,7 @@ export const deleteBranch: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteBranch",
 }));
@@ -2395,6 +2404,7 @@ export type DeleteDomainAssociationError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a domain association for an Amplify app.
@@ -2413,6 +2423,7 @@ export const deleteDomainAssociation: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteDomainAssociation",
 }));
@@ -2422,6 +2433,7 @@ export type DeleteJobError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a job for a branch of an Amplify app.
@@ -2440,6 +2452,7 @@ export const deleteJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteJob",
 }));
@@ -2449,6 +2462,7 @@ export type DeleteWebhookError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Deletes a webhook.
@@ -2467,6 +2481,7 @@ export const deleteWebhook: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "DeleteWebhook",
 }));
@@ -2475,6 +2490,7 @@ export type GenerateAccessLogsError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the website access logs for a specific time range using a presigned URL.
@@ -2492,6 +2508,7 @@ export const generateAccessLogs: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GenerateAccessLogs",
 }));
@@ -2500,6 +2517,7 @@ export type GetAppError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns an existing Amplify app specified by an app ID.
@@ -2517,6 +2535,7 @@ export const getApp: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetApp",
 }));
@@ -2526,6 +2545,7 @@ export type GetArtifactUrlError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the artifact info that corresponds to an artifact id.
@@ -2544,6 +2564,7 @@ export const getArtifactUrl: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetArtifactUrl",
 }));
@@ -2552,6 +2573,7 @@ export type GetBackendEnvironmentError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a backend environment for an Amplify app.
@@ -2575,6 +2597,7 @@ export const getBackendEnvironment: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetBackendEnvironment",
 }));
@@ -2583,6 +2606,7 @@ export type GetBranchError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a branch for an Amplify app.
@@ -2600,6 +2624,7 @@ export const getBranch: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetBranch",
 }));
@@ -2608,6 +2633,7 @@ export type GetDomainAssociationError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the domain information for an Amplify app.
@@ -2625,6 +2651,7 @@ export const getDomainAssociation: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetDomainAssociation",
 }));
@@ -2634,6 +2661,7 @@ export type GetJobError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a job for a branch of an Amplify app.
@@ -2652,6 +2680,7 @@ export const getJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetJob",
 }));
@@ -2661,6 +2690,7 @@ export type GetWebhookError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the webhook information that corresponds to a specified webhook ID.
@@ -2679,6 +2709,7 @@ export const getWebhook: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "GetWebhook",
 }));
@@ -2686,6 +2717,7 @@ export type ListAppsError =
   | BadRequestException
   | InternalFailureException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a list of the existing Amplify apps.
@@ -2717,6 +2749,7 @@ export const listApps: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListApps",
   pagination: {
@@ -2731,6 +2764,7 @@ export type ListArtifactsError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a list of end-to-end testing artifacts for a specified app, branch, and
@@ -2755,6 +2789,7 @@ export const listArtifacts: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListArtifacts",
 }));
@@ -2762,6 +2797,7 @@ export type ListBackendEnvironmentsError =
   | BadRequestException
   | InternalFailureException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Lists the backend environments for an Amplify app.
@@ -2784,6 +2820,7 @@ export const listBackendEnvironments: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListBackendEnvironments",
 }));
@@ -2791,6 +2828,7 @@ export type ListBranchesError =
   | BadRequestException
   | InternalFailureException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Lists the branches of an Amplify app.
@@ -2822,6 +2860,7 @@ export const listBranches: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListBranches",
   pagination: {
@@ -2835,6 +2874,7 @@ export type ListDomainAssociationsError =
   | BadRequestException
   | InternalFailureException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns the domain associations for an Amplify app.
@@ -2866,6 +2906,7 @@ export const listDomainAssociations: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListDomainAssociations",
   pagination: {
@@ -2880,6 +2921,7 @@ export type ListJobsError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Lists the jobs for a branch of an Amplify app.
@@ -2912,6 +2954,7 @@ export const listJobs: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListJobs",
   pagination: {
@@ -2925,6 +2968,7 @@ export type ListTagsForResourceError =
   | BadRequestException
   | InternalFailureException
   | ResourceNotFoundException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a list of tags for a specified Amazon Resource Name (ARN).
@@ -2941,6 +2985,7 @@ export const listTagsForResource: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     ResourceNotFoundException,
+    TimeoutException,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -2949,6 +2994,7 @@ export type ListWebhooksError =
   | InternalFailureException
   | LimitExceededException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Returns a list of webhooks for an Amplify app.
@@ -2966,6 +3012,7 @@ export const listWebhooks: API.OperationMethod<
     InternalFailureException,
     LimitExceededException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "ListWebhooks",
 }));
@@ -2975,6 +3022,7 @@ export type StartDeploymentError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Starts a deployment for a manually deployed app. Manually deployed apps are not
@@ -2999,6 +3047,7 @@ export const startDeployment: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "StartDeployment",
 }));
@@ -3008,6 +3057,7 @@ export type StartJobError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Starts a new job for a branch of an Amplify app.
@@ -3026,6 +3076,7 @@ export const startJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "StartJob",
 }));
@@ -3035,6 +3086,7 @@ export type StopJobError =
   | LimitExceededException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Stops a job that is in progress for a branch of an Amplify app.
@@ -3053,6 +3105,7 @@ export const stopJob: API.OperationMethod<
     LimitExceededException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "StopJob",
 }));
@@ -3060,6 +3113,7 @@ export type TagResourceError =
   | BadRequestException
   | InternalFailureException
   | ResourceNotFoundException
+  | TimeoutException
   | CommonErrors;
 /**
  * Tags the resource with a tag key and value.
@@ -3076,6 +3130,7 @@ export const tagResource: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     ResourceNotFoundException,
+    TimeoutException,
   ],
   operationName: "TagResource",
 }));
@@ -3083,6 +3138,7 @@ export type UntagResourceError =
   | BadRequestException
   | InternalFailureException
   | ResourceNotFoundException
+  | TimeoutException
   | CommonErrors;
 /**
  * Untags a resource with a specified Amazon Resource Name (ARN).
@@ -3099,6 +3155,7 @@ export const untagResource: API.OperationMethod<
     BadRequestException,
     InternalFailureException,
     ResourceNotFoundException,
+    TimeoutException,
   ],
   operationName: "UntagResource",
 }));
@@ -3107,6 +3164,7 @@ export type UpdateAppError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Updates an existing Amplify app.
@@ -3124,6 +3182,7 @@ export const updateApp: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "UpdateApp",
 }));
@@ -3133,6 +3192,7 @@ export type UpdateBranchError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Updates a branch for an Amplify app.
@@ -3151,6 +3211,7 @@ export const updateBranch: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "UpdateBranch",
 }));
@@ -3160,6 +3221,7 @@ export type UpdateDomainAssociationError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Creates a new domain association for an Amplify app.
@@ -3178,6 +3240,7 @@ export const updateDomainAssociation: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "UpdateDomainAssociation",
 }));
@@ -3187,6 +3250,7 @@ export type UpdateWebhookError =
   | InternalFailureException
   | NotFoundException
   | UnauthorizedException
+  | TimeoutException
   | CommonErrors;
 /**
  * Updates a webhook.
@@ -3205,6 +3269,7 @@ export const updateWebhook: API.OperationMethod<
     InternalFailureException,
     NotFoundException,
     UnauthorizedException,
+    TimeoutException,
   ],
   operationName: "UpdateWebhook",
 }));

@@ -183,19 +183,19 @@ export interface BatchDeleteSuccessfulDeletion {
   SignalType?: string;
   LocationHash?: string;
 }
-export const BatchDeleteSuccessfulDeletion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceArn: S.optional(S.String),
-      SignalType: S.optional(S.String),
-      LocationHash: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BatchDeleteSuccessfulDeletion",
-  }) as any as S.Schema<BatchDeleteSuccessfulDeletion>;
+export const BatchDeleteSuccessfulDeletion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.optional(S.String),
+    SignalType: S.optional(S.String),
+    LocationHash: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchDeleteSuccessfulDeletion",
+}) as any as S.Schema<BatchDeleteSuccessfulDeletion>;
 export type BatchDeleteSuccessfulDeletionList = BatchDeleteSuccessfulDeletion[];
-export const BatchDeleteSuccessfulDeletionList =
-  /*@__PURE__*/ S.Array(BatchDeleteSuccessfulDeletion);
+export const BatchDeleteSuccessfulDeletionList = /*@__PURE__*/ S.Array(
+  BatchDeleteSuccessfulDeletion,
+);
 export type BatchDeleteErrorCode =
   | "ResourceNotFoundException"
   | "AccessDeniedException"
@@ -427,20 +427,19 @@ export interface ServiceLevelIndicatorMetric {
   MetricSource?: MetricSource;
   CompositeSliConfig?: CompositeSliConfig;
 }
-export const ServiceLevelIndicatorMetric =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyAttributes: S.optional(Attributes),
-      OperationName: S.optional(S.String),
-      MetricType: S.optional(ServiceLevelIndicatorMetricType),
-      MetricDataQueries: MetricDataQueries,
-      DependencyConfig: S.optional(DependencyConfig),
-      MetricSource: S.optional(MetricSource),
-      CompositeSliConfig: S.optional(CompositeSliConfig),
-    }),
-  ).annotate({
-    identifier: "ServiceLevelIndicatorMetric",
-  }) as any as S.Schema<ServiceLevelIndicatorMetric>;
+export const ServiceLevelIndicatorMetric = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyAttributes: S.optional(Attributes),
+    OperationName: S.optional(S.String),
+    MetricType: S.optional(ServiceLevelIndicatorMetricType),
+    MetricDataQueries: MetricDataQueries,
+    DependencyConfig: S.optional(DependencyConfig),
+    MetricSource: S.optional(MetricSource),
+    CompositeSliConfig: S.optional(CompositeSliConfig),
+  }),
+).annotate({
+  identifier: "ServiceLevelIndicatorMetric",
+}) as any as S.Schema<ServiceLevelIndicatorMetric>;
 export type ServiceLevelIndicatorComparisonOperator =
   | "GreaterThanOrEqualTo"
   | "GreaterThan"
@@ -465,11 +464,10 @@ export const ServiceLevelIndicator = /*@__PURE__*/ S.suspend(() =>
 export type MonitoredRequestCountMetricDataQueries =
   | { GoodCountMetric: MetricDataQuery[]; BadCountMetric?: never }
   | { GoodCountMetric?: never; BadCountMetric: MetricDataQuery[] };
-export const MonitoredRequestCountMetricDataQueries =
-  /*@__PURE__*/ S.Union([
-    S.Struct({ GoodCountMetric: MetricDataQueries }),
-    S.Struct({ BadCountMetric: MetricDataQueries }),
-  ]);
+export const MonitoredRequestCountMetricDataQueries = /*@__PURE__*/ S.Union([
+  S.Struct({ GoodCountMetric: MetricDataQueries }),
+  S.Struct({ BadCountMetric: MetricDataQueries }),
+]);
 export interface RequestBasedServiceLevelIndicatorMetric {
   KeyAttributes?: { [key: string]: string | undefined };
   OperationName?: string;
@@ -480,8 +478,8 @@ export interface RequestBasedServiceLevelIndicatorMetric {
   MetricSource?: MetricSource;
   CompositeSliConfig?: CompositeSliConfig;
 }
-export const RequestBasedServiceLevelIndicatorMetric =
-  /*@__PURE__*/ S.suspend(() =>
+export const RequestBasedServiceLevelIndicatorMetric = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       KeyAttributes: S.optional(Attributes),
       OperationName: S.optional(S.String),
@@ -492,24 +490,23 @@ export const RequestBasedServiceLevelIndicatorMetric =
       MetricSource: S.optional(MetricSource),
       CompositeSliConfig: S.optional(CompositeSliConfig),
     }),
-  ).annotate({
-    identifier: "RequestBasedServiceLevelIndicatorMetric",
-  }) as any as S.Schema<RequestBasedServiceLevelIndicatorMetric>;
+).annotate({
+  identifier: "RequestBasedServiceLevelIndicatorMetric",
+}) as any as S.Schema<RequestBasedServiceLevelIndicatorMetric>;
 export interface RequestBasedServiceLevelIndicator {
   RequestBasedSliMetric: RequestBasedServiceLevelIndicatorMetric;
   MetricThreshold?: number;
   ComparisonOperator?: ServiceLevelIndicatorComparisonOperator;
 }
-export const RequestBasedServiceLevelIndicator =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RequestBasedSliMetric: RequestBasedServiceLevelIndicatorMetric,
-      MetricThreshold: S.optional(S.Number),
-      ComparisonOperator: S.optional(ServiceLevelIndicatorComparisonOperator),
-    }),
-  ).annotate({
-    identifier: "RequestBasedServiceLevelIndicator",
-  }) as any as S.Schema<RequestBasedServiceLevelIndicator>;
+export const RequestBasedServiceLevelIndicator = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RequestBasedSliMetric: RequestBasedServiceLevelIndicatorMetric,
+    MetricThreshold: S.optional(S.Number),
+    ComparisonOperator: S.optional(ServiceLevelIndicatorComparisonOperator),
+  }),
+).annotate({
+  identifier: "RequestBasedServiceLevelIndicator",
+}) as any as S.Schema<RequestBasedServiceLevelIndicator>;
 export type DurationUnit = "MINUTE" | "HOUR" | "DAY" | "MONTH" | (string & {});
 export const DurationUnit = /*@__PURE__*/ S.String;
 export interface RollingInterval {
@@ -568,50 +565,51 @@ export interface ServiceLevelObjectiveBudgetReport {
   RequestBasedSli?: RequestBasedServiceLevelIndicator;
   Goal?: Goal;
 }
-export const ServiceLevelObjectiveBudgetReport =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.String,
-      Name: S.String,
-      EvaluationType: S.optional(EvaluationType),
-      BudgetStatus: ServiceLevelObjectiveBudgetStatus,
-      Attainment: S.optional(S.Number),
-      TotalBudgetSeconds: S.optional(S.Number),
-      BudgetSecondsRemaining: S.optional(S.Number),
-      TotalBudgetRequests: S.optional(S.Number),
-      BudgetRequestsRemaining: S.optional(S.Number),
-      Sli: S.optional(ServiceLevelIndicator),
-      RequestBasedSli: S.optional(RequestBasedServiceLevelIndicator),
-      Goal: S.optional(Goal),
-    }),
-  ).annotate({
-    identifier: "ServiceLevelObjectiveBudgetReport",
-  }) as any as S.Schema<ServiceLevelObjectiveBudgetReport>;
+export const ServiceLevelObjectiveBudgetReport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Name: S.String,
+    EvaluationType: S.optional(EvaluationType),
+    BudgetStatus: ServiceLevelObjectiveBudgetStatus,
+    Attainment: S.optional(S.Number),
+    TotalBudgetSeconds: S.optional(S.Number),
+    BudgetSecondsRemaining: S.optional(S.Number),
+    TotalBudgetRequests: S.optional(S.Number),
+    BudgetRequestsRemaining: S.optional(S.Number),
+    Sli: S.optional(ServiceLevelIndicator),
+    RequestBasedSli: S.optional(RequestBasedServiceLevelIndicator),
+    Goal: S.optional(Goal),
+  }),
+).annotate({
+  identifier: "ServiceLevelObjectiveBudgetReport",
+}) as any as S.Schema<ServiceLevelObjectiveBudgetReport>;
 export type ServiceLevelObjectiveBudgetReports =
   ServiceLevelObjectiveBudgetReport[];
-export const ServiceLevelObjectiveBudgetReports =
-  /*@__PURE__*/ S.Array(ServiceLevelObjectiveBudgetReport);
+export const ServiceLevelObjectiveBudgetReports = /*@__PURE__*/ S.Array(
+  ServiceLevelObjectiveBudgetReport,
+);
 export interface ServiceLevelObjectiveBudgetReportError {
-  Name: string;
+  Name?: string;
   Arn: string;
   ErrorCode: string;
   ErrorMessage: string;
 }
-export const ServiceLevelObjectiveBudgetReportError =
-  /*@__PURE__*/ S.suspend(() =>
+export const ServiceLevelObjectiveBudgetReportError = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
-      Name: S.String,
+      Name: S.optional(S.String),
       Arn: S.String,
       ErrorCode: S.String,
       ErrorMessage: S.String,
     }),
-  ).annotate({
-    identifier: "ServiceLevelObjectiveBudgetReportError",
-  }) as any as S.Schema<ServiceLevelObjectiveBudgetReportError>;
+).annotate({
+  identifier: "ServiceLevelObjectiveBudgetReportError",
+}) as any as S.Schema<ServiceLevelObjectiveBudgetReportError>;
 export type ServiceLevelObjectiveBudgetReportErrors =
   ServiceLevelObjectiveBudgetReportError[];
-export const ServiceLevelObjectiveBudgetReportErrors =
-  /*@__PURE__*/ S.Array(ServiceLevelObjectiveBudgetReportError);
+export const ServiceLevelObjectiveBudgetReportErrors = /*@__PURE__*/ S.Array(
+  ServiceLevelObjectiveBudgetReportError,
+);
 export interface BatchGetServiceLevelObjectiveBudgetReportOutput {
   Timestamp: Date;
   Reports: ServiceLevelObjectiveBudgetReport[];
@@ -635,10 +633,10 @@ export const Window = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DurationUnit: DurationUnit, Duration: S.Number }),
 ).annotate({ identifier: "Window" }) as any as S.Schema<Window>;
 export interface RecurrenceRule {
-  Expression: string;
+  Expression?: string;
 }
 export const RecurrenceRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Expression: S.String }),
+  S.Struct({ Expression: S.optional(S.String) }),
 ).annotate({ identifier: "RecurrenceRule" }) as any as S.Schema<RecurrenceRule>;
 export interface ExclusionWindow {
   Window: Window;
@@ -663,53 +661,51 @@ export interface BatchUpdateExclusionWindowsInput {
   AddExclusionWindows?: ExclusionWindow[];
   RemoveExclusionWindows?: ExclusionWindow[];
 }
-export const BatchUpdateExclusionWindowsInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SloIds: ServiceLevelObjectiveIds,
-      AddExclusionWindows: S.optional(ExclusionWindows),
-      RemoveExclusionWindows: S.optional(ExclusionWindows),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/exclusion-windows" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchUpdateExclusionWindowsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SloIds: ServiceLevelObjectiveIds,
+    AddExclusionWindows: S.optional(ExclusionWindows),
+    RemoveExclusionWindows: S.optional(ExclusionWindows),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/exclusion-windows" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchUpdateExclusionWindowsInput",
-  }) as any as S.Schema<BatchUpdateExclusionWindowsInput>;
+  ),
+).annotate({
+  identifier: "BatchUpdateExclusionWindowsInput",
+}) as any as S.Schema<BatchUpdateExclusionWindowsInput>;
 export interface BatchUpdateExclusionWindowsError_ {
   SloId: string;
   ErrorCode: string;
   ErrorMessage: string;
 }
-export const BatchUpdateExclusionWindowsError_ =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SloId: S.String, ErrorCode: S.String, ErrorMessage: S.String }),
-  ).annotate({
-    identifier: "BatchUpdateExclusionWindowsError",
-  }) as any as S.Schema<BatchUpdateExclusionWindowsError_>;
+export const BatchUpdateExclusionWindowsError_ = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SloId: S.String, ErrorCode: S.String, ErrorMessage: S.String }),
+).annotate({
+  identifier: "BatchUpdateExclusionWindowsError",
+}) as any as S.Schema<BatchUpdateExclusionWindowsError_>;
 export type BatchUpdateExclusionWindowsErrors =
   BatchUpdateExclusionWindowsError_[];
-export const BatchUpdateExclusionWindowsErrors =
-  /*@__PURE__*/ S.Array(BatchUpdateExclusionWindowsError_);
+export const BatchUpdateExclusionWindowsErrors = /*@__PURE__*/ S.Array(
+  BatchUpdateExclusionWindowsError_,
+);
 export interface BatchUpdateExclusionWindowsOutput {
   SloIds: string[];
   Errors: BatchUpdateExclusionWindowsError_[];
 }
-export const BatchUpdateExclusionWindowsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SloIds: ServiceLevelObjectiveIds,
-      Errors: BatchUpdateExclusionWindowsErrors,
-    }),
-  ).annotate({
-    identifier: "BatchUpdateExclusionWindowsOutput",
-  }) as any as S.Schema<BatchUpdateExclusionWindowsOutput>;
+export const BatchUpdateExclusionWindowsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SloIds: ServiceLevelObjectiveIds,
+    Errors: BatchUpdateExclusionWindowsErrors,
+  }),
+).annotate({
+  identifier: "BatchUpdateExclusionWindowsOutput",
+}) as any as S.Schema<BatchUpdateExclusionWindowsOutput>;
 export type DynamicInstrumentationSignalType = "SNAPSHOT" | (string & {});
 export const DynamicInstrumentationSignalType = /*@__PURE__*/ S.String;
 export type ProgrammingLanguage =
@@ -748,8 +744,9 @@ export const DynamicInstrumentationAttributeFilterGroup =
 export type DynamicInstrumentationAttributeFilters = {
   [key: string]: string | undefined;
 }[];
-export const DynamicInstrumentationAttributeFilters =
-  /*@__PURE__*/ S.Array(DynamicInstrumentationAttributeFilterGroup);
+export const DynamicInstrumentationAttributeFilters = /*@__PURE__*/ S.Array(
+  DynamicInstrumentationAttributeFilterGroup,
+);
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface CaptureLimitsConfig {
@@ -882,19 +879,26 @@ export const CreateInstrumentationConfigurationResponse =
     identifier: "CreateInstrumentationConfigurationResponse",
   }) as any as S.Schema<CreateInstrumentationConfigurationResponse>;
 export interface DeleteGroupingConfigurationRequest {}
-export const DeleteGroupingConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+export const DeleteGroupingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/grouping-configuration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteGroupingConfigurationRequest",
-  }) as any as S.Schema<DeleteGroupingConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "DeleteGroupingConfigurationRequest",
+}) as any as S.Schema<DeleteGroupingConfigurationRequest>;
 export interface DeleteGroupingConfigurationOutput {}
-export const DeleteGroupingConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteGroupingConfigurationOutput",
-  }) as any as S.Schema<DeleteGroupingConfigurationOutput>;
+export const DeleteGroupingConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteGroupingConfigurationOutput",
+}) as any as S.Schema<DeleteGroupingConfigurationOutput>;
 export type LocationIdentifier =
   | { CodeLocation: CodeLocation; LocationHash?: never }
   | { CodeLocation?: never; LocationHash: string };
@@ -951,8 +955,8 @@ export interface GetInstrumentationConfigurationRequest {
   SignalType: DynamicInstrumentationSignalType;
   LocationIdentifier: LocationIdentifier;
 }
-export const GetInstrumentationConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetInstrumentationConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       InstrumentationType: InstrumentationType,
       Service: S.String,
@@ -969,9 +973,9 @@ export const GetInstrumentationConfigurationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetInstrumentationConfigurationRequest",
-  }) as any as S.Schema<GetInstrumentationConfigurationRequest>;
+).annotate({
+  identifier: "GetInstrumentationConfigurationRequest",
+}) as any as S.Schema<GetInstrumentationConfigurationRequest>;
 export interface InstrumentationConfiguration {
   InstrumentationType: InstrumentationType;
   Service: string;
@@ -986,34 +990,32 @@ export interface InstrumentationConfiguration {
   CreatedAt: Date;
   ARN: string;
 }
-export const InstrumentationConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InstrumentationType: InstrumentationType,
-      Service: S.String,
-      Environment: S.String,
-      SignalType: DynamicInstrumentationSignalType,
-      Location: Location,
-      LocationHash: S.String,
-      Description: S.optional(S.String),
-      ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      AttributeFilters: S.optional(DynamicInstrumentationAttributeFilters),
-      CaptureConfiguration: CaptureConfiguration,
-      CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ARN: S.String,
-    }),
-  ).annotate({
-    identifier: "InstrumentationConfiguration",
-  }) as any as S.Schema<InstrumentationConfiguration>;
+export const InstrumentationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstrumentationType: InstrumentationType,
+    Service: S.String,
+    Environment: S.String,
+    SignalType: DynamicInstrumentationSignalType,
+    Location: Location,
+    LocationHash: S.String,
+    Description: S.optional(S.String),
+    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AttributeFilters: S.optional(DynamicInstrumentationAttributeFilters),
+    CaptureConfiguration: CaptureConfiguration,
+    CreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ARN: S.String,
+  }),
+).annotate({
+  identifier: "InstrumentationConfiguration",
+}) as any as S.Schema<InstrumentationConfiguration>;
 export interface GetInstrumentationConfigurationResponse {
   Configuration: InstrumentationConfiguration;
 }
-export const GetInstrumentationConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Configuration: InstrumentationConfiguration }),
-  ).annotate({
-    identifier: "GetInstrumentationConfigurationResponse",
-  }) as any as S.Schema<GetInstrumentationConfigurationResponse>;
+export const GetInstrumentationConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ Configuration: InstrumentationConfiguration }),
+).annotate({
+  identifier: "GetInstrumentationConfigurationResponse",
+}) as any as S.Schema<GetInstrumentationConfigurationResponse>;
 export type InstrumentationConfigurationStatus =
   | "READY"
   | "ERROR"
@@ -1084,8 +1086,9 @@ export const InstrumentationStatusEvent = /*@__PURE__*/ S.suspend(() =>
   identifier: "InstrumentationStatusEvent",
 }) as any as S.Schema<InstrumentationStatusEvent>;
 export type InstrumentationStatusEventList = InstrumentationStatusEvent[];
-export const InstrumentationStatusEventList =
-  /*@__PURE__*/ S.Array(InstrumentationStatusEvent);
+export const InstrumentationStatusEventList = /*@__PURE__*/ S.Array(
+  InstrumentationStatusEvent,
+);
 export interface GetInstrumentationConfigurationStatusResponse {
   Service: string;
   Environment: string;
@@ -1182,18 +1185,18 @@ export const MetricReferences = /*@__PURE__*/ S.Array(MetricReference);
 export type LogGroupReferences = { [key: string]: string | undefined }[];
 export const LogGroupReferences = /*@__PURE__*/ S.Array(Attributes);
 export interface Service {
-  KeyAttributes: { [key: string]: string | undefined };
+  KeyAttributes?: { [key: string]: string | undefined };
   AttributeMaps?: { [key: string]: string | undefined }[];
   ServiceGroups?: ServiceGroup[];
-  MetricReferences: MetricReference[];
+  MetricReferences?: MetricReference[];
   LogGroupReferences?: { [key: string]: string | undefined }[];
 }
 export const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    KeyAttributes: Attributes,
+    KeyAttributes: S.optional(Attributes),
     AttributeMaps: S.optional(AttributeMaps),
     ServiceGroups: S.optional(ServiceGroups),
-    MetricReferences: MetricReferences,
+    MetricReferences: S.optional(MetricReferences),
     LogGroupReferences: S.optional(LogGroupReferences),
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
@@ -1233,12 +1236,11 @@ export interface ServiceLevelObjectiveEntity {
   SloName?: string;
   SloArn?: string;
 }
-export const ServiceLevelObjectiveEntity =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ SloName: S.optional(S.String), SloArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ServiceLevelObjectiveEntity",
-  }) as any as S.Schema<ServiceLevelObjectiveEntity>;
+export const ServiceLevelObjectiveEntity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SloName: S.optional(S.String), SloArn: S.optional(S.String) }),
+).annotate({
+  identifier: "ServiceLevelObjectiveEntity",
+}) as any as S.Schema<ServiceLevelObjectiveEntity>;
 export interface ServiceOperationEntity {
   Service?: ServiceEntity;
   Operation?: string;
@@ -1536,8 +1538,8 @@ export interface ListGroupingAttributeDefinitionsInput {
   AwsAccountId?: string;
   IncludeLinkedAccounts?: boolean;
 }
-export const ListGroupingAttributeDefinitionsInput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListGroupingAttributeDefinitionsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
       AwsAccountId: S.optional(S.String).pipe(T.HttpQuery("AwsAccountId")),
@@ -1554,9 +1556,9 @@ export const ListGroupingAttributeDefinitionsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListGroupingAttributeDefinitionsInput",
-  }) as any as S.Schema<ListGroupingAttributeDefinitionsInput>;
+).annotate({
+  identifier: "ListGroupingAttributeDefinitionsInput",
+}) as any as S.Schema<ListGroupingAttributeDefinitionsInput>;
 export type GroupingSourceKeyStringList = string[];
 export const GroupingSourceKeyStringList = /*@__PURE__*/ S.Array(S.String);
 export interface GroupingAttributeDefinition {
@@ -1564,16 +1566,15 @@ export interface GroupingAttributeDefinition {
   GroupingSourceKeys?: string[];
   DefaultGroupingValue?: string;
 }
-export const GroupingAttributeDefinition =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GroupingName: S.String,
-      GroupingSourceKeys: S.optional(GroupingSourceKeyStringList),
-      DefaultGroupingValue: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GroupingAttributeDefinition",
-  }) as any as S.Schema<GroupingAttributeDefinition>;
+export const GroupingAttributeDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GroupingName: S.String,
+    GroupingSourceKeys: S.optional(GroupingSourceKeyStringList),
+    DefaultGroupingValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GroupingAttributeDefinition",
+}) as any as S.Schema<GroupingAttributeDefinition>;
 export type GroupingAttributeDefinitions = GroupingAttributeDefinition[];
 export const GroupingAttributeDefinitions = /*@__PURE__*/ S.Array(
   GroupingAttributeDefinition,
@@ -1583,16 +1584,16 @@ export interface ListGroupingAttributeDefinitionsOutput {
   UpdatedAt?: Date;
   NextToken?: string;
 }
-export const ListGroupingAttributeDefinitionsOutput =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListGroupingAttributeDefinitionsOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       GroupingAttributeDefinitions: GroupingAttributeDefinitions,
       UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListGroupingAttributeDefinitionsOutput",
-  }) as any as S.Schema<ListGroupingAttributeDefinitionsOutput>;
+).annotate({
+  identifier: "ListGroupingAttributeDefinitionsOutput",
+}) as any as S.Schema<ListGroupingAttributeDefinitionsOutput>;
 export interface ListInstrumentationConfigurationsRequest {
   Service: string;
   Environment: string;
@@ -1601,8 +1602,8 @@ export interface ListInstrumentationConfigurationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListInstrumentationConfigurationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListInstrumentationConfigurationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Service: S.String,
       Environment: S.String,
@@ -1620,9 +1621,9 @@ export const ListInstrumentationConfigurationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListInstrumentationConfigurationsRequest",
-  }) as any as S.Schema<ListInstrumentationConfigurationsRequest>;
+).annotate({
+  identifier: "ListInstrumentationConfigurationsRequest",
+}) as any as S.Schema<ListInstrumentationConfigurationsRequest>;
 export interface InstrumentationConfigurationWithoutServiceEnv {
   InstrumentationType: InstrumentationType;
   SignalType: DynamicInstrumentationSignalType;
@@ -1665,22 +1666,21 @@ export interface InstrumentationConfigurationsPage {
   SyncInterval: number;
   NextToken?: string;
 }
-export const InstrumentationConfigurationsPage =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Service: S.String,
-      Environment: S.String,
-      Changed: S.Boolean,
-      LatestConfigurations: S.optional(
-        InstrumentationConfigurationsWithoutServiceEnv,
-      ),
-      SyncedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      SyncInterval: S.Number,
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InstrumentationConfigurationsPage",
-  }) as any as S.Schema<InstrumentationConfigurationsPage>;
+export const InstrumentationConfigurationsPage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Service: S.String,
+    Environment: S.String,
+    Changed: S.Boolean,
+    LatestConfigurations: S.optional(
+      InstrumentationConfigurationsWithoutServiceEnv,
+    ),
+    SyncedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    SyncInterval: S.Number,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InstrumentationConfigurationsPage",
+}) as any as S.Schema<InstrumentationConfigurationsPage>;
 export interface ListServiceDependenciesInput {
   StartTime: Date;
   EndTime: Date;
@@ -1688,31 +1688,30 @@ export interface ListServiceDependenciesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListServiceDependenciesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
-        T.HttpQuery("StartTime"),
-      ),
-      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
-        T.HttpQuery("EndTime"),
-      ),
-      KeyAttributes: Attributes,
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/service-dependencies" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListServiceDependenciesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+      T.HttpQuery("StartTime"),
     ),
-  ).annotate({
-    identifier: "ListServiceDependenciesInput",
-  }) as any as S.Schema<ListServiceDependenciesInput>;
+    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+      T.HttpQuery("EndTime"),
+    ),
+    KeyAttributes: Attributes,
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/service-dependencies" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListServiceDependenciesInput",
+}) as any as S.Schema<ListServiceDependenciesInput>;
 export interface ServiceDependency {
   OperationName: string;
   DependencyKeyAttributes: { [key: string]: string | undefined };
@@ -1737,17 +1736,16 @@ export interface ListServiceDependenciesOutput {
   ServiceDependencies: ServiceDependency[];
   NextToken?: string;
 }
-export const ListServiceDependenciesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ServiceDependencies: ServiceDependencies,
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListServiceDependenciesOutput",
-  }) as any as S.Schema<ListServiceDependenciesOutput>;
+export const ListServiceDependenciesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ServiceDependencies: ServiceDependencies,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceDependenciesOutput",
+}) as any as S.Schema<ListServiceDependenciesOutput>;
 export interface ListServiceDependentsInput {
   StartTime: Date;
   EndTime: Date;
@@ -1803,17 +1801,16 @@ export interface ListServiceDependentsOutput {
   ServiceDependents: ServiceDependent[];
   NextToken?: string;
 }
-export const ListServiceDependentsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ServiceDependents: ServiceDependents,
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListServiceDependentsOutput",
-  }) as any as S.Schema<ListServiceDependentsOutput>;
+export const ListServiceDependentsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ServiceDependents: ServiceDependents,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceDependentsOutput",
+}) as any as S.Schema<ListServiceDependentsOutput>;
 export interface ListServiceLevelObjectiveExclusionWindowsInput {
   Id: string;
   MaxResults?: number;
@@ -1899,17 +1896,16 @@ export interface ListServiceOperationsOutput {
   ServiceOperations: ServiceOperation[];
   NextToken?: string;
 }
-export const ListServiceOperationsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ServiceOperations: ServiceOperations,
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListServiceOperationsOutput",
-  }) as any as S.Schema<ListServiceOperationsOutput>;
+export const ListServiceOperationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StartTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ServiceOperations: ServiceOperations,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceOperationsOutput",
+}) as any as S.Schema<ListServiceOperationsOutput>;
 export interface ListServicesInput {
   StartTime: Date;
   EndTime: Date;
@@ -2076,32 +2072,28 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutGroupingConfigurationInput {
   GroupingAttributeDefinitions: GroupingAttributeDefinition[];
 }
-export const PutGroupingConfigurationInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      GroupingAttributeDefinitions: GroupingAttributeDefinitions,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/grouping-configuration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutGroupingConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GroupingAttributeDefinitions: GroupingAttributeDefinitions }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/grouping-configuration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutGroupingConfigurationInput",
-  }) as any as S.Schema<PutGroupingConfigurationInput>;
+  ),
+).annotate({
+  identifier: "PutGroupingConfigurationInput",
+}) as any as S.Schema<PutGroupingConfigurationInput>;
 export interface GroupingConfiguration {
   GroupingAttributeDefinitions: GroupingAttributeDefinition[];
   UpdatedAt: Date;
@@ -2117,12 +2109,11 @@ export const GroupingConfiguration = /*@__PURE__*/ S.suspend(() =>
 export interface PutGroupingConfigurationOutput {
   GroupingConfiguration: GroupingConfiguration;
 }
-export const PutGroupingConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ GroupingConfiguration: GroupingConfiguration }),
-  ).annotate({
-    identifier: "PutGroupingConfigurationOutput",
-  }) as any as S.Schema<PutGroupingConfigurationOutput>;
+export const PutGroupingConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GroupingConfiguration: GroupingConfiguration }),
+).annotate({
+  identifier: "PutGroupingConfigurationOutput",
+}) as any as S.Schema<PutGroupingConfigurationOutput>;
 export interface InstrumentationConfigurationStatusReport {
   InstrumentationType: InstrumentationType;
   SignalType: DynamicInstrumentationSignalType;
@@ -2131,8 +2122,8 @@ export interface InstrumentationConfigurationStatusReport {
   Time: Date;
   ErrorCause?: InstrumentationErrorCause;
 }
-export const InstrumentationConfigurationStatusReport =
-  /*@__PURE__*/ S.suspend(() =>
+export const InstrumentationConfigurationStatusReport = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       InstrumentationType: InstrumentationType,
       SignalType: DynamicInstrumentationSignalType,
@@ -2141,13 +2132,14 @@ export const InstrumentationConfigurationStatusReport =
       Time: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       ErrorCause: S.optional(InstrumentationErrorCause),
     }),
-  ).annotate({
-    identifier: "InstrumentationConfigurationStatusReport",
-  }) as any as S.Schema<InstrumentationConfigurationStatusReport>;
+).annotate({
+  identifier: "InstrumentationConfigurationStatusReport",
+}) as any as S.Schema<InstrumentationConfigurationStatusReport>;
 export type InstrumentationConfigurationStatusList =
   InstrumentationConfigurationStatusReport[];
-export const InstrumentationConfigurationStatusList =
-  /*@__PURE__*/ S.Array(InstrumentationConfigurationStatusReport);
+export const InstrumentationConfigurationStatusList = /*@__PURE__*/ S.Array(
+  InstrumentationConfigurationStatusReport,
+);
 export interface ReportInstrumentationConfigurationStatusRequest {
   Service: string;
   Environment: string;
@@ -2303,38 +2295,36 @@ export interface ServiceLevelIndicatorMetricConfig {
   DependencyConfig?: DependencyConfig;
   CompositeSliConfig?: CompositeSliConfig;
 }
-export const ServiceLevelIndicatorMetricConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyAttributes: S.optional(Attributes),
-      OperationName: S.optional(S.String),
-      MetricType: S.optional(ServiceLevelIndicatorMetricType),
-      MetricName: S.optional(S.String),
-      Statistic: S.optional(S.String),
-      PeriodSeconds: S.optional(S.Number),
-      MetricSource: S.optional(MetricSource),
-      MetricDataQueries: S.optional(MetricDataQueries),
-      DependencyConfig: S.optional(DependencyConfig),
-      CompositeSliConfig: S.optional(CompositeSliConfig),
-    }),
-  ).annotate({
-    identifier: "ServiceLevelIndicatorMetricConfig",
-  }) as any as S.Schema<ServiceLevelIndicatorMetricConfig>;
+export const ServiceLevelIndicatorMetricConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyAttributes: S.optional(Attributes),
+    OperationName: S.optional(S.String),
+    MetricType: S.optional(ServiceLevelIndicatorMetricType),
+    MetricName: S.optional(S.String),
+    Statistic: S.optional(S.String),
+    PeriodSeconds: S.optional(S.Number),
+    MetricSource: S.optional(MetricSource),
+    MetricDataQueries: S.optional(MetricDataQueries),
+    DependencyConfig: S.optional(DependencyConfig),
+    CompositeSliConfig: S.optional(CompositeSliConfig),
+  }),
+).annotate({
+  identifier: "ServiceLevelIndicatorMetricConfig",
+}) as any as S.Schema<ServiceLevelIndicatorMetricConfig>;
 export interface ServiceLevelIndicatorConfig {
   SliMetricConfig: ServiceLevelIndicatorMetricConfig;
   MetricThreshold?: number;
   ComparisonOperator?: ServiceLevelIndicatorComparisonOperator;
 }
-export const ServiceLevelIndicatorConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SliMetricConfig: ServiceLevelIndicatorMetricConfig,
-      MetricThreshold: S.optional(S.Number),
-      ComparisonOperator: S.optional(ServiceLevelIndicatorComparisonOperator),
-    }),
-  ).annotate({
-    identifier: "ServiceLevelIndicatorConfig",
-  }) as any as S.Schema<ServiceLevelIndicatorConfig>;
+export const ServiceLevelIndicatorConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SliMetricConfig: ServiceLevelIndicatorMetricConfig,
+    MetricThreshold: S.optional(S.Number),
+    ComparisonOperator: S.optional(ServiceLevelIndicatorComparisonOperator),
+  }),
+).annotate({
+  identifier: "ServiceLevelIndicatorConfig",
+}) as any as S.Schema<ServiceLevelIndicatorConfig>;
 export interface RequestBasedServiceLevelIndicatorMetricConfig {
   KeyAttributes?: { [key: string]: string | undefined };
   OperationName?: string;
@@ -2369,17 +2359,17 @@ export interface RequestBasedServiceLevelIndicatorConfig {
   MetricThreshold?: number;
   ComparisonOperator?: ServiceLevelIndicatorComparisonOperator;
 }
-export const RequestBasedServiceLevelIndicatorConfig =
-  /*@__PURE__*/ S.suspend(() =>
+export const RequestBasedServiceLevelIndicatorConfig = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       RequestBasedSliMetricConfig:
         RequestBasedServiceLevelIndicatorMetricConfig,
       MetricThreshold: S.optional(S.Number),
       ComparisonOperator: S.optional(ServiceLevelIndicatorComparisonOperator),
     }),
-  ).annotate({
-    identifier: "RequestBasedServiceLevelIndicatorConfig",
-  }) as any as S.Schema<RequestBasedServiceLevelIndicatorConfig>;
+).annotate({
+  identifier: "RequestBasedServiceLevelIndicatorConfig",
+}) as any as S.Schema<RequestBasedServiceLevelIndicatorConfig>;
 export interface BurnRateConfiguration {
   LookBackWindowMinutes: number;
 }
@@ -2403,33 +2393,30 @@ export interface CreateServiceLevelObjectiveInput {
   CreateRecommendedSlo?: boolean;
   AutoInvestigationEnabled?: boolean;
 }
-export const CreateServiceLevelObjectiveInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      Description: S.optional(S.String),
-      SliConfig: S.optional(ServiceLevelIndicatorConfig),
-      RequestBasedSliConfig: S.optional(
-        RequestBasedServiceLevelIndicatorConfig,
-      ),
-      Goal: S.optional(Goal),
-      Tags: S.optional(TagList),
-      BurnRateConfigurations: S.optional(BurnRateConfigurations),
-      CreateRecommendedSlo: S.optional(S.Boolean),
-      AutoInvestigationEnabled: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/slo" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Description: S.optional(S.String),
+    SliConfig: S.optional(ServiceLevelIndicatorConfig),
+    RequestBasedSliConfig: S.optional(RequestBasedServiceLevelIndicatorConfig),
+    Goal: S.optional(Goal),
+    Tags: S.optional(TagList),
+    BurnRateConfigurations: S.optional(BurnRateConfigurations),
+    CreateRecommendedSlo: S.optional(S.Boolean),
+    AutoInvestigationEnabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/slo" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateServiceLevelObjectiveInput",
-  }) as any as S.Schema<CreateServiceLevelObjectiveInput>;
+  ),
+).annotate({
+  identifier: "CreateServiceLevelObjectiveInput",
+}) as any as S.Schema<CreateServiceLevelObjectiveInput>;
 export type MetricSourceType =
   | "ServiceOperation"
   | "CloudWatchMetric"
@@ -2474,39 +2461,36 @@ export const ServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
 export interface CreateServiceLevelObjectiveOutput {
   Slo: ServiceLevelObjective;
 }
-export const CreateServiceLevelObjectiveOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Slo: ServiceLevelObjective }),
-  ).annotate({
-    identifier: "CreateServiceLevelObjectiveOutput",
-  }) as any as S.Schema<CreateServiceLevelObjectiveOutput>;
+export const CreateServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Slo: ServiceLevelObjective }),
+).annotate({
+  identifier: "CreateServiceLevelObjectiveOutput",
+}) as any as S.Schema<CreateServiceLevelObjectiveOutput>;
 export interface GetServiceLevelObjectiveInput {
   Id: string;
 }
-export const GetServiceLevelObjectiveInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/slo/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/slo/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetServiceLevelObjectiveInput",
-  }) as any as S.Schema<GetServiceLevelObjectiveInput>;
+  ),
+).annotate({
+  identifier: "GetServiceLevelObjectiveInput",
+}) as any as S.Schema<GetServiceLevelObjectiveInput>;
 export interface GetServiceLevelObjectiveOutput {
   Slo: ServiceLevelObjective;
 }
-export const GetServiceLevelObjectiveOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Slo: ServiceLevelObjective }),
-  ).annotate({
-    identifier: "GetServiceLevelObjectiveOutput",
-  }) as any as S.Schema<GetServiceLevelObjectiveOutput>;
+export const GetServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Slo: ServiceLevelObjective }),
+).annotate({
+  identifier: "GetServiceLevelObjectiveOutput",
+}) as any as S.Schema<GetServiceLevelObjectiveOutput>;
 export interface UpdateServiceLevelObjectiveInput {
   Id: string;
   Description?: string;
@@ -2516,63 +2500,59 @@ export interface UpdateServiceLevelObjectiveInput {
   BurnRateConfigurations?: BurnRateConfiguration[];
   AutoInvestigationEnabled?: boolean;
 }
-export const UpdateServiceLevelObjectiveInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Id: S.String.pipe(T.HttpLabel("Id")),
-      Description: S.optional(S.String),
-      SliConfig: S.optional(ServiceLevelIndicatorConfig),
-      RequestBasedSliConfig: S.optional(
-        RequestBasedServiceLevelIndicatorConfig,
-      ),
-      Goal: S.optional(Goal),
-      BurnRateConfigurations: S.optional(BurnRateConfigurations),
-      AutoInvestigationEnabled: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/slo/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    Description: S.optional(S.String),
+    SliConfig: S.optional(ServiceLevelIndicatorConfig),
+    RequestBasedSliConfig: S.optional(RequestBasedServiceLevelIndicatorConfig),
+    Goal: S.optional(Goal),
+    BurnRateConfigurations: S.optional(BurnRateConfigurations),
+    AutoInvestigationEnabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/slo/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateServiceLevelObjectiveInput",
-  }) as any as S.Schema<UpdateServiceLevelObjectiveInput>;
+  ),
+).annotate({
+  identifier: "UpdateServiceLevelObjectiveInput",
+}) as any as S.Schema<UpdateServiceLevelObjectiveInput>;
 export interface UpdateServiceLevelObjectiveOutput {
   Slo: ServiceLevelObjective;
 }
-export const UpdateServiceLevelObjectiveOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Slo: ServiceLevelObjective }),
-  ).annotate({
-    identifier: "UpdateServiceLevelObjectiveOutput",
-  }) as any as S.Schema<UpdateServiceLevelObjectiveOutput>;
+export const UpdateServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Slo: ServiceLevelObjective }),
+).annotate({
+  identifier: "UpdateServiceLevelObjectiveOutput",
+}) as any as S.Schema<UpdateServiceLevelObjectiveOutput>;
 export interface DeleteServiceLevelObjectiveInput {
   Id: string;
 }
-export const DeleteServiceLevelObjectiveInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/slo/{Id}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/slo/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteServiceLevelObjectiveInput",
-  }) as any as S.Schema<DeleteServiceLevelObjectiveInput>;
+  ),
+).annotate({
+  identifier: "DeleteServiceLevelObjectiveInput",
+}) as any as S.Schema<DeleteServiceLevelObjectiveInput>;
 export interface DeleteServiceLevelObjectiveOutput {}
-export const DeleteServiceLevelObjectiveOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteServiceLevelObjectiveOutput",
-  }) as any as S.Schema<DeleteServiceLevelObjectiveOutput>;
+export const DeleteServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServiceLevelObjectiveOutput",
+}) as any as S.Schema<DeleteServiceLevelObjectiveOutput>;
 export type MetricSourceTypes = MetricSourceType[];
 export const MetricSourceTypes = /*@__PURE__*/ S.Array(MetricSourceType);
 export interface ListServiceLevelObjectivesInput {
@@ -2586,35 +2566,34 @@ export interface ListServiceLevelObjectivesInput {
   SloOwnerAwsAccountId?: string;
   MetricSource?: MetricSource;
 }
-export const ListServiceLevelObjectivesInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyAttributes: S.optional(Attributes),
-      OperationName: S.optional(S.String).pipe(T.HttpQuery("OperationName")),
-      DependencyConfig: S.optional(DependencyConfig),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-      MetricSourceTypes: S.optional(MetricSourceTypes),
-      IncludeLinkedAccounts: S.optional(S.Boolean).pipe(
-        T.HttpQuery("IncludeLinkedAccounts"),
-      ),
-      SloOwnerAwsAccountId: S.optional(S.String).pipe(
-        T.HttpQuery("SloOwnerAwsAccountId"),
-      ),
-      MetricSource: S.optional(MetricSource),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/slos" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListServiceLevelObjectivesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyAttributes: S.optional(Attributes),
+    OperationName: S.optional(S.String).pipe(T.HttpQuery("OperationName")),
+    DependencyConfig: S.optional(DependencyConfig),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MetricSourceTypes: S.optional(MetricSourceTypes),
+    IncludeLinkedAccounts: S.optional(S.Boolean).pipe(
+      T.HttpQuery("IncludeLinkedAccounts"),
     ),
-  ).annotate({
-    identifier: "ListServiceLevelObjectivesInput",
-  }) as any as S.Schema<ListServiceLevelObjectivesInput>;
+    SloOwnerAwsAccountId: S.optional(S.String).pipe(
+      T.HttpQuery("SloOwnerAwsAccountId"),
+    ),
+    MetricSource: S.optional(MetricSource),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/slos" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListServiceLevelObjectivesInput",
+}) as any as S.Schema<ListServiceLevelObjectivesInput>;
 export interface ServiceLevelObjectiveSummary {
   Arn: string;
   Name: string;
@@ -2627,66 +2606,75 @@ export interface ServiceLevelObjectiveSummary {
   MetricSource?: MetricSource;
   CompositeSliConfig?: CompositeSliConfig;
 }
-export const ServiceLevelObjectiveSummary =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.String,
-      Name: S.String,
-      KeyAttributes: S.optional(Attributes),
-      OperationName: S.optional(S.String),
-      DependencyConfig: S.optional(DependencyConfig),
-      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      EvaluationType: S.optional(EvaluationType),
-      MetricSourceType: S.optional(MetricSourceType),
-      MetricSource: S.optional(MetricSource),
-      CompositeSliConfig: S.optional(CompositeSliConfig),
-    }),
-  ).annotate({
-    identifier: "ServiceLevelObjectiveSummary",
-  }) as any as S.Schema<ServiceLevelObjectiveSummary>;
+export const ServiceLevelObjectiveSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Name: S.String,
+    KeyAttributes: S.optional(Attributes),
+    OperationName: S.optional(S.String),
+    DependencyConfig: S.optional(DependencyConfig),
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EvaluationType: S.optional(EvaluationType),
+    MetricSourceType: S.optional(MetricSourceType),
+    MetricSource: S.optional(MetricSource),
+    CompositeSliConfig: S.optional(CompositeSliConfig),
+  }),
+).annotate({
+  identifier: "ServiceLevelObjectiveSummary",
+}) as any as S.Schema<ServiceLevelObjectiveSummary>;
 export type ServiceLevelObjectiveSummaries = ServiceLevelObjectiveSummary[];
-export const ServiceLevelObjectiveSummaries =
-  /*@__PURE__*/ S.Array(ServiceLevelObjectiveSummary);
+export const ServiceLevelObjectiveSummaries = /*@__PURE__*/ S.Array(
+  ServiceLevelObjectiveSummary,
+);
 export interface ListServiceLevelObjectivesOutput {
   SloSummaries?: ServiceLevelObjectiveSummary[];
   NextToken?: string;
 }
-export const ListServiceLevelObjectivesOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      SloSummaries: S.optional(ServiceLevelObjectiveSummaries),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListServiceLevelObjectivesOutput",
-  }) as any as S.Schema<ListServiceLevelObjectivesOutput>;
+export const ListServiceLevelObjectivesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SloSummaries: S.optional(ServiceLevelObjectiveSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceLevelObjectivesOutput",
+}) as any as S.Schema<ListServiceLevelObjectivesOutput>;
 
 //# Errors
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.String },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { ResourceType: S.String, ResourceId: S.String, Message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+  T.all(
+    T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
 ).pipe(C.withAuthError) {}
 
 //# Operations

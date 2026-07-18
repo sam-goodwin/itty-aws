@@ -487,23 +487,36 @@ export const PutRecordResponse = /*@__PURE__*/ S.suspend(() =>
 export class AccessForbidden extends S.TaggedErrorClass<AccessForbidden>()(
   "AccessForbidden",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
   "InternalFailure",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
   "ServiceUnavailable",
   { Message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
   "ValidationError",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
   "ResourceNotFound",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
+export class FeatureGroupNotFound extends S.TaggedErrorClass<FeatureGroupNotFound>()(
+  "FeatureGroupNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ValidationError",
+    message: { includes: "Resource Not Found" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type BatchGetRecordError =
@@ -570,6 +583,7 @@ export type DeleteRecordError =
   | InternalFailure
   | ServiceUnavailable
   | ValidationError
+  | FeatureGroupNotFound
   | CommonErrors;
 /**
  * Deletes a `Record` from a `FeatureGroup` in the
@@ -617,6 +631,7 @@ export const deleteRecord: API.OperationMethod<
     InternalFailure,
     ServiceUnavailable,
     ValidationError,
+    FeatureGroupNotFound,
   ],
   operationName: "DeleteRecord",
 }));
@@ -626,6 +641,7 @@ export type GetRecordError =
   | ResourceNotFound
   | ServiceUnavailable
   | ValidationError
+  | FeatureGroupNotFound
   | CommonErrors;
 /**
  * Use for `OnlineStore` serving from a `FeatureStore`. Only the
@@ -646,6 +662,7 @@ export const getRecord: API.OperationMethod<
     ResourceNotFound,
     ServiceUnavailable,
     ValidationError,
+    FeatureGroupNotFound,
   ],
   operationName: "GetRecord",
 }));
@@ -704,6 +721,7 @@ export type PutRecordError =
   | InternalFailure
   | ServiceUnavailable
   | ValidationError
+  | FeatureGroupNotFound
   | CommonErrors;
 /**
  * The `PutRecord` API is used to ingest a list of `Records` into
@@ -739,6 +757,7 @@ export const putRecord: API.OperationMethod<
     InternalFailure,
     ServiceUnavailable,
     ValidationError,
+    FeatureGroupNotFound,
   ],
   operationName: "PutRecord",
 }));

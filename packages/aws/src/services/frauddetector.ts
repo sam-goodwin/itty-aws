@@ -305,22 +305,21 @@ export const BatchGetVariableResult = /*@__PURE__*/ S.suspend(() =>
 export interface CancelBatchImportJobRequest {
   jobId: string;
 }
-export const CancelBatchImportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ jobId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelBatchImportJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CancelBatchImportJobRequest",
-  }) as any as S.Schema<CancelBatchImportJobRequest>;
+  ),
+).annotate({
+  identifier: "CancelBatchImportJobRequest",
+}) as any as S.Schema<CancelBatchImportJobRequest>;
 export interface CancelBatchImportJobResult {}
 export const CancelBatchImportJobResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
@@ -330,27 +329,27 @@ export const CancelBatchImportJobResult = /*@__PURE__*/ S.suspend(() =>
 export interface CancelBatchPredictionJobRequest {
   jobId: string;
 }
-export const CancelBatchPredictionJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ jobId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelBatchPredictionJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CancelBatchPredictionJobRequest",
-  }) as any as S.Schema<CancelBatchPredictionJobRequest>;
+  ),
+).annotate({
+  identifier: "CancelBatchPredictionJobRequest",
+}) as any as S.Schema<CancelBatchPredictionJobRequest>;
 export interface CancelBatchPredictionJobResult {}
-export const CancelBatchPredictionJobResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CancelBatchPredictionJobResult",
-  }) as any as S.Schema<CancelBatchPredictionJobResult>;
+export const CancelBatchPredictionJobResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CancelBatchPredictionJobResult",
+}) as any as S.Schema<CancelBatchPredictionJobResult>;
 export interface CreateBatchImportJobRequest {
   jobId: string;
   inputPath: string;
@@ -359,29 +358,28 @@ export interface CreateBatchImportJobRequest {
   iamRoleArn: string;
   tags?: Tag[];
 }
-export const CreateBatchImportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobId: S.String,
-      inputPath: S.String,
-      outputPath: S.String,
-      eventTypeName: S.String,
-      iamRoleArn: S.String,
-      tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateBatchImportJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobId: S.String,
+    inputPath: S.String,
+    outputPath: S.String,
+    eventTypeName: S.String,
+    iamRoleArn: S.String,
+    tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateBatchImportJobRequest",
-  }) as any as S.Schema<CreateBatchImportJobRequest>;
+  ),
+).annotate({
+  identifier: "CreateBatchImportJobRequest",
+}) as any as S.Schema<CreateBatchImportJobRequest>;
 export interface CreateBatchImportJobResult {}
 export const CreateBatchImportJobResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
@@ -398,36 +396,36 @@ export interface CreateBatchPredictionJobRequest {
   iamRoleArn: string;
   tags?: Tag[];
 }
-export const CreateBatchPredictionJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobId: S.String,
-      inputPath: S.String,
-      outputPath: S.String,
-      eventTypeName: S.String,
-      detectorName: S.String,
-      detectorVersion: S.optional(S.String),
-      iamRoleArn: S.String,
-      tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateBatchPredictionJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobId: S.String,
+    inputPath: S.String,
+    outputPath: S.String,
+    eventTypeName: S.String,
+    detectorName: S.String,
+    detectorVersion: S.optional(S.String),
+    iamRoleArn: S.String,
+    tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateBatchPredictionJobRequest",
-  }) as any as S.Schema<CreateBatchPredictionJobRequest>;
+  ),
+).annotate({
+  identifier: "CreateBatchPredictionJobRequest",
+}) as any as S.Schema<CreateBatchPredictionJobRequest>;
 export interface CreateBatchPredictionJobResult {}
-export const CreateBatchPredictionJobResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CreateBatchPredictionJobResult",
-  }) as any as S.Schema<CreateBatchPredictionJobResult>;
+export const CreateBatchPredictionJobResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CreateBatchPredictionJobResult",
+}) as any as S.Schema<CreateBatchPredictionJobResult>;
 export type ListOfStrings = string[];
 export const ListOfStrings = /*@__PURE__*/ S.Array(S.String);
 export interface Rule {
@@ -473,30 +471,29 @@ export interface CreateDetectorVersionRequest {
   ruleExecutionMode?: RuleExecutionMode;
   tags?: Tag[];
 }
-export const CreateDetectorVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorId: S.String,
-      description: S.optional(S.String),
-      externalModelEndpoints: S.optional(ListOfStrings),
-      rules: RuleList,
-      modelVersions: S.optional(ListOfModelVersions),
-      ruleExecutionMode: S.optional(RuleExecutionMode),
-      tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDetectorVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorId: S.String,
+    description: S.optional(S.String),
+    externalModelEndpoints: S.optional(ListOfStrings),
+    rules: RuleList,
+    modelVersions: S.optional(ListOfModelVersions),
+    ruleExecutionMode: S.optional(RuleExecutionMode),
+    tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDetectorVersionRequest",
-  }) as any as S.Schema<CreateDetectorVersionRequest>;
+  ),
+).annotate({
+  identifier: "CreateDetectorVersionRequest",
+}) as any as S.Schema<CreateDetectorVersionRequest>;
 export type DetectorVersionStatus =
   | "DRAFT"
   | "ACTIVE"
@@ -508,21 +505,20 @@ export interface CreateDetectorVersionResult {
   detectorVersionId?: string;
   status?: DetectorVersionStatus;
 }
-export const CreateDetectorVersionResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorId: S.optional(S.String),
-      detectorVersionId: S.optional(S.String),
-      status: S.optional(DetectorVersionStatus),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CreateDetectorVersionResult",
-  }) as any as S.Schema<CreateDetectorVersionResult>;
-export type ElementsList = string | redacted.Redacted<string>[];
+export const CreateDetectorVersionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorId: S.optional(S.String),
+    detectorVersionId: S.optional(S.String),
+    status: S.optional(DetectorVersionStatus),
+  }).pipe(ns),
+).annotate({
+  identifier: "CreateDetectorVersionResult",
+}) as any as S.Schema<CreateDetectorVersionResult>;
+export type ElementsList = (string | redacted.Redacted<string>)[];
 export const ElementsList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface CreateListRequest {
   name: string;
-  elements?: string | redacted.Redacted<string>[];
+  elements?: (string | redacted.Redacted<string>)[];
   variableType?: string;
   description?: string;
   tags?: Tag[];
@@ -786,22 +782,21 @@ export const CreateVariableResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBatchImportJobRequest {
   jobId: string;
 }
-export const DeleteBatchImportJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ jobId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteBatchImportJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteBatchImportJobRequest",
-  }) as any as S.Schema<DeleteBatchImportJobRequest>;
+  ),
+).annotate({
+  identifier: "DeleteBatchImportJobRequest",
+}) as any as S.Schema<DeleteBatchImportJobRequest>;
 export interface DeleteBatchImportJobResult {}
 export const DeleteBatchImportJobResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
@@ -811,27 +806,27 @@ export const DeleteBatchImportJobResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteBatchPredictionJobRequest {
   jobId: string;
 }
-export const DeleteBatchPredictionJobRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ jobId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteBatchPredictionJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteBatchPredictionJobRequest",
-  }) as any as S.Schema<DeleteBatchPredictionJobRequest>;
+  ),
+).annotate({
+  identifier: "DeleteBatchPredictionJobRequest",
+}) as any as S.Schema<DeleteBatchPredictionJobRequest>;
 export interface DeleteBatchPredictionJobResult {}
-export const DeleteBatchPredictionJobResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteBatchPredictionJobResult",
-  }) as any as S.Schema<DeleteBatchPredictionJobResult>;
+export const DeleteBatchPredictionJobResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteBatchPredictionJobResult",
+}) as any as S.Schema<DeleteBatchPredictionJobResult>;
 export interface DeleteDetectorRequest {
   detectorId: string;
 }
@@ -860,27 +855,27 @@ export interface DeleteDetectorVersionRequest {
   detectorId: string;
   detectorVersionId: string;
 }
-export const DeleteDetectorVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ detectorId: S.String, detectorVersionId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteDetectorVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ detectorId: S.String, detectorVersionId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteDetectorVersionRequest",
-  }) as any as S.Schema<DeleteDetectorVersionRequest>;
+  ),
+).annotate({
+  identifier: "DeleteDetectorVersionRequest",
+}) as any as S.Schema<DeleteDetectorVersionRequest>;
 export interface DeleteDetectorVersionResult {}
-export const DeleteDetectorVersionResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteDetectorVersionResult",
-  }) as any as S.Schema<DeleteDetectorVersionResult>;
+export const DeleteDetectorVersionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteDetectorVersionResult",
+}) as any as S.Schema<DeleteDetectorVersionResult>;
 export interface DeleteEntityTypeRequest {
   name: string;
 }
@@ -938,35 +933,33 @@ export const DeleteEventResult = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteEventsByEventTypeRequest {
   eventTypeName: string;
 }
-export const DeleteEventsByEventTypeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ eventTypeName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEventsByEventTypeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ eventTypeName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEventsByEventTypeRequest",
-  }) as any as S.Schema<DeleteEventsByEventTypeRequest>;
+  ),
+).annotate({
+  identifier: "DeleteEventsByEventTypeRequest",
+}) as any as S.Schema<DeleteEventsByEventTypeRequest>;
 export interface DeleteEventsByEventTypeResult {
   eventTypeName?: string;
   eventsDeletionStatus?: string;
 }
-export const DeleteEventsByEventTypeResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eventTypeName: S.optional(S.String),
-      eventsDeletionStatus: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DeleteEventsByEventTypeResult",
-  }) as any as S.Schema<DeleteEventsByEventTypeResult>;
+export const DeleteEventsByEventTypeResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eventTypeName: S.optional(S.String),
+    eventsDeletionStatus: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DeleteEventsByEventTypeResult",
+}) as any as S.Schema<DeleteEventsByEventTypeResult>;
 export interface DeleteEventTypeRequest {
   name: string;
 }
@@ -1257,28 +1250,27 @@ export interface DescribeModelVersionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const DescribeModelVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      modelId: S.optional(S.String),
-      modelVersionNumber: S.optional(S.String),
-      modelType: S.optional(ModelTypeEnum),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeModelVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modelId: S.optional(S.String),
+    modelVersionNumber: S.optional(S.String),
+    modelType: S.optional(ModelTypeEnum),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeModelVersionsRequest",
-  }) as any as S.Schema<DescribeModelVersionsRequest>;
+  ),
+).annotate({
+  identifier: "DescribeModelVersionsRequest",
+}) as any as S.Schema<DescribeModelVersionsRequest>;
 export interface FileValidationMessage {
   title?: string;
   content?: string;
@@ -1556,17 +1548,18 @@ export const AggregatedLogOddsMetric = /*@__PURE__*/ S.suspend(() =>
   identifier: "AggregatedLogOddsMetric",
 }) as any as S.Schema<AggregatedLogOddsMetric>;
 export type ListOfAggregatedLogOddsMetrics = AggregatedLogOddsMetric[];
-export const ListOfAggregatedLogOddsMetrics =
-  /*@__PURE__*/ S.Array(AggregatedLogOddsMetric);
+export const ListOfAggregatedLogOddsMetrics = /*@__PURE__*/ S.Array(
+  AggregatedLogOddsMetric,
+);
 export interface AggregatedVariablesImportanceMetrics {
   logOddsMetrics?: AggregatedLogOddsMetric[];
 }
-export const AggregatedVariablesImportanceMetrics =
-  /*@__PURE__*/ S.suspend(() =>
+export const AggregatedVariablesImportanceMetrics = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ logOddsMetrics: S.optional(ListOfAggregatedLogOddsMetrics) }),
-  ).annotate({
-    identifier: "AggregatedVariablesImportanceMetrics",
-  }) as any as S.Schema<AggregatedVariablesImportanceMetrics>;
+).annotate({
+  identifier: "AggregatedVariablesImportanceMetrics",
+}) as any as S.Schema<AggregatedVariablesImportanceMetrics>;
 export interface TrainingResultV2 {
   dataValidationMetrics?: DataValidationMetrics;
   trainingMetricsV2?: TrainingMetricsV2;
@@ -1625,15 +1618,14 @@ export interface DescribeModelVersionsResult {
   modelVersionDetails?: ModelVersionDetail[];
   nextToken?: string;
 }
-export const DescribeModelVersionsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      modelVersionDetails: S.optional(ModelVersionDetailList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeModelVersionsResult",
-  }) as any as S.Schema<DescribeModelVersionsResult>;
+export const DescribeModelVersionsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modelVersionDetails: S.optional(ModelVersionDetailList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeModelVersionsResult",
+}) as any as S.Schema<DescribeModelVersionsResult>;
 export interface GetBatchImportJobsRequest {
   jobId?: string;
   maxResults?: number;
@@ -1718,26 +1710,25 @@ export interface GetBatchPredictionJobsRequest {
   maxResults?: number;
   nextToken?: string;
 }
-export const GetBatchPredictionJobsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobId: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetBatchPredictionJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobId: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetBatchPredictionJobsRequest",
-  }) as any as S.Schema<GetBatchPredictionJobsRequest>;
+  ),
+).annotate({
+  identifier: "GetBatchPredictionJobsRequest",
+}) as any as S.Schema<GetBatchPredictionJobsRequest>;
 export interface BatchPrediction {
   jobId?: string;
   status?: AsyncJobStatus;
@@ -1782,20 +1773,19 @@ export interface GetBatchPredictionJobsResult {
   batchPredictions?: BatchPrediction[];
   nextToken?: string;
 }
-export const GetBatchPredictionJobsResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchPredictions: S.optional(BatchPredictionList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetBatchPredictionJobsResult",
-  }) as any as S.Schema<GetBatchPredictionJobsResult>;
+export const GetBatchPredictionJobsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchPredictions: S.optional(BatchPredictionList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetBatchPredictionJobsResult",
+}) as any as S.Schema<GetBatchPredictionJobsResult>;
 export interface GetDeleteEventsByEventTypeStatusRequest {
   eventTypeName: string;
 }
-export const GetDeleteEventsByEventTypeStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetDeleteEventsByEventTypeStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ eventTypeName: S.String }).pipe(
       T.all(
         ns,
@@ -1807,22 +1797,22 @@ export const GetDeleteEventsByEventTypeStatusRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetDeleteEventsByEventTypeStatusRequest",
-  }) as any as S.Schema<GetDeleteEventsByEventTypeStatusRequest>;
+).annotate({
+  identifier: "GetDeleteEventsByEventTypeStatusRequest",
+}) as any as S.Schema<GetDeleteEventsByEventTypeStatusRequest>;
 export interface GetDeleteEventsByEventTypeStatusResult {
   eventTypeName?: string;
   eventsDeletionStatus?: AsyncJobStatus;
 }
-export const GetDeleteEventsByEventTypeStatusResult =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetDeleteEventsByEventTypeStatusResult = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       eventTypeName: S.optional(S.String),
       eventsDeletionStatus: S.optional(AsyncJobStatus),
     }).pipe(ns),
-  ).annotate({
-    identifier: "GetDeleteEventsByEventTypeStatusResult",
-  }) as any as S.Schema<GetDeleteEventsByEventTypeStatusResult>;
+).annotate({
+  identifier: "GetDeleteEventsByEventTypeStatusResult",
+}) as any as S.Schema<GetDeleteEventsByEventTypeStatusResult>;
 export interface GetDetectorsRequest {
   detectorId?: string;
   nextToken?: string;
@@ -2067,8 +2057,10 @@ export const ModelEndpointDataBlob = /*@__PURE__*/ S.suspend(() =>
 export type ExternalModelEndpointDataBlobMap = {
   [key: string]: ModelEndpointDataBlob | undefined;
 };
-export const ExternalModelEndpointDataBlobMap =
-  /*@__PURE__*/ S.Record(S.String, ModelEndpointDataBlob.pipe(S.optional));
+export const ExternalModelEndpointDataBlobMap = /*@__PURE__*/ S.Record(
+  S.String,
+  ModelEndpointDataBlob.pipe(S.optional),
+);
 export interface GetEventPredictionRequest {
   detectorId: string;
   detectorVersionId?: string;
@@ -2193,28 +2185,27 @@ export interface GetEventPredictionMetadataRequest {
   detectorVersionId: string;
   predictionTimestamp: string;
 }
-export const GetEventPredictionMetadataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eventId: S.String,
-      eventTypeName: S.String,
-      detectorId: S.String,
-      detectorVersionId: S.String,
-      predictionTimestamp: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetEventPredictionMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eventId: S.String,
+    eventTypeName: S.String,
+    detectorId: S.String,
+    detectorVersionId: S.String,
+    predictionTimestamp: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetEventPredictionMetadataRequest",
-  }) as any as S.Schema<GetEventPredictionMetadataRequest>;
+  ),
+).annotate({
+  identifier: "GetEventPredictionMetadataRequest",
+}) as any as S.Schema<GetEventPredictionMetadataRequest>;
 export interface EventVariableSummary {
   name?: string | redacted.Redacted<string>;
   value?: string | redacted.Redacted<string>;
@@ -2269,23 +2260,24 @@ export const VariableImpactExplanation = /*@__PURE__*/ S.suspend(() =>
   identifier: "VariableImpactExplanation",
 }) as any as S.Schema<VariableImpactExplanation>;
 export type ListOfVariableImpactExplanations = VariableImpactExplanation[];
-export const ListOfVariableImpactExplanations =
-  /*@__PURE__*/ S.Array(VariableImpactExplanation);
+export const ListOfVariableImpactExplanations = /*@__PURE__*/ S.Array(
+  VariableImpactExplanation,
+);
 export interface AggregatedVariablesImpactExplanation {
   eventVariableNames?: string[];
   relativeImpact?: string;
   logOddsImpact?: number;
 }
-export const AggregatedVariablesImpactExplanation =
-  /*@__PURE__*/ S.suspend(() =>
+export const AggregatedVariablesImpactExplanation = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       eventVariableNames: S.optional(ListOfStrings),
       relativeImpact: S.optional(S.String),
       logOddsImpact: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "AggregatedVariablesImpactExplanation",
-  }) as any as S.Schema<AggregatedVariablesImpactExplanation>;
+).annotate({
+  identifier: "AggregatedVariablesImpactExplanation",
+}) as any as S.Schema<AggregatedVariablesImpactExplanation>;
 export type ListOfAggregatedVariablesImpactExplanations =
   AggregatedVariablesImpactExplanation[];
 export const ListOfAggregatedVariablesImpactExplanations =
@@ -2319,8 +2311,9 @@ export const ModelVersionEvaluation = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModelVersionEvaluation",
 }) as any as S.Schema<ModelVersionEvaluation>;
 export type ListOfModelVersionEvaluations = ModelVersionEvaluation[];
-export const ListOfModelVersionEvaluations =
-  /*@__PURE__*/ S.Array(ModelVersionEvaluation);
+export const ListOfModelVersionEvaluations = /*@__PURE__*/ S.Array(
+  ModelVersionEvaluation,
+);
 export interface EvaluatedModelVersion {
   modelId?: string;
   modelVersion?: string;
@@ -2363,8 +2356,9 @@ export const EvaluatedExternalModel = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluatedExternalModel",
 }) as any as S.Schema<EvaluatedExternalModel>;
 export type ListOfEvaluatedExternalModels = EvaluatedExternalModel[];
-export const ListOfEvaluatedExternalModels =
-  /*@__PURE__*/ S.Array(EvaluatedExternalModel);
+export const ListOfEvaluatedExternalModels = /*@__PURE__*/ S.Array(
+  EvaluatedExternalModel,
+);
 export interface GetEventPredictionMetadataResult {
   eventId?: string;
   eventTypeName?: string;
@@ -2382,28 +2376,27 @@ export interface GetEventPredictionMetadataResult {
   evaluatedExternalModels?: EvaluatedExternalModel[];
   predictionTimestamp?: string;
 }
-export const GetEventPredictionMetadataResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eventId: S.optional(S.String),
-      eventTypeName: S.optional(S.String),
-      entityId: S.optional(S.String),
-      entityType: S.optional(S.String),
-      eventTimestamp: S.optional(S.String),
-      detectorId: S.optional(S.String),
-      detectorVersionId: S.optional(S.String),
-      detectorVersionStatus: S.optional(S.String),
-      eventVariables: S.optional(ListOfEventVariableSummaries),
-      rules: S.optional(EvaluatedRuleList),
-      ruleExecutionMode: S.optional(RuleExecutionMode),
-      outcomes: S.optional(ListOfStrings),
-      evaluatedModelVersions: S.optional(ListOfEvaluatedModelVersions),
-      evaluatedExternalModels: S.optional(ListOfEvaluatedExternalModels),
-      predictionTimestamp: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "GetEventPredictionMetadataResult",
-  }) as any as S.Schema<GetEventPredictionMetadataResult>;
+export const GetEventPredictionMetadataResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eventId: S.optional(S.String),
+    eventTypeName: S.optional(S.String),
+    entityId: S.optional(S.String),
+    entityType: S.optional(S.String),
+    eventTimestamp: S.optional(S.String),
+    detectorId: S.optional(S.String),
+    detectorVersionId: S.optional(S.String),
+    detectorVersionStatus: S.optional(S.String),
+    eventVariables: S.optional(ListOfEventVariableSummaries),
+    rules: S.optional(EvaluatedRuleList),
+    ruleExecutionMode: S.optional(RuleExecutionMode),
+    outcomes: S.optional(ListOfStrings),
+    evaluatedModelVersions: S.optional(ListOfEvaluatedModelVersions),
+    evaluatedExternalModels: S.optional(ListOfEvaluatedExternalModels),
+    predictionTimestamp: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "GetEventPredictionMetadataResult",
+}) as any as S.Schema<GetEventPredictionMetadataResult>;
 export interface GetEventTypesRequest {
   name?: string;
   nextToken?: string;
@@ -2723,7 +2716,7 @@ export const GetListElementsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetListElementsRequest",
 }) as any as S.Schema<GetListElementsRequest>;
 export interface GetListElementsResult {
-  elements?: string | redacted.Redacted<string>[];
+  elements?: (string | redacted.Redacted<string>)[];
   nextToken?: string;
 }
 export const GetListElementsResult = /*@__PURE__*/ S.suspend(() =>
@@ -3082,30 +3075,29 @@ export interface ListEventPredictionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListEventPredictionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eventId: S.optional(FilterCondition),
-      eventType: S.optional(FilterCondition),
-      detectorId: S.optional(FilterCondition),
-      detectorVersionId: S.optional(FilterCondition),
-      predictionTimeRange: S.optional(PredictionTimeRange),
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEventPredictionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eventId: S.optional(FilterCondition),
+    eventType: S.optional(FilterCondition),
+    detectorId: S.optional(FilterCondition),
+    detectorVersionId: S.optional(FilterCondition),
+    predictionTimeRange: S.optional(PredictionTimeRange),
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListEventPredictionsRequest",
-  }) as any as S.Schema<ListEventPredictionsRequest>;
+  ),
+).annotate({
+  identifier: "ListEventPredictionsRequest",
+}) as any as S.Schema<ListEventPredictionsRequest>;
 export interface EventPredictionSummary {
   eventId?: string;
   eventTypeName?: string;
@@ -3127,8 +3119,9 @@ export const EventPredictionSummary = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventPredictionSummary",
 }) as any as S.Schema<EventPredictionSummary>;
 export type ListOfEventPredictionSummaries = EventPredictionSummary[];
-export const ListOfEventPredictionSummaries =
-  /*@__PURE__*/ S.Array(EventPredictionSummary);
+export const ListOfEventPredictionSummaries = /*@__PURE__*/ S.Array(
+  EventPredictionSummary,
+);
 export interface ListEventPredictionsResult {
   eventPredictionSummaries?: EventPredictionSummary[];
   nextToken?: string;
@@ -3170,10 +3163,9 @@ export interface ListTagsForResourceResult {
   nextToken?: string;
 }
 export const ListTagsForResourceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(TagList),
-    nextToken: S.optional(S.String),
-  }).pipe(ns),
+  S.Struct({ tags: S.optional(TagList), nextToken: S.optional(S.String) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "ListTagsForResourceResult",
 }) as any as S.Schema<ListTagsForResourceResult>;
@@ -3500,42 +3492,42 @@ export interface UpdateDetectorVersionRequest {
   modelVersions?: ModelVersion[];
   ruleExecutionMode?: RuleExecutionMode;
 }
-export const UpdateDetectorVersionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorId: S.String,
-      detectorVersionId: S.String,
-      externalModelEndpoints: ListOfStrings,
-      rules: RuleList,
-      description: S.optional(S.String),
-      modelVersions: S.optional(ListOfModelVersions),
-      ruleExecutionMode: S.optional(RuleExecutionMode),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDetectorVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorId: S.String,
+    detectorVersionId: S.String,
+    externalModelEndpoints: ListOfStrings,
+    rules: RuleList,
+    description: S.optional(S.String),
+    modelVersions: S.optional(ListOfModelVersions),
+    ruleExecutionMode: S.optional(RuleExecutionMode),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDetectorVersionRequest",
-  }) as any as S.Schema<UpdateDetectorVersionRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDetectorVersionRequest",
+}) as any as S.Schema<UpdateDetectorVersionRequest>;
 export interface UpdateDetectorVersionResult {}
-export const UpdateDetectorVersionResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateDetectorVersionResult",
-  }) as any as S.Schema<UpdateDetectorVersionResult>;
+export const UpdateDetectorVersionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateDetectorVersionResult",
+}) as any as S.Schema<UpdateDetectorVersionResult>;
 export interface UpdateDetectorVersionMetadataRequest {
   detectorId: string;
   detectorVersionId: string;
   description: string;
 }
-export const UpdateDetectorVersionMetadataRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const UpdateDetectorVersionMetadataRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       detectorId: S.String,
       detectorVersionId: S.String,
@@ -3551,44 +3543,45 @@ export const UpdateDetectorVersionMetadataRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateDetectorVersionMetadataRequest",
-  }) as any as S.Schema<UpdateDetectorVersionMetadataRequest>;
+).annotate({
+  identifier: "UpdateDetectorVersionMetadataRequest",
+}) as any as S.Schema<UpdateDetectorVersionMetadataRequest>;
 export interface UpdateDetectorVersionMetadataResult {}
-export const UpdateDetectorVersionMetadataResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateDetectorVersionMetadataResult",
-  }) as any as S.Schema<UpdateDetectorVersionMetadataResult>;
+export const UpdateDetectorVersionMetadataResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateDetectorVersionMetadataResult",
+}) as any as S.Schema<UpdateDetectorVersionMetadataResult>;
 export interface UpdateDetectorVersionStatusRequest {
   detectorId: string;
   detectorVersionId: string;
   status: DetectorVersionStatus;
 }
-export const UpdateDetectorVersionStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      detectorId: S.String,
-      detectorVersionId: S.String,
-      status: DetectorVersionStatus,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDetectorVersionStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    detectorId: S.String,
+    detectorVersionId: S.String,
+    status: DetectorVersionStatus,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDetectorVersionStatusRequest",
-  }) as any as S.Schema<UpdateDetectorVersionStatusRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDetectorVersionStatusRequest",
+}) as any as S.Schema<UpdateDetectorVersionStatusRequest>;
 export interface UpdateDetectorVersionStatusResult {}
-export const UpdateDetectorVersionStatusResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateDetectorVersionStatusResult",
-  }) as any as S.Schema<UpdateDetectorVersionStatusResult>;
+export const UpdateDetectorVersionStatusResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateDetectorVersionStatusResult",
+}) as any as S.Schema<UpdateDetectorVersionStatusResult>;
 export interface UpdateEventLabelRequest {
   eventId: string;
   eventTypeName: string;
@@ -3625,7 +3618,7 @@ export type ListUpdateMode = "REPLACE" | "APPEND" | "REMOVE" | (string & {});
 export const ListUpdateMode = /*@__PURE__*/ S.String;
 export interface UpdateListRequest {
   name: string;
-  elements?: string | redacted.Redacted<string>[];
+  elements?: (string | redacted.Redacted<string>)[];
   description?: string;
   updateMode?: ListUpdateMode;
   variableType?: string;
@@ -3745,32 +3738,32 @@ export interface UpdateModelVersionStatusRequest {
   modelVersionNumber: string;
   status: ModelVersionStatus;
 }
-export const UpdateModelVersionStatusRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      modelId: S.String,
-      modelType: ModelTypeEnum,
-      modelVersionNumber: S.String,
-      status: ModelVersionStatus,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateModelVersionStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modelId: S.String,
+    modelType: ModelTypeEnum,
+    modelVersionNumber: S.String,
+    status: ModelVersionStatus,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateModelVersionStatusRequest",
-  }) as any as S.Schema<UpdateModelVersionStatusRequest>;
+  ),
+).annotate({
+  identifier: "UpdateModelVersionStatusRequest",
+}) as any as S.Schema<UpdateModelVersionStatusRequest>;
 export interface UpdateModelVersionStatusResult {}
-export const UpdateModelVersionStatusResult =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateModelVersionStatusResult",
-  }) as any as S.Schema<UpdateModelVersionStatusResult>;
+export const UpdateModelVersionStatusResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateModelVersionStatusResult",
+}) as any as S.Schema<UpdateModelVersionStatusResult>;
 export interface UpdateRuleMetadataRequest {
   rule: Rule;
   description: string;
@@ -3871,30 +3864,37 @@ export const UpdateVariableResult = /*@__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.String },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
   "ResourceUnavailableException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 
 //# Operations

@@ -1907,35 +1907,51 @@ export const ViewBillingResponse = /*@__PURE__*/ S.suspend(() =>
 export class DomainLimitExceeded extends S.TaggedErrorClass<DomainLimitExceeded>()(
   "DomainLimitExceeded",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
   "InvalidInput",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class OperationLimitExceeded extends S.TaggedErrorClass<OperationLimitExceeded>()(
   "OperationLimitExceeded",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class UnsupportedTLD extends S.TaggedErrorClass<UnsupportedTLD>()(
   "UnsupportedTLD",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class DnssecLimitExceeded extends S.TaggedErrorClass<DnssecLimitExceeded>()(
   "DnssecLimitExceeded",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class DuplicateRequest extends S.TaggedErrorClass<DuplicateRequest>()(
   "DuplicateRequest",
   { requestId: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TLDRulesViolation extends S.TaggedErrorClass<TLDRulesViolation>()(
   "TLDRulesViolation",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TLDInMaintenance extends S.TaggedErrorClass<TLDInMaintenance>()(
   "TLDInMaintenance",
   { message: S.optional(S.String), tld: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
+export class DomainNotFound extends S.TaggedErrorClass<DomainNotFound>()(
+  "DomainNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidInput",
+    message: { includes: "not found in account" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type AcceptDomainTransferFromAnotherAwsAccountError =
@@ -2294,7 +2310,11 @@ export const getContactReachabilityStatus: API.OperationMethod<
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
   operationName: "GetContactReachabilityStatus",
 }));
-export type GetDomainDetailError = InvalidInput | UnsupportedTLD | CommonErrors;
+export type GetDomainDetailError =
+  | InvalidInput
+  | UnsupportedTLD
+  | DomainNotFound
+  | CommonErrors;
 /**
  * This operation returns detailed information about a specified domain that is
  * associated with the current Amazon Web Services account. Contact information for the
@@ -2308,7 +2328,7 @@ export const getDomainDetail: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDomainDetailRequest,
   output: GetDomainDetailResponse,
-  errors: [InvalidInput, UnsupportedTLD],
+  errors: [InvalidInput, UnsupportedTLD, DomainNotFound],
   operationName: "GetDomainDetail",
 }));
 export type GetDomainSuggestionsError =
@@ -2607,6 +2627,7 @@ export type RenewDomainError =
   | OperationLimitExceeded
   | TLDRulesViolation
   | UnsupportedTLD
+  | DomainNotFound
   | CommonErrors;
 /**
  * This operation renews a domain for the specified number of years. The cost of renewing
@@ -2632,6 +2653,7 @@ export const renewDomain: API.OperationMethod<
     OperationLimitExceeded,
     TLDRulesViolation,
     UnsupportedTLD,
+    DomainNotFound,
   ],
   operationName: "RenewDomain",
 }));
@@ -2684,6 +2706,7 @@ export type RetrieveDomainAuthCodeError =
   | InvalidInput
   | TLDInMaintenance
   | UnsupportedTLD
+  | DomainNotFound
   | CommonErrors;
 /**
  * This operation returns the authorization code for the domain. To transfer a domain to
@@ -2697,7 +2720,7 @@ export const retrieveDomainAuthCode: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RetrieveDomainAuthCodeRequest,
   output: RetrieveDomainAuthCodeResponse,
-  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
+  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD, DomainNotFound],
   operationName: "RetrieveDomainAuthCode",
 }));
 export type TransferDomainError =
@@ -2892,6 +2915,7 @@ export type UpdateDomainNameserversError =
   | OperationLimitExceeded
   | TLDRulesViolation
   | UnsupportedTLD
+  | DomainNotFound
   | CommonErrors;
 /**
  * This operation replaces the current set of name servers for the domain with the
@@ -2916,6 +2940,7 @@ export const updateDomainNameservers: API.OperationMethod<
     OperationLimitExceeded,
     TLDRulesViolation,
     UnsupportedTLD,
+    DomainNotFound,
   ],
   operationName: "UpdateDomainNameservers",
 }));

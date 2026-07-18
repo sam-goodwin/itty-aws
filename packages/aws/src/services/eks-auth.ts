@@ -127,15 +127,15 @@ export const AssumedRoleUser = /*@__PURE__*/ S.suspend(() =>
   identifier: "AssumedRoleUser",
 }) as any as S.Schema<AssumedRoleUser>;
 export interface Credentials {
-  sessionToken: string;
-  secretAccessKey: string;
+  sessionToken: string | redacted.Redacted<string>;
+  secretAccessKey: string | redacted.Redacted<string>;
   accessKeyId: string;
   expiration: Date;
 }
 export const Credentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    sessionToken: S.String,
-    secretAccessKey: S.String,
+    sessionToken: SensitiveString,
+    secretAccessKey: SensitiveString,
     accessKeyId: S.String,
     expiration: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
   }),
@@ -164,38 +164,47 @@ export const AssumeRoleForPodIdentityResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError, C.withAuthError) {}
 export class ExpiredTokenException extends S.TaggedErrorClass<ExpiredTokenException>()(
   "ExpiredTokenException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidTokenException extends S.TaggedErrorClass<InvalidTokenException>()(
   "InvalidTokenException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 
 //# Operations

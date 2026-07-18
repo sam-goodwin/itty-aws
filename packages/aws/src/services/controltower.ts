@@ -1567,6 +1567,14 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
   "ValidationException",
   { message: S.String },
 ).pipe(C.withBadRequestError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  {},
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {},
+).pipe(C.withBadRequestError) {}
 
 //# Operations
 export type DisableControlError =
@@ -1606,6 +1614,7 @@ export type GetBaselineOperationError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Returns the details of an asynchronous baseline operation, as initiated by any of these APIs: `EnableBaseline`, `DisableBaseline`, `UpdateEnabledBaseline`, `ResetEnabledBaseline`. A status message is displayed in case of operation failure. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
@@ -1624,6 +1633,7 @@ export const getBaselineOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "GetBaselineOperation",
 }));
@@ -1633,6 +1643,7 @@ export type GetBaselineError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Retrieve details about an existing `Baseline` resource by specifying its identifier. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
@@ -1651,6 +1662,7 @@ export const getBaseline: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "GetBaseline",
 }));
@@ -1659,6 +1671,7 @@ export type ListBaselinesError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Returns a summary list of all available baselines. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
@@ -1691,6 +1704,7 @@ export const listBaselines: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "ListBaselines",
   pagination: {
@@ -1781,6 +1795,7 @@ export type EnableBaselineError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Enable (apply) a `Baseline` to a Target. This API starts an asynchronous operation to deploy resources specified by the `Baseline` to the specified Target. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
@@ -1801,6 +1816,7 @@ export const enableBaseline: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "EnableBaseline",
 }));
@@ -1810,6 +1826,7 @@ export type GetEnabledBaselineError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Retrieve details of an `EnabledBaseline` resource by specifying its identifier.
@@ -1828,6 +1845,7 @@ export const getEnabledBaseline: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "GetEnabledBaseline",
 }));
@@ -1839,6 +1857,7 @@ export type UpdateEnabledBaselineError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Updates an `EnabledBaseline` resource's applied parameters or version. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
@@ -1859,6 +1878,7 @@ export const updateEnabledBaseline: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "UpdateEnabledBaseline",
 }));
@@ -1870,6 +1890,7 @@ export type DisableBaselineError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Disable an `EnabledBaseline` resource on the specified Target. This API starts an asynchronous operation to remove all resources deployed as part of the baseline enablement. The resource will vary depending on the enabled baseline. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
@@ -1890,6 +1911,7 @@ export const disableBaseline: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "DisableBaseline",
 }));
@@ -1898,6 +1920,7 @@ export type ListEnabledBaselinesError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Returns a list of summaries describing `EnabledBaseline` resources. You can filter the list by the corresponding `Baseline` or `Target` of the `EnabledBaseline` resources. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
@@ -1930,6 +1953,7 @@ export const listEnabledBaselines: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "ListEnabledBaselines",
   pagination: {
@@ -1947,6 +1971,7 @@ export type ResetEnabledBaselineError =
   | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Re-enables an `EnabledBaseline` resource. For example, this API can re-apply the existing `Baseline` after a new member account is moved to the target OU. For usage examples, see *the Amazon Web Services Control Tower User Guide* .
@@ -1967,6 +1992,7 @@ export const resetEnabledBaseline: API.OperationMethod<
     ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "ResetEnabledBaseline",
 }));
@@ -2150,6 +2176,7 @@ export type GetLandingZoneOperationError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Returns the status of the specified landing zone operation. Details for an operation are available for 90 days.
@@ -2168,6 +2195,7 @@ export const getLandingZoneOperation: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "GetLandingZoneOperation",
 }));
@@ -2176,6 +2204,7 @@ export type ListLandingZoneOperationsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Lists all landing zone operations from the past 90 days. Results are sorted by time, with the most recent operation first.
@@ -2208,6 +2237,7 @@ export const listLandingZoneOperations: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "ListLandingZoneOperations",
   pagination: {
@@ -2223,6 +2253,7 @@ export type CreateLandingZoneError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Creates a new landing zone. This API call starts an asynchronous operation that creates and configures a landing zone, based on the parameters specified in the manifest JSON file.
@@ -2241,6 +2272,7 @@ export const createLandingZone: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "CreateLandingZone",
 }));
@@ -2250,6 +2282,7 @@ export type GetLandingZoneError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Returns details about the landing zone. Displays a message in case of error.
@@ -2268,6 +2301,7 @@ export const getLandingZone: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "GetLandingZone",
 }));
@@ -2278,6 +2312,7 @@ export type UpdateLandingZoneError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * This API call updates the landing zone. It starts an asynchronous operation that updates the landing zone based on the new landing zone version, or on the changed parameters specified in the updated manifest file.
@@ -2297,6 +2332,7 @@ export const updateLandingZone: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "UpdateLandingZone",
 }));
@@ -2307,6 +2343,7 @@ export type DeleteLandingZoneError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Decommissions a landing zone. This API call starts an asynchronous operation that deletes Amazon Web Services Control Tower resources deployed in accounts managed by Amazon Web Services Control Tower.
@@ -2328,6 +2365,7 @@ export const deleteLandingZone: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "DeleteLandingZone",
 }));
@@ -2336,6 +2374,7 @@ export type ListLandingZonesError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Returns the landing zone ARN for the landing zone deployed in your managed account. This API also creates an ARN for existing accounts that do not yet have a landing zone ARN.
@@ -2370,6 +2409,7 @@ export const listLandingZones: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "ListLandingZones",
   pagination: {
@@ -2386,6 +2426,7 @@ export type ResetLandingZoneError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * This API call resets a landing zone. It starts an asynchronous operation that resets the landing zone to the parameters specified in the original configuration, which you specified in the manifest file. Nothing in the manifest file's original landing zone configuration is changed during the reset process, by default. This API is not the same as a rollback of a landing zone version, which is not a supported operation.
@@ -2405,6 +2446,7 @@ export const resetLandingZone: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "ResetLandingZone",
 }));
@@ -2412,6 +2454,7 @@ export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | BadRequestException
   | CommonErrors;
 /**
  * Returns a list of tags associated with the resource. For usage examples, see the *Controls Reference Guide* .
@@ -2428,6 +2471,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    BadRequestException,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -2435,6 +2479,7 @@ export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | BadRequestException
   | CommonErrors;
 /**
  * Applies tags to a resource. For usage examples, see the *Controls Reference Guide* .
@@ -2451,6 +2496,7 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    BadRequestException,
   ],
   operationName: "TagResource",
 }));
@@ -2458,6 +2504,7 @@ export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | BadRequestException
   | CommonErrors;
 /**
  * Removes tags from a resource. For usage examples, see the *Controls Reference Guide* .
@@ -2474,6 +2521,7 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    BadRequestException,
   ],
   operationName: "UntagResource",
 }));

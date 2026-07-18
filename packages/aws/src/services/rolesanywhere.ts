@@ -129,12 +129,11 @@ export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagList) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface NotificationSetting {
   enabled: boolean;
   event: string;
@@ -157,24 +156,23 @@ export interface PutNotificationSettingsRequest {
   trustAnchorId: string;
   notificationSettings: NotificationSetting[];
 }
-export const PutNotificationSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      trustAnchorId: S.String,
-      notificationSettings: NotificationSettings,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/put-notifications-settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trustAnchorId: S.String,
+    notificationSettings: NotificationSettings,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/put-notifications-settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutNotificationSettingsRequest",
-  }) as any as S.Schema<PutNotificationSettingsRequest>;
+  ),
+).annotate({
+  identifier: "PutNotificationSettingsRequest",
+}) as any as S.Schema<PutNotificationSettingsRequest>;
 export type SourceData =
   | { x509CertificateData: string; acmPcaArn?: never }
   | { x509CertificateData?: never; acmPcaArn: string };
@@ -245,12 +243,11 @@ export const TrustAnchorDetail = /*@__PURE__*/ S.suspend(() =>
 export interface PutNotificationSettingsResponse {
   trustAnchor: TrustAnchorDetail;
 }
-export const PutNotificationSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ trustAnchor: TrustAnchorDetail }),
-  ).annotate({
-    identifier: "PutNotificationSettingsResponse",
-  }) as any as S.Schema<PutNotificationSettingsResponse>;
+export const PutNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ trustAnchor: TrustAnchorDetail }),
+).annotate({
+  identifier: "PutNotificationSettingsResponse",
+}) as any as S.Schema<PutNotificationSettingsResponse>;
 export interface NotificationSettingKey {
   event: string;
   channel?: string;
@@ -268,33 +265,31 @@ export interface ResetNotificationSettingsRequest {
   trustAnchorId: string;
   notificationSettingKeys: NotificationSettingKey[];
 }
-export const ResetNotificationSettingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      trustAnchorId: S.String,
-      notificationSettingKeys: NotificationSettingKeys,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/reset-notifications-settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ResetNotificationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    trustAnchorId: S.String,
+    notificationSettingKeys: NotificationSettingKeys,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/reset-notifications-settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ResetNotificationSettingsRequest",
-  }) as any as S.Schema<ResetNotificationSettingsRequest>;
+  ),
+).annotate({
+  identifier: "ResetNotificationSettingsRequest",
+}) as any as S.Schema<ResetNotificationSettingsRequest>;
 export interface ResetNotificationSettingsResponse {
   trustAnchor: TrustAnchorDetail;
 }
-export const ResetNotificationSettingsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ trustAnchor: TrustAnchorDetail }),
-  ).annotate({
-    identifier: "ResetNotificationSettingsResponse",
-  }) as any as S.Schema<ResetNotificationSettingsResponse>;
+export const ResetNotificationSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ trustAnchor: TrustAnchorDetail }),
+).annotate({
+  identifier: "ResetNotificationSettingsResponse",
+}) as any as S.Schema<ResetNotificationSettingsResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
@@ -319,11 +314,11 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
-export type TagKeyList = string | redacted.Redacted<string>[];
+export type TagKeyList = (string | redacted.Redacted<string>)[];
 export const TagKeyList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface UntagResourceRequest {
   resourceArn: string;
-  tagKeys: string | redacted.Redacted<string>[];
+  tagKeys: (string | redacted.Redacted<string>)[];
 }
 export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
@@ -412,7 +407,7 @@ export interface ScalarCrlRequest {
 export const ScalarCrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ crlId: S.String.pipe(T.HttpLabel("crlId")) }).pipe(
     T.all(
-      T.Http({ method: "GET", uri: "/crl/{crlId}" }),
+      T.Http({ method: "DELETE", uri: "/crl/{crlId}" }),
       svc,
       auth,
       proto,
@@ -423,6 +418,10 @@ export const ScalarCrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScalarCrlRequest",
 }) as any as S.Schema<ScalarCrlRequest>;
+export interface GetCrlRequest extends ScalarCrlRequest {}
+export const GetCrlRequest = /*@__PURE__*/ ScalarCrlRequest.pipe(
+  T.Http({ method: "GET", uri: "/crl/{crlId}" }),
+).annotate({ identifier: "GetCrlRequest" }) as any as S.Schema<GetCrlRequest>;
 export interface UpdateCrlRequest {
   crlId: string;
   name?: string;
@@ -456,7 +455,7 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
     pageSize: S.optional(S.Number).pipe(T.HttpQuery("pageSize")),
   }).pipe(
     T.all(
-      T.Http({ method: "GET", uri: "/trustanchors" }),
+      T.Http({ method: "GET", uri: "/crls" }),
       svc,
       auth,
       proto,
@@ -476,6 +475,18 @@ export const ListCrlsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCrlsResponse",
 }) as any as S.Schema<ListCrlsResponse>;
+export interface DisableCrlRequest extends ScalarCrlRequest {}
+export const DisableCrlRequest = /*@__PURE__*/ ScalarCrlRequest.pipe(
+  T.Http({ method: "POST", uri: "/crl/{crlId}/disable" }),
+).annotate({
+  identifier: "DisableCrlRequest",
+}) as any as S.Schema<DisableCrlRequest>;
+export interface EnableCrlRequest extends ScalarCrlRequest {}
+export const EnableCrlRequest = /*@__PURE__*/ ScalarCrlRequest.pipe(
+  T.Http({ method: "POST", uri: "/crl/{crlId}/enable" }),
+).annotate({
+  identifier: "EnableCrlRequest",
+}) as any as S.Schema<EnableCrlRequest>;
 export type RoleArnList = string[];
 export const RoleArnList = /*@__PURE__*/ S.Array(S.String);
 export type ManagedPolicyList = string[];
@@ -589,7 +600,7 @@ export interface ScalarProfileRequest {
 export const ScalarProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ profileId: S.String.pipe(T.HttpLabel("profileId")) }).pipe(
     T.all(
-      T.Http({ method: "GET", uri: "/profile/{profileId}" }),
+      T.Http({ method: "DELETE", uri: "/profile/{profileId}" }),
       svc,
       auth,
       proto,
@@ -600,6 +611,12 @@ export const ScalarProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScalarProfileRequest",
 }) as any as S.Schema<ScalarProfileRequest>;
+export interface GetProfileRequest extends ScalarProfileRequest {}
+export const GetProfileRequest = /*@__PURE__*/ ScalarProfileRequest.pipe(
+  T.Http({ method: "GET", uri: "/profile/{profileId}" }),
+).annotate({
+  identifier: "GetProfileRequest",
+}) as any as S.Schema<GetProfileRequest>;
 export interface UpdateProfileRequest {
   profileId: string;
   name?: string;
@@ -631,6 +648,12 @@ export const UpdateProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateProfileRequest",
 }) as any as S.Schema<UpdateProfileRequest>;
+export interface ListProfilesRequest extends ListRequest {}
+export const ListProfilesRequest = /*@__PURE__*/ ListRequest.pipe(
+  T.Http({ method: "GET", uri: "/profiles" }),
+).annotate({
+  identifier: "ListProfilesRequest",
+}) as any as S.Schema<ListProfilesRequest>;
 export type ProfileDetails = ProfileDetail[];
 export const ProfileDetails = /*@__PURE__*/ S.Array(ProfileDetail);
 export interface ListProfilesResponse {
@@ -652,32 +675,44 @@ export interface DeleteAttributeMappingRequest {
   certificateField: string;
   specifiers?: string[];
 }
-export const DeleteAttributeMappingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      profileId: S.String.pipe(T.HttpLabel("profileId")),
-      certificateField: S.String.pipe(T.HttpQuery("certificateField")),
-      specifiers: S.optional(SpecifierList).pipe(T.HttpQuery("specifiers")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/profiles/{profileId}/mappings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteAttributeMappingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String.pipe(T.HttpLabel("profileId")),
+    certificateField: S.String.pipe(T.HttpQuery("certificateField")),
+    specifiers: S.optional(SpecifierList).pipe(T.HttpQuery("specifiers")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/profiles/{profileId}/mappings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteAttributeMappingRequest",
-  }) as any as S.Schema<DeleteAttributeMappingRequest>;
+  ),
+).annotate({
+  identifier: "DeleteAttributeMappingRequest",
+}) as any as S.Schema<DeleteAttributeMappingRequest>;
 export interface DeleteAttributeMappingResponse {
   profile: ProfileDetail;
 }
-export const DeleteAttributeMappingResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ profile: ProfileDetail })).annotate({
-    identifier: "DeleteAttributeMappingResponse",
-  }) as any as S.Schema<DeleteAttributeMappingResponse>;
+export const DeleteAttributeMappingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ profile: ProfileDetail }),
+).annotate({
+  identifier: "DeleteAttributeMappingResponse",
+}) as any as S.Schema<DeleteAttributeMappingResponse>;
+export interface DisableProfileRequest extends ScalarProfileRequest {}
+export const DisableProfileRequest = /*@__PURE__*/ ScalarProfileRequest.pipe(
+  T.Http({ method: "POST", uri: "/profile/{profileId}/disable" }),
+).annotate({
+  identifier: "DisableProfileRequest",
+}) as any as S.Schema<DisableProfileRequest>;
+export interface EnableProfileRequest extends ScalarProfileRequest {}
+export const EnableProfileRequest = /*@__PURE__*/ ScalarProfileRequest.pipe(
+  T.Http({ method: "POST", uri: "/profile/{profileId}/enable" }),
+).annotate({
+  identifier: "EnableProfileRequest",
+}) as any as S.Schema<EnableProfileRequest>;
 export interface PutAttributeMappingRequest {
   profileId: string;
   certificateField: string;
@@ -704,10 +739,11 @@ export const PutAttributeMappingRequest = /*@__PURE__*/ S.suspend(() =>
 export interface PutAttributeMappingResponse {
   profile: ProfileDetail;
 }
-export const PutAttributeMappingResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({ profile: ProfileDetail })).annotate({
-    identifier: "PutAttributeMappingResponse",
-  }) as any as S.Schema<PutAttributeMappingResponse>;
+export const PutAttributeMappingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ profile: ProfileDetail }),
+).annotate({
+  identifier: "PutAttributeMappingResponse",
+}) as any as S.Schema<PutAttributeMappingResponse>;
 export interface ScalarSubjectRequest {
   subjectId: string;
 }
@@ -806,6 +842,12 @@ export const SubjectDetailResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SubjectDetailResponse",
 }) as any as S.Schema<SubjectDetailResponse>;
+export interface ListSubjectsRequest extends ListRequest {}
+export const ListSubjectsRequest = /*@__PURE__*/ ListRequest.pipe(
+  T.Http({ method: "GET", uri: "/subjects" }),
+).annotate({
+  identifier: "ListSubjectsRequest",
+}) as any as S.Schema<ListSubjectsRequest>;
 export interface SubjectSummary {
   subjectArn?: string;
   subjectId?: string;
@@ -885,11 +927,9 @@ export interface ScalarTrustAnchorRequest {
   trustAnchorId: string;
 }
 export const ScalarTrustAnchorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    trustAnchorId: S.String.pipe(T.HttpLabel("trustAnchorId")),
-  }).pipe(
+  S.Struct({ trustAnchorId: S.String.pipe(T.HttpLabel("trustAnchorId")) }).pipe(
     T.all(
-      T.Http({ method: "GET", uri: "/trustanchor/{trustAnchorId}" }),
+      T.Http({ method: "DELETE", uri: "/trustanchor/{trustAnchorId}" }),
       svc,
       auth,
       proto,
@@ -900,6 +940,13 @@ export const ScalarTrustAnchorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScalarTrustAnchorRequest",
 }) as any as S.Schema<ScalarTrustAnchorRequest>;
+export interface GetTrustAnchorRequest extends ScalarTrustAnchorRequest {}
+export const GetTrustAnchorRequest =
+  /*@__PURE__*/ ScalarTrustAnchorRequest.pipe(
+    T.Http({ method: "GET", uri: "/trustanchor/{trustAnchorId}" }),
+  ).annotate({
+    identifier: "GetTrustAnchorRequest",
+  }) as any as S.Schema<GetTrustAnchorRequest>;
 export interface UpdateTrustAnchorRequest {
   trustAnchorId: string;
   name?: string;
@@ -923,6 +970,12 @@ export const UpdateTrustAnchorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTrustAnchorRequest",
 }) as any as S.Schema<UpdateTrustAnchorRequest>;
+export interface ListTrustAnchorsRequest extends ListRequest {}
+export const ListTrustAnchorsRequest = /*@__PURE__*/ ListRequest.pipe(
+  T.Http({ method: "GET", uri: "/trustanchors" }),
+).annotate({
+  identifier: "ListTrustAnchorsRequest",
+}) as any as S.Schema<ListTrustAnchorsRequest>;
 export type TrustAnchorDetails = TrustAnchorDetail[];
 export const TrustAnchorDetails = /*@__PURE__*/ S.Array(TrustAnchorDetail);
 export interface ListTrustAnchorsResponse {
@@ -937,23 +990,41 @@ export const ListTrustAnchorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTrustAnchorsResponse",
 }) as any as S.Schema<ListTrustAnchorsResponse>;
+export interface DisableTrustAnchorRequest extends ScalarTrustAnchorRequest {}
+export const DisableTrustAnchorRequest =
+  /*@__PURE__*/ ScalarTrustAnchorRequest.pipe(
+    T.Http({ method: "POST", uri: "/trustanchor/{trustAnchorId}/disable" }),
+  ).annotate({
+    identifier: "DisableTrustAnchorRequest",
+  }) as any as S.Schema<DisableTrustAnchorRequest>;
+export interface EnableTrustAnchorRequest extends ScalarTrustAnchorRequest {}
+export const EnableTrustAnchorRequest =
+  /*@__PURE__*/ ScalarTrustAnchorRequest.pipe(
+    T.Http({ method: "POST", uri: "/trustanchor/{trustAnchorId}/enable" }),
+  ).annotate({
+    identifier: "EnableTrustAnchorRequest",
+  }) as any as S.Schema<EnableTrustAnchorRequest>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -1113,12 +1184,12 @@ export type GetCrlError = ResourceNotFoundException | CommonErrors;
  * **Required permissions: ** `rolesanywhere:GetCrl`.
  */
 export const getCrl: API.OperationMethod<
-  ScalarCrlRequest,
+  GetCrlRequest,
   CrlDetailResponse,
   GetCrlError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScalarCrlRequest,
+  input: GetCrlRequest,
   output: CrlDetailResponse,
   errors: [ResourceNotFoundException],
   operationName: "GetCrl",
@@ -1218,12 +1289,12 @@ export type DisableCrlError =
  * **Required permissions: ** `rolesanywhere:DisableCrl`.
  */
 export const disableCrl: API.OperationMethod<
-  ScalarCrlRequest,
+  DisableCrlRequest,
   CrlDetailResponse,
   DisableCrlError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScalarCrlRequest,
+  input: DisableCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   operationName: "DisableCrl",
@@ -1238,12 +1309,12 @@ export type EnableCrlError =
  * **Required permissions: ** `rolesanywhere:EnableCrl`.
  */
 export const enableCrl: API.OperationMethod<
-  ScalarCrlRequest,
+  EnableCrlRequest,
   CrlDetailResponse,
   EnableCrlError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScalarCrlRequest,
+  input: EnableCrlRequest,
   output: CrlDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   operationName: "EnableCrl",
@@ -1278,12 +1349,12 @@ export type GetProfileError =
  * **Required permissions: ** `rolesanywhere:GetProfile`.
  */
 export const getProfile: API.OperationMethod<
-  ScalarProfileRequest,
+  GetProfileRequest,
   ProfileDetailResponse,
   GetProfileError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScalarProfileRequest,
+  input: GetProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   operationName: "GetProfile",
@@ -1343,27 +1414,27 @@ export type ListProfilesError =
  * **Required permissions: ** `rolesanywhere:ListProfiles`.
  */
 export const listProfiles: API.OperationMethod<
-  ListRequest,
+  ListProfilesRequest,
   ListProfilesResponse,
   ListProfilesError,
   Credentials | Region | HttpClient.HttpClient
 > & {
   pages: (
-    input: ListRequest,
+    input: ListProfilesRequest,
   ) => stream.Stream<
     ListProfilesResponse,
     ListProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
   items: (
-    input: ListRequest,
+    input: ListProfilesRequest,
   ) => stream.Stream<
     ProfileDetail,
     ListProfilesError,
     Credentials | Region | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRequest,
+  input: ListProfilesRequest,
   output: ListProfilesResponse,
   errors: [AccessDeniedException, ValidationException],
   operationName: "ListProfiles",
@@ -1406,12 +1477,12 @@ export type DisableProfileError =
  * **Required permissions: ** `rolesanywhere:DisableProfile`.
  */
 export const disableProfile: API.OperationMethod<
-  ScalarProfileRequest,
+  DisableProfileRequest,
   ProfileDetailResponse,
   DisableProfileError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScalarProfileRequest,
+  input: DisableProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   operationName: "DisableProfile",
@@ -1426,12 +1497,12 @@ export type EnableProfileError =
  * **Required permissions: ** `rolesanywhere:EnableProfile`.
  */
 export const enableProfile: API.OperationMethod<
-  ScalarProfileRequest,
+  EnableProfileRequest,
   ProfileDetailResponse,
   EnableProfileError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScalarProfileRequest,
+  input: EnableProfileRequest,
   output: ProfileDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   operationName: "EnableProfile",
@@ -1489,27 +1560,27 @@ export type ListSubjectsError =
  * **Required permissions: ** `rolesanywhere:ListSubjects`.
  */
 export const listSubjects: API.OperationMethod<
-  ListRequest,
+  ListSubjectsRequest,
   ListSubjectsResponse,
   ListSubjectsError,
   Credentials | Region | HttpClient.HttpClient
 > & {
   pages: (
-    input: ListRequest,
+    input: ListSubjectsRequest,
   ) => stream.Stream<
     ListSubjectsResponse,
     ListSubjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
   items: (
-    input: ListRequest,
+    input: ListSubjectsRequest,
   ) => stream.Stream<
     SubjectSummary,
     ListSubjectsError,
     Credentials | Region | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRequest,
+  input: ListSubjectsRequest,
   output: ListSubjectsResponse,
   errors: [AccessDeniedException, ValidationException],
   operationName: "ListSubjects",
@@ -1550,12 +1621,12 @@ export type GetTrustAnchorError =
  * **Required permissions: ** `rolesanywhere:GetTrustAnchor`.
  */
 export const getTrustAnchor: API.OperationMethod<
-  ScalarTrustAnchorRequest,
+  GetTrustAnchorRequest,
   TrustAnchorDetailResponse,
   GetTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScalarTrustAnchorRequest,
+  input: GetTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [
     AccessDeniedException,
@@ -1619,27 +1690,27 @@ export type ListTrustAnchorsError =
  * **Required permissions: ** `rolesanywhere:ListTrustAnchors`.
  */
 export const listTrustAnchors: API.OperationMethod<
-  ListRequest,
+  ListTrustAnchorsRequest,
   ListTrustAnchorsResponse,
   ListTrustAnchorsError,
   Credentials | Region | HttpClient.HttpClient
 > & {
   pages: (
-    input: ListRequest,
+    input: ListTrustAnchorsRequest,
   ) => stream.Stream<
     ListTrustAnchorsResponse,
     ListTrustAnchorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
   items: (
-    input: ListRequest,
+    input: ListTrustAnchorsRequest,
   ) => stream.Stream<
     TrustAnchorDetail,
     ListTrustAnchorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRequest,
+  input: ListTrustAnchorsRequest,
   output: ListTrustAnchorsResponse,
   errors: [AccessDeniedException, ValidationException],
   operationName: "ListTrustAnchors",
@@ -1659,12 +1730,12 @@ export type DisableTrustAnchorError =
  * **Required permissions: ** `rolesanywhere:DisableTrustAnchor`.
  */
 export const disableTrustAnchor: API.OperationMethod<
-  ScalarTrustAnchorRequest,
+  DisableTrustAnchorRequest,
   TrustAnchorDetailResponse,
   DisableTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScalarTrustAnchorRequest,
+  input: DisableTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   operationName: "DisableTrustAnchor",
@@ -1679,12 +1750,12 @@ export type EnableTrustAnchorError =
  * **Required permissions: ** `rolesanywhere:EnableTrustAnchor`.
  */
 export const enableTrustAnchor: API.OperationMethod<
-  ScalarTrustAnchorRequest,
+  EnableTrustAnchorRequest,
   TrustAnchorDetailResponse,
   EnableTrustAnchorError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScalarTrustAnchorRequest,
+  input: EnableTrustAnchorRequest,
   output: TrustAnchorDetailResponse,
   errors: [AccessDeniedException, ResourceNotFoundException],
   operationName: "EnableTrustAnchor",

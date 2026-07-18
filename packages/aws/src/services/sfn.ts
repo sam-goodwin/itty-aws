@@ -4072,6 +4072,7 @@ export const startSyncExecution: API.OperationMethod<
     StateMachineTypeNotSupported,
   ],
   operationName: "StartSyncExecution",
+  endpointHostPrefix: "sync-",
 }));
 export type StopExecutionError =
   | ExecutionDoesNotExist
@@ -4185,6 +4186,7 @@ export const testState: API.OperationMethod<
     ValidationException,
   ],
   operationName: "TestState",
+  endpointHostPrefix: "sync-",
 }));
 export type UntagResourceError = InvalidArn | ResourceNotFound | CommonErrors;
 /**

@@ -1643,6 +1643,14 @@ export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceA
   "ResourceAlreadyExistsException",
   { message: S.optional(S.String), resourceType: S.optional(S.String) },
 ).pipe(C.withAlreadyExistsError) {}
+export class SubscriptionNotFound extends S.TaggedErrorClass<SubscriptionNotFound>()(
+  "SubscriptionNotFound",
+  { message: S.optional(S.String), resourceType: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ResourceNotFoundException",
+    message: "The subscription does not exist.",
+  }),
+).pipe(C.withNotFoundError) {}
 export class LockedSubscriptionException extends S.TaggedErrorClass<LockedSubscriptionException>()(
   "LockedSubscriptionException",
   { message: S.optional(S.String) },
@@ -1805,6 +1813,7 @@ export type CreateProtectionError =
   | OptimisticLockException
   | ResourceAlreadyExistsException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Enables Shield Advanced for a specific Amazon Web Services resource. The resource can be an Amazon CloudFront distribution, Amazon Route 53 hosted zone, Global Accelerator standard accelerator, Elastic IP Address, Application Load Balancer, or a Classic Load Balancer. You can protect Amazon EC2 instances and Network Load Balancers by association with protected Amazon EC2 Elastic IP addresses.
@@ -1832,6 +1841,7 @@ export const createProtection: API.OperationMethod<
     OptimisticLockException,
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "CreateProtection",
 }));
@@ -1842,6 +1852,7 @@ export type CreateProtectionGroupError =
   | OptimisticLockException
   | ResourceAlreadyExistsException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Creates a grouping of protected resources so they can be handled as a collective. This resource grouping improves the accuracy of detection and reduces false positives.
@@ -1861,6 +1872,7 @@ export const createProtectionGroup: API.OperationMethod<
     OptimisticLockException,
     ResourceAlreadyExistsException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "CreateProtectionGroup",
 }));
@@ -1891,6 +1903,7 @@ export type DeleteProtectionError =
   | InternalErrorException
   | OptimisticLockException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Deletes an Shield Advanced Protection.
@@ -1907,6 +1920,7 @@ export const deleteProtection: API.OperationMethod<
     InternalErrorException,
     OptimisticLockException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "DeleteProtection",
 }));
@@ -1914,6 +1928,7 @@ export type DeleteProtectionGroupError =
   | InternalErrorException
   | OptimisticLockException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Removes the specified protection group.
@@ -1930,6 +1945,7 @@ export const deleteProtectionGroup: API.OperationMethod<
     InternalErrorException,
     OptimisticLockException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "DeleteProtectionGroup",
 }));
@@ -1937,6 +1953,7 @@ export type DeleteSubscriptionError =
   | InternalErrorException
   | LockedSubscriptionException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Removes Shield Advanced from an account. Shield Advanced requires a 1-year subscription commitment. You cannot delete a subscription prior to the completion of that commitment.
@@ -1953,6 +1970,7 @@ export const deleteSubscription: API.OperationMethod<
     InternalErrorException,
     LockedSubscriptionException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "DeleteSubscription",
 }));
@@ -2035,6 +2053,7 @@ export type DescribeProtectionError =
   | InternalErrorException
   | InvalidParameterException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Lists the details of a Protection object.
@@ -2051,12 +2070,14 @@ export const describeProtection: API.OperationMethod<
     InternalErrorException,
     InvalidParameterException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "DescribeProtection",
 }));
 export type DescribeProtectionGroupError =
   | InternalErrorException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Returns the specification for the specified protection group.
@@ -2069,12 +2090,17 @@ export const describeProtectionGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeProtectionGroupRequest,
   output: DescribeProtectionGroupResponse,
-  errors: [InternalErrorException, ResourceNotFoundException],
+  errors: [
+    InternalErrorException,
+    ResourceNotFoundException,
+    SubscriptionNotFound,
+  ],
   operationName: "DescribeProtectionGroup",
 }));
 export type DescribeSubscriptionError =
   | InternalErrorException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Provides details about the Shield Advanced subscription for an account.
@@ -2087,7 +2113,11 @@ export const describeSubscription: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSubscriptionRequest,
   output: DescribeSubscriptionResponse,
-  errors: [InternalErrorException, ResourceNotFoundException],
+  errors: [
+    InternalErrorException,
+    ResourceNotFoundException,
+    SubscriptionNotFound,
+  ],
   operationName: "DescribeSubscription",
 }));
 export type DisableApplicationLayerAutomaticResponseError =
@@ -2362,6 +2392,7 @@ export type ListProtectionGroupsError =
   | InternalErrorException
   | InvalidPaginationTokenException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Retrieves ProtectionGroup objects for the account. You can retrieve all protection groups or you can provide
@@ -2394,6 +2425,7 @@ export const listProtectionGroups: API.OperationMethod<
     InternalErrorException,
     InvalidPaginationTokenException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "ListProtectionGroups",
   pagination: {
@@ -2406,6 +2438,7 @@ export type ListProtectionsError =
   | InternalErrorException
   | InvalidPaginationTokenException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Retrieves Protection objects for the account. You can retrieve all protections or you can provide
@@ -2438,6 +2471,7 @@ export const listProtections: API.OperationMethod<
     InternalErrorException,
     InvalidPaginationTokenException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "ListProtections",
   pagination: {
@@ -2494,6 +2528,7 @@ export type ListTagsForResourceError =
   | InternalErrorException
   | InvalidResourceException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Gets information about Amazon Web Services tags for a specified Amazon Resource Name (ARN) in Shield.
@@ -2510,6 +2545,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalErrorException,
     InvalidResourceException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -2518,6 +2554,7 @@ export type TagResourceError =
   | InvalidParameterException
   | InvalidResourceException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Adds or updates tags for a resource in Shield.
@@ -2535,6 +2572,7 @@ export const tagResource: API.OperationMethod<
     InvalidParameterException,
     InvalidResourceException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "TagResource",
 }));
@@ -2543,6 +2581,7 @@ export type UntagResourceError =
   | InvalidParameterException
   | InvalidResourceException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Removes tags from a resource in Shield.
@@ -2560,6 +2599,7 @@ export const untagResource: API.OperationMethod<
     InvalidParameterException,
     InvalidResourceException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "UntagResource",
 }));
@@ -2620,6 +2660,7 @@ export type UpdateProtectionGroupError =
   | InvalidParameterException
   | OptimisticLockException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Updates an existing protection group. A protection group is a grouping of protected resources so they can be handled as a collective. This resource grouping improves the accuracy of detection and reduces false positives.
@@ -2637,6 +2678,7 @@ export const updateProtectionGroup: API.OperationMethod<
     InvalidParameterException,
     OptimisticLockException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "UpdateProtectionGroup",
 }));
@@ -2646,6 +2688,7 @@ export type UpdateSubscriptionError =
   | LockedSubscriptionException
   | OptimisticLockException
   | ResourceNotFoundException
+  | SubscriptionNotFound
   | CommonErrors;
 /**
  * Updates the details of an existing subscription. Only enter values for parameters you want to change. Empty parameters are not updated.
@@ -2667,6 +2710,7 @@ export const updateSubscription: API.OperationMethod<
     LockedSubscriptionException,
     OptimisticLockException,
     ResourceNotFoundException,
+    SubscriptionNotFound,
   ],
   operationName: "UpdateSubscription",
 }));

@@ -3004,15 +3004,15 @@ export type BehaviorOnMxFailure =
   | (string & {});
 export const BehaviorOnMxFailure = /*@__PURE__*/ S.String;
 export interface MailFromAttributes {
-  MailFromDomain: string;
-  MailFromDomainStatus: MailFromDomainStatus;
-  BehaviorOnMxFailure: BehaviorOnMxFailure;
+  MailFromDomain?: string;
+  MailFromDomainStatus?: MailFromDomainStatus;
+  BehaviorOnMxFailure?: BehaviorOnMxFailure;
 }
 export const MailFromAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    MailFromDomain: S.String,
-    MailFromDomainStatus: MailFromDomainStatus,
-    BehaviorOnMxFailure: BehaviorOnMxFailure,
+    MailFromDomain: S.optional(S.String),
+    MailFromDomainStatus: S.optional(MailFromDomainStatus),
+    BehaviorOnMxFailure: S.optional(BehaviorOnMxFailure),
   }),
 ).annotate({
   identifier: "MailFromAttributes",

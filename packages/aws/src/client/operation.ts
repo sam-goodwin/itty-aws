@@ -26,6 +26,14 @@ export interface Operation<
    * `AutoScalingGroupNamesType`).
    */
   operationName?: string;
+  /**
+   * The Smithy `smithy.api#endpoint` trait's `hostPrefix` (e.g. `"sync-"` on
+   * Step Functions' `StartSyncExecution`, which must target
+   * `sync-states.{region}` instead of `states.{region}`). Applied to the
+   * resolved endpoint's host unless a custom `Endpoint` service is provided.
+   * May contain `{memberName}` labels substituted from the operation input.
+   */
+  endpointHostPrefix?: string;
   /** Pagination metadata for paginated operations */
   pagination?: PaginatedTrait;
 }

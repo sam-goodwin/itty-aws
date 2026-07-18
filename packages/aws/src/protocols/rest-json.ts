@@ -37,10 +37,14 @@ import {
   getEventPayloadMap,
   getEventSchema,
   getHttpHeader,
+  getOutputEventPayloadMap,
   getHttpPrefixHeaders,
+  getHttpQuery,
   getPropAnnotations,
   getServiceVersion,
+  hasHttpLabel,
   hasHttpPayload,
+  hasHttpQueryParams,
   isInputEventStream,
   isOutputEventStream,
   isStreamingType,
@@ -48,6 +52,7 @@ import {
 } from "../traits.ts";
 import {
   getEncodedPropertySignatures,
+  getIdentifier,
   isBooleanAST,
   isNumberAST,
 } from "../util/ast.ts";
@@ -62,6 +67,7 @@ import {
   convertStreamingInput,
   isEffectStream,
   readableToEffectStream,
+  readStreamAsBytes,
   readStreamAsText,
 } from "../util/stream.ts";
 
@@ -95,8 +101,11 @@ export const restJson1Protocol: Protocol = (
     name: string;
     isStreaming: boolean;
     isRaw: boolean;
+    isBlob: boolean;
     isEventStream: boolean;
     eventSchema?: Schema.Schema<unknown>;
+    /** event type → `eventPayload` member name (raw-bytes events). */
+    eventPayloadMap?: Record<string, string>;
   };
 
   const headerProps: HeaderProp[] = [];
@@ -125,25 +134,56 @@ export const restJson1Protocol: Protocol = (
       prefixHeaderProps.push({ name, prefix: prefix.toLowerCase() });
     } else if (hasHttpPayload(prop)) {
       const isEventStream = isOutputEventStream(prop.type);
+      const eventSchema = isEventStream ? getEventSchema(prop.type) : undefined;
       outputPayloadProp = {
         name,
         isStreaming: isStreamingType(prop.type),
         isRaw: isRawPayload(prop.type),
+        isBlob: isBlobPayload(prop.type),
         isEventStream,
-        eventSchema: isEventStream ? getEventSchema(prop.type) : undefined,
+        eventSchema,
+        eventPayloadMap: eventSchema
+          ? getOutputEventPayloadMap(eventSchema)
+          : undefined,
       };
     } else if (isStreamingType(prop.type)) {
       // Streaming members (including event streams) implicitly become the payload
       const isEventStream = isOutputEventStream(prop.type);
+      const eventSchema = isEventStream ? getEventSchema(prop.type) : undefined;
       outputPayloadProp = {
         name,
         isStreaming: true,
         isRaw: false,
+        isBlob: false,
         isEventStream,
-        eventSchema: isEventStream ? getEventSchema(prop.type) : undefined,
+        eventSchema,
+        eventPayloadMap: eventSchema
+          ? getOutputEventPayloadMap(eventSchema)
+          : undefined,
       };
     }
   }
+
+  // restJson1 sends an explicit empty JSON document (`{}`) whenever the
+  // input shape has at least one member bound to the body but none were
+  // set (matching the AWS SDK v3 / botocore behavior — see
+  // AwsRestJsonProtocol.serializeRequest + ProtocolLib.resolveRestContentType
+  // in aws-sdk-js-v3). Several services reject an absent body outright:
+  // resource-explorer-2's ListIndexes/ListViews return
+  // `ValidationException: Invalid request body` when called with no body.
+  // Unit inputs (zero members) and inputs whose members are all bound to
+  // labels/query/headers keep an empty body.
+  const hasBodyCapableInputMembers = getEncodedPropertySignatures(
+    inputAst,
+  ).some(
+    (prop) =>
+      getHttpHeader(prop) === undefined &&
+      !hasHttpLabel(prop) &&
+      getHttpQuery(prop) === undefined &&
+      !hasHttpQueryParams(prop) &&
+      getHttpPrefixHeaders(prop) === undefined &&
+      !hasHttpPayload(prop),
+  );
 
   return {
     serializeRequest: Effect.fn(function* (input: unknown) {
@@ -199,6 +239,10 @@ export const restJson1Protocol: Protocol = (
           request.body = convertStreamingInput(
             payloadValue as StreamingInputBody,
           );
+          // Streaming-input operations are signed UNSIGNED-PAYLOAD (see
+          // Request.hasStreamingInput) — some services (Lex Runtime V2)
+          // reject payload-hash signatures on these routes.
+          request.hasStreamingInput = true;
           // Default to octet-stream for streaming payloads, unless user set explicitly
           if (!userSetContentType) {
             request.headers["Content-Type"] = "application/octet-stream";
@@ -223,7 +267,12 @@ export const restJson1Protocol: Protocol = (
           request.headers["Content-Type"] = "application/json";
         }
       } else {
-        // No body - set default JSON content type for consistency
+        if (hasBodyCapableInputMembers) {
+          // Body-capable members exist but none were set: send an explicit
+          // empty JSON document, matching AWS SDK v3 / botocore.
+          request.body = "{}";
+        }
+        // No body members set - default JSON content type for consistency
         if (!userSetContentType) {
           request.headers["Content-Type"] = "application/json";
         }
@@ -278,15 +327,32 @@ export const restJson1Protocol: Protocol = (
       // Handle streaming output payload - return early
       if (outputPayloadProp?.isStreaming) {
         if (outputPayloadProp.isEventStream && response.body) {
-          // Parse event stream - converts raw bytes to typed union events
+          // Parse event stream - converts raw bytes to typed union events,
+          // decoded through the event schema so blob/timestamp members match
+          // the generated types
           result[outputPayloadProp.name] = parseEventStreamToUnion(
             response.body as ReadableStream<Uint8Array>,
+            undefined,
+            outputPayloadProp.eventSchema,
+            outputPayloadProp.eventPayloadMap,
           );
         } else {
           // Raw streaming output (blob)
           result[outputPayloadProp.name] = readableToEffectStream(
             response.body,
           );
+        }
+        return result;
+      }
+
+      // Non-streaming blob payload (e.g. geo-maps GetTile / GetStaticMap):
+      // the raw body bytes ARE the payload. Read them as bytes and re-encode
+      // to the wire (base64 string) form the Blob schema decodes from.
+      // The body is binary, not a JSON document, so JSON parsing is skipped.
+      if (outputPayloadProp?.isBlob) {
+        const bytes = yield* readStreamAsBytes(response.body);
+        if (bytes.byteLength > 0) {
+          result[outputPayloadProp.name] = bytesToBase64(bytes);
         }
         return result;
       }
@@ -333,9 +399,12 @@ export const restJson1Protocol: Protocol = (
             body = parsed as Record<string, unknown>;
           }
         } catch {
-          return yield* new ParseError({
-            message: `Failed to parse error JSON body: ${bodyText}`,
-          });
+          // Some API Gateway-fronted services (e.g. FinSpace Data) return
+          // plain-text error bodies ("Failed to retrieve environment").
+          // Treat the text as the error message and fall back to matching
+          // the operation's declared errors by httpError status instead of
+          // failing the deserializer.
+          return { errorCode: "", data: { message: bodyText } };
         }
       }
 
@@ -346,9 +415,12 @@ export const restJson1Protocol: Protocol = (
         extractJsonErrorCode(body);
 
       if (!rawErrorCode) {
-        return yield* new ParseError({
-          message: `No error code found in response. Headers: ${JSON.stringify(response.headers)}, Body: ${bodyText}`,
-        });
+        // Some services (API Gateway-fronted, e.g. IoT Managed Integrations)
+        // return error responses with no error code at all — no
+        // X-Amzn-Errortype header and no __type/code body field. Return an
+        // empty error code so the response parser can fall back to matching
+        // the operation's declared errors by smithy.api#httpError status.
+        return { errorCode: "", data: extractJsonErrorData(body) };
       }
 
       // Sanitize the error code
@@ -370,4 +442,25 @@ function isRawPayload(ast: AST.AST): boolean {
   if (ast._tag === "String") return true;
   if (AST.isUnion(ast)) return ast.types.some(isRawPayload);
   return false;
+}
+
+/**
+ * Check if AST represents a non-streaming blob payload (T.Blob — decoded
+ * Uint8Array with a base64-string wire form). For httpPayload bindings the
+ * HTTP body carries the raw bytes directly, so the deserializer must read
+ * bytes instead of JSON-parsing the body.
+ */
+function isBlobPayload(ast: AST.AST): boolean {
+  if (AST.isUnion(ast)) return ast.types.some(isBlobPayload);
+  return getIdentifier(ast) === "Blob";
+}
+
+/** Base64-encode bytes without blowing the stack on large payloads. */
+function bytesToBase64(bytes: Uint8Array): string {
+  let binary = "";
+  const chunkSize = 0x2000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
 }

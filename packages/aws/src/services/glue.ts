@@ -18434,6 +18434,28 @@ export class ColumnStatisticsTaskRunningException extends S.TaggedErrorClass<Col
   "ColumnStatisticsTaskRunningException",
   { Message: S.optional(S.String) },
 ) {}
+export class GlueRoleNotAssumable extends S.TaggedErrorClass<GlueRoleNotAssumable>()(
+  "GlueRoleNotAssumable",
+  {
+    Message: S.optional(S.String),
+    FromFederationSource: S.optional(S.Boolean),
+  },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "unable to assume" },
+  }),
+).pipe(C.withRetryableError) {}
+export class GlueS3TargetNotReady extends S.TaggedErrorClass<GlueS3TargetNotReady>()(
+  "GlueS3TargetNotReady",
+  {
+    Message: S.optional(S.String),
+    FromFederationSource: S.optional(S.Boolean),
+  },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "InvalidAccessKeyId" },
+  }),
+).pipe(C.withRetryableError) {}
 export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
   "IdempotentParameterMismatchException",
   { Message: S.optional(S.String) },
@@ -18449,22 +18471,27 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
 export class IntegrationConflictOperationFault extends S.TaggedErrorClass<IntegrationConflictOperationFault>()(
   "IntegrationConflictOperationFault",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class IntegrationQuotaExceededFault extends S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
   "IntegrationQuotaExceededFault",
   { Message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
   "KMSKeyNotAccessibleFault",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
   "OperationNotSupportedException",
@@ -18481,10 +18508,12 @@ export class SchedulerTransitioningException extends S.TaggedErrorClass<Schedule
 export class IntegrationNotFoundFault extends S.TaggedErrorClass<IntegrationNotFoundFault>()(
   "IntegrationNotFoundFault",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class InvalidIntegrationStateFault extends S.TaggedErrorClass<InvalidIntegrationStateFault>()(
   "InvalidIntegrationStateFault",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConditionCheckFailureException extends S.TaggedErrorClass<ConditionCheckFailureException>()(
   "ConditionCheckFailureException",
@@ -18493,6 +18522,7 @@ export class ConditionCheckFailureException extends S.TaggedErrorClass<Condition
 export class TargetResourceNotFound extends S.TaggedErrorClass<TargetResourceNotFound>()(
   "TargetResourceNotFound",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class PermissionTypeMismatchException extends S.TaggedErrorClass<PermissionTypeMismatchException>()(
   "PermissionTypeMismatchException",
@@ -19364,6 +19394,8 @@ export type CreateCrawlerError =
   | InvalidInputException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
+  | GlueRoleNotAssumable
+  | GlueS3TargetNotReady
   | CommonErrors;
 /**
  * Creates a new crawler with specified targets, role, configuration, and optional schedule.
@@ -19383,6 +19415,8 @@ export const createCrawler: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
+    GlueRoleNotAssumable,
+    GlueS3TargetNotReady,
   ],
   operationName: "CreateCrawler",
 }));
@@ -19721,6 +19755,7 @@ export type CreateJobError =
   | InvalidInputException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
+  | GlueRoleNotAssumable
   | CommonErrors;
 /**
  * Creates a new job definition.
@@ -19741,6 +19776,7 @@ export const createJob: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
+    GlueRoleNotAssumable,
   ],
   operationName: "CreateJob",
 }));
@@ -26470,6 +26506,7 @@ export type StartJobRunError =
   | InvalidInputException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
+  | GlueRoleNotAssumable
   | CommonErrors;
 /**
  * Starts a job run using a job definition.
@@ -26489,6 +26526,7 @@ export const startJobRun: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
+    GlueRoleNotAssumable,
   ],
   operationName: "StartJobRun",
 }));
@@ -27195,6 +27233,8 @@ export type UpdateCrawlerError =
   | InvalidInputException
   | OperationTimeoutException
   | VersionMismatchException
+  | GlueRoleNotAssumable
+  | GlueS3TargetNotReady
   | CommonErrors;
 /**
  * Updates a crawler. If a crawler is
@@ -27215,6 +27255,8 @@ export const updateCrawler: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     VersionMismatchException,
+    GlueRoleNotAssumable,
+    GlueS3TargetNotReady,
   ],
   operationName: "UpdateCrawler",
 }));
@@ -27499,6 +27541,7 @@ export type UpdateJobError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | GlueRoleNotAssumable
   | CommonErrors;
 /**
  * Updates an existing job definition. The previous job definition is completely overwritten by this information.
@@ -27517,6 +27560,7 @@ export const updateJob: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    GlueRoleNotAssumable,
   ],
   operationName: "UpdateJob",
 }));

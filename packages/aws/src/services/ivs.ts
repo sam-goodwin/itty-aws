@@ -2121,6 +2121,7 @@ export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedExcept
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
   "ServiceUnavailable",
@@ -2145,6 +2146,7 @@ export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -2169,6 +2171,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class PendingVerification extends S.TaggedErrorClass<PendingVerification>()(
   "PendingVerification",
@@ -2193,6 +2196,7 @@ export class PendingVerification extends S.TaggedErrorClass<PendingVerification>
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -2217,6 +2221,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -2241,6 +2246,7 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -2265,6 +2271,7 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -2289,6 +2296,7 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -2313,6 +2321,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ChannelNotBroadcasting extends S.TaggedErrorClass<ChannelNotBroadcasting>()(
   "ChannelNotBroadcasting",
@@ -2337,6 +2346,7 @@ export class ChannelNotBroadcasting extends S.TaggedErrorClass<ChannelNotBroadca
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class StreamUnavailable extends S.TaggedErrorClass<StreamUnavailable>()(
   "StreamUnavailable",
@@ -2361,6 +2371,7 @@ export class StreamUnavailable extends S.TaggedErrorClass<StreamUnavailable>()(
     xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
     exceptionMessage: S.optional(S.String),
   },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 
 //# Operations
@@ -2466,6 +2477,7 @@ export type CreateChannelError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Creates a new channel and an associated stream key to start streaming.
@@ -2484,6 +2496,7 @@ export const createChannel: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "CreateChannel",
 }));
@@ -2521,6 +2534,7 @@ export type CreateRecordingConfigurationError =
   | PendingVerification
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Creates a new recording configuration, used to enable recording to Amazon S3.
@@ -2544,6 +2558,7 @@ export const createRecordingConfiguration: API.OperationMethod<
     PendingVerification,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "CreateRecordingConfiguration",
 }));
@@ -2553,6 +2568,7 @@ export type CreateStreamKeyError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Creates a stream key, used to initiate a stream, for the specified channel ARN.
@@ -2573,6 +2589,7 @@ export const createStreamKey: API.OperationMethod<
     ResourceNotFoundException,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "CreateStreamKey",
 }));
@@ -2582,6 +2599,7 @@ export type DeleteAdConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the specified ad configuration.
@@ -2600,6 +2618,7 @@ export const deleteAdConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeleteAdConfiguration",
 }));
@@ -2609,6 +2628,7 @@ export type DeleteChannelError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the specified channel and its associated stream keys.
@@ -2629,6 +2649,7 @@ export const deleteChannel: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeleteChannel",
 }));
@@ -2637,6 +2658,8 @@ export type DeletePlaybackKeyPairError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
+  | InternalServerException
   | CommonErrors;
 /**
  * Deletes a specified authorization key pair. This invalidates future viewer tokens generated using the key pair’s `privateKey`. For more information, see Setting Up Private Channels in the *Amazon IVS User Guide*.
@@ -2654,6 +2677,8 @@ export const deletePlaybackKeyPair: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
+    InternalServerException,
   ],
   operationName: "DeletePlaybackKeyPair",
 }));
@@ -2663,6 +2688,7 @@ export type DeletePlaybackRestrictionPolicyError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the specified playback restriction policy.
@@ -2681,6 +2707,7 @@ export const deletePlaybackRestrictionPolicy: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeletePlaybackRestrictionPolicy",
 }));
@@ -2690,6 +2717,7 @@ export type DeleteRecordingConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the recording configuration for the specified ARN.
@@ -2710,6 +2738,7 @@ export const deleteRecordingConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeleteRecordingConfiguration",
 }));
@@ -2718,6 +2747,7 @@ export type DeleteStreamKeyError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Deletes the stream key for the specified ARN, so it can no longer be used to stream.
@@ -2735,6 +2765,7 @@ export const deleteStreamKey: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "DeleteStreamKey",
 }));
@@ -2743,6 +2774,7 @@ export type GetAdConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets the ad configuration represented by the specified ARN.
@@ -2760,6 +2792,7 @@ export const getAdConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetAdConfiguration",
 }));
@@ -2767,6 +2800,7 @@ export type GetChannelError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets the channel configuration for the specified channel ARN. See also BatchGetChannel.
@@ -2783,6 +2817,7 @@ export const getChannel: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetChannel",
 }));
@@ -2790,6 +2825,7 @@ export type GetPlaybackKeyPairError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets a specified playback authorization key pair and returns the `arn` and `fingerprint`. The `privateKey` held by the caller can be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see Setting Up Private Channels in the *Amazon IVS User Guide*.
@@ -2806,6 +2842,7 @@ export const getPlaybackKeyPair: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetPlaybackKeyPair",
 }));
@@ -2814,6 +2851,7 @@ export type GetPlaybackRestrictionPolicyError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets the specified playback restriction policy.
@@ -2831,6 +2869,7 @@ export const getPlaybackRestrictionPolicy: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetPlaybackRestrictionPolicy",
 }));
@@ -2839,6 +2878,7 @@ export type GetRecordingConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets the recording configuration for the specified ARN.
@@ -2856,6 +2896,7 @@ export const getRecordingConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetRecordingConfiguration",
 }));
@@ -2864,6 +2905,7 @@ export type GetStreamError =
   | ChannelNotBroadcasting
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets information about the active (live) stream on a specified channel.
@@ -2881,6 +2923,7 @@ export const getStream: API.OperationMethod<
     ChannelNotBroadcasting,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetStream",
 }));
@@ -2888,6 +2931,7 @@ export type GetStreamKeyError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets stream-key information for a specified ARN.
@@ -2904,6 +2948,7 @@ export const getStreamKey: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetStreamKey",
 }));
@@ -2911,6 +2956,7 @@ export type GetStreamSessionError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets metadata on a specified stream.
@@ -2927,6 +2973,7 @@ export const getStreamSession: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "GetStreamSession",
 }));
@@ -2936,6 +2983,7 @@ export type ImportPlaybackKeyPairError =
   | PendingVerification
   | ServiceQuotaExceededException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Imports the public portion of a new key pair and returns its `arn` and `fingerprint`. The `privateKey` can then be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see Setting Up Private Channels in the *Amazon IVS User Guide*.
@@ -2954,6 +3002,7 @@ export const importPlaybackKeyPair: API.OperationMethod<
     PendingVerification,
     ServiceQuotaExceededException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ImportPlaybackKeyPair",
 }));
@@ -2994,6 +3043,7 @@ export type ListAdConfigurationsError =
   | AccessDeniedException
   | InternalServerException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about all ad configurations in your account, in the AWS region where the API request is processed.
@@ -3021,7 +3071,12 @@ export const listAdConfigurations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAdConfigurationsRequest,
   output: ListAdConfigurationsResponse,
-  errors: [AccessDeniedException, InternalServerException, ValidationException],
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ValidationException,
+    ThrottlingException,
+  ],
   operationName: "ListAdConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -3034,6 +3089,7 @@ export type ListChannelsError =
   | AccessDeniedException
   | ConflictException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about all channels in your account, in the Amazon Web Services region where the API request is processed. This list can be filtered to match a specified name or recording-configuration ARN. Filters are mutually exclusive and cannot be used together. If you try to use both filters, you will get an error (409 ConflictException).
@@ -3061,7 +3117,12 @@ export const listChannels: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
-  errors: [AccessDeniedException, ConflictException, ValidationException],
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ValidationException,
+    ThrottlingException,
+  ],
   operationName: "ListChannels",
   pagination: {
     inputToken: "nextToken",
@@ -3072,6 +3133,7 @@ export const listChannels: API.OperationMethod<
 export type ListPlaybackKeyPairsError =
   | AccessDeniedException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about playback key pairs. For more information, see Setting Up Private Channels in the *Amazon IVS User Guide*.
@@ -3099,7 +3161,7 @@ export const listPlaybackKeyPairs: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPlaybackKeyPairsRequest,
   output: ListPlaybackKeyPairsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ValidationException, ThrottlingException],
   operationName: "ListPlaybackKeyPairs",
   pagination: {
     inputToken: "nextToken",
@@ -3112,6 +3174,7 @@ export type ListPlaybackRestrictionPoliciesError =
   | ConflictException
   | PendingVerification
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about playback restriction policies.
@@ -3144,6 +3207,7 @@ export const listPlaybackRestrictionPolicies: API.OperationMethod<
     ConflictException,
     PendingVerification,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ListPlaybackRestrictionPolicies",
   pagination: {
@@ -3156,6 +3220,7 @@ export type ListRecordingConfigurationsError =
   | AccessDeniedException
   | InternalServerException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about all recording configurations in your account, in the Amazon Web Services region where the API request is processed.
@@ -3183,7 +3248,12 @@ export const listRecordingConfigurations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRecordingConfigurationsRequest,
   output: ListRecordingConfigurationsResponse,
-  errors: [AccessDeniedException, InternalServerException, ValidationException],
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ValidationException,
+    ThrottlingException,
+  ],
   operationName: "ListRecordingConfigurations",
   pagination: {
     inputToken: "nextToken",
@@ -3195,6 +3265,7 @@ export type ListStreamKeysError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about stream keys for the specified channel.
@@ -3226,6 +3297,7 @@ export const listStreamKeys: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ListStreamKeys",
   pagination: {
@@ -3237,6 +3309,7 @@ export const listStreamKeys: API.OperationMethod<
 export type ListStreamsError =
   | AccessDeniedException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets summary information about live streams in your account, in the Amazon Web Services region where the API request is processed.
@@ -3264,7 +3337,7 @@ export const listStreams: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamsRequest,
   output: ListStreamsResponse,
-  errors: [AccessDeniedException, ValidationException],
+  errors: [AccessDeniedException, ValidationException, ThrottlingException],
   operationName: "ListStreams",
   pagination: {
     inputToken: "nextToken",
@@ -3276,6 +3349,7 @@ export type ListStreamSessionsError =
   | AccessDeniedException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets a summary of current and previous streams for a specified channel in your account, in the AWS region where the API request is processed.
@@ -3307,6 +3381,7 @@ export const listStreamSessions: API.OperationMethod<
     AccessDeniedException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ListStreamSessions",
   pagination: {
@@ -3319,6 +3394,7 @@ export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Gets information about Amazon Web Services tags for the specified ARN.
@@ -3335,6 +3411,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -3400,6 +3477,7 @@ export type StopStreamError =
   | ResourceNotFoundException
   | StreamUnavailable
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Disconnects the incoming RTMPS stream for the specified channel. Can be used in conjunction with DeleteStreamKey to prevent further streaming to a channel.
@@ -3420,6 +3498,7 @@ export const stopStream: API.OperationMethod<
     ResourceNotFoundException,
     StreamUnavailable,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "StopStream",
 }));
@@ -3427,6 +3506,7 @@ export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Adds or updates tags for the Amazon Web Services resource with the specified ARN.
@@ -3443,6 +3523,7 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "TagResource",
 }));
@@ -3450,6 +3531,7 @@ export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Removes tags from the resource with the specified ARN.
@@ -3466,6 +3548,7 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "UntagResource",
 }));
@@ -3508,6 +3591,7 @@ export type UpdateChannelError =
   | PendingVerification
   | ResourceNotFoundException
   | ValidationException
+  | ThrottlingException
   | CommonErrors;
 /**
  * Updates a channel's configuration. Live channels cannot be updated. You must stop the ongoing stream, update the channel, and restart the stream for the changes to take effect.
@@ -3526,6 +3610,7 @@ export const updateChannel: API.OperationMethod<
     PendingVerification,
     ResourceNotFoundException,
     ValidationException,
+    ThrottlingException,
   ],
   operationName: "UpdateChannel",
 }));

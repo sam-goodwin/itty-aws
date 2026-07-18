@@ -159,21 +159,21 @@ export const ResourceQuery = /*@__PURE__*/ S.suspend(() =>
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type GroupConfigurationParameterValueList = string[];
-export const GroupConfigurationParameterValueList =
-  /*@__PURE__*/ S.Array(S.String);
+export const GroupConfigurationParameterValueList = /*@__PURE__*/ S.Array(
+  S.String,
+);
 export interface GroupConfigurationParameter {
   Name: string;
   Values?: string[];
 }
-export const GroupConfigurationParameter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      Values: S.optional(GroupConfigurationParameterValueList),
-    }),
-  ).annotate({
-    identifier: "GroupConfigurationParameter",
-  }) as any as S.Schema<GroupConfigurationParameter>;
+export const GroupConfigurationParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Values: S.optional(GroupConfigurationParameterValueList),
+  }),
+).annotate({
+  identifier: "GroupConfigurationParameter",
+}) as any as S.Schema<GroupConfigurationParameter>;
 export type GroupParameterList = GroupConfigurationParameter[];
 export const GroupParameterList = /*@__PURE__*/ S.Array(
   GroupConfigurationParameter,
@@ -272,14 +272,14 @@ export const GroupConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "GroupConfiguration",
 }) as any as S.Schema<GroupConfiguration>;
 export interface CreateGroupOutput {
-  Group?: Group;
+  Group: Group;
   ResourceQuery?: ResourceQuery;
   Tags?: { [key: string]: string | undefined };
   GroupConfiguration?: GroupConfiguration;
 }
 export const CreateGroupOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Group: S.optional(Group),
+    Group: Group,
     ResourceQuery: S.optional(ResourceQuery),
     Tags: S.optional(Tags),
     GroupConfiguration: S.optional(GroupConfiguration),
@@ -319,7 +319,14 @@ export const DeleteGroupOutput = /*@__PURE__*/ S.suspend(() =>
 export interface GetAccountSettingsRequest {}
 export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    T.all(
+      T.Http({ method: "POST", uri: "/get-account-settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
   ),
 ).annotate({
   identifier: "GetAccountSettingsRequest",
@@ -380,10 +387,10 @@ export const GetGroupInput = /*@__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetGroupInput" }) as any as S.Schema<GetGroupInput>;
 export interface GetGroupOutput {
-  Group?: Group;
+  Group: Group;
 }
 export const GetGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Group: S.optional(Group) }),
+  S.Struct({ Group: Group }),
 ).annotate({ identifier: "GetGroupOutput" }) as any as S.Schema<GetGroupOutput>;
 export interface GetGroupConfigurationInput {
   Group?: string;
@@ -405,12 +412,11 @@ export const GetGroupConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 export interface GetGroupConfigurationOutput {
   GroupConfiguration?: GroupConfiguration;
 }
-export const GetGroupConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ GroupConfiguration: S.optional(GroupConfiguration) }),
-  ).annotate({
-    identifier: "GetGroupConfigurationOutput",
-  }) as any as S.Schema<GetGroupConfigurationOutput>;
+export const GetGroupConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GroupConfiguration: S.optional(GroupConfiguration) }),
+).annotate({
+  identifier: "GetGroupConfigurationOutput",
+}) as any as S.Schema<GetGroupConfigurationOutput>;
 export interface GetGroupQueryInput {
   GroupName?: string;
   Group?: string;
@@ -594,8 +600,9 @@ export const ListGroupingStatusesFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListGroupingStatusesFilter",
 }) as any as S.Schema<ListGroupingStatusesFilter>;
 export type ListGroupingStatusesFilterList = ListGroupingStatusesFilter[];
-export const ListGroupingStatusesFilterList =
-  /*@__PURE__*/ S.Array(ListGroupingStatusesFilter);
+export const ListGroupingStatusesFilterList = /*@__PURE__*/ S.Array(
+  ListGroupingStatusesFilter,
+);
 export interface ListGroupingStatusesInput {
   Group: string;
   MaxResults?: number;
@@ -864,10 +871,7 @@ export interface ListTagSyncTasksFilter {
   GroupName?: string;
 }
 export const ListTagSyncTasksFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupArn: S.optional(S.String),
-    GroupName: S.optional(S.String),
-  }),
+  S.Struct({ GroupArn: S.optional(S.String), GroupName: S.optional(S.String) }),
 ).annotate({
   identifier: "ListTagSyncTasksFilter",
 }) as any as S.Schema<ListTagSyncTasksFilter>;
@@ -962,10 +966,11 @@ export const PutGroupConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutGroupConfigurationInput",
 }) as any as S.Schema<PutGroupConfigurationInput>;
 export interface PutGroupConfigurationOutput {}
-export const PutGroupConfigurationOutput =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutGroupConfigurationOutput",
-  }) as any as S.Schema<PutGroupConfigurationOutput>;
+export const PutGroupConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutGroupConfigurationOutput",
+}) as any as S.Schema<PutGroupConfigurationOutput>;
 export interface SearchResourcesInput {
   ResourceQuery: ResourceQuery;
   MaxResults?: number;
@@ -1156,12 +1161,11 @@ export const UpdateAccountSettingsInput = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccountSettingsOutput {
   AccountSettings?: AccountSettings;
 }
-export const UpdateAccountSettingsOutput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AccountSettings: S.optional(AccountSettings) }),
-  ).annotate({
-    identifier: "UpdateAccountSettingsOutput",
-  }) as any as S.Schema<UpdateAccountSettingsOutput>;
+export const UpdateAccountSettingsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AccountSettings: S.optional(AccountSettings) }),
+).annotate({
+  identifier: "UpdateAccountSettingsOutput",
+}) as any as S.Schema<UpdateAccountSettingsOutput>;
 export interface UpdateGroupInput {
   GroupName?: string;
   Group?: string;
@@ -1235,30 +1239,45 @@ export const UpdateGroupQueryOutput = /*@__PURE__*/ S.suspend(() =>
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
   "MethodNotAllowedException",
   { Message: S.optional(S.String) },
+  T.HttpError(405),
 ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { Message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
+export class GroupAlreadyExists extends S.TaggedErrorClass<GroupAlreadyExists>()(
+  "GroupAlreadyExists",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequestException",
+    message: { includes: "group already exists" },
+  }),
+).pipe(C.withAlreadyExistsError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -1305,6 +1324,7 @@ export type CreateGroupError =
   | InternalServerErrorException
   | MethodNotAllowedException
   | TooManyRequestsException
+  | GroupAlreadyExists
   | CommonErrors;
 /**
  * Creates a resource group with the specified name and description. You can optionally
@@ -1333,6 +1353,7 @@ export const createGroup: API.OperationMethod<
     InternalServerErrorException,
     MethodNotAllowedException,
     TooManyRequestsException,
+    GroupAlreadyExists,
   ],
   operationName: "CreateGroup",
 }));
@@ -1632,6 +1653,7 @@ export type ListGroupingStatusesError =
   | InternalServerErrorException
   | MethodNotAllowedException
   | TooManyRequestsException
+  | NotFoundException
   | CommonErrors;
 /**
  * Returns the status of the last grouping or ungrouping action for
@@ -1666,6 +1688,7 @@ export const listGroupingStatuses: API.OperationMethod<
     InternalServerErrorException,
     MethodNotAllowedException,
     TooManyRequestsException,
+    NotFoundException,
   ],
   operationName: "ListGroupingStatuses",
   pagination: {

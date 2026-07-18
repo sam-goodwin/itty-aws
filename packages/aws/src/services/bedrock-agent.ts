@@ -3766,7 +3766,7 @@ export interface Agent {
   agentId: string;
   agentName: string;
   agentArn: string;
-  agentVersion: string;
+  agentVersion?: string;
   clientToken?: string;
   instruction?: string | redacted.Redacted<string>;
   agentStatus: AgentStatus;
@@ -3792,7 +3792,7 @@ export const Agent = /*@__PURE__*/ S.suspend(() =>
     agentId: S.String,
     agentName: S.String,
     agentArn: S.String,
-    agentVersion: S.String,
+    agentVersion: S.optional(S.String),
     clientToken: S.optional(S.String),
     instruction: S.optional(SensitiveString),
     agentStatus: AgentStatus,

@@ -3486,8 +3486,31 @@ export const ListVodSourcesResponse = /*@__PURE__*/ S.suspend(() =>
 //# Errors
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
+  {},
+) {}
+export class ChannelNotFound extends S.TaggedErrorClass<ChannelNotFound>()(
+  "ChannelNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
+).pipe(C.withNotFoundError) {}
+export class ProgramNotFound extends S.TaggedErrorClass<ProgramNotFound>()(
+  "ProgramNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
+).pipe(C.withNotFoundError) {}
+export class PlaybackConfigurationNotFound extends S.TaggedErrorClass<PlaybackConfigurationNotFound>()(
+  "PlaybackConfigurationNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "NotFoundException",
+    message: { includes: "not found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class PrefetchScheduleNotFound extends S.TaggedErrorClass<PrefetchScheduleNotFound>()(
+  "PrefetchScheduleNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type ConfigureLogsForPlaybackConfigurationError = CommonErrors;
@@ -3505,7 +3528,7 @@ export const configureLogsForPlaybackConfiguration: API.OperationMethod<
   errors: [],
   operationName: "ConfigureLogsForPlaybackConfiguration",
 }));
-export type ListAlertsError = CommonErrors;
+export type ListAlertsError = BadRequestException | CommonErrors;
 /**
  * Lists the alerts that are associated with a MediaTailor channel assembly resource.
  */
@@ -3532,7 +3555,7 @@ export const listAlerts: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAlertsRequest,
   output: ListAlertsResponse,
-  errors: [],
+  errors: [BadRequestException],
   operationName: "ListAlerts",
   pagination: {
     inputToken: "NextToken",
@@ -3697,7 +3720,10 @@ export const configureLogsForChannel: API.OperationMethod<
   errors: [],
   operationName: "ConfigureLogsForChannel",
 }));
-export type GetChannelScheduleError = CommonErrors;
+export type GetChannelScheduleError =
+  | BadRequestException
+  | ChannelNotFound
+  | CommonErrors;
 /**
  * Retrieves information about your channel's schedule.
  */
@@ -3724,7 +3750,7 @@ export const getChannelSchedule: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetChannelScheduleRequest,
   output: GetChannelScheduleResponse,
-  errors: [],
+  errors: [BadRequestException, ChannelNotFound],
   operationName: "GetChannelSchedule",
   pagination: {
     inputToken: "NextToken",
@@ -3733,7 +3759,10 @@ export const getChannelSchedule: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type StartChannelError = CommonErrors;
+export type StartChannelError =
+  | BadRequestException
+  | ChannelNotFound
+  | CommonErrors;
 /**
  * Starts a channel. For information about MediaTailor channels, see Working with channels in the *MediaTailor User Guide*.
  */
@@ -3745,10 +3774,13 @@ export const startChannel: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StartChannelRequest,
   output: StartChannelResponse,
-  errors: [],
+  errors: [BadRequestException, ChannelNotFound],
   operationName: "StartChannel",
 }));
-export type StopChannelError = CommonErrors;
+export type StopChannelError =
+  | BadRequestException
+  | ChannelNotFound
+  | CommonErrors;
 /**
  * Stops a channel. For information about MediaTailor channels, see Working with channels in the *MediaTailor User Guide*.
  */
@@ -3760,7 +3792,7 @@ export const stopChannel: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StopChannelRequest,
   output: StopChannelResponse,
-  errors: [],
+  errors: [BadRequestException, ChannelNotFound],
   operationName: "StopChannel",
 }));
 export type PutChannelPolicyError = CommonErrors;
@@ -3808,7 +3840,10 @@ export const deleteChannelPolicy: API.OperationMethod<
   errors: [],
   operationName: "DeleteChannelPolicy",
 }));
-export type CreateProgramError = CommonErrors;
+export type CreateProgramError =
+  | BadRequestException
+  | ChannelNotFound
+  | CommonErrors;
 /**
  * Creates a program within a channel. For information about programs, see Working with programs in the *MediaTailor User Guide*.
  */
@@ -3820,10 +3855,13 @@ export const createProgram: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProgramRequest,
   output: CreateProgramResponse,
-  errors: [],
+  errors: [BadRequestException, ChannelNotFound],
   operationName: "CreateProgram",
 }));
-export type DescribeProgramError = CommonErrors;
+export type DescribeProgramError =
+  | BadRequestException
+  | ProgramNotFound
+  | CommonErrors;
 /**
  * Describes a program within a channel. For information about programs, see Working with programs in the *MediaTailor User Guide*.
  */
@@ -3835,10 +3873,13 @@ export const describeProgram: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeProgramRequest,
   output: DescribeProgramResponse,
-  errors: [],
+  errors: [BadRequestException, ProgramNotFound],
   operationName: "DescribeProgram",
 }));
-export type UpdateProgramError = CommonErrors;
+export type UpdateProgramError =
+  | BadRequestException
+  | ProgramNotFound
+  | CommonErrors;
 /**
  * Updates a program within a channel.
  */
@@ -3850,10 +3891,13 @@ export const updateProgram: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateProgramRequest,
   output: UpdateProgramResponse,
-  errors: [],
+  errors: [BadRequestException, ProgramNotFound],
   operationName: "UpdateProgram",
 }));
-export type DeleteProgramError = CommonErrors;
+export type DeleteProgramError =
+  | BadRequestException
+  | ProgramNotFound
+  | CommonErrors;
 /**
  * Deletes a program within a channel. For information about programs, see Working with programs in the *MediaTailor User Guide*.
  */
@@ -3865,7 +3909,7 @@ export const deleteProgram: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteProgramRequest,
   output: DeleteProgramResponse,
-  errors: [],
+  errors: [BadRequestException, ProgramNotFound],
   operationName: "DeleteProgram",
 }));
 export type PutFunctionError = CommonErrors;
@@ -4060,7 +4104,9 @@ export const putPlaybackConfiguration: API.OperationMethod<
   errors: [],
   operationName: "PutPlaybackConfiguration",
 }));
-export type GetPlaybackConfigurationError = CommonErrors;
+export type GetPlaybackConfigurationError =
+  | PlaybackConfigurationNotFound
+  | CommonErrors;
 /**
  * Retrieves a playback configuration. For information about MediaTailor configurations, see Working with configurations in AWS Elemental MediaTailor.
  */
@@ -4072,7 +4118,7 @@ export const getPlaybackConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPlaybackConfigurationRequest,
   output: GetPlaybackConfigurationResponse,
-  errors: [],
+  errors: [PlaybackConfigurationNotFound],
   operationName: "GetPlaybackConfiguration",
 }));
 export type DeletePlaybackConfigurationError = CommonErrors;
@@ -4126,7 +4172,10 @@ export const listPlaybackConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreatePrefetchScheduleError = CommonErrors;
+export type CreatePrefetchScheduleError =
+  | BadRequestException
+  | PlaybackConfigurationNotFound
+  | CommonErrors;
 /**
  * Creates a prefetch schedule for a playback configuration. A prefetch schedule allows you to tell MediaTailor to fetch and prepare certain ads before an ad break happens. For more information about ad prefetching, see Using ad prefetching in the *MediaTailor User Guide*.
  */
@@ -4138,10 +4187,13 @@ export const createPrefetchSchedule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePrefetchScheduleRequest,
   output: CreatePrefetchScheduleResponse,
-  errors: [],
+  errors: [BadRequestException, PlaybackConfigurationNotFound],
   operationName: "CreatePrefetchSchedule",
 }));
-export type GetPrefetchScheduleError = CommonErrors;
+export type GetPrefetchScheduleError =
+  | BadRequestException
+  | PrefetchScheduleNotFound
+  | CommonErrors;
 /**
  * Retrieves a prefetch schedule for a playback configuration. A prefetch schedule allows you to tell MediaTailor to fetch and prepare certain ads before an ad break happens. For more information about ad prefetching, see Using ad prefetching in the *MediaTailor User Guide*.
  */
@@ -4153,10 +4205,13 @@ export const getPrefetchSchedule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetPrefetchScheduleRequest,
   output: GetPrefetchScheduleResponse,
-  errors: [],
+  errors: [BadRequestException, PrefetchScheduleNotFound],
   operationName: "GetPrefetchSchedule",
 }));
-export type DeletePrefetchScheduleError = CommonErrors;
+export type DeletePrefetchScheduleError =
+  | BadRequestException
+  | PrefetchScheduleNotFound
+  | CommonErrors;
 /**
  * Deletes a prefetch schedule for a specific playback configuration. If you call `DeletePrefetchSchedule` on an expired prefetch schedule, MediaTailor returns an HTTP 404 status code. For more information about ad prefetching, see Using ad prefetching in the *MediaTailor User Guide*.
  */
@@ -4168,10 +4223,13 @@ export const deletePrefetchSchedule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePrefetchScheduleRequest,
   output: DeletePrefetchScheduleResponse,
-  errors: [],
+  errors: [BadRequestException, PrefetchScheduleNotFound],
   operationName: "DeletePrefetchSchedule",
 }));
-export type ListPrefetchSchedulesError = CommonErrors;
+export type ListPrefetchSchedulesError =
+  | BadRequestException
+  | PlaybackConfigurationNotFound
+  | CommonErrors;
 /**
  * Lists the prefetch schedules for a playback configuration.
  */
@@ -4198,7 +4256,7 @@ export const listPrefetchSchedules: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPrefetchSchedulesRequest,
   output: ListPrefetchSchedulesResponse,
-  errors: [],
+  errors: [BadRequestException, PlaybackConfigurationNotFound],
   operationName: "ListPrefetchSchedules",
   pagination: {
     inputToken: "NextToken",

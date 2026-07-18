@@ -7,6 +7,7 @@
 
 import * as Effect from "effect/Effect";
 import * as Ref from "effect/Ref";
+import * as Schema from "effect/Schema";
 import * as Stream from "effect/Stream";
 import {
   decodeMessage,
@@ -148,6 +149,16 @@ export const rawPayloadParser: PayloadParser = (payload: Uint8Array) => {
   return text ? { payload: text } : {};
 };
 
+/** Encode raw event payload bytes to the base64 wire form blob schemas decode from. */
+const uint8ToBase64 = (bytes: Uint8Array): string => {
+  let binary = "";
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, i + chunkSize));
+  }
+  return btoa(binary);
+};
+
 /**
  * Default JSON payload parser
  */
@@ -176,12 +187,25 @@ export const jsonPayloadParser: PayloadParser = (payload: Uint8Array) => {
 export const transformEventStreamToUnion = (
   eventStream: Stream.Stream<StreamEvent, EventStreamParseError>,
   payloadParser: PayloadParser = jsonPayloadParser,
+  eventPayloadMap?: Record<string, string>,
 ): Stream.Stream<ParsedEvent, EventStreamParseError> =>
   eventStream.pipe(
     Stream.map((streamEvent) => {
       if (streamEvent._tag === "MessageEvent") {
         // Normal message event - parse payload and wrap in tagged union
         const eventType = streamEvent.eventType;
+        // Smithy `eventPayload` member: the raw wire payload IS that single
+        // member's value (a blob), not a JSON document of the event struct.
+        // Bind the bytes to the member in wire (base64) form so the event
+        // schema decode produces the generated type (Uint8Array / Redacted).
+        const payloadMember = eventPayloadMap?.[eventType];
+        if (payloadMember !== undefined) {
+          return {
+            [eventType]: {
+              [payloadMember]: uint8ToBase64(streamEvent.payload),
+            },
+          };
+        }
         const payload = payloadParser(streamEvent.payload);
         return { [eventType]: payload };
       } else if (streamEvent._tag === "ExceptionEvent") {
@@ -202,17 +226,61 @@ export const transformEventStreamToUnion = (
   );
 
 /**
+ * Decode each parsed union event through the operation's event schema (the
+ * Smithy union of event types). The payload parser alone only produces plain
+ * JSON/XML values — member transformations declared on the schema never run,
+ * so blob members stay base64 strings (instead of `Uint8Array` /
+ * `Redacted<Uint8Array>` for sensitive blobs) and timestamps stay numbers.
+ * Running the schema decode makes the runtime values match the generated
+ * types (e.g. Bedrock `InvokeModelWithResponseStream`'s `chunk.bytes`).
+ *
+ * An event that fails to decode is passed through raw so unmodeled events
+ * (`UnmodeledError`) and exception events keep flowing.
+ */
+export const decodeEventStreamUnion = (
+  eventStream: Stream.Stream<ParsedEvent, EventStreamParseError>,
+  eventSchema: Schema.Schema<unknown> | undefined,
+): Stream.Stream<ParsedEvent, EventStreamParseError> => {
+  if (!eventSchema) return eventStream;
+  const decode = Schema.decodeUnknownEffect(eventSchema);
+  return Stream.mapEffect(
+    eventStream,
+    (event) =>
+      decode(event).pipe(
+        Effect.map((decoded) => decoded as ParsedEvent),
+        Effect.catch(() => Effect.succeed(event)),
+        // The schema arrives via untyped AST annotations as `Schema<unknown>`,
+        // whose decoding-services slot is `unknown`; generated event schemas
+        // are plain data codecs with no decode services, so the effect is
+        // service-free at runtime.
+      ) as Effect.Effect<ParsedEvent, never>,
+  );
+};
+
+/**
  * Parse a ReadableStream of bytes into a Stream of typed union events.
  *
  * This is the high-level API that combines:
  * 1. parseEventStream - decode wire format to StreamEvents
  * 2. transformEventStreamToUnion - convert to typed union members
+ * 3. decodeEventStreamUnion - run the event schema so runtime values match
+ *    the generated types (blobs → Uint8Array, sensitive blobs → Redacted)
  *
  * @param input - ReadableStream of event stream bytes
  * @param payloadParser - Function to parse event payloads (default: JSON)
+ * @param eventSchema - The Smithy union schema for the stream's events
  */
 export const parseEventStreamToUnion = (
   input: ReadableStream<Uint8Array>,
   payloadParser: PayloadParser = jsonPayloadParser,
+  eventSchema?: Schema.Schema<unknown>,
+  eventPayloadMap?: Record<string, string>,
 ): Stream.Stream<ParsedEvent, EventStreamParseError> =>
-  transformEventStreamToUnion(parseEventStream(input), payloadParser);
+  decodeEventStreamUnion(
+    transformEventStreamToUnion(
+      parseEventStream(input),
+      payloadParser,
+      eventPayloadMap,
+    ),
+    eventSchema,
+  );

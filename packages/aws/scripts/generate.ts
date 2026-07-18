@@ -15,7 +15,11 @@ import {
 import * as FileSystem from "effect/FileSystem";
 import * as Path from "effect/Path";
 import * as ChildProcess from "effect/unstable/process/ChildProcess";
-import { loadServiceSpecPatch, type ServiceSpec } from "./spec-schema.ts";
+import {
+  loadServiceSpecPatch,
+  type ServiceSpec,
+  type SyntheticError,
+} from "./spec-schema.ts";
 import type { RuleSetObject } from "./compile-rules.ts";
 import { generateRuleSetCode } from "./compile-rules.ts";
 import {
@@ -70,6 +74,14 @@ class SdkFile extends Context.Service<
     serviceXmlNamespace: string | undefined;
     // Map of input schema names to their operation traits
     operationInputTraits: Map<string, OperationInputTraits>;
+    // Per-operation trait overrides for input shapes SHARED by multiple
+    // operations with conflicting operation-level traits (keyed by operation
+    // shape name, e.g. "DisableTrustAnchor"). The operation generator emits a
+    // derived `${OpName}Request` schema carrying the correct @http trait —
+    // otherwise every op silently inherits one op's method/uri (observed
+    // live: rolesanywhere DisableTrustAnchor issued GET /trustanchor/{id}
+    // instead of POST .../disable and no-op'd).
+    operationInputTraitOverrides: Map<string, OperationInputTraits>;
     // Map of output schema names to their operation traits
     operationOutputTraits: Map<string, OperationOutputTraits>;
     // Service-level traits (applied to all request schemas)
@@ -117,6 +129,16 @@ class ShapeNotFound extends Data.TaggedError("ShapeNotFound")<{
   message: string;
 }> {}
 class ProtocolNotFound extends Data.TaggedError("ProtocolNotFound")<{}> {}
+
+// A patch file references an operation that does not exist in the Smithy
+// model — usually a typo'd key that would otherwise silently no-op.
+class OrphanedPatchOperations extends Data.TaggedError(
+  "OrphanedPatchOperations",
+)<{
+  sdkId: string;
+  operations: string[];
+  message: string;
+}> {}
 
 //* todo(pear): better error here - most of these need to be handled
 class UnableToTransformShapeToSchema extends Data.TaggedError(
@@ -584,9 +606,14 @@ const shapeToTsType = (
       }
 
       case "list": {
-        // For lists, get the element type and return an array type
+        // For lists, get the element type and return an array type.
+        // Parenthesize union element types (e.g. sensitive members that
+        // render as `string | redacted.Redacted<string>`) so the `[]`
+        // suffix binds to the whole union, not just the last member.
         const elementType = yield* shapeToTsType(shape.member.target);
-        return `${elementType}[]`;
+        return elementType.includes("|")
+          ? `(${elementType})[]`
+          : `${elementType}[]`;
       }
 
       case "map": {
@@ -932,11 +959,27 @@ interface OperationInputTraits {
   staticContextParams?: Record<string, { value: unknown }>;
 }
 
-// Collect operation traits for input schemas
-function collectOperationInputTraits(
-  model: SmithyModel,
-): Map<string, OperationInputTraits> {
+// Collect operation traits for input schemas.
+//
+// Returns two maps:
+// - inputTraits: input schema name -> traits baked into that schema constant
+// - inputTraitOverrides: operation shape name -> traits, for operations whose
+//   input shape is SHARED by multiple operations with CONFLICTING traits
+//   (restJson services commonly reuse one `Scalar{X}Request` shape across
+//   Get/Delete/Enable/Disable with different @http bindings). Keying traits
+//   by input shape name alone made the last writer win, so e.g. rolesanywhere
+//   DisableTrustAnchor issued GET /trustanchor/{id} and silently no-op'd. The
+//   operation generator emits a derived `${OpName}Request` schema for each
+//   overridden operation.
+function collectOperationInputTraits(model: SmithyModel): {
+  operationInputTraits: Map<string, OperationInputTraits>;
+  operationInputTraitOverrides: Map<string, OperationInputTraits>;
+} {
   const inputTraits = new Map<string, OperationInputTraits>();
+  const opsByInput = new Map<
+    string,
+    { opName: string; traits: OperationInputTraits }[]
+  >();
 
   for (const [_shapeId, shape] of Object.entries(model.shapes)) {
     if (shape.type === "operation" && shape.input) {
@@ -958,17 +1001,57 @@ function collectOperationInputTraits(
         "smithy.rules#staticContextParams"
       ] as Record<string, { value: unknown }> | undefined;
 
-      const inputName = formatName(shape.input.target);
-      inputTraits.set(inputName, {
+      const traits: OperationInputTraits = {
         method: httpTrait.method ?? "POST",
         uri: httpTrait.uri ?? "/",
         httpChecksum: httpChecksumTrait,
         staticContextParams: staticContextParamsTrait,
-      });
+      };
+
+      // Operations with `smithy.api#Unit` inputs get a synthesized
+      // `${OpName}Request` schema (see the Unit-input branch in the
+      // operation generator), so key their traits under that name —
+      // keying under "Unit" loses the operation's real @http trait and
+      // every Unit-input operation silently falls back to POST "/"
+      // (observed live: resource-explorer-2 GetIndex returned
+      // AccessDeniedException because it was posted to "/" instead of
+      // "/GetIndex").
+      if (shape.input.target === "smithy.api#Unit") {
+        inputTraits.set(`${_shapeId.split("#")[1]}Request`, traits);
+        continue;
+      }
+      const inputName = formatName(shape.input.target);
+      const ops = opsByInput.get(inputName) ?? [];
+      ops.push({ opName: _shapeId.split("#")[1], traits });
+      opsByInput.set(inputName, ops);
     }
   }
 
-  return inputTraits;
+  const inputTraitOverrides = new Map<string, OperationInputTraits>();
+  for (const [inputName, ops] of opsByInput) {
+    const distinct = new Set(ops.map((o) => JSON.stringify(o.traits)));
+    if (distinct.size === 1) {
+      inputTraits.set(inputName, ops[0].traits);
+      continue;
+    }
+    // Conflicting traits on a shared input shape. The op whose natural
+    // `${OpName}Request` name matches the shape keeps ownership of the base
+    // schema (so no derived name can collide with the base); otherwise the
+    // first op in model order owns it. Every other op with different traits
+    // gets a per-operation override.
+    const owner = ops.find((o) => `${o.opName}Request` === inputName) ?? ops[0];
+    inputTraits.set(inputName, owner.traits);
+    const ownerKey = JSON.stringify(owner.traits);
+    for (const op of ops) {
+      if (op === owner || JSON.stringify(op.traits) === ownerKey) continue;
+      inputTraitOverrides.set(op.opName, op.traits);
+    }
+  }
+
+  return {
+    operationInputTraits: inputTraits,
+    operationInputTraitOverrides: inputTraitOverrides,
+  };
 }
 
 interface OperationOutputTraits {
@@ -1552,7 +1635,9 @@ const convertShapeToSchema: (
                 .map((v) => `"${v}"`)
                 .join("\n  | ");
               const typeAlias = `export type ${schemaName} =\n  | ${literalUnion}\n  | (string & {});`;
-              const schemaDef = annotatePureExportConst(`export const ${schemaName} = S.String;`);
+              const schemaDef = annotatePureExportConst(
+                `export const ${schemaName} = S.String;`,
+              );
               return addAlias(Effect.succeed(`${typeAlias}\n${schemaDef}`), []);
             },
           ),
@@ -1583,7 +1668,9 @@ const convertShapeToSchema: (
               const literals = enumValues.join(", ");
               const literalUnion = enumValues.join(" | ");
               const typeAlias = `export type ${schemaName} = ${literalUnion};`;
-              const schemaDef = annotatePureExportConst(`export const ${schemaName} = S.Literals([${literals}]);`);
+              const schemaDef = annotatePureExportConst(
+                `export const ${schemaName} = S.Literals([${literals}]);`,
+              );
               return addAlias(Effect.succeed(`${typeAlias}\n${schemaDef}`), []);
             },
           ),
@@ -1636,10 +1723,19 @@ const convertShapeToSchema: (
                       const memberTsType = yield* shapeToTsType(
                         s.member.target,
                       );
-                      const typeAlias = `export type ${schemaName} = ${memberTsType}[];`;
+                      // Parenthesize union element types so `[]` binds to the
+                      // whole union, not just the last member.
+                      const memberTsTypeForArray = memberTsType.includes("|")
+                        ? `(${memberTsType})`
+                        : memberTsType;
+                      const typeAlias = `export type ${schemaName} = ${memberTsTypeForArray}[];`;
                       const schemaDef = isCyclic
-                        ? annotatePureExportConst(`export const ${schemaName} = S.Array(${innerType})${sparsePipe} as any as S.Schema<${schemaName}>;`)
-                        : annotatePureExportConst(`export const ${schemaName} = S.Array(${innerType})${sparsePipe};`);
+                        ? annotatePureExportConst(
+                            `export const ${schemaName} = S.Array(${innerType})${sparsePipe} as any as S.Schema<${schemaName}>;`,
+                          )
+                        : annotatePureExportConst(
+                            `export const ${schemaName} = S.Array(${innerType})${sparsePipe};`,
+                          );
                       return `${typeAlias}\n${schemaDef}`;
                     }),
                   ),
@@ -1810,6 +1906,43 @@ const convertShapeToSchema: (
                       sdkFile.serviceSpec.structures?.[currentSchemaName];
                     const memberOverride =
                       structureOverride?.members?.[memberName];
+                    // Member-level sensitive override from spec patches — the
+                    // Smithy model lacks @sensitive but the field carries secret
+                    // material (e.g. API Gateway ApiKey.value). Swap the wire
+                    // schema for SensitiveString so responses decode to Redacted
+                    // and requests accept raw or Redacted values.
+                    if (memberOverride?.sensitive) {
+                      const listMemberTarget =
+                        memberTargetShape?.type === "list"
+                          ? (
+                              memberTargetShape as {
+                                member?: { target?: string };
+                              }
+                            ).member?.target
+                          : undefined;
+                      const isStringList =
+                        listMemberTarget !== undefined &&
+                        (listMemberTarget === "smithy.api#String" ||
+                          (
+                            model.shapes[listMemberTarget] as
+                              | GenericShape
+                              | undefined
+                          )?.type === "string");
+                      if (schema === "S.String") {
+                        schema = "SensitiveString";
+                        tsType = "string | redacted.Redacted<string>";
+                      } else if (isStringList) {
+                        // Sensitive list of strings (e.g. ElastiCache user
+                        // Passwords) — each element decodes to Redacted.
+                        schema = "S.Array(SensitiveString)";
+                        tsType = "Array<string | redacted.Redacted<string>>";
+                      } else {
+                        return yield* Effect.die(
+                          `sensitive member override on ${currentSchemaName}.${memberName} ` +
+                            `requires a plain string or list-of-string member (schema was ${schema})`,
+                        );
+                      }
+                    }
                     // Check if this member is "soft required" (@clientOptional + @required)
                     const hasClientOptional =
                       member.traits?.["smithy.api#clientOptional"] != null;
@@ -2010,7 +2143,9 @@ const convertShapeToSchema: (
                     // Generate interface + suspend(struct) pattern
                     // Trait annotations inside suspend, identifier outside
                     const interfaceDef = `export interface ${exportedName} { ${interfaceFields} }`;
-                    const schemaDef = annotatePureExportConst(`export const ${exportedName} = S.suspend(() => S.Struct({${schemaFields}})${encodeKeysPipe}${innerPipe})${outerAnnotation} as any as S.Schema<${exportedName}>;`);
+                    const schemaDef = annotatePureExportConst(
+                      `export const ${exportedName} = S.suspend(() => S.Struct({${schemaFields}})${encodeKeysPipe}${innerPipe})${outerAnnotation} as any as S.Schema<${exportedName}>;`,
+                    );
 
                     return `${interfaceDef}\n${schemaDef}`;
                   }),
@@ -2259,8 +2394,12 @@ const convertShapeToSchema: (
                       }
 
                       const schemaDef = isCyclic
-                        ? annotatePureExportConst(`export const ${schemaName} = ${recordExpr} as any as S.Schema<${schemaName}>;`)
-                        : annotatePureExportConst(`export const ${schemaName} = ${recordExpr};`);
+                        ? annotatePureExportConst(
+                            `export const ${schemaName} = ${recordExpr} as any as S.Schema<${schemaName}>;`,
+                          )
+                        : annotatePureExportConst(
+                            `export const ${schemaName} = ${recordExpr};`,
+                          );
                       return `${typeAlias}\n${schemaDef}`;
                     }),
                   ),
@@ -2348,13 +2487,22 @@ const addError = Effect.fn(function* (error: {
   name: string;
   shapeId: string;
   tag?: string; // Original AWS error code (may contain dots)
+  // When set, this error is synthesized from an existing wire error + a
+  // message predicate (see spec-schema.ts SyntheticError). It inherits the
+  // base error's fields and carries a T.SyntheticError annotation that the
+  // response parser matches BEFORE the plain wire-code lookup.
+  synthetic?: SyntheticError;
 }) {
   const sdkFile = yield* SdkFile;
   const existingErrors = yield* Ref.get(sdkFile.errors);
   if (!existingErrors.some((e) => e.name === error.name)) {
-    // Get the inline fields from errorFields map (from Smithy model)
+    // Get the inline fields from errorFields map (from Smithy model).
+    // Synthetic errors reuse the fields of the wire error they derive from.
     const errorFieldsMap = yield* Ref.get(sdkFile.errorFields);
-    let fields = errorFieldsMap.get(error.name) ?? "{}";
+    let fields =
+      errorFieldsMap.get(
+        error.synthetic ? sanitizeErrorName(error.synthetic.from) : error.name,
+      ) ?? "{}";
 
     // Check for error member patches from spec file
     const errorPatches = sdkFile.serviceSpec.errors?.[error.name];
@@ -2409,6 +2557,13 @@ const addError = Effect.fn(function* (error: {
       );
     }
 
+    // Add httpError annotation if present (smithy.api#httpError). The
+    // response parser uses it as a status-based fallback for services whose
+    // error responses carry no error code (e.g. IoT Managed Integrations).
+    if (errorTraits?.httpError) {
+      annotations.push(`T.HttpError(${errorTraits.httpError})`);
+    }
+
     // Add retryable annotation if present (smithy.api#retryable)
     if (errorTraits?.retryable) {
       if (errorTraits.retryable.throttling) {
@@ -2416,6 +2571,18 @@ const addError = Effect.fn(function* (error: {
       } else {
         annotations.push(`T.Retryable()`);
       }
+    }
+
+    // Synthetic errors carry the matcher (base wire code + message
+    // predicate) as an annotation the response parser evaluates BEFORE the
+    // plain wire-code lookup.
+    if (error.synthetic) {
+      annotations.push(
+        `T.SyntheticError(${JSON.stringify({
+          from: error.synthetic.from,
+          message: error.synthetic.message,
+        })})`,
+      );
     }
 
     // Map HTTP status codes to categories
@@ -2627,7 +2794,9 @@ const generateClient = Effect.fn(function* (
             const outerAnnotation = `.annotate({ identifier: "${className}" })`;
 
             const interfaceDef = `export interface ${className} {}`;
-            const schemaDef = annotatePureExportConst(`export const ${className} = S.suspend(() => S.Struct({})${innerPipe})${outerAnnotation} as any as S.Schema<${className}>;`);
+            const schemaDef = annotatePureExportConst(
+              `export const ${className} = S.suspend(() => S.Struct({})${innerPipe})${outerAnnotation} as any as S.Schema<${className}>;`,
+            );
             const definition = `${interfaceDef}\n${schemaDef}`;
             yield* Ref.update(sdkFile.schemas, (arr) => [
               ...arr,
@@ -2635,9 +2804,68 @@ const generateClient = Effect.fn(function* (
             ]);
             return className;
           }
-          return yield* convertShapeToSchema(operationShape.input.target).pipe(
-            Effect.flatMap(Deferred.await),
+          const baseName = yield* convertShapeToSchema(
+            operationShape.input.target,
+          ).pipe(Effect.flatMap(Deferred.await));
+
+          // Input shape shared by multiple operations with CONFLICTING
+          // operation-level traits: emit a derived per-operation request
+          // schema whose direct annotations (getAnnotationUnwrap checks the
+          // outermost AST node first) override the traits baked into the
+          // shared base schema.
+          const overrideTraits =
+            sdkFile.operationInputTraitOverrides.get(opName);
+          if (overrideTraits === undefined) return baseName;
+          let derivedName = `${opName}Request`;
+          if (derivedName === baseName) return baseName;
+          if (sdkFile.allSchemaNames.has(derivedName)) {
+            derivedName = `${derivedName}_`;
+          }
+
+          const overrideAnnotations: string[] = [
+            `T.Http({ method: "${overrideTraits.method}", uri: "${overrideTraits.uri}" })`,
+          ];
+          if (overrideTraits.httpChecksum) {
+            const checksumParts: string[] = [];
+            if (overrideTraits.httpChecksum.requestAlgorithmMember) {
+              checksumParts.push(
+                `requestAlgorithmMember: "${overrideTraits.httpChecksum.requestAlgorithmMember}"`,
+              );
+            }
+            if (overrideTraits.httpChecksum.requestChecksumRequired) {
+              checksumParts.push(`requestChecksumRequired: true`);
+            }
+            if (overrideTraits.httpChecksum.responseAlgorithms) {
+              checksumParts.push(
+                `responseAlgorithms: [${overrideTraits.httpChecksum.responseAlgorithms.map((a) => `"${a}"`).join(", ")}]`,
+              );
+            }
+            overrideAnnotations.push(
+              `T.AwsProtocolsHttpChecksum({ ${checksumParts.join(", ")} })`,
+            );
+          }
+          if (overrideTraits.staticContextParams) {
+            overrideAnnotations.push(
+              `T.StaticContextParams(${JSON.stringify(overrideTraits.staticContextParams)})`,
+            );
+          }
+          const overridePipe =
+            overrideAnnotations.length === 1
+              ? overrideAnnotations[0]
+              : `T.all(${overrideAnnotations.join(", ")})`;
+          const interfaceDef = `export interface ${derivedName} extends ${baseName} {}`;
+          const schemaDef = annotatePureExportConst(
+            `export const ${derivedName} = ${baseName}.pipe(${overridePipe}).annotate({ identifier: "${derivedName}" }) as any as S.Schema<${derivedName}>;`,
           );
+          yield* Ref.update(sdkFile.schemas, (arr) => [
+            ...arr,
+            {
+              name: derivedName,
+              definition: `${interfaceDef}\n${schemaDef}`,
+              deps: [baseName],
+            },
+          ]);
+          return derivedName;
         });
 
         const output = yield* Effect.gen(function* () {
@@ -2661,7 +2889,9 @@ const generateClient = Effect.fn(function* (
             const outerAnnotation = `.annotate({ identifier: "${className}" })`;
 
             const interfaceDef = `export interface ${className} {}`;
-            const schemaDef = annotatePureExportConst(`export const ${className} = S.suspend(() => S.Struct({})${innerPipe})${outerAnnotation} as any as S.Schema<${className}>;`);
+            const schemaDef = annotatePureExportConst(
+              `export const ${className} = S.suspend(() => S.Struct({})${innerPipe})${outerAnnotation} as any as S.Schema<${className}>;`,
+            );
             const definition = `${interfaceDef}\n${schemaDef}`;
             yield* Ref.update(sdkFile.schemas, (arr) => [
               ...arr,
@@ -2676,9 +2906,12 @@ const generateClient = Effect.fn(function* (
 
         // Get patched errors from spec file for this operation
         // Use lowercase operation name to match spec file format
-        const patchedErrors =
-          sdkFile.serviceSpec.operations?.[formatName(operationShapeName, true)]
-            ?.errors ?? [];
+        const operationPatch =
+          sdkFile.serviceSpec.operations?.[
+            formatName(operationShapeName, true)
+          ];
+        const patchedErrors = operationPatch?.errors ?? [];
+        const patchedSyntheticErrors = operationPatch?.syntheticErrors ?? [];
 
         // Collect error names for both the runtime array and the type annotation
         const errorNames = yield* Effect.gen(function* () {
@@ -2714,8 +2947,24 @@ const generateClient = Effect.fn(function* (
               }),
           );
 
+          // Process synthetic errors: NEW tags carved out of an existing
+          // wire error by message predicate (see spec-schema.ts
+          // SyntheticError). Processed after model errors so the base
+          // error's fields are available in errorFields.
+          const syntheticErrors = yield* Effect.forEach(
+            patchedSyntheticErrors,
+            (synthetic) =>
+              addError({
+                name: sanitizeErrorName(synthetic.name),
+                shapeId: `synthetic#${synthetic.name}`,
+                synthetic,
+              }),
+          );
+
           // Combine and deduplicate
-          return [...new Set([...modelErrors, ...patchErrors])];
+          return [
+            ...new Set([...modelErrors, ...patchErrors, ...syntheticErrors]),
+          ];
         });
 
         // Build the errors array string for runtime
@@ -2765,15 +3014,34 @@ const generateClient = Effect.fn(function* (
             }
           : undefined;
 
+        // Extract the endpoint trait's hostPrefix (smithy.api#endpoint).
+        // Operations like SFN's StartSyncExecution must target a prefixed
+        // host (sync-states.{region}); the runtime applies this prefix to
+        // the resolved endpoint.
+        const endpointTrait = operationShape.traits?.["smithy.api#endpoint"] as
+          | { hostPrefix?: string }
+          | undefined;
+        const endpointHostPrefix = endpointTrait?.hostPrefix;
+
         // Build operation object - include pagination metadata if present
         // Use 'as const' on pagination to preserve literal types for type inference
         // Always emit the Smithy operation name: protocols use it as the wire
         // Action / X-Amz-Target instead of guessing it from the input shape
         // identifier (which fails for e.g. AutoScaling's `...NamesType` shapes).
         const exportedName = formatName(operationShapeName, true);
-        const metaObject = paginatedTrait
-          ? `{ input: ${input}, output: ${output}, errors: ${operationErrors}, operationName: ${JSON.stringify(opName)}, pagination: ${JSON.stringify(paginatedTrait)} as const }`
-          : `{ input: ${input}, output: ${output}, errors: ${operationErrors}, operationName: ${JSON.stringify(opName)} }`;
+        const metaParts = [
+          `input: ${input}`,
+          `output: ${output}`,
+          `errors: ${operationErrors}`,
+          `operationName: ${JSON.stringify(opName)}`,
+          ...(endpointHostPrefix !== undefined
+            ? [`endpointHostPrefix: ${JSON.stringify(endpointHostPrefix)}`]
+            : []),
+          ...(paginatedTrait
+            ? [`pagination: ${JSON.stringify(paginatedTrait)} as const`]
+            : []),
+        ];
+        const metaObject = `{ ${metaParts.join(", ")} }`;
 
         // Build the error type alias for the function signature
         // Errors include operation-specific errors plus common API errors
@@ -2939,6 +3207,32 @@ const generateClient = Effect.fn(function* (
         concurrency: "unbounded",
       },
     );
+
+    // Orphan detection: every operation key in patches/{sdkId}.json must
+    // correspond to a generated operation. A typo'd key would otherwise
+    // silently no-op — the exact failure mode patches exist to prevent.
+    const generatedOperationNames = new Set(
+      [...new Set(allOperationIds)].map((id) => formatName(id, true)),
+    );
+    const orphanedPatchOperations = Object.keys(
+      sdkFile.serviceSpec.operations ?? {},
+    ).filter((name) => !generatedOperationNames.has(name));
+    if (orphanedPatchOperations.length > 0) {
+      return yield* Effect.fail(
+        new OrphanedPatchOperations({
+          sdkId: sdkFile.serviceTraits.sdkId,
+          operations: orphanedPatchOperations,
+          message: `patches/${sdkFile.serviceTraits.sdkId
+            .toLowerCase()
+            .replaceAll(
+              " ",
+              "-",
+            )}.json patches unknown operation(s): ${orphanedPatchOperations.join(
+            ", ",
+          )}`,
+        }),
+      );
+    }
 
     // Get schemas and sort them topologically
     // Cycles were already computed before generation, so just sort
@@ -3152,7 +3446,8 @@ const generateClient = Effect.fn(function* (
   const errorShapeIds = collectErrorShapeIds(model);
 
   // Pre-collect operation input traits and output traits
-  const operationInputTraits = collectOperationInputTraits(model);
+  const { operationInputTraits, operationInputTraitOverrides } =
+    collectOperationInputTraits(model);
   const operationOutputTraits = collectOperationOutputTraits(model);
   const inputEventStreamShapeIds = collectInputEventStreamShapeIds(model);
   const sensitiveShapeIds = collectSensitiveShapeIds(model);
@@ -3201,6 +3496,69 @@ const generateClient = Effect.fn(function* (
   // Load spec patches for this service
   const serviceSpec = loadServiceSpecPatch(serviceTraits.sdkId);
 
+  // Apply error httpError-status patches — some services return REST errors
+  // with no error code (no X-Amzn-Errortype header, no __type/code body
+  // field) AND no smithy.api#httpError trait on the declared error shape, so
+  // the response parser's status-based fallback has nothing to match (e.g.
+  // MWAA's InvokeRestApi webserver proxy answers a bare 404
+  // `{"message":"Environment not found"}` for ResourceNotFoundException).
+  // The patch declares the wire status, emitted as a T.HttpError(n)
+  // annotation on the error class.
+  if (serviceSpec.errorHttpStatus) {
+    for (const [errorName, status] of Object.entries(
+      serviceSpec.errorHttpStatus,
+    )) {
+      const entry = [...errorShapeIds.entries()].find(
+        ([shapeId]) => shapeId.split("#")[1] === errorName,
+      );
+      if (entry === undefined) {
+        return yield* Effect.fail(
+          new UnableToTransformShapeToSchema({
+            message: `patches/${serviceTraits.sdkId
+              .toLowerCase()
+              .replaceAll(
+                " ",
+                "-",
+              )}.json errorHttpStatus patches error "${errorName}" which is not declared by any operation in the model`,
+          }),
+        );
+      }
+      entry[1].httpError ??= status;
+    }
+  }
+
+  // Apply union member patches to the loaded model — the live API can return
+  // union variants the published Smithy model is missing (e.g. DataZone's
+  // ProvisioningProperties `{ "manual": {} }` for CustomAwsService
+  // blueprints). Members are added before any codegen consumes the shape.
+  if (serviceSpec.unions) {
+    for (const [unionName, override] of Object.entries(serviceSpec.unions)) {
+      const shapeEntry = Object.entries(model.shapes).find(
+        ([id, shape]) =>
+          id.split("#")[1] === unionName && shape.type === "union",
+      );
+      if (shapeEntry === undefined) {
+        return yield* Effect.fail(
+          new UnableToTransformShapeToSchema({
+            message: `patches/${serviceTraits.sdkId
+              .toLowerCase()
+              .replaceAll(
+                " ",
+                "-",
+              )}.json patches union "${unionName}" which does not exist in the model`,
+          }),
+        );
+      }
+      const members = shapeEntry[1].members as Record<
+        string,
+        { target: string }
+      >;
+      for (const [memberName, target] of Object.entries(override.add)) {
+        members[memberName] ??= { target };
+      }
+    }
+  }
+
   return yield* client.pipe(
     Effect.provideService(SdkFile, {
       schemas: yield* Ref.make<
@@ -3226,6 +3584,7 @@ const generateClient = Effect.fn(function* (
       usesMiddleware: yield* Ref.make<boolean>(false),
       serviceXmlNamespace,
       operationInputTraits,
+      operationInputTraitOverrides,
       operationOutputTraits,
       serviceTraits,
       endpointRuleSet,
@@ -3267,14 +3626,24 @@ BunRuntime.runMain(
       "partition",
       "partitions.json",
     );
-    const partitionsExists = yield* fs.exists(partitionsSrc).pipe(Effect.catch(() => Effect.succeed(false)));
+    const partitionsExists = yield* fs
+      .exists(partitionsSrc)
+      .pipe(Effect.catch(() => Effect.succeed(false)));
     if (partitionsExists) {
-      yield* fs.makeDirectory(path.join("src", "rules-engine"), { recursive: true });
-      const partitionsDest = path.join("src", "rules-engine", "partitions.json");
+      yield* fs.makeDirectory(path.join("src", "rules-engine"), {
+        recursive: true,
+      });
+      const partitionsDest = path.join(
+        "src",
+        "rules-engine",
+        "partitions.json",
+      );
       yield* fs.copyFile(partitionsSrc, partitionsDest);
       yield* Console.log("✅ partitions.json");
     } else {
-      yield* Console.log("⚠️  partitions.json not found (smithy submodule not initialized)");
+      yield* Console.log(
+        "⚠️  partitions.json not found (smithy submodule not initialized)",
+      );
     }
 
     const rootModelsPath = path.join(AWS_MODELS_PATH, "models");

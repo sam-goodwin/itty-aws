@@ -231,7 +231,11 @@ export const TimestampFormat = (format: TimestampFormatType) => {
               S.Date,
               SchemaTransformation.transform({
                 decode: (n) => new Date(n * 1000),
-                encode: (d) => d.getTime() / 1000,
+                // Truncate to whole seconds: some services parse
+                // epoch-seconds strictly and reject fractional values —
+                // e.g. IoT SiteWise's GetAssetPropertyAggregates fails
+                // with "The date can only be in seconds."
+                encode: (d) => Math.floor(d.getTime() / 1000),
               }),
             ),
           )
@@ -290,6 +294,21 @@ export interface AwsAuthSigv4Trait {
 }
 export const AwsAuthSigv4 = (trait: AwsAuthSigv4Trait) =>
   makeAnnotation(awsAuthSigv4Symbol, trait);
+
+/**
+ * Legacy Signature Version 2 authentication. SimpleDB (2009-04-15) is the
+ * sole remaining SigV2-only service: its endpoint rejects SigV4
+ * Authorization headers outright (`AuthFailure: access credentials are
+ * missing`). SigV2 auth parameters ride in the form-encoded request body
+ * (`AWSAccessKeyId`, `SignatureVersion=2`, `SignatureMethod=HmacSHA256`,
+ * `Timestamp`, `SecurityToken`, `Signature`) rather than in headers.
+ */
+export const awsAuthSigv2Symbol = "distilled-aws/aws.auth#sigv2" as const;
+export interface AwsAuthSigv2Trait {
+  name: string;
+}
+export const AwsAuthSigv2 = (trait: AwsAuthSigv2Trait) =>
+  makeAnnotation(awsAuthSigv2Symbol, trait);
 
 // =============================================================================
 // AWS Protocol Traits (aws.protocols#*)
@@ -564,6 +583,28 @@ export interface AwsQueryErrorTrait {
 export const AwsQueryError = (trait: AwsQueryErrorTrait) =>
   makeAnnotation(awsQueryErrorSymbol, trait);
 
+/**
+ * distilled patch trait - synthesizes a NEW error class from an existing wire
+ * error plus a message predicate. Some AWS services overload a single wire
+ * error (e.g. X-Ray's InvalidRequestException) for semantically distinct
+ * failures that are only distinguishable by message text. The response parser
+ * checks synthetic matchers BEFORE the plain wire-code lookup so the
+ * synthetic tag specializes the base error.
+ */
+export const syntheticErrorSymbol = "distilled-aws/synthetic-error" as const;
+export interface SyntheticErrorTrait {
+  /** The wire error code this synthetic error derives from (e.g., "InvalidRequestException") */
+  from: string;
+  /**
+   * Message predicate: a plain string is an exact match; the object form
+   * supports substring (`includes`) and regular-expression (`matches`)
+   * predicates.
+   */
+  message: string | { includes?: string; matches?: string };
+}
+export const SyntheticError = (trait: SyntheticErrorTrait) =>
+  makeAnnotation(syntheticErrorSymbol, trait);
+
 /** aws.customizations#s3UnwrappedXmlOutput - S3 output not wrapped in operation-level XML node */
 export const s3UnwrappedXmlOutputSymbol =
   "distilled-aws/aws.customizations#s3UnwrappedXmlOutput" as const;
@@ -833,6 +874,47 @@ export const getEventPayloadMap = (
   return ast.annotations?.eventPayloadMap as Record<string, string> | undefined;
 };
 
+/**
+ * Derive the event-type → payload-member map for an OUTPUT event stream from
+ * its event union schema (`T.EventStream(S.Union([...]))`).
+ *
+ * Smithy's `eventPayload` trait means an event's wire payload IS that single
+ * member's raw bytes (e.g. Lambda `InvokeWithResponseStream`'s
+ * `PayloadChunk.Payload`), not a JSON document of the event struct — so the
+ * parser must bind the raw payload to that member instead of JSON-parsing it
+ * into struct fields. Input streams carry this map explicitly
+ * (`T.InputEventStream(..., eventPayloadMap)`); for outputs we recover it
+ * from the `T.EventPayload()` member annotations.
+ */
+export const getOutputEventPayloadMap = (
+  eventSchema: S.Schema<unknown>,
+): Record<string, string> | undefined => {
+  const unwrap = (ast: AST.AST): AST.AST => {
+    let current = ast;
+    while (current._tag === "Suspend") current = current.thunk();
+    return current;
+  };
+  const union = unwrap(eventSchema.ast);
+  if (union._tag !== "Union") return undefined;
+  const map: Record<string, string> = {};
+  for (const member of union.types) {
+    const eventStructWrapper = unwrap(member);
+    if (eventStructWrapper._tag !== "Objects") continue;
+    const wrapperProps = eventStructWrapper.propertySignatures;
+    if (wrapperProps.length !== 1) continue;
+    const eventType = String(wrapperProps[0].name);
+    const eventStruct = unwrap(wrapperProps[0].type);
+    if (eventStruct._tag !== "Objects") continue;
+    for (const prop of eventStruct.propertySignatures) {
+      if (hasPropAnnotation(prop, eventPayloadSymbol)) {
+        map[eventType] = String(prop.name);
+        break;
+      }
+    }
+  }
+  return Object.keys(map).length > 0 ? map : undefined;
+};
+
 // =============================================================================
 // Annotation Retrieval Helpers
 // =============================================================================
@@ -1014,6 +1096,9 @@ export const getAwsApiService = (
 export const getAwsAuthSigv4 = (ast: AST.AST): AwsAuthSigv4Trait | undefined =>
   getAnnotationUnwrap<AwsAuthSigv4Trait>(ast, awsAuthSigv4Symbol);
 
+export const getAwsAuthSigv2 = (ast: AST.AST): AwsAuthSigv2Trait | undefined =>
+  getAnnotationUnwrap<AwsAuthSigv2Trait>(ast, awsAuthSigv2Symbol);
+
 export const getServiceVersion = (ast: AST.AST): string | undefined =>
   getAnnotationUnwrap<string>(ast, serviceVersionSymbol);
 
@@ -1050,6 +1135,15 @@ export const getAwsQueryError = (
   ast: AST.AST,
 ): AwsQueryErrorTrait | undefined =>
   getAnnotationUnwrap<AwsQueryErrorTrait>(ast, awsQueryErrorSymbol);
+
+/** smithy.api#httpError status code declared on an error shape */
+export const getHttpError = (ast: AST.AST): number | undefined =>
+  getAnnotationUnwrap<number>(ast, httpErrorSymbol);
+
+export const getSyntheticError = (
+  ast: AST.AST,
+): SyntheticErrorTrait | undefined =>
+  getAnnotationUnwrap<SyntheticErrorTrait>(ast, syntheticErrorSymbol);
 
 export const getTimestampFormat = (
   prop: AST.PropertySignature,

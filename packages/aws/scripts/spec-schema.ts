@@ -41,7 +41,7 @@ export const CategorySchema = S.Literals([
   AbortedError,
   NotFoundError,
   AlreadyExistsError,
-  DependencyViolationError
+  DependencyViolationError,
 ]);
 export type CategorySchema = typeof CategorySchema.Type;
 
@@ -61,6 +61,48 @@ export const ErrorAlias = S.Struct({
 export type ErrorAlias = typeof ErrorAlias.Type;
 
 /**
+ * Message predicate for synthetic error matching.
+ * A plain string is an exact match; the object form supports substring
+ * (`includes`) and regular-expression (`matches`) predicates. An object
+ * must specify at least one of `includes`/`matches` — an empty object
+ * matches nothing.
+ */
+export const MessageMatcher = S.Union([
+  S.String,
+  S.Struct({
+    includes: S.optional(S.String),
+    matches: S.optional(S.String),
+  }),
+]);
+export type MessageMatcher = typeof MessageMatcher.Type;
+
+/**
+ * Synthetic error - carves a NEW typed error class out of an existing wire
+ * error using a message predicate. Some AWS services overload a single wire
+ * error (e.g. X-Ray's InvalidRequestException) for semantically distinct
+ * failures that are only distinguishable by message text. A synthetic error
+ * gives each failure mode its own tag in the operation's typed error union;
+ * the runtime checks synthetic matchers BEFORE the base wire-code lookup so
+ * the tag specializes the base error.
+ */
+export const SyntheticError = S.Struct({
+  /**
+   * The new error tag to synthesize (e.g., "SamplingRuleNotFound").
+   */
+  name: S.String,
+  /**
+   * The wire error code this error derives from (e.g., "InvalidRequestException").
+   * Compared against the wire code with Exception/Error suffix normalization.
+   */
+  from: S.String,
+  /**
+   * The message predicate that selects this error over the base wire error.
+   */
+  message: MessageMatcher,
+});
+export type SyntheticError = typeof SyntheticError.Type;
+
+/**
  * Patches for a single operation
  */
 export const OperationPatch = S.Struct({
@@ -74,6 +116,12 @@ export const OperationPatch = S.Struct({
    * Useful for deduplicating errors like "Error" vs "ErrorException".
    */
   aliases: S.optional(S.Array(ErrorAlias)),
+  /**
+   * Synthetic errors - new error classes carved out of an existing wire error
+   * by message predicate. Checked before the base error at runtime so the
+   * synthetic tag specializes the overloaded wire error.
+   */
+  syntheticErrors: S.optional(S.Array(SyntheticError)),
 });
 export type OperationPatch = typeof OperationPatch.Type;
 
@@ -87,6 +135,13 @@ export const MemberOverride = S.Struct({
    * If specified, overrides the Smithy model's required trait.
    */
   optional: S.optional(S.Boolean),
+  /**
+   * Marks a string member as sensitive even though the Smithy model lacks
+   * the `@sensitive` trait (e.g. API Gateway's `ApiKey.value`). The member
+   * is generated as `SensitiveString`: responses decode to
+   * `Redacted<string>` and requests accept either a raw or Redacted value.
+   */
+  sensitive: S.optional(S.Boolean),
 });
 export type MemberOverride = typeof MemberOverride.Type;
 
@@ -118,6 +173,24 @@ export const StructureOverride = S.Struct({
   members: S.Record(S.String, MemberOverride),
 });
 export type StructureOverride = typeof StructureOverride.Type;
+
+/**
+ * Union override - adds members to a Smithy union shape.
+ * Use this when the live API returns a union variant that the published
+ * Smithy model is missing (e.g. DataZone's ProvisioningProperties returns
+ * `{ "manual": {} }` for CustomAwsService blueprints, but the model only
+ * declares `cloudFormation`). The patch is applied to the loaded model
+ * before code generation.
+ */
+export const UnionOverride = S.Struct({
+  /**
+   * Map of member names to their target shape ids (e.g. "smithy.api#Unit"
+   * for an empty-struct variant, or a fully-qualified shape id already
+   * present in the model). Members that already exist are left untouched.
+   */
+  add: S.Record(S.String, S.String),
+});
+export type UnionOverride = typeof UnionOverride.Type;
 
 /**
  * Error member patch - adds a member to an error schema.
@@ -160,6 +233,12 @@ export const ServiceSpec = S.Struct({
    */
   structures: S.optional(S.Record(S.String, StructureOverride)),
   /**
+   * Map of union shape names to their member additions.
+   * Use this when the live API returns union variants missing from the
+   * published Smithy model. Applied to the loaded model before generation.
+   */
+  unions: S.optional(S.Record(S.String, UnionOverride)),
+  /**
    * Map of enum names to their value overrides.
    * Use this to fix enums where AWS returns values not in the Smithy model,
    * or with different casing than documented.
@@ -178,6 +257,17 @@ export const ServiceSpec = S.Struct({
    * Categories are applied globally to the error class, not per-operation.
    */
   errorCategories: S.optional(S.Record(S.String, S.Array(CategorySchema))),
+  /**
+   * Map of error names to the HTTP status code they arrive with on the wire.
+   * Use this when a service returns REST errors that carry NO error code
+   * (no X-Amzn-Errortype header, no __type/code body field) AND the Smithy
+   * model lacks the `smithy.api#httpError` trait on the error shape — the
+   * response parser's status-based fallback then has nothing to match (e.g.
+   * MWAA's InvokeRestApi webserver proxy returns a bare 404
+   * `{"message":"Environment not found"}` for ResourceNotFoundException).
+   * The status is emitted as a `T.HttpError(n)` annotation on the error class.
+   */
+  errorHttpStatus: S.optional(S.Record(S.String, S.Number)),
 });
 export type ServiceSpec = typeof ServiceSpec.Type;
 

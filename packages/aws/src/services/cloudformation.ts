@@ -6475,6 +6475,14 @@ export class StackRefactorNotFoundException extends S.TaggedErrorClass<StackRefa
     httpResponseCode: 404,
   }),
 ).pipe(C.withBadRequestError) {}
+export class StackNotFound extends S.TaggedErrorClass<StackNotFound>()(
+  "StackNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationError",
+    message: { includes: "does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
 export class HookResultNotFoundException extends S.TaggedErrorClass<HookResultNotFoundException>()(
   "HookResultNotFoundException",
   { Message: S.optional(S.String) },
@@ -6505,6 +6513,14 @@ export class ResourceScanLimitExceededException extends S.TaggedErrorClass<Resou
   { Message: S.optional(S.String) },
   T.AwsQueryError({ code: "ResourceScanLimitExceeded", httpResponseCode: 400 }),
 ).pipe(C.withBadRequestError) {}
+export class NoUpdateToPerform extends S.TaggedErrorClass<NoUpdateToPerform>()(
+  "NoUpdateToPerform",
+  {},
+  T.SyntheticError({
+    from: "ValidationError",
+    message: { includes: "No updates are to be performed" },
+  }),
+) {}
 
 //# Operations
 export type ActivateOrganizationsAccessError =
@@ -7456,7 +7472,7 @@ export const describeStackResources: API.OperationMethod<
   errors: [],
   operationName: "DescribeStackResources",
 }));
-export type DescribeStacksError = CommonErrors;
+export type DescribeStacksError = StackNotFound | CommonErrors;
 /**
  * Returns the description for the specified stack; if no stack name was specified, then it
  * returns the description for all the stacks created. For more information about a stack's event
@@ -7488,7 +7504,7 @@ export const describeStacks: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStacksInput,
   output: DescribeStacksOutput,
-  errors: [],
+  errors: [StackNotFound],
   operationName: "DescribeStacks",
   pagination: {
     inputToken: "NextToken",
@@ -9030,6 +9046,7 @@ export const updateGeneratedTemplate: API.OperationMethod<
 export type UpdateStackError =
   | InsufficientCapabilitiesException
   | TokenAlreadyExistsException
+  | NoUpdateToPerform
   | CommonErrors;
 /**
  * Updates a stack as specified in the template. After the call completes successfully, the
@@ -9050,7 +9067,11 @@ export const updateStack: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateStackInput,
   output: UpdateStackOutput,
-  errors: [InsufficientCapabilitiesException, TokenAlreadyExistsException],
+  errors: [
+    InsufficientCapabilitiesException,
+    TokenAlreadyExistsException,
+    NoUpdateToPerform,
+  ],
   operationName: "UpdateStack",
 }));
 export type UpdateStackInstancesError =

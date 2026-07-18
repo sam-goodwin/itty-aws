@@ -1020,7 +1020,7 @@ export const DescribeAlertManagerDefinitionRequest =
   }) as any as S.Schema<DescribeAlertManagerDefinitionRequest>;
 export interface AlertManagerDefinitionDescription {
   status: AlertManagerDefinitionStatus;
-  data: Uint8Array;
+  data?: Uint8Array;
   createdAt: Date;
   modifiedAt: Date;
 }
@@ -1028,7 +1028,7 @@ export const AlertManagerDefinitionDescription =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: AlertManagerDefinitionStatus,
-      data: T.Blob,
+      data: S.optional(T.Blob),
       createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       modifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     }),
@@ -1872,7 +1872,7 @@ export interface RuleGroupsNamespaceDescription {
   arn: string;
   name: string;
   status: RuleGroupsNamespaceStatus;
-  data: Uint8Array;
+  data?: Uint8Array;
   createdAt: Date;
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
@@ -1883,7 +1883,7 @@ export const RuleGroupsNamespaceDescription =
       arn: S.String,
       name: S.String,
       status: RuleGroupsNamespaceStatus,
-      data: T.Blob,
+      data: S.optional(T.Blob),
       createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       modifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
       tags: S.optional(TagMap),
@@ -2275,6 +2275,7 @@ export const DeleteResourcePolicyResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -2282,7 +2283,7 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -2292,11 +2293,12 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     quotaCode: S.optional(S.String),
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -2305,10 +2307,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: S.String,
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -2319,6 +2323,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     serviceCode: S.String,
     quotaCode: S.String,
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -3126,6 +3131,7 @@ export type CreateLoggingConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * The `CreateLoggingConfiguration` operation creates rules and alerting logging configuration for the workspace. Use this operation to set the CloudWatch log group to which the logs will be published to.
@@ -3145,6 +3151,7 @@ export const createLoggingConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "CreateLoggingConfiguration",
 }));
@@ -3238,6 +3245,7 @@ export type CreateQueryLoggingConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | ConflictException
   | CommonErrors;
 /**
  * Creates a query logging configuration for the specified workspace. This operation enables logging of queries that exceed the specified QSP threshold.
@@ -3255,6 +3263,7 @@ export const createQueryLoggingConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    ConflictException,
   ],
   operationName: "CreateQueryLoggingConfiguration",
 }));

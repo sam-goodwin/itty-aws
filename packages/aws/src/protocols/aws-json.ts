@@ -28,6 +28,7 @@ import { ParseError } from "../errors.ts";
 import { parseEventStreamToUnion } from "../eventstream/parser.ts";
 import {
   getAwsApiService,
+  getEventSchema,
   isOutputEventStream,
   isStreamingType,
 } from "../traits.ts";
@@ -75,13 +76,19 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
 
     // Check for streaming output member (event stream)
     let streamingOutputProp:
-      | { name: string; isEventStream: boolean }
+      | {
+          name: string;
+          isEventStream: boolean;
+          eventSchema?: Schema.Schema<unknown>;
+        }
       | undefined;
     for (const prop of getEncodedPropertySignatures(outputAst)) {
       if (isStreamingType(prop.type)) {
+        const isEventStream = isOutputEventStream(prop.type);
         streamingOutputProp = {
           name: String(prop.name),
-          isEventStream: isOutputEventStream(prop.type),
+          isEventStream,
+          eventSchema: isEventStream ? getEventSchema(prop.type) : undefined,
         };
         break;
       }
@@ -113,10 +120,13 @@ function createAwsJsonProtocol(version: "1.0" | "1.1"): Protocol {
         // Handle streaming output (event stream)
         if (streamingOutputProp && response.body) {
           if (streamingOutputProp.isEventStream) {
-            // Parse event stream to typed union events
+            // Parse event stream to typed union events, decoded through the
+            // event schema so blob/timestamp members match the generated types
             return {
               [streamingOutputProp.name]: parseEventStreamToUnion(
                 response.body as ReadableStream<Uint8Array>,
+                undefined,
+                streamingOutputProp.eventSchema,
               ),
             };
           }

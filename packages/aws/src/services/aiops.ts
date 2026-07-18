@@ -560,6 +560,10 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     quotaCode: S.optional(S.String),
   },
 ).pipe(C.withQuotaError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  {},
+).pipe(C.withAuthError) {}
 
 //# Operations
 export type ListTagsForResourceError =
@@ -707,6 +711,7 @@ export type GetInvestigationGroupError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Returns the configuration information for the specified investigation group.
@@ -724,6 +729,7 @@ export const getInvestigationGroup: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "GetInvestigationGroup",
 }));
@@ -734,6 +740,7 @@ export type UpdateInvestigationGroupError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Updates the configuration of the specified investigation group.
@@ -753,6 +760,7 @@ export const updateInvestigationGroup: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "UpdateInvestigationGroup",
 }));
@@ -761,6 +769,7 @@ export type DeleteInvestigationGroupError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Deletes the specified investigation group from your account. You can currently have one investigation group per Region in your account. After you delete an investigation group, you can later create a new investigation group in the same Region.
@@ -778,6 +787,7 @@ export const deleteInvestigationGroup: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "DeleteInvestigationGroup",
 }));
@@ -828,6 +838,7 @@ export type PutInvestigationGroupPolicyError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Creates an IAM resource policy and assigns it to the specified investigation group.
@@ -851,6 +862,7 @@ export const putInvestigationGroupPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "PutInvestigationGroupPolicy",
 }));
@@ -860,6 +872,7 @@ export type GetInvestigationGroupPolicyError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Returns the JSON of the IAM resource policy associated with the specified investigation group in a string. For example, `{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"aiops.alarms.cloudwatch.amazonaws.com\"},\"Action\":[\"aiops:CreateInvestigation\",\"aiops:CreateInvestigationEvent\"],\"Resource\":\"*\",\"Condition\":{\"StringEquals\":{\"aws:SourceAccount\":\"111122223333\"},\"ArnLike\":{\"aws:SourceArn\":\"arn:aws:cloudwatch:us-east-1:111122223333:alarm:*\"}}}]}`.
@@ -878,6 +891,7 @@ export const getInvestigationGroupPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "GetInvestigationGroupPolicy",
 }));
@@ -887,6 +901,7 @@ export type DeleteInvestigationGroupPolicyError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Removes the IAM resource policy from being associated with the investigation group that you specify.
@@ -905,6 +920,7 @@ export const deleteInvestigationGroupPolicy: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
+    UnauthorizedException,
   ],
   operationName: "DeleteInvestigationGroupPolicy",
 }));

@@ -5536,7 +5536,7 @@ export const StorageLensGroupLevel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageLensGroupLevel>;
 export interface AccountLevel {
   ActivityMetrics?: ActivityMetrics;
-  BucketLevel: BucketLevel;
+  BucketLevel?: BucketLevel;
   AdvancedCostOptimizationMetrics?: AdvancedCostOptimizationMetrics;
   AdvancedDataProtectionMetrics?: AdvancedDataProtectionMetrics;
   DetailedStatusCodesMetrics?: DetailedStatusCodesMetrics;
@@ -5546,7 +5546,7 @@ export interface AccountLevel {
 export const AccountLevel = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ActivityMetrics: S.optional(ActivityMetrics),
-    BucketLevel: BucketLevel,
+    BucketLevel: S.optional(BucketLevel),
     AdvancedCostOptimizationMetrics: S.optional(
       AdvancedCostOptimizationMetrics,
     ),
@@ -7596,6 +7596,28 @@ export const UpdateStorageLensGroupResponse =
   }) as any as S.Schema<UpdateStorageLensGroupResponse>;
 
 //# Errors
+export class AccessPointAlreadyOwnedByYou extends S.TaggedErrorClass<AccessPointAlreadyOwnedByYou>()(
+  "AccessPointAlreadyOwnedByYou",
+  {},
+).pipe(C.withAlreadyExistsError) {}
+export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
+  "InvalidRequest",
+  {},
+).pipe(C.withBadRequestError) {}
+export class NoSuchAccessPoint extends S.TaggedErrorClass<NoSuchAccessPoint>()(
+  "NoSuchAccessPoint",
+  {},
+).pipe(C.withNotFoundError) {}
+export class ObjectLambdaNotAvailable extends S.TaggedErrorClass<ObjectLambdaNotAvailable>()(
+  "ObjectLambdaNotAvailable",
+  {},
+  T.SyntheticError({
+    from: "AccessDenied",
+    message: {
+      includes: "Object Lambda is available only to existing customers",
+    },
+  }),
+).pipe(C.withAuthError) {}
 export class BucketAlreadyExists extends S.TaggedErrorClass<BucketAlreadyExists>()(
   "BucketAlreadyExists",
   {},
@@ -7620,13 +7642,26 @@ export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequests
   "TooManyRequestsException",
   { Message: S.optional(S.String) },
 ) {}
+export class NoSuchAccessPointPolicy extends S.TaggedErrorClass<NoSuchAccessPointPolicy>()(
+  "NoSuchAccessPointPolicy",
+  {},
+).pipe(C.withNotFoundError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { Message: S.optional(S.String) },
 ) {}
+export class NoSuchMultiRegionAccessPoint extends S.TaggedErrorClass<NoSuchMultiRegionAccessPoint>()(
+  "NoSuchMultiRegionAccessPoint",
+  {},
+).pipe(C.withNotFoundError) {}
+export class NoSuchConfiguration extends S.TaggedErrorClass<NoSuchConfiguration>()(
+  "NoSuchConfiguration",
+  {},
+).pipe(C.withNotFoundError) {}
 export class NoSuchPublicAccessBlockConfiguration extends S.TaggedErrorClass<NoSuchPublicAccessBlockConfiguration>()(
   "NoSuchPublicAccessBlockConfiguration",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
   "InvalidNextTokenException",
@@ -7636,10 +7671,26 @@ export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestEx
   "InvalidRequestException",
   { Message: S.optional(S.String) },
 ) {}
+export class MalformedPolicy extends S.TaggedErrorClass<MalformedPolicy>()(
+  "MalformedPolicy",
+  {},
+).pipe(C.withBadRequestError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { Message: S.optional(S.String) },
 ) {}
+export class MissingBucketLevelActivityMetrics extends S.TaggedErrorClass<MissingBucketLevelActivityMetrics>()(
+  "MissingBucketLevelActivityMetrics",
+  {},
+).pipe(C.withBadRequestError) {}
+export class JobStatusTransitionForbidden extends S.TaggedErrorClass<JobStatusTransitionForbidden>()(
+  "JobStatusTransitionForbidden",
+  {},
+  T.SyntheticError({
+    from: "InvalidRequest",
+    message: { includes: "job status forbidden" },
+  }),
+).pipe(C.withBadRequestError) {}
 export class JobStatusException extends S.TaggedErrorClass<JobStatusException>()(
   "JobStatusException",
   { Message: S.optional(S.String) },
@@ -7668,6 +7719,7 @@ export const associateAccessGrantsIdentityCenter: API.OperationMethod<
   output: AssociateAccessGrantsIdentityCenterResponse,
   errors: [],
   operationName: "AssociateAccessGrantsIdentityCenter",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type CreateAccessGrantError = CommonErrors;
 /**
@@ -7695,6 +7747,7 @@ export const createAccessGrant: API.OperationMethod<
   output: CreateAccessGrantResult,
   errors: [],
   operationName: "CreateAccessGrant",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type CreateAccessGrantsInstanceError = CommonErrors;
 /**
@@ -7718,6 +7771,7 @@ export const createAccessGrantsInstance: API.OperationMethod<
   output: CreateAccessGrantsInstanceResult,
   errors: [],
   operationName: "CreateAccessGrantsInstance",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type CreateAccessGrantsLocationError = CommonErrors;
 /**
@@ -7749,8 +7803,12 @@ export const createAccessGrantsLocation: API.OperationMethod<
   output: CreateAccessGrantsLocationResult,
   errors: [],
   operationName: "CreateAccessGrantsLocation",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type CreateAccessPointError = CommonErrors;
+export type CreateAccessPointError =
+  | AccessPointAlreadyOwnedByYou
+  | InvalidRequest
+  | CommonErrors;
 /**
  * Creates an access point and associates it to a specified bucket. For more information, see
  * Managing
@@ -7787,10 +7845,16 @@ export const createAccessPoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPointRequest,
   output: CreateAccessPointResult,
-  errors: [],
+  errors: [AccessPointAlreadyOwnedByYou, InvalidRequest],
   operationName: "CreateAccessPoint",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type CreateAccessPointForObjectLambdaError = CommonErrors;
+export type CreateAccessPointForObjectLambdaError =
+  | AccessPointAlreadyOwnedByYou
+  | InvalidRequest
+  | NoSuchAccessPoint
+  | ObjectLambdaNotAvailable
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -7814,8 +7878,14 @@ export const createAccessPointForObjectLambda: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessPointForObjectLambdaRequest,
   output: CreateAccessPointForObjectLambdaResult,
-  errors: [],
+  errors: [
+    AccessPointAlreadyOwnedByYou,
+    InvalidRequest,
+    NoSuchAccessPoint,
+    ObjectLambdaNotAvailable,
+  ],
   operationName: "CreateAccessPointForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type CreateBucketError =
   | BucketAlreadyExists
@@ -7876,6 +7946,7 @@ export type CreateJobError =
   | IdempotencyException
   | InternalServiceException
   | TooManyRequestsException
+  | InvalidRequest
   | CommonErrors;
 /**
  * This operation creates an S3 Batch Operations job.
@@ -7914,10 +7985,12 @@ export const createJob: API.OperationMethod<
     IdempotencyException,
     InternalServiceException,
     TooManyRequestsException,
+    InvalidRequest,
   ],
   operationName: "CreateJob",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type CreateMultiRegionAccessPointError = CommonErrors;
+export type CreateMultiRegionAccessPointError = InvalidRequest | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -7951,8 +8024,9 @@ export const createMultiRegionAccessPoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateMultiRegionAccessPointRequest,
   output: CreateMultiRegionAccessPointResult,
-  errors: [],
+  errors: [InvalidRequest],
   operationName: "CreateMultiRegionAccessPoint",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type CreateStorageLensGroupError = CommonErrors;
 /**
@@ -7982,6 +8056,7 @@ export const createStorageLensGroup: API.OperationMethod<
   output: CreateStorageLensGroupResponse,
   errors: [],
   operationName: "CreateStorageLensGroup",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteAccessGrantError = CommonErrors;
 /**
@@ -8001,6 +8076,7 @@ export const deleteAccessGrant: API.OperationMethod<
   output: DeleteAccessGrantResponse,
   errors: [],
   operationName: "DeleteAccessGrant",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteAccessGrantsInstanceError = CommonErrors;
 /**
@@ -8020,6 +8096,7 @@ export const deleteAccessGrantsInstance: API.OperationMethod<
   output: DeleteAccessGrantsInstanceResponse,
   errors: [],
   operationName: "DeleteAccessGrantsInstance",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteAccessGrantsInstanceResourcePolicyError = CommonErrors;
 /**
@@ -8039,6 +8116,7 @@ export const deleteAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   output: DeleteAccessGrantsInstanceResourcePolicyResponse,
   errors: [],
   operationName: "DeleteAccessGrantsInstanceResourcePolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteAccessGrantsLocationError = CommonErrors;
 /**
@@ -8058,8 +8136,9 @@ export const deleteAccessGrantsLocation: API.OperationMethod<
   output: DeleteAccessGrantsLocationResponse,
   errors: [],
   operationName: "DeleteAccessGrantsLocation",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type DeleteAccessPointError = CommonErrors;
+export type DeleteAccessPointError = NoSuchAccessPoint | CommonErrors;
 /**
  * Deletes the specified access point.
  *
@@ -8081,10 +8160,13 @@ export const deleteAccessPoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPointRequest,
   output: DeleteAccessPointResponse,
-  errors: [],
+  errors: [NoSuchAccessPoint],
   operationName: "DeleteAccessPoint",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type DeleteAccessPointForObjectLambdaError = CommonErrors;
+export type DeleteAccessPointForObjectLambdaError =
+  | NoSuchAccessPoint
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8107,10 +8189,14 @@ export const deleteAccessPointForObjectLambda: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPointForObjectLambdaRequest,
   output: DeleteAccessPointForObjectLambdaResponse,
-  errors: [],
+  errors: [NoSuchAccessPoint],
   operationName: "DeleteAccessPointForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type DeleteAccessPointPolicyError = CommonErrors;
+export type DeleteAccessPointPolicyError =
+  | NoSuchAccessPoint
+  | NoSuchAccessPointPolicy
+  | CommonErrors;
 /**
  * Deletes the access point policy for the specified access point.
  *
@@ -8130,10 +8216,14 @@ export const deleteAccessPointPolicy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPointPolicyRequest,
   output: DeleteAccessPointPolicyResponse,
-  errors: [],
+  errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   operationName: "DeleteAccessPointPolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type DeleteAccessPointPolicyForObjectLambdaError = CommonErrors;
+export type DeleteAccessPointPolicyForObjectLambdaError =
+  | NoSuchAccessPoint
+  | NoSuchAccessPointPolicy
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8154,8 +8244,9 @@ export const deleteAccessPointPolicyForObjectLambda: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessPointPolicyForObjectLambdaRequest,
   output: DeleteAccessPointPolicyForObjectLambdaResponse,
-  errors: [],
+  errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   operationName: "DeleteAccessPointPolicyForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteAccessPointScopeError = CommonErrors;
 /**
@@ -8208,6 +8299,7 @@ export const deleteBucket: API.OperationMethod<
   output: DeleteBucketResponse,
   errors: [],
   operationName: "DeleteBucket",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteBucketLifecycleConfigurationError = CommonErrors;
 /**
@@ -8246,6 +8338,7 @@ export const deleteBucketLifecycleConfiguration: API.OperationMethod<
   output: DeleteBucketLifecycleConfigurationResponse,
   errors: [],
   operationName: "DeleteBucketLifecycleConfiguration",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteBucketPolicyError = CommonErrors;
 /**
@@ -8290,6 +8383,7 @@ export const deleteBucketPolicy: API.OperationMethod<
   output: DeleteBucketPolicyResponse,
   errors: [],
   operationName: "DeleteBucketPolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteBucketReplicationError = CommonErrors;
 /**
@@ -8333,6 +8427,7 @@ export const deleteBucketReplication: API.OperationMethod<
   output: DeleteBucketReplicationResponse,
   errors: [],
   operationName: "DeleteBucketReplication",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteBucketTaggingError = CommonErrors;
 /**
@@ -8364,6 +8459,7 @@ export const deleteBucketTagging: API.OperationMethod<
   output: DeleteBucketTaggingResponse,
   errors: [],
   operationName: "DeleteBucketTagging",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteJobTaggingError =
   | InternalServiceException
@@ -8403,8 +8499,12 @@ export const deleteJobTagging: API.OperationMethod<
     TooManyRequestsException,
   ],
   operationName: "DeleteJobTagging",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type DeleteMultiRegionAccessPointError = CommonErrors;
+export type DeleteMultiRegionAccessPointError =
+  | NoSuchMultiRegionAccessPoint
+  | InvalidRequest
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8438,8 +8538,9 @@ export const deleteMultiRegionAccessPoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteMultiRegionAccessPointRequest,
   output: DeleteMultiRegionAccessPointResult,
-  errors: [],
+  errors: [NoSuchMultiRegionAccessPoint, InvalidRequest],
   operationName: "DeleteMultiRegionAccessPoint",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeletePublicAccessBlockError = CommonErrors;
 /**
@@ -8469,8 +8570,11 @@ export const deletePublicAccessBlock: API.OperationMethod<
   output: DeletePublicAccessBlockResponse,
   errors: [],
   operationName: "DeletePublicAccessBlock",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type DeleteStorageLensConfigurationError = CommonErrors;
+export type DeleteStorageLensConfigurationError =
+  | NoSuchConfiguration
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8491,10 +8595,13 @@ export const deleteStorageLensConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStorageLensConfigurationRequest,
   output: DeleteStorageLensConfigurationResponse,
-  errors: [],
+  errors: [NoSuchConfiguration],
   operationName: "DeleteStorageLensConfiguration",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type DeleteStorageLensConfigurationTaggingError = CommonErrors;
+export type DeleteStorageLensConfigurationTaggingError =
+  | NoSuchConfiguration
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8516,8 +8623,9 @@ export const deleteStorageLensConfigurationTagging: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteStorageLensConfigurationTaggingRequest,
   output: DeleteStorageLensConfigurationTaggingResult,
-  errors: [],
+  errors: [NoSuchConfiguration],
   operationName: "DeleteStorageLensConfigurationTagging",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DeleteStorageLensGroupError = CommonErrors;
 /**
@@ -8540,6 +8648,7 @@ export const deleteStorageLensGroup: API.OperationMethod<
   output: DeleteStorageLensGroupResponse,
   errors: [],
   operationName: "DeleteStorageLensGroup",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DescribeJobError =
   | BadRequestException
@@ -8580,8 +8689,11 @@ export const describeJob: API.OperationMethod<
     TooManyRequestsException,
   ],
   operationName: "DescribeJob",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type DescribeMultiRegionAccessPointOperationError = CommonErrors;
+export type DescribeMultiRegionAccessPointOperationError =
+  | InvalidRequest
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8606,8 +8718,9 @@ export const describeMultiRegionAccessPointOperation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeMultiRegionAccessPointOperationRequest,
   output: DescribeMultiRegionAccessPointOperationResult,
-  errors: [],
+  errors: [InvalidRequest],
   operationName: "DescribeMultiRegionAccessPointOperation",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type DissociateAccessGrantsIdentityCenterError = CommonErrors;
 /**
@@ -8631,6 +8744,7 @@ export const dissociateAccessGrantsIdentityCenter: API.OperationMethod<
   output: DissociateAccessGrantsIdentityCenterResponse,
   errors: [],
   operationName: "DissociateAccessGrantsIdentityCenter",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetAccessGrantError = CommonErrors;
 /**
@@ -8650,6 +8764,7 @@ export const getAccessGrant: API.OperationMethod<
   output: GetAccessGrantResult,
   errors: [],
   operationName: "GetAccessGrant",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetAccessGrantsInstanceError = CommonErrors;
 /**
@@ -8671,6 +8786,7 @@ export const getAccessGrantsInstance: API.OperationMethod<
   output: GetAccessGrantsInstanceResult,
   errors: [],
   operationName: "GetAccessGrantsInstance",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetAccessGrantsInstanceForPrefixError = CommonErrors;
 /**
@@ -8694,6 +8810,7 @@ export const getAccessGrantsInstanceForPrefix: API.OperationMethod<
   output: GetAccessGrantsInstanceForPrefixResult,
   errors: [],
   operationName: "GetAccessGrantsInstanceForPrefix",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetAccessGrantsInstanceResourcePolicyError = CommonErrors;
 /**
@@ -8713,6 +8830,7 @@ export const getAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   output: GetAccessGrantsInstanceResourcePolicyResult,
   errors: [],
   operationName: "GetAccessGrantsInstanceResourcePolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetAccessGrantsLocationError = CommonErrors;
 /**
@@ -8732,8 +8850,9 @@ export const getAccessGrantsLocation: API.OperationMethod<
   output: GetAccessGrantsLocationResult,
   errors: [],
   operationName: "GetAccessGrantsLocation",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetAccessPointError = CommonErrors;
+export type GetAccessPointError = NoSuchAccessPoint | CommonErrors;
 /**
  * Returns configuration information about the specified access point.
  *
@@ -8755,10 +8874,13 @@ export const getAccessPoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPointRequest,
   output: GetAccessPointResult,
-  errors: [],
+  errors: [NoSuchAccessPoint],
   operationName: "GetAccessPoint",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetAccessPointConfigurationForObjectLambdaError = CommonErrors;
+export type GetAccessPointConfigurationForObjectLambdaError =
+  | NoSuchAccessPoint
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8777,10 +8899,13 @@ export const getAccessPointConfigurationForObjectLambda: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPointConfigurationForObjectLambdaRequest,
   output: GetAccessPointConfigurationForObjectLambdaResult,
-  errors: [],
+  errors: [NoSuchAccessPoint],
   operationName: "GetAccessPointConfigurationForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetAccessPointForObjectLambdaError = CommonErrors;
+export type GetAccessPointForObjectLambdaError =
+  | NoSuchAccessPoint
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8802,10 +8927,14 @@ export const getAccessPointForObjectLambda: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPointForObjectLambdaRequest,
   output: GetAccessPointForObjectLambdaResult,
-  errors: [],
+  errors: [NoSuchAccessPoint],
   operationName: "GetAccessPointForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetAccessPointPolicyError = CommonErrors;
+export type GetAccessPointPolicyError =
+  | NoSuchAccessPoint
+  | NoSuchAccessPointPolicy
+  | CommonErrors;
 /**
  * Returns the access point policy associated with the specified access point.
  *
@@ -8823,10 +8952,14 @@ export const getAccessPointPolicy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPointPolicyRequest,
   output: GetAccessPointPolicyResult,
-  errors: [],
+  errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   operationName: "GetAccessPointPolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetAccessPointPolicyForObjectLambdaError = CommonErrors;
+export type GetAccessPointPolicyForObjectLambdaError =
+  | NoSuchAccessPoint
+  | NoSuchAccessPointPolicy
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8847,10 +8980,14 @@ export const getAccessPointPolicyForObjectLambda: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPointPolicyForObjectLambdaRequest,
   output: GetAccessPointPolicyForObjectLambdaResult,
-  errors: [],
+  errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   operationName: "GetAccessPointPolicyForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetAccessPointPolicyStatusError = CommonErrors;
+export type GetAccessPointPolicyStatusError =
+  | NoSuchAccessPoint
+  | NoSuchAccessPointPolicy
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -8866,8 +9003,9 @@ export const getAccessPointPolicyStatus: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccessPointPolicyStatusRequest,
   output: GetAccessPointPolicyStatusResult,
-  errors: [],
+  errors: [NoSuchAccessPoint, NoSuchAccessPointPolicy],
   operationName: "GetAccessPointPolicyStatus",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetAccessPointPolicyStatusForObjectLambdaError = CommonErrors;
 /**
@@ -8885,6 +9023,7 @@ export const getAccessPointPolicyStatusForObjectLambda: API.OperationMethod<
   output: GetAccessPointPolicyStatusForObjectLambdaResult,
   errors: [],
   operationName: "GetAccessPointPolicyStatusForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetAccessPointScopeError = CommonErrors;
 /**
@@ -8941,6 +9080,7 @@ export const getBucket: API.OperationMethod<
   output: GetBucketResult,
   errors: [],
   operationName: "GetBucket",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetBucketLifecycleConfigurationError = CommonErrors;
 /**
@@ -8987,6 +9127,7 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   output: GetBucketLifecycleConfigurationResult,
   errors: [],
   operationName: "GetBucketLifecycleConfiguration",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetBucketPolicyError = CommonErrors;
 /**
@@ -9034,6 +9175,7 @@ export const getBucketPolicy: API.OperationMethod<
   output: GetBucketPolicyResult,
   errors: [],
   operationName: "GetBucketPolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetBucketReplicationError = CommonErrors;
 /**
@@ -9085,6 +9227,7 @@ export const getBucketReplication: API.OperationMethod<
   output: GetBucketReplicationResult,
   errors: [],
   operationName: "GetBucketReplication",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetBucketTaggingError = CommonErrors;
 /**
@@ -9123,6 +9266,7 @@ export const getBucketTagging: API.OperationMethod<
   output: GetBucketTaggingResult,
   errors: [],
   operationName: "GetBucketTagging",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetBucketVersioningError = CommonErrors;
 /**
@@ -9167,6 +9311,7 @@ export const getBucketVersioning: API.OperationMethod<
   output: GetBucketVersioningResult,
   errors: [],
   operationName: "GetBucketVersioning",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetDataAccessError = CommonErrors;
 /**
@@ -9190,6 +9335,7 @@ export const getDataAccess: API.OperationMethod<
   output: GetDataAccessResult,
   errors: [],
   operationName: "GetDataAccess",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetJobTaggingError =
   | InternalServiceException
@@ -9229,8 +9375,11 @@ export const getJobTagging: API.OperationMethod<
     TooManyRequestsException,
   ],
   operationName: "GetJobTagging",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetMultiRegionAccessPointError = CommonErrors;
+export type GetMultiRegionAccessPointError =
+  | NoSuchMultiRegionAccessPoint
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -9258,10 +9407,13 @@ export const getMultiRegionAccessPoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMultiRegionAccessPointRequest,
   output: GetMultiRegionAccessPointResult,
-  errors: [],
+  errors: [NoSuchMultiRegionAccessPoint],
   operationName: "GetMultiRegionAccessPoint",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetMultiRegionAccessPointPolicyError = CommonErrors;
+export type GetMultiRegionAccessPointPolicyError =
+  | NoSuchMultiRegionAccessPoint
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -9286,8 +9438,9 @@ export const getMultiRegionAccessPointPolicy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetMultiRegionAccessPointPolicyRequest,
   output: GetMultiRegionAccessPointPolicyResult,
-  errors: [],
+  errors: [NoSuchMultiRegionAccessPoint],
   operationName: "GetMultiRegionAccessPointPolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetMultiRegionAccessPointPolicyStatusError = CommonErrors;
 /**
@@ -9317,6 +9470,7 @@ export const getMultiRegionAccessPointPolicyStatus: API.OperationMethod<
   output: GetMultiRegionAccessPointPolicyStatusResult,
   errors: [],
   operationName: "GetMultiRegionAccessPointPolicyStatus",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetMultiRegionAccessPointRoutesError = CommonErrors;
 /**
@@ -9348,6 +9502,7 @@ export const getMultiRegionAccessPointRoutes: API.OperationMethod<
   output: GetMultiRegionAccessPointRoutesResult,
   errors: [],
   operationName: "GetMultiRegionAccessPointRoutes",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetPublicAccessBlockError =
   | NoSuchPublicAccessBlockConfiguration
@@ -9376,8 +9531,11 @@ export const getPublicAccessBlock: API.OperationMethod<
   output: GetPublicAccessBlockOutput,
   errors: [NoSuchPublicAccessBlockConfiguration],
   operationName: "GetPublicAccessBlock",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetStorageLensConfigurationError = CommonErrors;
+export type GetStorageLensConfigurationError =
+  | NoSuchConfiguration
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -9397,10 +9555,13 @@ export const getStorageLensConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStorageLensConfigurationRequest,
   output: GetStorageLensConfigurationResult,
-  errors: [],
+  errors: [NoSuchConfiguration],
   operationName: "GetStorageLensConfiguration",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type GetStorageLensConfigurationTaggingError = CommonErrors;
+export type GetStorageLensConfigurationTaggingError =
+  | NoSuchConfiguration
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -9422,8 +9583,9 @@ export const getStorageLensConfigurationTagging: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetStorageLensConfigurationTaggingRequest,
   output: GetStorageLensConfigurationTaggingResult,
-  errors: [],
+  errors: [NoSuchConfiguration],
   operationName: "GetStorageLensConfigurationTagging",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type GetStorageLensGroupError = CommonErrors;
 /**
@@ -9446,6 +9608,7 @@ export const getStorageLensGroup: API.OperationMethod<
   output: GetStorageLensGroupResult,
   errors: [],
   operationName: "GetStorageLensGroup",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type ListAccessGrantsError = CommonErrors;
 /**
@@ -9480,6 +9643,7 @@ export const listAccessGrants: API.OperationMethod<
   output: ListAccessGrantsResult,
   errors: [],
   operationName: "ListAccessGrants",
+  endpointHostPrefix: "{AccountId}.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9519,6 +9683,7 @@ export const listAccessGrantsInstances: API.OperationMethod<
   output: ListAccessGrantsInstancesResult,
   errors: [],
   operationName: "ListAccessGrantsInstances",
+  endpointHostPrefix: "{AccountId}.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9558,6 +9723,7 @@ export const listAccessGrantsLocations: API.OperationMethod<
   output: ListAccessGrantsLocationsResult,
   errors: [],
   operationName: "ListAccessGrantsLocations",
+  endpointHostPrefix: "{AccountId}.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9611,6 +9777,7 @@ export const listAccessPoints: API.OperationMethod<
   output: ListAccessPointsResult,
   errors: [],
   operationName: "ListAccessPoints",
+  endpointHostPrefix: "{AccountId}.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9702,6 +9869,7 @@ export const listAccessPointsForObjectLambda: API.OperationMethod<
   output: ListAccessPointsForObjectLambdaResult,
   errors: [],
   operationName: "ListAccessPointsForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9742,6 +9910,7 @@ export const listCallerAccessGrants: API.OperationMethod<
   output: ListCallerAccessGrantsResult,
   errors: [],
   operationName: "ListCallerAccessGrants",
+  endpointHostPrefix: "{AccountId}.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9803,6 +9972,7 @@ export const listJobs: API.OperationMethod<
     InvalidRequestException,
   ],
   operationName: "ListJobs",
+  endpointHostPrefix: "{AccountId}.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9856,6 +10026,7 @@ export const listMultiRegionAccessPoints: API.OperationMethod<
   output: ListMultiRegionAccessPointsResult,
   errors: [],
   operationName: "ListMultiRegionAccessPoints",
+  endpointHostPrefix: "{AccountId}.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9898,6 +10069,7 @@ export const listRegionalBuckets: API.OperationMethod<
   output: ListRegionalBucketsResult,
   errors: [],
   operationName: "ListRegionalBuckets",
+  endpointHostPrefix: "{AccountId}.",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -9943,6 +10115,7 @@ export const listStorageLensConfigurations: API.OperationMethod<
   output: ListStorageLensConfigurationsResult,
   errors: [],
   operationName: "ListStorageLensConfigurations",
+  endpointHostPrefix: "{AccountId}.",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
 export type ListStorageLensGroupsError = CommonErrors;
@@ -9981,9 +10154,10 @@ export const listStorageLensGroups: API.OperationMethod<
   output: ListStorageLensGroupsResult,
   errors: [],
   operationName: "ListStorageLensGroups",
+  endpointHostPrefix: "{AccountId}.",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
-export type ListTagsForResourceError = CommonErrors;
+export type ListTagsForResourceError = NoSuchAccessPoint | CommonErrors;
 /**
  * This operation allows you to list all of the tags for a specified resource. Each tag is a label consisting of a key and value. Tags can help you organize, track costs for, and control access to resources.
  *
@@ -10023,8 +10197,9 @@ export const listTagsForResource: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResult,
-  errors: [],
+  errors: [NoSuchAccessPoint],
   operationName: "ListTagsForResource",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type PutAccessGrantsInstanceResourcePolicyError = CommonErrors;
 /**
@@ -10044,8 +10219,12 @@ export const putAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   output: PutAccessGrantsInstanceResourcePolicyResult,
   errors: [],
   operationName: "PutAccessGrantsInstanceResourcePolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type PutAccessPointConfigurationForObjectLambdaError = CommonErrors;
+export type PutAccessPointConfigurationForObjectLambdaError =
+  | NoSuchAccessPoint
+  | InvalidRequest
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -10064,10 +10243,14 @@ export const putAccessPointConfigurationForObjectLambda: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAccessPointConfigurationForObjectLambdaRequest,
   output: PutAccessPointConfigurationForObjectLambdaResponse,
-  errors: [],
+  errors: [NoSuchAccessPoint, InvalidRequest],
   operationName: "PutAccessPointConfigurationForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type PutAccessPointPolicyError = CommonErrors;
+export type PutAccessPointPolicyError =
+  | NoSuchAccessPoint
+  | MalformedPolicy
+  | CommonErrors;
 /**
  * Associates an access policy with the specified access point. Each access point can have only one policy,
  * so a request made to this API replaces any existing policy associated with the specified
@@ -10089,10 +10272,14 @@ export const putAccessPointPolicy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAccessPointPolicyRequest,
   output: PutAccessPointPolicyResponse,
-  errors: [],
+  errors: [NoSuchAccessPoint, MalformedPolicy],
   operationName: "PutAccessPointPolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type PutAccessPointPolicyForObjectLambdaError = CommonErrors;
+export type PutAccessPointPolicyForObjectLambdaError =
+  | NoSuchAccessPoint
+  | MalformedPolicy
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -10113,8 +10300,9 @@ export const putAccessPointPolicyForObjectLambda: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutAccessPointPolicyForObjectLambdaRequest,
   output: PutAccessPointPolicyForObjectLambdaResponse,
-  errors: [],
+  errors: [NoSuchAccessPoint, MalformedPolicy],
   operationName: "PutAccessPointPolicyForObjectLambda",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type PutAccessPointScopeError = CommonErrors;
 /**
@@ -10167,6 +10355,7 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   output: PutBucketLifecycleConfigurationResponse,
   errors: [],
   operationName: "PutBucketLifecycleConfiguration",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type PutBucketPolicyError = CommonErrors;
 /**
@@ -10212,6 +10401,7 @@ export const putBucketPolicy: API.OperationMethod<
   output: PutBucketPolicyResponse,
   errors: [],
   operationName: "PutBucketPolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type PutBucketReplicationError = CommonErrors;
 /**
@@ -10299,6 +10489,7 @@ export const putBucketReplication: API.OperationMethod<
   output: PutBucketReplicationResponse,
   errors: [],
   operationName: "PutBucketReplication",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type PutBucketTaggingError = CommonErrors;
 /**
@@ -10368,6 +10559,7 @@ export const putBucketTagging: API.OperationMethod<
   output: PutBucketTaggingResponse,
   errors: [],
   operationName: "PutBucketTagging",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type PutBucketVersioningError = CommonErrors;
 /**
@@ -10432,6 +10624,7 @@ export const putBucketVersioning: API.OperationMethod<
   output: PutBucketVersioningResponse,
   errors: [],
   operationName: "PutBucketVersioning",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type PutJobTaggingError =
   | InternalServiceException
@@ -10500,8 +10693,12 @@ export const putJobTagging: API.OperationMethod<
     TooManyTagsException,
   ],
   operationName: "PutJobTagging",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type PutMultiRegionAccessPointPolicyError = CommonErrors;
+export type PutMultiRegionAccessPointPolicyError =
+  | NoSuchMultiRegionAccessPoint
+  | InvalidRequest
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -10528,8 +10725,9 @@ export const putMultiRegionAccessPointPolicy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutMultiRegionAccessPointPolicyRequest,
   output: PutMultiRegionAccessPointPolicyResult,
-  errors: [],
+  errors: [NoSuchMultiRegionAccessPoint, InvalidRequest],
   operationName: "PutMultiRegionAccessPointPolicy",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type PutPublicAccessBlockError = CommonErrors;
 /**
@@ -10560,8 +10758,12 @@ export const putPublicAccessBlock: API.OperationMethod<
   output: PutPublicAccessBlockResponse,
   errors: [],
   operationName: "PutPublicAccessBlock",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type PutStorageLensConfigurationError = CommonErrors;
+export type PutStorageLensConfigurationError =
+  | InvalidRequest
+  | MissingBucketLevelActivityMetrics
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -10580,10 +10782,13 @@ export const putStorageLensConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutStorageLensConfigurationRequest,
   output: PutStorageLensConfigurationResponse,
-  errors: [],
+  errors: [InvalidRequest, MissingBucketLevelActivityMetrics],
   operationName: "PutStorageLensConfiguration",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type PutStorageLensConfigurationTaggingError = CommonErrors;
+export type PutStorageLensConfigurationTaggingError =
+  | NoSuchConfiguration
+  | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
  *
@@ -10604,8 +10809,9 @@ export const putStorageLensConfigurationTagging: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutStorageLensConfigurationTaggingRequest,
   output: PutStorageLensConfigurationTaggingResult,
-  errors: [],
+  errors: [NoSuchConfiguration],
   operationName: "PutStorageLensConfigurationTagging",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type SubmitMultiRegionAccessPointRoutesError = CommonErrors;
 /**
@@ -10649,8 +10855,9 @@ export const submitMultiRegionAccessPointRoutes: API.OperationMethod<
   output: SubmitMultiRegionAccessPointRoutesResult,
   errors: [],
   operationName: "SubmitMultiRegionAccessPointRoutes",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type TagResourceError = CommonErrors;
+export type TagResourceError = NoSuchAccessPoint | CommonErrors;
 /**
  * Creates a new user-defined tag or updates an existing tag. Each tag is a label consisting of a key and value that is applied to your resource. Tags can help you organize, track costs for, and control access to your resources. You can add up to 50 Amazon Web Services resource tags for each S3 resource.
  *
@@ -10690,10 +10897,11 @@ export const tagResource: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResult,
-  errors: [],
+  errors: [NoSuchAccessPoint],
   operationName: "TagResource",
+  endpointHostPrefix: "{AccountId}.",
 }));
-export type UntagResourceError = CommonErrors;
+export type UntagResourceError = NoSuchAccessPoint | CommonErrors;
 /**
  * This operation removes the specified user-defined tags from an S3 resource. You can pass one or more tag keys.
  *
@@ -10734,8 +10942,9 @@ export const untagResource: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResult,
-  errors: [],
+  errors: [NoSuchAccessPoint],
   operationName: "UntagResource",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type UpdateAccessGrantsLocationError = CommonErrors;
 /**
@@ -10759,12 +10968,15 @@ export const updateAccessGrantsLocation: API.OperationMethod<
   output: UpdateAccessGrantsLocationResult,
   errors: [],
   operationName: "UpdateAccessGrantsLocation",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type UpdateJobPriorityError =
   | BadRequestException
   | InternalServiceException
   | NotFoundException
   | TooManyRequestsException
+  | InvalidRequest
+  | JobStatusTransitionForbidden
   | CommonErrors;
 /**
  * Updates an existing S3 Batch Operations job's priority. For more information, see S3 Batch Operations in the *Amazon S3 User Guide*.
@@ -10798,8 +11010,11 @@ export const updateJobPriority: API.OperationMethod<
     InternalServiceException,
     NotFoundException,
     TooManyRequestsException,
+    InvalidRequest,
+    JobStatusTransitionForbidden,
   ],
   operationName: "UpdateJobPriority",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type UpdateJobStatusError =
   | BadRequestException
@@ -10807,6 +11022,8 @@ export type UpdateJobStatusError =
   | JobStatusException
   | NotFoundException
   | TooManyRequestsException
+  | InvalidRequest
+  | JobStatusTransitionForbidden
   | CommonErrors;
 /**
  * Updates the status for the specified job. Use this operation to confirm that you want to
@@ -10842,8 +11059,11 @@ export const updateJobStatus: API.OperationMethod<
     JobStatusException,
     NotFoundException,
     TooManyRequestsException,
+    InvalidRequest,
+    JobStatusTransitionForbidden,
   ],
   operationName: "UpdateJobStatus",
+  endpointHostPrefix: "{AccountId}.",
 }));
 export type UpdateStorageLensGroupError = CommonErrors;
 /**
@@ -10866,4 +11086,5 @@ export const updateStorageLensGroup: API.OperationMethod<
   output: UpdateStorageLensGroupResponse,
   errors: [],
   operationName: "UpdateStorageLensGroup",
+  endpointHostPrefix: "{AccountId}.",
 }));

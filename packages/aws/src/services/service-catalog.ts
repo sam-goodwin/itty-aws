@@ -4232,6 +4232,14 @@ export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseExce
   "ResourceInUseException",
   { Message: S.optional(S.String) },
 ) {}
+export class ProvisionedProductNotFound extends S.TaggedErrorClass<ProvisionedProductNotFound>()(
+  "ProvisionedProductNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Provisioned product not found" },
+  }),
+) {}
 
 //# Operations
 export type AcceptPortfolioShareError =
@@ -5439,6 +5447,7 @@ export type ExecuteProvisionedProductServiceActionError =
   | InvalidParametersException
   | InvalidStateException
   | ResourceNotFoundException
+  | ProvisionedProductNotFound
   | CommonErrors;
 /**
  * Executes a self-service action against a provisioned product.
@@ -5455,6 +5464,7 @@ export const executeProvisionedProductServiceAction: API.OperationMethod<
     InvalidParametersException,
     InvalidStateException,
     ResourceNotFoundException,
+    ProvisionedProductNotFound,
   ],
   operationName: "ExecuteProvisionedProductServiceAction",
 }));

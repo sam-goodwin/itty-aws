@@ -4627,6 +4627,14 @@ export class ScalingActivityInProgressFault extends S.TaggedErrorClass<ScalingAc
   { message: S.optional(S.String) },
   T.AwsQueryError({ code: "ScalingActivityInProgress", httpResponseCode: 400 }),
 ).pipe(C.withBadRequestError) {}
+export class AutoScalingGroupNotFound extends S.TaggedErrorClass<AutoScalingGroupNotFound>()(
+  "AutoScalingGroupNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationError",
+    message: { includes: "not found" },
+  }),
+) {}
 export class InvalidNextToken extends S.TaggedErrorClass<InvalidNextToken>()(
   "InvalidNextToken",
   { message: S.optional(S.String) },
@@ -5099,7 +5107,10 @@ export const deleteLaunchConfiguration: API.OperationMethod<
   errors: [ResourceContentionFault, ResourceInUseFault],
   operationName: "DeleteLaunchConfiguration",
 }));
-export type DeleteLifecycleHookError = ResourceContentionFault | CommonErrors;
+export type DeleteLifecycleHookError =
+  | ResourceContentionFault
+  | AutoScalingGroupNotFound
+  | CommonErrors;
 /**
  * Deletes the specified lifecycle hook.
  *
@@ -5115,7 +5126,7 @@ export const deleteLifecycleHook: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLifecycleHookType,
   output: DeleteLifecycleHookAnswer,
-  errors: [ResourceContentionFault],
+  errors: [ResourceContentionFault, AutoScalingGroupNotFound],
   operationName: "DeleteLifecycleHook",
 }));
 export type DeleteNotificationConfigurationError =
@@ -5160,7 +5171,10 @@ export const deletePolicy: API.OperationMethod<
   errors: [ResourceContentionFault, ServiceLinkedRoleFailure],
   operationName: "DeletePolicy",
 }));
-export type DeleteScheduledActionError = ResourceContentionFault | CommonErrors;
+export type DeleteScheduledActionError =
+  | ResourceContentionFault
+  | AutoScalingGroupNotFound
+  | CommonErrors;
 /**
  * Deletes the specified scheduled action.
  */
@@ -5172,7 +5186,7 @@ export const deleteScheduledAction: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteScheduledActionType,
   output: DeleteScheduledActionResponse,
-  errors: [ResourceContentionFault],
+  errors: [ResourceContentionFault, AutoScalingGroupNotFound],
   operationName: "DeleteScheduledAction",
 }));
 export type DeleteTagsError =
@@ -5462,6 +5476,7 @@ export const describeLaunchConfigurations: API.OperationMethod<
 }));
 export type DescribeLifecycleHooksError =
   | ResourceContentionFault
+  | AutoScalingGroupNotFound
   | CommonErrors;
 /**
  * Gets information about the lifecycle hooks for the specified Auto Scaling group.
@@ -5474,7 +5489,7 @@ export const describeLifecycleHooks: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLifecycleHooksType,
   output: DescribeLifecycleHooksAnswer,
-  errors: [ResourceContentionFault],
+  errors: [ResourceContentionFault, AutoScalingGroupNotFound],
   operationName: "DescribeLifecycleHooks",
 }));
 export type DescribeLifecycleHookTypesError =
@@ -5809,6 +5824,7 @@ export const describeScalingProcessTypes: API.OperationMethod<
 export type DescribeScheduledActionsError =
   | InvalidNextToken
   | ResourceContentionFault
+  | AutoScalingGroupNotFound
   | CommonErrors;
 /**
  * Gets information about the scheduled actions that haven't run or that have not reached
@@ -5840,7 +5856,7 @@ export const describeScheduledActions: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeScheduledActionsType,
   output: ScheduledActionsType,
-  errors: [InvalidNextToken, ResourceContentionFault],
+  errors: [InvalidNextToken, ResourceContentionFault, AutoScalingGroupNotFound],
   operationName: "DescribeScheduledActions",
   pagination: {
     inputToken: "NextToken",
@@ -6278,6 +6294,7 @@ export const launchInstances: API.OperationMethod<
 export type PutLifecycleHookError =
   | LimitExceededFault
   | ResourceContentionFault
+  | AutoScalingGroupNotFound
   | CommonErrors;
 /**
  * Creates or updates a lifecycle hook for the specified Auto Scaling group.
@@ -6328,7 +6345,11 @@ export const putLifecycleHook: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutLifecycleHookType,
   output: PutLifecycleHookAnswer,
-  errors: [LimitExceededFault, ResourceContentionFault],
+  errors: [
+    LimitExceededFault,
+    ResourceContentionFault,
+    AutoScalingGroupNotFound,
+  ],
   operationName: "PutLifecycleHook",
 }));
 export type PutNotificationConfigurationError =
@@ -6405,6 +6426,7 @@ export type PutScheduledUpdateGroupActionError =
   | AlreadyExistsFault
   | LimitExceededFault
   | ResourceContentionFault
+  | AutoScalingGroupNotFound
   | CommonErrors;
 /**
  * Creates or updates a scheduled scaling action for an Auto Scaling group.
@@ -6428,7 +6450,12 @@ export const putScheduledUpdateGroupAction: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutScheduledUpdateGroupActionType,
   output: PutScheduledUpdateGroupActionResponse,
-  errors: [AlreadyExistsFault, LimitExceededFault, ResourceContentionFault],
+  errors: [
+    AlreadyExistsFault,
+    LimitExceededFault,
+    ResourceContentionFault,
+    AutoScalingGroupNotFound,
+  ],
   operationName: "PutScheduledUpdateGroupAction",
 }));
 export type PutWarmPoolError =

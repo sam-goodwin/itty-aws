@@ -413,16 +413,16 @@ export const AssumeDecoratedRoleWithSAMLRequest =
   }) as any as S.Schema<AssumeDecoratedRoleWithSAMLRequest>;
 export interface AssumeDecoratedRoleWithSAMLResponse {
   AccessKeyId?: string;
-  SecretAccessKey?: string;
-  SessionToken?: string;
+  SecretAccessKey?: string | redacted.Redacted<string>;
+  SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
 export const AssumeDecoratedRoleWithSAMLResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AccessKeyId: S.optional(S.String),
-      SecretAccessKey: S.optional(S.String),
-      SessionToken: S.optional(S.String),
+      SecretAccessKey: S.optional(SensitiveString),
+      SessionToken: S.optional(SensitiveString),
       Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     }),
   ).annotate({
@@ -1753,15 +1753,15 @@ export const GetTemporaryDataLocationCredentialsRequest =
   }) as any as S.Schema<GetTemporaryDataLocationCredentialsRequest>;
 export interface TemporaryCredentials {
   AccessKeyId?: string;
-  SecretAccessKey?: string;
-  SessionToken?: string;
+  SecretAccessKey?: string | redacted.Redacted<string>;
+  SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
 export const TemporaryCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessKeyId: S.optional(S.String),
-    SecretAccessKey: S.optional(S.String),
-    SessionToken: S.optional(S.String),
+    SecretAccessKey: S.optional(SensitiveString),
+    SessionToken: S.optional(SensitiveString),
     Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({
@@ -1836,16 +1836,16 @@ export const GetTemporaryGluePartitionCredentialsRequest =
   }) as any as S.Schema<GetTemporaryGluePartitionCredentialsRequest>;
 export interface GetTemporaryGluePartitionCredentialsResponse {
   AccessKeyId?: string;
-  SecretAccessKey?: string;
-  SessionToken?: string;
+  SecretAccessKey?: string | redacted.Redacted<string>;
+  SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
 }
 export const GetTemporaryGluePartitionCredentialsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AccessKeyId: S.optional(S.String),
-      SecretAccessKey: S.optional(S.String),
-      SessionToken: S.optional(S.String),
+      SecretAccessKey: S.optional(SensitiveString),
+      SessionToken: S.optional(SensitiveString),
       Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     }),
   ).annotate({
@@ -1908,8 +1908,8 @@ export const GetTemporaryGlueTableCredentialsRequest =
   }) as any as S.Schema<GetTemporaryGlueTableCredentialsRequest>;
 export interface GetTemporaryGlueTableCredentialsResponse {
   AccessKeyId?: string;
-  SecretAccessKey?: string;
-  SessionToken?: string;
+  SecretAccessKey?: string | redacted.Redacted<string>;
+  SessionToken?: string | redacted.Redacted<string>;
   Expiration?: Date;
   VendedS3Path?: string[];
 }
@@ -1917,8 +1917,8 @@ export const GetTemporaryGlueTableCredentialsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AccessKeyId: S.optional(S.String),
-      SecretAccessKey: S.optional(S.String),
-      SessionToken: S.optional(S.String),
+      SecretAccessKey: S.optional(SensitiveString),
+      SessionToken: S.optional(SensitiveString),
       Expiration: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
       VendedS3Path: S.optional(PathStringList),
     }),
@@ -3081,6 +3081,7 @@ export const UpdateTableStorageOptimizerResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
   "ConcurrentModificationException",
@@ -3093,10 +3094,12 @@ export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundEx
 export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
   "InternalServiceException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
   "InvalidInputException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class OperationTimeoutException extends S.TaggedErrorClass<OperationTimeoutException>()(
   "OperationTimeoutException",
@@ -3105,14 +3108,17 @@ export class OperationTimeoutException extends S.TaggedErrorClass<OperationTimeo
 export class TransactionCommitInProgressException extends S.TaggedErrorClass<TransactionCommitInProgressException>()(
   "TransactionCommitInProgressException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TransactionCommittedException extends S.TaggedErrorClass<TransactionCommittedException>()(
   "TransactionCommittedException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TransactionCanceledException extends S.TaggedErrorClass<TransactionCanceledException>()(
   "TransactionCanceledException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
   "AlreadyExistsException",
@@ -3122,22 +3128,41 @@ export class ResourceNumberLimitExceededException extends S.TaggedErrorClass<Res
   "ResourceNumberLimitExceededException",
   { Message: S.optional(S.String) },
 ) {}
+export class InvalidLakeFormationPrincipal extends S.TaggedErrorClass<InvalidLakeFormationPrincipal>()(
+  "InvalidLakeFormationPrincipal",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "Invalid principal" },
+  }),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
   "ResourceNotReadyException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
+export class LastServiceLinkedRoleRegistration extends S.TaggedErrorClass<LastServiceLinkedRoleRegistration>()(
+  "LastServiceLinkedRoleRegistration",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "Must manually delete service-linked role" },
+  }),
+).pipe(C.withConflictError) {}
 export class ExpiredException extends S.TaggedErrorClass<ExpiredException>()(
   "ExpiredException",
   { Message: S.optional(S.String) },
+  T.HttpError(410),
 ).pipe(C.withBadRequestError) {}
 export class StatisticsNotReadyYetException extends S.TaggedErrorClass<StatisticsNotReadyYetException>()(
   "StatisticsNotReadyYetException",
   { Message: S.optional(S.String) },
+  T.HttpError(420),
 ) {}
 export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
   "ThrottledException",
   { Message: S.optional(S.String) },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class GlueEncryptionException extends S.TaggedErrorClass<GlueEncryptionException>()(
   "GlueEncryptionException",
@@ -3154,6 +3179,7 @@ export class PermissionTypeMismatchException extends S.TaggedErrorClass<Permissi
 export class WorkUnitsNotReadyYetException extends S.TaggedErrorClass<WorkUnitsNotReadyYetException>()(
   "WorkUnitsNotReadyYetException",
   { Message: S.optional(S.String) },
+  T.HttpError(420),
 ) {}
 
 //# Operations
@@ -3392,6 +3418,7 @@ export type CreateLakeFormationOptInError =
   | InvalidInputException
   | OperationTimeoutException
   | ResourceNumberLimitExceededException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Enforce Lake Formation permissions for the given databases, tables, and principals.
@@ -3412,6 +3439,7 @@ export const createLakeFormationOptIn: API.OperationMethod<
     InvalidInputException,
     OperationTimeoutException,
     ResourceNumberLimitExceededException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "CreateLakeFormationOptIn",
 }));
@@ -3544,6 +3572,7 @@ export type DeleteLakeFormationOptInError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Remove the Lake Formation permissions enforcement of the given databases, tables, and principals.
@@ -3563,6 +3592,7 @@ export const deleteLakeFormationOptIn: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "DeleteLakeFormationOptIn",
 }));
@@ -3670,6 +3700,7 @@ export type DeregisterResourceError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | LastServiceLinkedRoleRegistration
   | CommonErrors;
 /**
  * Deregisters the resource as managed by the Data Catalog.
@@ -3689,6 +3720,7 @@ export const deregisterResource: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    LastServiceLinkedRoleRegistration,
   ],
   operationName: "DeregisterResource",
 }));
@@ -3997,6 +4029,7 @@ export const getQueryState: API.OperationMethod<
     InvalidInputException,
   ],
   operationName: "GetQueryState",
+  endpointHostPrefix: "query-",
 }));
 export type GetQueryStatisticsError =
   | AccessDeniedException
@@ -4026,6 +4059,7 @@ export const getQueryStatistics: API.OperationMethod<
     ThrottledException,
   ],
   operationName: "GetQueryStatistics",
+  endpointHostPrefix: "query-",
 }));
 export type GetResourceLFTagsError =
   | AccessDeniedException
@@ -4243,6 +4277,7 @@ export const getWorkUnitResults: API.OperationMethod<
     ThrottledException,
   ],
   operationName: "GetWorkUnitResults",
+  endpointHostPrefix: "data-",
 }));
 export type GetWorkUnitsError =
   | AccessDeniedException
@@ -4285,6 +4320,7 @@ export const getWorkUnits: API.OperationMethod<
     WorkUnitsNotReadyYetException,
   ],
   operationName: "GetWorkUnits",
+  endpointHostPrefix: "query-",
   pagination: {
     inputToken: "NextToken",
     outputToken: "NextToken",
@@ -4296,6 +4332,7 @@ export type GrantPermissionsError =
   | ConcurrentModificationException
   | EntityNotFoundException
   | InvalidInputException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
@@ -4314,6 +4351,7 @@ export const grantPermissions: API.OperationMethod<
     ConcurrentModificationException,
     EntityNotFoundException,
     InvalidInputException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "GrantPermissions",
 }));
@@ -4368,6 +4406,8 @@ export type ListLakeFormationOptInsError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | EntityNotFoundException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Retrieve the current list of resources and principals that are opt in to enforce Lake Formation permissions.
@@ -4400,6 +4440,8 @@ export const listLakeFormationOptIns: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    EntityNotFoundException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "ListLakeFormationOptIns",
   pagination: {
@@ -4508,6 +4550,7 @@ export type ListPermissionsError =
   | InternalServiceException
   | InvalidInputException
   | OperationTimeoutException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Returns a list of the principal permissions on the resource, filtered by the permissions of the caller. For example, if you are granted an ALTER permission, you are able to see only the principal permissions for ALTER.
@@ -4545,6 +4588,7 @@ export const listPermissions: API.OperationMethod<
     InternalServiceException,
     InvalidInputException,
     OperationTimeoutException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "ListPermissions",
   pagination: {
@@ -4689,6 +4733,7 @@ export const listTransactions: API.OperationMethod<
 export type PutDataLakeSettingsError =
   | InternalServiceException
   | InvalidInputException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Sets the list of data lake administrators who have admin privileges on all resources managed by Lake Formation. For more information on admin privileges, see Granting Lake Formation Permissions.
@@ -4703,7 +4748,11 @@ export const putDataLakeSettings: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PutDataLakeSettingsRequest,
   output: PutDataLakeSettingsResponse,
-  errors: [InternalServiceException, InvalidInputException],
+  errors: [
+    InternalServiceException,
+    InvalidInputException,
+    InvalidLakeFormationPrincipal,
+  ],
   operationName: "PutDataLakeSettings",
 }));
 export type RegisterResourceError =
@@ -4783,6 +4832,7 @@ export type RevokePermissionsError =
   | ConcurrentModificationException
   | EntityNotFoundException
   | InvalidInputException
+  | InvalidLakeFormationPrincipal
   | CommonErrors;
 /**
  * Revokes permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3.
@@ -4799,6 +4849,7 @@ export const revokePermissions: API.OperationMethod<
     ConcurrentModificationException,
     EntityNotFoundException,
     InvalidInputException,
+    InvalidLakeFormationPrincipal,
   ],
   operationName: "RevokePermissions",
 }));
@@ -4928,6 +4979,7 @@ export const startQueryPlanning: API.OperationMethod<
     ThrottledException,
   ],
   operationName: "StartQueryPlanning",
+  endpointHostPrefix: "query-",
 }));
 export type StartTransactionError =
   | InternalServiceException

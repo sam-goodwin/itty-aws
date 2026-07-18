@@ -425,10 +425,7 @@ export interface ListAttachedLinksOutput {
   NextToken?: string;
 }
 export const ListAttachedLinksOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Items: ListAttachedLinksItems,
-    NextToken: S.optional(S.String),
-  }),
+  S.Struct({ Items: ListAttachedLinksItems, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListAttachedLinksOutput",
 }) as any as S.Schema<ListAttachedLinksOutput>;
@@ -690,6 +687,7 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     Message: S.optional(S.String),
     amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServiceFault extends S.TaggedErrorClass<InternalServiceFault>()(
   "InternalServiceFault",
@@ -697,6 +695,7 @@ export class InternalServiceFault extends S.TaggedErrorClass<InternalServiceFaul
     Message: S.optional(S.String),
     amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
   },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
@@ -704,6 +703,7 @@ export class InvalidParameterException extends S.TaggedErrorClass<InvalidParamet
     message: S.optional(S.String),
     amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class MissingRequiredParameterException extends S.TaggedErrorClass<MissingRequiredParameterException>()(
   "MissingRequiredParameterException",
@@ -711,6 +711,7 @@ export class MissingRequiredParameterException extends S.TaggedErrorClass<Missin
     message: S.optional(S.String),
     amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -718,21 +719,29 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     Message: S.optional(S.String),
     amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
   },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   {
     Message: S.optional(S.String),
     amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -742,6 +751,7 @@ export type CreateLinkError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ServiceQuotaExceededException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates a link between a source account and a sink that you have created in a monitoring account. After the link is created, data is sent from the source account to the monitoring account. When you create a link, you can optionally specify filters that specify which metric namespaces and which log groups are shared from the source account to the monitoring account.
@@ -768,6 +778,7 @@ export const createLink: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ServiceQuotaExceededException,
+    TooManyRequestsException,
   ],
   operationName: "CreateLink",
 }));
@@ -777,6 +788,7 @@ export type CreateSinkError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ServiceQuotaExceededException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Use this to create a *sink* in the current account, so that it can be used as a monitoring account in CloudWatch cross-account observability. A sink is a resource that represents an attachment point in a monitoring account. Source accounts can link to the sink to send observability data.
@@ -799,6 +811,7 @@ export const createSink: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ServiceQuotaExceededException,
+    TooManyRequestsException,
   ],
   operationName: "CreateSink",
 }));
@@ -807,6 +820,7 @@ export type DeleteLinkError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes a link between a monitoring account sink and a source account. You must run this operation in the source account.
@@ -824,6 +838,7 @@ export const deleteLink: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "DeleteLink",
 }));
@@ -833,6 +848,7 @@ export type DeleteSinkError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes a sink. You must delete all links to a sink before you can delete that sink.
@@ -851,6 +867,7 @@ export const deleteSink: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "DeleteSink",
 }));
@@ -859,6 +876,7 @@ export type GetLinkError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns complete information about one link.
@@ -878,6 +896,7 @@ export const getLink: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "GetLink",
 }));
@@ -886,6 +905,7 @@ export type GetSinkError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns complete information about one monitoring account sink.
@@ -905,6 +925,7 @@ export const getSink: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "GetSink",
 }));
@@ -913,6 +934,7 @@ export type GetSinkPolicyError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns the current sink policy attached to this sink. The sink policy specifies what accounts can attach to this sink as source accounts, and what types of data they can share.
@@ -930,6 +952,7 @@ export const getSinkPolicy: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "GetSinkPolicy",
 }));
@@ -938,6 +961,7 @@ export type ListAttachedLinksError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a list of source account links that are linked to this monitoring account sink.
@@ -974,6 +998,7 @@ export const listAttachedLinks: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "ListAttachedLinks",
   pagination: {
@@ -987,6 +1012,7 @@ export type ListLinksError =
   | InternalServiceFault
   | InvalidParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Use this operation in a source account to return a list of links to monitoring account sinks that this source account has.
@@ -1020,6 +1046,7 @@ export const listLinks: API.OperationMethod<
     InternalServiceFault,
     InvalidParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "ListLinks",
   pagination: {
@@ -1033,6 +1060,7 @@ export type ListSinksError =
   | InternalServiceFault
   | InvalidParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Use this operation in a monitoring account to return the list of sinks created in that account.
@@ -1064,6 +1092,7 @@ export const listSinks: API.OperationMethod<
     InternalServiceFault,
     InvalidParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "ListSinks",
   pagination: {
@@ -1076,6 +1105,7 @@ export const listSinks: API.OperationMethod<
 export type ListTagsForResourceError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Displays the tags associated with a resource. Both sinks and links support tagging.
@@ -1088,7 +1118,11 @@ export const listTagsForResource: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "ListTagsForResource",
 }));
 export type PutSinkPolicyError =
@@ -1096,6 +1130,7 @@ export type PutSinkPolicyError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates or updates the resource policy that grants permissions to source accounts to link to the monitoring account sink. When you create a sink policy, you can grant permissions to all accounts in an organization or to individual accounts.
@@ -1129,6 +1164,7 @@ export const putSinkPolicy: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "PutSinkPolicy",
 }));
@@ -1136,6 +1172,7 @@ export type TagResourceError =
   | ResourceNotFoundException
   | TooManyTagsException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Assigns one or more tags (key-value pairs) to the specified resource. Both sinks and links can be tagged.
@@ -1162,12 +1199,14 @@ export const tagResource: API.OperationMethod<
     ResourceNotFoundException,
     TooManyTagsException,
     ValidationException,
+    TooManyRequestsException,
   ],
   operationName: "TagResource",
 }));
 export type UntagResourceError =
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Removes one or more tags from the specified resource.
@@ -1182,7 +1221,11 @@ export const untagResource: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
-  errors: [ResourceNotFoundException, ValidationException],
+  errors: [
+    ResourceNotFoundException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   operationName: "UntagResource",
 }));
 export type UpdateLinkError =
@@ -1190,6 +1233,7 @@ export type UpdateLinkError =
   | InvalidParameterException
   | MissingRequiredParameterException
   | ResourceNotFoundException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Use this operation to change what types of data are shared from a source account to its linked monitoring account sink. You can't change the sink or change the monitoring account with this operation.
@@ -1211,6 +1255,7 @@ export const updateLink: API.OperationMethod<
     InvalidParameterException,
     MissingRequiredParameterException,
     ResourceNotFoundException,
+    TooManyRequestsException,
   ],
   operationName: "UpdateLink",
 }));

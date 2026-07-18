@@ -5099,6 +5099,7 @@ export type CreateFargateProfileError =
   | ResourceLimitExceededException
   | ServerException
   | UnsupportedAvailabilityZoneException
+  | ResourceInUseException
   | CommonErrors;
 /**
  * Creates an Fargate profile for your Amazon EKS cluster. You must have at least one
@@ -5147,6 +5148,7 @@ export const createFargateProfile: API.OperationMethod<
     ResourceLimitExceededException,
     ServerException,
     UnsupportedAvailabilityZoneException,
+    ResourceInUseException,
   ],
   operationName: "CreateFargateProfile",
 }));
@@ -5410,6 +5412,7 @@ export type DeleteFargateProfileError =
   | InvalidParameterException
   | ResourceNotFoundException
   | ServerException
+  | ResourceInUseException
   | CommonErrors;
 /**
  * Deletes an Fargate profile.
@@ -5437,6 +5440,7 @@ export const deleteFargateProfile: API.OperationMethod<
     InvalidParameterException,
     ResourceNotFoundException,
     ServerException,
+    ResourceInUseException,
   ],
   operationName: "DeleteFargateProfile",
 }));

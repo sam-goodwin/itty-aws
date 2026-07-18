@@ -73890,6 +73890,10 @@ export class InvalidAddressNotFound extends S.TaggedErrorClass<InvalidAddressNot
   "InvalidAddress.NotFound",
   {},
 ) {}
+export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
+  "UnauthorizedOperation",
+  {},
+).pipe(C.withAuthError) {}
 export class InvalidCapacityReservationIdMalformed extends S.TaggedErrorClass<InvalidCapacityReservationIdMalformed>()(
   "InvalidCapacityReservationId.Malformed",
   {},
@@ -74077,6 +74081,14 @@ export class InvalidVerifiedAccessInstanceIdNotFound extends S.TaggedErrorClass<
 export class InvalidVolumeNotFound extends S.TaggedErrorClass<InvalidVolumeNotFound>()(
   "InvalidVolume.NotFound",
   {},
+) {}
+export class VolumeInUse extends S.TaggedErrorClass<VolumeInUse>()(
+  "VolumeInUse",
+  {},
+).pipe(
+  C.withConflictError,
+  C.withRetryableError,
+  C.withDependencyViolationError,
 ) {}
 export class InvalidVpnGatewayIDNotFound extends S.TaggedErrorClass<InvalidVpnGatewayIDNotFound>()(
   "InvalidVpnGatewayID.NotFound",
@@ -74734,10 +74746,6 @@ export class InvalidVpcCidrBlockAssociationIdErrorNotFound extends S.TaggedError
   "InvalidVpcCidrBlockAssociationIdError.NotFound",
   {},
 ) {}
-export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
-  "UnauthorizedOperation",
-  {},
-).pipe(C.withAuthError) {}
 export class InvalidIpv6PoolIDMalformed extends S.TaggedErrorClass<InvalidIpv6PoolIDMalformed>()(
   "InvalidIpv6PoolID.Malformed",
   {},
@@ -74808,6 +74816,7 @@ export type AcceptAddressTransferError =
   | RequestLimitExceeded
   | InvalidAddressMalformed
   | InvalidAddressNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Accepts an Elastic IP address transfer. For more information, see Accept a transferred Elastic IP address in the *Amazon VPC User Guide*.
@@ -74824,12 +74833,14 @@ export const acceptAddressTransfer: API.OperationMethod<
     RequestLimitExceeded,
     InvalidAddressMalformed,
     InvalidAddressNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "AcceptAddressTransfer",
 }));
 export type AcceptCapacityReservationBillingOwnershipError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Accepts a request to assign billing of the available capacity of a shared Capacity
@@ -74844,12 +74855,17 @@ export const acceptCapacityReservationBillingOwnership: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptCapacityReservationBillingOwnershipRequest,
   output: AcceptCapacityReservationBillingOwnershipResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "AcceptCapacityReservationBillingOwnership",
 }));
 export type AcceptReservedInstancesExchangeQuoteError =
   | RequestLimitExceeded
   | InvalidReservedInstancesIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Accepts the Convertible Reserved Instance exchange quote described in the GetReservedInstancesExchangeQuote call.
@@ -74862,7 +74878,11 @@ export const acceptReservedInstancesExchangeQuote: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptReservedInstancesExchangeQuoteRequest,
   output: AcceptReservedInstancesExchangeQuoteResult,
-  errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidReservedInstancesIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "AcceptReservedInstancesExchangeQuote",
 }));
 export type AcceptTransitGatewayClientVpnAttachmentError = CommonErrors;
@@ -74883,6 +74903,7 @@ export const acceptTransitGatewayClientVpnAttachment: API.OperationMethod<
 export type AcceptTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Accepts a request to associate subnets with a transit gateway multicast domain.
@@ -74895,12 +74916,13 @@ export const acceptTransitGatewayMulticastDomainAssociations: API.OperationMetho
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayMulticastDomainAssociationsRequest,
   output: AcceptTransitGatewayMulticastDomainAssociationsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "AcceptTransitGatewayMulticastDomainAssociations",
 }));
 export type AcceptTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Accepts a transit gateway peering attachment request. The peering attachment must be
@@ -74914,12 +74936,17 @@ export const acceptTransitGatewayPeeringAttachment: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayPeeringAttachmentRequest,
   output: AcceptTransitGatewayPeeringAttachmentResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "AcceptTransitGatewayPeeringAttachment",
 }));
 export type AcceptTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Accepts a request to attach a VPC to a transit gateway.
@@ -74936,13 +74963,18 @@ export const acceptTransitGatewayVpcAttachment: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AcceptTransitGatewayVpcAttachmentRequest,
   output: AcceptTransitGatewayVpcAttachmentResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "AcceptTransitGatewayVpcAttachment",
 }));
 export type AcceptVpcEndpointConnectionsError =
   | RequestLimitExceeded
   | InvalidParameter
   | InvalidVpcEndpointServiceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Accepts connection requests to your VPC endpoint service.
@@ -74959,6 +74991,7 @@ export const acceptVpcEndpointConnections: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameter,
     InvalidVpcEndpointServiceIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "AcceptVpcEndpointConnections",
 }));
@@ -74966,6 +74999,7 @@ export type AcceptVpcPeeringConnectionError =
   | RequestLimitExceeded
   | InvalidVpcPeeringConnectionIDNotFound
   | InvalidVpcPeeringConnectionIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Accept a VPC peering connection request. To accept a request, the VPC peering connection must
@@ -74988,10 +75022,14 @@ export const acceptVpcPeeringConnection: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVpcPeeringConnectionIDNotFound,
     InvalidVpcPeeringConnectionIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "AcceptVpcPeeringConnection",
 }));
-export type AdvertiseByoipCidrError = RequestLimitExceeded | CommonErrors;
+export type AdvertiseByoipCidrError =
+  | RequestLimitExceeded
+  | UnauthorizedOperation
+  | CommonErrors;
 /**
  * Advertises an IPv4 or IPv6 address range that is provisioned for use with your Amazon Web Services resources through
  * bring your own IP addresses (BYOIP).
@@ -75015,12 +75053,13 @@ export const advertiseByoipCidr: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AdvertiseByoipCidrRequest,
   output: AdvertiseByoipCidrResult,
-  errors: [RequestLimitExceeded],
+  errors: [RequestLimitExceeded, UnauthorizedOperation],
   operationName: "AdvertiseByoipCidr",
 }));
 export type AllocateAddressError =
   | RequestLimitExceeded
   | AddressLimitExceeded
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Allocates an Elastic IP address to your Amazon Web Services account. After you allocate the Elastic IP address you can associate
@@ -75057,13 +75096,14 @@ export const allocateAddress: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocateAddressRequest,
   output: AllocateAddressResult,
-  errors: [RequestLimitExceeded, AddressLimitExceeded],
+  errors: [RequestLimitExceeded, AddressLimitExceeded, UnauthorizedOperation],
   operationName: "AllocateAddress",
 }));
 export type AllocateHostsError =
   | RequestLimitExceeded
   | InvalidHostConfiguration
   | InvalidRequest
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Allocates a Dedicated Host to your account. At a minimum, specify the supported
@@ -75078,12 +75118,18 @@ export const allocateHosts: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocateHostsRequest,
   output: AllocateHostsResult,
-  errors: [RequestLimitExceeded, InvalidHostConfiguration, InvalidRequest],
+  errors: [
+    RequestLimitExceeded,
+    InvalidHostConfiguration,
+    InvalidRequest,
+    UnauthorizedOperation,
+  ],
   operationName: "AllocateHosts",
 }));
 export type AllocateIpamPoolCidrError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Allocate a CIDR from an IPAM pool. The Region you use should be the IPAM pool locale. The locale is the Amazon Web Services Region where this IPAM pool is available for allocations.
@@ -75100,12 +75146,17 @@ export const allocateIpamPoolCidr: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AllocateIpamPoolCidrRequest,
   output: AllocateIpamPoolCidrResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "AllocateIpamPoolCidr",
 }));
 export type ApplySecurityGroupsToClientVpnTargetNetworkError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Applies a security group to the association between the target network and the Client VPN endpoint. This action replaces the existing
@@ -75119,13 +75170,14 @@ export const applySecurityGroupsToClientVpnTargetNetwork: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ApplySecurityGroupsToClientVpnTargetNetworkRequest,
   output: ApplySecurityGroupsToClientVpnTargetNetworkResult,
-  errors: [RequestLimitExceeded, InvalidVpcIdMalformed],
+  errors: [RequestLimitExceeded, InvalidVpcIdMalformed, UnauthorizedOperation],
   operationName: "ApplySecurityGroupsToClientVpnTargetNetwork",
 }));
 export type AssignIpv6AddressesError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Assigns the specified IPv6 addresses to the specified network interface. You can
@@ -75153,6 +75205,7 @@ export const assignIpv6Addresses: API.OperationMethod<
     RequestLimitExceeded,
     InvalidNetworkInterfaceIDNotFound,
     InvalidParameterCombination,
+    UnauthorizedOperation,
   ],
   operationName: "AssignIpv6Addresses",
 }));
@@ -75161,6 +75214,7 @@ export type AssignPrivateIpAddressesError =
   | InvalidNetworkInterfaceIDNotFound
   | InvalidNetworkInterfaceIdMalformed
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Assigns the specified secondary private IP addresses to the specified network
@@ -75201,12 +75255,14 @@ export const assignPrivateIpAddresses: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameter,
+    UnauthorizedOperation,
   ],
   operationName: "AssignPrivateIpAddresses",
 }));
 export type AssignPrivateNatGatewayAddressError =
   | RequestLimitExceeded
   | NatGatewayNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Assigns private IPv4 addresses to a private NAT gateway. For more information, see
@@ -75220,7 +75276,7 @@ export const assignPrivateNatGatewayAddress: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssignPrivateNatGatewayAddressRequest,
   output: AssignPrivateNatGatewayAddressResult,
-  errors: [RequestLimitExceeded, NatGatewayNotFound],
+  errors: [RequestLimitExceeded, NatGatewayNotFound, UnauthorizedOperation],
   operationName: "AssignPrivateNatGatewayAddress",
 }));
 export type AssociateAddressError =
@@ -75229,6 +75285,7 @@ export type AssociateAddressError =
   | InvalidAllocationIDNotFound
   | InvalidInstanceIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates an Elastic IP address, or carrier IP address (for instances that are in
@@ -75266,6 +75323,7 @@ export const associateAddress: API.OperationMethod<
     InvalidAllocationIDNotFound,
     InvalidInstanceIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateAddress",
 }));
@@ -75273,6 +75331,7 @@ export type AssociateCapacityReservationBillingOwnerError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Initiates a request to assign billing of the unused capacity of a shared Capacity
@@ -75292,6 +75351,7 @@ export const associateCapacityReservationBillingOwner: API.OperationMethod<
     RequestLimitExceeded,
     InvalidCapacityReservationIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateCapacityReservationBillingOwner",
 }));
@@ -75299,6 +75359,7 @@ export type AssociateClientVpnTargetNetworkError =
   | RequestLimitExceeded
   | InvalidSubnetIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates a target network with a Client VPN endpoint. A target network is a subnet in a VPC. You can associate multiple subnets from the same VPC with a Client VPN endpoint. You can associate only one subnet in each Availability Zone. We recommend that you associate at least two subnets to provide Availability Zone redundancy.
@@ -75313,7 +75374,12 @@ export const associateClientVpnTargetNetwork: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateClientVpnTargetNetworkRequest,
   output: AssociateClientVpnTargetNetworkResult,
-  errors: [RequestLimitExceeded, InvalidSubnetIDMalformed, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSubnetIDMalformed,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "AssociateClientVpnTargetNetwork",
 }));
 export type AssociateDhcpOptionsError =
@@ -75321,6 +75387,7 @@ export type AssociateDhcpOptionsError =
   | InvalidDhcpOptionsIdMalformed
   | InvalidVpcIDNotFound
   | InvalidVpcIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC.
@@ -75343,6 +75410,7 @@ export const associateDhcpOptions: API.OperationMethod<
     InvalidDhcpOptionsIdMalformed,
     InvalidVpcIDNotFound,
     InvalidVpcIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateDhcpOptions",
 }));
@@ -75350,6 +75418,7 @@ export type AssociateEnclaveCertificateIamRoleError =
   | RequestLimitExceeded
   | InvalidCertificateArnMalformed
   | InvalidRoleArnMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates an Identity and Access Management (IAM) role with an Certificate Manager (ACM) certificate.
@@ -75380,12 +75449,14 @@ export const associateEnclaveCertificateIamRole: API.OperationMethod<
     RequestLimitExceeded,
     InvalidCertificateArnMalformed,
     InvalidRoleArnMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateEnclaveCertificateIamRole",
 }));
 export type AssociateIamInstanceProfileError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates an IAM instance profile with a running or stopped instance. You cannot
@@ -75399,12 +75470,13 @@ export const associateIamInstanceProfile: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateIamInstanceProfileRequest,
   output: AssociateIamInstanceProfileResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "AssociateIamInstanceProfile",
 }));
 export type AssociateInstanceEventWindowError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates one or more targets with an event window. Only one type of target (instance
@@ -75421,12 +75493,13 @@ export const associateInstanceEventWindow: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateInstanceEventWindowRequest,
   output: AssociateInstanceEventWindowResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "AssociateInstanceEventWindow",
 }));
 export type AssociateIpamByoasnError =
   | RequestLimitExceeded
   | InvalidCidrNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates your Autonomous System Number (ASN) with a BYOIP CIDR that you own in the same Amazon Web Services Region.
@@ -75443,13 +75516,14 @@ export const associateIpamByoasn: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateIpamByoasnRequest,
   output: AssociateIpamByoasnResult,
-  errors: [RequestLimitExceeded, InvalidCidrNotFound],
+  errors: [RequestLimitExceeded, InvalidCidrNotFound, UnauthorizedOperation],
   operationName: "AssociateIpamByoasn",
 }));
 export type AssociateIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
   | InvalidIpamResourceDiscoveryIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates an IPAM resource discovery with an Amazon VPC IPAM. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
@@ -75466,6 +75540,7 @@ export const associateIpamResourceDiscovery: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateIpamResourceDiscovery",
 }));
@@ -75474,6 +75549,7 @@ export type AssociateNatGatewayAddressError =
   | MissingParameter
   | NatGatewayMalformed
   | NatGatewayNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway. For more information,
@@ -75501,12 +75577,14 @@ export const associateNatGatewayAddress: API.OperationMethod<
     MissingParameter,
     NatGatewayMalformed,
     NatGatewayNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateNatGatewayAddress",
 }));
 export type AssociateRouteServerError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates a route server with a VPC to enable dynamic route updates.
@@ -75523,7 +75601,11 @@ export const associateRouteServer: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateRouteServerRequest,
   output: AssociateRouteServerResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "AssociateRouteServer",
 }));
 export type AssociateRouteTableError =
@@ -75536,6 +75618,7 @@ export type AssociateRouteTableError =
   | InvalidRouteTableIDNotFound
   | InvalidSubnetIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates a subnet in your VPC or an internet gateway or virtual private gateway
@@ -75565,6 +75648,7 @@ export const associateRouteTable: API.OperationMethod<
     InvalidRouteTableIDNotFound,
     InvalidSubnetIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateRouteTable",
 }));
@@ -75572,6 +75656,7 @@ export type AssociateSecurityGroupVpcError =
   | RequestLimitExceeded
   | InvalidGroupIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates a security group with another VPC in the same Region. This enables you to use the same security group with network interfaces and instances in the specified VPC.
@@ -75594,13 +75679,19 @@ export const associateSecurityGroupVpc: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateSecurityGroupVpcRequest,
   output: AssociateSecurityGroupVpcResult,
-  errors: [RequestLimitExceeded, InvalidGroupIdMalformed, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidGroupIdMalformed,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "AssociateSecurityGroupVpc",
 }));
 export type AssociateSubnetCidrBlockError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates a CIDR block with your subnet. You can only associate a single IPv6 CIDR
@@ -75614,12 +75705,18 @@ export const associateSubnetCidrBlock: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateSubnetCidrBlockRequest,
   output: AssociateSubnetCidrBlockResult,
-  errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSubnetIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "AssociateSubnetCidrBlock",
 }));
 export type AssociateTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain.
@@ -75638,6 +75735,7 @@ export const associateTransitGatewayMulticastDomain: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidTransitGatewayMulticastDomainIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateTransitGatewayMulticastDomain",
 }));
@@ -75645,6 +75743,7 @@ export type AssociateTransitGatewayPolicyTableError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdMalformed
   | InvalidTransitGatewayPolicyTableIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates the specified transit gateway attachment with a transit gateway policy table.
@@ -75661,12 +75760,14 @@ export const associateTransitGatewayPolicyTable: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateTransitGatewayPolicyTable",
 }));
 export type AssociateTransitGatewayRouteTableError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates the specified attachment with the specified transit gateway route table. You can
@@ -75680,12 +75781,17 @@ export const associateTransitGatewayRouteTable: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateTransitGatewayRouteTableRequest,
   output: AssociateTransitGatewayRouteTableResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "AssociateTransitGatewayRouteTable",
 }));
 export type AssociateTrunkInterfaceError =
   | RequestLimitExceeded
   | OperationNotPermitted
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates a branch network interface with a trunk network interface.
@@ -75703,7 +75809,7 @@ export const associateTrunkInterface: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AssociateTrunkInterfaceRequest,
   output: AssociateTrunkInterfaceResult,
-  errors: [RequestLimitExceeded, OperationNotPermitted],
+  errors: [RequestLimitExceeded, OperationNotPermitted, UnauthorizedOperation],
   operationName: "AssociateTrunkInterface",
 }));
 export type AssociateVpcCidrBlockError =
@@ -75713,6 +75819,7 @@ export type AssociateVpcCidrBlockError =
   | InvalidVpcIDNotFound
   | InvalidVpcIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates a CIDR block with your VPC. You can associate a secondary IPv4 CIDR block,
@@ -75741,6 +75848,7 @@ export const associateVpcCidrBlock: API.OperationMethod<
     InvalidVpcIDNotFound,
     InvalidVpcIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "AssociateVpcCidrBlock",
 }));
@@ -75748,6 +75856,7 @@ export type AttachClassicLinkVpcError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -75770,7 +75879,12 @@ export const attachClassicLinkVpc: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachClassicLinkVpcRequest,
   output: AttachClassicLinkVpcResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "AttachClassicLinkVpc",
 }));
 export type AttachImageWatermarkError = CommonErrors;
@@ -75800,6 +75914,7 @@ export type AttachInternetGatewayError =
   | InvalidInternetGatewayIDNotFound
   | InvalidInternetGatewayIdMalformed
   | InvalidVpcIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity
@@ -75820,6 +75935,7 @@ export const attachInternetGateway: API.OperationMethod<
     InvalidInternetGatewayIDNotFound,
     InvalidInternetGatewayIdMalformed,
     InvalidVpcIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "AttachInternetGateway",
 }));
@@ -75828,6 +75944,7 @@ export type AttachNetworkInterfaceError =
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
   | InvalidNetworkInterfaceIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Attaches a network interface to an instance.
@@ -75845,12 +75962,14 @@ export const attachNetworkInterface: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
     InvalidNetworkInterfaceIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "AttachNetworkInterface",
 }));
 export type AttachVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Attaches the specified Amazon Web Services Verified Access trust provider to the specified Amazon Web Services Verified Access instance.
@@ -75863,7 +75982,11 @@ export const attachVerifiedAccessTrustProvider: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AttachVerifiedAccessTrustProviderRequest,
   output: AttachVerifiedAccessTrustProviderResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessInstanceIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "AttachVerifiedAccessTrustProvider",
 }));
 export type AttachVolumeError =
@@ -75871,6 +75994,8 @@ export type AttachVolumeError =
   | InvalidInstanceIDNotFound
   | InvalidParameterValue
   | InvalidVolumeNotFound
+  | VolumeInUse
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Attaches an Amazon EBS volume to a `running` or `stopped`
@@ -75914,6 +76039,8 @@ export const attachVolume: API.OperationMethod<
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
     InvalidVolumeNotFound,
+    VolumeInUse,
+    UnauthorizedOperation,
   ],
   operationName: "AttachVolume",
 }));
@@ -75921,6 +76048,7 @@ export type AttachVpnGatewayError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
   | InvalidVpnGatewayIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Attaches an available virtual private gateway to a VPC. You can attach one virtual private
@@ -75941,12 +76069,14 @@ export const attachVpnGateway: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVpcIDNotFound,
     InvalidVpnGatewayIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "AttachVpnGateway",
 }));
 export type AuthorizeClientVpnIngressError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Adds an ingress authorization rule to a Client VPN endpoint. Ingress authorization rules act as
@@ -75961,7 +76091,7 @@ export const authorizeClientVpnIngress: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AuthorizeClientVpnIngressRequest,
   output: AuthorizeClientVpnIngressResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "AuthorizeClientVpnIngress",
 }));
 export type AuthorizeSecurityGroupEgressError =
@@ -75969,6 +76099,7 @@ export type AuthorizeSecurityGroupEgressError =
   | InvalidGroupNotFound
   | InvalidGroupIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Adds the specified outbound (egress) rules to a security group.
@@ -76003,6 +76134,7 @@ export const authorizeSecurityGroupEgress: API.OperationMethod<
     InvalidGroupNotFound,
     InvalidGroupIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "AuthorizeSecurityGroupEgress",
 }));
@@ -76011,6 +76143,7 @@ export type AuthorizeSecurityGroupIngressError =
   | InvalidGroupNotFound
   | InvalidGroupIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Adds the specified inbound (ingress) rules to a security group.
@@ -76045,12 +76178,14 @@ export const authorizeSecurityGroupIngress: API.OperationMethod<
     InvalidGroupNotFound,
     InvalidGroupIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "AuthorizeSecurityGroupIngress",
 }));
 export type BundleInstanceError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Bundles an Amazon instance store-backed Windows instance.
@@ -76071,13 +76206,14 @@ export const bundleInstance: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: BundleInstanceRequest,
   output: BundleInstanceResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "BundleInstance",
 }));
 export type CancelBundleTaskError =
   | RequestLimitExceeded
   | InvalidBundleIDNotFound
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels a bundling operation for an instance store-backed Windows instance.
@@ -76094,6 +76230,7 @@ export const cancelBundleTask: API.OperationMethod<
     RequestLimitExceeded,
     InvalidBundleIDNotFound,
     InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "CancelBundleTask",
 }));
@@ -76101,6 +76238,7 @@ export type CancelCapacityReservationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels the specified Capacity Reservation, releases the reserved capacity, and
@@ -76145,12 +76283,14 @@ export const cancelCapacityReservation: API.OperationMethod<
     RequestLimitExceeded,
     InvalidCapacityReservationIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CancelCapacityReservation",
 }));
 export type CancelCapacityReservationFleetsError =
   | RequestLimitExceeded
   | InvalidCapacityReservationFleetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels one or more Capacity Reservation Fleets. When you cancel a Capacity
@@ -76173,12 +76313,17 @@ export const cancelCapacityReservationFleets: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelCapacityReservationFleetsRequest,
   output: CancelCapacityReservationFleetsResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationFleetIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "CancelCapacityReservationFleets",
 }));
 export type CancelConversionTaskError =
   | RequestLimitExceeded
   | InvalidAction
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels an active conversion task. The task can be the import of an instance or volume. The action removes all
@@ -76193,12 +76338,13 @@ export const cancelConversionTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelConversionRequest,
   output: CancelConversionTaskResponse,
-  errors: [RequestLimitExceeded, InvalidAction],
+  errors: [RequestLimitExceeded, InvalidAction, UnauthorizedOperation],
   operationName: "CancelConversionTask",
 }));
 export type CancelDeclarativePoliciesReportError =
   | RequestLimitExceeded
   | InvalidDeclarativePoliciesReportIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels the generation of an account status report.
@@ -76218,12 +76364,17 @@ export const cancelDeclarativePoliciesReport: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelDeclarativePoliciesReportRequest,
   output: CancelDeclarativePoliciesReportResult,
-  errors: [RequestLimitExceeded, InvalidDeclarativePoliciesReportIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidDeclarativePoliciesReportIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "CancelDeclarativePoliciesReport",
 }));
 export type CancelExportTaskError =
   | RequestLimitExceeded
   | InvalidID
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels an active export task. The request removes all artifacts of the export, including any partially-created
@@ -76238,12 +76389,13 @@ export const cancelExportTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelExportTaskRequest,
   output: CancelExportTaskResponse,
-  errors: [RequestLimitExceeded, InvalidID],
+  errors: [RequestLimitExceeded, InvalidID, UnauthorizedOperation],
   operationName: "CancelExportTask",
 }));
 export type CancelImageLaunchPermissionError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Removes your Amazon Web Services account from the launch permissions for the specified AMI.
@@ -76258,12 +76410,13 @@ export const cancelImageLaunchPermission: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelImageLaunchPermissionRequest,
   output: CancelImageLaunchPermissionResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "CancelImageLaunchPermission",
 }));
 export type CancelImportTaskError =
   | RequestLimitExceeded
   | InvalidConversionTaskIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels an in-process import virtual machine or import snapshot task.
@@ -76276,12 +76429,17 @@ export const cancelImportTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelImportTaskRequest,
   output: CancelImportTaskResult,
-  errors: [RequestLimitExceeded, InvalidConversionTaskIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidConversionTaskIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "CancelImportTask",
 }));
 export type CancelReservedInstancesListingError =
   | RequestLimitExceeded
   | InvalidInput
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels the specified Reserved Instance listing in the Reserved Instance
@@ -76298,13 +76456,14 @@ export const cancelReservedInstancesListing: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelReservedInstancesListingRequest,
   output: CancelReservedInstancesListingResult,
-  errors: [RequestLimitExceeded, InvalidInput],
+  errors: [RequestLimitExceeded, InvalidInput, UnauthorizedOperation],
   operationName: "CancelReservedInstancesListing",
 }));
 export type CancelSpotFleetRequestsError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels the specified Spot Fleet requests.
@@ -76341,13 +76500,19 @@ export const cancelSpotFleetRequests: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelSpotFleetRequestsRequest,
   output: CancelSpotFleetRequestsResponse,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CancelSpotFleetRequests",
 }));
 export type CancelSpotInstanceRequestsError =
   | RequestLimitExceeded
   | InvalidParameterCombination
   | InvalidSpotInstanceRequestIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels one or more Spot Instance requests.
@@ -76367,12 +76532,14 @@ export const cancelSpotInstanceRequests: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterCombination,
     InvalidSpotInstanceRequestIDMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "CancelSpotInstanceRequests",
 }));
 export type ConfirmProductInstanceError =
   | RequestLimitExceeded
   | AuthFailure
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Determines whether a product code is associated with an instance. This action can only
@@ -76387,12 +76554,13 @@ export const confirmProductInstance: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ConfirmProductInstanceRequest,
   output: ConfirmProductInstanceResult,
-  errors: [RequestLimitExceeded, AuthFailure],
+  errors: [RequestLimitExceeded, AuthFailure, UnauthorizedOperation],
   operationName: "ConfirmProductInstance",
 }));
 export type CopyFpgaImageError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Copies the specified Amazon FPGA Image (AFI) to the current Region.
@@ -76405,7 +76573,11 @@ export const copyFpgaImage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyFpgaImageRequest,
   output: CopyFpgaImageResult,
-  errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFpgaImageIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "CopyFpgaImage",
 }));
 export type CopyImageError =
@@ -76414,6 +76586,7 @@ export type CopyImageError =
   | InvalidAMIIDNotFound
   | InvalidRegion
   | InvalidRequest
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Initiates an AMI copy operation. You must specify the source AMI ID and both the source
@@ -76493,6 +76666,7 @@ export const copyImage: API.OperationMethod<
     InvalidAMIIDNotFound,
     InvalidRegion,
     InvalidRequest,
+    UnauthorizedOperation,
   ],
   operationName: "CopyImage",
 }));
@@ -76501,6 +76675,7 @@ export type CopySnapshotError =
   | InvalidParameterValue
   | InvalidRegion
   | InvalidSnapshotNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an exact copy of an Amazon EBS snapshot.
@@ -76546,12 +76721,14 @@ export const copySnapshot: API.OperationMethod<
     InvalidParameterValue,
     InvalidRegion,
     InvalidSnapshotNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "CopySnapshot",
 }));
 export type CopyVolumesError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a crash-consistent, point-in-time copy of an existing Amazon EBS volume within the same
@@ -76566,12 +76743,17 @@ export const copyVolumes: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyVolumesRequest,
   output: CopyVolumesResult,
-  errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVolumeIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "CopyVolumes",
 }));
 export type CreateCapacityManagerDataExportError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a new data export configuration for EC2 Capacity Manager. This allows you to automatically export capacity usage data to an S3 bucket on a scheduled basis.
@@ -76585,12 +76767,13 @@ export const createCapacityManagerDataExport: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityManagerDataExportRequest,
   output: CreateCapacityManagerDataExportResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateCapacityManagerDataExport",
 }));
 export type CreateCapacityReservationError =
   | RequestLimitExceeded
   | Unsupported
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a new Capacity Reservation with the specified attributes. Capacity
@@ -76626,13 +76809,14 @@ export const createCapacityReservation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationRequest,
   output: CreateCapacityReservationResult,
-  errors: [RequestLimitExceeded, Unsupported],
+  errors: [RequestLimitExceeded, Unsupported, UnauthorizedOperation],
   operationName: "CreateCapacityReservation",
 }));
 export type CreateCapacityReservationBySplittingError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
   | InvalidCapacityReservationIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Create a new Capacity Reservation by splitting the capacity of the source Capacity
@@ -76652,6 +76836,7 @@ export const createCapacityReservationBySplitting: API.OperationMethod<
     RequestLimitExceeded,
     InvalidCapacityReservationIdMalformed,
     InvalidCapacityReservationIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "CreateCapacityReservationBySplitting",
 }));
@@ -76676,6 +76861,7 @@ export const createCapacityReservationCancellationQuote: API.OperationMethod<
 export type CreateCapacityReservationFleetError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a Capacity Reservation Fleet. For more information, see Create a
@@ -76690,7 +76876,7 @@ export const createCapacityReservationFleet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCapacityReservationFleetRequest,
   output: CreateCapacityReservationFleetResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateCapacityReservationFleet",
 }));
 export type CreateCarrierGatewayError =
@@ -76699,6 +76885,7 @@ export type CreateCarrierGatewayError =
   | InvalidVpcIdMalformed
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a carrier gateway. For more information about carrier gateways, see Carrier gateways in the *Amazon Web Services Wavelength Developer Guide*.
@@ -76717,12 +76904,14 @@ export const createCarrierGateway: API.OperationMethod<
     InvalidVpcIdMalformed,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateCarrierGateway",
 }));
 export type CreateClientVpnEndpointError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to
@@ -76737,12 +76926,13 @@ export const createClientVpnEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClientVpnEndpointRequest,
   output: CreateClientVpnEndpointResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateClientVpnEndpoint",
 }));
 export type CreateClientVpnRouteError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Adds a route to a network to a Client VPN endpoint. Each Client VPN endpoint has a route table that describes the
@@ -76756,7 +76946,11 @@ export const createClientVpnRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateClientVpnRouteRequest,
   output: CreateClientVpnRouteResult,
-  errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidClientVpnEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateClientVpnRoute",
 }));
 export type CreateCoipCidrError =
@@ -76764,6 +76958,7 @@ export type CreateCoipCidrError =
   | InvalidPoolIDMalformed
   | InvalidPoolIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a range of customer-owned IP addresses.
@@ -76781,6 +76976,7 @@ export const createCoipCidr: API.OperationMethod<
     InvalidPoolIDMalformed,
     InvalidPoolIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateCoipCidr",
 }));
@@ -76789,6 +76985,7 @@ export type CreateCoipPoolError =
   | InvalidLocalGatewayRouteTableIDMalformed
   | InvalidLocalGatewayRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a pool of customer-owned IP (CoIP) addresses.
@@ -76806,6 +77003,7 @@ export const createCoipPool: API.OperationMethod<
     InvalidLocalGatewayRouteTableIDMalformed,
     InvalidLocalGatewayRouteTableIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateCoipPool",
 }));
@@ -76813,6 +77011,7 @@ export type CreateCustomerGatewayError =
   | RequestLimitExceeded
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Provides information to Amazon Web Services about your customer gateway device. The
@@ -76840,13 +77039,19 @@ export const createCustomerGateway: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomerGatewayRequest,
   output: CreateCustomerGatewayResult,
-  errors: [RequestLimitExceeded, MissingParameter, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    MissingParameter,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateCustomerGateway",
 }));
 export type CreateDefaultSubnetError =
   | RequestLimitExceeded
   | DefaultSubnetAlreadyExistsInAvailabilityZone
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a default subnet with a size `/20` IPv4 CIDR block in the
@@ -76866,12 +77071,14 @@ export const createDefaultSubnet: API.OperationMethod<
     RequestLimitExceeded,
     DefaultSubnetAlreadyExistsInAvailabilityZone,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateDefaultSubnet",
 }));
 export type CreateDefaultVpcError =
   | RequestLimitExceeded
   | DefaultVpcAlreadyExists
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a default VPC with a size `/16` IPv4 CIDR block and a default subnet
@@ -76891,12 +77098,17 @@ export const createDefaultVpc: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDefaultVpcRequest,
   output: CreateDefaultVpcResult,
-  errors: [RequestLimitExceeded, DefaultVpcAlreadyExists],
+  errors: [
+    RequestLimitExceeded,
+    DefaultVpcAlreadyExists,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateDefaultVpc",
 }));
 export type CreateDelegateMacVolumeOwnershipTaskError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delegates ownership of the Amazon EBS root volume for an Apple silicon
@@ -76910,13 +77122,14 @@ export const createDelegateMacVolumeOwnershipTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDelegateMacVolumeOwnershipTaskRequest,
   output: CreateDelegateMacVolumeOwnershipTaskResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateDelegateMacVolumeOwnershipTask",
 }));
 export type CreateDhcpOptionsError =
   | RequestLimitExceeded
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a custom set of DHCP options. After you create a DHCP option set, you associate
@@ -76966,7 +77179,12 @@ export const createDhcpOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateDhcpOptionsRequest,
   output: CreateDhcpOptionsResult,
-  errors: [RequestLimitExceeded, MissingParameter, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    MissingParameter,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateDhcpOptions",
 }));
 export type CreateEgressOnlyInternetGatewayError =
@@ -76975,6 +77193,7 @@ export type CreateEgressOnlyInternetGatewayError =
   | InvalidVpcIdMalformed
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * [IPv6 only] Creates an egress-only internet gateway for your VPC. An egress-only
@@ -76996,12 +77215,14 @@ export const createEgressOnlyInternetGateway: API.OperationMethod<
     InvalidVpcIdMalformed,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateEgressOnlyInternetGateway",
 }));
 export type CreateFleetError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an EC2 Fleet that contains the configuration information for On-Demand Instances and Spot Instances.
@@ -77020,7 +77241,7 @@ export const createFleet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFleetRequest,
   output: CreateFleetResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateFleet",
 }));
 export type CreateFlowLogsError =
@@ -77028,6 +77249,7 @@ export type CreateFlowLogsError =
   | InvalidID
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates one or more flow logs to capture information about IP traffic for a specific network interface,
@@ -77059,12 +77281,14 @@ export const createFlowLogs: API.OperationMethod<
     InvalidID,
     InvalidParameterValue,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateFlowLogs",
 }));
 export type CreateFpgaImageError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP).
@@ -77084,13 +77308,14 @@ export const createFpgaImage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateFpgaImageRequest,
   output: CreateFpgaImageResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "CreateFpgaImage",
 }));
 export type CreateImageError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or
@@ -77125,12 +77350,14 @@ export const createImage: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
+    UnauthorizedOperation,
   ],
   operationName: "CreateImage",
 }));
 export type CreateImageUsageReportError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a report that shows how your image is used across other Amazon Web Services accounts. The report
@@ -77148,7 +77375,7 @@ export const createImageUsageReport: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateImageUsageReportRequest,
   output: CreateImageUsageReportResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateImageUsageReport",
 }));
 export type CreateInstanceConnectEndpointError =
@@ -77156,6 +77383,7 @@ export type CreateInstanceConnectEndpointError =
   | InvalidGroupNotFound
   | InvalidSubnetIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an EC2 Instance Connect Endpoint.
@@ -77178,12 +77406,14 @@ export const createInstanceConnectEndpoint: API.OperationMethod<
     InvalidGroupNotFound,
     InvalidSubnetIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateInstanceConnectEndpoint",
 }));
 export type CreateInstanceEventWindowError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an event window in which scheduled events for the associated Amazon EC2 instances can
@@ -77218,12 +77448,13 @@ export const createInstanceEventWindow: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceEventWindowRequest,
   output: CreateInstanceEventWindowResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "CreateInstanceEventWindow",
 }));
 export type CreateInstanceExportTaskError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Exports a running or stopped instance to an Amazon S3 bucket.
@@ -77240,13 +77471,14 @@ export const createInstanceExportTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInstanceExportTaskRequest,
   output: CreateInstanceExportTaskResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateInstanceExportTask",
 }));
 export type CreateInternetGatewayError =
   | RequestLimitExceeded
   | InternetGatewayLimitExceeded
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an internet gateway for use with a VPC. After creating the internet gateway,
@@ -77263,12 +77495,18 @@ export const createInternetGateway: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInternetGatewayRequest,
   output: CreateInternetGatewayResult,
-  errors: [RequestLimitExceeded, InternetGatewayLimitExceeded, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InternetGatewayLimitExceeded,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateInternetGateway",
 }));
 export type CreateInterruptibleCapacityReservationAllocationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an interruptible Capacity Reservation by specifying the number of unused instances you want to allocate from your source reservation. This helps you make unused capacity available for other workloads within your account while maintaining control to reclaim it.
@@ -77281,7 +77519,11 @@ export const createInterruptibleCapacityReservationAllocation: API.OperationMeth
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateInterruptibleCapacityReservationAllocationRequest,
   output: CreateInterruptibleCapacityReservationAllocationResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateInterruptibleCapacityReservationAllocation",
 }));
 export type CreateIpamError =
@@ -77289,6 +77531,7 @@ export type CreateIpamError =
   | InvalidParameterValue
   | ParseError
   | ResourceLimitExceeded
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Create an IPAM. Amazon VPC IP Address Manager (IPAM) is a VPC feature that you can use
@@ -77311,6 +77554,7 @@ export const createIpam: API.OperationMethod<
     InvalidParameterValue,
     ParseError,
     ResourceLimitExceeded,
+    UnauthorizedOperation,
   ],
   operationName: "CreateIpam",
 }));
@@ -77318,6 +77562,7 @@ export type CreateIpamExternalResourceVerificationTokenError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Create a verification token.
@@ -77332,13 +77577,19 @@ export const createIpamExternalResourceVerificationToken: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamExternalResourceVerificationTokenRequest,
   output: CreateIpamExternalResourceVerificationTokenResult,
-  errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateIpamExternalResourceVerificationToken",
 }));
 export type CreateIpamPolicyError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an IPAM policy.
@@ -77355,13 +77606,19 @@ export const createIpamPolicy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPolicyRequest,
   output: CreateIpamPolicyResult,
-  errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateIpamPolicy",
 }));
 export type CreateIpamPoolError =
   | RequestLimitExceeded
   | InvalidIpamScopeIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Create an IP address pool for Amazon VPC IP Address Manager (IPAM). In IPAM, a pool is a collection of contiguous IP addresses CIDRs. Pools enable you to organize your IP addresses according to your routing and security needs. For example, if you have separate routing and security needs for development and production applications, you can create a pool for each.
@@ -77376,12 +77633,18 @@ export const createIpamPool: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPoolRequest,
   output: CreateIpamPoolResult,
-  errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamScopeIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateIpamPool",
 }));
 export type CreateIpamPrefixListResolverError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an IPAM prefix list resolver.
@@ -77398,7 +77661,7 @@ export const createIpamPrefixListResolver: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamPrefixListResolverRequest,
   output: CreateIpamPrefixListResolverResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateIpamPrefixListResolver",
 }));
 export type CreateIpamPrefixListResolverTargetError =
@@ -77406,6 +77669,7 @@ export type CreateIpamPrefixListResolverTargetError =
   | InvalidIpamPrefixListResolverIdMalformed
   | InvalidIpamPrefixListResolverIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an IPAM prefix list resolver target.
@@ -77427,12 +77691,14 @@ export const createIpamPrefixListResolverTarget: API.OperationMethod<
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateIpamPrefixListResolverTarget",
 }));
 export type CreateIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | ResourceLimitExceeded
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an IPAM resource discovery. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
@@ -77445,13 +77711,14 @@ export const createIpamResourceDiscovery: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamResourceDiscoveryRequest,
   output: CreateIpamResourceDiscoveryResult,
-  errors: [RequestLimitExceeded, ResourceLimitExceeded],
+  errors: [RequestLimitExceeded, ResourceLimitExceeded, UnauthorizedOperation],
   operationName: "CreateIpamResourceDiscovery",
 }));
 export type CreateIpamScopeError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Create an IPAM scope. In IPAM, a scope is the highest-level container within IPAM. An IPAM contains two default scopes. Each scope represents the IP space for a single network. The private scope is intended for all private IP address space. The public scope is intended for all public IP address space. Scopes enable you to reuse IP addresses across multiple unconnected networks without causing IP address overlap or conflict.
@@ -77466,12 +77733,18 @@ export const createIpamScope: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateIpamScopeRequest,
   output: CreateIpamScopeResult,
-  errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateIpamScope",
 }));
 export type CreateKeyPairError =
   | RequestLimitExceeded
   | InvalidKeyPairDuplicate
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an ED25519 or 2048-bit RSA key pair with the specified name and in the
@@ -77497,12 +77770,17 @@ export const createKeyPair: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateKeyPairRequest,
   output: KeyPair,
-  errors: [RequestLimitExceeded, InvalidKeyPairDuplicate],
+  errors: [
+    RequestLimitExceeded,
+    InvalidKeyPairDuplicate,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateKeyPair",
 }));
 export type CreateLaunchTemplateError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a launch template.
@@ -77526,7 +77804,7 @@ export const createLaunchTemplate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLaunchTemplateRequest,
   output: CreateLaunchTemplateResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateLaunchTemplate",
 }));
 export type CreateLaunchTemplateVersionError = CommonErrors;
@@ -77561,6 +77839,7 @@ export type CreateLocalGatewayRouteError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a static route for the specified local gateway route table. You must specify one of the
@@ -77578,7 +77857,12 @@ export const createLocalGatewayRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateLocalGatewayRouteRequest,
   output: CreateLocalGatewayRouteResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateLocalGatewayRoute",
 }));
 export type CreateLocalGatewayRouteTableError =
@@ -77586,6 +77870,7 @@ export type CreateLocalGatewayRouteTableError =
   | InvalidLocalGatewayIDMalformed
   | InvalidLocalGatewayIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a local gateway route table.
@@ -77603,6 +77888,7 @@ export const createLocalGatewayRouteTable: API.OperationMethod<
     InvalidLocalGatewayIDMalformed,
     InvalidLocalGatewayIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateLocalGatewayRouteTable",
 }));
@@ -77611,6 +77897,7 @@ export type CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationError =
   | InvalidLocalGatewayRouteTableIDNotFound
   | InvalidLocalGatewayVirtualInterfaceGroupIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a local gateway route table virtual interface group association.
@@ -77628,6 +77915,7 @@ export const createLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
     InvalidLocalGatewayRouteTableIDNotFound,
     InvalidLocalGatewayVirtualInterfaceGroupIDMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
 }));
@@ -77637,6 +77925,7 @@ export type CreateLocalGatewayRouteTableVpcAssociationError =
   | InvalidLocalGatewayRouteTableIDNotFound
   | InvalidVpcIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Associates the specified VPC with the specified local gateway route table.
@@ -77655,6 +77944,7 @@ export const createLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
     InvalidLocalGatewayRouteTableIDNotFound,
     InvalidVpcIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateLocalGatewayRouteTableVpcAssociation",
 }));
@@ -77663,6 +77953,7 @@ export type CreateLocalGatewayVirtualInterfaceError =
   | InvalidLocalGatewayVirtualInterfaceGroupIDMalformed
   | InvalidLocalGatewayVirtualInterfaceGroupIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Create a virtual interface for a local gateway.
@@ -77680,6 +77971,7 @@ export const createLocalGatewayVirtualInterface: API.OperationMethod<
     InvalidLocalGatewayVirtualInterfaceGroupIDMalformed,
     InvalidLocalGatewayVirtualInterfaceGroupIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateLocalGatewayVirtualInterface",
 }));
@@ -77687,6 +77979,7 @@ export type CreateLocalGatewayVirtualInterfaceGroupError =
   | RequestLimitExceeded
   | InvalidLocalGatewayIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Create a local gateway virtual interface group.
@@ -77703,6 +77996,7 @@ export const createLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
     RequestLimitExceeded,
     InvalidLocalGatewayIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateLocalGatewayVirtualInterfaceGroup",
 }));
@@ -77759,6 +78053,7 @@ export type CreateManagedPrefixListError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a managed prefix list. You can specify entries for the prefix list.
@@ -77772,7 +78067,12 @@ export const createManagedPrefixList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateManagedPrefixListRequest,
   output: CreateManagedPrefixListResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateManagedPrefixList",
 }));
 export type CreateNatGatewayError =
@@ -77782,6 +78082,7 @@ export type CreateNatGatewayError =
   | InvalidSubnetIDNotFound
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a NAT gateway in the specified subnet. This action creates a network interface
@@ -77821,6 +78122,7 @@ export const createNatGateway: API.OperationMethod<
     InvalidSubnetIDNotFound,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateNatGateway",
 }));
@@ -77829,6 +78131,7 @@ export type CreateNetworkAclError =
   | InvalidVpcIDNotFound
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.
@@ -77849,6 +78152,7 @@ export const createNetworkAcl: API.OperationMethod<
     InvalidVpcIDNotFound,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateNetworkAcl",
 }));
@@ -77856,6 +78160,7 @@ export type CreateNetworkAclEntryError =
   | RequestLimitExceeded
   | InvalidNetworkAclIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules
@@ -77879,7 +78184,12 @@ export const createNetworkAclEntry: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkAclEntryRequest,
   output: CreateNetworkAclEntryResponse,
-  errors: [RequestLimitExceeded, InvalidNetworkAclIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidNetworkAclIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateNetworkAclEntry",
 }));
 export type CreateNetworkInsightsAccessScopeError = CommonErrors;
@@ -77905,6 +78215,7 @@ export type CreateNetworkInsightsPathError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a path to analyze for reachability.
@@ -77921,7 +78232,12 @@ export const createNetworkInsightsPath: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInsightsPathRequest,
   output: CreateNetworkInsightsPathResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateNetworkInsightsPath",
 }));
 export type CreateNetworkInterfaceError =
@@ -77929,6 +78245,7 @@ export type CreateNetworkInterfaceError =
   | InvalidSubnetIDNotFound
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a network interface in the specified subnet.
@@ -77952,12 +78269,14 @@ export const createNetworkInterface: API.OperationMethod<
     InvalidSubnetIDNotFound,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateNetworkInterface",
 }));
 export type CreateNetworkInterfacePermissionError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Grants an Amazon Web Services-authorized account permission to attach the specified
@@ -77974,13 +78293,14 @@ export const createNetworkInterfacePermission: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInterfacePermissionRequest,
   output: CreateNetworkInterfacePermissionResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateNetworkInterfacePermission",
 }));
 export type CreatePlacementGroupError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a placement group in which to launch instances. The strategy of the placement
@@ -78006,7 +78326,12 @@ export const createPlacementGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreatePlacementGroupRequest,
   output: CreatePlacementGroupResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreatePlacementGroup",
 }));
 export type CreatePublicIpv4PoolError = CommonErrors;
@@ -78027,6 +78352,7 @@ export const createPublicIpv4Pool: API.OperationMethod<
 export type CreateReplaceRootVolumeTaskError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Replaces the EBS-backed root volume for a `running` instance with a new
@@ -78044,12 +78370,17 @@ export const createReplaceRootVolumeTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReplaceRootVolumeTaskRequest,
   output: CreateReplaceRootVolumeTaskResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateReplaceRootVolumeTask",
 }));
 export type CreateReservedInstancesListingError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved
@@ -78082,12 +78413,13 @@ export const createReservedInstancesListing: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateReservedInstancesListingRequest,
   output: CreateReservedInstancesListingResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateReservedInstancesListing",
 }));
 export type CreateRestoreImageTaskError =
   | RequestLimitExceeded
   | InvalidRequest
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Starts a task that restores an AMI from an Amazon S3 object that was previously created by
@@ -78107,7 +78439,7 @@ export const createRestoreImageTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRestoreImageTaskRequest,
   output: CreateRestoreImageTaskResult,
-  errors: [RequestLimitExceeded, InvalidRequest],
+  errors: [RequestLimitExceeded, InvalidRequest, UnauthorizedOperation],
   operationName: "CreateRestoreImageTask",
 }));
 export type CreateRouteError =
@@ -78121,6 +78453,7 @@ export type CreateRouteError =
   | InvalidVpcEndpointIdNotFound
   | MissingParameter
   | RouteAlreadyExists
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a route in a route table within a VPC.
@@ -78162,12 +78495,14 @@ export const createRoute: API.OperationMethod<
     InvalidVpcEndpointIdNotFound,
     MissingParameter,
     RouteAlreadyExists,
+    UnauthorizedOperation,
   ],
   operationName: "CreateRoute",
 }));
 export type CreateRouteServerError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a new route server to manage dynamic routing in a VPC.
@@ -78195,7 +78530,7 @@ export const createRouteServer: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteServerRequest,
   output: CreateRouteServerResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateRouteServer",
 }));
 export type CreateRouteServerEndpointError =
@@ -78204,6 +78539,7 @@ export type CreateRouteServerEndpointError =
   | InvalidRouteServerIdNotFound
   | InvalidSubnetIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a new endpoint for a route server in a specified subnet.
@@ -78226,12 +78562,14 @@ export const createRouteServerEndpoint: API.OperationMethod<
     InvalidRouteServerIdNotFound,
     InvalidSubnetIDMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateRouteServerEndpoint",
 }));
 export type CreateRouteServerPeerError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a new BGP peer for a specified route server endpoint.
@@ -78254,7 +78592,7 @@ export const createRouteServerPeer: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateRouteServerPeerRequest,
   output: CreateRouteServerPeerResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateRouteServerPeer",
 }));
 export type CreateRouteTableError =
@@ -78262,6 +78600,7 @@ export type CreateRouteTableError =
   | InvalidVpcIDNotFound
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.
@@ -78282,6 +78621,7 @@ export const createRouteTable: API.OperationMethod<
     InvalidVpcIDNotFound,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateRouteTable",
 }));
@@ -78329,6 +78669,7 @@ export type CreateSecurityGroupError =
   | InvalidVpcIdMalformed
   | MissingParameter
   | VPCIdNotSpecified
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a security group.
@@ -78372,6 +78713,7 @@ export const createSecurityGroup: API.OperationMethod<
     InvalidVpcIdMalformed,
     MissingParameter,
     VPCIdNotSpecified,
+    UnauthorizedOperation,
   ],
   operationName: "CreateSecurityGroup",
 }));
@@ -78380,6 +78722,7 @@ export type CreateSnapshotError =
   | InvalidParameterValue
   | InvalidVolumeNotFound
   | InvalidVolumeIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a snapshot of an EBS volume and stores it in Amazon S3. You can use snapshots for
@@ -78430,12 +78773,14 @@ export const createSnapshot: API.OperationMethod<
     InvalidParameterValue,
     InvalidVolumeNotFound,
     InvalidVolumeIDMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "CreateSnapshot",
 }));
 export type CreateSnapshotsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates crash-consistent snapshots of multiple EBS volumes attached to an Amazon EC2 instance.
@@ -78463,12 +78808,13 @@ export const createSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSnapshotsRequest,
   output: CreateSnapshotsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateSnapshots",
 }));
 export type CreateSpotDatafeedSubscriptionError =
   | RequestLimitExceeded
   | InaccessibleStorageLocation
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs.
@@ -78484,12 +78830,17 @@ export const createSpotDatafeedSubscription: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSpotDatafeedSubscriptionRequest,
   output: CreateSpotDatafeedSubscriptionResult,
-  errors: [RequestLimitExceeded, InaccessibleStorageLocation],
+  errors: [
+    RequestLimitExceeded,
+    InaccessibleStorageLocation,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateSpotDatafeedSubscription",
 }));
 export type CreateStoreImageTaskError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Stores an AMI as a single object in an Amazon S3 bucket.
@@ -78508,7 +78859,7 @@ export const createStoreImageTask: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateStoreImageTaskRequest,
   output: CreateStoreImageTaskResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "CreateStoreImageTask",
 }));
 export type CreateSubnetError =
@@ -78518,6 +78869,7 @@ export type CreateSubnetError =
   | MissingParameter
   | ParseError
   | InvalidSubnetConflict
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a subnet in the specified VPC. For an IPv4 only subnet, specify an IPv4 CIDR block.
@@ -78559,6 +78911,7 @@ export const createSubnet: API.OperationMethod<
     MissingParameter,
     ParseError,
     InvalidSubnetConflict,
+    UnauthorizedOperation,
   ],
   operationName: "CreateSubnet",
 }));
@@ -78567,6 +78920,7 @@ export type CreateSubnetCidrReservationError =
   | InvalidParameterValue
   | InvalidSubnetIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a subnet CIDR reservation. For more information, see Subnet CIDR reservations
@@ -78586,6 +78940,7 @@ export const createSubnetCidrReservation: API.OperationMethod<
     InvalidParameterValue,
     InvalidSubnetIDMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateSubnetCidrReservation",
 }));
@@ -78593,6 +78948,7 @@ export type CreateTagsError =
   | RequestLimitExceeded
   | InvalidID
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Adds or overwrites only the specified tags for the specified Amazon EC2 resource or
@@ -78614,12 +78970,18 @@ export const createTags: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTagsRequest,
   output: CreateTagsResponse,
-  errors: [RequestLimitExceeded, InvalidID, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidID,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateTags",
 }));
 export type CreateTrafficMirrorFilterError =
   | RequestLimitExceeded
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a Traffic Mirror filter.
@@ -78638,12 +79000,13 @@ export const createTrafficMirrorFilter: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorFilterRequest,
   output: CreateTrafficMirrorFilterResult,
-  errors: [RequestLimitExceeded, ParseError],
+  errors: [RequestLimitExceeded, ParseError, UnauthorizedOperation],
   operationName: "CreateTrafficMirrorFilter",
 }));
 export type CreateTrafficMirrorFilterRuleError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a Traffic Mirror filter rule.
@@ -78660,7 +79023,7 @@ export const createTrafficMirrorFilterRule: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorFilterRuleRequest,
   output: CreateTrafficMirrorFilterRuleResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateTrafficMirrorFilterRule",
 }));
 export type CreateTrafficMirrorSessionError =
@@ -78668,6 +79031,7 @@ export type CreateTrafficMirrorSessionError =
   | InvalidNetworkInterfaceIDNotFound
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a Traffic Mirror session.
@@ -78694,12 +79058,14 @@ export const createTrafficMirrorSession: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidParameterValue,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateTrafficMirrorSession",
 }));
 export type CreateTrafficMirrorTargetError =
   | RequestLimitExceeded
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a target for your Traffic Mirror session.
@@ -78720,13 +79086,18 @@ export const createTrafficMirrorTarget: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTrafficMirrorTargetRequest,
   output: CreateTrafficMirrorTargetResult,
-  errors: [RequestLimitExceeded, InvalidParameterCombination],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterCombination,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateTrafficMirrorTarget",
 }));
 export type CreateTransitGatewayError =
   | RequestLimitExceeded
   | ParseError
   | TransitGatewayLimitExceeded
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a transit gateway.
@@ -78755,12 +79126,18 @@ export const createTransitGateway: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRequest,
   output: CreateTransitGatewayResult,
-  errors: [RequestLimitExceeded, ParseError, TransitGatewayLimitExceeded],
+  errors: [
+    RequestLimitExceeded,
+    ParseError,
+    TransitGatewayLimitExceeded,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateTransitGateway",
 }));
 export type CreateTransitGatewayConnectError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a Connect attachment from a specified transit gateway attachment. A Connect attachment is a GRE-based tunnel attachment that you can use to establish a connection between a transit gateway and an appliance.
@@ -78775,12 +79152,13 @@ export const createTransitGatewayConnect: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayConnectRequest,
   output: CreateTransitGatewayConnectResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateTransitGatewayConnect",
 }));
 export type CreateTransitGatewayConnectPeerError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a Connect peer for a specified transit gateway Connect attachment between a
@@ -78799,7 +79177,7 @@ export const createTransitGatewayConnectPeer: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayConnectPeerRequest,
   output: CreateTransitGatewayConnectPeerResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateTransitGatewayConnectPeer",
 }));
 export type CreateTransitGatewayMeteringPolicyError =
@@ -78807,6 +79185,7 @@ export type CreateTransitGatewayMeteringPolicyError =
   | IncorrectState
   | InvalidTransitGatewayIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a metering policy for a transit gateway to track and measure network traffic.
@@ -78824,12 +79203,14 @@ export const createTransitGatewayMeteringPolicy: API.OperationMethod<
     IncorrectState,
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateTransitGatewayMeteringPolicy",
 }));
 export type CreateTransitGatewayMeteringPolicyEntryError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an entry in a transit gateway metering policy to define traffic measurement rules.
@@ -78842,7 +79223,7 @@ export const createTransitGatewayMeteringPolicyEntry: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayMeteringPolicyEntryRequest,
   output: CreateTransitGatewayMeteringPolicyEntryResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateTransitGatewayMeteringPolicyEntry",
 }));
 export type CreateTransitGatewayMulticastDomainError =
@@ -78851,6 +79232,7 @@ export type CreateTransitGatewayMulticastDomainError =
   | InvalidTransitGatewayIDMalformed
   | InvalidTransitGatewayIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a multicast domain using the specified transit gateway.
@@ -78871,6 +79253,7 @@ export const createTransitGatewayMulticastDomain: API.OperationMethod<
     InvalidTransitGatewayIDMalformed,
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateTransitGatewayMulticastDomain",
 }));
@@ -78879,6 +79262,7 @@ export type CreateTransitGatewayPeeringAttachmentError =
   | InvalidParameterValue
   | InvalidTransitGatewayIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Requests a transit gateway peering attachment between the specified transit gateway
@@ -78901,6 +79285,7 @@ export const createTransitGatewayPeeringAttachment: API.OperationMethod<
     InvalidParameterValue,
     InvalidTransitGatewayIDMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateTransitGatewayPeeringAttachment",
 }));
@@ -78909,6 +79294,7 @@ export type CreateTransitGatewayPolicyTableError =
   | IncorrectState
   | InvalidTransitGatewayIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a transit gateway policy table.
@@ -78926,12 +79312,14 @@ export const createTransitGatewayPolicyTable: API.OperationMethod<
     IncorrectState,
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateTransitGatewayPolicyTable",
 }));
 export type CreateTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a reference (route) to a prefix list in a specified transit gateway route table.
@@ -78944,13 +79332,14 @@ export const createTransitGatewayPrefixListReference: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayPrefixListReferenceRequest,
   output: CreateTransitGatewayPrefixListReferenceResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateTransitGatewayPrefixListReference",
 }));
 export type CreateTransitGatewayRouteError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a static route for the specified transit gateway route table.
@@ -78963,7 +79352,12 @@ export const createTransitGatewayRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateTransitGatewayRouteRequest,
   output: CreateTransitGatewayRouteResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateTransitGatewayRoute",
 }));
 export type CreateTransitGatewayRouteTableError =
@@ -78972,6 +79366,7 @@ export type CreateTransitGatewayRouteTableError =
   | InvalidTransitGatewayIDNotFound
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a route table for the specified transit gateway.
@@ -78990,6 +79385,7 @@ export const createTransitGatewayRouteTable: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateTransitGatewayRouteTable",
 }));
@@ -78998,6 +79394,7 @@ export type CreateTransitGatewayRouteTableAnnouncementError =
   | InvalidRouteTableIDNotFound
   | InvalidTransitGatewayAttachmentIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Advertises a new transit gateway route table.
@@ -79015,6 +79412,7 @@ export const createTransitGatewayRouteTableAnnouncement: API.OperationMethod<
     InvalidRouteTableIDNotFound,
     InvalidTransitGatewayAttachmentIDMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateTransitGatewayRouteTableAnnouncement",
 }));
@@ -79023,6 +79421,7 @@ export type CreateTransitGatewayVpcAttachmentError =
   | InvalidSubnetIDNotFound
   | InvalidTransitGatewayIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Attaches the specified VPC to the specified transit gateway.
@@ -79045,12 +79444,14 @@ export const createTransitGatewayVpcAttachment: API.OperationMethod<
     InvalidSubnetIDNotFound,
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateTransitGatewayVpcAttachment",
 }));
 export type CreateVerifiedAccessEndpointError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * An Amazon Web Services Verified Access endpoint is where you define your application along with an optional endpoint-level access policy.
@@ -79063,7 +79464,7 @@ export const createVerifiedAccessEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessEndpointRequest,
   output: CreateVerifiedAccessEndpointResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateVerifiedAccessEndpoint",
 }));
 export type CreateVerifiedAccessGroupError =
@@ -79071,6 +79472,7 @@ export type CreateVerifiedAccessGroupError =
   | InvalidParameterValue
   | InvalidVerifiedAccessInstanceIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * An Amazon Web Services Verified Access group is a collection of Amazon Web Services Verified Access endpoints who's associated applications have
@@ -79091,6 +79493,7 @@ export const createVerifiedAccessGroup: API.OperationMethod<
     InvalidParameterValue,
     InvalidVerifiedAccessInstanceIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "CreateVerifiedAccessGroup",
 }));
@@ -79098,6 +79501,7 @@ export type CreateVerifiedAccessInstanceError =
   | RequestLimitExceeded
   | ParseError
   | VerifiedAccessInstanceLimitExceeded
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * An Amazon Web Services Verified Access instance is a regional entity that evaluates application requests and grants
@@ -79115,12 +79519,14 @@ export const createVerifiedAccessInstance: API.OperationMethod<
     RequestLimitExceeded,
     ParseError,
     VerifiedAccessInstanceLimitExceeded,
+    UnauthorizedOperation,
   ],
   operationName: "CreateVerifiedAccessInstance",
 }));
 export type CreateVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * A trust provider is a third-party entity that creates, maintains, and manages identity
@@ -79136,13 +79542,14 @@ export const createVerifiedAccessTrustProvider: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVerifiedAccessTrustProviderRequest,
   output: CreateVerifiedAccessTrustProviderResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateVerifiedAccessTrustProvider",
 }));
 export type CreateVolumeError =
   | RequestLimitExceeded
   | InvalidZoneNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates an EBS volume that can be attached to an instance in the same Availability Zone.
@@ -79169,7 +79576,12 @@ export const createVolume: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVolumeRequest,
   output: Volume,
-  errors: [RequestLimitExceeded, InvalidZoneNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidZoneNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateVolume",
 }));
 export type CreateVpcError =
@@ -79178,6 +79590,7 @@ export type CreateVpcError =
   | MissingParameter
   | ParseError
   | VpcLimitExceeded
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a VPC with the specified CIDR blocks.
@@ -79211,6 +79624,7 @@ export const createVpc: API.OperationMethod<
     MissingParameter,
     ParseError,
     VpcLimitExceeded,
+    UnauthorizedOperation,
   ],
   operationName: "CreateVpc",
 }));
@@ -79218,6 +79632,7 @@ export type CreateVpcBlockPublicAccessExclusionError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Create a VPC Block Public Access (BPA) exclusion. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account’s BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
@@ -79230,13 +79645,19 @@ export const createVpcBlockPublicAccessExclusion: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcBlockPublicAccessExclusionRequest,
   output: CreateVpcBlockPublicAccessExclusionResult,
-  errors: [RequestLimitExceeded, InvalidVpcIdMalformed, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcIdMalformed,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateVpcBlockPublicAccessExclusion",
 }));
 export type CreateVpcEncryptionControlError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a VPC Encryption Control configuration for a specified VPC. VPC Encryption Control enables you to enforce encryption for all data in transit within and between VPCs to meet compliance requirements for standards like HIPAA, FedRAMP, and PCI DSS.
@@ -79251,7 +79672,12 @@ export const createVpcEncryptionControl: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEncryptionControlRequest,
   output: CreateVpcEncryptionControlResult,
-  errors: [RequestLimitExceeded, InvalidVpcIdMalformed, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcIdMalformed,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateVpcEncryptionControl",
 }));
 export type CreateVpcEndpointError =
@@ -79261,6 +79687,7 @@ export type CreateVpcEndpointError =
   | InvalidVpcIDNotFound
   | InvalidVpcIdNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a VPC endpoint. A VPC endpoint provides a private connection between the
@@ -79283,12 +79710,14 @@ export const createVpcEndpoint: API.OperationMethod<
     InvalidVpcIDNotFound,
     InvalidVpcIdNotFound,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateVpcEndpoint",
 }));
 export type CreateVpcEndpointConnectionNotificationError =
   | RequestLimitExceeded
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a connection notification for a specified VPC endpoint or VPC endpoint
@@ -79306,12 +79735,13 @@ export const createVpcEndpointConnectionNotification: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointConnectionNotificationRequest,
   output: CreateVpcEndpointConnectionNotificationResult,
-  errors: [RequestLimitExceeded, InvalidParameter],
+  errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
   operationName: "CreateVpcEndpointConnectionNotification",
 }));
 export type CreateVpcEndpointServiceConfigurationError =
   | RequestLimitExceeded
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a VPC endpoint service to which service consumers (Amazon Web Services accounts,
@@ -79339,7 +79769,7 @@ export const createVpcEndpointServiceConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpcEndpointServiceConfigurationRequest,
   output: CreateVpcEndpointServiceConfigurationResult,
-  errors: [RequestLimitExceeded, InvalidParameter],
+  errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
   operationName: "CreateVpcEndpointServiceConfiguration",
 }));
 export type CreateVpcPeeringConnectionError =
@@ -79348,6 +79778,7 @@ export type CreateVpcPeeringConnectionError =
   | InvalidVpcIdMalformed
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Requests a VPC peering connection between two VPCs: a requester VPC that you own and
@@ -79379,12 +79810,14 @@ export const createVpcPeeringConnection: API.OperationMethod<
     InvalidVpcIdMalformed,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateVpcPeeringConnection",
 }));
 export type CreateVpnConcentratorError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a VPN concentrator that aggregates multiple VPN connections to a transit gateway.
@@ -79397,7 +79830,7 @@ export const createVpnConcentrator: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnConcentratorRequest,
   output: CreateVpnConcentratorResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "CreateVpnConcentrator",
 }));
 export type CreateVpnConnectionError =
@@ -79406,6 +79839,7 @@ export type CreateVpnConnectionError =
   | InvalidParameterValue
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a VPN connection between an existing virtual private gateway or transit
@@ -79443,6 +79877,7 @@ export const createVpnConnection: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "CreateVpnConnection",
 }));
@@ -79450,6 +79885,7 @@ export type CreateVpnConnectionRouteError =
   | RequestLimitExceeded
   | InvalidParameter
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a static route associated with a VPN connection between an existing virtual
@@ -79467,13 +79903,19 @@ export const createVpnConnectionRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnConnectionRouteRequest,
   output: CreateVpnConnectionRouteResponse,
-  errors: [RequestLimitExceeded, InvalidParameter, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameter,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateVpnConnectionRoute",
 }));
 export type CreateVpnGatewayError =
   | RequestLimitExceeded
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a virtual private gateway. A virtual private gateway is the endpoint on the
@@ -79491,13 +79933,19 @@ export const createVpnGateway: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateVpnGatewayRequest,
   output: CreateVpnGatewayResult,
-  errors: [RequestLimitExceeded, MissingParameter, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    MissingParameter,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "CreateVpnGateway",
 }));
 export type DeleteCapacityManagerDataExportError =
   | RequestLimitExceeded
   | InvalidCapacityManagerDataExportIdMalformed
   | InvalidCapacityManagerDataExportIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes an existing Capacity Manager data export configuration. This stops future scheduled exports but does not delete previously exported files from S3.
@@ -79514,6 +79962,7 @@ export const deleteCapacityManagerDataExport: API.OperationMethod<
     RequestLimitExceeded,
     InvalidCapacityManagerDataExportIdMalformed,
     InvalidCapacityManagerDataExportIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteCapacityManagerDataExport",
 }));
@@ -79522,6 +79971,7 @@ export type DeleteCarrierGatewayError =
   | InvalidCarrierGatewayIDMalformed
   | InvalidCarrierGatewayIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a carrier gateway.
@@ -79543,12 +79993,14 @@ export const deleteCarrierGateway: API.OperationMethod<
     InvalidCarrierGatewayIDMalformed,
     InvalidCarrierGatewayIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteCarrierGateway",
 }));
 export type DeleteClientVpnEndpointError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Client VPN endpoint. You must disassociate all target networks before you
@@ -79562,12 +80014,17 @@ export const deleteClientVpnEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClientVpnEndpointRequest,
   output: DeleteClientVpnEndpointResult,
-  errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidClientVpnEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteClientVpnEndpoint",
 }));
 export type DeleteClientVpnRouteError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a route from a Client VPN endpoint. You can only delete routes that you manually added using
@@ -79583,7 +80040,11 @@ export const deleteClientVpnRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteClientVpnRouteRequest,
   output: DeleteClientVpnRouteResult,
-  errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidClientVpnEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteClientVpnRoute",
 }));
 export type DeleteCoipCidrError =
@@ -79591,6 +80052,7 @@ export type DeleteCoipCidrError =
   | InvalidCidrBlockMalformed
   | InvalidIpv4PoolCoipIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a range of customer-owned IP addresses.
@@ -79608,6 +80070,7 @@ export const deleteCoipCidr: API.OperationMethod<
     InvalidCidrBlockMalformed,
     InvalidIpv4PoolCoipIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteCoipCidr",
 }));
@@ -79616,6 +80079,7 @@ export type DeleteCoipPoolError =
   | InvalidIpv4PoolCoipIdMalformed
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a pool of customer-owned IP (CoIP) addresses.
@@ -79633,6 +80097,7 @@ export const deleteCoipPool: API.OperationMethod<
     InvalidIpv4PoolCoipIdMalformed,
     InvalidParameterValue,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteCoipPool",
 }));
@@ -79641,6 +80106,7 @@ export type DeleteCustomerGatewayError =
   | InvalidCustomerGatewayIDNotFound
   | InvalidCustomerGatewayIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified customer gateway. You must delete the VPN connection before you
@@ -79659,6 +80125,7 @@ export const deleteCustomerGateway: API.OperationMethod<
     InvalidCustomerGatewayIDNotFound,
     InvalidCustomerGatewayIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteCustomerGateway",
 }));
@@ -79668,6 +80135,7 @@ export type DeleteDhcpOptionsError =
   | InvalidDhcpOptionIDNotFound
   | InvalidDhcpOptionsIDNotFound
   | InvalidDhcpOptionsIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you can delete it. You can disassociate the set of DHCP options by associating either a new set of options or the default set of options with the VPC.
@@ -79686,6 +80154,7 @@ export const deleteDhcpOptions: API.OperationMethod<
     InvalidDhcpOptionIDNotFound,
     InvalidDhcpOptionsIDNotFound,
     InvalidDhcpOptionsIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteDhcpOptions",
 }));
@@ -79697,6 +80166,7 @@ export type DeleteEgressOnlyInternetGatewayError =
   | MalformedGatewayIDNotFound
   | MissingParameter
   | RequestLimitExceeded
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes an egress-only internet gateway.
@@ -79717,12 +80187,14 @@ export const deleteEgressOnlyInternetGateway: API.OperationMethod<
     MalformedGatewayIDNotFound,
     MissingParameter,
     RequestLimitExceeded,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteEgressOnlyInternetGateway",
 }));
 export type DeleteFleetsError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified EC2 Fleet request.
@@ -79777,12 +80249,17 @@ export const deleteFleets: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFleetsRequest,
   output: DeleteFleetsResult,
-  errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFleetIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteFleets",
 }));
 export type DeleteFlowLogsError =
   | RequestLimitExceeded
   | InvalidFlowLogIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes one or more flow logs.
@@ -79795,12 +80272,17 @@ export const deleteFlowLogs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFlowLogsRequest,
   output: DeleteFlowLogsResult,
-  errors: [RequestLimitExceeded, InvalidFlowLogIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFlowLogIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteFlowLogs",
 }));
 export type DeleteFpgaImageError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Amazon FPGA Image (AFI).
@@ -79813,13 +80295,18 @@ export const deleteFpgaImage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteFpgaImageRequest,
   output: DeleteFpgaImageResult,
-  errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFpgaImageIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteFpgaImage",
 }));
 export type DeleteImageUsageReportError =
   | RequestLimitExceeded
   | InvalidImageUsageReportIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified image usage report.
@@ -79839,6 +80326,7 @@ export const deleteImageUsageReport: API.OperationMethod<
     RequestLimitExceeded,
     InvalidImageUsageReportIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteImageUsageReport",
 }));
@@ -79848,6 +80336,7 @@ export type DeleteInstanceConnectEndpointError =
   | InvalidInstanceConnectEndpointIdNotFound
   | InvalidState
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified EC2 Instance Connect Endpoint.
@@ -79866,6 +80355,7 @@ export const deleteInstanceConnectEndpoint: API.OperationMethod<
     InvalidInstanceConnectEndpointIdNotFound,
     InvalidState,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteInstanceConnectEndpoint",
 }));
@@ -79873,6 +80363,7 @@ export type DeleteInstanceEventWindowError =
   | RequestLimitExceeded
   | InvalidInstanceEventWindowIDNotFound
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified event window.
@@ -79892,6 +80383,7 @@ export const deleteInstanceEventWindow: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceEventWindowIDNotFound,
     InvalidParameterValue,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteInstanceEventWindow",
 }));
@@ -79900,6 +80392,7 @@ export type DeleteInternetGatewayError =
   | DependencyViolation
   | InvalidInternetGatewayIDNotFound
   | InvalidInternetGatewayIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified internet gateway. You must detach the internet gateway from the
@@ -79918,6 +80411,7 @@ export const deleteInternetGateway: API.OperationMethod<
     DependencyViolation,
     InvalidInternetGatewayIDNotFound,
     InvalidInternetGatewayIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteInternetGateway",
 }));
@@ -79926,6 +80420,7 @@ export type DeleteIpamError =
   | DependencyViolation
   | InvalidIpamIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete an IPAM. Deleting an IPAM removes all monitored data associated with the IPAM including the historical data for CIDRs.
@@ -79945,6 +80440,7 @@ export const deleteIpam: API.OperationMethod<
     DependencyViolation,
     InvalidIpamIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteIpam",
 }));
@@ -79953,6 +80449,7 @@ export type DeleteIpamExternalResourceVerificationTokenError =
   | InvalidIpamExternalResourceVerificationTokenIdMalformed
   | InvalidIpamExternalResourceVerificationTokenIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete a verification token.
@@ -79972,6 +80469,7 @@ export const deleteIpamExternalResourceVerificationToken: API.OperationMethod<
     InvalidIpamExternalResourceVerificationTokenIdMalformed,
     InvalidIpamExternalResourceVerificationTokenIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteIpamExternalResourceVerificationToken",
 }));
@@ -79980,6 +80478,7 @@ export type DeleteIpamPolicyError =
   | InvalidIpamPolicyIdMalformed
   | InvalidIpamPolicyIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes an IPAM policy.
@@ -79999,6 +80498,7 @@ export const deleteIpamPolicy: API.OperationMethod<
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteIpamPolicy",
 }));
@@ -80007,6 +80507,7 @@ export type DeleteIpamPoolError =
   | IncorrectState
   | InvalidIpamPoolIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete an IPAM pool.
@@ -80030,6 +80531,7 @@ export const deleteIpamPool: API.OperationMethod<
     IncorrectState,
     InvalidIpamPoolIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteIpamPool",
 }));
@@ -80038,6 +80540,7 @@ export type DeleteIpamPrefixListResolverError =
   | InvalidIpamPrefixListResolverIdMalformed
   | InvalidIpamPrefixListResolverIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes an IPAM prefix list resolver. Before deleting a resolver, you must first delete all resolver targets associated with it.
@@ -80055,6 +80558,7 @@ export const deleteIpamPrefixListResolver: API.OperationMethod<
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteIpamPrefixListResolver",
 }));
@@ -80062,6 +80566,7 @@ export type DeleteIpamPrefixListResolverTargetError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverTargetIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes an IPAM prefix list resolver target. This removes the association between the resolver and the managed prefix list, stopping automatic CIDR synchronization.
@@ -80080,6 +80585,7 @@ export const deleteIpamPrefixListResolverTarget: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverTargetIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteIpamPrefixListResolverTarget",
 }));
@@ -80087,6 +80593,7 @@ export type DeleteIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
   | InvalidIpamResourceDiscoveryIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes an IPAM resource discovery. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
@@ -80103,6 +80610,7 @@ export const deleteIpamResourceDiscovery: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteIpamResourceDiscovery",
 }));
@@ -80112,6 +80620,7 @@ export type DeleteIpamScopeError =
   | IncorrectState
   | InvalidIpamScopeIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete the scope for an IPAM. You cannot delete the default scopes.
@@ -80132,12 +80641,14 @@ export const deleteIpamScope: API.OperationMethod<
     IncorrectState,
     InvalidIpamScopeIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteIpamScope",
 }));
 export type DeleteKeyPairError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified key pair, by removing the public key from Amazon EC2.
@@ -80150,13 +80661,14 @@ export const deleteKeyPair: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteKeyPairRequest,
   output: DeleteKeyPairResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DeleteKeyPair",
 }));
 export type DeleteLaunchTemplateError =
   | RequestLimitExceeded
   | InvalidLaunchTemplateNameNotFoundException
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a launch template. Deleting a launch template deletes all of its
@@ -80174,12 +80686,14 @@ export const deleteLaunchTemplate: API.OperationMethod<
     RequestLimitExceeded,
     InvalidLaunchTemplateNameNotFoundException,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteLaunchTemplate",
 }));
 export type DeleteLaunchTemplateVersionsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes one or more versions of a launch template.
@@ -80203,12 +80717,13 @@ export const deleteLaunchTemplateVersions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLaunchTemplateVersionsRequest,
   output: DeleteLaunchTemplateVersionsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DeleteLaunchTemplateVersions",
 }));
 export type DeleteLocalGatewayRouteError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified route from the specified local gateway route table.
@@ -80221,13 +80736,14 @@ export const deleteLocalGatewayRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteLocalGatewayRouteRequest,
   output: DeleteLocalGatewayRouteResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DeleteLocalGatewayRoute",
 }));
 export type DeleteLocalGatewayRouteTableError =
   | RequestLimitExceeded
   | InvalidLocalGatewayRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a local gateway route table.
@@ -80244,6 +80760,7 @@ export const deleteLocalGatewayRouteTable: API.OperationMethod<
     RequestLimitExceeded,
     InvalidLocalGatewayRouteTableIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteLocalGatewayRouteTable",
 }));
@@ -80252,6 +80769,7 @@ export type DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationError =
   | InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed
   | InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a local gateway route table virtual interface group association.
@@ -80269,6 +80787,7 @@ export const deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
     InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed,
     InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
 }));
@@ -80277,6 +80796,7 @@ export type DeleteLocalGatewayRouteTableVpcAssociationError =
   | InvalidLocalGatewayRouteTableVpcAssociationIDMalformed
   | InvalidLocalGatewayRouteTableVpcAssociationIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified association between a VPC and local gateway route table.
@@ -80294,6 +80814,7 @@ export const deleteLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
     InvalidLocalGatewayRouteTableVpcAssociationIDMalformed,
     InvalidLocalGatewayRouteTableVpcAssociationIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteLocalGatewayRouteTableVpcAssociation",
 }));
@@ -80302,6 +80823,7 @@ export type DeleteLocalGatewayVirtualInterfaceError =
   | InvalidLocalGatewayVirtualInterfaceIDMalformed
   | InvalidLocalGatewayVirtualInterfaceIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified local gateway virtual interface.
@@ -80319,6 +80841,7 @@ export const deleteLocalGatewayVirtualInterface: API.OperationMethod<
     InvalidLocalGatewayVirtualInterfaceIDMalformed,
     InvalidLocalGatewayVirtualInterfaceIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteLocalGatewayVirtualInterface",
 }));
@@ -80327,6 +80850,7 @@ export type DeleteLocalGatewayVirtualInterfaceGroupError =
   | InvalidLocalGatewayVirtualInterfaceGroupIDMalformed
   | InvalidLocalGatewayVirtualInterfaceGroupIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete the specified local gateway interface group.
@@ -80344,6 +80868,7 @@ export const deleteLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
     InvalidLocalGatewayVirtualInterfaceGroupIDMalformed,
     InvalidLocalGatewayVirtualInterfaceGroupIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteLocalGatewayVirtualInterfaceGroup",
 }));
@@ -80352,6 +80877,7 @@ export type DeleteManagedPrefixListError =
   | InvalidPrefixListIDNotFound
   | InvalidPrefixListIdMalformed
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified managed prefix list. You must first remove all references to the prefix list in your resources.
@@ -80369,6 +80895,7 @@ export const deleteManagedPrefixList: API.OperationMethod<
     InvalidPrefixListIDNotFound,
     InvalidPrefixListIdMalformed,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteManagedPrefixList",
 }));
@@ -80380,6 +80907,7 @@ export type DeleteNatGatewayError =
   | MissingParameter
   | NatGatewayMalformed
   | NatGatewayNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified NAT gateway. Deleting a public NAT gateway disassociates its Elastic IP address,
@@ -80402,6 +80930,7 @@ export const deleteNatGateway: API.OperationMethod<
     MissingParameter,
     NatGatewayMalformed,
     NatGatewayNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteNatGateway",
 }));
@@ -80413,6 +80942,7 @@ export type DeleteNetworkAclError =
   | InvalidNetworkAclIdMalformed
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.
@@ -80433,6 +80963,7 @@ export const deleteNetworkAcl: API.OperationMethod<
     InvalidNetworkAclIdMalformed,
     InvalidParameterValue,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteNetworkAcl",
 }));
@@ -80442,6 +80973,7 @@ export type DeleteNetworkAclEntryError =
   | InvalidNetworkAclIDNotFound
   | InvalidNetworkAclIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified ingress or egress entry (rule) from the specified network ACL.
@@ -80460,6 +80992,7 @@ export const deleteNetworkAclEntry: API.OperationMethod<
     InvalidNetworkAclIDNotFound,
     InvalidNetworkAclIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteNetworkAclEntry",
 }));
@@ -80467,6 +81000,7 @@ export type DeleteNetworkInsightsAccessScopeError =
   | RequestLimitExceeded
   | InvalidNetworkInsightsAccessScopeIdNotFound
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Network Access Scope.
@@ -80483,6 +81017,7 @@ export const deleteNetworkInsightsAccessScope: API.OperationMethod<
     RequestLimitExceeded,
     InvalidNetworkInsightsAccessScopeIdNotFound,
     InvalidParameterValue,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteNetworkInsightsAccessScope",
 }));
@@ -80490,6 +81025,7 @@ export type DeleteNetworkInsightsAccessScopeAnalysisError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Network Access Scope analysis.
@@ -80502,13 +81038,19 @@ export const deleteNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsAccessScopeAnalysisRequest,
   output: DeleteNetworkInsightsAccessScopeAnalysisResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteNetworkInsightsAccessScopeAnalysis",
 }));
 export type DeleteNetworkInsightsAnalysisError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified network insights analysis.
@@ -80521,13 +81063,19 @@ export const deleteNetworkInsightsAnalysis: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsAnalysisRequest,
   output: DeleteNetworkInsightsAnalysisResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteNetworkInsightsAnalysis",
 }));
 export type DeleteNetworkInsightsPathError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified path.
@@ -80540,7 +81088,12 @@ export const deleteNetworkInsightsPath: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteNetworkInsightsPathRequest,
   output: DeleteNetworkInsightsPathResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteNetworkInsightsPath",
 }));
 export type DeleteNetworkInterfaceError =
@@ -80550,6 +81103,7 @@ export type DeleteNetworkInterfaceError =
   | InvalidNetworkInterfaceIdMalformed
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified network interface. You must detach the network interface before
@@ -80570,6 +81124,7 @@ export const deleteNetworkInterface: API.OperationMethod<
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameterValue,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteNetworkInterface",
 }));
@@ -80578,6 +81133,7 @@ export type DeleteNetworkInterfacePermissionError =
   | InvalidPermissionIDMalformed
   | InvalidPermissionIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a permission for a network interface. By default, you cannot delete the
@@ -80598,12 +81154,14 @@ export const deleteNetworkInterfacePermission: API.OperationMethod<
     InvalidPermissionIDMalformed,
     InvalidPermissionIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteNetworkInterfacePermission",
 }));
 export type DeletePlacementGroupError =
   | RequestLimitExceeded
   | InvalidPlacementGroupUnknown
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified placement group. You must terminate all instances in the
@@ -80620,13 +81178,18 @@ export const deletePlacementGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeletePlacementGroupRequest,
   output: DeletePlacementGroupResponse,
-  errors: [RequestLimitExceeded, InvalidPlacementGroupUnknown],
+  errors: [
+    RequestLimitExceeded,
+    InvalidPlacementGroupUnknown,
+    UnauthorizedOperation,
+  ],
   operationName: "DeletePlacementGroup",
 }));
 export type DeletePublicIpv4PoolError =
   | RequestLimitExceeded
   | InvalidPublicIpv4PoolNotFound
   | InvalidPublicIpv4PoolIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete a public IPv4 pool. A public IPv4 pool is an EC2 IP address pool required for the public IPv4 CIDRs that you own and bring to Amazon Web Services to manage with IPAM. IPv6 addresses you bring to Amazon Web Services, however, use IPAM pools only.
@@ -80643,12 +81206,14 @@ export const deletePublicIpv4Pool: API.OperationMethod<
     RequestLimitExceeded,
     InvalidPublicIpv4PoolNotFound,
     InvalidPublicIpv4PoolIDMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DeletePublicIpv4Pool",
 }));
 export type DeleteQueuedReservedInstancesError =
   | RequestLimitExceeded
   | InvalidReservedInstancesIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the queued purchases for the specified Reserved Instances.
@@ -80661,7 +81226,11 @@ export const deleteQueuedReservedInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteQueuedReservedInstancesRequest,
   output: DeleteQueuedReservedInstancesResult,
-  errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidReservedInstancesIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteQueuedReservedInstances",
 }));
 export type DeleteRouteError =
@@ -80672,6 +81241,7 @@ export type DeleteRouteError =
   | InvalidRouteTableIDNotFound
   | InvalidRouteTableIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified route from the specified route table.
@@ -80692,6 +81262,7 @@ export const deleteRoute: API.OperationMethod<
     InvalidRouteTableIDNotFound,
     InvalidRouteTableIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteRoute",
 }));
@@ -80699,6 +81270,7 @@ export type DeleteRouteServerError =
   | RequestLimitExceeded
   | IncorrectState
   | InvalidRouteServerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified route server.
@@ -80726,13 +81298,19 @@ export const deleteRouteServer: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteRouteServerRequest,
   output: DeleteRouteServerResult,
-  errors: [RequestLimitExceeded, IncorrectState, InvalidRouteServerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    IncorrectState,
+    InvalidRouteServerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteRouteServer",
 }));
 export type DeleteRouteServerEndpointError =
   | RequestLimitExceeded
   | InvalidRouteServerEndpointIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified route server endpoint.
@@ -80751,6 +81329,7 @@ export const deleteRouteServerEndpoint: API.OperationMethod<
     RequestLimitExceeded,
     InvalidRouteServerEndpointIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteRouteServerEndpoint",
 }));
@@ -80759,6 +81338,7 @@ export type DeleteRouteServerPeerError =
   | InvalidRouteServerPeerIdMalformed
   | InvalidRouteServerPeerIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified BGP peer from a route server.
@@ -80784,6 +81364,7 @@ export const deleteRouteServerPeer: API.OperationMethod<
     InvalidRouteServerPeerIdMalformed,
     InvalidRouteServerPeerIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteRouteServerPeer",
 }));
@@ -80792,6 +81373,7 @@ export type DeleteRouteTableError =
   | DependencyViolation
   | InvalidRouteTableIDNotFound
   | InvalidRouteTableIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.
@@ -80809,6 +81391,7 @@ export const deleteRouteTable: API.OperationMethod<
     DependencyViolation,
     InvalidRouteTableIDNotFound,
     InvalidRouteTableIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteRouteTable",
 }));
@@ -80850,6 +81433,7 @@ export type DeleteSecurityGroupError =
   | InvalidGroupIdMalformed
   | MissingParameter
   | VPCIdNotSpecified
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a security group.
@@ -80874,6 +81458,7 @@ export const deleteSecurityGroup: API.OperationMethod<
     InvalidGroupIdMalformed,
     MissingParameter,
     VPCIdNotSpecified,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteSecurityGroup",
 }));
@@ -80882,6 +81467,7 @@ export type DeleteSnapshotError =
   | InvalidParameterValue
   | InvalidSnapshotNotFound
   | InvalidSnapshotIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified snapshot.
@@ -80911,6 +81497,7 @@ export const deleteSnapshot: API.OperationMethod<
     InvalidParameterValue,
     InvalidSnapshotNotFound,
     InvalidSnapshotIDMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteSnapshot",
 }));
@@ -80935,6 +81522,7 @@ export type DeleteSubnetError =
   | InvalidSubnetIDNotFound
   | InvalidSubnetIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified subnet. You must terminate all running instances in the subnet before you can delete the subnet.
@@ -80953,6 +81541,7 @@ export const deleteSubnet: API.OperationMethod<
     InvalidSubnetIDNotFound,
     InvalidSubnetIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteSubnet",
 }));
@@ -80961,6 +81550,7 @@ export type DeleteSubnetCidrReservationError =
   | InvalidSubnetCidrReservationIDMalformed
   | InvalidSubnetCidrReservationIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a subnet CIDR reservation.
@@ -80978,6 +81568,7 @@ export const deleteSubnetCidrReservation: API.OperationMethod<
     InvalidSubnetCidrReservationIDMalformed,
     InvalidSubnetCidrReservationIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteSubnetCidrReservation",
 }));
@@ -80985,6 +81576,7 @@ export type DeleteTagsError =
   | RequestLimitExceeded
   | InvalidID
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified set of tags from the specified set of resources.
@@ -81002,13 +81594,19 @@ export const deleteTags: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsRequest,
   output: DeleteTagsResponse,
-  errors: [RequestLimitExceeded, InvalidID, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidID,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteTags",
 }));
 export type DeleteTrafficMirrorFilterError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | InvalidTrafficMirrorFilterIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Traffic Mirror filter.
@@ -81027,6 +81625,7 @@ export const deleteTrafficMirrorFilter: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValue,
     InvalidTrafficMirrorFilterIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTrafficMirrorFilter",
 }));
@@ -81035,6 +81634,7 @@ export type DeleteTrafficMirrorFilterRuleError =
   | InvalidParameterValue
   | InvalidTrafficMirrorFilterRuleIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Traffic Mirror rule.
@@ -81052,6 +81652,7 @@ export const deleteTrafficMirrorFilterRule: API.OperationMethod<
     InvalidParameterValue,
     InvalidTrafficMirrorFilterRuleIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTrafficMirrorFilterRule",
 }));
@@ -81060,6 +81661,7 @@ export type DeleteTrafficMirrorSessionError =
   | InvalidParameterValue
   | InvalidTrafficMirrorSessionIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Traffic Mirror session.
@@ -81077,6 +81679,7 @@ export const deleteTrafficMirrorSession: API.OperationMethod<
     InvalidParameterValue,
     InvalidTrafficMirrorSessionIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTrafficMirrorSession",
 }));
@@ -81085,6 +81688,7 @@ export type DeleteTrafficMirrorTargetError =
   | InvalidParameterValue
   | InvalidTrafficMirrorTargetIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Traffic Mirror target.
@@ -81104,6 +81708,7 @@ export const deleteTrafficMirrorTarget: API.OperationMethod<
     InvalidParameterValue,
     InvalidTrafficMirrorTargetIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTrafficMirrorTarget",
 }));
@@ -81114,6 +81719,7 @@ export type DeleteTransitGatewayError =
   | InvalidTransitGatewayIDNotFound
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified transit gateway.
@@ -81133,6 +81739,7 @@ export const deleteTransitGateway: API.OperationMethod<
     InvalidTransitGatewayIDNotFound,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTransitGateway",
 }));
@@ -81154,6 +81761,7 @@ export const deleteTransitGatewayClientVpnAttachment: API.OperationMethod<
 export type DeleteTransitGatewayConnectError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Connect attachment. You must first delete any Connect peers for
@@ -81167,13 +81775,18 @@ export const deleteTransitGatewayConnect: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayConnectRequest,
   output: DeleteTransitGatewayConnectResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteTransitGatewayConnect",
 }));
 export type DeleteTransitGatewayConnectPeerError =
   | RequestLimitExceeded
   | InvalidTransitGatewayConnectPeerIDMalformed
   | InvalidTransitGatewayConnectPeerIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified Connect peer.
@@ -81190,6 +81803,7 @@ export const deleteTransitGatewayConnectPeer: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayConnectPeerIDMalformed,
     InvalidTransitGatewayConnectPeerIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTransitGatewayConnectPeer",
 }));
@@ -81198,6 +81812,7 @@ export type DeleteTransitGatewayMeteringPolicyError =
   | InvalidTransitGatewayMeteringPolicyIdNotFound
   | InvalidTransitGatewayMeteringPolicyIdMalformedException
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a transit gateway metering policy.
@@ -81215,6 +81830,7 @@ export const deleteTransitGatewayMeteringPolicy: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdNotFound,
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTransitGatewayMeteringPolicy",
 }));
@@ -81223,6 +81839,7 @@ export type DeleteTransitGatewayMeteringPolicyEntryError =
   | InvalidTransitGatewayMeteringPolicyIdNotFound
   | InvalidTransitGatewayMeteringPolicyIdMalformedException
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes an entry from a transit gateway metering policy.
@@ -81240,6 +81857,7 @@ export const deleteTransitGatewayMeteringPolicyEntry: API.OperationMethod<
     InvalidTransitGatewayMeteringPolicyIdNotFound,
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTransitGatewayMeteringPolicyEntry",
 }));
@@ -81247,6 +81865,7 @@ export type DeleteTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdMalformed
   | InvalidTransitGatewayMulticastDomainIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified transit gateway multicast domain.
@@ -81263,12 +81882,14 @@ export const deleteTransitGatewayMulticastDomain: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayMulticastDomainIdMalformed,
     InvalidTransitGatewayMulticastDomainIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTransitGatewayMulticastDomain",
 }));
 export type DeleteTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a transit gateway peering attachment.
@@ -81281,7 +81902,11 @@ export const deleteTransitGatewayPeeringAttachment: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayPeeringAttachmentRequest,
   output: DeleteTransitGatewayPeeringAttachmentResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteTransitGatewayPeeringAttachment",
 }));
 export type DeleteTransitGatewayPolicyTableError =
@@ -81289,6 +81914,7 @@ export type DeleteTransitGatewayPolicyTableError =
   | InvalidTransitGatewayPolicyTableIdMalformed
   | InvalidTransitGatewayPolicyTableIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified transit gateway policy table.
@@ -81306,6 +81932,7 @@ export const deleteTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTransitGatewayPolicyTable",
 }));
@@ -81313,6 +81940,7 @@ export type DeleteTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a reference (route) to a prefix list in a specified transit gateway route table.
@@ -81325,13 +81953,19 @@ export const deleteTransitGatewayPrefixListReference: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayPrefixListReferenceRequest,
   output: DeleteTransitGatewayPrefixListReferenceResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteTransitGatewayPrefixListReference",
 }));
 export type DeleteTransitGatewayRouteError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified route from the specified transit gateway route table.
@@ -81344,7 +81978,12 @@ export const deleteTransitGatewayRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteTransitGatewayRouteRequest,
   output: DeleteTransitGatewayRouteResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteTransitGatewayRoute",
 }));
 export type DeleteTransitGatewayRouteTableError =
@@ -81354,6 +81993,7 @@ export type DeleteTransitGatewayRouteTableError =
   | InvalidRouteTableIdMalformed
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified transit gateway route table. If there are any route tables associated with
@@ -81374,6 +82014,7 @@ export const deleteTransitGatewayRouteTable: API.OperationMethod<
     InvalidRouteTableIdMalformed,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTransitGatewayRouteTable",
 }));
@@ -81381,6 +82022,7 @@ export type DeleteTransitGatewayRouteTableAnnouncementError =
   | RequestLimitExceeded
   | InvalidTransitGatewayRouteTableAnnouncementIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Advertises to the transit gateway that a transit gateway route table is deleted.
@@ -81397,6 +82039,7 @@ export const deleteTransitGatewayRouteTableAnnouncement: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayRouteTableAnnouncementIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTransitGatewayRouteTableAnnouncement",
 }));
@@ -81404,6 +82047,7 @@ export type DeleteTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDMalformed
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified VPC attachment.
@@ -81420,6 +82064,7 @@ export const deleteTransitGatewayVpcAttachment: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayAttachmentIDMalformed,
     InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteTransitGatewayVpcAttachment",
 }));
@@ -81428,6 +82073,7 @@ export type DeleteVerifiedAccessEndpointError =
   | InvalidParameterValue
   | InvalidVerifiedAccessEndpointIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete an Amazon Web Services Verified Access endpoint.
@@ -81445,6 +82091,7 @@ export const deleteVerifiedAccessEndpoint: API.OperationMethod<
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteVerifiedAccessEndpoint",
 }));
@@ -81452,6 +82099,7 @@ export type DeleteVerifiedAccessGroupError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete an Amazon Web Services Verified Access group.
@@ -81468,12 +82116,14 @@ export const deleteVerifiedAccessGroup: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVerifiedAccessGroupIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteVerifiedAccessGroup",
 }));
 export type DeleteVerifiedAccessInstanceError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete an Amazon Web Services Verified Access instance.
@@ -81486,12 +82136,17 @@ export const deleteVerifiedAccessInstance: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessInstanceRequest,
   output: DeleteVerifiedAccessInstanceResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessInstanceIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteVerifiedAccessInstance",
 }));
 export type DeleteVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessTrustProviderIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete an Amazon Web Services Verified Access trust provider.
@@ -81504,13 +82159,19 @@ export const deleteVerifiedAccessTrustProvider: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVerifiedAccessTrustProviderRequest,
   output: DeleteVerifiedAccessTrustProviderResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessTrustProviderIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteVerifiedAccessTrustProvider",
 }));
 export type DeleteVolumeError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | InvalidVolumeNotFound
+  | VolumeInUse
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified EBS volume. The volume must be in the `available` state
@@ -81529,7 +82190,13 @@ export const deleteVolume: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVolumeRequest,
   output: DeleteVolumeResponse,
-  errors: [RequestLimitExceeded, InvalidParameterValue, InvalidVolumeNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    InvalidVolumeNotFound,
+    VolumeInUse,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteVolume",
 }));
 export type DeleteVpcError =
@@ -81539,6 +82206,7 @@ export type DeleteVpcError =
   | InvalidVpcIdMalformed
   | MissingParameter
   | RequestError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified VPC. You must detach or delete all gateways and resources that are associated
@@ -81565,6 +82233,7 @@ export const deleteVpc: API.OperationMethod<
     InvalidVpcIdMalformed,
     MissingParameter,
     RequestError,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteVpc",
 }));
@@ -81572,6 +82241,7 @@ export type DeleteVpcBlockPublicAccessExclusionError =
   | RequestLimitExceeded
   | MissingParameter
   | VpcBlockPublicAccessExclusionIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Delete a VPC Block Public Access (BPA) exclusion. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account’s BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
@@ -81588,6 +82258,7 @@ export const deleteVpcBlockPublicAccessExclusion: API.OperationMethod<
     RequestLimitExceeded,
     MissingParameter,
     VpcBlockPublicAccessExclusionIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteVpcBlockPublicAccessExclusion",
 }));
@@ -81596,6 +82267,7 @@ export type DeleteVpcEncryptionControlError =
   | InvalidVpcEncryptionControlIdMalformed
   | InvalidVpcEncryptionControlIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a VPC Encryption Control configuration. This removes the encryption policy enforcement from the specified VPC.
@@ -81615,6 +82287,7 @@ export const deleteVpcEncryptionControl: API.OperationMethod<
     InvalidVpcEncryptionControlIdMalformed,
     InvalidVpcEncryptionControlIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteVpcEncryptionControl",
 }));
@@ -81637,6 +82310,7 @@ export type DeleteVpcEndpointsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointIdNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified VPC endpoints.
@@ -81656,7 +82330,12 @@ export const deleteVpcEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpcEndpointsRequest,
   output: DeleteVpcEndpointsResult,
-  errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcEndpointIdNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteVpcEndpoints",
 }));
 export type DeleteVpcEndpointServiceConfigurationsError = CommonErrors;
@@ -81682,6 +82361,7 @@ export type DeleteVpcPeeringConnectionError =
   | InvalidVpcPeeringConnectionIDNotFound
   | InvalidVpcPeeringConnectionIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes a VPC peering connection. Either the owner of the requester VPC or the owner
@@ -81703,12 +82383,14 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
     InvalidVpcPeeringConnectionIDNotFound,
     InvalidVpcPeeringConnectionIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteVpcPeeringConnection",
 }));
 export type DeleteVpnConcentratorError =
   | RequestLimitExceeded
   | InvalidVpnConcentratorIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified VPN concentrator.
@@ -81721,13 +82403,18 @@ export const deleteVpnConcentrator: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnConcentratorRequest,
   output: DeleteVpnConcentratorResult,
-  errors: [RequestLimitExceeded, InvalidVpnConcentratorIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpnConcentratorIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteVpnConcentrator",
 }));
 export type DeleteVpnConnectionError =
   | RequestLimitExceeded
   | InvalidVpnConnectionIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified VPN connection.
@@ -81756,6 +82443,7 @@ export const deleteVpnConnection: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVpnConnectionIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeleteVpnConnection",
 }));
@@ -81763,6 +82451,7 @@ export type DeleteVpnConnectionRouteError =
   | RequestLimitExceeded
   | InvalidRouteMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified static route associated with a VPN connection between an
@@ -81778,13 +82467,19 @@ export const deleteVpnConnectionRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnConnectionRouteRequest,
   output: DeleteVpnConnectionRouteResponse,
-  errors: [RequestLimitExceeded, InvalidRouteMalformed, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteMalformed,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteVpnConnectionRoute",
 }));
 export type DeleteVpnGatewayError =
   | RequestLimitExceeded
   | IncorrectState
   | InvalidVpnGatewayIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deletes the specified virtual private gateway. You must first detach the virtual
@@ -81800,10 +82495,18 @@ export const deleteVpnGateway: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVpnGatewayRequest,
   output: DeleteVpnGatewayResponse,
-  errors: [RequestLimitExceeded, IncorrectState, InvalidVpnGatewayIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    IncorrectState,
+    InvalidVpnGatewayIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DeleteVpnGateway",
 }));
-export type DeprovisionByoipCidrError = RequestLimitExceeded | CommonErrors;
+export type DeprovisionByoipCidrError =
+  | RequestLimitExceeded
+  | UnauthorizedOperation
+  | CommonErrors;
 /**
  * Releases the specified address range that you provisioned for use with your Amazon Web Services resources
  * through bring your own IP addresses (BYOIP) and deletes the corresponding address pool.
@@ -81819,13 +82522,14 @@ export const deprovisionByoipCidr: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionByoipCidrRequest,
   output: DeprovisionByoipCidrResult,
-  errors: [RequestLimitExceeded],
+  errors: [RequestLimitExceeded, UnauthorizedOperation],
   operationName: "DeprovisionByoipCidr",
 }));
 export type DeprovisionIpamByoasnError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deprovisions your Autonomous System Number (ASN) from your Amazon Web Services account. This action can only be called after any BYOIP CIDR associations are removed from your Amazon Web Services account with DisassociateIpamByoasn.
@@ -81839,13 +82543,19 @@ export const deprovisionIpamByoasn: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionIpamByoasnRequest,
   output: DeprovisionIpamByoasnResult,
-  errors: [RequestLimitExceeded, InvalidIpamIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DeprovisionIpamByoasn",
 }));
 export type DeprovisionIpamPoolCidrError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deprovision a CIDR provisioned from an IPAM pool. If you deprovision a CIDR from a pool that has a source pool, the CIDR is recycled back into the source pool. For more information, see Deprovision pool CIDRs in the *Amazon VPC IPAM User Guide*.
@@ -81858,7 +82568,12 @@ export const deprovisionIpamPoolCidr: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeprovisionIpamPoolCidrRequest,
   output: DeprovisionIpamPoolCidrResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DeprovisionIpamPoolCidr",
 }));
 export type DeprovisionPublicIpv4PoolCidrError =
@@ -81866,6 +82581,7 @@ export type DeprovisionPublicIpv4PoolCidrError =
   | InvalidPublicIpv4PoolNotFound
   | InvalidPublicIpv4PoolIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deprovision a CIDR from a public IPv4 pool.
@@ -81883,6 +82599,7 @@ export const deprovisionPublicIpv4PoolCidr: API.OperationMethod<
     InvalidPublicIpv4PoolNotFound,
     InvalidPublicIpv4PoolIDMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeprovisionPublicIpv4PoolCidr",
 }));
@@ -81891,6 +82608,7 @@ export type DeregisterImageError =
   | InvalidAMIIDMalformed
   | InvalidAMIIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deregisters the specified AMI. A deregistered AMI can't be used to launch new
@@ -81934,12 +82652,14 @@ export const deregisterImage: API.OperationMethod<
     InvalidAMIIDMalformed,
     InvalidAMIIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DeregisterImage",
 }));
 export type DeregisterInstanceEventNotificationAttributesError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deregisters tag keys to prevent tags that have the specified tag keys from being
@@ -81953,12 +82673,13 @@ export const deregisterInstanceEventNotificationAttributes: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterInstanceEventNotificationAttributesRequest,
   output: DeregisterInstanceEventNotificationAttributesResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DeregisterInstanceEventNotificationAttributes",
 }));
 export type DeregisterTransitGatewayMulticastGroupMembersError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deregisters the specified members (network interfaces) from the transit gateway multicast group.
@@ -81971,12 +82692,13 @@ export const deregisterTransitGatewayMulticastGroupMembers: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTransitGatewayMulticastGroupMembersRequest,
   output: DeregisterTransitGatewayMulticastGroupMembersResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DeregisterTransitGatewayMulticastGroupMembers",
 }));
 export type DeregisterTransitGatewayMulticastGroupSourcesError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Deregisters the specified sources (network interfaces) from the transit gateway multicast group.
@@ -81989,7 +82711,7 @@ export const deregisterTransitGatewayMulticastGroupSources: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeregisterTransitGatewayMulticastGroupSourcesRequest,
   output: DeregisterTransitGatewayMulticastGroupSourcesResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DeregisterTransitGatewayMulticastGroupSources",
 }));
 export type DescribeAccountAttributesError = CommonErrors;
@@ -82030,6 +82752,7 @@ export const describeAccountAttributes: API.OperationMethod<
 export type DescribeAddressesError =
   | RequestLimitExceeded
   | InvalidAllocationIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Elastic IP addresses or all of your Elastic IP addresses.
@@ -82042,12 +82765,17 @@ export const describeAddresses: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAddressesRequest,
   output: DescribeAddressesResult,
-  errors: [RequestLimitExceeded, InvalidAllocationIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidAllocationIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeAddresses",
 }));
 export type DescribeAddressesAttributeError =
   | RequestLimitExceeded
   | InvalidAllocationIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the attributes of the specified Elastic IP addresses. For requirements, see Using reverse DNS for email applications.
@@ -82075,7 +82803,11 @@ export const describeAddressesAttribute: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeAddressesAttributeRequest,
   output: DescribeAddressesAttributeResult,
-  errors: [RequestLimitExceeded, InvalidAllocationIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidAllocationIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeAddressesAttribute",
   pagination: {
     inputToken: "NextToken",
@@ -82167,6 +82899,7 @@ export type DescribeAvailabilityZonesError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to
@@ -82188,7 +82921,12 @@ export const describeAvailabilityZones: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeAvailabilityZonesRequest,
   output: DescribeAvailabilityZonesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeAvailabilityZones",
 }));
 export type DescribeAwsNetworkPerformanceMetricSubscriptionsError =
@@ -82232,6 +82970,7 @@ export type DescribeBundleTasksError =
   | RequestLimitExceeded
   | InvalidBundleIDNotFound
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified bundle tasks or all of your bundle tasks.
@@ -82256,12 +82995,14 @@ export const describeBundleTasks: API.OperationMethod<
     RequestLimitExceeded,
     InvalidBundleIDNotFound,
     InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeBundleTasks",
 }));
 export type DescribeByoipCidrsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the IP address ranges that were provisioned for use with Amazon Web Services resources
@@ -82290,7 +83031,7 @@ export const describeByoipCidrs: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeByoipCidrsRequest,
   output: DescribeByoipCidrsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DescribeByoipCidrs",
   pagination: {
     inputToken: "NextToken",
@@ -82302,6 +83043,7 @@ export const describeByoipCidrs: API.OperationMethod<
 export type DescribeCapacityBlockExtensionHistoryError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the events for the specified Capacity Block extension during the specified
@@ -82330,7 +83072,11 @@ export const describeCapacityBlockExtensionHistory: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockExtensionHistoryRequest,
   output: DescribeCapacityBlockExtensionHistoryResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeCapacityBlockExtensionHistory",
   pagination: {
     inputToken: "NextToken",
@@ -82342,6 +83088,7 @@ export const describeCapacityBlockExtensionHistory: API.OperationMethod<
 export type DescribeCapacityBlockExtensionOfferingsError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes Capacity Block extension offerings available for purchase in the Amazon Web Services
@@ -82370,7 +83117,11 @@ export const describeCapacityBlockExtensionOfferings: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockExtensionOfferingsRequest,
   output: DescribeCapacityBlockExtensionOfferingsResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeCapacityBlockExtensionOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -82382,6 +83133,7 @@ export const describeCapacityBlockExtensionOfferings: API.OperationMethod<
 export type DescribeCapacityBlockOfferingsError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes Capacity Block offerings available for purchase in the Amazon Web Services Region that you're currently using. With Capacity Blocks, you can
@@ -82413,7 +83165,7 @@ export const describeCapacityBlockOfferings: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockOfferingsRequest,
   output: DescribeCapacityBlockOfferingsResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeCapacityBlockOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -82425,6 +83177,7 @@ export const describeCapacityBlockOfferings: API.OperationMethod<
 export type DescribeCapacityBlocksError =
   | RequestLimitExceeded
   | InvalidCapacityBlockIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes details about Capacity Blocks in the Amazon Web Services Region that you're currently using.
@@ -82452,7 +83205,11 @@ export const describeCapacityBlocks: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlocksRequest,
   output: DescribeCapacityBlocksResult,
-  errors: [RequestLimitExceeded, InvalidCapacityBlockIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityBlockIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeCapacityBlocks",
   pagination: {
     inputToken: "NextToken",
@@ -82464,6 +83221,7 @@ export const describeCapacityBlocks: API.OperationMethod<
 export type DescribeCapacityBlockStatusError =
   | RequestLimitExceeded
   | InvalidCapacityBlockIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the availability of capacity for the specified Capacity blocks, or all of your Capacity Blocks.
@@ -82491,7 +83249,11 @@ export const describeCapacityBlockStatus: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityBlockStatusRequest,
   output: DescribeCapacityBlockStatusResult,
-  errors: [RequestLimitExceeded, InvalidCapacityBlockIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityBlockIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeCapacityBlockStatus",
   pagination: {
     inputToken: "NextToken",
@@ -82503,6 +83265,7 @@ export const describeCapacityBlockStatus: API.OperationMethod<
 export type DescribeCapacityManagerDataExportsError =
   | RequestLimitExceeded
   | InvalidCapacityManagerDataExportIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more Capacity Manager data export configurations. Returns information about export settings, delivery status, and recent export activity.
@@ -82530,7 +83293,11 @@ export const describeCapacityManagerDataExports: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityManagerDataExportsRequest,
   output: DescribeCapacityManagerDataExportsResult,
-  errors: [RequestLimitExceeded, InvalidCapacityManagerDataExportIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityManagerDataExportIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeCapacityManagerDataExports",
   pagination: {
     inputToken: "NextToken",
@@ -82542,6 +83309,7 @@ export const describeCapacityManagerDataExports: API.OperationMethod<
 export type DescribeCapacityReservationBillingRequestsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes a request to assign the billing of the unused capacity of a Capacity
@@ -82571,7 +83339,7 @@ export const describeCapacityReservationBillingRequests: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationBillingRequestsRequest,
   output: DescribeCapacityReservationBillingRequestsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DescribeCapacityReservationBillingRequests",
   pagination: {
     inputToken: "NextToken",
@@ -82600,6 +83368,7 @@ export const describeCapacityReservationCancellationQuotes: API.OperationMethod<
 export type DescribeCapacityReservationFleetsError =
   | RequestLimitExceeded
   | InvalidCapacityReservationFleetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more Capacity Reservation Fleets.
@@ -82627,7 +83396,11 @@ export const describeCapacityReservationFleets: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationFleetsRequest,
   output: DescribeCapacityReservationFleetsResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationFleetIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeCapacityReservationFleets",
   pagination: {
     inputToken: "NextToken",
@@ -82639,6 +83412,7 @@ export const describeCapacityReservationFleets: API.OperationMethod<
 export type DescribeCapacityReservationsError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of your Capacity Reservations. The results describe only the
@@ -82668,7 +83442,11 @@ export const describeCapacityReservations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCapacityReservationsRequest,
   output: DescribeCapacityReservationsResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeCapacityReservations",
   pagination: {
     inputToken: "NextToken",
@@ -82718,6 +83496,7 @@ export type DescribeCarrierGatewaysError =
   | InvalidCarrierGatewayIDMalformed
   | InvalidCarrierGatewayIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of your carrier gateways.
@@ -82750,6 +83529,7 @@ export const describeCarrierGateways: API.OperationMethod<
     InvalidCarrierGatewayIDMalformed,
     InvalidCarrierGatewayIDNotFound,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeCarrierGateways",
   pagination: {
@@ -82762,6 +83542,7 @@ export const describeCarrierGateways: API.OperationMethod<
 export type DescribeClassicLinkInstancesError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -82793,7 +83574,11 @@ export const describeClassicLinkInstances: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClassicLinkInstancesRequest,
   output: DescribeClassicLinkInstancesResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeClassicLinkInstances",
   pagination: {
     inputToken: "NextToken",
@@ -82805,6 +83590,7 @@ export const describeClassicLinkInstances: API.OperationMethod<
 export type DescribeClientVpnAuthorizationRulesError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the authorization rules for a specified Client VPN endpoint.
@@ -82832,7 +83618,11 @@ export const describeClientVpnAuthorizationRules: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnAuthorizationRulesRequest,
   output: DescribeClientVpnAuthorizationRulesResult,
-  errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidClientVpnEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeClientVpnAuthorizationRules",
   pagination: {
     inputToken: "NextToken",
@@ -82845,6 +83635,7 @@ export type DescribeClientVpnConnectionsError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes active client connections and connections that have been terminated within the last 60
@@ -82877,6 +83668,7 @@ export const describeClientVpnConnections: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeClientVpnConnections",
   pagination: {
@@ -82889,6 +83681,7 @@ export const describeClientVpnConnections: API.OperationMethod<
 export type DescribeClientVpnEndpointsError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more Client VPN endpoints in the account.
@@ -82916,7 +83709,11 @@ export const describeClientVpnEndpoints: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClientVpnEndpointsRequest,
   output: DescribeClientVpnEndpointsResult,
-  errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidClientVpnEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeClientVpnEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -82929,6 +83726,7 @@ export type DescribeClientVpnRoutesError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the routes for the specified Client VPN endpoint.
@@ -82960,6 +83758,7 @@ export const describeClientVpnRoutes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeClientVpnRoutes",
   pagination: {
@@ -82973,6 +83772,7 @@ export type DescribeClientVpnTargetNetworksError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the target networks associated with the specified Client VPN endpoint.
@@ -83004,6 +83804,7 @@ export const describeClientVpnTargetNetworks: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeClientVpnTargetNetworks",
   pagination: {
@@ -83016,6 +83817,7 @@ export const describeClientVpnTargetNetworks: API.OperationMethod<
 export type DescribeCoipPoolsError =
   | RequestLimitExceeded
   | InvalidPoolIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified customer-owned address pools or all of your customer-owned address pools.
@@ -83043,7 +83845,7 @@ export const describeCoipPools: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeCoipPoolsRequest,
   output: DescribeCoipPoolsResult,
-  errors: [RequestLimitExceeded, InvalidPoolIDMalformed],
+  errors: [RequestLimitExceeded, InvalidPoolIDMalformed, UnauthorizedOperation],
   operationName: "DescribeCoipPools",
   pagination: {
     inputToken: "NextToken",
@@ -83074,6 +83876,7 @@ export type DescribeCustomerGatewaysError =
   | RequestLimitExceeded
   | InvalidCustomerGatewayIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of your VPN customer gateways.
@@ -83089,12 +83892,18 @@ export const describeCustomerGateways: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeCustomerGatewaysRequest,
   output: DescribeCustomerGatewaysResult,
-  errors: [RequestLimitExceeded, InvalidCustomerGatewayIDNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCustomerGatewayIDNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeCustomerGateways",
 }));
 export type DescribeDeclarativePoliciesReportsError =
   | RequestLimitExceeded
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the metadata of an account status report, including the status of the
@@ -83118,14 +83927,16 @@ export const describeDeclarativePoliciesReports: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeDeclarativePoliciesReportsRequest,
   output: DescribeDeclarativePoliciesReportsResult,
-  errors: [RequestLimitExceeded, InvalidParameter],
+  errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
   operationName: "DescribeDeclarativePoliciesReports",
 }));
 export type DescribeDhcpOptionsError =
   | RequestLimitExceeded
   | InvalidDhcpOptionIDNotFound
+  | InvalidDhcpOptionsIDNotFound
   | InvalidParameterValue
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your DHCP option sets. The default is to describe all your DHCP option sets.
@@ -83161,8 +83972,10 @@ export const describeDhcpOptions: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidDhcpOptionIDNotFound,
+    InvalidDhcpOptionsIDNotFound,
     InvalidParameterValue,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeDhcpOptions",
   pagination: {
@@ -83177,6 +83990,7 @@ export type DescribeEgressOnlyInternetGatewaysError =
   | InvalidEgressOnlyInternetGatewayIdMalformed
   | InvalidEgressOnlyInternetGatewayIdNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your egress-only internet gateways. The default is to describe all your egress-only internet gateways.
@@ -83211,6 +84025,7 @@ export const describeEgressOnlyInternetGateways: API.OperationMethod<
     InvalidEgressOnlyInternetGatewayIdMalformed,
     InvalidEgressOnlyInternetGatewayIdNotFound,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeEgressOnlyInternetGateways",
   pagination: {
@@ -83223,6 +84038,7 @@ export const describeEgressOnlyInternetGateways: API.OperationMethod<
 export type DescribeElasticGpusError =
   | RequestLimitExceeded
   | UnsupportedOperation
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Amazon Elastic Graphics reached end of life on January 8, 2024.
@@ -83237,12 +84053,13 @@ export const describeElasticGpus: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeElasticGpusRequest,
   output: DescribeElasticGpusResult,
-  errors: [RequestLimitExceeded, UnsupportedOperation],
+  errors: [RequestLimitExceeded, UnsupportedOperation, UnauthorizedOperation],
   operationName: "DescribeElasticGpus",
 }));
 export type DescribeExportImageTasksError =
   | RequestLimitExceeded
   | InvalidExportTaskIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified export image tasks or all of your export image tasks.
@@ -83270,7 +84087,11 @@ export const describeExportImageTasks: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeExportImageTasksRequest,
   output: DescribeExportImageTasksResult,
-  errors: [RequestLimitExceeded, InvalidExportTaskIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidExportTaskIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeExportImageTasks",
   pagination: {
     inputToken: "NextToken",
@@ -83282,6 +84103,7 @@ export const describeExportImageTasks: API.OperationMethod<
 export type DescribeExportTasksError =
   | RequestLimitExceeded
   | InvalidExportTaskIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified export instance tasks or all of your export instance tasks.
@@ -83294,12 +84116,17 @@ export const describeExportTasks: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeExportTasksRequest,
   output: DescribeExportTasksResult,
-  errors: [RequestLimitExceeded, InvalidExportTaskIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidExportTaskIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeExportTasks",
 }));
 export type DescribeFastLaunchImagesError =
   | RequestLimitExceeded
   | InvalidRequest
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describe details for Windows AMIs that are configured for Windows fast launch.
@@ -83327,7 +84154,7 @@ export const describeFastLaunchImages: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFastLaunchImagesRequest,
   output: DescribeFastLaunchImagesResult,
-  errors: [RequestLimitExceeded, InvalidRequest],
+  errors: [RequestLimitExceeded, InvalidRequest, UnauthorizedOperation],
   operationName: "DescribeFastLaunchImages",
   pagination: {
     inputToken: "NextToken",
@@ -83375,6 +84202,7 @@ export const describeFastSnapshotRestores: API.OperationMethod<
 export type DescribeFleetHistoryError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the events for the specified EC2 Fleet during the specified time.
@@ -83394,12 +84222,17 @@ export const describeFleetHistory: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetHistoryRequest,
   output: DescribeFleetHistoryResult,
-  errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFleetIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeFleetHistory",
 }));
 export type DescribeFleetInstancesError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the running instances for the specified EC2 Fleet.
@@ -83419,12 +84252,17 @@ export const describeFleetInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeFleetInstancesRequest,
   output: DescribeFleetInstancesResult,
-  errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFleetIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeFleetInstances",
 }));
 export type DescribeFleetsError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified EC2 Fleet or all of your EC2 Fleets.
@@ -83458,7 +84296,11 @@ export const describeFleets: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFleetsRequest,
   output: DescribeFleetsResult,
-  errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFleetIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeFleets",
   pagination: {
     inputToken: "NextToken",
@@ -83469,7 +84311,9 @@ export const describeFleets: API.OperationMethod<
 }));
 export type DescribeFlowLogsError =
   | RequestLimitExceeded
+  | InvalidFlowLogIdNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more flow logs.
@@ -83500,7 +84344,12 @@ export const describeFlowLogs: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFlowLogsRequest,
   output: DescribeFlowLogsResult,
-  errors: [RequestLimitExceeded, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFlowLogIdNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeFlowLogs",
   pagination: {
     inputToken: "NextToken",
@@ -83513,6 +84362,7 @@ export type DescribeFpgaImageAttributeError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
   | InvalidFpgaImageIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified attribute of the specified Amazon FPGA Image (AFI).
@@ -83529,12 +84379,14 @@ export const describeFpgaImageAttribute: API.OperationMethod<
     RequestLimitExceeded,
     InvalidFpgaImageIDMalformed,
     InvalidFpgaImageIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeFpgaImageAttribute",
 }));
 export type DescribeFpgaImagesError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the Amazon FPGA Images (AFIs) available to you. These include public AFIs,
@@ -83564,7 +84416,11 @@ export const describeFpgaImages: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeFpgaImagesRequest,
   output: DescribeFpgaImagesResult,
-  errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFpgaImageIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeFpgaImages",
   pagination: {
     inputToken: "NextToken",
@@ -83576,6 +84432,7 @@ export const describeFpgaImages: API.OperationMethod<
 export type DescribeHostReservationOfferingsError =
   | RequestLimitExceeded
   | InvalidHostReservationOfferingIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the Dedicated Host reservations that are available to purchase.
@@ -83610,7 +84467,11 @@ export const describeHostReservationOfferings: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostReservationOfferingsRequest,
   output: DescribeHostReservationOfferingsResult,
-  errors: [RequestLimitExceeded, InvalidHostReservationOfferingIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidHostReservationOfferingIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeHostReservationOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -83659,6 +84520,7 @@ export const describeHostReservations: API.OperationMethod<
 export type DescribeHostsError =
   | RequestLimitExceeded
   | InvalidHostIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Dedicated Hosts or all your Dedicated Hosts.
@@ -83690,7 +84552,7 @@ export const describeHosts: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeHostsRequest,
   output: DescribeHostsResult,
-  errors: [RequestLimitExceeded, InvalidHostIDMalformed],
+  errors: [RequestLimitExceeded, InvalidHostIDMalformed, UnauthorizedOperation],
   operationName: "DescribeHosts",
   pagination: {
     inputToken: "NextToken",
@@ -83702,6 +84564,7 @@ export const describeHosts: API.OperationMethod<
 export type DescribeIamInstanceProfileAssociationsError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your IAM instance profile associations.
@@ -83729,7 +84592,7 @@ export const describeIamInstanceProfileAssociations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIamInstanceProfileAssociationsRequest,
   output: DescribeIamInstanceProfileAssociationsResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeIamInstanceProfileAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -83741,6 +84604,7 @@ export const describeIamInstanceProfileAssociations: API.OperationMethod<
 export type DescribeIdentityIdFormatError =
   | RequestLimitExceeded
   | InvalidTargetArnUnknown
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the ID format settings for resources for the specified IAM user, IAM role, or root
@@ -83773,7 +84637,11 @@ export const describeIdentityIdFormat: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeIdentityIdFormatRequest,
   output: DescribeIdentityIdFormatResult,
-  errors: [RequestLimitExceeded, InvalidTargetArnUnknown],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTargetArnUnknown,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeIdentityIdFormat",
 }));
 export type DescribeIdFormatError = CommonErrors;
@@ -83816,6 +84684,7 @@ export type DescribeImageAttributeError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified attribute of the specified AMI. You can specify only one attribute
@@ -83832,12 +84701,18 @@ export const describeImageAttribute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeImageAttributeRequest,
   output: ImageAttribute,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidAMIIDMalformed,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeImageAttribute",
 }));
 export type DescribeImageReferencesError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your Amazon Web Services resources that are referencing the specified images.
@@ -83868,7 +84743,7 @@ export const describeImageReferences: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageReferencesRequest,
   output: DescribeImageReferencesResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "DescribeImageReferences",
   pagination: {
     inputToken: "NextToken",
@@ -83881,6 +84756,7 @@ export type DescribeImagesError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
   | InvalidAMIIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of the
@@ -83936,7 +84812,12 @@ export const describeImages: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImagesRequest,
   output: DescribeImagesResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, InvalidAMIIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidAMIIDMalformed,
+    InvalidAMIIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeImages",
   pagination: {
     inputToken: "NextToken",
@@ -83948,6 +84829,7 @@ export const describeImages: API.OperationMethod<
 export type DescribeImageUsageReportEntriesError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the entries in image usage reports, showing how your images are used across
@@ -83979,7 +84861,7 @@ export const describeImageUsageReportEntries: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageUsageReportEntriesRequest,
   output: DescribeImageUsageReportEntriesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeImageUsageReportEntries",
   pagination: {
     inputToken: "NextToken",
@@ -83991,6 +84873,7 @@ export const describeImageUsageReportEntries: API.OperationMethod<
 export type DescribeImageUsageReportsError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the configuration and status of image usage reports, filtered by report IDs or
@@ -84022,7 +84905,7 @@ export const describeImageUsageReports: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImageUsageReportsRequest,
   output: DescribeImageUsageReportsResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeImageUsageReports",
   pagination: {
     inputToken: "NextToken",
@@ -84034,6 +84917,7 @@ export const describeImageUsageReports: API.OperationMethod<
 export type DescribeImportImageTasksError =
   | RequestLimitExceeded
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Displays details about an import virtual machine or import snapshot tasks that are already created.
@@ -84061,7 +84945,7 @@ export const describeImportImageTasks: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportImageTasksRequest,
   output: DescribeImportImageTasksResult,
-  errors: [RequestLimitExceeded, InvalidParameter],
+  errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
   operationName: "DescribeImportImageTasks",
   pagination: {
     inputToken: "NextToken",
@@ -84073,6 +84957,7 @@ export const describeImportImageTasks: API.OperationMethod<
 export type DescribeImportSnapshotTasksError =
   | RequestLimitExceeded
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your import snapshot tasks.
@@ -84100,7 +84985,7 @@ export const describeImportSnapshotTasks: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeImportSnapshotTasksRequest,
   output: DescribeImportSnapshotTasksResult,
-  errors: [RequestLimitExceeded, InvalidParameter],
+  errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
   operationName: "DescribeImportSnapshotTasks",
   pagination: {
     inputToken: "NextToken",
@@ -84113,6 +84998,7 @@ export type DescribeInstanceAttributeError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified attribute of the specified instance. You can specify only one
@@ -84131,12 +85017,14 @@ export const describeInstanceAttribute: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeInstanceAttribute",
 }));
 export type DescribeInstanceConnectEndpointsError =
   | RequestLimitExceeded
   | InvalidInstanceConnectEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified EC2 Instance Connect Endpoints or all EC2 Instance Connect Endpoints.
@@ -84164,7 +85052,11 @@ export const describeInstanceConnectEndpoints: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceConnectEndpointsRequest,
   output: DescribeInstanceConnectEndpointsResult,
-  errors: [RequestLimitExceeded, InvalidInstanceConnectEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceConnectEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeInstanceConnectEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -84176,6 +85068,7 @@ export const describeInstanceConnectEndpoints: API.OperationMethod<
 export type DescribeInstanceCreditSpecificationsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the credit option for CPU usage of the specified burstable performance
@@ -84227,7 +85120,11 @@ export const describeInstanceCreditSpecifications: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceCreditSpecificationsRequest,
   output: DescribeInstanceCreditSpecificationsResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeInstanceCreditSpecifications",
   pagination: {
     inputToken: "NextToken",
@@ -84255,6 +85152,7 @@ export const describeInstanceEventNotificationAttributes: API.OperationMethod<
 export type DescribeInstanceEventWindowsError =
   | RequestLimitExceeded
   | InvalidInstanceEventWindowIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified event windows or all event windows.
@@ -84292,7 +85190,11 @@ export const describeInstanceEventWindows: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceEventWindowsRequest,
   output: DescribeInstanceEventWindowsResult,
-  errors: [RequestLimitExceeded, InvalidInstanceEventWindowIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceEventWindowIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeInstanceEventWindows",
   pagination: {
     inputToken: "NextToken",
@@ -84304,6 +85206,7 @@ export const describeInstanceEventWindows: API.OperationMethod<
 export type DescribeInstanceImageMetadataError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the AMI that was used to launch an instance, even if the AMI is deprecated,
@@ -84353,7 +85256,11 @@ export const describeInstanceImageMetadata: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInstanceImageMetadataRequest,
   output: DescribeInstanceImageMetadataResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeInstanceImageMetadata",
   pagination: {
     inputToken: "NextToken",
@@ -84367,6 +85274,7 @@ export type DescribeInstancesError =
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified instances or all instances.
@@ -84435,6 +85343,7 @@ export const describeInstances: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeInstances",
   pagination: {
@@ -84447,6 +85356,7 @@ export const describeInstances: API.OperationMethod<
 export type DescribeInstanceSqlHaHistoryStatesError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the historical SQL Server High Availability states for Amazon EC2
@@ -84460,12 +85370,17 @@ export const describeInstanceSqlHaHistoryStates: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceSqlHaHistoryStatesRequest,
   output: DescribeInstanceSqlHaHistoryStatesResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeInstanceSqlHaHistoryStates",
 }));
 export type DescribeInstanceSqlHaStatesError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the SQL Server High Availability states for Amazon EC2 instances that are
@@ -84479,13 +85394,18 @@ export const describeInstanceSqlHaStates: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeInstanceSqlHaStatesRequest,
   output: DescribeInstanceSqlHaStatesResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeInstanceSqlHaStates",
 }));
 export type DescribeInstanceStatusError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the status of the specified instances or all of your instances. By default,
@@ -84549,6 +85469,7 @@ export const describeInstanceStatus: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeInstanceStatus",
   pagination: {
@@ -84695,6 +85616,7 @@ export type DescribeInternetGatewaysError =
   | RequestLimitExceeded
   | InvalidInternetGatewayIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your internet gateways. The default is to describe all your internet gateways.
@@ -84724,7 +85646,12 @@ export const describeInternetGateways: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeInternetGatewaysRequest,
   output: DescribeInternetGatewaysResult,
-  errors: [RequestLimitExceeded, InvalidInternetGatewayIDNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInternetGatewayIDNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeInternetGateways",
   pagination: {
     inputToken: "NextToken",
@@ -84751,6 +85678,7 @@ export const describeIpamByoasn: API.OperationMethod<
 export type DescribeIpamExternalResourceVerificationTokensError =
   | RequestLimitExceeded
   | InvalidIpamExternalResourceVerificationTokenIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describe verification tokens.
@@ -84768,12 +85696,14 @@ export const describeIpamExternalResourceVerificationTokens: API.OperationMethod
   errors: [
     RequestLimitExceeded,
     InvalidIpamExternalResourceVerificationTokenIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeIpamExternalResourceVerificationTokens",
 }));
 export type DescribeIpamPoliciesError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more IPAM policies.
@@ -84788,7 +85718,11 @@ export const describeIpamPolicies: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeIpamPoliciesRequest,
   output: DescribeIpamPoliciesResult,
-  errors: [RequestLimitExceeded, InvalidIpamPolicyIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPolicyIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeIpamPolicies",
 }));
 export type DescribeIpamPoolAllocationsError = CommonErrors;
@@ -84834,6 +85768,7 @@ export const describeIpamPoolAllocations: API.OperationMethod<
 export type DescribeIpamPoolsError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Get information about your IPAM pools.
@@ -84861,7 +85796,11 @@ export const describeIpamPools: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPoolsRequest,
   output: DescribeIpamPoolsResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeIpamPools",
   pagination: {
     inputToken: "NextToken",
@@ -84873,6 +85812,7 @@ export const describeIpamPools: API.OperationMethod<
 export type DescribeIpamPrefixListResolversError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more IPAM prefix list resolvers. Use this operation to view the configuration, status, and properties of your resolvers.
@@ -84900,7 +85840,11 @@ export const describeIpamPrefixListResolvers: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamPrefixListResolversRequest,
   output: DescribeIpamPrefixListResolversResult,
-  errors: [RequestLimitExceeded, InvalidIpamPrefixListResolverIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPrefixListResolverIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeIpamPrefixListResolvers",
   pagination: {
     inputToken: "NextToken",
@@ -84912,6 +85856,7 @@ export const describeIpamPrefixListResolvers: API.OperationMethod<
 export type DescribeIpamPrefixListResolverTargetsError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverTargetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more IPAM prefix list resolver Targets. Use this operation to view the configuration and status of resolver targets.
@@ -84942,6 +85887,7 @@ export const describeIpamPrefixListResolverTargets: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverTargetIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeIpamPrefixListResolverTargets",
   pagination: {
@@ -84954,6 +85900,7 @@ export const describeIpamPrefixListResolverTargets: API.OperationMethod<
 export type DescribeIpamResourceDiscoveriesError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes IPAM resource discoveries. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
@@ -84981,7 +85928,11 @@ export const describeIpamResourceDiscoveries: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamResourceDiscoveriesRequest,
   output: DescribeIpamResourceDiscoveriesResult,
-  errors: [RequestLimitExceeded, InvalidIpamResourceDiscoveryIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamResourceDiscoveryIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeIpamResourceDiscoveries",
   pagination: {
     inputToken: "NextToken",
@@ -84993,6 +85944,7 @@ export const describeIpamResourceDiscoveries: API.OperationMethod<
 export type DescribeIpamResourceDiscoveryAssociationsError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryAssociationIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes resource discovery association with an Amazon VPC IPAM. An associated resource discovery is a resource discovery that has been associated with an IPAM..
@@ -85023,6 +85975,7 @@ export const describeIpamResourceDiscoveryAssociations: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryAssociationIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeIpamResourceDiscoveryAssociations",
   pagination: {
@@ -85035,6 +85988,7 @@ export const describeIpamResourceDiscoveryAssociations: API.OperationMethod<
 export type DescribeIpamsError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Get information about your IPAM pools.
@@ -85064,7 +86018,7 @@ export const describeIpams: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamsRequest,
   output: DescribeIpamsResult,
-  errors: [RequestLimitExceeded, InvalidIpamIdNotFound],
+  errors: [RequestLimitExceeded, InvalidIpamIdNotFound, UnauthorizedOperation],
   operationName: "DescribeIpams",
   pagination: {
     inputToken: "NextToken",
@@ -85076,6 +86030,7 @@ export const describeIpams: API.OperationMethod<
 export type DescribeIpamScopesError =
   | RequestLimitExceeded
   | InvalidIpamScopeIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Get information about your IPAM scopes.
@@ -85103,7 +86058,11 @@ export const describeIpamScopes: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpamScopesRequest,
   output: DescribeIpamScopesResult,
-  errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamScopeIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeIpamScopes",
   pagination: {
     inputToken: "NextToken",
@@ -85115,6 +86074,7 @@ export const describeIpamScopes: API.OperationMethod<
 export type DescribeIpv6PoolsError =
   | RequestLimitExceeded
   | InvalidIpv6PoolIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your IPv6 address pools.
@@ -85142,7 +86102,11 @@ export const describeIpv6Pools: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeIpv6PoolsRequest,
   output: DescribeIpv6PoolsResult,
-  errors: [RequestLimitExceeded, InvalidIpv6PoolIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpv6PoolIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeIpv6Pools",
   pagination: {
     inputToken: "NextToken",
@@ -85155,6 +86119,7 @@ export type DescribeKeyPairsError =
   | RequestLimitExceeded
   | InvalidKeyPairNotFound
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified key pairs or all of your key pairs.
@@ -85170,7 +86135,12 @@ export const describeKeyPairs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeKeyPairsRequest,
   output: DescribeKeyPairsResult,
-  errors: [RequestLimitExceeded, InvalidKeyPairNotFound, InvalidParameterValue],
+  errors: [
+    RequestLimitExceeded,
+    InvalidKeyPairNotFound,
+    InvalidParameterValue,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeKeyPairs",
 }));
 export type DescribeLaunchTemplatesError =
@@ -85179,6 +86149,7 @@ export type DescribeLaunchTemplatesError =
   | ParseError
   | InvalidLaunchTemplateIdNotFound
   | InvalidLaunchTemplateNameNotFoundException
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more launch templates.
@@ -85212,6 +86183,7 @@ export const describeLaunchTemplates: API.OperationMethod<
     ParseError,
     InvalidLaunchTemplateIdNotFound,
     InvalidLaunchTemplateNameNotFoundException,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeLaunchTemplates",
   pagination: {
@@ -85225,6 +86197,7 @@ export type DescribeLaunchTemplateVersionsError =
   | RequestLimitExceeded
   | InvalidLaunchTemplateIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more versions of a specified launch template. You can describe all
@@ -85259,6 +86232,7 @@ export const describeLaunchTemplateVersions: API.OperationMethod<
     RequestLimitExceeded,
     InvalidLaunchTemplateIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeLaunchTemplateVersions",
   pagination: {
@@ -85491,6 +86465,7 @@ export const describeLocalGatewayVirtualInterfaces: API.OperationMethod<
 export type DescribeLockedSnapshotsError =
   | RequestLimitExceeded
   | InvalidRequest
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the lock status for a snapshot.
@@ -85503,12 +86478,13 @@ export const describeLockedSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeLockedSnapshotsRequest,
   output: DescribeLockedSnapshotsResult,
-  errors: [RequestLimitExceeded, InvalidRequest],
+  errors: [RequestLimitExceeded, InvalidRequest, UnauthorizedOperation],
   operationName: "DescribeLockedSnapshots",
 }));
 export type DescribeMacHostsError =
   | RequestLimitExceeded
   | InvalidHostIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified EC2 Mac Dedicated Host or all of your EC2 Mac Dedicated Hosts.
@@ -85536,7 +86512,7 @@ export const describeMacHosts: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMacHostsRequest,
   output: DescribeMacHostsResult,
-  errors: [RequestLimitExceeded, InvalidHostIDMalformed],
+  errors: [RequestLimitExceeded, InvalidHostIDMalformed, UnauthorizedOperation],
   operationName: "DescribeMacHosts",
   pagination: {
     inputToken: "NextToken",
@@ -85548,6 +86524,7 @@ export const describeMacHosts: API.OperationMethod<
 export type DescribeMacModificationTasksError =
   | RequestLimitExceeded
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes a System Integrity Protection (SIP) modification task or volume ownership delegation
@@ -85577,7 +86554,7 @@ export const describeMacModificationTasks: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMacModificationTasksRequest,
   output: DescribeMacModificationTasksResult,
-  errors: [RequestLimitExceeded, InvalidParameter],
+  errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
   operationName: "DescribeMacModificationTasks",
   pagination: {
     inputToken: "NextToken",
@@ -85590,6 +86567,7 @@ export type DescribeManagedPrefixListsError =
   | RequestLimitExceeded
   | InvalidPrefixListIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your managed prefix lists and any Amazon Web Services-managed prefix lists.
@@ -85617,7 +86595,12 @@ export const describeManagedPrefixLists: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeManagedPrefixListsRequest,
   output: DescribeManagedPrefixListsResult,
-  errors: [RequestLimitExceeded, InvalidPrefixListIDNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidPrefixListIDNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeManagedPrefixLists",
   pagination: {
     inputToken: "NextToken",
@@ -85629,6 +86612,7 @@ export const describeManagedPrefixLists: API.OperationMethod<
 export type DescribeMovingAddressesError =
   | RequestLimitExceeded
   | UnsupportedOperation
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -85659,7 +86643,7 @@ export const describeMovingAddresses: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeMovingAddressesRequest,
   output: DescribeMovingAddressesResult,
-  errors: [RequestLimitExceeded, UnsupportedOperation],
+  errors: [RequestLimitExceeded, UnsupportedOperation, UnauthorizedOperation],
   operationName: "DescribeMovingAddresses",
   pagination: {
     inputToken: "NextToken",
@@ -85676,6 +86660,7 @@ export type DescribeNatGatewaysError =
   | NatGatewayMalformed
   | NatGatewayNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your NAT gateways. The default is to describe all your NAT gateways.
@@ -85713,6 +86698,7 @@ export const describeNatGateways: API.OperationMethod<
     NatGatewayMalformed,
     NatGatewayNotFound,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeNatGateways",
   pagination: {
@@ -85727,6 +86713,7 @@ export type DescribeNetworkAclsError =
   | InvalidNetworkAclIDNotFound
   | InvalidRouteTableIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your network ACLs. The default is to describe all your network ACLs.
@@ -85764,6 +86751,7 @@ export const describeNetworkAcls: API.OperationMethod<
     InvalidNetworkAclIDNotFound,
     InvalidRouteTableIDNotFound,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeNetworkAcls",
   pagination: {
@@ -85776,6 +86764,7 @@ export const describeNetworkAcls: API.OperationMethod<
 export type DescribeNetworkInsightsAccessScopeAnalysesError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Network Access Scope analyses.
@@ -85803,7 +86792,7 @@ export const describeNetworkInsightsAccessScopeAnalyses: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAccessScopeAnalysesRequest,
   output: DescribeNetworkInsightsAccessScopeAnalysesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeNetworkInsightsAccessScopeAnalyses",
   pagination: {
     inputToken: "NextToken",
@@ -85815,6 +86804,7 @@ export const describeNetworkInsightsAccessScopeAnalyses: API.OperationMethod<
 export type DescribeNetworkInsightsAccessScopesError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Network Access Scopes.
@@ -85842,7 +86832,7 @@ export const describeNetworkInsightsAccessScopes: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAccessScopesRequest,
   output: DescribeNetworkInsightsAccessScopesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeNetworkInsightsAccessScopes",
   pagination: {
     inputToken: "NextToken",
@@ -85854,6 +86844,7 @@ export const describeNetworkInsightsAccessScopes: API.OperationMethod<
 export type DescribeNetworkInsightsAnalysesError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of your network insights analyses.
@@ -85881,7 +86872,7 @@ export const describeNetworkInsightsAnalyses: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsAnalysesRequest,
   output: DescribeNetworkInsightsAnalysesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeNetworkInsightsAnalyses",
   pagination: {
     inputToken: "NextToken",
@@ -85893,6 +86884,7 @@ export const describeNetworkInsightsAnalyses: API.OperationMethod<
 export type DescribeNetworkInsightsPathsError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of your paths.
@@ -85920,7 +86912,7 @@ export const describeNetworkInsightsPaths: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInsightsPathsRequest,
   output: DescribeNetworkInsightsPathsResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeNetworkInsightsPaths",
   pagination: {
     inputToken: "NextToken",
@@ -85934,6 +86926,7 @@ export type DescribeNetworkInterfaceAttributeError =
   | InvalidNetworkInterfaceIDNotFound
   | InvalidNetworkInterfaceIdMalformed
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes a network interface attribute. You can specify only one attribute at a
@@ -85952,12 +86945,14 @@ export const describeNetworkInterfaceAttribute: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameterCombination,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeNetworkInterfaceAttribute",
 }));
 export type DescribeNetworkInterfacePermissionsError =
   | RequestLimitExceeded
   | InvalidPermissionIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the permissions for your network interfaces.
@@ -85985,7 +86980,11 @@ export const describeNetworkInterfacePermissions: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeNetworkInterfacePermissionsRequest,
   output: DescribeNetworkInterfacePermissionsResult,
-  errors: [RequestLimitExceeded, InvalidPermissionIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidPermissionIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeNetworkInterfacePermissions",
   pagination: {
     inputToken: "NextToken",
@@ -85999,6 +86998,7 @@ export type DescribeNetworkInterfacesError =
   | InvalidNetworkInterfaceIDNotFound
   | InvalidNetworkInterfaceIdMalformed
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified network interfaces or all your network interfaces.
@@ -86040,6 +87040,7 @@ export const describeNetworkInterfaces: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidNetworkInterfaceIdMalformed,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeNetworkInterfaces",
   pagination: {
@@ -86052,6 +87053,7 @@ export const describeNetworkInterfaces: API.OperationMethod<
 export type DescribeOutpostLagsError =
   | RequestLimitExceeded
   | InvalidOutpostLagIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the Outposts link aggregation groups (LAGs).
@@ -86066,13 +87068,18 @@ export const describeOutpostLags: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeOutpostLagsRequest,
   output: DescribeOutpostLagsResult,
-  errors: [RequestLimitExceeded, InvalidOutpostLagIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidOutpostLagIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeOutpostLags",
 }));
 export type DescribePlacementGroupsError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | InvalidPlacementGroupUnknown
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified placement groups or all of your placement groups.
@@ -86098,12 +87105,14 @@ export const describePlacementGroups: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValue,
     InvalidPlacementGroupUnknown,
+    UnauthorizedOperation,
   ],
   operationName: "DescribePlacementGroups",
 }));
 export type DescribePrefixListsError =
   | RequestLimitExceeded
   | InvalidPrefixListIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes available Amazon Web Services services in a prefix list format, which includes the prefix list
@@ -86132,7 +87141,11 @@ export const describePrefixLists: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePrefixListsRequest,
   output: DescribePrefixListsResult,
-  errors: [RequestLimitExceeded, InvalidPrefixListIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidPrefixListIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribePrefixLists",
   pagination: {
     inputToken: "NextToken",
@@ -86199,6 +87212,7 @@ export const describePrincipalIdFormat: API.OperationMethod<
 export type DescribePublicIpv4PoolsError =
   | RequestLimitExceeded
   | InvalidPublicIpv4PoolIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified IPv4 address pools.
@@ -86226,7 +87240,11 @@ export const describePublicIpv4Pools: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribePublicIpv4PoolsRequest,
   output: DescribePublicIpv4PoolsResult,
-  errors: [RequestLimitExceeded, InvalidPublicIpv4PoolIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidPublicIpv4PoolIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribePublicIpv4Pools",
   pagination: {
     inputToken: "NextToken",
@@ -86238,6 +87256,7 @@ export const describePublicIpv4Pools: API.OperationMethod<
 export type DescribeRegionsError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the Regions that are enabled for your account, or all Regions.
@@ -86258,12 +87277,13 @@ export const describeRegions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeRegionsRequest,
   output: DescribeRegionsResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeRegions",
 }));
 export type DescribeReplaceRootVolumeTasksError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes a root volume replacement task. For more information, see
@@ -86292,7 +87312,7 @@ export const describeReplaceRootVolumeTasks: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReplaceRootVolumeTasksRequest,
   output: DescribeReplaceRootVolumeTasksResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeReplaceRootVolumeTasks",
   pagination: {
     inputToken: "NextToken",
@@ -86304,6 +87324,7 @@ export const describeReplaceRootVolumeTasks: API.OperationMethod<
 export type DescribeReservedInstancesError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of the Reserved Instances that you purchased.
@@ -86322,7 +87343,7 @@ export const describeReservedInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeReservedInstancesRequest,
   output: DescribeReservedInstancesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeReservedInstances",
 }));
 export type DescribeReservedInstancesListingsError = CommonErrors;
@@ -86365,6 +87386,7 @@ export const describeReservedInstancesListings: API.OperationMethod<
 export type DescribeReservedInstancesModificationsError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the modifications made to your Reserved Instances. If no parameter is specified,
@@ -86401,7 +87423,7 @@ export const describeReservedInstancesModifications: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesModificationsRequest,
   output: DescribeReservedInstancesModificationsResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeReservedInstancesModifications",
   pagination: {
     inputToken: "NextToken",
@@ -86412,6 +87434,7 @@ export const describeReservedInstancesModifications: API.OperationMethod<
 export type DescribeReservedInstancesOfferingsError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes Reserved Instance offerings that are available for purchase. With Reserved
@@ -86452,7 +87475,7 @@ export const describeReservedInstancesOfferings: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeReservedInstancesOfferingsRequest,
   output: DescribeReservedInstancesOfferingsResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeReservedInstancesOfferings",
   pagination: {
     inputToken: "NextToken",
@@ -86464,6 +87487,7 @@ export const describeReservedInstancesOfferings: API.OperationMethod<
 export type DescribeRouteServerEndpointsError =
   | RequestLimitExceeded
   | InvalidRouteServerEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more route server endpoints.
@@ -86495,7 +87519,11 @@ export const describeRouteServerEndpoints: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServerEndpointsRequest,
   output: DescribeRouteServerEndpointsResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeRouteServerEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -86507,6 +87535,7 @@ export const describeRouteServerEndpoints: API.OperationMethod<
 export type DescribeRouteServerPeersError =
   | RequestLimitExceeded
   | InvalidRouteServerPeerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more route server peers.
@@ -86544,7 +87573,11 @@ export const describeRouteServerPeers: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServerPeersRequest,
   output: DescribeRouteServerPeersResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerPeerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerPeerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeRouteServerPeers",
   pagination: {
     inputToken: "NextToken",
@@ -86556,6 +87589,7 @@ export const describeRouteServerPeers: API.OperationMethod<
 export type DescribeRouteServersError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more route servers.
@@ -86598,7 +87632,11 @@ export const describeRouteServers: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteServersRequest,
   output: DescribeRouteServersResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeRouteServers",
   pagination: {
     inputToken: "NextToken",
@@ -86611,6 +87649,7 @@ export type DescribeRouteTablesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your route tables. The default is to describe all your route tables.
@@ -86645,7 +87684,12 @@ export const describeRouteTables: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeRouteTablesRequest,
   output: DescribeRouteTablesResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeRouteTables",
   pagination: {
     inputToken: "NextToken",
@@ -86857,6 +87901,7 @@ export const describeSecurityGroupReferences: API.OperationMethod<
 export type DescribeSecurityGroupRulesError =
   | RequestLimitExceeded
   | InvalidSecurityGroupRuleIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of your security group rules.
@@ -86884,7 +87929,11 @@ export const describeSecurityGroupRules: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSecurityGroupRulesRequest,
   output: DescribeSecurityGroupRulesResult,
-  errors: [RequestLimitExceeded, InvalidSecurityGroupRuleIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSecurityGroupRuleIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeSecurityGroupRules",
   pagination: {
     inputToken: "NextToken",
@@ -86899,6 +87948,7 @@ export type DescribeSecurityGroupsError =
   | InvalidGroupIdMalformed
   | ParseError
   | VPCIdNotSpecified
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified security groups or all of your security groups.
@@ -86932,6 +87982,7 @@ export const describeSecurityGroups: API.OperationMethod<
     InvalidGroupIdMalformed,
     ParseError,
     VPCIdNotSpecified,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeSecurityGroups",
   pagination: {
@@ -86980,6 +88031,7 @@ export const describeSecurityGroupVpcAssociations: API.OperationMethod<
 export type DescribeServiceLinkVirtualInterfacesError =
   | RequestLimitExceeded
   | InvalidServiceLinkVirtualInterfaceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the Outpost service link virtual interfaces.
@@ -86992,7 +88044,11 @@ export const describeServiceLinkVirtualInterfaces: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeServiceLinkVirtualInterfacesRequest,
   output: DescribeServiceLinkVirtualInterfacesResult,
-  errors: [RequestLimitExceeded, InvalidServiceLinkVirtualInterfaceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidServiceLinkVirtualInterfaceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeServiceLinkVirtualInterfaces",
 }));
 export type DescribeSnapshotAttributeError =
@@ -87000,6 +88056,7 @@ export type DescribeSnapshotAttributeError =
   | InvalidParameterValue
   | InvalidSnapshotNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified attribute of the specified snapshot. You can specify only one
@@ -87020,6 +88077,7 @@ export const describeSnapshotAttribute: API.OperationMethod<
     InvalidParameterValue,
     InvalidSnapshotNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeSnapshotAttribute",
 }));
@@ -87027,6 +88085,7 @@ export type DescribeSnapshotsError =
   | RequestLimitExceeded
   | InvalidSnapshotNotFound
   | InvalidUserIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified EBS snapshots available to you or all of the EBS snapshots
@@ -87102,6 +88161,7 @@ export const describeSnapshots: API.OperationMethod<
     RequestLimitExceeded,
     InvalidSnapshotNotFound,
     InvalidUserIDMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeSnapshots",
   pagination: {
@@ -87150,6 +88210,7 @@ export const describeSnapshotTierStatus: API.OperationMethod<
 export type DescribeSpotDatafeedSubscriptionError =
   | RequestLimitExceeded
   | InvalidSpotDatafeedNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the data feed for Spot Instances. For more information, see Spot
@@ -87163,12 +88224,17 @@ export const describeSpotDatafeedSubscription: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpotDatafeedSubscriptionRequest,
   output: DescribeSpotDatafeedSubscriptionResult,
-  errors: [RequestLimitExceeded, InvalidSpotDatafeedNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSpotDatafeedNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeSpotDatafeedSubscription",
 }));
 export type DescribeSpotFleetInstancesError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the running instances for the specified Spot Fleet.
@@ -87181,12 +88247,13 @@ export const describeSpotFleetInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpotFleetInstancesRequest,
   output: DescribeSpotFleetInstancesResponse,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DescribeSpotFleetInstances",
 }));
 export type DescribeSpotFleetRequestHistoryError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the events for the specified Spot Fleet request during the specified
@@ -87207,13 +88274,14 @@ export const describeSpotFleetRequestHistory: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeSpotFleetRequestHistoryRequest,
   output: DescribeSpotFleetRequestHistoryResponse,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DescribeSpotFleetRequestHistory",
 }));
 export type DescribeSpotFleetRequestsError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your Spot Fleet requests.
@@ -87244,7 +88312,12 @@ export const describeSpotFleetRequests: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSpotFleetRequestsRequest,
   output: DescribeSpotFleetRequestsResponse,
-  errors: [RequestLimitExceeded, InvalidParameterValue, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeSpotFleetRequests",
   pagination: {
     inputToken: "NextToken",
@@ -87257,6 +88330,7 @@ export type DescribeSpotInstanceRequestsError =
   | RequestLimitExceeded
   | InvalidSpotInstanceRequestIDMalformed
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Spot Instance requests.
@@ -87306,6 +88380,7 @@ export const describeSpotInstanceRequests: API.OperationMethod<
     RequestLimitExceeded,
     InvalidSpotInstanceRequestIDMalformed,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeSpotInstanceRequests",
   pagination: {
@@ -87359,6 +88434,7 @@ export const describeSpotPriceHistory: API.OperationMethod<
 export type DescribeStaleSecurityGroupsError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the stale security group rules for security groups referenced across a VPC
@@ -87393,7 +88469,7 @@ export const describeStaleSecurityGroups: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeStaleSecurityGroupsRequest,
   output: DescribeStaleSecurityGroupsResult,
-  errors: [RequestLimitExceeded, InvalidVpcIDNotFound],
+  errors: [RequestLimitExceeded, InvalidVpcIDNotFound, UnauthorizedOperation],
   operationName: "DescribeStaleSecurityGroups",
   pagination: {
     inputToken: "NextToken",
@@ -87457,6 +88533,7 @@ export type DescribeSubnetsError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your subnets. The default is to describe all your subnets.
@@ -87489,7 +88566,12 @@ export const describeSubnets: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeSubnetsRequest,
   output: DescribeSubnetsResult,
-  errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSubnetIDNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeSubnets",
   pagination: {
     inputToken: "NextToken",
@@ -87501,6 +88583,7 @@ export const describeSubnets: API.OperationMethod<
 export type DescribeTagsError =
   | RequestLimitExceeded
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified tags for your EC2 resources.
@@ -87538,7 +88621,7 @@ export const describeTags: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTagsRequest,
   output: DescribeTagsResult,
-  errors: [RequestLimitExceeded, ParseError],
+  errors: [RequestLimitExceeded, ParseError, UnauthorizedOperation],
   operationName: "DescribeTags",
   pagination: {
     inputToken: "NextToken",
@@ -87565,6 +88648,7 @@ export const describeTrafficMirrorFilterRules: API.OperationMethod<
 export type DescribeTrafficMirrorFiltersError =
   | RequestLimitExceeded
   | InvalidTrafficMirrorFilterIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more Traffic Mirror filters.
@@ -87592,7 +88676,11 @@ export const describeTrafficMirrorFilters: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorFiltersRequest,
   output: DescribeTrafficMirrorFiltersResult,
-  errors: [RequestLimitExceeded, InvalidTrafficMirrorFilterIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTrafficMirrorFilterIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTrafficMirrorFilters",
   pagination: {
     inputToken: "NextToken",
@@ -87604,6 +88692,7 @@ export const describeTrafficMirrorFilters: API.OperationMethod<
 export type DescribeTrafficMirrorSessionsError =
   | RequestLimitExceeded
   | InvalidTrafficMirrorSessionIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more Traffic Mirror sessions. By default, all Traffic Mirror sessions are described. Alternatively, you can filter the results.
@@ -87631,7 +88720,11 @@ export const describeTrafficMirrorSessions: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorSessionsRequest,
   output: DescribeTrafficMirrorSessionsResult,
-  errors: [RequestLimitExceeded, InvalidTrafficMirrorSessionIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTrafficMirrorSessionIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTrafficMirrorSessions",
   pagination: {
     inputToken: "NextToken",
@@ -87643,6 +88736,7 @@ export const describeTrafficMirrorSessions: API.OperationMethod<
 export type DescribeTrafficMirrorTargetsError =
   | RequestLimitExceeded
   | InvalidTrafficMirrorTargetIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Information about one or more Traffic Mirror targets.
@@ -87670,7 +88764,11 @@ export const describeTrafficMirrorTargets: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrafficMirrorTargetsRequest,
   output: DescribeTrafficMirrorTargetsResult,
-  errors: [RequestLimitExceeded, InvalidTrafficMirrorTargetIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTrafficMirrorTargetIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTrafficMirrorTargets",
   pagination: {
     inputToken: "NextToken",
@@ -87683,6 +88781,7 @@ export type DescribeTransitGatewayAttachmentsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more attachments between resources and transit gateways. By default, all attachments are described.
@@ -87715,6 +88814,7 @@ export const describeTransitGatewayAttachments: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayAttachmentIDNotFound,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeTransitGatewayAttachments",
   pagination: {
@@ -87727,6 +88827,7 @@ export const describeTransitGatewayAttachments: API.OperationMethod<
 export type DescribeTransitGatewayConnectPeersError =
   | RequestLimitExceeded
   | InvalidTransitGatewayConnectPeerIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more Connect peers.
@@ -87754,7 +88855,11 @@ export const describeTransitGatewayConnectPeers: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayConnectPeersRequest,
   output: DescribeTransitGatewayConnectPeersResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayConnectPeerIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayConnectPeerIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTransitGatewayConnectPeers",
   pagination: {
     inputToken: "NextToken",
@@ -87766,6 +88871,7 @@ export const describeTransitGatewayConnectPeers: API.OperationMethod<
 export type DescribeTransitGatewayConnectsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more Connect attachments.
@@ -87793,7 +88899,11 @@ export const describeTransitGatewayConnects: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayConnectsRequest,
   output: DescribeTransitGatewayConnectsResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTransitGatewayConnects",
   pagination: {
     inputToken: "NextToken",
@@ -87805,6 +88915,7 @@ export const describeTransitGatewayConnects: API.OperationMethod<
 export type DescribeTransitGatewayMeteringPoliciesError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMeteringPolicyIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more transit gateway metering policies.
@@ -87817,12 +88928,17 @@ export const describeTransitGatewayMeteringPolicies: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeTransitGatewayMeteringPoliciesRequest,
   output: DescribeTransitGatewayMeteringPoliciesResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayMeteringPolicyIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayMeteringPolicyIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTransitGatewayMeteringPolicies",
 }));
 export type DescribeTransitGatewayMulticastDomainsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more transit gateway multicast domains.
@@ -87853,6 +88969,7 @@ export const describeTransitGatewayMulticastDomains: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidTransitGatewayMulticastDomainIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeTransitGatewayMulticastDomains",
   pagination: {
@@ -87865,6 +88982,7 @@ export const describeTransitGatewayMulticastDomains: API.OperationMethod<
 export type DescribeTransitGatewayPeeringAttachmentsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your transit gateway peering attachments.
@@ -87892,7 +89010,11 @@ export const describeTransitGatewayPeeringAttachments: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayPeeringAttachmentsRequest,
   output: DescribeTransitGatewayPeeringAttachmentsResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTransitGatewayPeeringAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -87904,6 +89026,7 @@ export const describeTransitGatewayPeeringAttachments: API.OperationMethod<
 export type DescribeTransitGatewayPolicyTablesError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more transit gateway route policy tables.
@@ -87931,7 +89054,11 @@ export const describeTransitGatewayPolicyTables: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayPolicyTablesRequest,
   output: DescribeTransitGatewayPolicyTablesResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayPolicyTableIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayPolicyTableIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTransitGatewayPolicyTables",
   pagination: {
     inputToken: "NextToken",
@@ -87943,6 +89070,7 @@ export const describeTransitGatewayPolicyTables: API.OperationMethod<
 export type DescribeTransitGatewayRouteTableAnnouncementsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayRouteTableAnnouncementIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more transit gateway route table advertisements.
@@ -87973,6 +89101,7 @@ export const describeTransitGatewayRouteTableAnnouncements: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidTransitGatewayRouteTableAnnouncementIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeTransitGatewayRouteTableAnnouncements",
   pagination: {
@@ -87986,6 +89115,7 @@ export type DescribeTransitGatewayRouteTablesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more transit gateway route tables. By default, all transit gateway route tables are described.
@@ -88014,7 +89144,12 @@ export const describeTransitGatewayRouteTables: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayRouteTablesRequest,
   output: DescribeTransitGatewayRouteTablesResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTransitGatewayRouteTables",
   pagination: {
     inputToken: "NextToken",
@@ -88027,6 +89162,7 @@ export type DescribeTransitGatewaysError =
   | RequestLimitExceeded
   | InvalidTransitGatewayIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more transit gateways. By default, all transit gateways are described. Alternatively, you can
@@ -88055,7 +89191,12 @@ export const describeTransitGateways: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewaysRequest,
   output: DescribeTransitGatewaysResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayIDNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayIDNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTransitGateways",
   pagination: {
     inputToken: "NextToken",
@@ -88067,6 +89208,7 @@ export const describeTransitGateways: API.OperationMethod<
 export type DescribeTransitGatewayVpcAttachmentsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more VPC attachments. By default, all VPC attachments are described.
@@ -88095,7 +89237,11 @@ export const describeTransitGatewayVpcAttachments: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTransitGatewayVpcAttachmentsRequest,
   output: DescribeTransitGatewayVpcAttachmentsResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeTransitGatewayVpcAttachments",
   pagination: {
     inputToken: "NextToken",
@@ -88107,6 +89253,7 @@ export const describeTransitGatewayVpcAttachments: API.OperationMethod<
 export type DescribeTrunkInterfaceAssociationsError =
   | RequestLimitExceeded
   | OperationNotPermitted
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more network interface trunk associations.
@@ -88134,7 +89281,7 @@ export const describeTrunkInterfaceAssociations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeTrunkInterfaceAssociationsRequest,
   output: DescribeTrunkInterfaceAssociationsResult,
-  errors: [RequestLimitExceeded, OperationNotPermitted],
+  errors: [RequestLimitExceeded, OperationNotPermitted, UnauthorizedOperation],
   operationName: "DescribeTrunkInterfaceAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -88146,6 +89293,7 @@ export const describeTrunkInterfaceAssociations: API.OperationMethod<
 export type DescribeVerifiedAccessEndpointsError =
   | RequestLimitExceeded
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Amazon Web Services Verified Access endpoints.
@@ -88173,7 +89321,11 @@ export const describeVerifiedAccessEndpoints: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessEndpointsRequest,
   output: DescribeVerifiedAccessEndpointsResult,
-  errors: [RequestLimitExceeded, InvalidParameterCombination],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterCombination,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVerifiedAccessEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -88185,6 +89337,7 @@ export const describeVerifiedAccessEndpoints: API.OperationMethod<
 export type DescribeVerifiedAccessGroupsError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Verified Access groups.
@@ -88212,7 +89365,11 @@ export const describeVerifiedAccessGroups: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessGroupsRequest,
   output: DescribeVerifiedAccessGroupsResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessGroupIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVerifiedAccessGroups",
   pagination: {
     inputToken: "NextToken",
@@ -88224,6 +89381,7 @@ export const describeVerifiedAccessGroups: API.OperationMethod<
 export type DescribeVerifiedAccessInstanceLoggingConfigurationsError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Amazon Web Services Verified Access instances.
@@ -88251,7 +89409,11 @@ export const describeVerifiedAccessInstanceLoggingConfigurations: API.OperationM
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessInstanceLoggingConfigurationsRequest,
   output: DescribeVerifiedAccessInstanceLoggingConfigurationsResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessInstanceIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVerifiedAccessInstanceLoggingConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -88263,6 +89425,7 @@ export const describeVerifiedAccessInstanceLoggingConfigurations: API.OperationM
 export type DescribeVerifiedAccessInstancesError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Amazon Web Services Verified Access instances.
@@ -88290,7 +89453,11 @@ export const describeVerifiedAccessInstances: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessInstancesRequest,
   output: DescribeVerifiedAccessInstancesResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessInstanceIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVerifiedAccessInstances",
   pagination: {
     inputToken: "NextToken",
@@ -88302,6 +89469,7 @@ export const describeVerifiedAccessInstances: API.OperationMethod<
 export type DescribeVerifiedAccessTrustProvidersError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessTrustProviderIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified Amazon Web Services Verified Access trust providers.
@@ -88329,7 +89497,11 @@ export const describeVerifiedAccessTrustProviders: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVerifiedAccessTrustProvidersRequest,
   output: DescribeVerifiedAccessTrustProvidersResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessTrustProviderIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVerifiedAccessTrustProviders",
   pagination: {
     inputToken: "NextToken",
@@ -88343,6 +89515,7 @@ export type DescribeVolumeAttributeError =
   | InvalidParameterCombination
   | InvalidParameterValue
   | InvalidVolumeNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified attribute of the specified volume. You can specify only one
@@ -88363,6 +89536,7 @@ export const describeVolumeAttribute: API.OperationMethod<
     InvalidParameterCombination,
     InvalidParameterValue,
     InvalidVolumeNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeVolumeAttribute",
 }));
@@ -88371,6 +89545,7 @@ export type DescribeVolumesError =
   | InvalidParameterValue
   | InvalidVolumeNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified EBS volumes or all of your EBS volumes.
@@ -88415,6 +89590,7 @@ export const describeVolumes: API.OperationMethod<
     InvalidParameterValue,
     InvalidVolumeNotFound,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeVolumes",
   pagination: {
@@ -88427,6 +89603,7 @@ export const describeVolumes: API.OperationMethod<
 export type DescribeVolumesModificationsError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the most recent volume modification request for the specified EBS volumes.
@@ -88457,7 +89634,11 @@ export const describeVolumesModifications: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumesModificationsRequest,
   output: DescribeVolumesModificationsResult,
-  errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVolumeIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVolumesModifications",
   pagination: {
     inputToken: "NextToken",
@@ -88469,6 +89650,7 @@ export const describeVolumesModifications: API.OperationMethod<
 export type DescribeVolumeStatusError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the status of the specified volumes. Volume status provides the result of the
@@ -88535,7 +89717,11 @@ export const describeVolumeStatus: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVolumeStatusRequest,
   output: DescribeVolumeStatusResult,
-  errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVolumeIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVolumeStatus",
   pagination: {
     inputToken: "NextToken",
@@ -88548,6 +89734,7 @@ export type DescribeVpcAttributeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
   | InvalidVpcIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the specified attribute of the specified VPC. You can specify only one attribute at a time.
@@ -88564,6 +89751,7 @@ export const describeVpcAttribute: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterCombination,
     InvalidVpcIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeVpcAttribute",
 }));
@@ -88571,6 +89759,7 @@ export type DescribeVpcBlockPublicAccessExclusionsError =
   | RequestLimitExceeded
   | MissingParameter
   | VpcBlockPublicAccessExclusionIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describe VPC Block Public Access (BPA) exclusions. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account’s BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
@@ -88587,6 +89776,7 @@ export const describeVpcBlockPublicAccessExclusions: API.OperationMethod<
     RequestLimitExceeded,
     MissingParameter,
     VpcBlockPublicAccessExclusionIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeVpcBlockPublicAccessExclusions",
 }));
@@ -88609,6 +89799,7 @@ export type DescribeVpcClassicLinkError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
   | InvalidVpcIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -88623,12 +89814,18 @@ export const describeVpcClassicLink: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcClassicLinkRequest,
   output: DescribeVpcClassicLinkResult,
-  errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcIDNotFound,
+    InvalidVpcIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVpcClassicLink",
 }));
 export type DescribeVpcClassicLinkDnsSupportError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -88662,7 +89859,7 @@ export const describeVpcClassicLinkDnsSupport: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcClassicLinkDnsSupportRequest,
   output: DescribeVpcClassicLinkDnsSupportResult,
-  errors: [RequestLimitExceeded, InvalidVpcIDNotFound],
+  errors: [RequestLimitExceeded, InvalidVpcIDNotFound, UnauthorizedOperation],
   operationName: "DescribeVpcClassicLinkDnsSupport",
   pagination: {
     inputToken: "NextToken",
@@ -88674,6 +89871,7 @@ export const describeVpcClassicLinkDnsSupport: API.OperationMethod<
 export type DescribeVpcEncryptionControlsError =
   | RequestLimitExceeded
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more VPC Encryption Control configurations. VPC Encryption Control enables you to enforce encryption for all data in transit within and between VPCs to meet compliance requirements You can filter the results to return information about specific encryption controls or VPCs.
@@ -88688,7 +89886,11 @@ export const describeVpcEncryptionControls: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEncryptionControlsRequest,
   output: DescribeVpcEncryptionControlsResult,
-  errors: [RequestLimitExceeded, InvalidParameterCombination],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterCombination,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVpcEncryptionControls",
 }));
 export type DescribeVpcEndpointAssociationsError = CommonErrors;
@@ -88710,6 +89912,7 @@ export const describeVpcEndpointAssociations: API.OperationMethod<
 export type DescribeVpcEndpointConnectionNotificationsError =
   | RequestLimitExceeded
   | InvalidConnectionNotification
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the connection notifications for VPC endpoints and VPC endpoint
@@ -88738,7 +89941,11 @@ export const describeVpcEndpointConnectionNotifications: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointConnectionNotificationsRequest,
   output: DescribeVpcEndpointConnectionNotificationsResult,
-  errors: [RequestLimitExceeded, InvalidConnectionNotification],
+  errors: [
+    RequestLimitExceeded,
+    InvalidConnectionNotification,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVpcEndpointConnectionNotifications",
   pagination: {
     inputToken: "NextToken",
@@ -88788,6 +89995,7 @@ export type DescribeVpcEndpointsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointIdNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your VPC endpoints. The default is to describe all your VPC endpoints.
@@ -88817,7 +90025,12 @@ export const describeVpcEndpoints: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointsRequest,
   output: DescribeVpcEndpointsResult,
-  errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcEndpointIdNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVpcEndpoints",
   pagination: {
     inputToken: "NextToken",
@@ -88829,6 +90042,7 @@ export const describeVpcEndpoints: API.OperationMethod<
 export type DescribeVpcEndpointServiceConfigurationsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the VPC endpoint service configurations in your account (your services).
@@ -88856,7 +90070,11 @@ export const describeVpcEndpointServiceConfigurations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpcEndpointServiceConfigurationsRequest,
   output: DescribeVpcEndpointServiceConfigurationsResult,
-  errors: [RequestLimitExceeded, InvalidVpcEndpointServiceIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcEndpointServiceIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVpcEndpointServiceConfigurations",
   pagination: {
     inputToken: "NextToken",
@@ -88869,6 +90087,7 @@ export type DescribeVpcEndpointServicePermissionsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdMalformed
   | InvalidVpcEndpointServiceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the principals (service consumers) that are permitted to discover your VPC
@@ -88901,6 +90120,7 @@ export const describeVpcEndpointServicePermissions: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeVpcEndpointServicePermissions",
   pagination: {
@@ -88913,6 +90133,7 @@ export const describeVpcEndpointServicePermissions: API.OperationMethod<
 export type DescribeVpcEndpointServicesError =
   | RequestLimitExceeded
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes available services to which you can create a VPC endpoint.
@@ -88933,13 +90154,15 @@ export const describeVpcEndpointServices: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpcEndpointServicesRequest,
   output: DescribeVpcEndpointServicesResult,
-  errors: [RequestLimitExceeded, ParseError],
+  errors: [RequestLimitExceeded, ParseError, UnauthorizedOperation],
   operationName: "DescribeVpcEndpointServices",
 }));
 export type DescribeVpcPeeringConnectionsError =
   | RequestLimitExceeded
   | InvalidVpcPeeringConnectionIDNotFound
+  | InvalidVpcPeeringConnectionIdNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your VPC peering connections. The default is to describe all your VPC peering connections.
@@ -88972,7 +90195,9 @@ export const describeVpcPeeringConnections: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidVpcPeeringConnectionIDNotFound,
+    InvalidVpcPeeringConnectionIdNotFound,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeVpcPeeringConnections",
   pagination: {
@@ -88987,6 +90212,7 @@ export type DescribeVpcsError =
   | InvalidVpcIDNotFound
   | ParseError
   | RequestError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes your VPCs. The default is to describe all your VPCs.
@@ -89021,6 +90247,7 @@ export const describeVpcs: API.OperationMethod<
     InvalidVpcIDNotFound,
     ParseError,
     RequestError,
+    UnauthorizedOperation,
   ],
   operationName: "DescribeVpcs",
   pagination: {
@@ -89033,6 +90260,7 @@ export const describeVpcs: API.OperationMethod<
 export type DescribeVpnConcentratorsError =
   | RequestLimitExceeded
   | InvalidVpnConcentratorIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of your VPN concentrators.
@@ -89060,7 +90288,11 @@ export const describeVpnConcentrators: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeVpnConcentratorsRequest,
   output: DescribeVpnConcentratorsResult,
-  errors: [RequestLimitExceeded, InvalidVpnConcentratorIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpnConcentratorIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVpnConcentrators",
   pagination: {
     inputToken: "NextToken",
@@ -89072,6 +90304,7 @@ export const describeVpnConcentrators: API.OperationMethod<
 export type DescribeVpnConnectionsError =
   | RequestLimitExceeded
   | InvalidVpnConnectionIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of your VPN connections.
@@ -89087,13 +90320,18 @@ export const describeVpnConnections: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpnConnectionsRequest,
   output: DescribeVpnConnectionsResult,
-  errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpnConnectionIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVpnConnections",
 }));
 export type DescribeVpnGatewaysError =
   | RequestLimitExceeded
   | InvalidVpnGatewayIDNotFound
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes one or more of your virtual private gateways.
@@ -89109,7 +90347,12 @@ export const describeVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DescribeVpnGatewaysRequest,
   output: DescribeVpnGatewaysResult,
-  errors: [RequestLimitExceeded, InvalidVpnGatewayIDNotFound, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpnGatewayIDNotFound,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "DescribeVpnGateways",
 }));
 export type DetachClassicLinkVpcError =
@@ -89118,6 +90361,7 @@ export type DetachClassicLinkVpcError =
   | InvalidInstanceIDMalformed
   | InvalidVpcIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -89140,6 +90384,7 @@ export const detachClassicLinkVpc: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidVpcIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DetachClassicLinkVpc",
 }));
@@ -89171,6 +90416,7 @@ export type DetachInternetGatewayError =
   | InvalidInternetGatewayIDNotFound
   | InvalidInternetGatewayIdMalformed
   | InvalidVpcIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Detaches an internet gateway from a VPC, disabling connectivity between the internet
@@ -89192,6 +90438,7 @@ export const detachInternetGateway: API.OperationMethod<
     InvalidInternetGatewayIDNotFound,
     InvalidInternetGatewayIdMalformed,
     InvalidVpcIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DetachInternetGateway",
 }));
@@ -89200,6 +90447,7 @@ export type DetachNetworkInterfaceError =
   | DependencyViolation
   | InvalidAttachmentIDNotFound
   | InvalidNetworkInterfaceAttachmentIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Detaches a network interface from an instance.
@@ -89217,6 +90465,7 @@ export const detachNetworkInterface: API.OperationMethod<
     DependencyViolation,
     InvalidAttachmentIDNotFound,
     InvalidNetworkInterfaceAttachmentIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DetachNetworkInterface",
 }));
@@ -89224,6 +90473,7 @@ export type DetachVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | DependencyViolation
   | InvalidVerifiedAccessInstanceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Detaches the specified Amazon Web Services Verified Access trust provider from the specified Amazon Web Services Verified Access instance.
@@ -89240,6 +90490,7 @@ export const detachVerifiedAccessTrustProvider: API.OperationMethod<
     RequestLimitExceeded,
     DependencyViolation,
     InvalidVerifiedAccessInstanceIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DetachVerifiedAccessTrustProvider",
 }));
@@ -89249,6 +90500,7 @@ export type DetachVolumeError =
   | IncorrectState
   | InvalidParameterValue
   | InvalidVolumeNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Detaches an EBS volume from an instance. Make sure to unmount any file systems on the
@@ -89283,6 +90535,7 @@ export const detachVolume: API.OperationMethod<
     IncorrectState,
     InvalidParameterValue,
     InvalidVolumeNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DetachVolume",
 }));
@@ -89292,6 +90545,7 @@ export type DetachVpnGatewayError =
   | IncorrectState
   | InvalidVpnGatewayIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Detaches a virtual private gateway from a VPC. You do this if you're planning to turn
@@ -89316,12 +90570,14 @@ export const detachVpnGateway: API.OperationMethod<
     IncorrectState,
     InvalidVpnGatewayIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DetachVpnGateway",
 }));
 export type DisableAddressTransferError =
   | RequestLimitExceeded
   | InvalidElasticIpIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the *Amazon VPC User Guide*.
@@ -89334,7 +90590,11 @@ export const disableAddressTransfer: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableAddressTransferRequest,
   output: DisableAddressTransferResult,
-  errors: [RequestLimitExceeded, InvalidElasticIpIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidElasticIpIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DisableAddressTransfer",
 }));
 export type DisableAllowedImagesSettingsError = CommonErrors;
@@ -89366,6 +90626,7 @@ export const disableAllowedImagesSettings: API.OperationMethod<
 export type DisableAwsNetworkPerformanceMetricSubscriptionError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables Infrastructure Performance metric subscriptions.
@@ -89378,12 +90639,13 @@ export const disableAwsNetworkPerformanceMetricSubscription: API.OperationMethod
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: DisableAwsNetworkPerformanceMetricSubscriptionResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DisableAwsNetworkPerformanceMetricSubscription",
 }));
 export type DisableCapacityManagerError =
   | RequestLimitExceeded
   | CapacityManagerDisabled
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables EC2 Capacity Manager for your account. This stops data ingestion and removes access to capacity analytics and optimization recommendations.
@@ -89397,7 +90659,11 @@ export const disableCapacityManager: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableCapacityManagerRequest,
   output: DisableCapacityManagerResult,
-  errors: [RequestLimitExceeded, CapacityManagerDisabled],
+  errors: [
+    RequestLimitExceeded,
+    CapacityManagerDisabled,
+    UnauthorizedOperation,
+  ],
   operationName: "DisableCapacityManager",
 }));
 export type DisableEbsEncryptionByDefaultError = CommonErrors;
@@ -89427,6 +90693,7 @@ export const disableEbsEncryptionByDefault: API.OperationMethod<
 export type DisableFastLaunchError =
   | RequestLimitExceeded
   | InvalidRequest
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Discontinue Windows fast launch for a Windows AMI, and clean up existing pre-provisioned
@@ -89445,12 +90712,13 @@ export const disableFastLaunch: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableFastLaunchRequest,
   output: DisableFastLaunchResult,
-  errors: [RequestLimitExceeded, InvalidRequest],
+  errors: [RequestLimitExceeded, InvalidRequest, UnauthorizedOperation],
   operationName: "DisableFastLaunch",
 }));
 export type DisableFastSnapshotRestoresError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables fast snapshot restores for the specified snapshots in the specified Availability Zones.
@@ -89463,12 +90731,13 @@ export const disableFastSnapshotRestores: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableFastSnapshotRestoresRequest,
   output: DisableFastSnapshotRestoresResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DisableFastSnapshotRestores",
 }));
 export type DisableImageError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Sets the AMI state to `disabled` and removes all launch permissions from the
@@ -89496,7 +90765,7 @@ export const disableImage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableImageRequest,
   output: DisableImageResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "DisableImage",
 }));
 export type DisableImageBlockPublicAccessError = CommonErrors;
@@ -89523,6 +90792,7 @@ export const disableImageBlockPublicAccess: API.OperationMethod<
 export type DisableImageDeprecationError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels the deprecation of the specified AMI.
@@ -89538,12 +90808,13 @@ export const disableImageDeprecation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableImageDeprecationRequest,
   output: DisableImageDeprecationResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "DisableImageDeprecation",
 }));
 export type DisableImageDeregistrationProtectionError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables deregistration protection for an AMI. When deregistration protection is disabled,
@@ -89564,12 +90835,13 @@ export const disableImageDeregistrationProtection: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableImageDeregistrationProtectionRequest,
   output: DisableImageDeregistrationProtectionResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "DisableImageDeregistrationProtection",
 }));
 export type DisableInstanceSqlHaStandbyDetectionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disable Amazon EC2 instances running in an SQL Server High Availability cluster from SQL Server High Availability
@@ -89585,12 +90857,17 @@ export const disableInstanceSqlHaStandbyDetections: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableInstanceSqlHaStandbyDetectionsRequest,
   output: DisableInstanceSqlHaStandbyDetectionsResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DisableInstanceSqlHaStandbyDetections",
 }));
 export type DisableIpamOrganizationAdminAccountError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disable the IPAM account. For more information, see Enable integration with Organizations in the *Amazon VPC IPAM User Guide*.
@@ -89603,13 +90880,14 @@ export const disableIpamOrganizationAdminAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableIpamOrganizationAdminAccountRequest,
   output: DisableIpamOrganizationAdminAccountResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DisableIpamOrganizationAdminAccount",
 }));
 export type DisableIpamPolicyError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
   | InvalidIpamPolicyIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables an IPAM policy.
@@ -89628,12 +90906,14 @@ export const disableIpamPolicy: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DisableIpamPolicy",
 }));
 export type DisableRouteServerPropagationError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables route propagation from a route server to a specified route table.
@@ -89663,7 +90943,11 @@ export const disableRouteServerPropagation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableRouteServerPropagationRequest,
   output: DisableRouteServerPropagationResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DisableRouteServerPropagation",
 }));
 export type DisableSerialConsoleAccessError = CommonErrors;
@@ -89716,6 +91000,7 @@ export const disableSnapshotBlockPublicAccess: API.OperationMethod<
 export type DisableTransitGatewayRouteTablePropagationError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables the specified resource attachment from propagating routes to the specified
@@ -89729,12 +91014,13 @@ export const disableTransitGatewayRouteTablePropagation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableTransitGatewayRouteTablePropagationRequest,
   output: DisableTransitGatewayRouteTablePropagationResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "DisableTransitGatewayRouteTablePropagation",
 }));
 export type DisableVgwRoutePropagationError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables a virtual private gateway (VGW) from propagating routes to a specified route
@@ -89748,13 +91034,18 @@ export const disableVgwRoutePropagation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableVgwRoutePropagationRequest,
   output: DisableVgwRoutePropagationResponse,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "DisableVgwRoutePropagation",
 }));
 export type DisableVpcClassicLinkError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
   | InvalidVpcIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -89770,13 +91061,19 @@ export const disableVpcClassicLink: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableVpcClassicLinkRequest,
   output: DisableVpcClassicLinkResult,
-  errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcIDNotFound,
+    InvalidVpcIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "DisableVpcClassicLink",
 }));
 export type DisableVpcClassicLinkDnsSupportError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -89795,13 +91092,19 @@ export const disableVpcClassicLinkDnsSupport: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisableVpcClassicLinkDnsSupportRequest,
   output: DisableVpcClassicLinkDnsSupportResult,
-  errors: [RequestLimitExceeded, InvalidVpcIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DisableVpcClassicLinkDnsSupport",
 }));
 export type DisassociateAddressError =
   | RequestLimitExceeded
   | InvalidAssociationIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates an Elastic IP address from the instance or network interface it's associated with.
@@ -89828,6 +91131,7 @@ export const disassociateAddress: API.OperationMethod<
     RequestLimitExceeded,
     InvalidAssociationIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateAddress",
 }));
@@ -89835,6 +91139,7 @@ export type DisassociateCapacityReservationBillingOwnerError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Cancels a pending request to assign billing of the unused capacity of a Capacity
@@ -89854,6 +91159,7 @@ export const disassociateCapacityReservationBillingOwner: API.OperationMethod<
     RequestLimitExceeded,
     InvalidCapacityReservationIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateCapacityReservationBillingOwner",
 }));
@@ -89861,6 +91167,7 @@ export type DisassociateClientVpnTargetNetworkError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates a target network from the specified Client VPN endpoint. When you disassociate the
@@ -89886,6 +91193,7 @@ export const disassociateClientVpnTargetNetwork: API.OperationMethod<
     RequestLimitExceeded,
     InvalidClientVpnEndpointIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateClientVpnTargetNetwork",
 }));
@@ -89893,6 +91201,7 @@ export type DisassociateEnclaveCertificateIamRoleError =
   | RequestLimitExceeded
   | InvalidCertificateArnMalformed
   | InvalidRoleArnMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates an IAM role from an Certificate Manager (ACM) certificate. Disassociating an IAM role
@@ -89913,12 +91222,14 @@ export const disassociateEnclaveCertificateIamRole: API.OperationMethod<
     RequestLimitExceeded,
     InvalidCertificateArnMalformed,
     InvalidRoleArnMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateEnclaveCertificateIamRole",
 }));
 export type DisassociateIamInstanceProfileError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates an IAM instance profile from a running or stopped instance.
@@ -89934,13 +91245,14 @@ export const disassociateIamInstanceProfile: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIamInstanceProfileRequest,
   output: DisassociateIamInstanceProfileResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "DisassociateIamInstanceProfile",
 }));
 export type DisassociateInstanceEventWindowError =
   | RequestLimitExceeded
   | DependencyViolation
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates one or more targets from an event window.
@@ -89956,12 +91268,18 @@ export const disassociateInstanceEventWindow: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateInstanceEventWindowRequest,
   output: DisassociateInstanceEventWindowResult,
-  errors: [RequestLimitExceeded, DependencyViolation, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    DependencyViolation,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DisassociateInstanceEventWindow",
 }));
 export type DisassociateIpamByoasnError =
   | RequestLimitExceeded
   | InvalidCidrNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Remove the association between your Autonomous System Number (ASN) and your BYOIP CIDR. You may want to use this action to disassociate an ASN from a CIDR or if you want to swap ASNs.
@@ -89975,13 +91293,14 @@ export const disassociateIpamByoasn: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateIpamByoasnRequest,
   output: DisassociateIpamByoasnResult,
-  errors: [RequestLimitExceeded, InvalidCidrNotFound],
+  errors: [RequestLimitExceeded, InvalidCidrNotFound, UnauthorizedOperation],
   operationName: "DisassociateIpamByoasn",
 }));
 export type DisassociateIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryAssociationIdMalformed
   | InvalidIpamResourceDiscoveryAssociationIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates a resource discovery from an Amazon VPC IPAM. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
@@ -89998,6 +91317,7 @@ export const disassociateIpamResourceDiscovery: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryAssociationIdMalformed,
     InvalidIpamResourceDiscoveryAssociationIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateIpamResourceDiscovery",
 }));
@@ -90006,6 +91326,7 @@ export type DisassociateNatGatewayAddressError =
   | MissingParameter
   | NatGatewayMalformed
   | NatGatewayNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates secondary Elastic IP addresses (EIPs) from a public NAT gateway.
@@ -90032,6 +91353,7 @@ export const disassociateNatGatewayAddress: API.OperationMethod<
     MissingParameter,
     NatGatewayMalformed,
     NatGatewayNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateNatGatewayAddress",
 }));
@@ -90040,6 +91362,7 @@ export type DisassociateRouteServerError =
   | InvalidRouteServerIdNotFound
   | InvalidVpcIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates a route server from a VPC.
@@ -90061,6 +91384,7 @@ export const disassociateRouteServer: API.OperationMethod<
     InvalidRouteServerIdNotFound,
     InvalidVpcIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateRouteServer",
 }));
@@ -90069,6 +91393,7 @@ export type DisassociateRouteTableError =
   | InvalidAssociationIDNotFound
   | InvalidRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates a subnet or gateway from a route table.
@@ -90091,6 +91416,7 @@ export const disassociateRouteTable: API.OperationMethod<
     InvalidAssociationIDNotFound,
     InvalidRouteTableIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateRouteTable",
 }));
@@ -90098,6 +91424,7 @@ export type DisassociateSecurityGroupVpcError =
   | RequestLimitExceeded
   | InvalidGroupIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates a security group from a VPC. You cannot disassociate the security group if any Elastic network interfaces in the associated VPC are still associated with the security group.
@@ -90112,13 +91439,19 @@ export const disassociateSecurityGroupVpc: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSecurityGroupVpcRequest,
   output: DisassociateSecurityGroupVpcResult,
-  errors: [RequestLimitExceeded, InvalidGroupIdMalformed, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidGroupIdMalformed,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DisassociateSecurityGroupVpc",
 }));
 export type DisassociateSubnetCidrBlockError =
   | RequestLimitExceeded
   | InvalidSubnetCidrBlockAssociationIDNotFound
   | InvalidSubnetCidrBlockAssociationIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
@@ -90135,6 +91468,7 @@ export const disassociateSubnetCidrBlock: API.OperationMethod<
     RequestLimitExceeded,
     InvalidSubnetCidrBlockAssociationIDNotFound,
     InvalidSubnetCidrBlockAssociationIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateSubnetCidrBlock",
 }));
@@ -90142,6 +91476,7 @@ export type DisassociateTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates the specified subnets from the transit gateway multicast domain.
@@ -90158,6 +91493,7 @@ export const disassociateTransitGatewayMulticastDomain: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayMulticastDomainIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateTransitGatewayMulticastDomain",
 }));
@@ -90166,6 +91502,7 @@ export type DisassociateTransitGatewayPolicyTableError =
   | InvalidTransitGatewayPolicyTableIdMalformed
   | InvalidTransitGatewayPolicyTableIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Removes the association between an an attachment and a policy table.
@@ -90183,6 +91520,7 @@ export const disassociateTransitGatewayPolicyTable: API.OperationMethod<
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateTransitGatewayPolicyTable",
 }));
@@ -90190,6 +91528,7 @@ export type DisassociateTransitGatewayRouteTableError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates a resource attachment from a transit gateway route table.
@@ -90202,12 +91541,18 @@ export const disassociateTransitGatewayRouteTable: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTransitGatewayRouteTableRequest,
   output: DisassociateTransitGatewayRouteTableResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "DisassociateTransitGatewayRouteTable",
 }));
 export type DisassociateTrunkInterfaceError =
   | RequestLimitExceeded
   | OperationNotPermitted
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Removes an association between a branch network interface with a trunk network interface.
@@ -90220,7 +91565,7 @@ export const disassociateTrunkInterface: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DisassociateTrunkInterfaceRequest,
   output: DisassociateTrunkInterfaceResult,
-  errors: [RequestLimitExceeded, OperationNotPermitted],
+  errors: [RequestLimitExceeded, OperationNotPermitted, UnauthorizedOperation],
   operationName: "DisassociateTrunkInterface",
 }));
 export type DisassociateVpcCidrBlockError =
@@ -90229,6 +91574,7 @@ export type DisassociateVpcCidrBlockError =
   | InvalidVpcCidrBlockAssociationIdMalformed
   | InvalidVpcCidrBlockAssociationIdErrorNotFound
   | OperationNotPermitted
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disassociates a CIDR block from a VPC. To disassociate the CIDR block, you must
@@ -90253,12 +91599,14 @@ export const disassociateVpcCidrBlock: API.OperationMethod<
     InvalidVpcCidrBlockAssociationIdMalformed,
     InvalidVpcCidrBlockAssociationIdErrorNotFound,
     OperationNotPermitted,
+    UnauthorizedOperation,
   ],
   operationName: "DisassociateVpcCidrBlock",
 }));
 export type EnableAddressTransferError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the *Amazon VPC User Guide*.
@@ -90271,7 +91619,7 @@ export const enableAddressTransfer: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableAddressTransferRequest,
   output: EnableAddressTransferResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "EnableAddressTransfer",
 }));
 export type EnableAllowedImagesSettingsError = CommonErrors;
@@ -90315,6 +91663,7 @@ export const enableAllowedImagesSettings: API.OperationMethod<
 export type EnableAwsNetworkPerformanceMetricSubscriptionError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables Infrastructure Performance subscriptions.
@@ -90327,7 +91676,7 @@ export const enableAwsNetworkPerformanceMetricSubscription: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableAwsNetworkPerformanceMetricSubscriptionRequest,
   output: EnableAwsNetworkPerformanceMetricSubscriptionResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "EnableAwsNetworkPerformanceMetricSubscription",
 }));
 export type EnableCapacityManagerError = CommonErrors;
@@ -90376,6 +91725,7 @@ export const enableEbsEncryptionByDefault: API.OperationMethod<
 export type EnableFastLaunchError =
   | RequestLimitExceeded
   | InvalidRequest
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * When you enable Windows fast launch for a Windows AMI, images are pre-provisioned, using
@@ -90396,12 +91746,13 @@ export const enableFastLaunch: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableFastLaunchRequest,
   output: EnableFastLaunchResult,
-  errors: [RequestLimitExceeded, InvalidRequest],
+  errors: [RequestLimitExceeded, InvalidRequest, UnauthorizedOperation],
   operationName: "EnableFastLaunch",
 }));
 export type EnableFastSnapshotRestoresError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables fast snapshot restores for the specified snapshots in the specified Availability Zones.
@@ -90419,12 +91770,13 @@ export const enableFastSnapshotRestores: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableFastSnapshotRestoresRequest,
   output: EnableFastSnapshotRestoresResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "EnableFastSnapshotRestores",
 }));
 export type EnableImageError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Re-enables a disabled AMI. The re-enabled AMI is marked as `available` and can
@@ -90446,12 +91798,13 @@ export const enableImage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableImageRequest,
   output: EnableImageResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "EnableImage",
 }));
 export type EnableImageBlockPublicAccessError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables *block public access for AMIs* at the account level in the
@@ -90474,12 +91827,13 @@ export const enableImageBlockPublicAccess: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableImageBlockPublicAccessRequest,
   output: EnableImageBlockPublicAccessResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "EnableImageBlockPublicAccess",
 }));
 export type EnableImageDeprecationError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables deprecation of the specified AMI at the specified date and time.
@@ -90495,12 +91849,13 @@ export const enableImageDeprecation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableImageDeprecationRequest,
   output: EnableImageDeprecationResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "EnableImageDeprecation",
 }));
 export type EnableImageDeregistrationProtectionError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables deregistration protection for an AMI. When deregistration protection is enabled,
@@ -90519,12 +91874,13 @@ export const enableImageDeregistrationProtection: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableImageDeregistrationProtectionRequest,
   output: EnableImageDeregistrationProtectionResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "EnableImageDeregistrationProtection",
 }));
 export type EnableInstanceSqlHaStandbyDetectionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enable Amazon EC2 instances running in an SQL Server High Availability cluster for SQL Server High Availability
@@ -90547,12 +91903,17 @@ export const enableInstanceSqlHaStandbyDetections: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableInstanceSqlHaStandbyDetectionsRequest,
   output: EnableInstanceSqlHaStandbyDetectionsResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "EnableInstanceSqlHaStandbyDetections",
 }));
 export type EnableIpamOrganizationAdminAccountError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enable an Organizations member account as the IPAM admin account. You cannot select the Organizations management account as the IPAM admin account. For more information, see Enable integration with Organizations in the *Amazon VPC IPAM User Guide*.
@@ -90565,13 +91926,14 @@ export const enableIpamOrganizationAdminAccount: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableIpamOrganizationAdminAccountRequest,
   output: EnableIpamOrganizationAdminAccountResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "EnableIpamOrganizationAdminAccount",
 }));
 export type EnableIpamPolicyError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
   | InvalidIpamPolicyIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables an IPAM policy.
@@ -90592,6 +91954,7 @@ export const enableIpamPolicy: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "EnableIpamPolicy",
 }));
@@ -90618,6 +91981,7 @@ export const enableReachabilityAnalyzerOrganizationSharing: API.OperationMethod<
 export type EnableRouteServerPropagationError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Defines which route tables the route server can update with routes.
@@ -90634,7 +91998,11 @@ export const enableRouteServerPropagation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableRouteServerPropagationRequest,
   output: EnableRouteServerPropagationResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "EnableRouteServerPropagation",
 }));
 export type EnableSerialConsoleAccessError = CommonErrors;
@@ -90657,6 +92025,7 @@ export const enableSerialConsoleAccess: API.OperationMethod<
 export type EnableSnapshotBlockPublicAccessError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables or modifies the *block public access for snapshots*
@@ -90686,12 +92055,13 @@ export const enableSnapshotBlockPublicAccess: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableSnapshotBlockPublicAccessRequest,
   output: EnableSnapshotBlockPublicAccessResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "EnableSnapshotBlockPublicAccess",
 }));
 export type EnableTransitGatewayRouteTablePropagationError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables the specified attachment to propagate routes to the specified
@@ -90705,12 +92075,13 @@ export const enableTransitGatewayRouteTablePropagation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableTransitGatewayRouteTablePropagationRequest,
   output: EnableTransitGatewayRouteTablePropagationResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "EnableTransitGatewayRouteTablePropagation",
 }));
 export type EnableVgwRoutePropagationError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables a virtual private gateway (VGW) to propagate routes to the specified route
@@ -90724,7 +92095,11 @@ export const enableVgwRoutePropagation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableVgwRoutePropagationRequest,
   output: EnableVgwRoutePropagationResponse,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "EnableVgwRoutePropagation",
 }));
 export type EnableVolumeIOError = CommonErrors;
@@ -90747,6 +92122,7 @@ export type EnableVpcClassicLinkError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
   | InvalidVpcIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -90766,13 +92142,19 @@ export const enableVpcClassicLink: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableVpcClassicLinkRequest,
   output: EnableVpcClassicLinkResult,
-  errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcIDNotFound,
+    InvalidVpcIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "EnableVpcClassicLink",
 }));
 export type EnableVpcClassicLinkDnsSupportError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -90793,12 +92175,18 @@ export const enableVpcClassicLinkDnsSupport: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnableVpcClassicLinkDnsSupportRequest,
   output: EnableVpcClassicLinkDnsSupportResult,
-  errors: [RequestLimitExceeded, InvalidVpcIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "EnableVpcClassicLinkDnsSupport",
 }));
 export type ExportClientVpnClientCertificateRevocationListError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Downloads the client certificate revocation list for the specified Client VPN endpoint.
@@ -90811,12 +92199,17 @@ export const exportClientVpnClientCertificateRevocationList: API.OperationMethod
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportClientVpnClientCertificateRevocationListRequest,
   output: ExportClientVpnClientCertificateRevocationListResult,
-  errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidClientVpnEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ExportClientVpnClientCertificateRevocationList",
 }));
 export type ExportClientVpnClientConfigurationError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint. The Client VPN endpoint configuration
@@ -90831,12 +92224,17 @@ export const exportClientVpnClientConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportClientVpnClientConfigurationRequest,
   output: ExportClientVpnClientConfigurationResult,
-  errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidClientVpnEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ExportClientVpnClientConfiguration",
 }));
 export type ExportImageError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Exports an Amazon Machine Image (AMI) to a VM file. For more information, see Exporting a VM
@@ -90851,12 +92249,13 @@ export const exportImage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportImageRequest,
   output: ExportImageResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ExportImage",
 }));
 export type ExportTransitGatewayRoutesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Exports routes from the specified transit gateway route table to the specified S3 bucket.
@@ -90874,12 +92273,17 @@ export const exportTransitGatewayRoutes: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportTransitGatewayRoutesRequest,
   output: ExportTransitGatewayRoutesResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ExportTransitGatewayRoutes",
 }));
 export type ExportVerifiedAccessInstanceClientConfigurationError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Exports the client configuration for a Verified Access instance.
@@ -90892,12 +92296,17 @@ export const exportVerifiedAccessInstanceClientConfiguration: API.OperationMetho
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportVerifiedAccessInstanceClientConfigurationRequest,
   output: ExportVerifiedAccessInstanceClientConfigurationResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessInstanceIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ExportVerifiedAccessInstanceClientConfiguration",
 }));
 export type GetActiveVpnTunnelStatusError =
   | RequestLimitExceeded
   | InvalidVpnConnectionIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Returns the currently negotiated security parameters for an active VPN tunnel, including IKE version, DH groups, encryption algorithms, and integrity algorithms.
@@ -90910,7 +92319,11 @@ export const getActiveVpnTunnelStatus: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetActiveVpnTunnelStatusRequest,
   output: GetActiveVpnTunnelStatusResult,
-  errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpnConnectionIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetActiveVpnTunnelStatus",
 }));
 export type GetAllowedImagesSettingsError = CommonErrors;
@@ -90966,6 +92379,7 @@ export const getAssociatedEnclaveCertificateIamRoles: API.OperationMethod<
 export type GetAssociatedIpv6PoolCidrsError =
   | RequestLimitExceeded
   | InvalidIpv6PoolIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool.
@@ -90993,7 +92407,11 @@ export const getAssociatedIpv6PoolCidrs: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAssociatedIpv6PoolCidrsRequest,
   output: GetAssociatedIpv6PoolCidrsResult,
-  errors: [RequestLimitExceeded, InvalidIpv6PoolIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpv6PoolIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "GetAssociatedIpv6PoolCidrs",
   pagination: {
     inputToken: "NextToken",
@@ -91005,6 +92423,7 @@ export const getAssociatedIpv6PoolCidrs: API.OperationMethod<
 export type GetAwsNetworkPerformanceDataError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets network performance data.
@@ -91032,7 +92451,7 @@ export const getAwsNetworkPerformanceData: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAwsNetworkPerformanceDataRequest,
   output: GetAwsNetworkPerformanceDataResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "GetAwsNetworkPerformanceData",
   pagination: {
     inputToken: "NextToken",
@@ -91059,6 +92478,7 @@ export const getCapacityManagerAttributes: API.OperationMethod<
 export type GetCapacityManagerMetricDataError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves capacity usage metrics for your EC2 resources. Returns time-series data for metrics like unused capacity, utilization rates, and costs
@@ -91087,7 +92507,7 @@ export const getCapacityManagerMetricData: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMetricDataRequest,
   output: GetCapacityManagerMetricDataResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "GetCapacityManagerMetricData",
   pagination: {
     inputToken: "NextToken",
@@ -91099,6 +92519,7 @@ export const getCapacityManagerMetricData: API.OperationMethod<
 export type GetCapacityManagerMetricDimensionsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves the available dimension values for capacity metrics within a specified time range. This is useful for discovering what accounts,
@@ -91127,7 +92548,7 @@ export const getCapacityManagerMetricDimensions: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetCapacityManagerMetricDimensionsRequest,
   output: GetCapacityManagerMetricDimensionsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "GetCapacityManagerMetricDimensions",
   pagination: {
     inputToken: "NextToken",
@@ -91175,6 +92596,7 @@ export const getCapacityManagerMonitoredTagKeys: API.OperationMethod<
 export type GetCapacityReservationUsageError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets usage information about a Capacity Reservation. If the Capacity Reservation is
@@ -91189,12 +92611,17 @@ export const getCapacityReservationUsage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCapacityReservationUsageRequest,
   output: GetCapacityReservationUsageResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "GetCapacityReservationUsage",
 }));
 export type GetCoipPoolUsageError =
   | RequestLimitExceeded
   | InvalidPoolIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the allocations from the specified customer-owned address pool.
@@ -91207,13 +92634,14 @@ export const getCoipPoolUsage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetCoipPoolUsageRequest,
   output: GetCoipPoolUsageResult,
-  errors: [RequestLimitExceeded, InvalidPoolIDMalformed],
+  errors: [RequestLimitExceeded, InvalidPoolIDMalformed, UnauthorizedOperation],
   operationName: "GetCoipPoolUsage",
 }));
 export type GetConsoleOutputError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets the console output for the specified instance. For Linux instances, the instance
@@ -91236,6 +92664,7 @@ export const getConsoleOutput: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetConsoleOutput",
 }));
@@ -91243,6 +92672,7 @@ export type GetConsoleScreenshotError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieve a JPG-format screenshot of a running instance to help with
@@ -91264,12 +92694,14 @@ export const getConsoleScreenshot: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetConsoleScreenshot",
 }));
 export type GetDeclarativePoliciesReportSummaryError =
   | RequestLimitExceeded
   | InvalidDeclarativePoliciesReportIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves a summary of the account status report.
@@ -91292,12 +92724,17 @@ export const getDeclarativePoliciesReportSummary: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDeclarativePoliciesReportSummaryRequest,
   output: GetDeclarativePoliciesReportSummaryResult,
-  errors: [RequestLimitExceeded, InvalidDeclarativePoliciesReportIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidDeclarativePoliciesReportIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "GetDeclarativePoliciesReportSummary",
 }));
 export type GetDefaultCreditSpecificationError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Describes the default credit option for CPU usage of a burstable performance instance
@@ -91314,7 +92751,7 @@ export const getDefaultCreditSpecification: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultCreditSpecificationRequest,
   output: GetDefaultCreditSpecificationResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "GetDefaultCreditSpecification",
 }));
 export type GetEbsDefaultKmsKeyIdError = CommonErrors;
@@ -91403,6 +92840,7 @@ export const getFlowLogsIntegrationTemplate: API.OperationMethod<
 export type GetGroupsForCapacityReservationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Lists the resource groups to which a Capacity Reservation has been added.
@@ -91430,7 +92868,11 @@ export const getGroupsForCapacityReservation: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetGroupsForCapacityReservationRequest,
   output: GetGroupsForCapacityReservationResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "GetGroupsForCapacityReservation",
   pagination: {
     inputToken: "NextToken",
@@ -91462,6 +92904,7 @@ export const getHostReservationPurchasePreview: API.OperationMethod<
 export type GetImageAncestryError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves the ancestry chain of the specified AMI, tracing its lineage back to the root
@@ -91476,7 +92919,7 @@ export const getImageAncestry: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetImageAncestryRequest,
   output: GetImageAncestryResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "GetImageAncestry",
 }));
 export type GetImageBlockPublicAccessStateError = CommonErrors;
@@ -91521,6 +92964,7 @@ export const getInstanceMetadataDefaults: API.OperationMethod<
 export type GetInstanceTpmEkPubError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets the public endorsement key associated with the Nitro Trusted
@@ -91534,12 +92978,13 @@ export const getInstanceTpmEkPub: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceTpmEkPubRequest,
   output: GetInstanceTpmEkPubResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "GetInstanceTpmEkPub",
 }));
 export type GetInstanceTypesFromInstanceRequirementsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Returns a list of instance types with the specified instance attributes. You can
@@ -91578,7 +93023,7 @@ export const getInstanceTypesFromInstanceRequirements: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetInstanceTypesFromInstanceRequirementsRequest,
   output: GetInstanceTypesFromInstanceRequirementsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "GetInstanceTypesFromInstanceRequirements",
   pagination: {
     inputToken: "NextToken",
@@ -91590,6 +93035,7 @@ export const getInstanceTypesFromInstanceRequirements: API.OperationMethod<
 export type GetInstanceUefiDataError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * A binary representation of the UEFI variable store. Only non-volatile variables are
@@ -91614,12 +93060,17 @@ export const getInstanceUefiData: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetInstanceUefiDataRequest,
   output: GetInstanceUefiDataResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "GetInstanceUefiData",
 }));
 export type GetIpamAddressHistoryError =
   | RequestLimitExceeded
   | InvalidIpamScopeIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieve historical information about a CIDR within an IPAM scope. For more information, see View the history of IP addresses in the *Amazon VPC IPAM User Guide*.
@@ -91647,7 +93098,11 @@ export const getIpamAddressHistory: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamAddressHistoryRequest,
   output: GetIpamAddressHistoryResult,
-  errors: [RequestLimitExceeded, InvalidIpamScopeIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamScopeIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetIpamAddressHistory",
   pagination: {
     inputToken: "NextToken",
@@ -91660,6 +93115,7 @@ export type GetIpamDiscoveredAccountsError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
   | InvalidIpamResourceDiscoveryIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets IPAM discovered accounts. A discovered account is an Amazon Web Services account that is monitored under a resource discovery. If you have integrated IPAM with Amazon Web Services Organizations, all accounts in the organization are discovered accounts. Only the IPAM account can get all discovered accounts in the organization.
@@ -91691,6 +93147,7 @@ export const getIpamDiscoveredAccounts: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetIpamDiscoveredAccounts",
   pagination: {
@@ -91704,6 +93161,7 @@ export type GetIpamDiscoveredPublicAddressesError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
   | InvalidIpamResourceDiscoveryIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets the public IP addresses that have been discovered by IPAM.
@@ -91720,6 +93178,7 @@ export const getIpamDiscoveredPublicAddresses: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetIpamDiscoveredPublicAddresses",
 }));
@@ -91727,6 +93186,7 @@ export type GetIpamDiscoveredResourceCidrsError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
   | InvalidIpamResourceDiscoveryIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Returns the resource CIDRs that are monitored as part of a resource discovery. A discovered resource is a resource CIDR monitored under a resource discovery. The following resources can be discovered: VPCs, Public IPv4 pools, VPC subnets, and Elastic IP addresses.
@@ -91758,6 +93218,7 @@ export const getIpamDiscoveredResourceCidrs: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetIpamDiscoveredResourceCidrs",
   pagination: {
@@ -91771,6 +93232,7 @@ export type GetIpamPolicyAllocationRulesError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
   | InvalidIpamPolicyIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets the allocation rules for an IPAM policy.
@@ -91791,6 +93253,7 @@ export const getIpamPolicyAllocationRules: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetIpamPolicyAllocationRules",
 }));
@@ -91798,6 +93261,7 @@ export type GetIpamPolicyOrganizationTargetsError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
   | InvalidIpamPolicyIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets the Amazon Web Services Organizations targets for an IPAM policy.
@@ -91818,6 +93282,7 @@ export const getIpamPolicyOrganizationTargets: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPolicyIdMalformed,
     InvalidIpamPolicyIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetIpamPolicyOrganizationTargets",
 }));
@@ -91825,6 +93290,7 @@ export type GetIpamPoolAllocationsError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Get a list of all the CIDR allocations in an IPAM pool. The Region you use should be the IPAM pool locale. The locale is the Amazon Web Services Region where this IPAM pool is available for allocations.
@@ -91854,7 +93320,12 @@ export const getIpamPoolAllocations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPoolAllocationsRequest,
   output: GetIpamPoolAllocationsResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "GetIpamPoolAllocations",
   pagination: {
     inputToken: "NextToken",
@@ -91867,6 +93338,7 @@ export type GetIpamPoolCidrsError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Get the CIDRs provisioned to an IPAM pool.
@@ -91894,7 +93366,12 @@ export const getIpamPoolCidrs: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPoolCidrsRequest,
   output: GetIpamPoolCidrsResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "GetIpamPoolCidrs",
   pagination: {
     inputToken: "NextToken",
@@ -91907,6 +93384,7 @@ export type GetIpamPrefixListResolverRulesError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdMalformed
   | InvalidIpamPrefixListResolverIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves the CIDR selection rules for an IPAM prefix list resolver. Use this operation to view the business logic that determines which CIDRs are selected for synchronization with prefix lists.
@@ -91938,6 +93416,7 @@ export const getIpamPrefixListResolverRules: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetIpamPrefixListResolverRules",
   pagination: {
@@ -91950,6 +93429,7 @@ export const getIpamPrefixListResolverRules: API.OperationMethod<
 export type GetIpamPrefixListResolverVersionEntriesError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves the CIDR entries for a specific version of an IPAM prefix list resolver. This shows the actual CIDRs that were selected and synchronized at a particular point in time.
@@ -91977,7 +93457,7 @@ export const getIpamPrefixListResolverVersionEntries: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetIpamPrefixListResolverVersionEntriesRequest,
   output: GetIpamPrefixListResolverVersionEntriesResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "GetIpamPrefixListResolverVersionEntries",
   pagination: {
     inputToken: "NextToken",
@@ -91990,6 +93470,7 @@ export type GetIpamPrefixListResolverVersionsError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdMalformed
   | InvalidIpamPrefixListResolverIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves version information for an IPAM prefix list resolver.
@@ -92048,6 +93529,7 @@ export const getIpamPrefixListResolverVersions: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetIpamPrefixListResolverVersions",
   pagination: {
@@ -92061,6 +93543,7 @@ export type GetIpamResourceCidrsError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
   | InvalidIpamScopeIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Returns resource CIDRs managed by IPAM in a given scope. If an IPAM is associated with more than one resource discovery, the resource CIDRs across all of the resource discoveries is returned. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
@@ -92092,6 +93575,7 @@ export const getIpamResourceCidrs: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPoolIdNotFound,
     InvalidIpamScopeIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetIpamResourceCidrs",
   pagination: {
@@ -92104,6 +93588,7 @@ export const getIpamResourceCidrs: API.OperationMethod<
 export type GetLaunchTemplateDataError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves the configuration data of the specified instance. You can use this data to
@@ -92124,13 +93609,18 @@ export const getLaunchTemplateData: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetLaunchTemplateDataRequest,
   output: GetLaunchTemplateDataResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "GetLaunchTemplateData",
 }));
 export type GetManagedPrefixListAssociationsError =
   | RequestLimitExceeded
   | InvalidPrefixListIDNotFound
   | InvalidPrefixListIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the resources that are associated with the specified managed prefix list.
@@ -92162,6 +93652,7 @@ export const getManagedPrefixListAssociations: API.OperationMethod<
     RequestLimitExceeded,
     InvalidPrefixListIDNotFound,
     InvalidPrefixListIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "GetManagedPrefixListAssociations",
   pagination: {
@@ -92176,6 +93667,7 @@ export type GetManagedPrefixListEntriesError =
   | InvalidPrefixListIDNotFound
   | InvalidPrefixListIdMalformed
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the entries for a specified managed prefix list.
@@ -92208,6 +93700,7 @@ export const getManagedPrefixListEntries: API.OperationMethod<
     InvalidPrefixListIDNotFound,
     InvalidPrefixListIdMalformed,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "GetManagedPrefixListEntries",
   pagination: {
@@ -92236,6 +93729,7 @@ export const getManagedResourceVisibility: API.OperationMethod<
 export type GetNetworkInsightsAccessScopeAnalysisFindingsError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets the findings for the specified Network Access Scope analysis.
@@ -92263,7 +93757,7 @@ export const getNetworkInsightsAccessScopeAnalysisFindings: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetNetworkInsightsAccessScopeAnalysisFindingsRequest,
   output: GetNetworkInsightsAccessScopeAnalysisFindingsResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "GetNetworkInsightsAccessScopeAnalysisFindings",
   pagination: {
     inputToken: "NextToken",
@@ -92275,6 +93769,7 @@ export const getNetworkInsightsAccessScopeAnalysisFindings: API.OperationMethod<
 export type GetNetworkInsightsAccessScopeContentError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets the content for the specified Network Access Scope.
@@ -92287,13 +93782,14 @@ export const getNetworkInsightsAccessScopeContent: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkInsightsAccessScopeContentRequest,
   output: GetNetworkInsightsAccessScopeContentResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "GetNetworkInsightsAccessScopeContent",
 }));
 export type GetPasswordDataError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves the encrypted administrator password for a running Windows instance.
@@ -92326,12 +93822,14 @@ export const getPasswordData: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetPasswordData",
 }));
 export type GetReservedInstancesExchangeQuoteError =
   | RequestLimitExceeded
   | InvalidReservedInstancesIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Returns a quote and exchange information for exchanging one or more specified Convertible
@@ -92346,12 +93844,17 @@ export const getReservedInstancesExchangeQuote: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetReservedInstancesExchangeQuoteRequest,
   output: GetReservedInstancesExchangeQuoteResult,
-  errors: [RequestLimitExceeded, InvalidReservedInstancesIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidReservedInstancesIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetReservedInstancesExchangeQuote",
 }));
 export type GetRouteServerAssociationsError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the associations for the specified route server.
@@ -92368,12 +93871,17 @@ export const getRouteServerAssociations: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRouteServerAssociationsRequest,
   output: GetRouteServerAssociationsResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetRouteServerAssociations",
 }));
 export type GetRouteServerPropagationsError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the route propagations for the specified route server.
@@ -92401,12 +93909,17 @@ export const getRouteServerPropagations: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRouteServerPropagationsRequest,
   output: GetRouteServerPropagationsResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetRouteServerPropagations",
 }));
 export type GetRouteServerRoutingDatabaseError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets the routing database for the specified route server. The Routing Information Base (RIB) serves as a database that stores all the routing information and network topology data collected by a router or routing system, such as routes learned from BGP peers. The RIB is constantly updated as new routing information is received or existing routes change. This ensures that the route server always has the most current view of the network topology and can make optimal routing decisions.
@@ -92432,13 +93945,18 @@ export const getRouteServerRoutingDatabase: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetRouteServerRoutingDatabaseRequest,
   output: GetRouteServerRoutingDatabaseResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetRouteServerRoutingDatabase",
 }));
 export type GetSecurityGroupsForVpcError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets security groups that can be associated by the Amazon Web Services account making the request with network interfaces in the specified VPC.
@@ -92466,7 +93984,12 @@ export const getSecurityGroupsForVpc: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetSecurityGroupsForVpcRequest,
   output: GetSecurityGroupsForVpcResult,
-  errors: [RequestLimitExceeded, InvalidVpcIdMalformed, ParseError],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcIdMalformed,
+    ParseError,
+    UnauthorizedOperation,
+  ],
   operationName: "GetSecurityGroupsForVpc",
   pagination: {
     inputToken: "NextToken",
@@ -92561,6 +94084,7 @@ export type GetSubnetCidrReservationsError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the subnet CIDR reservations.
@@ -92573,12 +94097,18 @@ export const getSubnetCidrReservations: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetSubnetCidrReservationsRequest,
   output: GetSubnetCidrReservationsResult,
-  errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSubnetIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "GetSubnetCidrReservations",
 }));
 export type GetTransitGatewayAttachmentPropagationsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Lists the route tables to which the specified resource attachment propagates routes.
@@ -92606,7 +94136,11 @@ export const getTransitGatewayAttachmentPropagations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayAttachmentPropagationsRequest,
   output: GetTransitGatewayAttachmentPropagationsResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetTransitGatewayAttachmentPropagations",
   pagination: {
     inputToken: "NextToken",
@@ -92619,6 +94153,7 @@ export type GetTransitGatewayMeteringPolicyEntriesError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMeteringPolicyIdNotFound
   | InvalidTransitGatewayMeteringPolicyIdMalformedException
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Retrieves the entries for a transit gateway metering policy.
@@ -92635,6 +94170,7 @@ export const getTransitGatewayMeteringPolicyEntries: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayMeteringPolicyIdNotFound,
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
+    UnauthorizedOperation,
   ],
   operationName: "GetTransitGatewayMeteringPolicyEntries",
 }));
@@ -92643,6 +94179,7 @@ export type GetTransitGatewayMulticastDomainAssociationsError =
   | InvalidTransitGatewayMulticastDomainIdMalformed
   | InvalidTransitGatewayMulticastDomainIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the associations for the transit gateway multicast domain.
@@ -92675,6 +94212,7 @@ export const getTransitGatewayMulticastDomainAssociations: API.OperationMethod<
     InvalidTransitGatewayMulticastDomainIdMalformed,
     InvalidTransitGatewayMulticastDomainIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "GetTransitGatewayMulticastDomainAssociations",
   pagination: {
@@ -92688,6 +94226,7 @@ export type GetTransitGatewayPolicyTableAssociationsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdMalformed
   | InvalidTransitGatewayPolicyTableIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets a list of the transit gateway policy table associations.
@@ -92719,6 +94258,7 @@ export const getTransitGatewayPolicyTableAssociations: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetTransitGatewayPolicyTableAssociations",
   pagination: {
@@ -92732,6 +94272,7 @@ export type GetTransitGatewayPolicyTableEntriesError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdMalformed
   | InvalidTransitGatewayPolicyTableIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Returns a list of transit gateway policy table entries.
@@ -92748,6 +94289,7 @@ export const getTransitGatewayPolicyTableEntries: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayPolicyTableIdMalformed,
     InvalidTransitGatewayPolicyTableIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetTransitGatewayPolicyTableEntries",
 }));
@@ -92755,6 +94297,7 @@ export type GetTransitGatewayPrefixListReferencesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the prefix list references in a specified transit gateway route table.
@@ -92782,7 +94325,12 @@ export const getTransitGatewayPrefixListReferences: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayPrefixListReferencesRequest,
   output: GetTransitGatewayPrefixListReferencesResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "GetTransitGatewayPrefixListReferences",
   pagination: {
     inputToken: "NextToken",
@@ -92794,6 +94342,7 @@ export const getTransitGatewayPrefixListReferences: API.OperationMethod<
 export type GetTransitGatewayRouteTableAssociationsError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the associations for the specified transit gateway route table.
@@ -92821,7 +94370,11 @@ export const getTransitGatewayRouteTableAssociations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayRouteTableAssociationsRequest,
   output: GetTransitGatewayRouteTableAssociationsResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetTransitGatewayRouteTableAssociations",
   pagination: {
     inputToken: "NextToken",
@@ -92833,6 +94386,7 @@ export const getTransitGatewayRouteTableAssociations: API.OperationMethod<
 export type GetTransitGatewayRouteTablePropagationsError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about the route table propagations for the specified transit gateway route table.
@@ -92860,7 +94414,11 @@ export const getTransitGatewayRouteTablePropagations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetTransitGatewayRouteTablePropagationsRequest,
   output: GetTransitGatewayRouteTablePropagationsResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetTransitGatewayRouteTablePropagations",
   pagination: {
     inputToken: "NextToken",
@@ -92873,6 +94431,7 @@ export type GetVerifiedAccessEndpointPolicyError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | InvalidVerifiedAccessEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Get the Verified Access policy associated with the endpoint.
@@ -92889,12 +94448,14 @@ export const getVerifiedAccessEndpointPolicy: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "GetVerifiedAccessEndpointPolicy",
 }));
 export type GetVerifiedAccessEndpointTargetsError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets the targets for the specified network CIDR endpoint for Verified Access.
@@ -92907,12 +94468,17 @@ export const getVerifiedAccessEndpointTargets: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVerifiedAccessEndpointTargetsRequest,
   output: GetVerifiedAccessEndpointTargetsResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetVerifiedAccessEndpointTargets",
 }));
 export type GetVerifiedAccessGroupPolicyError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Shows the contents of the Verified Access policy associated with the group.
@@ -92925,12 +94491,17 @@ export const getVerifiedAccessGroupPolicy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVerifiedAccessGroupPolicyRequest,
   output: GetVerifiedAccessGroupPolicyResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessGroupIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetVerifiedAccessGroupPolicy",
 }));
 export type GetVpcResourcesBlockingEncryptionEnforcementError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Gets information about resources in a VPC that are blocking encryption enforcement.
@@ -92945,12 +94516,13 @@ export const getVpcResourcesBlockingEncryptionEnforcement: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVpcResourcesBlockingEncryptionEnforcementRequest,
   output: GetVpcResourcesBlockingEncryptionEnforcementResult,
-  errors: [RequestLimitExceeded, InvalidVpcIdMalformed],
+  errors: [RequestLimitExceeded, InvalidVpcIdMalformed, UnauthorizedOperation],
   operationName: "GetVpcResourcesBlockingEncryptionEnforcement",
 }));
 export type GetVpnConnectionDeviceSampleConfigurationError =
   | RequestLimitExceeded
   | InvalidVpnConnectionDeviceTypeIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Download an Amazon Web Services-provided sample configuration file to be used with the customer
@@ -92964,7 +94536,11 @@ export const getVpnConnectionDeviceSampleConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVpnConnectionDeviceSampleConfigurationRequest,
   output: GetVpnConnectionDeviceSampleConfigurationResult,
-  errors: [RequestLimitExceeded, InvalidVpnConnectionDeviceTypeIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpnConnectionDeviceTypeIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "GetVpnConnectionDeviceSampleConfiguration",
 }));
 export type GetVpnConnectionDeviceTypesError = CommonErrors;
@@ -93009,6 +94585,7 @@ export const getVpnConnectionDeviceTypes: API.OperationMethod<
 export type GetVpnTunnelReplacementStatusError =
   | RequestLimitExceeded
   | InvalidVpnConnectionId
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Get details of available tunnel endpoint maintenance.
@@ -93021,12 +94598,13 @@ export const getVpnTunnelReplacementStatus: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetVpnTunnelReplacementStatusRequest,
   output: GetVpnTunnelReplacementStatusResult,
-  errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  errors: [RequestLimitExceeded, InvalidVpnConnectionId, UnauthorizedOperation],
   operationName: "GetVpnTunnelReplacementStatus",
 }));
 export type ImportClientVpnClientCertificateRevocationListError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Uploads a client certificate revocation list to the specified Client VPN endpoint. Uploading a client certificate revocation list overwrites the existing client certificate revocation list.
@@ -93041,12 +94619,17 @@ export const importClientVpnClientCertificateRevocationList: API.OperationMethod
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportClientVpnClientCertificateRevocationListRequest,
   output: ImportClientVpnClientCertificateRevocationListResult,
-  errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidClientVpnEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ImportClientVpnClientCertificateRevocationList",
 }));
 export type ImportImageError =
   | RequestLimitExceeded
   | MissingRequiredParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * To import your virtual machines (VMs) with a console-based experience, you can use the
@@ -93073,12 +94656,17 @@ export const importImage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportImageRequest,
   output: ImportImageResult,
-  errors: [RequestLimitExceeded, MissingRequiredParameter],
+  errors: [
+    RequestLimitExceeded,
+    MissingRequiredParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "ImportImage",
 }));
 export type ImportInstanceError =
   | RequestLimitExceeded
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * We recommend that you use the
@@ -93104,12 +94692,13 @@ export const importInstance: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportInstanceRequest,
   output: ImportInstanceResult,
-  errors: [RequestLimitExceeded, InvalidParameter],
+  errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
   operationName: "ImportInstance",
 }));
 export type ImportKeyPairError =
   | RequestLimitExceeded
   | InvalidKeyPairDuplicate
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Imports the public key from an RSA or ED25519 key pair that you created using a third-party tool.
@@ -93125,12 +94714,17 @@ export const importKeyPair: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportKeyPairRequest,
   output: ImportKeyPairResult,
-  errors: [RequestLimitExceeded, InvalidKeyPairDuplicate],
+  errors: [
+    RequestLimitExceeded,
+    InvalidKeyPairDuplicate,
+    UnauthorizedOperation,
+  ],
   operationName: "ImportKeyPair",
 }));
 export type ImportSnapshotError =
   | RequestLimitExceeded
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Imports a disk into an EBS snapshot.
@@ -93146,7 +94740,7 @@ export const importSnapshot: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportSnapshotRequest,
   output: ImportSnapshotResult,
-  errors: [RequestLimitExceeded, InvalidParameter],
+  errors: [RequestLimitExceeded, InvalidParameter, UnauthorizedOperation],
   operationName: "ImportSnapshot",
 }));
 export type ImportVolumeError = CommonErrors;
@@ -93175,6 +94769,7 @@ export const importVolume: API.OperationMethod<
 export type ListImagesInRecycleBinError =
   | RequestLimitExceeded
   | InvalidAMIIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Lists one or more AMIs that are currently in the Recycle Bin. For more information, see
@@ -93204,7 +94799,7 @@ export const listImagesInRecycleBin: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListImagesInRecycleBinRequest,
   output: ListImagesInRecycleBinResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDNotFound],
+  errors: [RequestLimitExceeded, InvalidAMIIDNotFound, UnauthorizedOperation],
   operationName: "ListImagesInRecycleBin",
   pagination: {
     inputToken: "NextToken",
@@ -93216,6 +94811,7 @@ export const listImagesInRecycleBin: API.OperationMethod<
 export type ListSnapshotsInRecycleBinError =
   | RequestLimitExceeded
   | InvalidSnapshotIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Lists one or more snapshots that are currently in the Recycle Bin.
@@ -93243,7 +94839,11 @@ export const listSnapshotsInRecycleBin: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotsInRecycleBinRequest,
   output: ListSnapshotsInRecycleBinResult,
-  errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSnapshotIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ListSnapshotsInRecycleBin",
   pagination: {
     inputToken: "NextToken",
@@ -93255,6 +94855,7 @@ export const listSnapshotsInRecycleBin: API.OperationMethod<
 export type ListVolumesInRecycleBinError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Lists one or more volumes that are currently in the Recycle Bin.
@@ -93267,12 +94868,17 @@ export const listVolumesInRecycleBin: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ListVolumesInRecycleBinRequest,
   output: ListVolumesInRecycleBinResult,
-  errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVolumeIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ListVolumesInRecycleBin",
 }));
 export type LockSnapshotError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Locks an Amazon EBS snapshot in either *governance* or *compliance*
@@ -93299,13 +94905,14 @@ export const lockSnapshot: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: LockSnapshotRequest,
   output: LockSnapshotResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "LockSnapshot",
 }));
 export type ModifyAddressAttributeError =
   | RequestLimitExceeded
   | InvalidAllocationIDNotFound
   | InvalidElasticIpIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies an attribute of the specified Elastic IP address. For requirements, see Using reverse DNS for email applications.
@@ -93322,12 +94929,14 @@ export const modifyAddressAttribute: API.OperationMethod<
     RequestLimitExceeded,
     InvalidAllocationIDNotFound,
     InvalidElasticIpIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyAddressAttribute",
 }));
 export type ModifyAvailabilityZoneGroupError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Changes the opt-in status of the specified zone group for your account.
@@ -93340,12 +94949,13 @@ export const modifyAvailabilityZoneGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyAvailabilityZoneGroupRequest,
   output: ModifyAvailabilityZoneGroupResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyAvailabilityZoneGroup",
 }));
 export type ModifyCapacityReservationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a Capacity Reservation's capacity, instance eligibility, and the conditions
@@ -93383,12 +94993,17 @@ export const modifyCapacityReservation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyCapacityReservationRequest,
   output: ModifyCapacityReservationResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyCapacityReservation",
 }));
 export type ModifyCapacityReservationFleetError =
   | RequestLimitExceeded
   | InvalidCapacityReservationFleetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a Capacity Reservation Fleet.
@@ -93407,12 +95022,17 @@ export const modifyCapacityReservationFleet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyCapacityReservationFleetRequest,
   output: ModifyCapacityReservationFleetResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationFleetIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationFleetIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyCapacityReservationFleet",
 }));
 export type ModifyClientVpnEndpointError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified Client VPN endpoint. Modifying the DNS server resets existing client connections.
@@ -93425,12 +95045,17 @@ export const modifyClientVpnEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyClientVpnEndpointRequest,
   output: ModifyClientVpnEndpointResult,
-  errors: [RequestLimitExceeded, InvalidClientVpnEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidClientVpnEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyClientVpnEndpoint",
 }));
 export type ModifyDefaultCreditSpecificationError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the default credit option for CPU usage of burstable performance instances.
@@ -93457,12 +95082,13 @@ export const modifyDefaultCreditSpecification: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyDefaultCreditSpecificationRequest,
   output: ModifyDefaultCreditSpecificationResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyDefaultCreditSpecification",
 }));
 export type ModifyEbsDefaultKmsKeyIdError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Changes the default KMS key for EBS encryption by default for your account in this Region.
@@ -93485,12 +95111,13 @@ export const modifyEbsDefaultKmsKeyId: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyEbsDefaultKmsKeyIdRequest,
   output: ModifyEbsDefaultKmsKeyIdResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ModifyEbsDefaultKmsKeyId",
 }));
 export type ModifyFleetError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified EC2 Fleet.
@@ -93529,13 +95156,18 @@ export const modifyFleet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyFleetRequest,
   output: ModifyFleetResult,
-  errors: [RequestLimitExceeded, InvalidFleetIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFleetIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyFleet",
 }));
 export type ModifyFpgaImageAttributeError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
   | InvalidFpgaImageIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified attribute of the specified Amazon FPGA Image (AFI).
@@ -93552,6 +95184,7 @@ export const modifyFpgaImageAttribute: API.OperationMethod<
     RequestLimitExceeded,
     InvalidFpgaImageIDMalformed,
     InvalidFpgaImageIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyFpgaImageAttribute",
 }));
@@ -93665,6 +95298,7 @@ export type ModifyImageAttributeError =
   | InvalidAMIIDMalformed
   | InvalidAMIIDNotFound
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified attribute of the specified AMI. You can specify only one attribute
@@ -93692,6 +95326,7 @@ export const modifyImageAttribute: API.OperationMethod<
     InvalidAMIIDMalformed,
     InvalidAMIIDNotFound,
     InvalidParameterCombination,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyImageAttribute",
 }));
@@ -93699,6 +95334,7 @@ export type ModifyInstanceAttributeError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified attribute of the specified instance. You can specify only one
@@ -93726,12 +95362,14 @@ export const modifyInstanceAttribute: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceIDNotFound,
     InvalidParameterValue,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyInstanceAttribute",
 }));
 export type ModifyInstanceCapacityReservationAttributesError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the Capacity Reservation settings for a stopped instance. Use this action to
@@ -93747,13 +95385,14 @@ export const modifyInstanceCapacityReservationAttributes: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceCapacityReservationAttributesRequest,
   output: ModifyInstanceCapacityReservationAttributesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ModifyInstanceCapacityReservationAttributes",
 }));
 export type ModifyInstanceConnectEndpointError =
   | RequestLimitExceeded
   | InvalidInstanceConnectEndpointIdMalformed
   | InvalidInstanceConnectEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified EC2 Instance Connect Endpoint.
@@ -93774,12 +95413,14 @@ export const modifyInstanceConnectEndpoint: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceConnectEndpointIdMalformed,
     InvalidInstanceConnectEndpointIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyInstanceConnectEndpoint",
 }));
 export type ModifyInstanceCpuOptionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * By default, all vCPUs for the instance type are active when you launch an instance. When you
@@ -93801,7 +95442,11 @@ export const modifyInstanceCpuOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceCpuOptionsRequest,
   output: ModifyInstanceCpuOptionsResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyInstanceCpuOptions",
 }));
 export type ModifyInstanceCreditSpecificationError = CommonErrors;
@@ -93827,6 +95472,7 @@ export const modifyInstanceCreditSpecification: API.OperationMethod<
 export type ModifyInstanceEventStartTimeError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the start time for a scheduled Amazon EC2 instance event.
@@ -93839,13 +95485,14 @@ export const modifyInstanceEventStartTime: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceEventStartTimeRequest,
   output: ModifyInstanceEventStartTimeResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyInstanceEventStartTime",
 }));
 export type ModifyInstanceEventWindowError =
   | RequestLimitExceeded
   | InvalidInstanceEventWindowIDNotFound
   | InvalidInstanceEventWindowIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified event window.
@@ -93873,12 +95520,14 @@ export const modifyInstanceEventWindow: API.OperationMethod<
     RequestLimitExceeded,
     InvalidInstanceEventWindowIDNotFound,
     InvalidInstanceEventWindowIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyInstanceEventWindow",
 }));
 export type ModifyInstanceMaintenanceOptionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the recovery behavior of your instance to disable simplified automatic
@@ -93897,12 +95546,17 @@ export const modifyInstanceMaintenanceOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceMaintenanceOptionsRequest,
   output: ModifyInstanceMaintenanceOptionsResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyInstanceMaintenanceOptions",
 }));
 export type ModifyInstanceMetadataDefaultsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the default instance metadata service (IMDS) settings at the account level in
@@ -93923,12 +95577,13 @@ export const modifyInstanceMetadataDefaults: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceMetadataDefaultsRequest,
   output: ModifyInstanceMetadataDefaultsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyInstanceMetadataDefaults",
 }));
 export type ModifyInstanceMetadataOptionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modify the instance metadata parameters on a running or stopped instance. When you
@@ -93947,12 +95602,17 @@ export const modifyInstanceMetadataOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceMetadataOptionsRequest,
   output: ModifyInstanceMetadataOptionsResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyInstanceMetadataOptions",
 }));
 export type ModifyInstanceNetworkPerformanceOptionsError =
   | RequestLimitExceeded
   | InvalidAction
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Change the configuration of the network performance options for an existing
@@ -93966,12 +95626,13 @@ export const modifyInstanceNetworkPerformanceOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstanceNetworkPerformanceRequest,
   output: ModifyInstanceNetworkPerformanceResult,
-  errors: [RequestLimitExceeded, InvalidAction],
+  errors: [RequestLimitExceeded, InvalidAction, UnauthorizedOperation],
   operationName: "ModifyInstanceNetworkPerformanceOptions",
 }));
 export type ModifyInstancePlacementError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the placement attributes for a specified instance. You can do the
@@ -94005,12 +95666,17 @@ export const modifyInstancePlacement: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyInstancePlacementRequest,
   output: ModifyInstancePlacementResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyInstancePlacement",
 }));
 export type ModifyIpamError =
   | RequestLimitExceeded
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modify the configurations of an IPAM.
@@ -94023,12 +95689,17 @@ export const modifyIpam: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamRequest,
   output: ModifyIpamResult,
-  errors: [RequestLimitExceeded, InvalidParameterCombination],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterCombination,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyIpam",
 }));
 export type ModifyIpamPolicyAllocationRulesError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the allocation rules in an IPAM policy.
@@ -94045,12 +95716,13 @@ export const modifyIpamPolicyAllocationRules: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPolicyAllocationRulesRequest,
   output: ModifyIpamPolicyAllocationRulesResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyIpamPolicyAllocationRules",
 }));
 export type ModifyIpamPoolError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modify the configurations of an IPAM pool.
@@ -94065,7 +95737,11 @@ export const modifyIpamPool: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamPoolRequest,
   output: ModifyIpamPoolResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyIpamPool",
 }));
 export type ModifyIpamPoolAllocationError = CommonErrors;
@@ -94087,6 +95763,7 @@ export type ModifyIpamPrefixListResolverError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdMalformed
   | InvalidIpamPrefixListResolverIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies an IPAM prefix list resolver. You can update the description and CIDR selection rules. Changes to rules will trigger re-evaluation and potential updates to associated prefix lists.
@@ -94103,12 +95780,14 @@ export const modifyIpamPrefixListResolver: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverIdMalformed,
     InvalidIpamPrefixListResolverIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyIpamPrefixListResolver",
 }));
 export type ModifyIpamPrefixListResolverTargetError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverTargetIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies an IPAM prefix list resolver target. You can update version tracking settings and the desired version of the target prefix list.
@@ -94124,6 +95803,7 @@ export const modifyIpamPrefixListResolverTarget: API.OperationMethod<
   errors: [
     RequestLimitExceeded,
     InvalidIpamPrefixListResolverTargetIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyIpamPrefixListResolverTarget",
 }));
@@ -94131,6 +95811,7 @@ export type ModifyIpamResourceCidrError =
   | RequestLimitExceeded
   | InvalidIpamScopeIdMalformed
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modify a resource CIDR. You can use this action to transfer resource CIDRs between scopes and ignore resource CIDRs that you do not want to manage. If set to false, the resource will not be tracked for overlap, it cannot be auto-imported into a pool, and it will be removed from any pool it has an allocation in.
@@ -94149,6 +95830,7 @@ export const modifyIpamResourceCidr: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamScopeIdMalformed,
     InvalidParameterValue,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyIpamResourceCidr",
 }));
@@ -94156,6 +95838,7 @@ export type ModifyIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
   | InvalidIpamResourceDiscoveryIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a resource discovery. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
@@ -94172,12 +95855,14 @@ export const modifyIpamResourceDiscovery: API.OperationMethod<
     RequestLimitExceeded,
     InvalidIpamResourceDiscoveryIdMalformed,
     InvalidIpamResourceDiscoveryIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyIpamResourceDiscovery",
 }));
 export type ModifyIpamScopeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modify an IPAM scope.
@@ -94190,12 +95875,17 @@ export const modifyIpamScope: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyIpamScopeRequest,
   output: ModifyIpamScopeResult,
-  errors: [RequestLimitExceeded, InvalidParameterCombination],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterCombination,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyIpamScope",
 }));
 export type ModifyLaunchTemplateError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a launch template. You can specify which version of the launch template to
@@ -94210,12 +95900,13 @@ export const modifyLaunchTemplate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyLaunchTemplateRequest,
   output: ModifyLaunchTemplateResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyLaunchTemplate",
 }));
 export type ModifyLocalGatewayRouteError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified local gateway route.
@@ -94228,7 +95919,7 @@ export const modifyLocalGatewayRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyLocalGatewayRouteRequest,
   output: ModifyLocalGatewayRouteResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyLocalGatewayRoute",
 }));
 export type ModifyManagedPrefixListError =
@@ -94236,6 +95927,7 @@ export type ModifyManagedPrefixListError =
   | InvalidParameterCombination
   | InvalidPrefixListIDNotFound
   | InvalidPrefixListIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified managed prefix list.
@@ -94259,6 +95951,7 @@ export const modifyManagedPrefixList: API.OperationMethod<
     InvalidParameterCombination,
     InvalidPrefixListIDNotFound,
     InvalidPrefixListIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyManagedPrefixList",
 }));
@@ -94285,6 +95978,7 @@ export type ModifyNetworkInterfaceAttributeError =
   | InvalidNetworkInterfaceIDNotFound
   | InvalidNetworkInterfaceIdMalformed
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified network interface attribute. You can specify only one attribute
@@ -94304,12 +95998,14 @@ export const modifyNetworkInterfaceAttribute: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidNetworkInterfaceIdMalformed,
     InvalidParameterCombination,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyNetworkInterfaceAttribute",
 }));
 export type ModifyPrivateDnsNameOptionsError =
   | RequestLimitExceeded
   | UnknownResource
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the options for instance hostnames for the specified instance.
@@ -94322,12 +96018,13 @@ export const modifyPrivateDnsNameOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyPrivateDnsNameOptionsRequest,
   output: ModifyPrivateDnsNameOptionsResult,
-  errors: [RequestLimitExceeded, UnknownResource],
+  errors: [RequestLimitExceeded, UnknownResource, UnauthorizedOperation],
   operationName: "ModifyPrivateDnsNameOptions",
 }));
 export type ModifyPublicIpDnsNameOptionsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modify public hostname options for a network interface. For more information, see EC2 instance hostnames, DNS names, and domains in the *Amazon EC2 User Guide*.
@@ -94340,12 +96037,13 @@ export const modifyPublicIpDnsNameOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyPublicIpDnsNameOptionsRequest,
   output: ModifyPublicIpDnsNameOptionsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyPublicIpDnsNameOptions",
 }));
 export type ModifyReservedInstancesError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the configuration of your Reserved Instances, such as the Availability Zone,
@@ -94363,12 +96061,13 @@ export const modifyReservedInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyReservedInstancesRequest,
   output: ModifyReservedInstancesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ModifyReservedInstances",
 }));
 export type ModifyRouteServerError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the configuration of an existing route server.
@@ -94396,12 +96095,17 @@ export const modifyRouteServer: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyRouteServerRequest,
   output: ModifyRouteServerResult,
-  errors: [RequestLimitExceeded, InvalidRouteServerIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteServerIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyRouteServer",
 }));
 export type ModifySecurityGroupRulesError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the rules of a security group.
@@ -94414,13 +96118,14 @@ export const modifySecurityGroupRules: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifySecurityGroupRulesRequest,
   output: ModifySecurityGroupRulesResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifySecurityGroupRules",
 }));
 export type ModifySnapshotAttributeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
   | InvalidSnapshotNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Adds or removes permission settings for the specified snapshot. You may add or remove
@@ -94446,12 +96151,14 @@ export const modifySnapshotAttribute: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterCombination,
     InvalidSnapshotNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifySnapshotAttribute",
 }));
 export type ModifySnapshotTierError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Archives an Amazon EBS snapshot. When you archive a snapshot, it is converted to a full
@@ -94468,12 +96175,13 @@ export const modifySnapshotTier: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifySnapshotTierRequest,
   output: ModifySnapshotTierResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ModifySnapshotTier",
 }));
 export type ModifySpotFleetRequestError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified Spot Fleet request.
@@ -94515,13 +96223,14 @@ export const modifySpotFleetRequest: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifySpotFleetRequestRequest,
   output: ModifySpotFleetRequestResponse,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ModifySpotFleetRequest",
 }));
 export type ModifySubnetAttributeError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a subnet attribute. You can only modify one attribute at a time.
@@ -94551,12 +96260,18 @@ export const modifySubnetAttribute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifySubnetAttributeRequest,
   output: ModifySubnetAttributeResponse,
-  errors: [RequestLimitExceeded, InvalidSubnetIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSubnetIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifySubnetAttribute",
 }));
 export type ModifyTrafficMirrorFilterNetworkServicesError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Allows or restricts mirroring network services.
@@ -94572,13 +96287,14 @@ export const modifyTrafficMirrorFilterNetworkServices: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTrafficMirrorFilterNetworkServicesRequest,
   output: ModifyTrafficMirrorFilterNetworkServicesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ModifyTrafficMirrorFilterNetworkServices",
 }));
 export type ModifyTrafficMirrorFilterRuleError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | InvalidTrafficMirrorFilterRuleIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified Traffic Mirror rule.
@@ -94598,12 +96314,14 @@ export const modifyTrafficMirrorFilterRule: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValue,
     InvalidTrafficMirrorFilterRuleIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyTrafficMirrorFilterRule",
 }));
 export type ModifyTrafficMirrorSessionError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a Traffic Mirror session.
@@ -94616,12 +96334,13 @@ export const modifyTrafficMirrorSession: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTrafficMirrorSessionRequest,
   output: ModifyTrafficMirrorSessionResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ModifyTrafficMirrorSession",
 }));
 export type ModifyTransitGatewayError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified transit gateway. When you modify a transit gateway, the modified options are applied to new transit gateway attachments only. Your existing transit gateway attachments are not modified.
@@ -94634,13 +96353,14 @@ export const modifyTransitGateway: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayRequest,
   output: ModifyTransitGatewayResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyTransitGateway",
 }));
 export type ModifyTransitGatewayMeteringPolicyError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMeteringPolicyIdMalformedException
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a transit gateway metering policy.
@@ -94657,12 +96377,14 @@ export const modifyTransitGatewayMeteringPolicy: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayMeteringPolicyIdMalformedException,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyTransitGatewayMeteringPolicy",
 }));
 export type ModifyTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a reference (route) to a prefix list in a specified transit gateway route table.
@@ -94675,12 +96397,13 @@ export const modifyTransitGatewayPrefixListReference: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayPrefixListReferenceRequest,
   output: ModifyTransitGatewayPrefixListReferenceResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyTransitGatewayPrefixListReference",
 }));
 export type ModifyTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified VPC attachment.
@@ -94693,13 +96416,18 @@ export const modifyTransitGatewayVpcAttachment: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyTransitGatewayVpcAttachmentRequest,
   output: ModifyTransitGatewayVpcAttachmentResult,
-  errors: [RequestLimitExceeded, InvalidTransitGatewayAttachmentIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidTransitGatewayAttachmentIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyTransitGatewayVpcAttachment",
 }));
 export type ModifyVerifiedAccessEndpointError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | InvalidVerifiedAccessEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the configuration of the specified Amazon Web Services Verified Access endpoint.
@@ -94716,6 +96444,7 @@ export const modifyVerifiedAccessEndpoint: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVerifiedAccessEndpoint",
 }));
@@ -94723,6 +96452,7 @@ export type ModifyVerifiedAccessEndpointPolicyError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | InvalidVerifiedAccessEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified Amazon Web Services Verified Access endpoint policy.
@@ -94739,12 +96469,14 @@ export const modifyVerifiedAccessEndpointPolicy: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterValue,
     InvalidVerifiedAccessEndpointIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVerifiedAccessEndpointPolicy",
 }));
 export type ModifyVerifiedAccessGroupError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified Amazon Web Services Verified Access group configuration.
@@ -94757,12 +96489,17 @@ export const modifyVerifiedAccessGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessGroupRequest,
   output: ModifyVerifiedAccessGroupResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessGroupIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyVerifiedAccessGroup",
 }));
 export type ModifyVerifiedAccessGroupPolicyError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified Amazon Web Services Verified Access group policy.
@@ -94775,12 +96512,17 @@ export const modifyVerifiedAccessGroupPolicy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessGroupPolicyRequest,
   output: ModifyVerifiedAccessGroupPolicyResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessGroupIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessGroupIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyVerifiedAccessGroupPolicy",
 }));
 export type ModifyVerifiedAccessInstanceError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the configuration of the specified Amazon Web Services Verified Access instance.
@@ -94793,12 +96535,17 @@ export const modifyVerifiedAccessInstance: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessInstanceRequest,
   output: ModifyVerifiedAccessInstanceResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessInstanceIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessInstanceIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyVerifiedAccessInstance",
 }));
 export type ModifyVerifiedAccessInstanceLoggingConfigurationError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the logging configuration for the specified Amazon Web Services Verified Access instance.
@@ -94811,12 +96558,13 @@ export const modifyVerifiedAccessInstanceLoggingConfiguration: API.OperationMeth
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessInstanceLoggingConfigurationRequest,
   output: ModifyVerifiedAccessInstanceLoggingConfigurationResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ModifyVerifiedAccessInstanceLoggingConfiguration",
 }));
 export type ModifyVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessTrustProviderIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the configuration of the specified Amazon Web Services Verified Access trust provider.
@@ -94829,7 +96577,11 @@ export const modifyVerifiedAccessTrustProvider: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVerifiedAccessTrustProviderRequest,
   output: ModifyVerifiedAccessTrustProviderResult,
-  errors: [RequestLimitExceeded, InvalidVerifiedAccessTrustProviderIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVerifiedAccessTrustProviderIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyVerifiedAccessTrustProvider",
 }));
 export type ModifyVolumeError =
@@ -94837,6 +96589,7 @@ export type ModifyVolumeError =
   | InvalidParameterValue
   | InvalidVolumeNotFound
   | InvalidVolumeIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * You can modify several parameters of an existing EBS volume, including volume size, volume
@@ -94873,6 +96626,7 @@ export const modifyVolume: API.OperationMethod<
     InvalidParameterValue,
     InvalidVolumeNotFound,
     InvalidVolumeIDMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVolume",
 }));
@@ -94880,6 +96634,7 @@ export type ModifyVolumeAttributeError =
   | RequestLimitExceeded
   | InvalidVolumeNotFound
   | InvalidVolumeIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a volume attribute.
@@ -94904,6 +96659,7 @@ export const modifyVolumeAttribute: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVolumeNotFound,
     InvalidVolumeIDMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVolumeAttribute",
 }));
@@ -94911,6 +96667,7 @@ export type ModifyVpcAttributeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
   | InvalidVpcIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the specified attribute of the specified VPC.
@@ -94927,6 +96684,7 @@ export const modifyVpcAttribute: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameterCombination,
     InvalidVpcIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVpcAttribute",
 }));
@@ -94964,6 +96722,7 @@ export type ModifyVpcEncryptionControlError =
   | RequestLimitExceeded
   | InvalidVpcEncryptionControlIdMalformed
   | InvalidVpcEncryptionControlIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the encryption control configuration for a VPC. You can update the encryption mode and exclusion settings for various gateway types and peering connections.
@@ -94982,12 +96741,14 @@ export const modifyVpcEncryptionControl: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVpcEncryptionControlIdMalformed,
     InvalidVpcEncryptionControlIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVpcEncryptionControl",
 }));
 export type ModifyVpcEndpointError =
   | RequestLimitExceeded
   | InvalidVpcEndpointIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies attributes of a specified VPC endpoint. The attributes that you can modify
@@ -95003,13 +96764,18 @@ export const modifyVpcEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointRequest,
   output: ModifyVpcEndpointResult,
-  errors: [RequestLimitExceeded, InvalidVpcEndpointIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcEndpointIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyVpcEndpoint",
 }));
 export type ModifyVpcEndpointConnectionNotificationError =
   | RequestLimitExceeded
   | InvalidConnectionNotification
   | InvalidParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies a connection notification for VPC endpoint or VPC endpoint service. You
@@ -95027,6 +96793,7 @@ export const modifyVpcEndpointConnectionNotification: API.OperationMethod<
     RequestLimitExceeded,
     InvalidConnectionNotification,
     InvalidParameter,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVpcEndpointConnectionNotification",
 }));
@@ -95034,6 +96801,7 @@ export type ModifyVpcEndpointServiceConfigurationError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdMalformed
   | InvalidVpcEndpointServiceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the attributes of the specified VPC endpoint service configuration.
@@ -95053,12 +96821,14 @@ export const modifyVpcEndpointServiceConfiguration: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVpcEndpointServiceConfiguration",
 }));
 export type ModifyVpcEndpointServicePayerResponsibilityError =
   | RequestLimitExceeded
   | UnsupportedOperation
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the payer responsibility for your VPC endpoint service.
@@ -95071,13 +96841,14 @@ export const modifyVpcEndpointServicePayerResponsibility: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcEndpointServicePayerResponsibilityRequest,
   output: ModifyVpcEndpointServicePayerResponsibilityResult,
-  errors: [RequestLimitExceeded, UnsupportedOperation],
+  errors: [RequestLimitExceeded, UnsupportedOperation, UnauthorizedOperation],
   operationName: "ModifyVpcEndpointServicePayerResponsibility",
 }));
 export type ModifyVpcEndpointServicePermissionsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdMalformed
   | InvalidVpcEndpointServiceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the permissions for your VPC endpoint service. You can add or remove permissions
@@ -95100,6 +96871,7 @@ export const modifyVpcEndpointServicePermissions: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVpcEndpointServicePermissions",
 }));
@@ -95107,6 +96879,7 @@ export type ModifyVpcPeeringConnectionOptionsError =
   | RequestLimitExceeded
   | InvalidVpcPeeringConnectionIDNotFound
   | InvalidVpcPeeringConnectionIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the VPC peering connection options on one side of a VPC peering connection.
@@ -95134,6 +96907,7 @@ export const modifyVpcPeeringConnectionOptions: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVpcPeeringConnectionIDNotFound,
     InvalidVpcPeeringConnectionIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ModifyVpcPeeringConnectionOptions",
 }));
@@ -95141,6 +96915,7 @@ export type ModifyVpcTenancyError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
   | InvalidVpcIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the instance tenancy attribute of the specified VPC. You can change the
@@ -95162,12 +96937,18 @@ export const modifyVpcTenancy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpcTenancyRequest,
   output: ModifyVpcTenancyResult,
-  errors: [RequestLimitExceeded, InvalidVpcIDNotFound, InvalidVpcIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpcIDNotFound,
+    InvalidVpcIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyVpcTenancy",
 }));
 export type ModifyVpnConnectionError =
   | RequestLimitExceeded
   | InvalidVpnConnectionId
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the customer gateway or the target gateway of an Amazon Web Services Site-to-Site VPN connection. To
@@ -95217,12 +96998,13 @@ export const modifyVpnConnection: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnConnectionRequest,
   output: ModifyVpnConnectionResult,
-  errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  errors: [RequestLimitExceeded, InvalidVpnConnectionId, UnauthorizedOperation],
   operationName: "ModifyVpnConnection",
 }));
 export type ModifyVpnConnectionOptionsError =
   | RequestLimitExceeded
   | InvalidVpnConnectionIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the connection options for your Site-to-Site VPN connection.
@@ -95240,12 +97022,17 @@ export const modifyVpnConnectionOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnConnectionOptionsRequest,
   output: ModifyVpnConnectionOptionsResult,
-  errors: [RequestLimitExceeded, InvalidVpnConnectionIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVpnConnectionIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ModifyVpnConnectionOptions",
 }));
 export type ModifyVpnTunnelCertificateError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the VPN tunnel endpoint certificate.
@@ -95258,12 +97045,13 @@ export const modifyVpnTunnelCertificate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnTunnelCertificateRequest,
   output: ModifyVpnTunnelCertificateResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ModifyVpnTunnelCertificate",
 }));
 export type ModifyVpnTunnelOptionsError =
   | RequestLimitExceeded
   | InvalidVpnConnectionId
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the options for a VPN tunnel in an Amazon Web Services Site-to-Site VPN connection. You can modify
@@ -95279,13 +97067,14 @@ export const modifyVpnTunnelOptions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ModifyVpnTunnelOptionsRequest,
   output: ModifyVpnTunnelOptionsResult,
-  errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  errors: [RequestLimitExceeded, InvalidVpnConnectionId, UnauthorizedOperation],
   operationName: "ModifyVpnTunnelOptions",
 }));
 export type MonitorInstancesError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Enables detailed monitoring for a running instance. Otherwise, basic monitoring is
@@ -95302,12 +97091,18 @@ export const monitorInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MonitorInstancesRequest,
   output: MonitorInstancesResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "MonitorInstances",
 }));
 export type MoveAddressToVpcError =
   | RequestLimitExceeded
   | UnsupportedOperation
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -95326,12 +97121,13 @@ export const moveAddressToVpc: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MoveAddressToVpcRequest,
   output: MoveAddressToVpcResult,
-  errors: [RequestLimitExceeded, UnsupportedOperation],
+  errors: [RequestLimitExceeded, UnsupportedOperation, UnauthorizedOperation],
   operationName: "MoveAddressToVpc",
 }));
 export type MoveByoipCidrToIpamError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Move a BYOIPv4 CIDR to IPAM from a public IPv4 pool.
@@ -95346,12 +97142,17 @@ export const moveByoipCidrToIpam: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MoveByoipCidrToIpamRequest,
   output: MoveByoipCidrToIpamResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "MoveByoipCidrToIpam",
 }));
 export type MoveCapacityReservationInstancesError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Move available capacity from a source Capacity Reservation to a destination Capacity
@@ -95379,12 +97180,17 @@ export const moveCapacityReservationInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MoveCapacityReservationInstancesRequest,
   output: MoveCapacityReservationInstancesResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "MoveCapacityReservationInstances",
 }));
 export type ProvisionByoipCidrError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP
@@ -95408,12 +97214,13 @@ export const provisionByoipCidr: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvisionByoipCidrRequest,
   output: ProvisionByoipCidrResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ProvisionByoipCidr",
 }));
 export type ProvisionIpamByoasnError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Provisions your Autonomous System Number (ASN) for use in your Amazon Web Services account. This action requires authorization context for Amazon to bring the ASN to an Amazon Web Services account. For more information, see Tutorial: Bring your ASN to IPAM in the *Amazon VPC IPAM guide*.
@@ -95426,13 +97233,14 @@ export const provisionIpamByoasn: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvisionIpamByoasnRequest,
   output: ProvisionIpamByoasnResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ProvisionIpamByoasn",
 }));
 export type ProvisionIpamPoolCidrError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Provision a CIDR to an IPAM pool. You can use this action to provision new CIDRs to a top-level pool or to transfer a CIDR from a top-level pool to a pool within it.
@@ -95447,13 +97255,19 @@ export const provisionIpamPoolCidr: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvisionIpamPoolCidrRequest,
   output: ProvisionIpamPoolCidrResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "ProvisionIpamPoolCidr",
 }));
 export type ProvisionPublicIpv4PoolCidrError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Provision a CIDR to a public IPv4 pool.
@@ -95468,12 +97282,18 @@ export const provisionPublicIpv4PoolCidr: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ProvisionPublicIpv4PoolCidrRequest,
   output: ProvisionPublicIpv4PoolCidrResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "ProvisionPublicIpv4PoolCidr",
 }));
 export type PurchaseCapacityBlockError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Purchase the Capacity Block for use with your account. With Capacity Blocks you ensure
@@ -95488,12 +97308,13 @@ export const purchaseCapacityBlock: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseCapacityBlockRequest,
   output: PurchaseCapacityBlockResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "PurchaseCapacityBlock",
 }));
 export type PurchaseCapacityBlockExtensionError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Purchase the Capacity Block extension for use with your account. You must specify the
@@ -95507,7 +97328,11 @@ export const purchaseCapacityBlockExtension: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseCapacityBlockExtensionRequest,
   output: PurchaseCapacityBlockExtensionResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "PurchaseCapacityBlockExtension",
 }));
 export type PurchaseHostReservationError = CommonErrors;
@@ -95531,6 +97356,7 @@ export const purchaseHostReservation: API.OperationMethod<
 export type PurchaseReservedInstancesOfferingError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Purchases a Reserved Instance for use with your account. With Reserved Instances, you pay
@@ -95555,12 +97381,13 @@ export const purchaseReservedInstancesOffering: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseReservedInstancesOfferingRequest,
   output: PurchaseReservedInstancesOfferingResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "PurchaseReservedInstancesOffering",
 }));
 export type PurchaseScheduledInstancesError =
   | RequestLimitExceeded
   | InvalidPurchaseTokenMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * You can no longer purchase Scheduled Instances.
@@ -95582,7 +97409,11 @@ export const purchaseScheduledInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PurchaseScheduledInstancesRequest,
   output: PurchaseScheduledInstancesResult,
-  errors: [RequestLimitExceeded, InvalidPurchaseTokenMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidPurchaseTokenMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "PurchaseScheduledInstances",
 }));
 export type RebootInstancesError =
@@ -95590,6 +97421,7 @@ export type RebootInstancesError =
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Requests a reboot of the specified instances. This operation is asynchronous; it only
@@ -95616,12 +97448,14 @@ export const rebootInstances: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "RebootInstances",
 }));
 export type RegisterImageError =
   | RequestLimitExceeded
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Registers an AMI. When you're creating an instance-store backed AMI, registering the AMI
@@ -95675,12 +97509,17 @@ export const registerImage: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterImageRequest,
   output: RegisterImageResult,
-  errors: [RequestLimitExceeded, InvalidParameterCombination],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterCombination,
+    UnauthorizedOperation,
+  ],
   operationName: "RegisterImage",
 }));
 export type RegisterInstanceEventNotificationAttributesError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Registers a set of tag keys to include in scheduled event notifications for your
@@ -95696,13 +97535,14 @@ export const registerInstanceEventNotificationAttributes: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RegisterInstanceEventNotificationAttributesRequest,
   output: RegisterInstanceEventNotificationAttributesResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "RegisterInstanceEventNotificationAttributes",
 }));
 export type RegisterTransitGatewayMulticastGroupMembersError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Registers members (network interfaces) with the transit gateway multicast group. A member is a network interface associated
@@ -95725,6 +97565,7 @@ export const registerTransitGatewayMulticastGroupMembers: API.OperationMethod<
     RequestLimitExceeded,
     InvalidNetworkInterfaceIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "RegisterTransitGatewayMulticastGroupMembers",
 }));
@@ -95732,6 +97573,7 @@ export type RegisterTransitGatewayMulticastGroupSourcesError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Registers sources (network interfaces) with the specified transit gateway multicast group.
@@ -95755,12 +97597,14 @@ export const registerTransitGatewayMulticastGroupSources: API.OperationMethod<
     RequestLimitExceeded,
     InvalidNetworkInterfaceIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "RegisterTransitGatewayMulticastGroupSources",
 }));
 export type RejectCapacityReservationBillingOwnershipError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Rejects a request to assign billing of the available capacity of a shared Capacity
@@ -95775,7 +97619,11 @@ export const rejectCapacityReservationBillingOwnership: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectCapacityReservationBillingOwnershipRequest,
   output: RejectCapacityReservationBillingOwnershipResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "RejectCapacityReservationBillingOwnership",
 }));
 export type RejectTransitGatewayClientVpnAttachmentError = CommonErrors;
@@ -95796,6 +97644,7 @@ export const rejectTransitGatewayClientVpnAttachment: API.OperationMethod<
 export type RejectTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Rejects a request to associate cross-account subnets with a transit gateway multicast domain.
@@ -95808,13 +97657,14 @@ export const rejectTransitGatewayMulticastDomainAssociations: API.OperationMetho
 > = /*@__PURE__*/ API.make(() => ({
   input: RejectTransitGatewayMulticastDomainAssociationsRequest,
   output: RejectTransitGatewayMulticastDomainAssociationsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "RejectTransitGatewayMulticastDomainAssociations",
 }));
 export type RejectTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Rejects a transit gateway peering attachment request.
@@ -95831,6 +97681,7 @@ export const rejectTransitGatewayPeeringAttachment: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayAttachmentIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "RejectTransitGatewayPeeringAttachment",
 }));
@@ -95838,6 +97689,7 @@ export type RejectTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Rejects a request to attach a VPC to a transit gateway.
@@ -95858,6 +97710,7 @@ export const rejectTransitGatewayVpcAttachment: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayAttachmentIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "RejectTransitGatewayVpcAttachment",
 }));
@@ -95865,6 +97718,7 @@ export type RejectVpcEndpointConnectionsError =
   | RequestLimitExceeded
   | InvalidParameter
   | InvalidVpcEndpointServiceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Rejects VPC endpoint connection requests to your VPC endpoint service.
@@ -95881,6 +97735,7 @@ export const rejectVpcEndpointConnections: API.OperationMethod<
     RequestLimitExceeded,
     InvalidParameter,
     InvalidVpcEndpointServiceIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "RejectVpcEndpointConnections",
 }));
@@ -95889,6 +97744,7 @@ export type RejectVpcPeeringConnectionError =
   | InvalidVpcPeeringConnectionIDNotFound
   | InvalidVpcPeeringConnectionIdNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Rejects a VPC peering connection request. The VPC peering connection must be in the
@@ -95909,6 +97765,7 @@ export const rejectVpcPeeringConnection: API.OperationMethod<
     InvalidVpcPeeringConnectionIDNotFound,
     InvalidVpcPeeringConnectionIdNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "RejectVpcPeeringConnection",
 }));
@@ -95923,6 +97780,7 @@ export type ReleaseAddressError =
   | InvalidParameterCombination
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Releases the specified Elastic IP address.
@@ -95961,12 +97819,14 @@ export const releaseAddress: API.OperationMethod<
     InvalidParameterCombination,
     InvalidParameterValue,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "ReleaseAddress",
 }));
 export type ReleaseHostsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * When you no longer want to use an On-Demand Dedicated Host it can be released.
@@ -95989,12 +97849,13 @@ export const releaseHosts: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ReleaseHostsRequest,
   output: ReleaseHostsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ReleaseHosts",
 }));
 export type ReleaseIpamPoolAllocationError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Release an allocation within an IPAM pool. The Region you use should be the IPAM pool locale. The locale is the Amazon Web Services Region where this IPAM pool is available for allocations. You can only use this action to release manual allocations. To remove an allocation for a resource without deleting the resource, set its monitored state to false using ModifyIpamResourceCidr. For more information, see Release an allocation in the *Amazon VPC IPAM User Guide*.
@@ -96009,7 +97870,11 @@ export const releaseIpamPoolAllocation: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ReleaseIpamPoolAllocationRequest,
   output: ReleaseIpamPoolAllocationResult,
-  errors: [RequestLimitExceeded, InvalidIpamPoolIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidIpamPoolIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ReleaseIpamPoolAllocation",
 }));
 export type ReplaceIamInstanceProfileAssociationError = CommonErrors;
@@ -96064,6 +97929,7 @@ export type ReplaceNetworkAclAssociationError =
   | DryRunOperation
   | InvalidAssociationIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Changes which network ACL a subnet is associated with. By default when you create a
@@ -96085,6 +97951,7 @@ export const replaceNetworkAclAssociation: API.OperationMethod<
     DryRunOperation,
     InvalidAssociationIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "ReplaceNetworkAclAssociation",
 }));
@@ -96092,6 +97959,7 @@ export type ReplaceNetworkAclEntryError =
   | RequestLimitExceeded
   | InvalidNetworkAclIDNotFound
   | InvalidNetworkAclIdMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Replaces an entry (rule) in a network ACL. For more information, see Network ACLs in the
@@ -96109,6 +97977,7 @@ export const replaceNetworkAclEntry: API.OperationMethod<
     RequestLimitExceeded,
     InvalidNetworkAclIDNotFound,
     InvalidNetworkAclIdMalformed,
+    UnauthorizedOperation,
   ],
   operationName: "ReplaceNetworkAclEntry",
 }));
@@ -96116,6 +97985,7 @@ export type ReplaceRouteError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Replaces an existing route within a route table in a VPC.
@@ -96135,13 +98005,19 @@ export const replaceRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceRouteRequest,
   output: ReplaceRouteResponse,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "ReplaceRoute",
 }));
 export type ReplaceRouteTableAssociationError =
   | RequestLimitExceeded
   | InvalidRouteTableAssociationIdMalformed
   | InvalidRouteTableIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Changes the route table associated with a given subnet, internet gateway, or virtual private gateway in a VPC. After the operation
@@ -96163,12 +98039,14 @@ export const replaceRouteTableAssociation: API.OperationMethod<
     RequestLimitExceeded,
     InvalidRouteTableAssociationIdMalformed,
     InvalidRouteTableIDNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "ReplaceRouteTableAssociation",
 }));
 export type ReplaceTransitGatewayRouteError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Replaces the specified route in the specified transit gateway route table.
@@ -96181,12 +98059,17 @@ export const replaceTransitGatewayRoute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceTransitGatewayRouteRequest,
   output: ReplaceTransitGatewayRouteResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "ReplaceTransitGatewayRoute",
 }));
 export type ReplaceVpnTunnelError =
   | RequestLimitExceeded
   | InvalidVpnConnectionId
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Trigger replacement of specified VPN tunnel.
@@ -96199,12 +98082,13 @@ export const replaceVpnTunnel: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ReplaceVpnTunnelRequest,
   output: ReplaceVpnTunnelResult,
-  errors: [RequestLimitExceeded, InvalidVpnConnectionId],
+  errors: [RequestLimitExceeded, InvalidVpnConnectionId, UnauthorizedOperation],
   operationName: "ReplaceVpnTunnel",
 }));
 export type ReportInstanceStatusError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Submits feedback about the status of an instance. The instance must be in the
@@ -96222,12 +98106,13 @@ export const reportInstanceStatus: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ReportInstanceStatusRequest,
   output: ReportInstanceStatusResponse,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ReportInstanceStatus",
 }));
 export type RequestSpotFleetError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a Spot Fleet request.
@@ -96271,12 +98156,13 @@ export const requestSpotFleet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RequestSpotFleetRequest,
   output: RequestSpotFleetResponse,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "RequestSpotFleet",
 }));
 export type RequestSpotInstancesError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Creates a Spot Instance request.
@@ -96298,12 +98184,13 @@ export const requestSpotInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RequestSpotInstancesRequest,
   output: RequestSpotInstancesResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "RequestSpotInstances",
 }));
 export type ResetAddressAttributeError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Resets the attribute of the specified IP address. For requirements, see Using reverse DNS for email applications.
@@ -96316,7 +98203,7 @@ export const resetAddressAttribute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetAddressAttributeRequest,
   output: ResetAddressAttributeResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "ResetAddressAttribute",
 }));
 export type ResetEbsDefaultKmsKeyIdError = CommonErrors;
@@ -96343,6 +98230,7 @@ export const resetEbsDefaultKmsKeyId: API.OperationMethod<
 export type ResetFpgaImageAttributeError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value.
@@ -96356,7 +98244,11 @@ export const resetFpgaImageAttribute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetFpgaImageAttributeRequest,
   output: ResetFpgaImageAttributeResult,
-  errors: [RequestLimitExceeded, InvalidFpgaImageIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidFpgaImageIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "ResetFpgaImageAttribute",
 }));
 export type ResetImageAttributeError =
@@ -96364,6 +98256,7 @@ export type ResetImageAttributeError =
   | InvalidAMIIDMalformed
   | InvalidAMIIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Resets an attribute of an AMI to its default value.
@@ -96381,12 +98274,14 @@ export const resetImageAttribute: API.OperationMethod<
     InvalidAMIIDMalformed,
     InvalidAMIIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "ResetImageAttribute",
 }));
 export type ResetInstanceAttributeError =
   | RequestLimitExceeded
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Resets an attribute of an instance to its default value. To reset the
@@ -96408,12 +98303,13 @@ export const resetInstanceAttribute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetInstanceAttributeRequest,
   output: ResetInstanceAttributeResponse,
-  errors: [RequestLimitExceeded, InvalidParameterValue],
+  errors: [RequestLimitExceeded, InvalidParameterValue, UnauthorizedOperation],
   operationName: "ResetInstanceAttribute",
 }));
 export type ResetNetworkInterfaceAttributeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Resets a network interface attribute. You can specify only one attribute at a
@@ -96427,7 +98323,11 @@ export const resetNetworkInterfaceAttribute: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ResetNetworkInterfaceAttributeRequest,
   output: ResetNetworkInterfaceAttributeResponse,
-  errors: [RequestLimitExceeded, InvalidParameterCombination],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterCombination,
+    UnauthorizedOperation,
+  ],
   operationName: "ResetNetworkInterfaceAttribute",
 }));
 export type ResetSnapshotAttributeError =
@@ -96435,6 +98335,7 @@ export type ResetSnapshotAttributeError =
   | InvalidSnapshotNotFound
   | InvalidSnapshotIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Resets permission settings for the specified snapshot.
@@ -96455,12 +98356,14 @@ export const resetSnapshotAttribute: API.OperationMethod<
     InvalidSnapshotNotFound,
     InvalidSnapshotIDMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "ResetSnapshotAttribute",
 }));
 export type RestoreAddressToClassicError =
   | RequestLimitExceeded
   | UnsupportedOperation
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * This action is deprecated.
@@ -96475,12 +98378,13 @@ export const restoreAddressToClassic: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreAddressToClassicRequest,
   output: RestoreAddressToClassicResult,
-  errors: [RequestLimitExceeded, UnsupportedOperation],
+  errors: [RequestLimitExceeded, UnsupportedOperation, UnauthorizedOperation],
   operationName: "RestoreAddressToClassic",
 }));
 export type RestoreImageFromRecycleBinError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Restores an AMI from the Recycle Bin. For more information, see Recover deleted Amazon EBS
@@ -96495,12 +98399,13 @@ export const restoreImageFromRecycleBin: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreImageFromRecycleBinRequest,
   output: RestoreImageFromRecycleBinResult,
-  errors: [RequestLimitExceeded, InvalidAMIIDMalformed],
+  errors: [RequestLimitExceeded, InvalidAMIIDMalformed, UnauthorizedOperation],
   operationName: "RestoreImageFromRecycleBin",
 }));
 export type RestoreManagedPrefixListVersionError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Restores the entries from a previous version of a managed prefix list to a new version of the prefix list.
@@ -96513,12 +98418,13 @@ export const restoreManagedPrefixListVersion: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreManagedPrefixListVersionRequest,
   output: RestoreManagedPrefixListVersionResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "RestoreManagedPrefixListVersion",
 }));
 export type RestoreSnapshotFromRecycleBinError =
   | RequestLimitExceeded
   | InvalidSnapshotIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Restores a snapshot from the Recycle Bin. For more information, see Restore
@@ -96532,12 +98438,17 @@ export const restoreSnapshotFromRecycleBin: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreSnapshotFromRecycleBinRequest,
   output: RestoreSnapshotFromRecycleBinResult,
-  errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSnapshotIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "RestoreSnapshotFromRecycleBin",
 }));
 export type RestoreSnapshotTierError =
   | RequestLimitExceeded
   | InvalidSnapshotIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Restores an archived Amazon EBS snapshot for use temporarily or permanently, or modifies the restore
@@ -96555,12 +98466,17 @@ export const restoreSnapshotTier: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreSnapshotTierRequest,
   output: RestoreSnapshotTierResult,
-  errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSnapshotIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "RestoreSnapshotTier",
 }));
 export type RestoreVolumeFromRecycleBinError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Restores a volume from the Recycle Bin. For more information, see Restore
@@ -96574,12 +98490,17 @@ export const restoreVolumeFromRecycleBin: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RestoreVolumeFromRecycleBinRequest,
   output: RestoreVolumeFromRecycleBinResult,
-  errors: [RequestLimitExceeded, InvalidVolumeIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidVolumeIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "RestoreVolumeFromRecycleBin",
 }));
 export type RevokeClientVpnIngressError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Removes an ingress authorization rule from a Client VPN endpoint.
@@ -96592,7 +98513,7 @@ export const revokeClientVpnIngress: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RevokeClientVpnIngressRequest,
   output: RevokeClientVpnIngressResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "RevokeClientVpnIngress",
 }));
 export type RevokeSecurityGroupEgressError =
@@ -96605,6 +98526,7 @@ export type RevokeSecurityGroupEgressError =
   | InvalidSecurityGroupRuleIdMalformed
   | MissingParameter
   | UnknownParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Removes the specified outbound (egress) rules from the specified security group.
@@ -96643,6 +98565,7 @@ export const revokeSecurityGroupEgress: API.OperationMethod<
     InvalidSecurityGroupRuleIdMalformed,
     MissingParameter,
     UnknownParameter,
+    UnauthorizedOperation,
   ],
   operationName: "RevokeSecurityGroupEgress",
 }));
@@ -96653,6 +98576,7 @@ export type RevokeSecurityGroupIngressError =
   | InvalidPermissionNotFound
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Removes the specified inbound (ingress) rules from a security group.
@@ -96693,6 +98617,7 @@ export const revokeSecurityGroupIngress: API.OperationMethod<
     InvalidPermissionNotFound,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "RevokeSecurityGroupIngress",
 }));
@@ -96703,6 +98628,7 @@ export type RunInstancesError =
   | InvalidParameterValue
   | MissingParameter
   | ParseError
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Launches the specified number of instances using an AMI for which you have
@@ -96771,12 +98697,14 @@ export const runInstances: API.OperationMethod<
     InvalidParameterValue,
     MissingParameter,
     ParseError,
+    UnauthorizedOperation,
   ],
   operationName: "RunInstances",
 }));
 export type RunScheduledInstancesError =
   | RequestLimitExceeded
   | InvalidScheduledInstance
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Launches the specified Scheduled Instances.
@@ -96796,13 +98724,18 @@ export const runScheduledInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RunScheduledInstancesRequest,
   output: RunScheduledInstancesResult,
-  errors: [RequestLimitExceeded, InvalidScheduledInstance],
+  errors: [
+    RequestLimitExceeded,
+    InvalidScheduledInstance,
+    UnauthorizedOperation,
+  ],
   operationName: "RunScheduledInstances",
 }));
 export type SearchLocalGatewayRoutesError =
   | RequestLimitExceeded
   | InvalidLocalGatewayRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Searches for routes in the specified local gateway route table.
@@ -96834,6 +98767,7 @@ export const searchLocalGatewayRoutes: API.OperationMethod<
     RequestLimitExceeded,
     InvalidLocalGatewayRouteTableIDNotFound,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "SearchLocalGatewayRoutes",
   pagination: {
@@ -96847,6 +98781,7 @@ export type SearchTransitGatewayMulticastGroupsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdMalformed
   | InvalidTransitGatewayMulticastDomainIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Searches one or more transit gateway multicast groups and returns the group membership information.
@@ -96878,6 +98813,7 @@ export const searchTransitGatewayMulticastGroups: API.OperationMethod<
     RequestLimitExceeded,
     InvalidTransitGatewayMulticastDomainIdMalformed,
     InvalidTransitGatewayMulticastDomainIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "SearchTransitGatewayMulticastGroups",
   pagination: {
@@ -96891,6 +98827,7 @@ export type SearchTransitGatewayRoutesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Searches for routes in the specified transit gateway route table.
@@ -96918,7 +98855,12 @@ export const searchTransitGatewayRoutes: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitGatewayRoutesRequest,
   output: SearchTransitGatewayRoutesResult,
-  errors: [RequestLimitExceeded, InvalidRouteTableIDNotFound, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidRouteTableIDNotFound,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "SearchTransitGatewayRoutes",
   pagination: {
     inputToken: "NextToken",
@@ -96930,6 +98872,7 @@ export const searchTransitGatewayRoutes: API.OperationMethod<
 export type SendDiagnosticInterruptError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a
@@ -96958,12 +98901,17 @@ export const sendDiagnosticInterrupt: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SendDiagnosticInterruptRequest,
   output: SendDiagnosticInterruptResponse,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "SendDiagnosticInterrupt",
 }));
 export type StartDeclarativePoliciesReportError =
   | RequestLimitExceeded
   | DeclarativePoliciesAccessDenied
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Generates an account status report. The report is generated asynchronously, and can
@@ -97014,7 +98962,11 @@ export const startDeclarativePoliciesReport: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StartDeclarativePoliciesReportRequest,
   output: StartDeclarativePoliciesReportResult,
-  errors: [RequestLimitExceeded, DeclarativePoliciesAccessDenied],
+  errors: [
+    RequestLimitExceeded,
+    DeclarativePoliciesAccessDenied,
+    UnauthorizedOperation,
+  ],
   operationName: "StartDeclarativePoliciesReport",
 }));
 export type StartInstancesError =
@@ -97022,6 +98974,7 @@ export type StartInstancesError =
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Starts an Amazon EBS-backed instance that you've previously stopped.
@@ -97062,6 +99015,7 @@ export const startInstances: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
     InvalidParameterCombination,
+    UnauthorizedOperation,
   ],
   operationName: "StartInstances",
 }));
@@ -97069,6 +99023,7 @@ export type StartNetworkInsightsAccessScopeAnalysisError =
   | RequestLimitExceeded
   | IdempotentParameterMismatch
   | InvalidParameterValue
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Starts analyzing the specified Network Access Scope.
@@ -97085,6 +99040,7 @@ export const startNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
     RequestLimitExceeded,
     IdempotentParameterMismatch,
     InvalidParameterValue,
+    UnauthorizedOperation,
   ],
   operationName: "StartNetworkInsightsAccessScopeAnalysis",
 }));
@@ -97092,6 +99048,7 @@ export type StartNetworkInsightsAnalysisError =
   | RequestLimitExceeded
   | InvalidParameterValue
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Starts analyzing the specified path. If the path is reachable, the
@@ -97105,13 +99062,19 @@ export const startNetworkInsightsAnalysis: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StartNetworkInsightsAnalysisRequest,
   output: StartNetworkInsightsAnalysisResult,
-  errors: [RequestLimitExceeded, InvalidParameterValue, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidParameterValue,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "StartNetworkInsightsAnalysis",
 }));
 export type StartVpcEndpointServicePrivateDnsVerificationError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdMalformed
   | InvalidVpcEndpointServiceIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Initiates the verification process to prove that the service provider owns the private
@@ -97133,6 +99096,7 @@ export const startVpcEndpointServicePrivateDnsVerification: API.OperationMethod<
     RequestLimitExceeded,
     InvalidVpcEndpointServiceIdMalformed,
     InvalidVpcEndpointServiceIdNotFound,
+    UnauthorizedOperation,
   ],
   operationName: "StartVpcEndpointServicePrivateDnsVerification",
 }));
@@ -97141,6 +99105,7 @@ export type StopInstancesError =
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Stops an Amazon EBS-backed instance. You can restart your instance at any time using
@@ -97194,12 +99159,14 @@ export const stopInstances: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
     InvalidParameterCombination,
+    UnauthorizedOperation,
   ],
   operationName: "StopInstances",
 }));
 export type TerminateClientVpnConnectionsError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Terminates active Client VPN endpoint connections. This action can be used to terminate a specific client connection, or up to five connections established by a specific user.
@@ -97212,7 +99179,7 @@ export const terminateClientVpnConnections: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TerminateClientVpnConnectionsRequest,
   output: TerminateClientVpnConnectionsResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "TerminateClientVpnConnections",
 }));
 export type TerminateInstancesError =
@@ -97220,6 +99187,7 @@ export type TerminateInstancesError =
   | InvalidInstanceIDMalformed
   | InvalidInstanceIDNotFound
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Terminates (deletes) the specified instances. This operation is idempotent; if you
@@ -97309,6 +99277,7 @@ export const terminateInstances: API.OperationMethod<
     InvalidInstanceIDMalformed,
     InvalidInstanceIDNotFound,
     InvalidParameterCombination,
+    UnauthorizedOperation,
   ],
   operationName: "TerminateInstances",
 }));
@@ -97316,6 +99285,7 @@ export type UnassignIpv6AddressesError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
   | InvalidParameterCombination
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Unassigns the specified IPv6 addresses or Prefix Delegation prefixes from a network
@@ -97333,6 +99303,7 @@ export const unassignIpv6Addresses: API.OperationMethod<
     RequestLimitExceeded,
     InvalidNetworkInterfaceIDNotFound,
     InvalidParameterCombination,
+    UnauthorizedOperation,
   ],
   operationName: "UnassignIpv6Addresses",
 }));
@@ -97341,6 +99312,7 @@ export type UnassignPrivateIpAddressesError =
   | InvalidNetworkInterfaceIDNotFound
   | InvalidNetworkInterfaceIdMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Unassigns the specified secondary private IP addresses or IPv4 Prefix Delegation
@@ -97359,6 +99331,7 @@ export const unassignPrivateIpAddresses: API.OperationMethod<
     InvalidNetworkInterfaceIDNotFound,
     InvalidNetworkInterfaceIdMalformed,
     MissingParameter,
+    UnauthorizedOperation,
   ],
   operationName: "UnassignPrivateIpAddresses",
 }));
@@ -97390,6 +99363,7 @@ export const unassignPrivateNatGatewayAddress: API.OperationMethod<
 export type UnlockSnapshotError =
   | RequestLimitExceeded
   | InvalidSnapshotIDMalformed
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Unlocks a snapshot that is locked in governance mode or that is locked in compliance mode
@@ -97404,13 +99378,18 @@ export const unlockSnapshot: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UnlockSnapshotRequest,
   output: UnlockSnapshotResult,
-  errors: [RequestLimitExceeded, InvalidSnapshotIDMalformed],
+  errors: [
+    RequestLimitExceeded,
+    InvalidSnapshotIDMalformed,
+    UnauthorizedOperation,
+  ],
   operationName: "UnlockSnapshot",
 }));
 export type UnmonitorInstancesError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Disables detailed monitoring for a running instance. For more information, see Monitoring
@@ -97425,7 +99404,12 @@ export const unmonitorInstances: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UnmonitorInstancesRequest,
   output: UnmonitorInstancesResult,
-  errors: [RequestLimitExceeded, InvalidInstanceIDMalformed, MissingParameter],
+  errors: [
+    RequestLimitExceeded,
+    InvalidInstanceIDMalformed,
+    MissingParameter,
+    UnauthorizedOperation,
+  ],
   operationName: "UnmonitorInstances",
 }));
 export type UpdateCapacityManagerMonitoredTagKeysError = CommonErrors;
@@ -97446,6 +99430,7 @@ export const updateCapacityManagerMonitoredTagKeys: API.OperationMethod<
 export type UpdateCapacityManagerOrganizationsAccessError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Updates the Organizations access setting for EC2 Capacity Manager. This controls whether Capacity Manager can aggregate
@@ -97459,12 +99444,13 @@ export const updateCapacityManagerOrganizationsAccess: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateCapacityManagerOrganizationsAccessRequest,
   output: UpdateCapacityManagerOrganizationsAccessResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "UpdateCapacityManagerOrganizationsAccess",
 }));
 export type UpdateInterruptibleCapacityReservationAllocationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdNotFound
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Modifies the number of instances allocated to an interruptible reservation, allowing you to add more capacity or reclaim capacity to your source Capacity Reservation.
@@ -97477,12 +99463,17 @@ export const updateInterruptibleCapacityReservationAllocation: API.OperationMeth
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateInterruptibleCapacityReservationAllocationRequest,
   output: UpdateInterruptibleCapacityReservationAllocationResult,
-  errors: [RequestLimitExceeded, InvalidCapacityReservationIdNotFound],
+  errors: [
+    RequestLimitExceeded,
+    InvalidCapacityReservationIdNotFound,
+    UnauthorizedOperation,
+  ],
   operationName: "UpdateInterruptibleCapacityReservationAllocation",
 }));
 export type UpdateSecurityGroupRuleDescriptionsEgressError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Updates the description of an egress (outbound) security group rule. You
@@ -97498,12 +99489,13 @@ export const updateSecurityGroupRuleDescriptionsEgress: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityGroupRuleDescriptionsEgressRequest,
   output: UpdateSecurityGroupRuleDescriptionsEgressResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "UpdateSecurityGroupRuleDescriptionsEgress",
 }));
 export type UpdateSecurityGroupRuleDescriptionsIngressError =
   | RequestLimitExceeded
   | MissingParameter
+  | UnauthorizedOperation
   | CommonErrors;
 /**
  * Updates the description of an ingress (inbound) security group rule. You can replace an
@@ -97519,10 +99511,13 @@ export const updateSecurityGroupRuleDescriptionsIngress: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateSecurityGroupRuleDescriptionsIngressRequest,
   output: UpdateSecurityGroupRuleDescriptionsIngressResult,
-  errors: [RequestLimitExceeded, MissingParameter],
+  errors: [RequestLimitExceeded, MissingParameter, UnauthorizedOperation],
   operationName: "UpdateSecurityGroupRuleDescriptionsIngress",
 }));
-export type WithdrawByoipCidrError = RequestLimitExceeded | CommonErrors;
+export type WithdrawByoipCidrError =
+  | RequestLimitExceeded
+  | UnauthorizedOperation
+  | CommonErrors;
 /**
  * Stops advertising an address range that is provisioned as an address pool.
  *
@@ -97540,6 +99535,6 @@ export const withdrawByoipCidr: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WithdrawByoipCidrRequest,
   output: WithdrawByoipCidrResult,
-  errors: [RequestLimitExceeded],
+  errors: [RequestLimitExceeded, UnauthorizedOperation],
   operationName: "WithdrawByoipCidr",
 }));

@@ -1,4 +1,5 @@
 import * as HttpClient from "effect/unstable/http/HttpClient";
+import * as redacted from "effect/Redacted";
 import * as S from "@distilled.cloud/core/schema";
 import * as stream from "effect/Stream";
 import * as API from "../client/api.ts";
@@ -7,6 +8,7 @@ import * as C from "../category.ts";
 import type { Credentials } from "../credentials.ts";
 import type { CommonErrors } from "../errors.ts";
 import type { Region as Rgn } from "../region.ts";
+import { SensitiveString } from "../sensitive.ts";
 const svc = T.AwsApiService({
   sdkId: "SecurityLake",
   serviceShapeName: "SecurityLake",
@@ -1352,7 +1354,7 @@ export const HttpMethod = /*@__PURE__*/ S.String;
 export interface HttpsNotificationConfiguration {
   endpoint: string;
   authorizationApiKeyName?: string;
-  authorizationApiKeyValue?: string;
+  authorizationApiKeyValue?: string | redacted.Redacted<string>;
   httpMethod?: HttpMethod;
   targetRoleArn: string;
 }
@@ -1361,7 +1363,7 @@ export const HttpsNotificationConfiguration =
     S.Struct({
       endpoint: S.String,
       authorizationApiKeyName: S.optional(S.String),
-      authorizationApiKeyValue: S.optional(S.String),
+      authorizationApiKeyValue: S.optional(SensitiveString),
       httpMethod: S.optional(HttpMethod),
       targetRoleArn: S.String,
     }),
@@ -1480,10 +1482,12 @@ export const UpdateSubscriberNotificationResponse =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String), errorCode: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -1492,11 +1496,12 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     resourceName: S.optional(S.String),
     resourceType: S.optional(S.String),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -1505,6 +1510,7 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     resourceName: S.optional(S.String),
     resourceType: S.optional(S.String),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -1514,8 +1520,12 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     quotaCode: S.optional(S.String),
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  {},
+).pipe(C.withAuthError) {}
 
 //# Operations
 export type CreateDataLakeExceptionSubscriptionError =
@@ -1525,6 +1535,7 @@ export type CreateDataLakeExceptionSubscriptionError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Creates the specified notification subscription in Amazon Security Lake for the organization
@@ -1545,6 +1556,7 @@ export const createDataLakeExceptionSubscription: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "CreateDataLakeExceptionSubscription",
 }));
@@ -1555,6 +1567,7 @@ export type DeleteDataLakeExceptionSubscriptionError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Deletes the specified notification subscription in Amazon Security Lake for the organization
@@ -1575,6 +1588,7 @@ export const deleteDataLakeExceptionSubscription: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "DeleteDataLakeExceptionSubscription",
 }));
@@ -1616,6 +1630,7 @@ export type GetDataLakeExceptionSubscriptionError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Retrieves the protocol and endpoint that were provided when subscribing to Amazon SNS topics for exception notifications.
@@ -1635,6 +1650,7 @@ export const getDataLakeExceptionSubscription: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "GetDataLakeExceptionSubscription",
 }));
@@ -1645,6 +1661,7 @@ export type ListDataLakeExceptionsError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Lists the Amazon Security Lake exceptions that you can use to find the source of problems and
@@ -1680,6 +1697,7 @@ export const listDataLakeExceptions: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "ListDataLakeExceptions",
   pagination: {
@@ -1696,6 +1714,7 @@ export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Retrieves the tags (keys and values) that are associated with an Amazon Security Lake resource: a subscriber, or the data lake configuration for
@@ -1716,6 +1735,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "ListTagsForResource",
 }));
@@ -1757,6 +1777,7 @@ export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Adds or updates one or more tags that are associated with an Amazon Security Lake resource: a subscriber, or the data lake configuration for your
@@ -1783,6 +1804,7 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "TagResource",
 }));
@@ -1793,6 +1815,7 @@ export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Removes one or more tags (keys and values) from an Amazon Security Lake resource: a subscriber, or the data lake configuration for your
@@ -1813,6 +1836,7 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "UntagResource",
 }));
@@ -1823,6 +1847,7 @@ export type UpdateDataLakeExceptionSubscriptionError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Updates the specified notification subscription in Amazon Security Lake for the organization
@@ -1843,6 +1868,7 @@ export const updateDataLakeExceptionSubscription: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "UpdateDataLakeExceptionSubscription",
 }));
@@ -1853,6 +1879,7 @@ export type CreateAwsLogSourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Adds a natively supported Amazon Web Services service as an Amazon Security Lake source. Enables
@@ -1879,6 +1906,7 @@ export const createAwsLogSource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "CreateAwsLogSource",
 }));
@@ -1889,6 +1917,7 @@ export type CreateCustomLogSourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Adds a third-party custom source in Amazon Security Lake, from the Amazon Web Services Region
@@ -1914,6 +1943,7 @@ export const createCustomLogSource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "CreateCustomLogSource",
 }));
@@ -1924,6 +1954,7 @@ export type CreateDataLakeError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Initializes an Amazon Security Lake instance with the provided (or default) configuration. You
@@ -1957,6 +1988,7 @@ export const createDataLake: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "CreateDataLake",
 }));
@@ -2000,6 +2032,7 @@ export type DeleteAwsLogSourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Removes a natively supported Amazon Web Services service as an Amazon Security Lake source. You
@@ -2026,6 +2059,7 @@ export const deleteAwsLogSource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "DeleteAwsLogSource",
 }));
@@ -2036,6 +2070,7 @@ export type DeleteCustomLogSourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Removes a custom log source from Amazon Security Lake, to stop sending data from the custom
@@ -2056,6 +2091,7 @@ export const deleteCustomLogSource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "DeleteCustomLogSource",
 }));
@@ -2066,6 +2102,7 @@ export type DeleteDataLakeError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * When you disable Amazon Security Lake from your account, Security Lake is disabled in all Amazon Web Services Regions and it stops collecting data from your sources. Also, this API
@@ -2093,6 +2130,7 @@ export const deleteDataLake: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "DeleteDataLake",
 }));
@@ -2165,6 +2203,7 @@ export type GetDataLakeSourcesError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Retrieves a snapshot of the current Region, including whether Amazon Security Lake is enabled
@@ -2200,6 +2239,7 @@ export const getDataLakeSources: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "GetDataLakeSources",
   pagination: {
@@ -2216,6 +2256,7 @@ export type ListDataLakesError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Retrieves the Amazon Security Lake configuration object for the specified Amazon Web Services Regions. You can use this operation to determine whether
@@ -2236,6 +2277,7 @@ export const listDataLakes: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "ListDataLakes",
 }));
@@ -2246,6 +2288,7 @@ export type ListLogSourcesError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Retrieves the log sources.
@@ -2280,6 +2323,7 @@ export const listLogSources: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "ListLogSources",
   pagination: {
@@ -2296,6 +2340,7 @@ export type UpdateDataLakeError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * You can use `UpdateDataLake` to specify where to store your security data, how it should
@@ -2327,6 +2372,7 @@ export const updateDataLake: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "UpdateDataLake",
 }));
@@ -2337,6 +2383,7 @@ export type CreateSubscriberError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Creates a subscriber for accounts that are already enabled in Amazon Security Lake. You can
@@ -2357,6 +2404,7 @@ export const createSubscriber: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "CreateSubscriber",
 }));
@@ -2367,6 +2415,7 @@ export type GetSubscriberError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Retrieves the subscription information for the specified subscription ID. You can get
@@ -2387,6 +2436,7 @@ export const getSubscriber: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "GetSubscriber",
 }));
@@ -2397,6 +2447,7 @@ export type UpdateSubscriberError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Updates an existing subscription for the given Amazon Security Lake account ID. You can update
@@ -2417,6 +2468,7 @@ export const updateSubscriber: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "UpdateSubscriber",
 }));
@@ -2427,6 +2479,7 @@ export type DeleteSubscriberError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Deletes the subscription permission and all notification settings for accounts that are
@@ -2449,6 +2502,7 @@ export const deleteSubscriber: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "DeleteSubscriber",
 }));
@@ -2459,6 +2513,7 @@ export type ListSubscribersError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Lists all subscribers for the specific Amazon Security Lake account ID. You can retrieve a list
@@ -2494,6 +2549,7 @@ export const listSubscribers: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "ListSubscribers",
   pagination: {
@@ -2510,6 +2566,7 @@ export type CreateSubscriberNotificationError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Notifies the subscriber when new data is written to the data lake for the sources that
@@ -2531,6 +2588,7 @@ export const createSubscriberNotification: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "CreateSubscriberNotification",
 }));
@@ -2541,6 +2599,7 @@ export type DeleteSubscriberNotificationError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Deletes the specified subscription notification in Amazon Security Lake for the organization
@@ -2561,6 +2620,7 @@ export const deleteSubscriberNotification: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "DeleteSubscriberNotification",
 }));
@@ -2571,6 +2631,7 @@ export type UpdateSubscriberNotificationError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
  * Updates an existing notification method for the subscription (SQS or HTTPs endpoint) or
@@ -2591,6 +2652,7 @@ export const updateSubscriberNotification: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
+    UnauthorizedException,
   ],
   operationName: "UpdateSubscriberNotification",
 }));

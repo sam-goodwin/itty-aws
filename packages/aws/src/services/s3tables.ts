@@ -1700,7 +1700,7 @@ export interface GetTableResponse {
   createdBy: string;
   managedByService?: string;
   modifiedAt: Date;
-  modifiedBy: string;
+  modifiedBy?: string;
   ownerAccountId: string;
   format: OpenTableFormat;
   tableBucketId?: string;
@@ -1720,7 +1720,7 @@ export const GetTableResponse = /*@__PURE__*/ S.suspend(() =>
     createdBy: S.String,
     managedByService: S.optional(S.String),
     modifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    modifiedBy: S.String,
+    modifiedBy: S.optional(S.String),
     ownerAccountId: S.String,
     format: OpenTableFormat,
     tableBucketId: S.optional(S.String),
@@ -2330,34 +2330,42 @@ export const UpdateTableMetadataLocationResponse =
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
   "MethodNotAllowedException",
   { message: S.optional(S.String) },
+  T.HttpError(405),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
