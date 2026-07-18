@@ -15260,7 +15260,9 @@ export const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRespo
   /*@__PURE__*/ ListLineItemAssignedTargetingOptionsResponse;
 
 export type ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the targeting options assigned to a line item. */
 export const listAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.PaginatedOperationMethod<
@@ -15363,7 +15365,11 @@ export const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRes
   /*@__PURE__*/ AssignedTargetingOption;
 
 export type CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Assigns a targeting option to a line item. Returns the assigned targeting option if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch * DeleteLineItemAssignedTargetingOption YouTube & Partners line items cannot be created or updated using the API. */
 export const createAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -15464,7 +15470,9 @@ export const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRespon
   /*@__PURE__*/ AssignedTargetingOption;
 
 export type GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single targeting option assigned to a line item. */
 export const getAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -15563,7 +15571,11 @@ export const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRes
   /*@__PURE__*/ Empty;
 
 export type DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch * CreateLineItemAssignedTargetingOption YouTube & Partners line items cannot be created or updated using the API. */
 export const deleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -15622,7 +15634,11 @@ export const DeleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations
   /*@__PURE__*/ Empty;
 
 export type DeleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing association between the identified resource and a YouTube asset. *Warning:* This method is only available to an informed subset of users. */
 export const deleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations: API.OperationMethod<
@@ -15685,7 +15701,9 @@ export const ListAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRe
   /*@__PURE__*/ ListYoutubeAssetAssociationsResponse;
 
 export type ListAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the YouTube asset associations linked to the given resource. */
 export const listAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations: API.PaginatedOperationMethod<
@@ -15747,7 +15765,11 @@ export const CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations
   /*@__PURE__*/ YoutubeAssetAssociation;
 
 export type CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new association between the identified resource and a YouTube asset. Returns the newly-created association. *Warning:* This method is only available to an informed subset of users. */
 export const createAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations: API.OperationMethod<
@@ -17538,7 +17560,11 @@ export const DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResp
   /*@__PURE__*/ Empty;
 
 export type DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an assigned targeting option from an ad group. This method is only supported for Demand Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*. */
 export const deleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -17746,7 +17772,9 @@ export const ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRespon
   /*@__PURE__*/ ListAdGroupAssignedTargetingOptionsResponse;
 
 export type ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the targeting options assigned to an ad group. Inherited assigned targeting options are not included. */
 export const listAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.PaginatedOperationMethod<
@@ -17848,7 +17876,11 @@ export const CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResp
   /*@__PURE__*/ AssignedTargetingOption;
 
 export type CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Assigns a targeting option to an ad group. Returns the assigned targeting option if successful. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*. */
 export const createAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -17906,7 +17938,11 @@ export const DeleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsR
   /*@__PURE__*/ Empty;
 
 export type DeleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing association between the identified resource and a YouTube asset. *Warning:* This method is only available to an informed subset of users. */
 export const deleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations: API.OperationMethod<
@@ -17969,7 +18005,9 @@ export const ListAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRes
   /*@__PURE__*/ ListYoutubeAssetAssociationsResponse;
 
 export type ListAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the YouTube asset associations linked to the given resource. */
 export const listAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations: API.PaginatedOperationMethod<
@@ -18031,7 +18069,11 @@ export const CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsR
   /*@__PURE__*/ YoutubeAssetAssociation;
 
 export type CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new association between the identified resource and a YouTube asset. Returns the newly-created association. *Warning:* This method is only available to an informed subset of users. */
 export const createAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations: API.OperationMethod<

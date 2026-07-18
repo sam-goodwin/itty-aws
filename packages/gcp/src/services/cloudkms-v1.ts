@@ -4170,7 +4170,11 @@ export const DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResp
   /*@__PURE__*/ DecapsulateResponse;
 
 export type DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decapsulates data that was encapsulated with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose KEY_ENCAPSULATION. */
 export const decapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4386,7 +4390,9 @@ export const GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRes
   /*@__PURE__*/ PublicKey;
 
 export type GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the public key for the given CryptoKeyVersion. The CryptoKey.purpose must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT. */
 export const getPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4499,7 +4505,11 @@ export const MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRespon
   /*@__PURE__*/ MacVerifyResponse;
 
 export type MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and returns a response that indicates whether or not the verification was successful. */
 export const macVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4539,7 +4549,11 @@ export const AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersio
   /*@__PURE__*/ AsymmetricDecryptResponse;
 
 export type AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decrypts data that was encrypted with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_DECRYPT. */
 export const asymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4708,7 +4722,11 @@ export const RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRespo
   /*@__PURE__*/ RawDecryptResponse;
 
 export type RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decrypts data that was originally encrypted using a raw cryptographic mechanism. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
 export const rawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4745,7 +4763,11 @@ export const RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRespo
   /*@__PURE__*/ RawEncryptResponse;
 
 export type RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Encrypts data using portable cryptographic primitives. Most users should choose Encrypt and Decrypt rather than their raw counterparts. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
 export const rawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4786,7 +4808,11 @@ export const AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsR
   /*@__PURE__*/ AsymmetricSignResponse;
 
 export type AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs data using a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_SIGN, producing a signature that can be verified with the public key retrieved from GetPublicKey. */
 export const asymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<

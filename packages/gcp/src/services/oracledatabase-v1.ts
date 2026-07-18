@@ -6095,7 +6095,11 @@ export const ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresRespon
   /*@__PURE__*/ Operation;
 
 export type ConfigureExascaleProjectsLocationsCloudExadataInfrastructuresError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Configures Exascale for a single Exadata Infrastructure. */
 export const configureExascaleProjectsLocationsCloudExadataInfrastructures: API.OperationMethod<

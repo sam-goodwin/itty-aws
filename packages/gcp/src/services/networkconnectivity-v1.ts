@@ -5030,7 +5030,11 @@ export const PatchProjectsLocationsMulticloudDataTransferConfigsDestinationsResp
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsMulticloudDataTransferConfigsDestinationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `Destination` resource in a specified project and location. */
 export const patchProjectsLocationsMulticloudDataTransferConfigsDestinations: API.OperationMethod<
@@ -5070,7 +5074,11 @@ export const DeleteProjectsLocationsMulticloudDataTransferConfigsDestinationsRes
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsMulticloudDataTransferConfigsDestinationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `Destination` resource. */
 export const deleteProjectsLocationsMulticloudDataTransferConfigsDestinations: API.OperationMethod<
@@ -5122,7 +5130,9 @@ export const ListProjectsLocationsMulticloudDataTransferConfigsDestinationsRespo
   /*@__PURE__*/ ListDestinationsResponse;
 
 export type ListProjectsLocationsMulticloudDataTransferConfigsDestinationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the `Destination` resources in a specified project and location. */
 export const listProjectsLocationsMulticloudDataTransferConfigsDestinations: API.PaginatedOperationMethod<
@@ -5160,7 +5170,9 @@ export const GetProjectsLocationsMulticloudDataTransferConfigsDestinationsRespon
   /*@__PURE__*/ Destination;
 
 export type GetProjectsLocationsMulticloudDataTransferConfigsDestinationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a `Destination` resource. */
 export const getProjectsLocationsMulticloudDataTransferConfigsDestinations: API.OperationMethod<
@@ -5208,7 +5220,11 @@ export const CreateProjectsLocationsMulticloudDataTransferConfigsDestinationsRes
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsMulticloudDataTransferConfigsDestinationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a `Destination` resource in a specified project and location. */
 export const createProjectsLocationsMulticloudDataTransferConfigsDestinations: API.OperationMethod<

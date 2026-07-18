@@ -2025,7 +2025,11 @@ export const PerformMaintenanceQueuedResourceProjectsLocationsQueuedResourcesRes
   /*@__PURE__*/ Operation;
 
 export type PerformMaintenanceQueuedResourceProjectsLocationsQueuedResourcesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Perform manual maintenance on specific nodes of a QueuedResource. */
 export const performMaintenanceQueuedResourceProjectsLocationsQueuedResources: API.OperationMethod<

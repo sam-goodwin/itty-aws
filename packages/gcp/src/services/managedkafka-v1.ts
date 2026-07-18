@@ -3259,7 +3259,9 @@ export const ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRe
   /*@__PURE__*/ HttpBody;
 
 export type ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of IDs of schemas that reference the schema with the given subject and version. */
 export const listProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedby: API.OperationMethod<
@@ -3676,7 +3678,11 @@ export const LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRespo
   /*@__PURE__*/ SchemaVersion;
 
 export type LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lookup a schema under the specified subject. */
 export const lookupVersionProjectsLocationsSchemaRegistriesContextsSubjects: API.OperationMethod<
@@ -3713,7 +3719,9 @@ export const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRespon
   /*@__PURE__*/ HttpBody;
 
 export type ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get all versions of a subject. The response will be an array of versions of the subject. */
 export const listProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
@@ -3749,7 +3757,11 @@ export const CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResp
   /*@__PURE__*/ CreateVersionResponse;
 
 export type CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Register a new version under a given subject with the given schema. */
 export const createProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
@@ -3786,7 +3798,9 @@ export const GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsR
   /*@__PURE__*/ HttpBody;
 
 export type GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the schema string only for a version of a subject. The response will be the schema string. */
 export const getSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
@@ -3824,7 +3838,11 @@ export const DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsResp
   /*@__PURE__*/ HttpBody;
 
 export type DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a version of a subject. The response will be the deleted version id. */
 export const deleteProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.OperationMethod<
@@ -3896,7 +3914,9 @@ export const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRefere
   /*@__PURE__*/ HttpBody;
 
 export type ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of IDs of schemas that reference the schema with the given subject and version. */
 export const listProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedby: API.OperationMethod<
@@ -4244,7 +4264,11 @@ export const CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatib
   /*@__PURE__*/ CheckCompatibilityResponse;
 
 export type CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Check compatibility of a schema with all versions or a specific version of a subject. */
 export const checkCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibility: API.OperationMethod<
@@ -4475,7 +4499,11 @@ export const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRes
   /*@__PURE__*/ CheckCompatibilityResponse;
 
 export type CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Check compatibility of a schema with all versions or a specific version of a subject. */
 export const checkCompatibilityProjectsLocationsSchemaRegistriesCompatibility: API.OperationMethod<

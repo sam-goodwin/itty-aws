@@ -8412,7 +8412,11 @@ export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersResp
   /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type UpdateContainerThreatDetectionSettingsProjectsLocationsClustersError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const updateContainerThreatDetectionSettingsProjectsLocationsClusters: API.OperationMethod<
   UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest,
@@ -8448,7 +8452,9 @@ export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsR
   /*@__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateProjectsLocationsClustersContainerThreatDetectionSettingsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const calculateProjectsLocationsClustersContainerThreatDetectionSettings: API.OperationMethod<
   CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest,

@@ -3589,7 +3589,9 @@ export const GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvid
   /*@__PURE__*/ GenerateProviderAccessTokenResponse;
 
 export type GenerateProviderAccessTokenProjectsLocationsNetworkMonitoringProvidersError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates a provider access token for a given Google access token. Provider access token is a short-lived token that is used to access resources in the provider's platform. */
 export const generateProviderAccessTokenProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
@@ -3629,7 +3631,9 @@ export const GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProv
   /*@__PURE__*/ GenerateMonitoringPointConfigResponse;
 
 export type GenerateMonitoringPointConfigProjectsLocationsNetworkMonitoringProvidersError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates Monitoring Point configuration of a NetworkMonitoringProvider resource. */
 export const generateMonitoringPointConfigProjectsLocationsNetworkMonitoringProviders: API.OperationMethod<
@@ -3745,7 +3749,9 @@ export const DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMon
   /*@__PURE__*/ HttpBody;
 
 export type DownloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Downloads an install script for MonitoringPoints for a given network monitoring provider. */
 export const downloadInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
@@ -3783,7 +3789,9 @@ export const DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProv
   /*@__PURE__*/ HttpBody;
 
 export type DownloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Downloads an install script for a specific Container MonitoringPoint. */
 export const downloadRecreateInstallScriptProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
@@ -3821,7 +3829,9 @@ export const DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvid
   /*@__PURE__*/ HttpBody;
 
 export type DownloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Downloads the server connect configuration for a given network monitoring provider. */
 export const downloadServerConnectConfigProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
@@ -3862,7 +3872,9 @@ export const ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResp
   /*@__PURE__*/ ListMonitoringPointsResponse;
 
 export type ListProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists MonitoringPoints for a given network monitoring provider. */
 export const listProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.PaginatedOperationMethod<
@@ -3900,7 +3912,9 @@ export const GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsRespo
   /*@__PURE__*/ MonitoringPoint;
 
 export type GetProjectsLocationsNetworkMonitoringProvidersMonitoringPointsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the MonitoringPoint resource. */
 export const getProjectsLocationsNetworkMonitoringProvidersMonitoringPoints: API.OperationMethod<
@@ -4317,7 +4331,9 @@ export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRespon
   /*@__PURE__*/ QueryOrgVpcFlowLogsConfigsResponse;
 
 export type QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC Flow Logs configurations applicable to the specified project. */
 export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
@@ -4369,7 +4385,9 @@ export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResp
   /*@__PURE__*/ ShowEffectiveFlowLogsConfigsResponse;
 
 export type ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a specified resource. */
 export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<

@@ -1761,7 +1761,9 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRespo
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOrgPolicyViolationsPreviewsOperations: API.OperationMethod<
@@ -1801,7 +1803,9 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
   /*@__PURE__*/ GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ListOrgPolicyViolations lists the OrgPolicyViolations that are present in an OrgPolicyViolationsPreview. */
 export const listOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolations: API.PaginatedOperationMethod<

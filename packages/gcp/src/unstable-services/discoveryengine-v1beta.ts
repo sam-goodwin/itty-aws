@@ -20311,7 +20311,11 @@ export const DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsR
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaDistributeLicenseConfigResponse;
 
 export type DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Distributes a LicenseConfig from billing account level to project level. */
 export const distributeLicenseConfigBillingAccountsBillingAccountLicenseConfigs: API.OperationMethod<
@@ -20357,7 +20361,11 @@ export const RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsResp
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaRetractLicenseConfigResponse;
 
 export type RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This method is called from the billing account side to retract the LicenseConfig from the given project back to the billing account. */
 export const retractLicenseConfigBillingAccountsBillingAccountLicenseConfigs: API.OperationMethod<
@@ -21811,7 +21819,11 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfig
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse;
 
 export type CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes the user input with advanced keyword suggestions. */
 export const completeQueryProjectsLocationsCollectionsDataStoresCompletionConfig: API.OperationMethod<
@@ -22409,7 +22421,11 @@ export const ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRe
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports CompletionSuggestions for a DataStore. */
 export const importProjectsLocationsCollectionsDataStoresCompletionSuggestions: API.OperationMethod<
@@ -22453,7 +22469,11 @@ export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRes
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all CompletionSuggestions for a DataStore. */
 export const purgeProjectsLocationsCollectionsDataStoresCompletionSuggestions: API.OperationMethod<
@@ -22497,7 +22517,11 @@ export const ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntri
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports all SuggestionDenyListEntry for a DataStore. */
 export const importProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries: API.OperationMethod<
@@ -22541,7 +22565,11 @@ export const PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntrie
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all SuggestionDenyListEntry for a DataStore. */
 export const purgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries: API.OperationMethod<
@@ -23270,7 +23298,9 @@ export const BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBran
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse;
 
 export type BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets index freshness metadata for Documents. Supported for website search only. */
 export const batchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranches: API.OperationMethod<
@@ -23398,7 +23428,11 @@ export const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRespo
   /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsCollectionsDataStoresBranchesOperationsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsCollectionsDataStoresBranchesOperations: API.OperationMethod<
@@ -23585,7 +23619,11 @@ export const CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRespon
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaDocument;
 
 export type CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Document. */
 export const createProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -23662,7 +23700,11 @@ export const ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRespon
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items are created. Note: It is possible for a subset of the Documents to be successfully updated. */
 export const importProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -23695,7 +23737,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRespon
   /*@__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Document. */
 export const deleteProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -23737,7 +23783,11 @@ export const SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRespo
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaSearchResponse;
 
 export type SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security. */
 export const searchLiteProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -23780,7 +23830,11 @@ export const StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRes
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaAnswerQueryResponse;
 
 export type StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream. */
 export const streamAnswerProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -24129,7 +24183,11 @@ export const RecommendProjectsLocationsCollectionsDataStoresServingConfigsRespon
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaRecommendResponse;
 
 export type RecommendProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Makes a recommendation, which requires a contextual user event. */
 export const recommendProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -24171,7 +24229,11 @@ export const RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRe
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Request on-demand recrawl for a list of URIs. */
 export const recrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -24215,7 +24277,11 @@ export const EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteS
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upgrade from basic site search to advanced site search. */
 export const enableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -24259,7 +24325,11 @@ export const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSea
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verify target sites' ownership and validity. This API sends all the target sites under site search engine for verification. */
 export const batchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -24303,7 +24373,11 @@ export const DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSite
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Downgrade from advanced site search to basic site search. */
 export const disableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -24347,7 +24421,9 @@ export const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaFetchDomainVerificationStatusResponse;
 
 export type FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns list of target sites with its domain verification status. This method can only be called under data store with BASIC_SITE_SEARCH state at the moment. */
 export const fetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.PaginatedOperationMethod<
@@ -24400,7 +24476,9 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperation
   /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations: API.PaginatedOperationMethod<
@@ -24439,7 +24517,9 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations: API.OperationMethod<
@@ -24479,7 +24559,9 @@ export const FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaFetchSitemapsResponse;
 
 export type FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetch Sitemaps in a DataStore. */
 export const fetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -24523,7 +24605,11 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Sitemap. */
 export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -24558,7 +24644,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Sitemap. */
 export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -24598,7 +24688,11 @@ export const PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSi
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a TargetSite. */
 export const patchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -24639,7 +24733,9 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaListTargetSitesResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of TargetSites. */
 export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.PaginatedOperationMethod<
@@ -24687,7 +24783,11 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetSite. */
 export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -24731,7 +24831,11 @@ export const BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTa
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates TargetSite in a batch. */
 export const batchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -24766,7 +24870,9 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaTargetSite;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a TargetSite. */
 export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -24801,7 +24907,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TargetSite. */
 export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -24850,7 +24960,9 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   /*@__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperations: API.PaginatedOperationMethod<
@@ -24889,7 +25001,9 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperations: API.OperationMethod<
@@ -25788,7 +25902,9 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRes
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsError =
-  DefaultErrors | NotFound | Forbidden;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsEnginesAssistantsAgentsOperations: API.OperationMethod<
@@ -26392,7 +26508,11 @@ export const StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRespon
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaAnswerQueryResponse;
 
 export type StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream. */
 export const streamAnswerProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -26485,7 +26605,11 @@ export const CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRes
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaAdvancedCompleteQueryResponse;
 
 export type CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes the user input with advanced keyword suggestions. */
 export const completeQueryProjectsLocationsCollectionsEnginesCompletionConfig: API.OperationMethod<
@@ -26529,7 +26653,11 @@ export const RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfig
   /*@__PURE__*/ GoogleCloudDiscoveryengineV1betaRemoveSuggestionResponse;
 
 export type RemoveSuggestionProjectsLocationsCollectionsEnginesCompletionConfigError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the search history suggestion in an engine for a user. This will remove the suggestion from being returned in the AdvancedCompleteQueryResponse.recent_search_suggestions for this user. If the user searches the same suggestion again, the new history will override and suggest this suggestion again. */
 export const removeSuggestionProjectsLocationsCollectionsEnginesCompletionConfig: API.OperationMethod<
@@ -28124,7 +28252,11 @@ export const DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngin
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Downgrade from advanced site search to basic site search. */
 export const disableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -28168,7 +28300,11 @@ export const EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upgrade from basic site search to advanced site search. */
 export const enableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -28258,7 +28394,11 @@ export const BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRe
   /*@__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates TargetSite in a batch. */
 export const batchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<

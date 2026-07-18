@@ -4336,7 +4336,11 @@ export const RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketS
   /*@__PURE__*/ Empty;
 
 export type RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove a Bitbucket Server repository from a given BitbucketServerConfig's connected repositories. This API is experimental. */
 export const removeBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
@@ -4425,7 +4429,11 @@ export const BatchCreateProjectsLocationsBitbucketServerConfigsConnectedReposito
   /*@__PURE__*/ Operation;
 
 export type BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch connecting Bitbucket Server repositories to Cloud Build. */
 export const batchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositories: API.OperationMethod<
@@ -4674,7 +4682,11 @@ export const RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRespon
   /*@__PURE__*/ Empty;
 
 export type RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove a GitLab repository from a given GitLabConfig's connected repositories. This API is experimental. */
 export const removeGitLabConnectedRepositoryProjectsLocationsGitLabConfigs: API.OperationMethod<
@@ -4761,7 +4773,11 @@ export const BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRespo
   /*@__PURE__*/ Operation;
 
 export type BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesError =
-  DefaultErrors | NotFound | Forbidden | BadRequest | Conflict;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch connecting GitLab repositories to Cloud Build. This API is experimental. */
 export const batchCreateProjectsLocationsGitLabConfigsConnectedRepositories: API.OperationMethod<
