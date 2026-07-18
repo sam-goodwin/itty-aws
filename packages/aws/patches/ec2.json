@@ -345,6 +345,7 @@
         "RequestLimitExceeded",
         "InvalidGroup.NotFound",
         "InvalidGroupId.Malformed",
+        "InvalidPermission.Duplicate",
         "MissingParameter",
         "UnauthorizedOperation"
       ]
@@ -546,6 +547,7 @@
         "RequestLimitExceeded",
         "InvalidGroup.NotFound",
         "InvalidGroupId.Malformed",
+        "InvalidPermission.Duplicate",
         "MissingParameter",
         "UnauthorizedOperation"
       ]

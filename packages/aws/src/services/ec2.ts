@@ -74098,6 +74098,10 @@ export class InvalidGroupNotFound extends S.TaggedErrorClass<InvalidGroupNotFoun
   "InvalidGroup.NotFound",
   {},
 ) {}
+export class InvalidPermissionDuplicate extends S.TaggedErrorClass<InvalidPermissionDuplicate>()(
+  "InvalidPermission.Duplicate",
+  {},
+).pipe(C.withAlreadyExistsError) {}
 export class InvalidBundleIDNotFound extends S.TaggedErrorClass<InvalidBundleIDNotFound>()(
   "InvalidBundleID.NotFound",
   {},
@@ -76098,6 +76102,7 @@ export type AuthorizeSecurityGroupEgressError =
   | RequestLimitExceeded
   | InvalidGroupNotFound
   | InvalidGroupIdMalformed
+  | InvalidPermissionDuplicate
   | MissingParameter
   | UnauthorizedOperation
   | CommonErrors;
@@ -76133,6 +76138,7 @@ export const authorizeSecurityGroupEgress: API.OperationMethod<
     RequestLimitExceeded,
     InvalidGroupNotFound,
     InvalidGroupIdMalformed,
+    InvalidPermissionDuplicate,
     MissingParameter,
     UnauthorizedOperation,
   ],
@@ -76142,6 +76148,7 @@ export type AuthorizeSecurityGroupIngressError =
   | RequestLimitExceeded
   | InvalidGroupNotFound
   | InvalidGroupIdMalformed
+  | InvalidPermissionDuplicate
   | MissingParameter
   | UnauthorizedOperation
   | CommonErrors;
@@ -76177,6 +76184,7 @@ export const authorizeSecurityGroupIngress: API.OperationMethod<
     RequestLimitExceeded,
     InvalidGroupNotFound,
     InvalidGroupIdMalformed,
+    InvalidPermissionDuplicate,
     MissingParameter,
     UnauthorizedOperation,
   ],
