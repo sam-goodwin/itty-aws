@@ -90,26 +90,25 @@ export type EmbeddingDomain = string;
 
 //# Schemas
 export type EmbeddingDomains = string[];
-export const EmbeddingDomains = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const EmbeddingDomains = /*@__PURE__*/ S.Array(S.String);
 export interface GetBuyerDashboardInput {
   dashboardIdentifier: string;
   embeddingDomains: string[];
 }
-export const GetBuyerDashboardInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dashboardIdentifier: S.String,
-      embeddingDomains: EmbeddingDomains,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/getBuyerDashboard" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetBuyerDashboardInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dashboardIdentifier: S.String,
+    embeddingDomains: EmbeddingDomains,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/getBuyerDashboard" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetBuyerDashboardInput",
 }) as any as S.Schema<GetBuyerDashboardInput>;
@@ -118,13 +117,12 @@ export interface GetBuyerDashboardOutput {
   dashboardIdentifier: string;
   embeddingDomains: string[];
 }
-export const GetBuyerDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      embedUrl: S.String,
-      dashboardIdentifier: S.String,
-      embeddingDomains: EmbeddingDomains,
-    }),
+export const GetBuyerDashboardOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    embedUrl: S.String,
+    dashboardIdentifier: S.String,
+    embeddingDomains: EmbeddingDomains,
+  }),
 ).annotate({
   identifier: "GetBuyerDashboardOutput",
 }) as any as S.Schema<GetBuyerDashboardOutput>;
@@ -133,18 +131,22 @@ export const GetBuyerDashboardOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 
 //# Operations
@@ -172,7 +174,7 @@ export const getBuyerDashboard: API.OperationMethod<
   GetBuyerDashboardOutput,
   GetBuyerDashboardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBuyerDashboardInput,
   output: GetBuyerDashboardOutput,
   errors: [

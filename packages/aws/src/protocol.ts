@@ -46,7 +46,11 @@ import * as Credentials from "./credentials.browser.ts";
 import * as Endpoint from "./endpoint.ts";
 import * as Region from "./region.ts";
 import { makeEndpointResolver } from "./rules-engine/endpoint-resolver.ts";
-import { getAwsApiService, getAwsAuthSigv4 } from "./traits.ts";
+import {
+  getAwsApiService,
+  getAwsAuthSigv2,
+  getAwsAuthSigv4,
+} from "./traits.ts";
 import { getIdentifier } from "./util/ast.ts";
 
 /** Context (requirements) shared by every generated AWS operation. */
@@ -64,6 +68,9 @@ interface Prepared {
     body: string | ReadableStream<Uint8Array>;
   }) => Effect.Effect<any, any, any>;
   readonly sigv4: { name: string } | undefined;
+  /** Legacy SigV2 (SimpleDB only) — signs via body parameters, no header. */
+  readonly sigv2: unknown;
+  readonly serviceSdkId: string | undefined;
   readonly resolveEndpoint: ReturnType<typeof makeEndpointResolver>;
 }
 
@@ -103,6 +110,8 @@ const prepare = (config: API.ProtocolOperationConfig): Prepared => {
         !!process.env?.DISTILLED_AWS_SKIP_VALIDATION,
     }),
     sigv4: getAwsAuthSigv4(inputAst),
+    sigv2: getAwsAuthSigv2(inputAst),
+    serviceSdkId,
     resolveEndpoint: makeEndpointResolver(op),
   };
   preparedOps.set(config, prepared);
@@ -128,6 +137,8 @@ const encode = ({
     const {
       buildRequest,
       sigv4,
+      sigv2,
+      serviceSdkId,
       resolveEndpoint: rulesResolver,
     } = prepare(config);
 
@@ -184,6 +195,28 @@ const encode = ({
       endpoint = `https://${serviceName}.${region}.amazonaws.com`;
     }
 
+    // Apply the Smithy `smithy.api#endpoint` hostPrefix (e.g. "sync-" for
+    // Step Functions StartSyncExecution -> sync-states.{region}). Skipped for
+    // custom endpoints, matching official AWS SDK behavior. Labels of the
+    // form {memberName} are substituted from the operation input.
+    if (config.endpointHostPrefix !== undefined && !customEndpoint) {
+      const resolvedPrefix = config.endpointHostPrefix.replace(
+        /\{(\w+)\}/g,
+        (_, member: string) =>
+          String((input as Record<string, unknown>)?.[member] ?? ""),
+      );
+      // The endpoint rules engine may already have baked the same label into
+      // the host (e.g. S3 Control resolves `{AccountId}.s3-control.{region}`
+      // from the AccountId context param, and the operations ALSO carry the
+      // `{AccountId}.` hostPrefix trait). Only prepend when the resolved
+      // endpoint does not already start with the prefix, else the label is
+      // applied twice and TLS fails on the doubled host.
+      const hostStart = endpoint.indexOf("://") + 3;
+      if (!endpoint.startsWith(resolvedPrefix, hostStart)) {
+        endpoint = endpoint.replace("://", `://${resolvedPrefix}`);
+      }
+    }
+
     // Build full URL with query string
     const queryString = Object.entries(resolvedRequest.query)
       .filter(([_, v]) => v !== undefined)
@@ -206,6 +239,81 @@ const encode = ({
       ? `${resolvedRequest.path}?${queryString}`
       : resolvedRequest.path;
 
+    // Legacy Signature Version 2 (SimpleDB is the sole remaining SigV2-only
+    // service). The signature is an HMAC-SHA256 over the sorted,
+    // RFC3986-encoded form parameters and travels IN the form-encoded body —
+    // there is no Authorization header. The classic endpoint rejects SigV4
+    // with `AuthFailure: access credentials are missing`.
+    if (sigv2) {
+      const rfc3986 = (s: string) =>
+        encodeURIComponent(s).replace(
+          /[!'()*]/g,
+          (c) => "%" + c.charCodeAt(0).toString(16).toUpperCase(),
+        );
+      const pairs: Array<[string, string]> = [];
+      const bodyStr =
+        typeof resolvedRequest.body === "string" ? resolvedRequest.body : "";
+      for (const part of bodyStr.split("&")) {
+        if (!part) continue;
+        const eq = part.indexOf("=");
+        pairs.push([
+          decodeURIComponent(eq === -1 ? part : part.slice(0, eq)),
+          eq === -1 ? "" : decodeURIComponent(part.slice(eq + 1)),
+        ]);
+      }
+      pairs.push(
+        ["AWSAccessKeyId", Redacted.value(credentials.accessKeyId)],
+        ["SignatureVersion", "2"],
+        ["SignatureMethod", "HmacSHA256"],
+        ["Timestamp", new Date().toISOString().replace(/\.\d{3}/, "")],
+      );
+      if (credentials.sessionToken) {
+        pairs.push(["SecurityToken", Redacted.value(credentials.sessionToken)]);
+      }
+      const canonical = pairs
+        .map(([k, v]) => [rfc3986(k), rfc3986(v)] as const)
+        .sort(([a, av], [b, bv]) =>
+          a < b ? -1 : a > b ? 1 : av < bv ? -1 : av > bv ? 1 : 0,
+        )
+        .map(([k, v]) => `${k}=${v}`)
+        .join("&");
+      const requestUrl = new URL(`${endpoint}${fullPath}`);
+      const stringToSign = [
+        resolvedRequest.method,
+        requestUrl.host,
+        requestUrl.pathname || "/",
+        canonical,
+      ].join("\n");
+      const signatureBytes = yield* Effect.promise(async () => {
+        const key = await crypto.subtle.importKey(
+          "raw",
+          new TextEncoder().encode(Redacted.value(credentials.secretAccessKey)),
+          { name: "HMAC", hash: "SHA-256" },
+          false,
+          ["sign"],
+        );
+        return crypto.subtle.sign(
+          "HMAC",
+          key,
+          new TextEncoder().encode(stringToSign),
+        );
+      });
+      const signature = Buffer.from(signatureBytes).toString("base64");
+      const signedBody = `${canonical}&Signature=${rfc3986(signature)}`;
+      const contentTypeV2 =
+        resolvedRequest.headers["Content-Type"] ??
+        resolvedRequest.headers["content-type"] ??
+        "application/x-www-form-urlencoded";
+
+      return pipe(
+        HttpClientRequest.make(
+          resolvedRequest.method as "GET" | "POST" | "PUT" | "DELETE",
+        )(requestUrl.toString()),
+        HttpClientRequest.setHeaders(resolvedRequest.headers),
+        HttpClientRequest.setBody(HttpBody.text(signedBody, contentTypeV2)),
+      );
+    }
+
     // For streaming bodies (ReadableStream), we can't compute a hash
     // so we use UNSIGNED-PAYLOAD and don't pass the body to the signer
     const isStreamingBody = resolvedRequest.body instanceof ReadableStream;
@@ -220,15 +328,73 @@ const encode = ({
     );
     // Check if there's a body to sign
     const hasBody = resolvedRequest.body !== undefined;
-    // Use unsigned payload for streaming bodies OR when service provides checksum with body
+    // Operations with a streaming input payload (smithy `@streaming` blob)
+    // sign as UNSIGNED-PAYLOAD even when the caller supplied a buffered
+    // value — except for services that reject it and require the real
+    // payload hash (they reconstruct the canonical request from the body):
+    // Glacier, SageMaker Runtime, AppConfig, API Gateway Management,
+    // Bedrock Runtime, IoT Data Plane, IoT Wireless, and Lambda.
+    const hasStreamingInput =
+      resolvedRequest.hasStreamingInput === true &&
+      serviceSdkId !== "Glacier" &&
+      serviceSdkId !== "SageMaker Runtime" &&
+      serviceSdkId !== "AppConfig" &&
+      serviceSdkId !== "ApiGatewayManagementApi" &&
+      serviceSdkId !== "Bedrock Runtime" &&
+      serviceSdkId !== "IoT Data Plane" &&
+      serviceSdkId !== "IoT Wireless" &&
+      serviceSdkId !== "Lambda";
+    // Use unsigned payload for streaming bodies OR streaming-input
+    // operations OR when service provides checksum with body
     const useUnsignedPayload =
-      (isStreamingBody || (hasServiceChecksum && hasBody)) && !hasContentSha256;
-    const signingHeaders = useUnsignedPayload
+      (isStreamingBody ||
+        hasStreamingInput ||
+        (hasServiceChecksum && hasBody)) &&
+      !hasContentSha256;
+    let signingHeaders = useUnsignedPayload
       ? {
           ...resolvedRequest.headers,
           "X-Amz-Content-Sha256": "UNSIGNED-PAYLOAD",
         }
       : resolvedRequest.headers;
+
+    // S3 Control rejects UNSIGNED-PAYLOAD on several routes (access point
+    // operations fail with `InvalidRequest: "Request body cannot be
+    // unsigned"`). aws4fetch injects UNSIGNED-PAYLOAD for any service signing
+    // as "s3" when the header is absent, so pre-compute the real payload
+    // SHA-256 here (matching the official SDK's applyChecksum behavior).
+    // Glacier likewise REQUIRES the x-amz-content-sha256 header on
+    // payload-bearing requests (UploadArchive / UploadMultipartPart) — the
+    // service reconstructs the canonical request from that header, so
+    // omitting it fails with InvalidSignatureException (the official SDK's
+    // addChecksumHeaders middleware always sets it).
+    if (
+      (serviceSdkId === "S3 Control" || serviceSdkId === "Glacier") &&
+      !useUnsignedPayload &&
+      !hasContentSha256 &&
+      !isStreamingBody
+    ) {
+      const bodyBytes =
+        resolvedRequest.body === undefined
+          ? new Uint8Array(0)
+          : resolvedRequest.body instanceof Uint8Array
+            ? resolvedRequest.body
+            : new TextEncoder().encode(String(resolvedRequest.body));
+      const digest = yield* Effect.promise(() =>
+        crypto.subtle.digest(
+          "SHA-256",
+          // copy into a fresh ArrayBuffer-backed view for the DOM typings
+          bodyBytes.slice(),
+        ),
+      );
+      const payloadHash = Array.from(new Uint8Array(digest))
+        .map((byte) => byte.toString(16).padStart(2, "0"))
+        .join("");
+      signingHeaders = {
+        ...signingHeaders,
+        "X-Amz-Content-Sha256": payloadHash,
+      };
+    }
 
     const signer = new AwsV4Signer({
       method: resolvedRequest.method,

@@ -116,30 +116,28 @@ export type DbParameterGroupId = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type ResponseTagMap = { [key: string]: string | undefined };
-export const ResponseTagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ResponseTagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(ResponseTagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(ResponseTagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export type RequestTagMap = { [key: string]: string | undefined };
-export const RequestTagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RequestTagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -147,7 +145,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: RequestTagMap }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -155,18 +153,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeys,
@@ -177,7 +175,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -193,30 +191,28 @@ export type DbInstanceType =
   | "db.influx.16xlarge"
   | "db.influx.24xlarge"
   | (string & {});
-export const DbInstanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DbInstanceType = /*@__PURE__*/ S.String;
 export type DbStorageType =
   | "InfluxIOIncludedT1"
   | "InfluxIOIncludedT2"
   | "InfluxIOIncludedT3"
   | (string & {});
-export const DbStorageType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DbStorageType = /*@__PURE__*/ S.String;
 export type NetworkType = "IPV4" | "DUAL" | (string & {});
-export const NetworkType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkType = /*@__PURE__*/ S.String;
 export type VpcSubnetIdList = string[];
-export const VpcSubnetIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const VpcSubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type VpcSecurityGroupIdList = string[];
-export const VpcSecurityGroupIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export type ClusterDeploymentType = "MULTI_NODE_READ_REPLICAS" | (string & {});
-export const ClusterDeploymentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ClusterDeploymentType = /*@__PURE__*/ S.String;
 export type FailoverMode = "AUTOMATIC" | "NO_FAILOVER" | (string & {});
-export const FailoverMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FailoverMode = /*@__PURE__*/ S.String;
 export interface S3Configuration {
   bucketName: string;
   enabled: boolean;
 }
-export const S3Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketName: S.String, enabled: S.Boolean }),
 ).annotate({
   identifier: "S3Configuration",
@@ -224,8 +220,8 @@ export const S3Configuration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface LogDeliveryConfiguration {
   s3Configuration: S3Configuration;
 }
-export const LogDeliveryConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ s3Configuration: S3Configuration }),
+export const LogDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ s3Configuration: S3Configuration }),
 ).annotate({
   identifier: "LogDeliveryConfiguration",
 }) as any as S.Schema<LogDeliveryConfiguration>;
@@ -233,7 +229,7 @@ export interface MaintenanceSchedule {
   timezone: string;
   preferredMaintenanceWindow: string;
 }
-export const MaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ timezone: S.String, preferredMaintenanceWindow: S.String }),
 ).annotate({
   identifier: "MaintenanceSchedule",
@@ -259,7 +255,7 @@ export interface CreateDbClusterInput {
   maintenanceSchedule?: MaintenanceSchedule;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     username: S.optional(SensitiveString),
@@ -299,12 +295,12 @@ export type ClusterStatus =
   | "REBOOT_FAILED"
   | "PARTIALLY_AVAILABLE"
   | (string & {});
-export const ClusterStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ClusterStatus = /*@__PURE__*/ S.String;
 export interface CreateDbClusterOutput {
   dbClusterId?: string;
   dbClusterStatus?: ClusterStatus;
 }
-export const CreateDbClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dbClusterId: S.optional(S.String),
     dbClusterStatus: S.optional(ClusterStatus),
@@ -316,11 +312,11 @@ export type ValidationExceptionReason =
   | "FIELD_VALIDATION_FAILED"
   | "OTHER"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface GetDbClusterInput {
   dbClusterId: string;
 }
-export const GetDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -332,13 +328,13 @@ export type EngineType =
   | "INFLUXDB_V3_CORE"
   | "INFLUXDB_V3_ENTERPRISE"
   | (string & {});
-export const EngineType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EngineType = /*@__PURE__*/ S.String;
 export interface ClusterConfiguration {
   ingestQueryInstances?: number;
   queryOnlyInstances?: number;
   dedicatedCompactor?: boolean;
 }
-export const ClusterConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ClusterConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ingestQueryInstances: S.optional(S.Number),
     queryOnlyInstances: S.optional(S.Number),
@@ -373,7 +369,7 @@ export interface GetDbClusterOutput {
   failoverMode?: FailoverMode;
   clusterConfiguration?: ClusterConfiguration;
 }
-export const GetDbClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -416,7 +412,7 @@ export interface UpdateDbClusterInput {
   failoverMode?: FailoverMode;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-export const UpdateDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dbClusterId: S.String,
     logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
@@ -434,7 +430,7 @@ export const UpdateDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-export const UpdateDbClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
 ).annotate({
   identifier: "UpdateDbClusterOutput",
@@ -442,7 +438,7 @@ export const UpdateDbClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteDbClusterInput {
   dbClusterId: string;
 }
-export const DeleteDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -452,7 +448,7 @@ export const DeleteDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-export const DeleteDbClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
 ).annotate({
   identifier: "DeleteDbClusterOutput",
@@ -461,7 +457,7 @@ export interface ListDbClustersInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDbClustersInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDbClustersInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     maxResults: S.optional(S.Number),
@@ -486,7 +482,7 @@ export interface DbClusterSummary {
   allocatedStorage?: number;
   engineType?: EngineType;
 }
-export const DbClusterSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DbClusterSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -506,13 +502,12 @@ export const DbClusterSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DbClusterSummary",
 }) as any as S.Schema<DbClusterSummary>;
 export type DbClusterSummaryList = DbClusterSummary[];
-export const DbClusterSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DbClusterSummary);
+export const DbClusterSummaryList = /*@__PURE__*/ S.Array(DbClusterSummary);
 export interface ListDbClustersOutput {
   items: DbClusterSummary[];
   nextToken?: string;
 }
-export const ListDbClustersOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDbClustersOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: DbClusterSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDbClustersOutput",
@@ -522,18 +517,17 @@ export interface ListDbInstancesForClusterInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDbInstancesForClusterInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dbClusterId: S.String,
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListDbInstancesForClusterInput",
-  }) as any as S.Schema<ListDbInstancesForClusterInput>;
+export const ListDbInstancesForClusterInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dbClusterId: S.String,
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListDbInstancesForClusterInput",
+}) as any as S.Schema<ListDbInstancesForClusterInput>;
 export type Status =
   | "CREATING"
   | "AVAILABLE"
@@ -548,12 +542,12 @@ export type Status =
   | "REBOOTING"
   | "REBOOT_FAILED"
   | (string & {});
-export const Status = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Status = /*@__PURE__*/ S.String;
 export type DeploymentType =
   | "SINGLE_AZ"
   | "WITH_MULTIAZ_STANDBY"
   | (string & {});
-export const DeploymentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DeploymentType = /*@__PURE__*/ S.String;
 export type InstanceMode =
   | "PRIMARY"
   | "STANDBY"
@@ -563,10 +557,9 @@ export type InstanceMode =
   | "COMPACT"
   | "PROCESS"
   | (string & {});
-export const InstanceMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InstanceMode = /*@__PURE__*/ S.String;
 export type InstanceModeList = InstanceMode[];
-export const InstanceModeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(InstanceMode);
+export const InstanceModeList = /*@__PURE__*/ S.Array(InstanceMode);
 export interface DbInstanceForClusterSummary {
   id: string;
   name: string;
@@ -582,49 +575,48 @@ export interface DbInstanceForClusterSummary {
   instanceMode?: InstanceMode;
   instanceModes?: InstanceMode[];
 }
-export const DbInstanceForClusterSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      status: S.optional(Status),
-      endpoint: S.optional(S.String),
-      port: S.optional(S.Number),
-      networkType: S.optional(NetworkType),
-      dbInstanceType: S.optional(DbInstanceType),
-      dbStorageType: S.optional(DbStorageType),
-      allocatedStorage: S.optional(S.Number),
-      deploymentType: S.optional(DeploymentType),
-      instanceMode: S.optional(InstanceMode),
-      instanceModes: S.optional(InstanceModeList),
-    }),
-  ).annotate({
-    identifier: "DbInstanceForClusterSummary",
-  }) as any as S.Schema<DbInstanceForClusterSummary>;
+export const DbInstanceForClusterSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+  }),
+).annotate({
+  identifier: "DbInstanceForClusterSummary",
+}) as any as S.Schema<DbInstanceForClusterSummary>;
 export type DbInstanceForClusterSummaryList = DbInstanceForClusterSummary[];
-export const DbInstanceForClusterSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DbInstanceForClusterSummary);
+export const DbInstanceForClusterSummaryList = /*@__PURE__*/ S.Array(
+  DbInstanceForClusterSummary,
+);
 export interface ListDbInstancesForClusterOutput {
   items: DbInstanceForClusterSummary[];
   nextToken?: string;
 }
-export const ListDbInstancesForClusterOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: DbInstanceForClusterSummaryList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDbInstancesForClusterOutput",
-  }) as any as S.Schema<ListDbInstancesForClusterOutput>;
+export const ListDbInstancesForClusterOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: DbInstanceForClusterSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDbInstancesForClusterOutput",
+}) as any as S.Schema<ListDbInstancesForClusterOutput>;
 export type DbInstanceIdList = string[];
-export const DbInstanceIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const DbInstanceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface RebootDbClusterInput {
   dbClusterId: string;
   instanceIds?: string[];
 }
-export const RebootDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RebootDbClusterInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dbClusterId: S.String,
     instanceIds: S.optional(DbInstanceIdList),
@@ -637,7 +629,7 @@ export const RebootDbClusterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RebootDbClusterOutput {
   dbClusterStatus?: ClusterStatus;
 }
-export const RebootDbClusterOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RebootDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
 ).annotate({
   identifier: "RebootDbClusterOutput",
@@ -662,7 +654,7 @@ export interface CreateDbInstanceInput {
   port?: number;
   networkType?: NetworkType;
 }
-export const CreateDbInstanceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     username: S.optional(SensitiveString),
@@ -715,46 +707,45 @@ export interface CreateDbInstanceOutput {
   lastMaintenanceTime?: Date;
   nextMaintenanceTime?: Date;
 }
-export const CreateDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      status: S.optional(Status),
-      endpoint: S.optional(S.String),
-      port: S.optional(S.Number),
-      networkType: S.optional(NetworkType),
-      dbInstanceType: S.optional(DbInstanceType),
-      dbStorageType: S.optional(DbStorageType),
-      allocatedStorage: S.optional(S.Number),
-      deploymentType: S.optional(DeploymentType),
-      vpcSubnetIds: VpcSubnetIdList,
-      publiclyAccessible: S.optional(S.Boolean),
-      vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-      dbParameterGroupIdentifier: S.optional(S.String),
-      availabilityZone: S.optional(S.String),
-      secondaryAvailabilityZone: S.optional(S.String),
-      logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-      influxAuthParametersSecretArn: S.optional(S.String),
-      dbClusterId: S.optional(S.String),
-      instanceMode: S.optional(InstanceMode),
-      instanceModes: S.optional(InstanceModeList),
-      maintenanceSchedule: S.optional(MaintenanceSchedule),
-      lastMaintenanceTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      nextMaintenanceTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const CreateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    vpcSubnetIds: VpcSubnetIdList,
+    publiclyAccessible: S.optional(S.Boolean),
+    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    availabilityZone: S.optional(S.String),
+    secondaryAvailabilityZone: S.optional(S.String),
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    influxAuthParametersSecretArn: S.optional(S.String),
+    dbClusterId: S.optional(S.String),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "CreateDbInstanceOutput",
 }) as any as S.Schema<CreateDbInstanceOutput>;
 export interface GetDbInstanceInput {
   identifier: string;
 }
-export const GetDbInstanceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -788,7 +779,7 @@ export interface GetDbInstanceOutput {
   lastMaintenanceTime?: Date;
   nextMaintenanceTime?: Date;
 }
-export const GetDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -834,7 +825,7 @@ export interface UpdateDbInstanceInput {
   allocatedStorage?: number;
   maintenanceSchedule?: MaintenanceSchedule;
 }
-export const UpdateDbInstanceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     identifier: S.String,
     logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
@@ -878,46 +869,45 @@ export interface UpdateDbInstanceOutput {
   lastMaintenanceTime?: Date;
   nextMaintenanceTime?: Date;
 }
-export const UpdateDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      status: S.optional(Status),
-      endpoint: S.optional(S.String),
-      port: S.optional(S.Number),
-      networkType: S.optional(NetworkType),
-      dbInstanceType: S.optional(DbInstanceType),
-      dbStorageType: S.optional(DbStorageType),
-      allocatedStorage: S.optional(S.Number),
-      deploymentType: S.optional(DeploymentType),
-      vpcSubnetIds: VpcSubnetIdList,
-      publiclyAccessible: S.optional(S.Boolean),
-      vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-      dbParameterGroupIdentifier: S.optional(S.String),
-      availabilityZone: S.optional(S.String),
-      secondaryAvailabilityZone: S.optional(S.String),
-      logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-      influxAuthParametersSecretArn: S.optional(S.String),
-      dbClusterId: S.optional(S.String),
-      instanceMode: S.optional(InstanceMode),
-      instanceModes: S.optional(InstanceModeList),
-      maintenanceSchedule: S.optional(MaintenanceSchedule),
-      lastMaintenanceTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      nextMaintenanceTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const UpdateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    vpcSubnetIds: VpcSubnetIdList,
+    publiclyAccessible: S.optional(S.Boolean),
+    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    availabilityZone: S.optional(S.String),
+    secondaryAvailabilityZone: S.optional(S.String),
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    influxAuthParametersSecretArn: S.optional(S.String),
+    dbClusterId: S.optional(S.String),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "UpdateDbInstanceOutput",
 }) as any as S.Schema<UpdateDbInstanceOutput>;
 export interface DeleteDbInstanceInput {
   identifier: string;
 }
-export const DeleteDbInstanceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -951,39 +941,38 @@ export interface DeleteDbInstanceOutput {
   lastMaintenanceTime?: Date;
   nextMaintenanceTime?: Date;
 }
-export const DeleteDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      status: S.optional(Status),
-      endpoint: S.optional(S.String),
-      port: S.optional(S.Number),
-      networkType: S.optional(NetworkType),
-      dbInstanceType: S.optional(DbInstanceType),
-      dbStorageType: S.optional(DbStorageType),
-      allocatedStorage: S.optional(S.Number),
-      deploymentType: S.optional(DeploymentType),
-      vpcSubnetIds: VpcSubnetIdList,
-      publiclyAccessible: S.optional(S.Boolean),
-      vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-      dbParameterGroupIdentifier: S.optional(S.String),
-      availabilityZone: S.optional(S.String),
-      secondaryAvailabilityZone: S.optional(S.String),
-      logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-      influxAuthParametersSecretArn: S.optional(S.String),
-      dbClusterId: S.optional(S.String),
-      instanceMode: S.optional(InstanceMode),
-      instanceModes: S.optional(InstanceModeList),
-      maintenanceSchedule: S.optional(MaintenanceSchedule),
-      lastMaintenanceTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      nextMaintenanceTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const DeleteDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    vpcSubnetIds: VpcSubnetIdList,
+    publiclyAccessible: S.optional(S.Boolean),
+    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    availabilityZone: S.optional(S.String),
+    secondaryAvailabilityZone: S.optional(S.String),
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    influxAuthParametersSecretArn: S.optional(S.String),
+    dbClusterId: S.optional(S.String),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "DeleteDbInstanceOutput",
 }) as any as S.Schema<DeleteDbInstanceOutput>;
@@ -991,7 +980,7 @@ export interface ListDbInstancesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDbInstancesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDbInstancesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     maxResults: S.optional(S.Number),
@@ -1014,7 +1003,7 @@ export interface DbInstanceSummary {
   allocatedStorage?: number;
   deploymentType?: DeploymentType;
 }
-export const DbInstanceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DbInstanceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -1032,13 +1021,12 @@ export const DbInstanceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DbInstanceSummary",
 }) as any as S.Schema<DbInstanceSummary>;
 export type DbInstanceSummaryList = DbInstanceSummary[];
-export const DbInstanceSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DbInstanceSummary);
+export const DbInstanceSummaryList = /*@__PURE__*/ S.Array(DbInstanceSummary);
 export interface ListDbInstancesOutput {
   items: DbInstanceSummary[];
   nextToken?: string;
 }
-export const ListDbInstancesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDbInstancesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ items: DbInstanceSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDbInstancesOutput",
@@ -1046,7 +1034,7 @@ export const ListDbInstancesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RebootDbInstanceInput {
   identifier: string;
 }
-export const RebootDbInstanceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RebootDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ identifier: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -1080,46 +1068,45 @@ export interface RebootDbInstanceOutput {
   lastMaintenanceTime?: Date;
   nextMaintenanceTime?: Date;
 }
-export const RebootDbInstanceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      status: S.optional(Status),
-      endpoint: S.optional(S.String),
-      port: S.optional(S.Number),
-      networkType: S.optional(NetworkType),
-      dbInstanceType: S.optional(DbInstanceType),
-      dbStorageType: S.optional(DbStorageType),
-      allocatedStorage: S.optional(S.Number),
-      deploymentType: S.optional(DeploymentType),
-      vpcSubnetIds: VpcSubnetIdList,
-      publiclyAccessible: S.optional(S.Boolean),
-      vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-      dbParameterGroupIdentifier: S.optional(S.String),
-      availabilityZone: S.optional(S.String),
-      secondaryAvailabilityZone: S.optional(S.String),
-      logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-      influxAuthParametersSecretArn: S.optional(S.String),
-      dbClusterId: S.optional(S.String),
-      instanceMode: S.optional(InstanceMode),
-      instanceModes: S.optional(InstanceModeList),
-      maintenanceSchedule: S.optional(MaintenanceSchedule),
-      lastMaintenanceTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      nextMaintenanceTime: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const RebootDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    vpcSubnetIds: VpcSubnetIdList,
+    publiclyAccessible: S.optional(S.Boolean),
+    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    availabilityZone: S.optional(S.String),
+    secondaryAvailabilityZone: S.optional(S.String),
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    influxAuthParametersSecretArn: S.optional(S.String),
+    dbClusterId: S.optional(S.String),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "RebootDbInstanceOutput",
 }) as any as S.Schema<RebootDbInstanceOutput>;
 export type LogLevel = "debug" | "info" | "error" | (string & {});
-export const LogLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LogLevel = /*@__PURE__*/ S.String;
 export type TracingType = "log" | "jaeger" | "disabled" | (string & {});
-export const TracingType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TracingType = /*@__PURE__*/ S.String;
 export type DurationType =
   | "hours"
   | "minutes"
@@ -1127,12 +1114,12 @@ export type DurationType =
   | "milliseconds"
   | "days"
   | (string & {});
-export const DurationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DurationType = /*@__PURE__*/ S.String;
 export interface Duration {
   durationType: DurationType;
   value: number;
 }
-export const Duration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Duration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ durationType: DurationType, value: S.Number }),
 ).annotate({ identifier: "Duration" }) as any as S.Schema<Duration>;
 export interface InfluxDBv2Parameters {
@@ -1171,7 +1158,7 @@ export interface InfluxDBv2Parameters {
   storageWalMaxWriteDelay?: Duration;
   uiDisabled?: boolean;
 }
-export const InfluxDBv2Parameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InfluxDBv2Parameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fluxLogEnabled: S.optional(S.Boolean),
     logLevel: S.optional(LogLevel),
@@ -1212,16 +1199,16 @@ export const InfluxDBv2Parameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "InfluxDBv2Parameters",
 }) as any as S.Schema<InfluxDBv2Parameters>;
 export type LogFormats = "full" | (string & {});
-export const LogFormats = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const LogFormats = /*@__PURE__*/ S.String;
 export type DataFusionRuntimeType =
   | "multi-thread"
   | "multi-thread-alt"
   | (string & {});
-export const DataFusionRuntimeType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DataFusionRuntimeType = /*@__PURE__*/ S.String;
 export type PercentOrAbsoluteLong =
   | { percent: string; absolute?: never }
   | { percent?: never; absolute: number };
-export const PercentOrAbsoluteLong = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const PercentOrAbsoluteLong = /*@__PURE__*/ S.Union([
   S.Struct({ percent: S.String }),
   S.Struct({ absolute: S.Number }),
 ]);
@@ -1266,49 +1253,48 @@ export interface InfluxDBv3CoreParameters {
   deleteGracePeriod?: Duration;
   hardDeleteDefaultDuration?: Duration;
 }
-export const InfluxDBv3CoreParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      queryFileLimit: S.optional(S.Number),
-      queryLogSize: S.optional(S.Number),
-      logFilter: S.optional(S.String),
-      logFormat: S.optional(LogFormats),
-      dataFusionNumThreads: S.optional(S.Number),
-      dataFusionRuntimeType: S.optional(DataFusionRuntimeType),
-      dataFusionRuntimeDisableLifoSlot: S.optional(S.Boolean),
-      dataFusionRuntimeEventInterval: S.optional(S.Number),
-      dataFusionRuntimeGlobalQueueInterval: S.optional(S.Number),
-      dataFusionRuntimeMaxBlockingThreads: S.optional(S.Number),
-      dataFusionRuntimeMaxIoEventsPerTick: S.optional(S.Number),
-      dataFusionRuntimeThreadKeepAlive: S.optional(Duration),
-      dataFusionRuntimeThreadPriority: S.optional(S.Number),
-      dataFusionMaxParquetFanout: S.optional(S.Number),
-      dataFusionUseCachedParquetLoader: S.optional(S.Boolean),
-      dataFusionConfig: S.optional(S.String),
-      maxHttpRequestSize: S.optional(S.Number),
-      forceSnapshotMemThreshold: S.optional(PercentOrAbsoluteLong),
-      walSnapshotSize: S.optional(S.Number),
-      walMaxWriteBufferSize: S.optional(S.Number),
-      snapshottedWalFilesToKeep: S.optional(S.Number),
-      preemptiveCacheAge: S.optional(Duration),
-      parquetMemCachePrunePercentage: S.optional(S.Number),
-      parquetMemCachePruneInterval: S.optional(Duration),
-      disableParquetMemCache: S.optional(S.Boolean),
-      parquetMemCacheQueryPathDuration: S.optional(Duration),
-      lastCacheEvictionInterval: S.optional(Duration),
-      distinctCacheEvictionInterval: S.optional(Duration),
-      gen1Duration: S.optional(Duration),
-      execMemPoolBytes: S.optional(PercentOrAbsoluteLong),
-      parquetMemCacheSize: S.optional(PercentOrAbsoluteLong),
-      walReplayFailOnError: S.optional(S.Boolean),
-      walReplayConcurrencyLimit: S.optional(S.Number),
-      tableIndexCacheMaxEntries: S.optional(S.Number),
-      tableIndexCacheConcurrencyLimit: S.optional(S.Number),
-      gen1LookbackDuration: S.optional(Duration),
-      retentionCheckInterval: S.optional(Duration),
-      deleteGracePeriod: S.optional(Duration),
-      hardDeleteDefaultDuration: S.optional(Duration),
-    }),
+export const InfluxDBv3CoreParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queryFileLimit: S.optional(S.Number),
+    queryLogSize: S.optional(S.Number),
+    logFilter: S.optional(S.String),
+    logFormat: S.optional(LogFormats),
+    dataFusionNumThreads: S.optional(S.Number),
+    dataFusionRuntimeType: S.optional(DataFusionRuntimeType),
+    dataFusionRuntimeDisableLifoSlot: S.optional(S.Boolean),
+    dataFusionRuntimeEventInterval: S.optional(S.Number),
+    dataFusionRuntimeGlobalQueueInterval: S.optional(S.Number),
+    dataFusionRuntimeMaxBlockingThreads: S.optional(S.Number),
+    dataFusionRuntimeMaxIoEventsPerTick: S.optional(S.Number),
+    dataFusionRuntimeThreadKeepAlive: S.optional(Duration),
+    dataFusionRuntimeThreadPriority: S.optional(S.Number),
+    dataFusionMaxParquetFanout: S.optional(S.Number),
+    dataFusionUseCachedParquetLoader: S.optional(S.Boolean),
+    dataFusionConfig: S.optional(S.String),
+    maxHttpRequestSize: S.optional(S.Number),
+    forceSnapshotMemThreshold: S.optional(PercentOrAbsoluteLong),
+    walSnapshotSize: S.optional(S.Number),
+    walMaxWriteBufferSize: S.optional(S.Number),
+    snapshottedWalFilesToKeep: S.optional(S.Number),
+    preemptiveCacheAge: S.optional(Duration),
+    parquetMemCachePrunePercentage: S.optional(S.Number),
+    parquetMemCachePruneInterval: S.optional(Duration),
+    disableParquetMemCache: S.optional(S.Boolean),
+    parquetMemCacheQueryPathDuration: S.optional(Duration),
+    lastCacheEvictionInterval: S.optional(Duration),
+    distinctCacheEvictionInterval: S.optional(Duration),
+    gen1Duration: S.optional(Duration),
+    execMemPoolBytes: S.optional(PercentOrAbsoluteLong),
+    parquetMemCacheSize: S.optional(PercentOrAbsoluteLong),
+    walReplayFailOnError: S.optional(S.Boolean),
+    walReplayConcurrencyLimit: S.optional(S.Number),
+    tableIndexCacheMaxEntries: S.optional(S.Number),
+    tableIndexCacheConcurrencyLimit: S.optional(S.Number),
+    gen1LookbackDuration: S.optional(Duration),
+    retentionCheckInterval: S.optional(Duration),
+    deleteGracePeriod: S.optional(Duration),
+    hardDeleteDefaultDuration: S.optional(Duration),
+  }),
 ).annotate({
   identifier: "InfluxDBv3CoreParameters",
 }) as any as S.Schema<InfluxDBv3CoreParameters>;
@@ -1366,65 +1352,64 @@ export interface InfluxDBv3EnterpriseParameters {
   replicationInterval?: Duration;
   catalogSyncInterval?: Duration;
 }
-export const InfluxDBv3EnterpriseParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      queryFileLimit: S.optional(S.Number),
-      queryLogSize: S.optional(S.Number),
-      logFilter: S.optional(S.String),
-      logFormat: S.optional(LogFormats),
-      dataFusionNumThreads: S.optional(S.Number),
-      dataFusionRuntimeType: S.optional(DataFusionRuntimeType),
-      dataFusionRuntimeDisableLifoSlot: S.optional(S.Boolean),
-      dataFusionRuntimeEventInterval: S.optional(S.Number),
-      dataFusionRuntimeGlobalQueueInterval: S.optional(S.Number),
-      dataFusionRuntimeMaxBlockingThreads: S.optional(S.Number),
-      dataFusionRuntimeMaxIoEventsPerTick: S.optional(S.Number),
-      dataFusionRuntimeThreadKeepAlive: S.optional(Duration),
-      dataFusionRuntimeThreadPriority: S.optional(S.Number),
-      dataFusionMaxParquetFanout: S.optional(S.Number),
-      dataFusionUseCachedParquetLoader: S.optional(S.Boolean),
-      dataFusionConfig: S.optional(S.String),
-      maxHttpRequestSize: S.optional(S.Number),
-      forceSnapshotMemThreshold: S.optional(PercentOrAbsoluteLong),
-      walSnapshotSize: S.optional(S.Number),
-      walMaxWriteBufferSize: S.optional(S.Number),
-      snapshottedWalFilesToKeep: S.optional(S.Number),
-      preemptiveCacheAge: S.optional(Duration),
-      parquetMemCachePrunePercentage: S.optional(S.Number),
-      parquetMemCachePruneInterval: S.optional(Duration),
-      disableParquetMemCache: S.optional(S.Boolean),
-      parquetMemCacheQueryPathDuration: S.optional(Duration),
-      lastCacheEvictionInterval: S.optional(Duration),
-      distinctCacheEvictionInterval: S.optional(Duration),
-      gen1Duration: S.optional(Duration),
-      execMemPoolBytes: S.optional(PercentOrAbsoluteLong),
-      parquetMemCacheSize: S.optional(PercentOrAbsoluteLong),
-      walReplayFailOnError: S.optional(S.Boolean),
-      walReplayConcurrencyLimit: S.optional(S.Number),
-      tableIndexCacheMaxEntries: S.optional(S.Number),
-      tableIndexCacheConcurrencyLimit: S.optional(S.Number),
-      gen1LookbackDuration: S.optional(Duration),
-      retentionCheckInterval: S.optional(Duration),
-      deleteGracePeriod: S.optional(Duration),
-      hardDeleteDefaultDuration: S.optional(Duration),
-      ingestQueryInstances: S.Number,
-      queryOnlyInstances: S.Number,
-      dedicatedCompactor: S.Boolean,
-      compactionRowLimit: S.optional(S.Number),
-      compactionMaxNumFilesPerPlan: S.optional(S.Number),
-      compactionGen2Duration: S.optional(Duration),
-      compactionMultipliers: S.optional(S.String),
-      compactionCleanupWait: S.optional(Duration),
-      compactionCheckInterval: S.optional(Duration),
-      lastValueCacheDisableFromHistory: S.optional(S.Boolean),
-      distinctValueCacheDisableFromHistory: S.optional(S.Boolean),
-      replicationInterval: S.optional(Duration),
-      catalogSyncInterval: S.optional(Duration),
-    }),
-  ).annotate({
-    identifier: "InfluxDBv3EnterpriseParameters",
-  }) as any as S.Schema<InfluxDBv3EnterpriseParameters>;
+export const InfluxDBv3EnterpriseParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queryFileLimit: S.optional(S.Number),
+    queryLogSize: S.optional(S.Number),
+    logFilter: S.optional(S.String),
+    logFormat: S.optional(LogFormats),
+    dataFusionNumThreads: S.optional(S.Number),
+    dataFusionRuntimeType: S.optional(DataFusionRuntimeType),
+    dataFusionRuntimeDisableLifoSlot: S.optional(S.Boolean),
+    dataFusionRuntimeEventInterval: S.optional(S.Number),
+    dataFusionRuntimeGlobalQueueInterval: S.optional(S.Number),
+    dataFusionRuntimeMaxBlockingThreads: S.optional(S.Number),
+    dataFusionRuntimeMaxIoEventsPerTick: S.optional(S.Number),
+    dataFusionRuntimeThreadKeepAlive: S.optional(Duration),
+    dataFusionRuntimeThreadPriority: S.optional(S.Number),
+    dataFusionMaxParquetFanout: S.optional(S.Number),
+    dataFusionUseCachedParquetLoader: S.optional(S.Boolean),
+    dataFusionConfig: S.optional(S.String),
+    maxHttpRequestSize: S.optional(S.Number),
+    forceSnapshotMemThreshold: S.optional(PercentOrAbsoluteLong),
+    walSnapshotSize: S.optional(S.Number),
+    walMaxWriteBufferSize: S.optional(S.Number),
+    snapshottedWalFilesToKeep: S.optional(S.Number),
+    preemptiveCacheAge: S.optional(Duration),
+    parquetMemCachePrunePercentage: S.optional(S.Number),
+    parquetMemCachePruneInterval: S.optional(Duration),
+    disableParquetMemCache: S.optional(S.Boolean),
+    parquetMemCacheQueryPathDuration: S.optional(Duration),
+    lastCacheEvictionInterval: S.optional(Duration),
+    distinctCacheEvictionInterval: S.optional(Duration),
+    gen1Duration: S.optional(Duration),
+    execMemPoolBytes: S.optional(PercentOrAbsoluteLong),
+    parquetMemCacheSize: S.optional(PercentOrAbsoluteLong),
+    walReplayFailOnError: S.optional(S.Boolean),
+    walReplayConcurrencyLimit: S.optional(S.Number),
+    tableIndexCacheMaxEntries: S.optional(S.Number),
+    tableIndexCacheConcurrencyLimit: S.optional(S.Number),
+    gen1LookbackDuration: S.optional(Duration),
+    retentionCheckInterval: S.optional(Duration),
+    deleteGracePeriod: S.optional(Duration),
+    hardDeleteDefaultDuration: S.optional(Duration),
+    ingestQueryInstances: S.Number,
+    queryOnlyInstances: S.Number,
+    dedicatedCompactor: S.Boolean,
+    compactionRowLimit: S.optional(S.Number),
+    compactionMaxNumFilesPerPlan: S.optional(S.Number),
+    compactionGen2Duration: S.optional(Duration),
+    compactionMultipliers: S.optional(S.String),
+    compactionCleanupWait: S.optional(Duration),
+    compactionCheckInterval: S.optional(Duration),
+    lastValueCacheDisableFromHistory: S.optional(S.Boolean),
+    distinctValueCacheDisableFromHistory: S.optional(S.Boolean),
+    replicationInterval: S.optional(Duration),
+    catalogSyncInterval: S.optional(Duration),
+  }),
+).annotate({
+  identifier: "InfluxDBv3EnterpriseParameters",
+}) as any as S.Schema<InfluxDBv3EnterpriseParameters>;
 export type Parameters =
   | {
       InfluxDBv2: InfluxDBv2Parameters;
@@ -1441,7 +1426,7 @@ export type Parameters =
       InfluxDBv3Core?: never;
       InfluxDBv3Enterprise: InfluxDBv3EnterpriseParameters;
     };
-export const Parameters = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const Parameters = /*@__PURE__*/ S.Union([
   S.Struct({ InfluxDBv2: InfluxDBv2Parameters }),
   S.Struct({ InfluxDBv3Core: InfluxDBv3CoreParameters }),
   S.Struct({ InfluxDBv3Enterprise: InfluxDBv3EnterpriseParameters }),
@@ -1452,19 +1437,18 @@ export interface CreateDbParameterGroupInput {
   parameters?: Parameters;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateDbParameterGroupInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      description: S.optional(S.String),
-      parameters: S.optional(Parameters),
-      tags: S.optional(RequestTagMap),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "CreateDbParameterGroupInput",
-  }) as any as S.Schema<CreateDbParameterGroupInput>;
+export const CreateDbParameterGroupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(S.String),
+    parameters: S.optional(Parameters),
+    tags: S.optional(RequestTagMap),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "CreateDbParameterGroupInput",
+}) as any as S.Schema<CreateDbParameterGroupInput>;
 export interface CreateDbParameterGroupOutput {
   id: string;
   name: string;
@@ -1472,26 +1456,24 @@ export interface CreateDbParameterGroupOutput {
   description?: string;
   parameters?: Parameters;
 }
-export const CreateDbParameterGroupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      description: S.optional(S.String),
-      parameters: S.optional(Parameters),
-    }),
-  ).annotate({
-    identifier: "CreateDbParameterGroupOutput",
-  }) as any as S.Schema<CreateDbParameterGroupOutput>;
+export const CreateDbParameterGroupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    description: S.optional(S.String),
+    parameters: S.optional(Parameters),
+  }),
+).annotate({
+  identifier: "CreateDbParameterGroupOutput",
+}) as any as S.Schema<CreateDbParameterGroupOutput>;
 export interface GetDbParameterGroupInput {
   identifier: string;
 }
-export const GetDbParameterGroupInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ identifier: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetDbParameterGroupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ identifier: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetDbParameterGroupInput",
 }) as any as S.Schema<GetDbParameterGroupInput>;
@@ -1502,15 +1484,14 @@ export interface GetDbParameterGroupOutput {
   description?: string;
   parameters?: Parameters;
 }
-export const GetDbParameterGroupOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      description: S.optional(S.String),
-      parameters: S.optional(Parameters),
-    }),
+export const GetDbParameterGroupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    description: S.optional(S.String),
+    parameters: S.optional(Parameters),
+  }),
 ).annotate({
   identifier: "GetDbParameterGroupOutput",
 }) as any as S.Schema<GetDbParameterGroupOutput>;
@@ -1518,14 +1499,13 @@ export interface ListDbParameterGroupsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListDbParameterGroupsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const ListDbParameterGroupsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "ListDbParameterGroupsInput",
 }) as any as S.Schema<ListDbParameterGroupsInput>;
@@ -1535,56 +1515,58 @@ export interface DbParameterGroupSummary {
   arn: string;
   description?: string;
 }
-export const DbParameterGroupSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-      arn: S.String,
-      description: S.optional(S.String),
-    }),
+export const DbParameterGroupSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    description: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DbParameterGroupSummary",
 }) as any as S.Schema<DbParameterGroupSummary>;
 export type DbParameterGroupSummaryList = DbParameterGroupSummary[];
-export const DbParameterGroupSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DbParameterGroupSummaryList = /*@__PURE__*/ S.Array(
   DbParameterGroupSummary,
 );
 export interface ListDbParameterGroupsOutput {
   items: DbParameterGroupSummary[];
   nextToken?: string;
 }
-export const ListDbParameterGroupsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      items: DbParameterGroupSummaryList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDbParameterGroupsOutput",
-  }) as any as S.Schema<ListDbParameterGroupsOutput>;
+export const ListDbParameterGroupsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: DbParameterGroupSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDbParameterGroupsOutput",
+}) as any as S.Schema<ListDbParameterGroupsOutput>;
 
 //# Errors
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -1592,11 +1574,12 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.String, reason: ValidationExceptionReason },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -1609,7 +1592,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [ResourceNotFoundException],
@@ -1629,7 +1612,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [ResourceNotFoundException, ServiceQuotaExceededException],
@@ -1646,7 +1629,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [ResourceNotFoundException],
@@ -1671,7 +1654,7 @@ export const createDbCluster: API.OperationMethod<
   CreateDbClusterOutput,
   CreateDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDbClusterInput,
   output: CreateDbClusterOutput,
   errors: [
@@ -1702,7 +1685,7 @@ export const getDbCluster: API.OperationMethod<
   GetDbClusterOutput,
   GetDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDbClusterInput,
   output: GetDbClusterOutput,
   errors: [
@@ -1732,7 +1715,7 @@ export const updateDbCluster: API.OperationMethod<
   UpdateDbClusterOutput,
   UpdateDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDbClusterInput,
   output: UpdateDbClusterOutput,
   errors: [
@@ -1763,7 +1746,7 @@ export const deleteDbCluster: API.OperationMethod<
   DeleteDbClusterOutput,
   DeleteDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDbClusterInput,
   output: DeleteDbClusterOutput,
   errors: [
@@ -1808,7 +1791,7 @@ export const listDbClusters: API.OperationMethod<
     ListDbClustersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbClustersInput,
   output: ListDbClustersOutput,
   errors: [
@@ -1858,7 +1841,7 @@ export const listDbInstancesForCluster: API.OperationMethod<
     ListDbInstancesForClusterError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbInstancesForClusterInput,
   output: ListDbInstancesForClusterOutput,
   errors: [
@@ -1894,7 +1877,7 @@ export const rebootDbCluster: API.OperationMethod<
   RebootDbClusterOutput,
   RebootDbClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootDbClusterInput,
   output: RebootDbClusterOutput,
   errors: [
@@ -1926,7 +1909,7 @@ export const createDbInstance: API.OperationMethod<
   CreateDbInstanceOutput,
   CreateDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDbInstanceInput,
   output: CreateDbInstanceOutput,
   errors: [
@@ -1957,7 +1940,7 @@ export const getDbInstance: API.OperationMethod<
   GetDbInstanceOutput,
   GetDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDbInstanceInput,
   output: GetDbInstanceOutput,
   errors: [
@@ -1987,7 +1970,7 @@ export const updateDbInstance: API.OperationMethod<
   UpdateDbInstanceOutput,
   UpdateDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDbInstanceInput,
   output: UpdateDbInstanceOutput,
   errors: [
@@ -2018,7 +2001,7 @@ export const deleteDbInstance: API.OperationMethod<
   DeleteDbInstanceOutput,
   DeleteDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDbInstanceInput,
   output: DeleteDbInstanceOutput,
   errors: [
@@ -2063,7 +2046,7 @@ export const listDbInstances: API.OperationMethod<
     ListDbInstancesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbInstancesInput,
   output: ListDbInstancesOutput,
   errors: [
@@ -2099,7 +2082,7 @@ export const rebootDbInstance: API.OperationMethod<
   RebootDbInstanceOutput,
   RebootDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RebootDbInstanceInput,
   output: RebootDbInstanceOutput,
   errors: [
@@ -2131,7 +2114,7 @@ export const createDbParameterGroup: API.OperationMethod<
   CreateDbParameterGroupOutput,
   CreateDbParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDbParameterGroupInput,
   output: CreateDbParameterGroupOutput,
   errors: [
@@ -2162,7 +2145,7 @@ export const getDbParameterGroup: API.OperationMethod<
   GetDbParameterGroupOutput,
   GetDbParameterGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDbParameterGroupInput,
   output: GetDbParameterGroupOutput,
   errors: [
@@ -2206,7 +2189,7 @@ export const listDbParameterGroups: API.OperationMethod<
     ListDbParameterGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDbParameterGroupsInput,
   output: ListDbParameterGroupsOutput,
   errors: [

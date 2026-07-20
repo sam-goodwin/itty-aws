@@ -349,7 +349,7 @@ export interface RequestPayloadPart {
   CompletionState?: string;
   P?: string;
 }
-export const RequestPayloadPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RequestPayloadPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()),
     DataType: S.optional(S.String).pipe(T.EventHeader()),
@@ -360,10 +360,9 @@ export const RequestPayloadPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RequestPayloadPart",
 }) as any as S.Schema<RequestPayloadPart>;
 export type RequestStreamEvent = { PayloadPart: RequestPayloadPart };
-export const RequestStreamEvent =
-  /*@__PURE__*/ /*#__PURE__*/ T.InputEventStream(
-    S.Union([S.Struct({ PayloadPart: RequestPayloadPart })]),
-  ) as any as S.Schema<stream.Stream<RequestStreamEvent, Error, never>>;
+export const RequestStreamEvent = /*@__PURE__*/ T.InputEventStream(
+  S.Union([S.Struct({ PayloadPart: RequestPayloadPart })]),
+) as any as S.Schema<stream.Stream<RequestStreamEvent, Error, never>>;
 export interface InvokeEndpointWithBidirectionalStreamInput {
   EndpointName: string;
   Body: stream.Stream<RequestStreamEvent, Error, never>;
@@ -372,7 +371,7 @@ export interface InvokeEndpointWithBidirectionalStreamInput {
   ModelQueryString?: string;
 }
 export const InvokeEndpointWithBidirectionalStreamInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
       Body: RequestStreamEvent.pipe(T.HttpPayload()),
@@ -407,7 +406,7 @@ export interface ResponsePayloadPart {
   CompletionState?: string;
   P?: string;
 }
-export const ResponsePayloadPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResponsePayloadPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()),
     DataType: S.optional(S.String).pipe(T.EventHeader()),
@@ -433,7 +432,7 @@ export type ResponseStreamEvent =
       ModelStreamError?: never;
       InternalStreamFailure: InternalStreamFailure;
     };
-export const ResponseStreamEvent = /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+export const ResponseStreamEvent = /*@__PURE__*/ T.EventStream(
   S.Union([
     S.Struct({ PayloadPart: ResponsePayloadPart }),
     S.Struct({
@@ -453,7 +452,7 @@ export interface InvokeEndpointWithBidirectionalStreamOutput {
   InvokedProductionVariant?: string;
 }
 export const InvokeEndpointWithBidirectionalStreamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       Body: ResponseStreamEvent.pipe(T.HttpPayload()),
       InvokedProductionVariant: S.optional(S.String).pipe(
@@ -468,22 +467,28 @@ export const InvokeEndpointWithBidirectionalStreamOutput =
 export class InputValidationError extends S.TaggedErrorClass<InputValidationError>()(
   "InputValidationError",
   { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
   "InternalServerError",
   { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InternalStreamFailure extends S.TaggedErrorClass<InternalStreamFailure>()(
   "InternalStreamFailure",
   { Message: S.optional(S.String) },
 ) {}
-export class ModelError extends S.TaggedErrorClass<ModelError>()("ModelError", {
-  Message: S.optional(S.String),
-  OriginalStatusCode: S.optional(S.Number),
-  OriginalMessage: S.optional(S.String),
-  LogStreamArn: S.optional(S.String),
-  ErrorCode: S.optional(S.String),
-}) {}
+export class ModelError extends S.TaggedErrorClass<ModelError>()(
+  "ModelError",
+  {
+    Message: S.optional(S.String),
+    OriginalStatusCode: S.optional(S.Number),
+    OriginalMessage: S.optional(S.String),
+    LogStreamArn: S.optional(S.String),
+    ErrorCode: S.optional(S.String),
+  },
+  T.HttpError(424),
+) {}
 export class ModelStreamError extends S.TaggedErrorClass<ModelStreamError>()(
   "ModelStreamError",
   { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
@@ -491,6 +496,7 @@ export class ModelStreamError extends S.TaggedErrorClass<ModelStreamError>()(
 export class ServiceUnavailableError extends S.TaggedErrorClass<ServiceUnavailableError>()(
   "ServiceUnavailableError",
   { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 
 //# Operations
@@ -522,7 +528,7 @@ export const invokeEndpointWithBidirectionalStream: API.OperationMethod<
   InvokeEndpointWithBidirectionalStreamOutput,
   InvokeEndpointWithBidirectionalStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeEndpointWithBidirectionalStreamInput,
   output: InvokeEndpointWithBidirectionalStreamOutput,
   errors: [

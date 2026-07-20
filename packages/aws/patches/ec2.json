@@ -1,7 +1,8 @@
 {
   "errorCategories": {
     "RequestLimitExceeded": ["ThrottlingError"],
-    "IncorrectState": ["ConflictError"]
+    "IncorrectState": ["ConflictError"],
+    "VolumeInUse": ["ConflictError", "RetryableError"]
   },
   "operations": {
     "createVpc": {
@@ -10,7 +11,8 @@
         "InvalidParameterValue",
         "MissingParameter",
         "ParseError",
-        "VpcLimitExceeded"
+        "VpcLimitExceeded",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVpc": {
@@ -20,7 +22,8 @@
         "InvalidVpcID.NotFound",
         "InvalidVpcId.Malformed",
         "MissingParameter",
-        "RequestError"
+        "RequestError",
+        "UnauthorizedOperation"
       ]
     },
     "createSubnet": {
@@ -30,7 +33,8 @@
         "InvalidVpcID.NotFound",
         "MissingParameter",
         "ParseError",
-        "InvalidSubnet.Conflict"
+        "InvalidSubnet.Conflict",
+        "UnauthorizedOperation"
       ]
     },
     "deleteSubnet": {
@@ -39,14 +43,16 @@
         "DependencyViolation",
         "InvalidSubnetID.NotFound",
         "InvalidSubnetId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createInternetGateway": {
       "errors": [
         "RequestLimitExceeded",
         "InternetGatewayLimitExceeded",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteInternetGateway": {
@@ -54,7 +60,8 @@
         "RequestLimitExceeded",
         "DependencyViolation",
         "InvalidInternetGatewayID.NotFound",
-        "InvalidInternetGatewayId.Malformed"
+        "InvalidInternetGatewayId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "attachInternetGateway": {
@@ -63,7 +70,8 @@
         "InvalidVpcID.NotFound",
         "InvalidInternetGatewayID.NotFound",
         "InvalidInternetGatewayId.Malformed",
-        "InvalidVpcId.Malformed"
+        "InvalidVpcId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "detachInternetGateway": {
@@ -73,7 +81,8 @@
         "Gateway.NotAttached",
         "InvalidInternetGatewayID.NotFound",
         "InvalidInternetGatewayId.Malformed",
-        "InvalidVpcId.Malformed"
+        "InvalidVpcId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "createRouteTable": {
@@ -81,7 +90,8 @@
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteRouteTable": {
@@ -89,7 +99,8 @@
         "RequestLimitExceeded",
         "DependencyViolation",
         "InvalidRouteTableID.NotFound",
-        "InvalidRouteTableId.Malformed"
+        "InvalidRouteTableId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "createRoute": {
@@ -103,7 +114,8 @@
         "InvalidRouteTableId.Malformed",
         "InvalidVpcEndpointId.NotFound",
         "MissingParameter",
-        "RouteAlreadyExists"
+        "RouteAlreadyExists",
+        "UnauthorizedOperation"
       ]
     },
     "createNatGateway": {
@@ -113,7 +125,8 @@
         "InvalidSubnet",
         "InvalidSubnetID.NotFound",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeVpcs": {
@@ -121,28 +134,32 @@
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
         "ParseError",
-        "RequestError"
+        "RequestError",
+        "UnauthorizedOperation"
       ]
     },
     "describeSubnets": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidSubnetID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeInternetGateways": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInternetGatewayID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeRouteTables": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteTableID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteSecurityGroup": {
@@ -153,7 +170,8 @@
         "InvalidGroup.NotFound",
         "InvalidGroupId.Malformed",
         "MissingParameter",
-        "VPCIdNotSpecified"
+        "VPCIdNotSpecified",
+        "UnauthorizedOperation"
       ]
     },
     "createNetworkAcl": {
@@ -161,7 +179,8 @@
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteNetworkAcl": {
@@ -172,7 +191,8 @@
         "InvalidNetworkAclID.NotFound",
         "InvalidNetworkAclId.Malformed",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createVpcPeeringConnection": {
@@ -181,14 +201,16 @@
         "InvalidVpcID.NotFound",
         "InvalidVpcId.Malformed",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "acceptVpcPeeringConnection": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcPeeringConnectionID.NotFound",
-        "InvalidVpcPeeringConnectionId.NotFound"
+        "InvalidVpcPeeringConnectionId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "deleteDhcpOptions": {
@@ -197,7 +219,8 @@
         "DependencyViolation",
         "InvalidDhcpOptionID.NotFound",
         "InvalidDhcpOptionsID.NotFound",
-        "InvalidDhcpOptionsId.Malformed"
+        "InvalidDhcpOptionsId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "associateDhcpOptions": {
@@ -205,7 +228,8 @@
         "RequestLimitExceeded",
         "InvalidDhcpOptionsId.Malformed",
         "InvalidVpcID.NotFound",
-        "InvalidVpcId.Malformed"
+        "InvalidVpcId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "associateRouteTable": {
@@ -218,7 +242,8 @@
         "InvalidPublicIpv4PoolID.NotFound",
         "InvalidRouteTableID.NotFound",
         "InvalidSubnetID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateRouteTable": {
@@ -226,7 +251,8 @@
         "RequestLimitExceeded",
         "InvalidAssociationID.NotFound",
         "InvalidRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeNatGateways": {
@@ -237,7 +263,8 @@
         "InvalidParameter",
         "NatGatewayMalformed",
         "NatGatewayNotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "createVpcEndpoint": {
@@ -247,14 +274,16 @@
         "InvalidServiceName",
         "InvalidVpcID.NotFound",
         "InvalidVpcId.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVpcEndpoints": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcEndpointId.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "rejectVpcPeeringConnection": {
@@ -262,7 +291,8 @@
         "RequestLimitExceeded",
         "InvalidVpcPeeringConnectionID.NotFound",
         "InvalidVpcPeeringConnectionId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVpcPeeringConnection": {
@@ -270,7 +300,8 @@
         "RequestLimitExceeded",
         "InvalidVpcPeeringConnectionID.NotFound",
         "InvalidVpcPeeringConnectionId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "associateVpcCidrBlock": {
@@ -280,14 +311,16 @@
         "InvalidParameterCombination",
         "InvalidVpcID.NotFound",
         "InvalidVpcId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "modifySubnetAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidSubnetID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateVpcCidrBlock": {
@@ -296,7 +329,8 @@
         "InvalidVpcCidrBlockAssociationID.NotFound",
         "InvalidVpcCidrBlockAssociationId.Malformed",
         "InvalidVpcCidrBlockAssociationIdError.NotFound",
-        "OperationNotPermitted"
+        "OperationNotPermitted",
+        "UnauthorizedOperation"
       ]
     },
     "authorizeSecurityGroupIngress": {
@@ -304,7 +338,9 @@
         "RequestLimitExceeded",
         "InvalidGroup.NotFound",
         "InvalidGroupId.Malformed",
-        "MissingParameter"
+        "InvalidPermission.Duplicate",
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "revokeSecurityGroupIngress": {
@@ -314,7 +350,8 @@
         "InvalidGroupId.Malformed",
         "InvalidPermission.NotFound",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "createNetworkInterface": {
@@ -322,7 +359,8 @@
         "RequestLimitExceeded",
         "InvalidSubnetID.NotFound",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteNetworkInterface": {
@@ -332,7 +370,8 @@
         "InvalidNetworkInterfaceID.NotFound",
         "InvalidNetworkInterfaceId.Malformed",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createEgressOnlyInternetGateway": {
@@ -341,7 +380,8 @@
         "InvalidVpcID.NotFound",
         "InvalidVpcId.Malformed",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteEgressOnlyInternetGateway": {
@@ -352,24 +392,32 @@
         "InvalidGatewayID.NotFound",
         "MalformedGatewayID.NotFound",
         "MissingParameter",
-        "RequestLimitExceeded"
+        "RequestLimitExceeded",
+        "UnauthorizedOperation"
       ]
     },
     "createVpnGateway": {
-      "errors": ["RequestLimitExceeded", "MissingParameter", "ParseError"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "ParseError",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteVpnGateway": {
       "errors": [
         "RequestLimitExceeded",
         "IncorrectState",
-        "InvalidVpnGatewayID.NotFound"
+        "InvalidVpnGatewayID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "attachVpnGateway": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
-        "InvalidVpnGatewayID.NotFound"
+        "InvalidVpnGatewayID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "detachVpnGateway": {
@@ -378,7 +426,8 @@
         "DependencyViolation",
         "IncorrectState",
         "InvalidVpnGatewayID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createSecurityGroup": {
@@ -389,17 +438,24 @@
         "InvalidVpcID.NotFound",
         "InvalidVpcId.Malformed",
         "MissingParameter",
-        "VPCIdNotSpecified"
+        "VPCIdNotSpecified",
+        "UnauthorizedOperation"
       ]
     },
     "createDhcpOptions": {
-      "errors": ["RequestLimitExceeded", "MissingParameter", "ParseError"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "ParseError",
+        "UnauthorizedOperation"
+      ]
     },
     "createNetworkAclEntry": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidNetworkAclID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteNetworkAclEntry": {
@@ -408,14 +464,16 @@
         "InvalidNetworkAclEntry.NotFound",
         "InvalidNetworkAclID.NotFound",
         "InvalidNetworkAclId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "replaceNetworkAclEntry": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidNetworkAclID.NotFound",
-        "InvalidNetworkAclId.Malformed"
+        "InvalidNetworkAclId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "createVpnConnection": {
@@ -424,46 +482,57 @@
         "InvalidCustomerGatewayID.NotFound",
         "InvalidParameterValue",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVpnConnection": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpnConnectionID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createCustomerGateway": {
-      "errors": ["RequestLimitExceeded", "MissingParameter", "ParseError"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "ParseError",
+        "UnauthorizedOperation"
+      ]
     },
     "createTransitGatewayVpcAttachment": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidSubnetID.NotFound",
         "InvalidTransitGatewayID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeVpcAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterCombination",
-        "InvalidVpcID.NotFound"
+        "InvalidVpcID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeVpnGateways": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpnGatewayID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeCustomerGateways": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidCustomerGatewayID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "authorizeSecurityGroupEgress": {
@@ -471,7 +540,9 @@
         "RequestLimitExceeded",
         "InvalidGroup.NotFound",
         "InvalidGroupId.Malformed",
-        "MissingParameter"
+        "InvalidPermission.Duplicate",
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "revokeSecurityGroupEgress": {
@@ -484,7 +555,8 @@
         "InvalidPermission.NotFound",
         "InvalidSecurityGroupRuleId.Malformed",
         "MissingParameter",
-        "UnknownParameter"
+        "UnknownParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeSecurityGroups": {
@@ -493,7 +565,8 @@
         "InvalidGroup.NotFound",
         "InvalidGroupId.Malformed",
         "ParseError",
-        "VPCIdNotSpecified"
+        "VPCIdNotSpecified",
+        "UnauthorizedOperation"
       ]
     },
     "describeNetworkAcls": {
@@ -501,7 +574,8 @@
         "RequestLimitExceeded",
         "InvalidNetworkAclID.NotFound",
         "InvalidRouteTableID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "createCarrierGateway": {
@@ -510,7 +584,8 @@
         "InvalidVpcID.NotFound",
         "InvalidVpcId.Malformed",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteCarrierGateway": {
@@ -518,7 +593,8 @@
         "RequestLimitExceeded",
         "InvalidCarrierGatewayID.Malformed",
         "InvalidCarrierGatewayID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createFlowLogs": {
@@ -526,44 +602,63 @@
         "RequestLimitExceeded",
         "InvalidID",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteFlowLogs": {
-      "errors": ["RequestLimitExceeded", "InvalidFlowLogId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFlowLogId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "createManagedPrefixList": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue", "ParseError"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "ParseError",
+        "UnauthorizedOperation"
+      ]
     },
     "describeVpcPeeringConnections": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcPeeringConnectionID.NotFound",
-        "ParseError"
+        "InvalidVpcPeeringConnectionId.NotFound",
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVpcPeeringConnectionOptions": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcPeeringConnectionID.NotFound",
-        "InvalidVpcPeeringConnectionId.NotFound"
+        "InvalidVpcPeeringConnectionId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeVpcEndpoints": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcEndpointId.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVpcEndpoint": {
-      "errors": ["RequestLimitExceeded", "InvalidVpcEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpcEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "replaceRoute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteRoute": {
@@ -574,18 +669,20 @@
         "InvalidRoute.NotFound",
         "InvalidRouteTableID.NotFound",
         "InvalidRouteTableId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeVpcEndpointServices": {
-      "errors": ["RequestLimitExceeded", "ParseError"]
+      "errors": ["RequestLimitExceeded", "ParseError", "UnauthorizedOperation"]
     },
     "modifyNetworkInterfaceAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceID.NotFound",
         "InvalidNetworkInterfaceId.Malformed",
-        "InvalidParameterCombination"
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
       ]
     },
     "describeNetworkInterfaces": {
@@ -593,21 +690,24 @@
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceID.NotFound",
         "InvalidNetworkInterfaceId.Malformed",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeManagedPrefixLists": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidPrefixListID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeTransitGateways": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeCarrierGateways": {
@@ -615,60 +715,81 @@
         "RequestLimitExceeded",
         "InvalidCarrierGatewayID.Malformed",
         "InvalidCarrierGatewayID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeFlowLogs": {
-      "errors": ["RequestLimitExceeded", "ParseError"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFlowLogId.NotFound",
+        "ParseError",
+        "UnauthorizedOperation"
+      ]
     },
     "describeTransitGatewayAttachments": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayAttachmentID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeVpnConnections": {
-      "errors": ["RequestLimitExceeded", "InvalidVpnConnectionID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpnConnectionID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteCustomerGateway": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidCustomerGatewayID.NotFound",
         "InvalidCustomerGatewayId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVpcAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterCombination",
-        "InvalidVpcID.NotFound"
+        "InvalidVpcID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "replaceRouteTableAssociation": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteTableAssociationId.Malformed",
-        "InvalidRouteTableID.NotFound"
+        "InvalidRouteTableID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVpcEndpointServiceConfiguration": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcEndpointServiceId.Malformed",
-        "InvalidVpcEndpointServiceId.NotFound"
+        "InvalidVpcEndpointServiceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeVpcEndpointServiceConfigurations": {
-      "errors": ["RequestLimitExceeded", "InvalidVpcEndpointServiceId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpcEndpointServiceId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeDhcpOptions": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidDhcpOptionID.NotFound",
+        "InvalidDhcpOptionsID.NotFound",
         "InvalidParameterValue",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeNetworkInterfaceAttribute": {
@@ -676,7 +797,8 @@
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceID.NotFound",
         "InvalidNetworkInterfaceId.Malformed",
-        "InvalidParameterCombination"
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
       ]
     },
     "attachNetworkInterface": {
@@ -684,7 +806,8 @@
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
         "InvalidInstanceID.NotFound",
-        "InvalidNetworkInterfaceID.NotFound"
+        "InvalidNetworkInterfaceID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "detachNetworkInterface": {
@@ -692,7 +815,8 @@
         "RequestLimitExceeded",
         "DependencyViolation",
         "InvalidAttachmentID.NotFound",
-        "InvalidNetworkInterfaceAttachmentId.Malformed"
+        "InvalidNetworkInterfaceAttachmentId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "assignPrivateIpAddresses": {
@@ -700,7 +824,8 @@
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceID.NotFound",
         "InvalidNetworkInterfaceId.Malformed",
-        "InvalidParameter"
+        "InvalidParameter",
+        "UnauthorizedOperation"
       ]
     },
     "unassignPrivateIpAddresses": {
@@ -708,93 +833,118 @@
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceID.NotFound",
         "InvalidNetworkInterfaceId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "assignIpv6Addresses": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceID.NotFound",
-        "InvalidParameterCombination"
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
       ]
     },
     "unassignIpv6Addresses": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceID.NotFound",
-        "InvalidParameterCombination"
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
       ]
     },
     "associateSubnetCidrBlock": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidSubnetID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateSubnetCidrBlock": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidSubnetCidrBlockAssociationID.NotFound",
-        "InvalidSubnetCidrBlockAssociationId.Malformed"
+        "InvalidSubnetCidrBlockAssociationId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "getSecurityGroupsForVpc": {
-      "errors": ["RequestLimitExceeded", "InvalidVpcId.Malformed", "ParseError"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpcId.Malformed",
+        "ParseError",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyVpcTenancy": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
-        "InvalidVpcId.Malformed"
+        "InvalidVpcId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "createDefaultSubnet": {
       "errors": [
         "RequestLimitExceeded",
         "DefaultSubnetAlreadyExistsInAvailabilityZone",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createDefaultVpc": {
-      "errors": ["RequestLimitExceeded", "DefaultVpcAlreadyExists"]
+      "errors": [
+        "RequestLimitExceeded",
+        "DefaultVpcAlreadyExists",
+        "UnauthorizedOperation"
+      ]
     },
     "describeVpcClassicLink": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
-        "InvalidVpcId.Malformed"
+        "InvalidVpcId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeVpcClassicLinkDnsSupport": {
-      "errors": ["RequestLimitExceeded", "InvalidVpcID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpcID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "enableVpcClassicLink": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
-        "InvalidVpcId.Malformed"
+        "InvalidVpcId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "disableVpcClassicLink": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
-        "InvalidVpcId.Malformed"
+        "InvalidVpcId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "enableVpcClassicLinkDnsSupport": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disableVpcClassicLinkDnsSupport": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteManagedPrefixList": {
@@ -802,7 +952,8 @@
         "RequestLimitExceeded",
         "InvalidPrefixListID.NotFound",
         "InvalidPrefixListId.Malformed",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "releaseAddress": {
@@ -816,7 +967,8 @@
         "InvalidIPAddress.InUse",
         "InvalidParameterCombination",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "associateAddress": {
@@ -825,61 +977,89 @@
         "AuthFailure",
         "InvalidAllocationID.NotFound",
         "InvalidInstanceID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateAddress": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidAssociationID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeAddresses": {
-      "errors": ["RequestLimitExceeded", "InvalidAllocationID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAllocationID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeEgressOnlyInternetGateways": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidEgressOnlyInternetGatewayId.Malformed",
         "InvalidEgressOnlyInternetGatewayId.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeAddressesAttribute": {
-      "errors": ["RequestLimitExceeded", "InvalidAllocationID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAllocationID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeSecurityGroupRules": {
-      "errors": ["RequestLimitExceeded", "InvalidSecurityGroupRuleId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidSecurityGroupRuleId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeTags": {
-      "errors": ["RequestLimitExceeded", "ParseError"]
+      "errors": ["RequestLimitExceeded", "ParseError", "UnauthorizedOperation"]
     },
     "deleteTags": {
-      "errors": ["RequestLimitExceeded", "InvalidID", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidID",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createTags": {
-      "errors": ["RequestLimitExceeded", "InvalidID", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidID",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "describeInstanceAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.NotFound",
-        "InvalidParameterValue"
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
       ]
     },
     "modifyInstanceAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.NotFound",
-        "InvalidParameterValue"
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
       ]
     },
     "describeSnapshots": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidSnapshot.NotFound",
-        "InvalidUserID.Malformed"
+        "InvalidUserID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeVolumes": {
@@ -887,7 +1067,8 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidVolume.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteSnapshot": {
@@ -895,14 +1076,17 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidSnapshot.NotFound",
-        "InvalidSnapshotID.Malformed"
+        "InvalidSnapshotID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVolume": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "InvalidVolume.NotFound"
+        "InvalidVolume.NotFound",
+        "VolumeInUse",
+        "UnauthorizedOperation"
       ]
     },
     "runInstances": {
@@ -912,7 +1096,8 @@
         "InvalidAMIID.NotFound",
         "InvalidParameterValue",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "attachVolume": {
@@ -920,7 +1105,9 @@
         "RequestLimitExceeded",
         "InvalidInstanceID.NotFound",
         "InvalidParameterValue",
-        "InvalidVolume.NotFound"
+        "InvalidVolume.NotFound",
+        "VolumeInUse",
+        "UnauthorizedOperation"
       ]
     },
     "terminateInstances": {
@@ -928,7 +1115,8 @@
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
         "InvalidInstanceID.NotFound",
-        "InvalidParameterCombination"
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
       ]
     },
     "describeInstances": {
@@ -936,7 +1124,8 @@
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
         "InvalidInstanceID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "detachVolume": {
@@ -945,7 +1134,8 @@
         "DependencyViolation",
         "IncorrectState",
         "InvalidParameterValue",
-        "InvalidVolume.NotFound"
+        "InvalidVolume.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createSnapshot": {
@@ -953,7 +1143,8 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidVolume.NotFound",
-        "InvalidVolumeID.Malformed"
+        "InvalidVolumeID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "startInstances": {
@@ -961,7 +1152,8 @@
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
         "InvalidInstanceID.NotFound",
-        "InvalidParameterCombination"
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
       ]
     },
     "stopInstances": {
@@ -969,7 +1161,8 @@
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
         "InvalidInstanceID.NotFound",
-        "InvalidParameterCombination"
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
       ]
     },
     "rebootInstances": {
@@ -977,7 +1170,8 @@
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
         "InvalidInstanceID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVolume": {
@@ -985,14 +1179,16 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidVolume.NotFound",
-        "InvalidVolumeID.Malformed"
+        "InvalidVolumeID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeImages": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidAMIID.Malformed",
-        "InvalidAMIID.NotFound"
+        "InvalidAMIID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "deregisterImage": {
@@ -1000,14 +1196,16 @@
         "RequestLimitExceeded",
         "InvalidAMIID.Malformed",
         "InvalidAMIID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeKeyPairs": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidKeyPair.NotFound",
-        "InvalidParameterValue"
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
       ]
     },
     "copySnapshot": {
@@ -1015,7 +1213,8 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidRegion",
-        "InvalidSnapshot.NotFound"
+        "InvalidSnapshot.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeSnapshotAttribute": {
@@ -1023,7 +1222,8 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidSnapshot.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "modifyImageAttribute": {
@@ -1031,17 +1231,23 @@
         "RequestLimitExceeded",
         "InvalidAMIID.Malformed",
         "InvalidAMIID.NotFound",
-        "InvalidParameterCombination"
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
       ]
     },
     "createLaunchTemplate": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteLaunchTemplate": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidLaunchTemplateName.NotFoundException",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeLaunchTemplates": {
@@ -1050,42 +1256,48 @@
         "InvalidLaunchTemplateId.Malformed",
         "ParseError",
         "InvalidLaunchTemplateId.NotFound",
-        "InvalidLaunchTemplateName.NotFoundException"
+        "InvalidLaunchTemplateName.NotFoundException",
+        "UnauthorizedOperation"
       ]
     },
     "createTransitGateway": {
       "errors": [
         "RequestLimitExceeded",
         "ParseError",
-        "TransitGatewayLimitExceeded"
+        "TransitGatewayLimitExceeded",
+        "UnauthorizedOperation"
       ]
     },
     "describeInstanceStatus": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
-        "InvalidInstanceID.NotFound"
+        "InvalidInstanceID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getConsoleOutput": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
-        "InvalidInstanceID.NotFound"
+        "InvalidInstanceID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getPasswordData": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
-        "InvalidInstanceID.NotFound"
+        "InvalidInstanceID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createImage": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.NotFound",
-        "InvalidParameterValue"
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
       ]
     },
     "copyImage": {
@@ -1094,29 +1306,42 @@
         "InvalidAMIID.Malformed",
         "InvalidAMIID.NotFound",
         "InvalidRegion",
-        "InvalidRequest"
+        "InvalidRequest",
+        "UnauthorizedOperation"
       ]
     },
     "describeSpotInstanceRequests": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidSpotInstanceRequestID.Malformed",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeSpotFleetRequests": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue", "ParseError"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "ParseError",
+        "UnauthorizedOperation"
+      ]
     },
     "getManagedPrefixListEntries": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidPrefixListID.NotFound",
         "InvalidPrefixListId.Malformed",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "describeAvailabilityZones": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue", "ParseError"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "ParseError",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteTransitGateway": {
       "errors": [
@@ -1125,7 +1350,8 @@
         "InvalidTransitGatewayID.Malformed",
         "InvalidTransitGatewayID.NotFound",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "createTransitGatewayRouteTable": {
@@ -1134,7 +1360,8 @@
         "IncorrectState",
         "InvalidTransitGatewayID.NotFound",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayRouteTable": {
@@ -1144,24 +1371,31 @@
         "InvalidRouteTableID.NotFound",
         "InvalidRouteTableId.Malformed",
         "MissingParameter",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "modifySnapshotAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterCombination",
-        "InvalidSnapshot.NotFound"
+        "InvalidSnapshot.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createKeyPair": {
-      "errors": ["RequestLimitExceeded", "InvalidKeyPair.Duplicate"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidKeyPair.Duplicate",
+        "UnauthorizedOperation"
+      ]
     },
     "describeTransitGatewayRouteTables": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteTableID.NotFound",
-        "ParseError"
+        "ParseError",
+        "UnauthorizedOperation"
       ]
     },
     "deleteNatGateway": {
@@ -1172,18 +1406,24 @@
         "InvalidParameter",
         "MissingParameter",
         "NatGatewayMalformed",
-        "NatGatewayNotFound"
+        "NatGatewayNotFound",
+        "UnauthorizedOperation"
       ]
     },
     "deleteClientVpnEndpoint": {
-      "errors": ["RequestLimitExceeded", "InvalidClientVpnEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidClientVpnEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteNetworkInterfacePermission": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidPermissionID.Malformed",
         "InvalidPermissionID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createIpam": {
@@ -1191,7 +1431,8 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "ParseError",
-        "ResourceLimitExceeded"
+        "ResourceLimitExceeded",
+        "UnauthorizedOperation"
       ]
     },
     "deleteIpam": {
@@ -1199,14 +1440,16 @@
         "RequestLimitExceeded",
         "DependencyViolation",
         "InvalidIpamId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayVpcAttachment": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayAttachmentID.Malformed",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createTransitGatewayMulticastDomain": {
@@ -1215,7 +1458,8 @@
         "IncorrectState",
         "InvalidTransitGatewayID.Malformed",
         "InvalidTransitGatewayID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createLocalGatewayRouteTable": {
@@ -1223,7 +1467,8 @@
         "RequestLimitExceeded",
         "InvalidLocalGatewayID.Malformed",
         "InvalidLocalGatewayID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createSubnetCidrReservation": {
@@ -1231,7 +1476,8 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidSubnetID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteSubnetCidrReservation": {
@@ -1239,17 +1485,19 @@
         "RequestLimitExceeded",
         "InvalidSubnetCidrReservationID.Malformed",
         "InvalidSubnetCidrReservationID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createTrafficMirrorFilter": {
-      "errors": ["RequestLimitExceeded", "ParseError"]
+      "errors": ["RequestLimitExceeded", "ParseError", "UnauthorizedOperation"]
     },
     "deleteTrafficMirrorFilter": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "InvalidTrafficMirrorFilterId.NotFound"
+        "InvalidTrafficMirrorFilterId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTrafficMirrorTarget": {
@@ -1257,7 +1505,8 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidTrafficMirrorTargetId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTrafficMirrorSession": {
@@ -1265,39 +1514,48 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidTrafficMirrorSessionId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createNetworkInsightsPath": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteNetworkInsightsPath": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteNetworkInsightsAccessScope": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidNetworkInsightsAccessScopeId.NotFound",
-        "InvalidParameterValue"
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
       ]
     },
     "deletePlacementGroup": {
-      "errors": ["RequestLimitExceeded", "InvalidPlacementGroup.Unknown"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidPlacementGroup.Unknown",
+        "UnauthorizedOperation"
+      ]
     },
     "createCoipPool": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidLocalGatewayRouteTableID.Malformed",
         "InvalidLocalGatewayRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteCoipPool": {
@@ -1305,23 +1563,30 @@
         "RequestLimitExceeded",
         "InvalidIpv4PoolCoipId.Malformed",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createClientVpnEndpoint": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createVerifiedAccessInstance": {
       "errors": [
         "RequestLimitExceeded",
         "ParseError",
-        "VerifiedAccessInstanceLimitExceeded"
+        "VerifiedAccessInstanceLimitExceeded",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVerifiedAccessInstance": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessInstanceId.NotFound"
+        "InvalidVerifiedAccessInstanceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createVerifiedAccessGroup": {
@@ -1329,14 +1594,16 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidVerifiedAccessInstanceId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVerifiedAccessGroup": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVerifiedAccessGroupId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVerifiedAccessEndpoint": {
@@ -1344,23 +1611,30 @@
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidVerifiedAccessEndpointId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createVerifiedAccessTrustProvider": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteVerifiedAccessTrustProvider": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessTrustProviderId.NotFound"
+        "InvalidVerifiedAccessTrustProviderId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createIpamPool": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamScopeId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteIpamPool": {
@@ -1368,24 +1642,31 @@
         "RequestLimitExceeded",
         "IncorrectState",
         "InvalidIpamPoolId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createIpamResourceDiscovery": {
-      "errors": ["RequestLimitExceeded", "ResourceLimitExceeded"]
+      "errors": [
+        "RequestLimitExceeded",
+        "ResourceLimitExceeded",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteIpamResourceDiscovery": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamResourceDiscoveryId.Malformed",
-        "InvalidIpamResourceDiscoveryId.NotFound"
+        "InvalidIpamResourceDiscoveryId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createIpamScope": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteIpamScope": {
@@ -1394,14 +1675,16 @@
         "DependencyViolation",
         "IncorrectState",
         "InvalidIpamScopeId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createIpamPolicy": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteIpamPolicy": {
@@ -1409,17 +1692,23 @@
         "RequestLimitExceeded",
         "InvalidIpamPolicyId.Malformed",
         "InvalidIpamPolicyId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createRouteServer": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteRouteServer": {
       "errors": [
         "RequestLimitExceeded",
         "IncorrectState",
-        "InvalidRouteServerId.NotFound"
+        "InvalidRouteServerId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createInstanceConnectEndpoint": {
@@ -1427,7 +1716,8 @@
         "RequestLimitExceeded",
         "InvalidGroup.NotFound",
         "InvalidSubnetID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteInstanceConnectEndpoint": {
@@ -1436,28 +1726,32 @@
         "InvalidInstanceConnectEndpointId.Malformed",
         "InvalidInstanceConnectEndpointId.NotFound",
         "InvalidState",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createVpcBlockPublicAccessExclusion": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVpcBlockPublicAccessExclusion": {
       "errors": [
         "RequestLimitExceeded",
         "MissingParameter",
-        "VpcBlockPublicAccessExclusionId.Malformed"
+        "VpcBlockPublicAccessExclusionId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "createVpcEncryptionControl": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVpcEncryptionControl": {
@@ -1465,7 +1759,8 @@
         "RequestLimitExceeded",
         "InvalidVpcEncryptionControlId.Malformed",
         "InvalidVpcEncryptionControlId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "replaceNetworkAclAssociation": {
@@ -1473,21 +1768,24 @@
         "RequestLimitExceeded",
         "DryRunOperation",
         "InvalidAssociationID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "acceptVpcEndpointConnections": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameter",
-        "InvalidVpcEndpointServiceId.NotFound"
+        "InvalidVpcEndpointServiceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "rejectVpcEndpointConnections": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameter",
-        "InvalidVpcEndpointServiceId.NotFound"
+        "InvalidVpcEndpointServiceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyManagedPrefixList": {
@@ -1495,127 +1793,184 @@
         "RequestLimitExceeded",
         "InvalidParameterCombination",
         "InvalidPrefixListID.NotFound",
-        "InvalidPrefixListId.Malformed"
+        "InvalidPrefixListId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "modifySecurityGroupRules": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "allocateAddress": {
-      "errors": ["RequestLimitExceeded", "AddressLimitExceeded"]
+      "errors": [
+        "RequestLimitExceeded",
+        "AddressLimitExceeded",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteKeyPair": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createVolume": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidZone.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createPlacementGroup": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describePlacementGroups": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "InvalidPlacementGroup.Unknown"
+        "InvalidPlacementGroup.Unknown",
+        "UnauthorizedOperation"
       ]
     },
     "releaseHosts": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "allocateHosts": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidHostConfiguration",
-        "InvalidRequest"
+        "InvalidRequest",
+        "UnauthorizedOperation"
       ]
     },
     "describeHosts": {
-      "errors": ["RequestLimitExceeded", "InvalidHostID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidHostID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "cancelSpotFleetRequests": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "cancelSpotInstanceRequests": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterCombination",
-        "InvalidSpotInstanceRequestID.Malformed"
+        "InvalidSpotInstanceRequestID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "requestSpotInstances": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createSpotDatafeedSubscription": {
-      "errors": ["RequestLimitExceeded", "InaccessibleStorageLocation"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InaccessibleStorageLocation",
+        "UnauthorizedOperation"
+      ]
     },
     "describeSpotDatafeedSubscription": {
-      "errors": ["RequestLimitExceeded", "InvalidSpotDatafeed.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidSpotDatafeed.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "bundleInstance": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "cancelBundleTask": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidBundleID.NotFound",
-        "InvalidInstanceID.Malformed"
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeBundleTasks": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidBundleID.NotFound",
-        "InvalidInstanceID.Malformed"
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "getConsoleScreenshot": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
-        "InvalidInstanceID.NotFound"
+        "InvalidInstanceID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "reportInstanceStatus": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "monitorInstances": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "unmonitorInstances": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "confirmProductInstance": {
-      "errors": ["RequestLimitExceeded", "AuthFailure"]
+      "errors": ["RequestLimitExceeded", "AuthFailure", "UnauthorizedOperation"]
     },
     "createNetworkInterfacePermission": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyVolumeAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVolume.NotFound",
-        "InvalidVolumeID.Malformed"
+        "InvalidVolumeID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeVolumeAttribute": {
@@ -1623,7 +1978,8 @@
         "RequestLimitExceeded",
         "InvalidParameterCombination",
         "InvalidParameterValue",
-        "InvalidVolume.NotFound"
+        "InvalidVolume.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "resetSnapshotAttribute": {
@@ -1631,7 +1987,8 @@
         "RequestLimitExceeded",
         "InvalidSnapshot.NotFound",
         "InvalidSnapshotID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "resetImageAttribute": {
@@ -1639,39 +1996,48 @@
         "RequestLimitExceeded",
         "InvalidAMIID.Malformed",
         "InvalidAMIID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeImageAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidAMIID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeRegions": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "createTransitGatewayPeeringAttachment": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidTransitGatewayID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "rejectTransitGatewayPeeringAttachment": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayAttachmentID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "rejectTransitGatewayVpcAttachment": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayAttachmentID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "getTransitGatewayMulticastDomainAssociations": {
@@ -1679,87 +2045,106 @@
         "RequestLimitExceeded",
         "InvalidTransitGatewayMulticastDomainId.Malformed",
         "InvalidTransitGatewayMulticastDomainId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeLaunchTemplateVersions": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidLaunchTemplateId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeClientVpnConnections": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidClientVpnEndpointId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "provisionIpamPoolCidr": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPoolId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deprovisionIpamPoolCidr": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPoolId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createCapacityReservation": {
-      "errors": ["RequestLimitExceeded", "Unsupported"]
+      "errors": ["RequestLimitExceeded", "Unsupported", "UnauthorizedOperation"]
     },
     "associateCapacityReservationBillingOwner": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidCapacityReservationId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "cancelCapacityReservation": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidCapacityReservationId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateCapacityReservationBillingOwner": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidCapacityReservationId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "associateClientVpnTargetNetwork": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidSubnetID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateClientVpnTargetNetwork": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidClientVpnEndpointId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "provisionIpamByoasn": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "disassociateIpamByoasn": {
-      "errors": ["RequestLimitExceeded", "InvalidCidr.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidCidr.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "associateNatGatewayAddress": {
       "errors": [
         "RequestLimitExceeded",
         "MissingParameter",
         "NatGatewayMalformed",
-        "NatGatewayNotFound"
+        "NatGatewayNotFound",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateNatGatewayAddress": {
@@ -1767,28 +2152,32 @@
         "RequestLimitExceeded",
         "MissingParameter",
         "NatGatewayMalformed",
-        "NatGatewayNotFound"
+        "NatGatewayNotFound",
+        "UnauthorizedOperation"
       ]
     },
     "associateSecurityGroupVpc": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidGroupId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateSecurityGroupVpc": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidGroupId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateTransitGatewayMulticastDomain": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayMulticastDomainId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createTransitGatewayPolicyTable": {
@@ -1796,7 +2185,8 @@
         "RequestLimitExceeded",
         "IncorrectState",
         "InvalidTransitGatewayID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateTransitGatewayPolicyTable": {
@@ -1804,21 +2194,24 @@
         "RequestLimitExceeded",
         "InvalidTransitGatewayPolicyTableId.Malformed",
         "InvalidTransitGatewayPolicyTableId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateTransitGatewayRouteTable": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "attachClassicLinkVpc": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "detachClassicLinkVpc": {
@@ -1827,7 +2220,8 @@
         "DependencyViolation",
         "InvalidInstanceID.Malformed",
         "InvalidVpcID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createCoipCidr": {
@@ -1835,7 +2229,8 @@
         "RequestLimitExceeded",
         "InvalidPoolID.Malformed",
         "InvalidPoolID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteCoipCidr": {
@@ -1843,38 +2238,54 @@
         "RequestLimitExceeded",
         "InvalidCidrBlock.Malformed",
         "InvalidIpv4PoolCoipId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteLocalGatewayRouteTable": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidLocalGatewayRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "registerImage": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterCombination"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
+      ]
     },
     "createImageUsageReport": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteImageUsageReport": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidImageUsageReportId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createIpamPrefixListResolver": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteIpamPrefixListResolver": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPrefixListResolverId.Malformed",
         "InvalidIpamPrefixListResolverId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createIpamPrefixListResolverTarget": {
@@ -1882,39 +2293,48 @@
         "RequestLimitExceeded",
         "InvalidIpamPrefixListResolverId.Malformed",
         "InvalidIpamPrefixListResolverId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteIpamPrefixListResolverTarget": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPrefixListResolverTargetId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createLocalGatewayRoute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteLocalGatewayRoute": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.Malformed",
         "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createLocalGatewayVirtualInterfaceGroup": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidLocalGatewayID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createLocalGatewayRouteTableVirtualInterfaceGroupAssociation": {
@@ -1922,7 +2342,8 @@
         "RequestLimitExceeded",
         "InvalidLocalGatewayRouteTableID.NotFound",
         "InvalidLocalGatewayVirtualInterfaceGroupID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteLocalGatewayVirtualInterfaceGroup": {
@@ -1930,7 +2351,8 @@
         "RequestLimitExceeded",
         "InvalidLocalGatewayVirtualInterfaceGroupID.Malformed",
         "InvalidLocalGatewayVirtualInterfaceGroupID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createLocalGatewayRouteTableVpcAssociation": {
@@ -1939,7 +2361,8 @@
         "InvalidLocalGatewayRouteTableID.Malformed",
         "InvalidLocalGatewayRouteTableID.NotFound",
         "InvalidVpcID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteLocalGatewayRouteTableVpcAssociation": {
@@ -1947,7 +2370,8 @@
         "RequestLimitExceeded",
         "InvalidLocalGatewayRouteTableVpcAssociationID.Malformed",
         "InvalidLocalGatewayRouteTableVpcAssociationID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createLocalGatewayVirtualInterface": {
@@ -1955,7 +2379,8 @@
         "RequestLimitExceeded",
         "InvalidLocalGatewayVirtualInterfaceGroupID.Malformed",
         "InvalidLocalGatewayVirtualInterfaceGroupID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteLocalGatewayVirtualInterface": {
@@ -1963,7 +2388,8 @@
         "RequestLimitExceeded",
         "InvalidLocalGatewayVirtualInterfaceID.Malformed",
         "InvalidLocalGatewayVirtualInterfaceID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createRouteServerEndpoint": {
@@ -1972,7 +2398,8 @@
         "InvalidRouteServerId.NotAssociated",
         "InvalidRouteServerId.NotFound",
         "InvalidSubnetID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateRouteServer": {
@@ -1980,36 +2407,48 @@
         "RequestLimitExceeded",
         "InvalidRouteServerId.NotFound",
         "InvalidVpcID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteRouteServerEndpoint": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteServerEndpointId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createRouteServerPeer": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteRouteServerPeer": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteServerPeerId.Malformed",
         "InvalidRouteServerPeerId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createTrafficMirrorFilterRule": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteTrafficMirrorFilterRule": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
         "InvalidTrafficMirrorFilterRuleId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createTrafficMirrorSession": {
@@ -2017,18 +2456,24 @@
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceID.NotFound",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createTrafficMirrorTarget": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterCombination"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
+      ]
     },
     "createTransitGatewayMeteringPolicy": {
       "errors": [
         "RequestLimitExceeded",
         "IncorrectState",
         "InvalidTransitGatewayID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayMeteringPolicy": {
@@ -2036,42 +2481,55 @@
         "RequestLimitExceeded",
         "InvalidTransitGatewayMeteringPolicyId.NotFound",
         "InvalidTransitGatewayMeteringPolicyIdMalformedException",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createTransitGatewayMeteringPolicyEntry": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteTransitGatewayMeteringPolicyEntry": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayMeteringPolicyId.NotFound",
         "InvalidTransitGatewayMeteringPolicyIdMalformedException",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createTransitGatewayPrefixListReference": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteTransitGatewayPrefixListReference": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createTransitGatewayRoute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayRoute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createTransitGatewayRouteTableAnnouncement": {
@@ -2079,62 +2537,79 @@
         "RequestLimitExceeded",
         "InvalidRouteTableID.NotFound",
         "InvalidTransitGatewayAttachmentID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayRouteTableAnnouncement": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayRouteTableAnnouncementId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createVerifiedAccessEndpoint": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createVpnConnectionRoute": {
-      "errors": ["RequestLimitExceeded", "InvalidParameter", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameter",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteVpnConnectionRoute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRoute.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "startNetworkInsightsAccessScopeAnalysis": {
       "errors": [
         "RequestLimitExceeded",
         "IdempotentParameterMismatch",
-        "InvalidParameterValue"
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
       ]
     },
     "deleteNetworkInsightsAccessScopeAnalysis": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "startNetworkInsightsAnalysis": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteNetworkInsightsAnalysis": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "provisionPublicIpv4PoolCidr": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPoolId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deprovisionPublicIpv4PoolCidr": {
@@ -2142,106 +2617,132 @@
         "RequestLimitExceeded",
         "InvalidPublicIpv4Pool.NotFound",
         "InvalidPublicIpv4PoolID.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deregisterTransitGatewayMulticastGroupMembers": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "registerTransitGatewayMulticastGroupMembers": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deregisterTransitGatewayMulticastGroupSources": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "registerTransitGatewayMulticastGroupSources": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidNetworkInterfaceId.Malformed",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeByoipCidrs": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "getIpamPoolCidrs": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPoolId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeClientVpnTargetNetworks": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidClientVpnEndpointId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "getTransitGatewayPrefixListReferences": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "searchTransitGatewayRoutes": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "searchLocalGatewayRoutes": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidLocalGatewayRouteTableID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeClientVpnRoutes": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidClientVpnEndpointId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "getSubnetCidrReservations": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidSubnetID.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "describeVpcBlockPublicAccessExclusions": {
       "errors": [
         "RequestLimitExceeded",
         "MissingParameter",
-        "VpcBlockPublicAccessExclusionId.Malformed"
+        "VpcBlockPublicAccessExclusionId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "getIpamPoolAllocations": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPoolId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayPeeringAttachment": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "deprovisionIpamByoasn": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayPolicyTable": {
@@ -2249,14 +2750,16 @@
         "RequestLimitExceeded",
         "InvalidTransitGatewayPolicyTableId.Malformed",
         "InvalidTransitGatewayPolicyTableId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "createIpamExternalResourceVerificationToken": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "deleteIpamExternalResourceVerificationToken": {
@@ -2264,396 +2767,668 @@
         "RequestLimitExceeded",
         "InvalidIpamExternalResourceVerificationTokenId.Malformed",
         "InvalidIpamExternalResourceVerificationTokenId.NotFound",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
-    },
-    "cancelConversion": {
-      "errors": ["RequestLimitExceeded", "InvalidAction"]
     },
     "cancelDeclarativePoliciesReport": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidDeclarativePoliciesReportId.Malformed"
+        "InvalidDeclarativePoliciesReportId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "cancelExportTask": {
-      "errors": ["RequestLimitExceeded", "InvalidID"]
+      "errors": ["RequestLimitExceeded", "InvalidID", "UnauthorizedOperation"]
     },
     "cancelImageLaunchPermission": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "cancelImportTask": {
-      "errors": ["RequestLimitExceeded", "InvalidConversionTaskId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidConversionTaskId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "cancelReservedInstancesListing": {
-      "errors": ["RequestLimitExceeded", "InvalidInput"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInput",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteCapacityManagerDataExport": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidCapacityManagerDataExportId.Malformed",
-        "InvalidCapacityManagerDataExportId.NotFound"
+        "InvalidCapacityManagerDataExportId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "deleteClientVpnRoute": {
-      "errors": ["RequestLimitExceeded", "InvalidClientVpnEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidClientVpnEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteFpgaImage": {
-      "errors": ["RequestLimitExceeded", "InvalidFpgaImageID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFpgaImageID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteInstanceEventWindow": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceEventWindowIDNotFound",
-        "InvalidParameterValue"
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
       ]
     },
     "deleteLaunchTemplateVersions": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "deletePublicIpv4Pool": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidPublicIpv4Pool.NotFound",
-        "InvalidPublicIpv4PoolID.Malformed"
+        "InvalidPublicIpv4PoolID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayConnect": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayConnectPeer": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayConnectPeerID.Malformed",
-        "InvalidTransitGatewayConnectPeerID.NotFound"
+        "InvalidTransitGatewayConnectPeerID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "deleteTransitGatewayMulticastDomain": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayMulticastDomainId.Malformed",
-        "InvalidTransitGatewayMulticastDomainId.NotFound"
+        "InvalidTransitGatewayMulticastDomainId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "deleteVpnConcentrator": {
-      "errors": ["RequestLimitExceeded", "InvalidVpnConcentratorID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpnConcentratorID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "deprovisionByoipCidr": {
-      "errors": ["RequestLimitExceeded", "RequestLimitExceeded"]
+      "errors": [
+        "RequestLimitExceeded",
+        "RequestLimitExceeded",
+        "UnauthorizedOperation"
+      ]
     },
     "deregisterInstanceEventNotificationAttributes": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "rejectCapacityReservationBillingOwnership": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.Malformed"
+        "InvalidCapacityReservationId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "rejectTransitGatewayMulticastDomainAssociations": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "releaseIpamPoolAllocation": {
-      "errors": ["RequestLimitExceeded", "InvalidIpamPoolId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpamPoolId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "terminateClientVpnConnections": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "withdrawByoipCidr": {
-      "errors": ["RequestLimitExceeded", "RequestLimitExceeded"]
+      "errors": [
+        "RequestLimitExceeded",
+        "RequestLimitExceeded",
+        "UnauthorizedOperation"
+      ]
     },
     "allocateIpamPoolCidr": {
-      "errors": ["RequestLimitExceeded", "InvalidIpamPoolId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpamPoolId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "associateEnclaveCertificateIamRole": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidCertificateArn.Malformed",
-        "InvalidRoleArn.Malformed"
+        "InvalidRoleArn.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "associateIamInstanceProfile": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "associateIpamResourceDiscovery": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamResourceDiscoveryId.Malformed",
-        "InvalidIpamResourceDiscoveryId.NotFound"
+        "InvalidIpamResourceDiscoveryId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "associateRouteServer": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteServerId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteServerId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "associateTransitGatewayPolicyTable": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayPolicyTableId.Malformed",
-        "InvalidTransitGatewayPolicyTableId.NotFound"
+        "InvalidTransitGatewayPolicyTableId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "associateTransitGatewayRouteTable": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteTableID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteTableID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "associateTrunkInterface": {
-      "errors": ["RequestLimitExceeded", "OperationNotPermitted"]
+      "errors": [
+        "RequestLimitExceeded",
+        "OperationNotPermitted",
+        "UnauthorizedOperation"
+      ]
     },
     "attachVerifiedAccessTrustProvider": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessInstanceId.NotFound"
+        "InvalidVerifiedAccessInstanceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "copyFpgaImage": {
-      "errors": ["RequestLimitExceeded", "InvalidFpgaImageID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFpgaImageID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "copyVolumes": {
-      "errors": ["RequestLimitExceeded", "InvalidVolumeID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVolumeID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "createCapacityManagerDataExport": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createCapacityReservationBySplitting": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidCapacityReservationId.Malformed",
-        "InvalidCapacityReservationId.NotFound"
+        "InvalidCapacityReservationId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createClientVpnRoute": {
-      "errors": ["RequestLimitExceeded", "InvalidClientVpnEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidClientVpnEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "createDelegateMacVolumeOwnershipTask": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createInstanceExportTask": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createInterruptibleCapacityReservationAllocation": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.NotFound"
+        "InvalidCapacityReservationId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "createReplaceRootVolumeTask": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "createReservedInstancesListing": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createStoreImageTask": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "createTransitGatewayConnect": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createTransitGatewayConnectPeer": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createVpcEndpointConnectionNotification": {
-      "errors": ["RequestLimitExceeded", "InvalidParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "importKeyPair": {
-      "errors": ["RequestLimitExceeded", "InvalidKeyPair.Duplicate"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidKeyPair.Duplicate",
+        "UnauthorizedOperation"
+      ]
     },
     "purchaseCapacityBlock": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "purchaseCapacityBlockExtension": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.NotFound"
+        "InvalidCapacityReservationId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "runScheduledInstances": {
-      "errors": ["RequestLimitExceeded", "InvalidScheduledInstance"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidScheduledInstance",
+        "UnauthorizedOperation"
+      ]
     },
     "startDeclarativePoliciesReport": {
-      "errors": ["RequestLimitExceeded", "DeclarativePoliciesAccessDenied"]
+      "errors": [
+        "RequestLimitExceeded",
+        "DeclarativePoliciesAccessDenied",
+        "UnauthorizedOperation"
+      ]
     },
     "startVpcEndpointServicePrivateDnsVerification": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcEndpointServiceId.Malformed",
-        "InvalidVpcEndpointServiceId.NotFound"
+        "InvalidVpcEndpointServiceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "acceptAddressTransfer": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidAddress.Malformed",
-        "InvalidAddress.NotFound"
+        "InvalidAddress.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "acceptCapacityReservationBillingOwnership": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.Malformed"
+        "InvalidCapacityReservationId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "acceptTransitGatewayPeeringAttachment": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "acceptTransitGatewayVpcAttachment": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "assignPrivateNatGatewayAddress": {
-      "errors": ["RequestLimitExceeded", "NatGatewayNotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "NatGatewayNotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeCapacityBlockExtensionOfferings": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.NotFound"
+        "InvalidCapacityReservationId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeFleetHistory": {
-      "errors": ["RequestLimitExceeded", "InvalidFleetId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFleetId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeFleetInstances": {
-      "errors": ["RequestLimitExceeded", "InvalidFleetId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFleetId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeFpgaImageAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidFpgaImageID.Malformed",
-        "InvalidFpgaImageID.NotFound"
+        "InvalidFpgaImageID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeIdentityIdFormat": {
-      "errors": ["RequestLimitExceeded", "InvalidTargetArn.Unknown"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidTargetArn.Unknown",
+        "UnauthorizedOperation"
+      ]
     },
     "describeStaleSecurityGroups": {
-      "errors": ["RequestLimitExceeded", "InvalidVpcID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpcID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeVpcEndpointServicePermissions": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcEndpointServiceId.Malformed",
-        "InvalidVpcEndpointServiceId.NotFound"
+        "InvalidVpcEndpointServiceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "detachVerifiedAccessTrustProvider": {
       "errors": [
         "RequestLimitExceeded",
         "DependencyViolation",
-        "InvalidVerifiedAccessInstanceId.NotFound"
+        "InvalidVerifiedAccessInstanceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "disableAddressTransfer": {
-      "errors": ["RequestLimitExceeded", "InvalidElasticIpID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidElasticIpID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "disableFastLaunch": {
-      "errors": ["RequestLimitExceeded", "InvalidRequest"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRequest",
+        "UnauthorizedOperation"
+      ]
     },
     "disableImage": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "disableImageDeprecation": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "disableImageDeregistrationProtection": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "disableIpamPolicy": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPolicyId.Malformed",
-        "InvalidIpamPolicyId.NotFound"
+        "InvalidIpamPolicyId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "disableRouteServerPropagation": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteServerId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteServerId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "disableTransitGatewayRouteTablePropagation": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "disableVgwRoutePropagation": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteTableID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteTableID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "disassociateEnclaveCertificateIamRole": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidCertificateArn.Malformed",
-        "InvalidRoleArn.Malformed"
+        "InvalidRoleArn.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateIamInstanceProfile": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "disassociateInstanceEventWindow": {
       "errors": [
         "RequestLimitExceeded",
         "DependencyViolation",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateIpamResourceDiscovery": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamResourceDiscoveryAssociationId.Malformed",
-        "InvalidIpamResourceDiscoveryAssociationId.NotFound"
+        "InvalidIpamResourceDiscoveryAssociationId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "disassociateTrunkInterface": {
-      "errors": ["RequestLimitExceeded", "OperationNotPermitted"]
+      "errors": [
+        "RequestLimitExceeded",
+        "OperationNotPermitted",
+        "UnauthorizedOperation"
+      ]
     },
     "enableAddressTransfer": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "enableFastLaunch": {
-      "errors": ["RequestLimitExceeded", "InvalidRequest"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRequest",
+        "UnauthorizedOperation"
+      ]
     },
     "enableImage": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "enableImageBlockPublicAccess": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "enableImageDeprecation": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "enableImageDeregistrationProtection": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "enableIpamPolicy": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPolicyId.Malformed",
-        "InvalidIpamPolicyId.NotFound"
+        "InvalidIpamPolicyId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "enableRouteServerPropagation": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteServerId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteServerId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "enableTransitGatewayRouteTablePropagation": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "enableVgwRoutePropagation": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteTableID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteTableID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "exportImage": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "exportTransitGatewayRoutes": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteTableID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteTableID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "exportVerifiedAccessInstanceClientConfiguration": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessInstanceId.NotFound"
+        "InvalidVerifiedAccessInstanceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getActiveVpnTunnelStatus": {
-      "errors": ["RequestLimitExceeded", "InvalidVpnConnectionID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpnConnectionID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "getAssociatedEnclaveCertificateIamRoles": {
       "errors": [
@@ -2663,1022 +3438,1810 @@
       ]
     },
     "getAssociatedIpv6PoolCidrs": {
-      "errors": ["RequestLimitExceeded", "InvalidIpv6PoolID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpv6PoolID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "getCapacityReservationUsage": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.Malformed"
+        "InvalidCapacityReservationId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "getCoipPoolUsage": {
-      "errors": ["RequestLimitExceeded", "InvalidPoolID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidPoolID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "getDeclarativePoliciesReportSummary": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidDeclarativePoliciesReportId.Malformed"
+        "InvalidDeclarativePoliciesReportId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "getGroupsForCapacityReservation": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.Malformed"
+        "InvalidCapacityReservationId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "getImageAncestry": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "getInstanceTpmEkPub": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "getInstanceUefiData": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "getIpamAddressHistory": {
-      "errors": ["RequestLimitExceeded", "InvalidIpamScopeId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpamScopeId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "getIpamDiscoveredAccounts": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamResourceDiscoveryId.Malformed",
-        "InvalidIpamResourceDiscoveryId.NotFound"
+        "InvalidIpamResourceDiscoveryId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getIpamDiscoveredPublicAddresses": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamResourceDiscoveryId.Malformed",
-        "InvalidIpamResourceDiscoveryId.NotFound"
+        "InvalidIpamResourceDiscoveryId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getIpamDiscoveredResourceCidrs": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamResourceDiscoveryId.Malformed",
-        "InvalidIpamResourceDiscoveryId.NotFound"
+        "InvalidIpamResourceDiscoveryId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getIpamPolicyAllocationRules": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPolicyId.Malformed",
-        "InvalidIpamPolicyId.NotFound"
+        "InvalidIpamPolicyId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getIpamPolicyOrganizationTargets": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPolicyId.Malformed",
-        "InvalidIpamPolicyId.NotFound"
+        "InvalidIpamPolicyId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getIpamPrefixListResolverRules": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPrefixListResolverId.Malformed",
-        "InvalidIpamPrefixListResolverId.NotFound"
+        "InvalidIpamPrefixListResolverId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getIpamPrefixListResolverVersionEntries": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "getIpamPrefixListResolverVersions": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPrefixListResolverId.Malformed",
-        "InvalidIpamPrefixListResolverId.NotFound"
+        "InvalidIpamPrefixListResolverId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getIpamResourceCidrs": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPoolId.NotFound",
-        "InvalidIpamScopeId.NotFound"
+        "InvalidIpamScopeId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getLaunchTemplateData": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "getManagedPrefixListAssociations": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidPrefixListID.NotFound",
-        "InvalidPrefixListId.Malformed"
+        "InvalidPrefixListId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "getNetworkInsightsAccessScopeAnalysisFindings": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "getNetworkInsightsAccessScopeContent": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "getRouteServerAssociations": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteServerId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteServerId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "getRouteServerPropagations": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteServerId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteServerId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "getRouteServerRoutingDatabase": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteServerId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteServerId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "getTransitGatewayAttachmentPropagations": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getTransitGatewayMeteringPolicyEntries": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayMeteringPolicyId.NotFound",
-        "InvalidTransitGatewayMeteringPolicyIdMalformedException"
+        "InvalidTransitGatewayMeteringPolicyIdMalformedException",
+        "UnauthorizedOperation"
       ]
     },
     "getTransitGatewayPolicyTableAssociations": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayPolicyTableId.Malformed",
-        "InvalidTransitGatewayPolicyTableId.NotFound"
+        "InvalidTransitGatewayPolicyTableId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getTransitGatewayPolicyTableEntries": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayPolicyTableId.Malformed",
-        "InvalidTransitGatewayPolicyTableId.NotFound"
+        "InvalidTransitGatewayPolicyTableId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getTransitGatewayRouteTableAssociations": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteTableID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteTableID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "getTransitGatewayRouteTablePropagations": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteTableID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteTableID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "getVerifiedAccessEndpointPolicy": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "InvalidVerifiedAccessEndpointId.NotFound"
+        "InvalidVerifiedAccessEndpointId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getVerifiedAccessEndpointTargets": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessEndpointId.NotFound"
+        "InvalidVerifiedAccessEndpointId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getVerifiedAccessGroupPolicy": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessGroupId.NotFound"
+        "InvalidVerifiedAccessGroupId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getVpcResourcesBlockingEncryptionEnforcement": {
-      "errors": ["RequestLimitExceeded", "InvalidVpcId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpcId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "getVpnConnectionDeviceSampleConfiguration": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVpnConnectionDeviceTypeId.NotFound"
+        "InvalidVpnConnectionDeviceTypeId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "getVpnTunnelReplacementStatus": {
-      "errors": ["RequestLimitExceeded", "InvalidVpnConnectionId"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpnConnectionId",
+        "UnauthorizedOperation"
+      ]
     },
     "lockSnapshot": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyAddressAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidAllocationID.NotFound",
-        "InvalidElasticIpID.NotFound"
+        "InvalidElasticIpID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyAvailabilityZoneGroup": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyCapacityReservation": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.Malformed"
+        "InvalidCapacityReservationId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "modifyCapacityReservationFleet": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationFleetId.Malformed"
+        "InvalidCapacityReservationFleetId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "modifyFleet": {
-      "errors": ["RequestLimitExceeded", "InvalidFleetId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFleetId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyFpgaImageAttribute": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidFpgaImageID.Malformed",
-        "InvalidFpgaImageID.NotFound"
+        "InvalidFpgaImageID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyInstanceCapacityReservationAttributes": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyInstanceConnectEndpoint": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceConnectEndpointId.Malformed",
-        "InvalidInstanceConnectEndpointId.NotFound"
+        "InvalidInstanceConnectEndpointId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyInstanceCpuOptions": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyInstanceEventStartTime": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyInstanceEventWindow": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidInstanceEventWindowIDNotFound",
-        "InvalidInstanceEventWindowId.Malformed"
+        "InvalidInstanceEventWindowId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "modifyInstanceMaintenanceOptions": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyInstanceMetadataOptions": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
-    },
-    "modifyInstanceNetworkPerformance": {
-      "errors": ["RequestLimitExceeded", "InvalidAction"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyInstancePlacement": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyIpam": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterCombination"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyIpamPolicyAllocationRules": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyIpamPool": {
-      "errors": ["RequestLimitExceeded", "InvalidIpamPoolId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpamPoolId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyIpamPrefixListResolver": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamPrefixListResolverId.Malformed",
-        "InvalidIpamPrefixListResolverId.NotFound"
+        "InvalidIpamPrefixListResolverId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyIpamPrefixListResolverTarget": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidIpamPrefixListResolverTargetId.Malformed"
+        "InvalidIpamPrefixListResolverTargetId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "modifyIpamResourceCidr": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamScopeId.Malformed",
-        "InvalidParameterValue"
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
       ]
     },
     "modifyIpamResourceDiscovery": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidIpamResourceDiscoveryId.Malformed",
-        "InvalidIpamResourceDiscoveryId.NotFound"
+        "InvalidIpamResourceDiscoveryId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyIpamScope": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterCombination"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyLocalGatewayRoute": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyPrivateDnsNameOptions": {
-      "errors": ["RequestLimitExceeded", "UnknownResource"]
+      "errors": [
+        "RequestLimitExceeded",
+        "UnknownResource",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyPublicIpDnsNameOptions": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyRouteServer": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteServerId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteServerId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "modifySnapshotTier": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyTrafficMirrorFilterNetworkServices": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyTrafficMirrorFilterRule": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "InvalidTrafficMirrorFilterRuleId.NotFound"
+        "InvalidTrafficMirrorFilterRuleId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyTrafficMirrorSession": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyTransitGateway": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyTransitGatewayMeteringPolicy": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayMeteringPolicyIdMalformedException",
-        "MissingParameter"
+        "MissingParameter",
+        "UnauthorizedOperation"
       ]
     },
     "modifyTransitGatewayPrefixListReference": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyTransitGatewayVpcAttachment": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVerifiedAccessEndpoint": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "InvalidVerifiedAccessEndpointId.NotFound"
+        "InvalidVerifiedAccessEndpointId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVerifiedAccessEndpointPolicy": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidParameterValue",
-        "InvalidVerifiedAccessEndpointId.NotFound"
+        "InvalidVerifiedAccessEndpointId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVerifiedAccessGroup": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessGroupId.NotFound"
+        "InvalidVerifiedAccessGroupId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVerifiedAccessGroupPolicy": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessGroupId.NotFound"
+        "InvalidVerifiedAccessGroupId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVerifiedAccessInstance": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessInstanceId.NotFound"
+        "InvalidVerifiedAccessInstanceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVerifiedAccessInstanceLoggingConfiguration": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyVerifiedAccessTrustProvider": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessTrustProviderId.NotFound"
+        "InvalidVerifiedAccessTrustProviderId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVpcEncryptionControl": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcEncryptionControlId.Malformed",
-        "InvalidVpcEncryptionControlId.NotFound"
+        "InvalidVpcEncryptionControlId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVpcEndpointConnectionNotification": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidConnectionNotification",
-        "InvalidParameter"
+        "InvalidParameter",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVpcEndpointServicePayerResponsibility": {
-      "errors": ["RequestLimitExceeded", "UnsupportedOperation"]
+      "errors": [
+        "RequestLimitExceeded",
+        "UnsupportedOperation",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyVpcEndpointServicePermissions": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidVpcEndpointServiceId.Malformed",
-        "InvalidVpcEndpointServiceId.NotFound"
+        "InvalidVpcEndpointServiceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "modifyVpnConnection": {
-      "errors": ["RequestLimitExceeded", "InvalidVpnConnectionId"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpnConnectionId",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyVpnConnectionOptions": {
-      "errors": ["RequestLimitExceeded", "InvalidVpnConnectionID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpnConnectionID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyVpnTunnelCertificate": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyVpnTunnelOptions": {
-      "errors": ["RequestLimitExceeded", "InvalidVpnConnectionId"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpnConnectionId",
+        "UnauthorizedOperation"
+      ]
     },
     "moveByoipCidrToIpam": {
-      "errors": ["RequestLimitExceeded", "InvalidIpamPoolId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpamPoolId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "moveCapacityReservationInstances": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.Malformed"
+        "InvalidCapacityReservationId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "replaceTransitGatewayRoute": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteTableID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteTableID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "replaceVpnTunnel": {
-      "errors": ["RequestLimitExceeded", "InvalidVpnConnectionId"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpnConnectionId",
+        "UnauthorizedOperation"
+      ]
     },
     "resetAddressAttribute": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "resetFpgaImageAttribute": {
-      "errors": ["RequestLimitExceeded", "InvalidFpgaImageID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFpgaImageID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "resetInstanceAttribute": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "resetNetworkInterfaceAttribute": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterCombination"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
+      ]
     },
     "restoreImageFromRecycleBin": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "restoreManagedPrefixListVersion": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "restoreSnapshotFromRecycleBin": {
-      "errors": ["RequestLimitExceeded", "InvalidSnapshotID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidSnapshotID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "restoreSnapshotTier": {
-      "errors": ["RequestLimitExceeded", "InvalidSnapshotID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidSnapshotID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "restoreVolumeFromRecycleBin": {
-      "errors": ["RequestLimitExceeded", "InvalidVolumeID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVolumeID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "searchTransitGatewayMulticastGroups": {
       "errors": [
         "RequestLimitExceeded",
         "InvalidTransitGatewayMulticastDomainId.Malformed",
-        "InvalidTransitGatewayMulticastDomainId.NotFound"
+        "InvalidTransitGatewayMulticastDomainId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "sendDiagnosticInterrupt": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "unlockSnapshot": {
-      "errors": ["RequestLimitExceeded", "InvalidSnapshotID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidSnapshotID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "updateInterruptibleCapacityReservationAllocation": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.NotFound"
+        "InvalidCapacityReservationId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "acceptReservedInstancesExchangeQuote": {
-      "errors": ["RequestLimitExceeded", "InvalidReservedInstancesID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidReservedInstancesID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "applySecurityGroupsToClientVpnTargetNetwork": {
-      "errors": ["RequestLimitExceeded", "InvalidVpcId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpcId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "associateTransitGatewayMulticastDomain": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayMulticastDomainId.NotFound"
+        "InvalidTransitGatewayMulticastDomainId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "cancelCapacityReservationFleets": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationFleetId.Malformed"
+        "InvalidCapacityReservationFleetId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "deleteFleets": {
-      "errors": ["RequestLimitExceeded", "InvalidFleetId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFleetId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "deleteQueuedReservedInstances": {
-      "errors": ["RequestLimitExceeded", "InvalidReservedInstancesID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidReservedInstancesID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeCapacityBlockExtensionHistory": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.Malformed"
+        "InvalidCapacityReservationId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeCapacityBlockStatus": {
-      "errors": ["RequestLimitExceeded", "InvalidCapacityBlockId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidCapacityBlockId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeCapacityBlocks": {
-      "errors": ["RequestLimitExceeded", "InvalidCapacityBlockId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidCapacityBlockId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeCapacityManagerDataExports": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityManagerDataExportId.NotFound"
+        "InvalidCapacityManagerDataExportId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeCapacityReservationBillingRequests": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "describeCapacityReservationFleets": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationFleetId.Malformed"
+        "InvalidCapacityReservationFleetId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeCapacityReservations": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidCapacityReservationId.Malformed"
+        "InvalidCapacityReservationId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeClassicLinkInstances": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeClientVpnEndpoints": {
-      "errors": ["RequestLimitExceeded", "InvalidClientVpnEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidClientVpnEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeCoipPools": {
-      "errors": ["RequestLimitExceeded", "InvalidPoolID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidPoolID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeDeclarativePoliciesReports": {
-      "errors": ["RequestLimitExceeded", "InvalidParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "describeElasticGpus": {
-      "errors": ["RequestLimitExceeded", "UnsupportedOperation"]
+      "errors": [
+        "RequestLimitExceeded",
+        "UnsupportedOperation",
+        "UnauthorizedOperation"
+      ]
     },
     "describeExportImageTasks": {
-      "errors": ["RequestLimitExceeded", "InvalidExportTaskID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidExportTaskID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeExportTasks": {
-      "errors": ["RequestLimitExceeded", "InvalidExportTaskID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidExportTaskID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeFastLaunchImages": {
-      "errors": ["RequestLimitExceeded", "InvalidRequest"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRequest",
+        "UnauthorizedOperation"
+      ]
     },
     "describeFleets": {
-      "errors": ["RequestLimitExceeded", "InvalidFleetId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFleetId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeFpgaImages": {
-      "errors": ["RequestLimitExceeded", "InvalidFpgaImageID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidFpgaImageID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeHostReservationOfferings": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidHostReservationOfferingId.Malformed"
+        "InvalidHostReservationOfferingId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeIamInstanceProfileAssociations": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeImageReferences": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeImageUsageReportEntries": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeImageUsageReports": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeImportImageTasks": {
-      "errors": ["RequestLimitExceeded", "InvalidParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "describeImportSnapshotTasks": {
-      "errors": ["RequestLimitExceeded", "InvalidParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "describeInstanceConnectEndpoints": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidInstanceConnectEndpointId.NotFound"
+        "InvalidInstanceConnectEndpointId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeInstanceCreditSpecifications": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeInstanceEventWindows": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceEventWindowIDNotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceEventWindowIDNotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeInstanceImageMetadata": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeInstanceSqlHaHistoryStates": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeInstanceSqlHaStates": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeIpamExternalResourceVerificationTokens": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidIpamExternalResourceVerificationTokenId.NotFound"
+        "InvalidIpamExternalResourceVerificationTokenId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeIpamPolicies": {
-      "errors": ["RequestLimitExceeded", "InvalidIpamPolicyId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpamPolicyId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeIpamPools": {
-      "errors": ["RequestLimitExceeded", "InvalidIpamPoolId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpamPoolId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeIpamPrefixListResolverTargets": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidIpamPrefixListResolverTargetId.Malformed"
+        "InvalidIpamPrefixListResolverTargetId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeIpamPrefixListResolvers": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidIpamPrefixListResolverId.NotFound"
+        "InvalidIpamPrefixListResolverId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeIpamResourceDiscoveries": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidIpamResourceDiscoveryId.NotFound"
+        "InvalidIpamResourceDiscoveryId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeIpamResourceDiscoveryAssociations": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidIpamResourceDiscoveryAssociationId.NotFound"
+        "InvalidIpamResourceDiscoveryAssociationId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeIpamScopes": {
-      "errors": ["RequestLimitExceeded", "InvalidIpamScopeId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpamScopeId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeIpams": {
-      "errors": ["RequestLimitExceeded", "InvalidIpamId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpamId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeIpv6Pools": {
-      "errors": ["RequestLimitExceeded", "InvalidIpv6PoolID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidIpv6PoolID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeLockedSnapshots": {
-      "errors": ["RequestLimitExceeded", "InvalidRequest"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRequest",
+        "UnauthorizedOperation"
+      ]
     },
     "describeMacHosts": {
-      "errors": ["RequestLimitExceeded", "InvalidHostID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidHostID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeMacModificationTasks": {
-      "errors": ["RequestLimitExceeded", "InvalidParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "describeNetworkInsightsAccessScopeAnalyses": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeNetworkInsightsAccessScopes": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeNetworkInsightsAnalyses": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeNetworkInsightsPaths": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeNetworkInterfacePermissions": {
-      "errors": ["RequestLimitExceeded", "InvalidPermissionID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidPermissionID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeOutpostLags": {
-      "errors": ["RequestLimitExceeded", "InvalidOutpostLagID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidOutpostLagID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describePrefixLists": {
-      "errors": ["RequestLimitExceeded", "InvalidPrefixListId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidPrefixListId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describePublicIpv4Pools": {
-      "errors": ["RequestLimitExceeded", "InvalidPublicIpv4PoolID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidPublicIpv4PoolID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeReplaceRootVolumeTasks": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeReservedInstances": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeReservedInstancesModifications": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeReservedInstancesOfferings": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeRouteServerEndpoints": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidRouteServerEndpointId.NotFound"
+        "InvalidRouteServerEndpointId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeRouteServerPeers": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteServerPeerId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteServerPeerId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeRouteServers": {
-      "errors": ["RequestLimitExceeded", "InvalidRouteServerId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRouteServerId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeServiceLinkVirtualInterfaces": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidServiceLinkVirtualInterfaceID.Malformed"
+        "InvalidServiceLinkVirtualInterfaceID.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeTrafficMirrorFilters": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTrafficMirrorFilterId.NotFound"
+        "InvalidTrafficMirrorFilterId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTrafficMirrorSessions": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTrafficMirrorSessionId.NotFound"
+        "InvalidTrafficMirrorSessionId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTrafficMirrorTargets": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTrafficMirrorTargetId.NotFound"
+        "InvalidTrafficMirrorTargetId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTransitGatewayConnectPeers": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayConnectPeerID.NotFound"
+        "InvalidTransitGatewayConnectPeerID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTransitGatewayConnects": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTransitGatewayMeteringPolicies": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayMeteringPolicyId.NotFound"
+        "InvalidTransitGatewayMeteringPolicyId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTransitGatewayMulticastDomains": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayMulticastDomainId.NotFound"
+        "InvalidTransitGatewayMulticastDomainId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTransitGatewayPeeringAttachments": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTransitGatewayPolicyTables": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayPolicyTableId.NotFound"
+        "InvalidTransitGatewayPolicyTableId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTransitGatewayRouteTableAnnouncements": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayRouteTableAnnouncementId.Malformed"
+        "InvalidTransitGatewayRouteTableAnnouncementId.Malformed",
+        "UnauthorizedOperation"
       ]
     },
     "describeTransitGatewayVpcAttachments": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidTransitGatewayAttachmentID.NotFound"
+        "InvalidTransitGatewayAttachmentID.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeTrunkInterfaceAssociations": {
-      "errors": ["RequestLimitExceeded", "OperationNotPermitted"]
+      "errors": [
+        "RequestLimitExceeded",
+        "OperationNotPermitted",
+        "UnauthorizedOperation"
+      ]
     },
     "describeVerifiedAccessEndpoints": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterCombination"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
+      ]
     },
     "describeVerifiedAccessGroups": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessGroupId.NotFound"
+        "InvalidVerifiedAccessGroupId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeVerifiedAccessInstanceLoggingConfigurations": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessInstanceId.NotFound"
+        "InvalidVerifiedAccessInstanceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeVerifiedAccessInstances": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessInstanceId.NotFound"
+        "InvalidVerifiedAccessInstanceId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeVerifiedAccessTrustProviders": {
       "errors": [
         "RequestLimitExceeded",
-        "InvalidVerifiedAccessTrustProviderId.NotFound"
+        "InvalidVerifiedAccessTrustProviderId.NotFound",
+        "UnauthorizedOperation"
       ]
     },
     "describeVolumeStatus": {
-      "errors": ["RequestLimitExceeded", "InvalidVolumeID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVolumeID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeVolumesModifications": {
-      "errors": ["RequestLimitExceeded", "InvalidVolumeID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVolumeID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "describeVpcEncryptionControls": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterCombination"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterCombination",
+        "UnauthorizedOperation"
+      ]
     },
     "describeVpcEndpointConnectionNotifications": {
-      "errors": ["RequestLimitExceeded", "InvalidConnectionNotification"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidConnectionNotification",
+        "UnauthorizedOperation"
+      ]
     },
     "describeVpnConcentrators": {
-      "errors": ["RequestLimitExceeded", "InvalidVpnConcentratorId.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVpnConcentratorId.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "disableFastSnapshotRestores": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "disableInstanceSqlHaStandbyDetections": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "enableFastSnapshotRestores": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "enableInstanceSqlHaStandbyDetections": {
-      "errors": ["RequestLimitExceeded", "InvalidInstanceID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidInstanceID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "getReservedInstancesExchangeQuote": {
-      "errors": ["RequestLimitExceeded", "InvalidReservedInstancesID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidReservedInstancesID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "listImagesInRecycleBin": {
-      "errors": ["RequestLimitExceeded", "InvalidAMIID.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAMIID.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "listSnapshotsInRecycleBin": {
-      "errors": ["RequestLimitExceeded", "InvalidSnapshotID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidSnapshotID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "listVolumesInRecycleBin": {
-      "errors": ["RequestLimitExceeded", "InvalidVolumeID.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidVolumeID.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyReservedInstances": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "cancelConversionTask": {
-      "errors": ["RequestLimitExceeded", "InvalidAction"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAction",
+        "UnauthorizedOperation"
+      ]
     },
     "describeCapacityBlockOfferings": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeClientVpnAuthorizationRules": {
-      "errors": ["RequestLimitExceeded", "InvalidClientVpnEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidClientVpnEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "describeMovingAddresses": {
-      "errors": ["RequestLimitExceeded", "UnsupportedOperation"]
+      "errors": [
+        "RequestLimitExceeded",
+        "UnsupportedOperation",
+        "UnauthorizedOperation"
+      ]
     },
     "associateInstanceEventWindow": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "associateIpamByoasn": {
-      "errors": ["RequestLimitExceeded", "InvalidCidr.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidCidr.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "authorizeClientVpnIngress": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createCapacityReservationFleet": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createFleet": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createFpgaImage": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "createInstanceEventWindow": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "createRestoreImageTask": {
-      "errors": ["RequestLimitExceeded", "InvalidRequest"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidRequest",
+        "UnauthorizedOperation"
+      ]
     },
     "createSnapshots": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "acceptTransitGatewayMulticastDomainAssociations": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "advertiseByoipCidr": {
-      "errors": ["RequestLimitExceeded", "RequestLimitExceeded"]
+      "errors": [
+        "RequestLimitExceeded",
+        "RequestLimitExceeded",
+        "UnauthorizedOperation"
+      ]
     },
     "disableAwsNetworkPerformanceMetricSubscription": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "disableCapacityManager": {
-      "errors": ["RequestLimitExceeded", "CapacityManager.Disabled"]
+      "errors": [
+        "RequestLimitExceeded",
+        "CapacityManager.Disabled",
+        "UnauthorizedOperation"
+      ]
     },
     "disableIpamOrganizationAdminAccount": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "enableAwsNetworkPerformanceMetricSubscription": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "enableIpamOrganizationAdminAccount": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "enableSnapshotBlockPublicAccess": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyClientVpnEndpoint": {
-      "errors": ["RequestLimitExceeded", "InvalidClientVpnEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidClientVpnEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyDefaultCreditSpecification": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyEbsDefaultKmsKeyId": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyInstanceMetadataDefaults": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyInstanceNetworkPerformanceOptions": {
-      "errors": ["RequestLimitExceeded", "InvalidAction"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidAction",
+        "UnauthorizedOperation"
+      ]
     },
     "modifyLaunchTemplate": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "exportClientVpnClientCertificateRevocationList": {
-      "errors": ["RequestLimitExceeded", "InvalidClientVpnEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidClientVpnEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "exportClientVpnClientConfiguration": {
-      "errors": ["RequestLimitExceeded", "InvalidClientVpnEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidClientVpnEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "requestSpotFleet": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createVpcEndpointServiceConfiguration": {
-      "errors": ["RequestLimitExceeded", "InvalidParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "createVpnConcentrator": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "describeSpotFleetInstances": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "describeSpotFleetRequestHistory": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "getAwsNetworkPerformanceData": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "getCapacityManagerMetricData": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "getCapacityManagerMetricDimensions": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "getDefaultCreditSpecification": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "getInstanceTypesFromInstanceRequirements": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "importClientVpnClientCertificateRevocationList": {
-      "errors": ["RequestLimitExceeded", "InvalidClientVpnEndpointId.NotFound"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidClientVpnEndpointId.NotFound",
+        "UnauthorizedOperation"
+      ]
     },
     "importImage": {
-      "errors": ["RequestLimitExceeded", "MissingRequiredParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingRequiredParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "importInstance": {
-      "errors": ["RequestLimitExceeded", "InvalidParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "importSnapshot": {
-      "errors": ["RequestLimitExceeded", "InvalidParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "modifySpotFleetRequest": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "moveAddressToVpc": {
-      "errors": ["RequestLimitExceeded", "UnsupportedOperation"]
+      "errors": [
+        "RequestLimitExceeded",
+        "UnsupportedOperation",
+        "UnauthorizedOperation"
+      ]
     },
     "provisionByoipCidr": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "purchaseReservedInstancesOffering": {
-      "errors": ["RequestLimitExceeded", "InvalidParameterValue"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidParameterValue",
+        "UnauthorizedOperation"
+      ]
     },
     "purchaseScheduledInstances": {
-      "errors": ["RequestLimitExceeded", "InvalidPurchaseToken.Malformed"]
+      "errors": [
+        "RequestLimitExceeded",
+        "InvalidPurchaseToken.Malformed",
+        "UnauthorizedOperation"
+      ]
     },
     "registerInstanceEventNotificationAttributes": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "restoreAddressToClassic": {
-      "errors": ["RequestLimitExceeded", "UnsupportedOperation"]
+      "errors": [
+        "RequestLimitExceeded",
+        "UnsupportedOperation",
+        "UnauthorizedOperation"
+      ]
     },
     "revokeClientVpnIngress": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "updateCapacityManagerOrganizationsAccess": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "updateSecurityGroupRuleDescriptionsEgress": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     },
     "updateSecurityGroupRuleDescriptionsIngress": {
-      "errors": ["RequestLimitExceeded", "MissingParameter"]
+      "errors": [
+        "RequestLimitExceeded",
+        "MissingParameter",
+        "UnauthorizedOperation"
+      ]
     }
   },
   "enums": {

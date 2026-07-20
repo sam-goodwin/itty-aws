@@ -126,25 +126,24 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String, Value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CopyBackupToRegionRequest {
   DestinationRegion: string;
   BackupId: string;
   TagList?: Tag[];
 }
-export const CopyBackupToRegionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DestinationRegion: S.String,
-      BackupId: S.String,
-      TagList: S.optional(TagList),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const CopyBackupToRegionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DestinationRegion: S.String,
+    BackupId: S.String,
+    TagList: S.optional(TagList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "CopyBackupToRegionRequest",
 }) as any as S.Schema<CopyBackupToRegionRequest>;
@@ -154,7 +153,7 @@ export interface DestinationBackup {
   SourceBackup?: string;
   SourceCluster?: string;
 }
-export const DestinationBackup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DestinationBackup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CreateTimestamp: S.optional(
       S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -169,18 +168,18 @@ export const DestinationBackup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CopyBackupToRegionResponse {
   DestinationBackup?: DestinationBackup;
 }
-export const CopyBackupToRegionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ DestinationBackup: S.optional(DestinationBackup) }),
+export const CopyBackupToRegionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DestinationBackup: S.optional(DestinationBackup) }),
 ).annotate({
   identifier: "CopyBackupToRegionResponse",
 }) as any as S.Schema<CopyBackupToRegionResponse>;
 export type BackupRetentionType = "DAYS" | (string & {});
-export const BackupRetentionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BackupRetentionType = /*@__PURE__*/ S.String;
 export interface BackupRetentionPolicy {
   Type?: BackupRetentionType;
   Value?: string;
 }
-export const BackupRetentionPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BackupRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(BackupRetentionType),
     Value: S.optional(S.String),
@@ -189,11 +188,11 @@ export const BackupRetentionPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "BackupRetentionPolicy",
 }) as any as S.Schema<BackupRetentionPolicy>;
 export type SubnetIds = string[];
-export const SubnetIds = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type NetworkType = "IPV4" | "DUALSTACK" | (string & {});
-export const NetworkType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkType = /*@__PURE__*/ S.String;
 export type ClusterMode = "FIPS" | "NON_FIPS" | (string & {});
-export const ClusterMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ClusterMode = /*@__PURE__*/ S.String;
 export interface CreateClusterRequest {
   BackupRetentionPolicy?: BackupRetentionPolicy;
   HsmType: string;
@@ -203,7 +202,7 @@ export interface CreateClusterRequest {
   TagList?: Tag[];
   Mode?: ClusterMode;
 }
-export const CreateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BackupRetentionPolicy: S.optional(BackupRetentionPolicy),
     HsmType: S.String,
@@ -219,7 +218,7 @@ export const CreateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateClusterRequest",
 }) as any as S.Schema<CreateClusterRequest>;
 export type BackupPolicy = "DEFAULT" | (string & {});
-export const BackupPolicy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BackupPolicy = /*@__PURE__*/ S.String;
 export type HsmState =
   | "CREATE_IN_PROGRESS"
   | "ACTIVE"
@@ -227,7 +226,7 @@ export type HsmState =
   | "DELETE_IN_PROGRESS"
   | "DELETED"
   | (string & {});
-export const HsmState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const HsmState = /*@__PURE__*/ S.String;
 export interface Hsm {
   AvailabilityZone?: string;
   ClusterId?: string;
@@ -240,7 +239,7 @@ export interface Hsm {
   State?: HsmState;
   StateMessage?: string;
 }
-export const Hsm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Hsm = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AvailabilityZone: S.optional(S.String),
     ClusterId: S.optional(S.String),
@@ -255,7 +254,7 @@ export const Hsm = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Hsm" }) as any as S.Schema<Hsm>;
 export type Hsms = Hsm[];
-export const Hsms = /*@__PURE__*/ /*#__PURE__*/ S.Array(Hsm);
+export const Hsms = /*@__PURE__*/ S.Array(Hsm);
 export type ClusterState =
   | "CREATE_IN_PROGRESS"
   | "UNINITIALIZED"
@@ -269,9 +268,9 @@ export type ClusterState =
   | "DELETED"
   | "DEGRADED"
   | (string & {});
-export const ClusterState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ClusterState = /*@__PURE__*/ S.String;
 export type ExternalSubnetMapping = { [key: string]: string | undefined };
-export const ExternalSubnetMapping = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ExternalSubnetMapping = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -282,7 +281,7 @@ export interface Certificates {
   ManufacturerHardwareCertificate?: string;
   ClusterCertificate?: string;
 }
-export const Certificates = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Certificates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterCsr: S.optional(S.String),
     HsmCertificate: S.optional(S.String),
@@ -311,7 +310,7 @@ export interface Cluster {
   TagList?: Tag[];
   Mode?: ClusterMode;
 }
-export const Cluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Cluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BackupPolicy: S.optional(BackupPolicy),
     BackupRetentionPolicy: S.optional(BackupRetentionPolicy),
@@ -340,7 +339,7 @@ export const Cluster = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateClusterResponse {
   Cluster?: Cluster;
 }
-export const CreateClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cluster: S.optional(Cluster) }),
 ).annotate({
   identifier: "CreateClusterResponse",
@@ -350,7 +349,7 @@ export interface CreateHsmRequest {
   AvailabilityZone: string;
   IpAddress?: string;
 }
-export const CreateHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateHsmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterId: S.String,
     AvailabilityZone: S.String,
@@ -364,7 +363,7 @@ export const CreateHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateHsmResponse {
   Hsm?: Hsm;
 }
-export const CreateHsmResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateHsmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Hsm: S.optional(Hsm) }),
 ).annotate({
   identifier: "CreateHsmResponse",
@@ -372,7 +371,7 @@ export const CreateHsmResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteBackupRequest {
   BackupId: string;
 }
-export const DeleteBackupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BackupId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -385,7 +384,7 @@ export type BackupState =
   | "DELETED"
   | "PENDING_DELETION"
   | (string & {});
-export const BackupState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BackupState = /*@__PURE__*/ S.String;
 export interface Backup {
   BackupId: string;
   BackupArn?: string;
@@ -402,7 +401,7 @@ export interface Backup {
   HsmType?: string;
   Mode?: ClusterMode;
 }
-export const Backup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Backup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BackupId: S.String,
     BackupArn: S.optional(S.String),
@@ -427,7 +426,7 @@ export const Backup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteBackupResponse {
   Backup?: Backup;
 }
-export const DeleteBackupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Backup: S.optional(Backup) }),
 ).annotate({
   identifier: "DeleteBackupResponse",
@@ -435,7 +434,7 @@ export const DeleteBackupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteClusterRequest {
   ClusterId: string;
 }
-export const DeleteClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ClusterId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -445,7 +444,7 @@ export const DeleteClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteClusterResponse {
   Cluster?: Cluster;
 }
-export const DeleteClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cluster: S.optional(Cluster) }),
 ).annotate({
   identifier: "DeleteClusterResponse",
@@ -456,7 +455,7 @@ export interface DeleteHsmRequest {
   EniId?: string;
   EniIp?: string;
 }
-export const DeleteHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteHsmRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClusterId: S.String,
     HsmId: S.optional(S.String),
@@ -471,7 +470,7 @@ export const DeleteHsmRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteHsmResponse {
   HsmId?: string;
 }
-export const DeleteHsmResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteHsmResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ HsmId: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteHsmResponse",
@@ -479,31 +478,26 @@ export const DeleteHsmResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteResourcePolicyRequest {
   ResourceArn?: string;
 }
-export const DeleteResourcePolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteResourcePolicyRequest",
-  }) as any as S.Schema<DeleteResourcePolicyRequest>;
+export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteResourcePolicyRequest",
+}) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {
   ResourceArn?: string;
   Policy?: string;
 }
-export const DeleteResourcePolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceArn: S.optional(S.String),
-      Policy: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DeleteResourcePolicyResponse",
-  }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }),
+).annotate({
+  identifier: "DeleteResourcePolicyResponse",
+}) as any as S.Schema<DeleteResourcePolicyResponse>;
 export type Strings = string[];
-export const Strings = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Strings = /*@__PURE__*/ S.Array(S.String);
 export type Filters = { [key: string]: string[] | undefined };
-export const Filters = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const Filters = /*@__PURE__*/ S.Record(
   S.String,
   Strings.pipe(S.optional),
 );
@@ -514,29 +508,27 @@ export interface DescribeBackupsRequest {
   Shared?: boolean;
   SortAscending?: boolean;
 }
-export const DescribeBackupsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-      Filters: S.optional(Filters),
-      Shared: S.optional(S.Boolean),
-      SortAscending: S.optional(S.Boolean),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DescribeBackupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+    Filters: S.optional(Filters),
+    Shared: S.optional(S.Boolean),
+    SortAscending: S.optional(S.Boolean),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DescribeBackupsRequest",
 }) as any as S.Schema<DescribeBackupsRequest>;
 export type Backups = Backup[];
-export const Backups = /*@__PURE__*/ /*#__PURE__*/ S.Array(Backup);
+export const Backups = /*@__PURE__*/ S.Array(Backup);
 export interface DescribeBackupsResponse {
   Backups?: Backup[];
   NextToken?: string;
 }
-export const DescribeBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Backups: S.optional(Backups), NextToken: S.optional(S.String) }),
+export const DescribeBackupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Backups: S.optional(Backups), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "DescribeBackupsResponse",
 }) as any as S.Schema<DescribeBackupsResponse>;
@@ -545,49 +537,43 @@ export interface DescribeClustersRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const DescribeClustersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Filters: S.optional(Filters),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DescribeClustersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Filters: S.optional(Filters),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DescribeClustersRequest",
 }) as any as S.Schema<DescribeClustersRequest>;
 export type Clusters = Cluster[];
-export const Clusters = /*@__PURE__*/ /*#__PURE__*/ S.Array(Cluster);
+export const Clusters = /*@__PURE__*/ S.Array(Cluster);
 export interface DescribeClustersResponse {
   Clusters?: Cluster[];
   NextToken?: string;
 }
-export const DescribeClustersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Clusters: S.optional(Clusters),
-      NextToken: S.optional(S.String),
-    }),
+export const DescribeClustersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Clusters: S.optional(Clusters), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "DescribeClustersResponse",
 }) as any as S.Schema<DescribeClustersResponse>;
 export interface GetResourcePolicyRequest {
   ResourceArn?: string;
 }
-export const GetResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.optional(S.String) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
 export interface GetResourcePolicyResponse {
   Policy?: string;
 }
-export const GetResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Policy: S.optional(S.String) }),
+export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policy: S.optional(S.String) }),
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
@@ -596,15 +582,14 @@ export interface InitializeClusterRequest {
   SignedCert: string;
   TrustAnchor: string;
 }
-export const InitializeClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ClusterId: S.String,
-      SignedCert: S.String,
-      TrustAnchor: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const InitializeClusterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClusterId: S.String,
+    SignedCert: S.String,
+    TrustAnchor: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "InitializeClusterRequest",
 }) as any as S.Schema<InitializeClusterRequest>;
@@ -612,12 +597,11 @@ export interface InitializeClusterResponse {
   State?: ClusterState;
   StateMessage?: string;
 }
-export const InitializeClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      State: S.optional(ClusterState),
-      StateMessage: S.optional(S.String),
-    }),
+export const InitializeClusterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    State: S.optional(ClusterState),
+    StateMessage: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "InitializeClusterResponse",
 }) as any as S.Schema<InitializeClusterResponse>;
@@ -626,7 +610,7 @@ export interface ListTagsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListTagsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceId: S.String,
     NextToken: S.optional(S.String),
@@ -641,7 +625,7 @@ export interface ListTagsResponse {
   TagList: Tag[];
   NextToken?: string;
 }
-export const ListTagsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListTagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TagList: TagList, NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListTagsResponse",
@@ -650,29 +634,27 @@ export interface ModifyBackupAttributesRequest {
   BackupId: string;
   NeverExpires: boolean;
 }
-export const ModifyBackupAttributesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ BackupId: S.String, NeverExpires: S.Boolean }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ModifyBackupAttributesRequest",
-  }) as any as S.Schema<ModifyBackupAttributesRequest>;
+export const ModifyBackupAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ BackupId: S.String, NeverExpires: S.Boolean }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ModifyBackupAttributesRequest",
+}) as any as S.Schema<ModifyBackupAttributesRequest>;
 export interface ModifyBackupAttributesResponse {
   Backup?: Backup;
 }
-export const ModifyBackupAttributesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Backup: S.optional(Backup) }),
-  ).annotate({
-    identifier: "ModifyBackupAttributesResponse",
-  }) as any as S.Schema<ModifyBackupAttributesResponse>;
+export const ModifyBackupAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Backup: S.optional(Backup) }),
+).annotate({
+  identifier: "ModifyBackupAttributesResponse",
+}) as any as S.Schema<ModifyBackupAttributesResponse>;
 export interface ModifyClusterRequest {
   HsmType?: string;
   BackupRetentionPolicy?: BackupRetentionPolicy;
   ClusterId: string;
 }
-export const ModifyClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ModifyClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     HsmType: S.optional(S.String),
     BackupRetentionPolicy: S.optional(BackupRetentionPolicy),
@@ -686,7 +668,7 @@ export const ModifyClusterRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ModifyClusterResponse {
   Cluster?: Cluster;
 }
-export const ModifyClusterResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ModifyClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cluster: S.optional(Cluster) }),
 ).annotate({
   identifier: "ModifyClusterResponse",
@@ -695,14 +677,13 @@ export interface PutResourcePolicyRequest {
   ResourceArn?: string;
   Policy?: string;
 }
-export const PutResourcePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ResourceArn: S.optional(S.String),
-      Policy: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.optional(S.String),
+    Policy: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "PutResourcePolicyRequest",
 }) as any as S.Schema<PutResourcePolicyRequest>;
@@ -710,19 +691,15 @@ export interface PutResourcePolicyResponse {
   ResourceArn?: string;
   Policy?: string;
 }
-export const PutResourcePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ResourceArn: S.optional(S.String),
-      Policy: S.optional(S.String),
-    }),
+export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.optional(S.String), Policy: S.optional(S.String) }),
 ).annotate({
   identifier: "PutResourcePolicyResponse",
 }) as any as S.Schema<PutResourcePolicyResponse>;
 export interface RestoreBackupRequest {
   BackupId: string;
 }
-export const RestoreBackupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RestoreBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ BackupId: S.String }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -732,7 +709,7 @@ export const RestoreBackupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RestoreBackupResponse {
   Backup?: Backup;
 }
-export const RestoreBackupResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RestoreBackupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Backup: S.optional(Backup) }),
 ).annotate({
   identifier: "RestoreBackupResponse",
@@ -741,7 +718,7 @@ export interface TagResourceRequest {
   ResourceId: string;
   TagList: Tag[];
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceId: S.String, TagList: TagList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -749,18 +726,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceId: string;
   TagKeyList: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ResourceId: S.String, TagKeyList: TagKeyList }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
@@ -768,7 +745,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -823,7 +800,7 @@ export const copyBackupToRegion: API.OperationMethod<
   CopyBackupToRegionResponse,
   CopyBackupToRegionError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CopyBackupToRegionRequest,
   output: CopyBackupToRegionResponse,
   errors: [
@@ -857,7 +834,7 @@ export const createCluster: API.OperationMethod<
   CreateClusterResponse,
   CreateClusterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateClusterRequest,
   output: CreateClusterResponse,
   errors: [
@@ -890,7 +867,7 @@ export const createHsm: API.OperationMethod<
   CreateHsmResponse,
   CreateHsmError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateHsmRequest,
   output: CreateHsmResponse,
   errors: [
@@ -923,7 +900,7 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupResponse,
   DeleteBackupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteBackupRequest,
   output: DeleteBackupResponse,
   errors: [
@@ -956,7 +933,7 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterResponse,
   DeleteClusterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteClusterRequest,
   output: DeleteClusterResponse,
   errors: [
@@ -990,7 +967,7 @@ export const deleteHsm: API.OperationMethod<
   DeleteHsmResponse,
   DeleteHsmError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteHsmRequest,
   output: DeleteHsmResponse,
   errors: [
@@ -1023,7 +1000,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyResponse,
   DeleteResourcePolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourcePolicyRequest,
   output: DeleteResourcePolicyResponse,
   errors: [
@@ -1076,7 +1053,7 @@ export const describeBackups: API.OperationMethod<
     DescribeBackupsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeBackupsRequest,
   output: DescribeBackupsResponse,
   errors: [
@@ -1134,7 +1111,7 @@ export const describeClusters: API.OperationMethod<
     DescribeClustersError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeClustersRequest,
   output: DescribeClustersResponse,
   errors: [
@@ -1170,7 +1147,7 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyResponse,
   GetResourcePolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetResourcePolicyRequest,
   output: GetResourcePolicyResponse,
   errors: [
@@ -1204,7 +1181,7 @@ export const initializeCluster: API.OperationMethod<
   InitializeClusterResponse,
   InitializeClusterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InitializeClusterRequest,
   output: InitializeClusterResponse,
   errors: [
@@ -1257,7 +1234,7 @@ export const listTags: API.OperationMethod<
     ListTagsError,
     Credentials | Rgn | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsRequest,
   output: ListTagsResponse,
   errors: [
@@ -1294,7 +1271,7 @@ export const modifyBackupAttributes: API.OperationMethod<
   ModifyBackupAttributesResponse,
   ModifyBackupAttributesError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyBackupAttributesRequest,
   output: ModifyBackupAttributesResponse,
   errors: [
@@ -1325,7 +1302,7 @@ export const modifyCluster: API.OperationMethod<
   ModifyClusterResponse,
   ModifyClusterError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ModifyClusterRequest,
   output: ModifyClusterResponse,
   errors: [
@@ -1370,7 +1347,7 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyResponse,
   PutResourcePolicyError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutResourcePolicyRequest,
   output: PutResourcePolicyResponse,
   errors: [
@@ -1403,7 +1380,7 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupResponse,
   RestoreBackupError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestoreBackupRequest,
   output: RestoreBackupResponse,
   errors: [
@@ -1436,7 +1413,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1470,7 +1447,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Rgn | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [

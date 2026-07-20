@@ -4,6 +4,13 @@
     "ThrottlingException": ["ThrottlingError", "RetryableError"]
   },
   "structures": {
+    "CreateHostedZoneResponse": {
+      "members": {
+        "DelegationSet": {
+          "optional": true
+        }
+      }
+    },
     "ListResourceRecordSetsResponse": {
       "members": {
         "ResourceRecordSets": {
@@ -34,6 +41,20 @@
     "ListHostedZonesByNameResponse": {
       "members": {
         "HostedZones": {
+          "optional": true
+        }
+      }
+    },
+    "ListVPCAssociationAuthorizationsResponse": {
+      "members": {
+        "VPCs": {
+          "optional": true
+        }
+      }
+    },
+    "ListQueryLoggingConfigsResponse": {
+      "members": {
+        "QueryLoggingConfigs": {
           "optional": true
         }
       }

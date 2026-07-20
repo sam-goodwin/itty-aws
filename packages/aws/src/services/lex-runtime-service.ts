@@ -135,7 +135,7 @@ export interface DeleteSessionRequest {
   botAlias: string;
   userId: string;
 }
-export const DeleteSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botName: S.String.pipe(T.HttpLabel("botName")),
     botAlias: S.String.pipe(T.HttpLabel("botAlias")),
@@ -162,7 +162,7 @@ export interface DeleteSessionResponse {
   userId?: string;
   sessionId?: string;
 }
-export const DeleteSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botName: S.optional(S.String),
     botAlias: S.optional(S.String),
@@ -178,7 +178,7 @@ export interface GetSessionRequest {
   userId: string;
   checkpointLabelFilter?: string;
 }
-export const GetSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botName: S.String.pipe(T.HttpLabel("botName")),
     botAlias: S.String.pipe(T.HttpLabel("botAlias")),
@@ -203,7 +203,7 @@ export const GetSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetSessionRequest",
 }) as any as S.Schema<GetSessionRequest>;
 export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -212,7 +212,7 @@ export type ConfirmationStatus =
   | "Confirmed"
   | "Denied"
   | (string & {});
-export const ConfirmationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConfirmationStatus = /*@__PURE__*/ S.String;
 export type DialogActionType =
   | "ElicitIntent"
   | "ConfirmIntent"
@@ -220,13 +220,13 @@ export type DialogActionType =
   | "Close"
   | "Delegate"
   | (string & {});
-export const DialogActionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DialogActionType = /*@__PURE__*/ S.String;
 export type FulfillmentState =
   | "Fulfilled"
   | "Failed"
   | "ReadyForFulfillment"
   | (string & {});
-export const FulfillmentState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FulfillmentState = /*@__PURE__*/ S.String;
 export interface IntentSummary {
   intentName?: string;
   checkpointLabel?: string;
@@ -236,7 +236,7 @@ export interface IntentSummary {
   fulfillmentState?: FulfillmentState;
   slotToElicit?: string;
 }
-export const IntentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IntentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intentName: S.optional(S.String),
     checkpointLabel: S.optional(S.String),
@@ -248,15 +248,14 @@ export const IntentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IntentSummary" }) as any as S.Schema<IntentSummary>;
 export type IntentSummaryList = IntentSummary[];
-export const IntentSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IntentSummary);
+export const IntentSummaryList = /*@__PURE__*/ S.Array(IntentSummary);
 export type MessageFormatType =
   | "PlainText"
   | "CustomPayload"
   | "SSML"
   | "Composite"
   | (string & {});
-export const MessageFormatType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MessageFormatType = /*@__PURE__*/ S.String;
 export interface DialogAction {
   type: DialogActionType;
   intentName?: string;
@@ -266,7 +265,7 @@ export interface DialogAction {
   message?: string | redacted.Redacted<string>;
   messageFormat?: MessageFormatType;
 }
-export const DialogAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DialogAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: DialogActionType,
     intentName: S.optional(S.String),
@@ -281,19 +280,18 @@ export interface ActiveContextTimeToLive {
   timeToLiveInSeconds?: number;
   turnsToLive?: number;
 }
-export const ActiveContextTimeToLive = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      timeToLiveInSeconds: S.optional(S.Number),
-      turnsToLive: S.optional(S.Number),
-    }),
+export const ActiveContextTimeToLive = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeToLiveInSeconds: S.optional(S.Number),
+    turnsToLive: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "ActiveContextTimeToLive",
 }) as any as S.Schema<ActiveContextTimeToLive>;
 export type ActiveContextParametersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-export const ActiveContextParametersMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ActiveContextParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
@@ -302,7 +300,7 @@ export interface ActiveContext {
   timeToLive: ActiveContextTimeToLive;
   parameters: { [key: string]: string | redacted.Redacted<string> | undefined };
 }
-export const ActiveContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActiveContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     timeToLive: ActiveContextTimeToLive,
@@ -310,8 +308,7 @@ export const ActiveContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActiveContext" }) as any as S.Schema<ActiveContext>;
 export type ActiveContextsList = ActiveContext[];
-export const ActiveContextsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ActiveContext);
+export const ActiveContextsList = /*@__PURE__*/ S.Array(ActiveContext);
 export interface GetSessionResponse {
   recentIntentSummaryView?: IntentSummary[];
   sessionAttributes?: { [key: string]: string | undefined };
@@ -319,7 +316,7 @@ export interface GetSessionResponse {
   dialogAction?: DialogAction;
   activeContexts?: ActiveContext[];
 }
-export const GetSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recentIntentSummaryView: S.optional(IntentSummaryList),
     sessionAttributes: S.optional(StringMap),
@@ -341,7 +338,7 @@ export interface PostContentRequest {
   inputStream: T.StreamingInputBody;
   activeContexts?: string | redacted.Redacted<string>;
 }
-export const PostContentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PostContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botName: S.String.pipe(T.HttpLabel("botName")),
     botAlias: S.String.pipe(T.HttpLabel("botAlias")),
@@ -382,7 +379,7 @@ export type DialogState =
   | "ReadyForFulfillment"
   | "Failed"
   | (string & {});
-export const DialogState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DialogState = /*@__PURE__*/ S.String;
 export interface PostContentResponse {
   contentType?: string;
   intentName?: string;
@@ -403,7 +400,7 @@ export interface PostContentResponse {
   sessionId?: string;
   activeContexts?: string | redacted.Redacted<string>;
 }
-export const PostContentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PostContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     intentName: S.optional(S.String).pipe(
@@ -464,7 +461,7 @@ export interface PostTextRequest {
   inputText: string | redacted.Redacted<string>;
   activeContexts?: ActiveContext[];
 }
-export const PostTextRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PostTextRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botName: S.String.pipe(T.HttpLabel("botName")),
     botAlias: S.String.pipe(T.HttpLabel("botAlias")),
@@ -492,7 +489,7 @@ export const PostTextRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface IntentConfidence {
   score?: number;
 }
-export const IntentConfidence = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IntentConfidence = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ score: S.optional(S.Number) }),
 ).annotate({
   identifier: "IntentConfidence",
@@ -502,7 +499,7 @@ export interface PredictedIntent {
   nluIntentConfidence?: IntentConfidence;
   slots?: { [key: string]: string | undefined };
 }
-export const PredictedIntent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PredictedIntent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intentName: S.optional(S.String),
     nluIntentConfidence: S.optional(IntentConfidence),
@@ -512,12 +509,12 @@ export const PredictedIntent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PredictedIntent",
 }) as any as S.Schema<PredictedIntent>;
 export type IntentList = PredictedIntent[];
-export const IntentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(PredictedIntent);
+export const IntentList = /*@__PURE__*/ S.Array(PredictedIntent);
 export interface SentimentResponse {
   sentimentLabel?: string;
   sentimentScore?: string;
 }
-export const SentimentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SentimentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sentimentLabel: S.optional(S.String),
     sentimentScore: S.optional(S.String),
@@ -528,16 +525,16 @@ export const SentimentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ContentType =
   | "application/vnd.amazonaws.card.generic"
   | (string & {});
-export const ContentType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContentType = /*@__PURE__*/ S.String;
 export interface Button {
   text: string;
   value: string;
 }
-export const Button = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Button = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ text: S.String, value: S.String }),
 ).annotate({ identifier: "Button" }) as any as S.Schema<Button>;
 export type ListOfButtons = Button[];
-export const ListOfButtons = /*@__PURE__*/ /*#__PURE__*/ S.Array(Button);
+export const ListOfButtons = /*@__PURE__*/ S.Array(Button);
 export interface GenericAttachment {
   title?: string;
   subTitle?: string;
@@ -545,7 +542,7 @@ export interface GenericAttachment {
   imageUrl?: string;
   buttons?: Button[];
 }
-export const GenericAttachment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GenericAttachment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     title: S.optional(S.String),
     subTitle: S.optional(S.String),
@@ -557,14 +554,13 @@ export const GenericAttachment = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GenericAttachment",
 }) as any as S.Schema<GenericAttachment>;
 export type GenericAttachmentList = GenericAttachment[];
-export const GenericAttachmentList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GenericAttachment);
+export const GenericAttachmentList = /*@__PURE__*/ S.Array(GenericAttachment);
 export interface ResponseCard {
   version?: string;
   contentType?: ContentType;
   genericAttachments?: GenericAttachment[];
 }
-export const ResponseCard = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResponseCard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(S.String),
     contentType: S.optional(ContentType),
@@ -587,7 +583,7 @@ export interface PostTextResponse {
   botVersion?: string;
   activeContexts?: ActiveContext[];
 }
-export const PostTextResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PostTextResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     intentName: S.optional(S.String),
     nluIntentConfidence: S.optional(IntentConfidence),
@@ -617,7 +613,7 @@ export interface PutSessionRequest {
   accept?: string;
   activeContexts?: ActiveContext[];
 }
-export const PutSessionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botName: S.String.pipe(T.HttpLabel("botName")),
     botAlias: S.String.pipe(T.HttpLabel("botAlias")),
@@ -657,7 +653,7 @@ export interface PutSessionResponse {
   sessionId?: string;
   activeContexts?: string | redacted.Redacted<string>;
 }
-export const PutSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     contentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     intentName: S.optional(S.String).pipe(
@@ -696,14 +692,17 @@ export const PutSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
   "InternalFailureException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
@@ -711,34 +710,42 @@ export class LimitExceededException extends S.TaggedErrorClass<LimitExceededExce
     retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
     message: S.optional(S.String),
   },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class BadGatewayException extends S.TaggedErrorClass<BadGatewayException>()(
   "BadGatewayException",
   { Message: S.optional(S.String) },
+  T.HttpError(502),
 ).pipe(C.withServerError) {}
 export class DependencyFailedException extends S.TaggedErrorClass<DependencyFailedException>()(
   "DependencyFailedException",
   { Message: S.optional(S.String) },
+  T.HttpError(424),
 ) {}
 export class LoopDetectedException extends S.TaggedErrorClass<LoopDetectedException>()(
   "LoopDetectedException",
   { Message: S.optional(S.String) },
+  T.HttpError(508),
 ).pipe(C.withServerError) {}
 export class NotAcceptableException extends S.TaggedErrorClass<NotAcceptableException>()(
   "NotAcceptableException",
   { message: S.optional(S.String) },
+  T.HttpError(406),
 ).pipe(C.withBadRequestError) {}
 export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
   "RequestTimeoutException",
   { message: S.optional(S.String) },
+  T.HttpError(408),
 ).pipe(C.withTimeoutError) {}
 export class UnsupportedMediaTypeException extends S.TaggedErrorClass<UnsupportedMediaTypeException>()(
   "UnsupportedMediaTypeException",
   { message: S.optional(S.String) },
+  T.HttpError(415),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -757,7 +764,7 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionResponse,
   DeleteSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSessionRequest,
   output: DeleteSessionResponse,
   errors: [
@@ -786,7 +793,7 @@ export const getSession: API.OperationMethod<
   GetSessionResponse,
   GetSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSessionRequest,
   output: GetSessionResponse,
   errors: [
@@ -878,7 +885,7 @@ export const postContent: API.OperationMethod<
   PostContentResponse,
   PostContentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PostContentRequest,
   output: PostContentResponse,
   errors: [
@@ -971,7 +978,7 @@ export const postText: API.OperationMethod<
   PostTextResponse,
   PostTextError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PostTextRequest,
   output: PostTextResponse,
   errors: [
@@ -1011,7 +1018,7 @@ export const putSession: API.OperationMethod<
   PutSessionResponse,
   PutSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutSessionRequest,
   output: PutSessionResponse,
   errors: [

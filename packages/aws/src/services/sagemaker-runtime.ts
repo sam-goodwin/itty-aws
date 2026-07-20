@@ -134,7 +134,7 @@ export interface InvokeEndpointInput {
   InferenceComponentName?: string;
   SessionId?: string;
 }
-export const InvokeEndpointInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvokeEndpointInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
     Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
@@ -185,7 +185,7 @@ export interface InvokeEndpointOutput {
   NewSessionId?: string;
   ClosedSessionId?: string;
 }
-export const InvokeEndpointOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvokeEndpointOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Body: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -218,51 +218,48 @@ export interface InvokeEndpointAsyncInput {
   InvocationTimeoutSeconds?: number;
   Body?: T.StreamingInputBody;
 }
-export const InvokeEndpointAsyncInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
-      ContentType: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-Content-Type"),
-      ),
-      Accept: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-Accept"),
-      ),
-      CustomAttributes: S.optional(SensitiveString).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-Custom-Attributes"),
-      ),
-      InferenceId: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-Inference-Id"),
-      ),
-      InputLocation: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-InputLocation"),
-      ),
-      S3OutputPathExtension: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-S3OutputPathExtension"),
-      ),
-      Filename: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-Filename"),
-      ),
-      RequestTTLSeconds: S.optional(S.Number).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-RequestTTLSeconds"),
-      ),
-      InvocationTimeoutSeconds: S.optional(S.Number).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-InvocationTimeoutSeconds"),
-      ),
-      Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/endpoints/{EndpointName}/async-invocations",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const InvokeEndpointAsyncInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
+    ContentType: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-Content-Type"),
     ),
+    Accept: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-SageMaker-Accept")),
+    CustomAttributes: S.optional(SensitiveString).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-Custom-Attributes"),
+    ),
+    InferenceId: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-Inference-Id"),
+    ),
+    InputLocation: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-InputLocation"),
+    ),
+    S3OutputPathExtension: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-S3OutputPathExtension"),
+    ),
+    Filename: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-Filename"),
+    ),
+    RequestTTLSeconds: S.optional(S.Number).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-RequestTTLSeconds"),
+    ),
+    InvocationTimeoutSeconds: S.optional(S.Number).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-InvocationTimeoutSeconds"),
+    ),
+    Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/endpoints/{EndpointName}/async-invocations",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "InvokeEndpointAsyncInput",
 }) as any as S.Schema<InvokeEndpointAsyncInput>;
@@ -271,17 +268,16 @@ export interface InvokeEndpointAsyncOutput {
   OutputLocation?: string;
   FailureLocation?: string;
 }
-export const InvokeEndpointAsyncOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      InferenceId: S.optional(S.String),
-      OutputLocation: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-OutputLocation"),
-      ),
-      FailureLocation: S.optional(S.String).pipe(
-        T.HttpHeader("X-Amzn-SageMaker-FailureLocation"),
-      ),
-    }),
+export const InvokeEndpointAsyncOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InferenceId: S.optional(S.String),
+    OutputLocation: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-OutputLocation"),
+    ),
+    FailureLocation: S.optional(S.String).pipe(
+      T.HttpHeader("X-Amzn-SageMaker-FailureLocation"),
+    ),
+  }),
 ).annotate({
   identifier: "InvokeEndpointAsyncOutput",
 }) as any as S.Schema<InvokeEndpointAsyncOutput>;
@@ -297,8 +293,8 @@ export interface InvokeEndpointWithResponseStreamInput {
   InferenceComponentName?: string;
   SessionId?: string;
 }
-export const InvokeEndpointWithResponseStreamInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvokeEndpointWithResponseStreamInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       EndpointName: S.String.pipe(T.HttpLabel("EndpointName")),
       Body: S.optional(T.StreamingInput).pipe(T.HttpPayload()),
@@ -337,13 +333,13 @@ export const InvokeEndpointWithResponseStreamInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "InvokeEndpointWithResponseStreamInput",
-  }) as any as S.Schema<InvokeEndpointWithResponseStreamInput>;
+).annotate({
+  identifier: "InvokeEndpointWithResponseStreamInput",
+}) as any as S.Schema<InvokeEndpointWithResponseStreamInput>;
 export interface PayloadPart {
   Bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-export const PayloadPart = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PayloadPart = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bytes: S.optional(SensitiveBlob).pipe(T.EventPayload()) }),
 ).annotate({ identifier: "PayloadPart" }) as any as S.Schema<PayloadPart>;
 export type ResponseStream =
@@ -362,7 +358,7 @@ export type ResponseStream =
       ModelStreamError?: never;
       InternalStreamFailure: InternalStreamFailure;
     };
-export const ResponseStream = /*@__PURE__*/ /*#__PURE__*/ T.EventStream(
+export const ResponseStream = /*@__PURE__*/ T.EventStream(
   S.Union([
     S.Struct({ PayloadPart: PayloadPart }),
     S.Struct({
@@ -383,8 +379,8 @@ export interface InvokeEndpointWithResponseStreamOutput {
   InvokedProductionVariant?: string;
   CustomAttributes?: string | redacted.Redacted<string>;
 }
-export const InvokeEndpointWithResponseStreamOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InvokeEndpointWithResponseStreamOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Body: ResponseStream.pipe(T.HttpPayload()),
       ContentType: S.optional(S.String).pipe(
@@ -397,37 +393,48 @@ export const InvokeEndpointWithResponseStreamOutput =
         T.HttpHeader("X-Amzn-SageMaker-Custom-Attributes"),
       ),
     }),
-  ).annotate({
-    identifier: "InvokeEndpointWithResponseStreamOutput",
-  }) as any as S.Schema<InvokeEndpointWithResponseStreamOutput>;
+).annotate({
+  identifier: "InvokeEndpointWithResponseStreamOutput",
+}) as any as S.Schema<InvokeEndpointWithResponseStreamOutput>;
 
 //# Errors
 export class InternalDependencyException extends S.TaggedErrorClass<InternalDependencyException>()(
   "InternalDependencyException",
   { Message: S.optional(S.String) },
+  T.HttpError(530),
 ).pipe(C.withServerError) {}
 export class InternalFailure extends S.TaggedErrorClass<InternalFailure>()(
   "InternalFailure",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
-export class ModelError extends S.TaggedErrorClass<ModelError>()("ModelError", {
-  Message: S.optional(S.String),
-  OriginalStatusCode: S.optional(S.Number),
-  OriginalMessage: S.optional(S.String),
-  LogStreamArn: S.optional(S.String),
-}) {}
+export class ModelError extends S.TaggedErrorClass<ModelError>()(
+  "ModelError",
+  {
+    Message: S.optional(S.String),
+    OriginalStatusCode: S.optional(S.Number),
+    OriginalMessage: S.optional(S.String),
+    LogStreamArn: S.optional(S.String),
+  },
+  T.HttpError(424),
+) {}
 export class ModelNotReadyException extends S.TaggedErrorClass<ModelNotReadyException>()(
   "ModelNotReadyException",
   { Message: S.optional(S.String) },
-  T.AwsQueryError({ code: "ModelNotReadyException", httpResponseCode: 429 }),
+  T.all(
+    T.AwsQueryError({ code: "ModelNotReadyException", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
 ).pipe(C.withThrottlingError) {}
 export class ServiceUnavailable extends S.TaggedErrorClass<ServiceUnavailable>()(
   "ServiceUnavailable",
   { Message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
   "ValidationError",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InternalStreamFailure extends S.TaggedErrorClass<InternalStreamFailure>()(
   "InternalStreamFailure",
@@ -476,7 +483,7 @@ export const invokeEndpoint: API.OperationMethod<
   InvokeEndpointOutput,
   InvokeEndpointError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeEndpointInput,
   output: InvokeEndpointOutput,
   errors: [
@@ -518,7 +525,7 @@ export const invokeEndpointAsync: API.OperationMethod<
   InvokeEndpointAsyncOutput,
   InvokeEndpointAsyncError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeEndpointAsyncInput,
   output: InvokeEndpointAsyncOutput,
   errors: [InternalFailure, ServiceUnavailable, ValidationError],
@@ -565,7 +572,7 @@ export const invokeEndpointWithResponseStream: API.OperationMethod<
   InvokeEndpointWithResponseStreamOutput,
   InvokeEndpointWithResponseStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InvokeEndpointWithResponseStreamInput,
   output: InvokeEndpointWithResponseStreamOutput,
   errors: [

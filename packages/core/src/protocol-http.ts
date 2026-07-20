@@ -9,6 +9,7 @@
  * {@link matchTypedError}).
  */
 import type * as AST from "effect/SchemaAST";
+import * as HttpBody from "effect/unstable/http/HttpBody";
 import * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
 import {
   bodySymbol,
@@ -435,7 +436,20 @@ export const buildRequest = ({
     request = request.pipe(HttpClientRequest.bodyFormData(form));
   } else if (rawBody !== undefined && !BODYLESS.has(http.method)) {
     // Whole-body member (raw arrays/scalars) — sent as the body itself.
-    request = request.pipe(HttpClientRequest.bodyJsonUnsafe(rawBody));
+    // With a bodyMediaType, the member is a preserialized payload (string /
+    // bytes) sent verbatim under that media type (e.g. application/x-ndjson
+    // for Vectorize insert/upsert); otherwise it's JSON.
+    if (http.bodyMediaType) {
+      request = request.pipe(
+        HttpClientRequest.setBody(
+          typeof rawBody === "string"
+            ? HttpBody.text(rawBody, http.bodyMediaType)
+            : HttpBody.uint8Array(rawBody as Uint8Array, http.bodyMediaType),
+        ),
+      );
+    } else {
+      request = request.pipe(HttpClientRequest.bodyJsonUnsafe(rawBody));
+    }
   } else if (
     !BODYLESS.has(http.method) &&
     (Object.keys(body).length > 0 ||

@@ -518,6 +518,8 @@ export interface InsertIndexRequest {
   indexName: string;
   /** Behavior for ndjson parse failures. */
   unparsableBehavior?: IndexesInsertRequestUnparsableBehavior;
+  /** Vectors as newline-delimited JSON (application/x-ndjson), one vector object per line. */
+  body: string;
 }
 export const InsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -528,12 +530,14 @@ export const InsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("unparsable-behavior"),
       ),
     ),
+    body: S.String.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
         method: "POST",
         uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/insert",
         code: 200,
+        bodyMediaType: "application/x-ndjson",
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -891,6 +895,8 @@ export interface UpsertIndexRequest {
   indexName: string;
   /** Behavior for ndjson parse failures. */
   unparsableBehavior?: IndexesUpsertRequestUnparsableBehavior;
+  /** Vectors as newline-delimited JSON (application/x-ndjson), one vector object per line. */
+  body: string;
 }
 export const UpsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -901,12 +907,14 @@ export const UpsertIndexRequest = /*@__PURE__*/ S.suspend(() =>
         T.Query("unparsable-behavior"),
       ),
     ),
+    body: S.String.pipe(T.HttpBody()),
   })
     .pipe(
       T.Http({
         method: "POST",
         uri: "/accounts/{account_id}/vectorize/v2/indexes/{index_name}/upsert",
         code: 200,
+        bodyMediaType: "application/x-ndjson",
       }),
     )
     .pipe(T.KeyDictionary(KEY_DICTIONARY)),

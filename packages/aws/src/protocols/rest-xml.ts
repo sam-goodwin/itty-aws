@@ -17,6 +17,7 @@ import {
   type PayloadParser,
 } from "../eventstream/parser.ts";
 import {
+  getEventSchema,
   getHttpHeader,
   getHttpPrefixHeaders,
   getHttpQuery,
@@ -116,6 +117,7 @@ export const restXmlProtocol: Protocol = (
     type: AST.AST;
     isStreaming: boolean;
     isEventStream: boolean;
+    eventSchema?: S.Schema<unknown>;
     isRawString: boolean;
     xmlName?: string;
   };
@@ -146,11 +148,13 @@ export const restXmlProtocol: Protocol = (
       prefixHeaderProps.push({ name, prefix: prefixHeader.toLowerCase() });
     } else if (hasHttpPayload(prop)) {
       const unwrapped = unwrapUnion(prop.type);
+      const isEventStream = isOutputEventStream(prop.type);
       outputPayloadProp = {
         name,
         type: prop.type,
         isStreaming: isStreamingType(prop.type),
-        isEventStream: isOutputEventStream(prop.type),
+        isEventStream,
+        eventSchema: isEventStream ? getEventSchema(prop.type) : undefined,
         isRawString: unwrapped._tag === "Union" || unwrapped._tag === "String",
         // Use property name as fallback when type annotations aren't preserved
         // (e.g., when using Schema.pipe to add HttpPayload annotation)
@@ -262,6 +266,7 @@ export const restXmlProtocol: Protocol = (
           result[outputPayloadProp.name] = parseEventStreamToUnion(
             response.body as ReadableStream<Uint8Array>,
             xmlPayloadParser,
+            outputPayloadProp.eventSchema,
           );
         } else {
           // Raw streaming output (blob)
@@ -512,9 +517,12 @@ function deserializeValue(ast: AST.AST, value: unknown): unknown {
     if (!elAST) return Array.isArray(value) ? value : [value];
 
     // Handle wrapped arrays: { Item: [...] }
-    // Use xmlName trait first, then fall back to class identifier
+    // Use xmlName trait first, then fall back to class identifier, then the
+    // Smithy default wrapper for non-flattened lists: <member> (e.g.
+    // CloudFront RealtimeLogConfig.EndPoints, whose list member carries no
+    // xmlName trait and arrives as <EndPoints><member>...</member>).
     const elTag = getXmlNameFromAST(elAST) ?? getIdentifier(elAST);
-    const unwrapped = unwrapArrayValue(value, elTag);
+    const unwrapped = unwrapArrayValue(value, elTag, ["member"]);
 
     const items = Array.isArray(unwrapped) ? unwrapped : [unwrapped];
     return items.map((item) => deserializeValue(elAST, item));

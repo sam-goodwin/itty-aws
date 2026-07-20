@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/aws",
-  "version": "0.28.1",
+  "version": "0.29.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",
@@ -47,6 +47,11 @@
       "types": "./lib/errors.d.ts",
       "bun": "./src/errors.ts",
       "default": "./lib/errors.js"
+    },
+    "./Presign": {
+      "types": "./lib/presign.d.ts",
+      "bun": "./src/presign.ts",
+      "default": "./lib/presign.js"
     },
     "./Region": {
       "types": "./lib/region.d.ts",

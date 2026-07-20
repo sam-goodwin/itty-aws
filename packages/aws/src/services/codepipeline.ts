@@ -207,7 +207,7 @@ export interface AcknowledgeJobInput {
   jobId: string;
   nonce: string;
 }
-export const AcknowledgeJobInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AcknowledgeJobInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jobId: S.String, nonce: S.String }).pipe(
     T.all(
       ns,
@@ -231,11 +231,11 @@ export type JobStatus =
   | "Succeeded"
   | "Failed"
   | (string & {});
-export const JobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const JobStatus = /*@__PURE__*/ S.String;
 export interface AcknowledgeJobOutput {
   status?: JobStatus;
 }
-export const AcknowledgeJobOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AcknowledgeJobOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ status: S.optional(JobStatus) }).pipe(ns),
 ).annotate({
   identifier: "AcknowledgeJobOutput",
@@ -245,31 +245,29 @@ export interface AcknowledgeThirdPartyJobInput {
   nonce: string;
   clientToken: string;
 }
-export const AcknowledgeThirdPartyJobInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ jobId: S.String, nonce: S.String, clientToken: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AcknowledgeThirdPartyJobInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobId: S.String, nonce: S.String, clientToken: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AcknowledgeThirdPartyJobInput",
-  }) as any as S.Schema<AcknowledgeThirdPartyJobInput>;
+  ),
+).annotate({
+  identifier: "AcknowledgeThirdPartyJobInput",
+}) as any as S.Schema<AcknowledgeThirdPartyJobInput>;
 export interface AcknowledgeThirdPartyJobOutput {
   status?: JobStatus;
 }
-export const AcknowledgeThirdPartyJobOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ status: S.optional(JobStatus) }).pipe(ns),
-  ).annotate({
-    identifier: "AcknowledgeThirdPartyJobOutput",
-  }) as any as S.Schema<AcknowledgeThirdPartyJobOutput>;
+export const AcknowledgeThirdPartyJobOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ status: S.optional(JobStatus) }).pipe(ns),
+).annotate({
+  identifier: "AcknowledgeThirdPartyJobOutput",
+}) as any as S.Schema<AcknowledgeThirdPartyJobOutput>;
 export type ActionCategory =
   | "Source"
   | "Build"
@@ -279,14 +277,14 @@ export type ActionCategory =
   | "Approval"
   | "Compute"
   | (string & {});
-export const ActionCategory = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ActionCategory = /*@__PURE__*/ S.String;
 export interface ActionTypeSettings {
   thirdPartyConfigurationUrl?: string;
   entityUrlTemplate?: string;
   executionUrlTemplate?: string;
   revisionUrlTemplate?: string;
 }
-export const ActionTypeSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTypeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thirdPartyConfigurationUrl: S.optional(S.String),
     entityUrlTemplate: S.optional(S.String),
@@ -301,8 +299,7 @@ export type ActionConfigurationPropertyType =
   | "Number"
   | "Boolean"
   | (string & {});
-export const ActionConfigurationPropertyType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ActionConfigurationPropertyType = /*@__PURE__*/ S.String;
 export interface ActionConfigurationProperty {
   name: string;
   required: boolean;
@@ -312,28 +309,28 @@ export interface ActionConfigurationProperty {
   description?: string;
   type?: ActionConfigurationPropertyType;
 }
-export const ActionConfigurationProperty =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      required: S.Boolean,
-      key: S.Boolean,
-      secret: S.Boolean,
-      queryable: S.optional(S.Boolean),
-      description: S.optional(S.String),
-      type: S.optional(ActionConfigurationPropertyType),
-    }),
-  ).annotate({
-    identifier: "ActionConfigurationProperty",
-  }) as any as S.Schema<ActionConfigurationProperty>;
+export const ActionConfigurationProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    required: S.Boolean,
+    key: S.Boolean,
+    secret: S.Boolean,
+    queryable: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    type: S.optional(ActionConfigurationPropertyType),
+  }),
+).annotate({
+  identifier: "ActionConfigurationProperty",
+}) as any as S.Schema<ActionConfigurationProperty>;
 export type ActionConfigurationPropertyList = ActionConfigurationProperty[];
-export const ActionConfigurationPropertyList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ActionConfigurationProperty);
+export const ActionConfigurationPropertyList = /*@__PURE__*/ S.Array(
+  ActionConfigurationProperty,
+);
 export interface ArtifactDetails {
   minimumCount: number;
   maximumCount: number;
 }
-export const ArtifactDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ArtifactDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ minimumCount: S.Number, maximumCount: S.Number }),
 ).annotate({
   identifier: "ArtifactDetails",
@@ -342,11 +339,11 @@ export interface Tag {
   key: string;
   value: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, value: S.String }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface CreateCustomActionTypeInput {
   category: ActionCategory;
   provider: string;
@@ -357,40 +354,39 @@ export interface CreateCustomActionTypeInput {
   outputArtifactDetails: ArtifactDetails;
   tags?: Tag[];
 }
-export const CreateCustomActionTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: ActionCategory,
-      provider: S.String,
-      version: S.String,
-      settings: S.optional(ActionTypeSettings),
-      configurationProperties: S.optional(ActionConfigurationPropertyList),
-      inputArtifactDetails: ArtifactDetails,
-      outputArtifactDetails: ArtifactDetails,
-      tags: S.optional(TagList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateCustomActionTypeInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    category: ActionCategory,
+    provider: S.String,
+    version: S.String,
+    settings: S.optional(ActionTypeSettings),
+    configurationProperties: S.optional(ActionConfigurationPropertyList),
+    inputArtifactDetails: ArtifactDetails,
+    outputArtifactDetails: ArtifactDetails,
+    tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateCustomActionTypeInput",
-  }) as any as S.Schema<CreateCustomActionTypeInput>;
+  ),
+).annotate({
+  identifier: "CreateCustomActionTypeInput",
+}) as any as S.Schema<CreateCustomActionTypeInput>;
 export type ActionOwner = "AWS" | "ThirdParty" | "Custom" | (string & {});
-export const ActionOwner = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ActionOwner = /*@__PURE__*/ S.String;
 export interface ActionTypeId {
   category: ActionCategory;
   owner: ActionOwner;
   provider: string;
   version: string;
 }
-export const ActionTypeId = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTypeId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: ActionCategory,
     owner: ActionOwner,
@@ -405,7 +401,7 @@ export interface ActionType {
   inputArtifactDetails: ArtifactDetails;
   outputArtifactDetails: ArtifactDetails;
 }
-export const ActionType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: ActionTypeId,
     settings: S.optional(ActionTypeSettings),
@@ -418,21 +414,20 @@ export interface CreateCustomActionTypeOutput {
   actionType: ActionType;
   tags?: Tag[];
 }
-export const CreateCustomActionTypeOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ actionType: ActionType, tags: S.optional(TagList) }).pipe(ns),
-  ).annotate({
-    identifier: "CreateCustomActionTypeOutput",
-  }) as any as S.Schema<CreateCustomActionTypeOutput>;
+export const CreateCustomActionTypeOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ actionType: ActionType, tags: S.optional(TagList) }).pipe(ns),
+).annotate({
+  identifier: "CreateCustomActionTypeOutput",
+}) as any as S.Schema<CreateCustomActionTypeOutput>;
 export type ArtifactStoreType = "S3" | (string & {});
-export const ArtifactStoreType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ArtifactStoreType = /*@__PURE__*/ S.String;
 export type EncryptionKeyType = "KMS" | (string & {});
-export const EncryptionKeyType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EncryptionKeyType = /*@__PURE__*/ S.String;
 export interface EncryptionKey {
   id: string;
   type: EncryptionKeyType;
 }
-export const EncryptionKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EncryptionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String, type: EncryptionKeyType }),
 ).annotate({ identifier: "EncryptionKey" }) as any as S.Schema<EncryptionKey>;
 export interface ArtifactStore {
@@ -440,7 +435,7 @@ export interface ArtifactStore {
   location: string;
   encryptionKey?: EncryptionKey;
 }
-export const ArtifactStore = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ArtifactStore = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: ArtifactStoreType,
     location: S.String,
@@ -448,65 +443,63 @@ export const ArtifactStore = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ArtifactStore" }) as any as S.Schema<ArtifactStore>;
 export type ArtifactStoreMap = { [key: string]: ArtifactStore | undefined };
-export const ArtifactStoreMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ArtifactStoreMap = /*@__PURE__*/ S.Record(
   S.String,
   ArtifactStore.pipe(S.optional),
 );
 export type BlockerType = "Schedule" | (string & {});
-export const BlockerType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BlockerType = /*@__PURE__*/ S.String;
 export interface BlockerDeclaration {
   name: string;
   type: BlockerType;
 }
-export const BlockerDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BlockerDeclaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, type: BlockerType }),
 ).annotate({
   identifier: "BlockerDeclaration",
 }) as any as S.Schema<BlockerDeclaration>;
 export type StageBlockerDeclarationList = BlockerDeclaration[];
 export const StageBlockerDeclarationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BlockerDeclaration);
+  /*@__PURE__*/ S.Array(BlockerDeclaration);
 export type ActionConfigurationMap = { [key: string]: string | undefined };
-export const ActionConfigurationMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ActionConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type CommandList = string[];
-export const CommandList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const CommandList = /*@__PURE__*/ S.Array(S.String);
 export type FilePathList = string[];
-export const FilePathList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FilePathList = /*@__PURE__*/ S.Array(S.String);
 export interface OutputArtifact {
   name: string;
   files?: string[];
 }
-export const OutputArtifact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OutputArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, files: S.optional(FilePathList) }),
 ).annotate({ identifier: "OutputArtifact" }) as any as S.Schema<OutputArtifact>;
 export type OutputArtifactList = OutputArtifact[];
-export const OutputArtifactList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(OutputArtifact);
+export const OutputArtifactList = /*@__PURE__*/ S.Array(OutputArtifact);
 export interface InputArtifact {
   name: string;
 }
-export const InputArtifact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InputArtifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String }),
 ).annotate({ identifier: "InputArtifact" }) as any as S.Schema<InputArtifact>;
 export type InputArtifactList = InputArtifact[];
-export const InputArtifactList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(InputArtifact);
+export const InputArtifactList = /*@__PURE__*/ S.Array(InputArtifact);
 export type OutputVariableList = string[];
-export const OutputVariableList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const OutputVariableList = /*@__PURE__*/ S.Array(S.String);
 export type EnvironmentVariableType =
   | "PLAINTEXT"
   | "SECRETS_MANAGER"
   | (string & {});
-export const EnvironmentVariableType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EnvironmentVariableType = /*@__PURE__*/ S.String;
 export interface EnvironmentVariable {
   name: string;
   value: string;
   type?: EnvironmentVariableType;
 }
-export const EnvironmentVariable = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     value: S.String,
@@ -517,7 +510,7 @@ export const EnvironmentVariable = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentVariable>;
 export type EnvironmentVariableList = EnvironmentVariable[];
 export const EnvironmentVariableList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EnvironmentVariable);
+  /*@__PURE__*/ S.Array(EnvironmentVariable);
 export interface ActionDeclaration {
   name: string;
   actionTypeId: ActionTypeId;
@@ -533,7 +526,7 @@ export interface ActionDeclaration {
   timeoutInMinutes?: number;
   environmentVariables?: EnvironmentVariable[];
 }
-export const ActionDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionDeclaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     actionTypeId: ActionTypeId,
@@ -554,30 +547,30 @@ export const ActionDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActionDeclaration>;
 export type StageActionDeclarationList = ActionDeclaration[];
 export const StageActionDeclarationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ActionDeclaration);
+  /*@__PURE__*/ S.Array(ActionDeclaration);
 export type Result = "ROLLBACK" | "FAIL" | "RETRY" | "SKIP" | (string & {});
-export const Result = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Result = /*@__PURE__*/ S.String;
 export type StageRetryMode = "FAILED_ACTIONS" | "ALL_ACTIONS" | (string & {});
-export const StageRetryMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StageRetryMode = /*@__PURE__*/ S.String;
 export interface RetryConfiguration {
   retryMode?: StageRetryMode;
 }
-export const RetryConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RetryConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ retryMode: S.optional(StageRetryMode) }),
 ).annotate({
   identifier: "RetryConfiguration",
 }) as any as S.Schema<RetryConfiguration>;
 export type RuleCategory = "Rule" | (string & {});
-export const RuleCategory = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RuleCategory = /*@__PURE__*/ S.String;
 export type RuleOwner = "AWS" | (string & {});
-export const RuleOwner = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RuleOwner = /*@__PURE__*/ S.String;
 export interface RuleTypeId {
   category: RuleCategory;
   owner?: RuleOwner;
   provider: string;
   version?: string;
 }
-export const RuleTypeId = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleTypeId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: RuleCategory,
     owner: S.optional(RuleOwner),
@@ -586,7 +579,7 @@ export const RuleTypeId = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleTypeId" }) as any as S.Schema<RuleTypeId>;
 export type RuleConfigurationMap = { [key: string]: string | undefined };
-export const RuleConfigurationMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RuleConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -600,7 +593,7 @@ export interface RuleDeclaration {
   region?: string;
   timeoutInMinutes?: number;
 }
-export const RuleDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleDeclaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     ruleTypeId: RuleTypeId,
@@ -615,26 +608,25 @@ export const RuleDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RuleDeclaration",
 }) as any as S.Schema<RuleDeclaration>;
 export type RuleDeclarationList = RuleDeclaration[];
-export const RuleDeclarationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleDeclaration);
+export const RuleDeclarationList = /*@__PURE__*/ S.Array(RuleDeclaration);
 export interface Condition {
   result?: Result;
   rules?: RuleDeclaration[];
 }
-export const Condition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Condition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(Result),
     rules: S.optional(RuleDeclarationList),
   }),
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
 export type ConditionList = Condition[];
-export const ConditionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Condition);
+export const ConditionList = /*@__PURE__*/ S.Array(Condition);
 export interface FailureConditions {
   result?: Result;
   retryConfiguration?: RetryConfiguration;
   conditions?: Condition[];
 }
-export const FailureConditions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FailureConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(Result),
     retryConfiguration: S.optional(RetryConfiguration),
@@ -646,7 +638,7 @@ export const FailureConditions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface SuccessConditions {
   conditions: Condition[];
 }
-export const SuccessConditions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SuccessConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ conditions: ConditionList }),
 ).annotate({
   identifier: "SuccessConditions",
@@ -654,7 +646,7 @@ export const SuccessConditions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface BeforeEntryConditions {
   conditions: Condition[];
 }
-export const BeforeEntryConditions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BeforeEntryConditions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ conditions: ConditionList }),
 ).annotate({
   identifier: "BeforeEntryConditions",
@@ -667,7 +659,7 @@ export interface StageDeclaration {
   onSuccess?: SuccessConditions;
   beforeEntry?: BeforeEntryConditions;
 }
-export const StageDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StageDeclaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     blockers: S.optional(StageBlockerDeclarationList),
@@ -681,44 +673,44 @@ export const StageDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StageDeclaration>;
 export type PipelineStageDeclarationList = StageDeclaration[];
 export const PipelineStageDeclarationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StageDeclaration);
+  /*@__PURE__*/ S.Array(StageDeclaration);
 export type ExecutionMode =
   | "QUEUED"
   | "SUPERSEDED"
   | "PARALLEL"
   | (string & {});
-export const ExecutionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionMode = /*@__PURE__*/ S.String;
 export type PipelineType = "V1" | "V2" | (string & {});
-export const PipelineType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PipelineType = /*@__PURE__*/ S.String;
 export interface PipelineVariableDeclaration {
   name: string;
   defaultValue?: string;
   description?: string;
 }
-export const PipelineVariableDeclaration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      defaultValue: S.optional(S.String),
-      description: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PipelineVariableDeclaration",
-  }) as any as S.Schema<PipelineVariableDeclaration>;
+export const PipelineVariableDeclaration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    defaultValue: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PipelineVariableDeclaration",
+}) as any as S.Schema<PipelineVariableDeclaration>;
 export type PipelineVariableDeclarationList = PipelineVariableDeclaration[];
-export const PipelineVariableDeclarationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PipelineVariableDeclaration);
+export const PipelineVariableDeclarationList = /*@__PURE__*/ S.Array(
+  PipelineVariableDeclaration,
+);
 export type PipelineTriggerProviderType =
   | "CodeStarSourceConnection"
   | (string & {});
-export const PipelineTriggerProviderType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PipelineTriggerProviderType = /*@__PURE__*/ S.String;
 export type GitTagPatternList = string[];
-export const GitTagPatternList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const GitTagPatternList = /*@__PURE__*/ S.Array(S.String);
 export interface GitTagFilterCriteria {
   includes?: string[];
   excludes?: string[];
 }
-export const GitTagFilterCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GitTagFilterCriteria = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     includes: S.optional(GitTagPatternList),
     excludes: S.optional(GitTagPatternList),
@@ -727,36 +719,30 @@ export const GitTagFilterCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GitTagFilterCriteria",
 }) as any as S.Schema<GitTagFilterCriteria>;
 export type GitBranchPatternList = string[];
-export const GitBranchPatternList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const GitBranchPatternList = /*@__PURE__*/ S.Array(S.String);
 export interface GitBranchFilterCriteria {
   includes?: string[];
   excludes?: string[];
 }
-export const GitBranchFilterCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      includes: S.optional(GitBranchPatternList),
-      excludes: S.optional(GitBranchPatternList),
-    }),
+export const GitBranchFilterCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    includes: S.optional(GitBranchPatternList),
+    excludes: S.optional(GitBranchPatternList),
+  }),
 ).annotate({
   identifier: "GitBranchFilterCriteria",
 }) as any as S.Schema<GitBranchFilterCriteria>;
 export type GitFilePathPatternList = string[];
-export const GitFilePathPatternList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const GitFilePathPatternList = /*@__PURE__*/ S.Array(S.String);
 export interface GitFilePathFilterCriteria {
   includes?: string[];
   excludes?: string[];
 }
-export const GitFilePathFilterCriteria = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      includes: S.optional(GitFilePathPatternList),
-      excludes: S.optional(GitFilePathPatternList),
-    }),
+export const GitFilePathFilterCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    includes: S.optional(GitFilePathPatternList),
+    excludes: S.optional(GitFilePathPatternList),
+  }),
 ).annotate({
   identifier: "GitFilePathFilterCriteria",
 }) as any as S.Schema<GitFilePathFilterCriteria>;
@@ -765,7 +751,7 @@ export interface GitPushFilter {
   branches?: GitBranchFilterCriteria;
   filePaths?: GitFilePathFilterCriteria;
 }
-export const GitPushFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GitPushFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tags: S.optional(GitTagFilterCriteria),
     branches: S.optional(GitBranchFilterCriteria),
@@ -773,16 +759,15 @@ export const GitPushFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GitPushFilter" }) as any as S.Schema<GitPushFilter>;
 export type GitPushFilterList = GitPushFilter[];
-export const GitPushFilterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GitPushFilter);
+export const GitPushFilterList = /*@__PURE__*/ S.Array(GitPushFilter);
 export type GitPullRequestEventType =
   | "OPEN"
   | "UPDATED"
   | "CLOSED"
   | (string & {});
-export const GitPullRequestEventType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GitPullRequestEventType = /*@__PURE__*/ S.String;
 export type GitPullRequestEventTypeList = GitPullRequestEventType[];
-export const GitPullRequestEventTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const GitPullRequestEventTypeList = /*@__PURE__*/ S.Array(
   GitPullRequestEventType,
 );
 export interface GitPullRequestFilter {
@@ -790,7 +775,7 @@ export interface GitPullRequestFilter {
   branches?: GitBranchFilterCriteria;
   filePaths?: GitFilePathFilterCriteria;
 }
-export const GitPullRequestFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GitPullRequestFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     events: S.optional(GitPullRequestEventTypeList),
     branches: S.optional(GitBranchFilterCriteria),
@@ -801,13 +786,13 @@ export const GitPullRequestFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GitPullRequestFilter>;
 export type GitPullRequestFilterList = GitPullRequestFilter[];
 export const GitPullRequestFilterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GitPullRequestFilter);
+  /*@__PURE__*/ S.Array(GitPullRequestFilter);
 export interface GitConfiguration {
   sourceActionName: string;
   push?: GitPushFilter[];
   pullRequest?: GitPullRequestFilter[];
 }
-export const GitConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GitConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceActionName: S.String,
     push: S.optional(GitPushFilterList),
@@ -820,18 +805,18 @@ export interface PipelineTriggerDeclaration {
   providerType: PipelineTriggerProviderType;
   gitConfiguration: GitConfiguration;
 }
-export const PipelineTriggerDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      providerType: PipelineTriggerProviderType,
-      gitConfiguration: GitConfiguration,
-    }),
+export const PipelineTriggerDeclaration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    providerType: PipelineTriggerProviderType,
+    gitConfiguration: GitConfiguration,
+  }),
 ).annotate({
   identifier: "PipelineTriggerDeclaration",
 }) as any as S.Schema<PipelineTriggerDeclaration>;
 export type PipelineTriggerDeclarationList = PipelineTriggerDeclaration[];
-export const PipelineTriggerDeclarationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PipelineTriggerDeclaration);
+export const PipelineTriggerDeclarationList = /*@__PURE__*/ S.Array(
+  PipelineTriggerDeclaration,
+);
 export interface PipelineDeclaration {
   name: string;
   roleArn: string;
@@ -844,7 +829,7 @@ export interface PipelineDeclaration {
   variables?: PipelineVariableDeclaration[];
   triggers?: PipelineTriggerDeclaration[];
 }
-export const PipelineDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PipelineDeclaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     roleArn: S.String,
@@ -864,7 +849,7 @@ export interface CreatePipelineInput {
   pipeline: PipelineDeclaration;
   tags?: Tag[];
 }
-export const CreatePipelineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreatePipelineInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pipeline: PipelineDeclaration, tags: S.optional(TagList) }).pipe(
     T.all(
       ns,
@@ -883,7 +868,7 @@ export interface CreatePipelineOutput {
   pipeline?: PipelineDeclaration;
   tags?: Tag[];
 }
-export const CreatePipelineOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreatePipelineOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline: S.optional(PipelineDeclaration),
     tags: S.optional(TagList),
@@ -896,35 +881,35 @@ export interface DeleteCustomActionTypeInput {
   provider: string;
   version: string;
 }
-export const DeleteCustomActionTypeInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      category: ActionCategory,
-      provider: S.String,
-      version: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteCustomActionTypeInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    category: ActionCategory,
+    provider: S.String,
+    version: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteCustomActionTypeInput",
-  }) as any as S.Schema<DeleteCustomActionTypeInput>;
+  ),
+).annotate({
+  identifier: "DeleteCustomActionTypeInput",
+}) as any as S.Schema<DeleteCustomActionTypeInput>;
 export interface DeleteCustomActionTypeResponse {}
-export const DeleteCustomActionTypeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteCustomActionTypeResponse",
-  }) as any as S.Schema<DeleteCustomActionTypeResponse>;
+export const DeleteCustomActionTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteCustomActionTypeResponse",
+}) as any as S.Schema<DeleteCustomActionTypeResponse>;
 export interface DeletePipelineInput {
   name: string;
 }
-export const DeletePipelineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeletePipelineInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String }).pipe(
     T.all(
       ns,
@@ -940,15 +925,15 @@ export const DeletePipelineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeletePipelineInput",
 }) as any as S.Schema<DeletePipelineInput>;
 export interface DeletePipelineResponse {}
-export const DeletePipelineResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(ns),
+export const DeletePipelineResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeletePipelineResponse",
 }) as any as S.Schema<DeletePipelineResponse>;
 export interface DeleteWebhookInput {
   name: string;
 }
-export const DeleteWebhookInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteWebhookInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String }).pipe(
     T.all(
       ns,
@@ -964,7 +949,7 @@ export const DeleteWebhookInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteWebhookInput",
 }) as any as S.Schema<DeleteWebhookInput>;
 export interface DeleteWebhookOutput {}
-export const DeleteWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteWebhookOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteWebhookOutput",
@@ -972,8 +957,8 @@ export const DeleteWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeregisterWebhookWithThirdPartyInput {
   webhookName?: string;
 }
-export const DeregisterWebhookWithThirdPartyInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeregisterWebhookWithThirdPartyInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ webhookName: S.optional(S.String) }).pipe(
       T.all(
         ns,
@@ -985,85 +970,86 @@ export const DeregisterWebhookWithThirdPartyInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeregisterWebhookWithThirdPartyInput",
-  }) as any as S.Schema<DeregisterWebhookWithThirdPartyInput>;
+).annotate({
+  identifier: "DeregisterWebhookWithThirdPartyInput",
+}) as any as S.Schema<DeregisterWebhookWithThirdPartyInput>;
 export interface DeregisterWebhookWithThirdPartyOutput {}
-export const DeregisterWebhookWithThirdPartyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeregisterWebhookWithThirdPartyOutput",
-  }) as any as S.Schema<DeregisterWebhookWithThirdPartyOutput>;
+export const DeregisterWebhookWithThirdPartyOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeregisterWebhookWithThirdPartyOutput",
+}) as any as S.Schema<DeregisterWebhookWithThirdPartyOutput>;
 export type StageTransitionType = "Inbound" | "Outbound" | (string & {});
-export const StageTransitionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StageTransitionType = /*@__PURE__*/ S.String;
 export interface DisableStageTransitionInput {
   pipelineName: string;
   stageName: string;
   transitionType: StageTransitionType;
   reason: string;
 }
-export const DisableStageTransitionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pipelineName: S.String,
-      stageName: S.String,
-      transitionType: StageTransitionType,
-      reason: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisableStageTransitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    stageName: S.String,
+    transitionType: StageTransitionType,
+    reason: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisableStageTransitionInput",
-  }) as any as S.Schema<DisableStageTransitionInput>;
+  ),
+).annotate({
+  identifier: "DisableStageTransitionInput",
+}) as any as S.Schema<DisableStageTransitionInput>;
 export interface DisableStageTransitionResponse {}
-export const DisableStageTransitionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DisableStageTransitionResponse",
-  }) as any as S.Schema<DisableStageTransitionResponse>;
+export const DisableStageTransitionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DisableStageTransitionResponse",
+}) as any as S.Schema<DisableStageTransitionResponse>;
 export interface EnableStageTransitionInput {
   pipelineName: string;
   stageName: string;
   transitionType: StageTransitionType;
 }
-export const EnableStageTransitionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pipelineName: S.String,
-      stageName: S.String,
-      transitionType: StageTransitionType,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const EnableStageTransitionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    stageName: S.String,
+    transitionType: StageTransitionType,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "EnableStageTransitionInput",
 }) as any as S.Schema<EnableStageTransitionInput>;
 export interface EnableStageTransitionResponse {}
-export const EnableStageTransitionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "EnableStageTransitionResponse",
-  }) as any as S.Schema<EnableStageTransitionResponse>;
+export const EnableStageTransitionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "EnableStageTransitionResponse",
+}) as any as S.Schema<EnableStageTransitionResponse>;
 export interface GetActionTypeInput {
   category: ActionCategory;
   owner: string;
   provider: string;
   version: string;
 }
-export const GetActionTypeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetActionTypeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: ActionCategory,
     owner: S.String,
@@ -1086,36 +1072,32 @@ export const GetActionTypeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface LambdaExecutorConfiguration {
   lambdaFunctionArn: string;
 }
-export const LambdaExecutorConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ lambdaFunctionArn: S.String }),
-  ).annotate({
-    identifier: "LambdaExecutorConfiguration",
-  }) as any as S.Schema<LambdaExecutorConfiguration>;
+export const LambdaExecutorConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ lambdaFunctionArn: S.String }),
+).annotate({
+  identifier: "LambdaExecutorConfiguration",
+}) as any as S.Schema<LambdaExecutorConfiguration>;
 export type PollingAccountList = string[];
-export const PollingAccountList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PollingAccountList = /*@__PURE__*/ S.Array(S.String);
 export type PollingServicePrincipalList = string[];
-export const PollingServicePrincipalList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const PollingServicePrincipalList = /*@__PURE__*/ S.Array(S.String);
 export interface JobWorkerExecutorConfiguration {
   pollingAccounts?: string[];
   pollingServicePrincipals?: string[];
 }
-export const JobWorkerExecutorConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pollingAccounts: S.optional(PollingAccountList),
-      pollingServicePrincipals: S.optional(PollingServicePrincipalList),
-    }),
-  ).annotate({
-    identifier: "JobWorkerExecutorConfiguration",
-  }) as any as S.Schema<JobWorkerExecutorConfiguration>;
+export const JobWorkerExecutorConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pollingAccounts: S.optional(PollingAccountList),
+    pollingServicePrincipals: S.optional(PollingServicePrincipalList),
+  }),
+).annotate({
+  identifier: "JobWorkerExecutorConfiguration",
+}) as any as S.Schema<JobWorkerExecutorConfiguration>;
 export interface ExecutorConfiguration {
   lambdaExecutorConfiguration?: LambdaExecutorConfiguration;
   jobWorkerExecutorConfiguration?: JobWorkerExecutorConfiguration;
 }
-export const ExecutorConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExecutorConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lambdaExecutorConfiguration: S.optional(LambdaExecutorConfiguration),
     jobWorkerExecutorConfiguration: S.optional(JobWorkerExecutorConfiguration),
@@ -1124,14 +1106,14 @@ export const ExecutorConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExecutorConfiguration",
 }) as any as S.Schema<ExecutorConfiguration>;
 export type ExecutorType = "JobWorker" | "Lambda" | (string & {});
-export const ExecutorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutorType = /*@__PURE__*/ S.String;
 export interface ActionTypeExecutor {
   configuration: ExecutorConfiguration;
   type: ExecutorType;
   policyStatementsTemplate?: string;
   jobTimeout?: number;
 }
-export const ActionTypeExecutor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTypeExecutor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configuration: ExecutorConfiguration,
     type: ExecutorType,
@@ -1147,7 +1129,7 @@ export interface ActionTypeIdentifier {
   provider: string;
   version: string;
 }
-export const ActionTypeIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTypeIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     category: ActionCategory,
     owner: S.String,
@@ -1161,17 +1143,17 @@ export interface ActionTypeArtifactDetails {
   minimumCount: number;
   maximumCount: number;
 }
-export const ActionTypeArtifactDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ minimumCount: S.Number, maximumCount: S.Number }),
+export const ActionTypeArtifactDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ minimumCount: S.Number, maximumCount: S.Number }),
 ).annotate({
   identifier: "ActionTypeArtifactDetails",
 }) as any as S.Schema<ActionTypeArtifactDetails>;
 export type AllowedAccounts = string[];
-export const AllowedAccounts = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AllowedAccounts = /*@__PURE__*/ S.Array(S.String);
 export interface ActionTypePermissions {
   allowedAccounts: string[];
 }
-export const ActionTypePermissions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTypePermissions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ allowedAccounts: AllowedAccounts }),
 ).annotate({
   identifier: "ActionTypePermissions",
@@ -1184,7 +1166,7 @@ export interface ActionTypeProperty {
   queryable?: boolean;
   description?: string;
 }
-export const ActionTypeProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTypeProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     optional: S.Boolean,
@@ -1197,15 +1179,14 @@ export const ActionTypeProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ActionTypeProperty",
 }) as any as S.Schema<ActionTypeProperty>;
 export type ActionTypeProperties = ActionTypeProperty[];
-export const ActionTypeProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ActionTypeProperty);
+export const ActionTypeProperties = /*@__PURE__*/ S.Array(ActionTypeProperty);
 export interface ActionTypeUrls {
   configurationUrl?: string;
   entityUrlTemplate?: string;
   executionUrlTemplate?: string;
   revisionUrlTemplate?: string;
 }
-export const ActionTypeUrls = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTypeUrls = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configurationUrl: S.optional(S.String),
     entityUrlTemplate: S.optional(S.String),
@@ -1223,7 +1204,7 @@ export interface ActionTypeDeclaration {
   properties?: ActionTypeProperty[];
   urls?: ActionTypeUrls;
 }
-export const ActionTypeDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionTypeDeclaration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     description: S.optional(S.String),
     executor: ActionTypeExecutor,
@@ -1240,7 +1221,7 @@ export const ActionTypeDeclaration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetActionTypeOutput {
   actionType?: ActionTypeDeclaration;
 }
-export const GetActionTypeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetActionTypeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ actionType: S.optional(ActionTypeDeclaration) }).pipe(ns),
 ).annotate({
   identifier: "GetActionTypeOutput",
@@ -1248,7 +1229,7 @@ export const GetActionTypeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetJobDetailsInput {
   jobId: string;
 }
-export const GetJobDetailsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetJobDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jobId: S.String }).pipe(
     T.all(
       ns,
@@ -1266,7 +1247,7 @@ export const GetJobDetailsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ActionConfiguration {
   configuration?: { [key: string]: string | undefined };
 }
-export const ActionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ configuration: S.optional(ActionConfigurationMap) }),
 ).annotate({
   identifier: "ActionConfiguration",
@@ -1274,14 +1255,14 @@ export const ActionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StageContext {
   name?: string;
 }
-export const StageContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StageContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String) }),
 ).annotate({ identifier: "StageContext" }) as any as S.Schema<StageContext>;
 export interface ActionContext {
   name?: string;
   actionExecutionId?: string;
 }
-export const ActionContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     actionExecutionId: S.optional(S.String),
@@ -1294,7 +1275,7 @@ export interface PipelineContext {
   pipelineArn?: string;
   pipelineExecutionId?: string;
 }
-export const PipelineContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PipelineContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineName: S.optional(S.String),
     stage: S.optional(StageContext),
@@ -1306,12 +1287,12 @@ export const PipelineContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PipelineContext",
 }) as any as S.Schema<PipelineContext>;
 export type ArtifactLocationType = "S3" | (string & {});
-export const ArtifactLocationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ArtifactLocationType = /*@__PURE__*/ S.String;
 export interface S3ArtifactLocation {
   bucketName: string;
   objectKey: string;
 }
-export const S3ArtifactLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3ArtifactLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketName: S.String, objectKey: S.String }),
 ).annotate({
   identifier: "S3ArtifactLocation",
@@ -1320,7 +1301,7 @@ export interface ArtifactLocation {
   type?: ArtifactLocationType;
   s3Location?: S3ArtifactLocation;
 }
-export const ArtifactLocation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ArtifactLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ArtifactLocationType),
     s3Location: S.optional(S3ArtifactLocation),
@@ -1333,7 +1314,7 @@ export interface Artifact {
   revision?: string;
   location?: ArtifactLocation;
 }
-export const Artifact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Artifact = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     revision: S.optional(S.String),
@@ -1341,13 +1322,13 @@ export const Artifact = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Artifact" }) as any as S.Schema<Artifact>;
 export type ArtifactList = Artifact[];
-export const ArtifactList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Artifact);
+export const ArtifactList = /*@__PURE__*/ S.Array(Artifact);
 export interface AWSSessionCredentials {
   accessKeyId: string | redacted.Redacted<string>;
   secretAccessKey: string | redacted.Redacted<string>;
   sessionToken: string | redacted.Redacted<string>;
 }
-export const AWSSessionCredentials = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AWSSessionCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accessKeyId: SensitiveString,
     secretAccessKey: SensitiveString,
@@ -1366,7 +1347,7 @@ export interface JobData {
   continuationToken?: string;
   encryptionKey?: EncryptionKey;
 }
-export const JobData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const JobData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionTypeId: S.optional(ActionTypeId),
     actionConfiguration: S.optional(ActionConfiguration),
@@ -1383,7 +1364,7 @@ export interface JobDetails {
   data?: JobData;
   accountId?: string;
 }
-export const JobDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const JobDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     data: S.optional(JobData),
@@ -1393,7 +1374,7 @@ export const JobDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetJobDetailsOutput {
   jobDetails?: JobDetails;
 }
-export const GetJobDetailsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetJobDetailsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jobDetails: S.optional(JobDetails) }).pipe(ns),
 ).annotate({
   identifier: "GetJobDetailsOutput",
@@ -1402,7 +1383,7 @@ export interface GetPipelineInput {
   name: string;
   version?: number;
 }
-export const GetPipelineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetPipelineInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, version: S.optional(S.Number) }).pipe(
     T.all(
       ns,
@@ -1423,7 +1404,7 @@ export interface PipelineMetadata {
   updated?: Date;
   pollingDisabledAt?: Date;
 }
-export const PipelineMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PipelineMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineArn: S.optional(S.String),
     created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1439,7 +1420,7 @@ export interface GetPipelineOutput {
   pipeline?: PipelineDeclaration;
   metadata?: PipelineMetadata;
 }
-export const GetPipelineOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetPipelineOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipeline: S.optional(PipelineDeclaration),
     metadata: S.optional(PipelineMetadata),
@@ -1451,19 +1432,18 @@ export interface GetPipelineExecutionInput {
   pipelineName: string;
   pipelineExecutionId: string;
 }
-export const GetPipelineExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ pipelineName: S.String, pipelineExecutionId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetPipelineExecutionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pipelineName: S.String, pipelineExecutionId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetPipelineExecutionInput",
 }) as any as S.Schema<GetPipelineExecutionInput>;
@@ -1476,7 +1456,7 @@ export type PipelineExecutionStatus =
   | "Superseded"
   | "Failed"
   | (string & {});
-export const PipelineExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PipelineExecutionStatus = /*@__PURE__*/ S.String;
 export interface ArtifactRevision {
   name?: string;
   revisionId?: string;
@@ -1485,7 +1465,7 @@ export interface ArtifactRevision {
   created?: Date;
   revisionUrl?: string;
 }
-export const ArtifactRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ArtifactRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     revisionId: S.optional(S.String),
@@ -1498,23 +1478,18 @@ export const ArtifactRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ArtifactRevision",
 }) as any as S.Schema<ArtifactRevision>;
 export type ArtifactRevisionList = ArtifactRevision[];
-export const ArtifactRevisionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ArtifactRevision);
+export const ArtifactRevisionList = /*@__PURE__*/ S.Array(ArtifactRevision);
 export interface ResolvedPipelineVariable {
   name?: string;
   resolvedValue?: string;
 }
-export const ResolvedPipelineVariable = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      resolvedValue: S.optional(S.String),
-    }),
+export const ResolvedPipelineVariable = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.optional(S.String), resolvedValue: S.optional(S.String) }),
 ).annotate({
   identifier: "ResolvedPipelineVariable",
 }) as any as S.Schema<ResolvedPipelineVariable>;
 export type ResolvedPipelineVariableList = ResolvedPipelineVariable[];
-export const ResolvedPipelineVariableList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ResolvedPipelineVariableList = /*@__PURE__*/ S.Array(
   ResolvedPipelineVariable,
 );
 export type TriggerType =
@@ -1528,12 +1503,12 @@ export type TriggerType =
   | "ManualRollback"
   | "AutomatedRollback"
   | (string & {});
-export const TriggerType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TriggerType = /*@__PURE__*/ S.String;
 export interface ExecutionTrigger {
   triggerType?: TriggerType;
   triggerDetail?: string;
 }
-export const ExecutionTrigger = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExecutionTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     triggerType: S.optional(TriggerType),
     triggerDetail: S.optional(S.String),
@@ -1542,12 +1517,12 @@ export const ExecutionTrigger = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExecutionTrigger",
 }) as any as S.Schema<ExecutionTrigger>;
 export type ExecutionType = "STANDARD" | "ROLLBACK" | (string & {});
-export const ExecutionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionType = /*@__PURE__*/ S.String;
 export interface PipelineRollbackMetadata {
   rollbackTargetPipelineExecutionId?: string;
 }
-export const PipelineRollbackMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ rollbackTargetPipelineExecutionId: S.optional(S.String) }),
+export const PipelineRollbackMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ rollbackTargetPipelineExecutionId: S.optional(S.String) }),
 ).annotate({
   identifier: "PipelineRollbackMetadata",
 }) as any as S.Schema<PipelineRollbackMetadata>;
@@ -1564,7 +1539,7 @@ export interface PipelineExecution {
   executionType?: ExecutionType;
   rollbackMetadata?: PipelineRollbackMetadata;
 }
-export const PipelineExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PipelineExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineName: S.optional(S.String),
     pipelineVersion: S.optional(S.Number),
@@ -1584,15 +1559,15 @@ export const PipelineExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPipelineExecutionOutput {
   pipelineExecution?: PipelineExecution;
 }
-export const GetPipelineExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ pipelineExecution: S.optional(PipelineExecution) }).pipe(ns),
+export const GetPipelineExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pipelineExecution: S.optional(PipelineExecution) }).pipe(ns),
 ).annotate({
   identifier: "GetPipelineExecutionOutput",
 }) as any as S.Schema<GetPipelineExecutionOutput>;
 export interface GetPipelineStateInput {
   name: string;
 }
-export const GetPipelineStateInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetPipelineStateInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String }).pipe(
     T.all(
       ns,
@@ -1616,13 +1591,13 @@ export type StageExecutionStatus =
   | "Succeeded"
   | "Skipped"
   | (string & {});
-export const StageExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StageExecutionStatus = /*@__PURE__*/ S.String;
 export interface StageExecution {
   pipelineExecutionId: string;
   status: StageExecutionStatus;
   type?: ExecutionType;
 }
-export const StageExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StageExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineExecutionId: S.String,
     status: StageExecutionStatus,
@@ -1630,15 +1605,14 @@ export const StageExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StageExecution" }) as any as S.Schema<StageExecution>;
 export type StageExecutionList = StageExecution[];
-export const StageExecutionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StageExecution);
+export const StageExecutionList = /*@__PURE__*/ S.Array(StageExecution);
 export interface TransitionState {
   enabled?: boolean;
   lastChangedBy?: string;
   lastChangedAt?: Date;
   disabledReason?: string;
 }
-export const TransitionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TransitionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.optional(S.Boolean),
     lastChangedBy: S.optional(S.String),
@@ -1650,14 +1624,14 @@ export const TransitionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TransitionState>;
 export interface ActionRevision {
   revisionId: string;
-  revisionChangeId: string;
-  created: Date;
+  revisionChangeId?: string;
+  created?: Date;
 }
-export const ActionRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.String,
-    revisionChangeId: S.String,
-    created: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    revisionChangeId: S.optional(S.String),
+    created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "ActionRevision" }) as any as S.Schema<ActionRevision>;
 export type ActionExecutionStatus =
@@ -1666,12 +1640,12 @@ export type ActionExecutionStatus =
   | "Succeeded"
   | "Failed"
   | (string & {});
-export const ActionExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ActionExecutionStatus = /*@__PURE__*/ S.String;
 export interface ErrorDetails {
   code?: string;
   message?: string;
 }
-export const ErrorDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
 ).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
 export interface ActionExecution {
@@ -1687,7 +1661,7 @@ export interface ActionExecution {
   errorDetails?: ErrorDetails;
   logStreamARN?: string;
 }
-export const ActionExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionExecutionId: S.optional(S.String),
     status: S.optional(ActionExecutionStatus),
@@ -1713,7 +1687,7 @@ export interface ActionState {
   entityUrl?: string;
   revisionUrl?: string;
 }
-export const ActionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionName: S.optional(S.String),
     currentRevision: S.optional(ActionRevision),
@@ -1723,7 +1697,7 @@ export const ActionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ActionState" }) as any as S.Schema<ActionState>;
 export type ActionStateList = ActionState[];
-export const ActionStateList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ActionState);
+export const ActionStateList = /*@__PURE__*/ S.Array(ActionState);
 export type ConditionExecutionStatus =
   | "InProgress"
   | "Failed"
@@ -1733,17 +1707,16 @@ export type ConditionExecutionStatus =
   | "Abandoned"
   | "Overridden"
   | (string & {});
-export const ConditionExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConditionExecutionStatus = /*@__PURE__*/ S.String;
 export interface StageConditionsExecution {
   status?: ConditionExecutionStatus;
   summary?: string;
 }
-export const StageConditionsExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      status: S.optional(ConditionExecutionStatus),
-      summary: S.optional(S.String),
-    }),
+export const StageConditionsExecution = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(ConditionExecutionStatus),
+    summary: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "StageConditionsExecution",
 }) as any as S.Schema<StageConditionsExecution>;
@@ -1752,7 +1725,7 @@ export interface ConditionExecution {
   summary?: string;
   lastStatusChange?: Date;
 }
-export const ConditionExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConditionExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     status: S.optional(ConditionExecutionStatus),
     summary: S.optional(S.String),
@@ -1765,14 +1738,14 @@ export const ConditionExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConditionExecution>;
 export interface RuleRevision {
   revisionId: string;
-  revisionChangeId: string;
-  created: Date;
+  revisionChangeId?: string;
+  created?: Date;
 }
-export const RuleRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revisionId: S.String,
-    revisionChangeId: S.String,
-    created: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    revisionChangeId: S.optional(S.String),
+    created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "RuleRevision" }) as any as S.Schema<RuleRevision>;
 export type RuleExecutionStatus =
@@ -1781,7 +1754,7 @@ export type RuleExecutionStatus =
   | "Succeeded"
   | "Failed"
   | (string & {});
-export const RuleExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RuleExecutionStatus = /*@__PURE__*/ S.String;
 export interface RuleExecution {
   ruleExecutionId?: string;
   status?: RuleExecutionStatus;
@@ -1793,7 +1766,7 @@ export interface RuleExecution {
   externalExecutionUrl?: string;
   errorDetails?: ErrorDetails;
 }
-export const RuleExecution = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleExecution = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleExecutionId: S.optional(S.String),
     status: S.optional(RuleExecutionStatus),
@@ -1815,7 +1788,7 @@ export interface RuleState {
   entityUrl?: string;
   revisionUrl?: string;
 }
-export const RuleState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleName: S.optional(S.String),
     currentRevision: S.optional(RuleRevision),
@@ -1825,25 +1798,24 @@ export const RuleState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleState" }) as any as S.Schema<RuleState>;
 export type RuleStateList = RuleState[];
-export const RuleStateList = /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleState);
+export const RuleStateList = /*@__PURE__*/ S.Array(RuleState);
 export interface ConditionState {
   latestExecution?: ConditionExecution;
   ruleStates?: RuleState[];
 }
-export const ConditionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ConditionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latestExecution: S.optional(ConditionExecution),
     ruleStates: S.optional(RuleStateList),
   }),
 ).annotate({ identifier: "ConditionState" }) as any as S.Schema<ConditionState>;
 export type ConditionStateList = ConditionState[];
-export const ConditionStateList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ConditionState);
+export const ConditionStateList = /*@__PURE__*/ S.Array(ConditionState);
 export interface StageConditionState {
   latestExecution?: StageConditionsExecution;
   conditionStates?: ConditionState[];
 }
-export const StageConditionState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StageConditionState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     latestExecution: S.optional(StageConditionsExecution),
     conditionStates: S.optional(ConditionStateList),
@@ -1855,13 +1827,13 @@ export type RetryTrigger =
   | "AutomatedStageRetry"
   | "ManualStageRetry"
   | (string & {});
-export const RetryTrigger = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RetryTrigger = /*@__PURE__*/ S.String;
 export interface RetryStageMetadata {
   autoStageRetryAttempt?: number;
   manualStageRetryAttempt?: number;
   latestRetryTrigger?: RetryTrigger;
 }
-export const RetryStageMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RetryStageMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     autoStageRetryAttempt: S.optional(S.Number),
     manualStageRetryAttempt: S.optional(S.Number),
@@ -1882,7 +1854,7 @@ export interface StageState {
   onFailureConditionState?: StageConditionState;
   retryStageMetadata?: RetryStageMetadata;
 }
-export const StageState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StageState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stageName: S.optional(S.String),
     inboundExecution: S.optional(StageExecution),
@@ -1897,7 +1869,7 @@ export const StageState = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "StageState" }) as any as S.Schema<StageState>;
 export type StageStateList = StageState[];
-export const StageStateList = /*@__PURE__*/ /*#__PURE__*/ S.Array(StageState);
+export const StageStateList = /*@__PURE__*/ S.Array(StageState);
 export interface GetPipelineStateOutput {
   pipelineName?: string;
   pipelineVersion?: number;
@@ -1905,15 +1877,14 @@ export interface GetPipelineStateOutput {
   created?: Date;
   updated?: Date;
 }
-export const GetPipelineStateOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pipelineName: S.optional(S.String),
-      pipelineVersion: S.optional(S.Number),
-      stageStates: S.optional(StageStateList),
-      created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      updated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }).pipe(ns),
+export const GetPipelineStateOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.optional(S.String),
+    pipelineVersion: S.optional(S.Number),
+    stageStates: S.optional(StageStateList),
+    created: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    updated: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }).pipe(ns),
 ).annotate({
   identifier: "GetPipelineStateOutput",
 }) as any as S.Schema<GetPipelineStateOutput>;
@@ -1921,22 +1892,21 @@ export interface GetThirdPartyJobDetailsInput {
   jobId: string;
   clientToken: string;
 }
-export const GetThirdPartyJobDetailsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ jobId: S.String, clientToken: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetThirdPartyJobDetailsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobId: S.String, clientToken: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetThirdPartyJobDetailsInput",
-  }) as any as S.Schema<GetThirdPartyJobDetailsInput>;
+  ),
+).annotate({
+  identifier: "GetThirdPartyJobDetailsInput",
+}) as any as S.Schema<GetThirdPartyJobDetailsInput>;
 export interface ThirdPartyJobData {
   actionTypeId?: ActionTypeId;
   actionConfiguration?: ActionConfiguration;
@@ -1947,7 +1917,7 @@ export interface ThirdPartyJobData {
   continuationToken?: string;
   encryptionKey?: EncryptionKey;
 }
-export const ThirdPartyJobData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ThirdPartyJobData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionTypeId: S.optional(ActionTypeId),
     actionConfiguration: S.optional(ActionConfiguration),
@@ -1966,7 +1936,7 @@ export interface ThirdPartyJobDetails {
   data?: ThirdPartyJobData;
   nonce?: string;
 }
-export const ThirdPartyJobDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ThirdPartyJobDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     data: S.optional(ThirdPartyJobData),
@@ -1978,29 +1948,27 @@ export const ThirdPartyJobDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetThirdPartyJobDetailsOutput {
   jobDetails?: ThirdPartyJobDetails;
 }
-export const GetThirdPartyJobDetailsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ jobDetails: S.optional(ThirdPartyJobDetails) }).pipe(ns),
-  ).annotate({
-    identifier: "GetThirdPartyJobDetailsOutput",
-  }) as any as S.Schema<GetThirdPartyJobDetailsOutput>;
+export const GetThirdPartyJobDetailsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobDetails: S.optional(ThirdPartyJobDetails) }).pipe(ns),
+).annotate({
+  identifier: "GetThirdPartyJobDetailsOutput",
+}) as any as S.Schema<GetThirdPartyJobDetailsOutput>;
 export type StartTimeRange = "Latest" | "All" | (string & {});
-export const StartTimeRange = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StartTimeRange = /*@__PURE__*/ S.String;
 export interface LatestInPipelineExecutionFilter {
   pipelineExecutionId: string;
   startTimeRange: StartTimeRange;
 }
-export const LatestInPipelineExecutionFilter =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ pipelineExecutionId: S.String, startTimeRange: StartTimeRange }),
-  ).annotate({
-    identifier: "LatestInPipelineExecutionFilter",
-  }) as any as S.Schema<LatestInPipelineExecutionFilter>;
+export const LatestInPipelineExecutionFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pipelineExecutionId: S.String, startTimeRange: StartTimeRange }),
+).annotate({
+  identifier: "LatestInPipelineExecutionFilter",
+}) as any as S.Schema<LatestInPipelineExecutionFilter>;
 export interface ActionExecutionFilter {
   pipelineExecutionId?: string;
   latestInPipelineExecution?: LatestInPipelineExecutionFilter;
 }
-export const ActionExecutionFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionExecutionFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineExecutionId: S.optional(S.String),
     latestInPipelineExecution: S.optional(LatestInPipelineExecutionFilter),
@@ -2014,49 +1982,49 @@ export interface ListActionExecutionsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListActionExecutionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pipelineName: S.String,
-      filter: S.optional(ActionExecutionFilter),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListActionExecutionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    filter: S.optional(ActionExecutionFilter),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListActionExecutionsInput",
 }) as any as S.Schema<ListActionExecutionsInput>;
 export type ResolvedActionConfigurationMap = {
   [key: string]: string | undefined;
 };
-export const ResolvedActionConfigurationMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ResolvedActionConfigurationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface S3Location {
   bucket?: string;
   key?: string;
 }
-export const S3Location = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucket: S.optional(S.String), key: S.optional(S.String) }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
 export interface ArtifactDetail {
   name?: string;
   s3location?: S3Location;
 }
-export const ArtifactDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ArtifactDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), s3location: S.optional(S3Location) }),
 ).annotate({ identifier: "ArtifactDetail" }) as any as S.Schema<ArtifactDetail>;
 export type ArtifactDetailList = ArtifactDetail[];
-export const ArtifactDetailList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ArtifactDetail);
+export const ArtifactDetailList = /*@__PURE__*/ S.Array(ArtifactDetail);
 export interface ActionExecutionInput {
   actionTypeId?: ActionTypeId;
   configuration?: { [key: string]: string | undefined };
@@ -2066,7 +2034,7 @@ export interface ActionExecutionInput {
   inputArtifacts?: ArtifactDetail[];
   namespace?: string;
 }
-export const ActionExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionTypeId: S.optional(ActionTypeId),
     configuration: S.optional(ActionConfigurationMap),
@@ -2086,7 +2054,7 @@ export interface ActionExecutionResult {
   errorDetails?: ErrorDetails;
   logStreamARN?: string;
 }
-export const ActionExecutionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionExecutionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalExecutionId: S.optional(S.String),
     externalExecutionSummary: S.optional(S.String),
@@ -2098,7 +2066,7 @@ export const ActionExecutionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ActionExecutionResult",
 }) as any as S.Schema<ActionExecutionResult>;
 export type OutputVariablesMap = { [key: string]: string | undefined };
-export const OutputVariablesMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const OutputVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -2107,7 +2075,7 @@ export interface ActionExecutionOutput {
   executionResult?: ActionExecutionResult;
   outputVariables?: { [key: string]: string | undefined };
 }
-export const ActionExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionExecutionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     outputArtifacts: S.optional(ArtifactDetailList),
     executionResult: S.optional(ActionExecutionResult),
@@ -2129,7 +2097,7 @@ export interface ActionExecutionDetail {
   input?: ActionExecutionInput;
   output?: ActionExecutionOutput;
 }
-export const ActionExecutionDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionExecutionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineExecutionId: S.optional(S.String),
     actionExecutionId: S.optional(S.String),
@@ -2147,19 +2115,18 @@ export const ActionExecutionDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ActionExecutionDetail",
 }) as any as S.Schema<ActionExecutionDetail>;
 export type ActionExecutionDetailList = ActionExecutionDetail[];
-export const ActionExecutionDetailList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ActionExecutionDetailList = /*@__PURE__*/ S.Array(
   ActionExecutionDetail,
 );
 export interface ListActionExecutionsOutput {
   actionExecutionDetails?: ActionExecutionDetail[];
   nextToken?: string;
 }
-export const ListActionExecutionsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionExecutionDetails: S.optional(ActionExecutionDetailList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
+export const ListActionExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionExecutionDetails: S.optional(ActionExecutionDetailList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "ListActionExecutionsOutput",
 }) as any as S.Schema<ListActionExecutionsOutput>;
@@ -2168,7 +2135,7 @@ export interface ListActionTypesInput {
   nextToken?: string;
   regionFilter?: string;
 }
-export const ListActionTypesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListActionTypesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionOwnerFilter: S.optional(ActionOwner),
     nextToken: S.optional(S.String),
@@ -2188,12 +2155,12 @@ export const ListActionTypesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListActionTypesInput",
 }) as any as S.Schema<ListActionTypesInput>;
 export type ActionTypeList = ActionType[];
-export const ActionTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ActionType);
+export const ActionTypeList = /*@__PURE__*/ S.Array(ActionType);
 export interface ListActionTypesOutput {
   actionTypes: ActionType[];
   nextToken?: string;
 }
-export const ListActionTypesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListActionTypesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionTypes: ActionTypeList,
     nextToken: S.optional(S.String),
@@ -2202,24 +2169,21 @@ export const ListActionTypesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListActionTypesOutput",
 }) as any as S.Schema<ListActionTypesOutput>;
 export type TargetFilterName = "TARGET_STATUS" | (string & {});
-export const TargetFilterName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TargetFilterName = /*@__PURE__*/ S.String;
 export type TargetFilterValueList = string[];
-export const TargetFilterValueList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const TargetFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface TargetFilter {
   name?: TargetFilterName;
   values?: string[];
 }
-export const TargetFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(TargetFilterName),
     values: S.optional(TargetFilterValueList),
   }),
 ).annotate({ identifier: "TargetFilter" }) as any as S.Schema<TargetFilter>;
 export type TargetFilterList = TargetFilter[];
-export const TargetFilterList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetFilter);
+export const TargetFilterList = /*@__PURE__*/ S.Array(TargetFilter);
 export interface ListDeployActionExecutionTargetsInput {
   pipelineName?: string;
   actionExecutionId: string;
@@ -2227,8 +2191,8 @@ export interface ListDeployActionExecutionTargetsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListDeployActionExecutionTargetsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDeployActionExecutionTargetsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       pipelineName: S.optional(S.String),
       actionExecutionId: S.String,
@@ -2246,19 +2210,18 @@ export const ListDeployActionExecutionTargetsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListDeployActionExecutionTargetsInput",
-  }) as any as S.Schema<ListDeployActionExecutionTargetsInput>;
+).annotate({
+  identifier: "ListDeployActionExecutionTargetsInput",
+}) as any as S.Schema<ListDeployActionExecutionTargetsInput>;
 export interface DeployTargetEventContext {
   ssmCommandId?: string;
   message?: string;
 }
-export const DeployTargetEventContext = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ssmCommandId: S.optional(S.String),
-      message: S.optional(S.String),
-    }),
+export const DeployTargetEventContext = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ssmCommandId: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DeployTargetEventContext",
 }) as any as S.Schema<DeployTargetEventContext>;
@@ -2269,7 +2232,7 @@ export interface DeployTargetEvent {
   endTime?: Date;
   context?: DeployTargetEventContext;
 }
-export const DeployTargetEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeployTargetEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     status: S.optional(S.String),
@@ -2281,8 +2244,7 @@ export const DeployTargetEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeployTargetEvent",
 }) as any as S.Schema<DeployTargetEvent>;
 export type DeployTargetEventList = DeployTargetEvent[];
-export const DeployTargetEventList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeployTargetEvent);
+export const DeployTargetEventList = /*@__PURE__*/ S.Array(DeployTargetEvent);
 export interface DeployActionExecutionTarget {
   targetId?: string;
   targetType?: string;
@@ -2291,48 +2253,48 @@ export interface DeployActionExecutionTarget {
   endTime?: Date;
   events?: DeployTargetEvent[];
 }
-export const DeployActionExecutionTarget =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      targetId: S.optional(S.String),
-      targetType: S.optional(S.String),
-      status: S.optional(S.String),
-      startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      events: S.optional(DeployTargetEventList),
-    }),
-  ).annotate({
-    identifier: "DeployActionExecutionTarget",
-  }) as any as S.Schema<DeployActionExecutionTarget>;
+export const DeployActionExecutionTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetId: S.optional(S.String),
+    targetType: S.optional(S.String),
+    status: S.optional(S.String),
+    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    events: S.optional(DeployTargetEventList),
+  }),
+).annotate({
+  identifier: "DeployActionExecutionTarget",
+}) as any as S.Schema<DeployActionExecutionTarget>;
 export type DeployActionExecutionTargetList = DeployActionExecutionTarget[];
-export const DeployActionExecutionTargetList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeployActionExecutionTarget);
+export const DeployActionExecutionTargetList = /*@__PURE__*/ S.Array(
+  DeployActionExecutionTarget,
+);
 export interface ListDeployActionExecutionTargetsOutput {
   targets?: DeployActionExecutionTarget[];
   nextToken?: string;
 }
-export const ListDeployActionExecutionTargetsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDeployActionExecutionTargetsOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       targets: S.optional(DeployActionExecutionTargetList),
       nextToken: S.optional(S.String),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ListDeployActionExecutionTargetsOutput",
-  }) as any as S.Schema<ListDeployActionExecutionTargetsOutput>;
+).annotate({
+  identifier: "ListDeployActionExecutionTargetsOutput",
+}) as any as S.Schema<ListDeployActionExecutionTargetsOutput>;
 export interface SucceededInStageFilter {
   stageName?: string;
 }
-export const SucceededInStageFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ stageName: S.optional(S.String) }),
+export const SucceededInStageFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ stageName: S.optional(S.String) }),
 ).annotate({
   identifier: "SucceededInStageFilter",
 }) as any as S.Schema<SucceededInStageFilter>;
 export interface PipelineExecutionFilter {
   succeededInStage?: SucceededInStageFilter;
 }
-export const PipelineExecutionFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ succeededInStage: S.optional(SucceededInStageFilter) }),
+export const PipelineExecutionFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ succeededInStage: S.optional(SucceededInStageFilter) }),
 ).annotate({
   identifier: "PipelineExecutionFilter",
 }) as any as S.Schema<PipelineExecutionFilter>;
@@ -2342,34 +2304,33 @@ export interface ListPipelineExecutionsInput {
   filter?: PipelineExecutionFilter;
   nextToken?: string;
 }
-export const ListPipelineExecutionsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pipelineName: S.String,
-      maxResults: S.optional(S.Number),
-      filter: S.optional(PipelineExecutionFilter),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPipelineExecutionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    maxResults: S.optional(S.Number),
+    filter: S.optional(PipelineExecutionFilter),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListPipelineExecutionsInput",
-  }) as any as S.Schema<ListPipelineExecutionsInput>;
+  ),
+).annotate({
+  identifier: "ListPipelineExecutionsInput",
+}) as any as S.Schema<ListPipelineExecutionsInput>;
 export interface SourceRevision {
   actionName: string;
   revisionId?: string;
   revisionSummary?: string;
   revisionUrl?: string;
 }
-export const SourceRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SourceRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionName: S.String,
     revisionId: S.optional(S.String),
@@ -2378,12 +2339,11 @@ export const SourceRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SourceRevision" }) as any as S.Schema<SourceRevision>;
 export type SourceRevisionList = SourceRevision[];
-export const SourceRevisionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SourceRevision);
+export const SourceRevisionList = /*@__PURE__*/ S.Array(SourceRevision);
 export interface StopExecutionTrigger {
   reason?: string;
 }
-export const StopExecutionTrigger = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopExecutionTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ reason: S.optional(S.String) }),
 ).annotate({
   identifier: "StopExecutionTrigger",
@@ -2401,48 +2361,44 @@ export interface PipelineExecutionSummary {
   executionType?: ExecutionType;
   rollbackMetadata?: PipelineRollbackMetadata;
 }
-export const PipelineExecutionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pipelineExecutionId: S.optional(S.String),
-      status: S.optional(PipelineExecutionStatus),
-      statusSummary: S.optional(S.String),
-      startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastUpdateTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      sourceRevisions: S.optional(SourceRevisionList),
-      trigger: S.optional(ExecutionTrigger),
-      stopTrigger: S.optional(StopExecutionTrigger),
-      executionMode: S.optional(ExecutionMode),
-      executionType: S.optional(ExecutionType),
-      rollbackMetadata: S.optional(PipelineRollbackMetadata),
-    }),
+export const PipelineExecutionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineExecutionId: S.optional(S.String),
+    status: S.optional(PipelineExecutionStatus),
+    statusSummary: S.optional(S.String),
+    startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    sourceRevisions: S.optional(SourceRevisionList),
+    trigger: S.optional(ExecutionTrigger),
+    stopTrigger: S.optional(StopExecutionTrigger),
+    executionMode: S.optional(ExecutionMode),
+    executionType: S.optional(ExecutionType),
+    rollbackMetadata: S.optional(PipelineRollbackMetadata),
+  }),
 ).annotate({
   identifier: "PipelineExecutionSummary",
 }) as any as S.Schema<PipelineExecutionSummary>;
 export type PipelineExecutionSummaryList = PipelineExecutionSummary[];
-export const PipelineExecutionSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const PipelineExecutionSummaryList = /*@__PURE__*/ S.Array(
   PipelineExecutionSummary,
 );
 export interface ListPipelineExecutionsOutput {
   pipelineExecutionSummaries?: PipelineExecutionSummary[];
   nextToken?: string;
 }
-export const ListPipelineExecutionsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pipelineExecutionSummaries: S.optional(PipelineExecutionSummaryList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListPipelineExecutionsOutput",
-  }) as any as S.Schema<ListPipelineExecutionsOutput>;
+export const ListPipelineExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineExecutionSummaries: S.optional(PipelineExecutionSummaryList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListPipelineExecutionsOutput",
+}) as any as S.Schema<ListPipelineExecutionsOutput>;
 export interface ListPipelinesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListPipelinesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPipelinesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String),
     maxResults: S.optional(S.Number),
@@ -2468,7 +2424,7 @@ export interface PipelineSummary {
   created?: Date;
   updated?: Date;
 }
-export const PipelineSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PipelineSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     version: S.optional(S.Number),
@@ -2481,13 +2437,12 @@ export const PipelineSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PipelineSummary",
 }) as any as S.Schema<PipelineSummary>;
 export type PipelineList = PipelineSummary[];
-export const PipelineList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PipelineSummary);
+export const PipelineList = /*@__PURE__*/ S.Array(PipelineSummary);
 export interface ListPipelinesOutput {
   pipelines?: PipelineSummary[];
   nextToken?: string;
 }
-export const ListPipelinesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPipelinesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelines: S.optional(PipelineList),
     nextToken: S.optional(S.String),
@@ -2499,7 +2454,7 @@ export interface RuleExecutionFilter {
   pipelineExecutionId?: string;
   latestInPipelineExecution?: LatestInPipelineExecutionFilter;
 }
-export const RuleExecutionFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleExecutionFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineExecutionId: S.optional(S.String),
     latestInPipelineExecution: S.optional(LatestInPipelineExecutionFilter),
@@ -2513,32 +2468,33 @@ export interface ListRuleExecutionsInput {
   maxResults?: number;
   nextToken?: string;
 }
-export const ListRuleExecutionsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pipelineName: S.String,
-      filter: S.optional(RuleExecutionFilter),
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListRuleExecutionsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    filter: S.optional(RuleExecutionFilter),
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListRuleExecutionsInput",
 }) as any as S.Schema<ListRuleExecutionsInput>;
 export type ResolvedRuleConfigurationMap = {
   [key: string]: string | undefined;
 };
-export const ResolvedRuleConfigurationMap =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export const ResolvedRuleConfigurationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface RuleExecutionInput {
   ruleTypeId?: RuleTypeId;
   configuration?: { [key: string]: string | undefined };
@@ -2547,7 +2503,7 @@ export interface RuleExecutionInput {
   region?: string;
   inputArtifacts?: ArtifactDetail[];
 }
-export const RuleExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleExecutionInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleTypeId: S.optional(RuleTypeId),
     configuration: S.optional(RuleConfigurationMap),
@@ -2565,7 +2521,7 @@ export interface RuleExecutionResult {
   externalExecutionUrl?: string;
   errorDetails?: ErrorDetails;
 }
-export const RuleExecutionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleExecutionResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     externalExecutionId: S.optional(S.String),
     externalExecutionSummary: S.optional(S.String),
@@ -2578,7 +2534,7 @@ export const RuleExecutionResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RuleExecutionOutput {
   executionResult?: RuleExecutionResult;
 }
-export const RuleExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleExecutionOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ executionResult: S.optional(RuleExecutionResult) }),
 ).annotate({
   identifier: "RuleExecutionOutput",
@@ -2596,7 +2552,7 @@ export interface RuleExecutionDetail {
   input?: RuleExecutionInput;
   output?: RuleExecutionOutput;
 }
-export const RuleExecutionDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleExecutionDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineExecutionId: S.optional(S.String),
     ruleExecutionId: S.optional(S.String),
@@ -2615,17 +2571,16 @@ export const RuleExecutionDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuleExecutionDetail>;
 export type RuleExecutionDetailList = RuleExecutionDetail[];
 export const RuleExecutionDetailList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleExecutionDetail);
+  /*@__PURE__*/ S.Array(RuleExecutionDetail);
 export interface ListRuleExecutionsOutput {
   ruleExecutionDetails?: RuleExecutionDetail[];
   nextToken?: string;
 }
-export const ListRuleExecutionsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ruleExecutionDetails: S.optional(RuleExecutionDetailList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
+export const ListRuleExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleExecutionDetails: S.optional(RuleExecutionDetailList),
+    nextToken: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "ListRuleExecutionsOutput",
 }) as any as S.Schema<ListRuleExecutionsOutput>;
@@ -2633,7 +2588,7 @@ export interface ListRuleTypesInput {
   ruleOwnerFilter?: RuleOwner;
   regionFilter?: string;
 }
-export const ListRuleTypesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRuleTypesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ruleOwnerFilter: S.optional(RuleOwner),
     regionFilter: S.optional(S.String),
@@ -2657,7 +2612,7 @@ export interface RuleTypeSettings {
   executionUrlTemplate?: string;
   revisionUrlTemplate?: string;
 }
-export const RuleTypeSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleTypeSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     thirdPartyConfigurationUrl: S.optional(S.String),
     entityUrlTemplate: S.optional(S.String),
@@ -2672,8 +2627,7 @@ export type RuleConfigurationPropertyType =
   | "Number"
   | "Boolean"
   | (string & {});
-export const RuleConfigurationPropertyType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RuleConfigurationPropertyType = /*@__PURE__*/ S.String;
 export interface RuleConfigurationProperty {
   name: string;
   required: boolean;
@@ -2683,30 +2637,30 @@ export interface RuleConfigurationProperty {
   description?: string;
   type?: RuleConfigurationPropertyType;
 }
-export const RuleConfigurationProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      required: S.Boolean,
-      key: S.Boolean,
-      secret: S.Boolean,
-      queryable: S.optional(S.Boolean),
-      description: S.optional(S.String),
-      type: S.optional(RuleConfigurationPropertyType),
-    }),
+export const RuleConfigurationProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    required: S.Boolean,
+    key: S.Boolean,
+    secret: S.Boolean,
+    queryable: S.optional(S.Boolean),
+    description: S.optional(S.String),
+    type: S.optional(RuleConfigurationPropertyType),
+  }),
 ).annotate({
   identifier: "RuleConfigurationProperty",
 }) as any as S.Schema<RuleConfigurationProperty>;
 export type RuleConfigurationPropertyList = RuleConfigurationProperty[];
-export const RuleConfigurationPropertyList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleConfigurationProperty);
+export const RuleConfigurationPropertyList = /*@__PURE__*/ S.Array(
+  RuleConfigurationProperty,
+);
 export interface RuleType {
   id: RuleTypeId;
   settings?: RuleTypeSettings;
   ruleConfigurationProperties?: RuleConfigurationProperty[];
   inputArtifactDetails: ArtifactDetails;
 }
-export const RuleType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RuleType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: RuleTypeId,
     settings: S.optional(RuleTypeSettings),
@@ -2715,11 +2669,11 @@ export const RuleType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RuleType" }) as any as S.Schema<RuleType>;
 export type RuleTypeList = RuleType[];
-export const RuleTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(RuleType);
+export const RuleTypeList = /*@__PURE__*/ S.Array(RuleType);
 export interface ListRuleTypesOutput {
   ruleTypes: RuleType[];
 }
-export const ListRuleTypesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRuleTypesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ruleTypes: RuleTypeList }).pipe(ns),
 ).annotate({
   identifier: "ListRuleTypesOutput",
@@ -2729,23 +2683,22 @@ export interface ListTagsForResourceInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceArn: S.String,
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String,
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
@@ -2753,12 +2706,10 @@ export interface ListTagsForResourceOutput {
   tags?: Tag[];
   nextToken?: string;
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tags: S.optional(TagList),
-      nextToken: S.optional(S.String),
-    }).pipe(ns),
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagList), nextToken: S.optional(S.String) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
@@ -2766,7 +2717,7 @@ export interface ListWebhooksInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListWebhooksInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListWebhooksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -2788,30 +2739,28 @@ export interface WebhookFilterRule {
   jsonPath: string;
   matchEquals?: string;
 }
-export const WebhookFilterRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WebhookFilterRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jsonPath: S.String, matchEquals: S.optional(S.String) }),
 ).annotate({
   identifier: "WebhookFilterRule",
 }) as any as S.Schema<WebhookFilterRule>;
 export type WebhookFilters = WebhookFilterRule[];
-export const WebhookFilters =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WebhookFilterRule);
+export const WebhookFilters = /*@__PURE__*/ S.Array(WebhookFilterRule);
 export type WebhookAuthenticationType =
   | "GITHUB_HMAC"
   | "IP"
   | "UNAUTHENTICATED"
   | (string & {});
-export const WebhookAuthenticationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const WebhookAuthenticationType = /*@__PURE__*/ S.String;
 export interface WebhookAuthConfiguration {
   AllowedIPRange?: string;
-  SecretToken?: string;
+  SecretToken?: string | redacted.Redacted<string>;
 }
-export const WebhookAuthConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AllowedIPRange: S.optional(S.String),
-      SecretToken: S.optional(S.String),
-    }),
+export const WebhookAuthConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AllowedIPRange: S.optional(S.String),
+    SecretToken: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "WebhookAuthConfiguration",
 }) as any as S.Schema<WebhookAuthConfiguration>;
@@ -2823,7 +2772,7 @@ export interface WebhookDefinition {
   authentication: WebhookAuthenticationType;
   authenticationConfiguration: WebhookAuthConfiguration;
 }
-export const WebhookDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WebhookDefinition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     targetPipeline: S.String,
@@ -2844,7 +2793,7 @@ export interface ListWebhookItem {
   arn?: string;
   tags?: Tag[];
 }
-export const ListWebhookItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListWebhookItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     definition: WebhookDefinition,
     url: S.String,
@@ -2858,12 +2807,12 @@ export const ListWebhookItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListWebhookItem",
 }) as any as S.Schema<ListWebhookItem>;
 export type WebhookList = ListWebhookItem[];
-export const WebhookList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ListWebhookItem);
+export const WebhookList = /*@__PURE__*/ S.Array(ListWebhookItem);
 export interface ListWebhooksOutput {
   webhooks?: ListWebhookItem[];
   NextToken?: string;
 }
-export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListWebhooksOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     webhooks: S.optional(WebhookList),
     NextToken: S.optional(S.String),
@@ -2872,41 +2821,41 @@ export const ListWebhooksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListWebhooksOutput",
 }) as any as S.Schema<ListWebhooksOutput>;
 export type ConditionType = "BEFORE_ENTRY" | "ON_SUCCESS" | (string & {});
-export const ConditionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConditionType = /*@__PURE__*/ S.String;
 export interface OverrideStageConditionInput {
   pipelineName: string;
   stageName: string;
   pipelineExecutionId: string;
   conditionType: ConditionType;
 }
-export const OverrideStageConditionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pipelineName: S.String,
-      stageName: S.String,
-      pipelineExecutionId: S.String,
-      conditionType: ConditionType,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const OverrideStageConditionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    stageName: S.String,
+    pipelineExecutionId: S.String,
+    conditionType: ConditionType,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "OverrideStageConditionInput",
-  }) as any as S.Schema<OverrideStageConditionInput>;
+  ),
+).annotate({
+  identifier: "OverrideStageConditionInput",
+}) as any as S.Schema<OverrideStageConditionInput>;
 export interface OverrideStageConditionResponse {}
-export const OverrideStageConditionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "OverrideStageConditionResponse",
-  }) as any as S.Schema<OverrideStageConditionResponse>;
+export const OverrideStageConditionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "OverrideStageConditionResponse",
+}) as any as S.Schema<OverrideStageConditionResponse>;
 export type QueryParamMap = { [key: string]: string | undefined };
-export const QueryParamMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const QueryParamMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -2915,7 +2864,7 @@ export interface PollForJobsInput {
   maxBatchSize?: number;
   queryParam?: { [key: string]: string | undefined };
 }
-export const PollForJobsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PollForJobsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionTypeId: ActionTypeId,
     maxBatchSize: S.optional(S.Number),
@@ -2940,7 +2889,7 @@ export interface Job {
   nonce?: string;
   accountId?: string;
 }
-export const Job = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Job = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     data: S.optional(JobData),
@@ -2949,11 +2898,11 @@ export const Job = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Job" }) as any as S.Schema<Job>;
 export type JobList = Job[];
-export const JobList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Job);
+export const JobList = /*@__PURE__*/ S.Array(Job);
 export interface PollForJobsOutput {
   jobs?: Job[];
 }
-export const PollForJobsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PollForJobsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ jobs: S.optional(JobList) }).pipe(ns),
 ).annotate({
   identifier: "PollForJobsOutput",
@@ -2962,22 +2911,21 @@ export interface PollForThirdPartyJobsInput {
   actionTypeId: ActionTypeId;
   maxBatchSize?: number;
 }
-export const PollForThirdPartyJobsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionTypeId: ActionTypeId,
-      maxBatchSize: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PollForThirdPartyJobsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionTypeId: ActionTypeId,
+    maxBatchSize: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PollForThirdPartyJobsInput",
 }) as any as S.Schema<PollForThirdPartyJobsInput>;
@@ -2985,45 +2933,42 @@ export interface ThirdPartyJob {
   clientId?: string;
   jobId?: string;
 }
-export const ThirdPartyJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ThirdPartyJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ clientId: S.optional(S.String), jobId: S.optional(S.String) }),
 ).annotate({ identifier: "ThirdPartyJob" }) as any as S.Schema<ThirdPartyJob>;
 export type ThirdPartyJobList = ThirdPartyJob[];
-export const ThirdPartyJobList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ThirdPartyJob);
+export const ThirdPartyJobList = /*@__PURE__*/ S.Array(ThirdPartyJob);
 export interface PollForThirdPartyJobsOutput {
   jobs?: ThirdPartyJob[];
 }
-export const PollForThirdPartyJobsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ jobs: S.optional(ThirdPartyJobList) }).pipe(ns),
-  ).annotate({
-    identifier: "PollForThirdPartyJobsOutput",
-  }) as any as S.Schema<PollForThirdPartyJobsOutput>;
+export const PollForThirdPartyJobsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobs: S.optional(ThirdPartyJobList) }).pipe(ns),
+).annotate({
+  identifier: "PollForThirdPartyJobsOutput",
+}) as any as S.Schema<PollForThirdPartyJobsOutput>;
 export interface PutActionRevisionInput {
   pipelineName: string;
   stageName: string;
   actionName: string;
   actionRevision: ActionRevision;
 }
-export const PutActionRevisionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pipelineName: S.String,
-      stageName: S.String,
-      actionName: S.String,
-      actionRevision: ActionRevision,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutActionRevisionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    stageName: S.String,
+    actionName: S.String,
+    actionRevision: ActionRevision,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutActionRevisionInput",
 }) as any as S.Schema<PutActionRevisionInput>;
@@ -3031,22 +2976,21 @@ export interface PutActionRevisionOutput {
   newRevision?: boolean;
   pipelineExecutionId?: string;
 }
-export const PutActionRevisionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      newRevision: S.optional(S.Boolean),
-      pipelineExecutionId: S.optional(S.String),
-    }).pipe(ns),
+export const PutActionRevisionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    newRevision: S.optional(S.Boolean),
+    pipelineExecutionId: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "PutActionRevisionOutput",
 }) as any as S.Schema<PutActionRevisionOutput>;
 export type ApprovalStatus = "Approved" | "Rejected" | (string & {});
-export const ApprovalStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ApprovalStatus = /*@__PURE__*/ S.String;
 export interface ApprovalResult {
   summary: string;
   status: ApprovalStatus;
 }
-export const ApprovalResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApprovalResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ summary: S.String, status: ApprovalStatus }),
 ).annotate({ identifier: "ApprovalResult" }) as any as S.Schema<ApprovalResult>;
 export interface PutApprovalResultInput {
@@ -3056,36 +3000,34 @@ export interface PutApprovalResultInput {
   result: ApprovalResult;
   token: string;
 }
-export const PutApprovalResultInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pipelineName: S.String,
-      stageName: S.String,
-      actionName: S.String,
-      result: ApprovalResult,
-      token: S.String,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutApprovalResultInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    stageName: S.String,
+    actionName: S.String,
+    result: ApprovalResult,
+    token: S.String,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutApprovalResultInput",
 }) as any as S.Schema<PutApprovalResultInput>;
 export interface PutApprovalResultOutput {
   approvedAt?: Date;
 }
-export const PutApprovalResultOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      approvedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    }).pipe(ns),
+export const PutApprovalResultOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    approvedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }).pipe(ns),
 ).annotate({
   identifier: "PutApprovalResultOutput",
 }) as any as S.Schema<PutApprovalResultOutput>;
@@ -3097,13 +3039,13 @@ export type FailureType =
   | "RevisionUnavailable"
   | "SystemUnavailable"
   | (string & {});
-export const FailureType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FailureType = /*@__PURE__*/ S.String;
 export interface FailureDetails {
   type: FailureType;
   message: string;
   externalExecutionId?: string;
 }
-export const FailureDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FailureDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: FailureType,
     message: S.String,
@@ -3114,34 +3056,34 @@ export interface PutJobFailureResultInput {
   jobId: string;
   failureDetails: FailureDetails;
 }
-export const PutJobFailureResultInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ jobId: S.String, failureDetails: FailureDetails }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutJobFailureResultInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ jobId: S.String, failureDetails: FailureDetails }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutJobFailureResultInput",
 }) as any as S.Schema<PutJobFailureResultInput>;
 export interface PutJobFailureResultResponse {}
-export const PutJobFailureResultResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "PutJobFailureResultResponse",
-  }) as any as S.Schema<PutJobFailureResultResponse>;
+export const PutJobFailureResultResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "PutJobFailureResultResponse",
+}) as any as S.Schema<PutJobFailureResultResponse>;
 export interface CurrentRevision {
   revision: string;
   changeIdentifier: string;
   created?: Date;
   revisionSummary?: string;
 }
-export const CurrentRevision = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CurrentRevision = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     revision: S.String,
     changeIdentifier: S.String,
@@ -3156,7 +3098,7 @@ export interface ExecutionDetails {
   externalExecutionId?: string;
   percentComplete?: number;
 }
-export const ExecutionDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExecutionDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summary: S.optional(S.String),
     externalExecutionId: S.optional(S.String),
@@ -3172,63 +3114,63 @@ export interface PutJobSuccessResultInput {
   executionDetails?: ExecutionDetails;
   outputVariables?: { [key: string]: string | undefined };
 }
-export const PutJobSuccessResultInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      jobId: S.String,
-      currentRevision: S.optional(CurrentRevision),
-      continuationToken: S.optional(S.String),
-      executionDetails: S.optional(ExecutionDetails),
-      outputVariables: S.optional(OutputVariablesMap),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutJobSuccessResultInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobId: S.String,
+    currentRevision: S.optional(CurrentRevision),
+    continuationToken: S.optional(S.String),
+    executionDetails: S.optional(ExecutionDetails),
+    outputVariables: S.optional(OutputVariablesMap),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutJobSuccessResultInput",
 }) as any as S.Schema<PutJobSuccessResultInput>;
 export interface PutJobSuccessResultResponse {}
-export const PutJobSuccessResultResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "PutJobSuccessResultResponse",
-  }) as any as S.Schema<PutJobSuccessResultResponse>;
+export const PutJobSuccessResultResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "PutJobSuccessResultResponse",
+}) as any as S.Schema<PutJobSuccessResultResponse>;
 export interface PutThirdPartyJobFailureResultInput {
   jobId: string;
   clientToken: string;
   failureDetails: FailureDetails;
 }
-export const PutThirdPartyJobFailureResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobId: S.String,
-      clientToken: S.String,
-      failureDetails: FailureDetails,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutThirdPartyJobFailureResultInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobId: S.String,
+    clientToken: S.String,
+    failureDetails: FailureDetails,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutThirdPartyJobFailureResultInput",
-  }) as any as S.Schema<PutThirdPartyJobFailureResultInput>;
+  ),
+).annotate({
+  identifier: "PutThirdPartyJobFailureResultInput",
+}) as any as S.Schema<PutThirdPartyJobFailureResultInput>;
 export interface PutThirdPartyJobFailureResultResponse {}
-export const PutThirdPartyJobFailureResultResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "PutThirdPartyJobFailureResultResponse",
-  }) as any as S.Schema<PutThirdPartyJobFailureResultResponse>;
+export const PutThirdPartyJobFailureResultResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "PutThirdPartyJobFailureResultResponse",
+}) as any as S.Schema<PutThirdPartyJobFailureResultResponse>;
 export interface PutThirdPartyJobSuccessResultInput {
   jobId: string;
   clientToken: string;
@@ -3236,38 +3178,38 @@ export interface PutThirdPartyJobSuccessResultInput {
   continuationToken?: string;
   executionDetails?: ExecutionDetails;
 }
-export const PutThirdPartyJobSuccessResultInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      jobId: S.String,
-      clientToken: S.String,
-      currentRevision: S.optional(CurrentRevision),
-      continuationToken: S.optional(S.String),
-      executionDetails: S.optional(ExecutionDetails),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutThirdPartyJobSuccessResultInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    jobId: S.String,
+    clientToken: S.String,
+    currentRevision: S.optional(CurrentRevision),
+    continuationToken: S.optional(S.String),
+    executionDetails: S.optional(ExecutionDetails),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutThirdPartyJobSuccessResultInput",
-  }) as any as S.Schema<PutThirdPartyJobSuccessResultInput>;
+  ),
+).annotate({
+  identifier: "PutThirdPartyJobSuccessResultInput",
+}) as any as S.Schema<PutThirdPartyJobSuccessResultInput>;
 export interface PutThirdPartyJobSuccessResultResponse {}
-export const PutThirdPartyJobSuccessResultResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "PutThirdPartyJobSuccessResultResponse",
-  }) as any as S.Schema<PutThirdPartyJobSuccessResultResponse>;
+export const PutThirdPartyJobSuccessResultResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "PutThirdPartyJobSuccessResultResponse",
+}) as any as S.Schema<PutThirdPartyJobSuccessResultResponse>;
 export interface PutWebhookInput {
   webhook: WebhookDefinition;
   tags?: Tag[];
 }
-export const PutWebhookInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutWebhookInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ webhook: WebhookDefinition, tags: S.optional(TagList) }).pipe(
     T.all(
       ns,
@@ -3285,7 +3227,7 @@ export const PutWebhookInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface PutWebhookOutput {
   webhook?: ListWebhookItem;
 }
-export const PutWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutWebhookOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ webhook: S.optional(ListWebhookItem) }).pipe(ns),
 ).annotate({
   identifier: "PutWebhookOutput",
@@ -3293,59 +3235,58 @@ export const PutWebhookOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RegisterWebhookWithThirdPartyInput {
   webhookName?: string;
 }
-export const RegisterWebhookWithThirdPartyInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ webhookName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RegisterWebhookWithThirdPartyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ webhookName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RegisterWebhookWithThirdPartyInput",
-  }) as any as S.Schema<RegisterWebhookWithThirdPartyInput>;
+  ),
+).annotate({
+  identifier: "RegisterWebhookWithThirdPartyInput",
+}) as any as S.Schema<RegisterWebhookWithThirdPartyInput>;
 export interface RegisterWebhookWithThirdPartyOutput {}
-export const RegisterWebhookWithThirdPartyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "RegisterWebhookWithThirdPartyOutput",
-  }) as any as S.Schema<RegisterWebhookWithThirdPartyOutput>;
+export const RegisterWebhookWithThirdPartyOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "RegisterWebhookWithThirdPartyOutput",
+}) as any as S.Schema<RegisterWebhookWithThirdPartyOutput>;
 export interface RetryStageExecutionInput {
   pipelineName: string;
   stageName: string;
   pipelineExecutionId: string;
   retryMode: StageRetryMode;
 }
-export const RetryStageExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pipelineName: S.String,
-      stageName: S.String,
-      pipelineExecutionId: S.String,
-      retryMode: StageRetryMode,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RetryStageExecutionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    stageName: S.String,
+    pipelineExecutionId: S.String,
+    retryMode: StageRetryMode,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "RetryStageExecutionInput",
 }) as any as S.Schema<RetryStageExecutionInput>;
 export interface RetryStageExecutionOutput {
   pipelineExecutionId?: string;
 }
-export const RetryStageExecutionOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ pipelineExecutionId: S.optional(S.String) }).pipe(ns),
+export const RetryStageExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pipelineExecutionId: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "RetryStageExecutionOutput",
 }) as any as S.Schema<RetryStageExecutionOutput>;
@@ -3354,7 +3295,7 @@ export interface RollbackStageInput {
   stageName: string;
   targetPipelineExecutionId: string;
 }
-export const RollbackStageInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RollbackStageInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     pipelineName: S.String,
     stageName: S.String,
@@ -3376,7 +3317,7 @@ export const RollbackStageInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RollbackStageOutput {
   pipelineExecutionId: string;
 }
-export const RollbackStageOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RollbackStageOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pipelineExecutionId: S.String }).pipe(ns),
 ).annotate({
   identifier: "RollbackStageOutput",
@@ -3385,38 +3326,36 @@ export interface PipelineVariable {
   name: string;
   value: string;
 }
-export const PipelineVariable = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PipelineVariable = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.String, value: S.String }),
 ).annotate({
   identifier: "PipelineVariable",
 }) as any as S.Schema<PipelineVariable>;
 export type PipelineVariableList = PipelineVariable[];
-export const PipelineVariableList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PipelineVariable);
+export const PipelineVariableList = /*@__PURE__*/ S.Array(PipelineVariable);
 export type SourceRevisionType =
   | "COMMIT_ID"
   | "IMAGE_DIGEST"
   | "S3_OBJECT_VERSION_ID"
   | "S3_OBJECT_KEY"
   | (string & {});
-export const SourceRevisionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SourceRevisionType = /*@__PURE__*/ S.String;
 export interface SourceRevisionOverride {
   actionName: string;
   revisionType: SourceRevisionType;
   revisionValue: string;
 }
-export const SourceRevisionOverride = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionName: S.String,
-      revisionType: SourceRevisionType,
-      revisionValue: S.String,
-    }),
+export const SourceRevisionOverride = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionName: S.String,
+    revisionType: SourceRevisionType,
+    revisionValue: S.String,
+  }),
 ).annotate({
   identifier: "SourceRevisionOverride",
 }) as any as S.Schema<SourceRevisionOverride>;
 export type SourceRevisionOverrideList = SourceRevisionOverride[];
-export const SourceRevisionOverrideList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const SourceRevisionOverrideList = /*@__PURE__*/ S.Array(
   SourceRevisionOverride,
 );
 export interface StartPipelineExecutionInput {
@@ -3425,77 +3364,73 @@ export interface StartPipelineExecutionInput {
   clientRequestToken?: string;
   sourceRevisions?: SourceRevisionOverride[];
 }
-export const StartPipelineExecutionInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      variables: S.optional(PipelineVariableList),
-      clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      sourceRevisions: S.optional(SourceRevisionOverrideList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartPipelineExecutionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    variables: S.optional(PipelineVariableList),
+    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    sourceRevisions: S.optional(SourceRevisionOverrideList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "StartPipelineExecutionInput",
-  }) as any as S.Schema<StartPipelineExecutionInput>;
+  ),
+).annotate({
+  identifier: "StartPipelineExecutionInput",
+}) as any as S.Schema<StartPipelineExecutionInput>;
 export interface StartPipelineExecutionOutput {
   pipelineExecutionId?: string;
 }
-export const StartPipelineExecutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ pipelineExecutionId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StartPipelineExecutionOutput",
-  }) as any as S.Schema<StartPipelineExecutionOutput>;
+export const StartPipelineExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pipelineExecutionId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StartPipelineExecutionOutput",
+}) as any as S.Schema<StartPipelineExecutionOutput>;
 export interface StopPipelineExecutionInput {
   pipelineName: string;
   pipelineExecutionId: string;
   abandon?: boolean;
   reason?: string;
 }
-export const StopPipelineExecutionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      pipelineName: S.String,
-      pipelineExecutionId: S.String,
-      abandon: S.optional(S.Boolean),
-      reason: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopPipelineExecutionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pipelineName: S.String,
+    pipelineExecutionId: S.String,
+    abandon: S.optional(S.Boolean),
+    reason: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StopPipelineExecutionInput",
 }) as any as S.Schema<StopPipelineExecutionInput>;
 export interface StopPipelineExecutionOutput {
   pipelineExecutionId?: string;
 }
-export const StopPipelineExecutionOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ pipelineExecutionId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "StopPipelineExecutionOutput",
-  }) as any as S.Schema<StopPipelineExecutionOutput>;
+export const StopPipelineExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ pipelineExecutionId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "StopPipelineExecutionOutput",
+}) as any as S.Schema<StopPipelineExecutionOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: Tag[];
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tags: TagList }).pipe(
     T.all(
       ns,
@@ -3511,18 +3446,18 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ resourceArn: S.String, tagKeys: TagKeyList }).pipe(
     T.all(
       ns,
@@ -3538,7 +3473,7 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "UntagResourceOutput",
@@ -3546,7 +3481,7 @@ export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateActionTypeInput {
   actionType: ActionTypeDeclaration;
 }
-export const UpdateActionTypeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateActionTypeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ actionType: ActionTypeDeclaration }).pipe(
     T.all(
       ns,
@@ -3562,15 +3497,15 @@ export const UpdateActionTypeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateActionTypeInput",
 }) as any as S.Schema<UpdateActionTypeInput>;
 export interface UpdateActionTypeResponse {}
-export const UpdateActionTypeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(ns),
+export const UpdateActionTypeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "UpdateActionTypeResponse",
 }) as any as S.Schema<UpdateActionTypeResponse>;
 export interface UpdatePipelineInput {
   pipeline: PipelineDeclaration;
 }
-export const UpdatePipelineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdatePipelineInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pipeline: PipelineDeclaration }).pipe(
     T.all(
       ns,
@@ -3588,7 +3523,7 @@ export const UpdatePipelineInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdatePipelineOutput {
   pipeline?: PipelineDeclaration;
 }
-export const UpdatePipelineOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdatePipelineOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ pipeline: S.optional(PipelineDeclaration) }).pipe(ns),
 ).annotate({
   identifier: "UpdatePipelineOutput",
@@ -3702,6 +3637,7 @@ export class ConditionNotOverridableException extends S.TaggedErrorClass<Conditi
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class NotLatestPipelineExecutionException extends S.TaggedErrorClass<NotLatestPipelineExecutionException>()(
   "NotLatestPipelineExecutionException",
@@ -3775,7 +3711,7 @@ export const acknowledgeJob: API.OperationMethod<
   AcknowledgeJobOutput,
   AcknowledgeJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcknowledgeJobInput,
   output: AcknowledgeJobOutput,
   errors: [InvalidNonceException, JobNotFoundException, ValidationException],
@@ -3798,7 +3734,7 @@ export const acknowledgeThirdPartyJob: API.OperationMethod<
   AcknowledgeThirdPartyJobOutput,
   AcknowledgeThirdPartyJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcknowledgeThirdPartyJobInput,
   output: AcknowledgeThirdPartyJobOutput,
   errors: [
@@ -3827,7 +3763,7 @@ export const createCustomActionType: API.OperationMethod<
   CreateCustomActionTypeOutput,
   CreateCustomActionTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateCustomActionTypeInput,
   output: CreateCustomActionTypeOutput,
   errors: [
@@ -3866,7 +3802,7 @@ export const createPipeline: API.OperationMethod<
   CreatePipelineOutput,
   CreatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePipelineInput,
   output: CreatePipelineOutput,
   errors: [
@@ -3904,7 +3840,7 @@ export const deleteCustomActionType: API.OperationMethod<
   DeleteCustomActionTypeResponse,
   DeleteCustomActionTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteCustomActionTypeInput,
   output: DeleteCustomActionTypeResponse,
   errors: [ConcurrentModificationException, ValidationException],
@@ -3924,7 +3860,7 @@ export const deletePipeline: API.OperationMethod<
   DeletePipelineResponse,
   DeletePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePipelineInput,
   output: DeletePipelineResponse,
   errors: [ConcurrentModificationException, ValidationException],
@@ -3947,7 +3883,7 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookOutput,
   DeleteWebhookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteWebhookInput,
   output: DeleteWebhookOutput,
   errors: [ConcurrentModificationException, ValidationException],
@@ -3969,7 +3905,7 @@ export const deregisterWebhookWithThirdParty: API.OperationMethod<
   DeregisterWebhookWithThirdPartyOutput,
   DeregisterWebhookWithThirdPartyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterWebhookWithThirdPartyInput,
   output: DeregisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
@@ -3991,7 +3927,7 @@ export const disableStageTransition: API.OperationMethod<
   DisableStageTransitionResponse,
   DisableStageTransitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableStageTransitionInput,
   output: DisableStageTransitionResponse,
   errors: [
@@ -4016,7 +3952,7 @@ export const enableStageTransition: API.OperationMethod<
   EnableStageTransitionResponse,
   EnableStageTransitionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableStageTransitionInput,
   output: EnableStageTransitionResponse,
   errors: [
@@ -4042,7 +3978,7 @@ export const getActionType: API.OperationMethod<
   GetActionTypeOutput,
   GetActionTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetActionTypeInput,
   output: GetActionTypeOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
@@ -4067,7 +4003,7 @@ export const getJobDetails: API.OperationMethod<
   GetJobDetailsOutput,
   GetJobDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetJobDetailsInput,
   output: GetJobDetailsOutput,
   errors: [JobNotFoundException, ValidationException],
@@ -4090,7 +4026,7 @@ export const getPipeline: API.OperationMethod<
   GetPipelineOutput,
   GetPipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineInput,
   output: GetPipelineOutput,
   errors: [
@@ -4117,7 +4053,7 @@ export const getPipelineExecution: API.OperationMethod<
   GetPipelineExecutionOutput,
   GetPipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineExecutionInput,
   output: GetPipelineExecutionOutput,
   errors: [
@@ -4146,7 +4082,7 @@ export const getPipelineState: API.OperationMethod<
   GetPipelineStateOutput,
   GetPipelineStateError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPipelineStateInput,
   output: GetPipelineStateOutput,
   errors: [PipelineNotFoundException, ValidationException],
@@ -4174,7 +4110,7 @@ export const getThirdPartyJobDetails: API.OperationMethod<
   GetThirdPartyJobDetailsOutput,
   GetThirdPartyJobDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThirdPartyJobDetailsInput,
   output: GetThirdPartyJobDetailsOutput,
   errors: [
@@ -4216,7 +4152,7 @@ export const listActionExecutions: API.OperationMethod<
     ListActionExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionExecutionsInput,
   output: ListActionExecutionsOutput,
   errors: [
@@ -4263,7 +4199,7 @@ export const listActionTypes: API.OperationMethod<
     ListActionTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListActionTypesInput,
   output: ListActionTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4305,7 +4241,7 @@ export const listDeployActionExecutionTargets: API.OperationMethod<
     ListDeployActionExecutionTargetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeployActionExecutionTargetsInput,
   output: ListDeployActionExecutionTargetsOutput,
   errors: [
@@ -4356,7 +4292,7 @@ export const listPipelineExecutions: API.OperationMethod<
     ListPipelineExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelineExecutionsInput,
   output: ListPipelineExecutionsOutput,
   errors: [
@@ -4401,7 +4337,7 @@ export const listPipelines: API.OperationMethod<
     ListPipelinesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPipelinesInput,
   output: ListPipelinesOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4445,7 +4381,7 @@ export const listRuleExecutions: API.OperationMethod<
     ListRuleExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRuleExecutionsInput,
   output: ListRuleExecutionsOutput,
   errors: [
@@ -4478,7 +4414,7 @@ export const listRuleTypes: API.OperationMethod<
   ListRuleTypesOutput,
   ListRuleTypesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListRuleTypesInput,
   output: ListRuleTypesOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4516,7 +4452,7 @@ export const listTagsForResource: API.OperationMethod<
     ListTagsForResourceError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -4566,7 +4502,7 @@ export const listWebhooks: API.OperationMethod<
     ListWebhooksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListWebhooksInput,
   output: ListWebhooksOutput,
   errors: [InvalidNextTokenException, ValidationException],
@@ -4599,7 +4535,7 @@ export const overrideStageCondition: API.OperationMethod<
   OverrideStageConditionResponse,
   OverrideStageConditionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: OverrideStageConditionInput,
   output: OverrideStageConditionResponse,
   errors: [
@@ -4635,7 +4571,7 @@ export const pollForJobs: API.OperationMethod<
   PollForJobsOutput,
   PollForJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PollForJobsInput,
   output: PollForJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
@@ -4660,7 +4596,7 @@ export const pollForThirdPartyJobs: API.OperationMethod<
   PollForThirdPartyJobsOutput,
   PollForThirdPartyJobsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PollForThirdPartyJobsInput,
   output: PollForThirdPartyJobsOutput,
   errors: [ActionTypeNotFoundException, ValidationException],
@@ -4684,7 +4620,7 @@ export const putActionRevision: API.OperationMethod<
   PutActionRevisionOutput,
   PutActionRevisionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutActionRevisionInput,
   output: PutActionRevisionOutput,
   errors: [
@@ -4715,7 +4651,7 @@ export const putApprovalResult: API.OperationMethod<
   PutApprovalResultOutput,
   PutApprovalResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutApprovalResultInput,
   output: PutApprovalResultOutput,
   errors: [
@@ -4744,7 +4680,7 @@ export const putJobFailureResult: API.OperationMethod<
   PutJobFailureResultResponse,
   PutJobFailureResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutJobFailureResultInput,
   output: PutJobFailureResultResponse,
   errors: [InvalidJobStateException, JobNotFoundException, ValidationException],
@@ -4767,7 +4703,7 @@ export const putJobSuccessResult: API.OperationMethod<
   PutJobSuccessResultResponse,
   PutJobSuccessResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutJobSuccessResultInput,
   output: PutJobSuccessResultResponse,
   errors: [
@@ -4795,7 +4731,7 @@ export const putThirdPartyJobFailureResult: API.OperationMethod<
   PutThirdPartyJobFailureResultResponse,
   PutThirdPartyJobFailureResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutThirdPartyJobFailureResultInput,
   output: PutThirdPartyJobFailureResultResponse,
   errors: [
@@ -4823,7 +4759,7 @@ export const putThirdPartyJobSuccessResult: API.OperationMethod<
   PutThirdPartyJobSuccessResultResponse,
   PutThirdPartyJobSuccessResultError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutThirdPartyJobSuccessResultInput,
   output: PutThirdPartyJobSuccessResultResponse,
   errors: [
@@ -4871,7 +4807,7 @@ export const putWebhook: API.OperationMethod<
   PutWebhookOutput,
   PutWebhookError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutWebhookInput,
   output: PutWebhookOutput,
   errors: [
@@ -4901,7 +4837,7 @@ export const registerWebhookWithThirdParty: API.OperationMethod<
   RegisterWebhookWithThirdPartyOutput,
   RegisterWebhookWithThirdPartyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterWebhookWithThirdPartyInput,
   output: RegisterWebhookWithThirdPartyOutput,
   errors: [ValidationException, WebhookNotFoundException],
@@ -4933,7 +4869,7 @@ export const retryStageExecution: API.OperationMethod<
   RetryStageExecutionOutput,
   RetryStageExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetryStageExecutionInput,
   output: RetryStageExecutionOutput,
   errors: [
@@ -4966,7 +4902,7 @@ export const rollbackStage: API.OperationMethod<
   RollbackStageOutput,
   RollbackStageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RollbackStageInput,
   output: RollbackStageOutput,
   errors: [
@@ -4997,7 +4933,7 @@ export const startPipelineExecution: API.OperationMethod<
   StartPipelineExecutionOutput,
   StartPipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartPipelineExecutionInput,
   output: StartPipelineExecutionOutput,
   errors: [
@@ -5030,7 +4966,7 @@ export const stopPipelineExecution: API.OperationMethod<
   StopPipelineExecutionOutput,
   StopPipelineExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopPipelineExecutionInput,
   output: StopPipelineExecutionOutput,
   errors: [
@@ -5061,7 +4997,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -5091,7 +5027,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -5121,7 +5057,7 @@ export const updateActionType: API.OperationMethod<
   UpdateActionTypeResponse,
   UpdateActionTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateActionTypeInput,
   output: UpdateActionTypeResponse,
   errors: [
@@ -5152,7 +5088,7 @@ export const updatePipeline: API.OperationMethod<
   UpdatePipelineOutput,
   UpdatePipelineError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePipelineInput,
   output: UpdatePipelineOutput,
   errors: [

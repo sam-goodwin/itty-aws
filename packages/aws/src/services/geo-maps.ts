@@ -191,7 +191,7 @@ export interface GetGlyphsRequest {
   FontStack: string;
   FontUnicodeRange: string;
 }
-export const GetGlyphsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetGlyphsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FontStack: S.String.pipe(T.HttpLabel("FontStack")),
     FontUnicodeRange: S.String.pipe(T.HttpLabel("FontUnicodeRange")),
@@ -214,7 +214,7 @@ export interface GetGlyphsResponse {
   CacheControl?: string;
   ETag?: string;
 }
-export const GetGlyphsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetGlyphsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -230,7 +230,7 @@ export interface GetSpritesRequest {
   ColorScheme: string;
   Variant: string;
 }
-export const GetSpritesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSpritesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FileName: S.String.pipe(T.HttpLabel("FileName")),
     Style: S.String.pipe(T.HttpLabel("Style")),
@@ -258,7 +258,7 @@ export interface GetSpritesResponse {
   CacheControl?: string;
   ETag?: string;
 }
-export const GetSpritesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSpritesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -290,7 +290,7 @@ export interface GetStaticMapRequest {
   Width: number;
   Zoom?: number;
 }
-export const GetStaticMapRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetStaticMapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BoundingBox: S.optional(SensitiveString).pipe(T.HttpQuery("bounding-box")),
     BoundedPositions: S.optional(SensitiveString).pipe(
@@ -340,7 +340,7 @@ export interface GetStaticMapResponse {
   ETag?: string;
   PricingBucket: string;
 }
-export const GetStaticMapResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetStaticMapResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -355,20 +355,19 @@ export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Name: S.String, Message: S.String }).pipe(
-      S.encodeKeys({ Name: "name", Message: "message" }),
-    ),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }).pipe(
+    S.encodeKeys({ Name: "name", Message: "message" }),
+  ),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type TravelModeList = string[];
-export const TravelModeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TravelModeList = /*@__PURE__*/ S.Array(S.String);
 export interface GetStyleDescriptorRequest {
   Style: string;
   ColorScheme?: string;
@@ -380,30 +379,29 @@ export interface GetStyleDescriptorRequest {
   Buildings?: string;
   Key?: string | redacted.Redacted<string>;
 }
-export const GetStyleDescriptorRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Style: S.String.pipe(T.HttpLabel("Style")),
-      ColorScheme: S.optional(S.String).pipe(T.HttpQuery("color-scheme")),
-      PoliticalView: S.optional(SensitiveString).pipe(
-        T.HttpQuery("political-view"),
-      ),
-      Terrain: S.optional(S.String).pipe(T.HttpQuery("terrain")),
-      ContourDensity: S.optional(S.String).pipe(T.HttpQuery("contour-density")),
-      Traffic: S.optional(S.String).pipe(T.HttpQuery("traffic")),
-      TravelModes: S.optional(TravelModeList).pipe(T.HttpQuery("travel-modes")),
-      Buildings: S.optional(S.String).pipe(T.HttpQuery("buildings")),
-      Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/styles/{Style}/descriptor" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetStyleDescriptorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Style: S.String.pipe(T.HttpLabel("Style")),
+    ColorScheme: S.optional(S.String).pipe(T.HttpQuery("color-scheme")),
+    PoliticalView: S.optional(SensitiveString).pipe(
+      T.HttpQuery("political-view"),
     ),
+    Terrain: S.optional(S.String).pipe(T.HttpQuery("terrain")),
+    ContourDensity: S.optional(S.String).pipe(T.HttpQuery("contour-density")),
+    Traffic: S.optional(S.String).pipe(T.HttpQuery("traffic")),
+    TravelModes: S.optional(TravelModeList).pipe(T.HttpQuery("travel-modes")),
+    Buildings: S.optional(S.String).pipe(T.HttpQuery("buildings")),
+    Key: S.optional(SensitiveString).pipe(T.HttpQuery("key")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/styles/{Style}/descriptor" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "GetStyleDescriptorRequest",
 }) as any as S.Schema<GetStyleDescriptorRequest>;
@@ -413,21 +411,18 @@ export interface GetStyleDescriptorResponse {
   CacheControl?: string;
   ETag?: string;
 }
-export const GetStyleDescriptorResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
-      ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-      CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-      ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
-    }),
+export const GetStyleDescriptorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
+    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+    CacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    ETag: S.optional(S.String).pipe(T.HttpHeader("ETag")),
+  }),
 ).annotate({
   identifier: "GetStyleDescriptorResponse",
 }) as any as S.Schema<GetStyleDescriptorResponse>;
 export type TileAdditionalFeatureList = string[];
-export const TileAdditionalFeatureList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const TileAdditionalFeatureList = /*@__PURE__*/ S.Array(S.String);
 export interface GetTileRequest {
   AdditionalFeatures?: string[];
   Tileset: string;
@@ -436,7 +431,7 @@ export interface GetTileRequest {
   Y: string | redacted.Redacted<string>;
   Key?: string | redacted.Redacted<string>;
 }
-export const GetTileRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AdditionalFeatures: S.optional(TileAdditionalFeatureList).pipe(
       T.HttpQuery("additional-features"),
@@ -464,7 +459,7 @@ export interface GetTileResponse {
   ETag?: string;
   PricingBucket: string;
 }
-export const GetTileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Blob: S.optional(T.Blob).pipe(T.HttpPayload()),
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
@@ -480,16 +475,17 @@ export const GetTileResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -498,10 +494,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     Reason: S.String,
     FieldList: ValidationExceptionFieldList,
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -516,7 +514,7 @@ export const getGlyphs: API.OperationMethod<
   GetGlyphsResponse,
   GetGlyphsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGlyphsRequest,
   output: GetGlyphsResponse,
   errors: [],
@@ -535,7 +533,7 @@ export const getSprites: API.OperationMethod<
   GetSpritesResponse,
   GetSpritesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpritesRequest,
   output: GetSpritesResponse,
   errors: [],
@@ -567,7 +565,7 @@ export const getStaticMap: API.OperationMethod<
   GetStaticMapResponse,
   GetStaticMapError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStaticMapRequest,
   output: GetStaticMapResponse,
   errors: [
@@ -591,7 +589,7 @@ export const getStyleDescriptor: API.OperationMethod<
   GetStyleDescriptorResponse,
   GetStyleDescriptorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetStyleDescriptorRequest,
   output: GetStyleDescriptorResponse,
   errors: [],
@@ -616,7 +614,7 @@ export const getTile: API.OperationMethod<
   GetTileResponse,
   GetTileError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTileRequest,
   output: GetTileResponse,
   errors: [

@@ -110,60 +110,57 @@ export interface ExchangeCodeForTokenRequestBody {
   redirectUri: string;
   clientId?: string | redacted.Redacted<string>;
 }
-export const ExchangeCodeForTokenRequestBody =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: SensitiveString,
-      redirectUri: S.String,
-      clientId: S.optional(SensitiveString),
-    }),
-  ).annotate({
-    identifier: "ExchangeCodeForTokenRequestBody",
-  }) as any as S.Schema<ExchangeCodeForTokenRequestBody>;
+export const ExchangeCodeForTokenRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: SensitiveString,
+    redirectUri: S.String,
+    clientId: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "ExchangeCodeForTokenRequestBody",
+}) as any as S.Schema<ExchangeCodeForTokenRequestBody>;
 export interface ExchangeCodeForTokenRequest {
   provider: string;
   request: ExchangeCodeForTokenRequestBody;
 }
-export const ExchangeCodeForTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      provider: S.String.pipe(T.HttpLabel("provider")),
-      request: ExchangeCodeForTokenRequestBody.pipe(T.HttpPayload()).annotate({
-        identifier: "ExchangeCodeForTokenRequestBody",
-      }),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/tokens/{provider}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ExchangeCodeForTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.String.pipe(T.HttpLabel("provider")),
+    request: ExchangeCodeForTokenRequestBody.pipe(T.HttpPayload()).annotate({
+      identifier: "ExchangeCodeForTokenRequestBody",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tokens/{provider}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ExchangeCodeForTokenRequest",
-  }) as any as S.Schema<ExchangeCodeForTokenRequest>;
+  ),
+).annotate({
+  identifier: "ExchangeCodeForTokenRequest",
+}) as any as S.Schema<ExchangeCodeForTokenRequest>;
 export interface ExchangeCodeForTokenResponse {
   accessToken: string | redacted.Redacted<string>;
   expiresIn: number;
   refreshToken: string | redacted.Redacted<string>;
 }
-export const ExchangeCodeForTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accessToken: SensitiveString,
-      expiresIn: S.Number,
-      refreshToken: SensitiveString,
-    }),
-  ).annotate({
-    identifier: "ExchangeCodeForTokenResponse",
-  }) as any as S.Schema<ExchangeCodeForTokenResponse>;
+export const ExchangeCodeForTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessToken: SensitiveString,
+    expiresIn: S.Number,
+    refreshToken: SensitiveString,
+  }),
+).annotate({
+  identifier: "ExchangeCodeForTokenResponse",
+}) as any as S.Schema<ExchangeCodeForTokenResponse>;
 export interface GetMetadataRequest {
   appId: string;
   environmentName: string;
 }
-export const GetMetadataRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -184,14 +181,14 @@ export const GetMetadataRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetMetadataRequest",
 }) as any as S.Schema<GetMetadataRequest>;
 export type FeaturesMap = { [key: string]: string | undefined };
-export const FeaturesMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const FeaturesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface GetMetadataResponse {
   features: { [key: string]: string | undefined };
 }
-export const GetMetadataResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMetadataResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ features: FeaturesMap }),
 ).annotate({
   identifier: "GetMetadataResponse",
@@ -199,39 +196,34 @@ export const GetMetadataResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: Tags }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: Tags }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutMetadataFlagBody {
   newValue: string;
 }
-export const PutMetadataFlagBody = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutMetadataFlagBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ newValue: S.String }),
 ).annotate({
   identifier: "PutMetadataFlagBody",
@@ -242,34 +234,33 @@ export interface PutMetadataFlagRequest {
   featureName: string;
   body: PutMetadataFlagBody;
 }
-export const PutMetadataFlagRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-      featureName: S.String.pipe(T.HttpLabel("featureName")),
-      body: PutMetadataFlagBody.pipe(T.HttpPayload()).annotate({
-        identifier: "PutMetadataFlagBody",
+export const PutMetadataFlagRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    featureName: S.String.pipe(T.HttpLabel("featureName")),
+    body: PutMetadataFlagBody.pipe(T.HttpPayload()).annotate({
+      identifier: "PutMetadataFlagBody",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/app/{appId}/environment/{environmentName}/metadata/features/{featureName}",
       }),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/app/{appId}/environment/{environmentName}/metadata/features/{featureName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutMetadataFlagRequest",
 }) as any as S.Schema<PutMetadataFlagRequest>;
 export interface PutMetadataFlagResponse {}
-export const PutMetadataFlagResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const PutMetadataFlagResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "PutMetadataFlagResponse",
 }) as any as S.Schema<PutMetadataFlagResponse>;
@@ -277,9 +268,8 @@ export interface RefreshTokenRequestBody {
   token: string | redacted.Redacted<string>;
   clientId?: string | redacted.Redacted<string>;
 }
-export const RefreshTokenRequestBody = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ token: SensitiveString, clientId: S.optional(SensitiveString) }),
+export const RefreshTokenRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ token: SensitiveString, clientId: S.optional(SensitiveString) }),
 ).annotate({
   identifier: "RefreshTokenRequestBody",
 }) as any as S.Schema<RefreshTokenRequestBody>;
@@ -287,7 +277,7 @@ export interface RefreshTokenRequest {
   provider: string;
   refreshTokenBody: RefreshTokenRequestBody;
 }
-export const RefreshTokenRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RefreshTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     provider: S.String.pipe(T.HttpLabel("provider")),
     refreshTokenBody: RefreshTokenRequestBody.pipe(T.HttpPayload()).annotate({
@@ -310,7 +300,7 @@ export interface RefreshTokenResponse {
   accessToken: string | redacted.Redacted<string>;
   expiresIn: number;
 }
-export const RefreshTokenResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RefreshTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accessToken: SensitiveString, expiresIn: S.Number }),
 ).annotate({
   identifier: "RefreshTokenResponse",
@@ -319,7 +309,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: Tags,
@@ -337,18 +327,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -366,17 +356,17 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type JSModule = "es2020" | "esnext" | (string & {});
-export const JSModule = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const JSModule = /*@__PURE__*/ S.String;
 export type JSTarget = "es2015" | "es2020" | (string & {});
-export const JSTarget = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const JSTarget = /*@__PURE__*/ S.String;
 export type JSScript = "jsx" | "tsx" | "js" | (string & {});
-export const JSScript = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const JSScript = /*@__PURE__*/ S.String;
 export interface GraphQLRenderConfig {
   typesFilePath: string;
   queriesFilePath: string;
@@ -384,7 +374,7 @@ export interface GraphQLRenderConfig {
   subscriptionsFilePath: string;
   fragmentsFilePath: string;
 }
-export const GraphQLRenderConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GraphQLRenderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     typesFilePath: S.String,
     queriesFilePath: S.String,
@@ -396,13 +386,13 @@ export const GraphQLRenderConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GraphQLRenderConfig",
 }) as any as S.Schema<GraphQLRenderConfig>;
 export interface DataStoreRenderConfig {}
-export const DataStoreRenderConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataStoreRenderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DataStoreRenderConfig",
 }) as any as S.Schema<DataStoreRenderConfig>;
 export interface NoApiRenderConfig {}
-export const NoApiRenderConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NoApiRenderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "NoApiRenderConfig",
@@ -423,13 +413,13 @@ export type ApiConfiguration =
       dataStoreConfig?: never;
       noApiConfig: NoApiRenderConfig;
     };
-export const ApiConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ApiConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ graphQLConfig: GraphQLRenderConfig }),
   S.Struct({ dataStoreConfig: DataStoreRenderConfig }),
   S.Struct({ noApiConfig: NoApiRenderConfig }),
 ]);
 export type ReactCodegenDependencies = { [key: string]: string | undefined };
-export const ReactCodegenDependencies = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ReactCodegenDependencies = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -442,27 +432,25 @@ export interface ReactStartCodegenJobData {
   apiConfiguration?: ApiConfiguration;
   dependencies?: { [key: string]: string | undefined };
 }
-export const ReactStartCodegenJobData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      module: S.optional(JSModule),
-      target: S.optional(JSTarget),
-      script: S.optional(JSScript),
-      renderTypeDeclarations: S.optional(S.Boolean),
-      inlineSourceMap: S.optional(S.Boolean),
-      apiConfiguration: S.optional(ApiConfiguration),
-      dependencies: S.optional(ReactCodegenDependencies),
-    }),
+export const ReactStartCodegenJobData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    module: S.optional(JSModule),
+    target: S.optional(JSTarget),
+    script: S.optional(JSScript),
+    renderTypeDeclarations: S.optional(S.Boolean),
+    inlineSourceMap: S.optional(S.Boolean),
+    apiConfiguration: S.optional(ApiConfiguration),
+    dependencies: S.optional(ReactCodegenDependencies),
+  }),
 ).annotate({
   identifier: "ReactStartCodegenJobData",
 }) as any as S.Schema<ReactStartCodegenJobData>;
 export type CodegenJobRenderConfig = { react: ReactStartCodegenJobData };
-export const CodegenJobRenderConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const CodegenJobRenderConfig = /*@__PURE__*/ S.Union([
   S.Struct({ react: ReactStartCodegenJobData }),
 ]);
 export type CodegenJobGenericDataSourceType = "DataStore" | (string & {});
-export const CodegenJobGenericDataSourceType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CodegenJobGenericDataSourceType = /*@__PURE__*/ S.String;
 export type CodegenGenericDataFieldDataType =
   | "ID"
   | "String"
@@ -482,22 +470,17 @@ export type CodegenGenericDataFieldDataType =
   | "Model"
   | "NonModel"
   | (string & {});
-export const CodegenGenericDataFieldDataType =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CodegenGenericDataFieldDataType = /*@__PURE__*/ S.String;
 export type GenericDataRelationshipType =
   | "HAS_MANY"
   | "HAS_ONE"
   | "BELONGS_TO"
   | (string & {});
-export const GenericDataRelationshipType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GenericDataRelationshipType = /*@__PURE__*/ S.String;
 export type RelatedModelFieldsList = string[];
-export const RelatedModelFieldsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const RelatedModelFieldsList = /*@__PURE__*/ S.Array(S.String);
 export type AssociatedFieldsList = string[];
-export const AssociatedFieldsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const AssociatedFieldsList = /*@__PURE__*/ S.Array(S.String);
 export interface CodegenGenericDataRelationshipType {
   type: GenericDataRelationshipType;
   relatedModelName: string;
@@ -509,22 +492,21 @@ export interface CodegenGenericDataRelationshipType {
   associatedFields?: string[];
   isHasManyIndex?: boolean;
 }
-export const CodegenGenericDataRelationshipType =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GenericDataRelationshipType,
-      relatedModelName: S.String,
-      relatedModelFields: S.optional(RelatedModelFieldsList),
-      canUnlinkAssociatedModel: S.optional(S.Boolean),
-      relatedJoinFieldName: S.optional(S.String),
-      relatedJoinTableName: S.optional(S.String),
-      belongsToFieldOnRelatedModel: S.optional(S.String),
-      associatedFields: S.optional(AssociatedFieldsList),
-      isHasManyIndex: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "CodegenGenericDataRelationshipType",
-  }) as any as S.Schema<CodegenGenericDataRelationshipType>;
+export const CodegenGenericDataRelationshipType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: GenericDataRelationshipType,
+    relatedModelName: S.String,
+    relatedModelFields: S.optional(RelatedModelFieldsList),
+    canUnlinkAssociatedModel: S.optional(S.Boolean),
+    relatedJoinFieldName: S.optional(S.String),
+    relatedJoinTableName: S.optional(S.String),
+    belongsToFieldOnRelatedModel: S.optional(S.String),
+    associatedFields: S.optional(AssociatedFieldsList),
+    isHasManyIndex: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CodegenGenericDataRelationshipType",
+}) as any as S.Schema<CodegenGenericDataRelationshipType>;
 export interface CodegenGenericDataField {
   dataType: CodegenGenericDataFieldDataType;
   dataTypeValue: string;
@@ -533,90 +515,84 @@ export interface CodegenGenericDataField {
   isArray: boolean;
   relationship?: CodegenGenericDataRelationshipType;
 }
-export const CodegenGenericDataField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataType: CodegenGenericDataFieldDataType,
-      dataTypeValue: S.String,
-      required: S.Boolean,
-      readOnly: S.Boolean,
-      isArray: S.Boolean,
-      relationship: S.optional(CodegenGenericDataRelationshipType),
-    }),
+export const CodegenGenericDataField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataType: CodegenGenericDataFieldDataType,
+    dataTypeValue: S.String,
+    required: S.Boolean,
+    readOnly: S.Boolean,
+    isArray: S.Boolean,
+    relationship: S.optional(CodegenGenericDataRelationshipType),
+  }),
 ).annotate({
   identifier: "CodegenGenericDataField",
 }) as any as S.Schema<CodegenGenericDataField>;
 export type CodegenGenericDataFields = {
   [key: string]: CodegenGenericDataField | undefined;
 };
-export const CodegenGenericDataFields = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const CodegenGenericDataFields = /*@__PURE__*/ S.Record(
   S.String,
   CodegenGenericDataField.pipe(S.optional),
 );
 export type CodegenPrimaryKeysList = string[];
-export const CodegenPrimaryKeysList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const CodegenPrimaryKeysList = /*@__PURE__*/ S.Array(S.String);
 export interface CodegenGenericDataModel {
   fields: { [key: string]: CodegenGenericDataField | undefined };
   isJoinTable?: boolean;
   primaryKeys: string[];
 }
-export const CodegenGenericDataModel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fields: CodegenGenericDataFields,
-      isJoinTable: S.optional(S.Boolean),
-      primaryKeys: CodegenPrimaryKeysList,
-    }),
+export const CodegenGenericDataModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: CodegenGenericDataFields,
+    isJoinTable: S.optional(S.Boolean),
+    primaryKeys: CodegenPrimaryKeysList,
+  }),
 ).annotate({
   identifier: "CodegenGenericDataModel",
 }) as any as S.Schema<CodegenGenericDataModel>;
 export type CodegenGenericDataModels = {
   [key: string]: CodegenGenericDataModel | undefined;
 };
-export const CodegenGenericDataModels = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const CodegenGenericDataModels = /*@__PURE__*/ S.Record(
   S.String,
   CodegenGenericDataModel.pipe(S.optional),
 );
 export type CodegenGenericDataEnumValuesList = string[];
-export const CodegenGenericDataEnumValuesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const CodegenGenericDataEnumValuesList = /*@__PURE__*/ S.Array(S.String);
 export interface CodegenGenericDataEnum {
   values: string[];
 }
-export const CodegenGenericDataEnum = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ values: CodegenGenericDataEnumValuesList }),
+export const CodegenGenericDataEnum = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ values: CodegenGenericDataEnumValuesList }),
 ).annotate({
   identifier: "CodegenGenericDataEnum",
 }) as any as S.Schema<CodegenGenericDataEnum>;
 export type CodegenGenericDataEnums = {
   [key: string]: CodegenGenericDataEnum | undefined;
 };
-export const CodegenGenericDataEnums = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const CodegenGenericDataEnums = /*@__PURE__*/ S.Record(
   S.String,
   CodegenGenericDataEnum.pipe(S.optional),
 );
 export type CodegenGenericDataNonModelFields = {
   [key: string]: CodegenGenericDataField | undefined;
 };
-export const CodegenGenericDataNonModelFields =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
-    S.String,
-    CodegenGenericDataField.pipe(S.optional),
-  );
+export const CodegenGenericDataNonModelFields = /*@__PURE__*/ S.Record(
+  S.String,
+  CodegenGenericDataField.pipe(S.optional),
+);
 export interface CodegenGenericDataNonModel {
   fields: { [key: string]: CodegenGenericDataField | undefined };
 }
-export const CodegenGenericDataNonModel = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ fields: CodegenGenericDataNonModelFields }),
+export const CodegenGenericDataNonModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ fields: CodegenGenericDataNonModelFields }),
 ).annotate({
   identifier: "CodegenGenericDataNonModel",
 }) as any as S.Schema<CodegenGenericDataNonModel>;
 export type CodegenGenericDataNonModels = {
   [key: string]: CodegenGenericDataNonModel | undefined;
 };
-export const CodegenGenericDataNonModels = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const CodegenGenericDataNonModels = /*@__PURE__*/ S.Record(
   S.String,
   CodegenGenericDataNonModel.pipe(S.optional),
 );
@@ -626,22 +602,21 @@ export interface CodegenJobGenericDataSchema {
   enums: { [key: string]: CodegenGenericDataEnum | undefined };
   nonModels: { [key: string]: CodegenGenericDataNonModel | undefined };
 }
-export const CodegenJobGenericDataSchema =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataSourceType: CodegenJobGenericDataSourceType,
-      models: CodegenGenericDataModels,
-      enums: CodegenGenericDataEnums,
-      nonModels: CodegenGenericDataNonModels,
-    }),
-  ).annotate({
-    identifier: "CodegenJobGenericDataSchema",
-  }) as any as S.Schema<CodegenJobGenericDataSchema>;
+export const CodegenJobGenericDataSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataSourceType: CodegenJobGenericDataSourceType,
+    models: CodegenGenericDataModels,
+    enums: CodegenGenericDataEnums,
+    nonModels: CodegenGenericDataNonModels,
+  }),
+).annotate({
+  identifier: "CodegenJobGenericDataSchema",
+}) as any as S.Schema<CodegenJobGenericDataSchema>;
 export interface CodegenFeatureFlags {
   isRelationshipSupported?: boolean;
   isNonModelSupported?: boolean;
 }
-export const CodegenFeatureFlags = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CodegenFeatureFlags = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isRelationshipSupported: S.optional(S.Boolean),
     isNonModelSupported: S.optional(S.Boolean),
@@ -656,7 +631,7 @@ export interface StartCodegenJobData {
   features?: CodegenFeatureFlags;
   tags?: { [key: string]: string | undefined };
 }
-export const StartCodegenJobData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartCodegenJobData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     renderConfig: CodegenJobRenderConfig,
     genericDataSchema: S.optional(CodegenJobGenericDataSchema),
@@ -673,31 +648,30 @@ export interface StartCodegenJobRequest {
   clientToken?: string;
   codegenJobToCreate: StartCodegenJobData;
 }
-export const StartCodegenJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-      clientToken: S.optional(S.String).pipe(
-        T.HttpQuery("clientToken"),
-        T.IdempotencyToken(),
-      ),
-      codegenJobToCreate: StartCodegenJobData.pipe(T.HttpPayload()).annotate({
-        identifier: "StartCodegenJobData",
-      }),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/app/{appId}/environment/{environmentName}/codegen-jobs",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartCodegenJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
     ),
+    codegenJobToCreate: StartCodegenJobData.pipe(T.HttpPayload()).annotate({
+      identifier: "StartCodegenJobData",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/app/{appId}/environment/{environmentName}/codegen-jobs",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "StartCodegenJobRequest",
 }) as any as S.Schema<StartCodegenJobRequest>;
@@ -706,11 +680,11 @@ export type CodegenJobStatus =
   | "failed"
   | "succeeded"
   | (string & {});
-export const CodegenJobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CodegenJobStatus = /*@__PURE__*/ S.String;
 export interface CodegenJobAsset {
   downloadUrl?: string;
 }
-export const CodegenJobAsset = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CodegenJobAsset = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ downloadUrl: S.optional(S.String) }),
 ).annotate({
   identifier: "CodegenJobAsset",
@@ -721,7 +695,7 @@ export interface CodegenDependency {
   isSemVer?: boolean;
   reason?: string;
 }
-export const CodegenDependency = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CodegenDependency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     supportedVersion: S.optional(S.String),
@@ -732,8 +706,7 @@ export const CodegenDependency = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CodegenDependency",
 }) as any as S.Schema<CodegenDependency>;
 export type CodegenDependencies = CodegenDependency[];
-export const CodegenDependencies =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CodegenDependency);
+export const CodegenDependencies = /*@__PURE__*/ S.Array(CodegenDependency);
 export interface CodegenJob {
   id: string;
   appId: string;
@@ -750,7 +723,7 @@ export interface CodegenJob {
   modifiedAt?: Date;
   dependencies?: CodegenDependency[];
 }
-export const CodegenJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CodegenJob = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     appId: S.String,
@@ -775,13 +748,12 @@ export const CodegenJob = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StartCodegenJobResponse {
   entity?: CodegenJob;
 }
-export const StartCodegenJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      entity: S.optional(CodegenJob)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "CodegenJob" }),
-    }),
+export const StartCodegenJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entity: S.optional(CodegenJob)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "CodegenJob" }),
+  }),
 ).annotate({
   identifier: "StartCodegenJobResponse",
 }) as any as S.Schema<StartCodegenJobResponse>;
@@ -790,7 +762,7 @@ export interface GetCodegenJobRequest {
   environmentName: string;
   id: string;
 }
-export const GetCodegenJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetCodegenJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -814,7 +786,7 @@ export const GetCodegenJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetCodegenJobResponse {
   job?: CodegenJob;
 }
-export const GetCodegenJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetCodegenJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     job: S.optional(CodegenJob)
       .pipe(T.HttpPayload())
@@ -829,26 +801,25 @@ export interface ListCodegenJobsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListCodegenJobsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/app/{appId}/environment/{environmentName}/codegen-jobs",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListCodegenJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/app/{appId}/environment/{environmentName}/codegen-jobs",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListCodegenJobsRequest",
 }) as any as S.Schema<ListCodegenJobsRequest>;
@@ -859,7 +830,7 @@ export interface CodegenJobSummary {
   createdAt?: Date;
   modifiedAt?: Date;
 }
-export const CodegenJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CodegenJobSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String,
     environmentName: S.String,
@@ -875,18 +846,16 @@ export const CodegenJobSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CodegenJobSummary",
 }) as any as S.Schema<CodegenJobSummary>;
 export type CodegenJobSummaryList = CodegenJobSummary[];
-export const CodegenJobSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(CodegenJobSummary);
+export const CodegenJobSummaryList = /*@__PURE__*/ S.Array(CodegenJobSummary);
 export interface ListCodegenJobsResponse {
   entities: CodegenJobSummary[];
   nextToken?: string;
 }
-export const ListCodegenJobsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      entities: CodegenJobSummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListCodegenJobsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entities: CodegenJobSummaryList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListCodegenJobsResponse",
 }) as any as S.Schema<ListCodegenJobsResponse>;
@@ -894,28 +863,27 @@ export interface ComponentPropertyBindingProperties {
   property: string;
   field?: string;
 }
-export const ComponentPropertyBindingProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ property: S.String, field: S.optional(S.String) }),
-  ).annotate({
-    identifier: "ComponentPropertyBindingProperties",
-  }) as any as S.Schema<ComponentPropertyBindingProperties>;
+export const ComponentPropertyBindingProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ property: S.String, field: S.optional(S.String) }),
+).annotate({
+  identifier: "ComponentPropertyBindingProperties",
+}) as any as S.Schema<ComponentPropertyBindingProperties>;
 export interface FormBindingElement {
   element: string;
   property: string;
 }
-export const FormBindingElement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FormBindingElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ element: S.String, property: S.String }),
 ).annotate({
   identifier: "FormBindingElement",
 }) as any as S.Schema<FormBindingElement>;
 export type FormBindings = { [key: string]: FormBindingElement | undefined };
-export const FormBindings = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const FormBindings = /*@__PURE__*/ S.Record(
   S.String,
   FormBindingElement.pipe(S.optional),
 );
 export type ComponentPropertyList = ComponentProperty[];
-export const ComponentPropertyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ComponentPropertyList = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<ComponentProperty> => ComponentProperty).annotate({
     identifier: "ComponentProperty",
   }),
@@ -929,25 +897,24 @@ export interface ComponentConditionProperty {
   else?: ComponentProperty;
   operandType?: string;
 }
-export const ComponentConditionProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      property: S.optional(S.String),
-      field: S.optional(S.String),
-      operator: S.optional(S.String),
-      operand: S.optional(S.String),
-      then: S.optional(
-        S.suspend(
-          (): S.Schema<ComponentProperty> => ComponentProperty,
-        ).annotate({ identifier: "ComponentProperty" }),
-      ),
-      else: S.optional(
-        S.suspend(
-          (): S.Schema<ComponentProperty> => ComponentProperty,
-        ).annotate({ identifier: "ComponentProperty" }),
-      ),
-      operandType: S.optional(S.String),
-    }),
+export const ComponentConditionProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    property: S.optional(S.String),
+    field: S.optional(S.String),
+    operator: S.optional(S.String),
+    operand: S.optional(S.String),
+    then: S.optional(
+      S.suspend((): S.Schema<ComponentProperty> => ComponentProperty).annotate({
+        identifier: "ComponentProperty",
+      }),
+    ),
+    else: S.optional(
+      S.suspend((): S.Schema<ComponentProperty> => ComponentProperty).annotate({
+        identifier: "ComponentProperty",
+      }),
+    ),
+    operandType: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ComponentConditionProperty",
 }) as any as S.Schema<ComponentConditionProperty>;
@@ -968,7 +935,7 @@ export interface ComponentProperty {
   componentName?: string;
   property?: string;
 }
-export const ComponentProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComponentProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     bindingProperties: S.optional(ComponentPropertyBindingProperties),
@@ -1000,7 +967,7 @@ export const ComponentProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ComponentProperties = {
   [key: string]: ComponentProperty | undefined;
 };
-export const ComponentProperties = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ComponentProperties = /*@__PURE__*/ S.Record(
   S.String,
   S.suspend((): S.Schema<ComponentProperty> => ComponentProperty)
     .annotate({ identifier: "ComponentProperty" })
@@ -1011,16 +978,15 @@ export interface MutationActionSetStateParameter {
   property: string;
   set: ComponentProperty;
 }
-export const MutationActionSetStateParameter =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      componentName: S.String,
-      property: S.String,
-      set: ComponentProperty,
-    }),
-  ).annotate({
-    identifier: "MutationActionSetStateParameter",
-  }) as any as S.Schema<MutationActionSetStateParameter>;
+export const MutationActionSetStateParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    componentName: S.String,
+    property: S.String,
+    set: ComponentProperty,
+  }),
+).annotate({
+  identifier: "MutationActionSetStateParameter",
+}) as any as S.Schema<MutationActionSetStateParameter>;
 export interface ActionParameters {
   type?: ComponentProperty;
   url?: ComponentProperty;
@@ -1032,7 +998,7 @@ export interface ActionParameters {
   fields?: { [key: string]: ComponentProperty | undefined };
   state?: MutationActionSetStateParameter;
 }
-export const ActionParameters = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ActionParameters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.optional(ComponentProperty),
     url: S.optional(ComponentProperty),
@@ -1052,7 +1018,7 @@ export interface ComponentEvent {
   parameters?: ActionParameters;
   bindingEvent?: string;
 }
-export const ComponentEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComponentEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: S.optional(S.String),
     parameters: S.optional(ActionParameters),
@@ -1060,7 +1026,7 @@ export const ComponentEvent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ComponentEvent" }) as any as S.Schema<ComponentEvent>;
 export type ComponentEvents = { [key: string]: ComponentEvent | undefined };
-export const ComponentEvents = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ComponentEvents = /*@__PURE__*/ S.Record(
   S.String,
   ComponentEvent.pipe(S.optional),
 );
@@ -1072,7 +1038,7 @@ export interface ComponentChild {
   events?: { [key: string]: ComponentEvent | undefined };
   sourceId?: string;
 }
-export const ComponentChild = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComponentChild = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     componentType: S.String,
     name: S.String,
@@ -1087,25 +1053,25 @@ export const ComponentChild = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ComponentChild" }) as any as S.Schema<ComponentChild>;
 export type ComponentChildList = ComponentChild[];
-export const ComponentChildList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ComponentChildList = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<ComponentChild> => ComponentChild).annotate({
     identifier: "ComponentChild",
   }),
 ) as any as S.Schema<ComponentChildList>;
 export type ComponentVariantValues = { [key: string]: string | undefined };
-export const ComponentVariantValues = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ComponentVariantValues = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type ComponentOverridesValue = { [key: string]: string | undefined };
-export const ComponentOverridesValue = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ComponentOverridesValue = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type ComponentOverrides = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
-export const ComponentOverrides = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ComponentOverrides = /*@__PURE__*/ S.Record(
   S.String,
   ComponentOverridesValue.pipe(S.optional),
 );
@@ -1115,7 +1081,7 @@ export interface ComponentVariant {
     [key: string]: { [key: string]: string | undefined } | undefined;
   };
 }
-export const ComponentVariant = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComponentVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     variantValues: S.optional(ComponentVariantValues),
     overrides: S.optional(ComponentOverrides),
@@ -1124,8 +1090,7 @@ export const ComponentVariant = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ComponentVariant",
 }) as any as S.Schema<ComponentVariant>;
 export type ComponentVariants = ComponentVariant[];
-export const ComponentVariants =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ComponentVariant);
+export const ComponentVariants = /*@__PURE__*/ S.Array(ComponentVariant);
 export interface Predicate {
   or?: Predicate[];
   and?: Predicate[];
@@ -1134,7 +1099,7 @@ export interface Predicate {
   operand?: string;
   operandType?: string;
 }
-export const Predicate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Predicate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     or: S.optional(
       S.suspend(() => PredicateList).annotate({ identifier: "PredicateList" }),
@@ -1149,7 +1114,7 @@ export const Predicate = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Predicate" }) as any as S.Schema<Predicate>;
 export type PredicateList = Predicate[];
-export const PredicateList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const PredicateList = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<Predicate> => Predicate).annotate({
     identifier: "Predicate",
   }),
@@ -1165,7 +1130,7 @@ export interface ComponentBindingPropertiesValueProperties {
   slotName?: string;
 }
 export const ComponentBindingPropertiesValueProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       model: S.optional(S.String),
       field: S.optional(S.String),
@@ -1184,62 +1149,58 @@ export interface ComponentBindingPropertiesValue {
   bindingProperties?: ComponentBindingPropertiesValueProperties;
   defaultValue?: string;
 }
-export const ComponentBindingPropertiesValue =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(S.String),
-      bindingProperties: S.optional(ComponentBindingPropertiesValueProperties),
-      defaultValue: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ComponentBindingPropertiesValue",
-  }) as any as S.Schema<ComponentBindingPropertiesValue>;
+export const ComponentBindingPropertiesValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    bindingProperties: S.optional(ComponentBindingPropertiesValueProperties),
+    defaultValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ComponentBindingPropertiesValue",
+}) as any as S.Schema<ComponentBindingPropertiesValue>;
 export type ComponentBindingProperties = {
   [key: string]: ComponentBindingPropertiesValue | undefined;
 };
-export const ComponentBindingProperties = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ComponentBindingProperties = /*@__PURE__*/ S.Record(
   S.String,
   ComponentBindingPropertiesValue.pipe(S.optional),
 );
 export type SortDirection = "ASC" | "DESC" | (string & {});
-export const SortDirection = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SortDirection = /*@__PURE__*/ S.String;
 export interface SortProperty {
   field: string;
   direction: SortDirection;
 }
-export const SortProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SortProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ field: S.String, direction: SortDirection }),
 ).annotate({ identifier: "SortProperty" }) as any as S.Schema<SortProperty>;
 export type SortPropertyList = SortProperty[];
-export const SortPropertyList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SortProperty);
+export const SortPropertyList = /*@__PURE__*/ S.Array(SortProperty);
 export type IdentifierList = string[];
-export const IdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const IdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface ComponentDataConfiguration {
   model: string;
   sort?: SortProperty[];
   predicate?: Predicate;
   identifiers?: string[];
 }
-export const ComponentDataConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      model: S.String,
-      sort: S.optional(SortPropertyList),
-      predicate: S.optional(Predicate),
-      identifiers: S.optional(IdentifierList),
-    }),
+export const ComponentDataConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    model: S.String,
+    sort: S.optional(SortPropertyList),
+    predicate: S.optional(Predicate),
+    identifiers: S.optional(IdentifierList),
+  }),
 ).annotate({
   identifier: "ComponentDataConfiguration",
 }) as any as S.Schema<ComponentDataConfiguration>;
 export type ComponentCollectionProperties = {
   [key: string]: ComponentDataConfiguration | undefined;
 };
-export const ComponentCollectionProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
-    S.String,
-    ComponentDataConfiguration.pipe(S.optional),
-  );
+export const ComponentCollectionProperties = /*@__PURE__*/ S.Record(
+  S.String,
+  ComponentDataConfiguration.pipe(S.optional),
+);
 export interface CreateComponentData {
   name: string;
   sourceId?: string;
@@ -1260,7 +1221,7 @@ export interface CreateComponentData {
   events?: { [key: string]: ComponentEvent | undefined };
   schemaVersion?: string;
 }
-export const CreateComponentData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateComponentData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     sourceId: S.optional(S.String),
@@ -1284,31 +1245,30 @@ export interface CreateComponentRequest {
   clientToken?: string;
   componentToCreate: CreateComponentData;
 }
-export const CreateComponentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-      clientToken: S.optional(S.String).pipe(
-        T.HttpQuery("clientToken"),
-        T.IdempotencyToken(),
-      ),
-      componentToCreate: CreateComponentData.pipe(T.HttpPayload()).annotate({
-        identifier: "CreateComponentData",
-      }),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/app/{appId}/environment/{environmentName}/components",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateComponentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
     ),
+    componentToCreate: CreateComponentData.pipe(T.HttpPayload()).annotate({
+      identifier: "CreateComponentData",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/app/{appId}/environment/{environmentName}/components",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "CreateComponentRequest",
 }) as any as S.Schema<CreateComponentRequest>;
@@ -1337,7 +1297,7 @@ export interface Component {
   events?: { [key: string]: ComponentEvent | undefined };
   schemaVersion?: string;
 }
-export const Component = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Component = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String,
     environmentName: S.String,
@@ -1363,13 +1323,12 @@ export const Component = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateComponentResponse {
   entity?: Component;
 }
-export const CreateComponentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      entity: S.optional(Component)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "Component" }),
-    }),
+export const CreateComponentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entity: S.optional(Component)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "Component" }),
+  }),
 ).annotate({
   identifier: "CreateComponentResponse",
 }) as any as S.Schema<CreateComponentResponse>;
@@ -1378,7 +1337,7 @@ export interface GetComponentRequest {
   environmentName: string;
   id: string;
 }
-export const GetComponentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetComponentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -1402,7 +1361,7 @@ export const GetComponentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetComponentResponse {
   component?: Component;
 }
-export const GetComponentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetComponentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     component: S.optional(Component)
       .pipe(T.HttpPayload())
@@ -1431,7 +1390,7 @@ export interface UpdateComponentData {
   events?: { [key: string]: ComponentEvent | undefined };
   schemaVersion?: string;
 }
-export const UpdateComponentData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateComponentData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1456,45 +1415,43 @@ export interface UpdateComponentRequest {
   clientToken?: string;
   updatedComponent: UpdateComponentData;
 }
-export const UpdateComponentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-      id: S.String.pipe(T.HttpLabel("id")),
-      clientToken: S.optional(S.String).pipe(
-        T.HttpQuery("clientToken"),
-        T.IdempotencyToken(),
-      ),
-      updatedComponent: UpdateComponentData.pipe(T.HttpPayload()).annotate({
-        identifier: "UpdateComponentData",
-      }),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PATCH",
-          uri: "/app/{appId}/environment/{environmentName}/components/{id}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateComponentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
     ),
+    updatedComponent: UpdateComponentData.pipe(T.HttpPayload()).annotate({
+      identifier: "UpdateComponentData",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/app/{appId}/environment/{environmentName}/components/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "UpdateComponentRequest",
 }) as any as S.Schema<UpdateComponentRequest>;
 export interface UpdateComponentResponse {
   entity?: Component;
 }
-export const UpdateComponentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      entity: S.optional(Component)
-        .pipe(T.HttpPayload())
-        .annotate({ identifier: "Component" }),
-    }),
+export const UpdateComponentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entity: S.optional(Component)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "Component" }),
+  }),
 ).annotate({
   identifier: "UpdateComponentResponse",
 }) as any as S.Schema<UpdateComponentResponse>;
@@ -1503,31 +1460,30 @@ export interface DeleteComponentRequest {
   environmentName: string;
   id: string;
 }
-export const DeleteComponentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-      id: S.String.pipe(T.HttpLabel("id")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/app/{appId}/environment/{environmentName}/components/{id}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteComponentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/app/{appId}/environment/{environmentName}/components/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteComponentRequest",
 }) as any as S.Schema<DeleteComponentRequest>;
 export interface DeleteComponentResponse {}
-export const DeleteComponentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteComponentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteComponentResponse",
 }) as any as S.Schema<DeleteComponentResponse>;
@@ -1537,7 +1493,7 @@ export interface ListComponentsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListComponentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListComponentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -1566,7 +1522,7 @@ export interface ComponentSummary {
   name: string;
   componentType: string;
 }
-export const ComponentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ComponentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String,
     environmentName: S.String,
@@ -1578,18 +1534,13 @@ export const ComponentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ComponentSummary",
 }) as any as S.Schema<ComponentSummary>;
 export type ComponentSummaryList = ComponentSummary[];
-export const ComponentSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ComponentSummary);
+export const ComponentSummaryList = /*@__PURE__*/ S.Array(ComponentSummary);
 export interface ListComponentsResponse {
   entities: ComponentSummary[];
   nextToken?: string;
 }
-export const ListComponentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      entities: ComponentSummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListComponentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entities: ComponentSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListComponentsResponse",
 }) as any as S.Schema<ListComponentsResponse>;
@@ -1598,36 +1549,35 @@ export interface ExportComponentsRequest {
   environmentName: string;
   nextToken?: string;
 }
-export const ExportComponentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      appId: S.String.pipe(T.HttpLabel("appId")),
-      environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/export/app/{appId}/environment/{environmentName}/components",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ExportComponentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/export/app/{appId}/environment/{environmentName}/components",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ExportComponentsRequest",
 }) as any as S.Schema<ExportComponentsRequest>;
 export type ComponentList = Component[];
-export const ComponentList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Component);
+export const ComponentList = /*@__PURE__*/ S.Array(Component);
 export interface ExportComponentsResponse {
   entities: Component[];
   nextToken?: string;
 }
-export const ExportComponentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ entities: ComponentList, nextToken: S.optional(S.String) }),
+export const ExportComponentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entities: ComponentList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ExportComponentsResponse",
 }) as any as S.Schema<ExportComponentsResponse>;
@@ -1635,20 +1585,20 @@ export interface FormDataTypeConfig {
   dataSourceType: string;
   dataTypeName: string;
 }
-export const FormDataTypeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FormDataTypeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSourceType: S.String, dataTypeName: S.String }),
 ).annotate({
   identifier: "FormDataTypeConfig",
 }) as any as S.Schema<FormDataTypeConfig>;
 export type FormActionType = "create" | "update" | (string & {});
-export const FormActionType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FormActionType = /*@__PURE__*/ S.String;
 export type FixedPosition = "first" | (string & {});
-export const FixedPosition = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FixedPosition = /*@__PURE__*/ S.String;
 export type FieldPosition =
   | { fixed: FixedPosition; rightOf?: never; below?: never }
   | { fixed?: never; rightOf: string; below?: never }
   | { fixed?: never; rightOf?: never; below: string };
-export const FieldPosition = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FieldPosition = /*@__PURE__*/ S.Union([
   S.Struct({ fixed: FixedPosition }),
   S.Struct({ rightOf: S.String }),
   S.Struct({ below: S.String }),
@@ -1657,14 +1607,13 @@ export interface FormInputValuePropertyBindingProperties {
   property: string;
   field?: string;
 }
-export const FormInputValuePropertyBindingProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ property: S.String, field: S.optional(S.String) }),
-  ).annotate({
-    identifier: "FormInputValuePropertyBindingProperties",
-  }) as any as S.Schema<FormInputValuePropertyBindingProperties>;
+export const FormInputValuePropertyBindingProperties = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ property: S.String, field: S.optional(S.String) }),
+).annotate({
+  identifier: "FormInputValuePropertyBindingProperties",
+}) as any as S.Schema<FormInputValuePropertyBindingProperties>;
 export type FormInputValuePropertyList = FormInputValueProperty[];
-export const FormInputValuePropertyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const FormInputValuePropertyList = /*@__PURE__*/ S.Array(
   S.suspend(
     (): S.Schema<FormInputValueProperty> => FormInputValueProperty,
   ).annotate({ identifier: "FormInputValueProperty" }),
@@ -1674,17 +1623,16 @@ export interface FormInputValueProperty {
   bindingProperties?: FormInputValuePropertyBindingProperties;
   concat?: FormInputValueProperty[];
 }
-export const FormInputValueProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.optional(S.String),
-      bindingProperties: S.optional(FormInputValuePropertyBindingProperties),
-      concat: S.optional(
-        S.suspend(() => FormInputValuePropertyList).annotate({
-          identifier: "FormInputValuePropertyList",
-        }),
-      ),
-    }),
+export const FormInputValueProperty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    bindingProperties: S.optional(FormInputValuePropertyBindingProperties),
+    concat: S.optional(
+      S.suspend(() => FormInputValuePropertyList).annotate({
+        identifier: "FormInputValuePropertyList",
+      }),
+    ),
+  }),
 ).annotate({
   identifier: "FormInputValueProperty",
 }) as any as S.Schema<FormInputValueProperty>;
@@ -1692,20 +1640,19 @@ export interface ValueMapping {
   displayValue?: FormInputValueProperty;
   value: FormInputValueProperty;
 }
-export const ValueMapping = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ValueMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayValue: S.optional(FormInputValueProperty),
     value: FormInputValueProperty,
   }),
 ).annotate({ identifier: "ValueMapping" }) as any as S.Schema<ValueMapping>;
 export type ValueMappingList = ValueMapping[];
-export const ValueMappingList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ValueMapping);
+export const ValueMappingList = /*@__PURE__*/ S.Array(ValueMapping);
 export interface FormInputBindingPropertiesValueProperties {
   model?: string;
 }
 export const FormInputBindingPropertiesValueProperties =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ model: S.optional(S.String) }),
   ).annotate({
     identifier: "FormInputBindingPropertiesValueProperties",
@@ -1714,19 +1661,18 @@ export interface FormInputBindingPropertiesValue {
   type?: string;
   bindingProperties?: FormInputBindingPropertiesValueProperties;
 }
-export const FormInputBindingPropertiesValue =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(S.String),
-      bindingProperties: S.optional(FormInputBindingPropertiesValueProperties),
-    }),
-  ).annotate({
-    identifier: "FormInputBindingPropertiesValue",
-  }) as any as S.Schema<FormInputBindingPropertiesValue>;
+export const FormInputBindingPropertiesValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    bindingProperties: S.optional(FormInputBindingPropertiesValueProperties),
+  }),
+).annotate({
+  identifier: "FormInputBindingPropertiesValue",
+}) as any as S.Schema<FormInputBindingPropertiesValue>;
 export type FormInputBindingProperties = {
   [key: string]: FormInputBindingPropertiesValue | undefined;
 };
-export const FormInputBindingProperties = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const FormInputBindingProperties = /*@__PURE__*/ S.Record(
   S.String,
   FormInputBindingPropertiesValue.pipe(S.optional),
 );
@@ -1736,7 +1682,7 @@ export interface ValueMappings {
     [key: string]: FormInputBindingPropertiesValue | undefined;
   };
 }
-export const ValueMappings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ValueMappings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     values: ValueMappingList,
     bindingProperties: S.optional(FormInputBindingProperties),
@@ -1747,9 +1693,9 @@ export type StorageAccessLevel =
   | "protected"
   | "private"
   | (string & {});
-export const StorageAccessLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StorageAccessLevel = /*@__PURE__*/ S.String;
 export type StrValues = string[];
-export const StrValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StrValues = /*@__PURE__*/ S.Array(S.String);
 export interface FileUploaderFieldConfig {
   accessLevel: StorageAccessLevel;
   acceptedFileTypes: string[];
@@ -1758,16 +1704,15 @@ export interface FileUploaderFieldConfig {
   maxFileCount?: number;
   maxSize?: number;
 }
-export const FileUploaderFieldConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accessLevel: StorageAccessLevel,
-      acceptedFileTypes: StrValues,
-      showThumbnails: S.optional(S.Boolean),
-      isResumable: S.optional(S.Boolean),
-      maxFileCount: S.optional(S.Number),
-      maxSize: S.optional(S.Number),
-    }),
+export const FileUploaderFieldConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessLevel: StorageAccessLevel,
+    acceptedFileTypes: StrValues,
+    showThumbnails: S.optional(S.Boolean),
+    isResumable: S.optional(S.Boolean),
+    maxFileCount: S.optional(S.Number),
+    maxSize: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "FileUploaderFieldConfig",
 }) as any as S.Schema<FileUploaderFieldConfig>;
@@ -1789,7 +1734,7 @@ export interface FieldInputConfig {
   isArray?: boolean;
   fileUploaderConfig?: FileUploaderFieldConfig;
 }
-export const FieldInputConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FieldInputConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     required: S.optional(S.Boolean),
@@ -1812,26 +1757,25 @@ export const FieldInputConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "FieldInputConfig",
 }) as any as S.Schema<FieldInputConfig>;
 export type NumValues = number[];
-export const NumValues = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const NumValues = /*@__PURE__*/ S.Array(S.Number);
 export interface FieldValidationConfiguration {
   type: string;
   strValues?: string[];
   numValues?: number[];
   validationMessage?: string;
 }
-export const FieldValidationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.String,
-      strValues: S.optional(StrValues),
-      numValues: S.optional(NumValues),
-      validationMessage: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "FieldValidationConfiguration",
-  }) as any as S.Schema<FieldValidationConfiguration>;
+export const FieldValidationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.String,
+    strValues: S.optional(StrValues),
+    numValues: S.optional(NumValues),
+    validationMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FieldValidationConfiguration",
+}) as any as S.Schema<FieldValidationConfiguration>;
 export type ValidationsList = FieldValidationConfiguration[];
-export const ValidationsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationsList = /*@__PURE__*/ S.Array(
   FieldValidationConfiguration,
 );
 export interface FieldConfig {
@@ -1841,7 +1785,7 @@ export interface FieldConfig {
   inputType?: FieldInputConfig;
   validations?: FieldValidationConfiguration[];
 }
-export const FieldConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FieldConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     label: S.optional(S.String),
     position: S.optional(FieldPosition),
@@ -1851,14 +1795,14 @@ export const FieldConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FieldConfig" }) as any as S.Schema<FieldConfig>;
 export type FieldsMap = { [key: string]: FieldConfig | undefined };
-export const FieldsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const FieldsMap = /*@__PURE__*/ S.Record(
   S.String,
   FieldConfig.pipe(S.optional),
 );
 export type FormStyleConfig =
   | { tokenReference: string; value?: never }
   | { tokenReference?: never; value: string };
-export const FormStyleConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const FormStyleConfig = /*@__PURE__*/ S.Union([
   S.Struct({ tokenReference: S.String }),
   S.Struct({ value: S.String }),
 ]);
@@ -1867,7 +1811,7 @@ export interface FormStyle {
   verticalGap?: FormStyleConfig;
   outerPadding?: FormStyleConfig;
 }
-export const FormStyle = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FormStyle = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     horizontalGap: S.optional(FormStyleConfig),
     verticalGap: S.optional(FormStyleConfig),
@@ -1882,7 +1826,7 @@ export interface SectionalElement {
   orientation?: string;
   excluded?: boolean;
 }
-export const SectionalElement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SectionalElement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: S.String,
     position: S.optional(FieldPosition),
@@ -1897,7 +1841,7 @@ export const SectionalElement = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type SectionalElementMap = {
   [key: string]: SectionalElement | undefined;
 };
-export const SectionalElementMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const SectionalElementMap = /*@__PURE__*/ S.Record(
   S.String,
   SectionalElement.pipe(S.optional),
 );
@@ -1906,13 +1850,13 @@ export type FormButtonsPosition =
   | "bottom"
   | "top_and_bottom"
   | (string & {});
-export const FormButtonsPosition = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FormButtonsPosition = /*@__PURE__*/ S.String;
 export interface FormButton {
   excluded?: boolean;
   children?: string;
   position?: FieldPosition;
 }
-export const FormButton = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FormButton = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     excluded: S.optional(S.Boolean),
     children: S.optional(S.String),
@@ -1925,7 +1869,7 @@ export interface FormCTA {
   cancel?: FormButton;
   submit?: FormButton;
 }
-export const FormCTA = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FormCTA = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     position: S.optional(FormButtonsPosition),
     clear: S.optional(FormButton),
@@ -1945,7 +1889,7 @@ export interface CreateFormData {
   tags?: { [key: string]: string | undefined };
   labelDecorator?: string;
 }
-export const CreateFormData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateFormData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     dataType: FormDataTypeConfig,
@@ -1965,7 +1909,7 @@ export interface CreateFormRequest {
   clientToken?: string;
   formToCreate: CreateFormData;
 }
-export const CreateFormRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateFormRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2007,7 +1951,7 @@ export interface Form {
   cta?: FormCTA;
   labelDecorator?: string;
 }
-export const Form = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Form = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String,
     environmentName: S.String,
@@ -2027,7 +1971,7 @@ export const Form = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateFormResponse {
   entity?: Form;
 }
-export const CreateFormResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateFormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(Form)
       .pipe(T.HttpPayload())
@@ -2041,7 +1985,7 @@ export interface GetFormRequest {
   environmentName: string;
   id: string;
 }
-export const GetFormRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFormRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2063,7 +2007,7 @@ export const GetFormRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetFormResponse {
   form?: Form;
 }
-export const GetFormResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     form: S.optional(Form)
       .pipe(T.HttpPayload())
@@ -2083,7 +2027,7 @@ export interface UpdateFormData {
   cta?: FormCTA;
   labelDecorator?: string;
 }
-export const UpdateFormData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateFormData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     dataType: S.optional(FormDataTypeConfig),
@@ -2103,7 +2047,7 @@ export interface UpdateFormRequest {
   clientToken?: string;
   updatedForm: UpdateFormData;
 }
-export const UpdateFormRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateFormRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2134,7 +2078,7 @@ export const UpdateFormRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateFormResponse {
   entity?: Form;
 }
-export const UpdateFormResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateFormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(Form)
       .pipe(T.HttpPayload())
@@ -2148,7 +2092,7 @@ export interface DeleteFormRequest {
   environmentName: string;
   id: string;
 }
-export const DeleteFormRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteFormRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2170,7 +2114,7 @@ export const DeleteFormRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteFormRequest",
 }) as any as S.Schema<DeleteFormRequest>;
 export interface DeleteFormResponse {}
-export const DeleteFormResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteFormResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteFormResponse",
@@ -2181,7 +2125,7 @@ export interface ListFormsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListFormsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFormsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2211,7 +2155,7 @@ export interface FormSummary {
   id: string;
   name: string;
 }
-export const FormSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FormSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String,
     dataType: FormDataTypeConfig,
@@ -2222,12 +2166,12 @@ export const FormSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FormSummary" }) as any as S.Schema<FormSummary>;
 export type FormSummaryList = FormSummary[];
-export const FormSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(FormSummary);
+export const FormSummaryList = /*@__PURE__*/ S.Array(FormSummary);
 export interface ListFormsResponse {
   entities: FormSummary[];
   nextToken?: string;
 }
-export const ListFormsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListFormsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entities: FormSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListFormsResponse",
@@ -2237,7 +2181,7 @@ export interface ExportFormsRequest {
   environmentName: string;
   nextToken?: string;
 }
-export const ExportFormsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExportFormsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2259,12 +2203,12 @@ export const ExportFormsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExportFormsRequest",
 }) as any as S.Schema<ExportFormsRequest>;
 export type FormList = Form[];
-export const FormList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Form);
+export const FormList = /*@__PURE__*/ S.Array(Form);
 export interface ExportFormsResponse {
   entities: Form[];
   nextToken?: string;
 }
-export const ExportFormsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExportFormsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entities: FormList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ExportFormsResponse",
@@ -2273,7 +2217,7 @@ export interface ThemeValue {
   value?: string;
   children?: ThemeValues[];
 }
-export const ThemeValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ThemeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(S.String),
     children: S.optional(
@@ -2287,7 +2231,7 @@ export interface ThemeValues {
   key?: string;
   value?: ThemeValue;
 }
-export const ThemeValues = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ThemeValues = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.optional(S.String),
     value: S.optional(
@@ -2298,7 +2242,7 @@ export const ThemeValues = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ThemeValues" }) as any as S.Schema<ThemeValues>;
 export type ThemeValuesList = ThemeValues[];
-export const ThemeValuesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ThemeValuesList = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<ThemeValues> => ThemeValues).annotate({
     identifier: "ThemeValues",
   }),
@@ -2309,7 +2253,7 @@ export interface CreateThemeData {
   overrides?: ThemeValues[];
   tags?: { [key: string]: string | undefined };
 }
-export const CreateThemeData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateThemeData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     values: ThemeValuesList,
@@ -2325,7 +2269,7 @@ export interface CreateThemeRequest {
   clientToken?: string;
   themeToCreate: CreateThemeData;
 }
-export const CreateThemeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2363,7 +2307,7 @@ export interface Theme {
   overrides?: ThemeValues[];
   tags?: { [key: string]: string | undefined };
 }
-export const Theme = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Theme = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String,
     environmentName: S.String,
@@ -2381,7 +2325,7 @@ export const Theme = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateThemeResponse {
   entity?: Theme;
 }
-export const CreateThemeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateThemeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(Theme)
       .pipe(T.HttpPayload())
@@ -2395,7 +2339,7 @@ export interface GetThemeRequest {
   environmentName: string;
   id: string;
 }
-export const GetThemeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2419,7 +2363,7 @@ export const GetThemeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetThemeResponse {
   theme?: Theme;
 }
-export const GetThemeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetThemeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     theme: S.optional(Theme)
       .pipe(T.HttpPayload())
@@ -2434,7 +2378,7 @@ export interface UpdateThemeData {
   values: ThemeValues[];
   overrides?: ThemeValues[];
 }
-export const UpdateThemeData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateThemeData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2451,7 +2395,7 @@ export interface UpdateThemeRequest {
   clientToken?: string;
   updatedTheme: UpdateThemeData;
 }
-export const UpdateThemeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2482,7 +2426,7 @@ export const UpdateThemeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateThemeResponse {
   entity?: Theme;
 }
-export const UpdateThemeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateThemeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     entity: S.optional(Theme)
       .pipe(T.HttpPayload())
@@ -2496,7 +2440,7 @@ export interface DeleteThemeRequest {
   environmentName: string;
   id: string;
 }
-export const DeleteThemeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteThemeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2518,7 +2462,7 @@ export const DeleteThemeRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteThemeRequest",
 }) as any as S.Schema<DeleteThemeRequest>;
 export interface DeleteThemeResponse {}
-export const DeleteThemeResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteThemeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteThemeResponse",
@@ -2529,7 +2473,7 @@ export interface ListThemesRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListThemesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListThemesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2557,7 +2501,7 @@ export interface ThemeSummary {
   id: string;
   name: string;
 }
-export const ThemeSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ThemeSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String,
     environmentName: S.String,
@@ -2566,13 +2510,12 @@ export const ThemeSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ThemeSummary" }) as any as S.Schema<ThemeSummary>;
 export type ThemeSummaryList = ThemeSummary[];
-export const ThemeSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ThemeSummary);
+export const ThemeSummaryList = /*@__PURE__*/ S.Array(ThemeSummary);
 export interface ListThemesResponse {
   entities: ThemeSummary[];
   nextToken?: string;
 }
-export const ListThemesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListThemesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entities: ThemeSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListThemesResponse",
@@ -2582,7 +2525,7 @@ export interface ExportThemesRequest {
   environmentName: string;
   nextToken?: string;
 }
-export const ExportThemesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExportThemesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.String.pipe(T.HttpLabel("appId")),
     environmentName: S.String.pipe(T.HttpLabel("environmentName")),
@@ -2604,12 +2547,12 @@ export const ExportThemesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ExportThemesRequest",
 }) as any as S.Schema<ExportThemesRequest>;
 export type ThemeList = Theme[];
-export const ThemeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Theme);
+export const ThemeList = /*@__PURE__*/ S.Array(Theme);
 export interface ExportThemesResponse {
   entities: Theme[];
   nextToken?: string;
 }
-export const ExportThemesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExportThemesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entities: ThemeList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ExportThemesResponse",
@@ -2619,30 +2562,37 @@ export const ExportThemesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
   "ResourceConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -2659,7 +2609,7 @@ export const exchangeCodeForToken: API.OperationMethod<
   ExchangeCodeForTokenResponse,
   ExchangeCodeForTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ExchangeCodeForTokenRequest,
   output: ExchangeCodeForTokenResponse,
   errors: [InvalidParameterException],
@@ -2679,7 +2629,7 @@ export const getMetadata: API.OperationMethod<
   GetMetadataResponse,
   GetMetadataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetadataRequest,
   output: GetMetadataResponse,
   errors: [InvalidParameterException, UnauthorizedException],
@@ -2702,7 +2652,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2728,7 +2678,7 @@ export const putMetadataFlag: API.OperationMethod<
   PutMetadataFlagResponse,
   PutMetadataFlagError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutMetadataFlagRequest,
   output: PutMetadataFlagResponse,
   errors: [InvalidParameterException, UnauthorizedException],
@@ -2747,7 +2697,7 @@ export const refreshToken: API.OperationMethod<
   RefreshTokenResponse,
   RefreshTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RefreshTokenRequest,
   output: RefreshTokenResponse,
   errors: [InvalidParameterException],
@@ -2770,7 +2720,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2799,7 +2749,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2826,7 +2776,7 @@ export const startCodegenJob: API.OperationMethod<
   StartCodegenJobResponse,
   StartCodegenJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartCodegenJobRequest,
   output: StartCodegenJobResponse,
   errors: [
@@ -2852,7 +2802,7 @@ export const getCodegenJob: API.OperationMethod<
   GetCodegenJobResponse,
   GetCodegenJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetCodegenJobRequest,
   output: GetCodegenJobResponse,
   errors: [
@@ -2893,7 +2843,7 @@ export const listCodegenJobs: API.OperationMethod<
     ListCodegenJobsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListCodegenJobsRequest,
   output: ListCodegenJobsResponse,
   errors: [
@@ -2925,7 +2875,7 @@ export const createComponent: API.OperationMethod<
   CreateComponentResponse,
   CreateComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateComponentRequest,
   output: CreateComponentResponse,
   errors: [
@@ -2951,7 +2901,7 @@ export const getComponent: API.OperationMethod<
   GetComponentResponse,
   GetComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetComponentRequest,
   output: GetComponentResponse,
   errors: [
@@ -2976,7 +2926,7 @@ export const updateComponent: API.OperationMethod<
   UpdateComponentResponse,
   UpdateComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateComponentRequest,
   output: UpdateComponentResponse,
   errors: [
@@ -3001,7 +2951,7 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentResponse,
   DeleteComponentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteComponentRequest,
   output: DeleteComponentResponse,
   errors: [
@@ -3041,7 +2991,7 @@ export const listComponents: API.OperationMethod<
     ListComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListComponentsRequest,
   output: ListComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3082,7 +3032,7 @@ export const exportComponents: API.OperationMethod<
     ExportComponentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportComponentsRequest,
   output: ExportComponentsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3109,7 +3059,7 @@ export const createForm: API.OperationMethod<
   CreateFormResponse,
   CreateFormError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateFormRequest,
   output: CreateFormResponse,
   errors: [
@@ -3135,7 +3085,7 @@ export const getForm: API.OperationMethod<
   GetFormResponse,
   GetFormError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetFormRequest,
   output: GetFormResponse,
   errors: [
@@ -3160,7 +3110,7 @@ export const updateForm: API.OperationMethod<
   UpdateFormResponse,
   UpdateFormError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateFormRequest,
   output: UpdateFormResponse,
   errors: [
@@ -3185,7 +3135,7 @@ export const deleteForm: API.OperationMethod<
   DeleteFormResponse,
   DeleteFormError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteFormRequest,
   output: DeleteFormResponse,
   errors: [
@@ -3224,7 +3174,7 @@ export const listForms: API.OperationMethod<
     ListFormsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFormsRequest,
   output: ListFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3265,7 +3215,7 @@ export const exportForms: API.OperationMethod<
     ExportFormsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportFormsRequest,
   output: ExportFormsResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3292,7 +3242,7 @@ export const createTheme: API.OperationMethod<
   CreateThemeResponse,
   CreateThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateThemeRequest,
   output: CreateThemeResponse,
   errors: [
@@ -3318,7 +3268,7 @@ export const getTheme: API.OperationMethod<
   GetThemeResponse,
   GetThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetThemeRequest,
   output: GetThemeResponse,
   errors: [
@@ -3343,7 +3293,7 @@ export const updateTheme: API.OperationMethod<
   UpdateThemeResponse,
   UpdateThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateThemeRequest,
   output: UpdateThemeResponse,
   errors: [
@@ -3368,7 +3318,7 @@ export const deleteTheme: API.OperationMethod<
   DeleteThemeResponse,
   DeleteThemeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteThemeRequest,
   output: DeleteThemeResponse,
   errors: [
@@ -3408,7 +3358,7 @@ export const listThemes: API.OperationMethod<
     ListThemesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListThemesRequest,
   output: ListThemesResponse,
   errors: [InternalServerException, InvalidParameterException],
@@ -3449,7 +3399,7 @@ export const exportThemes: API.OperationMethod<
     ExportThemesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ExportThemesRequest,
   output: ExportThemesResponse,
   errors: [InternalServerException, InvalidParameterException],

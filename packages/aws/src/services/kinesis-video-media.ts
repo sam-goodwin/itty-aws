@@ -101,14 +101,14 @@ export type StartSelectorType =
   | "EARLIEST"
   | "CONTINUATION_TOKEN"
   | (string & {});
-export const StartSelectorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StartSelectorType = /*@__PURE__*/ S.String;
 export interface StartSelector {
   StartSelectorType: StartSelectorType;
   AfterFragmentNumber?: string;
   StartTimestamp?: Date;
   ContinuationToken?: string;
 }
-export const StartSelector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartSelector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StartSelectorType: StartSelectorType,
     AfterFragmentNumber: S.optional(S.String),
@@ -121,7 +121,7 @@ export interface GetMediaInput {
   StreamARN?: string;
   StartSelector: StartSelector;
 }
-export const GetMediaInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMediaInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     StreamName: S.optional(S.String),
     StreamARN: S.optional(S.String),
@@ -141,7 +141,7 @@ export interface GetMediaOutput {
   ContentType?: string;
   Payload?: T.StreamingOutputBody;
 }
-export const GetMediaOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMediaOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     Payload: S.optional(T.StreamingOutput).pipe(T.HttpPayload()),
@@ -152,26 +152,32 @@ export const GetMediaOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class ClientLimitExceededException extends S.TaggedErrorClass<ClientLimitExceededException>()(
   "ClientLimitExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConnectionLimitExceededException extends S.TaggedErrorClass<ConnectionLimitExceededException>()(
   "ConnectionLimitExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
   "InvalidArgumentException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
   "InvalidEndpointException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
   "NotAuthorizedException",
   { Message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -225,7 +231,7 @@ export const getMedia: API.OperationMethod<
   GetMediaOutput,
   GetMediaError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMediaInput,
   output: GetMediaOutput,
   errors: [

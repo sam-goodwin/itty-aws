@@ -100,11 +100,11 @@ export type QueryString = string | redacted.Redacted<string>;
 
 //# Schemas
 export type ViewArnList = string[];
-export const ViewArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ViewArnList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetViewInput {
   ViewArns?: string[];
 }
-export const BatchGetViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchGetViewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ViewArns: S.optional(ViewArnList) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/BatchGetView" }),
@@ -121,18 +121,17 @@ export const BatchGetViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface IncludedProperty {
   Name: string;
 }
-export const IncludedProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IncludedProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String }),
 ).annotate({
   identifier: "IncludedProperty",
 }) as any as S.Schema<IncludedProperty>;
 export type IncludedPropertyList = IncludedProperty[];
-export const IncludedPropertyList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IncludedProperty);
+export const IncludedPropertyList = /*@__PURE__*/ S.Array(IncludedProperty);
 export interface SearchFilter {
   FilterString: string;
 }
-export const SearchFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FilterString: S.String }),
 ).annotate({ identifier: "SearchFilter" }) as any as S.Schema<SearchFilter>;
 export interface View {
@@ -144,7 +143,7 @@ export interface View {
   IncludedProperties?: IncludedProperty[];
   Filters?: SearchFilter;
 }
-export const View = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const View = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ViewArn: S.optional(S.String),
     ViewName: S.optional(S.String),
@@ -158,24 +157,23 @@ export const View = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "View" }) as any as S.Schema<View>;
 export type ViewList = View[];
-export const ViewList = /*@__PURE__*/ /*#__PURE__*/ S.Array(View);
+export const ViewList = /*@__PURE__*/ S.Array(View);
 export interface BatchGetViewError_ {
   ViewArn: string;
   ErrorMessage: string;
 }
-export const BatchGetViewError_ = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchGetViewError_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ViewArn: S.String, ErrorMessage: S.String }),
 ).annotate({
   identifier: "BatchGetViewError",
 }) as any as S.Schema<BatchGetViewError_>;
 export type BatchGetViewErrors = BatchGetViewError_[];
-export const BatchGetViewErrors =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchGetViewError_);
+export const BatchGetViewErrors = /*@__PURE__*/ S.Array(BatchGetViewError_);
 export interface BatchGetViewOutput {
   Views?: View[];
   Errors?: BatchGetViewError_[];
 }
-export const BatchGetViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchGetViewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Views: S.optional(ViewList),
     Errors: S.optional(BatchGetViewErrors),
@@ -187,100 +185,110 @@ export interface ValidationExceptionField {
   Name: string;
   ValidationIssue: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Name: S.String, ValidationIssue: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, ValidationIssue: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type RegionList = string[];
-export const RegionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const RegionList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateResourceExplorerSetupInput {
   RegionList: string[];
   AggregatorRegions?: string[];
   ViewName: string;
 }
-export const CreateResourceExplorerSetupInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RegionList: RegionList,
-      AggregatorRegions: S.optional(RegionList),
-      ViewName: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateResourceExplorerSetup" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateResourceExplorerSetupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegionList: RegionList,
+    AggregatorRegions: S.optional(RegionList),
+    ViewName: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateResourceExplorerSetup" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateResourceExplorerSetupInput",
-  }) as any as S.Schema<CreateResourceExplorerSetupInput>;
+  ),
+).annotate({
+  identifier: "CreateResourceExplorerSetupInput",
+}) as any as S.Schema<CreateResourceExplorerSetupInput>;
 export interface CreateResourceExplorerSetupOutput {
   TaskId: string;
 }
-export const CreateResourceExplorerSetupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ TaskId: S.String }),
-  ).annotate({
-    identifier: "CreateResourceExplorerSetupOutput",
-  }) as any as S.Schema<CreateResourceExplorerSetupOutput>;
+export const CreateResourceExplorerSetupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TaskId: S.String }),
+).annotate({
+  identifier: "CreateResourceExplorerSetupOutput",
+}) as any as S.Schema<CreateResourceExplorerSetupOutput>;
 export interface DeleteResourceExplorerSetupInput {
   RegionList?: string[];
   DeleteInAllRegions?: boolean;
 }
-export const DeleteResourceExplorerSetupInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RegionList: S.optional(RegionList),
-      DeleteInAllRegions: S.optional(S.Boolean),
-    }).pipe(
+export const DeleteResourceExplorerSetupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RegionList: S.optional(RegionList),
+    DeleteInAllRegions: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteResourceExplorerSetup" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteResourceExplorerSetupInput",
+}) as any as S.Schema<DeleteResourceExplorerSetupInput>;
+export interface DeleteResourceExplorerSetupOutput {
+  TaskId: string;
+}
+export const DeleteResourceExplorerSetupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TaskId: S.String }),
+).annotate({
+  identifier: "DeleteResourceExplorerSetupOutput",
+}) as any as S.Schema<DeleteResourceExplorerSetupOutput>;
+export interface DisassociateDefaultViewRequest {}
+export const DisassociateDefaultViewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DisassociateDefaultView" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DisassociateDefaultViewRequest",
+}) as any as S.Schema<DisassociateDefaultViewRequest>;
+export interface DisassociateDefaultViewResponse {}
+export const DisassociateDefaultViewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DisassociateDefaultViewResponse",
+}) as any as S.Schema<DisassociateDefaultViewResponse>;
+export interface GetAccountLevelServiceConfigurationRequest {}
+export const GetAccountLevelServiceConfigurationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(
       T.all(
-        T.Http({ method: "POST", uri: "/DeleteResourceExplorerSetup" }),
+        T.Http({ method: "POST", uri: "/GetAccountLevelServiceConfiguration" }),
         svc,
         auth,
         proto,
         ver,
         rules,
       ),
-    ),
-  ).annotate({
-    identifier: "DeleteResourceExplorerSetupInput",
-  }) as any as S.Schema<DeleteResourceExplorerSetupInput>;
-export interface DeleteResourceExplorerSetupOutput {
-  TaskId: string;
-}
-export const DeleteResourceExplorerSetupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ TaskId: S.String }),
-  ).annotate({
-    identifier: "DeleteResourceExplorerSetupOutput",
-  }) as any as S.Schema<DeleteResourceExplorerSetupOutput>;
-export interface DisassociateDefaultViewRequest {}
-export const DisassociateDefaultViewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DisassociateDefaultViewRequest",
-  }) as any as S.Schema<DisassociateDefaultViewRequest>;
-export interface DisassociateDefaultViewResponse {}
-export const DisassociateDefaultViewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociateDefaultViewResponse",
-  }) as any as S.Schema<DisassociateDefaultViewResponse>;
-export interface GetAccountLevelServiceConfigurationRequest {}
-export const GetAccountLevelServiceConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
     ),
   ).annotate({
     identifier: "GetAccountLevelServiceConfigurationRequest",
@@ -289,7 +297,7 @@ export interface OrgConfiguration {
   AWSServiceAccessStatus: string;
   ServiceLinkedRole?: string;
 }
-export const OrgConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OrgConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AWSServiceAccessStatus: S.String,
     ServiceLinkedRole: S.optional(S.String),
@@ -301,15 +309,22 @@ export interface GetAccountLevelServiceConfigurationOutput {
   OrgConfiguration?: OrgConfiguration;
 }
 export const GetAccountLevelServiceConfigurationOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OrgConfiguration: S.optional(OrgConfiguration) }),
   ).annotate({
     identifier: "GetAccountLevelServiceConfigurationOutput",
   }) as any as S.Schema<GetAccountLevelServiceConfigurationOutput>;
 export interface GetDefaultViewRequest {}
-export const GetDefaultViewRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDefaultViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    T.all(
+      T.Http({ method: "POST", uri: "/GetDefaultView" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
   ),
 ).annotate({
   identifier: "GetDefaultViewRequest",
@@ -317,21 +332,28 @@ export const GetDefaultViewRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetDefaultViewOutput {
   ViewArn?: string;
 }
-export const GetDefaultViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDefaultViewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ViewArn: S.optional(S.String) }),
 ).annotate({
   identifier: "GetDefaultViewOutput",
 }) as any as S.Schema<GetDefaultViewOutput>;
 export interface GetIndexRequest {}
-export const GetIndexRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    T.all(
+      T.Http({ method: "POST", uri: "/GetIndex" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
   ),
 ).annotate({
   identifier: "GetIndexRequest",
 }) as any as S.Schema<GetIndexRequest>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -345,7 +367,7 @@ export interface GetIndexOutput {
   LastUpdatedAt?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetIndexOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetIndexOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Type: S.optional(S.String),
@@ -364,7 +386,7 @@ export const GetIndexOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetManagedViewInput {
   ManagedViewArn: string;
 }
-export const GetManagedViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetManagedViewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ManagedViewArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetManagedView" }),
@@ -390,7 +412,7 @@ export interface ManagedView {
   ResourcePolicy?: string;
   Version?: string;
 }
-export const ManagedView = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ManagedView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ManagedViewArn: S.optional(S.String),
     ManagedViewName: S.optional(S.String),
@@ -409,7 +431,7 @@ export const ManagedView = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetManagedViewOutput {
   ManagedView?: ManagedView;
 }
-export const GetManagedViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetManagedViewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ManagedView: S.optional(ManagedView) }),
 ).annotate({
   identifier: "GetManagedViewOutput",
@@ -419,31 +441,30 @@ export interface GetResourceExplorerSetupInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const GetResourceExplorerSetupInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TaskId: S.String,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetResourceExplorerSetup" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetResourceExplorerSetupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TaskId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetResourceExplorerSetup" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetResourceExplorerSetupInput",
-  }) as any as S.Schema<GetResourceExplorerSetupInput>;
+  ),
+).annotate({
+  identifier: "GetResourceExplorerSetupInput",
+}) as any as S.Schema<GetResourceExplorerSetupInput>;
 export interface Index {
   Region?: string;
   Arn?: string;
   Type?: string;
 }
-export const Index = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Index = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Region: S.optional(S.String),
     Arn: S.optional(S.String),
@@ -454,7 +475,7 @@ export interface ErrorDetails {
   Code?: string;
   Message?: string;
 }
-export const ErrorDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
 ).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
 export interface IndexStatus {
@@ -462,7 +483,7 @@ export interface IndexStatus {
   Index?: Index;
   ErrorDetails?: ErrorDetails;
 }
-export const IndexStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IndexStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(S.String),
     Index: S.optional(Index),
@@ -474,7 +495,7 @@ export interface ViewStatus {
   View?: View;
   ErrorDetails?: ErrorDetails;
 }
-export const ViewStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ViewStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Status: S.optional(S.String),
     View: S.optional(View),
@@ -486,7 +507,7 @@ export interface RegionStatus {
   Index?: IndexStatus;
   View?: ViewStatus;
 }
-export const RegionStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Region: S.optional(S.String),
     Index: S.optional(IndexStatus),
@@ -494,27 +515,31 @@ export const RegionStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegionStatus" }) as any as S.Schema<RegionStatus>;
 export type RegionStatusList = RegionStatus[];
-export const RegionStatusList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RegionStatus);
+export const RegionStatusList = /*@__PURE__*/ S.Array(RegionStatus);
 export interface GetResourceExplorerSetupOutput {
   Regions?: RegionStatus[];
   NextToken?: string;
 }
-export const GetResourceExplorerSetupOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Regions: S.optional(RegionStatusList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetResourceExplorerSetupOutput",
-  }) as any as S.Schema<GetResourceExplorerSetupOutput>;
+export const GetResourceExplorerSetupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Regions: S.optional(RegionStatusList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetResourceExplorerSetupOutput",
+}) as any as S.Schema<GetResourceExplorerSetupOutput>;
 export interface GetServiceIndexRequest {}
-export const GetServiceIndexRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+export const GetServiceIndexRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetServiceIndex" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetServiceIndexRequest",
 }) as any as S.Schema<GetServiceIndexRequest>;
@@ -522,7 +547,7 @@ export interface GetServiceIndexOutput {
   Arn?: string;
   Type?: string;
 }
-export const GetServiceIndexOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetServiceIndexOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.optional(S.String), Type: S.optional(S.String) }),
 ).annotate({
   identifier: "GetServiceIndexOutput",
@@ -530,7 +555,7 @@ export const GetServiceIndexOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetServiceViewInput {
   ServiceViewArn: string;
 }
-export const GetServiceViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetServiceViewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ServiceViewArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetServiceView" }),
@@ -549,13 +574,12 @@ export interface ServiceLinkedRecorderInfo {
   RecorderName?: string;
   RecorderType?: string;
 }
-export const ServiceLinkedRecorderInfo = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ServicePrincipal: S.optional(S.String),
-      RecorderName: S.optional(S.String),
-      RecorderType: S.optional(S.String),
-    }),
+export const ServiceLinkedRecorderInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServicePrincipal: S.optional(S.String),
+    RecorderName: S.optional(S.String),
+    RecorderType: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ServiceLinkedRecorderInfo",
 }) as any as S.Schema<ServiceLinkedRecorderInfo>;
@@ -568,7 +592,7 @@ export interface ServiceView {
   ScopeType?: string;
   ServiceLinkedRecorder?: ServiceLinkedRecorderInfo;
 }
-export const ServiceView = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ServiceView = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceViewArn: S.String,
     ServiceViewName: S.optional(S.String),
@@ -582,34 +606,33 @@ export const ServiceView = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetServiceViewOutput {
   View: ServiceView;
 }
-export const GetServiceViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetServiceViewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ View: ServiceView }),
 ).annotate({
   identifier: "GetServiceViewOutput",
 }) as any as S.Schema<GetServiceViewOutput>;
 export type AccountIdList = string[];
-export const AccountIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ListIndexesForMembersInput {
   AccountIdList: string[];
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListIndexesForMembersInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountIdList: AccountIdList,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListIndexesForMembers" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListIndexesForMembersInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountIdList: AccountIdList,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListIndexesForMembers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListIndexesForMembersInput",
 }) as any as S.Schema<ListIndexesForMembersInput>;
@@ -619,7 +642,7 @@ export interface MemberIndex {
   Arn?: string;
   Type?: string;
 }
-export const MemberIndex = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MemberIndex = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.optional(S.String),
     Region: S.optional(S.String),
@@ -628,26 +651,25 @@ export const MemberIndex = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemberIndex" }) as any as S.Schema<MemberIndex>;
 export type MemberIndexList = MemberIndex[];
-export const MemberIndexList = /*@__PURE__*/ /*#__PURE__*/ S.Array(MemberIndex);
+export const MemberIndexList = /*@__PURE__*/ S.Array(MemberIndex);
 export interface ListIndexesForMembersOutput {
   Indexes?: MemberIndex[];
   NextToken?: string;
 }
-export const ListIndexesForMembersOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Indexes: S.optional(MemberIndexList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListIndexesForMembersOutput",
-  }) as any as S.Schema<ListIndexesForMembersOutput>;
+export const ListIndexesForMembersOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Indexes: S.optional(MemberIndexList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListIndexesForMembersOutput",
+}) as any as S.Schema<ListIndexesForMembersOutput>;
 export interface ListManagedViewsInput {
   MaxResults?: number;
   NextToken?: string;
   ServicePrincipal?: string;
 }
-export const ListManagedViewsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListManagedViewsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     NextToken: S.optional(S.String),
@@ -666,17 +688,16 @@ export const ListManagedViewsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListManagedViewsInput",
 }) as any as S.Schema<ListManagedViewsInput>;
 export type ManagedViewArnList = string[];
-export const ManagedViewArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ManagedViewArnList = /*@__PURE__*/ S.Array(S.String);
 export interface ListManagedViewsOutput {
   NextToken?: string;
   ManagedViews?: string[];
 }
-export const ListManagedViewsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      ManagedViews: S.optional(ManagedViewArnList),
-    }),
+export const ListManagedViewsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ManagedViews: S.optional(ManagedViewArnList),
+  }),
 ).annotate({
   identifier: "ListManagedViewsOutput",
 }) as any as S.Schema<ListManagedViewsOutput>;
@@ -686,7 +707,7 @@ export interface ListResourcesInput {
   ViewArn?: string;
   NextToken?: string;
 }
-export const ListResourcesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListResourcesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Filters: S.optional(SearchFilter),
     MaxResults: S.optional(S.Number),
@@ -710,7 +731,7 @@ export interface ResourceProperty {
   LastReportedAt?: Date;
   Data?: any;
 }
-export const ResourceProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceProperty = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     LastReportedAt: S.optional(
@@ -722,8 +743,7 @@ export const ResourceProperty = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ResourceProperty",
 }) as any as S.Schema<ResourceProperty>;
 export type ResourcePropertyList = ResourceProperty[];
-export const ResourcePropertyList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ResourceProperty);
+export const ResourcePropertyList = /*@__PURE__*/ S.Array(ResourceProperty);
 export interface Resource {
   Arn?: string;
   OwningAccountId?: string;
@@ -734,7 +754,7 @@ export interface Resource {
   LastReportedAt?: Date;
   Properties?: ResourceProperty[];
 }
-export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     OwningAccountId: S.optional(S.String),
@@ -749,13 +769,13 @@ export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
-export const ResourceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Resource);
+export const ResourceList = /*@__PURE__*/ S.Array(Resource);
 export interface ListResourcesOutput {
   Resources?: Resource[];
   NextToken?: string;
   ViewArn?: string;
 }
-export const ListResourcesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListResourcesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Resources: S.optional(ResourceList),
     NextToken: S.optional(S.String),
@@ -769,37 +789,32 @@ export interface ListServiceIndexesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListServiceIndexesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Regions: S.optional(RegionList),
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListServiceIndexes" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListServiceIndexesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Regions: S.optional(RegionList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListServiceIndexes" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListServiceIndexesInput",
 }) as any as S.Schema<ListServiceIndexesInput>;
 export type IndexList = Index[];
-export const IndexList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Index);
+export const IndexList = /*@__PURE__*/ S.Array(Index);
 export interface ListServiceIndexesOutput {
   Indexes?: Index[];
   NextToken?: string;
 }
-export const ListServiceIndexesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Indexes: S.optional(IndexList),
-      NextToken: S.optional(S.String),
-    }),
+export const ListServiceIndexesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Indexes: S.optional(IndexList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListServiceIndexesOutput",
 }) as any as S.Schema<ListServiceIndexesOutput>;
@@ -807,7 +822,7 @@ export interface ListServiceViewsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListServiceViewsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListServiceViewsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number),
     NextToken: S.optional(S.String),
@@ -825,17 +840,16 @@ export const ListServiceViewsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListServiceViewsInput",
 }) as any as S.Schema<ListServiceViewsInput>;
 export type ServiceViewArnList = string[];
-export const ServiceViewArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ServiceViewArnList = /*@__PURE__*/ S.Array(S.String);
 export interface ListServiceViewsOutput {
   NextToken?: string;
   ServiceViews?: string[];
 }
-export const ListServiceViewsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      ServiceViews: S.optional(ServiceViewArnList),
-    }),
+export const ListServiceViewsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ServiceViews: S.optional(ServiceViewArnList),
+  }),
 ).annotate({
   identifier: "ListServiceViewsOutput",
 }) as any as S.Schema<ListServiceViewsOutput>;
@@ -843,86 +857,81 @@ export interface ListStreamingAccessForServicesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListStreamingAccessForServicesInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListStreamingAccessForServices" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListStreamingAccessForServicesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListStreamingAccessForServices" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListStreamingAccessForServicesInput",
-  }) as any as S.Schema<ListStreamingAccessForServicesInput>;
+  ),
+).annotate({
+  identifier: "ListStreamingAccessForServicesInput",
+}) as any as S.Schema<ListStreamingAccessForServicesInput>;
 export interface StreamingAccessDetails {
   ServicePrincipal: string;
   CreatedAt: Date;
 }
-export const StreamingAccessDetails = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ServicePrincipal: S.String,
-      CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    }),
+export const StreamingAccessDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServicePrincipal: S.String,
+    CreatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
 ).annotate({
   identifier: "StreamingAccessDetails",
 }) as any as S.Schema<StreamingAccessDetails>;
 export type StreamingAccessDetailsList = StreamingAccessDetails[];
-export const StreamingAccessDetailsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const StreamingAccessDetailsList = /*@__PURE__*/ S.Array(
   StreamingAccessDetails,
 );
 export interface ListStreamingAccessForServicesOutput {
   StreamingAccessForServices: StreamingAccessDetails[];
   NextToken?: string;
 }
-export const ListStreamingAccessForServicesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListStreamingAccessForServicesOutput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       StreamingAccessForServices: StreamingAccessDetailsList,
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListStreamingAccessForServicesOutput",
-  }) as any as S.Schema<ListStreamingAccessForServicesOutput>;
+).annotate({
+  identifier: "ListStreamingAccessForServicesOutput",
+}) as any as S.Schema<ListStreamingAccessForServicesOutput>;
 export interface ListSupportedResourceTypesInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListSupportedResourceTypesInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListSupportedResourceTypes" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListSupportedResourceTypesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListSupportedResourceTypes" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListSupportedResourceTypesInput",
-  }) as any as S.Schema<ListSupportedResourceTypesInput>;
+  ),
+).annotate({
+  identifier: "ListSupportedResourceTypesInput",
+}) as any as S.Schema<ListSupportedResourceTypesInput>;
 export type CFNResourceTypeList = string[];
-export const CFNResourceTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const CFNResourceTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface SupportedResourceType {
   Service?: string;
   ResourceType?: string;
   CFNResourceTypes?: string[];
 }
-export const SupportedResourceType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SupportedResourceType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Service: S.optional(S.String),
     ResourceType: S.optional(S.String),
@@ -932,45 +941,41 @@ export const SupportedResourceType = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SupportedResourceType",
 }) as any as S.Schema<SupportedResourceType>;
 export type ResourceTypeList = SupportedResourceType[];
-export const ResourceTypeList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  SupportedResourceType,
-);
+export const ResourceTypeList = /*@__PURE__*/ S.Array(SupportedResourceType);
 export interface ListSupportedResourceTypesOutput {
   ResourceTypes?: SupportedResourceType[];
   NextToken?: string;
 }
-export const ListSupportedResourceTypesOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ResourceTypes: S.optional(ResourceTypeList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListSupportedResourceTypesOutput",
-  }) as any as S.Schema<ListSupportedResourceTypesOutput>;
+export const ListSupportedResourceTypesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceTypes: S.optional(ResourceTypeList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListSupportedResourceTypesOutput",
+}) as any as S.Schema<ListSupportedResourceTypesOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Tags: S.optional(TagMap) }),
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
@@ -980,7 +985,7 @@ export interface SearchInput {
   ViewArn?: string;
   NextToken?: string;
 }
-export const SearchInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     QueryString: SensitiveString,
     MaxResults: S.optional(S.Number),
@@ -1001,7 +1006,7 @@ export interface ResourceCount {
   TotalResources?: number;
   Complete?: boolean;
 }
-export const ResourceCount = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResourceCount = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     TotalResources: S.optional(S.Number),
     Complete: S.optional(S.Boolean),
@@ -1013,7 +1018,7 @@ export interface SearchOutput {
   ViewArn?: string;
   Count?: ResourceCount;
 }
-export const SearchOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Resources: S.optional(ResourceList),
     NextToken: S.optional(S.String),
@@ -1025,7 +1030,7 @@ export interface TagResourceInput {
   resourceArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     Tags: S.optional(TagMap),
@@ -1043,18 +1048,18 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: StringList.pipe(T.HttpQuery("tagKeys")),
@@ -1072,7 +1077,7 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceOutput",
@@ -1081,7 +1086,7 @@ export interface CreateIndexInput {
   ClientToken?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateIndexInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateIndexInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     Tags: S.optional(TagMap),
@@ -1103,7 +1108,7 @@ export interface CreateIndexOutput {
   State?: string;
   CreatedAt?: Date;
 }
-export const CreateIndexOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateIndexOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     State: S.optional(S.String),
@@ -1118,7 +1123,7 @@ export interface UpdateIndexTypeInput {
   Arn: string;
   Type: string;
 }
-export const UpdateIndexTypeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateIndexTypeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String, Type: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/UpdateIndexType" }),
@@ -1138,7 +1143,7 @@ export interface UpdateIndexTypeOutput {
   State?: string;
   LastUpdatedAt?: Date;
 }
-export const UpdateIndexTypeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateIndexTypeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Type: S.optional(S.String),
@@ -1153,7 +1158,7 @@ export const UpdateIndexTypeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteIndexInput {
   Arn: string;
 }
-export const DeleteIndexInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteIndexInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteIndex" }),
@@ -1172,7 +1177,7 @@ export interface DeleteIndexOutput {
   State?: string;
   LastUpdatedAt?: Date;
 }
-export const DeleteIndexOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteIndexOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     State: S.optional(S.String),
@@ -1189,7 +1194,7 @@ export interface ListIndexesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListIndexesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListIndexesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Type: S.optional(S.String),
     Regions: S.optional(RegionList),
@@ -1212,7 +1217,7 @@ export interface ListIndexesOutput {
   Indexes?: Index[];
   NextToken?: string;
 }
-export const ListIndexesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListIndexesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Indexes: S.optional(IndexList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListIndexesOutput",
@@ -1225,7 +1230,7 @@ export interface CreateViewInput {
   Filters?: SearchFilter;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateViewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     ViewName: S.String,
@@ -1249,7 +1254,7 @@ export const CreateViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateViewOutput {
   View?: View;
 }
-export const CreateViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateViewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ View: S.optional(View) }),
 ).annotate({
   identifier: "CreateViewOutput",
@@ -1257,7 +1262,7 @@ export const CreateViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetViewInput {
   ViewArn: string;
 }
-export const GetViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetViewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ViewArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/GetView" }),
@@ -1273,7 +1278,7 @@ export interface GetViewOutput {
   View?: View;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetViewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ View: S.optional(View), Tags: S.optional(TagMap) }),
 ).annotate({ identifier: "GetViewOutput" }) as any as S.Schema<GetViewOutput>;
 export interface UpdateViewInput {
@@ -1281,7 +1286,7 @@ export interface UpdateViewInput {
   IncludedProperties?: IncludedProperty[];
   Filters?: SearchFilter;
 }
-export const UpdateViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateViewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ViewArn: S.String,
     IncludedProperties: S.optional(IncludedPropertyList),
@@ -1302,7 +1307,7 @@ export const UpdateViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateViewOutput {
   View?: View;
 }
-export const UpdateViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateViewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ View: S.optional(View) }),
 ).annotate({
   identifier: "UpdateViewOutput",
@@ -1310,7 +1315,7 @@ export const UpdateViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteViewInput {
   ViewArn: string;
 }
-export const DeleteViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteViewInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ViewArn: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/DeleteView" }),
@@ -1327,7 +1332,7 @@ export const DeleteViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteViewOutput {
   ViewArn?: string;
 }
-export const DeleteViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteViewOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ViewArn: S.optional(S.String) }),
 ).annotate({
   identifier: "DeleteViewOutput",
@@ -1336,7 +1341,7 @@ export interface ListViewsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListViewsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListViewsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextToken: S.optional(S.String),
     MaxResults: S.optional(S.Number),
@@ -1355,7 +1360,7 @@ export interface ListViewsOutput {
   Views?: string[];
   NextToken?: string;
 }
-export const ListViewsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListViewsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Views: S.optional(ViewArnList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListViewsOutput",
@@ -1363,26 +1368,25 @@ export const ListViewsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface AssociateDefaultViewInput {
   ViewArn: string;
 }
-export const AssociateDefaultViewInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ViewArn: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/AssociateDefaultView" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociateDefaultViewInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ViewArn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/AssociateDefaultView" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "AssociateDefaultViewInput",
 }) as any as S.Schema<AssociateDefaultViewInput>;
 export interface AssociateDefaultViewOutput {
   ViewArn?: string;
 }
-export const AssociateDefaultViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ViewArn: S.optional(S.String) }),
+export const AssociateDefaultViewOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ViewArn: S.optional(S.String) }),
 ).annotate({
   identifier: "AssociateDefaultViewOutput",
 }) as any as S.Schema<AssociateDefaultViewOutput>;
@@ -1391,34 +1395,42 @@ export const AssociateDefaultViewOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
   "UnauthorizedException",
   { Message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { Message: S.String, FieldList: S.optional(ValidationExceptionFieldList) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.String, Name: S.String, Value: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -1437,7 +1449,7 @@ export const batchGetView: API.OperationMethod<
   BatchGetViewOutput,
   BatchGetViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetViewInput,
   output: BatchGetViewOutput,
   errors: [
@@ -1466,7 +1478,7 @@ export const createResourceExplorerSetup: API.OperationMethod<
   CreateResourceExplorerSetupOutput,
   CreateResourceExplorerSetupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateResourceExplorerSetupInput,
   output: CreateResourceExplorerSetupOutput,
   errors: [
@@ -1495,7 +1507,7 @@ export const deleteResourceExplorerSetup: API.OperationMethod<
   DeleteResourceExplorerSetupOutput,
   DeleteResourceExplorerSetupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteResourceExplorerSetupInput,
   output: DeleteResourceExplorerSetupOutput,
   errors: [
@@ -1526,7 +1538,7 @@ export const disassociateDefaultView: API.OperationMethod<
   DisassociateDefaultViewResponse,
   DisassociateDefaultViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDefaultViewRequest,
   output: DisassociateDefaultViewResponse,
   errors: [
@@ -1554,7 +1566,7 @@ export const getAccountLevelServiceConfiguration: API.OperationMethod<
   GetAccountLevelServiceConfigurationOutput,
   GetAccountLevelServiceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountLevelServiceConfigurationRequest,
   output: GetAccountLevelServiceConfigurationOutput,
   errors: [
@@ -1582,7 +1594,7 @@ export const getDefaultView: API.OperationMethod<
   GetDefaultViewOutput,
   GetDefaultViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDefaultViewRequest,
   output: GetDefaultViewOutput,
   errors: [
@@ -1611,7 +1623,7 @@ export const getIndex: API.OperationMethod<
   GetIndexOutput,
   GetIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndexRequest,
   output: GetIndexOutput,
   errors: [
@@ -1641,7 +1653,7 @@ export const getManagedView: API.OperationMethod<
   GetManagedViewOutput,
   GetManagedViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetManagedViewInput,
   output: GetManagedViewOutput,
   errors: [
@@ -1686,7 +1698,7 @@ export const getResourceExplorerSetup: API.OperationMethod<
     GetResourceExplorerSetupError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetResourceExplorerSetupInput,
   output: GetResourceExplorerSetupOutput,
   errors: [
@@ -1721,7 +1733,7 @@ export const getServiceIndex: API.OperationMethod<
   GetServiceIndexOutput,
   GetServiceIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceIndexRequest,
   output: GetServiceIndexOutput,
   errors: [
@@ -1750,7 +1762,7 @@ export const getServiceView: API.OperationMethod<
   GetServiceViewOutput,
   GetServiceViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetServiceViewInput,
   output: GetServiceViewOutput,
   errors: [
@@ -1793,7 +1805,7 @@ export const listIndexesForMembers: API.OperationMethod<
     ListIndexesForMembersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesForMembersInput,
   output: ListIndexesForMembersOutput,
   errors: [
@@ -1842,7 +1854,7 @@ export const listManagedViews: API.OperationMethod<
     ListManagedViewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedViewsInput,
   output: ListManagedViewsOutput,
   errors: [
@@ -1893,7 +1905,7 @@ export const listResources: API.OperationMethod<
     ListResourcesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesInput,
   output: ListResourcesOutput,
   errors: [
@@ -1943,7 +1955,7 @@ export const listServiceIndexes: API.OperationMethod<
     ListServiceIndexesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceIndexesInput,
   output: ListServiceIndexesOutput,
   errors: [
@@ -1991,7 +2003,7 @@ export const listServiceViews: API.OperationMethod<
     ListServiceViewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListServiceViewsInput,
   output: ListServiceViewsOutput,
   errors: [
@@ -2038,7 +2050,7 @@ export const listStreamingAccessForServices: API.OperationMethod<
     ListStreamingAccessForServicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListStreamingAccessForServicesInput,
   output: ListStreamingAccessForServicesOutput,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
@@ -2081,7 +2093,7 @@ export const listSupportedResourceTypes: API.OperationMethod<
     ListSupportedResourceTypesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSupportedResourceTypesInput,
   output: ListSupportedResourceTypesOutput,
   errors: [
@@ -2116,7 +2128,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -2168,7 +2180,7 @@ export const search: API.OperationMethod<
     SearchError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchInput,
   output: SearchOutput,
   errors: [
@@ -2205,7 +2217,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -2236,7 +2248,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -2286,7 +2298,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexOutput,
   CreateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexInput,
   output: CreateIndexOutput,
   errors: [
@@ -2333,7 +2345,7 @@ export const updateIndexType: API.OperationMethod<
   UpdateIndexTypeOutput,
   UpdateIndexTypeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateIndexTypeInput,
   output: UpdateIndexTypeOutput,
   errors: [
@@ -2366,7 +2378,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexOutput,
   DeleteIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexInput,
   output: DeleteIndexOutput,
   errors: [
@@ -2409,7 +2421,7 @@ export const listIndexes: API.OperationMethod<
     ListIndexesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesInput,
   output: ListIndexesOutput,
   errors: [
@@ -2447,7 +2459,7 @@ export const createView: API.OperationMethod<
   CreateViewOutput,
   CreateViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateViewInput,
   output: CreateViewOutput,
   errors: [
@@ -2479,7 +2491,7 @@ export const getView: API.OperationMethod<
   GetViewOutput,
   GetViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetViewInput,
   output: GetViewOutput,
   errors: [
@@ -2510,7 +2522,7 @@ export const updateView: API.OperationMethod<
   UpdateViewOutput,
   UpdateViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateViewInput,
   output: UpdateViewOutput,
   errors: [
@@ -2543,7 +2555,7 @@ export const deleteView: API.OperationMethod<
   DeleteViewOutput,
   DeleteViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteViewInput,
   output: DeleteViewOutput,
   errors: [
@@ -2589,7 +2601,7 @@ export const listViews: API.OperationMethod<
     ListViewsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListViewsInput,
   output: ListViewsOutput,
   errors: [
@@ -2625,7 +2637,7 @@ export const associateDefaultView: API.OperationMethod<
   AssociateDefaultViewOutput,
   AssociateDefaultViewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDefaultViewInput,
   output: AssociateDefaultViewOutput,
   errors: [

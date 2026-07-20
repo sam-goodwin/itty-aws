@@ -79,31 +79,30 @@ export type ScopeId = string;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ tags: S.optional(TagMap) }),
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
@@ -111,7 +110,7 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -129,18 +128,18 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -158,7 +157,7 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceOutput",
@@ -170,19 +169,19 @@ export type MonitorLocalResourceType =
   | "AWS::Region"
   | "AWS::EKS::Cluster"
   | (string & {});
-export const MonitorLocalResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MonitorLocalResourceType = /*@__PURE__*/ S.String;
 export interface MonitorLocalResource {
   type: MonitorLocalResourceType;
   identifier: string;
 }
-export const MonitorLocalResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MonitorLocalResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: MonitorLocalResourceType, identifier: S.String }),
 ).annotate({
   identifier: "MonitorLocalResource",
 }) as any as S.Schema<MonitorLocalResource>;
 export type MonitorLocalResources = MonitorLocalResource[];
 export const MonitorLocalResources =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MonitorLocalResource);
+  /*@__PURE__*/ S.Array(MonitorLocalResource);
 export type MonitorRemoteResourceType =
   | "AWS::EC2::VPC"
   | "AWS::AvailabilityZone"
@@ -190,18 +189,18 @@ export type MonitorRemoteResourceType =
   | "AWS::AWSService"
   | "AWS::Region"
   | (string & {});
-export const MonitorRemoteResourceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MonitorRemoteResourceType = /*@__PURE__*/ S.String;
 export interface MonitorRemoteResource {
   type: MonitorRemoteResourceType;
   identifier: string;
 }
-export const MonitorRemoteResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MonitorRemoteResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ type: MonitorRemoteResourceType, identifier: S.String }),
 ).annotate({
   identifier: "MonitorRemoteResource",
 }) as any as S.Schema<MonitorRemoteResource>;
 export type MonitorRemoteResources = MonitorRemoteResource[];
-export const MonitorRemoteResources = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const MonitorRemoteResources = /*@__PURE__*/ S.Array(
   MonitorRemoteResource,
 );
 export interface CreateMonitorInput {
@@ -212,7 +211,7 @@ export interface CreateMonitorInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateMonitorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorName: S.String,
     localResources: MonitorLocalResources,
@@ -240,7 +239,7 @@ export type MonitorStatus =
   | "ERROR"
   | "DELETING"
   | (string & {});
-export const MonitorStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MonitorStatus = /*@__PURE__*/ S.String;
 export interface CreateMonitorOutput {
   monitorArn: string;
   monitorName: string;
@@ -251,7 +250,7 @@ export interface CreateMonitorOutput {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateMonitorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorArn: S.String,
     monitorName: S.String,
@@ -268,7 +267,7 @@ export const CreateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetMonitorInput {
   monitorName: string;
 }
-export const GetMonitorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMonitorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ monitorName: S.String.pipe(T.HttpLabel("monitorName")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/monitors/{monitorName}" }),
@@ -292,7 +291,7 @@ export interface GetMonitorOutput {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const GetMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMonitorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorArn: S.String,
     monitorName: S.String,
@@ -314,7 +313,7 @@ export interface UpdateMonitorInput {
   remoteResourcesToRemove?: MonitorRemoteResource[];
   clientToken?: string;
 }
-export const UpdateMonitorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateMonitorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorName: S.String.pipe(T.HttpLabel("monitorName")),
     localResourcesToAdd: S.optional(MonitorLocalResources),
@@ -345,7 +344,7 @@ export interface UpdateMonitorOutput {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateMonitorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorArn: S.String,
     monitorName: S.String,
@@ -362,7 +361,7 @@ export const UpdateMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteMonitorInput {
   monitorName: string;
 }
-export const DeleteMonitorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteMonitorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ monitorName: S.String.pipe(T.HttpLabel("monitorName")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/monitors/{monitorName}" }),
@@ -377,7 +376,7 @@ export const DeleteMonitorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteMonitorInput",
 }) as any as S.Schema<DeleteMonitorInput>;
 export interface DeleteMonitorOutput {}
-export const DeleteMonitorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteMonitorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteMonitorOutput",
@@ -387,7 +386,7 @@ export interface ListMonitorsInput {
   maxResults?: number;
   monitorStatus?: MonitorStatus;
 }
-export const ListMonitorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListMonitorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -410,7 +409,7 @@ export interface MonitorSummary {
   monitorName: string;
   monitorStatus: MonitorStatus;
 }
-export const MonitorSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MonitorSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     monitorArn: S.String,
     monitorName: S.String,
@@ -418,12 +417,12 @@ export const MonitorSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MonitorSummary" }) as any as S.Schema<MonitorSummary>;
 export type MonitorList = MonitorSummary[];
-export const MonitorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(MonitorSummary);
+export const MonitorList = /*@__PURE__*/ S.Array(MonitorSummary);
 export interface ListMonitorsOutput {
   monitors: MonitorSummary[];
   nextToken?: string;
 }
-export const ListMonitorsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListMonitorsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ monitors: MonitorList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListMonitorsOutput",
@@ -435,7 +434,7 @@ export interface GetQueryResultsMonitorTopContributorsInput {
   maxResults?: number;
 }
 export const GetQueryResultsMonitorTopContributorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       monitorName: S.String.pipe(T.HttpLabel("monitorName")),
       queryId: S.String.pipe(T.HttpLabel("queryId")),
@@ -486,7 +485,7 @@ export type MetricUnit =
   | "Count/Second"
   | "None"
   | (string & {});
-export const MetricUnit = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MetricUnit = /*@__PURE__*/ S.String;
 export type DestinationCategory =
   | "INTRA_AZ"
   | "INTER_AZ"
@@ -496,14 +495,14 @@ export type DestinationCategory =
   | "AMAZON_DYNAMODB"
   | "INTER_REGION"
   | (string & {});
-export const DestinationCategory = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DestinationCategory = /*@__PURE__*/ S.String;
 export interface TraversedComponent {
   componentId?: string;
   componentType?: string;
   componentArn?: string;
   serviceName?: string;
 }
-export const TraversedComponent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TraversedComponent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     componentId: S.optional(S.String),
     componentType: S.optional(S.String),
@@ -515,7 +514,7 @@ export const TraversedComponent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TraversedComponent>;
 export type TraversedConstructsList = TraversedComponent[];
 export const TraversedConstructsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TraversedComponent);
+  /*@__PURE__*/ S.Array(TraversedComponent);
 export interface KubernetesMetadata {
   localServiceName?: string;
   localPodName?: string;
@@ -524,7 +523,7 @@ export interface KubernetesMetadata {
   remotePodName?: string;
   remotePodNamespace?: string;
 }
-export const KubernetesMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const KubernetesMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     localServiceName: S.optional(S.String),
     localPodName: S.optional(S.String),
@@ -563,48 +562,48 @@ export interface MonitorTopContributorsRow {
   remoteSubnetArn?: string;
   remoteVpcArn?: string;
 }
-export const MonitorTopContributorsRow = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      localIp: S.optional(S.String),
-      snatIp: S.optional(S.String),
-      localInstanceId: S.optional(S.String),
-      localVpcId: S.optional(S.String),
-      localRegion: S.optional(S.String),
-      localAz: S.optional(S.String),
-      localSubnetId: S.optional(S.String),
-      targetPort: S.optional(S.Number),
-      destinationCategory: S.optional(DestinationCategory),
-      remoteVpcId: S.optional(S.String),
-      remoteRegion: S.optional(S.String),
-      remoteAz: S.optional(S.String),
-      remoteSubnetId: S.optional(S.String),
-      remoteInstanceId: S.optional(S.String),
-      remoteIp: S.optional(S.String),
-      dnatIp: S.optional(S.String),
-      value: S.optional(S.Number),
-      traversedConstructs: S.optional(TraversedConstructsList),
-      kubernetesMetadata: S.optional(KubernetesMetadata),
-      localInstanceArn: S.optional(S.String),
-      localSubnetArn: S.optional(S.String),
-      localVpcArn: S.optional(S.String),
-      remoteInstanceArn: S.optional(S.String),
-      remoteSubnetArn: S.optional(S.String),
-      remoteVpcArn: S.optional(S.String),
-    }),
+export const MonitorTopContributorsRow = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    localIp: S.optional(S.String),
+    snatIp: S.optional(S.String),
+    localInstanceId: S.optional(S.String),
+    localVpcId: S.optional(S.String),
+    localRegion: S.optional(S.String),
+    localAz: S.optional(S.String),
+    localSubnetId: S.optional(S.String),
+    targetPort: S.optional(S.Number),
+    destinationCategory: S.optional(DestinationCategory),
+    remoteVpcId: S.optional(S.String),
+    remoteRegion: S.optional(S.String),
+    remoteAz: S.optional(S.String),
+    remoteSubnetId: S.optional(S.String),
+    remoteInstanceId: S.optional(S.String),
+    remoteIp: S.optional(S.String),
+    dnatIp: S.optional(S.String),
+    value: S.optional(S.Number),
+    traversedConstructs: S.optional(TraversedConstructsList),
+    kubernetesMetadata: S.optional(KubernetesMetadata),
+    localInstanceArn: S.optional(S.String),
+    localSubnetArn: S.optional(S.String),
+    localVpcArn: S.optional(S.String),
+    remoteInstanceArn: S.optional(S.String),
+    remoteSubnetArn: S.optional(S.String),
+    remoteVpcArn: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "MonitorTopContributorsRow",
 }) as any as S.Schema<MonitorTopContributorsRow>;
 export type MonitorTopContributorsRowList = MonitorTopContributorsRow[];
-export const MonitorTopContributorsRowList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MonitorTopContributorsRow);
+export const MonitorTopContributorsRowList = /*@__PURE__*/ S.Array(
+  MonitorTopContributorsRow,
+);
 export interface GetQueryResultsMonitorTopContributorsOutput {
   unit?: MetricUnit;
   topContributors?: MonitorTopContributorsRow[];
   nextToken?: string;
 }
 export const GetQueryResultsMonitorTopContributorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       unit: S.optional(MetricUnit),
       topContributors: S.optional(MonitorTopContributorsRowList),
@@ -618,7 +617,7 @@ export interface GetQueryStatusMonitorTopContributorsInput {
   queryId: string;
 }
 export const GetQueryStatusMonitorTopContributorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       monitorName: S.String.pipe(T.HttpLabel("monitorName")),
       queryId: S.String.pipe(T.HttpLabel("queryId")),
@@ -645,14 +644,12 @@ export type QueryStatus =
   | "FAILED"
   | "CANCELED"
   | (string & {});
-export const QueryStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const QueryStatus = /*@__PURE__*/ S.String;
 export interface GetQueryStatusMonitorTopContributorsOutput {
   status: QueryStatus;
 }
 export const GetQueryStatusMonitorTopContributorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ status: QueryStatus }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ status: QueryStatus })).annotate({
     identifier: "GetQueryStatusMonitorTopContributorsOutput",
   }) as any as S.Schema<GetQueryStatusMonitorTopContributorsOutput>;
 export type MonitorMetric =
@@ -661,7 +658,7 @@ export type MonitorMetric =
   | "RETRANSMISSIONS"
   | "DATA_TRANSFERRED"
   | (string & {});
-export const MonitorMetric = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MonitorMetric = /*@__PURE__*/ S.String;
 export interface StartQueryMonitorTopContributorsInput {
   monitorName: string;
   startTime: Date;
@@ -670,8 +667,8 @@ export interface StartQueryMonitorTopContributorsInput {
   destinationCategory: DestinationCategory;
   limit?: number;
 }
-export const StartQueryMonitorTopContributorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartQueryMonitorTopContributorsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       monitorName: S.String.pipe(T.HttpLabel("monitorName")),
       startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -692,24 +689,23 @@ export const StartQueryMonitorTopContributorsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "StartQueryMonitorTopContributorsInput",
-  }) as any as S.Schema<StartQueryMonitorTopContributorsInput>;
+).annotate({
+  identifier: "StartQueryMonitorTopContributorsInput",
+}) as any as S.Schema<StartQueryMonitorTopContributorsInput>;
 export interface StartQueryMonitorTopContributorsOutput {
   queryId: string;
 }
-export const StartQueryMonitorTopContributorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ queryId: S.String }),
-  ).annotate({
-    identifier: "StartQueryMonitorTopContributorsOutput",
-  }) as any as S.Schema<StartQueryMonitorTopContributorsOutput>;
+export const StartQueryMonitorTopContributorsOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ queryId: S.String }),
+).annotate({
+  identifier: "StartQueryMonitorTopContributorsOutput",
+}) as any as S.Schema<StartQueryMonitorTopContributorsOutput>;
 export interface StopQueryMonitorTopContributorsInput {
   monitorName: string;
   queryId: string;
 }
-export const StopQueryMonitorTopContributorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StopQueryMonitorTopContributorsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       monitorName: S.String.pipe(T.HttpLabel("monitorName")),
       queryId: S.String.pipe(T.HttpLabel("queryId")),
@@ -726,25 +722,26 @@ export const StopQueryMonitorTopContributorsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "StopQueryMonitorTopContributorsInput",
-  }) as any as S.Schema<StopQueryMonitorTopContributorsInput>;
+).annotate({
+  identifier: "StopQueryMonitorTopContributorsInput",
+}) as any as S.Schema<StopQueryMonitorTopContributorsInput>;
 export interface StopQueryMonitorTopContributorsOutput {}
-export const StopQueryMonitorTopContributorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "StopQueryMonitorTopContributorsOutput",
-  }) as any as S.Schema<StopQueryMonitorTopContributorsOutput>;
+export const StopQueryMonitorTopContributorsOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "StopQueryMonitorTopContributorsOutput",
+}) as any as S.Schema<StopQueryMonitorTopContributorsOutput>;
 export type TargetId = { accountId: string };
-export const TargetId = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const TargetId = /*@__PURE__*/ S.Union([
   S.Struct({ accountId: S.String }),
 ]);
 export type TargetType = "ACCOUNT" | (string & {});
-export const TargetType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TargetType = /*@__PURE__*/ S.String;
 export interface TargetIdentifier {
   targetId: TargetId;
   targetType: TargetType;
 }
-export const TargetIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ targetId: TargetId, targetType: TargetType }),
 ).annotate({
   identifier: "TargetIdentifier",
@@ -753,18 +750,17 @@ export interface TargetResource {
   targetIdentifier: TargetIdentifier;
   region: string;
 }
-export const TargetResource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TargetResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ targetIdentifier: TargetIdentifier, region: S.String }),
 ).annotate({ identifier: "TargetResource" }) as any as S.Schema<TargetResource>;
 export type TargetResourceList = TargetResource[];
-export const TargetResourceList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TargetResource);
+export const TargetResourceList = /*@__PURE__*/ S.Array(TargetResource);
 export interface CreateScopeInput {
   targets: TargetResource[];
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateScopeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateScopeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     targets: TargetResourceList,
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
@@ -789,14 +785,14 @@ export type ScopeStatus =
   | "DEACTIVATING"
   | "DEACTIVATED"
   | (string & {});
-export const ScopeStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ScopeStatus = /*@__PURE__*/ S.String;
 export interface CreateScopeOutput {
   scopeId: string;
   status: ScopeStatus;
   scopeArn: string;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateScopeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateScopeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeId: S.String,
     status: ScopeStatus,
@@ -809,7 +805,7 @@ export const CreateScopeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetScopeInput {
   scopeId: string;
 }
-export const GetScopeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetScopeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scopeId: S.String.pipe(T.HttpLabel("scopeId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/scopes/{scopeId}" }),
@@ -828,7 +824,7 @@ export interface GetScopeOutput {
   targets: TargetResource[];
   tags?: { [key: string]: string | undefined };
 }
-export const GetScopeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetScopeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeId: S.String,
     status: ScopeStatus,
@@ -842,7 +838,7 @@ export interface UpdateScopeInput {
   resourcesToAdd?: TargetResource[];
   resourcesToDelete?: TargetResource[];
 }
-export const UpdateScopeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateScopeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeId: S.String.pipe(T.HttpLabel("scopeId")),
     resourcesToAdd: S.optional(TargetResourceList),
@@ -866,7 +862,7 @@ export interface UpdateScopeOutput {
   scopeArn: string;
   tags?: { [key: string]: string | undefined };
 }
-export const UpdateScopeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateScopeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scopeId: S.String,
     status: ScopeStatus,
@@ -879,7 +875,7 @@ export const UpdateScopeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteScopeInput {
   scopeId: string;
 }
-export const DeleteScopeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteScopeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scopeId: S.String.pipe(T.HttpLabel("scopeId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/scopes/{scopeId}" }),
@@ -894,7 +890,7 @@ export const DeleteScopeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteScopeInput",
 }) as any as S.Schema<DeleteScopeInput>;
 export interface DeleteScopeOutput {}
-export const DeleteScopeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteScopeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteScopeOutput",
@@ -903,7 +899,7 @@ export interface ListScopesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListScopesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListScopesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -925,17 +921,16 @@ export interface ScopeSummary {
   status: ScopeStatus;
   scopeArn: string;
 }
-export const ScopeSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScopeSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scopeId: S.String, status: ScopeStatus, scopeArn: S.String }),
 ).annotate({ identifier: "ScopeSummary" }) as any as S.Schema<ScopeSummary>;
 export type ScopeSummaryList = ScopeSummary[];
-export const ScopeSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ScopeSummary);
+export const ScopeSummaryList = /*@__PURE__*/ S.Array(ScopeSummary);
 export interface ListScopesOutput {
   scopes: ScopeSummary[];
   nextToken?: string;
 }
-export const ListScopesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListScopesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scopes: ScopeSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListScopesOutput",
@@ -947,7 +942,7 @@ export interface GetQueryResultsWorkloadInsightsTopContributorsInput {
   maxResults?: number;
 }
 export const GetQueryResultsWorkloadInsightsTopContributorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scopeId: S.String.pipe(T.HttpLabel("scopeId")),
       queryId: S.String.pipe(T.HttpLabel("queryId")),
@@ -980,32 +975,32 @@ export interface WorkloadInsightsTopContributorsRow {
   localSubnetArn?: string;
   localVpcArn?: string;
 }
-export const WorkloadInsightsTopContributorsRow =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.optional(S.String),
-      localSubnetId: S.optional(S.String),
-      localAz: S.optional(S.String),
-      localVpcId: S.optional(S.String),
-      localRegion: S.optional(S.String),
-      remoteIdentifier: S.optional(S.String),
-      value: S.optional(S.Number),
-      localSubnetArn: S.optional(S.String),
-      localVpcArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadInsightsTopContributorsRow",
-  }) as any as S.Schema<WorkloadInsightsTopContributorsRow>;
+export const WorkloadInsightsTopContributorsRow = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.optional(S.String),
+    localSubnetId: S.optional(S.String),
+    localAz: S.optional(S.String),
+    localVpcId: S.optional(S.String),
+    localRegion: S.optional(S.String),
+    remoteIdentifier: S.optional(S.String),
+    value: S.optional(S.Number),
+    localSubnetArn: S.optional(S.String),
+    localVpcArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "WorkloadInsightsTopContributorsRow",
+}) as any as S.Schema<WorkloadInsightsTopContributorsRow>;
 export type WorkloadInsightsTopContributorsRowList =
   WorkloadInsightsTopContributorsRow[];
-export const WorkloadInsightsTopContributorsRowList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WorkloadInsightsTopContributorsRow);
+export const WorkloadInsightsTopContributorsRowList = /*@__PURE__*/ S.Array(
+  WorkloadInsightsTopContributorsRow,
+);
 export interface GetQueryResultsWorkloadInsightsTopContributorsOutput {
   topContributors?: WorkloadInsightsTopContributorsRow[];
   nextToken?: string;
 }
 export const GetQueryResultsWorkloadInsightsTopContributorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       topContributors: S.optional(WorkloadInsightsTopContributorsRowList),
       nextToken: S.optional(S.String),
@@ -1020,7 +1015,7 @@ export interface GetQueryResultsWorkloadInsightsTopContributorsDataInput {
   maxResults?: number;
 }
 export const GetQueryResultsWorkloadInsightsTopContributorsDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scopeId: S.String.pipe(T.HttpLabel("scopeId")),
       queryId: S.String.pipe(T.HttpLabel("queryId")),
@@ -1044,38 +1039,38 @@ export const GetQueryResultsWorkloadInsightsTopContributorsDataInput =
   }) as any as S.Schema<GetQueryResultsWorkloadInsightsTopContributorsDataInput>;
 export type WorkloadInsightsTopContributorsTimestampsList = Date[];
 export const WorkloadInsightsTopContributorsTimestampsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(
-    S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  );
+  /*@__PURE__*/ S.Array(S.Date.pipe(T.TimestampFormat("epoch-seconds")));
 export type WorkloadInsightsTopContributorsValuesList = number[];
-export const WorkloadInsightsTopContributorsValuesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const WorkloadInsightsTopContributorsValuesList = /*@__PURE__*/ S.Array(
+  S.Number,
+);
 export interface WorkloadInsightsTopContributorsDataPoint {
   timestamps: Date[];
   values: number[];
   label: string;
 }
-export const WorkloadInsightsTopContributorsDataPoint =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const WorkloadInsightsTopContributorsDataPoint = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       timestamps: WorkloadInsightsTopContributorsTimestampsList,
       values: WorkloadInsightsTopContributorsValuesList,
       label: S.String,
     }),
-  ).annotate({
-    identifier: "WorkloadInsightsTopContributorsDataPoint",
-  }) as any as S.Schema<WorkloadInsightsTopContributorsDataPoint>;
+).annotate({
+  identifier: "WorkloadInsightsTopContributorsDataPoint",
+}) as any as S.Schema<WorkloadInsightsTopContributorsDataPoint>;
 export type WorkloadInsightsTopContributorsDataPoints =
   WorkloadInsightsTopContributorsDataPoint[];
-export const WorkloadInsightsTopContributorsDataPoints =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(WorkloadInsightsTopContributorsDataPoint);
+export const WorkloadInsightsTopContributorsDataPoints = /*@__PURE__*/ S.Array(
+  WorkloadInsightsTopContributorsDataPoint,
+);
 export interface GetQueryResultsWorkloadInsightsTopContributorsDataOutput {
   unit: MetricUnit;
   datapoints: WorkloadInsightsTopContributorsDataPoint[];
   nextToken?: string;
 }
 export const GetQueryResultsWorkloadInsightsTopContributorsDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       unit: MetricUnit,
       datapoints: WorkloadInsightsTopContributorsDataPoints,
@@ -1089,7 +1084,7 @@ export interface GetQueryStatusWorkloadInsightsTopContributorsInput {
   queryId: string;
 }
 export const GetQueryStatusWorkloadInsightsTopContributorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scopeId: S.String.pipe(T.HttpLabel("scopeId")),
       queryId: S.String.pipe(T.HttpLabel("queryId")),
@@ -1113,9 +1108,7 @@ export interface GetQueryStatusWorkloadInsightsTopContributorsOutput {
   status: QueryStatus;
 }
 export const GetQueryStatusWorkloadInsightsTopContributorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ status: QueryStatus }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ status: QueryStatus })).annotate({
     identifier: "GetQueryStatusWorkloadInsightsTopContributorsOutput",
   }) as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsOutput>;
 export interface GetQueryStatusWorkloadInsightsTopContributorsDataInput {
@@ -1123,7 +1116,7 @@ export interface GetQueryStatusWorkloadInsightsTopContributorsDataInput {
   queryId: string;
 }
 export const GetQueryStatusWorkloadInsightsTopContributorsDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scopeId: S.String.pipe(T.HttpLabel("scopeId")),
       queryId: S.String.pipe(T.HttpLabel("queryId")),
@@ -1147,9 +1140,7 @@ export interface GetQueryStatusWorkloadInsightsTopContributorsDataOutput {
   status: QueryStatus;
 }
 export const GetQueryStatusWorkloadInsightsTopContributorsDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ status: QueryStatus }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ status: QueryStatus })).annotate({
     identifier: "GetQueryStatusWorkloadInsightsTopContributorsDataOutput",
   }) as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsDataOutput>;
 export type WorkloadInsightsMetric =
@@ -1157,7 +1148,7 @@ export type WorkloadInsightsMetric =
   | "RETRANSMISSIONS"
   | "DATA_TRANSFERRED"
   | (string & {});
-export const WorkloadInsightsMetric = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const WorkloadInsightsMetric = /*@__PURE__*/ S.String;
 export interface StartQueryWorkloadInsightsTopContributorsInput {
   scopeId: string;
   startTime: Date;
@@ -1167,7 +1158,7 @@ export interface StartQueryWorkloadInsightsTopContributorsInput {
   limit?: number;
 }
 export const StartQueryWorkloadInsightsTopContributorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scopeId: S.String.pipe(T.HttpLabel("scopeId")),
       startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1195,9 +1186,7 @@ export interface StartQueryWorkloadInsightsTopContributorsOutput {
   queryId: string;
 }
 export const StartQueryWorkloadInsightsTopContributorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ queryId: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ queryId: S.String })).annotate({
     identifier: "StartQueryWorkloadInsightsTopContributorsOutput",
   }) as any as S.Schema<StartQueryWorkloadInsightsTopContributorsOutput>;
 export interface StartQueryWorkloadInsightsTopContributorsDataInput {
@@ -1208,7 +1197,7 @@ export interface StartQueryWorkloadInsightsTopContributorsDataInput {
   destinationCategory: DestinationCategory;
 }
 export const StartQueryWorkloadInsightsTopContributorsDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scopeId: S.String.pipe(T.HttpLabel("scopeId")),
       startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -1235,9 +1224,7 @@ export interface StartQueryWorkloadInsightsTopContributorsDataOutput {
   queryId: string;
 }
 export const StartQueryWorkloadInsightsTopContributorsDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ queryId: S.String }),
-  ).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({ queryId: S.String })).annotate({
     identifier: "StartQueryWorkloadInsightsTopContributorsDataOutput",
   }) as any as S.Schema<StartQueryWorkloadInsightsTopContributorsDataOutput>;
 export interface StopQueryWorkloadInsightsTopContributorsInput {
@@ -1245,7 +1232,7 @@ export interface StopQueryWorkloadInsightsTopContributorsInput {
   queryId: string;
 }
 export const StopQueryWorkloadInsightsTopContributorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scopeId: S.String.pipe(T.HttpLabel("scopeId")),
       queryId: S.String.pipe(T.HttpLabel("queryId")),
@@ -1267,7 +1254,7 @@ export const StopQueryWorkloadInsightsTopContributorsInput =
   }) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsInput>;
 export interface StopQueryWorkloadInsightsTopContributorsOutput {}
 export const StopQueryWorkloadInsightsTopContributorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StopQueryWorkloadInsightsTopContributorsOutput",
   }) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsOutput>;
 export interface StopQueryWorkloadInsightsTopContributorsDataInput {
@@ -1275,7 +1262,7 @@ export interface StopQueryWorkloadInsightsTopContributorsDataInput {
   queryId: string;
 }
 export const StopQueryWorkloadInsightsTopContributorsDataInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       scopeId: S.String.pipe(T.HttpLabel("scopeId")),
       queryId: S.String.pipe(T.HttpLabel("queryId")),
@@ -1297,7 +1284,7 @@ export const StopQueryWorkloadInsightsTopContributorsDataInput =
   }) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataInput>;
 export interface StopQueryWorkloadInsightsTopContributorsDataOutput {}
 export const StopQueryWorkloadInsightsTopContributorsDataOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "StopQueryWorkloadInsightsTopContributorsDataOutput",
   }) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataOutput>;
 
@@ -1305,32 +1292,37 @@ export const StopQueryWorkloadInsightsTopContributorsDataOutput =
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.optional(S.String) },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -1350,7 +1342,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [
@@ -1381,7 +1373,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [
@@ -1412,7 +1404,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [
@@ -1443,7 +1435,7 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorOutput,
   CreateMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMonitorInput,
   output: CreateMonitorOutput,
   errors: [
@@ -1473,7 +1465,7 @@ export const getMonitor: API.OperationMethod<
   GetMonitorOutput,
   GetMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMonitorInput,
   output: GetMonitorOutput,
   errors: [
@@ -1502,7 +1494,7 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorOutput,
   UpdateMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMonitorInput,
   output: UpdateMonitorOutput,
   errors: [
@@ -1532,7 +1524,7 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorOutput,
   DeleteMonitorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMonitorInput,
   output: DeleteMonitorOutput,
   errors: [
@@ -1576,7 +1568,7 @@ export const listMonitors: API.OperationMethod<
     ListMonitorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMonitorsInput,
   output: ListMonitorsOutput,
   errors: [
@@ -1630,7 +1622,7 @@ export const getQueryResultsMonitorTopContributors: API.OperationMethod<
     GetQueryResultsMonitorTopContributorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsMonitorTopContributorsInput,
   output: GetQueryResultsMonitorTopContributorsOutput,
   errors: [
@@ -1670,7 +1662,7 @@ export const getQueryStatusMonitorTopContributors: API.OperationMethod<
   GetQueryStatusMonitorTopContributorsOutput,
   GetQueryStatusMonitorTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStatusMonitorTopContributorsInput,
   output: GetQueryStatusMonitorTopContributorsOutput,
   errors: [
@@ -1703,7 +1695,7 @@ export const startQueryMonitorTopContributors: API.OperationMethod<
   StartQueryMonitorTopContributorsOutput,
   StartQueryMonitorTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryMonitorTopContributorsInput,
   output: StartQueryMonitorTopContributorsOutput,
   errors: [
@@ -1734,7 +1726,7 @@ export const stopQueryMonitorTopContributors: API.OperationMethod<
   StopQueryMonitorTopContributorsOutput,
   StopQueryMonitorTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopQueryMonitorTopContributorsInput,
   output: StopQueryMonitorTopContributorsOutput,
   errors: [
@@ -1774,7 +1766,7 @@ export const createScope: API.OperationMethod<
   CreateScopeOutput,
   CreateScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScopeInput,
   output: CreateScopeOutput,
   errors: [
@@ -1805,7 +1797,7 @@ export const getScope: API.OperationMethod<
   GetScopeOutput,
   GetScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScopeInput,
   output: GetScopeOutput,
   errors: [
@@ -1837,7 +1829,7 @@ export const updateScope: API.OperationMethod<
   UpdateScopeOutput,
   UpdateScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateScopeInput,
   output: UpdateScopeOutput,
   errors: [
@@ -1870,7 +1862,7 @@ export const deleteScope: API.OperationMethod<
   DeleteScopeOutput,
   DeleteScopeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteScopeInput,
   output: DeleteScopeOutput,
   errors: [
@@ -1916,7 +1908,7 @@ export const listScopes: API.OperationMethod<
     ListScopesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScopesInput,
   output: ListScopesOutput,
   errors: [
@@ -1973,7 +1965,7 @@ export const getQueryResultsWorkloadInsightsTopContributors: API.OperationMethod
     GetQueryResultsWorkloadInsightsTopContributorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsWorkloadInsightsTopContributorsInput,
   output: GetQueryResultsWorkloadInsightsTopContributorsOutput,
   errors: [
@@ -2033,7 +2025,7 @@ export const getQueryResultsWorkloadInsightsTopContributorsData: API.OperationMe
     GetQueryResultsWorkloadInsightsTopContributorsDataError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetQueryResultsWorkloadInsightsTopContributorsDataInput,
   output: GetQueryResultsWorkloadInsightsTopContributorsDataOutput,
   errors: [
@@ -2073,7 +2065,7 @@ export const getQueryStatusWorkloadInsightsTopContributors: API.OperationMethod<
   GetQueryStatusWorkloadInsightsTopContributorsOutput,
   GetQueryStatusWorkloadInsightsTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStatusWorkloadInsightsTopContributorsInput,
   output: GetQueryStatusWorkloadInsightsTopContributorsOutput,
   errors: [
@@ -2108,7 +2100,7 @@ export const getQueryStatusWorkloadInsightsTopContributorsData: API.OperationMet
   GetQueryStatusWorkloadInsightsTopContributorsDataOutput,
   GetQueryStatusWorkloadInsightsTopContributorsDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetQueryStatusWorkloadInsightsTopContributorsDataInput,
   output: GetQueryStatusWorkloadInsightsTopContributorsDataOutput,
   errors: [
@@ -2141,7 +2133,7 @@ export const startQueryWorkloadInsightsTopContributors: API.OperationMethod<
   StartQueryWorkloadInsightsTopContributorsOutput,
   StartQueryWorkloadInsightsTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryWorkloadInsightsTopContributorsInput,
   output: StartQueryWorkloadInsightsTopContributorsOutput,
   errors: [
@@ -2174,7 +2166,7 @@ export const startQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
   StartQueryWorkloadInsightsTopContributorsDataOutput,
   StartQueryWorkloadInsightsTopContributorsDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartQueryWorkloadInsightsTopContributorsDataInput,
   output: StartQueryWorkloadInsightsTopContributorsDataOutput,
   errors: [
@@ -2205,7 +2197,7 @@ export const stopQueryWorkloadInsightsTopContributors: API.OperationMethod<
   StopQueryWorkloadInsightsTopContributorsOutput,
   StopQueryWorkloadInsightsTopContributorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopQueryWorkloadInsightsTopContributorsInput,
   output: StopQueryWorkloadInsightsTopContributorsOutput,
   errors: [
@@ -2236,7 +2228,7 @@ export const stopQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
   StopQueryWorkloadInsightsTopContributorsDataOutput,
   StopQueryWorkloadInsightsTopContributorsDataError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopQueryWorkloadInsightsTopContributorsDataInput,
   output: StopQueryWorkloadInsightsTopContributorsDataOutput,
   errors: [

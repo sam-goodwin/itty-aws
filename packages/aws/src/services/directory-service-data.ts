@@ -120,7 +120,7 @@ export interface AddGroupMemberRequest {
   MemberRealm?: string;
   ClientToken?: string;
 }
-export const AddGroupMemberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AddGroupMemberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     GroupName: S.String,
@@ -142,7 +142,7 @@ export const AddGroupMemberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AddGroupMemberRequest",
 }) as any as S.Schema<AddGroupMemberRequest>;
 export interface AddGroupMemberResult {}
-export const AddGroupMemberResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AddGroupMemberResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "AddGroupMemberResult",
@@ -152,7 +152,7 @@ export type AccessDeniedReason =
   | "DIRECTORY_AUTH"
   | "DATA_DISABLED"
   | (string & {});
-export const AccessDeniedReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccessDeniedReason = /*@__PURE__*/ S.String;
 export type DirectoryUnavailableReason =
   | "INVALID_DIRECTORY_STATE"
   | "DIRECTORY_TIMEOUT"
@@ -160,7 +160,7 @@ export type DirectoryUnavailableReason =
   | "NO_DISK_SPACE"
   | "TRUST_AUTH_FAILURE"
   | (string & {});
-export const DirectoryUnavailableReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DirectoryUnavailableReason = /*@__PURE__*/ S.String;
 export type ValidationExceptionReason =
   | "INVALID_REALM"
   | "INVALID_DIRECTORY_TYPE"
@@ -178,19 +178,18 @@ export type ValidationExceptionReason =
   | "LDAP_SIZE_LIMIT_EXCEEDED"
   | "LDAP_UNSUPPORTED_OPERATION"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export type GroupType = "Distribution" | "Security" | (string & {});
-export const GroupType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const GroupType = /*@__PURE__*/ S.String;
 export type GroupScope =
   | "DomainLocal"
   | "Global"
   | "Universal"
   | "BuiltinLocal"
   | (string & {});
-export const GroupScope = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type StringSetAttributeValue = string | redacted.Redacted<string>[];
-export const StringSetAttributeValue =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const GroupScope = /*@__PURE__*/ S.String;
+export type StringSetAttributeValue = (string | redacted.Redacted<string>)[];
+export const StringSetAttributeValue = /*@__PURE__*/ S.Array(SensitiveString);
 export type AttributeValue =
   | {
       S: string | redacted.Redacted<string>;
@@ -204,16 +203,16 @@ export type AttributeValue =
       S?: never;
       N?: never;
       BOOL?: never;
-      SS: string | redacted.Redacted<string>[];
+      SS: (string | redacted.Redacted<string>)[];
     };
-export const AttributeValue = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const AttributeValue = /*@__PURE__*/ S.Union([
   S.Struct({ S: SensitiveString }),
   S.Struct({ N: S.Number }),
   S.Struct({ BOOL: S.Boolean }),
   S.Struct({ SS: StringSetAttributeValue }),
 ]);
 export type Attributes = { [key: string]: AttributeValue | undefined };
-export const Attributes = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
   AttributeValue.pipe(S.optional),
 );
@@ -225,7 +224,7 @@ export interface CreateGroupRequest {
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
   ClientToken?: string;
 }
-export const CreateGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     SAMAccountName: S.String,
@@ -252,7 +251,7 @@ export interface CreateGroupResult {
   SAMAccountName?: string;
   SID?: string;
 }
-export const CreateGroupResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateGroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.optional(S.String),
     SAMAccountName: S.optional(S.String),
@@ -270,7 +269,7 @@ export interface CreateUserRequest {
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
   ClientToken?: string;
 }
-export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     SAMAccountName: S.String,
@@ -298,7 +297,7 @@ export interface CreateUserResult {
   SID?: string;
   SAMAccountName?: string;
 }
-export const CreateUserResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.optional(S.String),
     SID: S.optional(S.String),
@@ -312,7 +311,7 @@ export interface DeleteGroupRequest {
   SAMAccountName: string;
   ClientToken?: string;
 }
-export const DeleteGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     SAMAccountName: S.String,
@@ -332,7 +331,7 @@ export const DeleteGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteGroupRequest",
 }) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResult {}
-export const DeleteGroupResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteGroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteGroupResult",
@@ -342,7 +341,7 @@ export interface DeleteUserRequest {
   SAMAccountName: string;
   ClientToken?: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     SAMAccountName: S.String,
@@ -362,22 +361,20 @@ export const DeleteUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteUserRequest",
 }) as any as S.Schema<DeleteUserRequest>;
 export interface DeleteUserResult {}
-export const DeleteUserResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteUserResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DeleteUserResult",
 }) as any as S.Schema<DeleteUserResult>;
 export type LdapDisplayNameList = string[];
-export const LdapDisplayNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const LdapDisplayNameList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeGroupRequest {
   DirectoryId: string;
   Realm?: string;
   SAMAccountName: string;
   OtherAttributes?: string[];
 }
-export const DescribeGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     Realm: S.optional(S.String),
@@ -407,7 +404,7 @@ export interface DescribeGroupResult {
   GroupScope?: GroupScope;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
 }
-export const DescribeGroupResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeGroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.optional(S.String),
     Realm: S.optional(S.String),
@@ -427,7 +424,7 @@ export interface DescribeUserRequest {
   OtherAttributes?: string[];
   Realm?: string;
 }
-export const DescribeUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     SAMAccountName: S.String,
@@ -460,7 +457,7 @@ export interface DescribeUserResult {
   Enabled?: boolean;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
 }
-export const DescribeUserResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DescribeUserResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.optional(S.String),
     Realm: S.optional(S.String),
@@ -482,7 +479,7 @@ export interface DisableUserRequest {
   SAMAccountName: string;
   ClientToken?: string;
 }
-export const DisableUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DisableUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     SAMAccountName: S.String,
@@ -502,7 +499,7 @@ export const DisableUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DisableUserRequest",
 }) as any as S.Schema<DisableUserRequest>;
 export interface DisableUserResult {}
-export const DisableUserResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DisableUserResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "DisableUserResult",
@@ -515,41 +512,40 @@ export interface ListGroupMembersRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
-export const ListGroupMembersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
-      Realm: S.optional(S.String),
-      MemberRealm: S.optional(S.String),
-      SAMAccountName: S.String,
-      NextToken: S.optional(SensitiveString),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/GroupMemberships/ListGroupMembers" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
+    Realm: S.optional(S.String),
+    MemberRealm: S.optional(S.String),
+    SAMAccountName: S.String,
+    NextToken: S.optional(SensitiveString),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/GroupMemberships/ListGroupMembers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListGroupMembersRequest",
 }) as any as S.Schema<ListGroupMembersRequest>;
 export type MemberType = "USER" | "GROUP" | "COMPUTER" | (string & {});
-export const MemberType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MemberType = /*@__PURE__*/ S.String;
 export interface Member {
   SID: string;
   SAMAccountName: string;
   MemberType: MemberType;
 }
-export const Member = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SID: S.String, SAMAccountName: S.String, MemberType: MemberType }),
 ).annotate({ identifier: "Member" }) as any as S.Schema<Member>;
 export type MemberList = Member[];
-export const MemberList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Member);
+export const MemberList = /*@__PURE__*/ S.Array(Member);
 export interface ListGroupMembersResult {
   DirectoryId?: string;
   Realm?: string;
@@ -557,15 +553,14 @@ export interface ListGroupMembersResult {
   Members?: Member[];
   NextToken?: string | redacted.Redacted<string>;
 }
-export const ListGroupMembersResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DirectoryId: S.optional(S.String),
-      Realm: S.optional(S.String),
-      MemberRealm: S.optional(S.String),
-      Members: S.optional(MemberList),
-      NextToken: S.optional(SensitiveString),
-    }).pipe(ns),
+export const ListGroupMembersResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.optional(S.String),
+    Realm: S.optional(S.String),
+    MemberRealm: S.optional(S.String),
+    Members: S.optional(MemberList),
+    NextToken: S.optional(SensitiveString),
+  }).pipe(ns),
 ).annotate({
   identifier: "ListGroupMembersResult",
 }) as any as S.Schema<ListGroupMembersResult>;
@@ -575,7 +570,7 @@ export interface ListGroupsRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
-export const ListGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     Realm: S.optional(S.String),
@@ -601,7 +596,7 @@ export interface GroupSummary {
   GroupType: GroupType;
   GroupScope: GroupScope;
 }
-export const GroupSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GroupSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SID: S.String,
     SAMAccountName: S.String,
@@ -610,15 +605,14 @@ export const GroupSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GroupSummary" }) as any as S.Schema<GroupSummary>;
 export type GroupSummaryList = GroupSummary[];
-export const GroupSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GroupSummary);
+export const GroupSummaryList = /*@__PURE__*/ S.Array(GroupSummary);
 export interface ListGroupsResult {
   DirectoryId?: string;
   Realm?: string;
   Groups?: GroupSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-export const ListGroupsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListGroupsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.optional(S.String),
     Realm: S.optional(S.String),
@@ -636,29 +630,25 @@ export interface ListGroupsForMemberRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
-export const ListGroupsForMemberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
-      Realm: S.optional(S.String),
-      MemberRealm: S.optional(S.String),
-      SAMAccountName: S.String,
-      NextToken: S.optional(SensitiveString),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({
-          method: "POST",
-          uri: "/GroupMemberships/ListGroupsForMember",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListGroupsForMemberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
+    Realm: S.optional(S.String),
+    MemberRealm: S.optional(S.String),
+    SAMAccountName: S.String,
+    NextToken: S.optional(SensitiveString),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/GroupMemberships/ListGroupsForMember" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListGroupsForMemberRequest",
 }) as any as S.Schema<ListGroupsForMemberRequest>;
@@ -669,15 +659,14 @@ export interface ListGroupsForMemberResult {
   Groups?: GroupSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-export const ListGroupsForMemberResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DirectoryId: S.optional(S.String),
-      Realm: S.optional(S.String),
-      MemberRealm: S.optional(S.String),
-      Groups: S.optional(GroupSummaryList),
-      NextToken: S.optional(SensitiveString),
-    }).pipe(ns),
+export const ListGroupsForMemberResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.optional(S.String),
+    Realm: S.optional(S.String),
+    MemberRealm: S.optional(S.String),
+    Groups: S.optional(GroupSummaryList),
+    NextToken: S.optional(SensitiveString),
+  }).pipe(ns),
 ).annotate({
   identifier: "ListGroupsForMemberResult",
 }) as any as S.Schema<ListGroupsForMemberResult>;
@@ -687,7 +676,7 @@ export interface ListUsersRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
-export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     Realm: S.optional(S.String),
@@ -714,7 +703,7 @@ export interface UserSummary {
   Surname?: string | redacted.Redacted<string>;
   Enabled: boolean;
 }
-export const UserSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SID: S.String,
     SAMAccountName: S.String,
@@ -724,14 +713,14 @@ export const UserSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserSummary" }) as any as S.Schema<UserSummary>;
 export type UserSummaryList = UserSummary[];
-export const UserSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(UserSummary);
+export const UserSummaryList = /*@__PURE__*/ S.Array(UserSummary);
 export interface ListUsersResult {
   DirectoryId?: string;
   Realm?: string;
   Users?: UserSummary[];
   NextToken?: string | redacted.Redacted<string>;
 }
-export const ListUsersResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.optional(S.String),
     Realm: S.optional(S.String),
@@ -748,31 +737,30 @@ export interface RemoveGroupMemberRequest {
   MemberRealm?: string;
   ClientToken?: string;
 }
-export const RemoveGroupMemberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
-      GroupName: S.String,
-      MemberName: S.String,
-      MemberRealm: S.optional(S.String),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/GroupMemberships/RemoveGroupMember" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RemoveGroupMemberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
+    GroupName: S.String,
+    MemberName: S.String,
+    MemberRealm: S.optional(S.String),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/GroupMemberships/RemoveGroupMember" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "RemoveGroupMemberRequest",
 }) as any as S.Schema<RemoveGroupMemberRequest>;
 export interface RemoveGroupMemberResult {}
-export const RemoveGroupMemberResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}).pipe(ns),
+export const RemoveGroupMemberResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "RemoveGroupMemberResult",
 }) as any as S.Schema<RemoveGroupMemberResult>;
@@ -784,7 +772,7 @@ export interface SearchGroupsRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
-export const SearchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     SearchString: SensitiveString,
@@ -814,7 +802,7 @@ export interface Group {
   GroupScope?: GroupScope;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
 }
-export const Group = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Group = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SID: S.optional(S.String),
     SAMAccountName: S.String,
@@ -825,14 +813,14 @@ export const Group = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 export type GroupList = Group[];
-export const GroupList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Group);
+export const GroupList = /*@__PURE__*/ S.Array(Group);
 export interface SearchGroupsResult {
   DirectoryId?: string;
   Realm?: string;
   Groups?: Group[];
   NextToken?: string | redacted.Redacted<string>;
 }
-export const SearchGroupsResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchGroupsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.optional(S.String),
     Realm: S.optional(S.String),
@@ -850,7 +838,7 @@ export interface SearchUsersRequest {
   NextToken?: string | redacted.Redacted<string>;
   MaxResults?: number;
 }
-export const SearchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     Realm: S.optional(S.String),
@@ -883,7 +871,7 @@ export interface User {
   Enabled?: boolean;
   OtherAttributes?: { [key: string]: AttributeValue | undefined };
 }
-export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SID: S.optional(S.String),
     SAMAccountName: S.String,
@@ -897,14 +885,14 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 export type UserList = User[];
-export const UserList = /*@__PURE__*/ /*#__PURE__*/ S.Array(User);
+export const UserList = /*@__PURE__*/ S.Array(User);
 export interface SearchUsersResult {
   DirectoryId?: string;
   Realm?: string;
   Users?: User[];
   NextToken?: string | redacted.Redacted<string>;
 }
-export const SearchUsersResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SearchUsersResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.optional(S.String),
     Realm: S.optional(S.String),
@@ -915,7 +903,7 @@ export const SearchUsersResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SearchUsersResult",
 }) as any as S.Schema<SearchUsersResult>;
 export type UpdateType = "ADD" | "REPLACE" | "REMOVE" | (string & {});
-export const UpdateType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UpdateType = /*@__PURE__*/ S.String;
 export interface UpdateGroupRequest {
   DirectoryId: string;
   SAMAccountName: string;
@@ -925,7 +913,7 @@ export interface UpdateGroupRequest {
   UpdateType?: UpdateType;
   ClientToken?: string;
 }
-export const UpdateGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     SAMAccountName: S.String,
@@ -949,7 +937,7 @@ export const UpdateGroupRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateGroupRequest",
 }) as any as S.Schema<UpdateGroupRequest>;
 export interface UpdateGroupResult {}
-export const UpdateGroupResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateGroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "UpdateGroupResult",
@@ -964,7 +952,7 @@ export interface UpdateUserRequest {
   UpdateType?: UpdateType;
   ClientToken?: string;
 }
-export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DirectoryId: S.String.pipe(T.HttpQuery("DirectoryId")),
     SAMAccountName: S.String,
@@ -989,7 +977,7 @@ export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserRequest",
 }) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResult {}
-export const UpdateUserResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "UpdateUserResult",
@@ -999,10 +987,12 @@ export const UpdateUserResult = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String), Reason: S.optional(AccessDeniedReason) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class DirectoryUnavailableException extends S.TaggedErrorClass<DirectoryUnavailableException>()(
   "DirectoryUnavailableException",
@@ -1010,16 +1000,17 @@ export class DirectoryUnavailableException extends S.TaggedErrorClass<DirectoryU
     Message: S.optional(S.String),
     Reason: S.optional(DirectoryUnavailableReason),
   },
-  T.Retryable(),
+  T.all(T.HttpError(400), T.Retryable()),
 ).pipe(C.withBadRequestError, C.withRetryableError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { Message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -1027,7 +1018,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     Message: S.String,
     RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -1035,6 +1026,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     Message: S.optional(S.String),
     Reason: S.optional(ValidationExceptionReason),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -1055,7 +1047,7 @@ export const addGroupMember: API.OperationMethod<
   AddGroupMemberResult,
   AddGroupMemberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AddGroupMemberRequest,
   output: AddGroupMemberResult,
   errors: [
@@ -1087,7 +1079,7 @@ export const createGroup: API.OperationMethod<
   CreateGroupResult,
   CreateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateGroupRequest,
   output: CreateGroupResult,
   errors: [
@@ -1118,7 +1110,7 @@ export const createUser: API.OperationMethod<
   CreateUserResult,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResult,
   errors: [
@@ -1150,7 +1142,7 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupResult,
   DeleteGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteGroupRequest,
   output: DeleteGroupResult,
   errors: [
@@ -1183,7 +1175,7 @@ export const deleteUser: API.OperationMethod<
   DeleteUserResult,
   DeleteUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteUserRequest,
   output: DeleteUserResult,
   errors: [
@@ -1215,7 +1207,7 @@ export const describeGroup: API.OperationMethod<
   DescribeGroupResult,
   DescribeGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeGroupRequest,
   output: DescribeGroupResult,
   errors: [
@@ -1246,7 +1238,7 @@ export const describeUser: API.OperationMethod<
   DescribeUserResult,
   DescribeUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DescribeUserRequest,
   output: DescribeUserResult,
   errors: [
@@ -1280,7 +1272,7 @@ export const disableUser: API.OperationMethod<
   DisableUserResult,
   DisableUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableUserRequest,
   output: DisableUserResult,
   errors: [
@@ -1335,7 +1327,7 @@ export const listGroupMembers: API.OperationMethod<
     ListGroupMembersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupMembersRequest,
   output: ListGroupMembersResult,
   errors: [
@@ -1394,7 +1386,7 @@ export const listGroups: API.OperationMethod<
     ListGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResult,
   errors: [
@@ -1453,7 +1445,7 @@ export const listGroupsForMember: API.OperationMethod<
     ListGroupsForMemberError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsForMemberRequest,
   output: ListGroupsForMemberResult,
   errors: [
@@ -1512,7 +1504,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResult,
   errors: [
@@ -1549,7 +1541,7 @@ export const removeGroupMember: API.OperationMethod<
   RemoveGroupMemberResult,
   RemoveGroupMemberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RemoveGroupMemberRequest,
   output: RemoveGroupMemberResult,
   errors: [
@@ -1605,7 +1597,7 @@ export const searchGroups: API.OperationMethod<
     SearchGroupsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchGroupsRequest,
   output: SearchGroupsResult,
   errors: [
@@ -1665,7 +1657,7 @@ export const searchUsers: API.OperationMethod<
     SearchUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchUsersRequest,
   output: SearchUsersResult,
   errors: [
@@ -1702,7 +1694,7 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupResult,
   UpdateGroupError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGroupRequest,
   output: UpdateGroupResult,
   errors: [
@@ -1735,7 +1727,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResult,
   UpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResult,
   errors: [

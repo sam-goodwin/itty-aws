@@ -101,40 +101,35 @@ export type DeploymentParameterResourceIdentifier = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(Tags) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags?: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: S.optional(Tags),
@@ -152,18 +147,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type StringList = string[];
-export const StringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: StringList.pipe(T.HttpQuery("tagKeys")),
@@ -181,7 +176,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -190,13 +185,13 @@ export interface DeploymentParameterInput {
   name: string;
   secretString: string | redacted.Redacted<string>;
 }
-export const DeploymentParameterInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, secretString: SensitiveString }),
+export const DeploymentParameterInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, secretString: SensitiveString }),
 ).annotate({
   identifier: "DeploymentParameterInput",
 }) as any as S.Schema<DeploymentParameterInput>;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -209,82 +204,85 @@ export interface PutDeploymentParameterRequest {
   expirationDate?: Date;
   clientToken?: string;
 }
-export const PutDeploymentParameterRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      catalog: S.String.pipe(T.HttpLabel("catalog")),
-      productId: S.String.pipe(T.HttpLabel("productId")),
-      agreementId: S.String,
-      deploymentParameter: DeploymentParameterInput,
-      tags: S.optional(TagsMap),
-      expirationDate: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/catalogs/{catalog}/products/{productId}/deployment-parameters",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutDeploymentParameterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    catalog: S.String.pipe(T.HttpLabel("catalog")),
+    productId: S.String.pipe(T.HttpLabel("productId")),
+    agreementId: S.String,
+    deploymentParameter: DeploymentParameterInput,
+    tags: S.optional(TagsMap),
+    expirationDate: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
     ),
-  ).annotate({
-    identifier: "PutDeploymentParameterRequest",
-  }) as any as S.Schema<PutDeploymentParameterRequest>;
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/catalogs/{catalog}/products/{productId}/deployment-parameters",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutDeploymentParameterRequest",
+}) as any as S.Schema<PutDeploymentParameterRequest>;
 export interface PutDeploymentParameterResponse {
   resourceArn: string;
   agreementId: string;
   deploymentParameterId: string;
   tags?: { [key: string]: string | undefined };
 }
-export const PutDeploymentParameterResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceArn: S.String,
-      agreementId: S.String,
-      deploymentParameterId: S.String,
-      tags: S.optional(TagsMap),
-    }),
-  ).annotate({
-    identifier: "PutDeploymentParameterResponse",
-  }) as any as S.Schema<PutDeploymentParameterResponse>;
+export const PutDeploymentParameterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String,
+    agreementId: S.String,
+    deploymentParameterId: S.String,
+    tags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "PutDeploymentParameterResponse",
+}) as any as S.Schema<PutDeploymentParameterResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { message: S.String },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.String, fieldName: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resourceId: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -303,7 +301,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -333,7 +331,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -364,7 +362,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -396,7 +394,7 @@ export const putDeploymentParameter: API.OperationMethod<
   PutDeploymentParameterResponse,
   PutDeploymentParameterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutDeploymentParameterRequest,
   output: PutDeploymentParameterResponse,
   errors: [

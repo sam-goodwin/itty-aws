@@ -93,12 +93,12 @@ export type OutputFormat =
   | "INSPECTOR"
   | "INSPECTOR_ALT"
   | (string & {});
-export const OutputFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OutputFormat = /*@__PURE__*/ S.String;
 export interface ScanSbomRequest {
   sbom: any;
   outputFormat?: OutputFormat;
 }
-export const ScanSbomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScanSbomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sbom: S.Any, outputFormat: S.optional(OutputFormat) }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/scan/sbom" }),
@@ -115,7 +115,7 @@ export const ScanSbomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ScanSbomResponse {
   sbom?: any;
 }
-export const ScanSbomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScanSbomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ sbom: S.optional(S.Any) }),
 ).annotate({
   identifier: "ScanSbomResponse",
@@ -124,8 +124,7 @@ export type InternalServerExceptionReason =
   | "FAILED_TO_GENERATE_SBOM"
   | "OTHER"
   | (string & {});
-export const InternalServerExceptionReason =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InternalServerExceptionReason = /*@__PURE__*/ S.String;
 export type ValidationExceptionReason =
   | "UNKNOWN_OPERATION"
   | "CANNOT_PARSE"
@@ -133,18 +132,18 @@ export type ValidationExceptionReason =
   | "UNSUPPORTED_SBOM_TYPE"
   | "OTHER"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFields = ValidationExceptionField[];
-export const ValidationExceptionFields = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFields = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 
@@ -152,6 +151,7 @@ export const ValidationExceptionFields = /*@__PURE__*/ /*#__PURE__*/ S.Array(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -160,7 +160,7 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     reason: InternalServerExceptionReason,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -168,7 +168,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -177,6 +177,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: ValidationExceptionReason,
     fields: S.optional(ValidationExceptionFields),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -196,7 +197,7 @@ export const scanSbom: API.OperationMethod<
   ScanSbomResponse,
   ScanSbomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ScanSbomRequest,
   output: ScanSbomResponse,
   errors: [

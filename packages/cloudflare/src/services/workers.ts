@@ -324,6 +324,14 @@ export class RouteNotFound extends T.applyErrorMatchers(
   [{ code: 10009 }, { status: 404 }],
 ) {}
 
+export class RouteScriptNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RouteScriptNotFound>()("RouteScriptNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10019 }],
+) {}
+
 export class ScriptModuleNotFound extends T.applyErrorMatchers(
   S.TaggedErrorClass<ScriptModuleNotFound>()("ScriptModuleNotFound", {
     code: S.Number,
@@ -23188,6 +23196,7 @@ export type CreateRouteError =
   | InvalidRoutePattern
   | InvalidRoute
   | Forbidden
+  | RouteScriptNotFound
   | CloudflareOpError;
 /** Creates a route that maps a URL pattern to a Worker. */
 export const createRoute: API.OperationMethod<
@@ -23202,6 +23211,7 @@ export const createRoute: API.OperationMethod<
     InvalidRoutePattern,
     InvalidRoute,
     Forbidden,
+    RouteScriptNotFound,
     CloudflareRateLimited,
     CloudflareError,
   ],

@@ -928,10 +928,10 @@ export const PatchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchDatabaseResponse",
 }) as any as S.Schema<PatchDatabaseResponse>;
 
-export type DatabaseQueryRequestBodyD1SingleQueryParamsList = string[];
+export type DatabaseQueryRequestBodyD1SingleQueryParamsList = unknown[];
 export const DatabaseQueryRequestBodyD1SingleQueryParamsList =
   /*@__PURE__*/ S.Array(
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<DatabaseQueryRequestBodyD1SingleQueryParamsList>;
 
 export interface DatabaseQueryRequestBodyD1SingleQuery {
@@ -950,10 +950,10 @@ export const DatabaseQueryRequestBodyD1SingleQuery = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatabaseQueryRequestBodyD1SingleQuery>;
 
 export type DatabaseQueryRequestBodyMultipleQueriesBatchItemParamsList =
-  string[];
+  unknown[];
 export const DatabaseQueryRequestBodyMultipleQueriesBatchItemParamsList =
   /*@__PURE__*/ S.Array(
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<DatabaseQueryRequestBodyMultipleQueriesBatchItemParamsList>;
 
 export interface DatabaseQueryRequestBodyMultipleQueriesBatchItem {
@@ -1130,10 +1130,10 @@ export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueryDatabaseResponse",
 }) as any as S.Schema<QueryDatabaseResponse>;
 
-export type DatabaseRawRequestBodyD1SingleQueryParamsList = string[];
+export type DatabaseRawRequestBodyD1SingleQueryParamsList = unknown[];
 export const DatabaseRawRequestBodyD1SingleQueryParamsList =
   /*@__PURE__*/ S.Array(
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<DatabaseRawRequestBodyD1SingleQueryParamsList>;
 
 export interface DatabaseRawRequestBodyD1SingleQuery {
@@ -1150,10 +1150,11 @@ export const DatabaseRawRequestBodyD1SingleQuery = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseRawRequestBodyD1SingleQuery",
 }) as any as S.Schema<DatabaseRawRequestBodyD1SingleQuery>;
 
-export type DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList = string[];
+export type DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList =
+  unknown[];
 export const DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList =
   /*@__PURE__*/ S.Array(
-    S.String,
+    S.Unknown,
   ) as any as S.Schema<DatabaseRawRequestBodyMultipleQueriesBatchItemParamsList>;
 
 export interface DatabaseRawRequestBodyMultipleQueriesBatchItem {

@@ -112,45 +112,43 @@ export interface DescribeServicesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const DescribeServicesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ServiceCode: S.optional(S.String),
-      FormatVersion: S.optional(S.String),
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const DescribeServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServiceCode: S.optional(S.String),
+    FormatVersion: S.optional(S.String),
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "DescribeServicesRequest",
 }) as any as S.Schema<DescribeServicesRequest>;
 export type AttributeNameList = string[];
-export const AttributeNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AttributeNameList = /*@__PURE__*/ S.Array(S.String);
 export interface Service {
   ServiceCode: string;
   AttributeNames?: string[];
 }
-export const Service = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Service = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceCode: S.String,
     AttributeNames: S.optional(AttributeNameList),
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
 export type ServiceList = Service[];
-export const ServiceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Service);
+export const ServiceList = /*@__PURE__*/ S.Array(Service);
 export interface DescribeServicesResponse {
   Services?: Service[];
   FormatVersion?: string;
   NextToken?: string;
 }
-export const DescribeServicesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Services: S.optional(ServiceList),
-      FormatVersion: S.optional(S.String),
-      NextToken: S.optional(S.String),
-    }),
+export const DescribeServicesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Services: S.optional(ServiceList),
+    FormatVersion: S.optional(S.String),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DescribeServicesResponse",
 }) as any as S.Schema<DescribeServicesResponse>;
@@ -160,38 +158,35 @@ export interface GetAttributeValuesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const GetAttributeValuesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ServiceCode: S.String,
-      AttributeName: S.String,
-      NextToken: S.optional(S.String),
-      MaxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetAttributeValuesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ServiceCode: S.String,
+    AttributeName: S.String,
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetAttributeValuesRequest",
 }) as any as S.Schema<GetAttributeValuesRequest>;
 export interface AttributeValue {
   Value?: string;
 }
-export const AttributeValue = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AttributeValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Value: S.optional(S.String) }),
 ).annotate({ identifier: "AttributeValue" }) as any as S.Schema<AttributeValue>;
 export type AttributeValueList = AttributeValue[];
-export const AttributeValueList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AttributeValue);
+export const AttributeValueList = /*@__PURE__*/ S.Array(AttributeValue);
 export interface GetAttributeValuesResponse {
   AttributeValues?: AttributeValue[];
   NextToken?: string;
 }
-export const GetAttributeValuesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AttributeValues: S.optional(AttributeValueList),
-      NextToken: S.optional(S.String),
-    }),
+export const GetAttributeValuesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AttributeValues: S.optional(AttributeValueList),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetAttributeValuesResponse",
 }) as any as S.Schema<GetAttributeValuesResponse>;
@@ -199,23 +194,21 @@ export interface GetPriceListFileUrlRequest {
   PriceListArn: string;
   FileFormat: string;
 }
-export const GetPriceListFileUrlRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ PriceListArn: S.String, FileFormat: S.String }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
+export const GetPriceListFileUrlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PriceListArn: S.String, FileFormat: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
 ).annotate({
   identifier: "GetPriceListFileUrlRequest",
 }) as any as S.Schema<GetPriceListFileUrlRequest>;
 export interface GetPriceListFileUrlResponse {
   Url?: string;
 }
-export const GetPriceListFileUrlResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Url: S.optional(S.String) }),
-  ).annotate({
-    identifier: "GetPriceListFileUrlResponse",
-  }) as any as S.Schema<GetPriceListFileUrlResponse>;
+export const GetPriceListFileUrlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Url: S.optional(S.String) }),
+).annotate({
+  identifier: "GetPriceListFileUrlResponse",
+}) as any as S.Schema<GetPriceListFileUrlResponse>;
 export type FilterType =
   | "TERM_MATCH"
   | "EQUALS"
@@ -223,17 +216,17 @@ export type FilterType =
   | "ANY_OF"
   | "NONE_OF"
   | (string & {});
-export const FilterType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FilterType = /*@__PURE__*/ S.String;
 export interface Filter {
   Type: FilterType;
   Field: string;
   Value: string;
 }
-export const Filter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Filter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: FilterType, Field: S.String, Value: S.String }),
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type Filters = Filter[];
-export const Filters = /*@__PURE__*/ /*#__PURE__*/ S.Array(Filter);
+export const Filters = /*@__PURE__*/ S.Array(Filter);
 export interface GetProductsRequest {
   ServiceCode: string;
   Filters?: Filter[];
@@ -241,7 +234,7 @@ export interface GetProductsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const GetProductsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetProductsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceCode: S.String,
     Filters: S.optional(Filters),
@@ -255,13 +248,13 @@ export const GetProductsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetProductsRequest",
 }) as any as S.Schema<GetProductsRequest>;
 export type PriceListJsonItems = string[];
-export const PriceListJsonItems = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PriceListJsonItems = /*@__PURE__*/ S.Array(S.String);
 export interface GetProductsResponse {
   FormatVersion?: string;
   PriceList?: string[];
   NextToken?: string;
 }
-export const GetProductsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetProductsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FormatVersion: S.optional(S.String),
     PriceList: S.optional(PriceListJsonItems),
@@ -278,7 +271,7 @@ export interface ListPriceListsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListPriceListsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPriceListsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ServiceCode: S.String,
     EffectiveDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -293,14 +286,14 @@ export const ListPriceListsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListPriceListsRequest",
 }) as any as S.Schema<ListPriceListsRequest>;
 export type FileFormats = string[];
-export const FileFormats = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FileFormats = /*@__PURE__*/ S.Array(S.String);
 export interface PriceList {
   PriceListArn?: string;
   RegionCode?: string;
   CurrencyCode?: string;
   FileFormats?: string[];
 }
-export const PriceList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PriceList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PriceListArn: S.optional(S.String),
     RegionCode: S.optional(S.String),
@@ -309,17 +302,16 @@ export const PriceList = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "PriceList" }) as any as S.Schema<PriceList>;
 export type PriceLists = PriceList[];
-export const PriceLists = /*@__PURE__*/ /*#__PURE__*/ S.Array(PriceList);
+export const PriceLists = /*@__PURE__*/ S.Array(PriceList);
 export interface ListPriceListsResponse {
   PriceLists?: PriceList[];
   NextToken?: string;
 }
-export const ListPriceListsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PriceLists: S.optional(PriceLists),
-      NextToken: S.optional(S.String),
-    }),
+export const ListPriceListsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PriceLists: S.optional(PriceLists),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListPriceListsResponse",
 }) as any as S.Schema<ListPriceListsResponse>;
@@ -328,36 +320,42 @@ export const ListPriceListsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ExpiredNextTokenException extends S.TaggedErrorClass<ExpiredNextTokenException>()(
   "ExpiredNextTokenException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
   "InternalErrorException",
   { Message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
   "InvalidNextTokenException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
   "InvalidParameterException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.optional(S.String) },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -393,7 +391,7 @@ export const describeServices: API.OperationMethod<
     DescribeServicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: DescribeServicesRequest,
   output: DescribeServicesResponse,
   errors: [
@@ -447,7 +445,7 @@ export const getAttributeValues: API.OperationMethod<
     GetAttributeValuesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetAttributeValuesRequest,
   output: GetAttributeValuesResponse,
   errors: [
@@ -487,7 +485,7 @@ export const getPriceListFileUrl: API.OperationMethod<
   GetPriceListFileUrlResponse,
   GetPriceListFileUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPriceListFileUrlRequest,
   output: GetPriceListFileUrlResponse,
   errors: [
@@ -534,7 +532,7 @@ export const getProducts: API.OperationMethod<
     GetProductsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetProductsRequest,
   output: GetProductsResponse,
   errors: [
@@ -591,7 +589,7 @@ export const listPriceLists: API.OperationMethod<
     ListPriceListsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPriceListsRequest,
   output: ListPriceListsResponse,
   errors: [

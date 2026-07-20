@@ -130,33 +130,33 @@ export interface AssociatePhoneNumberWithUserRequest {
   UserId: string;
   E164PhoneNumber: string | redacted.Redacted<string>;
 }
-export const AssociatePhoneNumberWithUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      UserId: S.String.pipe(T.HttpLabel("UserId")),
-      E164PhoneNumber: SensitiveString,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/users/{UserId}?operation=associate-phone-number",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const AssociatePhoneNumberWithUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    UserId: S.String.pipe(T.HttpLabel("UserId")),
+    E164PhoneNumber: SensitiveString,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/users/{UserId}?operation=associate-phone-number",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "AssociatePhoneNumberWithUserRequest",
-  }) as any as S.Schema<AssociatePhoneNumberWithUserRequest>;
+  ),
+).annotate({
+  identifier: "AssociatePhoneNumberWithUserRequest",
+}) as any as S.Schema<AssociatePhoneNumberWithUserRequest>;
 export interface AssociatePhoneNumberWithUserResponse {}
-export const AssociatePhoneNumberWithUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "AssociatePhoneNumberWithUserResponse",
-  }) as any as S.Schema<AssociatePhoneNumberWithUserResponse>;
+export const AssociatePhoneNumberWithUserResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AssociatePhoneNumberWithUserResponse",
+}) as any as S.Schema<AssociatePhoneNumberWithUserResponse>;
 export type ErrorCode =
   | "BadRequest"
   | "Conflict"
@@ -174,24 +174,24 @@ export type ErrorCode =
   | "VoiceConnectorGroupAssociationsExist"
   | "PhoneNumberAssociationsExist"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ErrorCode = /*@__PURE__*/ S.String;
 export interface SigninDelegateGroup {
   GroupName?: string;
 }
-export const SigninDelegateGroup = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SigninDelegateGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GroupName: S.optional(S.String) }),
 ).annotate({
   identifier: "SigninDelegateGroup",
 }) as any as S.Schema<SigninDelegateGroup>;
 export type SigninDelegateGroupList = SigninDelegateGroup[];
 export const SigninDelegateGroupList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SigninDelegateGroup);
+  /*@__PURE__*/ S.Array(SigninDelegateGroup);
 export interface AssociateSigninDelegateGroupsWithAccountRequest {
   AccountId: string;
   SigninDelegateGroups: SigninDelegateGroup[];
 }
 export const AssociateSigninDelegateGroupsWithAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AccountId: S.String.pipe(T.HttpLabel("AccountId")),
       SigninDelegateGroups: SigninDelegateGroupList,
@@ -213,57 +213,55 @@ export const AssociateSigninDelegateGroupsWithAccountRequest =
   }) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountRequest>;
 export interface AssociateSigninDelegateGroupsWithAccountResponse {}
 export const AssociateSigninDelegateGroupsWithAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateSigninDelegateGroupsWithAccountResponse",
   }) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountResponse>;
 export type RoomMembershipRole = "Administrator" | "Member" | (string & {});
-export const RoomMembershipRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RoomMembershipRole = /*@__PURE__*/ S.String;
 export interface MembershipItem {
   MemberId?: string;
   Role?: RoomMembershipRole;
 }
-export const MembershipItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MembershipItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MemberId: S.optional(S.String),
     Role: S.optional(RoomMembershipRole),
   }),
 ).annotate({ identifier: "MembershipItem" }) as any as S.Schema<MembershipItem>;
 export type MembershipItemList = MembershipItem[];
-export const MembershipItemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MembershipItem);
+export const MembershipItemList = /*@__PURE__*/ S.Array(MembershipItem);
 export interface BatchCreateRoomMembershipRequest {
   AccountId: string;
   RoomId: string;
   MembershipItemList: MembershipItem[];
 }
-export const BatchCreateRoomMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      RoomId: S.String.pipe(T.HttpLabel("RoomId")),
-      MembershipItemList: MembershipItemList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships?operation=batch-create",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchCreateRoomMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    RoomId: S.String.pipe(T.HttpLabel("RoomId")),
+    MembershipItemList: MembershipItemList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships?operation=batch-create",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchCreateRoomMembershipRequest",
-  }) as any as S.Schema<BatchCreateRoomMembershipRequest>;
+  ),
+).annotate({
+  identifier: "BatchCreateRoomMembershipRequest",
+}) as any as S.Schema<BatchCreateRoomMembershipRequest>;
 export interface MemberError {
   MemberId?: string;
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
-export const MemberError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MemberError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MemberId: S.optional(S.String),
     ErrorCode: S.optional(ErrorCode),
@@ -271,45 +269,40 @@ export const MemberError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemberError" }) as any as S.Schema<MemberError>;
 export type MemberErrorList = MemberError[];
-export const MemberErrorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(MemberError);
+export const MemberErrorList = /*@__PURE__*/ S.Array(MemberError);
 export interface BatchCreateRoomMembershipResponse {
   Errors?: MemberError[];
 }
-export const BatchCreateRoomMembershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Errors: S.optional(MemberErrorList) }),
-  ).annotate({
-    identifier: "BatchCreateRoomMembershipResponse",
-  }) as any as S.Schema<BatchCreateRoomMembershipResponse>;
+export const BatchCreateRoomMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Errors: S.optional(MemberErrorList) }),
+).annotate({
+  identifier: "BatchCreateRoomMembershipResponse",
+}) as any as S.Schema<BatchCreateRoomMembershipResponse>;
 export type NonEmptyStringList = string[];
-export const NonEmptyStringList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const NonEmptyStringList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeletePhoneNumberRequest {
   PhoneNumberIds: string[];
 }
-export const BatchDeletePhoneNumberRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberIds: NonEmptyStringList }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/phone-numbers?operation=batch-delete",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchDeletePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberIds: NonEmptyStringList }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/phone-numbers?operation=batch-delete" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchDeletePhoneNumberRequest",
-  }) as any as S.Schema<BatchDeletePhoneNumberRequest>;
+  ),
+).annotate({
+  identifier: "BatchDeletePhoneNumberRequest",
+}) as any as S.Schema<BatchDeletePhoneNumberRequest>;
 export interface PhoneNumberError {
   PhoneNumberId?: string;
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
-export const PhoneNumberError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PhoneNumberError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PhoneNumberId: S.optional(S.String),
     ErrorCode: S.optional(ErrorCode),
@@ -319,41 +312,38 @@ export const PhoneNumberError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PhoneNumberError",
 }) as any as S.Schema<PhoneNumberError>;
 export type PhoneNumberErrorList = PhoneNumberError[];
-export const PhoneNumberErrorList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumberError);
+export const PhoneNumberErrorList = /*@__PURE__*/ S.Array(PhoneNumberError);
 export interface BatchDeletePhoneNumberResponse {
   PhoneNumberErrors?: PhoneNumberError[];
 }
-export const BatchDeletePhoneNumberResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
-  ).annotate({
-    identifier: "BatchDeletePhoneNumberResponse",
-  }) as any as S.Schema<BatchDeletePhoneNumberResponse>;
+export const BatchDeletePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
+).annotate({
+  identifier: "BatchDeletePhoneNumberResponse",
+}) as any as S.Schema<BatchDeletePhoneNumberResponse>;
 export type UserIdList = string[];
-export const UserIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const UserIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchSuspendUserRequest {
   AccountId: string;
   UserIdList: string[];
 }
-export const BatchSuspendUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      UserIdList: UserIdList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/users?operation=suspend",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchSuspendUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    UserIdList: UserIdList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/users?operation=suspend",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchSuspendUserRequest",
 }) as any as S.Schema<BatchSuspendUserRequest>;
@@ -362,7 +352,7 @@ export interface UserError {
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
 }
-export const UserError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserId: S.optional(S.String),
     ErrorCode: S.optional(ErrorCode),
@@ -370,12 +360,12 @@ export const UserError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserError" }) as any as S.Schema<UserError>;
 export type UserErrorList = UserError[];
-export const UserErrorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(UserError);
+export const UserErrorList = /*@__PURE__*/ S.Array(UserError);
 export interface BatchSuspendUserResponse {
   UserErrors?: UserError[];
 }
-export const BatchSuspendUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ UserErrors: S.optional(UserErrorList) }),
+export const BatchSuspendUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UserErrors: S.optional(UserErrorList) }),
 ).annotate({
   identifier: "BatchSuspendUserResponse",
 }) as any as S.Schema<BatchSuspendUserResponse>;
@@ -383,32 +373,31 @@ export interface BatchUnsuspendUserRequest {
   AccountId: string;
   UserIdList: string[];
 }
-export const BatchUnsuspendUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      UserIdList: UserIdList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/users?operation=unsuspend",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchUnsuspendUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    UserIdList: UserIdList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/users?operation=unsuspend",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchUnsuspendUserRequest",
 }) as any as S.Schema<BatchUnsuspendUserRequest>;
 export interface BatchUnsuspendUserResponse {
   UserErrors?: UserError[];
 }
-export const BatchUnsuspendUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ UserErrors: S.optional(UserErrorList) }),
+export const BatchUnsuspendUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UserErrors: S.optional(UserErrorList) }),
 ).annotate({
   identifier: "BatchUnsuspendUserResponse",
 }) as any as S.Schema<BatchUnsuspendUserResponse>;
@@ -417,71 +406,65 @@ export type PhoneNumberProductType =
   | "VoiceConnector"
   | "SipMediaApplicationDialIn"
   | (string & {});
-export const PhoneNumberProductType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberProductType = /*@__PURE__*/ S.String;
 export interface UpdatePhoneNumberRequestItem {
   PhoneNumberId: string;
   ProductType?: PhoneNumberProductType;
   CallingName?: string | redacted.Redacted<string>;
 }
-export const UpdatePhoneNumberRequestItem =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PhoneNumberId: S.String,
-      ProductType: S.optional(PhoneNumberProductType),
-      CallingName: S.optional(SensitiveString),
-    }),
-  ).annotate({
-    identifier: "UpdatePhoneNumberRequestItem",
-  }) as any as S.Schema<UpdatePhoneNumberRequestItem>;
+export const UpdatePhoneNumberRequestItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberId: S.String,
+    ProductType: S.optional(PhoneNumberProductType),
+    CallingName: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "UpdatePhoneNumberRequestItem",
+}) as any as S.Schema<UpdatePhoneNumberRequestItem>;
 export type UpdatePhoneNumberRequestItemList = UpdatePhoneNumberRequestItem[];
-export const UpdatePhoneNumberRequestItemList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(UpdatePhoneNumberRequestItem);
+export const UpdatePhoneNumberRequestItemList = /*@__PURE__*/ S.Array(
+  UpdatePhoneNumberRequestItem,
+);
 export interface BatchUpdatePhoneNumberRequest {
   UpdatePhoneNumberRequestItems: UpdatePhoneNumberRequestItem[];
 }
-export const BatchUpdatePhoneNumberRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      UpdatePhoneNumberRequestItems: UpdatePhoneNumberRequestItemList,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/phone-numbers?operation=batch-update",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchUpdatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    UpdatePhoneNumberRequestItems: UpdatePhoneNumberRequestItemList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/phone-numbers?operation=batch-update" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchUpdatePhoneNumberRequest",
-  }) as any as S.Schema<BatchUpdatePhoneNumberRequest>;
+  ),
+).annotate({
+  identifier: "BatchUpdatePhoneNumberRequest",
+}) as any as S.Schema<BatchUpdatePhoneNumberRequest>;
 export interface BatchUpdatePhoneNumberResponse {
   PhoneNumberErrors?: PhoneNumberError[];
 }
-export const BatchUpdatePhoneNumberResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
-  ).annotate({
-    identifier: "BatchUpdatePhoneNumberResponse",
-  }) as any as S.Schema<BatchUpdatePhoneNumberResponse>;
+export const BatchUpdatePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberErrors: S.optional(PhoneNumberErrorList) }),
+).annotate({
+  identifier: "BatchUpdatePhoneNumberResponse",
+}) as any as S.Schema<BatchUpdatePhoneNumberResponse>;
 export type License = "Basic" | "Plus" | "Pro" | "ProTrial" | (string & {});
-export const License = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const License = /*@__PURE__*/ S.String;
 export type UserType = "PrivateUser" | "SharedDevice" | (string & {});
-export const UserType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const UserType = /*@__PURE__*/ S.String;
 export interface AlexaForBusinessMetadata {
   IsAlexaForBusinessEnabled?: boolean;
   AlexaForBusinessRoomArn?: string | redacted.Redacted<string>;
 }
-export const AlexaForBusinessMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      IsAlexaForBusinessEnabled: S.optional(S.Boolean),
-      AlexaForBusinessRoomArn: S.optional(SensitiveString),
-    }),
+export const AlexaForBusinessMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IsAlexaForBusinessEnabled: S.optional(S.Boolean),
+    AlexaForBusinessRoomArn: S.optional(SensitiveString),
+  }),
 ).annotate({
   identifier: "AlexaForBusinessMetadata",
 }) as any as S.Schema<AlexaForBusinessMetadata>;
@@ -491,7 +474,7 @@ export interface UpdateUserRequestItem {
   UserType?: UserType;
   AlexaForBusinessMetadata?: AlexaForBusinessMetadata;
 }
-export const UpdateUserRequestItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserRequestItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserId: S.String,
     LicenseType: S.optional(License),
@@ -502,43 +485,42 @@ export const UpdateUserRequestItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateUserRequestItem",
 }) as any as S.Schema<UpdateUserRequestItem>;
 export type UpdateUserRequestItemList = UpdateUserRequestItem[];
-export const UpdateUserRequestItemList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const UpdateUserRequestItemList = /*@__PURE__*/ S.Array(
   UpdateUserRequestItem,
 );
 export interface BatchUpdateUserRequest {
   AccountId: string;
   UpdateUserRequestItems: UpdateUserRequestItem[];
 }
-export const BatchUpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      UpdateUserRequestItems: UpdateUserRequestItemList,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/accounts/{AccountId}/users" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchUpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    UpdateUserRequestItems: UpdateUserRequestItemList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/accounts/{AccountId}/users" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchUpdateUserRequest",
 }) as any as S.Schema<BatchUpdateUserRequest>;
 export interface BatchUpdateUserResponse {
   UserErrors?: UserError[];
 }
-export const BatchUpdateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ UserErrors: S.optional(UserErrorList) }),
+export const BatchUpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UserErrors: S.optional(UserErrorList) }),
 ).annotate({
   identifier: "BatchUpdateUserResponse",
 }) as any as S.Schema<BatchUpdateUserResponse>;
 export interface CreateAccountRequest {
   Name: string;
 }
-export const CreateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String }).pipe(
     T.all(
       T.Http({ method: "POST", uri: "/accounts" }),
@@ -558,11 +540,11 @@ export type AccountType =
   | "EnterpriseLWA"
   | "EnterpriseOIDC"
   | (string & {});
-export const AccountType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccountType = /*@__PURE__*/ S.String;
 export type LicenseList = License[];
-export const LicenseList = /*@__PURE__*/ /*#__PURE__*/ S.Array(License);
+export const LicenseList = /*@__PURE__*/ S.Array(License);
 export type AccountStatus = "Suspended" | "Active" | (string & {});
-export const AccountStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccountStatus = /*@__PURE__*/ S.String;
 export interface Account {
   AwsAccountId: string;
   AccountId: string;
@@ -574,7 +556,7 @@ export interface Account {
   AccountStatus?: AccountStatus;
   SigninDelegateGroups?: SigninDelegateGroup[];
 }
-export const Account = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Account = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AwsAccountId: S.String,
     AccountId: S.String,
@@ -592,7 +574,7 @@ export const Account = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateAccountResponse {
   Account?: Account;
 }
-export const CreateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Account: S.optional(Account) }),
 ).annotate({
   identifier: "CreateAccountResponse",
@@ -602,7 +584,7 @@ export interface CreateBotRequest {
   DisplayName: string | redacted.Redacted<string>;
   Domain?: string;
 }
-export const CreateBotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateBotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     DisplayName: SensitiveString,
@@ -621,7 +603,7 @@ export const CreateBotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateBotRequest",
 }) as any as S.Schema<CreateBotRequest>;
 export type BotType = "ChatBot" | (string & {});
-export const BotType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const BotType = /*@__PURE__*/ S.String;
 export interface Bot {
   BotId?: string;
   UserId?: string;
@@ -633,7 +615,7 @@ export interface Bot {
   BotEmail?: string | redacted.Redacted<string>;
   SecurityToken?: string | redacted.Redacted<string>;
 }
-export const Bot = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Bot = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BotId: S.optional(S.String),
     UserId: S.optional(S.String),
@@ -653,7 +635,7 @@ export const Bot = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateBotResponse {
   Bot?: Bot;
 }
-export const CreateBotResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bot: S.optional(Bot) }),
 ).annotate({
   identifier: "CreateBotResponse",
@@ -664,78 +646,74 @@ export interface CreateMeetingDialOutRequest {
   ToPhoneNumber: string | redacted.Redacted<string>;
   JoinToken: string | redacted.Redacted<string>;
 }
-export const CreateMeetingDialOutRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MeetingId: S.String.pipe(T.HttpLabel("MeetingId")),
-      FromPhoneNumber: SensitiveString,
-      ToPhoneNumber: SensitiveString,
-      JoinToken: SensitiveString,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/meetings/{MeetingId}/dial-outs" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateMeetingDialOutRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MeetingId: S.String.pipe(T.HttpLabel("MeetingId")),
+    FromPhoneNumber: SensitiveString,
+    ToPhoneNumber: SensitiveString,
+    JoinToken: SensitiveString,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/meetings/{MeetingId}/dial-outs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateMeetingDialOutRequest",
-  }) as any as S.Schema<CreateMeetingDialOutRequest>;
+  ),
+).annotate({
+  identifier: "CreateMeetingDialOutRequest",
+}) as any as S.Schema<CreateMeetingDialOutRequest>;
 export interface CreateMeetingDialOutResponse {
   TransactionId?: string;
 }
-export const CreateMeetingDialOutResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ TransactionId: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateMeetingDialOutResponse",
-  }) as any as S.Schema<CreateMeetingDialOutResponse>;
-export type E164PhoneNumberList = string | redacted.Redacted<string>[];
-export const E164PhoneNumberList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const CreateMeetingDialOutResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TransactionId: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateMeetingDialOutResponse",
+}) as any as S.Schema<CreateMeetingDialOutResponse>;
+export type E164PhoneNumberList = (string | redacted.Redacted<string>)[];
+export const E164PhoneNumberList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface CreatePhoneNumberOrderRequest {
   ProductType: PhoneNumberProductType;
-  E164PhoneNumbers: string | redacted.Redacted<string>[];
+  E164PhoneNumbers: (string | redacted.Redacted<string>)[];
 }
-export const CreatePhoneNumberOrderRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ProductType: PhoneNumberProductType,
-      E164PhoneNumbers: E164PhoneNumberList,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/phone-number-orders" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreatePhoneNumberOrderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProductType: PhoneNumberProductType,
+    E164PhoneNumbers: E164PhoneNumberList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/phone-number-orders" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreatePhoneNumberOrderRequest",
-  }) as any as S.Schema<CreatePhoneNumberOrderRequest>;
+  ),
+).annotate({
+  identifier: "CreatePhoneNumberOrderRequest",
+}) as any as S.Schema<CreatePhoneNumberOrderRequest>;
 export type PhoneNumberOrderStatus =
   | "Processing"
   | "Successful"
   | "Failed"
   | "Partial"
   | (string & {});
-export const PhoneNumberOrderStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberOrderStatus = /*@__PURE__*/ S.String;
 export type OrderedPhoneNumberStatus =
   | "Processing"
   | "Acquired"
   | "Failed"
   | (string & {});
-export const OrderedPhoneNumberStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OrderedPhoneNumberStatus = /*@__PURE__*/ S.String;
 export interface OrderedPhoneNumber {
   E164PhoneNumber?: string | redacted.Redacted<string>;
   Status?: OrderedPhoneNumberStatus;
 }
-export const OrderedPhoneNumber = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OrderedPhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     E164PhoneNumber: S.optional(SensitiveString),
     Status: S.optional(OrderedPhoneNumberStatus),
@@ -744,8 +722,7 @@ export const OrderedPhoneNumber = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "OrderedPhoneNumber",
 }) as any as S.Schema<OrderedPhoneNumber>;
 export type OrderedPhoneNumberList = OrderedPhoneNumber[];
-export const OrderedPhoneNumberList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(OrderedPhoneNumber);
+export const OrderedPhoneNumberList = /*@__PURE__*/ S.Array(OrderedPhoneNumber);
 export interface PhoneNumberOrder {
   PhoneNumberOrderId?: string;
   ProductType?: PhoneNumberProductType;
@@ -754,7 +731,7 @@ export interface PhoneNumberOrder {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
-export const PhoneNumberOrder = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PhoneNumberOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PhoneNumberOrderId: S.optional(S.String),
     ProductType: S.optional(PhoneNumberProductType),
@@ -773,18 +750,17 @@ export const PhoneNumberOrder = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreatePhoneNumberOrderResponse {
   PhoneNumberOrder?: PhoneNumberOrder;
 }
-export const CreatePhoneNumberOrderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberOrder: S.optional(PhoneNumberOrder) }),
-  ).annotate({
-    identifier: "CreatePhoneNumberOrderResponse",
-  }) as any as S.Schema<CreatePhoneNumberOrderResponse>;
+export const CreatePhoneNumberOrderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberOrder: S.optional(PhoneNumberOrder) }),
+).annotate({
+  identifier: "CreatePhoneNumberOrderResponse",
+}) as any as S.Schema<CreatePhoneNumberOrderResponse>;
 export interface CreateRoomRequest {
   AccountId: string;
   Name: string | redacted.Redacted<string>;
   ClientRequestToken?: string | redacted.Redacted<string>;
 }
-export const CreateRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     Name: SensitiveString,
@@ -810,7 +786,7 @@ export interface Room {
   CreatedTimestamp?: Date;
   UpdatedTimestamp?: Date;
 }
-export const Room = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Room = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RoomId: S.optional(S.String),
     Name: S.optional(SensitiveString),
@@ -827,7 +803,7 @@ export const Room = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateRoomResponse {
   Room?: Room;
 }
-export const CreateRoomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Room: S.optional(Room) }),
 ).annotate({
   identifier: "CreateRoomResponse",
@@ -838,31 +814,30 @@ export interface CreateRoomMembershipRequest {
   MemberId: string;
   Role?: RoomMembershipRole;
 }
-export const CreateRoomMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      RoomId: S.String.pipe(T.HttpLabel("RoomId")),
-      MemberId: S.String,
-      Role: S.optional(RoomMembershipRole),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateRoomMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    RoomId: S.String.pipe(T.HttpLabel("RoomId")),
+    MemberId: S.String,
+    Role: S.optional(RoomMembershipRole),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateRoomMembershipRequest",
-  }) as any as S.Schema<CreateRoomMembershipRequest>;
+  ),
+).annotate({
+  identifier: "CreateRoomMembershipRequest",
+}) as any as S.Schema<CreateRoomMembershipRequest>;
 export type MemberType = "User" | "Bot" | "Webhook" | (string & {});
-export const MemberType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MemberType = /*@__PURE__*/ S.String;
 export interface Member {
   MemberId?: string;
   MemberType?: MemberType;
@@ -870,7 +845,7 @@ export interface Member {
   FullName?: string | redacted.Redacted<string>;
   AccountId?: string;
 }
-export const Member = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MemberId: S.optional(S.String),
     MemberType: S.optional(MemberType),
@@ -886,7 +861,7 @@ export interface RoomMembership {
   InvitedBy?: string;
   UpdatedTimestamp?: Date;
 }
-export const RoomMembership = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RoomMembership = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RoomId: S.optional(S.String),
     Member: S.optional(Member),
@@ -900,19 +875,18 @@ export const RoomMembership = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateRoomMembershipResponse {
   RoomMembership?: RoomMembership;
 }
-export const CreateRoomMembershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ RoomMembership: S.optional(RoomMembership) }),
-  ).annotate({
-    identifier: "CreateRoomMembershipResponse",
-  }) as any as S.Schema<CreateRoomMembershipResponse>;
+export const CreateRoomMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RoomMembership: S.optional(RoomMembership) }),
+).annotate({
+  identifier: "CreateRoomMembershipResponse",
+}) as any as S.Schema<CreateRoomMembershipResponse>;
 export interface CreateUserRequest {
   AccountId: string;
   Username?: string;
   Email?: string | redacted.Redacted<string>;
   UserType?: UserType;
 }
-export const CreateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     Username: S.optional(S.String),
@@ -939,9 +913,9 @@ export type RegistrationStatus =
   | "Registered"
   | "Suspended"
   | (string & {});
-export const RegistrationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const RegistrationStatus = /*@__PURE__*/ S.String;
 export type InviteStatus = "Pending" | "Accepted" | "Failed" | (string & {});
-export const InviteStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InviteStatus = /*@__PURE__*/ S.String;
 export interface User {
   UserId: string;
   AccountId?: string;
@@ -957,7 +931,7 @@ export interface User {
   AlexaForBusinessMetadata?: AlexaForBusinessMetadata;
   PersonalPIN?: string;
 }
-export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const User = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     UserId: S.String,
     AccountId: S.optional(S.String),
@@ -981,7 +955,7 @@ export const User = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateUserResponse {
   User?: User;
 }
-export const CreateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ User: S.optional(User) }),
 ).annotate({
   identifier: "CreateUserResponse",
@@ -989,7 +963,7 @@ export const CreateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteAccountRequest {
   AccountId: string;
 }
-export const DeleteAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/accounts/{AccountId}" }),
@@ -1004,7 +978,7 @@ export const DeleteAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteAccountRequest",
 }) as any as S.Schema<DeleteAccountRequest>;
 export interface DeleteAccountResponse {}
-export const DeleteAccountResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteAccountResponse",
@@ -1013,55 +987,52 @@ export interface DeleteEventsConfigurationRequest {
   AccountId: string;
   BotId: string;
 }
-export const DeleteEventsConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      BotId: S.String.pipe(T.HttpLabel("BotId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/accounts/{AccountId}/bots/{BotId}/events-configuration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEventsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    BotId: S.String.pipe(T.HttpLabel("BotId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{AccountId}/bots/{BotId}/events-configuration",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEventsConfigurationRequest",
-  }) as any as S.Schema<DeleteEventsConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "DeleteEventsConfigurationRequest",
+}) as any as S.Schema<DeleteEventsConfigurationRequest>;
 export interface DeleteEventsConfigurationResponse {}
-export const DeleteEventsConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteEventsConfigurationResponse",
-  }) as any as S.Schema<DeleteEventsConfigurationResponse>;
+export const DeleteEventsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteEventsConfigurationResponse",
+}) as any as S.Schema<DeleteEventsConfigurationResponse>;
 export interface DeletePhoneNumberRequest {
   PhoneNumberId: string;
 }
-export const DeletePhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/phone-numbers/{PhoneNumberId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeletePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/phone-numbers/{PhoneNumberId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeletePhoneNumberRequest",
 }) as any as S.Schema<DeletePhoneNumberRequest>;
 export interface DeletePhoneNumberResponse {}
-export const DeletePhoneNumberResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeletePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeletePhoneNumberResponse",
 }) as any as S.Schema<DeletePhoneNumberResponse>;
@@ -1069,7 +1040,7 @@ export interface DeleteRoomRequest {
   AccountId: string;
   RoomId: string;
 }
-export const DeleteRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     RoomId: S.String.pipe(T.HttpLabel("RoomId")),
@@ -1087,7 +1058,7 @@ export const DeleteRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteRoomRequest",
 }) as any as S.Schema<DeleteRoomRequest>;
 export interface DeleteRoomResponse {}
-export const DeleteRoomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteRoomResponse",
@@ -1097,39 +1068,39 @@ export interface DeleteRoomMembershipRequest {
   RoomId: string;
   MemberId: string;
 }
-export const DeleteRoomMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      RoomId: S.String.pipe(T.HttpLabel("RoomId")),
-      MemberId: S.String.pipe(T.HttpLabel("MemberId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships/{MemberId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteRoomMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    RoomId: S.String.pipe(T.HttpLabel("RoomId")),
+    MemberId: S.String.pipe(T.HttpLabel("MemberId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships/{MemberId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteRoomMembershipRequest",
-  }) as any as S.Schema<DeleteRoomMembershipRequest>;
+  ),
+).annotate({
+  identifier: "DeleteRoomMembershipRequest",
+}) as any as S.Schema<DeleteRoomMembershipRequest>;
 export interface DeleteRoomMembershipResponse {}
-export const DeleteRoomMembershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteRoomMembershipResponse",
-  }) as any as S.Schema<DeleteRoomMembershipResponse>;
+export const DeleteRoomMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRoomMembershipResponse",
+}) as any as S.Schema<DeleteRoomMembershipResponse>;
 export interface DisassociatePhoneNumberFromUserRequest {
   AccountId: string;
   UserId: string;
 }
-export const DisassociatePhoneNumberFromUserRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DisassociatePhoneNumberFromUserRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       AccountId: S.String.pipe(T.HttpLabel("AccountId")),
       UserId: S.String.pipe(T.HttpLabel("UserId")),
@@ -1146,20 +1117,21 @@ export const DisassociatePhoneNumberFromUserRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DisassociatePhoneNumberFromUserRequest",
-  }) as any as S.Schema<DisassociatePhoneNumberFromUserRequest>;
+).annotate({
+  identifier: "DisassociatePhoneNumberFromUserRequest",
+}) as any as S.Schema<DisassociatePhoneNumberFromUserRequest>;
 export interface DisassociatePhoneNumberFromUserResponse {}
-export const DisassociatePhoneNumberFromUserResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DisassociatePhoneNumberFromUserResponse",
-  }) as any as S.Schema<DisassociatePhoneNumberFromUserResponse>;
+export const DisassociatePhoneNumberFromUserResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DisassociatePhoneNumberFromUserResponse",
+}) as any as S.Schema<DisassociatePhoneNumberFromUserResponse>;
 export interface DisassociateSigninDelegateGroupsFromAccountRequest {
   AccountId: string;
   GroupNames: string[];
 }
 export const DisassociateSigninDelegateGroupsFromAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AccountId: S.String.pipe(T.HttpLabel("AccountId")),
       GroupNames: NonEmptyStringList,
@@ -1181,13 +1153,13 @@ export const DisassociateSigninDelegateGroupsFromAccountRequest =
   }) as any as S.Schema<DisassociateSigninDelegateGroupsFromAccountRequest>;
 export interface DisassociateSigninDelegateGroupsFromAccountResponse {}
 export const DisassociateSigninDelegateGroupsFromAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DisassociateSigninDelegateGroupsFromAccountResponse",
   }) as any as S.Schema<DisassociateSigninDelegateGroupsFromAccountResponse>;
 export interface GetAccountRequest {
   AccountId: string;
 }
-export const GetAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/accounts/{AccountId}" }),
@@ -1204,7 +1176,7 @@ export const GetAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetAccountResponse {
   Account?: Account;
 }
-export const GetAccountResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Account: S.optional(Account) }),
 ).annotate({
   identifier: "GetAccountResponse",
@@ -1212,18 +1184,17 @@ export const GetAccountResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetAccountSettingsRequest {
   AccountId: string;
 }
-export const GetAccountSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/accounts/{AccountId}/settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/accounts/{AccountId}/settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetAccountSettingsRequest",
 }) as any as S.Schema<GetAccountSettingsRequest>;
@@ -1231,7 +1202,7 @@ export interface AccountSettings {
   DisableRemoteControl?: boolean;
   EnableDialOut?: boolean;
 }
-export const AccountSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccountSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DisableRemoteControl: S.optional(S.Boolean),
     EnableDialOut: S.optional(S.Boolean),
@@ -1242,8 +1213,8 @@ export const AccountSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetAccountSettingsResponse {
   AccountSettings?: AccountSettings;
 }
-export const GetAccountSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ AccountSettings: S.optional(AccountSettings) }),
+export const GetAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AccountSettings: S.optional(AccountSettings) }),
 ).annotate({
   identifier: "GetAccountSettingsResponse",
 }) as any as S.Schema<GetAccountSettingsResponse>;
@@ -1251,7 +1222,7 @@ export interface GetBotRequest {
   AccountId: string;
   BotId: string;
 }
-export const GetBotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetBotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     BotId: S.String.pipe(T.HttpLabel("BotId")),
@@ -1269,40 +1240,39 @@ export const GetBotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetBotResponse {
   Bot?: Bot;
 }
-export const GetBotResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bot: S.optional(Bot) }),
 ).annotate({ identifier: "GetBotResponse" }) as any as S.Schema<GetBotResponse>;
 export interface GetEventsConfigurationRequest {
   AccountId: string;
   BotId: string;
 }
-export const GetEventsConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      BotId: S.String.pipe(T.HttpLabel("BotId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/accounts/{AccountId}/bots/{BotId}/events-configuration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetEventsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    BotId: S.String.pipe(T.HttpLabel("BotId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{AccountId}/bots/{BotId}/events-configuration",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetEventsConfigurationRequest",
-  }) as any as S.Schema<GetEventsConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "GetEventsConfigurationRequest",
+}) as any as S.Schema<GetEventsConfigurationRequest>;
 export interface EventsConfiguration {
   BotId?: string;
   OutboundEventsHTTPSEndpoint?: string | redacted.Redacted<string>;
   LambdaFunctionArn?: string | redacted.Redacted<string>;
 }
-export const EventsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EventsConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BotId: S.optional(S.String),
     OutboundEventsHTTPSEndpoint: S.optional(SensitiveString),
@@ -1314,34 +1284,39 @@ export const EventsConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetEventsConfigurationResponse {
   EventsConfiguration?: EventsConfiguration;
 }
-export const GetEventsConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ EventsConfiguration: S.optional(EventsConfiguration) }),
-  ).annotate({
-    identifier: "GetEventsConfigurationResponse",
-  }) as any as S.Schema<GetEventsConfigurationResponse>;
+export const GetEventsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventsConfiguration: S.optional(EventsConfiguration) }),
+).annotate({
+  identifier: "GetEventsConfigurationResponse",
+}) as any as S.Schema<GetEventsConfigurationResponse>;
 export interface GetGlobalSettingsRequest {}
-export const GetGlobalSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+export const GetGlobalSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetGlobalSettingsRequest",
 }) as any as S.Schema<GetGlobalSettingsRequest>;
 export interface BusinessCallingSettings {
   CdrBucket?: string;
 }
-export const BusinessCallingSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ CdrBucket: S.optional(S.String) }),
+export const BusinessCallingSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CdrBucket: S.optional(S.String) }),
 ).annotate({
   identifier: "BusinessCallingSettings",
 }) as any as S.Schema<BusinessCallingSettings>;
 export interface VoiceConnectorSettings {
   CdrBucket?: string;
 }
-export const VoiceConnectorSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ CdrBucket: S.optional(S.String) }),
+export const VoiceConnectorSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CdrBucket: S.optional(S.String) }),
 ).annotate({
   identifier: "VoiceConnectorSettings",
 }) as any as S.Schema<VoiceConnectorSettings>;
@@ -1349,19 +1324,18 @@ export interface GetGlobalSettingsResponse {
   BusinessCalling?: BusinessCallingSettings;
   VoiceConnector?: VoiceConnectorSettings;
 }
-export const GetGlobalSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      BusinessCalling: S.optional(BusinessCallingSettings),
-      VoiceConnector: S.optional(VoiceConnectorSettings),
-    }),
+export const GetGlobalSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BusinessCalling: S.optional(BusinessCallingSettings),
+    VoiceConnector: S.optional(VoiceConnectorSettings),
+  }),
 ).annotate({
   identifier: "GetGlobalSettingsResponse",
 }) as any as S.Schema<GetGlobalSettingsResponse>;
 export interface GetPhoneNumberRequest {
   PhoneNumberId: string;
 }
-export const GetPhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/phone-numbers/{PhoneNumberId}" }),
@@ -1376,7 +1350,7 @@ export const GetPhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetPhoneNumberRequest",
 }) as any as S.Schema<GetPhoneNumberRequest>;
 export type PhoneNumberType = "Local" | "TollFree" | (string & {});
-export const PhoneNumberType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberType = /*@__PURE__*/ S.String;
 export type PhoneNumberStatus =
   | "AcquireInProgress"
   | "AcquireFailed"
@@ -1387,7 +1361,7 @@ export type PhoneNumberStatus =
   | "ReleaseFailed"
   | "DeleteFailed"
   | (string & {});
-export const PhoneNumberStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberStatus = /*@__PURE__*/ S.String;
 export interface PhoneNumberCapabilities {
   InboundCall?: boolean;
   OutboundCall?: boolean;
@@ -1396,16 +1370,15 @@ export interface PhoneNumberCapabilities {
   InboundMMS?: boolean;
   OutboundMMS?: boolean;
 }
-export const PhoneNumberCapabilities = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      InboundCall: S.optional(S.Boolean),
-      OutboundCall: S.optional(S.Boolean),
-      InboundSMS: S.optional(S.Boolean),
-      OutboundSMS: S.optional(S.Boolean),
-      InboundMMS: S.optional(S.Boolean),
-      OutboundMMS: S.optional(S.Boolean),
-    }),
+export const PhoneNumberCapabilities = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InboundCall: S.optional(S.Boolean),
+    OutboundCall: S.optional(S.Boolean),
+    InboundSMS: S.optional(S.Boolean),
+    OutboundSMS: S.optional(S.Boolean),
+    InboundMMS: S.optional(S.Boolean),
+    OutboundMMS: S.optional(S.Boolean),
+  }),
 ).annotate({
   identifier: "PhoneNumberCapabilities",
 }) as any as S.Schema<PhoneNumberCapabilities>;
@@ -1416,26 +1389,25 @@ export type PhoneNumberAssociationName =
   | "VoiceConnectorGroupId"
   | "SipRuleId"
   | (string & {});
-export const PhoneNumberAssociationName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const PhoneNumberAssociationName = /*@__PURE__*/ S.String;
 export interface PhoneNumberAssociation {
   Value?: string;
   Name?: PhoneNumberAssociationName;
   AssociatedTimestamp?: Date;
 }
-export const PhoneNumberAssociation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Value: S.optional(S.String),
-      Name: S.optional(PhoneNumberAssociationName),
-      AssociatedTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
+export const PhoneNumberAssociation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Value: S.optional(S.String),
+    Name: S.optional(PhoneNumberAssociationName),
+    AssociatedTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
 ).annotate({
   identifier: "PhoneNumberAssociation",
 }) as any as S.Schema<PhoneNumberAssociation>;
 export type PhoneNumberAssociationList = PhoneNumberAssociation[];
-export const PhoneNumberAssociationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const PhoneNumberAssociationList = /*@__PURE__*/ S.Array(
   PhoneNumberAssociation,
 );
 export type CallingNameStatus =
@@ -1444,7 +1416,7 @@ export type CallingNameStatus =
   | "UpdateSucceeded"
   | "UpdateFailed"
   | (string & {});
-export const CallingNameStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CallingNameStatus = /*@__PURE__*/ S.String;
 export interface PhoneNumber {
   PhoneNumberId?: string;
   E164PhoneNumber?: string | redacted.Redacted<string>;
@@ -1460,7 +1432,7 @@ export interface PhoneNumber {
   UpdatedTimestamp?: Date;
   DeletionTimestamp?: Date;
 }
-export const PhoneNumber = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PhoneNumber = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PhoneNumberId: S.optional(S.String),
     E164PhoneNumber: S.optional(SensitiveString),
@@ -1486,92 +1458,94 @@ export const PhoneNumber = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetPhoneNumberResponse {
   PhoneNumber?: PhoneNumber;
 }
-export const GetPhoneNumberResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
+export const GetPhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
 ).annotate({
   identifier: "GetPhoneNumberResponse",
 }) as any as S.Schema<GetPhoneNumberResponse>;
 export interface GetPhoneNumberOrderRequest {
   PhoneNumberOrderId: string;
 }
-export const GetPhoneNumberOrderRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumberOrderId: S.String.pipe(T.HttpLabel("PhoneNumberOrderId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/phone-number-orders/{PhoneNumberOrderId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetPhoneNumberOrderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberOrderId: S.String.pipe(T.HttpLabel("PhoneNumberOrderId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/phone-number-orders/{PhoneNumberOrderId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetPhoneNumberOrderRequest",
 }) as any as S.Schema<GetPhoneNumberOrderRequest>;
 export interface GetPhoneNumberOrderResponse {
   PhoneNumberOrder?: PhoneNumberOrder;
 }
-export const GetPhoneNumberOrderResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ PhoneNumberOrder: S.optional(PhoneNumberOrder) }),
-  ).annotate({
-    identifier: "GetPhoneNumberOrderResponse",
-  }) as any as S.Schema<GetPhoneNumberOrderResponse>;
+export const GetPhoneNumberOrderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberOrder: S.optional(PhoneNumberOrder) }),
+).annotate({
+  identifier: "GetPhoneNumberOrderResponse",
+}) as any as S.Schema<GetPhoneNumberOrderResponse>;
 export interface GetPhoneNumberSettingsRequest {}
-export const GetPhoneNumberSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+export const GetPhoneNumberSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/settings/phone-number" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetPhoneNumberSettingsRequest",
-  }) as any as S.Schema<GetPhoneNumberSettingsRequest>;
+  ),
+).annotate({
+  identifier: "GetPhoneNumberSettingsRequest",
+}) as any as S.Schema<GetPhoneNumberSettingsRequest>;
 export interface GetPhoneNumberSettingsResponse {
   CallingName?: string | redacted.Redacted<string>;
   CallingNameUpdatedTimestamp?: Date;
 }
-export const GetPhoneNumberSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      CallingName: S.optional(SensitiveString),
-      CallingNameUpdatedTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetPhoneNumberSettingsResponse",
-  }) as any as S.Schema<GetPhoneNumberSettingsResponse>;
+export const GetPhoneNumberSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CallingName: S.optional(SensitiveString),
+    CallingNameUpdatedTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GetPhoneNumberSettingsResponse",
+}) as any as S.Schema<GetPhoneNumberSettingsResponse>;
 export interface GetRetentionSettingsRequest {
   AccountId: string;
 }
-export const GetRetentionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/accounts/{AccountId}/retention-settings",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetRetentionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AccountId: S.String.pipe(T.HttpLabel("AccountId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{AccountId}/retention-settings",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetRetentionSettingsRequest",
-  }) as any as S.Schema<GetRetentionSettingsRequest>;
+  ),
+).annotate({
+  identifier: "GetRetentionSettingsRequest",
+}) as any as S.Schema<GetRetentionSettingsRequest>;
 export interface RoomRetentionSettings {
   RetentionDays?: number;
 }
-export const RoomRetentionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RoomRetentionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RetentionDays: S.optional(S.Number) }),
 ).annotate({
   identifier: "RoomRetentionSettings",
@@ -1579,17 +1553,16 @@ export const RoomRetentionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ConversationRetentionSettings {
   RetentionDays?: number;
 }
-export const ConversationRetentionSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ RetentionDays: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "ConversationRetentionSettings",
-  }) as any as S.Schema<ConversationRetentionSettings>;
+export const ConversationRetentionSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RetentionDays: S.optional(S.Number) }),
+).annotate({
+  identifier: "ConversationRetentionSettings",
+}) as any as S.Schema<ConversationRetentionSettings>;
 export interface RetentionSettings {
   RoomRetentionSettings?: RoomRetentionSettings;
   ConversationRetentionSettings?: ConversationRetentionSettings;
 }
-export const RetentionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RetentionSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     RoomRetentionSettings: S.optional(RoomRetentionSettings),
     ConversationRetentionSettings: S.optional(ConversationRetentionSettings),
@@ -1601,22 +1574,21 @@ export interface GetRetentionSettingsResponse {
   RetentionSettings?: RetentionSettings;
   InitiateDeletionTimestamp?: Date;
 }
-export const GetRetentionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RetentionSettings: S.optional(RetentionSettings),
-      InitiateDeletionTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GetRetentionSettingsResponse",
-  }) as any as S.Schema<GetRetentionSettingsResponse>;
+export const GetRetentionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RetentionSettings: S.optional(RetentionSettings),
+    InitiateDeletionTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GetRetentionSettingsResponse",
+}) as any as S.Schema<GetRetentionSettingsResponse>;
 export interface GetRoomRequest {
   AccountId: string;
   RoomId: string;
 }
-export const GetRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     RoomId: S.String.pipe(T.HttpLabel("RoomId")),
@@ -1634,7 +1606,7 @@ export const GetRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetRoomResponse {
   Room?: Room;
 }
-export const GetRoomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Room: S.optional(Room) }),
 ).annotate({
   identifier: "GetRoomResponse",
@@ -1643,7 +1615,7 @@ export interface GetUserRequest {
   AccountId: string;
   UserId: string;
 }
-export const GetUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     UserId: S.String.pipe(T.HttpLabel("UserId")),
@@ -1661,7 +1633,7 @@ export const GetUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetUserResponse {
   User?: User;
 }
-export const GetUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ User: S.optional(User) }),
 ).annotate({
   identifier: "GetUserResponse",
@@ -1670,24 +1642,23 @@ export interface GetUserSettingsRequest {
   AccountId: string;
   UserId: string;
 }
-export const GetUserSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      UserId: S.String.pipe(T.HttpLabel("UserId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/accounts/{AccountId}/users/{UserId}/settings",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    UserId: S.String.pipe(T.HttpLabel("UserId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{AccountId}/users/{UserId}/settings",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetUserSettingsRequest",
 }) as any as S.Schema<GetUserSettingsRequest>;
@@ -1696,7 +1667,7 @@ export interface TelephonySettings {
   OutboundCalling: boolean;
   SMS: boolean;
 }
-export const TelephonySettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TelephonySettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InboundCalling: S.Boolean,
     OutboundCalling: S.Boolean,
@@ -1708,26 +1679,25 @@ export const TelephonySettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UserSettings {
   Telephony: TelephonySettings;
 }
-export const UserSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UserSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Telephony: TelephonySettings }),
 ).annotate({ identifier: "UserSettings" }) as any as S.Schema<UserSettings>;
 export interface GetUserSettingsResponse {
   UserSettings?: UserSettings;
 }
-export const GetUserSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ UserSettings: S.optional(UserSettings) }),
+export const GetUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ UserSettings: S.optional(UserSettings) }),
 ).annotate({
   identifier: "GetUserSettingsResponse",
 }) as any as S.Schema<GetUserSettingsResponse>;
-export type UserEmailList = string | redacted.Redacted<string>[];
-export const UserEmailList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export type UserEmailList = (string | redacted.Redacted<string>)[];
+export const UserEmailList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface InviteUsersRequest {
   AccountId: string;
-  UserEmailList: string | redacted.Redacted<string>[];
+  UserEmailList: (string | redacted.Redacted<string>)[];
   UserType?: UserType;
 }
-export const InviteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InviteUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     UserEmailList: UserEmailList,
@@ -1749,14 +1719,14 @@ export const InviteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "InviteUsersRequest",
 }) as any as S.Schema<InviteUsersRequest>;
 export type EmailStatus = "NotSent" | "Sent" | "Failed" | (string & {});
-export const EmailStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const EmailStatus = /*@__PURE__*/ S.String;
 export interface Invite {
   InviteId?: string;
   Status?: InviteStatus;
   EmailAddress?: string | redacted.Redacted<string>;
   EmailStatus?: EmailStatus;
 }
-export const Invite = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Invite = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InviteId: S.optional(S.String),
     Status: S.optional(InviteStatus),
@@ -1765,11 +1735,11 @@ export const Invite = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Invite" }) as any as S.Schema<Invite>;
 export type InviteList = Invite[];
-export const InviteList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Invite);
+export const InviteList = /*@__PURE__*/ S.Array(Invite);
 export interface InviteUsersResponse {
   Invites?: Invite[];
 }
-export const InviteUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InviteUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Invites: S.optional(InviteList) }),
 ).annotate({
   identifier: "InviteUsersResponse",
@@ -1780,7 +1750,7 @@ export interface ListAccountsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAccountsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String).pipe(T.HttpQuery("name")),
     UserEmail: S.optional(SensitiveString).pipe(T.HttpQuery("user-email")),
@@ -1800,12 +1770,12 @@ export const ListAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListAccountsRequest",
 }) as any as S.Schema<ListAccountsRequest>;
 export type AccountList = Account[];
-export const AccountList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Account);
+export const AccountList = /*@__PURE__*/ S.Array(Account);
 export interface ListAccountsResponse {
   Accounts?: Account[];
   NextToken?: string;
 }
-export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Accounts: S.optional(AccountList),
     NextToken: S.optional(S.String),
@@ -1818,7 +1788,7 @@ export interface ListBotsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListBotsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListBotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
@@ -1837,12 +1807,12 @@ export const ListBotsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListBotsRequest",
 }) as any as S.Schema<ListBotsRequest>;
 export type BotList = Bot[];
-export const BotList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Bot);
+export const BotList = /*@__PURE__*/ S.Array(Bot);
 export interface ListBotsResponse {
   Bots?: Bot[];
   NextToken?: string;
 }
-export const ListBotsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListBotsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bots: S.optional(BotList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListBotsResponse",
@@ -1851,40 +1821,37 @@ export interface ListPhoneNumberOrdersRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListPhoneNumberOrdersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/phone-number-orders" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPhoneNumberOrdersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/phone-number-orders" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListPhoneNumberOrdersRequest",
-  }) as any as S.Schema<ListPhoneNumberOrdersRequest>;
+  ),
+).annotate({
+  identifier: "ListPhoneNumberOrdersRequest",
+}) as any as S.Schema<ListPhoneNumberOrdersRequest>;
 export type PhoneNumberOrderList = PhoneNumberOrder[];
-export const PhoneNumberOrderList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumberOrder);
+export const PhoneNumberOrderList = /*@__PURE__*/ S.Array(PhoneNumberOrder);
 export interface ListPhoneNumberOrdersResponse {
   PhoneNumberOrders?: PhoneNumberOrder[];
   NextToken?: string;
 }
-export const ListPhoneNumberOrdersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      PhoneNumberOrders: S.optional(PhoneNumberOrderList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListPhoneNumberOrdersResponse",
-  }) as any as S.Schema<ListPhoneNumberOrdersResponse>;
+export const ListPhoneNumberOrdersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberOrders: S.optional(PhoneNumberOrderList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPhoneNumberOrdersResponse",
+}) as any as S.Schema<ListPhoneNumberOrdersResponse>;
 export interface ListPhoneNumbersRequest {
   Status?: PhoneNumberStatus;
   ProductType?: PhoneNumberProductType;
@@ -1893,44 +1860,42 @@ export interface ListPhoneNumbersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListPhoneNumbersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Status: S.optional(PhoneNumberStatus).pipe(T.HttpQuery("status")),
-      ProductType: S.optional(PhoneNumberProductType).pipe(
-        T.HttpQuery("product-type"),
-      ),
-      FilterName: S.optional(PhoneNumberAssociationName).pipe(
-        T.HttpQuery("filter-name"),
-      ),
-      FilterValue: S.optional(S.String).pipe(T.HttpQuery("filter-value")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/phone-numbers" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListPhoneNumbersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Status: S.optional(PhoneNumberStatus).pipe(T.HttpQuery("status")),
+    ProductType: S.optional(PhoneNumberProductType).pipe(
+      T.HttpQuery("product-type"),
     ),
+    FilterName: S.optional(PhoneNumberAssociationName).pipe(
+      T.HttpQuery("filter-name"),
+    ),
+    FilterValue: S.optional(S.String).pipe(T.HttpQuery("filter-value")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/phone-numbers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListPhoneNumbersRequest",
 }) as any as S.Schema<ListPhoneNumbersRequest>;
 export type PhoneNumberList = PhoneNumber[];
-export const PhoneNumberList = /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumber);
+export const PhoneNumberList = /*@__PURE__*/ S.Array(PhoneNumber);
 export interface ListPhoneNumbersResponse {
   PhoneNumbers?: PhoneNumber[];
   NextToken?: string;
 }
-export const ListPhoneNumbersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumbers: S.optional(PhoneNumberList),
-      NextToken: S.optional(S.String),
-    }),
+export const ListPhoneNumbersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumbers: S.optional(PhoneNumberList),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListPhoneNumbersResponse",
 }) as any as S.Schema<ListPhoneNumbersResponse>;
@@ -1940,52 +1905,49 @@ export interface ListRoomMembershipsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListRoomMembershipsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      RoomId: S.String.pipe(T.HttpLabel("RoomId")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListRoomMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    RoomId: S.String.pipe(T.HttpLabel("RoomId")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListRoomMembershipsRequest",
 }) as any as S.Schema<ListRoomMembershipsRequest>;
 export type RoomMembershipList = RoomMembership[];
-export const RoomMembershipList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RoomMembership);
+export const RoomMembershipList = /*@__PURE__*/ S.Array(RoomMembership);
 export interface ListRoomMembershipsResponse {
   RoomMemberships?: RoomMembership[];
   NextToken?: string;
 }
-export const ListRoomMembershipsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RoomMemberships: S.optional(RoomMembershipList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListRoomMembershipsResponse",
-  }) as any as S.Schema<ListRoomMembershipsResponse>;
+export const ListRoomMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RoomMemberships: S.optional(RoomMembershipList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRoomMembershipsResponse",
+}) as any as S.Schema<ListRoomMembershipsResponse>;
 export interface ListRoomsRequest {
   AccountId: string;
   MemberId?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListRoomsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRoomsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     MemberId: S.optional(S.String).pipe(T.HttpQuery("member-id")),
@@ -2005,12 +1967,12 @@ export const ListRoomsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListRoomsRequest",
 }) as any as S.Schema<ListRoomsRequest>;
 export type RoomList = Room[];
-export const RoomList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Room);
+export const RoomList = /*@__PURE__*/ S.Array(Room);
 export interface ListRoomsResponse {
   Rooms?: Room[];
   NextToken?: string;
 }
-export const ListRoomsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListRoomsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Rooms: S.optional(RoomList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListRoomsResponse",
@@ -2018,8 +1980,8 @@ export const ListRoomsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListSupportedPhoneNumberCountriesRequest {
   ProductType: PhoneNumberProductType;
 }
-export const ListSupportedPhoneNumberCountriesRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSupportedPhoneNumberCountriesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ProductType: PhoneNumberProductType.pipe(T.HttpQuery("product-type")),
     }).pipe(
@@ -2032,17 +1994,16 @@ export const ListSupportedPhoneNumberCountriesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListSupportedPhoneNumberCountriesRequest",
-  }) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>;
+).annotate({
+  identifier: "ListSupportedPhoneNumberCountriesRequest",
+}) as any as S.Schema<ListSupportedPhoneNumberCountriesRequest>;
 export type PhoneNumberTypeList = PhoneNumberType[];
-export const PhoneNumberTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumberType);
+export const PhoneNumberTypeList = /*@__PURE__*/ S.Array(PhoneNumberType);
 export interface PhoneNumberCountry {
   CountryCode?: string;
   SupportedPhoneNumberTypes?: PhoneNumberType[];
 }
-export const PhoneNumberCountry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PhoneNumberCountry = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     CountryCode: S.optional(S.String),
     SupportedPhoneNumberTypes: S.optional(PhoneNumberTypeList),
@@ -2052,12 +2013,12 @@ export const PhoneNumberCountry = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PhoneNumberCountry>;
 export type PhoneNumberCountriesList = PhoneNumberCountry[];
 export const PhoneNumberCountriesList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PhoneNumberCountry);
+  /*@__PURE__*/ S.Array(PhoneNumberCountry);
 export interface ListSupportedPhoneNumberCountriesResponse {
   PhoneNumberCountries?: PhoneNumberCountry[];
 }
 export const ListSupportedPhoneNumberCountriesResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ PhoneNumberCountries: S.optional(PhoneNumberCountriesList) }),
   ).annotate({
     identifier: "ListSupportedPhoneNumberCountriesResponse",
@@ -2069,7 +2030,7 @@ export interface ListUsersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     UserEmail: S.optional(SensitiveString).pipe(T.HttpQuery("user-email")),
@@ -2090,12 +2051,12 @@ export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListUsersRequest",
 }) as any as S.Schema<ListUsersRequest>;
 export type UserList = User[];
-export const UserList = /*@__PURE__*/ /*#__PURE__*/ S.Array(User);
+export const UserList = /*@__PURE__*/ S.Array(User);
 export interface ListUsersResponse {
   Users?: User[];
   NextToken?: string;
 }
-export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Users: S.optional(UserList), NextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListUsersResponse",
@@ -2104,7 +2065,7 @@ export interface LogoutUserRequest {
   AccountId: string;
   UserId: string;
 }
-export const LogoutUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogoutUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     UserId: S.String.pipe(T.HttpLabel("UserId")),
@@ -2125,7 +2086,7 @@ export const LogoutUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "LogoutUserRequest",
 }) as any as S.Schema<LogoutUserRequest>;
 export interface LogoutUserResponse {}
-export const LogoutUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogoutUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "LogoutUserResponse",
@@ -2136,140 +2097,135 @@ export interface PutEventsConfigurationRequest {
   OutboundEventsHTTPSEndpoint?: string | redacted.Redacted<string>;
   LambdaFunctionArn?: string | redacted.Redacted<string>;
 }
-export const PutEventsConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      BotId: S.String.pipe(T.HttpLabel("BotId")),
-      OutboundEventsHTTPSEndpoint: S.optional(SensitiveString),
-      LambdaFunctionArn: S.optional(SensitiveString),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/accounts/{AccountId}/bots/{BotId}/events-configuration",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutEventsConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    BotId: S.String.pipe(T.HttpLabel("BotId")),
+    OutboundEventsHTTPSEndpoint: S.optional(SensitiveString),
+    LambdaFunctionArn: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{AccountId}/bots/{BotId}/events-configuration",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutEventsConfigurationRequest",
-  }) as any as S.Schema<PutEventsConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "PutEventsConfigurationRequest",
+}) as any as S.Schema<PutEventsConfigurationRequest>;
 export interface PutEventsConfigurationResponse {
   EventsConfiguration?: EventsConfiguration;
 }
-export const PutEventsConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ EventsConfiguration: S.optional(EventsConfiguration) }),
-  ).annotate({
-    identifier: "PutEventsConfigurationResponse",
-  }) as any as S.Schema<PutEventsConfigurationResponse>;
+export const PutEventsConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventsConfiguration: S.optional(EventsConfiguration) }),
+).annotate({
+  identifier: "PutEventsConfigurationResponse",
+}) as any as S.Schema<PutEventsConfigurationResponse>;
 export interface PutRetentionSettingsRequest {
   AccountId: string;
   RetentionSettings: RetentionSettings;
 }
-export const PutRetentionSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      RetentionSettings: RetentionSettings,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/accounts/{AccountId}/retention-settings",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutRetentionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    RetentionSettings: RetentionSettings,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{AccountId}/retention-settings",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutRetentionSettingsRequest",
-  }) as any as S.Schema<PutRetentionSettingsRequest>;
+  ),
+).annotate({
+  identifier: "PutRetentionSettingsRequest",
+}) as any as S.Schema<PutRetentionSettingsRequest>;
 export interface PutRetentionSettingsResponse {
   RetentionSettings?: RetentionSettings;
   InitiateDeletionTimestamp?: Date;
 }
-export const PutRetentionSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RetentionSettings: S.optional(RetentionSettings),
-      InitiateDeletionTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PutRetentionSettingsResponse",
-  }) as any as S.Schema<PutRetentionSettingsResponse>;
+export const PutRetentionSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RetentionSettings: S.optional(RetentionSettings),
+    InitiateDeletionTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "PutRetentionSettingsResponse",
+}) as any as S.Schema<PutRetentionSettingsResponse>;
 export interface RedactConversationMessageRequest {
   AccountId: string;
   ConversationId: string;
   MessageId: string;
 }
-export const RedactConversationMessageRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      ConversationId: S.String.pipe(T.HttpLabel("ConversationId")),
-      MessageId: S.String.pipe(T.HttpLabel("MessageId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/conversations/{ConversationId}/messages/{MessageId}?operation=redact",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RedactConversationMessageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    ConversationId: S.String.pipe(T.HttpLabel("ConversationId")),
+    MessageId: S.String.pipe(T.HttpLabel("MessageId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/conversations/{ConversationId}/messages/{MessageId}?operation=redact",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RedactConversationMessageRequest",
-  }) as any as S.Schema<RedactConversationMessageRequest>;
+  ),
+).annotate({
+  identifier: "RedactConversationMessageRequest",
+}) as any as S.Schema<RedactConversationMessageRequest>;
 export interface RedactConversationMessageResponse {}
-export const RedactConversationMessageResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RedactConversationMessageResponse",
-  }) as any as S.Schema<RedactConversationMessageResponse>;
+export const RedactConversationMessageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RedactConversationMessageResponse",
+}) as any as S.Schema<RedactConversationMessageResponse>;
 export interface RedactRoomMessageRequest {
   AccountId: string;
   RoomId: string;
   MessageId: string;
 }
-export const RedactRoomMessageRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      RoomId: S.String.pipe(T.HttpLabel("RoomId")),
-      MessageId: S.String.pipe(T.HttpLabel("MessageId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/rooms/{RoomId}/messages/{MessageId}?operation=redact",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RedactRoomMessageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    RoomId: S.String.pipe(T.HttpLabel("RoomId")),
+    MessageId: S.String.pipe(T.HttpLabel("MessageId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/rooms/{RoomId}/messages/{MessageId}?operation=redact",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "RedactRoomMessageRequest",
 }) as any as S.Schema<RedactRoomMessageRequest>;
 export interface RedactRoomMessageResponse {}
-export const RedactRoomMessageResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const RedactRoomMessageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "RedactRoomMessageResponse",
 }) as any as S.Schema<RedactRoomMessageResponse>;
@@ -2277,97 +2233,91 @@ export interface RegenerateSecurityTokenRequest {
   AccountId: string;
   BotId: string;
 }
-export const RegenerateSecurityTokenRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      BotId: S.String.pipe(T.HttpLabel("BotId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/bots/{BotId}?operation=regenerate-security-token",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RegenerateSecurityTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    BotId: S.String.pipe(T.HttpLabel("BotId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/bots/{BotId}?operation=regenerate-security-token",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RegenerateSecurityTokenRequest",
-  }) as any as S.Schema<RegenerateSecurityTokenRequest>;
+  ),
+).annotate({
+  identifier: "RegenerateSecurityTokenRequest",
+}) as any as S.Schema<RegenerateSecurityTokenRequest>;
 export interface RegenerateSecurityTokenResponse {
   Bot?: Bot;
 }
-export const RegenerateSecurityTokenResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Bot: S.optional(Bot) }),
-  ).annotate({
-    identifier: "RegenerateSecurityTokenResponse",
-  }) as any as S.Schema<RegenerateSecurityTokenResponse>;
+export const RegenerateSecurityTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Bot: S.optional(Bot) }),
+).annotate({
+  identifier: "RegenerateSecurityTokenResponse",
+}) as any as S.Schema<RegenerateSecurityTokenResponse>;
 export interface ResetPersonalPINRequest {
   AccountId: string;
   UserId: string;
 }
-export const ResetPersonalPINRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      UserId: S.String.pipe(T.HttpLabel("UserId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/users/{UserId}?operation=reset-personal-pin",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ResetPersonalPINRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    UserId: S.String.pipe(T.HttpLabel("UserId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/users/{UserId}?operation=reset-personal-pin",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ResetPersonalPINRequest",
 }) as any as S.Schema<ResetPersonalPINRequest>;
 export interface ResetPersonalPINResponse {
   User?: User;
 }
-export const ResetPersonalPINResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ User: S.optional(User) }),
+export const ResetPersonalPINResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ User: S.optional(User) }),
 ).annotate({
   identifier: "ResetPersonalPINResponse",
 }) as any as S.Schema<ResetPersonalPINResponse>;
 export interface RestorePhoneNumberRequest {
   PhoneNumberId: string;
 }
-export const RestorePhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/phone-numbers/{PhoneNumberId}?operation=restore",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RestorePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")) }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/phone-numbers/{PhoneNumberId}?operation=restore",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "RestorePhoneNumberRequest",
 }) as any as S.Schema<RestorePhoneNumberRequest>;
 export interface RestorePhoneNumberResponse {
   PhoneNumber?: PhoneNumber;
 }
-export const RestorePhoneNumberResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
+export const RestorePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
 ).annotate({
   identifier: "RestorePhoneNumberResponse",
 }) as any as S.Schema<RestorePhoneNumberResponse>;
@@ -2381,53 +2331,49 @@ export interface SearchAvailablePhoneNumbersRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-export const SearchAvailablePhoneNumbersRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AreaCode: S.optional(S.String).pipe(T.HttpQuery("area-code")),
-      City: S.optional(S.String).pipe(T.HttpQuery("city")),
-      Country: S.optional(S.String).pipe(T.HttpQuery("country")),
-      State: S.optional(S.String).pipe(T.HttpQuery("state")),
-      TollFreePrefix: S.optional(S.String).pipe(
-        T.HttpQuery("toll-free-prefix"),
-      ),
-      PhoneNumberType: S.optional(PhoneNumberType).pipe(
-        T.HttpQuery("phone-number-type"),
-      ),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/search?type=phone-numbers" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SearchAvailablePhoneNumbersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AreaCode: S.optional(S.String).pipe(T.HttpQuery("area-code")),
+    City: S.optional(S.String).pipe(T.HttpQuery("city")),
+    Country: S.optional(S.String).pipe(T.HttpQuery("country")),
+    State: S.optional(S.String).pipe(T.HttpQuery("state")),
+    TollFreePrefix: S.optional(S.String).pipe(T.HttpQuery("toll-free-prefix")),
+    PhoneNumberType: S.optional(PhoneNumberType).pipe(
+      T.HttpQuery("phone-number-type"),
     ),
-  ).annotate({
-    identifier: "SearchAvailablePhoneNumbersRequest",
-  }) as any as S.Schema<SearchAvailablePhoneNumbersRequest>;
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("max-results")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("next-token")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/search?type=phone-numbers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SearchAvailablePhoneNumbersRequest",
+}) as any as S.Schema<SearchAvailablePhoneNumbersRequest>;
 export interface SearchAvailablePhoneNumbersResponse {
-  E164PhoneNumbers?: string | redacted.Redacted<string>[];
+  E164PhoneNumbers?: (string | redacted.Redacted<string>)[];
   NextToken?: string;
 }
-export const SearchAvailablePhoneNumbersResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      E164PhoneNumbers: S.optional(E164PhoneNumberList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SearchAvailablePhoneNumbersResponse",
-  }) as any as S.Schema<SearchAvailablePhoneNumbersResponse>;
+export const SearchAvailablePhoneNumbersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    E164PhoneNumbers: S.optional(E164PhoneNumberList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SearchAvailablePhoneNumbersResponse",
+}) as any as S.Schema<SearchAvailablePhoneNumbersResponse>;
 export interface UpdateAccountRequest {
   AccountId: string;
   Name?: string;
   DefaultLicense?: License;
 }
-export const UpdateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateAccountRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     Name: S.optional(S.String),
@@ -2448,7 +2394,7 @@ export const UpdateAccountRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateAccountResponse {
   Account?: Account;
 }
-export const UpdateAccountResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateAccountResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Account: S.optional(Account) }),
 ).annotate({
   identifier: "UpdateAccountResponse",
@@ -2457,35 +2403,35 @@ export interface UpdateAccountSettingsRequest {
   AccountId: string;
   AccountSettings: AccountSettings;
 }
-export const UpdateAccountSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      AccountSettings: AccountSettings,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/accounts/{AccountId}/settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    AccountSettings: AccountSettings,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/accounts/{AccountId}/settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateAccountSettingsRequest",
-  }) as any as S.Schema<UpdateAccountSettingsRequest>;
+  ),
+).annotate({
+  identifier: "UpdateAccountSettingsRequest",
+}) as any as S.Schema<UpdateAccountSettingsRequest>;
 export interface UpdateAccountSettingsResponse {}
-export const UpdateAccountSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateAccountSettingsResponse",
-  }) as any as S.Schema<UpdateAccountSettingsResponse>;
+export const UpdateAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateAccountSettingsResponse",
+}) as any as S.Schema<UpdateAccountSettingsResponse>;
 export interface UpdateBotRequest {
   AccountId: string;
   BotId: string;
   Disabled?: boolean;
 }
-export const UpdateBotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateBotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     BotId: S.String.pipe(T.HttpLabel("BotId")),
@@ -2506,7 +2452,7 @@ export const UpdateBotRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateBotResponse {
   Bot?: Bot;
 }
-export const UpdateBotResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bot: S.optional(Bot) }),
 ).annotate({
   identifier: "UpdateBotResponse",
@@ -2515,90 +2461,89 @@ export interface UpdateGlobalSettingsRequest {
   BusinessCalling?: BusinessCallingSettings;
   VoiceConnector?: VoiceConnectorSettings;
 }
-export const UpdateGlobalSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BusinessCalling: S.optional(BusinessCallingSettings),
-      VoiceConnector: S.optional(VoiceConnectorSettings),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/settings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateGlobalSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BusinessCalling: S.optional(BusinessCallingSettings),
+    VoiceConnector: S.optional(VoiceConnectorSettings),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/settings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateGlobalSettingsRequest",
-  }) as any as S.Schema<UpdateGlobalSettingsRequest>;
+  ),
+).annotate({
+  identifier: "UpdateGlobalSettingsRequest",
+}) as any as S.Schema<UpdateGlobalSettingsRequest>;
 export interface UpdateGlobalSettingsResponse {}
-export const UpdateGlobalSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateGlobalSettingsResponse",
-  }) as any as S.Schema<UpdateGlobalSettingsResponse>;
+export const UpdateGlobalSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateGlobalSettingsResponse",
+}) as any as S.Schema<UpdateGlobalSettingsResponse>;
 export interface UpdatePhoneNumberRequest {
   PhoneNumberId: string;
   ProductType?: PhoneNumberProductType;
   CallingName?: string | redacted.Redacted<string>;
 }
-export const UpdatePhoneNumberRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")),
-      ProductType: S.optional(PhoneNumberProductType),
-      CallingName: S.optional(SensitiveString),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/phone-numbers/{PhoneNumberId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdatePhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PhoneNumberId: S.String.pipe(T.HttpLabel("PhoneNumberId")),
+    ProductType: S.optional(PhoneNumberProductType),
+    CallingName: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/phone-numbers/{PhoneNumberId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdatePhoneNumberRequest",
 }) as any as S.Schema<UpdatePhoneNumberRequest>;
 export interface UpdatePhoneNumberResponse {
   PhoneNumber?: PhoneNumber;
 }
-export const UpdatePhoneNumberResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
+export const UpdatePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PhoneNumber: S.optional(PhoneNumber) }),
 ).annotate({
   identifier: "UpdatePhoneNumberResponse",
 }) as any as S.Schema<UpdatePhoneNumberResponse>;
 export interface UpdatePhoneNumberSettingsRequest {
   CallingName: string | redacted.Redacted<string>;
 }
-export const UpdatePhoneNumberSettingsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ CallingName: SensitiveString }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/settings/phone-number" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdatePhoneNumberSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ CallingName: SensitiveString }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/settings/phone-number" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdatePhoneNumberSettingsRequest",
-  }) as any as S.Schema<UpdatePhoneNumberSettingsRequest>;
+  ),
+).annotate({
+  identifier: "UpdatePhoneNumberSettingsRequest",
+}) as any as S.Schema<UpdatePhoneNumberSettingsRequest>;
 export interface UpdatePhoneNumberSettingsResponse {}
-export const UpdatePhoneNumberSettingsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdatePhoneNumberSettingsResponse",
-  }) as any as S.Schema<UpdatePhoneNumberSettingsResponse>;
+export const UpdatePhoneNumberSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdatePhoneNumberSettingsResponse",
+}) as any as S.Schema<UpdatePhoneNumberSettingsResponse>;
 export interface UpdateRoomRequest {
   AccountId: string;
   RoomId: string;
   Name?: string | redacted.Redacted<string>;
 }
-export const UpdateRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRoomRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     RoomId: S.String.pipe(T.HttpLabel("RoomId")),
@@ -2619,7 +2564,7 @@ export const UpdateRoomRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateRoomResponse {
   Room?: Room;
 }
-export const UpdateRoomResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRoomResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Room: S.optional(Room) }),
 ).annotate({
   identifier: "UpdateRoomResponse",
@@ -2630,38 +2575,36 @@ export interface UpdateRoomMembershipRequest {
   MemberId: string;
   Role?: RoomMembershipRole;
 }
-export const UpdateRoomMembershipRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      RoomId: S.String.pipe(T.HttpLabel("RoomId")),
-      MemberId: S.String.pipe(T.HttpLabel("MemberId")),
-      Role: S.optional(RoomMembershipRole),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships/{MemberId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateRoomMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    RoomId: S.String.pipe(T.HttpLabel("RoomId")),
+    MemberId: S.String.pipe(T.HttpLabel("MemberId")),
+    Role: S.optional(RoomMembershipRole),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{AccountId}/rooms/{RoomId}/memberships/{MemberId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateRoomMembershipRequest",
-  }) as any as S.Schema<UpdateRoomMembershipRequest>;
+  ),
+).annotate({
+  identifier: "UpdateRoomMembershipRequest",
+}) as any as S.Schema<UpdateRoomMembershipRequest>;
 export interface UpdateRoomMembershipResponse {
   RoomMembership?: RoomMembership;
 }
-export const UpdateRoomMembershipResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ RoomMembership: S.optional(RoomMembership) }),
-  ).annotate({
-    identifier: "UpdateRoomMembershipResponse",
-  }) as any as S.Schema<UpdateRoomMembershipResponse>;
+export const UpdateRoomMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RoomMembership: S.optional(RoomMembership) }),
+).annotate({
+  identifier: "UpdateRoomMembershipResponse",
+}) as any as S.Schema<UpdateRoomMembershipResponse>;
 export interface UpdateUserRequest {
   AccountId: string;
   UserId: string;
@@ -2669,7 +2612,7 @@ export interface UpdateUserRequest {
   UserType?: UserType;
   AlexaForBusinessMetadata?: AlexaForBusinessMetadata;
 }
-export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccountId: S.String.pipe(T.HttpLabel("AccountId")),
     UserId: S.String.pipe(T.HttpLabel("UserId")),
@@ -2692,7 +2635,7 @@ export const UpdateUserRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateUserResponse {
   User?: User;
 }
-export const UpdateUserResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ User: S.optional(User) }),
 ).annotate({
   identifier: "UpdateUserResponse",
@@ -2702,31 +2645,30 @@ export interface UpdateUserSettingsRequest {
   UserId: string;
   UserSettings: UserSettings;
 }
-export const UpdateUserSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountId: S.String.pipe(T.HttpLabel("AccountId")),
-      UserId: S.String.pipe(T.HttpLabel("UserId")),
-      UserSettings: UserSettings,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/accounts/{AccountId}/users/{UserId}/settings",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateUserSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountId: S.String.pipe(T.HttpLabel("AccountId")),
+    UserId: S.String.pipe(T.HttpLabel("UserId")),
+    UserSettings: UserSettings,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{AccountId}/users/{UserId}/settings",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateUserSettingsRequest",
 }) as any as S.Schema<UpdateUserSettingsRequest>;
 export interface UpdateUserSettingsResponse {}
-export const UpdateUserSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const UpdateUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "UpdateUserSettingsResponse",
 }) as any as S.Schema<UpdateUserSettingsResponse>;
@@ -2735,46 +2677,57 @@ export const UpdateUserSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
   "ServiceFailureException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(503),
 ).pipe(C.withServerError) {}
 export class ThrottledClientException extends S.TaggedErrorClass<ThrottledClientException>()(
   "ThrottledClientException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
   "UnauthorizedClientException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(401),
 ).pipe(C.withAuthError) {}
 export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
   "ResourceLimitExceededException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
   "UnprocessableEntityException",
   { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
+  T.HttpError(422),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -2796,7 +2749,7 @@ export const associatePhoneNumberWithUser: API.OperationMethod<
   AssociatePhoneNumberWithUserResponse,
   AssociatePhoneNumberWithUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociatePhoneNumberWithUserRequest,
   output: AssociatePhoneNumberWithUserResponse,
   errors: [
@@ -2830,7 +2783,7 @@ export const associateSigninDelegateGroupsWithAccount: API.OperationMethod<
   AssociateSigninDelegateGroupsWithAccountResponse,
   AssociateSigninDelegateGroupsWithAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateSigninDelegateGroupsWithAccountRequest,
   output: AssociateSigninDelegateGroupsWithAccountResponse,
   errors: [
@@ -2864,7 +2817,7 @@ export const batchCreateRoomMembership: API.OperationMethod<
   BatchCreateRoomMembershipResponse,
   BatchCreateRoomMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchCreateRoomMembershipRequest,
   output: BatchCreateRoomMembershipResponse,
   errors: [
@@ -2901,7 +2854,7 @@ export const batchDeletePhoneNumber: API.OperationMethod<
   BatchDeletePhoneNumberResponse,
   BatchDeletePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchDeletePhoneNumberRequest,
   output: BatchDeletePhoneNumberResponse,
   errors: [
@@ -2948,7 +2901,7 @@ export const batchSuspendUser: API.OperationMethod<
   BatchSuspendUserResponse,
   BatchSuspendUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchSuspendUserRequest,
   output: BatchSuspendUserResponse,
   errors: [
@@ -2990,7 +2943,7 @@ export const batchUnsuspendUser: API.OperationMethod<
   BatchUnsuspendUserResponse,
   BatchUnsuspendUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUnsuspendUserRequest,
   output: BatchUnsuspendUserResponse,
   errors: [
@@ -3027,7 +2980,7 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
   BatchUpdatePhoneNumberResponse,
   BatchUpdatePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdatePhoneNumberRequest,
   output: BatchUpdatePhoneNumberResponse,
   errors: [
@@ -3060,7 +3013,7 @@ export const batchUpdateUser: API.OperationMethod<
   BatchUpdateUserResponse,
   BatchUpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchUpdateUserRequest,
   output: BatchUpdateUserResponse,
   errors: [
@@ -3096,7 +3049,7 @@ export const createAccount: API.OperationMethod<
   CreateAccountResponse,
   CreateAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccountRequest,
   output: CreateAccountResponse,
   errors: [
@@ -3130,7 +3083,7 @@ export const createBot: API.OperationMethod<
   CreateBotResponse,
   CreateBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateBotRequest,
   output: CreateBotResponse,
   errors: [
@@ -3171,7 +3124,7 @@ export const createMeetingDialOut: API.OperationMethod<
   CreateMeetingDialOutResponse,
   CreateMeetingDialOutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMeetingDialOutRequest,
   output: CreateMeetingDialOutResponse,
   errors: [
@@ -3207,7 +3160,7 @@ export const createPhoneNumberOrder: API.OperationMethod<
   CreatePhoneNumberOrderResponse,
   CreatePhoneNumberOrderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreatePhoneNumberOrderRequest,
   output: CreatePhoneNumberOrderResponse,
   errors: [
@@ -3242,7 +3195,7 @@ export const createRoom: API.OperationMethod<
   CreateRoomResponse,
   CreateRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRoomRequest,
   output: CreateRoomResponse,
   errors: [
@@ -3278,7 +3231,7 @@ export const createRoomMembership: API.OperationMethod<
   CreateRoomMembershipResponse,
   CreateRoomMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateRoomMembershipRequest,
   output: CreateRoomMembershipResponse,
   errors: [
@@ -3314,7 +3267,7 @@ export const createUser: API.OperationMethod<
   CreateUserResponse,
   CreateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUserRequest,
   output: CreateUserResponse,
   errors: [
@@ -3362,7 +3315,7 @@ export const deleteAccount: API.OperationMethod<
   DeleteAccountResponse,
   DeleteAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccountRequest,
   output: DeleteAccountResponse,
   errors: [
@@ -3395,7 +3348,7 @@ export const deleteEventsConfiguration: API.OperationMethod<
   DeleteEventsConfigurationResponse,
   DeleteEventsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventsConfigurationRequest,
   output: DeleteEventsConfigurationResponse,
   errors: [
@@ -3433,7 +3386,7 @@ export const deletePhoneNumber: API.OperationMethod<
   DeletePhoneNumberResponse,
   DeletePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeletePhoneNumberRequest,
   output: DeletePhoneNumberResponse,
   errors: [
@@ -3466,7 +3419,7 @@ export const deleteRoom: API.OperationMethod<
   DeleteRoomResponse,
   DeleteRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRoomRequest,
   output: DeleteRoomResponse,
   errors: [
@@ -3499,7 +3452,7 @@ export const deleteRoomMembership: API.OperationMethod<
   DeleteRoomMembershipResponse,
   DeleteRoomMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteRoomMembershipRequest,
   output: DeleteRoomMembershipResponse,
   errors: [
@@ -3532,7 +3485,7 @@ export const disassociatePhoneNumberFromUser: API.OperationMethod<
   DisassociatePhoneNumberFromUserResponse,
   DisassociatePhoneNumberFromUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociatePhoneNumberFromUserRequest,
   output: DisassociatePhoneNumberFromUserResponse,
   errors: [
@@ -3565,7 +3518,7 @@ export const disassociateSigninDelegateGroupsFromAccount: API.OperationMethod<
   DisassociateSigninDelegateGroupsFromAccountResponse,
   DisassociateSigninDelegateGroupsFromAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateSigninDelegateGroupsFromAccountRequest,
   output: DisassociateSigninDelegateGroupsFromAccountResponse,
   errors: [
@@ -3599,7 +3552,7 @@ export const getAccount: API.OperationMethod<
   GetAccountResponse,
   GetAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountRequest,
   output: GetAccountResponse,
   errors: [
@@ -3634,7 +3587,7 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsResponse,
   GetAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountSettingsRequest,
   output: GetAccountSettingsResponse,
   errors: [
@@ -3667,7 +3620,7 @@ export const getBot: API.OperationMethod<
   GetBotResponse,
   GetBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBotRequest,
   output: GetBotResponse,
   errors: [
@@ -3700,7 +3653,7 @@ export const getEventsConfiguration: API.OperationMethod<
   GetEventsConfigurationResponse,
   GetEventsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventsConfigurationRequest,
   output: GetEventsConfigurationResponse,
   errors: [
@@ -3733,7 +3686,7 @@ export const getGlobalSettings: API.OperationMethod<
   GetGlobalSettingsResponse,
   GetGlobalSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetGlobalSettingsRequest,
   output: GetGlobalSettingsResponse,
   errors: [
@@ -3765,7 +3718,7 @@ export const getPhoneNumber: API.OperationMethod<
   GetPhoneNumberResponse,
   GetPhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhoneNumberRequest,
   output: GetPhoneNumberResponse,
   errors: [
@@ -3799,7 +3752,7 @@ export const getPhoneNumberOrder: API.OperationMethod<
   GetPhoneNumberOrderResponse,
   GetPhoneNumberOrderError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhoneNumberOrderRequest,
   output: GetPhoneNumberOrderResponse,
   errors: [
@@ -3831,7 +3784,7 @@ export const getPhoneNumberSettings: API.OperationMethod<
   GetPhoneNumberSettingsResponse,
   GetPhoneNumberSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetPhoneNumberSettingsRequest,
   output: GetPhoneNumberSettingsResponse,
   errors: [
@@ -3864,7 +3817,7 @@ export const getRetentionSettings: API.OperationMethod<
   GetRetentionSettingsResponse,
   GetRetentionSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRetentionSettingsRequest,
   output: GetRetentionSettingsResponse,
   errors: [
@@ -3897,7 +3850,7 @@ export const getRoom: API.OperationMethod<
   GetRoomResponse,
   GetRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetRoomRequest,
   output: GetRoomResponse,
   errors: [
@@ -3933,7 +3886,7 @@ export const getUser: API.OperationMethod<
   GetUserResponse,
   GetUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserRequest,
   output: GetUserResponse,
   errors: [
@@ -3966,7 +3919,7 @@ export const getUserSettings: API.OperationMethod<
   GetUserSettingsResponse,
   GetUserSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetUserSettingsRequest,
   output: GetUserSettingsResponse,
   errors: [
@@ -4001,7 +3954,7 @@ export const inviteUsers: API.OperationMethod<
   InviteUsersResponse,
   InviteUsersError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: InviteUsersRequest,
   output: InviteUsersResponse,
   errors: [
@@ -4051,7 +4004,7 @@ export const listAccounts: API.OperationMethod<
     ListAccountsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
   errors: [
@@ -4104,7 +4057,7 @@ export const listBots: API.OperationMethod<
     ListBotsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBotsRequest,
   output: ListBotsResponse,
   errors: [
@@ -4156,7 +4109,7 @@ export const listPhoneNumberOrders: API.OperationMethod<
     ListPhoneNumberOrdersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumberOrdersRequest,
   output: ListPhoneNumberOrdersResponse,
   errors: [
@@ -4208,7 +4161,7 @@ export const listPhoneNumbers: API.OperationMethod<
     ListPhoneNumbersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPhoneNumbersRequest,
   output: ListPhoneNumbersResponse,
   errors: [
@@ -4262,7 +4215,7 @@ export const listRoomMemberships: API.OperationMethod<
     ListRoomMembershipsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoomMembershipsRequest,
   output: ListRoomMembershipsResponse,
   errors: [
@@ -4315,7 +4268,7 @@ export const listRooms: API.OperationMethod<
     ListRoomsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListRoomsRequest,
   output: ListRoomsResponse,
   errors: [
@@ -4353,7 +4306,7 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
   ListSupportedPhoneNumberCountriesResponse,
   ListSupportedPhoneNumberCountriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListSupportedPhoneNumberCountriesRequest,
   output: ListSupportedPhoneNumberCountriesResponse,
   errors: [
@@ -4402,7 +4355,7 @@ export const listUsers: API.OperationMethod<
     ListUsersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
   errors: [
@@ -4440,7 +4393,7 @@ export const logoutUser: API.OperationMethod<
   LogoutUserResponse,
   LogoutUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: LogoutUserRequest,
   output: LogoutUserResponse,
   errors: [
@@ -4475,7 +4428,7 @@ export const putEventsConfiguration: API.OperationMethod<
   PutEventsConfigurationResponse,
   PutEventsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutEventsConfigurationRequest,
   output: PutEventsConfigurationResponse,
   errors: [
@@ -4519,7 +4472,7 @@ export const putRetentionSettings: API.OperationMethod<
   PutRetentionSettingsResponse,
   PutRetentionSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutRetentionSettingsRequest,
   output: PutRetentionSettingsResponse,
   errors: [
@@ -4553,7 +4506,7 @@ export const redactConversationMessage: API.OperationMethod<
   RedactConversationMessageResponse,
   RedactConversationMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RedactConversationMessageRequest,
   output: RedactConversationMessageResponse,
   errors: [
@@ -4586,7 +4539,7 @@ export const redactRoomMessage: API.OperationMethod<
   RedactRoomMessageResponse,
   RedactRoomMessageError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RedactRoomMessageRequest,
   output: RedactRoomMessageResponse,
   errors: [
@@ -4619,7 +4572,7 @@ export const regenerateSecurityToken: API.OperationMethod<
   RegenerateSecurityTokenResponse,
   RegenerateSecurityTokenError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegenerateSecurityTokenRequest,
   output: RegenerateSecurityTokenResponse,
   errors: [
@@ -4653,7 +4606,7 @@ export const resetPersonalPIN: API.OperationMethod<
   ResetPersonalPINResponse,
   ResetPersonalPINError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResetPersonalPINRequest,
   output: ResetPersonalPINResponse,
   errors: [
@@ -4688,7 +4641,7 @@ export const restorePhoneNumber: API.OperationMethod<
   RestorePhoneNumberResponse,
   RestorePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RestorePhoneNumberRequest,
   output: RestorePhoneNumberResponse,
   errors: [
@@ -4741,7 +4694,7 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     SearchAvailablePhoneNumbersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: SearchAvailablePhoneNumbersRequest,
   output: SearchAvailablePhoneNumbersResponse,
   errors: [
@@ -4779,7 +4732,7 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountResponse,
   UpdateAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountRequest,
   output: UpdateAccountResponse,
   errors: [
@@ -4817,7 +4770,7 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsResponse,
   UpdateAccountSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountSettingsRequest,
   output: UpdateAccountSettingsResponse,
   errors: [
@@ -4851,7 +4804,7 @@ export const updateBot: API.OperationMethod<
   UpdateBotResponse,
   UpdateBotError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateBotRequest,
   output: UpdateBotResponse,
   errors: [
@@ -4883,7 +4836,7 @@ export const updateGlobalSettings: API.OperationMethod<
   UpdateGlobalSettingsResponse,
   UpdateGlobalSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateGlobalSettingsRequest,
   output: UpdateGlobalSettingsResponse,
   errors: [
@@ -4920,7 +4873,7 @@ export const updatePhoneNumber: API.OperationMethod<
   UpdatePhoneNumberResponse,
   UpdatePhoneNumberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePhoneNumberRequest,
   output: UpdatePhoneNumberResponse,
   errors: [
@@ -4955,7 +4908,7 @@ export const updatePhoneNumberSettings: API.OperationMethod<
   UpdatePhoneNumberSettingsResponse,
   UpdatePhoneNumberSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdatePhoneNumberSettingsRequest,
   output: UpdatePhoneNumberSettingsResponse,
   errors: [
@@ -4987,7 +4940,7 @@ export const updateRoom: API.OperationMethod<
   UpdateRoomResponse,
   UpdateRoomError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoomRequest,
   output: UpdateRoomResponse,
   errors: [
@@ -5023,7 +4976,7 @@ export const updateRoomMembership: API.OperationMethod<
   UpdateRoomMembershipResponse,
   UpdateRoomMembershipError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRoomMembershipRequest,
   output: UpdateRoomMembershipResponse,
   errors: [
@@ -5056,7 +5009,7 @@ export const updateUser: API.OperationMethod<
   UpdateUserResponse,
   UpdateUserError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserRequest,
   output: UpdateUserResponse,
   errors: [
@@ -5089,7 +5042,7 @@ export const updateUserSettings: API.OperationMethod<
   UpdateUserSettingsResponse,
   UpdateUserSettingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateUserSettingsRequest,
   output: UpdateUserSettingsResponse,
   errors: [

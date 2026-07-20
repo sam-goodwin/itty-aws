@@ -113,40 +113,35 @@ export type ListTablesLimit = number;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tag/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tag/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(Tags) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: Tags,
@@ -164,18 +159,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -193,32 +188,31 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
 export type NamespaceList = string[];
-export const NamespaceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const NamespaceList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateNamespaceRequest {
   tableBucketARN: string;
   namespace: string[];
 }
-export const CreateNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      namespace: NamespaceList,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/namespaces/{tableBucketARN}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    namespace: NamespaceList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/namespaces/{tableBucketARN}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateNamespaceRequest",
 }) as any as S.Schema<CreateNamespaceRequest>;
@@ -226,8 +220,8 @@ export interface CreateNamespaceResponse {
   tableBucketARN: string;
   namespace: string[];
 }
-export const CreateNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ tableBucketARN: S.String, namespace: NamespaceList }),
+export const CreateNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tableBucketARN: S.String, namespace: NamespaceList }),
 ).annotate({
   identifier: "CreateNamespaceResponse",
 }) as any as S.Schema<CreateNamespaceResponse>;
@@ -235,30 +229,29 @@ export interface DeleteNamespaceRequest {
   tableBucketARN: string;
   namespace: string;
 }
-export const DeleteNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      namespace: S.String.pipe(T.HttpLabel("namespace")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/namespaces/{tableBucketARN}/{namespace}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    namespace: S.String.pipe(T.HttpLabel("namespace")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/namespaces/{tableBucketARN}/{namespace}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteNamespaceRequest",
 }) as any as S.Schema<DeleteNamespaceRequest>;
 export interface DeleteNamespaceResponse {}
-export const DeleteNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteNamespaceResponse",
 }) as any as S.Schema<DeleteNamespaceResponse>;
@@ -266,7 +259,7 @@ export interface GetNamespaceRequest {
   tableBucketARN: string;
   namespace: string;
 }
-export const GetNamespaceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -294,7 +287,7 @@ export interface GetNamespaceResponse {
   namespaceId?: string;
   tableBucketId?: string;
 }
-export const GetNamespaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: NamespaceList,
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -312,7 +305,7 @@ export interface ListNamespacesRequest {
   continuationToken?: string;
   maxNamespaces?: number;
 }
-export const ListNamespacesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
@@ -341,7 +334,7 @@ export interface NamespaceSummary {
   namespaceId?: string;
   tableBucketId?: string;
 }
-export const NamespaceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NamespaceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: NamespaceList,
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
@@ -354,333 +347,318 @@ export const NamespaceSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "NamespaceSummary",
 }) as any as S.Schema<NamespaceSummary>;
 export type NamespaceSummaryList = NamespaceSummary[];
-export const NamespaceSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NamespaceSummary);
+export const NamespaceSummaryList = /*@__PURE__*/ S.Array(NamespaceSummary);
 export interface ListNamespacesResponse {
   namespaces: NamespaceSummary[];
   continuationToken?: string;
 }
-export const ListNamespacesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      namespaces: NamespaceSummaryList,
-      continuationToken: S.optional(S.String),
-    }),
+export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespaces: NamespaceSummaryList,
+    continuationToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListNamespacesResponse",
 }) as any as S.Schema<ListNamespacesResponse>;
 export interface DeleteTableBucketEncryptionRequest {
   tableBucketARN: string;
 }
-export const DeleteTableBucketEncryptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/buckets/{tableBucketARN}/encryption",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTableBucketEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/buckets/{tableBucketARN}/encryption" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteTableBucketEncryptionRequest",
-  }) as any as S.Schema<DeleteTableBucketEncryptionRequest>;
+  ),
+).annotate({
+  identifier: "DeleteTableBucketEncryptionRequest",
+}) as any as S.Schema<DeleteTableBucketEncryptionRequest>;
 export interface DeleteTableBucketEncryptionResponse {}
-export const DeleteTableBucketEncryptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTableBucketEncryptionResponse",
-  }) as any as S.Schema<DeleteTableBucketEncryptionResponse>;
+export const DeleteTableBucketEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTableBucketEncryptionResponse",
+}) as any as S.Schema<DeleteTableBucketEncryptionResponse>;
 export interface GetTableBucketEncryptionRequest {
   tableBucketARN: string;
 }
-export const GetTableBucketEncryptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/buckets/{tableBucketARN}/encryption" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableBucketEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/buckets/{tableBucketARN}/encryption" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTableBucketEncryptionRequest",
-  }) as any as S.Schema<GetTableBucketEncryptionRequest>;
+  ),
+).annotate({
+  identifier: "GetTableBucketEncryptionRequest",
+}) as any as S.Schema<GetTableBucketEncryptionRequest>;
 export type SSEAlgorithm = "AES256" | "aws:kms" | (string & {});
-export const SSEAlgorithm = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SSEAlgorithm = /*@__PURE__*/ S.String;
 export interface EncryptionConfiguration {
   sseAlgorithm: SSEAlgorithm;
   kmsKeyArn?: string;
 }
-export const EncryptionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ sseAlgorithm: SSEAlgorithm, kmsKeyArn: S.optional(S.String) }),
+export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ sseAlgorithm: SSEAlgorithm, kmsKeyArn: S.optional(S.String) }),
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
 export interface GetTableBucketEncryptionResponse {
   encryptionConfiguration: EncryptionConfiguration;
 }
-export const GetTableBucketEncryptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ encryptionConfiguration: EncryptionConfiguration }),
-  ).annotate({
-    identifier: "GetTableBucketEncryptionResponse",
-  }) as any as S.Schema<GetTableBucketEncryptionResponse>;
+export const GetTableBucketEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ encryptionConfiguration: EncryptionConfiguration }),
+).annotate({
+  identifier: "GetTableBucketEncryptionResponse",
+}) as any as S.Schema<GetTableBucketEncryptionResponse>;
 export interface PutTableBucketEncryptionRequest {
   tableBucketARN: string;
   encryptionConfiguration: EncryptionConfiguration;
 }
-export const PutTableBucketEncryptionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      encryptionConfiguration: EncryptionConfiguration,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/buckets/{tableBucketARN}/encryption" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutTableBucketEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    encryptionConfiguration: EncryptionConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/buckets/{tableBucketARN}/encryption" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutTableBucketEncryptionRequest",
-  }) as any as S.Schema<PutTableBucketEncryptionRequest>;
+  ),
+).annotate({
+  identifier: "PutTableBucketEncryptionRequest",
+}) as any as S.Schema<PutTableBucketEncryptionRequest>;
 export interface PutTableBucketEncryptionResponse {}
-export const PutTableBucketEncryptionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutTableBucketEncryptionResponse",
-  }) as any as S.Schema<PutTableBucketEncryptionResponse>;
+export const PutTableBucketEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutTableBucketEncryptionResponse",
+}) as any as S.Schema<PutTableBucketEncryptionResponse>;
 export interface DeleteTableBucketPolicyRequest {
   tableBucketARN: string;
 }
-export const DeleteTableBucketPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/buckets/{tableBucketARN}/policy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTableBucketPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/buckets/{tableBucketARN}/policy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteTableBucketPolicyRequest",
-  }) as any as S.Schema<DeleteTableBucketPolicyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteTableBucketPolicyRequest",
+}) as any as S.Schema<DeleteTableBucketPolicyRequest>;
 export interface DeleteTableBucketPolicyResponse {}
-export const DeleteTableBucketPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTableBucketPolicyResponse",
-  }) as any as S.Schema<DeleteTableBucketPolicyResponse>;
+export const DeleteTableBucketPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTableBucketPolicyResponse",
+}) as any as S.Schema<DeleteTableBucketPolicyResponse>;
 export interface GetTableBucketPolicyRequest {
   tableBucketARN: string;
 }
-export const GetTableBucketPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/buckets/{tableBucketARN}/policy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableBucketPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/buckets/{tableBucketARN}/policy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTableBucketPolicyRequest",
-  }) as any as S.Schema<GetTableBucketPolicyRequest>;
+  ),
+).annotate({
+  identifier: "GetTableBucketPolicyRequest",
+}) as any as S.Schema<GetTableBucketPolicyRequest>;
 export interface GetTableBucketPolicyResponse {
   resourcePolicy: string;
 }
-export const GetTableBucketPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ resourcePolicy: S.String }),
-  ).annotate({
-    identifier: "GetTableBucketPolicyResponse",
-  }) as any as S.Schema<GetTableBucketPolicyResponse>;
+export const GetTableBucketPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourcePolicy: S.String }),
+).annotate({
+  identifier: "GetTableBucketPolicyResponse",
+}) as any as S.Schema<GetTableBucketPolicyResponse>;
 export interface PutTableBucketPolicyRequest {
   tableBucketARN: string;
   resourcePolicy: string;
 }
-export const PutTableBucketPolicyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      resourcePolicy: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/buckets/{tableBucketARN}/policy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutTableBucketPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    resourcePolicy: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/buckets/{tableBucketARN}/policy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutTableBucketPolicyRequest",
-  }) as any as S.Schema<PutTableBucketPolicyRequest>;
+  ),
+).annotate({
+  identifier: "PutTableBucketPolicyRequest",
+}) as any as S.Schema<PutTableBucketPolicyRequest>;
 export interface PutTableBucketPolicyResponse {}
-export const PutTableBucketPolicyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutTableBucketPolicyResponse",
-  }) as any as S.Schema<PutTableBucketPolicyResponse>;
+export const PutTableBucketPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutTableBucketPolicyResponse",
+}) as any as S.Schema<PutTableBucketPolicyResponse>;
 export interface DeleteTableBucketReplicationRequest {
   tableBucketARN: string;
   versionToken?: string;
 }
-export const DeleteTableBucketReplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpQuery("tableBucketARN")),
-      versionToken: S.optional(S.String).pipe(T.HttpQuery("versionToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/table-bucket-replication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTableBucketReplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpQuery("tableBucketARN")),
+    versionToken: S.optional(S.String).pipe(T.HttpQuery("versionToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/table-bucket-replication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteTableBucketReplicationRequest",
-  }) as any as S.Schema<DeleteTableBucketReplicationRequest>;
+  ),
+).annotate({
+  identifier: "DeleteTableBucketReplicationRequest",
+}) as any as S.Schema<DeleteTableBucketReplicationRequest>;
 export interface DeleteTableBucketReplicationResponse {}
-export const DeleteTableBucketReplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTableBucketReplicationResponse",
-  }) as any as S.Schema<DeleteTableBucketReplicationResponse>;
+export const DeleteTableBucketReplicationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteTableBucketReplicationResponse",
+}) as any as S.Schema<DeleteTableBucketReplicationResponse>;
 export interface GetTableBucketReplicationRequest {
   tableBucketARN: string;
 }
-export const GetTableBucketReplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpQuery("tableBucketARN")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/table-bucket-replication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableBucketReplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpQuery("tableBucketARN")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/table-bucket-replication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTableBucketReplicationRequest",
-  }) as any as S.Schema<GetTableBucketReplicationRequest>;
+  ),
+).annotate({
+  identifier: "GetTableBucketReplicationRequest",
+}) as any as S.Schema<GetTableBucketReplicationRequest>;
 export interface ReplicationDestination {
   destinationTableBucketARN: string;
 }
-export const ReplicationDestination = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ destinationTableBucketARN: S.String }),
+export const ReplicationDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ destinationTableBucketARN: S.String }),
 ).annotate({
   identifier: "ReplicationDestination",
 }) as any as S.Schema<ReplicationDestination>;
 export type ReplicationDestinations = ReplicationDestination[];
-export const ReplicationDestinations = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ReplicationDestinations = /*@__PURE__*/ S.Array(
   ReplicationDestination,
 );
 export interface TableBucketReplicationRule {
   destinations: ReplicationDestination[];
 }
-export const TableBucketReplicationRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ destinations: ReplicationDestinations }),
+export const TableBucketReplicationRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ destinations: ReplicationDestinations }),
 ).annotate({
   identifier: "TableBucketReplicationRule",
 }) as any as S.Schema<TableBucketReplicationRule>;
 export type TableBucketReplicationRules = TableBucketReplicationRule[];
-export const TableBucketReplicationRules = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const TableBucketReplicationRules = /*@__PURE__*/ S.Array(
   TableBucketReplicationRule,
 );
 export interface TableBucketReplicationConfiguration {
   role: string;
   rules: TableBucketReplicationRule[];
 }
-export const TableBucketReplicationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ role: S.String, rules: TableBucketReplicationRules }),
-  ).annotate({
-    identifier: "TableBucketReplicationConfiguration",
-  }) as any as S.Schema<TableBucketReplicationConfiguration>;
+export const TableBucketReplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ role: S.String, rules: TableBucketReplicationRules }),
+).annotate({
+  identifier: "TableBucketReplicationConfiguration",
+}) as any as S.Schema<TableBucketReplicationConfiguration>;
 export interface GetTableBucketReplicationResponse {
   versionToken: string;
   configuration: TableBucketReplicationConfiguration;
 }
-export const GetTableBucketReplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      versionToken: S.String,
-      configuration: TableBucketReplicationConfiguration,
-    }),
-  ).annotate({
-    identifier: "GetTableBucketReplicationResponse",
-  }) as any as S.Schema<GetTableBucketReplicationResponse>;
+export const GetTableBucketReplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    versionToken: S.String,
+    configuration: TableBucketReplicationConfiguration,
+  }),
+).annotate({
+  identifier: "GetTableBucketReplicationResponse",
+}) as any as S.Schema<GetTableBucketReplicationResponse>;
 export interface PutTableBucketReplicationRequest {
   tableBucketARN: string;
   versionToken?: string;
   configuration: TableBucketReplicationConfiguration;
 }
-export const PutTableBucketReplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpQuery("tableBucketARN")),
-      versionToken: S.optional(S.String).pipe(T.HttpQuery("versionToken")),
-      configuration: TableBucketReplicationConfiguration,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/table-bucket-replication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutTableBucketReplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpQuery("tableBucketARN")),
+    versionToken: S.optional(S.String).pipe(T.HttpQuery("versionToken")),
+    configuration: TableBucketReplicationConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/table-bucket-replication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutTableBucketReplicationRequest",
-  }) as any as S.Schema<PutTableBucketReplicationRequest>;
+  ),
+).annotate({
+  identifier: "PutTableBucketReplicationRequest",
+}) as any as S.Schema<PutTableBucketReplicationRequest>;
 export interface PutTableBucketReplicationResponse {
   versionToken: string;
   status: string;
 }
-export const PutTableBucketReplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ versionToken: S.String, status: S.String }),
-  ).annotate({
-    identifier: "PutTableBucketReplicationResponse",
-  }) as any as S.Schema<PutTableBucketReplicationResponse>;
+export const PutTableBucketReplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ versionToken: S.String, status: S.String }),
+).annotate({
+  identifier: "PutTableBucketReplicationResponse",
+}) as any as S.Schema<PutTableBucketReplicationResponse>;
 export type StorageClass = "STANDARD" | "INTELLIGENT_TIERING" | (string & {});
-export const StorageClass = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StorageClass = /*@__PURE__*/ S.String;
 export interface StorageClassConfiguration {
   storageClass: StorageClass;
 }
-export const StorageClassConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ storageClass: StorageClass }),
+export const StorageClassConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ storageClass: StorageClass }),
 ).annotate({
   identifier: "StorageClassConfiguration",
 }) as any as S.Schema<StorageClassConfiguration>;
@@ -690,57 +668,55 @@ export interface CreateTableBucketRequest {
   storageClassConfiguration?: StorageClassConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateTableBucketRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      encryptionConfiguration: S.optional(EncryptionConfiguration),
-      storageClassConfiguration: S.optional(StorageClassConfiguration),
-      tags: S.optional(Tags),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/buckets" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateTableBucketRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    encryptionConfiguration: S.optional(EncryptionConfiguration),
+    storageClassConfiguration: S.optional(StorageClassConfiguration),
+    tags: S.optional(Tags),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/buckets" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateTableBucketRequest",
 }) as any as S.Schema<CreateTableBucketRequest>;
 export interface CreateTableBucketResponse {
   arn: string;
 }
-export const CreateTableBucketResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ arn: S.String }),
+export const CreateTableBucketResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }),
 ).annotate({
   identifier: "CreateTableBucketResponse",
 }) as any as S.Schema<CreateTableBucketResponse>;
 export interface DeleteTableBucketRequest {
   tableBucketARN: string;
 }
-export const DeleteTableBucketRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/buckets/{tableBucketARN}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTableBucketRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/buckets/{tableBucketARN}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteTableBucketRequest",
 }) as any as S.Schema<DeleteTableBucketRequest>;
 export interface DeleteTableBucketResponse {}
-export const DeleteTableBucketResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteTableBucketResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteTableBucketResponse",
 }) as any as S.Schema<DeleteTableBucketResponse>;
@@ -748,7 +724,7 @@ export interface DeleteTableBucketMetricsConfigurationRequest {
   tableBucketARN: string;
 }
 export const DeleteTableBucketMetricsConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     }).pipe(
@@ -766,13 +742,13 @@ export const DeleteTableBucketMetricsConfigurationRequest =
   }) as any as S.Schema<DeleteTableBucketMetricsConfigurationRequest>;
 export interface DeleteTableBucketMetricsConfigurationResponse {}
 export const DeleteTableBucketMetricsConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteTableBucketMetricsConfigurationResponse",
   }) as any as S.Schema<DeleteTableBucketMetricsConfigurationResponse>;
 export interface GetTableBucketRequest {
   tableBucketARN: string;
 }
-export const GetTableBucketRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTableBucketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
   }).pipe(
@@ -789,7 +765,7 @@ export const GetTableBucketRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetTableBucketRequest",
 }) as any as S.Schema<GetTableBucketRequest>;
 export type TableBucketType = "customer" | "aws" | (string & {});
-export const TableBucketType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TableBucketType = /*@__PURE__*/ S.String;
 export interface GetTableBucketResponse {
   arn: string;
   name: string;
@@ -798,16 +774,15 @@ export interface GetTableBucketResponse {
   tableBucketId?: string;
   type?: TableBucketType;
 }
-export const GetTableBucketResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      arn: S.String,
-      name: S.String,
-      ownerAccountId: S.String,
-      createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      tableBucketId: S.optional(S.String),
-      type: S.optional(TableBucketType),
-    }),
+export const GetTableBucketResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.String,
+    name: S.String,
+    ownerAccountId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    tableBucketId: S.optional(S.String),
+    type: S.optional(TableBucketType),
+  }),
 ).annotate({
   identifier: "GetTableBucketResponse",
 }) as any as S.Schema<GetTableBucketResponse>;
@@ -815,7 +790,7 @@ export interface GetTableBucketMaintenanceConfigurationRequest {
   tableBucketARN: string;
 }
 export const GetTableBucketMaintenanceConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     }).pipe(
@@ -834,52 +809,50 @@ export const GetTableBucketMaintenanceConfigurationRequest =
 export type TableBucketMaintenanceType =
   | "icebergUnreferencedFileRemoval"
   | (string & {});
-export const TableBucketMaintenanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TableBucketMaintenanceType = /*@__PURE__*/ S.String;
 export type MaintenanceStatus = "enabled" | "disabled" | (string & {});
-export const MaintenanceStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MaintenanceStatus = /*@__PURE__*/ S.String;
 export interface IcebergUnreferencedFileRemovalSettings {
   unreferencedDays?: number;
   nonCurrentDays?: number;
 }
-export const IcebergUnreferencedFileRemovalSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IcebergUnreferencedFileRemovalSettings = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       unreferencedDays: S.optional(S.Number),
       nonCurrentDays: S.optional(S.Number),
     }),
-  ).annotate({
-    identifier: "IcebergUnreferencedFileRemovalSettings",
-  }) as any as S.Schema<IcebergUnreferencedFileRemovalSettings>;
+).annotate({
+  identifier: "IcebergUnreferencedFileRemovalSettings",
+}) as any as S.Schema<IcebergUnreferencedFileRemovalSettings>;
 export type TableBucketMaintenanceSettings = {
   icebergUnreferencedFileRemoval: IcebergUnreferencedFileRemovalSettings;
 };
-export const TableBucketMaintenanceSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.Union([
-    S.Struct({
-      icebergUnreferencedFileRemoval: IcebergUnreferencedFileRemovalSettings,
-    }),
-  ]);
+export const TableBucketMaintenanceSettings = /*@__PURE__*/ S.Union([
+  S.Struct({
+    icebergUnreferencedFileRemoval: IcebergUnreferencedFileRemovalSettings,
+  }),
+]);
 export interface TableBucketMaintenanceConfigurationValue {
   status?: MaintenanceStatus;
   settings?: TableBucketMaintenanceSettings;
 }
-export const TableBucketMaintenanceConfigurationValue =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TableBucketMaintenanceConfigurationValue = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       status: S.optional(MaintenanceStatus),
       settings: S.optional(TableBucketMaintenanceSettings),
     }),
-  ).annotate({
-    identifier: "TableBucketMaintenanceConfigurationValue",
-  }) as any as S.Schema<TableBucketMaintenanceConfigurationValue>;
+).annotate({
+  identifier: "TableBucketMaintenanceConfigurationValue",
+}) as any as S.Schema<TableBucketMaintenanceConfigurationValue>;
 export type TableBucketMaintenanceConfiguration = {
   [key in TableBucketMaintenanceType]?: TableBucketMaintenanceConfigurationValue;
 };
-export const TableBucketMaintenanceConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
-    TableBucketMaintenanceType,
-    TableBucketMaintenanceConfigurationValue.pipe(S.optional),
-  );
+export const TableBucketMaintenanceConfiguration = /*@__PURE__*/ S.Record(
+  TableBucketMaintenanceType,
+  TableBucketMaintenanceConfigurationValue.pipe(S.optional),
+);
 export interface GetTableBucketMaintenanceConfigurationResponse {
   tableBucketARN: string;
   configuration: {
@@ -887,7 +860,7 @@ export interface GetTableBucketMaintenanceConfigurationResponse {
   };
 }
 export const GetTableBucketMaintenanceConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tableBucketARN: S.String,
       configuration: TableBucketMaintenanceConfiguration,
@@ -899,7 +872,7 @@ export interface GetTableBucketMetricsConfigurationRequest {
   tableBucketARN: string;
 }
 export const GetTableBucketMetricsConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     }).pipe(
@@ -920,7 +893,7 @@ export interface GetTableBucketMetricsConfigurationResponse {
   id?: string;
 }
 export const GetTableBucketMetricsConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tableBucketARN: S.String, id: S.optional(S.String) }),
   ).annotate({
     identifier: "GetTableBucketMetricsConfigurationResponse",
@@ -928,60 +901,54 @@ export const GetTableBucketMetricsConfigurationResponse =
 export interface GetTableBucketStorageClassRequest {
   tableBucketARN: string;
 }
-export const GetTableBucketStorageClassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/buckets/{tableBucketARN}/storage-class",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableBucketStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/buckets/{tableBucketARN}/storage-class" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTableBucketStorageClassRequest",
-  }) as any as S.Schema<GetTableBucketStorageClassRequest>;
+  ),
+).annotate({
+  identifier: "GetTableBucketStorageClassRequest",
+}) as any as S.Schema<GetTableBucketStorageClassRequest>;
 export interface GetTableBucketStorageClassResponse {
   storageClassConfiguration: StorageClassConfiguration;
 }
-export const GetTableBucketStorageClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ storageClassConfiguration: StorageClassConfiguration }),
-  ).annotate({
-    identifier: "GetTableBucketStorageClassResponse",
-  }) as any as S.Schema<GetTableBucketStorageClassResponse>;
+export const GetTableBucketStorageClassResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ storageClassConfiguration: StorageClassConfiguration }),
+).annotate({
+  identifier: "GetTableBucketStorageClassResponse",
+}) as any as S.Schema<GetTableBucketStorageClassResponse>;
 export interface ListTableBucketsRequest {
   prefix?: string;
   continuationToken?: string;
   maxBuckets?: number;
   type?: TableBucketType;
 }
-export const ListTableBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
-      continuationToken: S.optional(S.String).pipe(
-        T.HttpQuery("continuationToken"),
-      ),
-      maxBuckets: S.optional(S.Number).pipe(T.HttpQuery("maxBuckets")),
-      type: S.optional(TableBucketType).pipe(T.HttpQuery("type")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/buckets" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTableBucketsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
+    continuationToken: S.optional(S.String).pipe(
+      T.HttpQuery("continuationToken"),
     ),
+    maxBuckets: S.optional(S.Number).pipe(T.HttpQuery("maxBuckets")),
+    type: S.optional(TableBucketType).pipe(T.HttpQuery("type")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/buckets" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListTableBucketsRequest",
 }) as any as S.Schema<ListTableBucketsRequest>;
@@ -993,7 +960,7 @@ export interface TableBucketSummary {
   tableBucketId?: string;
   type?: TableBucketType;
 }
-export const TableBucketSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TableBucketSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     arn: S.String,
     name: S.String,
@@ -1006,18 +973,16 @@ export const TableBucketSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TableBucketSummary",
 }) as any as S.Schema<TableBucketSummary>;
 export type TableBucketSummaryList = TableBucketSummary[];
-export const TableBucketSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TableBucketSummary);
+export const TableBucketSummaryList = /*@__PURE__*/ S.Array(TableBucketSummary);
 export interface ListTableBucketsResponse {
   tableBuckets: TableBucketSummary[];
   continuationToken?: string;
 }
-export const ListTableBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tableBuckets: TableBucketSummaryList,
-      continuationToken: S.optional(S.String),
-    }),
+export const ListTableBucketsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBuckets: TableBucketSummaryList,
+    continuationToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListTableBucketsResponse",
 }) as any as S.Schema<ListTableBucketsResponse>;
@@ -1027,7 +992,7 @@ export interface PutTableBucketMaintenanceConfigurationRequest {
   value: TableBucketMaintenanceConfigurationValue;
 }
 export const PutTableBucketMaintenanceConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
       type: TableBucketMaintenanceType.pipe(T.HttpLabel("type")),
@@ -1050,14 +1015,14 @@ export const PutTableBucketMaintenanceConfigurationRequest =
   }) as any as S.Schema<PutTableBucketMaintenanceConfigurationRequest>;
 export interface PutTableBucketMaintenanceConfigurationResponse {}
 export const PutTableBucketMaintenanceConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutTableBucketMaintenanceConfigurationResponse",
   }) as any as S.Schema<PutTableBucketMaintenanceConfigurationResponse>;
 export interface PutTableBucketMetricsConfigurationRequest {
   tableBucketARN: string;
 }
 export const PutTableBucketMetricsConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     }).pipe(
@@ -1075,71 +1040,67 @@ export const PutTableBucketMetricsConfigurationRequest =
   }) as any as S.Schema<PutTableBucketMetricsConfigurationRequest>;
 export interface PutTableBucketMetricsConfigurationResponse {}
 export const PutTableBucketMetricsConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutTableBucketMetricsConfigurationResponse",
   }) as any as S.Schema<PutTableBucketMetricsConfigurationResponse>;
 export interface PutTableBucketStorageClassRequest {
   tableBucketARN: string;
   storageClassConfiguration: StorageClassConfiguration;
 }
-export const PutTableBucketStorageClassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      storageClassConfiguration: StorageClassConfiguration,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/buckets/{tableBucketARN}/storage-class",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutTableBucketStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    storageClassConfiguration: StorageClassConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/buckets/{tableBucketARN}/storage-class" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "PutTableBucketStorageClassRequest",
-  }) as any as S.Schema<PutTableBucketStorageClassRequest>;
+  ),
+).annotate({
+  identifier: "PutTableBucketStorageClassRequest",
+}) as any as S.Schema<PutTableBucketStorageClassRequest>;
 export interface PutTableBucketStorageClassResponse {}
-export const PutTableBucketStorageClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutTableBucketStorageClassResponse",
-  }) as any as S.Schema<PutTableBucketStorageClassResponse>;
+export const PutTableBucketStorageClassResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutTableBucketStorageClassResponse",
+}) as any as S.Schema<PutTableBucketStorageClassResponse>;
 export interface GetTableEncryptionRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-export const GetTableEncryptionRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      namespace: S.String.pipe(T.HttpLabel("namespace")),
-      name: S.String.pipe(T.HttpLabel("name")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/tables/{tableBucketARN}/{namespace}/{name}/encryption",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableEncryptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    namespace: S.String.pipe(T.HttpLabel("namespace")),
+    name: S.String.pipe(T.HttpLabel("name")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/tables/{tableBucketARN}/{namespace}/{name}/encryption",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetTableEncryptionRequest",
 }) as any as S.Schema<GetTableEncryptionRequest>;
 export interface GetTableEncryptionResponse {
   encryptionConfiguration: EncryptionConfiguration;
 }
-export const GetTableEncryptionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ encryptionConfiguration: EncryptionConfiguration }),
+export const GetTableEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ encryptionConfiguration: EncryptionConfiguration }),
 ).annotate({
   identifier: "GetTableEncryptionResponse",
 }) as any as S.Schema<GetTableEncryptionResponse>;
@@ -1148,31 +1109,30 @@ export interface DeleteTablePolicyRequest {
   namespace: string;
   name: string;
 }
-export const DeleteTablePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      namespace: S.String.pipe(T.HttpLabel("namespace")),
-      name: S.String.pipe(T.HttpLabel("name")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/tables/{tableBucketARN}/{namespace}/{name}/policy",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTablePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    namespace: S.String.pipe(T.HttpLabel("namespace")),
+    name: S.String.pipe(T.HttpLabel("name")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/tables/{tableBucketARN}/{namespace}/{name}/policy",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteTablePolicyRequest",
 }) as any as S.Schema<DeleteTablePolicyRequest>;
 export interface DeleteTablePolicyResponse {}
-export const DeleteTablePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteTablePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteTablePolicyResponse",
 }) as any as S.Schema<DeleteTablePolicyResponse>;
@@ -1181,7 +1141,7 @@ export interface GetTablePolicyRequest {
   namespace: string;
   name: string;
 }
-export const GetTablePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTablePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -1205,8 +1165,8 @@ export const GetTablePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetTablePolicyResponse {
   resourcePolicy: string;
 }
-export const GetTablePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ resourcePolicy: S.String }),
+export const GetTablePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourcePolicy: S.String }),
 ).annotate({
   identifier: "GetTablePolicyResponse",
 }) as any as S.Schema<GetTablePolicyResponse>;
@@ -1216,7 +1176,7 @@ export interface PutTablePolicyRequest {
   name: string;
   resourcePolicy: string;
 }
-export const PutTablePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutTablePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -1239,8 +1199,8 @@ export const PutTablePolicyRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PutTablePolicyRequest",
 }) as any as S.Schema<PutTablePolicyRequest>;
 export interface PutTablePolicyResponse {}
-export const PutTablePolicyResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const PutTablePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "PutTablePolicyResponse",
 }) as any as S.Schema<PutTablePolicyResponse>;
@@ -1248,118 +1208,113 @@ export interface DeleteTableReplicationRequest {
   tableArn: string;
   versionToken: string;
 }
-export const DeleteTableReplicationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableArn: S.String.pipe(T.HttpQuery("tableArn")),
-      versionToken: S.String.pipe(T.HttpQuery("versionToken")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/table-replication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTableReplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableArn: S.String.pipe(T.HttpQuery("tableArn")),
+    versionToken: S.String.pipe(T.HttpQuery("versionToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/table-replication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteTableReplicationRequest",
-  }) as any as S.Schema<DeleteTableReplicationRequest>;
+  ),
+).annotate({
+  identifier: "DeleteTableReplicationRequest",
+}) as any as S.Schema<DeleteTableReplicationRequest>;
 export interface DeleteTableReplicationResponse {}
-export const DeleteTableReplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteTableReplicationResponse",
-  }) as any as S.Schema<DeleteTableReplicationResponse>;
+export const DeleteTableReplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTableReplicationResponse",
+}) as any as S.Schema<DeleteTableReplicationResponse>;
 export interface GetTableReplicationRequest {
   tableArn: string;
 }
-export const GetTableReplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ tableArn: S.String.pipe(T.HttpQuery("tableArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/table-replication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableReplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tableArn: S.String.pipe(T.HttpQuery("tableArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/table-replication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetTableReplicationRequest",
 }) as any as S.Schema<GetTableReplicationRequest>;
 export interface TableReplicationRule {
   destinations: ReplicationDestination[];
 }
-export const TableReplicationRule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TableReplicationRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ destinations: ReplicationDestinations }),
 ).annotate({
   identifier: "TableReplicationRule",
 }) as any as S.Schema<TableReplicationRule>;
 export type TableReplicationRules = TableReplicationRule[];
 export const TableReplicationRules =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TableReplicationRule);
+  /*@__PURE__*/ S.Array(TableReplicationRule);
 export interface TableReplicationConfiguration {
   role: string;
   rules: TableReplicationRule[];
 }
-export const TableReplicationConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ role: S.String, rules: TableReplicationRules }),
-  ).annotate({
-    identifier: "TableReplicationConfiguration",
-  }) as any as S.Schema<TableReplicationConfiguration>;
+export const TableReplicationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ role: S.String, rules: TableReplicationRules }),
+).annotate({
+  identifier: "TableReplicationConfiguration",
+}) as any as S.Schema<TableReplicationConfiguration>;
 export interface GetTableReplicationResponse {
   versionToken: string;
   configuration: TableReplicationConfiguration;
 }
-export const GetTableReplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      versionToken: S.String,
-      configuration: TableReplicationConfiguration,
-    }),
-  ).annotate({
-    identifier: "GetTableReplicationResponse",
-  }) as any as S.Schema<GetTableReplicationResponse>;
+export const GetTableReplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    versionToken: S.String,
+    configuration: TableReplicationConfiguration,
+  }),
+).annotate({
+  identifier: "GetTableReplicationResponse",
+}) as any as S.Schema<GetTableReplicationResponse>;
 export interface GetTableReplicationStatusRequest {
   tableArn: string;
 }
-export const GetTableReplicationStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tableArn: S.String.pipe(T.HttpQuery("tableArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/replication-status" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableReplicationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tableArn: S.String.pipe(T.HttpQuery("tableArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/replication-status" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTableReplicationStatusRequest",
-  }) as any as S.Schema<GetTableReplicationStatusRequest>;
+  ),
+).annotate({
+  identifier: "GetTableReplicationStatusRequest",
+}) as any as S.Schema<GetTableReplicationStatusRequest>;
 export type ReplicationStatus =
   | "pending"
   | "completed"
   | "failed"
   | (string & {});
-export const ReplicationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ReplicationStatus = /*@__PURE__*/ S.String;
 export interface LastSuccessfulReplicatedUpdate {
   metadataLocation: string;
   timestamp: Date;
 }
-export const LastSuccessfulReplicatedUpdate =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      metadataLocation: S.String,
-      timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    }),
-  ).annotate({
-    identifier: "LastSuccessfulReplicatedUpdate",
-  }) as any as S.Schema<LastSuccessfulReplicatedUpdate>;
+export const LastSuccessfulReplicatedUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadataLocation: S.String,
+    timestamp: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "LastSuccessfulReplicatedUpdate",
+}) as any as S.Schema<LastSuccessfulReplicatedUpdate>;
 export interface ReplicationDestinationStatusModel {
   replicationStatus: ReplicationStatus;
   destinationTableBucketArn: string;
@@ -1367,58 +1322,54 @@ export interface ReplicationDestinationStatusModel {
   lastSuccessfulReplicatedUpdate?: LastSuccessfulReplicatedUpdate;
   failureMessage?: string;
 }
-export const ReplicationDestinationStatusModel =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      replicationStatus: ReplicationStatus,
-      destinationTableBucketArn: S.String,
-      destinationTableArn: S.optional(S.String),
-      lastSuccessfulReplicatedUpdate: S.optional(
-        LastSuccessfulReplicatedUpdate,
-      ),
-      failureMessage: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ReplicationDestinationStatusModel",
-  }) as any as S.Schema<ReplicationDestinationStatusModel>;
+export const ReplicationDestinationStatusModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    replicationStatus: ReplicationStatus,
+    destinationTableBucketArn: S.String,
+    destinationTableArn: S.optional(S.String),
+    lastSuccessfulReplicatedUpdate: S.optional(LastSuccessfulReplicatedUpdate),
+    failureMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReplicationDestinationStatusModel",
+}) as any as S.Schema<ReplicationDestinationStatusModel>;
 export type ReplicationDestinationStatuses =
   ReplicationDestinationStatusModel[];
-export const ReplicationDestinationStatuses =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ReplicationDestinationStatusModel);
+export const ReplicationDestinationStatuses = /*@__PURE__*/ S.Array(
+  ReplicationDestinationStatusModel,
+);
 export interface GetTableReplicationStatusResponse {
   sourceTableArn: string;
   destinations: ReplicationDestinationStatusModel[];
 }
-export const GetTableReplicationStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sourceTableArn: S.String,
-      destinations: ReplicationDestinationStatuses,
-    }),
-  ).annotate({
-    identifier: "GetTableReplicationStatusResponse",
-  }) as any as S.Schema<GetTableReplicationStatusResponse>;
+export const GetTableReplicationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceTableArn: S.String,
+    destinations: ReplicationDestinationStatuses,
+  }),
+).annotate({
+  identifier: "GetTableReplicationStatusResponse",
+}) as any as S.Schema<GetTableReplicationStatusResponse>;
 export interface PutTableReplicationRequest {
   tableArn: string;
   versionToken?: string;
   configuration: TableReplicationConfiguration;
 }
-export const PutTableReplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tableArn: S.String.pipe(T.HttpQuery("tableArn")),
-      versionToken: S.optional(S.String).pipe(T.HttpQuery("versionToken")),
-      configuration: TableReplicationConfiguration,
-    }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/table-replication" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutTableReplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableArn: S.String.pipe(T.HttpQuery("tableArn")),
+    versionToken: S.optional(S.String).pipe(T.HttpQuery("versionToken")),
+    configuration: TableReplicationConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/table-replication" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutTableReplicationRequest",
 }) as any as S.Schema<PutTableReplicationRequest>;
@@ -1426,21 +1377,20 @@ export interface PutTableReplicationResponse {
   versionToken: string;
   status: string;
 }
-export const PutTableReplicationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ versionToken: S.String, status: S.String }),
-  ).annotate({
-    identifier: "PutTableReplicationResponse",
-  }) as any as S.Schema<PutTableReplicationResponse>;
+export const PutTableReplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ versionToken: S.String, status: S.String }),
+).annotate({
+  identifier: "PutTableReplicationResponse",
+}) as any as S.Schema<PutTableReplicationResponse>;
 export type OpenTableFormat = "ICEBERG" | (string & {});
-export const OpenTableFormat = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OpenTableFormat = /*@__PURE__*/ S.String;
 export interface SchemaField {
   id?: number;
   name: string;
   type: string;
   required?: boolean;
 }
-export const SchemaField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SchemaField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.Number),
     name: S.String,
@@ -1449,15 +1399,15 @@ export const SchemaField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SchemaField" }) as any as S.Schema<SchemaField>;
 export type SchemaFieldList = SchemaField[];
-export const SchemaFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SchemaField);
+export const SchemaFieldList = /*@__PURE__*/ S.Array(SchemaField);
 export interface IcebergSchema {
   fields: SchemaField[];
 }
-export const IcebergSchema = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IcebergSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ fields: SchemaFieldList }),
 ).annotate({ identifier: "IcebergSchema" }) as any as S.Schema<IcebergSchema>;
 export type SchemaV2FieldType = "struct" | (string & {});
-export const SchemaV2FieldType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SchemaV2FieldType = /*@__PURE__*/ S.String;
 export interface SchemaV2Field {
   id: number;
   name: string;
@@ -1465,7 +1415,7 @@ export interface SchemaV2Field {
   required: boolean;
   doc?: string;
 }
-export const SchemaV2Field = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SchemaV2Field = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.Number,
     name: S.String,
@@ -1475,17 +1425,16 @@ export const SchemaV2Field = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SchemaV2Field" }) as any as S.Schema<SchemaV2Field>;
 export type SchemaV2FieldList = SchemaV2Field[];
-export const SchemaV2FieldList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SchemaV2Field);
+export const SchemaV2FieldList = /*@__PURE__*/ S.Array(SchemaV2Field);
 export type IntegerList = number[];
-export const IntegerList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export interface IcebergSchemaV2 {
   type: SchemaV2FieldType;
   fields: SchemaV2Field[];
   schemaId?: number;
   identifierFieldIds?: number[];
 }
-export const IcebergSchemaV2 = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IcebergSchemaV2 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     type: SchemaV2FieldType,
     fields: SchemaV2FieldList,
@@ -1506,7 +1455,7 @@ export interface IcebergPartitionField {
   name: string;
   fieldId?: number;
 }
-export const IcebergPartitionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IcebergPartitionField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceId: S.Number,
     transform: S.String,
@@ -1517,14 +1466,14 @@ export const IcebergPartitionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "IcebergPartitionField",
 }) as any as S.Schema<IcebergPartitionField>;
 export type IcebergPartitionFieldList = IcebergPartitionField[];
-export const IcebergPartitionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const IcebergPartitionFieldList = /*@__PURE__*/ S.Array(
   IcebergPartitionField,
 );
 export interface IcebergPartitionSpec {
   fields: IcebergPartitionField[];
   specId?: number;
 }
-export const IcebergPartitionSpec = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IcebergPartitionSpec = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fields: IcebergPartitionFieldList,
     specId: S.optional(S.Number),
@@ -1533,16 +1482,16 @@ export const IcebergPartitionSpec = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "IcebergPartitionSpec",
 }) as any as S.Schema<IcebergPartitionSpec>;
 export type IcebergSortDirection = "asc" | "desc" | (string & {});
-export const IcebergSortDirection = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IcebergSortDirection = /*@__PURE__*/ S.String;
 export type IcebergNullOrder = "nulls-first" | "nulls-last" | (string & {});
-export const IcebergNullOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IcebergNullOrder = /*@__PURE__*/ S.String;
 export interface IcebergSortField {
   sourceId: number;
   transform: string;
   direction: IcebergSortDirection;
   nullOrder: IcebergNullOrder;
 }
-export const IcebergSortField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IcebergSortField = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourceId: S.Number,
     transform: S.String,
@@ -1553,13 +1502,12 @@ export const IcebergSortField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "IcebergSortField",
 }) as any as S.Schema<IcebergSortField>;
 export type IcebergSortFieldList = IcebergSortField[];
-export const IcebergSortFieldList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IcebergSortField);
+export const IcebergSortFieldList = /*@__PURE__*/ S.Array(IcebergSortField);
 export interface IcebergSortOrder {
   orderId: number;
   fields: IcebergSortField[];
 }
-export const IcebergSortOrder = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IcebergSortOrder = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ orderId: S.Number, fields: IcebergSortFieldList }).pipe(
     S.encodeKeys({ orderId: "order-id" }),
   ),
@@ -1567,7 +1515,7 @@ export const IcebergSortOrder = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "IcebergSortOrder",
 }) as any as S.Schema<IcebergSortOrder>;
 export type TableProperties = { [key: string]: string | undefined };
-export const TableProperties = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TableProperties = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -1578,7 +1526,7 @@ export interface IcebergMetadata {
   writeOrder?: IcebergSortOrder;
   properties?: { [key: string]: string | undefined };
 }
-export const IcebergMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IcebergMetadata = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schema: S.optional(IcebergSchema),
     schemaV2: S.optional(IcebergSchemaV2),
@@ -1590,7 +1538,7 @@ export const IcebergMetadata = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "IcebergMetadata",
 }) as any as S.Schema<IcebergMetadata>;
 export type TableMetadata = { iceberg: IcebergMetadata };
-export const TableMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const TableMetadata = /*@__PURE__*/ S.Union([
   S.Struct({ iceberg: IcebergMetadata }),
 ]);
 export interface CreateTableRequest {
@@ -1603,7 +1551,7 @@ export interface CreateTableRequest {
   storageClassConfiguration?: StorageClassConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -1630,7 +1578,7 @@ export interface CreateTableResponse {
   tableARN: string;
   versionToken: string;
 }
-export const CreateTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateTableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ tableARN: S.String, versionToken: S.String }),
 ).annotate({
   identifier: "CreateTableResponse",
@@ -1641,7 +1589,7 @@ export interface DeleteTableRequest {
   name: string;
   versionToken?: string;
 }
-export const DeleteTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -1664,7 +1612,7 @@ export const DeleteTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteTableRequest",
 }) as any as S.Schema<DeleteTableRequest>;
 export interface DeleteTableResponse {}
-export const DeleteTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteTableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteTableResponse",
@@ -1675,7 +1623,7 @@ export interface GetTableRequest {
   name?: string;
   tableArn?: string;
 }
-export const GetTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.optional(S.String).pipe(T.HttpQuery("tableBucketARN")),
     namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
@@ -1695,21 +1643,20 @@ export const GetTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetTableRequest",
 }) as any as S.Schema<GetTableRequest>;
 export type TableType = "customer" | "aws" | (string & {});
-export const TableType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TableType = /*@__PURE__*/ S.String;
 export interface ReplicationInformation {
   sourceTableARN: string;
 }
-export const ReplicationInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ sourceTableARN: S.String }),
+export const ReplicationInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ sourceTableARN: S.String }),
 ).annotate({
   identifier: "ReplicationInformation",
 }) as any as S.Schema<ReplicationInformation>;
 export interface ManagedTableInformation {
   replicationInformation?: ReplicationInformation;
 }
-export const ManagedTableInformation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ replicationInformation: S.optional(ReplicationInformation) }),
+export const ManagedTableInformation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ replicationInformation: S.optional(ReplicationInformation) }),
 ).annotate({
   identifier: "ManagedTableInformation",
 }) as any as S.Schema<ManagedTableInformation>;
@@ -1726,13 +1673,13 @@ export interface GetTableResponse {
   createdBy: string;
   managedByService?: string;
   modifiedAt: Date;
-  modifiedBy: string;
+  modifiedBy?: string;
   ownerAccountId: string;
   format: OpenTableFormat;
   tableBucketId?: string;
   managedTableInformation?: ManagedTableInformation;
 }
-export const GetTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     type: TableType,
@@ -1746,7 +1693,7 @@ export const GetTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
     createdBy: S.String,
     managedByService: S.optional(S.String),
     modifiedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    modifiedBy: S.String,
+    modifiedBy: S.optional(S.String),
     ownerAccountId: S.String,
     format: OpenTableFormat,
     tableBucketId: S.optional(S.String),
@@ -1760,8 +1707,8 @@ export interface GetTableMaintenanceConfigurationRequest {
   namespace: string;
   name: string;
 }
-export const GetTableMaintenanceConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTableMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
       namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -1779,31 +1726,30 @@ export const GetTableMaintenanceConfigurationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetTableMaintenanceConfigurationRequest",
-  }) as any as S.Schema<GetTableMaintenanceConfigurationRequest>;
+).annotate({
+  identifier: "GetTableMaintenanceConfigurationRequest",
+}) as any as S.Schema<GetTableMaintenanceConfigurationRequest>;
 export type TableMaintenanceType =
   | "icebergCompaction"
   | "icebergSnapshotManagement"
   | (string & {});
-export const TableMaintenanceType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TableMaintenanceType = /*@__PURE__*/ S.String;
 export type IcebergCompactionStrategy =
   | "auto"
   | "binpack"
   | "sort"
   | "z-order"
   | (string & {});
-export const IcebergCompactionStrategy = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const IcebergCompactionStrategy = /*@__PURE__*/ S.String;
 export interface IcebergCompactionSettings {
   targetFileSizeMB?: number;
   strategy?: IcebergCompactionStrategy;
 }
-export const IcebergCompactionSettings = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      targetFileSizeMB: S.optional(S.Number),
-      strategy: S.optional(IcebergCompactionStrategy),
-    }),
+export const IcebergCompactionSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetFileSizeMB: S.optional(S.Number),
+    strategy: S.optional(IcebergCompactionStrategy),
+  }),
 ).annotate({
   identifier: "IcebergCompactionSettings",
 }) as any as S.Schema<IcebergCompactionSettings>;
@@ -1811,15 +1757,14 @@ export interface IcebergSnapshotManagementSettings {
   minSnapshotsToKeep?: number;
   maxSnapshotAgeHours?: number;
 }
-export const IcebergSnapshotManagementSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      minSnapshotsToKeep: S.optional(S.Number),
-      maxSnapshotAgeHours: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "IcebergSnapshotManagementSettings",
-  }) as any as S.Schema<IcebergSnapshotManagementSettings>;
+export const IcebergSnapshotManagementSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minSnapshotsToKeep: S.optional(S.Number),
+    maxSnapshotAgeHours: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "IcebergSnapshotManagementSettings",
+}) as any as S.Schema<IcebergSnapshotManagementSettings>;
 export type TableMaintenanceSettings =
   | {
       icebergCompaction: IcebergCompactionSettings;
@@ -1829,7 +1774,7 @@ export type TableMaintenanceSettings =
       icebergCompaction?: never;
       icebergSnapshotManagement: IcebergSnapshotManagementSettings;
     };
-export const TableMaintenanceSettings = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const TableMaintenanceSettings = /*@__PURE__*/ S.Union([
   S.Struct({ icebergCompaction: IcebergCompactionSettings }),
   S.Struct({ icebergSnapshotManagement: IcebergSnapshotManagementSettings }),
 ]);
@@ -1837,99 +1782,95 @@ export interface TableMaintenanceConfigurationValue {
   status?: MaintenanceStatus;
   settings?: TableMaintenanceSettings;
 }
-export const TableMaintenanceConfigurationValue =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: S.optional(MaintenanceStatus),
-      settings: S.optional(TableMaintenanceSettings),
-    }),
-  ).annotate({
-    identifier: "TableMaintenanceConfigurationValue",
-  }) as any as S.Schema<TableMaintenanceConfigurationValue>;
+export const TableMaintenanceConfigurationValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(MaintenanceStatus),
+    settings: S.optional(TableMaintenanceSettings),
+  }),
+).annotate({
+  identifier: "TableMaintenanceConfigurationValue",
+}) as any as S.Schema<TableMaintenanceConfigurationValue>;
 export type TableMaintenanceConfiguration = {
   [key in TableMaintenanceType]?: TableMaintenanceConfigurationValue;
 };
-export const TableMaintenanceConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.Record(
-    TableMaintenanceType,
-    TableMaintenanceConfigurationValue.pipe(S.optional),
-  );
+export const TableMaintenanceConfiguration = /*@__PURE__*/ S.Record(
+  TableMaintenanceType,
+  TableMaintenanceConfigurationValue.pipe(S.optional),
+);
 export interface GetTableMaintenanceConfigurationResponse {
   tableARN: string;
   configuration: {
     [key: string]: TableMaintenanceConfigurationValue | undefined;
   };
 }
-export const GetTableMaintenanceConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTableMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       tableARN: S.String,
       configuration: TableMaintenanceConfiguration,
     }),
-  ).annotate({
-    identifier: "GetTableMaintenanceConfigurationResponse",
-  }) as any as S.Schema<GetTableMaintenanceConfigurationResponse>;
+).annotate({
+  identifier: "GetTableMaintenanceConfigurationResponse",
+}) as any as S.Schema<GetTableMaintenanceConfigurationResponse>;
 export interface GetTableMaintenanceJobStatusRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-export const GetTableMaintenanceJobStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      namespace: S.String.pipe(T.HttpLabel("namespace")),
-      name: S.String.pipe(T.HttpLabel("name")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/tables/{tableBucketARN}/{namespace}/{name}/maintenance-job-status",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableMaintenanceJobStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    namespace: S.String.pipe(T.HttpLabel("namespace")),
+    name: S.String.pipe(T.HttpLabel("name")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/tables/{tableBucketARN}/{namespace}/{name}/maintenance-job-status",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTableMaintenanceJobStatusRequest",
-  }) as any as S.Schema<GetTableMaintenanceJobStatusRequest>;
+  ),
+).annotate({
+  identifier: "GetTableMaintenanceJobStatusRequest",
+}) as any as S.Schema<GetTableMaintenanceJobStatusRequest>;
 export type TableMaintenanceJobType =
   | "icebergCompaction"
   | "icebergSnapshotManagement"
   | "icebergUnreferencedFileRemoval"
   | (string & {});
-export const TableMaintenanceJobType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TableMaintenanceJobType = /*@__PURE__*/ S.String;
 export type JobStatus =
   | "Not_Yet_Run"
   | "Successful"
   | "Failed"
   | "Disabled"
   | (string & {});
-export const JobStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const JobStatus = /*@__PURE__*/ S.String;
 export interface TableMaintenanceJobStatusValue {
   status: JobStatus;
   lastRunTimestamp?: Date;
   failureMessage?: string;
 }
-export const TableMaintenanceJobStatusValue =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      status: JobStatus,
-      lastRunTimestamp: S.optional(
-        T.DateFromString.pipe(T.TimestampFormat("date-time")),
-      ),
-      failureMessage: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TableMaintenanceJobStatusValue",
-  }) as any as S.Schema<TableMaintenanceJobStatusValue>;
+export const TableMaintenanceJobStatusValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: JobStatus,
+    lastRunTimestamp: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    failureMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TableMaintenanceJobStatusValue",
+}) as any as S.Schema<TableMaintenanceJobStatusValue>;
 export type TableMaintenanceJobStatus = {
   [key in TableMaintenanceJobType]?: TableMaintenanceJobStatusValue;
 };
-export const TableMaintenanceJobStatus = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TableMaintenanceJobStatus = /*@__PURE__*/ S.Record(
   TableMaintenanceJobType,
   TableMaintenanceJobStatusValue.pipe(S.optional),
 );
@@ -1937,59 +1878,56 @@ export interface GetTableMaintenanceJobStatusResponse {
   tableARN: string;
   status: { [key: string]: TableMaintenanceJobStatusValue | undefined };
 }
-export const GetTableMaintenanceJobStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tableARN: S.String, status: TableMaintenanceJobStatus }),
-  ).annotate({
-    identifier: "GetTableMaintenanceJobStatusResponse",
-  }) as any as S.Schema<GetTableMaintenanceJobStatusResponse>;
+export const GetTableMaintenanceJobStatusResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ tableARN: S.String, status: TableMaintenanceJobStatus }),
+).annotate({
+  identifier: "GetTableMaintenanceJobStatusResponse",
+}) as any as S.Schema<GetTableMaintenanceJobStatusResponse>;
 export interface GetTableMetadataLocationRequest {
   tableBucketARN: string;
   namespace: string;
   name: string;
 }
-export const GetTableMetadataLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      namespace: S.String.pipe(T.HttpLabel("namespace")),
-      name: S.String.pipe(T.HttpLabel("name")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/tables/{tableBucketARN}/{namespace}/{name}/metadata-location",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableMetadataLocationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    namespace: S.String.pipe(T.HttpLabel("namespace")),
+    name: S.String.pipe(T.HttpLabel("name")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/tables/{tableBucketARN}/{namespace}/{name}/metadata-location",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTableMetadataLocationRequest",
-  }) as any as S.Schema<GetTableMetadataLocationRequest>;
+  ),
+).annotate({
+  identifier: "GetTableMetadataLocationRequest",
+}) as any as S.Schema<GetTableMetadataLocationRequest>;
 export interface GetTableMetadataLocationResponse {
   versionToken: string;
   metadataLocation?: string;
   warehouseLocation: string;
 }
-export const GetTableMetadataLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      versionToken: S.String,
-      metadataLocation: S.optional(S.String),
-      warehouseLocation: S.String,
-    }),
-  ).annotate({
-    identifier: "GetTableMetadataLocationResponse",
-  }) as any as S.Schema<GetTableMetadataLocationResponse>;
+export const GetTableMetadataLocationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    versionToken: S.String,
+    metadataLocation: S.optional(S.String),
+    warehouseLocation: S.String,
+  }),
+).annotate({
+  identifier: "GetTableMetadataLocationResponse",
+}) as any as S.Schema<GetTableMetadataLocationResponse>;
 export interface GetTableRecordExpirationConfigurationRequest {
   tableArn: string;
 }
 export const GetTableRecordExpirationConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ tableArn: S.String.pipe(T.HttpQuery("tableArn")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/table-record-expiration" }),
@@ -2007,34 +1945,33 @@ export type TableRecordExpirationStatus =
   | "enabled"
   | "disabled"
   | (string & {});
-export const TableRecordExpirationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TableRecordExpirationStatus = /*@__PURE__*/ S.String;
 export interface TableRecordExpirationSettings {
   days?: number;
 }
-export const TableRecordExpirationSettings =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ days: S.optional(S.Number) }),
-  ).annotate({
-    identifier: "TableRecordExpirationSettings",
-  }) as any as S.Schema<TableRecordExpirationSettings>;
+export const TableRecordExpirationSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ days: S.optional(S.Number) }),
+).annotate({
+  identifier: "TableRecordExpirationSettings",
+}) as any as S.Schema<TableRecordExpirationSettings>;
 export interface TableRecordExpirationConfigurationValue {
   status?: TableRecordExpirationStatus;
   settings?: TableRecordExpirationSettings;
 }
-export const TableRecordExpirationConfigurationValue =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TableRecordExpirationConfigurationValue = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       status: S.optional(TableRecordExpirationStatus),
       settings: S.optional(TableRecordExpirationSettings),
     }),
-  ).annotate({
-    identifier: "TableRecordExpirationConfigurationValue",
-  }) as any as S.Schema<TableRecordExpirationConfigurationValue>;
+).annotate({
+  identifier: "TableRecordExpirationConfigurationValue",
+}) as any as S.Schema<TableRecordExpirationConfigurationValue>;
 export interface GetTableRecordExpirationConfigurationResponse {
   configuration: TableRecordExpirationConfigurationValue;
 }
 export const GetTableRecordExpirationConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ configuration: TableRecordExpirationConfigurationValue }),
   ).annotate({
     identifier: "GetTableRecordExpirationConfigurationResponse",
@@ -2042,8 +1979,8 @@ export const GetTableRecordExpirationConfigurationResponse =
 export interface GetTableRecordExpirationJobStatusRequest {
   tableArn: string;
 }
-export const GetTableRecordExpirationJobStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetTableRecordExpirationJobStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ tableArn: S.String.pipe(T.HttpQuery("tableArn")) }).pipe(
       T.all(
         T.Http({ method: "GET", uri: "/table-record-expiration-job-status" }),
@@ -2054,32 +1991,30 @@ export const GetTableRecordExpirationJobStatusRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetTableRecordExpirationJobStatusRequest",
-  }) as any as S.Schema<GetTableRecordExpirationJobStatusRequest>;
+).annotate({
+  identifier: "GetTableRecordExpirationJobStatusRequest",
+}) as any as S.Schema<GetTableRecordExpirationJobStatusRequest>;
 export type TableRecordExpirationJobStatus =
   | "NotYetRun"
   | "Successful"
   | "Failed"
   | "Disabled"
   | (string & {});
-export const TableRecordExpirationJobStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TableRecordExpirationJobStatus = /*@__PURE__*/ S.String;
 export interface TableRecordExpirationJobMetrics {
   deletedDataFiles?: number;
   deletedRecords?: number;
   removedFilesSize?: number;
 }
-export const TableRecordExpirationJobMetrics =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deletedDataFiles: S.optional(S.Number),
-      deletedRecords: S.optional(S.Number),
-      removedFilesSize: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "TableRecordExpirationJobMetrics",
-  }) as any as S.Schema<TableRecordExpirationJobMetrics>;
+export const TableRecordExpirationJobMetrics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deletedDataFiles: S.optional(S.Number),
+    deletedRecords: S.optional(S.Number),
+    removedFilesSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TableRecordExpirationJobMetrics",
+}) as any as S.Schema<TableRecordExpirationJobMetrics>;
 export interface GetTableRecordExpirationJobStatusResponse {
   status: TableRecordExpirationJobStatus;
   lastRunTimestamp?: Date;
@@ -2087,7 +2022,7 @@ export interface GetTableRecordExpirationJobStatusResponse {
   metrics?: TableRecordExpirationJobMetrics;
 }
 export const GetTableRecordExpirationJobStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       status: TableRecordExpirationJobStatus,
       lastRunTimestamp: S.optional(
@@ -2104,37 +2039,35 @@ export interface GetTableStorageClassRequest {
   namespace: string;
   name: string;
 }
-export const GetTableStorageClassRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      namespace: S.String.pipe(T.HttpLabel("namespace")),
-      name: S.String.pipe(T.HttpLabel("name")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/tables/{tableBucketARN}/{namespace}/{name}/storage-class",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetTableStorageClassRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    namespace: S.String.pipe(T.HttpLabel("namespace")),
+    name: S.String.pipe(T.HttpLabel("name")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/tables/{tableBucketARN}/{namespace}/{name}/storage-class",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetTableStorageClassRequest",
-  }) as any as S.Schema<GetTableStorageClassRequest>;
+  ),
+).annotate({
+  identifier: "GetTableStorageClassRequest",
+}) as any as S.Schema<GetTableStorageClassRequest>;
 export interface GetTableStorageClassResponse {
   storageClassConfiguration: StorageClassConfiguration;
 }
-export const GetTableStorageClassResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ storageClassConfiguration: StorageClassConfiguration }),
-  ).annotate({
-    identifier: "GetTableStorageClassResponse",
-  }) as any as S.Schema<GetTableStorageClassResponse>;
+export const GetTableStorageClassResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ storageClassConfiguration: StorageClassConfiguration }),
+).annotate({
+  identifier: "GetTableStorageClassResponse",
+}) as any as S.Schema<GetTableStorageClassResponse>;
 export interface ListTablesRequest {
   tableBucketARN: string;
   namespace?: string;
@@ -2142,7 +2075,7 @@ export interface ListTablesRequest {
   continuationToken?: string;
   maxTables?: number;
 }
-export const ListTablesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListTablesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     namespace: S.optional(S.String).pipe(T.HttpQuery("namespace")),
@@ -2175,7 +2108,7 @@ export interface TableSummary {
   namespaceId?: string;
   tableBucketId?: string;
 }
-export const TableSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TableSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     namespace: NamespaceList,
     name: S.String,
@@ -2189,13 +2122,12 @@ export const TableSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableSummary" }) as any as S.Schema<TableSummary>;
 export type TableSummaryList = TableSummary[];
-export const TableSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(TableSummary);
+export const TableSummaryList = /*@__PURE__*/ S.Array(TableSummary);
 export interface ListTablesResponse {
   tables: TableSummary[];
   continuationToken?: string;
 }
-export const ListTablesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tables: TableSummaryList,
     continuationToken: S.optional(S.String),
@@ -2210,8 +2142,8 @@ export interface PutTableMaintenanceConfigurationRequest {
   type: TableMaintenanceType;
   value: TableMaintenanceConfigurationValue;
 }
-export const PutTableMaintenanceConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutTableMaintenanceConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
       namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -2231,20 +2163,21 @@ export const PutTableMaintenanceConfigurationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "PutTableMaintenanceConfigurationRequest",
-  }) as any as S.Schema<PutTableMaintenanceConfigurationRequest>;
+).annotate({
+  identifier: "PutTableMaintenanceConfigurationRequest",
+}) as any as S.Schema<PutTableMaintenanceConfigurationRequest>;
 export interface PutTableMaintenanceConfigurationResponse {}
-export const PutTableMaintenanceConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutTableMaintenanceConfigurationResponse",
-  }) as any as S.Schema<PutTableMaintenanceConfigurationResponse>;
+export const PutTableMaintenanceConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "PutTableMaintenanceConfigurationResponse",
+}) as any as S.Schema<PutTableMaintenanceConfigurationResponse>;
 export interface PutTableRecordExpirationConfigurationRequest {
   tableArn: string;
   value: TableRecordExpirationConfigurationValue;
 }
 export const PutTableRecordExpirationConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       tableArn: S.String.pipe(T.HttpQuery("tableArn")),
       value: TableRecordExpirationConfigurationValue,
@@ -2263,7 +2196,7 @@ export const PutTableRecordExpirationConfigurationRequest =
   }) as any as S.Schema<PutTableRecordExpirationConfigurationRequest>;
 export interface PutTableRecordExpirationConfigurationResponse {}
 export const PutTableRecordExpirationConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutTableRecordExpirationConfigurationResponse",
   }) as any as S.Schema<PutTableRecordExpirationConfigurationResponse>;
 export interface RenameTableRequest {
@@ -2274,7 +2207,7 @@ export interface RenameTableRequest {
   newName?: string;
   versionToken?: string;
 }
-export const RenameTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RenameTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
     namespace: S.String.pipe(T.HttpLabel("namespace")),
@@ -2299,7 +2232,7 @@ export const RenameTableRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RenameTableRequest",
 }) as any as S.Schema<RenameTableRequest>;
 export interface RenameTableResponse {}
-export const RenameTableResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RenameTableResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "RenameTableResponse",
@@ -2311,30 +2244,29 @@ export interface UpdateTableMetadataLocationRequest {
   versionToken: string;
   metadataLocation: string;
 }
-export const UpdateTableMetadataLocationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
-      namespace: S.String.pipe(T.HttpLabel("namespace")),
-      name: S.String.pipe(T.HttpLabel("name")),
-      versionToken: S.String,
-      metadataLocation: S.String,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/tables/{tableBucketARN}/{namespace}/{name}/metadata-location",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTableMetadataLocationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tableBucketARN: S.String.pipe(T.HttpLabel("tableBucketARN")),
+    namespace: S.String.pipe(T.HttpLabel("namespace")),
+    name: S.String.pipe(T.HttpLabel("name")),
+    versionToken: S.String,
+    metadataLocation: S.String,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/tables/{tableBucketARN}/{namespace}/{name}/metadata-location",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateTableMetadataLocationRequest",
-  }) as any as S.Schema<UpdateTableMetadataLocationRequest>;
+  ),
+).annotate({
+  identifier: "UpdateTableMetadataLocationRequest",
+}) as any as S.Schema<UpdateTableMetadataLocationRequest>;
 export interface UpdateTableMetadataLocationResponse {
   name: string;
   tableARN: string;
@@ -2342,51 +2274,58 @@ export interface UpdateTableMetadataLocationResponse {
   versionToken: string;
   metadataLocation: string;
 }
-export const UpdateTableMetadataLocationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      tableARN: S.String,
-      namespace: NamespaceList,
-      versionToken: S.String,
-      metadataLocation: S.String,
-    }),
-  ).annotate({
-    identifier: "UpdateTableMetadataLocationResponse",
-  }) as any as S.Schema<UpdateTableMetadataLocationResponse>;
+export const UpdateTableMetadataLocationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tableARN: S.String,
+    namespace: NamespaceList,
+    versionToken: S.String,
+    metadataLocation: S.String,
+  }),
+).annotate({
+  identifier: "UpdateTableMetadataLocationResponse",
+}) as any as S.Schema<UpdateTableMetadataLocationResponse>;
 
 //# Errors
 export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
   "BadRequestException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
   "ForbiddenException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
   "InternalServerErrorException",
   { message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
   "TooManyRequestsException",
   { message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
   "MethodNotAllowedException",
   { message: S.optional(S.String) },
+  T.HttpError(405),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -2412,7 +2351,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2449,7 +2388,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2486,7 +2425,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2521,7 +2460,7 @@ export const createNamespace: API.OperationMethod<
   CreateNamespaceResponse,
   CreateNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNamespaceRequest,
   output: CreateNamespaceResponse,
   errors: [
@@ -2556,7 +2495,7 @@ export const deleteNamespace: API.OperationMethod<
   DeleteNamespaceResponse,
   DeleteNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNamespaceRequest,
   output: DeleteNamespaceResponse,
   errors: [
@@ -2592,7 +2531,7 @@ export const getNamespace: API.OperationMethod<
   GetNamespaceResponse,
   GetNamespaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNamespaceRequest,
   output: GetNamespaceResponse,
   errors: [
@@ -2644,7 +2583,7 @@ export const listNamespaces: API.OperationMethod<
     ListNamespacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNamespacesRequest,
   output: ListNamespacesResponse,
   errors: [
@@ -2686,7 +2625,7 @@ export const deleteTableBucketEncryption: API.OperationMethod<
   DeleteTableBucketEncryptionResponse,
   DeleteTableBucketEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketEncryptionRequest,
   output: DeleteTableBucketEncryptionResponse,
   errors: [
@@ -2721,7 +2660,7 @@ export const getTableBucketEncryption: API.OperationMethod<
   GetTableBucketEncryptionResponse,
   GetTableBucketEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketEncryptionRequest,
   output: GetTableBucketEncryptionResponse,
   errors: [
@@ -2758,7 +2697,7 @@ export const putTableBucketEncryption: API.OperationMethod<
   PutTableBucketEncryptionResponse,
   PutTableBucketEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketEncryptionRequest,
   output: PutTableBucketEncryptionResponse,
   errors: [
@@ -2793,7 +2732,7 @@ export const deleteTableBucketPolicy: API.OperationMethod<
   DeleteTableBucketPolicyResponse,
   DeleteTableBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketPolicyRequest,
   output: DeleteTableBucketPolicyResponse,
   errors: [
@@ -2828,7 +2767,7 @@ export const getTableBucketPolicy: API.OperationMethod<
   GetTableBucketPolicyResponse,
   GetTableBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketPolicyRequest,
   output: GetTableBucketPolicyResponse,
   errors: [
@@ -2863,7 +2802,7 @@ export const putTableBucketPolicy: API.OperationMethod<
   PutTableBucketPolicyResponse,
   PutTableBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketPolicyRequest,
   output: PutTableBucketPolicyResponse,
   errors: [
@@ -2899,7 +2838,7 @@ export const deleteTableBucketReplication: API.OperationMethod<
   DeleteTableBucketReplicationResponse,
   DeleteTableBucketReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketReplicationRequest,
   output: DeleteTableBucketReplicationResponse,
   errors: [
@@ -2936,7 +2875,7 @@ export const getTableBucketReplication: API.OperationMethod<
   GetTableBucketReplicationResponse,
   GetTableBucketReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketReplicationRequest,
   output: GetTableBucketReplicationResponse,
   errors: [
@@ -2989,7 +2928,7 @@ export const putTableBucketReplication: API.OperationMethod<
   PutTableBucketReplicationResponse,
   PutTableBucketReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketReplicationRequest,
   output: PutTableBucketReplicationResponse,
   errors: [
@@ -3031,7 +2970,7 @@ export const createTableBucket: API.OperationMethod<
   CreateTableBucketResponse,
   CreateTableBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTableBucketRequest,
   output: CreateTableBucketResponse,
   errors: [
@@ -3066,7 +3005,7 @@ export const deleteTableBucket: API.OperationMethod<
   DeleteTableBucketResponse,
   DeleteTableBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketRequest,
   output: DeleteTableBucketResponse,
   errors: [
@@ -3101,7 +3040,7 @@ export const deleteTableBucketMetricsConfiguration: API.OperationMethod<
   DeleteTableBucketMetricsConfigurationResponse,
   DeleteTableBucketMetricsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableBucketMetricsConfigurationRequest,
   output: DeleteTableBucketMetricsConfigurationResponse,
   errors: [
@@ -3137,7 +3076,7 @@ export const getTableBucket: API.OperationMethod<
   GetTableBucketResponse,
   GetTableBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketRequest,
   output: GetTableBucketResponse,
   errors: [
@@ -3173,7 +3112,7 @@ export const getTableBucketMaintenanceConfiguration: API.OperationMethod<
   GetTableBucketMaintenanceConfigurationResponse,
   GetTableBucketMaintenanceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketMaintenanceConfigurationRequest,
   output: GetTableBucketMaintenanceConfigurationResponse,
   errors: [
@@ -3208,7 +3147,7 @@ export const getTableBucketMetricsConfiguration: API.OperationMethod<
   GetTableBucketMetricsConfigurationResponse,
   GetTableBucketMetricsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketMetricsConfigurationRequest,
   output: GetTableBucketMetricsConfigurationResponse,
   errors: [
@@ -3243,7 +3182,7 @@ export const getTableBucketStorageClass: API.OperationMethod<
   GetTableBucketStorageClassResponse,
   GetTableBucketStorageClassError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableBucketStorageClassRequest,
   output: GetTableBucketStorageClassResponse,
   errors: [
@@ -3294,7 +3233,7 @@ export const listTableBuckets: API.OperationMethod<
     ListTableBucketsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTableBucketsRequest,
   output: ListTableBucketsResponse,
   errors: [
@@ -3336,7 +3275,7 @@ export const putTableBucketMaintenanceConfiguration: API.OperationMethod<
   PutTableBucketMaintenanceConfigurationResponse,
   PutTableBucketMaintenanceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketMaintenanceConfigurationRequest,
   output: PutTableBucketMaintenanceConfigurationResponse,
   errors: [
@@ -3371,7 +3310,7 @@ export const putTableBucketMetricsConfiguration: API.OperationMethod<
   PutTableBucketMetricsConfigurationResponse,
   PutTableBucketMetricsConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketMetricsConfigurationRequest,
   output: PutTableBucketMetricsConfigurationResponse,
   errors: [
@@ -3406,7 +3345,7 @@ export const putTableBucketStorageClass: API.OperationMethod<
   PutTableBucketStorageClassResponse,
   PutTableBucketStorageClassError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableBucketStorageClassRequest,
   output: PutTableBucketStorageClassResponse,
   errors: [
@@ -3441,7 +3380,7 @@ export const getTableEncryption: API.OperationMethod<
   GetTableEncryptionResponse,
   GetTableEncryptionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableEncryptionRequest,
   output: GetTableEncryptionResponse,
   errors: [
@@ -3476,7 +3415,7 @@ export const deleteTablePolicy: API.OperationMethod<
   DeleteTablePolicyResponse,
   DeleteTablePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTablePolicyRequest,
   output: DeleteTablePolicyResponse,
   errors: [
@@ -3511,7 +3450,7 @@ export const getTablePolicy: API.OperationMethod<
   GetTablePolicyResponse,
   GetTablePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTablePolicyRequest,
   output: GetTablePolicyResponse,
   errors: [
@@ -3546,7 +3485,7 @@ export const putTablePolicy: API.OperationMethod<
   PutTablePolicyResponse,
   PutTablePolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTablePolicyRequest,
   output: PutTablePolicyResponse,
   errors: [
@@ -3582,7 +3521,7 @@ export const deleteTableReplication: API.OperationMethod<
   DeleteTableReplicationResponse,
   DeleteTableReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableReplicationRequest,
   output: DeleteTableReplicationResponse,
   errors: [
@@ -3619,7 +3558,7 @@ export const getTableReplication: API.OperationMethod<
   GetTableReplicationResponse,
   GetTableReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableReplicationRequest,
   output: GetTableReplicationResponse,
   errors: [
@@ -3655,7 +3594,7 @@ export const getTableReplicationStatus: API.OperationMethod<
   GetTableReplicationStatusResponse,
   GetTableReplicationStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableReplicationStatusRequest,
   output: GetTableReplicationStatusResponse,
   errors: [
@@ -3705,7 +3644,7 @@ export const putTableReplication: API.OperationMethod<
   PutTableReplicationResponse,
   PutTableReplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableReplicationRequest,
   output: PutTableReplicationResponse,
   errors: [
@@ -3751,7 +3690,7 @@ export const createTable: API.OperationMethod<
   CreateTableResponse,
   CreateTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateTableRequest,
   output: CreateTableResponse,
   errors: [
@@ -3786,7 +3725,7 @@ export const deleteTable: API.OperationMethod<
   DeleteTableResponse,
   DeleteTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTableRequest,
   output: DeleteTableResponse,
   errors: [
@@ -3822,7 +3761,7 @@ export const getTable: API.OperationMethod<
   GetTableResponse,
   GetTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableRequest,
   output: GetTableResponse,
   errors: [
@@ -3860,7 +3799,7 @@ export const getTableMaintenanceConfiguration: API.OperationMethod<
   GetTableMaintenanceConfigurationResponse,
   GetTableMaintenanceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableMaintenanceConfigurationRequest,
   output: GetTableMaintenanceConfigurationResponse,
   errors: [
@@ -3895,7 +3834,7 @@ export const getTableMaintenanceJobStatus: API.OperationMethod<
   GetTableMaintenanceJobStatusResponse,
   GetTableMaintenanceJobStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableMaintenanceJobStatusRequest,
   output: GetTableMaintenanceJobStatusResponse,
   errors: [
@@ -3930,7 +3869,7 @@ export const getTableMetadataLocation: API.OperationMethod<
   GetTableMetadataLocationResponse,
   GetTableMetadataLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableMetadataLocationRequest,
   output: GetTableMetadataLocationResponse,
   errors: [
@@ -3965,7 +3904,7 @@ export const getTableRecordExpirationConfiguration: API.OperationMethod<
   GetTableRecordExpirationConfigurationResponse,
   GetTableRecordExpirationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableRecordExpirationConfigurationRequest,
   output: GetTableRecordExpirationConfigurationResponse,
   errors: [
@@ -4000,7 +3939,7 @@ export const getTableRecordExpirationJobStatus: API.OperationMethod<
   GetTableRecordExpirationJobStatusResponse,
   GetTableRecordExpirationJobStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableRecordExpirationJobStatusRequest,
   output: GetTableRecordExpirationJobStatusResponse,
   errors: [
@@ -4035,7 +3974,7 @@ export const getTableStorageClass: API.OperationMethod<
   GetTableStorageClassResponse,
   GetTableStorageClassError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetTableStorageClassRequest,
   output: GetTableStorageClassResponse,
   errors: [
@@ -4085,7 +4024,7 @@ export const listTables: API.OperationMethod<
     ListTablesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: ListTablesResponse,
   errors: [
@@ -4126,7 +4065,7 @@ export const putTableMaintenanceConfiguration: API.OperationMethod<
   PutTableMaintenanceConfigurationResponse,
   PutTableMaintenanceConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableMaintenanceConfigurationRequest,
   output: PutTableMaintenanceConfigurationResponse,
   errors: [
@@ -4161,7 +4100,7 @@ export const putTableRecordExpirationConfiguration: API.OperationMethod<
   PutTableRecordExpirationConfigurationResponse,
   PutTableRecordExpirationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutTableRecordExpirationConfigurationRequest,
   output: PutTableRecordExpirationConfigurationResponse,
   errors: [
@@ -4196,7 +4135,7 @@ export const renameTable: API.OperationMethod<
   RenameTableResponse,
   RenameTableError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenameTableRequest,
   output: RenameTableResponse,
   errors: [
@@ -4231,7 +4170,7 @@ export const updateTableMetadataLocation: API.OperationMethod<
   UpdateTableMetadataLocationResponse,
   UpdateTableMetadataLocationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTableMetadataLocationRequest,
   output: UpdateTableMetadataLocationResponse,
   errors: [

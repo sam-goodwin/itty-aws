@@ -27,6 +27,13 @@ export * as Endpoint from "./endpoint.ts";
 export * as Errors from "./errors.ts";
 
 /**
+ * SigV4 query-string presigning for AWS URLs (e.g. S3 presigned URLs).
+ *
+ * @since 0.0.0
+ */
+export * as Presign from "./presign.ts";
+
+/**
  * AWS Region configuration.
  *
  * @since 0.0.0

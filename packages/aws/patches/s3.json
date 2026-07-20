@@ -2,6 +2,7 @@
   "errorCategories": {
     "SlowDown": ["ThrottlingError", "RetryableError"],
     "BucketNotEmpty": ["ConflictError"],
+    "BucketHasAccessPointsAttached": ["ConflictError"],
     "BucketAlreadyOwnedByYou": ["AlreadyExistsError"],
     "MalformedXML": ["BadRequestError"],
     "MalformedPolicy": ["BadRequestError"],
@@ -14,6 +15,13 @@
     "IllegalLocationConstraintException": ["BadRequestError"],
     "PreconditionFailed": ["ConflictError"],
     "ConditionalRequestConflict": ["ConflictError", "RetryableError"]
+  },
+  "structures": {
+    "GetObjectTaggingOutput": {
+      "members": {
+        "TagSet": { "optional": true }
+      }
+    }
   },
   "operations": {
     "createBucket": {
@@ -31,6 +39,7 @@
         "RequestLimitExceeded",
         "SlowDown",
         "BucketNotEmpty",
+        "BucketHasAccessPointsAttached",
         "NoSuchBucket",
         "PermanentRedirect"
       ]
@@ -479,7 +488,12 @@
       "errors": ["RequestLimitExceeded", "SlowDown", "InvalidRequest"]
     },
     "putObjectLegalHold": {
-      "errors": ["RequestLimitExceeded", "SlowDown", "MalformedXML"]
+      "errors": [
+        "RequestLimitExceeded",
+        "SlowDown",
+        "MalformedXML",
+        "InvalidRequest"
+      ]
     },
     "listMultipartUploads": {
       "errors": [
@@ -540,7 +554,8 @@
         "RequestLimitExceeded",
         "SlowDown",
         "NoSuchKey",
-        "PermanentRedirect"
+        "PermanentRedirect",
+        "InvalidObjectState"
       ]
     },
     "uploadPartCopy": {

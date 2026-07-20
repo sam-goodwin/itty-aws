@@ -77,6 +77,13 @@ export interface HttpTrait {
    * JSON-encoded) and members marked `FormDataFile()` append their files.
    */
   readonly contentType?: "multipart";
+  /**
+   * Explicit `Content-Type` for a whole-body (`HttpBody()`) member carrying a
+   * preserialized payload, when the API requires a specific media type rather
+   * than JSON (e.g. `application/x-ndjson` for Vectorize insert/upsert). The
+   * member value is sent verbatim (string/bytes) under this media type.
+   */
+  readonly bodyMediaType?: string;
 }
 
 export const httpSymbol = Symbol.for("@distilled.cloud/core/http");

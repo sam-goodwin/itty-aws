@@ -181,6 +181,27 @@ export const awsQueryProtocol: Protocol = (
         }
       }
 
+      // Legacy query services (SimpleDB) wrap errors EC2-style:
+      // <Response><Errors><Error><Code>..</Code><Message>..</Message></Error></Errors><RequestID>..</RequestID></Response>
+      if (
+        !errorContent &&
+        parsed.Response &&
+        typeof parsed.Response === "object"
+      ) {
+        const responseObj = parsed.Response as Record<string, unknown>;
+        if (typeof responseObj.RequestID === "string") {
+          requestId = responseObj.RequestID;
+        }
+        if (responseObj.Errors && typeof responseObj.Errors === "object") {
+          const errors = responseObj.Errors as Record<string, unknown>;
+          if (errors.Error && typeof errors.Error === "object") {
+            errorContent = (
+              Array.isArray(errors.Error) ? errors.Error[0] : errors.Error
+            ) as Record<string, unknown>;
+          }
+        }
+      }
+
       if (!errorContent) {
         return yield* new ParseError({
           message: `Could not find Error element in XML response: ${bodyText}`,

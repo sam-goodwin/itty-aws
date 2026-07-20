@@ -106,56 +106,52 @@ export interface FindingIdentifier {
   scanName: string;
   findingId: string;
 }
-export const FindingIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FindingIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ scanName: S.String, findingId: S.String }),
 ).annotate({
   identifier: "FindingIdentifier",
 }) as any as S.Schema<FindingIdentifier>;
 export type FindingIdentifiers = FindingIdentifier[];
-export const FindingIdentifiers =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FindingIdentifier);
+export const FindingIdentifiers = /*@__PURE__*/ S.Array(FindingIdentifier);
 export interface BatchGetFindingsRequest {
   findingIdentifiers: FindingIdentifier[];
 }
-export const BatchGetFindingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ findingIdentifiers: FindingIdentifiers }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/batchGetFindings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchGetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ findingIdentifiers: FindingIdentifiers }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/batchGetFindings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "BatchGetFindingsRequest",
 }) as any as S.Schema<BatchGetFindingsRequest>;
 export type Status = "Closed" | "Open" | "All" | (string & {});
-export const Status = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Status = /*@__PURE__*/ S.String;
 export interface Resource {
   id?: string;
   subResourceId?: string;
 }
-export const Resource = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Resource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.optional(S.String), subResourceId: S.optional(S.String) }),
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type ReferenceUrls = string[];
-export const ReferenceUrls = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ReferenceUrls = /*@__PURE__*/ S.Array(S.String);
 export type RelatedVulnerabilities = string[];
-export const RelatedVulnerabilities = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const RelatedVulnerabilities = /*@__PURE__*/ S.Array(S.String);
 export interface CodeLine {
   number?: number;
   content?: string;
 }
-export const CodeLine = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CodeLine = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ number: S.optional(S.Number), content: S.optional(S.String) }),
 ).annotate({ identifier: "CodeLine" }) as any as S.Schema<CodeLine>;
 export type CodeSnippet = CodeLine[];
-export const CodeSnippet = /*@__PURE__*/ /*#__PURE__*/ S.Array(CodeLine);
+export const CodeSnippet = /*@__PURE__*/ S.Array(CodeLine);
 export interface FilePath {
   name?: string;
   path?: string;
@@ -163,7 +159,7 @@ export interface FilePath {
   endLine?: number;
   codeSnippet?: CodeLine[];
 }
-export const FilePath = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FilePath = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     path: S.optional(S.String),
@@ -179,7 +175,7 @@ export interface Vulnerability {
   filePath?: FilePath;
   itemCount?: number;
 }
-export const Vulnerability = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Vulnerability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     referenceUrls: S.optional(ReferenceUrls),
     relatedVulnerabilities: S.optional(RelatedVulnerabilities),
@@ -195,35 +191,35 @@ export type Severity =
   | "Low"
   | "Info"
   | (string & {});
-export const Severity = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Severity = /*@__PURE__*/ S.String;
 export interface Recommendation {
   text?: string;
   url?: string;
 }
-export const Recommendation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Recommendation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ text: S.optional(S.String), url: S.optional(S.String) }),
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 export interface SuggestedFix {
   description?: string;
   code?: string;
 }
-export const SuggestedFix = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SuggestedFix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ description: S.optional(S.String), code: S.optional(S.String) }),
 ).annotate({ identifier: "SuggestedFix" }) as any as S.Schema<SuggestedFix>;
 export type SuggestedFixes = SuggestedFix[];
-export const SuggestedFixes = /*@__PURE__*/ /*#__PURE__*/ S.Array(SuggestedFix);
+export const SuggestedFixes = /*@__PURE__*/ S.Array(SuggestedFix);
 export interface Remediation {
   recommendation?: Recommendation;
   suggestedFixes?: SuggestedFix[];
 }
-export const Remediation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Remediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recommendation: S.optional(Recommendation),
     suggestedFixes: S.optional(SuggestedFixes),
   }),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
 export type DetectorTags = string[];
-export const DetectorTags = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const DetectorTags = /*@__PURE__*/ S.Array(S.String);
 export interface Finding {
   createdAt?: Date;
   description?: string;
@@ -242,7 +238,7 @@ export interface Finding {
   detectorName?: string;
   ruleId?: string;
 }
-export const Finding = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Finding = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     description: S.optional(S.String),
@@ -263,7 +259,7 @@ export const Finding = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 export type Findings = Finding[];
-export const Findings = /*@__PURE__*/ /*#__PURE__*/ S.Array(Finding);
+export const Findings = /*@__PURE__*/ S.Array(Finding);
 export type ErrorCode =
   | "DUPLICATE_IDENTIFIER"
   | "ITEM_DOES_NOT_EXIST"
@@ -271,35 +267,33 @@ export type ErrorCode =
   | "INVALID_FINDING_ID"
   | "INVALID_SCAN_NAME"
   | (string & {});
-export const ErrorCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ErrorCode = /*@__PURE__*/ S.String;
 export interface BatchGetFindingsError_ {
   scanName: string;
   findingId: string;
   errorCode: ErrorCode;
   message: string;
 }
-export const BatchGetFindingsError_ = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scanName: S.String,
-      findingId: S.String,
-      errorCode: ErrorCode,
-      message: S.String,
-    }),
+export const BatchGetFindingsError_ = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scanName: S.String,
+    findingId: S.String,
+    errorCode: ErrorCode,
+    message: S.String,
+  }),
 ).annotate({
   identifier: "BatchGetFindingsError",
 }) as any as S.Schema<BatchGetFindingsError_>;
 export type BatchGetFindingsErrors = BatchGetFindingsError_[];
-export const BatchGetFindingsErrors = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BatchGetFindingsErrors = /*@__PURE__*/ S.Array(
   BatchGetFindingsError_,
 );
 export interface BatchGetFindingsResponse {
   findings: Finding[];
   failedFindings: BatchGetFindingsError_[];
 }
-export const BatchGetFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ findings: Findings, failedFindings: BatchGetFindingsErrors }),
+export const BatchGetFindingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ findings: Findings, failedFindings: BatchGetFindingsErrors }),
 ).annotate({
   identifier: "BatchGetFindingsResponse",
 }) as any as S.Schema<BatchGetFindingsResponse>;
@@ -310,30 +304,30 @@ export type ValidationExceptionReason =
   | "other"
   | "lambdaCodeShaMisMatch"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type ResourceId = { codeArtifactId: string };
-export const ResourceId = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ResourceId = /*@__PURE__*/ S.Union([
   S.Struct({ codeArtifactId: S.String }),
 ]);
 export type ScanType = "Standard" | "Express" | (string & {});
-export const ScanType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ScanType = /*@__PURE__*/ S.String;
 export type AnalysisType = "Security" | "All" | (string & {});
-export const AnalysisType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AnalysisType = /*@__PURE__*/ S.String;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -345,7 +339,7 @@ export interface CreateScanRequest {
   analysisType?: AnalysisType;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateScanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
     resourceId: ResourceId,
@@ -367,7 +361,7 @@ export const CreateScanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "CreateScanRequest",
 }) as any as S.Schema<CreateScanRequest>;
 export type ScanState = "InProgress" | "Successful" | "Failed" | (string & {});
-export const ScanState = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ScanState = /*@__PURE__*/ S.String;
 export interface CreateScanResponse {
   scanName: string;
   runId: string;
@@ -375,7 +369,7 @@ export interface CreateScanResponse {
   scanState: ScanState;
   scanNameArn?: string;
 }
-export const CreateScanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanName: S.String,
     runId: S.String,
@@ -389,23 +383,22 @@ export const CreateScanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateUploadUrlRequest {
   scanName: string;
 }
-export const CreateUploadUrlRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ scanName: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/uploadUrl" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateUploadUrlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ scanName: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/uploadUrl" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateUploadUrlRequest",
 }) as any as S.Schema<CreateUploadUrlRequest>;
 export type RequestHeaderMap = { [key: string]: string | undefined };
-export const RequestHeaderMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const RequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -414,36 +407,34 @@ export interface CreateUploadUrlResponse {
   requestHeaders: { [key: string]: string | undefined };
   codeArtifactId: string;
 }
-export const CreateUploadUrlResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      s3Url: SensitiveString,
-      requestHeaders: RequestHeaderMap,
-      codeArtifactId: S.String,
-    }),
+export const CreateUploadUrlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    s3Url: SensitiveString,
+    requestHeaders: RequestHeaderMap,
+    codeArtifactId: S.String,
+  }),
 ).annotate({
   identifier: "CreateUploadUrlResponse",
 }) as any as S.Schema<CreateUploadUrlResponse>;
 export interface GetAccountConfigurationRequest {}
-export const GetAccountConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/accountConfiguration/get" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/accountConfiguration/get" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetAccountConfigurationRequest",
-  }) as any as S.Schema<GetAccountConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "GetAccountConfigurationRequest",
+}) as any as S.Schema<GetAccountConfigurationRequest>;
 export interface EncryptionConfig {
   kmsKeyArn?: string;
 }
-export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EncryptionConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ kmsKeyArn: S.optional(S.String) }),
 ).annotate({
   identifier: "EncryptionConfig",
@@ -451,19 +442,18 @@ export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetAccountConfigurationResponse {
   encryptionConfig: EncryptionConfig;
 }
-export const GetAccountConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ encryptionConfig: EncryptionConfig }),
-  ).annotate({
-    identifier: "GetAccountConfigurationResponse",
-  }) as any as S.Schema<GetAccountConfigurationResponse>;
+export const GetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ encryptionConfig: EncryptionConfig }),
+).annotate({
+  identifier: "GetAccountConfigurationResponse",
+}) as any as S.Schema<GetAccountConfigurationResponse>;
 export interface GetFindingsRequest {
   scanName: string;
   nextToken?: string;
   maxResults?: number;
   status?: Status;
 }
-export const GetFindingsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanName: S.String.pipe(T.HttpLabel("scanName")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -486,7 +476,7 @@ export interface GetFindingsResponse {
   findings?: Finding[];
   nextToken?: string;
 }
-export const GetFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetFindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ findings: S.optional(Findings), nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "GetFindingsResponse",
@@ -494,22 +484,21 @@ export const GetFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetMetricsSummaryRequest {
   date: Date;
 }
-export const GetMetricsSummaryRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      date: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
-        T.HttpQuery("date"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/metrics/summary" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetMetricsSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    date: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+      T.HttpQuery("date"),
     ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/metrics/summary" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "GetMetricsSummaryRequest",
 }) as any as S.Schema<GetMetricsSummaryRequest>;
@@ -520,55 +509,53 @@ export interface FindingMetricsValuePerSeverity {
   high?: number;
   critical?: number;
 }
-export const FindingMetricsValuePerSeverity =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      info: S.optional(S.Number),
-      low: S.optional(S.Number),
-      medium: S.optional(S.Number),
-      high: S.optional(S.Number),
-      critical: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "FindingMetricsValuePerSeverity",
-  }) as any as S.Schema<FindingMetricsValuePerSeverity>;
+export const FindingMetricsValuePerSeverity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    info: S.optional(S.Number),
+    low: S.optional(S.Number),
+    medium: S.optional(S.Number),
+    high: S.optional(S.Number),
+    critical: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "FindingMetricsValuePerSeverity",
+}) as any as S.Schema<FindingMetricsValuePerSeverity>;
 export interface CategoryWithFindingNum {
   categoryName?: string;
   findingNumber?: number;
 }
-export const CategoryWithFindingNum = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      categoryName: S.optional(S.String),
-      findingNumber: S.optional(S.Number),
-    }),
+export const CategoryWithFindingNum = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    categoryName: S.optional(S.String),
+    findingNumber: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "CategoryWithFindingNum",
 }) as any as S.Schema<CategoryWithFindingNum>;
 export type CategoriesWithMostFindings = CategoryWithFindingNum[];
-export const CategoriesWithMostFindings = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const CategoriesWithMostFindings = /*@__PURE__*/ S.Array(
   CategoryWithFindingNum,
 );
 export interface ScanNameWithFindingNum {
   scanName?: string;
   findingNumber?: number;
 }
-export const ScanNameWithFindingNum = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      scanName: S.optional(S.String),
-      findingNumber: S.optional(S.Number),
-    }),
+export const ScanNameWithFindingNum = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scanName: S.optional(S.String),
+    findingNumber: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "ScanNameWithFindingNum",
 }) as any as S.Schema<ScanNameWithFindingNum>;
 export type ScansWithMostOpenFindings = ScanNameWithFindingNum[];
-export const ScansWithMostOpenFindings = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ScansWithMostOpenFindings = /*@__PURE__*/ S.Array(
   ScanNameWithFindingNum,
 );
 export type ScansWithMostOpenCriticalFindings = ScanNameWithFindingNum[];
-export const ScansWithMostOpenCriticalFindings =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ScanNameWithFindingNum);
+export const ScansWithMostOpenCriticalFindings = /*@__PURE__*/ S.Array(
+  ScanNameWithFindingNum,
+);
 export interface MetricsSummary {
   date?: Date;
   openFindings?: FindingMetricsValuePerSeverity;
@@ -576,7 +563,7 @@ export interface MetricsSummary {
   scansWithMostOpenFindings?: ScanNameWithFindingNum[];
   scansWithMostOpenCriticalFindings?: ScanNameWithFindingNum[];
 }
-export const MetricsSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MetricsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     openFindings: S.optional(FindingMetricsValuePerSeverity),
@@ -590,8 +577,8 @@ export const MetricsSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetMetricsSummaryResponse {
   metricsSummary?: MetricsSummary;
 }
-export const GetMetricsSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ metricsSummary: S.optional(MetricsSummary) }),
+export const GetMetricsSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ metricsSummary: S.optional(MetricsSummary) }),
 ).annotate({
   identifier: "GetMetricsSummaryResponse",
 }) as any as S.Schema<GetMetricsSummaryResponse>;
@@ -599,7 +586,7 @@ export interface GetScanRequest {
   scanName: string;
   runId?: string;
 }
-export const GetScanRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetScanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanName: S.String.pipe(T.HttpLabel("scanName")),
     runId: S.optional(S.String).pipe(T.HttpQuery("runId")),
@@ -625,7 +612,7 @@ export interface GetScanResponse {
   scanNameArn?: string;
   errorMessage?: string;
 }
-export const GetScanResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetScanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanName: S.String,
     runId: S.String,
@@ -646,27 +633,26 @@ export interface ListFindingsMetricsRequest {
   startDate: Date;
   endDate: Date;
 }
-export const ListFindingsMetricsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
-        T.HttpQuery("startDate"),
-      ),
-      endDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
-        T.HttpQuery("endDate"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/metrics/findings" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListFindingsMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    startDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+      T.HttpQuery("startDate"),
     ),
+    endDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")).pipe(
+      T.HttpQuery("endDate"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/metrics/findings" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListFindingsMetricsRequest",
 }) as any as S.Schema<ListFindingsMetricsRequest>;
@@ -677,7 +663,7 @@ export interface AccountFindingsMetric {
   openFindings?: FindingMetricsValuePerSeverity;
   meanTimeToClose?: FindingMetricsValuePerSeverity;
 }
-export const AccountFindingsMetric = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccountFindingsMetric = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     date: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     newFindings: S.optional(FindingMetricsValuePerSeverity),
@@ -689,27 +675,24 @@ export const AccountFindingsMetric = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AccountFindingsMetric",
 }) as any as S.Schema<AccountFindingsMetric>;
 export type FindingsMetricList = AccountFindingsMetric[];
-export const FindingsMetricList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  AccountFindingsMetric,
-);
+export const FindingsMetricList = /*@__PURE__*/ S.Array(AccountFindingsMetric);
 export interface ListFindingsMetricsResponse {
   findingsMetrics?: AccountFindingsMetric[];
   nextToken?: string;
 }
-export const ListFindingsMetricsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      findingsMetrics: S.optional(FindingsMetricList),
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListFindingsMetricsResponse",
-  }) as any as S.Schema<ListFindingsMetricsResponse>;
+export const ListFindingsMetricsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    findingsMetrics: S.optional(FindingsMetricList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFindingsMetricsResponse",
+}) as any as S.Schema<ListFindingsMetricsResponse>;
 export interface ListScansRequest {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListScansRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListScansRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -734,7 +717,7 @@ export interface ScanSummary {
   runId: string;
   scanNameArn?: string;
 }
-export const ScanSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScanSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scanState: ScanState,
     createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -745,12 +728,12 @@ export const ScanSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ScanSummary" }) as any as S.Schema<ScanSummary>;
 export type ScanSummaries = ScanSummary[];
-export const ScanSummaries = /*@__PURE__*/ /*#__PURE__*/ S.Array(ScanSummary);
+export const ScanSummaries = /*@__PURE__*/ S.Array(ScanSummary);
 export interface ListScansResponse {
   summaries?: ScanSummary[];
   nextToken?: string;
 }
-export const ListScansResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListScansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     summaries: S.optional(ScanSummaries),
     nextToken: S.optional(S.String),
@@ -761,35 +744,33 @@ export const ListScansResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -807,18 +788,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -836,7 +817,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -844,30 +825,28 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface UpdateAccountConfigurationRequest {
   encryptionConfig: EncryptionConfig;
 }
-export const UpdateAccountConfigurationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ encryptionConfig: EncryptionConfig }).pipe(
-      T.all(
-        T.Http({ method: "PUT", uri: "/updateAccountConfiguration" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ encryptionConfig: EncryptionConfig }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/updateAccountConfiguration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateAccountConfigurationRequest",
-  }) as any as S.Schema<UpdateAccountConfigurationRequest>;
+  ),
+).annotate({
+  identifier: "UpdateAccountConfigurationRequest",
+}) as any as S.Schema<UpdateAccountConfigurationRequest>;
 export interface UpdateAccountConfigurationResponse {
   encryptionConfig: EncryptionConfig;
 }
-export const UpdateAccountConfigurationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ encryptionConfig: EncryptionConfig }),
-  ).annotate({
-    identifier: "UpdateAccountConfigurationResponse",
-  }) as any as S.Schema<UpdateAccountConfigurationResponse>;
+export const UpdateAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ encryptionConfig: EncryptionConfig }),
+).annotate({
+  identifier: "UpdateAccountConfigurationResponse",
+}) as any as S.Schema<UpdateAccountConfigurationResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
@@ -878,11 +857,12 @@ export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedExcept
     resourceId: S.optional(S.String),
     resourceType: S.optional(S.String),
   },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
   { error: S.optional(S.String), message: S.optional(S.String) },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -892,7 +872,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     serviceCode: S.optional(S.String),
     quotaCode: S.optional(S.String),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -902,6 +882,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: ValidationExceptionReason,
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -911,6 +892,7 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     resourceId: S.String,
     resourceType: S.String,
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -920,6 +902,7 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     resourceId: S.String,
     resourceType: S.String,
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -937,7 +920,7 @@ export const batchGetFindings: API.OperationMethod<
   BatchGetFindingsResponse,
   BatchGetFindingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchGetFindingsRequest,
   output: BatchGetFindingsResponse,
   errors: [
@@ -966,7 +949,7 @@ export const createScan: API.OperationMethod<
   CreateScanResponse,
   CreateScanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateScanRequest,
   output: CreateScanResponse,
   errors: [
@@ -997,7 +980,7 @@ export const createUploadUrl: API.OperationMethod<
   CreateUploadUrlResponse,
   CreateUploadUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateUploadUrlRequest,
   output: CreateUploadUrlResponse,
   errors: [
@@ -1024,7 +1007,7 @@ export const getAccountConfiguration: API.OperationMethod<
   GetAccountConfigurationResponse,
   GetAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccountConfigurationRequest,
   output: GetAccountConfigurationResponse,
   errors: [
@@ -1068,7 +1051,7 @@ export const getFindings: API.OperationMethod<
     GetFindingsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: GetFindingsRequest,
   output: GetFindingsResponse,
   errors: [
@@ -1103,7 +1086,7 @@ export const getMetricsSummary: API.OperationMethod<
   GetMetricsSummaryResponse,
   GetMetricsSummaryError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMetricsSummaryRequest,
   output: GetMetricsSummaryResponse,
   errors: [
@@ -1131,7 +1114,7 @@ export const getScan: API.OperationMethod<
   GetScanResponse,
   GetScanError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetScanRequest,
   output: GetScanResponse,
   errors: [
@@ -1174,7 +1157,7 @@ export const listFindingsMetrics: API.OperationMethod<
     ListFindingsMetricsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListFindingsMetricsRequest,
   output: ListFindingsMetricsResponse,
   errors: [
@@ -1222,7 +1205,7 @@ export const listScans: API.OperationMethod<
     ListScansError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListScansRequest,
   output: ListScansResponse,
   errors: [
@@ -1257,7 +1240,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1288,7 +1271,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1319,7 +1302,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1349,7 +1332,7 @@ export const updateAccountConfiguration: API.OperationMethod<
   UpdateAccountConfigurationResponse,
   UpdateAccountConfigurationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateAccountConfigurationRequest,
   output: UpdateAccountConfigurationResponse,
   errors: [

@@ -140,7 +140,7 @@ export interface AcceptDomainTransferFromAnotherAwsAccountRequest {
   Password: string | redacted.Redacted<string>;
 }
 export const AcceptDomainTransferFromAnotherAwsAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ DomainName: S.String, Password: SensitiveString }).pipe(
       T.all(
         ns,
@@ -159,7 +159,7 @@ export interface AcceptDomainTransferFromAnotherAwsAccountResponse {
   OperationId?: string;
 }
 export const AcceptDomainTransferFromAnotherAwsAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
   ).annotate({
     identifier: "AcceptDomainTransferFromAnotherAwsAccountResponse",
@@ -169,13 +169,12 @@ export interface DnssecSigningAttributes {
   Flags?: number;
   PublicKey?: string;
 }
-export const DnssecSigningAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Algorithm: S.optional(S.Number),
-      Flags: S.optional(S.Number),
-      PublicKey: S.optional(S.String),
-    }),
+export const DnssecSigningAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Algorithm: S.optional(S.Number),
+    Flags: S.optional(S.Number),
+    PublicKey: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DnssecSigningAttributes",
 }) as any as S.Schema<DnssecSigningAttributes>;
@@ -183,8 +182,8 @@ export interface AssociateDelegationSignerToDomainRequest {
   DomainName: string;
   SigningAttributes: DnssecSigningAttributes;
 }
-export const AssociateDelegationSignerToDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AssociateDelegationSignerToDomainRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DomainName: S.String,
       SigningAttributes: DnssecSigningAttributes,
@@ -199,14 +198,14 @@ export const AssociateDelegationSignerToDomainRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "AssociateDelegationSignerToDomainRequest",
-  }) as any as S.Schema<AssociateDelegationSignerToDomainRequest>;
+).annotate({
+  identifier: "AssociateDelegationSignerToDomainRequest",
+}) as any as S.Schema<AssociateDelegationSignerToDomainRequest>;
 export interface AssociateDelegationSignerToDomainResponse {
   OperationId?: string;
 }
 export const AssociateDelegationSignerToDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
   ).annotate({
     identifier: "AssociateDelegationSignerToDomainResponse",
@@ -215,7 +214,7 @@ export interface CancelDomainTransferToAnotherAwsAccountRequest {
   DomainName: string;
 }
 export const CancelDomainTransferToAnotherAwsAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ DomainName: S.String }).pipe(
       T.all(
         ns,
@@ -234,7 +233,7 @@ export interface CancelDomainTransferToAnotherAwsAccountResponse {
   OperationId?: string;
 }
 export const CancelDomainTransferToAnotherAwsAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
   ).annotate({
     identifier: "CancelDomainTransferToAnotherAwsAccountResponse",
@@ -243,22 +242,21 @@ export interface CheckDomainAvailabilityRequest {
   DomainName: string;
   IdnLangCode?: string;
 }
-export const CheckDomainAvailabilityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DomainName: S.String, IdnLangCode: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CheckDomainAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String, IdnLangCode: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CheckDomainAvailabilityRequest",
-  }) as any as S.Schema<CheckDomainAvailabilityRequest>;
+  ),
+).annotate({
+  identifier: "CheckDomainAvailabilityRequest",
+}) as any as S.Schema<CheckDomainAvailabilityRequest>;
 export type DomainAvailability =
   | "AVAILABLE"
   | "AVAILABLE_RESERVED"
@@ -271,39 +269,37 @@ export type DomainAvailability =
   | "INVALID_NAME_FOR_TLD"
   | "PENDING"
   | (string & {});
-export const DomainAvailability = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DomainAvailability = /*@__PURE__*/ S.String;
 export interface CheckDomainAvailabilityResponse {
   Availability?: DomainAvailability;
 }
-export const CheckDomainAvailabilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Availability: S.optional(DomainAvailability) }).pipe(ns),
-  ).annotate({
-    identifier: "CheckDomainAvailabilityResponse",
-  }) as any as S.Schema<CheckDomainAvailabilityResponse>;
+export const CheckDomainAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Availability: S.optional(DomainAvailability) }).pipe(ns),
+).annotate({
+  identifier: "CheckDomainAvailabilityResponse",
+}) as any as S.Schema<CheckDomainAvailabilityResponse>;
 export interface CheckDomainTransferabilityRequest {
   DomainName: string;
   AuthCode?: string | redacted.Redacted<string>;
 }
-export const CheckDomainTransferabilityRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DomainName: S.String,
-      AuthCode: S.optional(SensitiveString),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CheckDomainTransferabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    AuthCode: S.optional(SensitiveString),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CheckDomainTransferabilityRequest",
-  }) as any as S.Schema<CheckDomainTransferabilityRequest>;
+  ),
+).annotate({
+  identifier: "CheckDomainTransferabilityRequest",
+}) as any as S.Schema<CheckDomainTransferabilityRequest>;
 export type Transferable =
   | "TRANSFERABLE"
   | "UNTRANSFERABLE"
@@ -312,11 +308,11 @@ export type Transferable =
   | "DOMAIN_IN_ANOTHER_ACCOUNT"
   | "PREMIUM_DOMAIN"
   | (string & {});
-export const Transferable = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Transferable = /*@__PURE__*/ S.String;
 export interface DomainTransferability {
   Transferable?: Transferable;
 }
-export const DomainTransferability = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DomainTransferability = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Transferable: S.optional(Transferable) }),
 ).annotate({
   identifier: "DomainTransferability",
@@ -325,19 +321,18 @@ export interface CheckDomainTransferabilityResponse {
   Transferability?: DomainTransferability;
   Message?: string;
 }
-export const CheckDomainTransferabilityResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Transferability: S.optional(DomainTransferability),
-      Message: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "CheckDomainTransferabilityResponse",
-  }) as any as S.Schema<CheckDomainTransferabilityResponse>;
+export const CheckDomainTransferabilityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Transferability: S.optional(DomainTransferability),
+    Message: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "CheckDomainTransferabilityResponse",
+}) as any as S.Schema<CheckDomainTransferabilityResponse>;
 export interface DeleteDomainRequest {
   DomainName: string;
 }
-export const DeleteDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String }).pipe(
     T.all(
       ns,
@@ -355,96 +350,94 @@ export const DeleteDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteDomainResponse {
   OperationId?: string;
 }
-export const DeleteDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "DeleteDomainResponse",
 }) as any as S.Schema<DeleteDomainResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface DeleteTagsForDomainRequest {
   DomainName: string;
   TagsToDelete: string[];
 }
-export const DeleteTagsForDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ DomainName: S.String, TagsToDelete: TagKeyList }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteTagsForDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String, TagsToDelete: TagKeyList }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteTagsForDomainRequest",
 }) as any as S.Schema<DeleteTagsForDomainRequest>;
 export interface DeleteTagsForDomainResponse {}
-export const DeleteTagsForDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteTagsForDomainResponse",
-  }) as any as S.Schema<DeleteTagsForDomainResponse>;
+export const DeleteTagsForDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteTagsForDomainResponse",
+}) as any as S.Schema<DeleteTagsForDomainResponse>;
 export interface DisableDomainAutoRenewRequest {
   DomainName: string;
 }
-export const DisableDomainAutoRenewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DomainName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisableDomainAutoRenewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisableDomainAutoRenewRequest",
-  }) as any as S.Schema<DisableDomainAutoRenewRequest>;
+  ),
+).annotate({
+  identifier: "DisableDomainAutoRenewRequest",
+}) as any as S.Schema<DisableDomainAutoRenewRequest>;
 export interface DisableDomainAutoRenewResponse {}
-export const DisableDomainAutoRenewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DisableDomainAutoRenewResponse",
-  }) as any as S.Schema<DisableDomainAutoRenewResponse>;
+export const DisableDomainAutoRenewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DisableDomainAutoRenewResponse",
+}) as any as S.Schema<DisableDomainAutoRenewResponse>;
 export interface DisableDomainTransferLockRequest {
   DomainName: string;
 }
-export const DisableDomainTransferLockRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DomainName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DisableDomainTransferLockRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DisableDomainTransferLockRequest",
-  }) as any as S.Schema<DisableDomainTransferLockRequest>;
+  ),
+).annotate({
+  identifier: "DisableDomainTransferLockRequest",
+}) as any as S.Schema<DisableDomainTransferLockRequest>;
 export interface DisableDomainTransferLockResponse {
   OperationId?: string;
 }
-export const DisableDomainTransferLockResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "DisableDomainTransferLockResponse",
-  }) as any as S.Schema<DisableDomainTransferLockResponse>;
+export const DisableDomainTransferLockResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "DisableDomainTransferLockResponse",
+}) as any as S.Schema<DisableDomainTransferLockResponse>;
 export interface DisassociateDelegationSignerFromDomainRequest {
   DomainName: string;
   Id: string;
 }
 export const DisassociateDelegationSignerFromDomainRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ DomainName: S.String, Id: S.String }).pipe(
       T.all(
         ns,
@@ -463,7 +456,7 @@ export interface DisassociateDelegationSignerFromDomainResponse {
   OperationId?: string;
 }
 export const DisassociateDelegationSignerFromDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
   ).annotate({
     identifier: "DisassociateDelegationSignerFromDomainResponse",
@@ -471,119 +464,115 @@ export const DisassociateDelegationSignerFromDomainResponse =
 export interface EnableDomainAutoRenewRequest {
   DomainName: string;
 }
-export const EnableDomainAutoRenewRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DomainName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const EnableDomainAutoRenewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "EnableDomainAutoRenewRequest",
-  }) as any as S.Schema<EnableDomainAutoRenewRequest>;
+  ),
+).annotate({
+  identifier: "EnableDomainAutoRenewRequest",
+}) as any as S.Schema<EnableDomainAutoRenewRequest>;
 export interface EnableDomainAutoRenewResponse {}
-export const EnableDomainAutoRenewResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "EnableDomainAutoRenewResponse",
-  }) as any as S.Schema<EnableDomainAutoRenewResponse>;
+export const EnableDomainAutoRenewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "EnableDomainAutoRenewResponse",
+}) as any as S.Schema<EnableDomainAutoRenewResponse>;
 export interface EnableDomainTransferLockRequest {
   DomainName: string;
 }
-export const EnableDomainTransferLockRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DomainName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const EnableDomainTransferLockRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "EnableDomainTransferLockRequest",
-  }) as any as S.Schema<EnableDomainTransferLockRequest>;
+  ),
+).annotate({
+  identifier: "EnableDomainTransferLockRequest",
+}) as any as S.Schema<EnableDomainTransferLockRequest>;
 export interface EnableDomainTransferLockResponse {
   OperationId?: string;
 }
-export const EnableDomainTransferLockResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "EnableDomainTransferLockResponse",
-  }) as any as S.Schema<EnableDomainTransferLockResponse>;
+export const EnableDomainTransferLockResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "EnableDomainTransferLockResponse",
+}) as any as S.Schema<EnableDomainTransferLockResponse>;
 export interface GetContactReachabilityStatusRequest {
   domainName?: string;
 }
-export const GetContactReachabilityStatusRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ domainName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetContactReachabilityStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ domainName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetContactReachabilityStatusRequest",
-  }) as any as S.Schema<GetContactReachabilityStatusRequest>;
+  ),
+).annotate({
+  identifier: "GetContactReachabilityStatusRequest",
+}) as any as S.Schema<GetContactReachabilityStatusRequest>;
 export type ReachabilityStatus = "PENDING" | "DONE" | "EXPIRED" | (string & {});
-export const ReachabilityStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ReachabilityStatus = /*@__PURE__*/ S.String;
 export interface GetContactReachabilityStatusResponse {
   domainName?: string;
   status?: ReachabilityStatus;
 }
-export const GetContactReachabilityStatusResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetContactReachabilityStatusResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       domainName: S.optional(S.String),
       status: S.optional(ReachabilityStatus),
     }).pipe(ns),
-  ).annotate({
-    identifier: "GetContactReachabilityStatusResponse",
-  }) as any as S.Schema<GetContactReachabilityStatusResponse>;
+).annotate({
+  identifier: "GetContactReachabilityStatusResponse",
+}) as any as S.Schema<GetContactReachabilityStatusResponse>;
 export interface GetDomainDetailRequest {
   DomainName: string;
 }
-export const GetDomainDetailRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ DomainName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDomainDetailRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetDomainDetailRequest",
 }) as any as S.Schema<GetDomainDetailRequest>;
 export type GlueIpList = string[];
-export const GlueIpList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const GlueIpList = /*@__PURE__*/ S.Array(S.String);
 export interface Nameserver {
   Name: string;
   GlueIps?: string[];
 }
-export const Nameserver = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Nameserver = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, GlueIps: S.optional(GlueIpList) }),
 ).annotate({ identifier: "Nameserver" }) as any as S.Schema<Nameserver>;
 export type NameserverList = Nameserver[];
-export const NameserverList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Nameserver);
+export const NameserverList = /*@__PURE__*/ S.Array(Nameserver);
 export type ContactType =
   | "PERSON"
   | "COMPANY"
@@ -591,7 +580,7 @@ export type ContactType =
   | "PUBLIC_BODY"
   | "RESELLER"
   | (string & {});
-export const ContactType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContactType = /*@__PURE__*/ S.String;
 export type CountryCode =
   | "AC"
   | "AD"
@@ -845,7 +834,7 @@ export type CountryCode =
   | "ZM"
   | "ZW"
   | (string & {});
-export const CountryCode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CountryCode = /*@__PURE__*/ S.String;
 export type ExtraParamName =
   | "DUNS_NUMBER"
   | "BRAND_NUMBER"
@@ -882,16 +871,16 @@ export type ExtraParamName =
   | "AU_POLICY_REASON"
   | "AU_REGISTRANT_NAME"
   | (string & {});
-export const ExtraParamName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExtraParamName = /*@__PURE__*/ S.String;
 export interface ExtraParam {
   Name: ExtraParamName;
   Value: string | redacted.Redacted<string>;
 }
-export const ExtraParam = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExtraParam = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: ExtraParamName, Value: SensitiveString }),
 ).annotate({ identifier: "ExtraParam" }) as any as S.Schema<ExtraParam>;
 export type ExtraParamList = ExtraParam[];
-export const ExtraParamList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ExtraParam);
+export const ExtraParamList = /*@__PURE__*/ S.Array(ExtraParam);
 export interface ContactDetail {
   FirstName?: string | redacted.Redacted<string>;
   LastName?: string | redacted.Redacted<string>;
@@ -908,7 +897,7 @@ export interface ContactDetail {
   Fax?: string | redacted.Redacted<string>;
   ExtraParams?: ExtraParam[];
 }
-export const ContactDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ContactDetail = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FirstName: S.optional(SensitiveString),
     LastName: S.optional(SensitiveString),
@@ -927,7 +916,7 @@ export const ContactDetail = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ContactDetail" }) as any as S.Schema<ContactDetail>;
 export type DomainStatusList = string[];
-export const DomainStatusList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const DomainStatusList = /*@__PURE__*/ S.Array(S.String);
 export interface DnssecKey {
   Algorithm?: number;
   Flags?: number;
@@ -937,7 +926,7 @@ export interface DnssecKey {
   KeyTag?: number;
   Id?: string;
 }
-export const DnssecKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DnssecKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Algorithm: S.optional(S.Number),
     Flags: S.optional(S.Number),
@@ -949,7 +938,7 @@ export const DnssecKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DnssecKey" }) as any as S.Schema<DnssecKey>;
 export type DnssecKeyList = DnssecKey[];
-export const DnssecKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(DnssecKey);
+export const DnssecKeyList = /*@__PURE__*/ S.Array(DnssecKey);
 export interface GetDomainDetailResponse {
   DomainName?: string;
   Nameservers?: Nameserver[];
@@ -976,36 +965,33 @@ export interface GetDomainDetailResponse {
   BillingContact?: ContactDetail;
   BillingPrivacy?: boolean;
 }
-export const GetDomainDetailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DomainName: S.optional(S.String),
-      Nameservers: S.optional(NameserverList),
-      AutoRenew: S.optional(S.Boolean),
-      AdminContact: S.optional(ContactDetail),
-      RegistrantContact: S.optional(ContactDetail),
-      TechContact: S.optional(ContactDetail),
-      AdminPrivacy: S.optional(S.Boolean),
-      RegistrantPrivacy: S.optional(S.Boolean),
-      TechPrivacy: S.optional(S.Boolean),
-      RegistrarName: S.optional(S.String),
-      WhoIsServer: S.optional(S.String),
-      RegistrarUrl: S.optional(S.String),
-      AbuseContactEmail: S.optional(SensitiveString),
-      AbuseContactPhone: S.optional(SensitiveString),
-      RegistryDomainId: S.optional(S.String),
-      CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      UpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      ExpirationDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      Reseller: S.optional(S.String),
-      DnsSec: S.optional(S.String),
-      StatusList: S.optional(DomainStatusList),
-      DnssecKeys: S.optional(DnssecKeyList),
-      BillingContact: S.optional(ContactDetail),
-      BillingPrivacy: S.optional(S.Boolean),
-    }).pipe(ns),
+export const GetDomainDetailResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.optional(S.String),
+    Nameservers: S.optional(NameserverList),
+    AutoRenew: S.optional(S.Boolean),
+    AdminContact: S.optional(ContactDetail),
+    RegistrantContact: S.optional(ContactDetail),
+    TechContact: S.optional(ContactDetail),
+    AdminPrivacy: S.optional(S.Boolean),
+    RegistrantPrivacy: S.optional(S.Boolean),
+    TechPrivacy: S.optional(S.Boolean),
+    RegistrarName: S.optional(S.String),
+    WhoIsServer: S.optional(S.String),
+    RegistrarUrl: S.optional(S.String),
+    AbuseContactEmail: S.optional(SensitiveString),
+    AbuseContactPhone: S.optional(SensitiveString),
+    RegistryDomainId: S.optional(S.String),
+    CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Reseller: S.optional(S.String),
+    DnsSec: S.optional(S.String),
+    StatusList: S.optional(DomainStatusList),
+    DnssecKeys: S.optional(DnssecKeyList),
+    BillingContact: S.optional(ContactDetail),
+    BillingPrivacy: S.optional(S.Boolean),
+  }).pipe(ns),
 ).annotate({
   identifier: "GetDomainDetailResponse",
 }) as any as S.Schema<GetDomainDetailResponse>;
@@ -1014,31 +1000,30 @@ export interface GetDomainSuggestionsRequest {
   SuggestionCount: number;
   OnlyAvailable: boolean;
 }
-export const GetDomainSuggestionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DomainName: S.String,
-      SuggestionCount: S.Number,
-      OnlyAvailable: S.Boolean,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDomainSuggestionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    SuggestionCount: S.Number,
+    OnlyAvailable: S.Boolean,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDomainSuggestionsRequest",
-  }) as any as S.Schema<GetDomainSuggestionsRequest>;
+  ),
+).annotate({
+  identifier: "GetDomainSuggestionsRequest",
+}) as any as S.Schema<GetDomainSuggestionsRequest>;
 export interface DomainSuggestion {
   DomainName?: string;
   Availability?: string;
 }
-export const DomainSuggestion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DomainSuggestion = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.optional(S.String),
     Availability: S.optional(S.String),
@@ -1047,33 +1032,30 @@ export const DomainSuggestion = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DomainSuggestion",
 }) as any as S.Schema<DomainSuggestion>;
 export type DomainSuggestionsList = DomainSuggestion[];
-export const DomainSuggestionsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DomainSuggestion);
+export const DomainSuggestionsList = /*@__PURE__*/ S.Array(DomainSuggestion);
 export interface GetDomainSuggestionsResponse {
   SuggestionsList?: DomainSuggestion[];
 }
-export const GetDomainSuggestionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ SuggestionsList: S.optional(DomainSuggestionsList) }).pipe(ns),
-  ).annotate({
-    identifier: "GetDomainSuggestionsResponse",
-  }) as any as S.Schema<GetDomainSuggestionsResponse>;
+export const GetDomainSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ SuggestionsList: S.optional(DomainSuggestionsList) }).pipe(ns),
+).annotate({
+  identifier: "GetDomainSuggestionsResponse",
+}) as any as S.Schema<GetDomainSuggestionsResponse>;
 export interface GetOperationDetailRequest {
   OperationId: string;
 }
-export const GetOperationDetailRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ OperationId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetOperationDetailRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetOperationDetailRequest",
 }) as any as S.Schema<GetOperationDetailRequest>;
@@ -1084,7 +1066,7 @@ export type OperationStatus =
   | "SUCCESSFUL"
   | "FAILED"
   | (string & {});
-export const OperationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OperationStatus = /*@__PURE__*/ S.String;
 export type OperationType =
   | "REGISTER_DOMAIN"
   | "DELETE_DOMAIN"
@@ -1108,7 +1090,7 @@ export type OperationType =
   | "TRANSFER_ON_RENEW"
   | "RESTORE_DOMAIN"
   | (string & {});
-export const OperationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const OperationType = /*@__PURE__*/ S.String;
 export type StatusFlag =
   | "PENDING_ACCEPTANCE"
   | "PENDING_CUSTOMER_ACTION"
@@ -1116,7 +1098,7 @@ export type StatusFlag =
   | "PENDING_PAYMENT_VERIFICATION"
   | "PENDING_SUPPORT_CASE"
   | (string & {});
-export const StatusFlag = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StatusFlag = /*@__PURE__*/ S.String;
 export interface GetOperationDetailResponse {
   OperationId?: string;
   Status?: OperationStatus;
@@ -1127,37 +1109,34 @@ export interface GetOperationDetailResponse {
   LastUpdatedDate?: Date;
   StatusFlag?: StatusFlag;
 }
-export const GetOperationDetailResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OperationId: S.optional(S.String),
-      Status: S.optional(OperationStatus),
-      Message: S.optional(S.String),
-      DomainName: S.optional(S.String),
-      Type: S.optional(OperationType),
-      SubmittedDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      LastUpdatedDate: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      StatusFlag: S.optional(StatusFlag),
-    }).pipe(ns),
+export const GetOperationDetailResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OperationId: S.optional(S.String),
+    Status: S.optional(OperationStatus),
+    Message: S.optional(S.String),
+    DomainName: S.optional(S.String),
+    Type: S.optional(OperationType),
+    SubmittedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastUpdatedDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    StatusFlag: S.optional(StatusFlag),
+  }).pipe(ns),
 ).annotate({
   identifier: "GetOperationDetailResponse",
 }) as any as S.Schema<GetOperationDetailResponse>;
 export type ListDomainsAttributeName = "DomainName" | "Expiry" | (string & {});
-export const ListDomainsAttributeName = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ListDomainsAttributeName = /*@__PURE__*/ S.String;
 export type Operator = "LE" | "GE" | "BEGINS_WITH" | (string & {});
-export const Operator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Operator = /*@__PURE__*/ S.String;
 export type Values = string[];
-export const Values = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface FilterCondition {
   Name: ListDomainsAttributeName;
   Operator: Operator;
   Values: string[];
 }
-export const FilterCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FilterCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: ListDomainsAttributeName,
     Operator: Operator,
@@ -1167,15 +1146,14 @@ export const FilterCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "FilterCondition",
 }) as any as S.Schema<FilterCondition>;
 export type FilterConditions = FilterCondition[];
-export const FilterConditions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(FilterCondition);
+export const FilterConditions = /*@__PURE__*/ S.Array(FilterCondition);
 export type SortOrder = "ASC" | "DESC" | (string & {});
-export const SortOrder = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SortOrder = /*@__PURE__*/ S.String;
 export interface SortCondition {
   Name: ListDomainsAttributeName;
   SortOrder: SortOrder;
 }
-export const SortCondition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SortCondition = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: ListDomainsAttributeName, SortOrder: SortOrder }),
 ).annotate({ identifier: "SortCondition" }) as any as S.Schema<SortCondition>;
 export interface ListDomainsRequest {
@@ -1184,7 +1162,7 @@ export interface ListDomainsRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FilterConditions: S.optional(FilterConditions),
     SortCondition: S.optional(SortCondition),
@@ -1210,7 +1188,7 @@ export interface DomainSummary {
   TransferLock?: boolean;
   Expiry?: Date;
 }
-export const DomainSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DomainSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.optional(S.String),
     AutoRenew: S.optional(S.Boolean),
@@ -1219,13 +1197,12 @@ export const DomainSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainSummary" }) as any as S.Schema<DomainSummary>;
 export type DomainSummaryList = DomainSummary[];
-export const DomainSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DomainSummary);
+export const DomainSummaryList = /*@__PURE__*/ S.Array(DomainSummary);
 export interface ListDomainsResponse {
   Domains?: DomainSummary[];
   NextPageMarker?: string;
 }
-export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Domains: S.optional(DomainSummaryList),
     NextPageMarker: S.optional(S.String),
@@ -1234,14 +1211,11 @@ export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListDomainsResponse",
 }) as any as S.Schema<ListDomainsResponse>;
 export type OperationStatusList = OperationStatus[];
-export const OperationStatusList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(OperationStatus);
+export const OperationStatusList = /*@__PURE__*/ S.Array(OperationStatus);
 export type OperationTypeList = OperationType[];
-export const OperationTypeList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(OperationType);
+export const OperationTypeList = /*@__PURE__*/ S.Array(OperationType);
 export type ListOperationsSortAttributeName = "SubmittedDate" | (string & {});
-export const ListOperationsSortAttributeName =
-  /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ListOperationsSortAttributeName = /*@__PURE__*/ S.String;
 export interface ListOperationsRequest {
   SubmittedSince?: Date;
   Marker?: string;
@@ -1251,7 +1225,7 @@ export interface ListOperationsRequest {
   SortBy?: ListOperationsSortAttributeName;
   SortOrder?: SortOrder;
 }
-export const ListOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SubmittedSince: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     Marker: S.optional(S.String),
@@ -1284,7 +1258,7 @@ export interface OperationSummary {
   StatusFlag?: StatusFlag;
   LastUpdatedDate?: Date;
 }
-export const OperationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OperationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     OperationId: S.optional(S.String),
     Status: S.optional(OperationStatus),
@@ -1301,18 +1275,16 @@ export const OperationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "OperationSummary",
 }) as any as S.Schema<OperationSummary>;
 export type OperationSummaryList = OperationSummary[];
-export const OperationSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(OperationSummary);
+export const OperationSummaryList = /*@__PURE__*/ S.Array(OperationSummary);
 export interface ListOperationsResponse {
   Operations?: OperationSummary[];
   NextPageMarker?: string;
 }
-export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Operations: S.optional(OperationSummaryList),
-      NextPageMarker: S.optional(S.String),
-    }).pipe(ns),
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Operations: S.optional(OperationSummaryList),
+    NextPageMarker: S.optional(S.String),
+  }).pipe(ns),
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
@@ -1321,7 +1293,7 @@ export interface ListPricesRequest {
   Marker?: string;
   MaxItems?: number;
 }
-export const ListPricesRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPricesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Tld: S.optional(S.String),
     Marker: S.optional(S.String),
@@ -1344,7 +1316,7 @@ export interface PriceWithCurrency {
   Price: number;
   Currency: string;
 }
-export const PriceWithCurrency = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PriceWithCurrency = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Price: S.Number, Currency: S.String }),
 ).annotate({
   identifier: "PriceWithCurrency",
@@ -1357,7 +1329,7 @@ export interface DomainPrice {
   ChangeOwnershipPrice?: PriceWithCurrency;
   RestorationPrice?: PriceWithCurrency;
 }
-export const DomainPrice = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DomainPrice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String),
     RegistrationPrice: S.optional(PriceWithCurrency),
@@ -1368,12 +1340,12 @@ export const DomainPrice = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DomainPrice" }) as any as S.Schema<DomainPrice>;
 export type DomainPriceList = DomainPrice[];
-export const DomainPriceList = /*@__PURE__*/ /*#__PURE__*/ S.Array(DomainPrice);
+export const DomainPriceList = /*@__PURE__*/ S.Array(DomainPrice);
 export interface ListPricesResponse {
   Prices?: DomainPrice[];
   NextPageMarker?: string;
 }
-export const ListPricesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListPricesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Prices: S.optional(DomainPriceList),
     NextPageMarker: S.optional(S.String),
@@ -1384,19 +1356,18 @@ export const ListPricesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForDomainRequest {
   DomainName: string;
 }
-export const ListTagsForDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ DomainName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForDomainRequest",
 }) as any as S.Schema<ListTagsForDomainRequest>;
@@ -1404,16 +1375,16 @@ export interface Tag {
   Key?: string;
   Value?: string;
 }
-export const Tag = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Tag = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Tag);
+export const TagList = /*@__PURE__*/ S.Array(Tag);
 export interface ListTagsForDomainResponse {
   TagList?: Tag[];
 }
-export const ListTagsForDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
+export const ListTagsForDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TagList: S.optional(TagList) }).pipe(ns),
 ).annotate({
   identifier: "ListTagsForDomainResponse",
 }) as any as S.Schema<ListTagsForDomainResponse>;
@@ -1421,7 +1392,7 @@ export interface PushDomainRequest {
   DomainName: string;
   Target: string;
 }
-export const PushDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PushDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DomainName: S.String, Target: S.String }).pipe(
     T.all(
       ns,
@@ -1437,7 +1408,7 @@ export const PushDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PushDomainRequest",
 }) as any as S.Schema<PushDomainRequest>;
 export interface PushDomainResponse {}
-export const PushDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PushDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({
   identifier: "PushDomainResponse",
@@ -1456,7 +1427,7 @@ export interface RegisterDomainRequest {
   BillingContact?: ContactDetail;
   PrivacyProtectBillingContact?: boolean;
 }
-export const RegisterDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegisterDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     IdnLangCode: S.optional(S.String),
@@ -1487,8 +1458,8 @@ export const RegisterDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RegisterDomainResponse {
   OperationId?: string;
 }
-export const RegisterDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
+export const RegisterDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "RegisterDomainResponse",
 }) as any as S.Schema<RegisterDomainResponse>;
@@ -1496,7 +1467,7 @@ export interface RejectDomainTransferFromAnotherAwsAccountRequest {
   DomainName: string;
 }
 export const RejectDomainTransferFromAnotherAwsAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ DomainName: S.String }).pipe(
       T.all(
         ns,
@@ -1515,7 +1486,7 @@ export interface RejectDomainTransferFromAnotherAwsAccountResponse {
   OperationId?: string;
 }
 export const RejectDomainTransferFromAnotherAwsAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
   ).annotate({
     identifier: "RejectDomainTransferFromAnotherAwsAccountResponse",
@@ -1525,7 +1496,7 @@ export interface RenewDomainRequest {
   DurationInYears?: number;
   CurrentExpiryYear: number;
 }
-export const RenewDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RenewDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     DurationInYears: S.optional(S.Number),
@@ -1547,7 +1518,7 @@ export const RenewDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface RenewDomainResponse {
   OperationId?: string;
 }
-export const RenewDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RenewDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "RenewDomainResponse",
@@ -1555,8 +1526,8 @@ export const RenewDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ResendContactReachabilityEmailRequest {
   domainName?: string;
 }
-export const ResendContactReachabilityEmailRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResendContactReachabilityEmailRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ domainName: S.optional(S.String) }).pipe(
       T.all(
         ns,
@@ -1568,76 +1539,74 @@ export const ResendContactReachabilityEmailRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ResendContactReachabilityEmailRequest",
-  }) as any as S.Schema<ResendContactReachabilityEmailRequest>;
+).annotate({
+  identifier: "ResendContactReachabilityEmailRequest",
+}) as any as S.Schema<ResendContactReachabilityEmailRequest>;
 export interface ResendContactReachabilityEmailResponse {
   domainName?: string;
   emailAddress?: string | redacted.Redacted<string>;
   isAlreadyVerified?: boolean;
 }
-export const ResendContactReachabilityEmailResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ResendContactReachabilityEmailResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       domainName: S.optional(S.String),
       emailAddress: S.optional(SensitiveString),
       isAlreadyVerified: S.optional(S.Boolean),
     }).pipe(ns),
-  ).annotate({
-    identifier: "ResendContactReachabilityEmailResponse",
-  }) as any as S.Schema<ResendContactReachabilityEmailResponse>;
+).annotate({
+  identifier: "ResendContactReachabilityEmailResponse",
+}) as any as S.Schema<ResendContactReachabilityEmailResponse>;
 export interface ResendOperationAuthorizationRequest {
   OperationId: string;
 }
-export const ResendOperationAuthorizationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ OperationId: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ResendOperationAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ResendOperationAuthorizationRequest",
-  }) as any as S.Schema<ResendOperationAuthorizationRequest>;
+  ),
+).annotate({
+  identifier: "ResendOperationAuthorizationRequest",
+}) as any as S.Schema<ResendOperationAuthorizationRequest>;
 export interface ResendOperationAuthorizationResponse {}
-export const ResendOperationAuthorizationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "ResendOperationAuthorizationResponse",
-  }) as any as S.Schema<ResendOperationAuthorizationResponse>;
+export const ResendOperationAuthorizationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "ResendOperationAuthorizationResponse",
+}) as any as S.Schema<ResendOperationAuthorizationResponse>;
 export interface RetrieveDomainAuthCodeRequest {
   DomainName: string;
 }
-export const RetrieveDomainAuthCodeRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ DomainName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const RetrieveDomainAuthCodeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "RetrieveDomainAuthCodeRequest",
-  }) as any as S.Schema<RetrieveDomainAuthCodeRequest>;
+  ),
+).annotate({
+  identifier: "RetrieveDomainAuthCodeRequest",
+}) as any as S.Schema<RetrieveDomainAuthCodeRequest>;
 export interface RetrieveDomainAuthCodeResponse {
   AuthCode?: string | redacted.Redacted<string>;
 }
-export const RetrieveDomainAuthCodeResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ AuthCode: S.optional(SensitiveString) }).pipe(ns),
-  ).annotate({
-    identifier: "RetrieveDomainAuthCodeResponse",
-  }) as any as S.Schema<RetrieveDomainAuthCodeResponse>;
+export const RetrieveDomainAuthCodeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AuthCode: S.optional(SensitiveString) }).pipe(ns),
+).annotate({
+  identifier: "RetrieveDomainAuthCodeResponse",
+}) as any as S.Schema<RetrieveDomainAuthCodeResponse>;
 export interface TransferDomainRequest {
   DomainName: string;
   IdnLangCode?: string;
@@ -1654,7 +1623,7 @@ export interface TransferDomainRequest {
   BillingContact?: ContactDetail;
   PrivacyProtectBillingContact?: boolean;
 }
-export const TransferDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TransferDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.String,
     IdnLangCode: S.optional(S.String),
@@ -1687,8 +1656,8 @@ export const TransferDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface TransferDomainResponse {
   OperationId?: string;
 }
-export const TransferDomainResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
+export const TransferDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
 ).annotate({
   identifier: "TransferDomainResponse",
 }) as any as S.Schema<TransferDomainResponse>;
@@ -1696,8 +1665,8 @@ export interface TransferDomainToAnotherAwsAccountRequest {
   DomainName: string;
   AccountId: string;
 }
-export const TransferDomainToAnotherAwsAccountRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TransferDomainToAnotherAwsAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ DomainName: S.String, AccountId: S.String }).pipe(
       T.all(
         ns,
@@ -1709,15 +1678,15 @@ export const TransferDomainToAnotherAwsAccountRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "TransferDomainToAnotherAwsAccountRequest",
-  }) as any as S.Schema<TransferDomainToAnotherAwsAccountRequest>;
+).annotate({
+  identifier: "TransferDomainToAnotherAwsAccountRequest",
+}) as any as S.Schema<TransferDomainToAnotherAwsAccountRequest>;
 export interface TransferDomainToAnotherAwsAccountResponse {
   OperationId?: string;
   Password?: string | redacted.Redacted<string>;
 }
 export const TransferDomainToAnotherAwsAccountResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       OperationId: S.optional(S.String),
       Password: S.optional(SensitiveString),
@@ -1729,7 +1698,7 @@ export interface Consent {
   MaxPrice: number;
   Currency: string;
 }
-export const Consent = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Consent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MaxPrice: S.Number, Currency: S.String }),
 ).annotate({ identifier: "Consent" }) as any as S.Schema<Consent>;
 export interface UpdateDomainContactRequest {
@@ -1740,38 +1709,36 @@ export interface UpdateDomainContactRequest {
   Consent?: Consent;
   BillingContact?: ContactDetail;
 }
-export const UpdateDomainContactRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      DomainName: S.String,
-      AdminContact: S.optional(ContactDetail),
-      RegistrantContact: S.optional(ContactDetail),
-      TechContact: S.optional(ContactDetail),
-      Consent: S.optional(Consent),
-      BillingContact: S.optional(ContactDetail),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDomainContactRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    AdminContact: S.optional(ContactDetail),
+    RegistrantContact: S.optional(ContactDetail),
+    TechContact: S.optional(ContactDetail),
+    Consent: S.optional(Consent),
+    BillingContact: S.optional(ContactDetail),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateDomainContactRequest",
 }) as any as S.Schema<UpdateDomainContactRequest>;
 export interface UpdateDomainContactResponse {
   OperationId?: string;
 }
-export const UpdateDomainContactResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateDomainContactResponse",
-  }) as any as S.Schema<UpdateDomainContactResponse>;
+export const UpdateDomainContactResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "UpdateDomainContactResponse",
+}) as any as S.Schema<UpdateDomainContactResponse>;
 export interface UpdateDomainContactPrivacyRequest {
   DomainName: string;
   AdminPrivacy?: boolean;
@@ -1779,103 +1746,99 @@ export interface UpdateDomainContactPrivacyRequest {
   TechPrivacy?: boolean;
   BillingPrivacy?: boolean;
 }
-export const UpdateDomainContactPrivacyRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DomainName: S.String,
-      AdminPrivacy: S.optional(S.Boolean),
-      RegistrantPrivacy: S.optional(S.Boolean),
-      TechPrivacy: S.optional(S.Boolean),
-      BillingPrivacy: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDomainContactPrivacyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    AdminPrivacy: S.optional(S.Boolean),
+    RegistrantPrivacy: S.optional(S.Boolean),
+    TechPrivacy: S.optional(S.Boolean),
+    BillingPrivacy: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDomainContactPrivacyRequest",
-  }) as any as S.Schema<UpdateDomainContactPrivacyRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDomainContactPrivacyRequest",
+}) as any as S.Schema<UpdateDomainContactPrivacyRequest>;
 export interface UpdateDomainContactPrivacyResponse {
   OperationId?: string;
 }
-export const UpdateDomainContactPrivacyResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateDomainContactPrivacyResponse",
-  }) as any as S.Schema<UpdateDomainContactPrivacyResponse>;
+export const UpdateDomainContactPrivacyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "UpdateDomainContactPrivacyResponse",
+}) as any as S.Schema<UpdateDomainContactPrivacyResponse>;
 export interface UpdateDomainNameserversRequest {
   DomainName: string;
   FIAuthKey?: string | redacted.Redacted<string>;
   Nameservers: Nameserver[];
 }
-export const UpdateDomainNameserversRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DomainName: S.String,
-      FIAuthKey: S.optional(SensitiveString),
-      Nameservers: NameserverList,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDomainNameserversRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DomainName: S.String,
+    FIAuthKey: S.optional(SensitiveString),
+    Nameservers: NameserverList,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDomainNameserversRequest",
-  }) as any as S.Schema<UpdateDomainNameserversRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDomainNameserversRequest",
+}) as any as S.Schema<UpdateDomainNameserversRequest>;
 export interface UpdateDomainNameserversResponse {
   OperationId?: string;
 }
-export const UpdateDomainNameserversResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "UpdateDomainNameserversResponse",
-  }) as any as S.Schema<UpdateDomainNameserversResponse>;
+export const UpdateDomainNameserversResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ OperationId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "UpdateDomainNameserversResponse",
+}) as any as S.Schema<UpdateDomainNameserversResponse>;
 export interface UpdateTagsForDomainRequest {
   DomainName: string;
   TagsToUpdate?: Tag[];
 }
-export const UpdateTagsForDomainRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ DomainName: S.String, TagsToUpdate: S.optional(TagList) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateTagsForDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DomainName: S.String, TagsToUpdate: S.optional(TagList) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateTagsForDomainRequest",
 }) as any as S.Schema<UpdateTagsForDomainRequest>;
 export interface UpdateTagsForDomainResponse {}
-export const UpdateTagsForDomainResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateTagsForDomainResponse",
-  }) as any as S.Schema<UpdateTagsForDomainResponse>;
+export const UpdateTagsForDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateTagsForDomainResponse",
+}) as any as S.Schema<UpdateTagsForDomainResponse>;
 export interface ViewBillingRequest {
   Start?: Date;
   End?: Date;
   Marker?: string;
   MaxItems?: number;
 }
-export const ViewBillingRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ViewBillingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Start: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     End: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1902,7 +1865,7 @@ export interface BillingRecord {
   BillDate?: Date;
   Price?: number;
 }
-export const BillingRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BillingRecord = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     DomainName: S.optional(S.String),
     Operation: S.optional(OperationType),
@@ -1912,13 +1875,12 @@ export const BillingRecord = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BillingRecord" }) as any as S.Schema<BillingRecord>;
 export type BillingRecords = BillingRecord[];
-export const BillingRecords =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BillingRecord);
+export const BillingRecords = /*@__PURE__*/ S.Array(BillingRecord);
 export interface ViewBillingResponse {
   NextPageMarker?: string;
   BillingRecords?: BillingRecord[];
 }
-export const ViewBillingResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ViewBillingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NextPageMarker: S.optional(S.String),
     BillingRecords: S.optional(BillingRecords),
@@ -1931,35 +1893,51 @@ export const ViewBillingResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class DomainLimitExceeded extends S.TaggedErrorClass<DomainLimitExceeded>()(
   "DomainLimitExceeded",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
   "InvalidInput",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class OperationLimitExceeded extends S.TaggedErrorClass<OperationLimitExceeded>()(
   "OperationLimitExceeded",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class UnsupportedTLD extends S.TaggedErrorClass<UnsupportedTLD>()(
   "UnsupportedTLD",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class DnssecLimitExceeded extends S.TaggedErrorClass<DnssecLimitExceeded>()(
   "DnssecLimitExceeded",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError, C.withThrottlingError) {}
 export class DuplicateRequest extends S.TaggedErrorClass<DuplicateRequest>()(
   "DuplicateRequest",
   { requestId: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TLDRulesViolation extends S.TaggedErrorClass<TLDRulesViolation>()(
   "TLDRulesViolation",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class TLDInMaintenance extends S.TaggedErrorClass<TLDInMaintenance>()(
   "TLDInMaintenance",
   { message: S.optional(S.String), tld: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
+export class DomainNotFound extends S.TaggedErrorClass<DomainNotFound>()(
+  "DomainNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidInput",
+    message: { includes: "not found in account" },
+  }),
+).pipe(C.withNotFoundError) {}
 
 //# Operations
 export type AcceptDomainTransferFromAnotherAwsAccountError =
@@ -1984,7 +1962,7 @@ export const acceptDomainTransferFromAnotherAwsAccount: API.OperationMethod<
   AcceptDomainTransferFromAnotherAwsAccountResponse,
   AcceptDomainTransferFromAnotherAwsAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AcceptDomainTransferFromAnotherAwsAccountRequest,
   output: AcceptDomainTransferFromAnotherAwsAccountResponse,
   errors: [
@@ -2021,7 +1999,7 @@ export const associateDelegationSignerToDomain: API.OperationMethod<
   AssociateDelegationSignerToDomainResponse,
   AssociateDelegationSignerToDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: AssociateDelegationSignerToDomainRequest,
   output: AssociateDelegationSignerToDomainResponse,
   errors: [
@@ -2056,7 +2034,7 @@ export const cancelDomainTransferToAnotherAwsAccount: API.OperationMethod<
   CancelDomainTransferToAnotherAwsAccountResponse,
   CancelDomainTransferToAnotherAwsAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelDomainTransferToAnotherAwsAccountRequest,
   output: CancelDomainTransferToAnotherAwsAccountResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
@@ -2079,7 +2057,7 @@ export const checkDomainAvailability: API.OperationMethod<
   CheckDomainAvailabilityResponse,
   CheckDomainAvailabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckDomainAvailabilityRequest,
   output: CheckDomainAvailabilityResponse,
   errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
@@ -2100,7 +2078,7 @@ export const checkDomainTransferability: API.OperationMethod<
   CheckDomainTransferabilityResponse,
   CheckDomainTransferabilityError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CheckDomainTransferabilityRequest,
   output: CheckDomainTransferabilityResponse,
   errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
@@ -2139,7 +2117,7 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainResponse,
   DeleteDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDomainRequest,
   output: DeleteDomainResponse,
   errors: [DuplicateRequest, InvalidInput, TLDRulesViolation, UnsupportedTLD],
@@ -2163,7 +2141,7 @@ export const deleteTagsForDomain: API.OperationMethod<
   DeleteTagsForDomainResponse,
   DeleteTagsForDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteTagsForDomainRequest,
   output: DeleteTagsForDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
@@ -2184,7 +2162,7 @@ export const disableDomainAutoRenew: API.OperationMethod<
   DisableDomainAutoRenewResponse,
   DisableDomainAutoRenewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableDomainAutoRenewRequest,
   output: DisableDomainAutoRenewResponse,
   errors: [InvalidInput, UnsupportedTLD],
@@ -2212,7 +2190,7 @@ export const disableDomainTransferLock: API.OperationMethod<
   DisableDomainTransferLockResponse,
   DisableDomainTransferLockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisableDomainTransferLockRequest,
   output: DisableDomainTransferLockResponse,
   errors: [
@@ -2242,7 +2220,7 @@ export const disassociateDelegationSignerFromDomain: API.OperationMethod<
   DisassociateDelegationSignerFromDomainResponse,
   DisassociateDelegationSignerFromDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DisassociateDelegationSignerFromDomainRequest,
   output: DisassociateDelegationSignerFromDomainResponse,
   errors: [
@@ -2277,7 +2255,7 @@ export const enableDomainAutoRenew: API.OperationMethod<
   EnableDomainAutoRenewResponse,
   EnableDomainAutoRenewError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableDomainAutoRenewRequest,
   output: EnableDomainAutoRenewResponse,
   errors: [InvalidInput, TLDRulesViolation, UnsupportedTLD],
@@ -2304,7 +2282,7 @@ export const enableDomainTransferLock: API.OperationMethod<
   EnableDomainTransferLockResponse,
   EnableDomainTransferLockError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: EnableDomainTransferLockRequest,
   output: EnableDomainTransferLockResponse,
   errors: [
@@ -2336,7 +2314,7 @@ export const getContactReachabilityStatus: API.OperationMethod<
   GetContactReachabilityStatusResponse,
   GetContactReachabilityStatusError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetContactReachabilityStatusRequest,
   output: GetContactReachabilityStatusResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
@@ -2344,7 +2322,11 @@ export const getContactReachabilityStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetContactReachabilityStatus",
 }));
-export type GetDomainDetailError = InvalidInput | UnsupportedTLD | CommonErrors;
+export type GetDomainDetailError =
+  | InvalidInput
+  | UnsupportedTLD
+  | DomainNotFound
+  | CommonErrors;
 /**
  * This operation returns detailed information about a specified domain that is
  * associated with the current Amazon Web Services account. Contact information for the
@@ -2355,10 +2337,10 @@ export const getDomainDetail: API.OperationMethod<
   GetDomainDetailResponse,
   GetDomainDetailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainDetailRequest,
   output: GetDomainDetailResponse,
-  errors: [InvalidInput, UnsupportedTLD],
+  errors: [InvalidInput, UnsupportedTLD, DomainNotFound],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "GetDomainDetail",
@@ -2376,7 +2358,7 @@ export const getDomainSuggestions: API.OperationMethod<
   GetDomainSuggestionsResponse,
   GetDomainSuggestionsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDomainSuggestionsRequest,
   output: GetDomainSuggestionsResponse,
   errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
@@ -2394,7 +2376,7 @@ export const getOperationDetail: API.OperationMethod<
   GetOperationDetailResponse,
   GetOperationDetailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetOperationDetailRequest,
   output: GetOperationDetailResponse,
   errors: [InvalidInput],
@@ -2427,7 +2409,7 @@ export const listDomains: API.OperationMethod<
     ListDomainsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
   errors: [InvalidInput],
@@ -2468,7 +2450,7 @@ export const listOperations: API.OperationMethod<
     ListOperationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
   errors: [InvalidInput],
@@ -2517,7 +2499,7 @@ export const listPrices: API.OperationMethod<
     ListPricesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListPricesRequest,
   output: ListPricesResponse,
   errors: [InvalidInput, UnsupportedTLD],
@@ -2548,7 +2530,7 @@ export const listTagsForDomain: API.OperationMethod<
   ListTagsForDomainResponse,
   ListTagsForDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForDomainRequest,
   output: ListTagsForDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
@@ -2575,7 +2557,7 @@ export const pushDomain: API.OperationMethod<
   PushDomainResponse,
   PushDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PushDomainRequest,
   output: PushDomainResponse,
   errors: [
@@ -2631,7 +2613,7 @@ export const registerDomain: API.OperationMethod<
   RegisterDomainResponse,
   RegisterDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterDomainRequest,
   output: RegisterDomainResponse,
   errors: [
@@ -2663,7 +2645,7 @@ export const rejectDomainTransferFromAnotherAwsAccount: API.OperationMethod<
   RejectDomainTransferFromAnotherAwsAccountResponse,
   RejectDomainTransferFromAnotherAwsAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectDomainTransferFromAnotherAwsAccountRequest,
   output: RejectDomainTransferFromAnotherAwsAccountResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
@@ -2677,6 +2659,7 @@ export type RenewDomainError =
   | OperationLimitExceeded
   | TLDRulesViolation
   | UnsupportedTLD
+  | DomainNotFound
   | CommonErrors;
 /**
  * This operation renews a domain for the specified number of years. The cost of renewing
@@ -2693,7 +2676,7 @@ export const renewDomain: API.OperationMethod<
   RenewDomainResponse,
   RenewDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RenewDomainRequest,
   output: RenewDomainResponse,
   errors: [
@@ -2702,6 +2685,7 @@ export const renewDomain: API.OperationMethod<
     OperationLimitExceeded,
     TLDRulesViolation,
     UnsupportedTLD,
+    DomainNotFound,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2723,7 +2707,7 @@ export const resendContactReachabilityEmail: API.OperationMethod<
   ResendContactReachabilityEmailResponse,
   ResendContactReachabilityEmailError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResendContactReachabilityEmailRequest,
   output: ResendContactReachabilityEmailResponse,
   errors: [
@@ -2748,7 +2732,7 @@ export const resendOperationAuthorization: API.OperationMethod<
   ResendOperationAuthorizationResponse,
   ResendOperationAuthorizationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ResendOperationAuthorizationRequest,
   output: ResendOperationAuthorizationResponse,
   errors: [InvalidInput, TLDInMaintenance],
@@ -2760,6 +2744,7 @@ export type RetrieveDomainAuthCodeError =
   | InvalidInput
   | TLDInMaintenance
   | UnsupportedTLD
+  | DomainNotFound
   | CommonErrors;
 /**
  * This operation returns the authorization code for the domain. To transfer a domain to
@@ -2770,10 +2755,10 @@ export const retrieveDomainAuthCode: API.OperationMethod<
   RetrieveDomainAuthCodeResponse,
   RetrieveDomainAuthCodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RetrieveDomainAuthCodeRequest,
   output: RetrieveDomainAuthCodeResponse,
-  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD],
+  errors: [InvalidInput, TLDInMaintenance, UnsupportedTLD, DomainNotFound],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "RetrieveDomainAuthCode",
@@ -2827,7 +2812,7 @@ export const transferDomain: API.OperationMethod<
   TransferDomainResponse,
   TransferDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransferDomainRequest,
   output: TransferDomainResponse,
   errors: [
@@ -2875,7 +2860,7 @@ export const transferDomainToAnotherAwsAccount: API.OperationMethod<
   TransferDomainToAnotherAwsAccountResponse,
   TransferDomainToAnotherAwsAccountError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TransferDomainToAnotherAwsAccountRequest,
   output: TransferDomainToAnotherAwsAccountResponse,
   errors: [
@@ -2909,7 +2894,7 @@ export const updateDomainContact: API.OperationMethod<
   UpdateDomainContactResponse,
   UpdateDomainContactError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainContactRequest,
   output: UpdateDomainContactResponse,
   errors: [
@@ -2958,7 +2943,7 @@ export const updateDomainContactPrivacy: API.OperationMethod<
   UpdateDomainContactPrivacyResponse,
   UpdateDomainContactPrivacyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainContactPrivacyRequest,
   output: UpdateDomainContactPrivacyResponse,
   errors: [
@@ -2978,6 +2963,7 @@ export type UpdateDomainNameserversError =
   | OperationLimitExceeded
   | TLDRulesViolation
   | UnsupportedTLD
+  | DomainNotFound
   | CommonErrors;
 /**
  * This operation replaces the current set of name servers for the domain with the
@@ -2993,7 +2979,7 @@ export const updateDomainNameservers: API.OperationMethod<
   UpdateDomainNameserversResponse,
   UpdateDomainNameserversError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDomainNameserversRequest,
   output: UpdateDomainNameserversResponse,
   errors: [
@@ -3002,6 +2988,7 @@ export const updateDomainNameservers: API.OperationMethod<
     OperationLimitExceeded,
     TLDRulesViolation,
     UnsupportedTLD,
+    DomainNotFound,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3023,7 +3010,7 @@ export const updateTagsForDomain: API.OperationMethod<
   UpdateTagsForDomainResponse,
   UpdateTagsForDomainError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateTagsForDomainRequest,
   output: UpdateTagsForDomainResponse,
   errors: [InvalidInput, OperationLimitExceeded, UnsupportedTLD],
@@ -3055,7 +3042,7 @@ export const viewBilling: API.OperationMethod<
     ViewBillingError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ViewBillingRequest,
   output: ViewBillingResponse,
   errors: [InvalidInput],

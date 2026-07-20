@@ -119,81 +119,79 @@ export type InviteBody = string | redacted.Redacted<string>;
 
 //# Schemas
 export type AccessorIdList = string[];
-export const AccessorIdList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const AccessorIdList = /*@__PURE__*/ S.Array(S.String);
 export type ChannelRole =
   | "ASKER"
   | "EXPERT"
   | "MODERATOR"
   | "SUPPORTREQUESTOR"
   | (string & {});
-export const ChannelRole = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ChannelRole = /*@__PURE__*/ S.String;
 export interface BatchAddChannelRoleToAccessorsInput {
   spaceId: string;
   channelId: string;
   accessorIds: string[];
   channelRole: ChannelRole;
 }
-export const BatchAddChannelRoleToAccessorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      spaceId: S.String.pipe(T.HttpLabel("spaceId")),
-      channelId: S.String.pipe(T.HttpLabel("channelId")),
-      accessorIds: AccessorIdList,
-      channelRole: ChannelRole,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/spaces/{spaceId}/channels/{channelId}/roles",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const BatchAddChannelRoleToAccessorsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    spaceId: S.String.pipe(T.HttpLabel("spaceId")),
+    channelId: S.String.pipe(T.HttpLabel("channelId")),
+    accessorIds: AccessorIdList,
+    channelRole: ChannelRole,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/spaces/{spaceId}/channels/{channelId}/roles",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "BatchAddChannelRoleToAccessorsInput",
-  }) as any as S.Schema<BatchAddChannelRoleToAccessorsInput>;
+  ),
+).annotate({
+  identifier: "BatchAddChannelRoleToAccessorsInput",
+}) as any as S.Schema<BatchAddChannelRoleToAccessorsInput>;
 export interface BatchError {
   accessorId: string;
   error: number;
   message: string;
 }
-export const BatchError = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchError = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accessorId: S.String, error: S.Number, message: S.String }),
 ).annotate({ identifier: "BatchError" }) as any as S.Schema<BatchError>;
 export type BatchErrorList = BatchError[];
-export const BatchErrorList = /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchError);
+export const BatchErrorList = /*@__PURE__*/ S.Array(BatchError);
 export interface BatchAddChannelRoleToAccessorsOutput {
   addedAccessorIds: string[];
   errors: BatchError[];
 }
-export const BatchAddChannelRoleToAccessorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ addedAccessorIds: AccessorIdList, errors: BatchErrorList }),
-  ).annotate({
-    identifier: "BatchAddChannelRoleToAccessorsOutput",
-  }) as any as S.Schema<BatchAddChannelRoleToAccessorsOutput>;
+export const BatchAddChannelRoleToAccessorsOutput = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ addedAccessorIds: AccessorIdList, errors: BatchErrorList }),
+).annotate({
+  identifier: "BatchAddChannelRoleToAccessorsOutput",
+}) as any as S.Schema<BatchAddChannelRoleToAccessorsOutput>;
 export type ValidationExceptionReason =
   | "unknownOperation"
   | "cannotParse"
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export type Role =
@@ -202,13 +200,13 @@ export type Role =
   | "ADMINISTRATOR"
   | "SUPPORTREQUESTOR"
   | (string & {});
-export const Role = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Role = /*@__PURE__*/ S.String;
 export interface BatchAddRoleInput {
   spaceId: string;
   accessorIds: string[];
   role: Role;
 }
-export const BatchAddRoleInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchAddRoleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     accessorIds: AccessorIdList,
@@ -230,7 +228,7 @@ export interface BatchAddRoleOutput {
   addedAccessorIds: string[];
   errors: BatchError[];
 }
-export const BatchAddRoleOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchAddRoleOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ addedAccessorIds: AccessorIdList, errors: BatchErrorList }),
 ).annotate({
   identifier: "BatchAddRoleOutput",
@@ -241,8 +239,8 @@ export interface BatchRemoveChannelRoleFromAccessorsInput {
   accessorIds: string[];
   channelRole: ChannelRole;
 }
-export const BatchRemoveChannelRoleFromAccessorsInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchRemoveChannelRoleFromAccessorsInput = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       spaceId: S.String.pipe(T.HttpLabel("spaceId")),
       channelId: S.String.pipe(T.HttpLabel("channelId")),
@@ -261,15 +259,15 @@ export const BatchRemoveChannelRoleFromAccessorsInput =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "BatchRemoveChannelRoleFromAccessorsInput",
-  }) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsInput>;
+).annotate({
+  identifier: "BatchRemoveChannelRoleFromAccessorsInput",
+}) as any as S.Schema<BatchRemoveChannelRoleFromAccessorsInput>;
 export interface BatchRemoveChannelRoleFromAccessorsOutput {
   removedAccessorIds: string[];
   errors: BatchError[];
 }
 export const BatchRemoveChannelRoleFromAccessorsOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({ removedAccessorIds: AccessorIdList, errors: BatchErrorList }),
   ).annotate({
     identifier: "BatchRemoveChannelRoleFromAccessorsOutput",
@@ -279,7 +277,7 @@ export interface BatchRemoveRoleInput {
   accessorIds: string[];
   role: Role;
 }
-export const BatchRemoveRoleInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchRemoveRoleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     accessorIds: AccessorIdList,
@@ -301,7 +299,7 @@ export interface BatchRemoveRoleOutput {
   removedAccessorIds: string[];
   errors: BatchError[];
 }
-export const BatchRemoveRoleOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const BatchRemoveRoleOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ removedAccessorIds: AccessorIdList, errors: BatchErrorList }),
 ).annotate({
   identifier: "BatchRemoveRoleOutput",
@@ -311,7 +309,7 @@ export interface CreateChannelInput {
   channelName: string | redacted.Redacted<string>;
   channelDescription?: string | redacted.Redacted<string>;
 }
-export const CreateChannelInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     channelName: SensitiveString,
@@ -332,36 +330,31 @@ export const CreateChannelInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateChannelOutput {
   channelId: string;
 }
-export const CreateChannelOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateChannelOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channelId: S.String }),
 ).annotate({
   identifier: "CreateChannelOutput",
 }) as any as S.Schema<CreateChannelOutput>;
 export type TierLevel = "BASIC" | "STANDARD" | (string & {});
-export const TierLevel = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const TierLevel = /*@__PURE__*/ S.String;
 export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ /*#__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type FeatureEnableParameter = "ENABLED" | "DISABLED" | (string & {});
-export const FeatureEnableParameter = /*@__PURE__*/ /*#__PURE__*/ S.String;
-export type AllowedDomainsList = string | redacted.Redacted<string>[];
-export const AllowedDomainsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(SensitiveString);
+export const FeatureEnableParameter = /*@__PURE__*/ S.String;
+export type AllowedDomainsList = (string | redacted.Redacted<string>)[];
+export const AllowedDomainsList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface SupportedEmailDomainsParameters {
   enabled?: FeatureEnableParameter;
-  allowedDomains?: string | redacted.Redacted<string>[];
+  allowedDomains?: (string | redacted.Redacted<string>)[];
 }
-export const SupportedEmailDomainsParameters =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(FeatureEnableParameter),
-      allowedDomains: S.optional(AllowedDomainsList),
-    }),
-  ).annotate({
-    identifier: "SupportedEmailDomainsParameters",
-  }) as any as S.Schema<SupportedEmailDomainsParameters>;
+export const SupportedEmailDomainsParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(FeatureEnableParameter),
+    allowedDomains: S.optional(AllowedDomainsList),
+  }),
+).annotate({
+  identifier: "SupportedEmailDomainsParameters",
+}) as any as S.Schema<SupportedEmailDomainsParameters>;
 export interface CreateSpaceInput {
   name: string | redacted.Redacted<string>;
   subdomain: string;
@@ -372,7 +365,7 @@ export interface CreateSpaceInput {
   roleArn?: string;
   supportedEmailDomains?: SupportedEmailDomainsParameters;
 }
-export const CreateSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSpaceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: SensitiveString,
     subdomain: S.String,
@@ -398,7 +391,7 @@ export const CreateSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateSpaceOutput {
   spaceId: string;
 }
-export const CreateSpaceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateSpaceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ spaceId: S.String }),
 ).annotate({
   identifier: "CreateSpaceOutput",
@@ -406,7 +399,7 @@ export const CreateSpaceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteSpaceInput {
   spaceId: string;
 }
-export const DeleteSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSpaceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ spaceId: S.String.pipe(T.HttpLabel("spaceId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/spaces/{spaceId}" }),
@@ -421,7 +414,7 @@ export const DeleteSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteSpaceInput",
 }) as any as S.Schema<DeleteSpaceInput>;
 export interface DeleteSpaceResponse {}
-export const DeleteSpaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteSpaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteSpaceResponse",
@@ -430,7 +423,7 @@ export interface DeregisterAdminInput {
   spaceId: string;
   adminId: string;
 }
-export const DeregisterAdminInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeregisterAdminInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     adminId: S.String.pipe(T.HttpLabel("adminId")),
@@ -448,8 +441,8 @@ export const DeregisterAdminInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeregisterAdminInput",
 }) as any as S.Schema<DeregisterAdminInput>;
 export interface DeregisterAdminResponse {}
-export const DeregisterAdminResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeregisterAdminResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeregisterAdminResponse",
 }) as any as S.Schema<DeregisterAdminResponse>;
@@ -457,7 +450,7 @@ export interface GetChannelInput {
   spaceId: string;
   channelId: string;
 }
-export const GetChannelInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     channelId: S.String.pipe(T.HttpLabel("channelId")),
@@ -475,9 +468,9 @@ export const GetChannelInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetChannelInput",
 }) as any as S.Schema<GetChannelInput>;
 export type ChannelRoleList = ChannelRole[];
-export const ChannelRoleList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ChannelRole);
+export const ChannelRoleList = /*@__PURE__*/ S.Array(ChannelRole);
 export type ChannelRoles = { [key: string]: ChannelRole[] | undefined };
-export const ChannelRoles = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ChannelRoles = /*@__PURE__*/ S.Record(
   S.String,
   ChannelRoleList.pipe(S.optional),
 );
@@ -489,7 +482,7 @@ export type ChannelStatus =
   | "DELETING"
   | "DELETE_FAILED"
   | (string & {});
-export const ChannelStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ChannelStatus = /*@__PURE__*/ S.String;
 export interface GetChannelOutput {
   spaceId: string;
   channelId: string;
@@ -500,7 +493,7 @@ export interface GetChannelOutput {
   channelRoles?: { [key: string]: ChannelRole[] | undefined };
   channelStatus: ChannelStatus;
 }
-export const GetChannelOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetChannelOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String,
     channelId: S.String,
@@ -519,7 +512,7 @@ export const GetChannelOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetSpaceInput {
   spaceId: string;
 }
-export const GetSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSpaceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ spaceId: S.String.pipe(T.HttpLabel("spaceId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/spaces/{spaceId}" }),
@@ -532,21 +525,21 @@ export const GetSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   ),
 ).annotate({ identifier: "GetSpaceInput" }) as any as S.Schema<GetSpaceInput>;
 export type ConfigurationStatus = "CONFIGURED" | "UNCONFIGURED" | (string & {});
-export const ConfigurationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ConfigurationStatus = /*@__PURE__*/ S.String;
 export type VanityDomainStatus =
   | "PENDING"
   | "APPROVED"
   | "UNAPPROVED"
   | (string & {});
-export const VanityDomainStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VanityDomainStatus = /*@__PURE__*/ S.String;
 export type UserAdmins = string[];
-export const UserAdmins = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const UserAdmins = /*@__PURE__*/ S.Array(S.String);
 export type GroupAdmins = string[];
-export const GroupAdmins = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const GroupAdmins = /*@__PURE__*/ S.Array(S.String);
 export type RoleList = Role[];
-export const RoleList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Role);
+export const RoleList = /*@__PURE__*/ S.Array(Role);
 export type Roles = { [key: string]: Role[] | undefined };
-export const Roles = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const Roles = /*@__PURE__*/ S.Record(
   S.String,
   RoleList.pipe(S.optional),
 );
@@ -555,20 +548,19 @@ export type FeatureEnableStatus =
   | "DISABLED"
   | "NOT_ALLOWED"
   | (string & {});
-export const FeatureEnableStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const FeatureEnableStatus = /*@__PURE__*/ S.String;
 export interface SupportedEmailDomainsStatus {
   enabled?: FeatureEnableStatus;
-  allowedDomains?: string | redacted.Redacted<string>[];
+  allowedDomains?: (string | redacted.Redacted<string>)[];
 }
-export const SupportedEmailDomainsStatus =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(FeatureEnableStatus),
-      allowedDomains: S.optional(AllowedDomainsList),
-    }),
-  ).annotate({
-    identifier: "SupportedEmailDomainsStatus",
-  }) as any as S.Schema<SupportedEmailDomainsStatus>;
+export const SupportedEmailDomainsStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(FeatureEnableStatus),
+    allowedDomains: S.optional(AllowedDomainsList),
+  }),
+).annotate({
+  identifier: "SupportedEmailDomainsStatus",
+}) as any as S.Schema<SupportedEmailDomainsStatus>;
 export interface GetSpaceOutput {
   spaceId: string;
   arn: string;
@@ -595,7 +587,7 @@ export interface GetSpaceOutput {
   contentSize?: number;
   supportedEmailDomains?: SupportedEmailDomainsStatus;
 }
-export const GetSpaceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetSpaceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String,
     arn: S.String,
@@ -630,7 +622,7 @@ export interface ListChannelsInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListChannelsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListChannelsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -659,7 +651,7 @@ export interface ChannelData {
   userCount: number;
   groupCount: number;
 }
-export const ChannelData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ChannelData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String,
     channelId: S.String,
@@ -675,12 +667,12 @@ export const ChannelData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChannelData" }) as any as S.Schema<ChannelData>;
 export type ChannelsList = ChannelData[];
-export const ChannelsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(ChannelData);
+export const ChannelsList = /*@__PURE__*/ S.Array(ChannelData);
 export interface ListChannelsOutput {
   channels: ChannelData[];
   nextToken?: string;
 }
-export const ListChannelsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListChannelsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ channels: ChannelsList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListChannelsOutput",
@@ -689,7 +681,7 @@ export interface ListSpacesInput {
   nextToken?: string;
   maxResults?: number;
 }
-export const ListSpacesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSpacesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -725,7 +717,7 @@ export interface SpaceData {
   contentSize?: number;
   supportedEmailDomains?: SupportedEmailDomainsStatus;
 }
-export const SpaceData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SpaceData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String,
     arn: S.String,
@@ -749,12 +741,12 @@ export const SpaceData = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SpaceData" }) as any as S.Schema<SpaceData>;
 export type SpacesList = SpaceData[];
-export const SpacesList = /*@__PURE__*/ /*#__PURE__*/ S.Array(SpaceData);
+export const SpacesList = /*@__PURE__*/ S.Array(SpaceData);
 export interface ListSpacesOutput {
   spaces: SpaceData[];
   nextToken?: string;
 }
-export const ListSpacesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListSpacesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ spaces: SpacesList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListSpacesOutput",
@@ -762,35 +754,33 @@ export const ListSpacesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(Tags) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(Tags) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RegisterAdminInput {
   spaceId: string;
   adminId: string;
 }
-export const RegisterAdminInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegisterAdminInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     adminId: S.String.pipe(T.HttpLabel("adminId")),
@@ -808,7 +798,7 @@ export const RegisterAdminInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RegisterAdminInput",
 }) as any as S.Schema<RegisterAdminInput>;
 export interface RegisterAdminResponse {}
-export const RegisterAdminResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RegisterAdminResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "RegisterAdminResponse",
@@ -819,7 +809,7 @@ export interface SendInvitesInput {
   title: string | redacted.Redacted<string>;
   body: string | redacted.Redacted<string>;
 }
-export const SendInvitesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendInvitesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     accessorIds: AccessorIdList,
@@ -839,7 +829,7 @@ export const SendInvitesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "SendInvitesInput",
 }) as any as S.Schema<SendInvitesInput>;
 export interface SendInvitesResponse {}
-export const SendInvitesResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SendInvitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "SendInvitesResponse",
@@ -848,7 +838,7 @@ export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: Tags,
@@ -866,18 +856,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -895,7 +885,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -906,7 +896,7 @@ export interface UpdateChannelInput {
   channelName: string | redacted.Redacted<string>;
   channelDescription?: string | redacted.Redacted<string>;
 }
-export const UpdateChannelInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateChannelInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     channelId: S.String.pipe(T.HttpLabel("channelId")),
@@ -926,7 +916,7 @@ export const UpdateChannelInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateChannelInput",
 }) as any as S.Schema<UpdateChannelInput>;
 export interface UpdateChannelOutput {}
-export const UpdateChannelOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateChannelOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UpdateChannelOutput",
@@ -938,7 +928,7 @@ export interface UpdateSpaceInput {
   roleArn?: string;
   supportedEmailDomains?: SupportedEmailDomainsParameters;
 }
-export const UpdateSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateSpaceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     spaceId: S.String.pipe(T.HttpLabel("spaceId")),
     description: S.optional(SensitiveString),
@@ -959,7 +949,7 @@ export const UpdateSpaceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateSpaceInput",
 }) as any as S.Schema<UpdateSpaceInput>;
 export interface UpdateSpaceResponse {}
-export const UpdateSpaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateSpaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UpdateSpaceResponse",
@@ -969,6 +959,7 @@ export const UpdateSpaceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -976,11 +967,12 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -990,7 +982,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     quotaCode: S.optional(S.String),
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -999,10 +991,12 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: ValidationExceptionReason,
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -1013,6 +1007,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     serviceCode: S.String,
     quotaCode: S.String,
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 
 //# Operations
@@ -1031,7 +1026,7 @@ export const batchAddChannelRoleToAccessors: API.OperationMethod<
   BatchAddChannelRoleToAccessorsOutput,
   BatchAddChannelRoleToAccessorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAddChannelRoleToAccessorsInput,
   output: BatchAddChannelRoleToAccessorsOutput,
   errors: [
@@ -1060,7 +1055,7 @@ export const batchAddRole: API.OperationMethod<
   BatchAddRoleOutput,
   BatchAddRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchAddRoleInput,
   output: BatchAddRoleOutput,
   errors: [
@@ -1089,7 +1084,7 @@ export const batchRemoveChannelRoleFromAccessors: API.OperationMethod<
   BatchRemoveChannelRoleFromAccessorsOutput,
   BatchRemoveChannelRoleFromAccessorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRemoveChannelRoleFromAccessorsInput,
   output: BatchRemoveChannelRoleFromAccessorsOutput,
   errors: [
@@ -1118,7 +1113,7 @@ export const batchRemoveRole: API.OperationMethod<
   BatchRemoveRoleOutput,
   BatchRemoveRoleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: BatchRemoveRoleInput,
   output: BatchRemoveRoleOutput,
   errors: [
@@ -1149,7 +1144,7 @@ export const createChannel: API.OperationMethod<
   CreateChannelOutput,
   CreateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateChannelInput,
   output: CreateChannelOutput,
   errors: [
@@ -1182,7 +1177,7 @@ export const createSpace: API.OperationMethod<
   CreateSpaceOutput,
   CreateSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateSpaceInput,
   output: CreateSpaceOutput,
   errors: [
@@ -1213,7 +1208,7 @@ export const deleteSpace: API.OperationMethod<
   DeleteSpaceResponse,
   DeleteSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteSpaceInput,
   output: DeleteSpaceResponse,
   errors: [
@@ -1242,7 +1237,7 @@ export const deregisterAdmin: API.OperationMethod<
   DeregisterAdminResponse,
   DeregisterAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeregisterAdminInput,
   output: DeregisterAdminResponse,
   errors: [
@@ -1271,7 +1266,7 @@ export const getChannel: API.OperationMethod<
   GetChannelOutput,
   GetChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetChannelInput,
   output: GetChannelOutput,
   errors: [
@@ -1300,7 +1295,7 @@ export const getSpace: API.OperationMethod<
   GetSpaceOutput,
   GetSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSpaceInput,
   output: GetSpaceOutput,
   errors: [
@@ -1319,6 +1314,7 @@ export type ListChannelsError =
   | InternalServerException
   | ThrottlingException
   | ValidationException
+  | ResourceNotFoundException
   | CommonErrors;
 /**
  * Returns the list of channel within a private re:Post with some information about each channel.
@@ -1343,7 +1339,7 @@ export const listChannels: API.OperationMethod<
     ListChannelsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsInput,
   output: ListChannelsOutput,
   errors: [
@@ -1351,6 +1347,7 @@ export const listChannels: API.OperationMethod<
     InternalServerException,
     ThrottlingException,
     ValidationException,
+    ResourceNotFoundException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1391,7 +1388,7 @@ export const listSpaces: API.OperationMethod<
     ListSpacesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesInput,
   output: ListSpacesOutput,
   errors: [
@@ -1425,7 +1422,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -1454,7 +1451,7 @@ export const registerAdmin: API.OperationMethod<
   RegisterAdminResponse,
   RegisterAdminError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RegisterAdminInput,
   output: RegisterAdminResponse,
   errors: [
@@ -1483,7 +1480,7 @@ export const sendInvites: API.OperationMethod<
   SendInvitesResponse,
   SendInvitesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SendInvitesInput,
   output: SendInvitesResponse,
   errors: [
@@ -1512,7 +1509,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -1541,7 +1538,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -1571,7 +1568,7 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelOutput,
   UpdateChannelError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateChannelInput,
   output: UpdateChannelOutput,
   errors: [
@@ -1602,7 +1599,7 @@ export const updateSpace: API.OperationMethod<
   UpdateSpaceResponse,
   UpdateSpaceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateSpaceInput,
   output: UpdateSpaceResponse,
   errors: [

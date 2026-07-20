@@ -35,6 +35,12 @@ export interface ProtocolOperationConfig {
    * Query's `Action=`) and unwrap responses by it; REST protocols ignore it.
    */
   readonly operationName?: string;
+  /**
+   * The smithy `smithy.api#endpoint` hostPrefix (e.g. `sync-` for Step
+   * Functions' StartSyncExecution). Protocols prepend it to the resolved
+   * endpoint host, substituting `{memberName}` labels from the input.
+   */
+  readonly endpointHostPrefix?: string;
   readonly pagination?: Pagination.PaginatedTrait;
 }
 
@@ -169,6 +175,11 @@ export interface OperationConfig<
    * {@link ProtocolOperationConfig.operationName}).
    */
   operationName?: string;
+  /**
+   * Host prefix from the smithy endpoint trait (see
+   * {@link ProtocolOperationConfig.endpointHostPrefix}).
+   */
+  endpointHostPrefix?: string;
 }
 
 /**

@@ -118,9 +118,9 @@ export type NodeListMaxResults = number;
 
 //# Schemas
 export type AccessorType = "BILLING_TOKEN" | (string & {});
-export const AccessorType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccessorType = /*@__PURE__*/ S.String;
 export type InputTagMap = { [key: string]: string | undefined };
-export const InputTagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const InputTagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -131,14 +131,14 @@ export type AccessorNetworkType =
   | "POLYGON_MAINNET"
   | "POLYGON_MUMBAI"
   | (string & {});
-export const AccessorNetworkType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccessorNetworkType = /*@__PURE__*/ S.String;
 export interface CreateAccessorInput {
   ClientRequestToken: string;
   AccessorType: AccessorType;
   Tags?: { [key: string]: string | undefined };
   NetworkType?: AccessorNetworkType;
 }
-export const CreateAccessorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateAccessorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
     AccessorType: AccessorType,
@@ -162,7 +162,7 @@ export interface CreateAccessorOutput {
   BillingToken?: string;
   NetworkType?: AccessorNetworkType;
 }
-export const CreateAccessorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateAccessorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessorId: S.optional(S.String),
     BillingToken: S.optional(S.String),
@@ -175,24 +175,23 @@ export interface MemberFabricConfiguration {
   AdminUsername: string;
   AdminPassword: string | redacted.Redacted<string>;
 }
-export const MemberFabricConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ AdminUsername: S.String, AdminPassword: SensitiveString }),
+export const MemberFabricConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AdminUsername: S.String, AdminPassword: SensitiveString }),
 ).annotate({
   identifier: "MemberFabricConfiguration",
 }) as any as S.Schema<MemberFabricConfiguration>;
 export interface MemberFrameworkConfiguration {
   Fabric?: MemberFabricConfiguration;
 }
-export const MemberFrameworkConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Fabric: S.optional(MemberFabricConfiguration) }),
-  ).annotate({
-    identifier: "MemberFrameworkConfiguration",
-  }) as any as S.Schema<MemberFrameworkConfiguration>;
+export const MemberFrameworkConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Fabric: S.optional(MemberFabricConfiguration) }),
+).annotate({
+  identifier: "MemberFrameworkConfiguration",
+}) as any as S.Schema<MemberFrameworkConfiguration>;
 export interface LogConfiguration {
   Enabled?: boolean;
 }
-export const LogConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Enabled: S.optional(S.Boolean) }),
 ).annotate({
   identifier: "LogConfiguration",
@@ -200,7 +199,7 @@ export const LogConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface LogConfigurations {
   Cloudwatch?: LogConfiguration;
 }
-export const LogConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogConfigurations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Cloudwatch: S.optional(LogConfiguration) }),
 ).annotate({
   identifier: "LogConfigurations",
@@ -208,21 +207,19 @@ export const LogConfigurations = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface MemberFabricLogPublishingConfiguration {
   CaLogs?: LogConfigurations;
 }
-export const MemberFabricLogPublishingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ CaLogs: S.optional(LogConfigurations) }),
-  ).annotate({
-    identifier: "MemberFabricLogPublishingConfiguration",
-  }) as any as S.Schema<MemberFabricLogPublishingConfiguration>;
+export const MemberFabricLogPublishingConfiguration = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ CaLogs: S.optional(LogConfigurations) }),
+).annotate({
+  identifier: "MemberFabricLogPublishingConfiguration",
+}) as any as S.Schema<MemberFabricLogPublishingConfiguration>;
 export interface MemberLogPublishingConfiguration {
   Fabric?: MemberFabricLogPublishingConfiguration;
 }
-export const MemberLogPublishingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Fabric: S.optional(MemberFabricLogPublishingConfiguration) }),
-  ).annotate({
-    identifier: "MemberLogPublishingConfiguration",
-  }) as any as S.Schema<MemberLogPublishingConfiguration>;
+export const MemberLogPublishingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Fabric: S.optional(MemberFabricLogPublishingConfiguration) }),
+).annotate({
+  identifier: "MemberLogPublishingConfiguration",
+}) as any as S.Schema<MemberLogPublishingConfiguration>;
 export interface MemberConfiguration {
   Name: string;
   Description?: string;
@@ -231,7 +228,7 @@ export interface MemberConfiguration {
   Tags?: { [key: string]: string | undefined };
   KmsKeyArn?: string;
 }
-export const MemberConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MemberConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.String,
     Description: S.optional(S.String),
@@ -249,7 +246,7 @@ export interface CreateMemberInput {
   NetworkId: string;
   MemberConfiguration: MemberConfiguration;
 }
-export const CreateMemberInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateMemberInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
     InvitationId: S.String,
@@ -271,56 +268,54 @@ export const CreateMemberInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateMemberOutput {
   MemberId?: string;
 }
-export const CreateMemberOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateMemberOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MemberId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateMemberOutput",
 }) as any as S.Schema<CreateMemberOutput>;
 export type Framework = "HYPERLEDGER_FABRIC" | "ETHEREUM" | (string & {});
-export const Framework = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Framework = /*@__PURE__*/ S.String;
 export type Edition = "STARTER" | "STANDARD" | (string & {});
-export const Edition = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const Edition = /*@__PURE__*/ S.String;
 export interface NetworkFabricConfiguration {
   Edition: Edition;
 }
-export const NetworkFabricConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Edition: Edition }),
+export const NetworkFabricConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Edition: Edition }),
 ).annotate({
   identifier: "NetworkFabricConfiguration",
 }) as any as S.Schema<NetworkFabricConfiguration>;
 export interface NetworkFrameworkConfiguration {
   Fabric?: NetworkFabricConfiguration;
 }
-export const NetworkFrameworkConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Fabric: S.optional(NetworkFabricConfiguration) }),
-  ).annotate({
-    identifier: "NetworkFrameworkConfiguration",
-  }) as any as S.Schema<NetworkFrameworkConfiguration>;
+export const NetworkFrameworkConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Fabric: S.optional(NetworkFabricConfiguration) }),
+).annotate({
+  identifier: "NetworkFrameworkConfiguration",
+}) as any as S.Schema<NetworkFrameworkConfiguration>;
 export type ThresholdComparator =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL_TO"
   | (string & {});
-export const ThresholdComparator = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ThresholdComparator = /*@__PURE__*/ S.String;
 export interface ApprovalThresholdPolicy {
   ThresholdPercentage?: number;
   ProposalDurationInHours?: number;
   ThresholdComparator?: ThresholdComparator;
 }
-export const ApprovalThresholdPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ThresholdPercentage: S.optional(S.Number),
-      ProposalDurationInHours: S.optional(S.Number),
-      ThresholdComparator: S.optional(ThresholdComparator),
-    }),
+export const ApprovalThresholdPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ThresholdPercentage: S.optional(S.Number),
+    ProposalDurationInHours: S.optional(S.Number),
+    ThresholdComparator: S.optional(ThresholdComparator),
+  }),
 ).annotate({
   identifier: "ApprovalThresholdPolicy",
 }) as any as S.Schema<ApprovalThresholdPolicy>;
 export interface VotingPolicy {
   ApprovalThresholdPolicy?: ApprovalThresholdPolicy;
 }
-export const VotingPolicy = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VotingPolicy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ApprovalThresholdPolicy: S.optional(ApprovalThresholdPolicy) }),
 ).annotate({ identifier: "VotingPolicy" }) as any as S.Schema<VotingPolicy>;
 export interface CreateNetworkInput {
@@ -334,7 +329,7 @@ export interface CreateNetworkInput {
   MemberConfiguration: MemberConfiguration;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateNetworkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateNetworkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
     Name: S.String,
@@ -362,7 +357,7 @@ export interface CreateNetworkOutput {
   NetworkId?: string;
   MemberId?: string;
 }
-export const CreateNetworkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateNetworkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NetworkId: S.optional(S.String), MemberId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateNetworkOutput",
@@ -371,33 +366,32 @@ export interface NodeFabricLogPublishingConfiguration {
   ChaincodeLogs?: LogConfigurations;
   PeerLogs?: LogConfigurations;
 }
-export const NodeFabricLogPublishingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeFabricLogPublishingConfiguration = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       ChaincodeLogs: S.optional(LogConfigurations),
       PeerLogs: S.optional(LogConfigurations),
     }),
-  ).annotate({
-    identifier: "NodeFabricLogPublishingConfiguration",
-  }) as any as S.Schema<NodeFabricLogPublishingConfiguration>;
+).annotate({
+  identifier: "NodeFabricLogPublishingConfiguration",
+}) as any as S.Schema<NodeFabricLogPublishingConfiguration>;
 export interface NodeLogPublishingConfiguration {
   Fabric?: NodeFabricLogPublishingConfiguration;
 }
-export const NodeLogPublishingConfiguration =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Fabric: S.optional(NodeFabricLogPublishingConfiguration) }),
-  ).annotate({
-    identifier: "NodeLogPublishingConfiguration",
-  }) as any as S.Schema<NodeLogPublishingConfiguration>;
+export const NodeLogPublishingConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Fabric: S.optional(NodeFabricLogPublishingConfiguration) }),
+).annotate({
+  identifier: "NodeLogPublishingConfiguration",
+}) as any as S.Schema<NodeLogPublishingConfiguration>;
 export type StateDBType = "LevelDB" | "CouchDB" | (string & {});
-export const StateDBType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const StateDBType = /*@__PURE__*/ S.String;
 export interface NodeConfiguration {
   InstanceType: string;
   AvailabilityZone?: string;
   LogPublishingConfiguration?: NodeLogPublishingConfiguration;
   StateDB?: StateDBType;
 }
-export const NodeConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InstanceType: S.String,
     AvailabilityZone: S.optional(S.String),
@@ -414,7 +408,7 @@ export interface CreateNodeInput {
   NodeConfiguration: NodeConfiguration;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateNodeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateNodeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
@@ -437,7 +431,7 @@ export const CreateNodeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateNodeOutput {
   NodeId?: string;
 }
-export const CreateNodeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateNodeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NodeId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateNodeOutput",
@@ -445,26 +439,24 @@ export const CreateNodeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface InviteAction {
   Principal: string;
 }
-export const InviteAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const InviteAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Principal: S.String }),
 ).annotate({ identifier: "InviteAction" }) as any as S.Schema<InviteAction>;
 export type InviteActionList = InviteAction[];
-export const InviteActionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(InviteAction);
+export const InviteActionList = /*@__PURE__*/ S.Array(InviteAction);
 export interface RemoveAction {
   MemberId: string;
 }
-export const RemoveAction = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RemoveAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MemberId: S.String }),
 ).annotate({ identifier: "RemoveAction" }) as any as S.Schema<RemoveAction>;
 export type RemoveActionList = RemoveAction[];
-export const RemoveActionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(RemoveAction);
+export const RemoveActionList = /*@__PURE__*/ S.Array(RemoveAction);
 export interface ProposalActions {
   Invitations?: InviteAction[];
   Removals?: RemoveAction[];
 }
-export const ProposalActions = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProposalActions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Invitations: S.optional(InviteActionList),
     Removals: S.optional(RemoveActionList),
@@ -480,7 +472,7 @@ export interface CreateProposalInput {
   Description?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateProposalInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateProposalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ClientRequestToken: S.String.pipe(T.IdempotencyToken()),
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
@@ -504,7 +496,7 @@ export const CreateProposalInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateProposalOutput {
   ProposalId?: string;
 }
-export const CreateProposalOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateProposalOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ProposalId: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateProposalOutput",
@@ -512,7 +504,7 @@ export const CreateProposalOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface DeleteAccessorInput {
   AccessorId: string;
 }
-export const DeleteAccessorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAccessorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AccessorId: S.String.pipe(T.HttpLabel("AccessorId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/accessors/{AccessorId}" }),
@@ -527,7 +519,7 @@ export const DeleteAccessorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteAccessorInput",
 }) as any as S.Schema<DeleteAccessorInput>;
 export interface DeleteAccessorOutput {}
-export const DeleteAccessorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteAccessorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteAccessorOutput",
@@ -536,7 +528,7 @@ export interface DeleteMemberInput {
   NetworkId: string;
   MemberId: string;
 }
-export const DeleteMemberInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteMemberInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     MemberId: S.String.pipe(T.HttpLabel("MemberId")),
@@ -557,7 +549,7 @@ export const DeleteMemberInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteMemberInput",
 }) as any as S.Schema<DeleteMemberInput>;
 export interface DeleteMemberOutput {}
-export const DeleteMemberOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteMemberOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteMemberOutput",
@@ -567,7 +559,7 @@ export interface DeleteNodeInput {
   MemberId?: string;
   NodeId: string;
 }
-export const DeleteNodeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteNodeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     MemberId: S.optional(S.String).pipe(T.HttpQuery("memberId")),
@@ -586,7 +578,7 @@ export const DeleteNodeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteNodeInput",
 }) as any as S.Schema<DeleteNodeInput>;
 export interface DeleteNodeOutput {}
-export const DeleteNodeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteNodeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteNodeOutput",
@@ -594,7 +586,7 @@ export const DeleteNodeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetAccessorInput {
   AccessorId: string;
 }
-export const GetAccessorInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAccessorInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AccessorId: S.String.pipe(T.HttpLabel("AccessorId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/accessors/{AccessorId}" }),
@@ -613,9 +605,9 @@ export type AccessorStatus =
   | "PENDING_DELETION"
   | "DELETED"
   | (string & {});
-export const AccessorStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const AccessorStatus = /*@__PURE__*/ S.String;
 export type OutputTagMap = { [key: string]: string | undefined };
-export const OutputTagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const OutputTagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -629,7 +621,7 @@ export interface Accessor {
   Tags?: { [key: string]: string | undefined };
   NetworkType?: AccessorNetworkType;
 }
-export const Accessor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Accessor = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Type: S.optional(AccessorType),
@@ -646,7 +638,7 @@ export const Accessor = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetAccessorOutput {
   Accessor?: Accessor;
 }
-export const GetAccessorOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetAccessorOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Accessor: S.optional(Accessor) }),
 ).annotate({
   identifier: "GetAccessorOutput",
@@ -655,7 +647,7 @@ export interface GetMemberInput {
   NetworkId: string;
   MemberId: string;
 }
-export const GetMemberInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMemberInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     MemberId: S.String.pipe(T.HttpLabel("MemberId")),
@@ -677,20 +669,19 @@ export interface MemberFabricAttributes {
   AdminUsername?: string;
   CaEndpoint?: string;
 }
-export const MemberFabricAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AdminUsername: S.optional(S.String),
-      CaEndpoint: S.optional(S.String),
-    }),
+export const MemberFabricAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AdminUsername: S.optional(S.String),
+    CaEndpoint: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "MemberFabricAttributes",
 }) as any as S.Schema<MemberFabricAttributes>;
 export interface MemberFrameworkAttributes {
   Fabric?: MemberFabricAttributes;
 }
-export const MemberFrameworkAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Fabric: S.optional(MemberFabricAttributes) }),
+export const MemberFrameworkAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Fabric: S.optional(MemberFabricAttributes) }),
 ).annotate({
   identifier: "MemberFrameworkAttributes",
 }) as any as S.Schema<MemberFrameworkAttributes>;
@@ -703,7 +694,7 @@ export type MemberStatus =
   | "DELETED"
   | "INACCESSIBLE_ENCRYPTION_KEY"
   | (string & {});
-export const MemberStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const MemberStatus = /*@__PURE__*/ S.String;
 export interface Member {
   NetworkId?: string;
   Id?: string;
@@ -717,7 +708,7 @@ export interface Member {
   Arn?: string;
   KmsKeyArn?: string;
 }
-export const Member = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Member = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.optional(S.String),
     Id: S.optional(S.String),
@@ -737,7 +728,7 @@ export const Member = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetMemberOutput {
   Member?: Member;
 }
-export const GetMemberOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetMemberOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Member: S.optional(Member) }),
 ).annotate({
   identifier: "GetMemberOutput",
@@ -745,7 +736,7 @@ export const GetMemberOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetNetworkInput {
   NetworkId: string;
 }
-export const GetNetworkInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetNetworkInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ NetworkId: S.String.pipe(T.HttpLabel("NetworkId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/networks/{NetworkId}" }),
@@ -763,20 +754,19 @@ export interface NetworkFabricAttributes {
   OrderingServiceEndpoint?: string;
   Edition?: Edition;
 }
-export const NetworkFabricAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      OrderingServiceEndpoint: S.optional(S.String),
-      Edition: S.optional(Edition),
-    }),
+export const NetworkFabricAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    OrderingServiceEndpoint: S.optional(S.String),
+    Edition: S.optional(Edition),
+  }),
 ).annotate({
   identifier: "NetworkFabricAttributes",
 }) as any as S.Schema<NetworkFabricAttributes>;
 export interface NetworkEthereumAttributes {
   ChainId?: string;
 }
-export const NetworkEthereumAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ChainId: S.optional(S.String) }),
+export const NetworkEthereumAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ChainId: S.optional(S.String) }),
 ).annotate({
   identifier: "NetworkEthereumAttributes",
 }) as any as S.Schema<NetworkEthereumAttributes>;
@@ -784,12 +774,11 @@ export interface NetworkFrameworkAttributes {
   Fabric?: NetworkFabricAttributes;
   Ethereum?: NetworkEthereumAttributes;
 }
-export const NetworkFrameworkAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Fabric: S.optional(NetworkFabricAttributes),
-      Ethereum: S.optional(NetworkEthereumAttributes),
-    }),
+export const NetworkFrameworkAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Fabric: S.optional(NetworkFabricAttributes),
+    Ethereum: S.optional(NetworkEthereumAttributes),
+  }),
 ).annotate({
   identifier: "NetworkFrameworkAttributes",
 }) as any as S.Schema<NetworkFrameworkAttributes>;
@@ -800,7 +789,7 @@ export type NetworkStatus =
   | "DELETING"
   | "DELETED"
   | (string & {});
-export const NetworkStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NetworkStatus = /*@__PURE__*/ S.String;
 export interface Network {
   Id?: string;
   Name?: string;
@@ -815,7 +804,7 @@ export interface Network {
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
 }
-export const Network = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Network = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Name: S.optional(S.String),
@@ -836,7 +825,7 @@ export const Network = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetNetworkOutput {
   Network?: Network;
 }
-export const GetNetworkOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetNetworkOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Network: S.optional(Network) }),
 ).annotate({
   identifier: "GetNetworkOutput",
@@ -846,7 +835,7 @@ export interface GetNodeInput {
   MemberId?: string;
   NodeId: string;
 }
-export const GetNodeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetNodeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     MemberId: S.optional(S.String).pipe(T.HttpQuery("memberId")),
@@ -866,7 +855,7 @@ export interface NodeFabricAttributes {
   PeerEndpoint?: string;
   PeerEventEndpoint?: string;
 }
-export const NodeFabricAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeFabricAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PeerEndpoint: S.optional(S.String),
     PeerEventEndpoint: S.optional(S.String),
@@ -878,12 +867,11 @@ export interface NodeEthereumAttributes {
   HttpEndpoint?: string;
   WebSocketEndpoint?: string;
 }
-export const NodeEthereumAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      HttpEndpoint: S.optional(S.String),
-      WebSocketEndpoint: S.optional(S.String),
-    }),
+export const NodeEthereumAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HttpEndpoint: S.optional(S.String),
+    WebSocketEndpoint: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "NodeEthereumAttributes",
 }) as any as S.Schema<NodeEthereumAttributes>;
@@ -891,12 +879,11 @@ export interface NodeFrameworkAttributes {
   Fabric?: NodeFabricAttributes;
   Ethereum?: NodeEthereumAttributes;
 }
-export const NodeFrameworkAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Fabric: S.optional(NodeFabricAttributes),
-      Ethereum: S.optional(NodeEthereumAttributes),
-    }),
+export const NodeFrameworkAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Fabric: S.optional(NodeFabricAttributes),
+    Ethereum: S.optional(NodeEthereumAttributes),
+  }),
 ).annotate({
   identifier: "NodeFrameworkAttributes",
 }) as any as S.Schema<NodeFrameworkAttributes>;
@@ -911,7 +898,7 @@ export type NodeStatus =
   | "FAILED"
   | "INACCESSIBLE_ENCRYPTION_KEY"
   | (string & {});
-export const NodeStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const NodeStatus = /*@__PURE__*/ S.String;
 export interface Node {
   NetworkId?: string;
   MemberId?: string;
@@ -927,7 +914,7 @@ export interface Node {
   Arn?: string;
   KmsKeyArn?: string;
 }
-export const Node = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Node = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.optional(S.String),
     MemberId: S.optional(S.String),
@@ -949,14 +936,14 @@ export const Node = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetNodeOutput {
   Node?: Node;
 }
-export const GetNodeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetNodeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Node: S.optional(Node) }),
 ).annotate({ identifier: "GetNodeOutput" }) as any as S.Schema<GetNodeOutput>;
 export interface GetProposalInput {
   NetworkId: string;
   ProposalId: string;
 }
-export const GetProposalInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetProposalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     ProposalId: S.String.pipe(T.HttpLabel("ProposalId")),
@@ -983,7 +970,7 @@ export type ProposalStatus =
   | "EXPIRED"
   | "ACTION_FAILED"
   | (string & {});
-export const ProposalStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ProposalStatus = /*@__PURE__*/ S.String;
 export interface Proposal {
   ProposalId?: string;
   NetworkId?: string;
@@ -1000,7 +987,7 @@ export interface Proposal {
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
 }
-export const Proposal = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Proposal = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProposalId: S.optional(S.String),
     NetworkId: S.optional(S.String),
@@ -1025,7 +1012,7 @@ export const Proposal = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetProposalOutput {
   Proposal?: Proposal;
 }
-export const GetProposalOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetProposalOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Proposal: S.optional(Proposal) }),
 ).annotate({
   identifier: "GetProposalOutput",
@@ -1035,7 +1022,7 @@ export interface ListAccessorsInput {
   NextToken?: string;
   NetworkType?: AccessorNetworkType;
 }
-export const ListAccessorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAccessorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1063,7 +1050,7 @@ export interface AccessorSummary {
   Arn?: string;
   NetworkType?: AccessorNetworkType;
 }
-export const AccessorSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AccessorSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Type: S.optional(AccessorType),
@@ -1078,13 +1065,12 @@ export const AccessorSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "AccessorSummary",
 }) as any as S.Schema<AccessorSummary>;
 export type AccessorSummaryList = AccessorSummary[];
-export const AccessorSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AccessorSummary);
+export const AccessorSummaryList = /*@__PURE__*/ S.Array(AccessorSummary);
 export interface ListAccessorsOutput {
   Accessors?: AccessorSummary[];
   NextToken?: string;
 }
-export const ListAccessorsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListAccessorsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Accessors: S.optional(AccessorSummaryList),
     NextToken: S.optional(S.String),
@@ -1096,7 +1082,7 @@ export interface ListInvitationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListInvitationsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListInvitationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1120,7 +1106,7 @@ export type InvitationStatus =
   | "REJECTED"
   | "EXPIRED"
   | (string & {});
-export const InvitationStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const InvitationStatus = /*@__PURE__*/ S.String;
 export interface NetworkSummary {
   Id?: string;
   Name?: string;
@@ -1131,7 +1117,7 @@ export interface NetworkSummary {
   CreationDate?: Date;
   Arn?: string;
 }
-export const NetworkSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NetworkSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1153,7 +1139,7 @@ export interface Invitation {
   NetworkSummary?: NetworkSummary;
   Arn?: string;
 }
-export const Invitation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Invitation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     InvitationId: S.optional(S.String),
     CreationDate: S.optional(
@@ -1168,12 +1154,12 @@ export const Invitation = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Invitation" }) as any as S.Schema<Invitation>;
 export type InvitationList = Invitation[];
-export const InvitationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Invitation);
+export const InvitationList = /*@__PURE__*/ S.Array(Invitation);
 export interface ListInvitationsOutput {
   Invitations?: Invitation[];
   NextToken?: string;
 }
-export const ListInvitationsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListInvitationsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Invitations: S.optional(InvitationList),
     NextToken: S.optional(S.String),
@@ -1189,7 +1175,7 @@ export interface ListMembersInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListMembersInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListMembersInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     Name: S.optional(S.String).pipe(T.HttpQuery("name")),
@@ -1219,7 +1205,7 @@ export interface MemberSummary {
   IsOwned?: boolean;
   Arn?: string;
 }
-export const MemberSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MemberSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1233,13 +1219,12 @@ export const MemberSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MemberSummary" }) as any as S.Schema<MemberSummary>;
 export type MemberSummaryList = MemberSummary[];
-export const MemberSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(MemberSummary);
+export const MemberSummaryList = /*@__PURE__*/ S.Array(MemberSummary);
 export interface ListMembersOutput {
   Members?: MemberSummary[];
   NextToken?: string;
 }
-export const ListMembersOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListMembersOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Members: S.optional(MemberSummaryList),
     NextToken: S.optional(S.String),
@@ -1254,7 +1239,7 @@ export interface ListNetworksInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListNetworksInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListNetworksInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Name: S.optional(S.String).pipe(T.HttpQuery("name")),
     Framework: S.optional(Framework).pipe(T.HttpQuery("framework")),
@@ -1275,13 +1260,12 @@ export const ListNetworksInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListNetworksInput",
 }) as any as S.Schema<ListNetworksInput>;
 export type NetworkSummaryList = NetworkSummary[];
-export const NetworkSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(NetworkSummary);
+export const NetworkSummaryList = /*@__PURE__*/ S.Array(NetworkSummary);
 export interface ListNetworksOutput {
   Networks?: NetworkSummary[];
   NextToken?: string;
 }
-export const ListNetworksOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListNetworksOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Networks: S.optional(NetworkSummaryList),
     NextToken: S.optional(S.String),
@@ -1296,7 +1280,7 @@ export interface ListNodesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListNodesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListNodesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     MemberId: S.optional(S.String).pipe(T.HttpQuery("memberId")),
@@ -1322,7 +1306,7 @@ export interface NodeSummary {
   InstanceType?: string;
   Arn?: string;
 }
-export const NodeSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const NodeSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Id: S.optional(S.String),
     Status: S.optional(NodeStatus),
@@ -1335,12 +1319,12 @@ export const NodeSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "NodeSummary" }) as any as S.Schema<NodeSummary>;
 export type NodeSummaryList = NodeSummary[];
-export const NodeSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(NodeSummary);
+export const NodeSummaryList = /*@__PURE__*/ S.Array(NodeSummary);
 export interface ListNodesOutput {
   Nodes?: NodeSummary[];
   NextToken?: string;
 }
-export const ListNodesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListNodesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Nodes: S.optional(NodeSummaryList),
     NextToken: S.optional(S.String),
@@ -1353,7 +1337,7 @@ export interface ListProposalsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListProposalsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListProposalsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
@@ -1381,7 +1365,7 @@ export interface ProposalSummary {
   ExpirationDate?: Date;
   Arn?: string;
 }
-export const ProposalSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ProposalSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ProposalId: S.optional(S.String),
     Description: S.optional(S.String),
@@ -1400,13 +1384,12 @@ export const ProposalSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ProposalSummary",
 }) as any as S.Schema<ProposalSummary>;
 export type ProposalSummaryList = ProposalSummary[];
-export const ProposalSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ProposalSummary);
+export const ProposalSummaryList = /*@__PURE__*/ S.Array(ProposalSummary);
 export interface ListProposalsOutput {
   Proposals?: ProposalSummary[];
   NextToken?: string;
 }
-export const ListProposalsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListProposalsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Proposals: S.optional(ProposalSummaryList),
     NextToken: S.optional(S.String),
@@ -1420,37 +1403,36 @@ export interface ListProposalVotesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-export const ListProposalVotesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
-      ProposalId: S.String.pipe(T.HttpLabel("ProposalId")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/networks/{NetworkId}/proposals/{ProposalId}/votes",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListProposalVotesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
+    ProposalId: S.String.pipe(T.HttpLabel("ProposalId")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/networks/{NetworkId}/proposals/{ProposalId}/votes",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListProposalVotesInput",
 }) as any as S.Schema<ListProposalVotesInput>;
 export type VoteValue = "YES" | "NO" | (string & {});
-export const VoteValue = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const VoteValue = /*@__PURE__*/ S.String;
 export interface VoteSummary {
   Vote?: VoteValue;
   MemberName?: string;
   MemberId?: string;
 }
-export const VoteSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoteSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Vote: S.optional(VoteValue),
     MemberName: S.optional(S.String),
@@ -1458,52 +1440,48 @@ export const VoteSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "VoteSummary" }) as any as S.Schema<VoteSummary>;
 export type ProposalVoteList = VoteSummary[];
-export const ProposalVoteList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VoteSummary);
+export const ProposalVoteList = /*@__PURE__*/ S.Array(VoteSummary);
 export interface ListProposalVotesOutput {
   ProposalVotes?: VoteSummary[];
   NextToken?: string;
 }
-export const ListProposalVotesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ProposalVotes: S.optional(ProposalVoteList),
-      NextToken: S.optional(S.String),
-    }),
+export const ListProposalVotesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProposalVotes: S.optional(ProposalVoteList),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListProposalVotesOutput",
 }) as any as S.Schema<ListProposalVotesOutput>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Tags: S.optional(OutputTagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(OutputTagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RejectInvitationInput {
   InvitationId: string;
 }
-export const RejectInvitationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RejectInvitationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InvitationId: S.String.pipe(T.HttpLabel("InvitationId")) }).pipe(
     T.all(
       T.Http({ method: "DELETE", uri: "/invitations/{InvitationId}" }),
@@ -1518,8 +1496,8 @@ export const RejectInvitationInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "RejectInvitationInput",
 }) as any as S.Schema<RejectInvitationInput>;
 export interface RejectInvitationOutput {}
-export const RejectInvitationOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const RejectInvitationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "RejectInvitationOutput",
 }) as any as S.Schema<RejectInvitationOutput>;
@@ -1527,7 +1505,7 @@ export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     Tags: InputTagMap,
@@ -1545,18 +1523,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
     TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1574,7 +1552,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -1584,7 +1562,7 @@ export interface UpdateMemberInput {
   MemberId: string;
   LogPublishingConfiguration?: MemberLogPublishingConfiguration;
 }
-export const UpdateMemberInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateMemberInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     MemberId: S.String.pipe(T.HttpLabel("MemberId")),
@@ -1606,7 +1584,7 @@ export const UpdateMemberInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateMemberInput",
 }) as any as S.Schema<UpdateMemberInput>;
 export interface UpdateMemberOutput {}
-export const UpdateMemberOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateMemberOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UpdateMemberOutput",
@@ -1617,7 +1595,7 @@ export interface UpdateNodeInput {
   NodeId: string;
   LogPublishingConfiguration?: NodeLogPublishingConfiguration;
 }
-export const UpdateNodeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateNodeInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     MemberId: S.optional(S.String),
@@ -1637,7 +1615,7 @@ export const UpdateNodeInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateNodeInput",
 }) as any as S.Schema<UpdateNodeInput>;
 export interface UpdateNodeOutput {}
-export const UpdateNodeOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateNodeOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UpdateNodeOutput",
@@ -1648,7 +1626,7 @@ export interface VoteOnProposalInput {
   VoterMemberId: string;
   Vote: VoteValue;
 }
-export const VoteOnProposalInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoteOnProposalInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     NetworkId: S.String.pipe(T.HttpLabel("NetworkId")),
     ProposalId: S.String.pipe(T.HttpLabel("ProposalId")),
@@ -1671,7 +1649,7 @@ export const VoteOnProposalInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "VoteOnProposalInput",
 }) as any as S.Schema<VoteOnProposalInput>;
 export interface VoteOnProposalOutput {}
-export const VoteOnProposalOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VoteOnProposalOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "VoteOnProposalOutput",
@@ -1681,42 +1659,52 @@ export const VoteOnProposalOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
   "InternalServiceErrorException",
   {},
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
   "ResourceAlreadyExistsException",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError, C.withAlreadyExistsError) {}
 export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
   "ResourceLimitExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   {},
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
   "TooManyTagsException",
   { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
   "ResourceNotReadyException",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class IllegalActionException extends S.TaggedErrorClass<IllegalActionException>()(
   "IllegalActionException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -1738,7 +1726,7 @@ export const createAccessor: API.OperationMethod<
   CreateAccessorOutput,
   CreateAccessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateAccessorInput,
   output: CreateAccessorOutput,
   errors: [
@@ -1775,7 +1763,7 @@ export const createMember: API.OperationMethod<
   CreateMemberOutput,
   CreateMemberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateMemberInput,
   output: CreateMemberOutput,
   errors: [
@@ -1812,7 +1800,7 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkOutput,
   CreateNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNetworkInput,
   output: CreateNetworkOutput,
   errors: [
@@ -1849,7 +1837,7 @@ export const createNode: API.OperationMethod<
   CreateNodeOutput,
   CreateNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateNodeInput,
   output: CreateNodeOutput,
   errors: [
@@ -1886,7 +1874,7 @@ export const createProposal: API.OperationMethod<
   CreateProposalOutput,
   CreateProposalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateProposalInput,
   output: CreateProposalOutput,
   errors: [
@@ -1923,7 +1911,7 @@ export const deleteAccessor: API.OperationMethod<
   DeleteAccessorOutput,
   DeleteAccessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteAccessorInput,
   output: DeleteAccessorOutput,
   errors: [
@@ -1955,7 +1943,7 @@ export const deleteMember: API.OperationMethod<
   DeleteMemberOutput,
   DeleteMemberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteMemberInput,
   output: DeleteMemberOutput,
   errors: [
@@ -1988,7 +1976,7 @@ export const deleteNode: API.OperationMethod<
   DeleteNodeOutput,
   DeleteNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteNodeInput,
   output: DeleteNodeOutput,
   errors: [
@@ -2019,7 +2007,7 @@ export const getAccessor: API.OperationMethod<
   GetAccessorOutput,
   GetAccessorError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetAccessorInput,
   output: GetAccessorOutput,
   errors: [
@@ -2050,7 +2038,7 @@ export const getMember: API.OperationMethod<
   GetMemberOutput,
   GetMemberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetMemberInput,
   output: GetMemberOutput,
   errors: [
@@ -2081,7 +2069,7 @@ export const getNetwork: API.OperationMethod<
   GetNetworkOutput,
   GetNetworkError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNetworkInput,
   output: GetNetworkOutput,
   errors: [
@@ -2112,7 +2100,7 @@ export const getNode: API.OperationMethod<
   GetNodeOutput,
   GetNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetNodeInput,
   output: GetNodeOutput,
   errors: [
@@ -2143,7 +2131,7 @@ export const getProposal: API.OperationMethod<
   GetProposalOutput,
   GetProposalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetProposalInput,
   output: GetProposalOutput,
   errors: [
@@ -2187,7 +2175,7 @@ export const listAccessors: API.OperationMethod<
     ListAccessorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListAccessorsInput,
   output: ListAccessorsOutput,
   errors: [
@@ -2239,7 +2227,7 @@ export const listInvitations: API.OperationMethod<
     ListInvitationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListInvitationsInput,
   output: ListInvitationsOutput,
   errors: [
@@ -2290,7 +2278,7 @@ export const listMembers: API.OperationMethod<
     ListMembersError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListMembersInput,
   output: ListMembersOutput,
   errors: [
@@ -2339,7 +2327,7 @@ export const listNetworks: API.OperationMethod<
     ListNetworksError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNetworksInput,
   output: ListNetworksOutput,
   errors: [
@@ -2388,7 +2376,7 @@ export const listNodes: API.OperationMethod<
     ListNodesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListNodesInput,
   output: ListNodesOutput,
   errors: [
@@ -2438,7 +2426,7 @@ export const listProposals: API.OperationMethod<
     ListProposalsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProposalsInput,
   output: ListProposalsOutput,
   errors: [
@@ -2488,7 +2476,7 @@ export const listProposalVotes: API.OperationMethod<
     ListProposalVotesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListProposalVotesInput,
   output: ListProposalVotesOutput,
   errors: [
@@ -2522,7 +2510,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2553,7 +2541,7 @@ export const rejectInvitation: API.OperationMethod<
   RejectInvitationOutput,
   RejectInvitationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: RejectInvitationInput,
   output: RejectInvitationOutput,
   errors: [
@@ -2589,7 +2577,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2619,7 +2607,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2649,7 +2637,7 @@ export const updateMember: API.OperationMethod<
   UpdateMemberOutput,
   UpdateMemberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateMemberInput,
   output: UpdateMemberOutput,
   errors: [
@@ -2680,7 +2668,7 @@ export const updateNode: API.OperationMethod<
   UpdateNodeOutput,
   UpdateNodeError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateNodeInput,
   output: UpdateNodeOutput,
   errors: [
@@ -2712,7 +2700,7 @@ export const voteOnProposal: API.OperationMethod<
   VoteOnProposalOutput,
   VoteOnProposalError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: VoteOnProposalInput,
   output: VoteOnProposalOutput,
   errors: [

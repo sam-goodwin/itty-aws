@@ -119,14 +119,12 @@ export type EventBridgeRuleName = string;
 
 //# Schemas
 export type ApplicationApprovedOrigins = string[];
-export const ApplicationApprovedOrigins = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const ApplicationApprovedOrigins = /*@__PURE__*/ S.Array(S.String);
 export interface ExternalUrlConfig {
   AccessUrl: string;
   ApprovedOrigins?: string[];
 }
-export const ExternalUrlConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ExternalUrlConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessUrl: S.String,
     ApprovedOrigins: S.optional(ApplicationApprovedOrigins),
@@ -137,8 +135,8 @@ export const ExternalUrlConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ApplicationSourceConfig {
   ExternalUrlConfig?: ExternalUrlConfig;
 }
-export const ApplicationSourceConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ ExternalUrlConfig: S.optional(ExternalUrlConfig) }),
+export const ApplicationSourceConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ExternalUrlConfig: S.optional(ExternalUrlConfig) }),
 ).annotate({
   identifier: "ApplicationSourceConfig",
 }) as any as S.Schema<ApplicationSourceConfig>;
@@ -146,18 +144,17 @@ export interface Subscription {
   Event: string;
   Description?: string;
 }
-export const Subscription = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Subscription = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Event: S.String, Description: S.optional(S.String) }),
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 export type SubscriptionList = Subscription[];
-export const SubscriptionList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(Subscription);
+export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription);
 export interface Publication {
   Event: string;
   Schema: string;
   Description?: string;
 }
-export const Publication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Publication = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Event: S.String,
     Schema: S.String,
@@ -165,23 +162,23 @@ export const Publication = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Publication" }) as any as S.Schema<Publication>;
 export type PublicationList = Publication[];
-export const PublicationList = /*@__PURE__*/ /*#__PURE__*/ S.Array(Publication);
+export const PublicationList = /*@__PURE__*/ S.Array(Publication);
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type PermissionList = string[];
-export const PermissionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const PermissionList = /*@__PURE__*/ S.Array(S.String);
 export type ContactHandlingScope =
   | "CROSS_CONTACTS"
   | "PER_CONTACT"
   | (string & {});
-export const ContactHandlingScope = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ContactHandlingScope = /*@__PURE__*/ S.String;
 export interface ContactHandling {
   Scope?: ContactHandlingScope;
 }
-export const ContactHandling = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ContactHandling = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Scope: S.optional(ContactHandlingScope) }),
 ).annotate({
   identifier: "ContactHandling",
@@ -189,20 +186,18 @@ export const ContactHandling = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface ApplicationConfig {
   ContactHandling?: ContactHandling;
 }
-export const ApplicationConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApplicationConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ContactHandling: S.optional(ContactHandling) }),
 ).annotate({
   identifier: "ApplicationConfig",
 }) as any as S.Schema<ApplicationConfig>;
 export type IframePermissionList = string[];
-export const IframePermissionList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const IframePermissionList = /*@__PURE__*/ S.Array(S.String);
 export interface IframeConfig {
   Allow?: string[];
   Sandbox?: string[];
 }
-export const IframeConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IframeConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Allow: S.optional(IframePermissionList),
     Sandbox: S.optional(IframePermissionList),
@@ -213,7 +208,7 @@ export type ApplicationType =
   | "SERVICE"
   | "MCP_SERVER"
   | (string & {});
-export const ApplicationType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ApplicationType = /*@__PURE__*/ S.String;
 export interface CreateApplicationRequest {
   Name: string;
   Namespace: string;
@@ -230,33 +225,32 @@ export interface CreateApplicationRequest {
   IframeConfig?: IframeConfig;
   ApplicationType?: ApplicationType;
 }
-export const CreateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Name: S.String,
-      Namespace: S.String,
-      Description: S.optional(S.String),
-      ApplicationSourceConfig: ApplicationSourceConfig,
-      Subscriptions: S.optional(SubscriptionList),
-      Publications: S.optional(PublicationList),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      Tags: S.optional(TagMap),
-      Permissions: S.optional(PermissionList),
-      IsService: S.optional(S.Boolean),
-      InitializationTimeout: S.optional(S.Number),
-      ApplicationConfig: S.optional(ApplicationConfig),
-      IframeConfig: S.optional(IframeConfig),
-      ApplicationType: S.optional(ApplicationType),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/applications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Namespace: S.String,
+    Description: S.optional(S.String),
+    ApplicationSourceConfig: ApplicationSourceConfig,
+    Subscriptions: S.optional(SubscriptionList),
+    Publications: S.optional(PublicationList),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Tags: S.optional(TagMap),
+    Permissions: S.optional(PermissionList),
+    IsService: S.optional(S.Boolean),
+    InitializationTimeout: S.optional(S.Number),
+    ApplicationConfig: S.optional(ApplicationConfig),
+    IframeConfig: S.optional(IframeConfig),
+    ApplicationType: S.optional(ApplicationType),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/applications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateApplicationRequest",
 }) as any as S.Schema<CreateApplicationRequest>;
@@ -264,8 +258,8 @@ export interface CreateApplicationResponse {
   Arn?: string;
   Id?: string;
 }
-export const CreateApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }),
+export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.optional(S.String), Id: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
@@ -274,7 +268,7 @@ export interface ScheduleConfiguration {
   Object?: string;
   ScheduleExpression: string;
 }
-export const ScheduleConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     FirstExecutionFrom: S.optional(S.String),
     Object: S.optional(S.String),
@@ -284,11 +278,11 @@ export const ScheduleConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ScheduleConfiguration",
 }) as any as S.Schema<ScheduleConfiguration>;
 export type FolderList = string[];
-export const FolderList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FolderList = /*@__PURE__*/ S.Array(S.String);
 export type FieldsList = string[];
-export const FieldsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const FieldsList = /*@__PURE__*/ S.Array(S.String);
 export type FieldsMap = { [key: string]: string[] | undefined };
-export const FieldsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const FieldsMap = /*@__PURE__*/ S.Record(
   S.String,
   FieldsList.pipe(S.optional),
 );
@@ -296,7 +290,7 @@ export interface FileConfiguration {
   Folders: string[];
   Filters?: { [key: string]: string[] | undefined };
 }
-export const FileConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const FileConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Folders: FolderList, Filters: S.optional(FieldsMap) }),
 ).annotate({
   identifier: "FileConfiguration",
@@ -304,7 +298,7 @@ export const FileConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type ObjectConfiguration = {
   [key: string]: { [key: string]: string[] | undefined } | undefined;
 };
-export const ObjectConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ObjectConfiguration = /*@__PURE__*/ S.Record(
   S.String,
   FieldsMap.pipe(S.optional),
 );
@@ -321,31 +315,30 @@ export interface CreateDataIntegrationRequest {
     [key: string]: { [key: string]: string[] | undefined } | undefined;
   };
 }
-export const CreateDataIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      Description: S.optional(S.String),
-      KmsKey: S.String,
-      SourceURI: S.optional(S.String),
-      ScheduleConfig: S.optional(ScheduleConfiguration),
-      Tags: S.optional(TagMap),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      FileConfiguration: S.optional(FileConfiguration),
-      ObjectConfiguration: S.optional(ObjectConfiguration),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/dataIntegrations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDataIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Description: S.optional(S.String),
+    KmsKey: S.String,
+    SourceURI: S.optional(S.String),
+    ScheduleConfig: S.optional(ScheduleConfiguration),
+    Tags: S.optional(TagMap),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    FileConfiguration: S.optional(FileConfiguration),
+    ObjectConfiguration: S.optional(ObjectConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/dataIntegrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDataIntegrationRequest",
-  }) as any as S.Schema<CreateDataIntegrationRequest>;
+  ),
+).annotate({
+  identifier: "CreateDataIntegrationRequest",
+}) as any as S.Schema<CreateDataIntegrationRequest>;
 export interface CreateDataIntegrationResponse {
   Arn?: string;
   Id?: string;
@@ -361,36 +354,35 @@ export interface CreateDataIntegrationResponse {
     [key: string]: { [key: string]: string[] | undefined } | undefined;
   };
 }
-export const CreateDataIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      Id: S.optional(S.String),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      KmsKey: S.optional(S.String),
-      SourceURI: S.optional(S.String),
-      ScheduleConfiguration: S.optional(ScheduleConfiguration),
-      Tags: S.optional(TagMap),
-      ClientToken: S.optional(S.String),
-      FileConfiguration: S.optional(FileConfiguration),
-      ObjectConfiguration: S.optional(ObjectConfiguration),
-    }),
-  ).annotate({
-    identifier: "CreateDataIntegrationResponse",
-  }) as any as S.Schema<CreateDataIntegrationResponse>;
+export const CreateDataIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    KmsKey: S.optional(S.String),
+    SourceURI: S.optional(S.String),
+    ScheduleConfiguration: S.optional(ScheduleConfiguration),
+    Tags: S.optional(TagMap),
+    ClientToken: S.optional(S.String),
+    FileConfiguration: S.optional(FileConfiguration),
+    ObjectConfiguration: S.optional(ObjectConfiguration),
+  }),
+).annotate({
+  identifier: "CreateDataIntegrationResponse",
+}) as any as S.Schema<CreateDataIntegrationResponse>;
 export type ClientAssociationMetadata = { [key: string]: string | undefined };
-export const ClientAssociationMetadata = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const ClientAssociationMetadata = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export type ExecutionMode = "ON_DEMAND" | "SCHEDULED" | (string & {});
-export const ExecutionMode = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionMode = /*@__PURE__*/ S.String;
 export interface OnDemandConfiguration {
   StartTime: string;
   EndTime?: string;
 }
-export const OnDemandConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const OnDemandConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ StartTime: S.String, EndTime: S.optional(S.String) }),
 ).annotate({
   identifier: "OnDemandConfiguration",
@@ -400,13 +392,12 @@ export interface ExecutionConfiguration {
   OnDemandConfiguration?: OnDemandConfiguration;
   ScheduleConfiguration?: ScheduleConfiguration;
 }
-export const ExecutionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ExecutionMode: ExecutionMode,
-      OnDemandConfiguration: S.optional(OnDemandConfiguration),
-      ScheduleConfiguration: S.optional(ScheduleConfiguration),
-    }),
+export const ExecutionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExecutionMode: ExecutionMode,
+    OnDemandConfiguration: S.optional(OnDemandConfiguration),
+    ScheduleConfiguration: S.optional(ScheduleConfiguration),
+  }),
 ).annotate({
   identifier: "ExecutionConfiguration",
 }) as any as S.Schema<ExecutionConfiguration>;
@@ -421,8 +412,8 @@ export interface CreateDataIntegrationAssociationRequest {
   ClientToken?: string;
   ExecutionConfiguration?: ExecutionConfiguration;
 }
-export const CreateDataIntegrationAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDataIntegrationAssociationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DataIntegrationIdentifier: S.String.pipe(
         T.HttpLabel("DataIntegrationIdentifier"),
@@ -446,26 +437,26 @@ export const CreateDataIntegrationAssociationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "CreateDataIntegrationAssociationRequest",
-  }) as any as S.Schema<CreateDataIntegrationAssociationRequest>;
+).annotate({
+  identifier: "CreateDataIntegrationAssociationRequest",
+}) as any as S.Schema<CreateDataIntegrationAssociationRequest>;
 export interface CreateDataIntegrationAssociationResponse {
   DataIntegrationAssociationId?: string;
   DataIntegrationArn?: string;
 }
-export const CreateDataIntegrationAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateDataIntegrationAssociationResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DataIntegrationAssociationId: S.optional(S.String),
       DataIntegrationArn: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "CreateDataIntegrationAssociationResponse",
-  }) as any as S.Schema<CreateDataIntegrationAssociationResponse>;
+).annotate({
+  identifier: "CreateDataIntegrationAssociationResponse",
+}) as any as S.Schema<CreateDataIntegrationAssociationResponse>;
 export interface EventFilter {
   Source: string;
 }
-export const EventFilter = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Source: S.String }),
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
 export interface CreateEventIntegrationRequest {
@@ -476,118 +467,115 @@ export interface CreateEventIntegrationRequest {
   ClientToken?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const CreateEventIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String,
-      Description: S.optional(S.String),
-      EventFilter: EventFilter,
-      EventBridgeBus: S.String,
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      Tags: S.optional(TagMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/eventIntegrations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEventIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Description: S.optional(S.String),
+    EventFilter: EventFilter,
+    EventBridgeBus: S.String,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/eventIntegrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateEventIntegrationRequest",
-  }) as any as S.Schema<CreateEventIntegrationRequest>;
+  ),
+).annotate({
+  identifier: "CreateEventIntegrationRequest",
+}) as any as S.Schema<CreateEventIntegrationRequest>;
 export interface CreateEventIntegrationResponse {
   EventIntegrationArn?: string;
 }
-export const CreateEventIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ EventIntegrationArn: S.optional(S.String) }),
-  ).annotate({
-    identifier: "CreateEventIntegrationResponse",
-  }) as any as S.Schema<CreateEventIntegrationResponse>;
+export const CreateEventIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventIntegrationArn: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateEventIntegrationResponse",
+}) as any as S.Schema<CreateEventIntegrationResponse>;
 export interface DeleteApplicationRequest {
   Arn: string;
 }
-export const DeleteApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Arn: S.String.pipe(T.HttpLabel("Arn")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/applications/{Arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String.pipe(T.HttpLabel("Arn")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/applications/{Arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteApplicationRequest",
 }) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteDataIntegrationRequest {
   DataIntegrationIdentifier: string;
 }
-export const DeleteDataIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DataIntegrationIdentifier: S.String.pipe(
-        T.HttpLabel("DataIntegrationIdentifier"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/dataIntegrations/{DataIntegrationIdentifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteDataIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataIntegrationIdentifier: S.String.pipe(
+      T.HttpLabel("DataIntegrationIdentifier"),
     ),
-  ).annotate({
-    identifier: "DeleteDataIntegrationRequest",
-  }) as any as S.Schema<DeleteDataIntegrationRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/dataIntegrations/{DataIntegrationIdentifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDataIntegrationRequest",
+}) as any as S.Schema<DeleteDataIntegrationRequest>;
 export interface DeleteDataIntegrationResponse {}
-export const DeleteDataIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteDataIntegrationResponse",
-  }) as any as S.Schema<DeleteDataIntegrationResponse>;
+export const DeleteDataIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDataIntegrationResponse",
+}) as any as S.Schema<DeleteDataIntegrationResponse>;
 export interface DeleteEventIntegrationRequest {
   Name: string;
 }
-export const DeleteEventIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/eventIntegrations/{Name}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEventIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/eventIntegrations/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteEventIntegrationRequest",
-  }) as any as S.Schema<DeleteEventIntegrationRequest>;
+  ),
+).annotate({
+  identifier: "DeleteEventIntegrationRequest",
+}) as any as S.Schema<DeleteEventIntegrationRequest>;
 export interface DeleteEventIntegrationResponse {}
-export const DeleteEventIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteEventIntegrationResponse",
-  }) as any as S.Schema<DeleteEventIntegrationResponse>;
+export const DeleteEventIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteEventIntegrationResponse",
+}) as any as S.Schema<DeleteEventIntegrationResponse>;
 export interface GetApplicationRequest {
   Arn: string;
 }
-export const GetApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Arn: S.String.pipe(T.HttpLabel("Arn")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/applications/{Arn}" }),
@@ -620,47 +608,45 @@ export interface GetApplicationResponse {
   IframeConfig?: IframeConfig;
   ApplicationType?: ApplicationType;
 }
-export const GetApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      Id: S.optional(S.String),
-      Name: S.optional(S.String),
-      Namespace: S.optional(S.String),
-      Description: S.optional(S.String),
-      ApplicationSourceConfig: S.optional(ApplicationSourceConfig),
-      Subscriptions: S.optional(SubscriptionList),
-      Publications: S.optional(PublicationList),
-      CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      LastModifiedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      Tags: S.optional(TagMap),
-      Permissions: S.optional(PermissionList),
-      IsService: S.optional(S.Boolean),
-      InitializationTimeout: S.optional(S.Number),
-      ApplicationConfig: S.optional(ApplicationConfig),
-      IframeConfig: S.optional(IframeConfig),
-      ApplicationType: S.optional(ApplicationType),
-    }),
+export const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Namespace: S.optional(S.String),
+    Description: S.optional(S.String),
+    ApplicationSourceConfig: S.optional(ApplicationSourceConfig),
+    Subscriptions: S.optional(SubscriptionList),
+    Publications: S.optional(PublicationList),
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModifiedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    Tags: S.optional(TagMap),
+    Permissions: S.optional(PermissionList),
+    IsService: S.optional(S.Boolean),
+    InitializationTimeout: S.optional(S.Number),
+    ApplicationConfig: S.optional(ApplicationConfig),
+    IframeConfig: S.optional(IframeConfig),
+    ApplicationType: S.optional(ApplicationType),
+  }),
 ).annotate({
   identifier: "GetApplicationResponse",
 }) as any as S.Schema<GetApplicationResponse>;
 export interface GetDataIntegrationRequest {
   Identifier: string;
 }
-export const GetDataIntegrationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/dataIntegrations/{Identifier}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDataIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/dataIntegrations/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetDataIntegrationRequest",
 }) as any as S.Schema<GetDataIntegrationRequest>;
@@ -678,38 +664,36 @@ export interface GetDataIntegrationResponse {
     [key: string]: { [key: string]: string[] | undefined } | undefined;
   };
 }
-export const GetDataIntegrationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      Id: S.optional(S.String),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      KmsKey: S.optional(S.String),
-      SourceURI: S.optional(S.String),
-      ScheduleConfiguration: S.optional(ScheduleConfiguration),
-      Tags: S.optional(TagMap),
-      FileConfiguration: S.optional(FileConfiguration),
-      ObjectConfiguration: S.optional(ObjectConfiguration),
-    }),
+export const GetDataIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Id: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    KmsKey: S.optional(S.String),
+    SourceURI: S.optional(S.String),
+    ScheduleConfiguration: S.optional(ScheduleConfiguration),
+    Tags: S.optional(TagMap),
+    FileConfiguration: S.optional(FileConfiguration),
+    ObjectConfiguration: S.optional(ObjectConfiguration),
+  }),
 ).annotate({
   identifier: "GetDataIntegrationResponse",
 }) as any as S.Schema<GetDataIntegrationResponse>;
 export interface GetEventIntegrationRequest {
   Name: string;
 }
-export const GetEventIntegrationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/eventIntegrations/{Name}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetEventIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/eventIntegrations/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetEventIntegrationRequest",
 }) as any as S.Schema<GetEventIntegrationRequest>;
@@ -721,101 +705,96 @@ export interface GetEventIntegrationResponse {
   EventFilter?: EventFilter;
   Tags?: { [key: string]: string | undefined };
 }
-export const GetEventIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      EventIntegrationArn: S.optional(S.String),
-      EventBridgeBus: S.optional(S.String),
-      EventFilter: S.optional(EventFilter),
-      Tags: S.optional(TagMap),
-    }),
-  ).annotate({
-    identifier: "GetEventIntegrationResponse",
-  }) as any as S.Schema<GetEventIntegrationResponse>;
+export const GetEventIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    EventIntegrationArn: S.optional(S.String),
+    EventBridgeBus: S.optional(S.String),
+    EventFilter: S.optional(EventFilter),
+    Tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "GetEventIntegrationResponse",
+}) as any as S.Schema<GetEventIntegrationResponse>;
 export interface ListApplicationAssociationsRequest {
   ApplicationId: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListApplicationAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{ApplicationId}/associations",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListApplicationAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationId: S.String.pipe(T.HttpLabel("ApplicationId")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{ApplicationId}/associations",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListApplicationAssociationsRequest",
-  }) as any as S.Schema<ListApplicationAssociationsRequest>;
+  ),
+).annotate({
+  identifier: "ListApplicationAssociationsRequest",
+}) as any as S.Schema<ListApplicationAssociationsRequest>;
 export interface ApplicationAssociationSummary {
   ApplicationAssociationArn?: string;
   ApplicationArn?: string;
   ClientId?: string;
 }
-export const ApplicationAssociationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationAssociationArn: S.optional(S.String),
-      ApplicationArn: S.optional(S.String),
-      ClientId: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationAssociationSummary",
-  }) as any as S.Schema<ApplicationAssociationSummary>;
+export const ApplicationAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationAssociationArn: S.optional(S.String),
+    ApplicationArn: S.optional(S.String),
+    ClientId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ApplicationAssociationSummary",
+}) as any as S.Schema<ApplicationAssociationSummary>;
 export type ApplicationAssociationsList = ApplicationAssociationSummary[];
-export const ApplicationAssociationsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ApplicationAssociationsList = /*@__PURE__*/ S.Array(
   ApplicationAssociationSummary,
 );
 export interface ListApplicationAssociationsResponse {
   ApplicationAssociations?: ApplicationAssociationSummary[];
   NextToken?: string;
 }
-export const ListApplicationAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationAssociations: S.optional(ApplicationAssociationsList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListApplicationAssociationsResponse",
-  }) as any as S.Schema<ListApplicationAssociationsResponse>;
+export const ListApplicationAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationAssociations: S.optional(ApplicationAssociationsList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListApplicationAssociationsResponse",
+}) as any as S.Schema<ListApplicationAssociationsResponse>;
 export interface ListApplicationsRequest {
   NextToken?: string;
   MaxResults?: number;
   ApplicationType?: ApplicationType;
 }
-export const ListApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      ApplicationType: S.optional(ApplicationType).pipe(
-        T.HttpQuery("applicationType"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/applications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    ApplicationType: S.optional(ApplicationType).pipe(
+      T.HttpQuery("applicationType"),
     ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/applications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
 ).annotate({
   identifier: "ListApplicationsRequest",
 }) as any as S.Schema<ListApplicationsRequest>;
@@ -829,7 +808,7 @@ export interface ApplicationSummary {
   IsService?: boolean;
   ApplicationType?: ApplicationType;
 }
-export const ApplicationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Arn: S.optional(S.String),
     Id: S.optional(S.String),
@@ -846,18 +825,16 @@ export const ApplicationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ApplicationSummary",
 }) as any as S.Schema<ApplicationSummary>;
 export type ApplicationsList = ApplicationSummary[];
-export const ApplicationsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ApplicationSummary);
+export const ApplicationsList = /*@__PURE__*/ S.Array(ApplicationSummary);
 export interface ListApplicationsResponse {
   Applications?: ApplicationSummary[];
   NextToken?: string;
 }
-export const ListApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Applications: S.optional(ApplicationsList),
-      NextToken: S.optional(S.String),
-    }),
+export const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Applications: S.optional(ApplicationsList),
+    NextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListApplicationsResponse",
 }) as any as S.Schema<ListApplicationsResponse>;
@@ -866,8 +843,8 @@ export interface ListDataIntegrationAssociationsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListDataIntegrationAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDataIntegrationAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DataIntegrationIdentifier: S.String.pipe(
         T.HttpLabel("DataIntegrationIdentifier"),
@@ -887,20 +864,20 @@ export const ListDataIntegrationAssociationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListDataIntegrationAssociationsRequest",
-  }) as any as S.Schema<ListDataIntegrationAssociationsRequest>;
+).annotate({
+  identifier: "ListDataIntegrationAssociationsRequest",
+}) as any as S.Schema<ListDataIntegrationAssociationsRequest>;
 export type ExecutionStatus =
   | "COMPLETED"
   | "IN_PROGRESS"
   | "FAILED"
   | (string & {});
-export const ExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const ExecutionStatus = /*@__PURE__*/ S.String;
 export interface LastExecutionStatus {
   ExecutionStatus?: ExecutionStatus;
   StatusMessage?: string;
 }
-export const LastExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LastExecutionStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ExecutionStatus: S.optional(ExecutionStatus),
     StatusMessage: S.optional(S.String),
@@ -916,97 +893,94 @@ export interface DataIntegrationAssociationSummary {
   LastExecutionStatus?: LastExecutionStatus;
   ExecutionConfiguration?: ExecutionConfiguration;
 }
-export const DataIntegrationAssociationSummary =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DataIntegrationAssociationArn: S.optional(S.String),
-      DataIntegrationArn: S.optional(S.String),
-      ClientId: S.optional(S.String),
-      DestinationURI: S.optional(S.String),
-      LastExecutionStatus: S.optional(LastExecutionStatus),
-      ExecutionConfiguration: S.optional(ExecutionConfiguration),
-    }),
-  ).annotate({
-    identifier: "DataIntegrationAssociationSummary",
-  }) as any as S.Schema<DataIntegrationAssociationSummary>;
+export const DataIntegrationAssociationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataIntegrationAssociationArn: S.optional(S.String),
+    DataIntegrationArn: S.optional(S.String),
+    ClientId: S.optional(S.String),
+    DestinationURI: S.optional(S.String),
+    LastExecutionStatus: S.optional(LastExecutionStatus),
+    ExecutionConfiguration: S.optional(ExecutionConfiguration),
+  }),
+).annotate({
+  identifier: "DataIntegrationAssociationSummary",
+}) as any as S.Schema<DataIntegrationAssociationSummary>;
 export type DataIntegrationAssociationsList =
   DataIntegrationAssociationSummary[];
-export const DataIntegrationAssociationsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataIntegrationAssociationSummary);
+export const DataIntegrationAssociationsList = /*@__PURE__*/ S.Array(
+  DataIntegrationAssociationSummary,
+);
 export interface ListDataIntegrationAssociationsResponse {
   DataIntegrationAssociations?: DataIntegrationAssociationSummary[];
   NextToken?: string;
 }
-export const ListDataIntegrationAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDataIntegrationAssociationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DataIntegrationAssociations: S.optional(DataIntegrationAssociationsList),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListDataIntegrationAssociationsResponse",
-  }) as any as S.Schema<ListDataIntegrationAssociationsResponse>;
+).annotate({
+  identifier: "ListDataIntegrationAssociationsResponse",
+}) as any as S.Schema<ListDataIntegrationAssociationsResponse>;
 export interface ListDataIntegrationsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListDataIntegrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/dataIntegrations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDataIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/dataIntegrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDataIntegrationsRequest",
-  }) as any as S.Schema<ListDataIntegrationsRequest>;
+  ),
+).annotate({
+  identifier: "ListDataIntegrationsRequest",
+}) as any as S.Schema<ListDataIntegrationsRequest>;
 export interface DataIntegrationSummary {
   Arn?: string;
   Name?: string;
   SourceURI?: string;
 }
-export const DataIntegrationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Arn: S.optional(S.String),
-      Name: S.optional(S.String),
-      SourceURI: S.optional(S.String),
-    }),
+export const DataIntegrationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    SourceURI: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DataIntegrationSummary",
 }) as any as S.Schema<DataIntegrationSummary>;
 export type DataIntegrationsList = DataIntegrationSummary[];
-export const DataIntegrationsList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const DataIntegrationsList = /*@__PURE__*/ S.Array(
   DataIntegrationSummary,
 );
 export interface ListDataIntegrationsResponse {
   DataIntegrations?: DataIntegrationSummary[];
   NextToken?: string;
 }
-export const ListDataIntegrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DataIntegrations: S.optional(DataIntegrationsList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDataIntegrationsResponse",
-  }) as any as S.Schema<ListDataIntegrationsResponse>;
+export const ListDataIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DataIntegrations: S.optional(DataIntegrationsList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDataIntegrationsResponse",
+}) as any as S.Schema<ListDataIntegrationsResponse>;
 export interface ListEventIntegrationAssociationsRequest {
   EventIntegrationName: string;
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListEventIntegrationAssociationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListEventIntegrationAssociationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       EventIntegrationName: S.String.pipe(T.HttpLabel("EventIntegrationName")),
       NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1024,9 +998,9 @@ export const ListEventIntegrationAssociationsRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "ListEventIntegrationAssociationsRequest",
-  }) as any as S.Schema<ListEventIntegrationAssociationsRequest>;
+).annotate({
+  identifier: "ListEventIntegrationAssociationsRequest",
+}) as any as S.Schema<ListEventIntegrationAssociationsRequest>;
 export interface EventIntegrationAssociation {
   EventIntegrationAssociationArn?: string;
   EventIntegrationAssociationId?: string;
@@ -1035,59 +1009,58 @@ export interface EventIntegrationAssociation {
   EventBridgeRuleName?: string;
   ClientAssociationMetadata?: { [key: string]: string | undefined };
 }
-export const EventIntegrationAssociation =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventIntegrationAssociationArn: S.optional(S.String),
-      EventIntegrationAssociationId: S.optional(S.String),
-      EventIntegrationName: S.optional(S.String),
-      ClientId: S.optional(S.String),
-      EventBridgeRuleName: S.optional(S.String),
-      ClientAssociationMetadata: S.optional(ClientAssociationMetadata),
-    }),
-  ).annotate({
-    identifier: "EventIntegrationAssociation",
-  }) as any as S.Schema<EventIntegrationAssociation>;
+export const EventIntegrationAssociation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventIntegrationAssociationArn: S.optional(S.String),
+    EventIntegrationAssociationId: S.optional(S.String),
+    EventIntegrationName: S.optional(S.String),
+    ClientId: S.optional(S.String),
+    EventBridgeRuleName: S.optional(S.String),
+    ClientAssociationMetadata: S.optional(ClientAssociationMetadata),
+  }),
+).annotate({
+  identifier: "EventIntegrationAssociation",
+}) as any as S.Schema<EventIntegrationAssociation>;
 export type EventIntegrationAssociationsList = EventIntegrationAssociation[];
-export const EventIntegrationAssociationsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EventIntegrationAssociation);
+export const EventIntegrationAssociationsList = /*@__PURE__*/ S.Array(
+  EventIntegrationAssociation,
+);
 export interface ListEventIntegrationAssociationsResponse {
   EventIntegrationAssociations?: EventIntegrationAssociation[];
   NextToken?: string;
 }
-export const ListEventIntegrationAssociationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListEventIntegrationAssociationsResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       EventIntegrationAssociations: S.optional(
         EventIntegrationAssociationsList,
       ),
       NextToken: S.optional(S.String),
     }),
-  ).annotate({
-    identifier: "ListEventIntegrationAssociationsResponse",
-  }) as any as S.Schema<ListEventIntegrationAssociationsResponse>;
+).annotate({
+  identifier: "ListEventIntegrationAssociationsResponse",
+}) as any as S.Schema<ListEventIntegrationAssociationsResponse>;
 export interface ListEventIntegrationsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-export const ListEventIntegrationsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/eventIntegrations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEventIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/eventIntegrations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListEventIntegrationsRequest",
-  }) as any as S.Schema<ListEventIntegrationsRequest>;
+  ),
+).annotate({
+  identifier: "ListEventIntegrationsRequest",
+}) as any as S.Schema<ListEventIntegrationsRequest>;
 export interface EventIntegration {
   EventIntegrationArn?: string;
   Name?: string;
@@ -1096,7 +1069,7 @@ export interface EventIntegration {
   EventBridgeBus?: string;
   Tags?: { [key: string]: string | undefined };
 }
-export const EventIntegration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EventIntegration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     EventIntegrationArn: S.optional(S.String),
     Name: S.optional(S.String),
@@ -1109,53 +1082,49 @@ export const EventIntegration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EventIntegration",
 }) as any as S.Schema<EventIntegration>;
 export type EventIntegrationsList = EventIntegration[];
-export const EventIntegrationsList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EventIntegration);
+export const EventIntegrationsList = /*@__PURE__*/ S.Array(EventIntegration);
 export interface ListEventIntegrationsResponse {
   EventIntegrations?: EventIntegration[];
   NextToken?: string;
 }
-export const ListEventIntegrationsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EventIntegrations: S.optional(EventIntegrationsList),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListEventIntegrationsResponse",
-  }) as any as S.Schema<ListEventIntegrationsResponse>;
+export const ListEventIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EventIntegrations: S.optional(EventIntegrationsList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEventIntegrationsResponse",
+}) as any as S.Schema<ListEventIntegrationsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: S.optional(TagMap) }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -1173,18 +1142,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -1202,7 +1171,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -1221,37 +1190,36 @@ export interface UpdateApplicationRequest {
   IframeConfig?: IframeConfig;
   ApplicationType?: ApplicationType;
 }
-export const UpdateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Arn: S.String.pipe(T.HttpLabel("Arn")),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-      ApplicationSourceConfig: S.optional(ApplicationSourceConfig),
-      Subscriptions: S.optional(SubscriptionList),
-      Publications: S.optional(PublicationList),
-      Permissions: S.optional(PermissionList),
-      IsService: S.optional(S.Boolean),
-      InitializationTimeout: S.optional(S.Number),
-      ApplicationConfig: S.optional(ApplicationConfig),
-      IframeConfig: S.optional(IframeConfig),
-      ApplicationType: S.optional(ApplicationType),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/applications/{Arn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String.pipe(T.HttpLabel("Arn")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    ApplicationSourceConfig: S.optional(ApplicationSourceConfig),
+    Subscriptions: S.optional(SubscriptionList),
+    Publications: S.optional(PublicationList),
+    Permissions: S.optional(PermissionList),
+    IsService: S.optional(S.Boolean),
+    InitializationTimeout: S.optional(S.Number),
+    ApplicationConfig: S.optional(ApplicationConfig),
+    IframeConfig: S.optional(IframeConfig),
+    ApplicationType: S.optional(ApplicationType),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/applications/{Arn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateApplicationRequest",
 }) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {}
-export const UpdateApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "UpdateApplicationResponse",
 }) as any as S.Schema<UpdateApplicationResponse>;
@@ -1260,37 +1228,37 @@ export interface UpdateDataIntegrationRequest {
   Name?: string;
   Description?: string;
 }
-export const UpdateDataIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-      Name: S.optional(S.String),
-      Description: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/dataIntegrations/{Identifier}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateDataIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/dataIntegrations/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateDataIntegrationRequest",
-  }) as any as S.Schema<UpdateDataIntegrationRequest>;
+  ),
+).annotate({
+  identifier: "UpdateDataIntegrationRequest",
+}) as any as S.Schema<UpdateDataIntegrationRequest>;
 export interface UpdateDataIntegrationResponse {}
-export const UpdateDataIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateDataIntegrationResponse",
-  }) as any as S.Schema<UpdateDataIntegrationResponse>;
+export const UpdateDataIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateDataIntegrationResponse",
+}) as any as S.Schema<UpdateDataIntegrationResponse>;
 export interface UpdateDataIntegrationAssociationRequest {
   DataIntegrationIdentifier: string;
   DataIntegrationAssociationIdentifier: string;
   ExecutionConfiguration: ExecutionConfiguration;
 }
-export const UpdateDataIntegrationAssociationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateDataIntegrationAssociationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       DataIntegrationIdentifier: S.String.pipe(
         T.HttpLabel("DataIntegrationIdentifier"),
@@ -1312,74 +1280,87 @@ export const UpdateDataIntegrationAssociationRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "UpdateDataIntegrationAssociationRequest",
-  }) as any as S.Schema<UpdateDataIntegrationAssociationRequest>;
+).annotate({
+  identifier: "UpdateDataIntegrationAssociationRequest",
+}) as any as S.Schema<UpdateDataIntegrationAssociationRequest>;
 export interface UpdateDataIntegrationAssociationResponse {}
-export const UpdateDataIntegrationAssociationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateDataIntegrationAssociationResponse",
-  }) as any as S.Schema<UpdateDataIntegrationAssociationResponse>;
+export const UpdateDataIntegrationAssociationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UpdateDataIntegrationAssociationResponse",
+}) as any as S.Schema<UpdateDataIntegrationAssociationResponse>;
 export interface UpdateEventIntegrationRequest {
   Name: string;
   Description?: string;
 }
-export const UpdateEventIntegrationRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Name: S.String.pipe(T.HttpLabel("Name")),
-      Description: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/eventIntegrations/{Name}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEventIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String.pipe(T.HttpLabel("Name")),
+    Description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/eventIntegrations/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateEventIntegrationRequest",
-  }) as any as S.Schema<UpdateEventIntegrationRequest>;
+  ),
+).annotate({
+  identifier: "UpdateEventIntegrationRequest",
+}) as any as S.Schema<UpdateEventIntegrationRequest>;
 export interface UpdateEventIntegrationResponse {}
-export const UpdateEventIntegrationResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "UpdateEventIntegrationResponse",
-  }) as any as S.Schema<UpdateEventIntegrationResponse>;
+export const UpdateEventIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateEventIntegrationResponse",
+}) as any as S.Schema<UpdateEventIntegrationResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
   "DuplicateResourceException",
   { Message: S.optional(S.String) },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
   "InternalServiceError",
   { Message: S.optional(S.String) },
+  T.HttpError(500),
 ).pipe(C.withServerError) {}
 export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
   "InvalidRequestException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceQuotaExceededException extends S.TaggedErrorClass<ResourceQuotaExceededException>()(
   "ResourceQuotaExceededException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.optional(S.String) },
+  T.HttpError(429),
 ).pipe(C.withThrottlingError) {}
 export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
   "UnsupportedOperationException",
   { Message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -1391,6 +1372,7 @@ export type CreateApplicationError =
   | ResourceQuotaExceededException
   | ThrottlingException
   | UnsupportedOperationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates and persists an Application resource.
@@ -1400,7 +1382,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [
@@ -1411,6 +1393,7 @@ export const createApplication: API.OperationMethod<
     ResourceQuotaExceededException,
     ThrottlingException,
     UnsupportedOperationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1423,6 +1406,7 @@ export type CreateDataIntegrationError =
   | InvalidRequestException
   | ResourceQuotaExceededException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates and persists a DataIntegration resource.
@@ -1436,7 +1420,7 @@ export const createDataIntegration: API.OperationMethod<
   CreateDataIntegrationResponse,
   CreateDataIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataIntegrationRequest,
   output: CreateDataIntegrationResponse,
   errors: [
@@ -1446,6 +1430,7 @@ export const createDataIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceQuotaExceededException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1458,6 +1443,7 @@ export type CreateDataIntegrationAssociationError =
   | ResourceNotFoundException
   | ResourceQuotaExceededException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates and persists a DataIntegrationAssociation resource.
@@ -1467,7 +1453,7 @@ export const createDataIntegrationAssociation: API.OperationMethod<
   CreateDataIntegrationAssociationResponse,
   CreateDataIntegrationAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataIntegrationAssociationRequest,
   output: CreateDataIntegrationAssociationResponse,
   errors: [
@@ -1477,6 +1463,7 @@ export const createDataIntegrationAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ResourceQuotaExceededException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1489,6 +1476,7 @@ export type CreateEventIntegrationError =
   | InvalidRequestException
   | ResourceQuotaExceededException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates an EventIntegration, given a specified name, description, and a reference to an
@@ -1501,7 +1489,7 @@ export const createEventIntegration: API.OperationMethod<
   CreateEventIntegrationResponse,
   CreateEventIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEventIntegrationRequest,
   output: CreateEventIntegrationResponse,
   errors: [
@@ -1511,6 +1499,7 @@ export const createEventIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceQuotaExceededException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1522,6 +1511,7 @@ export type DeleteApplicationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes the Application. Only Applications that don't have any Application Associations
@@ -1532,7 +1522,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -1541,6 +1531,7 @@ export const deleteApplication: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1552,6 +1543,7 @@ export type DeleteDataIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes the DataIntegration. Only DataIntegrations that don't have any
@@ -1567,7 +1559,7 @@ export const deleteDataIntegration: API.OperationMethod<
   DeleteDataIntegrationResponse,
   DeleteDataIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteDataIntegrationRequest,
   output: DeleteDataIntegrationResponse,
   errors: [
@@ -1576,6 +1568,7 @@ export const deleteDataIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1587,6 +1580,7 @@ export type DeleteEventIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes the specified existing event integration. If the event integration is associated
@@ -1597,7 +1591,7 @@ export const deleteEventIntegration: API.OperationMethod<
   DeleteEventIntegrationResponse,
   DeleteEventIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEventIntegrationRequest,
   output: DeleteEventIntegrationResponse,
   errors: [
@@ -1606,6 +1600,7 @@ export const deleteEventIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1617,6 +1612,7 @@ export type GetApplicationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Get an Application resource.
@@ -1626,7 +1622,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationResponse,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [
@@ -1635,6 +1631,7 @@ export const getApplication: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1646,6 +1643,7 @@ export type GetDataIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns information about the DataIntegration.
@@ -1659,7 +1657,7 @@ export const getDataIntegration: API.OperationMethod<
   GetDataIntegrationResponse,
   GetDataIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataIntegrationRequest,
   output: GetDataIntegrationResponse,
   errors: [
@@ -1668,6 +1666,7 @@ export const getDataIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1679,6 +1678,7 @@ export type GetEventIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns information about the event integration.
@@ -1688,7 +1688,7 @@ export const getEventIntegration: API.OperationMethod<
   GetEventIntegrationResponse,
   GetEventIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEventIntegrationRequest,
   output: GetEventIntegrationResponse,
   errors: [
@@ -1697,6 +1697,7 @@ export const getEventIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1708,6 +1709,7 @@ export type ListApplicationAssociationsError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of application associations for an application.
@@ -1732,7 +1734,7 @@ export const listApplicationAssociations: API.OperationMethod<
     ListApplicationAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationAssociationsRequest,
   output: ListApplicationAssociationsResponse,
   errors: [
@@ -1741,6 +1743,7 @@ export const listApplicationAssociations: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1757,6 +1760,7 @@ export type ListApplicationsError =
   | InternalServiceError
   | InvalidRequestException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists applications in the account.
@@ -1781,7 +1785,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -1789,6 +1793,7 @@ export const listApplications: API.OperationMethod<
     InternalServiceError,
     InvalidRequestException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1806,6 +1811,7 @@ export type ListDataIntegrationAssociationsError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of DataIntegration associations in the account.
@@ -1834,7 +1840,7 @@ export const listDataIntegrationAssociations: API.OperationMethod<
     ListDataIntegrationAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationAssociationsRequest,
   output: ListDataIntegrationAssociationsResponse,
   errors: [
@@ -1843,6 +1849,7 @@ export const listDataIntegrationAssociations: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1859,6 +1866,7 @@ export type ListDataIntegrationsError =
   | InternalServiceError
   | InvalidRequestException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of DataIntegrations in the account.
@@ -1887,7 +1895,7 @@ export const listDataIntegrations: API.OperationMethod<
     ListDataIntegrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataIntegrationsRequest,
   output: ListDataIntegrationsResponse,
   errors: [
@@ -1895,6 +1903,7 @@ export const listDataIntegrations: API.OperationMethod<
     InternalServiceError,
     InvalidRequestException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1912,6 +1921,7 @@ export type ListEventIntegrationAssociationsError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of event integration associations in the account.
@@ -1936,7 +1946,7 @@ export const listEventIntegrationAssociations: API.OperationMethod<
     ListEventIntegrationAssociationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventIntegrationAssociationsRequest,
   output: ListEventIntegrationAssociationsResponse,
   errors: [
@@ -1945,6 +1955,7 @@ export const listEventIntegrationAssociations: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1961,6 +1972,7 @@ export type ListEventIntegrationsError =
   | InternalServiceError
   | InvalidRequestException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Returns a paginated list of event integrations in the account.
@@ -1985,7 +1997,7 @@ export const listEventIntegrations: API.OperationMethod<
     ListEventIntegrationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEventIntegrationsRequest,
   output: ListEventIntegrationsResponse,
   errors: [
@@ -1993,6 +2005,7 @@ export const listEventIntegrations: API.OperationMethod<
     InternalServiceError,
     InvalidRequestException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2009,6 +2022,7 @@ export type ListTagsForResourceError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists the tags for the specified resource.
@@ -2018,7 +2032,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2026,6 +2040,7 @@ export const listTagsForResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2036,6 +2051,7 @@ export type TagResourceError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Adds the specified tags to the specified resource.
@@ -2045,7 +2061,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2053,6 +2069,7 @@ export const tagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2063,6 +2080,7 @@ export type UntagResourceError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Removes the specified tags from the specified resource.
@@ -2072,7 +2090,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2080,6 +2098,7 @@ export const untagResource: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2092,6 +2111,7 @@ export type UpdateApplicationError =
   | ResourceNotFoundException
   | ThrottlingException
   | UnsupportedOperationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Updates and persists an Application resource.
@@ -2101,7 +2121,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [
@@ -2111,6 +2131,7 @@ export const updateApplication: API.OperationMethod<
     ResourceNotFoundException,
     ThrottlingException,
     UnsupportedOperationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2122,6 +2143,7 @@ export type UpdateDataIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Updates the description of a DataIntegration.
@@ -2135,7 +2157,7 @@ export const updateDataIntegration: API.OperationMethod<
   UpdateDataIntegrationResponse,
   UpdateDataIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataIntegrationRequest,
   output: UpdateDataIntegrationResponse,
   errors: [
@@ -2144,6 +2166,7 @@ export const updateDataIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2155,6 +2178,7 @@ export type UpdateDataIntegrationAssociationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Updates and persists a DataIntegrationAssociation resource.
@@ -2166,7 +2190,7 @@ export const updateDataIntegrationAssociation: API.OperationMethod<
   UpdateDataIntegrationAssociationResponse,
   UpdateDataIntegrationAssociationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataIntegrationAssociationRequest,
   output: UpdateDataIntegrationAssociationResponse,
   errors: [
@@ -2175,6 +2199,7 @@ export const updateDataIntegrationAssociation: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2186,6 +2211,7 @@ export type UpdateEventIntegrationError =
   | InvalidRequestException
   | ResourceNotFoundException
   | ThrottlingException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Updates the description of an event integration.
@@ -2195,7 +2221,7 @@ export const updateEventIntegration: API.OperationMethod<
   UpdateEventIntegrationResponse,
   UpdateEventIntegrationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEventIntegrationRequest,
   output: UpdateEventIntegrationResponse,
   errors: [
@@ -2204,6 +2230,7 @@ export const updateEventIntegration: API.OperationMethod<
     InvalidRequestException,
     ResourceNotFoundException,
     ThrottlingException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,

@@ -92,24 +92,23 @@ export type ClientId = string;
 export interface JoinStorageSessionInput {
   channelArn: string;
 }
-export const JoinStorageSessionInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ channelArn: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/joinStorageSession" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const JoinStorageSessionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ channelArn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/joinStorageSession" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "JoinStorageSessionInput",
 }) as any as S.Schema<JoinStorageSessionInput>;
 export interface JoinStorageSessionResponse {}
-export const JoinStorageSessionResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const JoinStorageSessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "JoinStorageSessionResponse",
 }) as any as S.Schema<JoinStorageSessionResponse>;
@@ -117,43 +116,47 @@ export interface JoinStorageSessionAsViewerInput {
   channelArn: string;
   clientId: string;
 }
-export const JoinStorageSessionAsViewerInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ channelArn: S.String, clientId: S.String }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/joinStorageSessionAsViewer" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const JoinStorageSessionAsViewerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ channelArn: S.String, clientId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/joinStorageSessionAsViewer" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "JoinStorageSessionAsViewerInput",
-  }) as any as S.Schema<JoinStorageSessionAsViewerInput>;
+  ),
+).annotate({
+  identifier: "JoinStorageSessionAsViewerInput",
+}) as any as S.Schema<JoinStorageSessionAsViewerInput>;
 export interface JoinStorageSessionAsViewerResponse {}
-export const JoinStorageSessionAsViewerResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "JoinStorageSessionAsViewerResponse",
-  }) as any as S.Schema<JoinStorageSessionAsViewerResponse>;
+export const JoinStorageSessionAsViewerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "JoinStorageSessionAsViewerResponse",
+}) as any as S.Schema<JoinStorageSessionAsViewerResponse>;
 
 //# Errors
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.optional(S.String) },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ClientLimitExceededException extends S.TaggedErrorClass<ClientLimitExceededException>()(
   "ClientLimitExceededException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
   "InvalidArgumentException",
   { message: S.optional(S.String) },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { message: S.optional(S.String) },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -213,7 +216,7 @@ export const joinStorageSession: API.OperationMethod<
   JoinStorageSessionResponse,
   JoinStorageSessionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: JoinStorageSessionInput,
   output: JoinStorageSessionResponse,
   errors: [
@@ -256,7 +259,7 @@ export const joinStorageSessionAsViewer: API.OperationMethod<
   JoinStorageSessionAsViewerResponse,
   JoinStorageSessionAsViewerError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: JoinStorageSessionAsViewerInput,
   output: JoinStorageSessionAsViewerResponse,
   errors: [

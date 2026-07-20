@@ -79,36 +79,35 @@ export type FailureReason = string;
 
 //# Schemas
 export type CompletionStatus = "ready" | "failed" | (string & {});
-export const CompletionStatus = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const CompletionStatus = /*@__PURE__*/ S.String;
 export interface CompleteRolloutRequest {
   JobArn: string;
   TrajectoryId: string;
   Status?: CompletionStatus;
   ClientToken?: string;
 }
-export const CompleteRolloutRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
-      TrajectoryId: S.String,
-      Status: S.optional(CompletionStatus),
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/complete-rollout" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CompleteRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
+    TrajectoryId: S.String,
+    Status: S.optional(CompletionStatus),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/complete-rollout" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CompleteRolloutRequest",
 }) as any as S.Schema<CompleteRolloutRequest>;
 export interface CompleteRolloutResponse {}
-export const CompleteRolloutResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const CompleteRolloutResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "CompleteRolloutResponse",
 }) as any as S.Schema<CompleteRolloutResponse>;
@@ -117,7 +116,7 @@ export interface SampleRequest {
   TrajectoryId: string;
   Body: T.StreamingInputBody;
 }
-export const SampleRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SampleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
     TrajectoryId: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id")),
@@ -137,7 +136,7 @@ export interface SampleResponse {
   ContentType?: string;
   Body: T.StreamingOutputBody;
 }
-export const SampleResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const SampleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
     Body: T.StreamingOutput.pipe(T.HttpPayload()),
@@ -148,49 +147,45 @@ export interface SampleWithResponseStreamRequest {
   TrajectoryId: string;
   Body: T.StreamingInputBody;
 }
-export const SampleWithResponseStreamRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
-      TrajectoryId: S.String.pipe(
-        T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id"),
-      ),
-      Body: T.StreamingInput.pipe(T.HttpPayload()),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/sample-with-response-stream" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SampleWithResponseStreamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
+    TrajectoryId: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Trajectory-Id")),
+    Body: T.StreamingInput.pipe(T.HttpPayload()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/sample-with-response-stream" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SampleWithResponseStreamRequest",
-  }) as any as S.Schema<SampleWithResponseStreamRequest>;
+  ),
+).annotate({
+  identifier: "SampleWithResponseStreamRequest",
+}) as any as S.Schema<SampleWithResponseStreamRequest>;
 export interface SampleWithResponseStreamResponse {
   ContentType?: string;
   Body: T.StreamingOutputBody;
 }
-export const SampleWithResponseStreamResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
-      Body: T.StreamingOutput.pipe(T.HttpPayload()),
-    }),
-  ).annotate({
-    identifier: "SampleWithResponseStreamResponse",
-  }) as any as S.Schema<SampleWithResponseStreamResponse>;
+export const SampleWithResponseStreamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ContentType: S.optional(S.String).pipe(T.HttpHeader("Content-Type")),
+    Body: T.StreamingOutput.pipe(T.HttpPayload()),
+  }),
+).annotate({
+  identifier: "SampleWithResponseStreamResponse",
+}) as any as S.Schema<SampleWithResponseStreamResponse>;
 export type DoubleList = number[];
-export const DoubleList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const DoubleList = /*@__PURE__*/ S.Array(S.Number);
 export interface UpdateRewardRequest {
   JobArn: string;
   TrajectoryId: string;
   Rewards: number[];
   ClientToken?: string;
 }
-export const UpdateRewardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRewardRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     JobArn: S.String.pipe(T.HttpHeader("X-Amzn-SageMaker-Job-Arn")),
     TrajectoryId: S.String,
@@ -210,7 +205,7 @@ export const UpdateRewardRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UpdateRewardRequest",
 }) as any as S.Schema<UpdateRewardRequest>;
 export interface UpdateRewardResponse {}
-export const UpdateRewardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UpdateRewardResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UpdateRewardResponse",
@@ -220,32 +215,37 @@ export const UpdateRewardResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { Message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { Message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
   "InternalServiceError",
   { Message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
   { Message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { Message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
   { Message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(429), T.Retryable()),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { Message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -268,7 +268,7 @@ export const completeRollout: API.OperationMethod<
   CompleteRolloutResponse,
   CompleteRolloutError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CompleteRolloutRequest,
   output: CompleteRolloutResponse,
   errors: [
@@ -302,7 +302,7 @@ export const sample: API.OperationMethod<
   SampleResponse,
   SampleError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SampleRequest,
   output: SampleResponse,
   errors: [
@@ -335,7 +335,7 @@ export const sampleWithResponseStream: API.OperationMethod<
   SampleWithResponseStreamResponse,
   SampleWithResponseStreamError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: SampleWithResponseStreamRequest,
   output: SampleWithResponseStreamResponse,
   errors: [
@@ -369,7 +369,7 @@ export const updateReward: API.OperationMethod<
   UpdateRewardResponse,
   UpdateRewardError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateRewardRequest,
   output: UpdateRewardResponse,
   errors: [

@@ -1,4 +1,11 @@
 {
+  "structures": {
+    "AuthorizationData": {
+      "members": {
+        "authorizationToken": { "sensitive": true }
+      }
+    }
+  },
   "errorCategories": {
     "RepositoryAlreadyExistsException": ["ConflictError", "AlreadyExistsError"],
     "RepositoryNotFoundException": ["NotFoundError"],

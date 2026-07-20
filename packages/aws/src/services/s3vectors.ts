@@ -84,31 +84,30 @@ export type QueryVectorsNextToken = string;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
 export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface ListTagsForResourceOutput {
   tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ tags: TagsMap }),
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: TagsMap }),
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
@@ -116,7 +115,7 @@ export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagsMap,
@@ -134,18 +133,18 @@ export const TagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceInput",
 }) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceOutput",
 }) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -163,20 +162,19 @@ export const UntagResourceInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceInput",
 }) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceOutput",
 }) as any as S.Schema<UntagResourceOutput>;
 export type SseType = "AES256" | "aws:kms" | (string & {});
-export const SseType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const SseType = /*@__PURE__*/ S.String;
 export interface EncryptionConfiguration {
   sseType?: SseType;
   kmsKeyArn?: string;
 }
-export const EncryptionConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ sseType: S.optional(SseType), kmsKeyArn: S.optional(S.String) }),
+export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ sseType: S.optional(SseType), kmsKeyArn: S.optional(S.String) }),
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
@@ -185,30 +183,29 @@ export interface CreateVectorBucketInput {
   encryptionConfiguration?: EncryptionConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateVectorBucketInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      vectorBucketName: S.String,
-      encryptionConfiguration: S.optional(EncryptionConfiguration),
-      tags: S.optional(TagsMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/CreateVectorBucket" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateVectorBucketInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vectorBucketName: S.String,
+    encryptionConfiguration: S.optional(EncryptionConfiguration),
+    tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateVectorBucket" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateVectorBucketInput",
 }) as any as S.Schema<CreateVectorBucketInput>;
 export interface CreateVectorBucketOutput {
   vectorBucketArn: string;
 }
-export const CreateVectorBucketOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ vectorBucketArn: S.optional(S.String) }),
+export const CreateVectorBucketOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ vectorBucketArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateVectorBucketOutput",
 }) as any as S.Schema<CreateVectorBucketOutput>;
@@ -216,27 +213,26 @@ export interface DeleteVectorBucketInput {
   vectorBucketName?: string;
   vectorBucketArn?: string;
 }
-export const DeleteVectorBucketInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      vectorBucketName: S.optional(S.String),
-      vectorBucketArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteVectorBucket" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVectorBucketInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vectorBucketName: S.optional(S.String),
+    vectorBucketArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteVectorBucket" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteVectorBucketInput",
 }) as any as S.Schema<DeleteVectorBucketInput>;
 export interface DeleteVectorBucketOutput {}
-export const DeleteVectorBucketOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteVectorBucketOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteVectorBucketOutput",
 }) as any as S.Schema<DeleteVectorBucketOutput>;
@@ -244,34 +240,34 @@ export interface DeleteVectorBucketPolicyInput {
   vectorBucketName?: string;
   vectorBucketArn?: string;
 }
-export const DeleteVectorBucketPolicyInput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      vectorBucketName: S.optional(S.String),
-      vectorBucketArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/DeleteVectorBucketPolicy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVectorBucketPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vectorBucketName: S.optional(S.String),
+    vectorBucketArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteVectorBucketPolicy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteVectorBucketPolicyInput",
-  }) as any as S.Schema<DeleteVectorBucketPolicyInput>;
+  ),
+).annotate({
+  identifier: "DeleteVectorBucketPolicyInput",
+}) as any as S.Schema<DeleteVectorBucketPolicyInput>;
 export interface DeleteVectorBucketPolicyOutput {}
-export const DeleteVectorBucketPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteVectorBucketPolicyOutput",
-  }) as any as S.Schema<DeleteVectorBucketPolicyOutput>;
+export const DeleteVectorBucketPolicyOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteVectorBucketPolicyOutput",
+}) as any as S.Schema<DeleteVectorBucketPolicyOutput>;
 export interface GetVectorBucketInput {
   vectorBucketName?: string;
   vectorBucketArn?: string;
 }
-export const GetVectorBucketInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetVectorBucketInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     vectorBucketArn: S.optional(S.String),
@@ -294,7 +290,7 @@ export interface VectorBucket {
   creationTime: Date;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-export const VectorBucket = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VectorBucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.String,
     vectorBucketArn: S.String,
@@ -305,7 +301,7 @@ export const VectorBucket = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetVectorBucketOutput {
   vectorBucket: VectorBucket;
 }
-export const GetVectorBucketOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetVectorBucketOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ vectorBucket: VectorBucket }),
 ).annotate({
   identifier: "GetVectorBucketOutput",
@@ -314,54 +310,51 @@ export interface GetVectorBucketPolicyInput {
   vectorBucketName?: string;
   vectorBucketArn?: string;
 }
-export const GetVectorBucketPolicyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      vectorBucketName: S.optional(S.String),
-      vectorBucketArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/GetVectorBucketPolicy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetVectorBucketPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vectorBucketName: S.optional(S.String),
+    vectorBucketArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetVectorBucketPolicy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetVectorBucketPolicyInput",
 }) as any as S.Schema<GetVectorBucketPolicyInput>;
 export interface GetVectorBucketPolicyOutput {
   policy?: string;
 }
-export const GetVectorBucketPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ policy: S.optional(S.String) }),
-  ).annotate({
-    identifier: "GetVectorBucketPolicyOutput",
-  }) as any as S.Schema<GetVectorBucketPolicyOutput>;
+export const GetVectorBucketPolicyOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ policy: S.optional(S.String) }),
+).annotate({
+  identifier: "GetVectorBucketPolicyOutput",
+}) as any as S.Schema<GetVectorBucketPolicyOutput>;
 export interface ListVectorBucketsInput {
   maxResults?: number;
   nextToken?: string;
   prefix?: string;
 }
-export const ListVectorBucketsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxResults: S.optional(S.Number),
-      nextToken: S.optional(S.String),
-      prefix: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/ListVectorBuckets" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListVectorBucketsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+    prefix: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListVectorBuckets" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListVectorBucketsInput",
 }) as any as S.Schema<ListVectorBucketsInput>;
@@ -370,7 +363,7 @@ export interface VectorBucketSummary {
   vectorBucketArn: string;
   creationTime: Date;
 }
-export const VectorBucketSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VectorBucketSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.String,
     vectorBucketArn: S.String,
@@ -381,17 +374,16 @@ export const VectorBucketSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VectorBucketSummary>;
 export type ListVectorBucketsOutputList = VectorBucketSummary[];
 export const ListVectorBucketsOutputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(VectorBucketSummary);
+  /*@__PURE__*/ S.Array(VectorBucketSummary);
 export interface ListVectorBucketsOutput {
   nextToken?: string;
   vectorBuckets: VectorBucketSummary[];
 }
-export const ListVectorBucketsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      vectorBuckets: ListVectorBucketsOutputList,
-    }),
+export const ListVectorBucketsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    vectorBuckets: ListVectorBucketsOutputList,
+  }),
 ).annotate({
   identifier: "ListVectorBucketsOutput",
 }) as any as S.Schema<ListVectorBucketsOutput>;
@@ -400,42 +392,40 @@ export interface PutVectorBucketPolicyInput {
   vectorBucketArn?: string;
   policy: string;
 }
-export const PutVectorBucketPolicyInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      vectorBucketName: S.optional(S.String),
-      vectorBucketArn: S.optional(S.String),
-      policy: S.String,
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/PutVectorBucketPolicy" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const PutVectorBucketPolicyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    vectorBucketName: S.optional(S.String),
+    vectorBucketArn: S.optional(S.String),
+    policy: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/PutVectorBucketPolicy" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "PutVectorBucketPolicyInput",
 }) as any as S.Schema<PutVectorBucketPolicyInput>;
 export interface PutVectorBucketPolicyOutput {}
-export const PutVectorBucketPolicyOutput =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutVectorBucketPolicyOutput",
-  }) as any as S.Schema<PutVectorBucketPolicyOutput>;
+export const PutVectorBucketPolicyOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutVectorBucketPolicyOutput",
+}) as any as S.Schema<PutVectorBucketPolicyOutput>;
 export type DataType = "float32" | (string & {});
-export const DataType = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DataType = /*@__PURE__*/ S.String;
 export type DistanceMetric = "euclidean" | "cosine" | (string & {});
-export const DistanceMetric = /*@__PURE__*/ /*#__PURE__*/ S.String;
+export const DistanceMetric = /*@__PURE__*/ S.String;
 export type NonFilterableMetadataKeys = string[];
-export const NonFilterableMetadataKeys = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const NonFilterableMetadataKeys = /*@__PURE__*/ S.Array(S.String);
 export interface MetadataConfiguration {
   nonFilterableMetadataKeys: string[];
 }
-export const MetadataConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MetadataConfiguration = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nonFilterableMetadataKeys: NonFilterableMetadataKeys }),
 ).annotate({
   identifier: "MetadataConfiguration",
@@ -451,7 +441,7 @@ export interface CreateIndexInput {
   encryptionConfiguration?: EncryptionConfiguration;
   tags?: { [key: string]: string | undefined };
 }
-export const CreateIndexInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateIndexInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     vectorBucketArn: S.optional(S.String),
@@ -478,7 +468,7 @@ export const CreateIndexInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface CreateIndexOutput {
   indexArn: string;
 }
-export const CreateIndexOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const CreateIndexOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ indexArn: S.optional(S.String) }),
 ).annotate({
   identifier: "CreateIndexOutput",
@@ -488,7 +478,7 @@ export interface DeleteIndexInput {
   indexName?: string;
   indexArn?: string;
 }
-export const DeleteIndexInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteIndexInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     indexName: S.optional(S.String),
@@ -507,7 +497,7 @@ export const DeleteIndexInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteIndexInput",
 }) as any as S.Schema<DeleteIndexInput>;
 export interface DeleteIndexOutput {}
-export const DeleteIndexOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteIndexOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteIndexOutput",
@@ -517,7 +507,7 @@ export interface GetIndexInput {
   indexName?: string;
   indexArn?: string;
 }
-export const GetIndexInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetIndexInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     indexName: S.optional(S.String),
@@ -544,7 +534,7 @@ export interface Index {
   metadataConfiguration?: MetadataConfiguration;
   encryptionConfiguration?: EncryptionConfiguration;
 }
-export const Index = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const Index = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.String,
     indexName: S.String,
@@ -560,7 +550,7 @@ export const Index = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface GetIndexOutput {
   index: Index;
 }
-export const GetIndexOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetIndexOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ index: Index }),
 ).annotate({ identifier: "GetIndexOutput" }) as any as S.Schema<GetIndexOutput>;
 export interface ListIndexesInput {
@@ -570,7 +560,7 @@ export interface ListIndexesInput {
   nextToken?: string;
   prefix?: string;
 }
-export const ListIndexesInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListIndexesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     vectorBucketArn: S.optional(S.String),
@@ -596,7 +586,7 @@ export interface IndexSummary {
   indexArn: string;
   creationTime: Date;
 }
-export const IndexSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const IndexSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.String,
     indexName: S.String,
@@ -605,28 +595,25 @@ export const IndexSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IndexSummary" }) as any as S.Schema<IndexSummary>;
 export type ListIndexesOutputList = IndexSummary[];
-export const ListIndexesOutputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(IndexSummary);
+export const ListIndexesOutputList = /*@__PURE__*/ S.Array(IndexSummary);
 export interface ListIndexesOutput {
   nextToken?: string;
   indexes: IndexSummary[];
 }
-export const ListIndexesOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListIndexesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), indexes: ListIndexesOutputList }),
 ).annotate({
   identifier: "ListIndexesOutput",
 }) as any as S.Schema<ListIndexesOutput>;
 export type DeleteVectorsInputList = string[];
-export const DeleteVectorsInputList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const DeleteVectorsInputList = /*@__PURE__*/ S.Array(S.String);
 export interface DeleteVectorsInput {
   vectorBucketName?: string;
   indexName?: string;
   indexArn?: string;
   keys: string[];
 }
-export const DeleteVectorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteVectorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     indexName: S.optional(S.String),
@@ -646,15 +633,13 @@ export const DeleteVectorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeleteVectorsInput",
 }) as any as S.Schema<DeleteVectorsInput>;
 export interface DeleteVectorsOutput {}
-export const DeleteVectorsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteVectorsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "DeleteVectorsOutput",
 }) as any as S.Schema<DeleteVectorsOutput>;
 export type GetVectorsInputList = string[];
-export const GetVectorsInputList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
-  S.String,
-);
+export const GetVectorsInputList = /*@__PURE__*/ S.Array(S.String);
 export interface GetVectorsInput {
   vectorBucketName?: string;
   indexName?: string;
@@ -663,7 +648,7 @@ export interface GetVectorsInput {
   returnData?: boolean;
   returnMetadata?: boolean;
 }
-export const GetVectorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetVectorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     indexName: S.optional(S.String),
@@ -685,9 +670,9 @@ export const GetVectorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetVectorsInput",
 }) as any as S.Schema<GetVectorsInput>;
 export type Float32VectorData = number[];
-export const Float32VectorData = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const Float32VectorData = /*@__PURE__*/ S.Array(S.Number);
 export type VectorData = { float32: number[] };
-export const VectorData = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const VectorData = /*@__PURE__*/ S.Union([
   S.Struct({ float32: Float32VectorData }),
 ]);
 export interface GetOutputVector {
@@ -695,7 +680,7 @@ export interface GetOutputVector {
   data?: VectorData;
   metadata?: any;
 }
-export const GetOutputVector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetOutputVector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     data: S.optional(VectorData),
@@ -705,12 +690,11 @@ export const GetOutputVector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "GetOutputVector",
 }) as any as S.Schema<GetOutputVector>;
 export type GetVectorsOutputList = GetOutputVector[];
-export const GetVectorsOutputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(GetOutputVector);
+export const GetVectorsOutputList = /*@__PURE__*/ S.Array(GetOutputVector);
 export interface GetVectorsOutput {
   vectors: GetOutputVector[];
 }
-export const GetVectorsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetVectorsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ vectors: GetVectorsOutputList }),
 ).annotate({
   identifier: "GetVectorsOutput",
@@ -726,7 +710,7 @@ export interface ListVectorsInput {
   returnData?: boolean;
   returnMetadata?: boolean;
 }
-export const ListVectorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListVectorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     indexName: S.optional(S.String),
@@ -755,7 +739,7 @@ export interface ListOutputVector {
   data?: VectorData;
   metadata?: any;
 }
-export const ListOutputVector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListOutputVector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
     data: S.optional(VectorData),
@@ -765,13 +749,12 @@ export const ListOutputVector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ListOutputVector",
 }) as any as S.Schema<ListOutputVector>;
 export type ListVectorsOutputList = ListOutputVector[];
-export const ListVectorsOutputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ListOutputVector);
+export const ListVectorsOutputList = /*@__PURE__*/ S.Array(ListOutputVector);
 export interface ListVectorsOutput {
   nextToken?: string;
   vectors: ListOutputVector[];
 }
-export const ListVectorsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListVectorsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ nextToken: S.optional(S.String), vectors: ListVectorsOutputList }),
 ).annotate({
   identifier: "ListVectorsOutput",
@@ -781,19 +764,18 @@ export interface PutInputVector {
   data: VectorData;
   metadata?: any;
 }
-export const PutInputVector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutInputVector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ key: S.String, data: VectorData, metadata: S.optional(S.Any) }),
 ).annotate({ identifier: "PutInputVector" }) as any as S.Schema<PutInputVector>;
 export type PutVectorsInputList = PutInputVector[];
-export const PutVectorsInputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(PutInputVector);
+export const PutVectorsInputList = /*@__PURE__*/ S.Array(PutInputVector);
 export interface PutVectorsInput {
   vectorBucketName?: string;
   indexName?: string;
   indexArn?: string;
   vectors: PutInputVector[];
 }
-export const PutVectorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutVectorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     indexName: S.optional(S.String),
@@ -813,7 +795,7 @@ export const PutVectorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "PutVectorsInput",
 }) as any as S.Schema<PutVectorsInput>;
 export interface PutVectorsOutput {}
-export const PutVectorsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PutVectorsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "PutVectorsOutput",
@@ -829,7 +811,7 @@ export interface QueryVectorsInput {
   returnDistance?: boolean;
   nextToken?: string;
 }
-export const QueryVectorsInput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const QueryVectorsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectorBucketName: S.optional(S.String),
     indexName: S.optional(S.String),
@@ -858,7 +840,7 @@ export interface QueryOutputVector {
   key: string;
   metadata?: any;
 }
-export const QueryOutputVector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const QueryOutputVector = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     distance: S.optional(S.Number),
     key: S.String,
@@ -868,14 +850,13 @@ export const QueryOutputVector = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "QueryOutputVector",
 }) as any as S.Schema<QueryOutputVector>;
 export type QueryVectorsOutputList = QueryOutputVector[];
-export const QueryVectorsOutputList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(QueryOutputVector);
+export const QueryVectorsOutputList = /*@__PURE__*/ S.Array(QueryOutputVector);
 export interface QueryVectorsOutput {
   vectors: QueryOutputVector[];
   distanceMetric: DistanceMetric;
   nextToken?: string;
 }
-export const QueryVectorsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const QueryVectorsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     vectors: QueryVectorsOutputList,
     distanceMetric: S.optional(DistanceMetric),
@@ -889,39 +870,47 @@ export const QueryVectorsOutput = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
   "NotFoundException",
   { message: S.String },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(503), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
   { message: S.String },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
   { message: S.String },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class KmsDisabledException extends S.TaggedErrorClass<KmsDisabledException>()(
   "KmsDisabledException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class KmsInvalidKeyUsageException extends S.TaggedErrorClass<KmsInvalidKeyUsageException>()(
   "KmsInvalidKeyUsageException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class KmsInvalidStateException extends S.TaggedErrorClass<KmsInvalidStateException>()(
   "KmsInvalidStateException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class KmsNotFoundException extends S.TaggedErrorClass<KmsNotFoundException>()(
   "KmsNotFoundException",
   { message: S.String },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -943,7 +932,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceOutput,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceInput,
   output: ListTagsForResourceOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -970,7 +959,7 @@ export const tagResource: API.OperationMethod<
   TagResourceOutput,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceInput,
   output: TagResourceOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
@@ -997,7 +986,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceOutput,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceInput,
   output: UntagResourceOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
@@ -1024,7 +1013,7 @@ export const createVectorBucket: API.OperationMethod<
   CreateVectorBucketOutput,
   CreateVectorBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateVectorBucketInput,
   output: CreateVectorBucketOutput,
   errors: [
@@ -1053,7 +1042,7 @@ export const deleteVectorBucket: API.OperationMethod<
   DeleteVectorBucketOutput,
   DeleteVectorBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVectorBucketInput,
   output: DeleteVectorBucketOutput,
   errors: [ConflictException, NotFoundException, ServiceUnavailableException],
@@ -1077,7 +1066,7 @@ export const deleteVectorBucketPolicy: API.OperationMethod<
   DeleteVectorBucketPolicyOutput,
   DeleteVectorBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVectorBucketPolicyInput,
   output: DeleteVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1101,7 +1090,7 @@ export const getVectorBucket: API.OperationMethod<
   GetVectorBucketOutput,
   GetVectorBucketError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVectorBucketInput,
   output: GetVectorBucketOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1125,7 +1114,7 @@ export const getVectorBucketPolicy: API.OperationMethod<
   GetVectorBucketPolicyOutput,
   GetVectorBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVectorBucketPolicyInput,
   output: GetVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1161,7 +1150,7 @@ export const listVectorBuckets: API.OperationMethod<
     ListVectorBucketsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVectorBucketsInput,
   output: ListVectorBucketsOutput,
   errors: [ServiceUnavailableException],
@@ -1191,7 +1180,7 @@ export const putVectorBucketPolicy: API.OperationMethod<
   PutVectorBucketPolicyOutput,
   PutVectorBucketPolicyError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutVectorBucketPolicyInput,
   output: PutVectorBucketPolicyOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1219,7 +1208,7 @@ export const createIndex: API.OperationMethod<
   CreateIndexOutput,
   CreateIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateIndexInput,
   output: CreateIndexOutput,
   errors: [
@@ -1248,7 +1237,7 @@ export const deleteIndex: API.OperationMethod<
   DeleteIndexOutput,
   DeleteIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteIndexInput,
   output: DeleteIndexOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1272,7 +1261,7 @@ export const getIndex: API.OperationMethod<
   GetIndexOutput,
   GetIndexError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetIndexInput,
   output: GetIndexOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1311,7 +1300,7 @@ export const listIndexes: API.OperationMethod<
     ListIndexesError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListIndexesInput,
   output: ListIndexesOutput,
   errors: [NotFoundException, ServiceUnavailableException],
@@ -1346,7 +1335,7 @@ export const deleteVectors: API.OperationMethod<
   DeleteVectorsOutput,
   DeleteVectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteVectorsInput,
   output: DeleteVectorsOutput,
   errors: [
@@ -1382,7 +1371,7 @@ export const getVectors: API.OperationMethod<
   GetVectorsOutput,
   GetVectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetVectorsInput,
   output: GetVectorsOutput,
   errors: [
@@ -1435,7 +1424,7 @@ export const listVectors: API.OperationMethod<
     ListVectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVectorsInput,
   output: ListVectorsOutput,
   errors: [
@@ -1479,7 +1468,7 @@ export const putVectors: API.OperationMethod<
   PutVectorsOutput,
   PutVectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: PutVectorsInput,
   output: PutVectorsOutput,
   errors: [
@@ -1537,7 +1526,7 @@ export const queryVectors: API.OperationMethod<
     QueryVectorsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: QueryVectorsInput,
   output: QueryVectorsOutput,
   errors: [

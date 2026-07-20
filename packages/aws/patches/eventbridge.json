@@ -9,11 +9,21 @@
     "ManagedRuleException": ["BadRequestError"],
     "OperationDisabledException": ["BadRequestError"],
     "LimitExceededException": ["QuotaError"],
-    "PolicyLengthExceededException": ["QuotaError"]
+    "PolicyLengthExceededException": ["QuotaError"],
+    "EventBusHasRules": ["ConflictError"]
   },
   "operations": {
     "deleteEventBus": {
-      "errors": ["ResourceNotFoundException"]
+      "errors": ["ResourceNotFoundException"],
+      "syntheticErrors": [
+        {
+          "name": "EventBusHasRules",
+          "from": "ValidationException",
+          "message": {
+            "includes": "has rules"
+          }
+        }
+      ]
     },
     "tagResource": {
       "errors": ["ThrottlingException"]

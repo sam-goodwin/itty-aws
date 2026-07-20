@@ -123,44 +123,48 @@ export type EnvironmentLifecycle = string;
 
 //# Schemas
 export interface GetSignedBluinsightsUrlRequest {}
-export const GetSignedBluinsightsUrlRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+export const GetSignedBluinsightsUrlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/signed-bi-url" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetSignedBluinsightsUrlRequest",
-  }) as any as S.Schema<GetSignedBluinsightsUrlRequest>;
+  ),
+).annotate({
+  identifier: "GetSignedBluinsightsUrlRequest",
+}) as any as S.Schema<GetSignedBluinsightsUrlRequest>;
 export interface GetSignedBluinsightsUrlResponse {
   signedBiUrl: string;
 }
-export const GetSignedBluinsightsUrlResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ signedBiUrl: S.String }),
-  ).annotate({
-    identifier: "GetSignedBluinsightsUrlResponse",
-  }) as any as S.Schema<GetSignedBluinsightsUrlResponse>;
+export const GetSignedBluinsightsUrlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ signedBiUrl: S.String }),
+).annotate({
+  identifier: "GetSignedBluinsightsUrlResponse",
+}) as any as S.Schema<GetSignedBluinsightsUrlResponse>;
 export interface ListEngineVersionsRequest {
   engineType?: string;
   nextToken?: string;
   maxResults?: number;
 }
-export const ListEngineVersionsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      engineType: S.optional(S.String).pipe(T.HttpQuery("engineType")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/engine-versions" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEngineVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    engineType: S.optional(S.String).pipe(T.HttpQuery("engineType")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/engine-versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListEngineVersionsRequest",
 }) as any as S.Schema<ListEngineVersionsRequest>;
@@ -168,25 +172,24 @@ export interface EngineVersionsSummary {
   engineType: string;
   engineVersion: string;
 }
-export const EngineVersionsSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EngineVersionsSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ engineType: S.String, engineVersion: S.String }),
 ).annotate({
   identifier: "EngineVersionsSummary",
 }) as any as S.Schema<EngineVersionsSummary>;
 export type EngineVersionsSummaryList = EngineVersionsSummary[];
-export const EngineVersionsSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const EngineVersionsSummaryList = /*@__PURE__*/ S.Array(
   EngineVersionsSummary,
 );
 export interface ListEngineVersionsResponse {
   engineVersions: EngineVersionsSummary[];
   nextToken?: string;
 }
-export const ListEngineVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      engineVersions: EngineVersionsSummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListEngineVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    engineVersions: EngineVersionsSummaryList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListEngineVersionsResponse",
 }) as any as S.Schema<ListEngineVersionsResponse>;
@@ -194,52 +197,50 @@ export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ name: S.String, message: S.String }),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
 ).annotate({
   identifier: "ValidationExceptionField",
 }) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
   ValidationExceptionField,
 );
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-export const ListTagsForResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
 export interface ListTagsForResourceResponse {
   tags: { [key: string]: string | undefined };
 }
-export const ListTagsForResourceResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ tags: TagMap }),
-  ).annotate({
-    identifier: "ListTagsForResourceResponse",
-  }) as any as S.Schema<ListTagsForResourceResponse>;
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: TagMap }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tags: TagMap,
@@ -257,18 +258,18 @@ export const TagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "TagResourceRequest",
 }) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
     tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
@@ -286,7 +287,7 @@ export const UntagResourceRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "UntagResourceRequest",
 }) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
   identifier: "UntagResourceResponse",
@@ -294,7 +295,7 @@ export const UntagResourceResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export type Definition =
   | { s3Location: string; content?: never }
   | { s3Location?: never; content: string };
-export const Definition = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const Definition = /*@__PURE__*/ S.Union([
   S.Struct({ s3Location: S.String }),
   S.Struct({ content: S.String }),
 ]);
@@ -308,27 +309,26 @@ export interface CreateApplicationRequest {
   kmsKeyId?: string;
   roleArn?: string;
 }
-export const CreateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      description: S.optional(S.String),
-      engineType: S.String,
-      definition: Definition,
-      tags: S.optional(TagMap),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      kmsKeyId: S.optional(S.String),
-      roleArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/applications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(S.String),
+    engineType: S.String,
+    definition: Definition,
+    tags: S.optional(TagMap),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    kmsKeyId: S.optional(S.String),
+    roleArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/applications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateApplicationRequest",
 }) as any as S.Schema<CreateApplicationRequest>;
@@ -337,20 +337,19 @@ export interface CreateApplicationResponse {
   applicationId: string;
   applicationVersion: number;
 }
-export const CreateApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationArn: S.String,
-      applicationId: S.String,
-      applicationVersion: S.Number,
-    }),
+export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationArn: S.String,
+    applicationId: S.String,
+    applicationVersion: S.Number,
+  }),
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
 export interface GetApplicationRequest {
   applicationId: string;
 }
-export const GetApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/applications/{applicationId}" }),
@@ -370,14 +369,13 @@ export interface ApplicationVersionSummary {
   statusReason?: string;
   creationTime: Date;
 }
-export const ApplicationVersionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationVersion: S.Number,
-      status: S.String,
-      statusReason: S.optional(S.String),
-      creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    }),
+export const ApplicationVersionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationVersion: S.Number,
+    status: S.String,
+    statusReason: S.optional(S.String),
+    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
 ).annotate({
   identifier: "ApplicationVersionSummary",
 }) as any as S.Schema<ApplicationVersionSummary>;
@@ -386,13 +384,12 @@ export interface DeployedVersionSummary {
   status: string;
   statusReason?: string;
 }
-export const DeployedVersionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationVersion: S.Number,
-      status: S.String,
-      statusReason: S.optional(S.String),
-    }),
+export const DeployedVersionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationVersion: S.Number,
+    status: S.String,
+    statusReason: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "DeployedVersionSummary",
 }) as any as S.Schema<DeployedVersionSummary>;
@@ -400,18 +397,17 @@ export interface LogGroupSummary {
   logType: string;
   logGroupName: string;
 }
-export const LogGroupSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const LogGroupSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ logType: S.String, logGroupName: S.String }),
 ).annotate({
   identifier: "LogGroupSummary",
 }) as any as S.Schema<LogGroupSummary>;
 export type LogGroupSummaries = LogGroupSummary[];
-export const LogGroupSummaries =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(LogGroupSummary);
+export const LogGroupSummaries = /*@__PURE__*/ S.Array(LogGroupSummary);
 export type ArnList = string[];
-export const ArnList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const ArnList = /*@__PURE__*/ S.Array(S.String);
 export type PortList = number[];
-export const PortList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.Number);
+export const PortList = /*@__PURE__*/ S.Array(S.Number);
 export interface GetApplicationResponse {
   name: string;
   description?: string;
@@ -434,32 +430,29 @@ export interface GetApplicationResponse {
   kmsKeyId?: string;
   roleArn?: string;
 }
-export const GetApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      description: S.optional(S.String),
-      applicationId: S.String,
-      applicationArn: S.String,
-      status: S.String,
-      latestVersion: ApplicationVersionSummary,
-      deployedVersion: S.optional(DeployedVersionSummary),
-      engineType: S.String,
-      logGroups: S.optional(LogGroupSummaries),
-      creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      lastStartTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      tags: S.optional(TagMap),
-      environmentId: S.optional(S.String),
-      targetGroupArns: S.optional(ArnList),
-      listenerArns: S.optional(ArnList),
-      listenerPorts: S.optional(PortList),
-      loadBalancerDnsName: S.optional(S.String),
-      statusReason: S.optional(S.String),
-      kmsKeyId: S.optional(S.String),
-      roleArn: S.optional(S.String),
-    }),
+export const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(S.String),
+    applicationId: S.String,
+    applicationArn: S.String,
+    status: S.String,
+    latestVersion: ApplicationVersionSummary,
+    deployedVersion: S.optional(DeployedVersionSummary),
+    engineType: S.String,
+    logGroups: S.optional(LogGroupSummaries),
+    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lastStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    tags: S.optional(TagMap),
+    environmentId: S.optional(S.String),
+    targetGroupArns: S.optional(ArnList),
+    listenerArns: S.optional(ArnList),
+    listenerPorts: S.optional(PortList),
+    loadBalancerDnsName: S.optional(S.String),
+    statusReason: S.optional(S.String),
+    kmsKeyId: S.optional(S.String),
+    roleArn: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetApplicationResponse",
 }) as any as S.Schema<GetApplicationResponse>;
@@ -469,85 +462,80 @@ export interface UpdateApplicationRequest {
   currentApplicationVersion: number;
   definition?: Definition;
 }
-export const UpdateApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      description: S.optional(S.String),
-      currentApplicationVersion: S.Number,
-      definition: S.optional(Definition),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/applications/{applicationId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    description: S.optional(S.String),
+    currentApplicationVersion: S.Number,
+    definition: S.optional(Definition),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/applications/{applicationId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateApplicationRequest",
 }) as any as S.Schema<UpdateApplicationRequest>;
 export interface UpdateApplicationResponse {
   applicationVersion: number;
 }
-export const UpdateApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ applicationVersion: S.Number }),
+export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ applicationVersion: S.Number }),
 ).annotate({
   identifier: "UpdateApplicationResponse",
 }) as any as S.Schema<UpdateApplicationResponse>;
 export interface DeleteApplicationRequest {
   applicationId: string;
 }
-export const DeleteApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/applications/{applicationId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/applications/{applicationId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteApplicationRequest",
 }) as any as S.Schema<DeleteApplicationRequest>;
 export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
 export type EntityNameList = string[];
-export const EntityNameList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const EntityNameList = /*@__PURE__*/ S.Array(S.String);
 export interface ListApplicationsRequest {
   nextToken?: string;
   maxResults?: number;
   names?: string[];
   environmentId?: string;
 }
-export const ListApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      names: S.optional(EntityNameList).pipe(T.HttpQuery("names")),
-      environmentId: S.optional(S.String).pipe(T.HttpQuery("environmentId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/applications" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    names: S.optional(EntityNameList).pipe(T.HttpQuery("names")),
+    environmentId: S.optional(S.String).pipe(T.HttpQuery("environmentId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/applications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListApplicationsRequest",
 }) as any as S.Schema<ListApplicationsRequest>;
@@ -566,7 +554,7 @@ export interface ApplicationSummary {
   deploymentStatus?: string;
   roleArn?: string;
 }
-export const ApplicationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     description: S.optional(S.String),
@@ -586,18 +574,16 @@ export const ApplicationSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "ApplicationSummary",
 }) as any as S.Schema<ApplicationSummary>;
 export type ApplicationSummaryList = ApplicationSummary[];
-export const ApplicationSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ApplicationSummary);
+export const ApplicationSummaryList = /*@__PURE__*/ S.Array(ApplicationSummary);
 export interface ListApplicationsResponse {
   applications: ApplicationSummary[];
   nextToken?: string;
 }
-export const ListApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applications: ApplicationSummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applications: ApplicationSummaryList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListApplicationsResponse",
 }) as any as S.Schema<ListApplicationsResponse>;
@@ -606,53 +592,52 @@ export interface CancelBatchJobExecutionRequest {
   executionId: string;
   authSecretsManagerArn?: string;
 }
-export const CancelBatchJobExecutionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      executionId: S.String.pipe(T.HttpLabel("executionId")),
-      authSecretsManagerArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/applications/{applicationId}/batch-job-executions/{executionId}/cancel",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CancelBatchJobExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    executionId: S.String.pipe(T.HttpLabel("executionId")),
+    authSecretsManagerArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/applications/{applicationId}/batch-job-executions/{executionId}/cancel",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CancelBatchJobExecutionRequest",
-  }) as any as S.Schema<CancelBatchJobExecutionRequest>;
+  ),
+).annotate({
+  identifier: "CancelBatchJobExecutionRequest",
+}) as any as S.Schema<CancelBatchJobExecutionRequest>;
 export interface CancelBatchJobExecutionResponse {}
-export const CancelBatchJobExecutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "CancelBatchJobExecutionResponse",
-  }) as any as S.Schema<CancelBatchJobExecutionResponse>;
+export const CancelBatchJobExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CancelBatchJobExecutionResponse",
+}) as any as S.Schema<CancelBatchJobExecutionResponse>;
 export type ExternalLocation = { s3Location: string };
-export const ExternalLocation = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const ExternalLocation = /*@__PURE__*/ S.Union([
   S.Struct({ s3Location: S.String }),
 ]);
 export interface DataSetExportItem {
   datasetName: string;
   externalLocation: ExternalLocation;
 }
-export const DataSetExportItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSetExportItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ datasetName: S.String, externalLocation: ExternalLocation }),
 ).annotate({
   identifier: "DataSetExportItem",
 }) as any as S.Schema<DataSetExportItem>;
 export type DataSetExportList = DataSetExportItem[];
-export const DataSetExportList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataSetExportItem);
+export const DataSetExportList = /*@__PURE__*/ S.Array(DataSetExportItem);
 export type DataSetExportConfig =
   | { s3Location: string; dataSets?: never }
   | { s3Location?: never; dataSets: DataSetExportItem[] };
-export const DataSetExportConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const DataSetExportConfig = /*@__PURE__*/ S.Union([
   S.Struct({ s3Location: S.String }),
   S.Struct({ dataSets: DataSetExportList }),
 ]);
@@ -662,44 +647,42 @@ export interface CreateDataSetExportTaskRequest {
   clientToken?: string;
   kmsKeyId?: string;
 }
-export const CreateDataSetExportTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      exportConfig: DataSetExportConfig,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      kmsKeyId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/applications/{applicationId}/dataset-export-task",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDataSetExportTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    exportConfig: DataSetExportConfig,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    kmsKeyId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/applications/{applicationId}/dataset-export-task",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDataSetExportTaskRequest",
-  }) as any as S.Schema<CreateDataSetExportTaskRequest>;
+  ),
+).annotate({
+  identifier: "CreateDataSetExportTaskRequest",
+}) as any as S.Schema<CreateDataSetExportTaskRequest>;
 export interface CreateDataSetExportTaskResponse {
   taskId: string;
 }
-export const CreateDataSetExportTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ taskId: S.String }),
-  ).annotate({
-    identifier: "CreateDataSetExportTaskResponse",
-  }) as any as S.Schema<CreateDataSetExportTaskResponse>;
+export const CreateDataSetExportTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ taskId: S.String }),
+).annotate({
+  identifier: "CreateDataSetExportTaskResponse",
+}) as any as S.Schema<CreateDataSetExportTaskResponse>;
 export interface PrimaryKey {
   name?: string;
   offset: number;
   length: number;
 }
-export const PrimaryKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PrimaryKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), offset: S.Number, length: S.Number }),
 ).annotate({ identifier: "PrimaryKey" }) as any as S.Schema<PrimaryKey>;
 export interface AlternateKey {
@@ -708,7 +691,7 @@ export interface AlternateKey {
   length: number;
   allowDuplicates?: boolean;
 }
-export const AlternateKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const AlternateKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     offset: S.Number,
@@ -717,8 +700,7 @@ export const AlternateKey = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "AlternateKey" }) as any as S.Schema<AlternateKey>;
 export type AlternateKeyList = AlternateKey[];
-export const AlternateKeyList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(AlternateKey);
+export const AlternateKeyList = /*@__PURE__*/ S.Array(AlternateKey);
 export interface VsamAttributes {
   format: string;
   encoding?: string;
@@ -726,7 +708,7 @@ export interface VsamAttributes {
   primaryKey?: PrimaryKey;
   alternateKeys?: AlternateKey[];
 }
-export const VsamAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VsamAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.String,
     encoding: S.optional(S.String),
@@ -739,20 +721,20 @@ export interface GdgAttributes {
   limit?: number;
   rollDisposition?: string;
 }
-export const GdgAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GdgAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     rollDisposition: S.optional(S.String),
   }),
 ).annotate({ identifier: "GdgAttributes" }) as any as S.Schema<GdgAttributes>;
 export type String20List = string[];
-export const String20List = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const String20List = /*@__PURE__*/ S.Array(S.String);
 export interface PoAttributes {
   format: string;
   encoding?: string;
   memberFileExtensions: string[];
 }
-export const PoAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PoAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     format: S.String,
     encoding: S.optional(S.String),
@@ -763,7 +745,7 @@ export interface PsAttributes {
   format: string;
   encoding?: string;
 }
-export const PsAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PsAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ format: S.String, encoding: S.optional(S.String) }),
 ).annotate({ identifier: "PsAttributes" }) as any as S.Schema<PsAttributes>;
 export type DatasetOrgAttributes =
@@ -771,7 +753,7 @@ export type DatasetOrgAttributes =
   | { vsam?: never; gdg: GdgAttributes; po?: never; ps?: never }
   | { vsam?: never; gdg?: never; po: PoAttributes; ps?: never }
   | { vsam?: never; gdg?: never; po?: never; ps: PsAttributes };
-export const DatasetOrgAttributes = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const DatasetOrgAttributes = /*@__PURE__*/ S.Union([
   S.Struct({ vsam: VsamAttributes }),
   S.Struct({ gdg: GdgAttributes }),
   S.Struct({ po: PoAttributes }),
@@ -781,7 +763,7 @@ export interface RecordLength {
   min: number;
   max: number;
 }
-export const RecordLength = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const RecordLength = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ min: S.Number, max: S.Number }),
 ).annotate({ identifier: "RecordLength" }) as any as S.Schema<RecordLength>;
 export interface DataSet {
@@ -791,7 +773,7 @@ export interface DataSet {
   relativePath?: string;
   recordLength: RecordLength;
 }
-export const DataSet = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSet = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     storageType: S.optional(S.String),
     datasetName: S.String,
@@ -804,18 +786,17 @@ export interface DataSetImportItem {
   dataSet: DataSet;
   externalLocation: ExternalLocation;
 }
-export const DataSetImportItem = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSetImportItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSet: DataSet, externalLocation: ExternalLocation }),
 ).annotate({
   identifier: "DataSetImportItem",
 }) as any as S.Schema<DataSetImportItem>;
 export type DataSetImportList = DataSetImportItem[];
-export const DataSetImportList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataSetImportItem);
+export const DataSetImportList = /*@__PURE__*/ S.Array(DataSetImportItem);
 export type DataSetImportConfig =
   | { s3Location: string; dataSets?: never }
   | { s3Location?: never; dataSets: DataSetImportItem[] };
-export const DataSetImportConfig = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const DataSetImportConfig = /*@__PURE__*/ S.Union([
   S.Struct({ s3Location: S.String }),
   S.Struct({ dataSets: DataSetImportList }),
 ]);
@@ -824,71 +805,68 @@ export interface CreateDataSetImportTaskRequest {
   importConfig: DataSetImportConfig;
   clientToken?: string;
 }
-export const CreateDataSetImportTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      importConfig: DataSetImportConfig,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/applications/{applicationId}/dataset-import-task",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDataSetImportTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    importConfig: DataSetImportConfig,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/applications/{applicationId}/dataset-import-task",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateDataSetImportTaskRequest",
-  }) as any as S.Schema<CreateDataSetImportTaskRequest>;
+  ),
+).annotate({
+  identifier: "CreateDataSetImportTaskRequest",
+}) as any as S.Schema<CreateDataSetImportTaskRequest>;
 export interface CreateDataSetImportTaskResponse {
   taskId: string;
 }
-export const CreateDataSetImportTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ taskId: S.String }),
-  ).annotate({
-    identifier: "CreateDataSetImportTaskResponse",
-  }) as any as S.Schema<CreateDataSetImportTaskResponse>;
+export const CreateDataSetImportTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ taskId: S.String }),
+).annotate({
+  identifier: "CreateDataSetImportTaskResponse",
+}) as any as S.Schema<CreateDataSetImportTaskResponse>;
 export interface CreateDeploymentRequest {
   environmentId: string;
   applicationId: string;
   applicationVersion: number;
   clientToken?: string;
 }
-export const CreateDeploymentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environmentId: S.String,
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      applicationVersion: S.Number,
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/applications/{applicationId}/deployments",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    applicationVersion: S.Number,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/applications/{applicationId}/deployments",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateDeploymentRequest",
 }) as any as S.Schema<CreateDeploymentRequest>;
 export interface CreateDeploymentResponse {
   deploymentId: string;
 }
-export const CreateDeploymentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ deploymentId: S.String }),
+export const CreateDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ deploymentId: S.String }),
 ).annotate({
   identifier: "CreateDeploymentResponse",
 }) as any as S.Schema<CreateDeploymentResponse>;
@@ -896,8 +874,8 @@ export interface DeleteApplicationFromEnvironmentRequest {
   applicationId: string;
   environmentId: string;
 }
-export const DeleteApplicationFromEnvironmentRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeleteApplicationFromEnvironmentRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       applicationId: S.String.pipe(T.HttpLabel("applicationId")),
       environmentId: S.String.pipe(T.HttpLabel("environmentId")),
@@ -914,39 +892,39 @@ export const DeleteApplicationFromEnvironmentRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "DeleteApplicationFromEnvironmentRequest",
-  }) as any as S.Schema<DeleteApplicationFromEnvironmentRequest>;
+).annotate({
+  identifier: "DeleteApplicationFromEnvironmentRequest",
+}) as any as S.Schema<DeleteApplicationFromEnvironmentRequest>;
 export interface DeleteApplicationFromEnvironmentResponse {}
-export const DeleteApplicationFromEnvironmentResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteApplicationFromEnvironmentResponse",
-  }) as any as S.Schema<DeleteApplicationFromEnvironmentResponse>;
+export const DeleteApplicationFromEnvironmentResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteApplicationFromEnvironmentResponse",
+}) as any as S.Schema<DeleteApplicationFromEnvironmentResponse>;
 export interface GetApplicationVersionRequest {
   applicationId: string;
   applicationVersion: number;
 }
-export const GetApplicationVersionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      applicationVersion: S.Number.pipe(T.HttpLabel("applicationVersion")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/versions/{applicationVersion}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetApplicationVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    applicationVersion: S.Number.pipe(T.HttpLabel("applicationVersion")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/versions/{applicationVersion}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetApplicationVersionRequest",
-  }) as any as S.Schema<GetApplicationVersionRequest>;
+  ),
+).annotate({
+  identifier: "GetApplicationVersionRequest",
+}) as any as S.Schema<GetApplicationVersionRequest>;
 export interface GetApplicationVersionResponse {
   name: string;
   applicationVersion: number;
@@ -956,66 +934,64 @@ export interface GetApplicationVersionResponse {
   creationTime: Date;
   statusReason?: string;
 }
-export const GetApplicationVersionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      applicationVersion: S.Number,
-      description: S.optional(S.String),
-      definitionContent: S.String,
-      status: S.String,
-      creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      statusReason: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetApplicationVersionResponse",
-  }) as any as S.Schema<GetApplicationVersionResponse>;
+export const GetApplicationVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    applicationVersion: S.Number,
+    description: S.optional(S.String),
+    definitionContent: S.String,
+    status: S.String,
+    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    statusReason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetApplicationVersionResponse",
+}) as any as S.Schema<GetApplicationVersionResponse>;
 export interface GetBatchJobExecutionRequest {
   applicationId: string;
   executionId: string;
 }
-export const GetBatchJobExecutionRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      executionId: S.String.pipe(T.HttpLabel("executionId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/batch-job-executions/{executionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetBatchJobExecutionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    executionId: S.String.pipe(T.HttpLabel("executionId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/batch-job-executions/{executionId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetBatchJobExecutionRequest",
-  }) as any as S.Schema<GetBatchJobExecutionRequest>;
+  ),
+).annotate({
+  identifier: "GetBatchJobExecutionRequest",
+}) as any as S.Schema<GetBatchJobExecutionRequest>;
 export interface FileBatchJobIdentifier {
   fileName: string;
   folderPath?: string;
 }
-export const FileBatchJobIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ fileName: S.String, folderPath: S.optional(S.String) }),
+export const FileBatchJobIdentifier = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ fileName: S.String, folderPath: S.optional(S.String) }),
 ).annotate({
   identifier: "FileBatchJobIdentifier",
 }) as any as S.Schema<FileBatchJobIdentifier>;
 export interface ScriptBatchJobIdentifier {
   scriptName: string;
 }
-export const ScriptBatchJobIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ scriptName: S.String }),
+export const ScriptBatchJobIdentifier = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ scriptName: S.String }),
 ).annotate({
   identifier: "ScriptBatchJobIdentifier",
 }) as any as S.Schema<ScriptBatchJobIdentifier>;
 export type JobIdentifier =
   | { fileName: string; scriptName?: never }
   | { fileName?: never; scriptName: string };
-export const JobIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const JobIdentifier = /*@__PURE__*/ S.Union([
   S.Struct({ fileName: S.String }),
   S.Struct({ scriptName: S.String }),
 ]);
@@ -1024,7 +1000,7 @@ export interface S3BatchJobIdentifier {
   keyPrefix?: string;
   identifier: JobIdentifier;
 }
-export const S3BatchJobIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const S3BatchJobIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bucket: S.String,
     keyPrefix: S.optional(S.String),
@@ -1041,7 +1017,7 @@ export interface JobStepRestartMarker {
   stepCheckpoint?: number;
   skip?: boolean;
 }
-export const JobStepRestartMarker = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const JobStepRestartMarker = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fromStep: S.String,
     fromProcStep: S.optional(S.String),
@@ -1057,12 +1033,11 @@ export interface RestartBatchJobIdentifier {
   executionId: string;
   jobStepRestartMarker: JobStepRestartMarker;
 }
-export const RestartBatchJobIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionId: S.String,
-      jobStepRestartMarker: JobStepRestartMarker,
-    }),
+export const RestartBatchJobIdentifier = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionId: S.String,
+    jobStepRestartMarker: JobStepRestartMarker,
+  }),
 ).annotate({
   identifier: "RestartBatchJobIdentifier",
 }) as any as S.Schema<RestartBatchJobIdentifier>;
@@ -1091,7 +1066,7 @@ export type BatchJobIdentifier =
       s3BatchJobIdentifier?: never;
       restartBatchJobIdentifier: RestartBatchJobIdentifier;
     };
-export const BatchJobIdentifier = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const BatchJobIdentifier = /*@__PURE__*/ S.Union([
   S.Struct({ fileBatchJobIdentifier: FileBatchJobIdentifier }),
   S.Struct({ scriptBatchJobIdentifier: ScriptBatchJobIdentifier }),
   S.Struct({ s3BatchJobIdentifier: S3BatchJobIdentifier }),
@@ -1112,48 +1087,46 @@ export interface GetBatchJobExecutionResponse {
   batchJobIdentifier?: BatchJobIdentifier;
   jobStepRestartMarker?: JobStepRestartMarker;
 }
-export const GetBatchJobExecutionResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      executionId: S.String,
-      applicationId: S.String,
-      jobId: S.optional(S.String),
-      jobName: S.optional(S.String),
-      jobUser: S.optional(S.String),
-      jobType: S.optional(S.String),
-      status: S.String,
-      startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      statusReason: S.optional(S.String),
-      returnCode: S.optional(S.String),
-      batchJobIdentifier: S.optional(BatchJobIdentifier),
-      jobStepRestartMarker: S.optional(JobStepRestartMarker),
-    }),
-  ).annotate({
-    identifier: "GetBatchJobExecutionResponse",
-  }) as any as S.Schema<GetBatchJobExecutionResponse>;
+export const GetBatchJobExecutionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionId: S.String,
+    applicationId: S.String,
+    jobId: S.optional(S.String),
+    jobName: S.optional(S.String),
+    jobUser: S.optional(S.String),
+    jobType: S.optional(S.String),
+    status: S.String,
+    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    statusReason: S.optional(S.String),
+    returnCode: S.optional(S.String),
+    batchJobIdentifier: S.optional(BatchJobIdentifier),
+    jobStepRestartMarker: S.optional(JobStepRestartMarker),
+  }),
+).annotate({
+  identifier: "GetBatchJobExecutionResponse",
+}) as any as S.Schema<GetBatchJobExecutionResponse>;
 export interface GetDataSetDetailsRequest {
   applicationId: string;
   dataSetName: string;
 }
-export const GetDataSetDetailsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      dataSetName: S.String.pipe(T.HttpLabel("dataSetName")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/datasets/{dataSetName}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDataSetDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    dataSetName: S.String.pipe(T.HttpLabel("dataSetName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/datasets/{dataSetName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "GetDataSetDetailsRequest",
 }) as any as S.Schema<GetDataSetDetailsRequest>;
@@ -1165,7 +1138,7 @@ export interface VsamDetailAttributes {
   primaryKey?: PrimaryKey;
   alternateKeys?: AlternateKey[];
 }
-export const VsamDetailAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const VsamDetailAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     encoding: S.optional(S.String),
     recordFormat: S.optional(S.String),
@@ -1181,7 +1154,7 @@ export interface GdgDetailAttributes {
   limit?: number;
   rollDisposition?: string;
 }
-export const GdgDetailAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GdgDetailAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     limit: S.optional(S.Number),
     rollDisposition: S.optional(S.String),
@@ -1193,7 +1166,7 @@ export interface PoDetailAttributes {
   format: string;
   encoding: string;
 }
-export const PoDetailAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PoDetailAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ format: S.String, encoding: S.String }),
 ).annotate({
   identifier: "PoDetailAttributes",
@@ -1202,7 +1175,7 @@ export interface PsDetailAttributes {
   format: string;
   encoding: string;
 }
-export const PsDetailAttributes = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PsDetailAttributes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ format: S.String, encoding: S.String }),
 ).annotate({
   identifier: "PsDetailAttributes",
@@ -1212,7 +1185,7 @@ export type DatasetDetailOrgAttributes =
   | { vsam?: never; gdg: GdgDetailAttributes; po?: never; ps?: never }
   | { vsam?: never; gdg?: never; po: PoDetailAttributes; ps?: never }
   | { vsam?: never; gdg?: never; po?: never; ps: PsDetailAttributes };
-export const DatasetDetailOrgAttributes = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const DatasetDetailOrgAttributes = /*@__PURE__*/ S.Union([
   S.Struct({ vsam: VsamDetailAttributes }),
   S.Struct({ gdg: GdgDetailAttributes }),
   S.Struct({ po: PoDetailAttributes }),
@@ -1229,23 +1202,22 @@ export interface GetDataSetDetailsResponse {
   lastReferencedTime?: Date;
   fileSize?: number;
 }
-export const GetDataSetDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dataSetName: S.String,
-      dataSetOrg: S.optional(DatasetDetailOrgAttributes),
-      recordLength: S.optional(S.Number),
-      location: S.optional(S.String),
-      blocksize: S.optional(S.Number),
-      creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      lastUpdatedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      lastReferencedTime: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ),
-      fileSize: S.optional(S.Number),
-    }),
+export const GetDataSetDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataSetName: S.String,
+    dataSetOrg: S.optional(DatasetDetailOrgAttributes),
+    recordLength: S.optional(S.Number),
+    location: S.optional(S.String),
+    blocksize: S.optional(S.Number),
+    creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdatedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    lastReferencedTime: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    fileSize: S.optional(S.Number),
+  }),
 ).annotate({
   identifier: "GetDataSetDetailsResponse",
 }) as any as S.Schema<GetDataSetDetailsResponse>;
@@ -1253,27 +1225,26 @@ export interface GetDataSetExportTaskRequest {
   applicationId: string;
   taskId: string;
 }
-export const GetDataSetExportTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      taskId: S.String.pipe(T.HttpLabel("taskId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/dataset-export-tasks/{taskId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDataSetExportTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    taskId: S.String.pipe(T.HttpLabel("taskId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/dataset-export-tasks/{taskId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDataSetExportTaskRequest",
-  }) as any as S.Schema<GetDataSetExportTaskRequest>;
+  ),
+).annotate({
+  identifier: "GetDataSetExportTaskRequest",
+}) as any as S.Schema<GetDataSetExportTaskRequest>;
 export interface DataSetExportSummary {
   total: number;
   succeeded: number;
@@ -1281,7 +1252,7 @@ export interface DataSetExportSummary {
   pending: number;
   inProgress: number;
 }
-export const DataSetExportSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSetExportSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     succeeded: S.Number,
@@ -1299,43 +1270,41 @@ export interface GetDataSetExportTaskResponse {
   statusReason?: string;
   kmsKeyArn?: string;
 }
-export const GetDataSetExportTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      taskId: S.String,
-      status: S.String,
-      summary: S.optional(DataSetExportSummary),
-      statusReason: S.optional(S.String),
-      kmsKeyArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDataSetExportTaskResponse",
-  }) as any as S.Schema<GetDataSetExportTaskResponse>;
+export const GetDataSetExportTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskId: S.String,
+    status: S.String,
+    summary: S.optional(DataSetExportSummary),
+    statusReason: S.optional(S.String),
+    kmsKeyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetDataSetExportTaskResponse",
+}) as any as S.Schema<GetDataSetExportTaskResponse>;
 export interface GetDataSetImportTaskRequest {
   applicationId: string;
   taskId: string;
 }
-export const GetDataSetImportTaskRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      taskId: S.String.pipe(T.HttpLabel("taskId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/dataset-import-tasks/{taskId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetDataSetImportTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    taskId: S.String.pipe(T.HttpLabel("taskId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/dataset-import-tasks/{taskId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetDataSetImportTaskRequest",
-  }) as any as S.Schema<GetDataSetImportTaskRequest>;
+  ),
+).annotate({
+  identifier: "GetDataSetImportTaskRequest",
+}) as any as S.Schema<GetDataSetImportTaskRequest>;
 export interface DataSetImportSummary {
   total: number;
   succeeded: number;
@@ -1343,7 +1312,7 @@ export interface DataSetImportSummary {
   pending: number;
   inProgress: number;
 }
-export const DataSetImportSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSetImportSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     total: S.Number,
     succeeded: S.Number,
@@ -1359,21 +1328,20 @@ export interface GetDataSetImportTaskResponse {
   status: string;
   summary?: DataSetImportSummary;
 }
-export const GetDataSetImportTaskResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      taskId: S.String,
-      status: S.String,
-      summary: S.optional(DataSetImportSummary),
-    }),
-  ).annotate({
-    identifier: "GetDataSetImportTaskResponse",
-  }) as any as S.Schema<GetDataSetImportTaskResponse>;
+export const GetDataSetImportTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskId: S.String,
+    status: S.String,
+    summary: S.optional(DataSetImportSummary),
+  }),
+).annotate({
+  identifier: "GetDataSetImportTaskResponse",
+}) as any as S.Schema<GetDataSetImportTaskResponse>;
 export interface GetDeploymentRequest {
   deploymentId: string;
   applicationId: string;
 }
-export const GetDeploymentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String.pipe(T.HttpLabel("deploymentId")),
     applicationId: S.String.pipe(T.HttpLabel("applicationId")),
@@ -1402,7 +1370,7 @@ export interface GetDeploymentResponse {
   creationTime: Date;
   statusReason?: string;
 }
-export const GetDeploymentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String,
     applicationId: S.String,
@@ -1420,87 +1388,82 @@ export interface ListApplicationVersionsRequest {
   maxResults?: number;
   applicationId: string;
 }
-export const ListApplicationVersionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListApplicationVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/applications/{applicationId}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListApplicationVersionsRequest",
-  }) as any as S.Schema<ListApplicationVersionsRequest>;
+  ),
+).annotate({
+  identifier: "ListApplicationVersionsRequest",
+}) as any as S.Schema<ListApplicationVersionsRequest>;
 export type ApplicationVersionSummaryList = ApplicationVersionSummary[];
-export const ApplicationVersionSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(ApplicationVersionSummary);
+export const ApplicationVersionSummaryList = /*@__PURE__*/ S.Array(
+  ApplicationVersionSummary,
+);
 export interface ListApplicationVersionsResponse {
   applicationVersions: ApplicationVersionSummary[];
   nextToken?: string;
 }
-export const ListApplicationVersionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationVersions: ApplicationVersionSummaryList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListApplicationVersionsResponse",
-  }) as any as S.Schema<ListApplicationVersionsResponse>;
+export const ListApplicationVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationVersions: ApplicationVersionSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListApplicationVersionsResponse",
+}) as any as S.Schema<ListApplicationVersionsResponse>;
 export interface ListBatchJobDefinitionsRequest {
   nextToken?: string;
   maxResults?: number;
   applicationId: string;
   prefix?: string;
 }
-export const ListBatchJobDefinitionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/batch-job-definitions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListBatchJobDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    prefix: S.optional(S.String).pipe(T.HttpQuery("prefix")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/batch-job-definitions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListBatchJobDefinitionsRequest",
-  }) as any as S.Schema<ListBatchJobDefinitionsRequest>;
+  ),
+).annotate({
+  identifier: "ListBatchJobDefinitionsRequest",
+}) as any as S.Schema<ListBatchJobDefinitionsRequest>;
 export interface FileBatchJobDefinition {
   fileName: string;
   folderPath?: string;
 }
-export const FileBatchJobDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ fileName: S.String, folderPath: S.optional(S.String) }),
+export const FileBatchJobDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ fileName: S.String, folderPath: S.optional(S.String) }),
 ).annotate({
   identifier: "FileBatchJobDefinition",
 }) as any as S.Schema<FileBatchJobDefinition>;
 export interface ScriptBatchJobDefinition {
   scriptName: string;
 }
-export const ScriptBatchJobDefinition = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ scriptName: S.String }),
+export const ScriptBatchJobDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ scriptName: S.String }),
 ).annotate({
   identifier: "ScriptBatchJobDefinition",
 }) as any as S.Schema<ScriptBatchJobDefinition>;
@@ -1513,28 +1476,26 @@ export type BatchJobDefinition =
       fileBatchJobDefinition?: never;
       scriptBatchJobDefinition: ScriptBatchJobDefinition;
     };
-export const BatchJobDefinition = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const BatchJobDefinition = /*@__PURE__*/ S.Union([
   S.Struct({ fileBatchJobDefinition: FileBatchJobDefinition }),
   S.Struct({ scriptBatchJobDefinition: ScriptBatchJobDefinition }),
 ]);
 export type BatchJobDefinitions = BatchJobDefinition[];
-export const BatchJobDefinitions =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(BatchJobDefinition);
+export const BatchJobDefinitions = /*@__PURE__*/ S.Array(BatchJobDefinition);
 export interface ListBatchJobDefinitionsResponse {
   batchJobDefinitions: BatchJobDefinition[];
   nextToken?: string;
 }
-export const ListBatchJobDefinitionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchJobDefinitions: BatchJobDefinitions,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListBatchJobDefinitionsResponse",
-  }) as any as S.Schema<ListBatchJobDefinitionsResponse>;
+export const ListBatchJobDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchJobDefinitions: BatchJobDefinitions,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBatchJobDefinitionsResponse",
+}) as any as S.Schema<ListBatchJobDefinitionsResponse>;
 export type IdentifierList = string[];
-export const IdentifierList = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const IdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface ListBatchJobExecutionsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1545,39 +1506,36 @@ export interface ListBatchJobExecutionsRequest {
   startedAfter?: Date;
   startedBefore?: Date;
 }
-export const ListBatchJobExecutionsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      executionIds: S.optional(IdentifierList).pipe(
-        T.HttpQuery("executionIds"),
-      ),
-      jobName: S.optional(S.String).pipe(T.HttpQuery("jobName")),
-      status: S.optional(S.String).pipe(T.HttpQuery("status")),
-      startedAfter: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ).pipe(T.HttpQuery("startedAfter")),
-      startedBefore: S.optional(
-        S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      ).pipe(T.HttpQuery("startedBefore")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/batch-job-executions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListBatchJobExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    executionIds: S.optional(IdentifierList).pipe(T.HttpQuery("executionIds")),
+    jobName: S.optional(S.String).pipe(T.HttpQuery("jobName")),
+    status: S.optional(S.String).pipe(T.HttpQuery("status")),
+    startedAfter: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ).pipe(T.HttpQuery("startedAfter")),
+    startedBefore: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ).pipe(T.HttpQuery("startedBefore")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/batch-job-executions",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListBatchJobExecutionsRequest",
-  }) as any as S.Schema<ListBatchJobExecutionsRequest>;
+  ),
+).annotate({
+  identifier: "ListBatchJobExecutionsRequest",
+}) as any as S.Schema<ListBatchJobExecutionsRequest>;
 export interface BatchJobExecutionSummary {
   executionId: string;
   applicationId: string;
@@ -1590,69 +1548,66 @@ export interface BatchJobExecutionSummary {
   returnCode?: string;
   batchJobIdentifier?: BatchJobIdentifier;
 }
-export const BatchJobExecutionSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      executionId: S.String,
-      applicationId: S.String,
-      jobId: S.optional(S.String),
-      jobName: S.optional(S.String),
-      jobType: S.optional(S.String),
-      status: S.String,
-      startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      returnCode: S.optional(S.String),
-      batchJobIdentifier: S.optional(BatchJobIdentifier),
-    }),
+export const BatchJobExecutionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    executionId: S.String,
+    applicationId: S.String,
+    jobId: S.optional(S.String),
+    jobName: S.optional(S.String),
+    jobType: S.optional(S.String),
+    status: S.String,
+    startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    returnCode: S.optional(S.String),
+    batchJobIdentifier: S.optional(BatchJobIdentifier),
+  }),
 ).annotate({
   identifier: "BatchJobExecutionSummary",
 }) as any as S.Schema<BatchJobExecutionSummary>;
 export type BatchJobExecutionSummaryList = BatchJobExecutionSummary[];
-export const BatchJobExecutionSummaryList = /*@__PURE__*/ /*#__PURE__*/ S.Array(
+export const BatchJobExecutionSummaryList = /*@__PURE__*/ S.Array(
   BatchJobExecutionSummary,
 );
 export interface ListBatchJobExecutionsResponse {
   batchJobExecutions: BatchJobExecutionSummary[];
   nextToken?: string;
 }
-export const ListBatchJobExecutionsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      batchJobExecutions: BatchJobExecutionSummaryList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListBatchJobExecutionsResponse",
-  }) as any as S.Schema<ListBatchJobExecutionsResponse>;
+export const ListBatchJobExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchJobExecutions: BatchJobExecutionSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBatchJobExecutionsResponse",
+}) as any as S.Schema<ListBatchJobExecutionsResponse>;
 export interface ListBatchJobRestartPointsRequest {
   applicationId: string;
   executionId: string;
   authSecretsManagerArn?: string;
 }
-export const ListBatchJobRestartPointsRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      executionId: S.String.pipe(T.HttpLabel("executionId")),
-      authSecretsManagerArn: S.optional(S.String).pipe(
-        T.HttpQuery("authSecretsManagerArn"),
-      ),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/batch-job-executions/{executionId}/steps",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListBatchJobRestartPointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    executionId: S.String.pipe(T.HttpLabel("executionId")),
+    authSecretsManagerArn: S.optional(S.String).pipe(
+      T.HttpQuery("authSecretsManagerArn"),
     ),
-  ).annotate({
-    identifier: "ListBatchJobRestartPointsRequest",
-  }) as any as S.Schema<ListBatchJobRestartPointsRequest>;
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/batch-job-executions/{executionId}/steps",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListBatchJobRestartPointsRequest",
+}) as any as S.Schema<ListBatchJobRestartPointsRequest>;
 export interface JobStep {
   stepNumber?: number;
   stepName?: string;
@@ -1664,7 +1619,7 @@ export interface JobStep {
   stepCheckpointStatus?: string;
   stepCheckpointTime?: Date;
 }
-export const JobStep = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const JobStep = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     stepNumber: S.optional(S.Number),
     stepName: S.optional(S.String),
@@ -1680,50 +1635,48 @@ export const JobStep = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "JobStep" }) as any as S.Schema<JobStep>;
 export type BatchJobStepList = JobStep[];
-export const BatchJobStepList = /*@__PURE__*/ /*#__PURE__*/ S.Array(JobStep);
+export const BatchJobStepList = /*@__PURE__*/ S.Array(JobStep);
 export interface ListBatchJobRestartPointsResponse {
   batchJobSteps?: JobStep[];
 }
-export const ListBatchJobRestartPointsResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({ batchJobSteps: S.optional(BatchJobStepList) }),
-  ).annotate({
-    identifier: "ListBatchJobRestartPointsResponse",
-  }) as any as S.Schema<ListBatchJobRestartPointsResponse>;
+export const ListBatchJobRestartPointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ batchJobSteps: S.optional(BatchJobStepList) }),
+).annotate({
+  identifier: "ListBatchJobRestartPointsResponse",
+}) as any as S.Schema<ListBatchJobRestartPointsResponse>;
 export interface ListDataSetExportHistoryRequest {
   nextToken?: string;
   maxResults?: number;
   applicationId: string;
 }
-export const ListDataSetExportHistoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/dataset-export-tasks",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDataSetExportHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/dataset-export-tasks",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDataSetExportHistoryRequest",
-  }) as any as S.Schema<ListDataSetExportHistoryRequest>;
+  ),
+).annotate({
+  identifier: "ListDataSetExportHistoryRequest",
+}) as any as S.Schema<ListDataSetExportHistoryRequest>;
 export interface DataSetExportTask {
   taskId: string;
   status: string;
   summary: DataSetExportSummary;
   statusReason?: string;
 }
-export const DataSetExportTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSetExportTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String,
     status: S.String,
@@ -1734,55 +1687,52 @@ export const DataSetExportTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DataSetExportTask",
 }) as any as S.Schema<DataSetExportTask>;
 export type DataSetExportTaskList = DataSetExportTask[];
-export const DataSetExportTaskList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataSetExportTask);
+export const DataSetExportTaskList = /*@__PURE__*/ S.Array(DataSetExportTask);
 export interface ListDataSetExportHistoryResponse {
   dataSetExportTasks: DataSetExportTask[];
   nextToken?: string;
 }
-export const ListDataSetExportHistoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataSetExportTasks: DataSetExportTaskList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDataSetExportHistoryResponse",
-  }) as any as S.Schema<ListDataSetExportHistoryResponse>;
+export const ListDataSetExportHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataSetExportTasks: DataSetExportTaskList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDataSetExportHistoryResponse",
+}) as any as S.Schema<ListDataSetExportHistoryResponse>;
 export interface ListDataSetImportHistoryRequest {
   nextToken?: string;
   maxResults?: number;
   applicationId: string;
 }
-export const ListDataSetImportHistoryRequest =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/dataset-import-tasks",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDataSetImportHistoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/dataset-import-tasks",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListDataSetImportHistoryRequest",
-  }) as any as S.Schema<ListDataSetImportHistoryRequest>;
+  ),
+).annotate({
+  identifier: "ListDataSetImportHistoryRequest",
+}) as any as S.Schema<ListDataSetImportHistoryRequest>;
 export interface DataSetImportTask {
   taskId: string;
   status: string;
   summary: DataSetImportSummary;
   statusReason?: string;
 }
-export const DataSetImportTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSetImportTask = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.String,
     status: S.String,
@@ -1793,21 +1743,19 @@ export const DataSetImportTask = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DataSetImportTask",
 }) as any as S.Schema<DataSetImportTask>;
 export type DataSetImportTaskList = DataSetImportTask[];
-export const DataSetImportTaskList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataSetImportTask);
+export const DataSetImportTaskList = /*@__PURE__*/ S.Array(DataSetImportTask);
 export interface ListDataSetImportHistoryResponse {
   dataSetImportTasks: DataSetImportTask[];
   nextToken?: string;
 }
-export const ListDataSetImportHistoryResponse =
-  /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dataSetImportTasks: DataSetImportTaskList,
-      nextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListDataSetImportHistoryResponse",
-  }) as any as S.Schema<ListDataSetImportHistoryResponse>;
+export const ListDataSetImportHistoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataSetImportTasks: DataSetImportTaskList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDataSetImportHistoryResponse",
+}) as any as S.Schema<ListDataSetImportHistoryResponse>;
 export interface ListDataSetsRequest {
   applicationId: string;
   nextToken?: string;
@@ -1815,7 +1763,7 @@ export interface ListDataSetsRequest {
   prefix?: string;
   nameFilter?: string;
 }
-export const ListDataSetsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDataSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.HttpLabel("applicationId")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
@@ -1843,7 +1791,7 @@ export interface DataSetSummary {
   lastUpdatedTime?: Date;
   lastReferencedTime?: Date;
 }
-export const DataSetSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DataSetSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataSetName: S.String,
     dataSetOrg: S.optional(S.String),
@@ -1858,13 +1806,12 @@ export const DataSetSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "DataSetSummary" }) as any as S.Schema<DataSetSummary>;
 export type DataSetsSummaryList = DataSetSummary[];
-export const DataSetsSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DataSetSummary);
+export const DataSetsSummaryList = /*@__PURE__*/ S.Array(DataSetSummary);
 export interface ListDataSetsResponse {
   dataSets: DataSetSummary[];
   nextToken?: string;
 }
-export const ListDataSetsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const ListDataSetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ dataSets: DataSetsSummaryList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDataSetsResponse",
@@ -1874,25 +1821,24 @@ export interface ListDeploymentsRequest {
   maxResults?: number;
   applicationId: string;
 }
-export const ListDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/applications/{applicationId}/deployments",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/applications/{applicationId}/deployments",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListDeploymentsRequest",
 }) as any as S.Schema<ListDeploymentsRequest>;
@@ -1905,7 +1851,7 @@ export interface DeploymentSummary {
   creationTime: Date;
   statusReason?: string;
 }
-export const DeploymentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const DeploymentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deploymentId: S.String,
     applicationId: S.String,
@@ -1919,46 +1865,41 @@ export const DeploymentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "DeploymentSummary",
 }) as any as S.Schema<DeploymentSummary>;
 export type DeploymentList = DeploymentSummary[];
-export const DeploymentList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(DeploymentSummary);
+export const DeploymentList = /*@__PURE__*/ S.Array(DeploymentSummary);
 export interface ListDeploymentsResponse {
   deployments: DeploymentSummary[];
   nextToken?: string;
 }
-export const ListDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ deployments: DeploymentList, nextToken: S.optional(S.String) }),
+export const ListDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ deployments: DeploymentList, nextToken: S.optional(S.String) }),
 ).annotate({
   identifier: "ListDeploymentsResponse",
 }) as any as S.Schema<ListDeploymentsResponse>;
 export interface StartApplicationRequest {
   applicationId: string;
 }
-export const StartApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/applications/{applicationId}/start" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StartApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ applicationId: S.String.pipe(T.HttpLabel("applicationId")) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/applications/{applicationId}/start" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StartApplicationRequest",
 }) as any as S.Schema<StartApplicationRequest>;
 export interface StartApplicationResponse {}
-export const StartApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const StartApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "StartApplicationResponse",
 }) as any as S.Schema<StartApplicationResponse>;
 export type BatchJobParametersMap = { [key: string]: string | undefined };
-export const BatchJobParametersMap = /*@__PURE__*/ /*#__PURE__*/ S.Record(
+export const BatchJobParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
@@ -1968,7 +1909,7 @@ export interface StartBatchJobRequest {
   jobParams?: { [key: string]: string | undefined };
   authSecretsManagerArn?: string;
 }
-export const StartBatchJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartBatchJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     applicationId: S.String.pipe(T.HttpLabel("applicationId")),
     batchJobIdentifier: BatchJobIdentifier,
@@ -1993,7 +1934,7 @@ export const StartBatchJobRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
 export interface StartBatchJobResponse {
   executionId: string;
 }
-export const StartBatchJobResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const StartBatchJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ executionId: S.String }),
 ).annotate({
   identifier: "StartBatchJobResponse",
@@ -2002,44 +1943,39 @@ export interface StopApplicationRequest {
   applicationId: string;
   forceStop?: boolean;
 }
-export const StopApplicationRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      applicationId: S.String.pipe(T.HttpLabel("applicationId")),
-      forceStop: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/applications/{applicationId}/stop" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const StopApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationId: S.String.pipe(T.HttpLabel("applicationId")),
+    forceStop: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/applications/{applicationId}/stop" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "StopApplicationRequest",
 }) as any as S.Schema<StopApplicationRequest>;
 export interface StopApplicationResponse {}
-export const StopApplicationResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const StopApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "StopApplicationResponse",
 }) as any as S.Schema<StopApplicationResponse>;
 export type String50List = string[];
-export const String50List = /*@__PURE__*/ /*#__PURE__*/ S.Array(S.String);
+export const String50List = /*@__PURE__*/ S.Array(S.String);
 export interface EfsStorageConfiguration {
   fileSystemId: string;
   mountPoint: string;
 }
-export const EfsStorageConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ fileSystemId: S.String, mountPoint: S.String }).pipe(
-      S.encodeKeys({
-        fileSystemId: "file-system-id",
-        mountPoint: "mount-point",
-      }),
-    ),
+export const EfsStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ fileSystemId: S.String, mountPoint: S.String }).pipe(
+    S.encodeKeys({ fileSystemId: "file-system-id", mountPoint: "mount-point" }),
+  ),
 ).annotate({
   identifier: "EfsStorageConfiguration",
 }) as any as S.Schema<EfsStorageConfiguration>;
@@ -2047,32 +1983,28 @@ export interface FsxStorageConfiguration {
   fileSystemId: string;
   mountPoint: string;
 }
-export const FsxStorageConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ fileSystemId: S.String, mountPoint: S.String }).pipe(
-      S.encodeKeys({
-        fileSystemId: "file-system-id",
-        mountPoint: "mount-point",
-      }),
-    ),
+export const FsxStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ fileSystemId: S.String, mountPoint: S.String }).pipe(
+    S.encodeKeys({ fileSystemId: "file-system-id", mountPoint: "mount-point" }),
+  ),
 ).annotate({
   identifier: "FsxStorageConfiguration",
 }) as any as S.Schema<FsxStorageConfiguration>;
 export type StorageConfiguration =
   | { efs: EfsStorageConfiguration; fsx?: never }
   | { efs?: never; fsx: FsxStorageConfiguration };
-export const StorageConfiguration = /*@__PURE__*/ /*#__PURE__*/ S.Union([
+export const StorageConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ efs: EfsStorageConfiguration }),
   S.Struct({ fsx: FsxStorageConfiguration }),
 ]);
 export type StorageConfigurationList = StorageConfiguration[];
 export const StorageConfigurationList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(StorageConfiguration);
+  /*@__PURE__*/ S.Array(StorageConfiguration);
 export interface HighAvailabilityConfig {
   desiredCapacity: number;
 }
-export const HighAvailabilityConfig = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ desiredCapacity: S.Number }),
+export const HighAvailabilityConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ desiredCapacity: S.Number }),
 ).annotate({
   identifier: "HighAvailabilityConfig",
 }) as any as S.Schema<HighAvailabilityConfig>;
@@ -2093,49 +2025,48 @@ export interface CreateEnvironmentRequest {
   clientToken?: string;
   kmsKeyId?: string;
 }
-export const CreateEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      instanceType: S.String,
-      description: S.optional(S.String),
-      engineType: S.String,
-      engineVersion: S.optional(S.String),
-      subnetIds: S.optional(String50List),
-      securityGroupIds: S.optional(String50List),
-      storageConfigurations: S.optional(StorageConfigurationList),
-      publiclyAccessible: S.optional(S.Boolean),
-      highAvailabilityConfig: S.optional(HighAvailabilityConfig),
-      tags: S.optional(TagMap),
-      preferredMaintenanceWindow: S.optional(S.String),
-      networkType: S.optional(S.String),
-      clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      kmsKeyId: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/environments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    instanceType: S.String,
+    description: S.optional(S.String),
+    engineType: S.String,
+    engineVersion: S.optional(S.String),
+    subnetIds: S.optional(String50List),
+    securityGroupIds: S.optional(String50List),
+    storageConfigurations: S.optional(StorageConfigurationList),
+    publiclyAccessible: S.optional(S.Boolean),
+    highAvailabilityConfig: S.optional(HighAvailabilityConfig),
+    tags: S.optional(TagMap),
+    preferredMaintenanceWindow: S.optional(S.String),
+    networkType: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    kmsKeyId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/environments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "CreateEnvironmentRequest",
 }) as any as S.Schema<CreateEnvironmentRequest>;
 export interface CreateEnvironmentResponse {
   environmentId: string;
 }
-export const CreateEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ environmentId: S.String }),
+export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environmentId: S.String }),
 ).annotate({
   identifier: "CreateEnvironmentResponse",
 }) as any as S.Schema<CreateEnvironmentResponse>;
 export interface GetEnvironmentRequest {
   environmentId: string;
 }
-export const GetEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
     T.all(
       T.Http({ method: "GET", uri: "/environments/{environmentId}" }),
@@ -2153,7 +2084,7 @@ export interface MaintenanceSchedule {
   startTime?: Date;
   endTime?: Date;
 }
-export const MaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -2165,7 +2096,7 @@ export interface PendingMaintenance {
   schedule?: MaintenanceSchedule;
   engineVersion?: string;
 }
-export const PendingMaintenance = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const PendingMaintenance = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     schedule: S.optional(MaintenanceSchedule),
     engineVersion: S.optional(S.String),
@@ -2198,33 +2129,32 @@ export interface GetEnvironmentResponse {
   kmsKeyId?: string;
   networkType?: string;
 }
-export const GetEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      description: S.optional(S.String),
-      environmentArn: S.String,
-      environmentId: S.String,
-      instanceType: S.String,
-      status: S.String,
-      engineType: S.String,
-      engineVersion: S.String,
-      vpcId: S.String,
-      subnetIds: String50List,
-      securityGroupIds: String50List,
-      creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      storageConfigurations: S.optional(StorageConfigurationList),
-      tags: S.optional(TagMap),
-      highAvailabilityConfig: S.optional(HighAvailabilityConfig),
-      publiclyAccessible: S.optional(S.Boolean),
-      actualCapacity: S.optional(S.Number),
-      loadBalancerArn: S.optional(S.String),
-      statusReason: S.optional(S.String),
-      preferredMaintenanceWindow: S.optional(S.String),
-      pendingMaintenance: S.optional(PendingMaintenance),
-      kmsKeyId: S.optional(S.String),
-      networkType: S.optional(S.String),
-    }),
+export const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(S.String),
+    environmentArn: S.String,
+    environmentId: S.String,
+    instanceType: S.String,
+    status: S.String,
+    engineType: S.String,
+    engineVersion: S.String,
+    vpcId: S.String,
+    subnetIds: String50List,
+    securityGroupIds: String50List,
+    creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    storageConfigurations: S.optional(StorageConfigurationList),
+    tags: S.optional(TagMap),
+    highAvailabilityConfig: S.optional(HighAvailabilityConfig),
+    publiclyAccessible: S.optional(S.Boolean),
+    actualCapacity: S.optional(S.Number),
+    loadBalancerArn: S.optional(S.String),
+    statusReason: S.optional(S.String),
+    preferredMaintenanceWindow: S.optional(S.String),
+    pendingMaintenance: S.optional(PendingMaintenance),
+    kmsKeyId: S.optional(S.String),
+    networkType: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "GetEnvironmentResponse",
 }) as any as S.Schema<GetEnvironmentResponse>;
@@ -2237,60 +2167,56 @@ export interface UpdateEnvironmentRequest {
   applyDuringMaintenanceWindow?: boolean;
   forceUpdate?: boolean;
 }
-export const UpdateEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-      desiredCapacity: S.optional(S.Number),
-      instanceType: S.optional(S.String),
-      engineVersion: S.optional(S.String),
-      preferredMaintenanceWindow: S.optional(S.String),
-      applyDuringMaintenanceWindow: S.optional(S.Boolean),
-      forceUpdate: S.optional(S.Boolean),
-    }).pipe(
-      T.all(
-        T.Http({ method: "PATCH", uri: "/environments/{environmentId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String.pipe(T.HttpLabel("environmentId")),
+    desiredCapacity: S.optional(S.Number),
+    instanceType: S.optional(S.String),
+    engineVersion: S.optional(S.String),
+    preferredMaintenanceWindow: S.optional(S.String),
+    applyDuringMaintenanceWindow: S.optional(S.Boolean),
+    forceUpdate: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/environments/{environmentId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "UpdateEnvironmentRequest",
 }) as any as S.Schema<UpdateEnvironmentRequest>;
 export interface UpdateEnvironmentResponse {
   environmentId: string;
 }
-export const UpdateEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({ environmentId: S.String }),
+export const UpdateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environmentId: S.String }),
 ).annotate({
   identifier: "UpdateEnvironmentResponse",
 }) as any as S.Schema<UpdateEnvironmentResponse>;
 export interface DeleteEnvironmentRequest {
   environmentId: string;
 }
-export const DeleteEnvironmentRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environmentId: S.String.pipe(T.HttpLabel("environmentId")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "DELETE", uri: "/environments/{environmentId}" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environmentId: S.String.pipe(T.HttpLabel("environmentId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/environments/{environmentId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "DeleteEnvironmentRequest",
 }) as any as S.Schema<DeleteEnvironmentRequest>;
 export interface DeleteEnvironmentResponse {}
-export const DeleteEnvironmentResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () => S.Struct({}),
+export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
   identifier: "DeleteEnvironmentResponse",
 }) as any as S.Schema<DeleteEnvironmentResponse>;
@@ -2300,23 +2226,22 @@ export interface ListEnvironmentsRequest {
   names?: string[];
   engineType?: string;
 }
-export const ListEnvironmentsRequest = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      names: S.optional(EntityNameList).pipe(T.HttpQuery("names")),
-      engineType: S.optional(S.String).pipe(T.HttpQuery("engineType")),
-    }).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/environments" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    names: S.optional(EntityNameList).pipe(T.HttpQuery("names")),
+    engineType: S.optional(S.String).pipe(T.HttpQuery("engineType")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/environments" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
+  ),
 ).annotate({
   identifier: "ListEnvironmentsRequest",
 }) as any as S.Schema<ListEnvironmentsRequest>;
@@ -2331,7 +2256,7 @@ export interface EnvironmentSummary {
   creationTime: Date;
   networkType?: string;
 }
-export const EnvironmentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
+export const EnvironmentSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     environmentArn: S.String,
@@ -2347,18 +2272,16 @@ export const EnvironmentSummary = /*@__PURE__*/ /*#__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentSummary",
 }) as any as S.Schema<EnvironmentSummary>;
 export type EnvironmentSummaryList = EnvironmentSummary[];
-export const EnvironmentSummaryList =
-  /*@__PURE__*/ /*#__PURE__*/ S.Array(EnvironmentSummary);
+export const EnvironmentSummaryList = /*@__PURE__*/ S.Array(EnvironmentSummary);
 export interface ListEnvironmentsResponse {
   environments: EnvironmentSummary[];
   nextToken?: string;
 }
-export const ListEnvironmentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environments: EnvironmentSummaryList,
-      nextToken: S.optional(S.String),
-    }),
+export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environments: EnvironmentSummaryList,
+    nextToken: S.optional(S.String),
+  }),
 ).annotate({
   identifier: "ListEnvironmentsResponse",
 }) as any as S.Schema<ListEnvironmentsResponse>;
@@ -2367,6 +2290,7 @@ export const ListEnvironmentsResponse = /*@__PURE__*/ /*#__PURE__*/ S.suspend(
 export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
   "AccessDeniedException",
   { message: S.String },
+  T.HttpError(403),
 ).pipe(C.withAuthError) {}
 export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
   "InternalServerException",
@@ -2374,7 +2298,7 @@ export class InternalServerException extends S.TaggedErrorClass<InternalServerEx
     message: S.String,
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable(),
+  T.all(T.HttpError(500), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
   "ThrottlingException",
@@ -2384,7 +2308,7 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     quotaCode: S.optional(S.String),
     retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
   },
-  T.Retryable({ throttling: true }),
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
 ).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
@@ -2393,6 +2317,7 @@ export class ValidationException extends S.TaggedErrorClass<ValidationException>
     reason: S.optional(S.String),
     fieldList: S.optional(ValidationExceptionFieldList),
   },
+  T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
 export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
   "ResourceNotFoundException",
@@ -2401,6 +2326,7 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
     resourceId: S.optional(S.String),
     resourceType: S.optional(S.String),
   },
+  T.HttpError(404),
 ).pipe(C.withBadRequestError) {}
 export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
   "ServiceQuotaExceededException",
@@ -2411,6 +2337,7 @@ export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuo
     serviceCode: S.optional(S.String),
     quotaCode: S.optional(S.String),
   },
+  T.HttpError(402),
 ).pipe(C.withQuotaError) {}
 export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
   "ConflictException",
@@ -2419,16 +2346,17 @@ export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
     resourceId: S.optional(S.String),
     resourceType: S.optional(S.String),
   },
+  T.HttpError(409),
 ).pipe(C.withConflictError) {}
 export class ExecutionTimeoutException extends S.TaggedErrorClass<ExecutionTimeoutException>()(
   "ExecutionTimeoutException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(504), T.Retryable()),
 ).pipe(C.withTimeoutError, C.withRetryableError) {}
 export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
   "ServiceUnavailableException",
   { message: S.String },
-  T.Retryable(),
+  T.all(T.HttpError(503), T.Retryable()),
 ).pipe(C.withServerError, C.withRetryableError) {}
 
 //# Operations
@@ -2445,7 +2373,7 @@ export const getSignedBluinsightsUrl: API.OperationMethod<
   GetSignedBluinsightsUrlResponse,
   GetSignedBluinsightsUrlError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetSignedBluinsightsUrlRequest,
   output: GetSignedBluinsightsUrlResponse,
   errors: [AccessDeniedException, InternalServerException, ThrottlingException],
@@ -2482,7 +2410,7 @@ export const listEngineVersions: API.OperationMethod<
     ListEngineVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEngineVersionsRequest,
   output: ListEngineVersionsResponse,
   errors: [
@@ -2516,7 +2444,7 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceResponse,
   ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListTagsForResourceRequest,
   output: ListTagsForResourceResponse,
   errors: [
@@ -2546,7 +2474,7 @@ export const tagResource: API.OperationMethod<
   TagResourceResponse,
   TagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: TagResourceRequest,
   output: TagResourceResponse,
   errors: [
@@ -2576,7 +2504,7 @@ export const untagResource: API.OperationMethod<
   UntagResourceResponse,
   UntagResourceError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UntagResourceRequest,
   output: UntagResourceResponse,
   errors: [
@@ -2607,7 +2535,7 @@ export const createApplication: API.OperationMethod<
   CreateApplicationResponse,
   CreateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateApplicationRequest,
   output: CreateApplicationResponse,
   errors: [
@@ -2637,7 +2565,7 @@ export const getApplication: API.OperationMethod<
   GetApplicationResponse,
   GetApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationRequest,
   output: GetApplicationResponse,
   errors: [
@@ -2667,7 +2595,7 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationResponse,
   UpdateApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateApplicationRequest,
   output: UpdateApplicationResponse,
   errors: [
@@ -2697,7 +2625,7 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationResponse,
   DeleteApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationRequest,
   output: DeleteApplicationResponse,
   errors: [
@@ -2742,7 +2670,7 @@ export const listApplications: API.OperationMethod<
     ListApplicationsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
   errors: [
@@ -2777,7 +2705,7 @@ export const cancelBatchJobExecution: API.OperationMethod<
   CancelBatchJobExecutionResponse,
   CancelBatchJobExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CancelBatchJobExecutionRequest,
   output: CancelBatchJobExecutionResponse,
   errors: [
@@ -2809,7 +2737,7 @@ export const createDataSetExportTask: API.OperationMethod<
   CreateDataSetExportTaskResponse,
   CreateDataSetExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSetExportTaskRequest,
   output: CreateDataSetExportTaskResponse,
   errors: [
@@ -2842,7 +2770,7 @@ export const createDataSetImportTask: API.OperationMethod<
   CreateDataSetImportTaskResponse,
   CreateDataSetImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDataSetImportTaskRequest,
   output: CreateDataSetImportTaskResponse,
   errors: [
@@ -2876,7 +2804,7 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentResponse,
   CreateDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateDeploymentRequest,
   output: CreateDeploymentResponse,
   errors: [
@@ -2911,7 +2839,7 @@ export const deleteApplicationFromEnvironment: API.OperationMethod<
   DeleteApplicationFromEnvironmentResponse,
   DeleteApplicationFromEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteApplicationFromEnvironmentRequest,
   output: DeleteApplicationFromEnvironmentResponse,
   errors: [
@@ -2941,7 +2869,7 @@ export const getApplicationVersion: API.OperationMethod<
   GetApplicationVersionResponse,
   GetApplicationVersionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetApplicationVersionRequest,
   output: GetApplicationVersionResponse,
   errors: [
@@ -2970,7 +2898,7 @@ export const getBatchJobExecution: API.OperationMethod<
   GetBatchJobExecutionResponse,
   GetBatchJobExecutionError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetBatchJobExecutionRequest,
   output: GetBatchJobExecutionResponse,
   errors: [
@@ -3002,7 +2930,7 @@ export const getDataSetDetails: API.OperationMethod<
   GetDataSetDetailsResponse,
   GetDataSetDetailsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataSetDetailsRequest,
   output: GetDataSetDetailsResponse,
   errors: [
@@ -3034,7 +2962,7 @@ export const getDataSetExportTask: API.OperationMethod<
   GetDataSetExportTaskResponse,
   GetDataSetExportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataSetExportTaskRequest,
   output: GetDataSetExportTaskResponse,
   errors: [
@@ -3063,7 +2991,7 @@ export const getDataSetImportTask: API.OperationMethod<
   GetDataSetImportTaskResponse,
   GetDataSetImportTaskError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDataSetImportTaskRequest,
   output: GetDataSetImportTaskResponse,
   errors: [
@@ -3092,7 +3020,7 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentResponse,
   GetDeploymentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetDeploymentRequest,
   output: GetDeploymentResponse,
   errors: [
@@ -3136,7 +3064,7 @@ export const listApplicationVersions: API.OperationMethod<
     ListApplicationVersionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationVersionsRequest,
   output: ListApplicationVersionsResponse,
   errors: [
@@ -3188,7 +3116,7 @@ export const listBatchJobDefinitions: API.OperationMethod<
     ListBatchJobDefinitionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchJobDefinitionsRequest,
   output: ListBatchJobDefinitionsResponse,
   errors: [
@@ -3239,7 +3167,7 @@ export const listBatchJobExecutions: API.OperationMethod<
     ListBatchJobExecutionsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListBatchJobExecutionsRequest,
   output: ListBatchJobExecutionsResponse,
   errors: [
@@ -3275,7 +3203,7 @@ export const listBatchJobRestartPoints: API.OperationMethod<
   ListBatchJobRestartPointsResponse,
   ListBatchJobRestartPointsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: ListBatchJobRestartPointsRequest,
   output: ListBatchJobRestartPointsResponse,
   errors: [
@@ -3320,7 +3248,7 @@ export const listDataSetExportHistory: API.OperationMethod<
     ListDataSetExportHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetExportHistoryRequest,
   output: ListDataSetExportHistoryResponse,
   errors: [
@@ -3370,7 +3298,7 @@ export const listDataSetImportHistory: API.OperationMethod<
     ListDataSetImportHistoryError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetImportHistoryRequest,
   output: ListDataSetImportHistoryResponse,
   errors: [
@@ -3425,7 +3353,7 @@ export const listDataSets: API.OperationMethod<
     ListDataSetsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDataSetsRequest,
   output: ListDataSetsResponse,
   errors: [
@@ -3480,7 +3408,7 @@ export const listDeployments: API.OperationMethod<
     ListDeploymentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
   errors: [
@@ -3516,7 +3444,7 @@ export const startApplication: API.OperationMethod<
   StartApplicationResponse,
   StartApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartApplicationRequest,
   output: StartApplicationResponse,
   errors: [
@@ -3548,7 +3476,7 @@ export const startBatchJob: API.OperationMethod<
   StartBatchJobResponse,
   StartBatchJobError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StartBatchJobRequest,
   output: StartBatchJobResponse,
   errors: [
@@ -3579,7 +3507,7 @@ export const stopApplication: API.OperationMethod<
   StopApplicationResponse,
   StopApplicationError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: StopApplicationRequest,
   output: StopApplicationResponse,
   errors: [
@@ -3610,7 +3538,7 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentResponse,
   CreateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: CreateEnvironmentRequest,
   output: CreateEnvironmentResponse,
   errors: [
@@ -3640,7 +3568,7 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentResponse,
   GetEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: GetEnvironmentRequest,
   output: GetEnvironmentResponse,
   errors: [
@@ -3671,7 +3599,7 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentResponse,
   UpdateEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentRequest,
   output: UpdateEnvironmentResponse,
   errors: [
@@ -3704,7 +3632,7 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentResponse,
   DeleteEnvironmentError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
+> = /*@__PURE__*/ API.make(() => ({
   input: DeleteEnvironmentRequest,
   output: DeleteEnvironmentResponse,
   errors: [
@@ -3747,7 +3675,7 @@ export const listEnvironments: API.OperationMethod<
     ListEnvironmentsError,
     Credentials | Region | HttpClient.HttpClient
   >;
-} = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
+} = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListEnvironmentsRequest,
   output: ListEnvironmentsResponse,
   errors: [
