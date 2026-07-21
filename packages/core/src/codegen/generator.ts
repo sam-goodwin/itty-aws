@@ -128,6 +128,22 @@ export interface SdkSpec {
   readonly memberName?: (name: string) => string;
   /** Operation shape name → exported const name. Default: lowerFirst. */
   readonly opExportName?: (name: string) => string;
+  /**
+   * Emit the one-line smithy doc comment above shapes and error classes.
+   * Default true. AWS turns this off — its models carry multi-kilobyte HTML
+   * docs per shape and the SDK only surfaces operation-level docs.
+   */
+  readonly shapeDocs?: boolean;
+  /**
+   * Extra reachability roots beyond the operations' I/O shapes. AWS seeds
+   * the error shapes here so their member targets are emitted (error class
+   * fields reference schema consts); the error shapes themselves are still
+   * emitted as error classes, not schemas.
+   */
+  readonly extraRoots?: (
+    selected: readonly OpEntry[],
+    shapes: ShapeMap,
+  ) => Iterable<string>;
 
   /**
    * Provider member bindings as data, checked in order between the generic
@@ -274,6 +290,16 @@ export interface SdkSpec {
   /** Error-class emission details. All optional. */
   readonly errors?: {
     /**
+     * Full override of one error class's emission (mirrors shapeOverride):
+     * return the emitted lines to own the error, or undefined to fall back
+     * to the driver's field/wrap-based emission.
+     */
+    readonly override?: (ctx: {
+      readonly id: string;
+      readonly def: any;
+      readonly name: string;
+    }) => string[] | undefined;
+    /**
      * Field lines used when the error shape declares no members.
      * Default: `code` (integer) + `message` (string) — the common REST
      * error envelope.
@@ -382,7 +408,10 @@ export const generateService = (
   if (selected.length === 0) return { code: "", operations: 0 };
 
   // 2. Reachability + dependencies-first order (cycles suspend at refs).
-  const roots = selected.flatMap((op) => [op.def.__input, op.def.__output]);
+  const roots = [
+    ...selected.flatMap((op) => [op.def.__input, op.def.__output]),
+    ...(spec.extraRoots?.(selected, shapes) ?? []),
+  ];
   const reachable = reachableFrom(shapes, roots, shapeDeps);
   const order = topoOrder(shapes, reachable, shapeDeps);
   const indexOf = orderIndex(order);
@@ -556,11 +585,18 @@ export const generateService = (
   const errorIdSet = new Set(errorIds);
   const errorNames = new Set(errorIds.map(local));
 
+  const shapeDocs = spec.shapeDocs ?? true;
+
   for (const id of errorIds) {
     const d = shapes[id];
     const name = local(id);
     const doc = oneLine(d.traits?.["smithy.api#documentation"]);
-    if (doc) out.push(`/** ${doc} */`);
+    if (doc && shapeDocs) out.push(`/** ${doc} */`);
+    const overridden = spec.errors?.override?.({ id, def: d, name });
+    if (overridden) {
+      out.push(...overridden);
+      continue;
+    }
     const errorField =
       spec.errors?.field ??
       ((mn: string, target: string) =>
@@ -598,7 +634,7 @@ export const generateService = (
     const d = shapes[id];
     const name = local(id);
     const doc = oneLine(d.traits?.["smithy.api#documentation"]);
-    if (doc) out.push(`/** ${doc} */`);
+    if (doc && shapeDocs) out.push(`/** ${doc} */`);
 
     const override = spec.shapeOverride?.({
       id,
