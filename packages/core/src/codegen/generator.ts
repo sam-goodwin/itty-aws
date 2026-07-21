@@ -202,6 +202,16 @@ export interface SdkSpec {
   readonly sourceNote?: string;
 
   /**
+   * Operation aliases: re-export the canonical op (and its
+   * Request/Response/Error types) under each alias name. Skipped when the
+   * target wasn't emitted or the alias name is taken.
+   */
+  readonly opAliases?: ReadonlyArray<{
+    readonly alias: string;
+    readonly target: string;
+  }>;
+
+  /**
    * Full shape-emission override, checked before the driver's own shape
    * handling. Return the emitted lines to own a shape (e.g. AWS's
    * newtypes, structural unions, event streams), or undefined to let the
@@ -731,11 +741,22 @@ export const generateService = (
     );
   }
 
-  // 7. Provider trailing sections (aliases etc.).
-  if (spec.footer) {
-    const emittedOps = new Set(
-      selected.map((op) => opExportName(local(op.id))),
+  // 7. Alias re-exports, then provider trailing sections.
+  const emittedOps = new Set(selected.map((op) => opExportName(local(op.id))));
+  for (const { alias, target } of spec.opAliases ?? []) {
+    if (!emittedOps.has(target) || emittedOps.has(alias)) continue;
+    emittedOps.add(alias);
+    const A = upperFirst(alias);
+    const T2 = upperFirst(target);
+    out.push(
+      `// Alias of ${target} (same route, alternate export name upstream).\n` +
+        `export const ${alias} = ${target};\n` +
+        `export type ${A}Request = ${T2}Request;\n` +
+        `export type ${A}Response = ${T2}Response;\n` +
+        `export type ${A}Error = ${T2}Error;\n`,
     );
+  }
+  if (spec.footer) {
     out.push(...spec.footer({ emittedOps }));
   }
 

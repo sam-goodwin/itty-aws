@@ -14,10 +14,7 @@
 
 import { camel } from "@distilled.cloud/core/codegen/naming";
 import { PURE } from "@distilled.cloud/core/codegen/emit";
-import {
-  upperFirst,
-  type SdkSpec,
-} from "@distilled.cloud/core/codegen/generator";
+import { type SdkSpec } from "@distilled.cloud/core/codegen/generator";
 import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
 
 const ENVELOPE_PAYLOAD_TRAIT = "com.cloudflare.protocols#envelopePayload";
@@ -108,25 +105,8 @@ const makeCfSpec = (
     retry: "Retry.Retry",
   },
 
-  // Route-alias exports: some routes exist under several distilled export
-  // names; re-export the canonical op (and its types) under each alias.
-  footer: ({ emittedOps }) => {
-    const out: string[] = [];
-    for (const { alias, target } of opAliases ?? []) {
-      if (!emittedOps.has(target) || emittedOps.has(alias)) continue;
-      emittedOps.add(alias);
-      const A = upperFirst(alias);
-      const T2 = upperFirst(target);
-      out.push(
-        `// Alias of ${target} (same route, alternate export name upstream).\n` +
-          `export const ${alias} = ${target};\n` +
-          `export type ${A}Request = ${T2}Request;\n` +
-          `export type ${A}Response = ${T2}Response;\n` +
-          `export type ${A}Error = ${T2}Error;\n`,
-      );
-    }
-    return out;
-  },
+  // Some routes exist under several distilled export names upstream.
+  opAliases,
 });
 
 runGeneratorCli({
