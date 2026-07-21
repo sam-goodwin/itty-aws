@@ -69,19 +69,24 @@ const makeCfSpec = (
     rootPipe: "T.EnvelopePayloadRoot()",
   },
 
-  pagination: {
-    itemsFallback: "result",
-    syntheticOutputs: ["resultInfo"],
-    // Paginated responses additionally carry the envelope's `result_info`
-    // (see CloudflarePaginatedProtocol / the shared ResultInfo schema).
-    injectOutputMember: {
-      tsName: "resultInfo",
-      interfaceLines: [
-        `  /** Pagination info from the envelope's \`result_info\`. */`,
-        `  resultInfo?: ResultInfo | null;`,
-      ],
-      structLine: `  "resultInfo": S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),`,
-      imports: ["ResultInfo"],
+  // One pagination profile: the v4 envelope. Its protocol keeps the
+  // envelope's `result_info` on the response (delivered as the injected
+  // `resultInfo` member) so `.pages()`/`.items()` can advance.
+  paginationProfiles: {
+    envelope: {
+      protocol: "CloudflarePaginatedProtocol",
+      strategy: "cloudflarePaginate",
+      itemsFallback: "result",
+      syntheticOutputs: ["resultInfo"],
+      injectOutputMember: {
+        tsName: "resultInfo",
+        interfaceLines: [
+          `  /** Pagination info from the envelope's \`result_info\`. */`,
+          `  resultInfo?: ResultInfo | null;`,
+        ],
+        structLine: `  "resultInfo": S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),`,
+        imports: ["ResultInfo"],
+      },
     },
   },
 
@@ -94,8 +99,6 @@ const makeCfSpec = (
     commonErrorType: "CloudflareOpError",
     commonErrorClasses: ["CloudflareRateLimited", "CloudflareError"],
     protocol: "CloudflareProtocol",
-    paginatedProtocol: "CloudflarePaginatedProtocol",
-    paginateStrategy: "cloudflarePaginate",
     retry: "Retry.Retry",
   },
 

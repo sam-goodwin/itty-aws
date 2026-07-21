@@ -78,6 +78,30 @@ export interface EmittedMember {
   readonly traits: Record<string, any>;
 }
 
+export interface PaginationProfile {
+  /** Protocol const for paginated ops. Defaults to operationDecl.protocol. */
+  readonly protocol?: string;
+  /** Strategy expression passed as makePaginated's second argument. */
+  readonly strategy?: string;
+  /** Items path fallback when the trait omits `items`. */
+  readonly itemsFallback: string;
+  /** Output names accepted even when not modeled (delivered by the protocol). */
+  readonly syntheticOutputs?: readonly string[];
+  /**
+   * Extra interface field + struct member appended to paginated outputs
+   * that don't already model them (what the protocol delivers beyond the
+   * modeled shape — e.g. cloudflare's `resultInfo` from the envelope's
+   * `result_info`). `imports` are pulled from the pagination module in the
+   * header.
+   */
+  readonly injectOutputMember?: {
+    readonly tsName: string;
+    readonly interfaceLines: readonly string[];
+    readonly structLine: string;
+    readonly imports?: readonly string[];
+  };
+}
+
 export interface OperationEmit {
   readonly op: OpEntry;
   readonly opName: string;
@@ -171,22 +195,24 @@ export interface SdkSpec {
     readonly rootPipe: string;
   };
 
-  /** Pagination validation inputs (see codegen/pagination.ts). */
-  readonly pagination?: {
-    readonly itemsFallback: string;
-    readonly syntheticOutputs: readonly string[];
-    /**
-     * Extra interface field + struct member appended to paginated outputs
-     * that don't already model them (e.g. cloudflare's `resultInfo`).
-     * `imports` are pulled from the pagination module in the header.
-     */
-    readonly injectOutputMember?: {
-      readonly tsName: string;
-      readonly interfaceLines: readonly string[];
-      readonly structLine: string;
-      readonly imports?: readonly string[];
-    };
-  };
+  /**
+   * Pagination profiles. A profile is the codegen-side description of one
+   * paginated wire variant: the Protocol const that decodes it, the
+   * strategy passed to makePaginated, the trait-validation rules, and any
+   * output member the protocol delivers beyond the modeled shape. SDKs
+   * with several pagination styles declare several profiles and select
+   * per-op via {@link SdkSpec.paginationProfileFor}.
+   */
+  readonly paginationProfiles?: Readonly<Record<string, PaginationProfile>>;
+  /**
+   * Select the profile for a paginated op (from its `smithy.api#paginated`
+   * trait / shape). Default: the sole declared profile; with several
+   * profiles this becomes required for ops to paginate.
+   */
+  readonly paginationProfileFor?: (
+    trait: any,
+    op: OpEntry,
+  ) => string | undefined;
 
   /**
    * Service-wide fallback key dictionary stamped on op I/O roots (emitted
@@ -277,9 +303,6 @@ export interface SdkSpec {
     /** Error classes appended to every op's `errors: [...]` list. */
     readonly commonErrorClasses: readonly string[];
     readonly protocol: string;
-    readonly paginatedProtocol?: string;
-    /** Optional pagination strategy passed as makePaginated's 2nd arg. */
-    readonly paginateStrategy?: string;
     /** The retry tag expression (e.g. `Retry.Retry`). */
     readonly retry: string;
     /**
@@ -487,11 +510,25 @@ export const generateService = (
   //    degrades to a plain operation.
   const paginatedOutputs = new Set<string>();
   const paginatedItemsRoot = new Map<string, string>();
-  if (spec.pagination) {
-    const syntheticOutputs = new Set(spec.pagination.syntheticOutputs);
+  /** Output shape id → the pagination profile that decodes it. */
+  const outputProfile = new Map<string, PaginationProfile>();
+  /** Op id → its pagination profile (drives protocol/strategy emission). */
+  const opProfile = new Map<string, PaginationProfile>();
+  const usedProfiles = new Set<PaginationProfile>();
+  const profileNames = Object.keys(spec.paginationProfiles ?? {});
+  if (profileNames.length > 0) {
     for (const op of selected) {
       const pg = op.def.traits?.[PAGINATED_TRAIT];
       if (!pg) continue;
+      // Which profile decodes this op's pages: the selector's answer, or
+      // the sole declared profile.
+      const profileName =
+        spec.paginationProfileFor?.(pg, op) ??
+        (profileNames.length === 1 ? profileNames[0] : undefined);
+      const profile = profileName
+        ? spec.paginationProfiles![profileName]
+        : undefined;
+      if (!profile) continue;
       const inNames = new Set(
         memberInfos(shapes[op.def.__input] ?? {}).map((m) => m.tsName),
       );
@@ -502,13 +539,16 @@ export const generateService = (
         trait: pg,
         inputNames: inNames,
         outputNames: outNames,
-        itemsFallback: spec.pagination.itemsFallback,
-        syntheticOutputs,
+        itemsFallback: profile.itemsFallback,
+        syntheticOutputs: new Set(profile.syntheticOutputs ?? []),
       });
       if (ok) {
         op.def.__pagination = pg;
         paginatedOutputs.add(op.def.__output);
         paginatedItemsRoot.set(op.def.__output, itemsRoot);
+        outputProfile.set(op.def.__output, profile);
+        opProfile.set(op.id, profile);
+        usedProfiles.add(profile);
       }
     }
   }
@@ -618,12 +658,8 @@ export const generateService = (
         }),
       );
       const members = infos.map((info) => emitMember(info, i));
-      const inject = spec.pagination?.injectOutputMember;
-      if (
-        inject &&
-        paginatedOutputs.has(id) &&
-        !infos.some((m) => m.tsName === inject.tsName)
-      ) {
+      const inject = outputProfile.get(id)?.injectOutputMember;
+      if (inject && !infos.some((m) => m.tsName === inject.tsName)) {
         fields.push(...inject.interfaceLines);
         members.push(inject.structLine);
       }
@@ -719,7 +755,7 @@ export const generateService = (
         `  input: ${ctx.inputName},\n` +
         `  output: ${ctx.outputName},\n` +
         `  errors: [${errList.join(", ")}],\n` +
-        `  protocol: ${paginated ? (decl.paginatedProtocol ?? decl.protocol) : decl.protocol},\n` +
+        `  protocol: ${(paginated && opProfile.get(ctx.op.id)?.protocol) || decl.protocol},\n` +
         `  retry: ${decl.retry},\n` +
         (decl.extraConfig?.(ctx) ?? []).map((l) => `  ${l},\n`).join("") +
         (paginated
@@ -734,7 +770,7 @@ export const generateService = (
           typeAnnotation,
           factory: paginated ? "API.makePaginated" : "API.make",
           pure,
-          extraArg: paginated ? decl.paginateStrategy : undefined,
+          extraArg: paginated ? opProfile.get(ctx.op.id)?.strategy : undefined,
           config,
         }),
       ].join("\n");
@@ -789,9 +825,23 @@ export const generateService = (
       );
     }
     const retryNs = decl.retry.split(".")[0];
+    // Imports the used pagination profiles pull in: their protocol consts
+    // (from the protocol module) and strategy/injected-member names (from
+    // the pagination module).
+    const profileProtocols = [
+      ...new Set(
+        [...usedProfiles]
+          .map((p) => p.protocol)
+          .filter((p): p is string => p !== undefined && p !== decl.protocol),
+      ),
+    ];
     const pagImports = [
-      ...(decl.paginateStrategy ? [decl.paginateStrategy] : []),
-      ...(spec.pagination?.injectOutputMember?.imports ?? []),
+      ...new Set(
+        [...usedProfiles].flatMap((p) => [
+          ...(p.strategy ? [p.strategy] : []),
+          ...(p.injectOutputMember?.imports ?? []),
+        ]),
+      ),
     ];
     return (
       `// AUTO-GENERATED by scripts/generate.ts${
@@ -802,9 +852,7 @@ export const generateService = (
       `import * as T from "../traits.ts";\n` +
       `import {\n` +
       `  ${decl.protocol},\n` +
-      (ctx.hasPaginated && decl.paginatedProtocol
-        ? `  ${decl.paginatedProtocol},\n`
-        : "") +
+      profileProtocols.map((p) => `  ${p},\n`).join("") +
       `  type ${decl.commonErrorType},\n` +
       `  type ${decl.contextType},\n` +
       `} from "../protocol.ts";\n` +
