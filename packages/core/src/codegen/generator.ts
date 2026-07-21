@@ -106,14 +106,19 @@ export interface SdkSpec {
   readonly opExportName?: (name: string) => string;
 
   /**
-   * Provider bindings checked between the generic header binding and
-   * `smithy.api#httpPayload` — e.g. cloudflare's envelope payloads and
-   * form-data files. The driver owns the generic cascade:
-   * label → query → header → extraBinding → rawBody (httpPayload) → body.
+   * Provider member bindings as data, checked in order between the generic
+   * header binding and `smithy.api#httpPayload`. The driver's cascade:
+   * label → query → header → extraBindings → rawBody (httpPayload) → body.
+   *
+   * `pipe` is emitted for the member; `tsType` overrides its interface
+   * type (e.g. file uploads → `(File | Blob)[]`).
    */
-  readonly extraBinding?: (
-    traits: Record<string, any>,
-  ) => MemberBinding | undefined;
+  readonly extraBindings?: ReadonlyArray<{
+    readonly trait: string;
+    readonly binding: MemberBinding;
+    readonly pipe: string;
+    readonly tsType?: string;
+  }>;
   /**
    * Which wire-name rule a binding follows. Defaults: the three generic
    * kinds map to themselves, everything else to `"other"` (jsonName).
@@ -124,16 +129,23 @@ export interface SdkSpec {
   /** Trait id marking a member nullable (`S.NullOr` + `| null`). */
   readonly nullableTrait?: string;
   /**
-   * Extra schema pipes appended after the generic ones. The driver emits
-   * `T.Label/T.Query/T.Header` (wire-aware), `T.HttpBody()` for rawBody,
-   * and `T.Body(wire)` renames — the SDK's traits module must export those
-   * core builders under these names. Provider bindings and member traits
-   * (e.g. key dictionaries) add theirs here.
+   * Member traits emitted as pipes when present: trait id → pipe builder
+   * name in the SDK's traits module. The trait's value is JSON-inlined as
+   * the argument (e.g. `"…#keyDictionary": "T.KeyDictionary"` →
+   * `T.KeyDictionary({…})`).
+   */
+  readonly memberTraitPipes?: Readonly<Record<string, string>>;
+  /**
+   * Extra schema pipes appended after the generic ones, for anything the
+   * data tables can't express. The driver emits `T.Label/T.Query/T.Header`
+   * (wire-aware), `T.HttpBody()` for rawBody, and `T.Body(wire)` renames —
+   * the SDK's traits module must export those core builders under these
+   * names.
    */
   readonly memberExtraPipes?: (m: EmittedMember) => string[];
   /** Full override of member pipe emission (rarely needed). */
   readonly memberPipes?: (m: EmittedMember) => string[];
-  /** Override the TS type of a member (e.g. file uploads → `(File | Blob)[]`). */
+  /** Function override for member TS types beyond the binding table. */
   readonly memberTsType?: (
     m: EmittedMember,
     tsRef: (target: string) => string,
@@ -182,6 +194,11 @@ export interface SdkSpec {
     readonly tsRef: (target: string) => string;
   }) => string[];
 
+  /**
+   * Trait id carrying error matchers: when present on an error shape, the
+   * class is wrapped in `T.applyErrorMatchers(<cls>, <trait value>)`.
+   */
+  readonly errorMatchersTrait?: string;
   /** Error-class emission details. All optional. */
   readonly errors?: {
     /**
@@ -299,6 +316,14 @@ export const generateService = (
             : "other");
 
   // The generic binding cascade; provider bindings slot in after headers.
+  const extraBindingOf = (
+    traits: Record<string, any>,
+  ): MemberBinding | undefined => {
+    for (const b of spec.extraBindings ?? []) {
+      if (b.trait in traits) return b.binding;
+    }
+    return undefined;
+  };
   const bindingOf = (traits: Record<string, any>): MemberBinding =>
     "smithy.api#httpLabel" in traits
       ? "label"
@@ -306,7 +331,7 @@ export const generateService = (
         ? "query"
         : "smithy.api#httpHeader" in traits
           ? "header"
-          : (spec.extraBinding?.(traits) ??
+          : (extraBindingOf(traits) ??
             ("smithy.api#httpPayload" in traits ? "rawBody" : "body"));
 
   const memberInfos = (d: any): EmittedMember[] =>
@@ -353,8 +378,28 @@ export const generateService = (
     spec.memberPipes ??
     ((info: EmittedMember) => [
       ...genericPipes(info),
+      // The binding table's pipe (envelope payloads, file uploads, …).
+      ...(spec.extraBindings ?? [])
+        .filter((b) => b.binding === info.binding && b.trait in info.traits)
+        .map((b) => b.pipe),
+      // Trait-table pipes: trait value JSON-inlined as the argument.
+      ...Object.entries(spec.memberTraitPipes ?? {})
+        .filter(([trait]) => info.traits[trait] !== undefined)
+        .map(
+          ([trait, builder]) =>
+            `${builder}(${JSON.stringify(info.traits[trait])})`,
+        ),
       ...(spec.memberExtraPipes?.(info) ?? []),
     ]);
+
+  const memberTsTypeOf = (
+    info: EmittedMember,
+    tsRefFn: (target: string) => string,
+  ): string | undefined =>
+    spec.memberTsType?.(info, tsRefFn) ??
+    (spec.extraBindings ?? []).find(
+      (b) => b.binding === info.binding && b.tsType !== undefined,
+    )?.tsType;
 
   const emitMember = (info: EmittedMember, selfIdx: number): string => {
     let expr = ref(info.target, selfIdx);
@@ -426,11 +471,19 @@ export const generateService = (
             errorField("code", "smithy.api#Integer"),
             errorField("message", "smithy.api#String"),
           ]);
+    const matchers = spec.errorMatchersTrait
+      ? d.traits?.[spec.errorMatchersTrait]
+      : undefined;
     out.push(
       errorClass({
         name,
         fields,
-        wrap: spec.errors?.wrap?.(d.traits ?? {}),
+        wrap:
+          spec.errors?.wrap?.(d.traits ?? {}) ??
+          (matchers
+            ? (cls) =>
+                `T.applyErrorMatchers(\n${cls},\n${JSON.stringify(matchers)},\n)`
+            : undefined),
       }),
     );
   }
@@ -480,7 +533,7 @@ export const generateService = (
           optional: !info.required,
           doc: info.doc,
           type:
-            spec.memberTsType?.(info, tsRef) ??
+            memberTsTypeOf(info, tsRef) ??
             `${tsRef(info.target)}${info.nullable ? " | null" : ""}`,
         }),
       );

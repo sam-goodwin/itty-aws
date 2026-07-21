@@ -34,33 +34,25 @@ const makeCfSpec = (
   // Docs wire names are snake_case; the TS surface is camelCase.
   memberName: camel,
   nullableTrait: NULLABLE_TRAIT,
+  errorMatchersTrait: ERROR_MATCHERS_TRAIT,
 
-  extraBinding: (traits) =>
-    ENVELOPE_PAYLOAD_TRAIT in traits
-      ? "payload"
-      : FORM_DATA_FILE_TRAIT in traits
-        ? "file"
-        : undefined,
+  extraBindings: [
+    {
+      trait: ENVELOPE_PAYLOAD_TRAIT,
+      binding: "payload",
+      pipe: "T.EnvelopePayload()",
+    },
+    {
+      trait: FORM_DATA_FILE_TRAIT,
+      binding: "file",
+      pipe: "T.FormDataFile()",
+      tsType: "(File | Blob)[]",
+    },
+  ],
 
-  memberExtraPipes: (info) => {
-    switch (info.binding) {
-      case "payload":
-        return ["T.EnvelopePayload()"];
-      case "file":
-        return ["T.FormDataFile()"];
-      case "body":
-        return info.traits[KEY_DICTIONARY_TRAIT]
-          ? [
-              `T.KeyDictionary(${JSON.stringify(info.traits[KEY_DICTIONARY_TRAIT])})`,
-            ]
-          : [];
-      default:
-        return [];
-    }
+  memberTraitPipes: {
+    [KEY_DICTIONARY_TRAIT]: "T.KeyDictionary",
   },
-
-  memberTsType: (info) =>
-    info.binding === "file" ? "(File | Blob)[]" : undefined,
 
   // Op I/O roots carry the service key dictionary (inside the suspend, so it
   // survives core's Suspend resolution): the protocol reads it off the root
@@ -98,16 +90,6 @@ const makeCfSpec = (
     `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
     `export const ${name} = ${PURE}S.Unknown.pipe(T.UnionCases(${JSON.stringify(caseKeys)}));\n`,
   ],
-
-  errors: {
-    wrap: (traits) => {
-      const matchers = traits[ERROR_MATCHERS_TRAIT];
-      return matchers
-        ? (cls) =>
-            `T.applyErrorMatchers(\n${cls},\n${JSON.stringify(matchers)},\n)`
-        : undefined;
-    },
-  },
 
   operationDecl: {
     contextType: "CloudflareOpContext",
