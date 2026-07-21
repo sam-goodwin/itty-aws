@@ -186,6 +186,23 @@ export interface SdkSpec {
     };
   };
 
+  /**
+   * Full shape-emission override, checked before the driver's own shape
+   * handling. Return the emitted lines to own a shape (e.g. AWS's
+   * newtypes, structural unions, event streams), or undefined to let the
+   * driver emit it. `selfIdx` is the shape's position in emission order
+   * for forward-ref decisions.
+   */
+  readonly shapeOverride?: (ctx: {
+    readonly id: string;
+    readonly def: any;
+    readonly name: string;
+    readonly selfIdx: number;
+    readonly ref: (target: string, selfIdx: number) => string;
+    readonly tsRef: (target: string) => string;
+    readonly members: (d: any) => EmittedMember[];
+  }) => string[] | undefined;
+
   /** Union emission: TS alias union + opaque/structural schema const. */
   readonly union: (ctx: {
     readonly name: string;
@@ -233,12 +250,23 @@ export interface SdkSpec {
     readonly paginateStrategy?: string;
     /** The retry tag expression (e.g. `Retry.Retry`). */
     readonly retry: string;
+    /**
+     * Extra config lines inserted before the pagination entry (e.g. AWS's
+     * `operationName` and `endpointHostPrefix`).
+     */
+    readonly extraConfig?: (ctx: OperationEmit) => string[];
   };
   /** Full override of operation const emission. */
   readonly operation?: (ctx: OperationEmit) => string;
 
   /** Module header (imports, shared consts). */
-  readonly header: (ctx: { readonly hasPaginated: boolean }) => string;
+  readonly header: (ctx: {
+    readonly hasPaginated: boolean;
+    readonly model: any;
+  }) => string;
+
+  /** Final pass over the assembled module (e.g. pruning unused imports). */
+  readonly postProcess?: (code: string) => string;
 
   /**
    * Trailing sections after operations (e.g. route-alias re-exports).
@@ -497,6 +525,20 @@ export const generateService = (
     const doc = oneLine(d.traits?.["smithy.api#documentation"]);
     if (doc) out.push(`/** ${doc} */`);
 
+    const override = spec.shapeOverride?.({
+      id,
+      def: d,
+      name,
+      selfIdx: i,
+      ref,
+      tsRef,
+      members: memberInfos,
+    });
+    if (override) {
+      out.push(...override);
+      return;
+    }
+
     if (d.type === "structure") {
       // Bare-payload response: single trait-marked member — the response IS
       // that member's value; emit its type + a root marker for the protocol.
@@ -623,6 +665,7 @@ export const generateService = (
         `  errors: [${errList.join(", ")}],\n` +
         `  protocol: ${paginated ? (decl.paginatedProtocol ?? decl.protocol) : decl.protocol},\n` +
         `  retry: ${decl.retry},\n` +
+        (decl.extraConfig?.(ctx) ?? []).map((l) => `  ${l},\n`).join("") +
         (paginated
           ? `  pagination: ${JSON.stringify(ctx.pagination)} as const,\n`
           : "") +
@@ -668,8 +711,15 @@ export const generateService = (
     out.push(...spec.footer({ emittedOps }));
   }
 
-  const header = spec.header({ hasPaginated: paginatedOutputs.size > 0 });
-  return { code: header + out.join("\n") + "\n", operations: selected.length };
+  const header = spec.header({
+    hasPaginated: paginatedOutputs.size > 0,
+    model,
+  });
+  const code = header + out.join("\n") + "\n";
+  return {
+    code: spec.postProcess?.(code) ?? code,
+    operations: selected.length,
+  };
 };
 
 // Re-exported so provider specs can be written against the same helpers the
