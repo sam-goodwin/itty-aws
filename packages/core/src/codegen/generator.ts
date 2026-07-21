@@ -240,8 +240,14 @@ export const generateService = (
 
   const wireKind =
     spec.wireKind ??
-    ((b: MemberBinding) =>
-      b === "label" || b === "query" || b === "header" ? b : "other");
+    ((b: MemberBinding): "label" | "query" | "header" | "other" =>
+      b === "label"
+        ? "label"
+        : b === "query"
+          ? "query"
+          : b === "header"
+            ? "header"
+            : "other");
 
   const memberInfos = (d: any): EmittedMember[] =>
     memberBases(d, spec.memberName).map((base) => {
