@@ -1,6 +1,6 @@
 {
   "name": "@distilled.cloud/kubernetes",
-  "version": "0.29.1",
+  "version": "0.30.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/alchemy-run/distilled",

@@ -1,3 +1,18 @@
+## v0.30.0
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **aws**: Broad patches from AWS fan-out &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/369 [<samp>(a945d)</samp>](https://github.com/alchemy-run/distilled/commit/a945d874c)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **aws**:
+  - **ec2**: Type duplicate security group rules &nbsp;-&nbsp; by **Riccardo Michelon** in https://github.com/alchemy-run/distilled/issues/383 [<samp>(c9a77)</samp>](https://github.com/alchemy-run/distilled/commit/c9a7779af)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.29.1...HEAD)
+
+---
+
 ## v0.29.1
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
